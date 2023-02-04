@@ -1,0 +1,114 @@
+site_name: API Logic Server
+docs_dir: docs
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - kramdown
+    - content.tooltips
+nav:
+  - " ": index.md
+  - Quick Start:
+    - Express Eval: Install-Eval-x.md
+    - Express Eval-Z: Install-Eval.md
+    - Express Install-x: Install-Express-x.md
+    - Express Install: Install-Express.md
+    - Detailed Install:
+      - "Install API Logic Server": Install.md
+      - "Create an API Logic Project": Create-ApiLogicProject.md
+      - Execute an API Logic Project:
+        - Execute in your IDE: IDE-Execute.md
+        - Execute From Terminal: Execute.md
+  - Tutorial:
+    - "Tutorial-x": Tutorial-x.md
+    - "Tutorial": Tutorial.md
+    - Sample-Database.md
+  - 1. Admin Web App:
+    - "Admin App Features": Admin-Tour.md
+    - Admin-Customization.md
+  - 2. API:
+    - "JSON:API": API.md
+    - "API Customization": API-Customize.md
+  - 3. Logic:
+    - "Rules: 40X, Extensible": Logic-Why.md
+    - "Rules": Logic.md
+    - "Logic Operation": "Logic-Operation.md"
+    - "TDD-based Approach": "Logic-Tutorial.md"
+  - 4. Security:
+    - "Overview": Security-Overview.md
+    - "Authorization": Security-Authorization.md
+    - "Authentication": Security-Authentication.md
+    - "Authentication Provider": Security-Authentication-Provider.md
+    - "Activation": Security-Activation.md
+  - "Using Your IDE": IDE-Customize.md
+  - Managing API Logic Projects:
+    - "DevOps": Project-DevOps.md
+    - "Structure": Project-Structure.md
+    - "Rebuild": Project-Rebuild.md
+    - "Working With Docker": Working-With-Docker.md
+    - "GitHub and Codespaces": Manage-GitHub.md
+    - "Virtual Environment": Project-Env.md
+    - "Execution - Hosts and Ports": Project-Execution.md
+    - "Builders": Project-Builders.md
+  - Database:
+    - "Examples": Data-Model-Examples.md
+    - Data-Model-Classes.md
+    - Data-Model-Keys.md
+    - Data-Model-Customization.md
+    - "Connection Examples": Database-Connectivity.md
+    - "Multiple Databases": Data-Model-Multi.md
+    - "Install pyodbc: SqlServer": Install-pyodbc.md
+    - "Install psycopg2: Postgres": Install-psycopg2.md
+  - Testing:
+    - "Testing With Behave": Behave.md
+    - "Behave Logic Report": Behave-Logic-Report.md
+  - Architecture:
+    - "What is API Logic Server": Architecture-What-Is.md
+    - Architecture.md
+    - Working-with-Flask-AppBuilder.md
+    - "API Logic Server Development": Internals.md
+    - "Internals - CLI": Internals-CLI.md
+  - Troubleshooting.md
+  - FAQs:
+    - "Is this a Low Code approach?": FAQ-Low-Code.md
+    - "Is this a Framework?": FAQ-Frameworks.md
+    - "Is this a RETE Engine?": FAQ-RETE.md
+    - "Is this a 4GL?": Tech-4GL.md
+    - "Is this a Proven Technology?": Tech-Proven.md
+  - Tech Notes:
+    - "About Tech Notes": Tech--Notes.md
+    - "Docker": Tech-Docker.md
+    - "Python for a Java developer": Tech-Python.md
+    - "Python Installation": Tech-Install-Python.md
+    - "Python 3.11": Tech-Python-311.md
+    - "Mkdocs Material": Tech-mkdocs-material.md
+    - "CodeSpaces": Tech-CodeSpaces.md
+    - "M1 Mac": Tech-m1.md
+    - Personal:
+      - "PyCon23 Talk": Tech-Conference-PyCon23-Talk.md
+      - "PyCon23 Tutorial": Tech-Conference-PyCon23-Tutorial.md
+      - "Conference": Tech-Conference.md
+markdown_extensions:
+  - toc:
+      baselevel: 2
+      title: On this Page
+      toc_depth: 6
+  - meta
+  - attr_list
+  - abbr
+  - footnotes
+  - md_in_html
+  - pymdownx.emoji:
+      title: "long"
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+extra_css:
+  - stylesheets/extra.css
