@@ -10,7 +10,7 @@ title:
 
 &nbsp;
 
-# Welcome to API Logic Server - Docs, V8.0
+# Welcome to API Logic Server - Docs V8
 
 API Logic Server creates __customizable database web app projects:__
 
