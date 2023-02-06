@@ -68,7 +68,7 @@ API Logic Server is a low-code, developer-friendly approach that leverages autom
 
 No install is required - this runs in the cloud, via your Browser, courtesy Codespaces.  Use your existing GitHub account (no signup is required), and:
 
-1. [__Click here__](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=593459232){:target="_blank" rel="noopener"} to open the *Create Codespace* page.
+1. [__Click here__](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=526240678){:target="_blank" rel="noopener"} to open the *Create Codespace* page.
 
 2. Configure as desired, and click __Create codespace__.
 
@@ -78,7 +78,7 @@ No install is required - this runs in the cloud, via your Browser, courtesy Code
 
 <summary>What Is Happening</summary>
 
-You will now see 3 projects - open in VSCode, _in the Browser._  But that's just what you _see..._
+You will now see the template project - open in VSCode, _in the Browser._  But that's just what you _see..._
 
 Behind the scenes, Codespaces has requisitioned a cloud machine, and loaded the template - with a _complete development environment_ - Python, your dependencies, git, etc.
 
@@ -99,10 +99,9 @@ VSCode will open in your Browser, and the project will perform various initializ
 
 1. Port is created
 2. Port made public
-3. 3 Sample projects created
 3. `readme` opened, showing next step
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/git-codespaces/verify-codespaces-tutorial.png?raw=true"></figure>
+<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/git-codespaces/verify-codespaces.png?raw=true"></figure>
 
 </details>
 
@@ -110,9 +109,68 @@ These instructions will continue in Codespaces in the `readme.md` (double-click 
 
 &nbsp;
 
-## 4. Explore the Readme
+## 2. Create a project
 
-[Open the Readme](readme.md) to explore the sample project.
+Wait a bit for initialization to complete, then paste this into the Terminal window (lower right):
+
+```
+ApiLogicServer create --project_name=./ --db_url=
+```
+
+When prompted, _do **not** rebuild the container._
+
+<details markdown>
+
+<summary>What Just Happened</summary>
+
+This is **not** a coded application.
+
+The system examined your database (here, the default), and __created an _executable project:___
+
+* __API__ - an endpoint for each table, with full CRUD services, filtering, sorting, pagination and related data access
+
+* __Admin UI__ - multi-page / multi-table apps, with page navigations and automatic joins
+
+__Projects are Customizable, using _your IDE_:__ the Project Explorer shows the project structure.  Use the code editor to customize your project, and the debugger to debug it.
+
+__Business Logic is Automated:__ use unique spreadsheet-like rules to declare multi-table derivations and constraints - 40X more concise than code.  Extend logic with Python.
+
+<details markdown>
+
+<summary>Using your own database</summary>
+
+In this case, we used a default Customers/Orders database.  To use your own database, provide the `db_url` [like this](../Database-Connectivity/).
+
+</details>
+</details>
+
+&nbsp;
+
+## 3. Start Server, Admin App
+
+The project is ready to run.
+
+Use the prebuilt Run Configuration to start the server, and the prebuilt Port to start the web app.
+
+<details markdown>
+
+<summary>Show Me How</summary>
+
+As shown below:
+
+1. Use the default __Run Configuration__ to start the server, and 
+
+2. Click __Ports > Globe__ to start the web app. 
+
+<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/git-codespaces/create-port-launch-simple.jpg?raw=true"></figure>
+
+</details>
+
+&nbsp;
+
+## 4. Explore the Tutorial
+
+[Open the Tutorial](Tutorial.md) to explore the sample project.
 
 <details markdown>
 

@@ -1,12 +1,8 @@
-## About this Detailed Tutorial
+## About this Tutorial
 
-This Detailed Tutorial is designed for these scenarios:
+This Tutorial is designed for these scenarios:
 
-* You are using **codespaces** / VSCode, open to either the [tutorial project](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=593459232), or [appfiddle](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=594296622).
-
-* You are using a **local install** (pip install) version of API Logic Server, and have reviewed the [tutorial readme](https://github.com/ApiLogicServer/tutorial#readme).
-
-* You are using a **docker version** of API Logic Server, and have reviewed the [tutorial readme](https://github.com/ApiLogicServer/tutorial#readme).
+* You have executed the `ApiLogicServer create` step, have opened the created [default project](https://valhuber.github.io/ApiLogicServer/Sample-Database/) in your IDE, and want to explore a typical project
 
    * Projects are pre-configured for VS Code with `.devcontainer` and `launch configurations,` so these instructions are oriented around VS Code.
 
@@ -55,41 +51,16 @@ The diagram above summarizes the create / run / customize process.  When you iss
 After creation, you must establish your Python environment:
 
 * This is already complete for Codespace users
-* Other users - please  see [Quick Start > Express Install](https://valhuber.github.io/ApiLogicServer/IDE-Execute/), which explains how to (note different instructions depending on your environment.
+* Other users - please  see [Quick Start > Express Install](https://valhuber.github.io/ApiLogicServer/IDE-Execute/), which explains how to:
+
+   1. Install API Logic Server
+   2. Create the sample Tutorial API Logic Server Project
+   3. Open it in your IDE
+   4. Prepare the projects' Python environment
+   5. Start the Server, and open the Admin App in the Browser
 
 
 &nbsp;&nbsp;
-
-## Start the Server and Admin App
-
-> Stop any running servers that might still be running from the readme.
-
-To execute (see *Show me how*, below, for details): start the server with **Run and Debug >> *3. API Logic Project: Logic***, and then start the Browser at localhost:5656
-
-&nbsp;
-
-<details markdown>
-
-<summary> Show me how </summary>
-
-&nbsp;
-
-To run the ApiLogicProject app:
-
-1. Start the Server:
-
-    1. Click **Run and Debug**
-    2. Use the dropdown to select **3. API Logic Project: Logic**, and
-    3. Click the green button to start the server
-<br><br>
-
-2. Start the Browser at localhost:5656
-
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/tutorial/2-apilogicproject-tutorial.png?raw=true"></figure>
-
-</details>
-
-&nbsp;
 
 ---
 
@@ -117,7 +88,7 @@ After starting the server and browser, explore the Admin App in your browser:
 
 7. __Leave the server and browser running__
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/run-admin-app.png?raw=true"></figure>
+<figure><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/ui-admin/run-admin-app.png?raw=true"></figure>
 
 &nbsp;&nbsp;
 
