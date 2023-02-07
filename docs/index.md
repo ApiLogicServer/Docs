@@ -10,7 +10,7 @@ title:
 
 &nbsp;
 
-# Welcome to API Logic Server - Docs V8
+# Welcome to API Logic Server - Docs (V8)
 
 API Logic Server creates __customizable database web app projects:__
 
@@ -217,7 +217,7 @@ To get started, please see  the [Architecture.](Internals).
 You can try the pre-release at:
 
 ```bash
-python3 -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==7.0.43
+python3 -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==7.0.54
 ```
 
 Or use:
