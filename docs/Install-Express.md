@@ -50,11 +50,11 @@ Open the appropriate section below.
     __Create the Tutorial Project__
 
     ```bash title="Create Tutorial"
-    ApiLogicServer create      # accept default project_name, db_url (sample tutorial)
+    ApiLogicServer tutorial
     ```
     __Open the Project in VSCode__
 
-    1. Open Folder `ApiLogicServer/ApiLogicProject` in VSCode
+    1. Open Folder `ApiLogicServer/tutorial` in VSCode
         * Decline options for Containers
     2. Establish your Virtual Environment - open __Terminal > New Terminal__, and
 
@@ -78,12 +78,13 @@ Open the appropriate section below.
 
     You are now running a terminal window in the Docker machine.  Create the Tutorial project:
       ```bash title="Create Tutorial"
-      $ ApiLogicServer create --project_name=/localhost/ApiLogicProject --db_url=
-      $ exit  # return to local host 
+      $ cd /localhost/             # a directory on your local file system in which...
+      $ ApiLogicServer tutorial    # tutorial directory will be created
+      $ exit                       # return to local host 
       ```
     __Open the Project in VSCode__
 
-    1. Open Folder `ApiLogicServer/ApiLogicProject` in VSCode
+    1. Open Folder `ApiLogicServer/tutorial` in VSCode
         * Accept option to "Reopen in Container"
 
             > If you already skipped this option, no worries.  Use __View > Command Palette > Remote-Containers: Reopen in Container__
@@ -96,8 +97,4 @@ Open the appropriate section below.
 
 ## Next Steps - Tutorial
 
-You're all set - the Tutorial is created, installed and ready to run:
-
-1. Start the Server using the pre-built Launch Configuration [as shown here](../IDE-Execute/#execute-prebuilt-launch-configurations)
-2. Open the Admin App in your Browser
-3. Proceed to [Explore the Tutorial](../Tutorial).
+You're all set - the Tutorial is created, installed and ready to run.  Proceed to [Explore the Tutorial](../Tutorial).

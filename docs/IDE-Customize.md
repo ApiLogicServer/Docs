@@ -24,7 +24,7 @@ The `ApiLogicServer create` command creates an API Logic Project, which you can 
 
 The `ApiLogicServer create` command also creates:
 
-* Launch configurations to run your project, and run [tests](../Behave.md){:target="_blank" rel="noopener"}.
+* Launch configurations to run your project, and run [tests](../Behave){:target="_blank" rel="noopener"}.
 * [Docker](../Working-With-Docker){:target="_blank" rel="noopener"} files to open your project, and dockerize your project into a container for DockerHub
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/run-admin-app.png?raw=true"></figure>

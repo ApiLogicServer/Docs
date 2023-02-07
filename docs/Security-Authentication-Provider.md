@@ -41,7 +41,7 @@ This provided to demonstrate a typical sql-based Authentication-Provider.
 
 ### Authentication DB
 
-Note this uses [Multi-DB Support](..Data-Model-Multi).  
+Note this uses [Multi-DB Support](../Data-Model-Multi).  
 
 The database file is `security/authentication_provider/sql/authentication_db.sqlite`.  This database includes:
 

@@ -112,7 +112,7 @@ These instructions will continue in Codespaces in the `readme.md` (double-click 
 
 ## 4. Explore the Readme
 
-[Open the Readme](readme.md) to explore the sample project.
+Open the `readme` to explore the sample project.
 
 <details markdown>
 
