@@ -1,10 +1,16 @@
-Security is under active development.  You can examine the [Prototype in the Preview Version](../#preview-version){:target="_blank" rel="noopener"}.  We are seeking design partners, so contact us if you'd like to discuss - we'd love to hear from you!
+Security consists of many things; here, we focus on the following key concepts:
 
-## Terms
+* **Authentication:** a login function that confirms a user has access, usually by posting credentials and obtaining a JWT token identifying the users' roles.
 
-* Authentication: a login function that confirms a user has access, usually by posting credentials and obtaining a JWT token identifying the users' roles.
-* Authorization: controlling access to row/columns based on assigned roles.
-* Role: in security, users are assigned one or many roles.  Roles are authorized for access to data, potentially down to the row/column level.
+* **Authorization:** controlling access to row/columns based on assigned roles.
+
+* **Role:** in security, users are assigned one or many roles.  Roles are authorized for access to data, down to the row level.
+
+&nbsp;
+
+> Security is scheduled for Version 8.  You can examine the [Prototype in the Preview Version](../#preview-version){:target="_blank" rel="noopener"}.  Comments are welcome - we'd love to hear from you!
+
+&nbsp;
 
 ## Overview
 
@@ -101,37 +107,9 @@ Grant(  on_entity = models.Category,
         filter = models.Category.Client_id == Security.current_user().client_id)  # User table attributes
 ```
 
-&nbsp;
-
-## Status: Preview
-
-This preview is intended to:
-
-* Confirm approach to __role-based row authorization__, using SQLAlchemy [adding-global-where](https://docs.sqlalchemy.org/en/14/orm/session_events.html#adding-global-where-on-criteria) functionality.  See also [the examples](https://docs.sqlalchemy.org/en/14/orm/query.html#sqlalchemy.orm.with_loader_criteria).
-     * Note using SQLAlchemy means that filters apply to all SAFRS and custom api access
-     * SQLAlchemy support is working quite well!
-* Confirm whether the basic filtering capability __meets the requirements of 1 real-world app__
-     * Once *certain* use case is *multi-tenent*
-         * Each row is stamped with a `client_id`
-         * User table identifies users' `client_id`
-         * Enforced in `declare_security.py`:
-     * Preliminary finding - first test case worked on real-world app
-* Confirm the approach to authentication, including using authentication-providers
 
 &nbsp;
 
-This preview is _not_ meant to explore:
+## Appendix: Resources
 
-* System issues such as performance, caching, etc.
-
-&nbsp;
-
-### Trying this on your own project
-
-We'd love the feedback.  Follow the directions below, and please contact the authors.
-
-&nbsp;
-
-## Appendix: Internals
-
-The Security Manager and sqlite Authentication-Provider are built into created projects from the [system's prototype project](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype_nw).
+The Security Manager and sqlite Authentication-Provider are built into created projects from the [system's prototype project](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype) -- see the `security` directory.
