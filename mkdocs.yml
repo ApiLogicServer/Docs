@@ -30,7 +30,7 @@ nav:
     - "Rules: 40X, Extensible": Logic-Why.md
     - "Rules": Logic.md
     - "Logic Operation": "Logic-Operation.md"
-    - "TDD-based Approach": "Logic-Tutorial.md"
+    - "Logic Tutorial": "Logic-Tutorial.md"
   - 4. Security:
     - "Overview": Security-Overview.md
     - "Authorization": Security-Authorization.md

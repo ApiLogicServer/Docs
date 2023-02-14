@@ -1,3 +1,5 @@
+This page describes a TDD-based approach to logic.
+
 # Automation + Collaboration: Fast, Right
 
 **Automated App Creation** (Working Software Now) enables **Collaboration** to uncover **Automated Rules.**
