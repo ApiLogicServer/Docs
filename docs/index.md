@@ -214,10 +214,10 @@ To get started, please see  the [Architecture.](Internals).
 
 ### Preview Version
 
-You can try the pre-release at:
+You can try the pre-release at (you may need to use `python3`):
 
 ```bash
-python3 -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==7.0.58
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==7.0.74
 
 Or use:
 
