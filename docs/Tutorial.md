@@ -177,13 +177,13 @@ To run the customized app:
 
 Get `access_token`:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/security/token-get.png?raw=true"></figure>
+<figure><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/security/token-get.png?raw=true"></figure>
 
 &nbsp;
 
 Authenticate with your `access_token`:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/security/token-auth.png?raw=true"></figure>
+<figure><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/security/token-auth.png?raw=true></figure>
 
 </details>
 
