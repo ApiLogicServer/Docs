@@ -1,4 +1,4 @@
-Security consists of many aspects; here, we focus on the following key concepts:
+Security consists of many aspects (http headers, cookie settings, etc.); here, we focus on the following key concepts:
 
 * **Authentication:** a login function that confirms a user has access, usually by posting credentials and obtaining a JWT token identifying the users' roles.
 

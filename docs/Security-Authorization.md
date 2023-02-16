@@ -57,18 +57,15 @@ You can test it via the Admin App, or via Swagger.
 
 ### Admin App
 
-Click `Cateogory` in the Admin App:
+Click `Category` in the Admin App:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/security/security-admin.png"></figure>
+![Role-based authorization](images/security/security-admin.png){ align=left }
 
 
 &nbsp;
 
-### cURL
+### Swagger
 
-As shown in the first diagram above, you can also test with this cURL command:
+The same result is visible in Swagger:
 
-```bash
-curl -X 'GET' \
-'http://localhost:5656/api/Category/?fields%5BCategory%5D=Id%2CCategoryName%2CDescription&page%5Boffset%5D=0&page%5Blimit%5D=10&sort=id' -H 'accept: application/vnd.api+json' -H 'Content-Type: application/vnd.api+json'
-```
+![Role-based authorization](images/security/swagger-categories.png){ align=left }

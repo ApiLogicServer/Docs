@@ -37,6 +37,7 @@ nav:
     - "Authentication": Security-Authentication.md
     - "Authentication Provider": Security-Authentication-Provider.md
     - "Activation": Security-Activation.md
+    - "Swagger": Security-Swagger.md
   - "Using Your IDE": IDE-Customize.md
   - Managing API Logic Projects:
     - "DevOps": Project-DevOps.md
