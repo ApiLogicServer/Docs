@@ -142,7 +142,7 @@ Your system is running - explore the data and api at [localhost:5656](http://loc
 
 VSCode and PyCharm users can customize and run/debug within their IDE with [these steps](IDE-Execute){:target="_blank" rel="noopener"}.  Created projects include Launch and Docker configurations.  
 
-![Image title](images/generated-project.png){ align=left }
+![Customize in your IDE](images/generated-project.png){ align=left }
 
 [Rebuild services](https://valhuber.github.io/ApiLogicServer/Project-Rebuild/){:target="_blank" rel="noopener"} are provided to accommodate changes to database structure or ORM classes.
 
