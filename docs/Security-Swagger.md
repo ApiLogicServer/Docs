@@ -4,7 +4,9 @@ You must therefore authorize to use Swagger, as follows:
 
 &nbsp;
 
-**Get `access_token`:**
+## Get `access_token`
+
+Use the system-supplied endpoint `auth/Post` to obtain an `access_token`:
 
 * Click the `auth/Post` endpoint (at the end of the swagger)
 * Click **Try it out**
@@ -15,12 +17,18 @@ You must therefore authorize to use Swagger, as follows:
 
 &nbsp;
 
-**Authenticate with your `access_token`**
+## Authenticate 
+
+Authenticate with your `access_token` as follows:
 
 * Scroll up to the top of the swagger, and click **Authorize**
 * Enter **Bearer**, add a space, **paste** your `access_token`, click **Authorize**, and **Close** the dialog 
 
 ![Get access_token](images/security/token-auth.png){ align=left }
+
+&nbsp;
+
+## Verify using Category
 
 You can then verify this using Category:
 
