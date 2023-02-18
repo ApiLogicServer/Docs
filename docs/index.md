@@ -26,6 +26,21 @@ API Logic Server creates __customizable database web app projects:__
 
 &nbsp;
 
+
+### Quick Evaluation - _no install_
+
+Run in the cloud: VSCode via your Browser, courtesy Codespaces.  Use your existing GitHub account (no signup is required), and:
+
+1. [__Click here__](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=593459232){:target="_blank" rel="noopener"} to open the *Create Codespace* page.
+
+2. Configure as desired, and click __Create codespace__.
+
+>  This process takes about a minute.  Wait until you see the port created.
+
+We think you'll find Codespaces pretty amazing - check it out!
+
+&nbsp;
+
 ### Why It Matters: Faster, Simpler, Modern Architecture
 
 API Logic Server can dramatically improve web app development:
@@ -35,16 +50,6 @@ API Logic Server can dramatically improve web app development:
 * Automation makes it __simpler:__ this reduces the risk of architectural errors, e.g., APIs without pagination.
 
 * Automation guarantees a __modern software architecture:__ _container-ready_, _API-based_, with _shared logic_ between UIs and APIs (no more logic in UI controllers), in a predictable structure for maintenance.
-
-### Quick Evaluation - _no install_
-
-You can avoid install hassles by exploring the [Sample Project in Codespaces](Install-Eval).  This will enable you to use VSCode - _in your Browser, zero install_ - to:
-
-* Create a project using the supplied sample database
-* Examine the created project in VSCode (in your Browser)
-* Use the Tutorial to run, customize and debug it 
-
-We think you'll find Codespaces pretty amazing - check it out!
 
 &nbsp;
 
