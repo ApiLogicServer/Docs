@@ -80,6 +80,7 @@ nav:
     - "Python Installation": Tech-Install-Python.md
     - "Python 3.11": Tech-Python-311.md
     - "Mkdocs Material": Tech-mkdocs-material.md
+    - "Mkdocs Banner": Tech-mkdocs-banner.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "M1 Mac": Tech-m1.md
     - Personal:
