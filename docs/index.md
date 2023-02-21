@@ -1,5 +1,6 @@
 ---
-title:
+title: API Logic Server
+Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 ---
 
 [![Downloads](https://pepy.tech/badge/apilogicserver)](https://pepy.tech/project/apilogicserver)
@@ -20,7 +21,7 @@ API Logic Server creates __customizable database web app projects:__
 
     * __Admin UI:__ multi-page / multi-table apps, with page navigations, automatic joins and declarative hide/show
 
-* __Standard Flask Projects -- Customizable, using _your IDE_:__ such as VSCode, PyCharm, etc, for familiar edit/debug services
+* __Standard Flask / SQLAlchemy Projects -- Customizable, using _your IDE_:__ such as VSCode, PyCharm, etc, for familiar edit/debug services
 
 * __Business Logic Automation:__ using unique spreadsheet-like rules, extensible with Python :trophy:
 
