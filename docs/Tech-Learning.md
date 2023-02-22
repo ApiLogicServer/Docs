@@ -24,7 +24,11 @@ The link (at the end) actually opens 3 projects.  The first is a minimal Flask/S
 
 But that's not all.
 
-You can automate creation of your Flask project with API Logic Server.  It's an open source Python app, already loaded into our Codespace project.  It creates an entire Flask project with a single command, like this:
+While the first project shows it's pretty simple to create a single endpoint, gather some data and return it, it's a *lot* more work to create an entire project (multiple endpoints, an Admin App, etc).
+
+So, we've created API Logic Server.  It's an open source Python app, already loaded into our Codespace project.
+
+It creates an entire Flask project with a single command, like this:
 
 ```bash
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw-  # use Northwind, no customizations
@@ -34,10 +38,38 @@ This reads your database schema and creates a complete, executable project, *ins
 
 * **API:** an endpoint for each table, with filtering, sorting, pagination and related data access.  Swagger is automatic.
 
-* **Admin UI:** multi-page / multi-table apps, with page navigations, automatic joins and declarative hide/show.
 
-* **Customizable:** use your IDE, Flask and SQLAlchemy to customize your project, including unique delarative spreadsheet-like rules for logic and security.  Custom UIs can be built using your tool of choice (React, Angular, etc), using the API.<br><br>
+* **Admin UI:** multi-page / multi-table apps, with page navigations, automatic joins and declarative hide/show.  It executes a yaml file, so basic customizations do not require HTML or JavaScript background.
 
+    * Custom UIs can be built using your tool of choice (React, Angular, etc), using the API.<br><br>
+
+
+&nbsp;
+
+## Fully Customizable - Standard Python, Flask, SQLAlchemy
+
+The created project is a standard Flask/SQLAlchemy project.  Customize and extend it with all the fundamentals learned in Tutorials and App Fiddle.
+
+&nbsp;
+
+## Unique Spreadsheet-like Business Rules
+
+As a experienced app developer, I think of projects as about half backend and half frontend.  Your mileage may vary, but the backend is certainly a lot of work:
+
+* multi-table derivations and constraints applied on update
+    * E.g. the customer's balance - the sum of the unpaid order totals - cannot exceed 
+the credit limit
+
+
+* authorization and authentication
+    * E.g., users must enter a valid id and password to gain access
+    * And, their roles determine what database rows they see (e.g., a multi-tenant application)
+
+API Logic Server enables you to ***declare spreadsheet-like rules*** to implement these.  Rules are a very significant technology, but perhaps the most striking characteristic is that they are *40X more concise than code*.  You can read more about rules [here](Logic-Why).
+
+The third project in the fiddle illustrates both the rules, and some "standard" Flask/SQLAlchemy customizations.  A tutorial is included to help you explore these, run them, see how to debug them, etc.
+
+&nbsp;
 
 ## Intrigued?
 
