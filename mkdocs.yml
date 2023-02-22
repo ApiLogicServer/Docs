@@ -78,6 +78,7 @@ nav:
     - "Is this a Proven Technology?": Tech-Proven.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
+    - "Learning Flask": Tech-Learning-Flask.md
     - "Docker": Tech-Docker.md
     - "Python for a Java developer": Tech-Python.md
     - "Python Installation": Tech-Install-Python.md
