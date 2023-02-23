@@ -1,6 +1,6 @@
-There is a conventional approach to learning a framework such as Flask: start with a Tutorial, build something small, and gradually increase your knowledge.  There are dozens to hundreds of such Tutorials, and they are very helpful.
+There is a conventional approach to learning a framework such as Flask: start with a Tutorial, build something small, and gradually increase functionality as you increase your knowledge. There are dozens to hundreds of such Tutorials, and they are very helpful.
 
-Here we offer a complementary approach.  It's based on a ***running project*** you can explore within a minute, to learn how it works -- and how to create it, *in seconds*.
+Here we offer a complementary approach, one that entirely reverses the script.  It's based on a ***running project*** you can explore within a minute, run it, alter it, debug it -- and then how to *create* it, *in seconds*.
 
 &nbsp;
 
@@ -8,7 +8,8 @@ Here we offer a complementary approach.  It's based on a ***running project*** y
 
 Tools like JSFiddle are extremely useful.  Without installation, you can use your Browser to explore existing JavaScript / HTML code, alter it, and see the results.
 
-Here, we apply this approach to an entire app: an ***App Fiddle*** (link at the end).
+![Flask Fiddle](images/vscode/app-fiddle/flask-fiddle.jpg){: style="height:150px;width:150px"; align=right }
+Here, we apply this approach to an entire app: an ***App (Flask) Fiddle*** (link at the end).
 
 * Like a JSFiddle, it **opens in your Browser.  No install.**
 * But it's a **complete Flask App:** a running project, with a database, accessed with SQLAlchemy.
@@ -24,7 +25,8 @@ The link (at the end) actually opens 3 projects.  The first is a minimal Flask/S
 
 But that's not all.
 
-While the first project shows it's pretty simple to create a single endpoint, gather some data and return it, it's a *lot* more work to create an entire project (multiple endpoints, an Admin App, etc).
+![Flask Fiddle](images/vscode/app-fiddle/horse-feathers.jpg){: style="height:150px;width:150px"; align=right }
+While the first project shows it's pretty simple to create a single endpoint, gather some data and return it, it's a *lot* more work to create an entire project (multiple endpoints, an Admin App, etc).  That's a horse of an entirely different feather!
 
 So, we've created API Logic Server.  It's an open source Python app, already loaded into our Codespace project.
 
@@ -48,7 +50,7 @@ This reads your database schema and creates a complete, executable project, *ins
 
 ## Fully Customizable - Standard Python, Flask, SQLAlchemy
 
-The created project is a standard Flask/SQLAlchemy project.  Customize and extend it with all the fundamentals learned in Tutorials and App Fiddle.
+The created project is a standard Flask/SQLAlchemy project.  Customize and extend it with all the fundamentals learned in conventional Tutorials, and App Fiddle.
 
 &nbsp;
 
@@ -65,7 +67,26 @@ the credit limit
     * E.g., users must enter a valid id and password to gain access
     * And, their roles determine what database rows they see (e.g., a multi-tenant application)
 
-API Logic Server enables you to ***declare spreadsheet-like rules*** to implement these.  Rules are a very significant technology, but perhaps the most striking characteristic is that they are *40X more concise than code*.  You can read more about rules [here](Logic-Why).
+API Logic Server enables you to ***declare spreadsheet-like rules*** to implement these.  [Rules](https://apilogicserver.github.io/Docs/Tech-Learning/Logic-Why) are a very significant technology, but perhaps the most striking characteristic is that they are *40X more concise than code*.  These 5 rules represent the same logic as [200 lines of Python](https://github.com/valhuber/LogicBank/wiki/by-code):
+
+```python
+Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
+    as_condition=lambda row: row.Balance <= row.CreditLimit,
+    error_msg="balance ({row.Balance}) exceeds credit ({row.CreditLimit})")
+
+Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
+    as_sum_of=models.Order.AmountTotal,
+    where=lambda row: row.ShippedDate is None)  # adjusts - *not* a sql select sum...
+
+Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
+    as_sum_of=models.OrderDetail.Amount)
+
+Rule.formula(derive=models.OrderDetail.Amount,  # compute price * qty
+    as_expression=lambda row: row.UnitPrice * row.Quantity)
+
+Rule.copy(derive=models.OrderDetail.UnitPrice,  # get Product Price (e,g., on insert, or ProductId change)
+    from_parent=models.Product.UnitPrice)
+```
 
 The third project in the fiddle illustrates both the rules, and some "standard" Flask/SQLAlchemy customizations.  A tutorial is included to help you explore these, run them, see how to debug them, etc.
 
