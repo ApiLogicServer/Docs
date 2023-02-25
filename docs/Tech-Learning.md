@@ -1,6 +1,6 @@
-There is a conventional approach to learning a framework such as Flask: start with a Tutorial, build something small, and gradually increase functionality as you increase your knowledge. There are dozens to hundreds of such Tutorials, and they are very helpful.
+There is a conventional approach to learning a framework such as Flask.  **Learn** with a Tutorial, ***then* build,** starting small, gradually increasing functionality. There are dozens to hundreds of such Tutorials, and they are very helpful.
 
-Here we offer a complementary approach, one that entirely reverses the script.  It's based on a ***running project*** you can explore within a minute, run it, alter it, debug it -- and then how to *create* it, *in seconds*.
+Here we offer a complementary approach, one that entirely reverses the script.  **Build** a *complete running project* - explore within a minute.  ***Then* learn:** alter it, debug it -- and then how to *create* it, *in seconds*.
 
 &nbsp;
 
@@ -50,7 +50,9 @@ This reads your database schema and creates a complete, executable project, *ins
 
 ## Fully Customizable - Standard Python, Flask, SQLAlchemy
 
-The created project is a standard Flask/SQLAlchemy project.  Customize and extend it with all the fundamentals learned in conventional Tutorials, and App Fiddle.
+Creating the executable project requires no background in Flask, SQLAlchemy, or even Python.  In fact, you can use the created project to learn these technologies, by "fiddling" with a running system that's already delivering value (e.g, enabling custom UI dev, integration).
+
+That's because the created project is a standard Flask/SQLAlchemy project. Customize and extend it with all the fundamentals you learned in conventional Tutorials, and in the App Fiddle, with your favorite IDE.
 
 &nbsp;
 

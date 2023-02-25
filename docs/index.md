@@ -13,9 +13,9 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 # Welcome to API Logic Server - Docs (V8)
 
-API Logic Server creates __customizable database web app projects:__
+API Logic Server creates __executable, customizable Flask database projects:__
 
-* Creation is __Instant:__ create _executable_ projects from your database with a _single_ command.  Projects are __Highly Functional,__ providing:
+* Creation is __Instant:__ create _executable_ projects from your database with a _single_ command.  Projects are __highly functional,__ providing:
 
     * __API:__ an endpoint for each table, with filtering, sorting, pagination and related data access
 
@@ -28,7 +28,7 @@ API Logic Server creates __customizable database web app projects:__
 &nbsp;
 
 
-### Quick Evaluation - _no install_
+### Instant Evaluation - _no install_
 
 Run in the cloud: VSCode via your Browser, courtesy Codespaces.  Use your existing GitHub account (no signup is required), and:
 
@@ -42,7 +42,9 @@ We think you'll find Codespaces pretty amazing - check it out!
 
 &nbsp;
 
-### Why It Matters: Faster, Simpler, Modern Architecture
+# Why It Matters: 
+
+### Faster, Simpler, Modern Architecture
 
 API Logic Server can dramatically improve web app development:
 
@@ -54,23 +56,27 @@ API Logic Server can dramatically improve web app development:
 
 &nbsp;
 
-# Background
-A brief look at why we built it, and our approach.<br><br>
+### Flexibility of a Framework, Faster than Low Code
 
-### Motivation - not instant, proprietary IDE, no logic automation
+We saw issues with current approaches for building database systems:   
 
-We looked at approaches for building database systems:   
+* __Frameworks:__ Frameworks like Flask or Django enable you to build a single endpoint or _Hello World_ page, but a _multi-endpoint_ API and _multi-page_ application would take __weeks or more__.
 
-* __Frameworks:__ Frameworks like Flask or Django enable you to build a single endpoint or _Hello World_ page, but a __multi-endpoint__ API and __multi-page__ application would take __weeks__ or more.
+* __Low Code Tools:__ these are great for building custom UIs, but
 
-* __Low Code Tools:__ these are great for building great UIs, but
+    * __Slow Admin app creation,__ requiring _layout for each screen_
+    * __Propietary IDEs__ don't _preserve dev tool value_ - VSCode, PyCharm, git, etc
+    * __No automation for backend business logic__ (it's nearly half the effort)<br><br>
 
-    * Want a multi-page app, _instantly_ -- __no layout required each screen__
-    * Want to __preserve dev tools__ - VSCode, PyCharm, git, etc
-    * Need an answer for __backend business logic__ (it's nearly half the effort)<br><br>
+Our objective was to deliver:
 
+* __Flexibility of a framework:__ use your IDE to customize the created project, with full access to underlying Flask and SQLAlchemy services
 
-### Our Approach: Instant, Customizable, Logic Automation
+* __Faster than low code for admin apps:__ you get a full API and Admin app instantly, no screen painting required.
+
+&nbsp;
+
+### What is API Logic Server
 
 API Logic Server is an open source Python project, consisting of:
 
