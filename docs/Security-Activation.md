@@ -50,6 +50,8 @@ The procedure above uses sqlite for the authdb, and is convenient for local deve
 
 For example, use [this Dockerfile](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype/devops/docker) to create a MySQL docker image for your project, including `authdb`.
 
+> After release 08.00.05, those files are created in new projects.  For earlier versions, create these files in devops/docker.
+
 &nbsp;
 
 ## Manual Configuration 
