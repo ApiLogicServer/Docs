@@ -44,6 +44,14 @@ This command will:
 
 &nbsp;
 
+### Use MySql for `authdb`
+
+The procedure above uses sqlite for the authdb, and is convenient for local development.  You will frequently want to use the same kind of DBMS you are using for your data.
+
+For example, use [this Dockerfile](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype/devops/docker) to create a MySQL docker image for your project, including `authdb`.
+
+&nbsp;
+
 ## Manual Configuration 
 
 To configure security:
