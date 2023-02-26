@@ -19,7 +19,21 @@ python3 -m pip install -r requirements.txt
 
 ## Shared `venv`
 
-If you wish to share a `venv` over multiple projects, use __Settings > Python: Venv Path__, and specify a directory containing `venv` directories (e.g, where you installed API Logic Server).
+If you wish to share a `venv` over multiple projects, use __Settings > Python: Venv Path__, and specify a directory containing `venv` directories (e.g, where you installed API Logic Server).  This is a convenient way to get started.
+
+Recall this does _not_ apply to docker or Codespace environments.  
+
+A typical install might create a directory called ApiLogicServer, and create a `venv` inside it, like this:
+
+![Installed venv](images/tutorial/setup/install-dirs.png)
+
+The `venv` from `pip install ApiLogicServer` can be re-used by defining a global path in your settings:
+
+![Settings to define global venv](images/tutorial/setup/settings-python-venv.png)
+
+Then, choose this `venv` with `select interpreter`:
+
+![Select global venv](images/tutorial/setup/select-interpreter.png)
 
 &nbsp;
 
