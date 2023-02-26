@@ -30,18 +30,25 @@ Recall this does _not_ apply to docker or Codespace environments.
 
 &nbsp;
 
-To set up and use a shared `venv`:
+A typical way to install API Logic Server is to create a directory called `ApiLogicServer`, and create a `venv` inside it, like this:
 
+```bash title="Install API Logic Server in a Virtual Environment"
+python -m venv venv                  # may require python3 -m venv venv
+venv\Scripts\activate                # mac/linux: source venv/bin/activate
+python -m pip install ApiLogicServer
+```
 
-A typical install might create a directory called ApiLogicServer, and create a `venv` inside it, like this:
+&nbsp;
+
+The resultant directory structure:
 
 ![Installed venv](images/tutorial/setup/install-dirs.png)
 
-The `venv` from `pip install ApiLogicServer` can be re-used by defining a global path in your settings:
+This `venv` can be re-used by defining a global path in your `Python: venv` setting:
 
 ![Settings to define global venv](images/tutorial/setup/settings-python-venv.png)
 
-Then, choose this `venv` with `select interpreter`:
+Then, choose this `venv` with `select interpreter` (you sometimes have to open a Python file):
 
 ![Select global venv](images/tutorial/setup/select-interpreter.png)
 
