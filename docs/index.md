@@ -61,11 +61,11 @@ API Logic Server can dramatically improve web app development:
 We saw short-comings with current approaches for building database systems:   
 
 * __Frameworks:__ Frameworks like Flask or Django enable you to build a single endpoint or _Hello World_ page, but
-    * __Require weeks or more__ for a _multi-endpoint_ API and _multi-page_ application
+    * _Require weeks or more_ for a _multi-endpoint_ API and _multi-page_ application
 * __Low Code Tools:__ are great for building custom UIs, but
-    * __Slow Admin app creation,__ requiring _layout for each screen_
-    * __Propietary IDEs__ don't _preserve value_ of traditional IDEs like VSCode, PyCharm, etc
-    * __No automation for backend business logic__ (it's nearly half the effort)<br><br>
+    * _Slow Admin app creation,_ requiring _layout for each screen_
+    * _Propietary IDEs_ don't _preserve value_ of traditional IDEs like VSCode, PyCharm, etc
+    * _No automation for backend business logic_ (it's nearly half the effort)<br><br>
 
 We wanted to provide:
 

@@ -37,7 +37,7 @@ Open the appropriate section below.
 
     __Install API Logic Server in a Virtual Environment__
 
-    Then, install API Logic Server in the usual manner:
+    Then, install API Logic Server in the usual manner (typically you create/cd to a new directory, e.g., `ApiLogicServer`):
 
     ```bash title="Install API Logic Server in a Virtual Environment"
     python -m venv venv                  # may require python3 -m venv venv
@@ -54,9 +54,13 @@ Open the appropriate section below.
     ```
     __Open the Project in VSCode__
 
-    1. Open Folder `ApiLogicServer/tutorial` in VSCode
-        * Decline options for Containers
-    2. Establish your Virtual Environment - open __Terminal > New Terminal__, and
+    You have 2 choices:
+
+    * Use a shared `venv`; follow [this procedure](../Project-Env/#shared-venv), _or_
+    * Create a `venv` local to the project
+        1. Open Folder `ApiLogicServer/tutorial` in VSCode
+            * Decline options for Containers
+        2. Establish your Virtual Environment - open __Terminal > New Terminal__, and
 
     ```bash title="Install API Logic Server in a Virtual Environment"
     python -m venv venv                  # may require python3 -m venv venv

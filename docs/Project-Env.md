@@ -23,6 +23,16 @@ If you wish to share a `venv` over multiple projects, use __Settings > Python: V
 
 Recall this does _not_ apply to docker or Codespace environments.  
 
+
+<details markdown>
+
+<summary> Show me how </summary>
+
+&nbsp;
+
+To set up and use a shared `venv`:
+
+
 A typical install might create a directory called ApiLogicServer, and create a `venv` inside it, like this:
 
 ![Installed venv](images/tutorial/setup/install-dirs.png)
@@ -34,6 +44,8 @@ The `venv` from `pip install ApiLogicServer` can be re-used by defining a global
 Then, choose this `venv` with `select interpreter`:
 
 ![Select global venv](images/tutorial/setup/select-interpreter.png)
+
+</details>
 
 &nbsp;
 
