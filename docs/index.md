@@ -21,7 +21,7 @@ API Logic Server creates __executable, customizable Flask database projects:__
 
     * __Admin UI:__ multi-page / multi-table apps, with page navigations, automatic joins and declarative hide/show
 
-* __Standard Flask / SQLAlchemy Projects -- Customizable, using _your IDE_:__ such as VSCode, PyCharm, etc, for familiar edit/debug services
+* __Standard Flask / SQLAlchemy Projects__ -- _customize with your IDE_ for familiar edit/debug services
 
 * __Business Logic Automation:__ using unique spreadsheet-like rules, extensible with Python :trophy:
 
@@ -58,21 +58,20 @@ API Logic Server can dramatically improve web app development:
 
 ### Flexibility of a Framework, Faster than Low Code
 
-We saw issues with current approaches for building database systems:   
+We saw short-comings with current approaches for building database systems:   
 
-* __Frameworks:__ Frameworks like Flask or Django enable you to build a single endpoint or _Hello World_ page, but a _multi-endpoint_ API and _multi-page_ application would take __weeks or more__.
-
-* __Low Code Tools:__ these are great for building custom UIs, but
-
+* __Frameworks:__ Frameworks like Flask or Django enable you to build a single endpoint or _Hello World_ page, but
+    * __Require weeks or more__ for a _multi-endpoint_ API and _multi-page_ application
+* __Low Code Tools:__ are great for building custom UIs, but
     * __Slow Admin app creation,__ requiring _layout for each screen_
-    * __Propietary IDEs__ don't _preserve dev tool value_ - VSCode, PyCharm, git, etc
+    * __Propietary IDEs__ don't _preserve value_ of traditional IDEs like VSCode, PyCharm, etc
     * __No automation for backend business logic__ (it's nearly half the effort)<br><br>
 
-Our objective was to deliver:
+We wanted to provide:
 
-* __Flexibility of a framework:__ use your IDE to customize the created project, with full access to underlying Flask and SQLAlchemy services
+* __Flexibility of a framework:__ use your IDE's code editor and debugger to customize the created project, with full access to underlying Flask and SQLAlchemy services
 
-* __Faster than low code for admin apps:__ you get a full API and Admin app instantly, no screen painting required.
+* __Faster than low code for admin apps:__ you get a full API and Admin app instantly, no screen painting required
 
 &nbsp;
 
