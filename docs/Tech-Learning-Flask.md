@@ -8,7 +8,7 @@ Here we offer a complementary approach.  It's based on a ***running project*** y
 
 Tools like JSFiddle are extremely useful.  Without installation, you can use your Browser to explore existing JavaScript / HTML code, alter it, and see the results.
 
-Here, we apply this approach to an entire app: an ***App Fiddle*** (link at the end).
+Here, we apply this approach to an entire app: an [***App* Fiddle**](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=594296622).  What's that?
 
 * Like a JSFiddle, it **opens in your Browser.  No install.**
 * But it's a **complete Flask App:** a running project, with a database, accessed with SQLAlchemy.
@@ -16,7 +16,7 @@ Here, we apply this approach to an entire app: an ***App Fiddle*** (link at the 
     * Codespaces is a remarkable new product from GitHub.  When you click the link above, it requisitions a server, installs your project (and all its dependencies, such as Python and Flask), and opens it in VSCode *in your Browser*.
     * You can also use this App Fiddle to explore Codespaces, how to set up a dev container, and use it on your own projects.
 
-The link (at the end) actually opens 3 projects.  The first is a minimal Flask/SQLAlchemy app.  It has a readme - use it to explore the code, run it, alter / debug it, etc.
+The link (at the end) actually opens 3 projects.  The first is a minimal Flask/SQLAlchemy app.  It has a readme - use it to explore the code, run it, alter / debug it, etc.  The other 2 illustrate how API Logic Server *creates* executable, customizable Flask projects, with a single command.
 
 &nbsp;
 
@@ -26,7 +26,7 @@ But that's not all.
 
 You can automate creation of your Flask project with API Logic Server.  It's an open source Python app, already loaded into our Codespace project.  It creates an entire Flask project with a single command, like this:
 
-```bash
+```bash title="Create Project with 1 command (do not repeat, already done)"
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw-  # use Northwind, no customizations
 ```
 
@@ -36,9 +36,11 @@ This reads your database schema and creates a complete, executable project, *ins
 
 * **Admin UI:** multi-page / multi-table apps, with page navigations, automatic joins and declarative hide/show.
 
-* **Customizable:** use your IDE, Flask and SQLAlchemy to customize your project, including unique delarative spreadsheet-like rules for logic and security.  Custom UIs can be built using your tool of choice (React, Angular, etc), using the API.<br><br>
+* **Customizable:** use your IDE, Flask and SQLAlchemy to customize your project, including unique delarative spreadsheet-like rules for logic and security.  Custom UIs can be built using your tool of choice (React, Angular, etc), using the API.
+
+Two additional projects are provided in the app fiddle, so you can explore the created project, and how to customize it with both standard code (Python, Flask, SQLAlchemy), and rules.
 
 
 ## Intrigued?
 
-[Click here to start it](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=594296622)  (takes about a minute to load).
+[Click here to start it](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=594296622)  (takes about a minute to load).  We'd love feedback - provide it [here](https://github.com/valhuber/ApiLogicServer/issues).
