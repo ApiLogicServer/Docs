@@ -14,7 +14,7 @@ Here, we apply this approach to an entire app: an [***App* Fiddle**](https://git
 * But it's a **complete Flask App:** a running project, with a database, accessed with SQLAlchemy.
 * **Accessed via VSCode**, *running in your Browser*, courtesy Codespaces.
     * Codespaces is a remarkable new product from GitHub.  When you click the link above, it requisitions a server, installs your project (and all its dependencies, such as Python and Flask), and opens it in VSCode *in your Browser*.
-    * You can also use this App Fiddle to explore Codespaces, how to set up a dev container, and use it on your own projects.
+    * You can also use this App Fiddle learn how to use Codespaces - how to set up a dev container, and use it on your own projects.
 
 The link (at the end) actually opens 3 projects.  The first is a minimal Flask/SQLAlchemy app.  It has a readme - use it to explore the code, run it, alter / debug it, etc.  The other 2 illustrate how API Logic Server *creates* executable, customizable Flask projects, with a single command.
 
@@ -24,13 +24,15 @@ The link (at the end) actually opens 3 projects.  The first is a minimal Flask/S
 
 But that's not all.
 
-You can automate creation of your Flask project with API Logic Server.  It's an open source Python app, already loaded into our Codespace project.  It creates an entire Flask project with a single command, like this:
+Two additional projects are provided in the app fiddle.  These show how you can create a Flask project with a single command, then customize it in your IDE with standard Flask and SQLAlchemy, with API Logic Server.
 
-```bash title="Create Project with 1 command (do not repeat, already done)"
+API Logic Server is an open source Python app, already loaded into our Codespace project.  It creates an entire Flask project, like this:
+
+```bash title="Create a Flask project with this command"
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw-  # use Northwind, no customizations
 ```
 
-This reads your database schema and creates a complete, executable project, *instantly:*
+This reads your database schema and creates a complete, executable Flask project, *instantly:*
 
 * **API:** an endpoint for each table, with filtering, sorting, pagination and related data access.  Swagger is automatic.
 
@@ -38,8 +40,7 @@ This reads your database schema and creates a complete, executable project, *ins
 
 * **Customizable:** use your IDE, Flask and SQLAlchemy to customize your project, including unique delarative spreadsheet-like rules for logic and security.  Custom UIs can be built using your tool of choice (React, Angular, etc), using the API.
 
-Two additional projects are provided in the app fiddle, so you can explore the created project, and how to customize it with both standard code (Python, Flask, SQLAlchemy), and rules.
-
+&nbpsp;
 
 ## Intrigued?
 
