@@ -1,6 +1,11 @@
-There is a conventional approach to learning a framework such as Flask: start with a Tutorial, build something small, and gradually increase your knowledge.  There are dozens to hundreds of such Tutorials, and they are very helpful.
+There is a conventional approach to learning a framework such as Flask.  **Learn** with a Tutorial, ***then* build,** starting small, gradually increasing functionality. There are dozens to hundreds of such Tutorials, and they are very helpful.
 
-Here we offer a complementary approach.  It's based on a ***running project*** you can explore within a minute, to learn how it works -- and how to create it, *in seconds*.
+Here we offer a complementary approach, one that entirely reverses the script.  **Build** a *complete running project* - explore within a minute.  ***Then* learn:** alter it, debug it -- and then how to *create* it, *in seconds*.
+<br><br>
+
+We call it an **App Fiddle** - [try it here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=594296622), described below.
+
+---
 
 &nbsp;
 
