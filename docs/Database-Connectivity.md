@@ -301,9 +301,34 @@ Important considerations for SQLAlchemy URIs:
 
 Various IDEs provide tools for managing databases.
 
+&nbsp;
+
+## dbviz 
+
+A very popular tool.
+
+&nbsp;
+
+## adminer
+
+You can [find it here](https://hub.docker.com/_/adminer).
+
+Try:
+```
+docker run --link some_database:db -p 8080:8080 --net dev-network adminer
+```
+
+Then you can hit http://localhost:8080 or http://host-ip:8080 in your browser:
+
+![Customize in your IDE](images/docker/databases/aadminer.png){ align=left }
+
+> You will need to install plug-ins for sqlite3, to address logging in without a password
+
+&nbsp;
+
 ## PyCharm Database Tools
 
-Pycharm provides [database tools](https://www.jetbrains.com/help/pycharm/2021.3/database-tool-window.html), as shown below:
+Pycharm provides excellent [database tools](https://www.jetbrains.com/help/pycharm/2021.3/database-tool-window.html), as shown below:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/PyCharm/database-tools.png"></figure>
 
@@ -321,6 +346,15 @@ Then, you can explore the sample:
 
 &nbsp;
 
+## Docker pgadmin
+
+See [discussion above](#northwind-postgres-docker).
+
+&nbsp;
+
+## Azure Data Studio
+
+See [discussion above](#northwind-sqlserver-docker).
 
 &nbsp;
 

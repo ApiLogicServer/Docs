@@ -67,7 +67,7 @@ If you update your ApiLogicServer container to a new version, your existing VSCo
 
 ## Connect to Dockerized Databases
 
-One of the great things about Docker is the ability to install popular databases, with no hassle.  Follow the procedures described in [Testing](../Testing){:target="_blank" rel="noopener"}.
+One of the great things about Docker is the ability to install popular databases, with no hassle.  Follow the procedures described in [Connection Examples](../Database-Connectivity/#docker-databases){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
