@@ -315,7 +315,7 @@ You can [find it here](https://hub.docker.com/_/adminer).
 
 Try:
 ```
-docker run --link some_database:db -p 8080:8080 --net dev-network adminer
+docker run --name adminer --link some_database:db -p 8080:8080 --net dev-network adminer
 ```
 
 Then you can hit http://localhost:8080 or http://host-ip:8080 in your browser:

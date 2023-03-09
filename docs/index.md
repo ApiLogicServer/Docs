@@ -265,7 +265,7 @@ Many thanks to:
 - Michael Holleran, for design collaboration and testing
 - Nishanth Shyamsundar, for review and testing
 - Thomas Peters, for review and testing
-- Daniel Gaspar, for Flask AppBuilder
+- Tyler Band, for review, design input and functionality suggestions
 - Gloria Huber and Denny McKinney, for doc review
 
 &nbsp;
