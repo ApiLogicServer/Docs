@@ -65,8 +65,7 @@ nav:
     - "Behave Logic Report": Behave-Logic-Report.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md
-    - Architecture.md
-    - Working-with-Flask-AppBuilder.md
+    - "Project Operation": Project-Operation.md
     - "API Logic Server Development": Internals.md
     - "Internals - CLI": Internals-CLI.md
   - Troubleshooting.md
@@ -76,6 +75,7 @@ nav:
     - "Is this a RETE Engine?": FAQ-RETE.md
     - "Is this a 4GL?": Tech-4GL.md
     - "Is this a Proven Technology?": Tech-Proven.md
+    - "Adoption Considerations?": Tech-Adoption.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
     - "Learning Center": Tech-Learning.md

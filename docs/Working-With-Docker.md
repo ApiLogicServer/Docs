@@ -73,11 +73,35 @@ One of the great things about Docker is the ability to install popular databases
 
 ## Docker and API Logic Projects
 
+
+### Docker Containers for Dev
+
+As shown below, there are typically 2-3 "machines" in operation:
+
+* Your **local host** (in grey), where the Customizable Project files (`ApiLogicProject`) are stored, 
+and your Dev Tools (IDE etc) operate
+
+* The ApiLogicServer Docker **container** (blue), which contains:
+     * The **ApiLogicServer**, with CLI (Command Language Interface) commands:
+       * **`create`** to create projects on your local host
+       * **`run`** to execute projects, utilizing the various runtimes (Flask, SQLAlchemy, SAFRS API, Logic, Flask App Builder)
+    * A **Python** environment to support execution, and development using your IDE
+
+* The **database** (purple) can run as a separate Docker container, in your local host, or (for the demo) within the ApiLogicServer docker container
+
+![Docker Create run](/images/docker/docker-arch-create-run.png)
+
+Your docker container (blue) files include Python, Python libraries, and API Logic Server.  The Python project above utilizes IDE `remote-container` support (visible at the lower left in the preceding diagram), which utilizes the docker container (not local host) version of Python.
+
+Your docker container looks like this:
+
+<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/docker-files.png"></figure>
+
 &nbsp;
 
 ### Create Docker Hub from API Logic Project
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/docker-repos.png?raw=true"></figure>
+![Docker Repositories](/images/docker/docker-repos.png)
 
 You can build a container for your ApiLogicProject:
 
