@@ -94,7 +94,7 @@ ApiLogicServer create --project_name=ApiLogicProject db_url=
 
     API Logic Server reads your schema, and creates an executable, customizable project providing the features listed below.  Check it out [here](Install-Express){:target="_blank" rel="noopener"}.
 
-
+For more on API Logic Server, [see here](Architecture-What-Is).
 &nbsp;
 
 # Feature Summary

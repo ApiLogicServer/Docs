@@ -26,11 +26,11 @@ Start the server, and open your Browser at `localhost:5656`.  Or, explore the sa
 
 ## Provider-Defined vs. Consumer-Defined
 
-JSON:APIs are interesting because they are _Consumer-Defined,_ to __reduce network traffic__ and __minimize organizational dependencies.__
+JSON:APIs are interesting because (somewhat like GraphQL) they are _Consumer-Defined,_ to __reduce network traffic__ and __minimize organizational dependencies.__
 
-Contrast these to Provider-Defined APIs.  These can be simpler for interrnal users, whose needs can be determiend.
+Contrast these to Provider-Defined APIs.  These can be simpler for internal users, whose needs can be determined.
 
-But for a wider class of consumers (e.g., business partenrs), providers typically cannot predict consumer needs.  Consumers often resort to making multiple calls to obtain the data they need, or invoke APIs that return too much data.  These can increase network traffic.
+But for a wider class of consumers (e.g., business partners), providers typically cannot predict consumer needs.  Consumers often resort to making multiple calls to obtain the data they need, or invoke APIs that return too much data.  These can increase network traffic.
 
 &nbsp;
 
