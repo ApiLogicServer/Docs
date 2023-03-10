@@ -8,7 +8,7 @@ The ApiLogicServer CLI `create` (or `create-and-run`) command creates the projec
 
 Execution begins in `api_logic_server_run.py`.  Your customizations are done to the files noted in the callouts below.
 
-![API Logic Server Intro](/images/generated-project.png)
+![API Logic Server Intro](../images/generated-project.png)
 
 `api_logic_server_run.py` (a file created in your ApiLogicProject) sets up a Flask app, the database, logic and api:
 
