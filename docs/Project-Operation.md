@@ -8,7 +8,10 @@ The ApiLogicServer CLI `create` (or `create-and-run`) command creates the projec
 
 Execution begins in `api_logic_server_run.py`.  Your customizations are done to the files noted in the callouts below.
 
-![API Logic Server Intro](../images/generated-project.png)
+![API Logic Server Intro](images/generated-project.png)
+
+![Declare Security](images/security/declare-security.png){ align=left }
+
 
 `api_logic_server_run.py` (a file created in your ApiLogicProject) sets up a Flask app, the database, logic and api:
 
@@ -20,7 +23,7 @@ Execution begins in `api_logic_server_run.py`.  Your customizations are done to 
 
 3. **API Setup:** It next invokes `api/expose_api_models`.  This calls safrs to create the end points and the swagger information, based on the created `database/models.py` (the models used by the SQLAlchemy ORM).   It finally calls `api/customize.py` where you can add your own services.  The sample includes a trivial Hello World, as well as `add_order`.
 
-![API Logic Server Intro](/images/logic/logic-exec-arch.png)
+![API Logic Server Intro](images/logic/logic-exec-arch.png)
 
 ## Logic Execution
 
