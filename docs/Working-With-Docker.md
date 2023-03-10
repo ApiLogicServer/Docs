@@ -89,7 +89,7 @@ and your Dev Tools (IDE etc) operate
 
 * The **database** (purple) can run as a separate Docker container, in your local host, or (for the demo) within the ApiLogicServer docker container
 
-![Docker Create run](/images/docker/docker-arch-create-run.png)
+![Docker Create run](images/docker/docker-arch-create-run.png)
 
 Your docker container (blue) files include Python, Python libraries, and API Logic Server.  The Python project above utilizes IDE `remote-container` support (visible at the lower left in the preceding diagram), which utilizes the docker container (not local host) version of Python.
 
@@ -101,7 +101,7 @@ Your docker container looks like this:
 
 ### Create Docker Hub from API Logic Project
 
-![Docker Repositories](/images/docker/docker-repos.png)
+![Docker Repositories](images/docker/docker-repos.png)
 
 You can build a container for your ApiLogicProject:
 

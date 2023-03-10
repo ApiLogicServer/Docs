@@ -8,7 +8,7 @@ API Logic Server is a Python Application, consisting of:
 It executes either as a locally install (venv), or a Docker image (which includes Python).  In either case, the contents are the same:
 
 
-![API Logic Server Intro](/images/Architecture-What-Is.png)
+![API Logic Server Intro](images/Architecture-What-Is.png)
 
 &nbsp;
 
@@ -29,4 +29,4 @@ The following
 
 The API Logic Server executes as an application server, accessed by an API, in a standard 3-tiered architecture.  In most cases, the API Logic Server executes in a container, and scales horizontally  like any other Flask-based server.
 
-![API Logic Server Intro](/images/Architecture.png)
+![API Logic Server Intro](images/Architecture.png)

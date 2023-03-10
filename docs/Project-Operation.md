@@ -10,8 +10,6 @@ Execution begins in `api_logic_server_run.py`.  Your customizations are done to 
 
 ![API Logic Server Intro](images/generated-project.png)
 
-![Declare Security](images/security/declare-security.png){ align=left }
-
 
 `api_logic_server_run.py` (a file created in your ApiLogicProject) sets up a Flask app, the database, logic and api:
 
@@ -69,7 +67,7 @@ This is important because they are orders of magnitude shorter, and therefore fa
 
 For example, consider the UI, defined by `ui/admin/admin.yaml`.  This is in lieu of hundreds of lines of very complex HTML and JavaScript.
 
-![API Logic Server Intro](/images/logic/declarative.png)
+![API Logic Server Intro](images/logic/declarative.png)
 
 ### Extensible
 
