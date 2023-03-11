@@ -95,15 +95,19 @@ Your docker container (blue) files include Python, Python libraries, and API Log
 
 Your docker container looks like this:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/docker-files.png"></figure>
+![Docker Repositories](images/docker/docker-repos.png)
+
+![Docker Repositories](images/docker/docker-files.png)
 
 &nbsp;
 
-### Create Docker Hub from API Logic Project
+### Build Docker Hub
 
-![Docker Repositories](images/docker/docker-repos.png)
+You can not only *develop* in a container (top dockerfile below), you can containerize your project for execution, by using a pre-supplied `devops/docker/build-container.dockerfile` (bottom dockerfile below):
 
-You can build a container for your ApiLogicProject:
+![Docker Repositories](images/docker/container-creation.png)
+
+To build a container for your ApiLogicProject:
 
 1. On Docker Hub, create a docker repository under your docker account.  Some quick terms:
     * Your docker account can contain multiple docker repositories
