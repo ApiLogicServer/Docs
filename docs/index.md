@@ -161,7 +161,7 @@ VSCode and PyCharm users can customize and run/debug within their IDE with [thes
 
 # Overview Video
 
-Project creation is based on database schema introspection as shown below: identify a database, and the ```ApiLogicServer create``` commands creates an executable, customomizable project.
+Project creation is based on database schema introspection as shown below: identify a database, and the ```ApiLogicServer create``` commands creates an executable, customizable project.
 
 Click for a video tutorial, showing complete project creation, execution, customization and debugging.
 
