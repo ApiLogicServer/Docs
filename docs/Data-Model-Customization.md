@@ -23,10 +23,12 @@ Your api, logic and ui are not (directly) dependent on this setting, so there is
 
 &nbsp;
 
-### Edit ```model_ext.py```: add relationships, derived attributes
-In addition, you may wish to edit ```models_ext.py```, for example:
+### Edit `customize_models.py`: add relationships, derived attributes
+In addition, you may wish to edit `customize_models.py`, for example:
 
 * to define [relationships](https://github.com/valhuber/LogicBank/wiki/Managing-Rules#database-design), critical for multi-table logic, APIs, and web apps
+
+     * See [this example](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20ApiLogicProject_Logic/database/customize_models.py).
 
 * to describe derived attributes, so that your API, logic and apps are not limited to the physical data model
 

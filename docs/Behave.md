@@ -1,6 +1,6 @@
 # Behave Creates Executable Test Suite, Documentation
 
-You can optionally use the Behave test framework to (here is an [Agile Approach for using Behave](../Logic:-Tutorial)):
+You can optionally use the Behave test framework to (here is an [Agile Approach for using Behave](../Logic-Tutorial)):
 
 1. **Create and Run an Executable Test Suite:** in your IDE, create test definitions (similar to what is shown in the report below), and Python code to execute tests.  You can then execute your test suite with 1 command.
 
