@@ -1,4 +1,4 @@
-# Behave Creates Executable Test Suite, Documentation
+# TL;DR: Executable Test Suite, Documentation
 
 You can optionally use the Behave test framework to (here is an [Agile Approach for using Behave](../Logic-Tutorial)):
 

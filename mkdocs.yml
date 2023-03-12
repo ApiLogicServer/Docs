@@ -31,7 +31,7 @@ nav:
     - "JSON:API": API.md
     - "API Customization": API-Customize.md
   - 3. Logic:
-    - "Why: 40X, Extensible": Logic-Why.md
+    - "Why: Time, Quality": Logic-Why.md
     - "What": Logic.md
     - "How": "Logic-Tutorial.md"
     - "Logic Operation": "Logic-Operation.md"
