@@ -298,7 +298,7 @@ Such logic is [automatically re-used](../Logic-Why/#automatic-reuse) over transa
 * changing `Order.ShippedDate`
 * deleting an `Order`
 
-One of the mechanisms to [debug logic](Logic-Why/#extend-python#debugging) is the logic log; here is the log from changing the Product, above, illustrating that our change was a _multi-table_ transaction, altering 5 rows:
+One of the mechanisms to [debug logic](../Logic-Why/#extend-python#debugging) is the logic log; here is the log from changing the Product, above, illustrating that our change was a _multi-table_ transaction, altering 5 rows:
 
 ```log
 Logic Phase:		ROW LOGIC(session=0x1072b1d30) (sqlalchemy before_flush)			 - 2021-12-29 20:19:07,564 - logic_logger - INFO

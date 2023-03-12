@@ -25,7 +25,7 @@ sql.h not found - your console log might include:
     src/pyodbc.h:56:10: fatal error: 'sql.h' file not found
 ```
 
-Resolve these as explained in the [Quick Start](../Quick-Start#sqlserver---install-pyodbc).
+Resolve these as [explained here](../Install-psycopg2/).
 
 
 ## Unsupported Architecture - MacOS
@@ -182,7 +182,7 @@ As of release 5.02.10, you can run `venv_setup/py.py sys-info`, either
 # Database Issues
 
 ## Docker API Logic Server connecting to dockerized databases
-Even when you can access the database to create the project, your dockerized project may fail to connect.  This is often caused by not enabling your project for network access.  For more information, see [connectivity](../Testing#connecting).
+Even when you can access the database to create the project, your dockerized project may fail to connect.  This is often caused by not enabling your project for network access.  For more information, see [connectivity](../Database-Connectivity).
 
 
 ## MySQL
