@@ -71,7 +71,7 @@ Other important notes:
 
 ## Northwind - sqlite (default sample)
 
-See [Sample Database](Sample-Database).
+See [Sample Database](../Sample-Database).
 
 This is a sqlite database, packaged with API Logic Server, so you can explore without any installs.  It is obtained from [Northwind](https://github.com/jpwhite3/northwind-SQLite3), and altered to include several columns to demonstrate rules.
 

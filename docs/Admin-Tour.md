@@ -46,7 +46,7 @@ That said, it's common that you will need custom apps for complex functions, cus
 * Create these in your favorite technology (React, Angular, etc)
 
 
-* Base them on the automatically created API, which handles not only data retrieval and update, but also enforces your [business logic](Logic-Why/#extend-python), which dramatically reduces client app dev effort by factoring out business logic to the shared API.
+* Base them on the automatically created API, which handles not only data retrieval and update, but also enforces your [business logic](../Logic-Why/#extend-python), which dramatically reduces client app dev effort by factoring out business logic to the shared API.
 
 # Architecture - React, based on created logic-enabled API
 The Admin App is created in your ApiLogicProject, and operates as follows:

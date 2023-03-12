@@ -61,7 +61,7 @@ To configure security:
 1. Declare Grants
     * Paste into your `security/declare_security.py` from [this sample](../Security-Authorization/#sample){:target="_blank" rel="noopener"}
 2. Set `SECURITY_ENABLED = True` in config.py
-3. Configure your Authentication-Provider, using your own [Authentication-Provider](/..Security-Authentication-Provider){:target="_blank" rel="noopener"},
+3. Configure your Authentication-Provider, using your own [Authentication-Provider](../Security-Authentication-Provider){:target="_blank" rel="noopener"},
 
 &nbsp;
 

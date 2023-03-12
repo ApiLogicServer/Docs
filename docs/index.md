@@ -11,7 +11,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-# Welcome to API Logic Server - Docs (V8)
+# Welcome to API Logic Server - Docs (Version 8)
 
 API Logic Server creates __executable, customizable Flask database projects:__
 

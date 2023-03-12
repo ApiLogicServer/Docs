@@ -119,4 +119,4 @@ Relationship names are also part of your API:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/model/relns-api-z.png?raw=true"></figure>
 
-> Each database has extensions which can introduce issues in model generation, so facilities are described in [Troubleshooting](Troubleshooting) to edit models and rebuild.
+> Each database has extensions which can introduce issues in model generation, so facilities are described in [Troubleshooting](../Troubleshooting) to edit models and rebuild.
