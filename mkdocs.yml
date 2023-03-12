@@ -2,6 +2,7 @@ site_name: API Logic Server
 site_description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 repo_url: https://github.com/valhuber/ApiLogicServer
 docs_dir: docs
+strict: true
 theme:
   name: material
   custom_dir: docs/.overrides
@@ -65,9 +66,11 @@ nav:
     - "Behave Logic Report": Behave-Logic-Report.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md
-    - "Project Operation": Project-Operation.md
-    - "API Logic Server Development": Internals.md
-    - "Internals - CLI": Internals-CLI.md
+    - "Project Operation": Architecture-Project-Operation.md
+    - "Declarative Automation": Architecture-Declarative-Automation.md
+    - Internals:
+      - "API Logic Server Development": Architecture-Internals.md
+      - "Internals - CLI": Architecture-Internals-CLI.md
   - Troubleshooting.md
   - FAQs:
     - "Is this a Low Code approach?": FAQ-Low-Code.md

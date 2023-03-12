@@ -1,13 +1,13 @@
 There are several novel elements of API Logic Server:
 
-* Logic, using spreadsheet-like rules, extensible with Python
+* Logic, using spreadsheet-like rules, customizable with Python
 * Automated Admin Apps - multi-page, multi-table, automatic joins
 * Models, expressed in Python, instead of massive code generation
-* Extensible, using a standard language, in standard IDEs such as VSCode or PyCharm
+* Customizable, using a standard language, in standard IDEs such as VSCode or PyCharm
 
 It's therefore quite reasonable to ask whether this technology is proven.
 
-It has been.
+It has.
 
 Key aspects of this technology first surfaced in PACE, Wang's highly regarded DBMS with over 6500 installed sites. It provided a relational query engine with rule enforcement, an application builder, and a query/report writer. The technology was awarded several patents for rules and application generation.
 

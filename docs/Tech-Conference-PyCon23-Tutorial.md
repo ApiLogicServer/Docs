@@ -25,7 +25,7 @@ API Logic Server is an open source Python system for creating __customizable dat
 
 __Projects are Customizable -__ use VSCode for  edit/debug
 
-Declare **spreadsheet-like rules** for multi-table derivations and constraints, extensible with Python (key innovation)
+Declare **spreadsheet-like rules** for multi-table derivations and constraints, customizable with Python (key innovation)
 
 &nbsp;
 

@@ -12,7 +12,7 @@ Frameworks require extensive background in web app development, and significant 
 
 &nbsp;
 
-## API Logic Server - low-code declarative, extensible system creation
+## API Logic Server - low-code declarative, customizable system creation
 
 API Logic Server is designed to provide a significantly faster and simpler __low-code__ approach for creating database systems:
 

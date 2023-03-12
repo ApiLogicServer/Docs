@@ -19,7 +19,7 @@ Let's consider these rule technologies in the light of the following requirement
 | Category |      Consideration    |
 | ------------- | ------------- |
 | **Scalable** | Rules should minimize SQL overhead, _automatically_ |
-| **Extensible** | Developers must be able to extend rule-based logic |
+| **Customizable** | Developers must be able to extend rule-based logic |
 | **Manageable** | Developers must be able to use existing developer tools and procedures for code editing, debugging, code management, etc |
 | **Integrity** | The system should ensure that *all* the rules are consistently enforced, in *all* cases |
 | **Architecture** | Logic should _automatically_ enforced over all apps and APIs |
@@ -79,7 +79,7 @@ rule execution is bound into update processing.
 | Category |      Consideration    | Transaction Logic |
 | ------------- | ------------- | ----------- |
 | **Scalable** | Rules should minimize SQL overhead, _automatically_ | Old row access enables pruning and sql optimizations (see below) |
-| **Extensible** | Developers must be able to extend rule-based logic | Many rules (events, constraints) invoke Python, providing access to all that entails |
+| **Customizable** | Developers must be able to extend rule-based logic | Many rules (events, constraints) invoke Python, providing access to all that entails |
 | **Manageable** | Developers must be able to use existing developer tools and procedures for code editing, debugging, code management, etc | Rules are Python code - use standard editors (with code completion), debuggers, and source code control systems and procedures |
 | **Integrity** | The system should ensure that *all* the rules are consistently enforced, in *all* cases | All ORM access enforces the rules |
 | **Architecture** | Logic should _automatically_ enforced over all apps and APIs | Logic enforcement is factored out of UI controllers, so shared over all apps and APIs |

@@ -20,7 +20,7 @@ The following
 |:---------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|
 | [Flask](https://flask.palletsprojects.com/en/1.1.x){:target="_blank" rel="noopener"}        | enables you to write custom web apps, and custom api end points  |
 | [SQLAlchemy](https://docs.sqlalchemy.org/en/14/core/engines.html){:target="_blank" rel="noopener"}    | Python-friendly ORM (analogous to Hiberate, JPA)                                                                      |
-| [Logic Bank](../Logic:-Rules-plus-Python){:target="_blank" rel="noopener"} | Listens for SQLAlchemy updates, provides Multi-Table Derivation and Constraint Rules<br>Python Events (e.g., send mail, message)<br>Extensible with Python<br> |
+| [Logic Bank](Logic-Why/#extend-python){:target="_blank" rel="noopener"} | Listens for SQLAlchemy updates, provides Multi-Table Derivation and Constraint Rules<br>Python Events (e.g., send mail, message)<br>Customizable with Python<br> |
 | [SAFRS](https://github.com/thomaxxl/safrs/wiki){:target="_blank" rel="noopener"}     | JSON:API and swagger, based on SQLAlchemy  |
 | [SAFRS-RA](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"}   | Executable React Admin UI, using SAFRS    |
 

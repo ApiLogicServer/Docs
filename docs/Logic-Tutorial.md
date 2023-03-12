@@ -6,7 +6,9 @@ This page describes a TDD-based approach to logic.
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/behave/introduction.png?raw=true"></figure>
 
-This page explains how [API Logic Server](https://github.com/valhuber/ApiLogicServer/blob/main/README.md) Automation, coupled with an [Agile (TDD - Test Driven Development) Process](http://dannorth.net/introducing-bdd/), can dramatically improve Time to Market and reduce Requirements Risk:
+![API Logic Server Intro](images/behave/introduction.png)
+
+This page explains how API Logic Server Automation, coupled with an [Agile (TDD - Test Driven Development) Process](http://dannorth.net/introducing-bdd/){:target="_blank" rel="noopener"}, can dramatically improve Time to Market and reduce Requirements Risk:
   
 1. **Automated App Creation:** API Logic Server creates an API Logic Project with a single command.  The project implements an **Admin App** and underlying API.
 
@@ -14,7 +16,7 @@ This page explains how [API Logic Server](https://github.com/valhuber/ApiLogicSe
 
 1. **Automated Logic:** the Logic Design often translates directly into ***Executable* Rules,** which can be entered as customizations into the created API Logic Project.
 
-2. **Transparency:** the [Behave Logic Report](#behave-logic-report) documents the functionality of the system: Features (Stories) and Scenarios (tests) that confirm its operation.  The report includes the underlying Rules, extending transparency to the implementation level.
+2. **Transparency:** the [Behave Logic Report](../Behave-Logic-Report){:target="_blank" rel="noopener"} documents the functionality of the system: Features (Stories) and Scenarios (tests) that confirm its operation.  The report includes the underlying Rules, extending transparency to the implementation level.
 
 &nbsp;&nbsp;
 
@@ -27,10 +29,11 @@ This page explains how [API Logic Server](https://github.com/valhuber/ApiLogicSe
 # Resources
 
 After you've reviewed the [logic background](../Logic:-Rules-plus-Python), use this page to learn how to use logic.  Key resources:
-1. [Rule Summary](https://github.com/valhuber/LogicBank/wiki/Examples)
-2. [Sample Database](../Sample-Database)
-3. [Behave](https://behave.readthedocs.io/en/stable/tutorial.html) is a framework for defining and executing tests.  It is based on [TDD (Test Driven Development)](http://dannorth.net/introducing-bdd/), an Agile approach for defining system requirements as executable tests.
-  * Here are some [details for using Behave with API Logic Server](../Working-With-Behave).
+
+1. [Rule Summary](../Logic){:target="_blank" rel="noopener"}
+2. [Sample Database](../Sample-Database){:target="_blank" rel="noopener"}
+3. [Behave](https://behave.readthedocs.io/en/stable/tutorial.html){:target="_blank" rel="noopener"} is a framework for defining and executing tests.  It is based on [TDD (Test Driven Development)](http://dannorth.net/introducing-bdd/){:target="_blank" rel="noopener"}, an Agile approach for defining system requirements as executable tests.
+  * Here are some [details for using Behave with API Logic Server](../Behave){:target="_blank" rel="noopener"}.
 
 &nbsp;&nbsp;
 
@@ -204,7 +207,7 @@ Execute the tests using the pre-supplied Launch Configurations:
 The rules fire as transactions are run, and produce Logic Log files later used in Report Behave Logic (described below): 
 
 1. `test/api_logic_server_behave/behave.log` - summarizes test success / failure
-2. `api_logic_server_behave/scenario_logic_logs/Bad_Order_Custom_Service.log` - [Logic Log output](../Logic:-Rules-plus-Python#debugging).
+2. `api_logic_server_behave/scenario_logic_logs/Bad_Order_Custom_Service.log` - [Logic Log output](../Logic-Why/#extend-python).
    * The code on line 161 signals the name of Logic Log
    * Note the Logic Log actually consists of 2 sections:
       * The first shows each rule firing, including complete old/new row values, with indentation for `multi-table chaining`

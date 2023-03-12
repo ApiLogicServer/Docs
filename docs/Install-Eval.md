@@ -14,7 +14,7 @@ API Logic Server creates __customizable database web app projects:__
 
 * __Projects are Customizable, using _your IDE_:__ such as VSCode, PyCharm, etc, for familiar edit/debug services
 
-* __Business Logic Automation:__ using unique spreadsheet-like rules, extensible with Python :trophy:
+* __Business Logic Automation:__ using unique spreadsheet-like rules, customizable with Python :trophy:
 
 Follow the steps below to be up and running in about a minute - no install, no configuration.  You can run the created project to explore its functionality, and how to customize it in VSCode.
 

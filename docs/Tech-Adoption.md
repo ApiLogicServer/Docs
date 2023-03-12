@@ -16,8 +16,8 @@ Logic represents the starkest different between procedural code and declarative 
 
 ApiLogicServer automation creates a running project nearly instantly, but it also is designed to help you adapt to business changes more rapidly:
 
-* [Rebuild](https://github.com/valhuber/ApiLogicServer/wiki#rebuilding) support to update existing projects from database or data model changes
-* Logic provides automatic [reordering and reoptimization](../Logic:-Rules-plus-Python#ordering-automatic-for-derivations-with-control-for-actions-and-constraints) as logic is altered
+* [Rebuild](../Project-Rebuild) support to update existing projects from database or data model changes
+* Logic provides automatic [reordering and reoptimization](../Logic-Why/#key-aspects-of-logic) as logic is altered
 
 ## Technology Agility - an Application Virtual Machine
 
@@ -38,7 +38,7 @@ The most troublesome bugs are silent failures - no stacktrace, but the wrong ans
 Automation address this by designing out whole classes of error:
 
 * the UI and API just work
-* logic is [automatically re-used](../Logic:-Rules-plus-Python#spreadsheet-like-automatic-reuse) over all Use Cases
+* logic is [automatically re-used](../Logic-Why/#automatic-reuse) over all Use Cases
 
 ### Architectural Risk
 

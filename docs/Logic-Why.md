@@ -25,7 +25,7 @@ And your code is the "how".
 </details>
 
 
-## Solution: Rules are an Executable Design
+## Solution: Rules Are An Executable Design
 
 API Logic -- unique to API Logic Server -- consists of __Rules, extensible with Python.__  
 
@@ -116,24 +116,36 @@ While 95% is certainly remarkable, it's not 100%.  Automating most of the logic 
 
 That provision is standard Python, provided as standard events (lines 84-100 in the first screen shot above).  This will be typically be used for non-database oriented logic such as files and messages, and for extremely complex database logic.
 
+
+
 ### Manage: Your IDE, SCCS
 
 The screen shot above illustrates you use your IDE (e.g., VSCode, PyCharm) to declare logic using Python, with all the familiar features of code completion and syntax high-lighting.  You can also use the debugger, and familiar Source Code Control tools such as `git`.
 
 
-#### Debugging
 
-As shown on the [readme video](https://github.com/valhuber/ApiLogicServer/blob/main/README.md), you can:
+#### Logic Debugging
 
-1. Use your IDE to set breakpoints in rules, then examine `row` variables
+If we use Swagger and run `ServicesEndPoint - Post/add_order`, we get the following :
 
-2. Visualize logic execution with the _logic log._ Shown below, the console shows a line for each rule that fires, with the full row content (old/new values), indented to show multi-table logic chaining.
+![Logic Debug](images/logic/logic-debug.png)
 
-> Note: the logic log creates long lines.  You will generally therefore want to suppress word wrap.  Most IDEs and text editors have mechanisms to do this; if you are using the console, you may want to copy/paste the log into a text editor that can suppress word wrap.  This is defaulted in `api_logic_server_run.py` for sqlite databases.
+##### IDE Debugger
 
-<figure><img src="https://github.com/valhuber/LogicBank/raw/main/images/overview/log.png"></figure>
+This illustrates that you can stop in your rule logic (the red dot on line 111), and use your **IDE debugger** (here, VSCode) to see variables, step through execution, etc.
 
-###### VSCode debugging
+##### Logic Logging
+
+In addition, the system creates a ""logic log** of all rules that fire, to aid in debugging by visualizing rule execution:
+
+*   Each line represents a rule execution, showing row state (old/new values), and the _{reason}_ that caused the update (e.g., client, sum adjustment)
+*   Log indention shows multi-table chaining
+
+> Logging is performed using standard Python logging, with a logger named `logic_logger`.  Use `info` for tracing, and `debug` for additional information (e.g., a declared rules are logged).
+
+
+##### VSCode debugging
+
 In VSCode, set `"redirectOutput": true` in your **Launch Configuration.**  This directs logging output to the Debug Console, where it is not word-wrapped (word-wrap obscures the multi-table chaining).
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/no-line-wrap.png"></figure>
