@@ -119,7 +119,7 @@ To build a container for your ApiLogicProject:
     * Your system might be comprised of multiple docker containers, e.g. one for your API Logic Project, one for your DBMS, etc.
 2. Create / customize your project as your normally would
 3. Edit `ApiLogicProject.dockerfile`: change `your_account/your_repository` as appropriate
-    * Here is [an example](https://github.com/valhuber/docker_api_logic_project/blob/main/ApiLogicProject.dockerfile){:target="_blank" rel="noopener"}
+    * Here is [an example](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20ApiLogicProject_Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}
 4. In terminal (not in VSCode docker - docker CLI is not installed there), cd to your project
 5. Build a container for your project with terminal commands:
 

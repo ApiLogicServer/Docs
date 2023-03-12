@@ -288,7 +288,7 @@ Repeat the process above, but note the `Customer.Balance` before and after.  Thi
     Rule.formula(derive=models.Product.UnitsInStock, calling=units_in_stock)
 
 ```
-Such logic is [automatically re-used](Logic-Why/#extend-python#spreadsheet-like-automatic-reuse) over transactions, and is therefore [equivalent to several hundred lines of code.](Logic-Why/#extend-python#what---declare-spreadsheet-like-rules---40x-more-concise)  So, these rules also govern:
+Such logic is [automatically re-used](../Logic-Why/#automatic-reuse) over transactions, and is therefore [equivalent to several hundred lines of code.](../Logic-Why/#concise)  So, these rules also govern:
 
 * changing an `OrderDetail.ProductId` (as we did here)
 * changing an `OrderDetail.Quantity` 

@@ -55,7 +55,7 @@ Update: as of Oct 2022, the most recent release of `psycopg2` provides ARM suppo
 
 ## Docker Databases - running
 
-The [Docker database images](..Database-Connectivity/) work for M1 Macs, __except SQL/Server__ (it fails to start). It is architecture specific.
+The [Docker database images](../Database-Connectivity/) work for M1 Macs, __except SQL/Server__ (it fails to start). It is architecture specific.
 
 These solutions were successful [as described here](https://github.com/valhuber/ApiLogicServer/blob/main/tests/docker_databases/Dockerfile-SqlSvr-instructions-m1).  Many thanks for the following information:
 

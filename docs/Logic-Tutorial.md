@@ -28,7 +28,7 @@ This page explains how API Logic Server Automation, coupled with an [Agile (TDD 
 
 # Resources
 
-After you've reviewed the [logic background](../Logic:-Rules-plus-Python), use this page to learn how to use logic.  Key resources:
+After you've reviewed the [logic background](../Logic-Why), use this page to learn how to use logic.  Key resources:
 
 1. [Rule Summary](../Logic){:target="_blank" rel="noopener"}
 2. [Sample Database](../Sample-Database){:target="_blank" rel="noopener"}
@@ -269,7 +269,7 @@ In addition to Behave, you can use manual approaches for testing:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/logic/run-server-test.png" title="run instructions"></figure>
 
-After you've [created the sample project](../Quick-Start), you can execute pre-defined tests as shown above:
+After you've [created the sample project](../Tutorial), you can execute pre-defined tests as shown above:
 
 1. Start the Server (e.g., under VS Code, Launch Configuration *ApiLogicServer*)
 2. Open a terminal window, and `cd test/basic; python server_test.py go`

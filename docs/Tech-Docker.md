@@ -22,7 +22,7 @@ When you use API Logic Server to create projects, the resultant projects can run
 To make this work, `ApiLogicServer create` builds the following files in your project:
 
 * [.devcontainer/devcontainer.json](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/project_prototype/.devcontainer/devcontainer.json){:target="_blank" rel="noopener"}
-* [For_VSCode.dockerfile](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/project_prototype/For_VSCode.dockerfile){:target="_blank" rel="noopener"}
+* [For_VSCode.dockerfile](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/project_prototype/.devcontainer/For_VSCode.dockerfile){:target="_blank" rel="noopener"}
 
 &nbsp;
 

@@ -70,7 +70,7 @@ Then, open the appropriate section below, and see the [Installation Notes](#inst
 
     For more information, see [Working With Docker](../Working-With-Docker).
 
-    > Already installed?  Upgrade to the latest (5.03.10): ```docker pull apilogicserver/api_logic_server``` (you may need to [rebuild your container](https://valhuber.github.io/ApiLogicServer/Execute-VSCode-Docker/)).
+    > Already installed?  Upgrade to the latest: ```docker pull apilogicserver/api_logic_server``` (you may need to [rebuild your container](../Working-With-Docker/#apilogicserver-container-upgrades)).
 
 === "PythonAnyWhere"
 

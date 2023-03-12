@@ -24,7 +24,7 @@ You will typically want to customize and extend the created project.  Edit the f
 
 The 2 indicated files in the tree are the Python files that run for the Basic Web App and the API Server.
 
-Projects are created from a [system-supplied prototype](https://github.com/valhuber/ApiLogicServer/tree/main/prototype).  You can use your own prototype from git (or a local directory) using the ```from_git``` parameter.
+Projects are created from a [system-supplied prototype](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype).  You can use your own prototype from git (or a local directory) using the ```from_git``` parameter.
 
 ## Architecture
 

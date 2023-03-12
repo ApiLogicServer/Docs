@@ -167,6 +167,10 @@ While conciseness is the most immediately obvious aspect of logic, rules provide
 
 See also the [FAQs](../FAQ-RETE).
 
+### Concise
+
+Automatic dependency management means that this logic is eliminated, so rules can be n-fold more concise as explained at the top of this page.
+
 
 ### Automatic Reuse
 Just as a spreadsheet reacts
