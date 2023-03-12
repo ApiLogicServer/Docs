@@ -1,6 +1,7 @@
 ## Logic Architecture
 
 <figure><img src="https://github.com/valhuber/LogicBank/raw/main/images/architecture.png"></figure>
+
 Logic Bank operates as shown above:
 
  1. **Automatic Configuration**

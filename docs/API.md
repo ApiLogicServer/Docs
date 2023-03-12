@@ -1,16 +1,15 @@
 
-## JSON:API - Related Data, Filtering, Sorting, Pagination
+## TL;DR: JSON:API - Related Data, Filtering, Sorting, Pagination
 
-The `ApiLogicServer create` command creates an API Logic Project that implements your API.  No additional code is required.
+The `ApiLogicServer create` command creates an API Logic Project that implements your API.  No additional code is required.  **Custom App Dev is unblocked.**
 
-* You get an __endpoint for each table__, with __CRUD support__ - create, read, update and delete.
+* __Endpoint for each table__, with __CRUD support__ - create, read, update and delete.
 
-* The API also supports __related data access__, based on relationships in the models file (typically derived from foreign keys).
+* Filtering, sorting, pagination, including __related data access__, based on relationships in the models file (typically derived from foreign keys)
 
+* Automatic **Swagger**
 
-&nbsp;
-
-  > **Key Take-away:** instant *rich* APIs, with filtering, sorting, pagination, related data access and swagger.  **Custom App Dev is unblocked.**
+* Enforces **logic and security** - automatic partitioning of logic from (each) client app
 
 &nbsp;
 

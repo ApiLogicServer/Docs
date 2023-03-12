@@ -8,12 +8,12 @@
 *[lookups]: User Interface to get list of parent rows, select one, and fill child Foreign Key (e.g. Lookup Product for OrderDetail)
 *[Foreign Key]: one or more fields in child rows that identify a parent row (e.g., OrderDetail.ProductId identifies a Product)
 *[foreign key]: one or more fields in child rows that identify a parent row (e.g., OrderDetail.ProductId identifies a Product)
-*[Multi-Page]: Applications providing multiple pages, e.g. a Customer Page and an Order Page
-*[Multi-page]: Applications providing multiple pages, e.g. a Customer Page and an Order Page
-*[multi-page]: Applications providing multiple pages, e.g. a Customer Page and an Order Page
-*[Multi-Table]: An Application form displaying multiple table, e.g., an Order with a (Parent) Sales Rep, and (children) OrderDetails
-*[Multi-table]: An Application form displaying multiple table, e.g., an Order with a (Parent) Sales Rep, and (children) OrderDetails
-*[multi-table]: An Application form displaying multiple table, e.g., an Order with a (Parent) Sales Rep, and (children) OrderDetails
+*[Multi-Page]: Applications providing multiple pages, e.g. a Customer Page and an Order Page, with filtering, pagination and sorting
+*[Multi-page]: Applications providing multiple pages, e.g. a Customer Page and an Order Page, with filtering, pagination and sorting
+*[multi-page]: Applications providing multiple pages, e.g. a Customer Page and an Order Page, with filtering, pagination and sorting
+*[Multi-Table]: An Application form displaying multiple table, e.g., an Order with a (Parent) Sales Rep, and (children) OrderDetails;  Tab sheets for related data, lookups, automatic joins.
+*[Multi-table]: An Application form displaying multiple table, e.g., an Order with a (Parent) Sales Rep, and (children) OrderDetails;  Tab sheets for related data, lookups, automatic joins.
+*[multi-table]: An Application form displaying multiple table, e.g., an Order with a (Parent) Sales Rep, and (children) OrderDetails;  Tab sheets for related data, lookups, automatic joins.
 *[Declarative Hide/Show]: Support for Application fields that are displayed/hidden based on an expression for the current row declared in the Admin.yaml file
 *[Automatic Joins]: Automatically joined parent data, e.g., the ProductName (instead of the ProductId) for OrderDetails; these defaults can be overridden in the Admin.yaml file
 *[Automatic joins]: Automatically joined parent data, e.g., the ProductName (instead of the ProductId) for OrderDetails; these defaults can be overridden in the Admin.yaml file

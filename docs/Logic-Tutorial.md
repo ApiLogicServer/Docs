@@ -1,10 +1,11 @@
-This page describes a TDD-based approach to logic.
+This page describes a TDD-based approach to using logic.
+
+  > **TL;DR:** <br><br>1. Create your database, and your API Logic Project.<br><br>2. Use the created Admin App as **Working Software *Now***, to drive Business User Collaboration and **capture logic requirements in Behave**.  <br><br>3. Use these to **drive rule declaration**, and **develop tests** that verify the scenarios work.  <br><br>4. Use the **Behave Logic Report** to document the requirements, tests results, including the *rules that fired for each test.*
+
 
 # Automation + Collaboration: Fast, Right
 
 **Automated App Creation** (Working Software Now) enables **Collaboration** to uncover **Automated Rules.**
-
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/behave/introduction.png?raw=true"></figure>
 
 ![API Logic Server Intro](images/behave/introduction.png)
 

@@ -1,5 +1,5 @@
 
-## Rules Summary
+## What Are the Rules
 The table shows excerpts only; see the ```nw``` sample for full syntax.
 
 | Rule | Summary   | Example | Notes |
