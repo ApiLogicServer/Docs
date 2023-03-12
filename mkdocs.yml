@@ -31,9 +31,9 @@ nav:
     - "JSON:API": API.md
     - "API Customization": API-Customize.md
   - 3. Logic:
-    - "Why: Time, Quality": Logic-Why.md
-    - "What": Logic.md
-    - "How": "Logic-Tutorial.md"
+    - "Why Logic": Logic-Why.md
+    - "What Are the Rules": Logic.md
+    - "How To Use Logic": "Logic-Tutorial.md"
     - "Logic Operation": "Logic-Operation.md"
   - 4. Security:
     - "Overview": Security-Overview.md

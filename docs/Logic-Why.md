@@ -1,16 +1,18 @@
-## TL;DR - automate multi-table derivations and constraints
+## TL;DR - spreadsheet-like automation of multi-table derivations and constraints
 
-For transaction systems, backend multi-table constraint and derivation logic is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**, declared in Python, extensible with events as required.
+For transaction systems, backend multi-table constraint and derivation logic is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**, declared in Python, extensible with events as needed.
 
-Rules are **declarative approach** that automates remarkable amounts of backend logic:
+> Rules are 40X more concise than code, and can improve quality.
 
-| Declarative Automates | Which Means | Why It Matters |
+Rules are a **declarative approach** that automates remarkable amounts of backend logic:
+
+| Declarative &nbsp;&nbsp;&nbsp;&nbsp;Rules Automate | <br><br>Which Means | <br><br>Why It Matters |
 | :--- |:---|:---|
 | **Invocation** | Rules fire when referenced data changes<br><br>Eg., Customer balance adjusted when order amount (or Customer-id) changes | **Quality** - no missed "corner cases"<br><br>**Conciseness** - eliminates watch/react and data access code |
 | **Ordering** | Execution ordered by automatic dependency analysis | **Maintenance** - eliminates code analysis for inserting new code |
 | **Optimization** | System prunes rules, optimizes SQL | Reduces effort for scalability |
 
-Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules; you can [visualize the process here](https://valhuber.github.io/ApiLogicServer/Logic-Operation/#watch-react-chain).
+Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](https://valhuber.github.io/ApiLogicServer/Logic-Operation/#watch-react-chain).
 
 &nbsp;
 
