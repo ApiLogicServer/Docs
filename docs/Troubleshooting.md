@@ -160,6 +160,7 @@ In some installations, PyCharm may fail when your `venv` is pre-created.  I have
 In most cases, VSCode discovers `venv` environments, whether created prior to launching VSCode, or created inside the newly created project.
 
 However, this process occasionally fails.  For example, if you create the project successfully, then delete and recreate it, VSCode may not discover your `venv`.  This is usually resolved by:
+
 1. Create the `venv` as described in the [Quick Start](../Project-Env)
 2. Exit / restart VSCode
 3. Use __View > Command Palette > Python: Select Interpreter__, and select the entry `"venv”: venv`.  See the diagram below.
@@ -203,7 +204,7 @@ sql.h not found - your console log might include:
     src/pyodbc.h:56:10: fatal error: 'sql.h' file not found
 ```
 
-Resolve these as explained in the [Quick Start](../Quick-Start#sqlserver---install-pyodbc).
+Resolve these as explained in the [Quick Start](../Install-pyodbc/).
 
 &nbsp;&nbsp;
 
