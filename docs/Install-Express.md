@@ -28,7 +28,7 @@ Open the appropriate section below.
 
     Ensure you have these pre-reqs:
 
-    ```bash title="Verify 3.8 - 3.10"
+    ```bash title="Verify 3.8 - 3.11"
     python --version  # on macs, you may need to use Python3
     ```
 
@@ -41,17 +41,30 @@ Open the appropriate section below.
 
     ```bash title="Install API Logic Server in a Virtual Environment"
     python -m venv venv                  # may require python3 -m venv venv
-    venv\Scripts\activate                # mac/linux: source venv/bin/activate
+    source venv/bin/activate             # windows: venv\Scripts\activate
     python -m pip install ApiLogicServer
     ```
 
     If you are using SqlServer, you also need to [install `pyodbc`](../Install-pyodbc).
+
+    &nbsp;
 
     __Create the Tutorial Project__
 
     ```bash title="Create Tutorial"
     ApiLogicServer tutorial
     ```
+
+    &nbsp;
+
+    __Or, Create a Normal Project__
+
+    ```bash title="Create Typical Project"
+    ApiLogicServer create --project_name=ApiLogicProject --db_url=  # or, create-and-run
+    ```
+
+    &nbsp;
+
     __Open the Project in VSCode__
 
     You have 2 choices:
@@ -68,15 +81,27 @@ Open the appropriate section below.
     python -m pip install -r requirements.txt  # accept "new Virtual environment"
     ```
 
+    &nbsp;
+
+    __Or, run the project directly__
+
+    ```bash title="Run the Project from the Command Line"
+    cd ApiLogicProject
+    python ApiLogicProject/api_logic_server_run.py                  # run the server
+    ```
+
 
 === "Docker"
 
     __Start Docker__
     ```bash title="Start (might install) API Logic Server Docker"
-      docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
+      > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost > > > > apilogicserver/api_logic_server
+      $ # you are now active in the API Logic Server docker container to create projects
     ```
 
     > Windows: use __Powershell__ (`PWD` is not supported in Command Line)
+
+    &nbsp;
 
     __Create the Tutorial Project__
 
@@ -86,7 +111,23 @@ Open the appropriate section below.
       $ ApiLogicServer tutorial    # tutorial directory will be created
       $ exit                       # return to local host 
       ```
-    __Open the Project in VSCode__
+
+    &nbsp;
+
+    __Or, Create a Typical Project__
+
+    Typical project creation identifies the database and target project name:
+      ```bash title="Create Typical project"
+      $ cd /localhost/             # a directory on your local file system for project creation
+      $ ApiLogicServer create-and-run --project_name=ApiLogicProject --db_url=
+      $ exit                       # return to local host 
+      ```
+
+    &nbsp;
+
+    __Open the created Project in VSCode__
+    
+    Once the project is created, open it in VSCode on your local host:
 
     1. Open Folder `ApiLogicServer/tutorial` in VSCode
         * Accept option to "Reopen in Container"

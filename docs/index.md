@@ -11,24 +11,51 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-# Welcome to API Logic Server - Docs (V8)
+!!! pied-piper ":bulb: TL;DR - instant projects, standard customization, *unique* declarative rules"
 
-API Logic Server creates __executable, customizable Flask database projects:__
+    Use the `ApiLogicServer create` command to create a Flask/SQLAlchemy project from your database.  Projects are **instantly executable**, providing:
 
-* Creation is __Instant:__ create _executable_ projects from your database with a _single_ command.  Projects are __highly functional,__ providing:
+    * **an Admin App:** multi-page, multi-table apps -- ready for Business User collaboration
+    * **an API:** end points for each table, with filtering, sorting, pagination and related data access -- ready for custom add dev
 
-    * __Admin UI:__ multi-page / multi-table apps, with page navigations, automatic joins and declarative hide/show - working software *now* -- **ready for Agile collaboration**
+    Use your IDE to **customize** and debug your application:
 
-    * __API:__ an endpoint for each table, with filtering, sorting, pagination and related data access -- **ready for custom app dev**
-
-* __Customize with standard dev tools:__ *your IDE* for familiar edit/debug services, Python, and proven packages like Flask and SQLAlchemy
-
-* __Business Logic Automation:__ using unique spreadsheet-like rules, extensible with Python :trophy:
+    * Use **standard Python/Flask/SQLAlchemy** to create new services
+    * ***Declare* security and multi-table constraint/validation logic**, using unique spreadsheet-like rules - 40X more concise than code. :trophy:  Extend logic with Python events.
 
 &nbsp;
 
+## Video - What is API Logic Server
 
-### Instant Evaluation - _no install_
+API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
+
+It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is).
+
+Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging.
+
+[![Using VS Code](https://github.com/valhuber/apilogicserver/wiki/images/creates-and-runs-video.jpg?raw=true)](https://youtu.be/tOojjEAct4M "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}
+
+&nbsp;
+
+### Created Admin App
+
+The [Admin App](Admin-Tour) is shown below:
+
+![API Logic Server Intro](images/ui-admin/Order-Page.png)
+
+&nbsp;
+
+### Customize in IDE
+
+VSCode and PyCharm users can customize and run/debug within their IDE with [these steps](IDE-Execute){:target="_blank" rel="noopener"}.  Created projects include Launch and Docker configurations.  
+
+![Customize in your IDE](images/generated-project.png){ align=left }
+
+[Rebuild services](https://valhuber.github.io/ApiLogicServer/Project-Rebuild/){:target="_blank" rel="noopener"} are provided to accommodate changes to database structure or ORM classes.
+
+&nbsp;
+
+## Instant Evaluation - _no install_
 
 Run in the cloud: VSCode via your Browser, courtesy Codespaces.  Use your existing GitHub account (no signup is required), and:
 
@@ -75,26 +102,20 @@ API Logic Server provides:
 
 &nbsp;
 
-### What is API Logic Server
+# Use Cases
 
-API Logic Server is an open source Python project, consisting of:
+There are a variety of ways for getting value from API Logic Server:
 
-* a set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution, plus 
+* __Create and Customize database web apps__ - the core target of the project
 
-* a CLI (Command Language Interface) to create executable projects, which can be customized in an IDE such as VSCode or PyCharm
+* __Admin App for your database__ - the Admin App is a create way to navigate through your database, particularly to explore data relationships
 
-It runs as a standard pip install, or under Docker. After installation, you use the CLI create a project like this:
+* __Data Repair__ - using the Admin App with logic to ensure integrity, repair data for which you may not have had time to create custom apps
 
-```
-ApiLogicServer create --project_name=ApiLogicProject db_url=
-```
-&nbsp;
+* __Project Creation__ - even if you do not intend to use the API, Admin App or logic, you can use API Logic Server to create project you then edit by hand.  Created projects will include the SQLAlchemy Data Models, and project structure
 
-!!! pied-piper ":bulb: Key Takeaway"
+* __Learning__ - explore the [Learning Center](https://github.com/ApiLogicServer/.github/blob/main/profile/README.md){:target="_blank" rel="noopener"} to learn about key concepts of Flask and SQLAlchemy
 
-    API Logic Server reads your schema, and creates an executable, customizable project providing the features listed below.  Check it out [here](Install-Express){:target="_blank" rel="noopener"}.
-
-For more on API Logic Server Architecture, [see here](Architecture-What-Is).
 &nbsp;
 
 # Feature Summary
@@ -111,109 +132,24 @@ For more on API Logic Server Architecture, [see here](Architecture-What-Is).
 
 &nbsp;
 
-# Instant Project Creation
-
-Use the CLI to create the sample API and Admin App project, with a single command.
-
-&nbsp;
-
-### Create With Docker
-
-Execute the following commands (Windows, use Windows Terminal or Powershell):
-
-```bash title="Run API Logic Server in Docker"
-# Start the API Logic Server docker container
-docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
-
-ApiLogicServer create-and-run --project_name=/localhost/ApiLogicProject --db_url=
-```
-&nbsp;
-
-### Or, Create With Local Install
-Presuming Python 3.7+ [is installed](Install){:target="_blank" rel="noopener"}, it's typically:
-
-```bash title="Run API Logic Server from a local pip install"
-python -m venv venv        # may require python3 -m venv venv
-source venv/bin/activate   # windows: venv\Scripts\activate
-python -m pip install ApiLogicServer
-
-ApiLogicServer create --project_name=ApiLogicProject --db_url=  # or, create-and-run
-python ApiLogicProject/api_logic_server_run.py                  # run the server
-```
-&nbsp;
-
-## Execute
-
-Your system is running on the [sample database](Sample-Database){:target="_blank" rel="noopener"} - explore the data and api at [localhost:5656](http://localhost:5656).
-
-## Tutorial
-
-The best way to get started is to run the [Tutorial](Tutorial/){:target="_blank" rel="noopener"}.  It creates 2 versions of the sample:
-
-* without customizations - so you to see exactly what is automated from the `ApiLogicServer create` command
-* with customizations - so you can see how to customize
-
-```bash title="Run API the Tutorial"
-ApiLogicServer tutorial  # creates project - open in your IDE
-```
-
-&nbsp;
-
-# Customize in IDE
-
-VSCode and PyCharm users can customize and run/debug within their IDE with [these steps](IDE-Execute){:target="_blank" rel="noopener"}.  Created projects include Launch and Docker configurations.  
-
-![Customize in your IDE](images/generated-project.png){ align=left }
-
-[Rebuild services](https://valhuber.github.io/ApiLogicServer/Project-Rebuild/){:target="_blank" rel="noopener"} are provided to accommodate changes to database structure or ORM classes.
-
-&nbsp;
-
-# Overview Video
-
-Project creation is based on database schema introspection as shown below: identify a database, and the ```ApiLogicServer create``` commands creates an executable, customizable project.
-
-Click for a video tutorial, showing complete project creation, execution, customization and debugging.
-
-[![Using VS Code](https://github.com/valhuber/apilogicserver/wiki/images/creates-and-runs-video.jpg?raw=true)](https://youtu.be/tOojjEAct4M "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}
-
-&nbsp;
-
-# Getting Started
-
-### Local Install
+# Getting Started - Install, Tutorial
 
 API Logic Server is designed to make it easy to get started:
 
 * **Install and run Tutorial** - 
-[install](https://valhuber.github.io/ApiLogicServer/Install-Express/){:target="_blank" rel="noopener"}, and explore the [tutorial](https://valhuber.github.io/ApiLogicServer/Tutorial/){:target="_blank" rel="noopener"}.  You'll create a complete project using the pre-installed sample database, explore its features, and support for customization and debugging. 
+[install](https://valhuber.github.io/ApiLogicServer/Install-Express/){:target="_blank" rel="noopener"}, and explore the [tutorial](https://valhuber.github.io/ApiLogicServer/Tutorial/){:target="_blank" rel="noopener"}.  The tutorial creates 2 versions of the [sample database](https://valhuber.github.io/ApiLogicServer/Sample-Database){:target="_blank" rel="noopener"}
+
+     * without customizations - so you to see exactly what is automated from the `ApiLogicServer create` command
+     * with customizations - so you can see how to customize 
 
 * **Installed Sample Databases** -
-Here are [some installed sample databases](Data-Model-Examples){:target="_blank" rel="noopener"}
+Here are [some installed sample databases](Data-Model-Examples){:target="_blank" rel="noopener"} you can access with simplified abbreviations for `db_url`.
 
 * **Dockerized Test Databases** - 
 Then, you might like to try out some of our [dockerized test databases](https://valhuber.github.io/ApiLogicServer/Database-Connectivity/){:target="_blank" rel="noopener"}.
 
 * **Your Database** - 
 Finally, try your own database.
-
-&nbsp;
-
-# Use Cases
-
-There are a variety of ways for getting value from API Logic Server:
-
-* __Create and Customize database web apps__ - the core target of the project
-
-* __Admin App for your database__ - the Admin App is a create way to navigate through your database, particularly to explore data relationships
-
-* __Data Repair__ - using the Admin App with logic to ensure integrity, repair data for which you may not have had time to create custom apps
-
-* __Project Creation__ - even if you do not intend to use the API, Admin App or logic, you can use API Logic Server to create project you then edit by hand.  Created projects will include the SQLAlchemy Data Models, and project structure
-
-* __Learning__ - explore the [Learning Center](https://github.com/ApiLogicServer/.github/blob/main/profile/README.md){:target="_blank" rel="noopener"} to learn about key concepts of Flask and SQLAlchemy
-
-
 
 &nbsp;
 
