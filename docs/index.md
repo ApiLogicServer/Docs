@@ -17,11 +17,11 @@ API Logic Server creates __executable, customizable Flask database projects:__
 
 * Creation is __Instant:__ create _executable_ projects from your database with a _single_ command.  Projects are __highly functional,__ providing:
 
-    * __API:__ an endpoint for each table, with filtering, sorting, pagination and related data access
+    * __Admin UI:__ multi-page / multi-table apps, with page navigations, automatic joins and declarative hide/show - working software *now* -- **ready for Agile collaboration**
 
-    * __Admin UI:__ multi-page / multi-table apps, with page navigations, automatic joins and declarative hide/show
+    * __API:__ an endpoint for each table, with filtering, sorting, pagination and related data access -- **ready for custom app dev**
 
-* __Standard Flask / SQLAlchemy Projects__ -- _customize with your IDE_ for familiar edit/debug services
+* __Customize with standard dev tools:__ *your IDE* for familiar edit/debug services, Python, and proven packages like Flask and SQLAlchemy
 
 * __Business Logic Automation:__ using unique spreadsheet-like rules, extensible with Python :trophy:
 
@@ -48,7 +48,7 @@ We think you'll find Codespaces pretty amazing - check it out!
 
 API Logic Server can dramatically improve web app development:
 
-* Automation makes it __faster:__ what used to require weeks or months is now immediate.  Unblock UI Dev, and engage business users - _early_ - instead of investing in a misunderstanding.
+* Automation makes it __faster:__ what used to require weeks or months is now immediate.  Unblock UI Dev, and engage business users - _early_ - instead of wasting time on a misunderstanding.
 
 * Automation makes it __simpler:__ this reduces the risk of architectural errors, e.g., APIs without pagination.
 
@@ -58,7 +58,7 @@ API Logic Server can dramatically improve web app development:
 
 ### Flexibility of a Framework, Faster than Low Code
 
-We saw short-comings with current approaches for building database systems:   
+Current approaches for building database systems have shortcomings:   
 
 * __Frameworks:__ Frameworks like Flask or Django enable you to build a single endpoint or _Hello World_ page, but
     * _Require weeks or more_ for a _multi-endpoint_ API and _multi-page_ application
@@ -67,7 +67,7 @@ We saw short-comings with current approaches for building database systems:
     * _Propietary IDEs_ don't _preserve value_ of traditional IDEs like VSCode, PyCharm, etc
     * _No automation for backend business logic_ (it's nearly half the effort)<br><br>
 
-We wanted to provide:
+API Logic Server provides:
 
 * __Flexibility of a framework:__ use your IDE's code editor and debugger to customize the created project, with full access to underlying Flask and SQLAlchemy services
 
@@ -101,18 +101,18 @@ For more on API Logic Server Architecture, [see here](Architecture-What-Is).
 
 |   | Feature    | Providing   | Why it Matters   |
 :-------|:-----------|:------------|:-----------------|
-| __Instant__ | 1. [**Admin App**](Admin-Tour){:target="_blank" rel="noopener"} | Instant **multi-page, multi-table** app  [(running here on PythonAnywhere)](http://apilogicserver.pythonanywhere.com/admin-app/index.html#/Home){:target="_blank" rel="noopener"}              | Engage Business Users<br>Back-office Admin       |
-| | 2. [JSON:**API** and Swagger](API){:target="_blank" rel="noopener"}                     | Endpoint for each table, with... <br>Filtering, pagination, related data                                                                        | Custom UI Dev<br>App Integration                           |
-| | 3. Data Model Class Creation                                                     | Classes for Python-friendly ORM                                                                                                                             | Custom Data Access<br>Used by API                |
-| __Customizable__ | 4. [**Customizable Project**](Project-Structure){:target="_blank" rel="noopener"}                   | Custom Endpoints, Logic <br>Use Python and your IDE  |Customize and run <br>Re-creation *not* required |                                                                                      
-| __Unique Logic__ | 5. [Spreadsheet-like Business Rules](Logic-Why){:target="_blank" rel="noopener"}  &nbsp; :trophy:      | **40X more concise** - compare [legacy code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"} | Unique backend automation <br> ... nearly half the system  |
+| __Instant__ | 1. [**Admin App**](Admin-Tour){:target="_blank" rel="noopener"} | Instant **multi-page, multi-table** app  [(running here on PythonAnywhere)](http://apilogicserver.pythonanywhere.com/admin-app/index.html#/Home){:target="_blank" rel="noopener"}              | Business Users engaged early<br><br>Back-office Admin       |
+| | 2. [JSON:**API** and Swagger](API){:target="_blank" rel="noopener"}                     | Endpoint for each table, with... <br>Filtering, pagination, related data     | Custom UI Dev<br>App Integration                           |
+| | 3. Data Model Class Creation                                                     | Classes for Python-friendly ORM     | Custom Data Access<br>Used by API                |
+| __Customizable__ | 4. [**Customizable Project**](Project-Structure){:target="_blank" rel="noopener"}   | Custom Endpoints, Logic <br>Use Python and your IDE  | Customize and run <br><br>Re-creation *not* required |                                                                                      
+| __Unique Logic__ | 5. [Spreadsheet-like Business Rules](Logic-Why){:target="_blank" rel="noopener"}  &nbsp; :trophy:      | **40X more concise** - <br>compare [legacy code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"} | Unique backend automation <br> ... nearly half the system  |
 |  | Customizable with Python      | Familiar Event Model | Eg., Send messages, email  |
-| Testing | 6. [Behave **Test Framework**](Behave)         | Test Suite Automation<br/>Behave Logic Report<br/>Drive Automation with Agile                                                                                                                           | Optimize Automation to get it fast<br/>Agile Collaboration to get it right                |
+| Testing | 6. [Behave **Test Framework**](Behave)         | Test Suite Automation<br><br>Behave Logic Report<br><br>Drive Automation with Agile  | Optimize Automation to get it fast<br><br>Get it Right with Agile Collaboration  |
 
 &nbsp;
 
-# Instant -- Single Command
-
+# Instant Project Creation
+f
 Use the CLI to create the sample API and Admin App project, with a single command.
 
 &nbsp;
@@ -134,8 +134,7 @@ Presuming Python 3.7+ [is installed](Install){:target="_blank" rel="noopener"}, 
 
 ```bash title="Run API Logic Server from a local pip install"
 python -m venv venv        # may require python3 -m venv venv
-source venv/bin/activate   # windows venv\Scripts\activate
-venv\Scripts\activate      # mac/linux: source venv/bin/activate
+source venv/bin/activate   # windows: venv\Scripts\activate
 python -m pip install ApiLogicServer
 
 ApiLogicServer create --project_name=ApiLogicProject --db_url=  # or, create-and-run

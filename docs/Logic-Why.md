@@ -1,14 +1,16 @@
-## TL;DR - spreadsheet-like automation of multi-table derivations and constraints
+## TL;DR - Remarkable Reduction of Backend Logic With Spreadsheet-like Rules
 
 For transaction systems, backend multi-table constraint and derivation logic is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**, declared in Python, extensible with events as needed.
 
-> Rules are 40X more concise than code, and can improve quality.
+!!! pied-piper ":bulb: Key Takeaway"
+
+    Rules are 40X more concise than code, and can improve quality.
 
 Rules are a **declarative approach** that automates remarkable amounts of backend logic:
 
 | Declarative &nbsp;&nbsp;&nbsp;&nbsp;Rules Automate | <br><br>Which Means | <br><br>Why It Matters |
 | :--- |:---|:---|
-| **Invocation** | Rules fire when referenced data changes<br><br>Eg., Customer balance adjusted when order amount (or Customer-id) changes | **Quality** - no missed "corner cases"<br><br>**Conciseness** - eliminates watch/react and data access code |
+| **Invocation** | Rules fire when referenced data changes<br><br>Eg., Customer balance adjusted when order amount (or Customer-id) changes | **Quality** - no missed "corner cases"<br><br>**Conciseness** - watch/react and data access code eliminated |
 | **Ordering** | Execution ordered by automatic dependency analysis | **Maintenance** - eliminates code analysis for inserting new code |
 | **Optimization** | System prunes rules, optimizes SQL | Reduces effort for scalability |
 
@@ -178,6 +180,7 @@ While conciseness is the most immediately obvious aspect of logic, rules provide
 | Invocation | Automatic logic execution, on referenced data changes |__Quality:__ Eliminates the _"code was there but not called"_ problem.<br><br>Rules are _active,_ transforming ‘dumb’ database objects into _smart_ business objects |
 | Execution Order | Automatic ordering based on dependencies |__Maintenance:__ Eliminates the _"where do I insert this code"_ problem - the bulk of maintenance effort. |
 | Dependency Management | Automatic chaining |__Conciseness:__ Eliminates the code that tests _"what's changed"_ to invoke relevant logic |
+| Multi-Table Chaining | Multi-Table Transactions |__Simplicity:__ Eliminates and optimizes data access code |
 | Persistence | Automatic optimization |__Performance:__ Unlike Rete engines which have no concept of old values, transaction logic can prune rules for unchanged data, and optimize for adjustment logic based on the difference between old/new values.  This can literally result in sub-second performance instead of multiple minutes, and can be tuned without recoding.. |
 
 See also the [FAQs](../FAQ-RETE).
