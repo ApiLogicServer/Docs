@@ -112,7 +112,7 @@ For more on API Logic Server Architecture, [see here](Architecture-What-Is).
 &nbsp;
 
 # Instant Project Creation
-f
+
 Use the CLI to create the sample API and Admin App project, with a single command.
 
 &nbsp;
@@ -144,7 +144,17 @@ python ApiLogicProject/api_logic_server_run.py                  # run the server
 
 ## Execute
 
-Your system is running - explore the data and api at [localhost:5656](http://localhost:5656).  Using the defaults provided above, you have started the [Tutorial](Tutorial/){:target="_blank" rel="noopener"}, the recommended quick start for API Logic Server.
+Your system is running - explore the data and api at [localhost:5656](http://localhost:5656).
+
+### Tutorial
+
+The best way to get started is to run the [Tutorial](Tutorial/){:target="_blank" rel="noopener"}:
+
+```bash title="Run API the Tutorial"
+ApiLogicServer tutorial  # creates project - open in your IDE
+```
+
+
 
 &nbsp;
 
