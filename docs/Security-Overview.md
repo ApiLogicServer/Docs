@@ -1,3 +1,13 @@
+## TLDR: Control Row Access with Grant Permissions on User Roles
+
+Declarative security enables you to `Grant` row filters to user roles, so that users see only the roles to which they are authorized.  Grants can access user properties, such as their organization.  A common usage is to enforce *multi-tenant* access.
+
+Define users and roles with a SQL database using an Admin app, or, supply a *provider* to attach to corporate security (AD, LDAP, etc).
+
+&nbsp;
+
+## Scope
+
 Security consists of many aspects (http headers, cookie settings, etc.); here, we focus on the following key concepts:
 
 * **Authentication:** a login function that confirms a user has access, usually by posting credentials and obtaining a JWT token identifying the users' roles.
@@ -8,11 +18,7 @@ Security consists of many aspects (http headers, cookie settings, etc.); here, w
 
 &nbsp;
 
-> Security is scheduled for Version 8.  You can examine the [Prototype in the Preview Version](../#preview-version){:target="_blank" rel="noopener"}.  Comments are welcome - we'd love to hear from you!
-
-&nbsp;
-
-## Overview
+## Process Overview
 
 The overall flow is shown below, where:
 
