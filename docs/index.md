@@ -144,17 +144,18 @@ python ApiLogicProject/api_logic_server_run.py                  # run the server
 
 ## Execute
 
-Your system is running - explore the data and api at [localhost:5656](http://localhost:5656).
+Your system is running on the [sample database](Sample-Database){:target="_blank" rel="noopener"} - explore the data and api at [localhost:5656](http://localhost:5656).
 
-### Tutorial
+## Tutorial
 
-The best way to get started is to run the [Tutorial](Tutorial/){:target="_blank" rel="noopener"}:
+The best way to get started is to run the [Tutorial](Tutorial/){:target="_blank" rel="noopener"}.  It creates 2 versions of the sample:
+
+* without customizations - so you to see exactly what is automated from the `ApiLogicServer create` command
+* with customizations - so you can see how to customize
 
 ```bash title="Run API the Tutorial"
 ApiLogicServer tutorial  # creates project - open in your IDE
 ```
-
-
 
 &nbsp;
 
