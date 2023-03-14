@@ -101,7 +101,7 @@ Current approaches for building database systems have shortcomings:
     * _Propietary IDEs_ don't _preserve value_ of traditional IDEs like VSCode, PyCharm, etc
     * _No automation for backend business logic_ (it's nearly half the effort)<br><br>
 
-API Logic Server provides:
+In contrast, API Logic Server provides:
 
 * __Flexibility of a framework:__ use your IDE's code editor and debugger to customize the created project, with full access to underlying Flask and SQLAlchemy services
 
@@ -119,7 +119,7 @@ There are a variety of ways for getting value from API Logic Server:
 
 * __Data Repair__ - using the Admin App with logic to ensure integrity, repair data for which you may not have had time to create custom apps
 
-* __Project Creation__ - even if you do not intend to use the API, Admin App or logic, you can use API Logic Server to create project you then edit by hand.  Created projects will include the SQLAlchemy Data Models, and project structure
+* __Project Creation__ - even if you do not intend to use the API, Admin App or logic, you can use API Logic Server to create projects you then edit by hand.  Created projects will include the SQLAlchemy Data Models, and project structure
 
 * __Learning__ - explore the [Learning Center](https://github.com/ApiLogicServer/.github/blob/main/profile/README.md){:target="_blank" rel="noopener"} to learn about key concepts of Flask and SQLAlchemy
 
@@ -150,7 +150,7 @@ API Logic Server is designed to make it easy to get started:
      * with customizations - so you can see how to customize 
 
 * **Installed Sample Databases** -
-Here are [some installed sample databases](Data-Model-Examples){:target="_blank" rel="noopener"} you can access with simplified abbreviations for `db_url`.
+Here are [some installed sample databases](Data-Model-Examples){:target="_blank" rel="noopener"} you can use with simplified abbreviations for `db_url`.
 
 * **Dockerized Test Databases** - 
 Then, you might like to try out some of our [dockerized test databases](https://valhuber.github.io/ApiLogicServer/Database-Connectivity/){:target="_blank" rel="noopener"}.
