@@ -37,9 +37,15 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 &nbsp;
 
+<details markdown>
+
+<summary>Click to see Created Admin App, Project</summary>
+
+&nbsp;
+
 ### Created Admin App
 
-The [Admin App](Admin-Tour) is shown below:
+The [Admin App](Admin-Tour){:target="_blank" rel="noopener"} is shown below:
 
 ![API Logic Server Intro](images/ui-admin/Order-Page.png)
 
@@ -52,6 +58,8 @@ VSCode and PyCharm users can customize and run/debug within their IDE with [thes
 ![Customize in your IDE](images/generated-project.png){ align=left }
 
 [Rebuild services](https://valhuber.github.io/ApiLogicServer/Project-Rebuild/){:target="_blank" rel="noopener"} are provided to accommodate changes to database structure or ORM classes.
+
+</details>
 
 &nbsp;
 
