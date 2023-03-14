@@ -20,7 +20,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     2. **Customize** and debug your application with **standard dev tools**.  Use *your IDE*, Python, and Flask/SQLAlchemy to create new services.
 
-    3. ***Declare* security and multi-table constraint/validation logic**, using unique spreadsheet-like rules - 40X more concise than code. :trophy:  Extend logic with Python events.
+    3. ***Declare* security and multi-table constraint/validation logic**, using unique spreadsheet-like rules - 40X more concise than code. :trophy:  Logic consists of rules, extensible with Python event code as required.
 
     &nbsp;
 
