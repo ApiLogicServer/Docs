@@ -23,6 +23,32 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
     * Use **standard Python/Flask/SQLAlchemy** to create new services
     * ***Declare* security and multi-table constraint/validation logic**, using unique spreadsheet-like rules - 40X more concise than code. :trophy:  Extend logic with Python events.
 
+    &nbsp;
+
+    <details markdown>
+
+    <summary>Click to see Created Admin App, Project</summary>
+
+    &nbsp;
+
+    **Created Admin App**
+
+    The [Admin App](Admin-Tour){:target="_blank" rel="noopener"} is shown below:
+
+    ![API Logic Server Intro](images/ui-admin/Order-Page.png)
+
+    &nbsp;
+
+    **Customize in IDE**
+
+    VSCode and PyCharm users can customize and run/debug within their IDE with [these steps](IDE-Execute){:target="_blank" rel="noopener"}.  Created projects include Launch and Docker configurations.  
+
+    ![Customize in your IDE](images/generated-project.png){ align=left }
+
+    [Rebuild services](https://valhuber.github.io/ApiLogicServer/Project-Rebuild/){:target="_blank" rel="noopener"} are provided to accommodate changes to database structure or ORM classes.
+
+    </details>
+
 &nbsp;
 
 ## Video - What is API Logic Server
@@ -34,32 +60,6 @@ It runs as a standard pip install, or under Docker. For more on API Logic Server
 Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging.
 
 [![Using VS Code](https://github.com/valhuber/apilogicserver/wiki/images/creates-and-runs-video.jpg?raw=true)](https://youtu.be/tOojjEAct4M "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}
-
-&nbsp;
-
-<details markdown>
-
-<summary>Click to see Created Admin App, Project</summary>
-
-&nbsp;
-
-### Created Admin App
-
-The [Admin App](Admin-Tour){:target="_blank" rel="noopener"} is shown below:
-
-![API Logic Server Intro](images/ui-admin/Order-Page.png)
-
-&nbsp;
-
-### Customize in IDE
-
-VSCode and PyCharm users can customize and run/debug within their IDE with [these steps](IDE-Execute){:target="_blank" rel="noopener"}.  Created projects include Launch and Docker configurations.  
-
-![Customize in your IDE](images/generated-project.png){ align=left }
-
-[Rebuild services](https://valhuber.github.io/ApiLogicServer/Project-Rebuild/){:target="_blank" rel="noopener"} are provided to accommodate changes to database structure or ORM classes.
-
-</details>
 
 &nbsp;
 
