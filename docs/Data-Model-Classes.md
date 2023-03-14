@@ -88,6 +88,12 @@ The diagram below illustrates how the class aspects and the admin app tie togeth
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/model/relns-admin.png?raw=true"></figure>
 
+## Override s_count: performance
+
+If you see performance issues in loading the API, explore overriding s_count:
+
+![performance - override s_count](images/model/override%20_s_count.png)
+
 &nbsp;
 
 ----
