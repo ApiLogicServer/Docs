@@ -13,6 +13,8 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 !!! pied-piper ":bulb: TL;DR - instant projects, standard customization, *unique* declarative rules"
 
+    API Logic Server provides a **remarkably simple** approach for creating **modern API-based database systems:**
+
     1. Use the `ApiLogicServer create` command to create a Flask/SQLAlchemy project from your database.  Zero learning curve.  Projects are **instantly executable**, providing:
 
         * **an Admin App:** multi-page, multi-table apps -- ready for business user agile collaboration
