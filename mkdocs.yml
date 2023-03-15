@@ -33,7 +33,7 @@ nav:
   - 3. Logic:
     - "Why Logic": Logic-Why.md
     - "What Are the Rules": Logic.md
-    - "How To Use Logic": "Logic-Tutorial.md"
+    - "How: Logic and Agile": "Logic-Tutorial.md"
     - "Logic Operation": "Logic-Operation.md"
   - 4. Security:
     - "Overview": Security-Overview.md
@@ -62,8 +62,8 @@ nav:
     - "Table Filters": Data-Model-Filters.md
     - "Install pyodbc: SqlServer": Install-pyodbc.md
     - "Install psycopg2: Postgres": Install-psycopg2.md
-  - Testing:
-    - "Testing With Behave": Behave.md
+  - Agile / Testing:
+    - "Agility With Behave": Behave.md
     - "Behave Logic Report": Behave-Logic-Report.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md

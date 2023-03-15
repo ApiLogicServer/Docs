@@ -8,11 +8,11 @@ You can use this basic approach to capture requirements, create test suites, and
 
 1. Create your database, and your API Logic Project
   
-2. Use the created Admin App as **Working Software *Now***, to drive Business User Collaboration and **capture logic requirements** in Behave.
+2. Use the created Admin App as **Working Software *Now***, to drive Business User **Collaboration** to **capture logic requirements** in Behave.
 
-3. Use these requirements to **drive rule declaration**, and **develop tests** that verify the scenarios work.
+3. Use these requirements to **drive rule declaration**, and **develop tests** that verify the scenarios work.  Iterations are extremely rapid due to automatic logic **ordering and optimization**.
 
-4. Use the **Behave Logic Report** to document the requirements, tests results, including the *rules that fired for each test.*
+4. Use the **Behave Logic Report** for **requirements traceability:** document the requirements, test results, including the *rules that fired for each test.*
 
 &nbsp;
 
