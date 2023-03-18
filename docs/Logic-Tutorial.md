@@ -1,10 +1,10 @@
-This page describes how you can use logic in a TDD-based Agile framework.
+This page describes an optional approach for using logic in a TDD-based Agile framework.
 
 &nbsp;
 
-## TL;DR: Requirements, Tests, Logic Reports
+## TL;DR: Collaboration drives Requirements, Tests, Logic Reports
 
-You can use this basic approach to capture requirements, create test suites, and document requirements / rules:
+Use API Logic Server with Behave: Working Software *Now* for Agile Collaboration, near instant iteration, and unified requirements capture / traceabilty / test suite development:
 
 1. Create your database, and your API Logic Project
   
