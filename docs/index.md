@@ -56,7 +56,9 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-## Video - What is API Logic Server
+## Check it out
+
+### Video - Create, Run, Customize
 
 API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
@@ -68,7 +70,7 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 &nbsp;
 
-## Instant Evaluation - _no install_
+### Instant Evaluation - _no install_
 
 Run in the cloud: VSCode via your Browser, courtesy Codespaces.  Use your existing GitHub account (no signup is required), and:
 
