@@ -48,6 +48,8 @@ Some quick terms:
 * A docker image can be run as a docker container
 * Your system might be comprised of multiple docker containers, e.g. one for your API Logic Project, one for your DBMS, etc.
 
+For more information on containers, [see here](https://docker-curriculum.com){:target="_blank" rel="noopener"}.
+
 &nbsp;
 
 ## Dev: Local, Container, Cloud
@@ -63,6 +65,12 @@ You can [install](../Install-Express){:target="_blank" rel="noopener"} API Logic
 * Or, run in the cloud using **Codespaces** - no install at all
 
 In any case, you'll be using a source control system such as `git`, so it's possible to mix and match these configurations among developers.
+
+!!! pied-piper ":bulb: Best Practice for deployment, worth considering but *optional* for dev"
+
+    It's worth emphasizing that your decisions to use *Dev Containers* has no effect on using containers *for deployment*.  Dev Containers for deployment are a best practice.  Dev Containers provide interesting value, and should be considered, but you can create deployment containers no matter what decision you take.
+
+    As you evalute Dev Containers, be aware API Logic Projects will run either way.  In fact, you can switch back and forth as you determine which approach is best for your team.
 
 &nbsp;
 
