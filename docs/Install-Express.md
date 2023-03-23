@@ -95,7 +95,7 @@ Open the appropriate section below.
 
     __Start Docker__
     ```bash title="Start (might install) API Logic Server Docker"
-      > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost > > > > apilogicserver/api_logic_server
+      > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
       $ # you are now active in the API Logic Server docker container to create projects
     ```
 

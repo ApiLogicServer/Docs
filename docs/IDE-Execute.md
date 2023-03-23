@@ -98,7 +98,7 @@ IDE instructions depend on whether you are using a local install, or Docker.  Se
 
     <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/open-in-container.png"></figure>
 
-    __Note:__ when you Execute your application (below), you may need to update your Docker container - see [Working with Docker](../Working-With-Docker).
+    __Note:__ when you Execute your application (below), you may need to update your Docker container - see [Working with Docker](../DevOps-Docker).
 
 === "PyCharm"
 

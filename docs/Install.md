@@ -68,9 +68,9 @@ Then, open the appropriate section below, and see the [Installation Notes](#inst
 
     The `api_logic_server` image supports startup arguments so you can control the `api_logic_server` container, by running a startup script or by supplying environment variables.  You might, for example, have automated test procedures that load projects from `GitHub` and run tests.
 
-    For more information, see [Working With Docker](../Working-With-Docker).
+    For more information, see [Working With Docker](../DevOps-Docker).
 
-    > Already installed?  Upgrade to the latest: ```docker pull apilogicserver/api_logic_server``` (you may need to [rebuild your container](../Working-With-Docker/#apilogicserver-container-upgrades)).
+    > Already installed?  Upgrade to the latest: ```docker pull apilogicserver/api_logic_server``` (you may need to [rebuild your container](../DevOps-Containers-Run/#apilogicserver-container-upgrades)).
 
 === "PythonAnyWhere"
 

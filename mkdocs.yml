@@ -43,12 +43,16 @@ nav:
     - "Activation": Security-Activation.md
     - "Swagger": Security-Swagger.md
   - "Using Your IDE": IDE-Customize.md
+  - DevOps - Containers:
+    - "Containers": DevOps-Containers.md
+    - "Dev Containers": DevOps-Docker.md
+    - "Build Image": DevOps-Containers-Build.md
+    - "Run Container": DevOps-Containers-Run.md
+    - "Deploy Image: Azure": DevOps-Containers-Deploy.md
+    - "GitHub and Codespaces": DevOps-GitHub.md
   - Managing API Logic Projects:
-    - "DevOps": Project-DevOps.md
     - "Structure": Project-Structure.md
     - "Rebuild": Project-Rebuild.md
-    - "Working With Docker": Working-With-Docker.md
-    - "GitHub and Codespaces": Manage-GitHub.md
     - "Virtual Environment": Project-Env.md
     - "Execution - Hosts and Ports": Project-Execution.md
     - "Builders": Project-Builders.md
