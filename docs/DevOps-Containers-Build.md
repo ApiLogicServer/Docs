@@ -2,13 +2,11 @@
 
 ![Container Overview](images/docker/container-dev-deploy.png)
 
-## Building Images
-
 The diagram above identifies 3 important images you can build, described below.
 
 &nbsp;
 
-### MyApp: containerize project
+## MyApp: containerize project
 
 This is the image you will deploy for production.  It includes Python, API Logic Server, any additional packages your require, and your app (Python and logic).  These are defined by a `dockerfile`. 
 
@@ -26,14 +24,7 @@ This builds your projects' image, starting with API Logic Server image.
 
 To build a container for your ApiLogicProject:
 
-1. On Docker Hub, create a docker repository under your docker account.  Some quick terms:
-    * Your docker account can contain multiple docker repositories
-        * It would be typical to use your project name as the docker repository name
-        * Note: repository names must be lower case
-        * Repository names are scoped by your account - see the diagram above.  You then refer to your docker repository in the CLI commands as `your_account/your_repository`
-    * A docker repository can can be downloaded (pulled) to create a docker image on your local computer
-    * A docker image can be run as a docker container
-    * Your system might be comprised of multiple docker containers, e.g. one for your API Logic Project, one for your DBMS, etc.
+1. On Docker Hub, create a docker repository under your docker account. 
 2. Create / customize your project as your normally would
 3. Edit `ApiLogicProject.dockerfile`: change `your_account/your_repository` as appropriate
     * Here is [an example](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20ApiLogicProject_Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}
@@ -57,7 +48,7 @@ docker run -it --name your_project --rm --net dev-network -p 5656:5656 -p 5002:5
 
 &nbsp;
 
-### MyPkgs
+## MyPkgs: Containerize Packages
 
 Your project may require additional packages not already included with API Logic Server.  You have 2 choices how to include these:
 
@@ -67,7 +58,7 @@ Your project may require additional packages not already included with API Logic
 
 &nbsp;
 
-### MyDB
+## MyDB: Test Databases
 
 One of the great things about Docker is the ability to install popular databases, with no hassle.  Follow the procedures described in [Connection Examples](../Database-Connectivity/#docker-databases){:target="_blank" rel="noopener"}.
 
