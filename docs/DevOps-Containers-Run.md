@@ -15,6 +15,9 @@ docker run -it --name your_project --rm --net dev-network -p 5656:5656 -p 5002:5
 docker run -it --name your_project --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost your_account/your_repository bash
 ```
 
+&nbsp;
+
+### Testing
 
 TBD - env variables, logging, etc.
 

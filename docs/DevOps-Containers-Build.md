@@ -34,17 +34,11 @@ To build a container for your ApiLogicProject:
 ```bash
 docker build -f ApiLogicProject.dockerfile -t your_account/your_repository --rm .
 docker tag your_account/your_repository your_account/your_repository:1.00.00
-docker login; docker push your_account/your_repository:1.00.00
+docker login
+docker push your_account/your_repository:1.00.00
 ```
 
-To run your project container directly...
-
-```bash
-docker run -it --name your_project --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost your_account/your_repository
-
-# start the image, but open terminal (e.g., for exploring docker container)
-docker run -it --name your_project --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost your_account/your_repository bash
-```
+To run your project container, see the next page.
 
 &nbsp;
 

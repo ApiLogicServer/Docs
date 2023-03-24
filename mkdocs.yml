@@ -10,6 +10,7 @@ theme:
     - navigation.instant
     - kramdown
     - content.tooltips
+    - navigation.footer
 nav:
   - " ": index.md
   - Quick Start:

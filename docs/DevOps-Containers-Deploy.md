@@ -2,44 +2,53 @@ Under Construction
 
 [Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantables for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
 
+This tutorial presumes you've already `push`ed an image, here called `apilogicserver/docker_api_logic_project:latest`.
+
 ![Container Overview](images/docker/container-dev-deploy.png)
-
-## Deploying Containers
-
-One of the main features of containers is that you can use them to deploy your system to the cloud.  S
-
-Under construction.  Coming soon.
 
 &nbsp;
 
 ## Create Azure Account
 
+&nbsp;
+
 ## Create Managed Database
 
-Used: https://learn.microsoft.com/en-us/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy?view=azuresql#create-a-database
+Creating the database was straightforward using Microsoft documentation.  To see it, [click here](https://learn.microsoft.com/en-us/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy?view=azuresql#create-a-database){:target="_blank" rel="noopener"}.
 
-what is managed
+Note this is a *managed database*, which means that Azure will apply DBMS updates, take backups, etc.  Contrast this to running a database in a bare container, where you'd need to arrange such services yourself.
 
+&nbsp;
 
+### Container Group
 
-### database nwlogic 
+The database creation wizard requires that you create a [container group](https://learn.microsoft.com/en-us/azure/container-instances/container-instances-container-groups){:target="_blank" rel="noopener"}.
 
+&nbsp;
 
+### database `nwlogic` 
+
+For this tutoroial we created the database `nwlogic`.  It is an exact replica of the sample (nw) [sample database](Sample-Database{:target="_blank" rel="noopener"}), using SqlServer.
+
+&nbsp;
 
 ### Load Data: Azure Data Tools
+
+After creating the database, we loaded the data using Azure Data Tools.  
 
 ![Azure Data Tools](images/docker/azure/data-tools.png)
 
 Extensions for MySQL, Postgres
 
-### Use SqlServer Auth
+To find the sql scripts, [click here](For this tutoroial we create){:target="_blank" rel="noopener"}.
 
-Login failed for user '<token-identified principal>'. The server is not currently configured to accept this token.
+&nbsp;
 
 ## Portal
 
 ![Azure Data Tools](images/docker/azure/portal.png)
 
+&nbsp;
 
 ## Create Container
 
@@ -49,23 +58,37 @@ Login failed for user '<token-identified principal>'. The server is not currentl
 az container create --resource-group myResourceGroup --name mycontainer --image apilogicserver/docker_api_logic_project:latest --dns-name-label val-demo --ports 5656 --environment-variables 'FLASK_HOST'='mssql+pyodbc://valhuber:PWD@mysqlserver-nwlogic.database.windows.net:1433/nwlogic?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no' 'VERBOSE'='True'
 ```
 
+Most of the arguments are straight-forward, identifying the Docker Hub repository (`apilogicserver/docker_api_logic_project:latest`), the container group.  
+
+    > Note the `--environment-variables` are used to communicate the database and server location.
+
+&nbsp;
+
+### Recreate the container
+
+If you need to recreate the container, you can use the portal, or this command:
+
+```bash
+az container delete --resource-group myResourceGroup --name mycontainer
+```
+
+&nbsp;
 
 ## Run Admin App
 
+The `create` command above starts the server.  After that, you can run the admin app: http://val-demo.eastus.azurecontainer.io:5656/.
+
+&nbsp;
 
 ## Trouble Shooting
+
+Use this command to view Azure logs:
 
 ```bash
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-### SqlServer Auth Type (AD vs SQLServer Auth)
-
-### pyodbc version
-
-### ssh to container
-
-Unable to get this working
+For specific error conditions, see [Troubleshooting Azure](../Troubleshooting/#azure-cloud-deployment){:target="_blank" rel="noopener"}.
 
 
 

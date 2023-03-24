@@ -289,3 +289,18 @@ result: Something went wrong <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] cer
 ```
 
 This may be due to a certificate issue.  The `python.org` installer includes a script for this, or [try this](https://stackoverflow.com/questions/27835619/urllib-and-ssl-certificate-verify-failed-error), or [like this](https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org).
+
+&nbsp;
+
+## Azure Cloud Deployment
+
+
+### Use SqlServer Auth
+
+Login failed for user '<token-identified principal>'. The server is not currently configured to accept this token.
+
+### SqlServer Auth Type (AD vs SQLServer Auth)
+
+### pyodbc version
+
+
