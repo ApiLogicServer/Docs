@@ -1,4 +1,4 @@
-[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantables for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
+[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
 
 This tutorial presumes you've already `push`ed an image, here called `apilogicserver/docker_api_logic_project:latest`.
 
@@ -8,13 +8,15 @@ This tutorial presumes you've already `push`ed an image, here called `apilogicse
 
 ## Create Azure Account
 
-I created a free account, electing the $200 free option.  In the entire exercise, I used less than $200 of my allotment.
+I created a free account, electing the $200 free option.  In the entire exercise, I used less than $2 of my allotment.
 
 &nbsp;
 
 ## Create Managed Database
 
 Creating the database was straightforward using Microsoft documentation.  To see it, [click here](https://learn.microsoft.com/en-us/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy?view=azuresql#create-a-database){:target="_blank" rel="noopener"}.
+
+> Note: we used the database name `nwlogic`.
 
 Note this is a *managed database*, which means that Azure will apply DBMS updates, take backups, etc.  Contrast this to running a database in a bare container, where you'd need to arrange such services yourself.
 
@@ -34,11 +36,7 @@ For this tutoroial we created the database `nwlogic`.  It is an exact replica of
 
 ### Load Data: Azure Data Tools
 
-After creating the database, we loaded the data using Azure Data Tools.  
-
-![Azure Data Tools](images/docker/azure/data-tools.png)
-
-Extensions for MySQL, Postgres
+After creating the database, load the data using tools like [PyCharm Data Tools](Database-Connectivity/#pycharm-database-tools){:target="_blank" rel="noopener"}, or [DbVis](Database-Connectivity/#dbvis){:target="_blank" rel="noopener"}. 
 
 To find the sql scripts, [click here](For this tutoroial we create){:target="_blank" rel="noopener"}.
 

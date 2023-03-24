@@ -27,6 +27,10 @@ The following
 
 ## Execution: 3-tiered architecture
 
-The API Logic Server executes as an application server, accessed by an API, in a standard 3-tiered architecture.  In most cases, the API Logic Server executes in a container, and scales horizontally  like any other Flask-based server.
+The API Logic Server executes as an application server, accessed by an API, in a standard 3-tiered architecture.  
+
+Observe that logic plugs into SQLAlchemy.  **Logic is thus automatically shared** (factored out) of custom services, and web or browser-based apps.
+
+In most cases, the API Logic Server executes in a **container**, so scales horizontally like any other Flask-based server.
 
 ![API Logic Server Intro](images/Architecture.png)

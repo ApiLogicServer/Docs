@@ -1,4 +1,4 @@
-[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantables for development.  This outlines a typical scenario for running and testing API Logic Server projects prior to deployment.
+[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for running and testing API Logic Server projects prior to deployment.
 
 ![Container Overview](images/docker/container-dev-deploy.png)
 

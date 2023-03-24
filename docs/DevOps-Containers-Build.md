@@ -1,4 +1,4 @@
-[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantables for development.  This outlines a typical scenario for building images for API Logic Server projects.
+[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for building images for API Logic Server projects.
 
 !!! pied-piper ":bulb: TL;DR - edit/use the pre-built dockerfile to `build` and `push` your project"
 
@@ -15,7 +15,7 @@ The diagram above identifies 3 important images you can build, described below.
 
 This is the image you will deploy for production.  It includes Python, API Logic Server, any additional packages your require, and your app (Python and logic).  These are defined by a `dockerfile`. 
 
-API Logic Projects include a `dockerfile` for [containerizing your application](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20ApiLogicProject_Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}.
+API Logic Projects include a `devops/docker/build-container.dockerfile` for containerizing your application, shown are right in the diagram below. [Click here to see it](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20ApiLogicProject_Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}.
 
 A key aspect of images is that you can *extend* an existing image: add new software to build another image.  See the line:
 

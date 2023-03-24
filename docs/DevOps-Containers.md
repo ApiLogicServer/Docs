@@ -1,14 +1,16 @@
 Containers are a best practice for deployment.  They *also* offer several advantages for development.  This page outlines a typical scenario for API Logic Server projects.
 
 
-!!! pied-piper ":bulb: TL;DR - API Logic Projects are pre-configured for containers, both deployment and dev"
+!!! pied-piper ":bulb: TL;DR - Projects are pre-configured for containers: both deployment and development"
 
     Containers are a critical component of DevOps, so API Logic Projects provide pre-configured support.
 
 
-## Containers: What and Why
+## Container Overview
 
 ![Container Overview](images/docker/container-dev-deploy.png)
+
+### Process
 
 As shown above, you can
 
@@ -21,6 +23,10 @@ As shown above, you can
 2. These images can be `pushed` to Docker Hub as `repositories`, where they can be shared with other developers, and for production deployment.
 
 3. Developers can `run` an image, whether on Windows, Macs or Linux systems - a running image is called a `container`.
+
+&nbsp;
+
+### Advantages
 
 Containers provide significant well-known advantages for development and deployment:
 
@@ -60,7 +66,9 @@ For more information on containers, [see here](https://docker-curriculum.com){:t
 
 ## Dev: Local, Container, Cloud
 
-You can [install](../Install-Express){:target="_blank" rel="noopener"} API Logic Server either:
+Containers are generally regarded as a deployment technology.  In addition, they offer several advantages for development.
+
+API Logic Server supports a variety of development models.  You can [install](../Install-Express){:target="_blank" rel="noopener"} API Logic Server either:
 
 * As a **Local** `pip` install,
 * Or, use **Dev Containers,** by running the pre-supplied API Logic Server image
@@ -72,11 +80,15 @@ You can [install](../Install-Express){:target="_blank" rel="noopener"} API Logic
 
 In any case, you'll be using a source control system such as `git`, so it's possible to mix and match these configurations among developers.
 
+&nbsp;
+
+### Dev Containers: Optional
+
 !!! pied-piper ":bulb: Best Practice for deployment, worth considering but *optional* for dev"
 
-    It's worth emphasizing that your decisions to use *Dev Containers* has no effect on using containers *for deployment*.  Dev Containers for deployment are a best practice.  Dev Containers provide interesting value, and should be considered, but you can create deployment containers no matter what decision you take.
+    It's worth emphasizing that your decision to use *Dev Containers* has no effect on using containers *for deployment*.  Dev Containers for *deployment* are a best practice.  *Dev Containers* provide interesting value, and should be considered, but you can create deployment containers no matter what decision you take.
 
-    As you evalute Dev Containers, be aware API Logic Projects will run either way.  In fact, you can switch back and forth as you determine which approach is best for your team.
+    As you evalute Dev Containers, be aware API Logic Projects will run either way.  Or both: you can switch back and forth as you determine which approach is best for your team.
 
 &nbsp;
 

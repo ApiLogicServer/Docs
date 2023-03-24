@@ -1,23 +1,17 @@
 As described in [Containers](../DevOps-Containers){:target="_blank" rel="noopener"}, you can ***develop* in a container**, including using VSCode.  This is optional, and *not* required to containerize your project for deployment.
 
-
-!!! pied-piper ":bulb: TL;DR - Best Practice for deployment, worth considering but *optional* for dev"
-
-    It's worth emphasizing that your decisions to use *Dev Containers* has no effect on using containers *for deployment*.  Dev Containers for deployment are a best practice.  Dev Containers provide interesting value, and should be considered, but you can create deployment containers no matter what decision you take.
-
-    As you evalute Dev Containers, be aware API Logic Projects will run either way.  In fact, you can switch back and forth as you determine which approach is best for your team.
-
-
 !!! pied-piper ":bulb: TL;DR - `.devcontainer` configurations are pre-built for API Logic Projects"
 
     The `.devcontainer` is pre-built into your project, so it is ready to use with VSCode for code editing, debugging, etc.
+
+    Recall that [devcontainers are valuable, but ***optional***](../DevOps-Containers/#dev-containers-optional){:target="_blank" rel="noopener"}.
 
 
 ## Creating projects
 
 Recall from the [Install doc](../Install-Express) that you create projects like this:
 
-### Start Docker
+### 1. Start Docker
 
 ```bash title="Start (might install) API Logic Server Docker"
 > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
@@ -28,7 +22,7 @@ $ # you are now active in the API Logic Server docker container to create projec
 
 &nbsp;
 
-### Create a Project
+### 2. Create a Project
 
 Typical project creation identifies the database and target project name:
 ```bash title="Create Typical project"
@@ -39,9 +33,9 @@ $ exit                       # return to local host
 
 &nbsp;
 
-### Open the created Project in VSCode
+### 3. Customize project
 
-Once the project is created, open it in VSCode on your local host:
+Once the project is created, open it in VSCode:
 
 1. Open Folder `ApiLogicServer/ApiLogicProject` in VSCode
    * Accept option to "Reopen in Container"
@@ -50,11 +44,11 @@ Once the project is created, open it in VSCode on your local host:
 
 &nbsp;
 
-## Docker and API Logic Projects
+## Project Files are Local
 
 Recall that docker containers are self-contained.  So, we should ask: are the project files in the container, or on the local host?
 
-They are on the local host:
+Project files (and VSCode) are on the local host:
 
 * That is why you provided `-v ${PWD}:/localhost`
     * This gives the container permission to access the current folder

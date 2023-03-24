@@ -271,7 +271,12 @@ ApiLogicServer create --project_name=/localhost/sqlserver --db_url=mssql+pyodbc:
 
 You will probably also want to get [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15), and configure a connection like this (password: posey3861):
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/databases/sqlsvr-conn.png"></figure>
+![Azure Data Tools](images/docker/databases/sqlsvr-conn.png)
+
+It also supports connecting to Azure-based databases:
+
+![Azure Data Tools](images/docker/azure/data-tools.png)
+
 
 ### SqlServer SQLAlchemy URIs
 
@@ -303,9 +308,13 @@ Various IDEs provide tools for managing databases.
 
 &nbsp;
 
-## dbviz 
+## dbvis
 
-A very popular tool.
+A very popular tool, with support for exporting tables and data.
+
+For local connections, consider resetting `trustServerCertificate`:
+
+![DBVis](images/model/trusted-connection.png)
 
 &nbsp;
 
@@ -339,6 +348,8 @@ Pycharm provides excellent [database tools](https://www.jetbrains.com/help/pycha
 I use [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools).  To use it, you must first install drivers:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/SQLTools/SQLTools-drivers.png"></figure>
+
+You may want to install extensions for MySQL and Postgres.
 
 Then, you can explore the sample:
 
