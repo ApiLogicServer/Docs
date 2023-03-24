@@ -10,6 +10,8 @@ This tutorial presumes you've already `push`ed an image, here called `apilogicse
 
 ## Create Azure Account
 
+I created a free account, electing the $200 free option.  In the entire exercise, I used less than $200 of my allotment.
+
 &nbsp;
 
 ## Create Managed Database
