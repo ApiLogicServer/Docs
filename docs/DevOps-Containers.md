@@ -1,5 +1,11 @@
 Containers are a best practice for deployment.  They *also* offer several advantages for development.  This page outlines a typical scenario for API Logic Server projects.
 
+
+!!! pied-piper ":bulb: TL;DR - API Logic Projects are pre-configured for containers, both deployment and dev"
+
+    Containers are a critical component of DevOps, so API Logic Projects provide pre-configured support.
+
+
 ## Containers: What and Why
 
 ![Container Overview](images/docker/container-dev-deploy.png)

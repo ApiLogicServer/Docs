@@ -1,5 +1,10 @@
 [Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantables for development.  This outlines a typical scenario for building images for API Logic Server projects.
 
+!!! pied-piper ":bulb: TL;DR - edit/use the pre-built dockerfile to `build` and `push` your project"
+
+    `devops/docker/build-container.dockerfile` is pre-built into your project.  Alter it for your organization and project name.  It contains instructions for using it via the command line to `build` and `push` your image.
+
+
 ![Container Overview](images/docker/container-dev-deploy.png)
 
 The diagram above identifies 3 important images you can build, described below.

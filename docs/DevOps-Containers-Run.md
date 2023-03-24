@@ -19,7 +19,15 @@ docker run -it --name your_project --rm --net dev-network -p 5656:5656 -p 5002:5
 
 ### Testing
 
-TBD - env variables, logging, etc.
+Cloud container testing is significantly more challenging that in an IDE.  There are some steps we recommend that can make it easier:
+
+1. Test with `env` variables - cloud containers pass parameters using `env` variables, typically not with command line arguments.  These typically identify your database locations etc.
+
+    * A VSCode Run configuration `ApiLogicServer ENV` is provided for this, so you can begin testing in your IDE.<br>
+
+2. Use the `VERBOSE` env variable to activate logging
+
+3. Then test  by running your container locally, setting env variables per your OS.  See the CLI examples shown above.
 
 
 ## ApiLogicServer Container upgrades

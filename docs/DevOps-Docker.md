@@ -1,5 +1,18 @@
 As described in [Containers](../DevOps-Containers){:target="_blank" rel="noopener"}, you can ***develop* in a container**, including using VSCode.  This is optional, and *not* required to containerize your project for deployment.
 
+
+!!! pied-piper ":bulb: TL;DR - Best Practice for deployment, worth considering but *optional* for dev"
+
+    It's worth emphasizing that your decisions to use *Dev Containers* has no effect on using containers *for deployment*.  Dev Containers for deployment are a best practice.  Dev Containers provide interesting value, and should be considered, but you can create deployment containers no matter what decision you take.
+
+    As you evalute Dev Containers, be aware API Logic Projects will run either way.  In fact, you can switch back and forth as you determine which approach is best for your team.
+
+
+!!! pied-piper ":bulb: TL;DR - `.devcontainer` configurations are pre-built for API Logic Projects"
+
+    The `.devcontainer` is pre-built into your project, so it is ready to use with VSCode for code editing, debugging, etc.
+
+
 ## Creating projects
 
 Recall from the [Install doc](../Install-Express) that you create projects like this:

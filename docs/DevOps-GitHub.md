@@ -1,6 +1,13 @@
 API Logic Projects are standard, and so are their GitHb / IDE operations.  A typical flow is illustrated below.
 
 
+!!! pied-piper ":bulb: TL;DR - Standard file-based projects enable git; Codespaces ready"
+
+    Projects are file-based (including logic), so work with standard `git` support.
+
+    Projects are pre-configured for Dev Containers, so work with Codespaces.
+
+
 ## Local Project Creation
 
 Create your project, customize as necessary, and use `git` or your IDE to publish the project to GitHub.  For example, in VSCode, there is a button to `Publish` your project.
