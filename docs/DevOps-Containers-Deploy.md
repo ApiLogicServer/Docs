@@ -1,5 +1,3 @@
-Under Construction
-
 [Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantables for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
 
 This tutorial presumes you've already `push`ed an image, here called `apilogicserver/docker_api_logic_project:latest`.
