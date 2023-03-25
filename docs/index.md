@@ -32,7 +32,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     <details markdown>
 
-    <summary>Click to see Created Admin App, Project</summary>
+    <summary>Click to see Created Admin App, Project, Architecture</summary>
 
     &nbsp;
 
@@ -51,6 +51,14 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
     ![Customize in your IDE](images/generated-project.png){ align=left }
 
     [Rebuild services](https://valhuber.github.io/ApiLogicServer/Project-Rebuild/){:target="_blank" rel="noopener"} are provided to accommodate changes to database structure or ORM classes.
+
+    &nbsp;
+
+    **Standard, Scalable Architecture**
+
+    Containerized servers, accessed by APIs.  Logic partitioned out of customized services and browser/server apps for automatic reuse.
+
+    ![API Logic Server Intro](images/Architecture.png)
 
     </details>
 
