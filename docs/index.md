@@ -54,9 +54,12 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     &nbsp;
 
-    **Standard, Scalable Architecture**
+    **Standard, Scalable Modern Architecture**
 
-    Containerized servers, accessed by APIs.  Logic partitioned out of customized services and browser/server apps for automatic reuse.
+    * A modern 3-tiered architecture, accessed by **APIs**
+    * Logic is **automatically reused**, factored out of web apps and custom services
+    * **Containerized** for scalable cloud deployment - the project includes a dockerfile to containerize it to DockerHub.
+
 
     ![API Logic Server Intro](images/Architecture.png)
 
