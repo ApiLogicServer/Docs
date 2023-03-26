@@ -1,8 +1,8 @@
-## TLDR: Control Row Access with Grant Permissions on User Roles
+!!! pied-piper ":bulb: TL;DR - Control Row Access with Grant Permissions on User Roles"
 
-Declarative security enables you to `Grant` row filters to user roles, so that users see only the roles to which they are authorized.  Grants can access user properties, such as their organization.  A common usage is to enforce *multi-tenant* access.
+        Declarative security enables you to `Grant` row filters to user roles, so that users see only the roles to which they are authorized.  Grants can access user properties, such as their organization.  A common usage is to enforce *multi-tenant* access.
 
-Define users and roles with a SQL database using an Admin app, or, supply a *provider* to attach to corporate security (AD, LDAP, etc).
+        Define users and roles with a SQL database using an Admin app, or, supply a *provider* to attach to corporate security (AD, LDAP, etc).
 
 &nbsp;
 

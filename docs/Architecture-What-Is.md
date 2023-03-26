@@ -1,3 +1,17 @@
+!!! pied-piper ":bulb: TL;DR - modern 3-tiered architecture, API-accessed, scalable containers"
+
+        **Deployment Architecture**
+
+        * A modern 3-tiered architecture, accessed by **APIs**
+        * Logic is **automatically reused**, factored out of web apps and custom services
+        * **Containerized** for scalable cloud deployment - the project includes a dockerfile to containerize it to DockerHub.
+
+        **Development Architecture**
+
+        * Installed as Docker, `pip`, or use Codespaces
+        * **Standards-based customization** - debug in a standard IDE (VSCode, PyCharm), using standard packages (Flask, SQLAlchemy)
+
+
 ## Runtimes and CLI
 
 API Logic Server is a Python Application, consisting of:

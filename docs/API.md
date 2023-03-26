@@ -1,15 +1,14 @@
+!!! pied-piper ":bulb: TL;DR - Instant API, Related Data, Filtering, Sorting, Pagination, Swagger"
 
-## TL;DR: JSON:API - Related Data, Filtering, Sorting, Pagination
+    The `ApiLogicServer create` command creates an API Logic Project that implements your API.  No additional code is required.  **Custom App Dev is unblocked.**
 
-The `ApiLogicServer create` command creates an API Logic Project that implements your API.  No additional code is required.  **Custom App Dev is unblocked.**
+    * __Endpoint for each table__, with __CRUD support__ - create, read, update and delete.
 
-* __Endpoint for each table__, with __CRUD support__ - create, read, update and delete.
+    * Filtering, sorting, pagination, including __related data access__, based on relationships in the models file (typically derived from foreign keys)
 
-* Filtering, sorting, pagination, including __related data access__, based on relationships in the models file (typically derived from foreign keys)
+    * Automatic **Swagger**
 
-* Automatic **Swagger**
-
-* Enforces **logic and security** - automatic partitioning of logic from (each) client app
+    * Enforces **logic and security** - automatic partitioning of logic from (each) client app
 
 &nbsp;
 

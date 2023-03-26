@@ -1,22 +1,8 @@
-## TL;DR - Remarkable Reduction of Backend Logic With Spreadsheet-like Rules
+!!! pied-piper ":bulb: TL;DR - n-fold Reduction of Backend Logic With Spreadsheet-like Rules"
 
-For transaction systems, backend multi-table constraint and derivation logic is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**, declared in Python, extensible with events as needed.
+        For transaction systems, backend multi-table constraint and derivation logic is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**, declared in Python, extensible with events as needed.
 
-!!! pied-piper ":bulb: Key Takeaway"
-
-    Rules are 40X more concise than code, and can improve quality.
-
-Rules are a **declarative approach** that automates remarkable amounts of backend logic:
-
-| Declarative &nbsp;&nbsp;&nbsp;&nbsp;Rules Automate | <br><br>Which Means | <br><br>Why It Matters |
-| :--- |:---|:---|
-| **Invocation** | Rules fire when referenced data changes<br><br>Eg., Customer balance adjusted when order amount (or Customer-id) changes | **Quality** - no missed "corner cases"<br><br>**Conciseness** - watch/react and data access code eliminated |
-| **Ordering** | Execution ordered by automatic dependency analysis | **Maintenance** - eliminates code analysis for inserting new code |
-| **Optimization** | System prunes rules, optimizes SQL | Reduces effort for scalability |
-
-Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](https://valhuber.github.io/ApiLogicServer/Logic-Operation/#watch-react-chain).
-
-&nbsp;
+        Rules are 40X more concise than code, and can improve quality.
 
 ## Problem: Code Explosion
 
@@ -40,9 +26,27 @@ It's also incredibly repetitive - you often get the feeling you're doing the sam
 And you're right.  It's because backend logic follows patterns of "what" is supposed to happen.
 And your code is the "how". 
 </details>
+<br>
+## Solution: Rules
+
+So, API Logic Server provides **unique spreadsheet-like rules** for multi-table derivations and constraints, extensible with Python.
+
+&nbsp;
+
+### Rules: Declarative
+
+Rules are a **declarative approach** that automates remarkable amounts of backend logic:
+
+| Declarative &nbsp;&nbsp;&nbsp;&nbsp;Rules Automate | <br><br>Which Means | <br><br>Why It Matters |
+| :--- |:---|:---|
+| **Invocation** | Rules fire when referenced data changes<br><br>Eg., Customer balance adjusted when order amount (or Customer-id) changes | **Quality** - no missed "corner cases"<br><br>**Conciseness** - watch/react and data access code eliminated |
+| **Ordering** | Execution ordered by automatic dependency analysis | **Maintenance** - eliminates code analysis for inserting new code |
+| **Optimization** | System prunes rules, optimizes SQL | Reduces effort for scalability |
+
+Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](https://valhuber.github.io/ApiLogicServer/Logic-Operation/#watch-react-chain).
 
 
-## Solution: Rules Are An Executable Design
+### Rules: Executable Design
 
 API Logic -- unique to API Logic Server -- consists of __Rules, extensible with Python.__  
 

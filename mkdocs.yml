@@ -26,10 +26,10 @@ nav:
     - "Tutorial": Tutorial.md
     - Sample-Database.md
   - 1. Admin Web App:
-    - "Admin App Features": Admin-Tour.md
+    - "Automatic Admin App": Admin-Tour.md
     - Admin-Customization.md
   - 2. API:
-    - "JSON:API": API.md
+    - "Automatic Multi-Table API": API.md
     - "API Customization": API-Customize.md
   - 3. Logic:
     - "Why Logic": Logic-Why.md
@@ -37,7 +37,7 @@ nav:
     - "How: Logic and Agile": "Logic-Tutorial.md"
     - "Logic Operation": "Logic-Operation.md"
   - 4. Security:
-    - "Overview": Security-Overview.md
+    - "Role-based Authorization": Security-Overview.md
     - "Authorization": Security-Authorization.md
     - "Authentication": Security-Authentication.md
     - "Authentication Provider": Security-Authentication-Provider.md

@@ -1,21 +1,17 @@
+!!! pied-piper ":bulb: TL;DR - instant multi-page, multi-table apps"
+
+      * Multi-page - for each table, you get a list page and a detail page
+         * list pages provide filtering, sorting and pagination
+
+      * Multi-table - pages include related data: 
+
+         * Tab Sheets for related child data (Order Details List)
+         * Automatic joins for related parent data (Product _Name_ - not just the Id)
+         * Lookups for foreign keys (find Product for OrderDetail)
+         * Page Transitions for related data (e.g., on a Customer/Orders page, click an Order to see Order/OrderDetails)
+         * Declarative hide/show (e.g., provide expression to hide union for salaried employees)
+
 This page describes the Admin App automatically created during `ApiLogicServer create`.
-
-&nbsp;
-
-## TL;DR - Key Features
-
-* Multi-page - for each table, you get a list page and a detail page
-    * list pages provide filtering, sorting and pagination
-
-* Multi-table - pages include related data: 
-
-    * Tab Sheets for related child data (Order Details List)
-    * Automatic joins for related parent data (Product _Name_ - not just the Id)
-    * Lookups for foreign keys (find Product for OrderDetail)
-    * Page Transitions for related data (e.g., on a Customer/Orders page, click an Order to see Order/OrderDetails)
-    * Declarative hide/show (e.g., provide expression to hide union for salaried employees)
-
-This page illustrates some of the key features:  
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/Order-Page.png"></figure>
 

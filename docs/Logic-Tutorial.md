@@ -1,18 +1,16 @@
+!!! pied-piper ":bulb: TL;DR - Collaboration drives Requirements, Tests, Logic Reports"
+
+    Use API Logic Server with Behave: Working Software *Now* for Agile Collaboration, near instant iteration, and unified requirements capture / traceabilty / test suite development:
+
+    1. Create your database, and your API Logic Project
+      
+    2. Use the created Admin App as **Working Software *Now***, to drive Business User **Collaboration** to **capture logic requirements** in Behave.
+
+    3. Use these requirements to **drive rule declaration**, and **develop tests** that verify the scenarios work.  Iterations are extremely rapid due to automatic logic **ordering and optimization**.
+
+    4. Use the **Behave Logic Report** for **requirements traceability:** document the requirements, test results, including the *rules that fired for each test.*
+
 This page describes an optional approach for using logic in a TDD-based Agile framework.
-
-&nbsp;
-
-## TL;DR: Collaboration drives Requirements, Tests, Logic Reports
-
-Use API Logic Server with Behave: Working Software *Now* for Agile Collaboration, near instant iteration, and unified requirements capture / traceabilty / test suite development:
-
-1. Create your database, and your API Logic Project
-  
-2. Use the created Admin App as **Working Software *Now***, to drive Business User **Collaboration** to **capture logic requirements** in Behave.
-
-3. Use these requirements to **drive rule declaration**, and **develop tests** that verify the scenarios work.  Iterations are extremely rapid due to automatic logic **ordering and optimization**.
-
-4. Use the **Behave Logic Report** for **requirements traceability:** document the requirements, test results, including the *rules that fired for each test.*
 
 &nbsp;
 
@@ -112,7 +110,7 @@ The [created project is customizable,](https://github.com/valhuber/ApiLogicServe
 
 &nbsp;&nbsp;
 
-## 2. Collaborate using **Admin App**
+## 2. Collaborate with **Admin App**
 
 As noted above, running screens are an excellent way to engage business user collaboration, and ensure the system meets actual user needs.  Such collaboration typically leads in two important directions, described below.
 
