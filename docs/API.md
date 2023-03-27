@@ -10,6 +10,8 @@
 
     * Enforces **logic and security** - automatic partitioning of logic from (each) client app
 
+    * **Add new endpoints using standard Flask and SQLAlchemy** - customize `api/customize_api.py` - 
+
 &nbsp;
 
 ## Automatic Swagger Generation
