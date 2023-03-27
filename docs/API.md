@@ -14,6 +14,18 @@
 
 &nbsp;
 
+## Declare / Customize API
+
+APIs are
+
+1. Declared in `api/expose_api_models.py` -- *generated* code which is typically note modified
+
+2. Customized in `api/customize_api.py` -- see below, and next page
+
+![API Declaration](images/api/Declare-Customize-API.png)
+
+&nbsp;
+
 ## Automatic Swagger Generation
 
 API creation includes automatic swagger generation.  

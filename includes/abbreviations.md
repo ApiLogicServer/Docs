@@ -40,3 +40,6 @@
 *[Authorization]: controlling access to row/columns based on assigned roles.
 *[Role]: in security, users are assigned one or many roles.  Roles are authorized for access to data, potentially down to the row/column level.
 *[Authentication-Provider]: Developer-supplied Class that, given a id/password, authenticates a user and returns the list of authorized roles (on None).  Invoked by the system when client apps log in.
+*[Domain Specific Language]: A language focused on a specific domain (e.g., logic), providing speed and transparency by using a high-level declarative approach to specify behavior.
+*[domain specific language]: A language focused on a specific domain (e.g., logic), providing speed and transparency by using a high-level declarative approach to specify behavior.
+*[DSL]: A domain specific language focuses on a specific domain (e.g., logic), providing speed and transparency by using a high-level declarative approach to specify behavior.
