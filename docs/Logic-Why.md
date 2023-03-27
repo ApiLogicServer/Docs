@@ -1,6 +1,8 @@
 !!! pied-piper ":bulb: TL;DR - n-fold Reduction of Backend Logic With Spreadsheet-like Rules"
 
-        For transaction systems, backend **multi-table constraint and derivation logic** is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**. Declared in Python, debug with your IDE, extend with Python events as needed.
+        For transaction systems, backend **multi-table constraint and derivation logic** is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**. 
+        
+        **Declare in Python**, debug with your IDE, extend with Python events as needed.
 
         Rules are **40X more concise than code**, and can improve quality.
 

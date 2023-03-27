@@ -2,12 +2,11 @@
 
       | Feature  | Provides         | Example         |
       |:---------------------------|:-----------------|:-------------------------------------------------------------------------------|
-      | Multi-Page | Page for each table    | Customer Page, Order Page, etc | 
-      | Multi-Table | Tab Sheet for related child data    | Customer page has OrderList | 
-      |             | Page Transitions for related data    | Click Customer/OrdersList to see Order/OrderDetails | 
-      |             | Automatic Joins for Parent Data    | Product _Name_ - not just the Id | 
-      |             | Lookups for foreign keys    | Find Product for OrderDetail | 
-      |             | Declarative hide/show    | Hide union for salaried employees | 
+      | Multi-Page | List/Show pages for each table<br>Built-in **search, sort, export**    | Customer Page, Order Page, etc | 
+      | Multi-Table | **Tab Sheet** for related child data <br>**Page Transitions** for related data | Customer page has OrderList<br>Click --> Order/OrderDetails | 
+      |             | **Automatic Joins** for Parent Data    | Product _Name_ - not just the Id | 
+      |             | **Lookups** for foreign keys    | Find Product for OrderDetail | 
+      |             | **Declarative hide/show** | Salaried Employee: Hide Union | 
       | Customize | Simple - no HTML / JavaScript    | Edit `ui/admin/admin.yaml` | 
       | Extend | Build Custom UIs with your own framework, using the API    | API-enforced logic simplifies app dev | 
 

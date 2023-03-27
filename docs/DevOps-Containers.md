@@ -1,8 +1,14 @@
 !!! pied-piper ":bulb: TL;DR - Projects are pre-configured for containers: for both deployment and development"
 
-    Containers are a critical component of DevOps, so API Logic Projects provide pre-configured support.
+    Containers are a critical component of DevOps, so API Logic Projects provide pre-configured support:
+
+    * they contain the `.devcontainer` directory to enable **Dev Container** use
+
+    * they contain `devops/docker/build-container.dockerfile` for building your container for **deployment**
 
 Containers are a best practice for deployment.  They *also* offer several advantages for development.  This page outlines a typical scenario for API Logic Server projects.
+
+&nbsp;
 
 ## Container Overview
 
@@ -94,9 +100,9 @@ In any case, you'll be using a source control system such as `git`, so it's poss
 
 API Logic Server pre-supplies several [repositories](https://hub.docker.com/repositories/apilogicserver){:target="_blank" rel="noopener"} (images available on Docker Hub):
 
-* [Several DBMSs](../Database-Connectivity){:target="_blank" rel="noopener"}, so you can explore connectivity and as a quick-start for development
+1. [Several DBMSs](../Database-Connectivity){:target="_blank" rel="noopener"}, so you can explore connectivity and as a quick-start for development
 
-* API Logic Server itself (here is the [dockerfile](https://github.com/valhuber/ApiLogicServer/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"}):   
+2. API Logic Server itself (here is the [dockerfile](https://github.com/valhuber/ApiLogicServer/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"}), shown below: 
 
 ![API Logic Server Intro](images/docker/docker-container.png)
 
@@ -107,13 +113,3 @@ You can use it in 2 ways:
    * to build images - to share with developers, or deploy to cloud providers (e.g., Microsoft Azure, Amazon AWS, etc)
 
 For more information, see [Architecture](../Architecture-What_Is).
-
-&nbsp;
-
-## Container-ready projects
-
-Projects you create with API Logic Server are container-ready:
-
-* they contain the `.devcontainer` directory to enable Dev Container use
-
-* they contain `devops/docker/build-container.dockerfile` for building your container for deployment ("MyApp", above)
