@@ -32,7 +32,7 @@ nav:
     - "Automatic Multi-Table API": API.md
     - "API Customization": API-Customize.md
   - 3. Logic:
-    - "Why Logic": Logic-Why.md
+    - "Logic: Why": Logic-Why.md
     - "What Are the Rules": Logic.md
     - "How: Logic and Agile": "Logic-Tutorial.md"
     - "Logic Operation": "Logic-Operation.md"

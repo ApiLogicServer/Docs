@@ -41,7 +41,7 @@ Rules are a **declarative approach** that automates remarkable amounts of backen
 | :--- |:---|:---|
 | **Invocation** | Rules fire when referenced data changes<br><br>Eg., Customer balance adjusted when order amount (or Customer-id) changes | **Quality** - no missed "corner cases"<br><br>**Conciseness** - watch/react and data access code eliminated |
 | **Ordering** | Execution ordered by automatic dependency analysis | **Maintenance** - eliminates code analysis for inserting new code |
-| **Optimization** | System prunes rules, optimizes SQL | Reduces effort for scalability |
+| **Optimization** | System prunes rules, optimizes SQL | Reduces effort for **scalability** |
 
 Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](https://valhuber.github.io/ApiLogicServer/Logic-Operation/#watch-react-chain).
 
