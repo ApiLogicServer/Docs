@@ -51,13 +51,13 @@ nav:
     - "Run Container": DevOps-Containers-Run.md
     - "Deploy Image: Azure": DevOps-Containers-Deploy.md
     - "GitHub and Codespaces": DevOps-GitHub.md
-  - Agile / Testing:
-    - "Agility With Behave": Behave.md
-    - "Behave Logic Report": Behave-Logic-Report.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md
     - "Project Operation": Architecture-Project-Operation.md
     - "Declarative Automation": Architecture-Declarative-Automation.md
+  - Agile / Testing:
+    - "Agility With Behave": Behave.md
+    - "Behave Logic Report": Behave-Logic-Report.md
   - Database:
     - "Examples": Data-Model-Examples.md
     - Data-Model-Classes.md
