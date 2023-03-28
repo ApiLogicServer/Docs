@@ -16,9 +16,9 @@
 
 ## Declare / Customize API
 
-APIs are
+APIs are:
 
-1. Declared in `api/expose_api_models.py` -- *generated* code which is typically note modified
+1. Declared in `api/expose_api_models.py` -- *generated* code which is typically not modified
 
 2. Customized in `api/customize_api.py` -- see below, and next page
 
