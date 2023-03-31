@@ -20,7 +20,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
         * **an Admin App:** multi-page, multi-table apps -- ready for business user agile collaboration
         * **an API:** end points for each table, with filtering, sorting, pagination and related data access -- ready for custom app dev
 
-    2. **Customize** and debug your application with **standard dev tools**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.  Manage and share projects with <span style="background-color:Azure;">GitHub</span>.
+    2. **Customize** and debug your application with **<span style="background-color:Azure;">standard dev tools</span>**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.  Manage and share projects with <span style="background-color:Azure;">GitHub</span>.
 
         * Flexible as a framework, Faster then Low Code for Admin Apps
 
@@ -28,7 +28,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
         * 40X more concise than code - Unique to API Logic Server :trophy:
 
-    4. **DevOps Ready** - container support presupplied:
+    4. **DevOps Ready** - container support presupplied, enabling **<span style="background-color:Azure;">standard infrastructure:</span>**
 
         * `.devcontainer` to **develop** under Docker, or <span style="background-color:Azure;">Codespaces</span>
 
