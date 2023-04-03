@@ -29,4 +29,9 @@ exclude:
   - Region
 ```
 
+!!! pied-piper "Heads up - exact match syntax ^Region$"
+
+    Regex infers implicit leading/trailing wildcards.  For exact match, use ^Region$ in the example above
+
+
 > As of release 8.1.12, you can omit the include/extend tag, and/or the values under them.  Prior releases require these tags to be present, and populated (e.g., use 'a^' to exclude nothing)
