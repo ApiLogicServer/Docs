@@ -117,11 +117,13 @@ Here is a quick tour of the basic process:
 
     ![Created Project](images/nutshell/project-created.png)
 
+    You will need to [set up your venv](../Project-Env).
+
     > Note: database urls are pesky to type, so [abbrevations](../Data-Model-Examples) are provided for pre-supplied sample databases.
 
 === "2. Execute"
 
-    Projects are **fully configured**, including **Run Configurations** (you must first [set up your venv](../Project-Env)).  Run this to **start the server**, and then **click the URL** to start the Admin App, and see the swagger (see screen shots, below).
+    Projects are *fully configured*, including **Run Configurations**.  Run this to **start the server**, and then **click the URL** to start the Admin App, and see the swagger (see screen shots, below).
 
     ![Created Project](images/nutshell/project-executable.png)
 
