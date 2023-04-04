@@ -101,6 +101,66 @@ We think you'll find Codespaces pretty amazing - check it out!
 
 &nbsp;
 
+### In a Nutshell
+
+Here is a quick tour of the basic process:
+
+=== "1. Create"
+
+    You use the API Logic Server CLI to create a project from a database, like this:
+
+    ```bash title="Create Project using API Logic Server CLI"
+    ApiLogicServer create --db_url=sqlite:///sample_db.sqlite --project_name=ApiLogicProject
+    ```
+
+    That creates a project you can open in your IDE:
+
+    ![Created Project](images/nutshell/project-created.png)
+
+    > Note: database urls are pesky to type, so [abbrevations](../Data-Model-Examples) are provided for pre-supplied sample databases.
+
+=== "2. Execute"
+
+    Projects are **fully configured**, including **Run Configurations** (you must first [set up your venv](../Project-Env)).  Run this to **start the server**, and then **click the URL** to start the Admin App, and see the swagger (see screen shots, below).
+
+    ![Created Project](images/nutshell/project-executable.png)
+
+
+    *** Admin App***
+
+    ![Admin App](images/ui-admin/Order-Page.png)
+
+    &nbsp;
+
+    *** API, with Swagger ***
+    
+    ![Admin App](images/ui-admin/swagger.png)
+
+    *** Customize ***
+
+    See next tab.
+
+=== "3. Customize API"
+
+    Standards-based customization - use your IDE, and standard packages such as Flask and SQLAlchemy:
+
+    ![Customize API](images/nutshell/customize-api.png)
+
+
+=== "4. Customize Logic"
+
+    Customization includes declarative logic, using rules.  Create and debug these using Python and your IDE (e.g., code completion, debugger):
+
+    ![Declarative Logic](images/nutshell/declare-logic.png)
+
+=== "5. Deploy"
+
+    Project are container-ready.  To create a docker image:
+
+    ![Create Image](images/nutshell/build-image.png)
+
+&nbsp;
+
 # Why It Matters: 
 
 ### Faster, Simpler, Modern Architecture
