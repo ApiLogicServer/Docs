@@ -55,6 +55,9 @@ nav:
     - "What is API Logic Server": Architecture-What-Is.md
     - "Project Operation": Architecture-Project-Operation.md
     - "Declarative Automation": Architecture-Declarative-Automation.md
+    - Internals:
+      - "API Logic Server Development": Architecture-Internals.md
+      - "Internals - CLI": Architecture-Internals-CLI.md
   - Agile / Testing:
     - "Agility With Behave": Behave.md
     - "Behave Logic Report": Behave-Logic-Report.md
@@ -68,9 +71,6 @@ nav:
     - "Table Filters": Data-Model-Filters.md
     - "Install pyodbc: SqlServer": Install-pyodbc.md
     - "Install psycopg2: Postgres": Install-psycopg2.md
-    - Internals:
-      - "API Logic Server Development": Architecture-Internals.md
-      - "Internals - CLI": Architecture-Internals-CLI.md
   - Managing API Logic Projects:
     - "Structure": Project-Structure.md
     - "Rebuild": Project-Rebuild.md
