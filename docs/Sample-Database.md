@@ -8,7 +8,7 @@ The sample application [(run it here)](http://apilogicserver.pythonanywhere.com/
 
 The integrity of this database is enforced with [this logic](../Logic-Why/#solution-rules-are-an-executable-design).
 
-<figure><img src="https://github.com/valhuber/LogicBank/raw/main/images/nw.png"></figure>
+![Sample Database](images/model/sample-database.png)
 
 
 ## Standard Northwind
