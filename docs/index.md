@@ -144,20 +144,20 @@ Here is a quick tour of the basic process:
 
 === "3. Customize API"
 
-    Standards-based customization - use your IDE, and standard packages such as Flask and SQLAlchemy:
+    **Standards-based customization** - use your IDE, and standard packages such as Flask and SQLAlchemy:
 
     ![Customize API](images/nutshell/customize-api.png)
 
 
 === "4. Customize Logic"
 
-    Customization includes declarative logic, using rules.  Create and debug these using Python and your IDE (e.g., code completion, debugger):
+    Customization includes **declarative logic, using rules.**  Create and debug these using Python and your IDE (e.g., code completion, debugger):
 
     ![Declarative Logic](images/nutshell/declare-logic.png)
 
 === "5. Deploy"
 
-    Project are container-ready.  To create a docker image:
+    Projects are container-ready.  To create a docker image:
 
     ![Create Image](images/nutshell/build-image.png)
 
