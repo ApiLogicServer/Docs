@@ -6,11 +6,26 @@ Development and runtime architectures are what programmers expect:
 
 ## Near-Zero Learning Curve - no frameworks, etc
 
-ApiLogicServer has a near-zero learning curve.  You do not need to know Python, SQLAlchemy, React, or JSONapi_logic_serverPIs to get started.  You have a running project in moments, customizable without requiring deep understanding of any of these frameworks.  Making extensions, of course, begins to require more technical background.
+ApiLogicServer has a near-zero learning curve:
+
+* You do not need to know Python, SQLAlchemy, React, Flask, or JSON / APIs to get started.  
+* You should have a basic background in database - familiar with terms like Table, Column, Foreign Key.
+
+&nbsp;
+
+### Deliver While Learning
+
+You have a running project in moments, customizable without requiring deep understanding of any of these frameworks.  Such instantly-availabe projects are valuable to Custom App Dev and Business Users, who can begin with these while you gain familiarity with Flask and SQLAlchemy.
+
+Making extensions, of course, begins to require more technical background.
+
+&nbsp;
 
 ### Allow a few days for learning logic
 
 Logic represents the starkest different between procedural code and declarative rules.  It requires a few days to get the hang of it.  We recommend you [explore this documentation](https://github.com/valhuber/LogicBank#next-steps).
+
+&nbsp;
 
 ## Business Agility
 
@@ -19,6 +34,8 @@ ApiLogicServer automation creates a running project nearly instantly, but it als
 * [Rebuild](../Project-Rebuild) support to update existing projects from database or data model changes
 * Logic provides automatic [reordering and reoptimization](../Logic-Why/#key-aspects-of-logic) as logic is altered
 
+&nbsp;
+
 ## Technology Agility - an Application Virtual Machine
 
 Models are, somewhat by their very nature, rather technology independent.  Instead of React, the UI specification could be implemented on Angular.  Instead of interpreted, the logic could be code-generated onto any language.  And so forth.
@@ -26,6 +43,8 @@ Models are, somewhat by their very nature, rather technology independent.  Inste
 You can think of the [Key Project Components](#key-project-components) as an Application Virtual Machine that executes ApiLogicProjects.  As new underlying technology becomes available, new AVMs could be developed that migrate the declarative elements of your UI, API and Logic - ***without coding change***.  Because, they are models, not code.
 
    > This provides an unprecedented preservation of your application investment over underlying technology change. 
+
+&nbsp;
 
 ## Automation Reduces Risk
 
@@ -56,5 +75,3 @@ But automation can help - since your declarative models only stipulate _what_, t
 Requirements risk can represent an even greater challenge.  The reality that users may only realize the real requirements when they actually use running screens with real data.  The problem, of course, is that these are often available after considerable time and effort.
 
 That's why _working software **now**_ is so important - users get screens right away.  These can identify data model errors (_"hey... customers have more than one address"_) or business logic requirements (_"hey.... we need to check the credit limit"_).
-
-
