@@ -151,6 +151,16 @@ Customize using your IDE:
 
 # Creation Internals
 
+!!! pied-piper ":bulb: TL/;DR - Deep Copy for default project, create models from schema, create api/ui from models"
+
+    The basic process of creating a project is a deep copy of `api_logic_server_cli/project_prototype`, overlaid (as appropriate) from `project_prototype_nw`.
+
+    Much of the logic is the process of creating the models from the database, using an altered variant of `sqlacodegen`.  The created model is then re-opened to create the internal meta data that drives the builders.
+
+    The builders use this to create the api and ui.
+
+&nbsp;
+
 The ApiLogicServer source code looks like this:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/apilogicserver-ide.png?raw=true"></figure>
