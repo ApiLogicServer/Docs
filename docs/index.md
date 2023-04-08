@@ -7,11 +7,12 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 [![Latest Version](https://img.shields.io/pypi/v/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 
-[![API Logic Server Intro](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/hero-banner.png?raw=true)](https://apilogicserver.github.io/Docs/ "Single command creates executable, customizable Flask projects")
+[![API Logic Server Intro](images/hero-banner.png)](#instant-evaluation-no-install "Single command creates executable, customizable Flask projects")
+
 
 &nbsp;
 
-!!! pied-piper ":bulb: TL;DR - instant App/API, standard customization, *unique* declarative rules"
+!!! pied-piper ":bulb: TL;DR - instant App/API, fully flexible, *unique* declarative rules"
 
     API Logic Server is the **fastest and simplest** way to create **modern, scalable API-based database systems:**
 
@@ -20,13 +21,13 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
         * **an Admin App:** multi-page, multi-table apps -- ready for business user agile collaboration
         * **an API:** end points for each table, with filtering, sorting, pagination and related data access -- ready for custom app dev
 
-    2. **Customize** and debug with the full flexibility of **<span style="background-color:Azure;">standard dev tools</span>**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.  Manage projects with <span style="background-color:Azure;">GitHub</span>.
+    2. **Fully Flexible:** customize and debug with **<span style="background-color:Azure;">standard dev tools</span>**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.  Manage projects with <span style="background-color:Azure;">GitHub</span>.
 
         * Flexible as a framework, Faster then Low Code for Admin Apps
 
-    3. ***Declare* security and multi-table constraint/validation logic**, using unique spreadsheet-like rules.  Logic consists of rules, extensible with Python event code as required.
+    3. ***Declare* security and multi-table constraint/validation logic**, using **declarative spreadsheet-like rules**.  Logic consists of rules, extensible with Python event code as required.
 
-        * 40X more concise than code - Unique to API Logic Server :trophy:
+        * 40X more concise than code - *unique* to API Logic Server &nbsp;&nbsp; :trophy:
 
     4. **DevOps Ready** - container support presupplied, enabling **<span style="background-color:Azure;">standard infrastructure:</span>**
 
