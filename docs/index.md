@@ -12,7 +12,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-!!! pied-piper ":bulb: TL;DR - instant App/API, fully flexible, *unique* declarative rules"
+!!! pied-piper ":bulb: TL;DR - Instant App/API, Fully Flexible, *Unique* Declarative Rules"
 
     API Logic Server is the **fastest and simplest** way to create **modern, scalable API-based database systems:**
 
@@ -21,19 +21,17 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
         * **an Admin App:** multi-page, multi-table apps -- ready for business user agile collaboration
         * **an API:** end points for each table, with filtering, sorting, pagination and related data access -- ready for custom app dev
 
-    2. **Fully Flexible:** customize and debug with **<span style="background-color:Azure;">standard dev tools</span>**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.  Manage projects with <span style="background-color:Azure;">GitHub</span>.
+    2. **Fully Flexible:** leverage standards for development and deployment:
 
-        * Flexible as a framework, Faster then Low Code for Admin Apps
+        * Dev: customize and debug with **<span style="background-color:Azure;">standard dev tools</span>**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.  Manage projects with <span style="background-color:Azure;">GitHub</span>.
+
+        * Deploy: **containerize** your project - deploy on-premise or to the cloud <span style="background-color:Azure;">(Azure, AWS, etc)</span>.
+        
+        * *Flexible as a framework, Faster then Low Code for Admin Apps*
 
     3. ***Declare* security and multi-table constraint/validation logic**, using **declarative spreadsheet-like rules**.  Logic consists of rules, extensible with Python event code as required.
 
         * 40X more concise than code - *unique* to API Logic Server &nbsp;&nbsp; :trophy:
-
-    4. **DevOps Ready** - container support presupplied, enabling **<span style="background-color:Azure;">standard infrastructure:</span>**
-
-        * `.devcontainer` to **develop** under Docker, or <span style="background-color:Azure;">Codespaces</span>
-
-        * `dockerfile` to **deploy** images on-premise or to the cloud <span style="background-color:Azure;">(Azure, AWS, etc)</span>
 
     &nbsp;
 
