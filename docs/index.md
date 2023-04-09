@@ -7,7 +7,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 [![Latest Version](https://img.shields.io/pypi/v/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 
-[![API Logic Server Intro](images/hero-banner.png)](#instant-evaluation-no-install "Single command creates executable, customizable Flask projects")
+[![API Logic Server Intro](images/hero-banner.png)](#instant-evaluation-no-install "Click for instant cloud-based, no-install eval")
 
 
 &nbsp;
@@ -33,7 +33,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
         * `.devcontainer` to **develop** under Docker, or <span style="background-color:Azure;">Codespaces</span>
 
-        * `dockerfile` to **deploy** images to the cloud <span style="background-color:Azure;">(Azure, AWS, etc)</span>
+        * `dockerfile` to **deploy** images on-premise or to the cloud <span style="background-color:Azure;">(Azure, AWS, etc)</span>
 
     &nbsp;
 
