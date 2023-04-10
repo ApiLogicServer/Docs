@@ -104,7 +104,7 @@ We think you'll find Codespaces pretty amazing - check it out!
 
 ### In a Nutshell
 
-Here is a quick tour of the basic process:
+Here is a quick screen-shot demo of the basic process:
 
 === "1. Create"
 
