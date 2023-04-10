@@ -40,7 +40,16 @@ First, imports are executable... so what does _that_ mean.
 
 * The key underlying fact is that Python does not require all code to be in a class.  
 
-* On import, all the non-class code ___actually runs___.  It is not just setting up paths.
+* On import, all the non-class/function code ___actually runs___.  It is not just setting up paths.
+
+* If you want to know whether your module was run (directly) or imported, use:
+
+```python title="determine run directly vs. import"
+if __name__ == '__main__':   # prounounced:   "dunder name" == "dunder main"
+    pass  # I was run directly
+else:
+    pass  # I was imported
+```
 
 &nbsp;
 
