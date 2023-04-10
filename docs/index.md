@@ -72,7 +72,9 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-## Check it out
+---
+
+# Check it out
 
 ### Video - Create, Run, Customize
 
@@ -112,7 +114,9 @@ Here is a quick tour of the basic process:
     ApiLogicServer create --db_url=sqlite:///sample_db.sqlite --project_name=ApiLogicProject
     ```
 
-    That creates a project you can open in your IDE:
+    &nbsp;
+
+    That command creates a standard project you can open in your IDE:
 
     ![Created Project](images/nutshell/project-created.png)
 
@@ -145,12 +149,18 @@ Here is a quick tour of the basic process:
 
     **Standards-based customization** - use your IDE, and standard packages such as Flask and SQLAlchemy:
 
+    ![Customize API](images/api/custom-api-nested-result.png)
+
+    &nbsp;
+
+    You can also make the endpoint part of your swagger:
+
     ![Customize API](images/nutshell/customize-api.png)
 
 
 === "4. Customize Logic"
 
-    Customization includes **declarative logic, using rules.**  Create and debug these using Python and your IDE (e.g., code completion, debugger):
+    Customization includes **declarative logic, using rules.**  Create and debug these, using Python and your IDE (e.g., code completion, debugger):
 
     ![Declarative Logic](images/nutshell/declare-logic.png)
 
@@ -162,6 +172,8 @@ Here is a quick tour of the basic process:
 
 &nbsp;
 
+---
+
 # Why It Matters: 
 
 ### Faster, Simpler, Modern Architecture
@@ -170,7 +182,7 @@ API Logic Server can dramatically improve web app development:
 
 * Automation makes it __faster:__ what used to require weeks or months is now immediate.  Unblock UI Dev, and engage business users - _early_ - instead of wasting time on a misunderstanding.
 
-* Automation makes it __simpler:__ this reduces the risk of architectural errors, e.g., APIs without pagination.
+* Automation makes it __simpler:__ this reduces the risk of architectural errors, e.g., no logic reuse between Apps / Services, APIs without pagination, etc.
 
 * Automation guarantees a __modern software architecture:__ _container-ready_, _API-based_, with _shared logic_ between UIs and APIs (no more logic in UI controllers), in a predictable structure for maintenance.
 
