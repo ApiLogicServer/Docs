@@ -76,18 +76,6 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 # Check it out
 
-### Video - Create, Run, Customize
-
-API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
-
-It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is).
-
-Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging.
-
-[![Using VS Code](https://github.com/valhuber/apilogicserver/wiki/images/creates-and-runs-video.jpg?raw=true)](https://youtu.be/tOojjEAct4M "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}
-
-&nbsp;
-
 ### Instant Evaluation - _no install_
 
 Run in the cloud: VSCode via your Browser, courtesy Codespaces.  Use your existing GitHub account (no signup is required), and:
@@ -184,6 +172,18 @@ Here is a quick screen-shot demo of the basic process:
     Projects are container-ready.  To create a docker image:
 
     ![Create Image](images/nutshell/build-image.png)
+
+### Video - Create, Run, Customize
+
+API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
+
+It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is).
+
+Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging.
+
+[![Using VS Code](https://github.com/valhuber/apilogicserver/wiki/images/creates-and-runs-video.jpg?raw=true)](https://youtu.be/tOojjEAct4M "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}
+
+&nbsp;
 
 &nbsp;
 
