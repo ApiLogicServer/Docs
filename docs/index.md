@@ -167,10 +167,17 @@ Here is a quick screen-shot demo of the basic process:
 
 === "4. Customize Logic"
 
-    Customization includes **declarative logic, using rules.**  Create and debug these, using [Python and your IDE](../Tech-DSL)
- (e.g., code completion, debugger):
+    Customization includes **declarative logic, using rules.**  Create and debug these, using [Python and your IDE](../Tech-DSL) (e.g., code completion, debugger):
 
     ![Declarative Logic](images/nutshell/declare-logic.png)
+
+    &nbsp;
+
+    **Row Filtering - Role-based Security**
+
+    You can also declare `Grants`: row filters for Roles:
+
+    ![Declarative Security](images/security/declare-security.png)
 
 === "5. Deploy"
 
