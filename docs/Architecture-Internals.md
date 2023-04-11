@@ -38,6 +38,9 @@ It's basically straightforward, _though note_ the `cp` command which copies the 
     cd ApiLogicServer
     cp -r ../safrs-react-admin/build api_logic_server_cli/create_from_model/safrs-react-admin-npm-build
 ```
+
+> Note: `curl` must be installed for this procedure.
+
 &nbsp;
 
 ## Open `~/dev/ApiLogicServer` in your IDE
@@ -162,3 +165,12 @@ sh /home/api_logic_server/bin/run-project.sh https://github.com/valhuber/Tutoria
 ```
 
 In both cases, the git load is performed by `bin/run-project.sh`, which you can explore on github.
+
+&nbsp;
+
+# Useful links
+
+As a contributor, you will likely work with:
+
+* [Docker Databases](../Database-Connectivity)
+* [Shared virtual environments](../Project-Env)

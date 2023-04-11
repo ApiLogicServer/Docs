@@ -92,6 +92,7 @@ nav:
     - "Learning Flask": Tech-Learning-Flask.md
     - "Docker": Tech-Docker.md
     - "Python for a Java developer": Tech-Python.md
+    - "Using Slack": Tech-Slack.md
     - "Python Installation": Tech-Install-Python.md
     - "Python 3.11": Tech-Python-311.md
     - "Mkdocs Material": Tech-mkdocs-material.md
