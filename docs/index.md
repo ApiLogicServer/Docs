@@ -29,9 +29,9 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
         
         * *Flexible as a framework, Faster then Low Code for Admin Apps*
 
-    3. ***Declare* security and multi-table constraint/validation logic**, using **declarative spreadsheet-like rules**.  Logic consists of rules, extensible with Python event code as required.
+    3. ***Declare* security and multi-table constraint/validation logic**, using **declarative spreadsheet-like rules**.  Addressing the backend *half* of your system, logic consists of rules, extensible with Python event code.
 
-        * 40X more concise than code - *unique* to API Logic Server &nbsp;&nbsp; :trophy:
+        * *40X more concise than code - unique to API Logic Server* &nbsp;&nbsp; :trophy:
 
     &nbsp;
 
@@ -152,7 +152,7 @@ Here is a quick screen-shot demo of the basic process:
 
     See next tab.
 
-=== "3. Customize API"
+=== "3. Customize -- API"
 
     **Standards-based customization** - use your IDE, and standard packages such as Flask and SQLAlchemy.  Here, we add a custom nested resultset Flask API, using SQLAlchemy to retrieve the data:
 
@@ -165,7 +165,7 @@ Here is a quick screen-shot demo of the basic process:
     ![Customize API](images/nutshell/customize-api.png)
 
 
-=== "4. Customize Logic"
+=== "4. Customize -- Logic"
 
     Customization includes **declarative logic, using rules.**  Create and debug these, using [Python and your IDE](../Tech-DSL) (e.g., code completion, debugger):
 
