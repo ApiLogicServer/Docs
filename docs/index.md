@@ -133,6 +133,13 @@ Here is a quick screen-shot demo of the basic process:
 
     *** Admin App***
 
+    Launch the Admin App shows the home page:
+
+    ![Admin App](images/ui-admin/admin-home.png)
+
+
+    Click the nav menu left to explore your data:
+
     ![Admin App](images/ui-admin/Order-Page.png)
 
     &nbsp;
@@ -147,20 +154,21 @@ Here is a quick screen-shot demo of the basic process:
 
 === "3. Customize API"
 
-    **Standards-based customization** - use your IDE, and standard packages such as Flask and SQLAlchemy:
+    **Standards-based customization** - use your IDE, and standard packages such as Flask and SQLAlchemy.  Here, we add a custom nested resultset Flask API, using SQLAlchemy to retrieve the data:
 
     ![Customize API](images/api/custom-api-nested-result.png)
 
     &nbsp;
 
-    You can also make the endpoint part of your swagger:
+    Use a `safrsJABase` class to create an endpoint shown in the swagger:
 
     ![Customize API](images/nutshell/customize-api.png)
 
 
 === "4. Customize Logic"
 
-    Customization includes **declarative logic, using rules.**  Create and debug these, using Python and your IDE (e.g., code completion, debugger):
+    Customization includes **declarative logic, using rules.**  Create and debug these, using [Python and your IDE](../Tech-DSL)
+ (e.g., code completion, debugger):
 
     ![Declarative Logic](images/nutshell/declare-logic.png)
 
