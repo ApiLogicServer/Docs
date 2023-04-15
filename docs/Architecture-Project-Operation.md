@@ -27,22 +27,37 @@ Execution begins in `api_logic_server_run.py`.  Your customizations are done to 
 
 SAFRS API listens for API calls, e.g., from the Admin App.  When updates are issued:
 
-4. **Invokes SQLAlchemy updates:** SAFRS calls SQLAlchemy, passing a set of rows comprising a database transaction
+ **L1. Invokes SQLAlchemy updates:** SAFRS calls SQLAlchemy, passing a set of rows comprising a database transaction
 
 
-5. **`before_flush`:** SQLAlchemy provides a `before_flush` event, where all the update rows are assembled and passed to `Logic Bank`  (no relation to retail!).
+**L2. `before_flush`:** SQLAlchemy provides a `before_flush` event, where all the update rows are assembled and passed to `Logic Bank`  (no relation to retail!).
 
 
-6. **Logic Execution:** Logic Bank reviews the rows, and based on what has change, prunes rules for unchanged data, and executes / optimizes relevant logic in an appropriate order.  
+**L3. Logic Execution:** Logic Bank reviews the rows, and based on what has change, prunes rules for unchanged data, and executes / optimizes relevant logic in an appropriate order.  
 
-### Declarative Logic is critical
+&nbsp;
 
-Logic addresses multi-table derivations, constraints, and actions such as sending messages or emails.  These can constitute nearly half the effort in transactional systems.
+### Row/Commit Logic
 
+The console log below illustrates that the rows are processed in 2 distinct "logic loops":
+
+* **Row Logic** - rules are executed, with chaining, as received in the `before_flush` event
+* **Commit Logic** - commit constraints and events are executed after *all row logic is complete**
+
+Two logic loops are provided so that parent logic can see all the adjustments of the child logic. 
+
+* When the Order is first seen at the top of the log, the OrderDetails have not yet been processed, so their adjustment logic has not been run.  So, sums/counts will be 0 (e.g. `OrderDetailCount`).
+
+* The Commit Logic loop is therefore provided after all the adjustment processing has occurred.
+
+    * So, if you want to verify that Orders have 1 or more OrderDetails by placing a constraint on `OrderDetailCount`, this would need to be a CommitConstraint.
+
+![Commit-logic](images/logic/logic-debug.png)
+
+&nbsp;
 
 ## Admin App Execution: `ui/admin/admin.yaml`
 
 [http://localhost:5656/](http://localhost:5656/) redirects to `ui/admin/index.html` which loads the react-admin single-page app into your browser.
 
 It then loads your `ui/admin/admin.yaml`, and responds to the various clicks by invoking the API (and hence the update logic), or the swagger at [http://localhost:5656/api](http://localhost:5656/api).
-
