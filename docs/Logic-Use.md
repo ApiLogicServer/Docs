@@ -72,7 +72,11 @@ Rule.constraint(validate=models.Employee,
                 error_msg="{row.LastName} needs a more meaningful raise")
 ```
 
-Note the `log` method, which enables you to write row/od_row into the log with a short message.
+Note the `log` method, which enables you to write row/old_row into the log with a short message:
+
+```python
+logic_row.log("no manager for this order's salesrep")
+```
 
 &nbsp;
 
