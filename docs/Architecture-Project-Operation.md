@@ -41,6 +41,8 @@ SAFRS API listens for API calls, e.g., from the Admin App.  When updates are iss
 
 The console log below illustrates that the rows are processed in 2 distinct "logic loops":
 
+![Commit-logic](images/logic/logic-debug.png)
+
 * **Row Logic** - rules are executed, with chaining, as received in the `before_flush` event
 * **Commit Logic** - commit constraints and events are executed after *all row logic is complete**
 
@@ -52,7 +54,9 @@ Two logic loops are provided so that parent logic can see all the adjustments of
 
     * So, if you want to verify that Orders have 1 or more OrderDetails by placing a constraint on `OrderDetailCount`, this would need to be a CommitConstraint.
 
-![Commit-logic](images/logic/logic-debug.png)
+Row Logic processing:
+
+![Row-logic](images/logic/row-logic-update.png)
 
 &nbsp;
 
