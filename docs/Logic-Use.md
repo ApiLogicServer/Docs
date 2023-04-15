@@ -50,16 +50,13 @@ From the online documentation (use code completion):
 
         Wraps row and old_row, plus methods for insert, update and delete - rule enforcement
 
-        Passed to user logic, mainly to make updates - with logic, for example
-
-            row = sqlalchemy read logic_row.update(row=row, msg="my log message")
-
         Additional instance variables: ins_upd_dlt, nest_level, session, etc.
 
         Helper Methods
+
             are_attributes_changed, set_same_named_attributes, get_parent_logic_row(role_name), get_derived_attributes, log, etc
 
-Here is another example:
+Here is an example:
 
 ```python
 """
@@ -74,6 +71,8 @@ Rule.constraint(validate=models.Employee,
                 calling=raise_over_20_percent,
                 error_msg="{row.LastName} needs a more meaningful raise")
 ```
+
+Note the `log` method, which enables you to write row/od_row into the log with a short message.
 
 &nbsp;
 
