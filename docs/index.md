@@ -104,41 +104,43 @@ Here is a quick screen-shot demo of the basic process:
 
     &nbsp;
 
-    That command creates a standard project you can open in your IDE:
+    That command creates a standard project.  You can open in your IDE:
 
     ![Created Project](images/nutshell/project-created.png)
 
     You will need to [set up your venv](../Project-Env).
 
-    > Note: database urls are pesky to type, so [abbrevations](../Data-Model-Examples) are provided for pre-supplied sample databases.
+    > Click "2. Execute", above
 
 === "2. Execute"
 
-    Projects are *fully configured*, including **Run Configurations**.  Run this to **start the server**, and then **click the URL** to start the Admin App, and see the swagger (see screen shots, below).
+    Projects are *fully configured*, including **Run Configurations**.  Run this to **start the server**, and then **click the URL** to run the Admin App in your Browser:
 
     ![Created Project](images/nutshell/project-executable.png)
 
 
     *** Admin App***
 
-    Launch the Admin App shows the home page:
+    Running the Admin App in your Browser shows the Home page:
 
     ![Admin App](images/ui-admin/admin-home.png)
 
 
-    Click the nav menu left to explore your data:
+    Click the left nav menu to explore your data:
 
     ![Admin App](images/ui-admin/Order-Page.png)
 
     &nbsp;
 
     *** API, with Swagger ***
+
+    The Home page also provides access to the automatically created swagger to explore your API:
     
     ![Admin App](images/ui-admin/swagger.png)
 
     *** Customize ***
 
-    See next tab.
+    > Click "3. Customize -- API", above
 
 === "3. Customize -- API"
 
@@ -152,6 +154,7 @@ Here is a quick screen-shot demo of the basic process:
 
     ![Customize API](images/nutshell/customize-api.png)
 
+    > Click "4. Customize -- Logic", above
 
 === "4. Customize -- Logic"
 
@@ -167,11 +170,18 @@ Here is a quick screen-shot demo of the basic process:
 
     ![Declarative Security](images/security/declare-security.png)
 
+    > Click "5. Deploy", above
+
 === "5. Deploy"
 
     Projects are container-ready.  To create a docker image:
 
     ![Create Image](images/nutshell/build-image.png)
+
+
+&nbsp;
+
+---
 
 ### Video - Create, Run, Customize
 
