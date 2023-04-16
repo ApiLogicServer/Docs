@@ -113,35 +113,39 @@ Here is a quick screen-shot demo of the basic process:
     > Click "2. Execute", above
 
 === "2. Execute"
-
-    Projects are *fully configured*, including **Run Configurations**.  Run this to **start the server**, and then **click the URL** to run the Admin App in your Browser:
-
-    ![Created Project](images/nutshell/project-executable.png)
-
-
-    *** Admin App***
-
-    Running the Admin App in your Browser shows the Home page:
-
-    ![Admin App](images/ui-admin/admin-home.png)
-
-
-    Click the left nav menu to explore your data:
-
-    ![Admin App](images/ui-admin/Order-Page.png)
-
-    &nbsp;
-
-    *** API, with Swagger ***
-
-    The Home page also provides access to the automatically created swagger to explore your API:
     
-    ![Admin App](images/ui-admin/swagger.png)
+    You can run projects from the command line, but the recommended approach is to **use your IDE**:
 
-    *** Customize ***
+    === "Execute from IDE"
+        
+        Projects are *fully configured*, including *Run Configurations*:
+        
+        1. Run this to **start the server**, and then 
+        2. **Click the URL** to run the **Admin App Home Page** in your Browser:
 
-    > Click "3. Customize -- API", above
+        ![Created Project](images/nutshell/project-executable.png)
 
+    === "Admin App Home Page"
+
+        The Admin App starts with the Home page, with links to **Explore Data** and **Explore API**: 
+
+        ![Admin App](images/ui-admin/admin-home.png)
+
+    === "Explore Data"
+        
+        Click the left nav menu to explore your data:
+
+        ![Admin App](images/ui-admin/Order-Page.png)
+
+        &nbsp;
+
+    === "Explore API, with Swagger"
+
+        Use the automatically created swagger to explore your API, and get code snippets for custom app dev:
+        
+        ![Admin App](images/ui-admin/swagger.png)
+
+            
 === "3. Customize -- API"
 
     **Standards-based customization** - use your IDE, and standard packages such as Flask and SQLAlchemy.  Here, we add a custom nested resultset Flask API, using SQLAlchemy to retrieve the data:
