@@ -96,7 +96,7 @@ Here is a quick screen-shot demo of the basic process:
 
 === "1. Create"
 
-    You use the API Logic Server CLI to create a project from a database, like this:
+    Use the API Logic Server CLI to create a project from a database, like this:
 
     ```bash title="Create Project using API Logic Server CLI"
     ApiLogicServer create --db_url=sqlite:///sample_db.sqlite --project_name=ApiLogicProject
@@ -114,11 +114,14 @@ Here is a quick screen-shot demo of the basic process:
 
 === "2. Execute"
     
-    You can run projects from the command line, but the recommended approach is to **use your IDE**:
+    Projects are ready to run, instantly, providing
+    
+    * an **Admin App** for Business User collaboration, and 
+    * an **API** to unblock custom app dev
 
     === "Execute from IDE"
         
-        Projects are *fully configured*, including *Run Configurations*:
+        Projects are *fully configured*, including *Run Configurations*, so you can run them in your IDE:
         
         1. Run this to **start the server**, and then 
         2. **Click the URL** to run the **Admin App Home Page** in your Browser:
@@ -133,7 +136,7 @@ Here is a quick screen-shot demo of the basic process:
 
     === "Explore Data"
         
-        Click the left nav menu to explore your data:
+        Click the left nav menu to explore and update your data:
 
         ![Admin App](images/ui-admin/Order-Page.png)
 
@@ -146,42 +149,49 @@ Here is a quick screen-shot demo of the basic process:
         ![Admin App](images/ui-admin/swagger.png)
 
             
-=== "3. Customize -- API"
+=== "3. Customize"
 
-    **Standards-based customization** - use your IDE, and standard packages such as Flask and SQLAlchemy.  Here, we add a custom nested resultset Flask API, using SQLAlchemy to retrieve the data:
+    Customize and debug with **standard dev tools**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.
 
-    ![Customize API](images/api/custom-api-nested-result.png)
+    === "New Service"
 
-    &nbsp;
+        ![Customize API](images/api/custom-api-nested-result.png)
 
-    Use a `safrsJABase` class to create an endpoint shown in the swagger:
+    === "New Service, visible in Swagger"
 
-    ![Customize API](images/nutshell/customize-api.png)
+        Use a `safrsJABase` class to create an endpoint shown in the swagger:
 
-    > Click "4. Customize -- Logic", above
+        ![Customize API](images/nutshell/customize-api.png)
 
-=== "4. Customize -- Logic"
+=== "4. Logic &nbsp;&nbsp; :trophy:"
 
-    Customization includes **declarative logic, using rules.**  Create and debug these, using [Python and your IDE](../Tech-DSL) (e.g., code completion, debugger):
+    Multi-table constraint/validation logic consitutes nearly *half* your system.  ** Unique spreadsheet-like rules** are remarkably more concise, and extensible with Python.
 
-    ![Declarative Logic](images/nutshell/declare-logic.png)
+    === "Rules - 40X More Concise"
 
-    &nbsp;
+        Unlike conventional procedural code, rules are *declarative:* automatically invoked, ordered and optimized.  This results in **40X more concise logic** - see the typical example below.
+        
+        Create and debug rules using [Python and your IDE](../Tech-DSL){:target="_blank" rel="noopener"} (e.g., code completion, debugger):
 
-    **Row Filtering - Role-based Security**
+        ![Declarative Logic](images/nutshell/declare-logic.png)
 
-    You can also declare `Grants`: row filters for Roles:
+    === "Extend with Python"
+
+        Logic consists of Rules and Python.   Use Python to address requirements not automated by rules, and non-database requirements such as sending messages and email.
+
+        ![Extend and Debug](images/logic/logic-debug.png)
+
+=== "5. Security"
+
+    Declare `Grants` - row filters for Roles:
 
     ![Declarative Security](images/security/declare-security.png)
 
-    > Click "5. Deploy", above
+=== "6. Deploy"
 
-=== "5. Deploy"
-
-    Projects are container-ready.  To create a docker image:
+    Projects are **container-ready**.  The system provides configuration and scripts to containerize your project:
 
     ![Create Image](images/nutshell/build-image.png)
-
 
 &nbsp;
 
