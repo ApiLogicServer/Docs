@@ -114,7 +114,7 @@ Here is a quick screen-shot demo of the basic process:
 
 === "2. Execute"
     
-    Projects are ready to run, instantly, providing
+    Instead of weeks or months, projects are ready to run, *instantly*, providing:
     
     * an **Admin App** for Business User collaboration, and 
     * an **API** to unblock custom app dev
@@ -189,9 +189,24 @@ Here is a quick screen-shot demo of the basic process:
 
 === "6. Deploy"
 
-    Projects are **container-ready**.  The system provides configuration and scripts to containerize your project:
+    Projects are **container-ready**.  
+    
+    
+    === "Create Container"
+    
+        The system provides configuration and scripts to containerize your project:
 
-    ![Create Image](images/nutshell/build-image.png)
+        ![Create Image](images/nutshell/build-image.png)
+
+    === "Scalable Architecture"
+
+        The container is ready to deploy, on-premise or in the cloud (eg, Azure, AWS, etc):
+
+        * A modern 3-tiered architecture, accessed by **APIs**
+        * Logic is **automatically reused**, factored out of web apps and custom services
+        * **Scale** using standard toooling such as Kubernetes
+
+        ![API Logic Server Intro](images/Architecture.png)
 
 &nbsp;
 
