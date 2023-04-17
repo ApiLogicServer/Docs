@@ -153,7 +153,7 @@ Here is a quick screen-shot demo of the basic process:
 
     <details markdown>
 
-    <summary>Show Me - use a`safrsJABase` class to create an endpoint shown in the swagger</summary>
+    <summary>Use a `safrsJABase` class to create an endpoint shown in the swagger</summary>
 
     &nbsp;
 
@@ -165,7 +165,7 @@ Here is a quick screen-shot demo of the basic process:
 
 === "3. Declarative Logic &nbsp;&nbsp; :trophy:"
 
-    Declare multi-table constraint/derivation logic using [Python and your IDE](../Tech-DSL){:target="_blank" rel="noopener"}.  The 5 rules below are *declarative*, representing the same logic as 200 lines of procedural code:
+    Declare multi-table constraint/derivation logic using [Python and your IDE](../Tech-DSL){:target="_blank" rel="noopener"}.  The 5 spreadsheet-like rules below are [*declarative*](Logic-Why){:target="_blank" rel="noopener"}, representing the same logic as 200 lines of procedural code:
 
     ![Declarative Logic](images/nutshell/declare-logic.png)
 
