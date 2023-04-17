@@ -96,144 +96,121 @@ Here is a quick screen-shot demo of the basic process:
 
 === "1. Instant App and API"
 
-    **Instantly create** a Flask/SQLAlchemy project from your database.  Zero learning curve.  In fact, this is a great way to *learn* Python, Flask and SQLAlchemy.
+    **Instantly create** a Flask/SQLAlchemy project from your database:
 
-    === "1a. Create Project"
+    ```bash title="Create Project from database, using API Logic Server CLI"
+    ApiLogicServer create --db_url=sqlite:///sample_db.sqlite --project_name=ApiLogicProject
+    ```
 
-        Use the API Logic Server CLI to create a project from a database, like this:
+    That command creates a standard project you can open your IDE, and start the server (details below).  Here's the **Admin App**, ready for business user collaboration:
 
-        ```bash title="Create Project using API Logic Server CLI"
-        ApiLogicServer create --db_url=sqlite:///sample_db.sqlite --project_name=ApiLogicProject
-        ```
+    ![Admin App](images/ui-admin/Order-Page.png)
 
-        &nbsp;
+    <details markdown>
 
-        That command creates a standard project.  You can open in your IDE:
+    <summary>Expore API, Using Automatically Created Swagger - Custom Add Dev Ready</summary>
 
-        ![Created Project](images/nutshell/project-created.png)
+    &nbsp;
 
-        You will need to [set up your venv](../Project-Env).
+    The Admin App provides a link to the Swagger:
 
-        > When you're ready, click **1b. Execute**, above.
+    ![Admin App](images/ui-admin/swagger.png)
 
-    === "1b. Execute: Admin App, API"
+    </details>
+
+    > When you're ready, click **2. Flexible Customization**, above.
+
+    &nbsp;
+
+    <details markdown>
+
+    <summary>Details: Starting the Server From Your IDE</summary>
+
+    The `ApiLogicServer create` command above creates a standard project you can open in your IDE:
+
+    ![Created Project](images/nutshell/project-created.png)
+
+    You will need to [set up your venv](../Project-Env).
         
-        Instead of weeks or months, projects are ready to run, *instantly*, providing:
-        
-        * an **Admin App** for Business User collaboration, and 
-        * an **API** to unblock custom app dev
+    Projects are *fully configured*, including *Run Configurations*, so you can execute them in your IDE:
+    
+    1. Run this to **start the server**, and then 
+    2. **Click the URL** to run the **Admin App Home Page** in your Browser:
 
-        === "Execute from IDE"
-            
-            Projects are *fully configured*, including *Run Configurations*, so you can execute them in your IDE:
-            
-            1. Run this to **start the server**, and then 
-            2. **Click the URL** to run the **Admin App Home Page** in your Browser:
+    ![Created Project](images/nutshell/project-executable.png)
 
-            ![Created Project](images/nutshell/project-executable.png)
+    The Admin App starts with the Home page, with links to **Explore Data** and **Explore API**: 
 
-            > When you're ready, click **Admin App: Home Page**, above.
+    ![Admin App](images/ui-admin/admin-home.png)
 
-        === "Admin App: Home Page"
+    </details>
 
-            The Admin App starts with the Home page, with links to **Explore Data** and **Explore API**: 
-
-            ![Admin App](images/ui-admin/admin-home.png)
-
-            > When you're ready, click **Admin App: Explore Data**, above.
-
-
-        === "Admin App: Explore Data"
-            
-            Click the left nav menu to explore and update your data:
-
-            ![Admin App](images/ui-admin/Order-Page.png)
-
-            > When you're ready, click **Explore API**, above.
-
-        === "Explore API"
-
-            Use the automatically created swagger to explore your API, and get code snippets for custom app dev:
-            
-            ![Admin App](images/ui-admin/swagger.png)
-
-            > When you're ready, click **2. Flexible Customization**, above.
-
-
-                
 === "2. Flexible Customization"
 
     Customize and debug with **standard dev tools**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.
 
-    === "2a. New Custom Service"
+    ![Customize API](images/api/custom-api-nested-result.png)
 
-        ![Customize API](images/api/custom-api-nested-result.png)
+    <details markdown>
 
-        > When you're ready, click **2b. New Custom Service, visible in Swagger**, above.
+    <summary>Show Me - use a`safrsJABase` class to create an endpoint shown in the swagger</summary>
 
-    === "2b. New Custom Service, visible in Swagger"
+    &nbsp;
 
-        Use a `safrsJABase` class to create an endpoint shown in the swagger:
+    ![Customize API](images/nutshell/customize-api.png)
 
-        ![Customize API](images/nutshell/customize-api.png)
+    </details>
 
-        > When you're ready, click **3. Declarative Logic**, above.
+    > When you're ready, click **3. Declarative Logic**, above.
 
 === "3. Declarative Logic &nbsp;&nbsp; :trophy:"
 
-    In addition to using standard IDEs, and standard packages such as Flask and SQLAlchemy, you can use *declarative* logic.
+    Declare multi-table constraint/derivation logic using [Python and your IDE](../Tech-DSL){:target="_blank" rel="noopener"}.  The 5 rules below are *declarative*, representing the same logic as 200 lines of procedural code:
 
-    === "3a. Update Logic"
-        Multi-table constraint/derivation logic consitutes nearly *half* your system.  ** Unique spreadsheet-like rules** are remarkably more concise, and extensible with Python.
+    ![Declarative Logic](images/nutshell/declare-logic.png)
 
-        === "Rules - 40X More Concise"
+    > When you're ready, click **Extend With Python**, above.
 
-            Unlike conventional procedural code, rules are *declarative:* automatically invoked, ordered and optimized.  This results in **40X more concise logic** - see the typical example below.
-            
-            Create and debug rules using [Python and your IDE](../Tech-DSL){:target="_blank" rel="noopener"} (e.g., code completion, debugger):
+    <details markdown>
 
-            ![Declarative Logic](images/nutshell/declare-logic.png)
+    <summary>Extend Declarative Rules with Standard Python; Debugging</summary>
 
-            > When you're ready, click **Extend With Python**, above.
+    &nbsp;
 
-        === "Extend with Python"
+    Logic consists of Rules plus Python.
+    
+    * Use Python to address requirements not automated by rules, and non-database requirements such as sending messages and email.
+    * Debug logic with your IDE, and the logic log in the console
 
-            Logic consists of Rules and Python.   Use Python to address requirements not automated by rules, and non-database requirements such as sending messages and email.
+    ![Extend and Debug](images/logic/logic-debug.png)
 
-            ![Extend and Debug](images/logic/logic-debug.png)
+    </details>
 
-            > When you're ready, click **3b. Security**, above.
+    <details markdown>
 
-    === "3b. Security"
+    <summary>Declarative Role-based Row Level Security</summary>
 
-        Declare `Grants` - row filters for Roles:
+    Declare `Grants` - row filters for Roles:
 
-        ![Declarative Security](images/security/declare-security.png)
+    ![Declarative Security](images/security/declare-security.png)
 
-        > When you're ready, click **4. Deployment**, above.
+    </details>
+
+    > When you're ready, click **4. Deployment**, above.
 
 === "4. Deployment"
 
-    Projects are **container-ready**.  
-    
-    
-    === "Create Container"
-    
-        The system provides configuration and scripts to containerize your project:
+    Projects are **container-ready**.  The system provides configuration and scripts to containerize your project:
 
-        ![Create Image](images/nutshell/build-image.png)
+    ![Create Image](images/nutshell/build-image.png)
 
-        > When you're ready, click **Scalable Architecture**, above.
+    The container is ready to deploy, on-premise or in the cloud (eg, Azure, AWS, etc):
 
-    === "Scalable Architecture"
+    * A modern 3-tiered architecture, accessed by **APIs**
+    * Logic is **automatically reused**, factored out of web apps and custom services
+    * **Scale** using standard toooling such as Kubernetes
 
-        The container is ready to deploy, on-premise or in the cloud (eg, Azure, AWS, etc):
-
-        * A modern 3-tiered architecture, accessed by **APIs**
-        * Logic is **automatically reused**, factored out of web apps and custom services
-        * **Scale** using standard toooling such as Kubernetes
-
-        ![API Logic Server Intro](images/Architecture.png)
+    ![API Logic Server Intro](images/Architecture.png)
 
 &nbsp;
 
