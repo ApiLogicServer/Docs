@@ -96,13 +96,13 @@ Here is a quick screen-shot demo of the basic process:
 
 === "1. Instant App and API"
 
-    **Instantly create** a Flask/SQLAlchemy project from your database:
+    Create a Flask/SQLAlchemy project from your database:
 
     ```bash title="Create Project from database, using API Logic Server CLI"
     ApiLogicServer create --db_url=sqlite:///sample_db.sqlite --project_name=ApiLogicProject
     ```
 
-    That command creates a standard project you can open your IDE, and start the server (details below).  Here's the **Admin App**, ready for business user collaboration:
+    That command creates a standard project you can open and execute in your IDE.  Here's the **Admin App**, ready for business user collaboration:
 
     ![Admin App](images/ui-admin/Order-Page.png)
 
@@ -120,81 +120,26 @@ Here is a quick screen-shot demo of the basic process:
 
     > When you're ready, click **2. Flexible Customization**, above.
 
-    &nbsp;
-
-    <details markdown>
-
-    <summary>Details: Starting the Server From Your IDE</summary>
-
-    The `ApiLogicServer create` command above creates a standard project you can open in your IDE:
-
-    ![Created Project](images/nutshell/project-created.png)
-
-    You will need to [set up your venv](Project-Env).
-        
-    Projects are *fully configured*, including *Run Configurations*, so you can execute them in your IDE:
-    
-    1. Run this to **start the server**, and then 
-    2. **Click the URL** to run the **Admin App Home Page** in your Browser:
-
-    ![Created Project](images/nutshell/project-executable.png)
-
-    The Admin App starts with the Home page, with links to **Explore Data** and **Explore API**: 
-
-    ![Admin App](images/ui-admin/admin-home.png)
-
-    </details>
-
 === "2. Flexible Customization"
 
     Customize and debug with **standard dev tools**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.
 
     ![Customize API](images/api/custom-api-nested-result.png)
 
-    <details markdown>
-
-    <summary>Use a `safrsJABase` class to create an endpoint shown in the swagger</summary>
-
-    &nbsp;
-
-    ![Customize API](images/nutshell/customize-api.png)
-
-    </details>
-
     > When you're ready, click **3. Declarative Logic**, above.
 
 === "3. Declarative Logic &nbsp;&nbsp; :trophy:"
 
-    Declare multi-table constraint/derivation logic using [Python and your IDE](Tech-DSL){:target="_blank" rel="noopener"}.  The 5 spreadsheet-like rules below are [***declarative***](Logic-Why){:target="_blank" rel="noopener"}, representing the same logic as 200 lines of procedural code:
+    Declare multi-table constraint/derivation logic, using Python and your IDE.  The 5 spreadsheet-like rules below are declarative, representing the same logic as 200 lines of procedural code **(40X more concise)**:
 
     ![Declarative Logic](images/nutshell/declare-logic.png)
 
-    > When you're ready, click **Extend With Python**, above.
+    Notes:
 
-    <details markdown>
-
-    <summary>Extend Declarative Rules with Standard Python; Debugging</summary>
+    1. You can extend rules with Python, as explained in the Eval
+    2. Similar declarative facilities are provided **row level security**, based on a users roles
 
     &nbsp;
-
-    Logic consists of Rules plus Python.
-    
-    * Use Python to address requirements not automated by rules, and non-database requirements such as sending messages and email.
-    * Debug logic with your IDE, and the logic log in the console
-
-    ![Extend and Debug](images/logic/logic-debug.png)
-
-    </details>
-
-    <details markdown>
-
-    <summary>Declarative Role-based Row Level Security</summary>
-
-    Declare `Grants` - row filters for Roles:
-
-    ![Declarative Security](images/security/declare-security.png)
-
-    </details>
 
     > When you're ready, click **4. Deployment**, above.
 
