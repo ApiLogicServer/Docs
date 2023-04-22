@@ -137,7 +137,7 @@ Here is a quick screen-shot demo of the basic process:
     Notes:
 
     1. You can extend rules with Python, as explained in the Eval
-    2. Similar declarative facilities are provided **row level security**, based on a users roles
+    2. Similar declarative facilities provide **row level security**, based on a users roles
 
     &nbsp;
 
