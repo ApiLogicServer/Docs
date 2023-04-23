@@ -46,11 +46,13 @@ This provides a mechanism to define attributes as part of the row (so it sent to
         self._proper_salary = value
         print(f'_proper_salary={self._proper_salary}')
         pass
+
+    ProperSalary = proper_salary  # signal safrs to recognize this as api-visible property
 ```
 
 ## Open Issue: declaring `@jsonapi_attr`
 
-The current example for `proper_salary` fails, since the getter/setter must be of the model (here, Employee) class.  The code above works if hand-entered in `database.models.py`.
+The current (8.02.00) example for `proper_salary` fails, since the getter/setter must be of the model (here, Employee) class.  The code above works if hand-entered in `database.models.py`.
 
 However, that is not ideal... if `models.py` is rebuilt-from-model, these changes are lost.  I looked into the following:
 
@@ -60,7 +62,7 @@ It would not be difficult to generate current models with the suffix `_base`, th
 
 However, this failed, since LogicBank uses simple mechanisms to find attributes and relationships.  This might be an extensive change.
 
-### Declare in mixin: fails to be invoked by safrs
+### Declare in mixin: fails to recognize property
 
 Other approach is to generate models like this:
 
@@ -68,7 +70,9 @@ Other approach is to generate models like this:
 class Employee(SAFRSBase, Base, models_mix.Employee_mix):
 ```
 
-where `models_mix.Employee_mix` is a user-alterable file that defines virtual attributes.  However, this does not appear to work (be called) for `@jsonapi_attr`s.  Hand-altered prototype: https://github.com/valhuber/opt_locking_mix.
+where `models_mix.Employee_mix` is a user-alterable file that defines virtual attributes.  However, this does not appear to work for `@jsonapi_attr`s -- it is not called when retrieving rows, and `ProperSalary` does not appear in swagger.
+
+See hand-altered prototype: https://github.com/valhuber/opt_locking_mix.
 
 
 
