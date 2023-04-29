@@ -53,7 +53,7 @@ export ARCHFLAGS="-arch x86_64"  # <=== enable this line
 Project Creation involves 2 steps that can cause errors, described in the following sub-sections.
 
 ## Database failed to open
-The `db_url` argument is a [SQLAlchemy database uri](https://docs.sqlalchemy.org/en/14/core/engines.html).  Please find several examples we use in our [testing](../Database-Connectivity).
+The `db_url` argument is a [SQLAlchemy database uri](https://docs.sqlalchemy.org/en/14/core/engines.html).  For several examples we use in our testing, [click here](../Database-Connectivity).
 
 ### Check Connectivity using SQL Tools
 A typical cause is lack of connectivity to the database.  Use your local database tools to verify connectivity from your machine to the database.
