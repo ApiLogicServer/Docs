@@ -38,6 +38,8 @@ include=OrderList,OrderList.OrderDetailList,OrderList.OrderDetailList.Product
 
 These terms are the Parent / Child Relationship names, from your data model.  Note they support multi-level navigations, such as `OrderList.OrderDetailList`.  For more on [relationship names, click here](../Data-Model-Classes/#relationship-names).
 
+To explore the resultant json, [click here](https://github.com/ApiLogicServer/tutorial/tree/main/3.%20Logic/api/multi-table-example){:target="_blank" rel="noopener"}.
+
 
 
 
