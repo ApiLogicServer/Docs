@@ -30,7 +30,8 @@ nav:
     - Admin-Customization.md
   - 2. API:
     - "Automatic Multi-Table API": API.md
-    - "API Customization": API-Customize.md
+    - "Multi-Table APIs": API-Multi-Table.md
+    - "Custom APIs": API-Customize.md
   - 3. Logic:
     - "Logic: Why": Logic-Why.md
     - "What Are the Rules": Logic.md
