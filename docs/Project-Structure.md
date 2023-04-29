@@ -33,7 +33,9 @@ You will need to edit it to reflect your project and Docker account names.
 
 ### 3.  Launch Configurations
 
-These are created so you can run the API Logic Server, run tests, etc.  You should not need to modify these, but you may wish to extend them.
+These are created so you can run the API Logic Server, run tests, etc.  You should not need to modify these, but you may wish to extend them.  
+
+Note the file that starts the project is `api_logic_server_run.py`, which obtains arguments from `config.py` and environmental variables.
 
 &nbsp;
 
@@ -65,9 +67,7 @@ All project elements are files - no database or binary objects.  So, you can sto
 
 ## Customizing ApiLogicProjects
 
-You will typically want to customize and extend the created project.  Edit the files described in the subsections below.
-
-The 2 indicated files in the tree are the Python files that run for the Basic Web App and the API Server.
+You will typically want to customize and extend the created project.  Edit the files noted ih the diagram at the top of this page.
 
 Projects are created from a [system-supplied prototype](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype).  You can use your own prototype from git (or a local directory) using the ```from_git``` parameter.
 
