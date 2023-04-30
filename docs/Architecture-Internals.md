@@ -84,6 +84,10 @@ This:
 2. Installs it into a Python environment `dev/servers/install/ApiLogicServer/venv`
 3. Installs `pyodbc`.  Note this requires you have installed `odbc`, but install failures are intentionally ignored (instead, skip the Sql/Server database with`do_docker_sqlserver = False` )
 
+!!! pied-piper ":bulb: venv can be used for projects"
+
+    You will probably find it helpful to use this as a [shared venv](../Project-Env/#shared-venv).
+
 #### `do_create_api_logic_project`...
 
 This creates the sample project, runs the server, and tests the logic using the behave tests.  It produces quite a lot of output which you can ignore.  The test is designed to terminate if the tests fail.
