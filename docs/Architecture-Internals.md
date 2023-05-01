@@ -106,6 +106,12 @@ These create projects from docker databases ([see here](../Database-Connectivity
 
 &nbsp;
 
+## Get Docs working
+
+The install procedure also installs `Org-ApiLogicServer/Docs`.  Follow it's readme.
+
+&nbsp;
+
 ## Develop / Debug admin app
 
 Once you have created the API Logic Project, you can restart the server like this (it is _not_ necessary to recreate the sample each time you run):
