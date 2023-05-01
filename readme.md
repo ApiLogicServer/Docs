@@ -3,6 +3,7 @@
 There are the official docs of [API Logic Server](https://apilogicserver.github.io/Docs/).  Docs are built with mkdocs, which requires special setup to operate locally.
 
 * Mac: run `docs.sh`
+    * I find it helpful to copy this to my `~/bin` folder.
 * Windows: execute this in Powershell:
 
 ```
@@ -14,3 +15,5 @@ mkdocs serve
 These start a process that monitors changes to the docs folder, whereupon the docs are rebuilt.
 
 To see the doc build locally, [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+The public docs are automatically rebuilt whenever you push changes to GitHub.
