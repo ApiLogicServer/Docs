@@ -36,6 +36,7 @@ nav:
     - "Logic: Why": Logic-Why.md
     - "What Are the Rules": Logic.md
     - "Using Logic": "Logic-Use.md"
+    - "Debugging Logic": "Logic-Debug.md"
     - "How: Logic and Agile": "Logic-Tutorial.md"
     - "Logic Operation": "Logic-Operation.md"
     - Types:
