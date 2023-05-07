@@ -110,6 +110,26 @@ These create projects from docker databases ([see here](../Database-Connectivity
 
 The install procedure also installs `Org-ApiLogicServer/Docs`.  Follow it's readme.
 
+&bnsp;
+
+## Testing Packages
+
+In some cases, you may wish to test using experimental version of underlying packages, such as `safrs` or `logicbank`:
+
+*1.* Edit `ApiLogicServer/.vscode/settings.json` to identify the desired packages, e.g.:
+
+```
+    "terminal.integrated.env.osx": 
+        { "PYTHONPATH": "/Users/val/dev/safr" }
+```
+
+If yu have more than one, separate them with *colon*s.
+
+
+*2.* Exit the ApiLogicServer workspace, and restart VSCode on the `ApiLogicServer` folder (not workspace)
+
+*3.* Use the Run Configs to create/test the app, e.g., `2 - Debug ApiLogicProject`
+
 &nbsp;
 
 ## Develop / Debug admin app
