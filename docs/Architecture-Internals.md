@@ -114,21 +114,22 @@ The install procedure also installs `Org-ApiLogicServer/Docs`.  Follow it's read
 
 ## Testing Packages
 
-In some cases, you may wish to test using experimental version of underlying packages, such as `safrs` or `logicbank`:
+In some cases, you may wish to test using experimental version of underlying packages, such as `safrs` or `logicbank`.  You can [add multiple paths to Python Path](https://stackoverflow.com/questions/41471578/visual-studio-code-how-to-add-multiple-paths-to-python-path){:target="_blank" rel="noopener"} like this:
 
 *1.* Edit `ApiLogicServer/.vscode/settings.json` to identify the desired packages, e.g.:
 
 ```
     "terminal.integrated.env.osx": 
-        { "PYTHONPATH": "/Users/val/dev/safr" }
+        { "PYTHONPATH": "/Users/val/dev/safrs" }
 ```
 
 If yu have more than one, separate them with *colon*s.
 
+*2.* With the ApiLogicServer venv active, `pip uninstall` the packages you want to test
 
-*2.* Exit the ApiLogicServer workspace, and restart VSCode on the `ApiLogicServer` folder (not workspace)
+*3.* Exit the ApiLogicServer workspace, and restart VSCode on the `ApiLogicServer` folder (not workspace)
 
-*3.* Use the Run Configs to create/test the app, e.g., `2 - Debug ApiLogicProject`
+*4.* Use the Run Configs to create/test the app, e.g., `2 - Debug ApiLogicProject`
 
 &nbsp;
 
