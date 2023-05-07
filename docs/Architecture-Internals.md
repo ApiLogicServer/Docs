@@ -131,6 +131,31 @@ If yu have more than one, separate them with *colon*s.
 
 *4.* Use the Run Configs to create/test the app, e.g., `2 - Debug ApiLogicProject`
 
+> **Note:** you will need to perform a similar process if you want an *installed* local version of ApiLogicServer using the `tests/build_and_test` procedure.
+
+&nbsp;
+
+### Simpler for LogicBank: local install
+
+It's easy to create a local install for LogicBank.  First, you need to install the source:
+
+```bash
+cd ~/dev
+git clone https://github.com/valhuber/LogicBank.git
+```
+
+Then, build it and add to the ApiLogicServer venv:
+
+*1.* Create Logic Bank installer on your hard drive
+
+```bash
+python3 setup.py sdist bdist_wheel
+```
+
+*2.* With the ApiLogicServer venv active, `pip uninstall LogicBank`
+
+*3.* With the ApiLogicServer venv active, `python3 -m pip install ~/dev/LogicBank`
+
 &nbsp;
 
 ## Develop / Debug admin app
