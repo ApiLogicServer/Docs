@@ -54,6 +54,12 @@ This is provided by LAC, and currently under investigation.
 
 &nbsp;
 
+### Column Level Security
+
+Both provide role-based row security.  Additionally, LAC provides role-based column security.
+
+&nbsp;
+
 ### Open Source Stability
 
 API Logic Server is open source.  Besides obvious pricing advantages, open source is not subject to business cycles and whims of vendors.
