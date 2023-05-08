@@ -48,6 +48,12 @@ The styles are different:
 
 &nbsp;
 
+### Optimistic Locking
+
+This is provided by LAC, and currently under investigation.
+
+&nbsp;
+
 ### Open Source Stability
 
 API Logic Server is open source.  Besides obvious pricing advantages, open source is not subject to business cycles and whims of vendors.
