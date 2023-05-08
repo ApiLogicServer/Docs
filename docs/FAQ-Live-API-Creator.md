@@ -70,7 +70,7 @@ API Logic Server is open source.  Besides obvious pricing advantages, open sourc
 
 &nbsp;
 
-#### Standard Dev, Deploy
+#### Leverage IDE, Containers
 
 API Logic Server does not provide a "studio UI", instead using a [Standard IDE](../IDE-Customize){:target="_blank" rel="noopener"} using [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"}.  This leverages signficant tooling, such as **standard debuggers and source control**.
 
