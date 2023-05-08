@@ -34,7 +34,9 @@ Both products provide:
 
 &nbsp;
 
-### API Style - Custom Resources
+### LAC Only
+
+#### API Style: Custom Resources
 
 The styles are different:
 
@@ -48,25 +50,27 @@ The styles are different:
 
 &nbsp;
 
-### Optimistic Locking
+#### Optimistic Locking
 
 This is provided by LAC, and currently under investigation.
 
 &nbsp;
 
-### Column Level Security
+#### Column Level Security
 
 Both provide role-based row security.  Additionally, LAC provides role-based column security.
 
 &nbsp;
 
-### Open Source Stability
+### API Logic Server Only
+
+#### Open Source Stability
 
 API Logic Server is open source.  Besides obvious pricing advantages, open source is not subject to business cycles and whims of vendors.
 
 &nbsp;
 
-### Standards: Dev, Deployment
+#### Standard Dev, Deploy
 
 API Logic Server does not provide a "studio UI", instead using a [Standard IDE](../IDE-Customize){:target="_blank" rel="noopener"} using [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"}.  This leverages signficant tooling, such as **standard debuggers and source control**.
 
@@ -74,7 +78,7 @@ API Logic Server leverages [containers for Dev and Deploy](../DevOps-Containers)
 
 &nbsp;
 
-### Python vs. JavaScript
+#### Python vs. JavaScript
 
 Both products provide a code-by-exception approach for APIs and logic.  API Logic Server uses Python.  While this may be new to some shops, the general approach is declarative using [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"} and scripting language.  This level of Python is extremely easy to pick up.
 
