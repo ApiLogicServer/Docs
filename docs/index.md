@@ -300,6 +300,8 @@ We have tested several databases - see [status here.](Database-Connectivity)
 
 We are tracking [issues in git](https://github.com/valhuber/ApiLogicServer/issues){:target="_blank" rel="noopener"}.
 
+We communicate [via slack](https://join.slack.com/t/apilogicserver/signup?x=x-p3388652117142-3395302306098-5241761647201).
+
  &nbsp;
 
 ### Acknowledgements
