@@ -78,7 +78,7 @@ API Logic Server leverages [containers for Dev and Deploy](../DevOps-Containers)
 
 &nbsp;
 
-#### Python vs. JavaScript
+#### Python (as a DSL)
 
 Both products provide a code-by-exception approach for APIs and logic.  API Logic Server uses Python.  While this may be new to some shops, the general approach is declarative using [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"} and scripting language.  This level of Python is extremely easy to pick up.
 
