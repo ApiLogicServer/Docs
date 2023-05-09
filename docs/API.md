@@ -42,7 +42,7 @@ Start the server, and open your Browser at `localhost:5656`.  Or, explore the sa
 
       *Provider-defined* APIs are suitable for in-house use.
       
-      For external use, *Consumer-defined* APIs can __reduce network traffic__ and __minimize organizational dependencies.__
+      For external use, *Consumer-defined* APIs can __reduce network traffic__ and __minimize organizational dependencies with _self-service APIs_.__
 
 Consider 2 classes of APIs:
 
@@ -54,9 +54,10 @@ Consider 2 classes of APIs:
 
 That leads to a second class of APIs such as GraphQL and [JSON:API](https://jsonapi.org){:target="_blank" rel="noopener"}:
 
-* ***Consumer-Defined APIs*** enable clients to provide parameters for exactly the fields and related data they need
+* ***Consumer-Defined APIs*** enable clients to provide parameters for exactly the fields and related data they need.  This can:
 
-  * This can __reduce network traffic__ and __minimize organizational dependencies.__
+    * __Reduce network traffic__ by eliminating multiple API calls, or calls for excessive data, and
+    * __Minimize organizational dependencies with _self-service APIs_.__
 
 &nbsp;
 

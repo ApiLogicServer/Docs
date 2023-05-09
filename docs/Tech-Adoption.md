@@ -104,9 +104,9 @@ In particular:
 
 * **Business Users**
 
-   * Can read rules (e.g. identify that *"the tax calculation is missing"*).  For more information, see [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"}
-   
-   * Oo not need to load an IDE - they can access the project on GitHub and use Shift + "." to view the rules, and the [BDD Report](../Behave-Logic-Report){:target="_blank" rel="noopener"}
+      * Can _read_ rules (e.g. identify that *"the tax calculation is missing"*).  For more information, see [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"}.
+      
+      * Oo not need to load an IDE - they can access the project on GitHub and use Shift + "." to view the rules, and the [BDD Report](../Behave-Logic-Report){:target="_blank" rel="noopener"}.
 
 * **Power Users** will be very comfortable with Python as a Scripting language, using the examples to quick become adept with enhancing declarative services
 
