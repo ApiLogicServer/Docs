@@ -1,23 +1,35 @@
 ## Standards-based
 
 Development and runtime architectures are what programmers expect:
-* As noted above, the [Key Project Components](#key-project-components) are standard Python packages for APIs, data access.
+
+* As noted above, the [Key Project Components](../Architecture-What-Is){:target="_blank" rel="noopener"} are standard Python packages for APIs, data access.
 * Projects developed in standard IDEs, and deployed in standard containers.
 
 ## Near-Zero Learning Curve - no frameworks, etc
 
 ApiLogicServer has a near-zero learning curve:
 
-* You do not need to know Python, SQLAlchemy, React, Flask, or JSON / APIs to get started.  
+* You do not need to know Python, SQLAlchemy, React, Flask, or JSON / APIs to get started. 
+
 * You should have a basic background in database - familiar with terms like Table, Column, Foreign Key.
 
 &nbsp;
 
 ### Deliver While Learning
 
-You have a running project in moments, customizable without requiring deep understanding of any of these frameworks.  Such instantly-availabe projects are valuable to Custom App Dev and Business Users, who can begin with these while you gain familiarity with Flask and SQLAlchemy.
+You have a running project in moments, customizable without requiring deep understanding of any of these frameworks.  Such instantly-available projects are valuable to Custom App Developers and Business Users, who can begin with these while you gain familiarity with Flask and SQLAlchemy.
 
 Making extensions, of course, begins to require more technical background.
+
+&nbsp;
+
+#### Facilitate Python Adoption
+
+For organizations seeking to leverage the value of Python, API Logic Server enables you to 
+
+* Start without Python background, and 
+
+* Use the created systems / examples to learn Python, based on working software
 
 &nbsp;
 
@@ -75,3 +87,29 @@ But automation can help - since your declarative models only stipulate _what_, t
 Requirements risk can represent an even greater challenge.  The reality that users may only realize the real requirements when they actually use running screens with real data.  The problem, of course, is that these are often available after considerable time and effort.
 
 That's why _working software **now**_ is so important - users get screens right away.  These can identify data model errors (_"hey... customers have more than one address"_) or business logic requirements (_"hey.... we need to check the credit limit"_).
+
+&nbsp;
+
+## Unifying User Groups
+
+While it may at first seem that an IDE, language-based approach may be for developers only, this is not the case:
+
+| Python Level | Users | Usage |
+| :--- |:---|:---|
+| **DSL** | Business Users | - Read Rules<br>- BDD |
+| **Scripting** | Power Users | - Logic Events<br>- Customize Admin App |
+| **OO Language** | Developers | - Full Capability |
+
+In particular:
+
+* **Business Users**
+
+   * Can read rules (e.g. identify that *"the tax calculation is missing"*).  For more information, see [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"}
+   
+   * Oo not need to load an IDE - they can access the project on GitHub and use Shift + "." to view the rules, and the [BDD Report](../Behave-Logic-Report){:target="_blank" rel="noopener"}
+
+* **Power Users** will be very comfortable with Python as a Scripting language, using the examples to quick become adept with enhancing declarative services
+
+This is one of the major advantages of declarative.  Unlike procedural code that is impenetrable to Business / Power users, declarative logic means anyone in the organization can go directly to the source
+
+
