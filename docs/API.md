@@ -38,11 +38,25 @@ Start the server, and open your Browser at `localhost:5656`.  Or, explore the sa
 
 ## Provider-Defined vs. Consumer-Defined
 
-JSON:APIs are interesting because (somewhat like GraphQL) they are _Consumer-Defined,_ to __reduce network traffic__ and __minimize organizational dependencies.__
+!!! pied-piper ":bulb: TL;DR - Consumer-Defined APIs: __reduce network traffic__, __minimize organizational dependencies.__"
 
-Contrast these to Provider-Defined APIs.  These can be simpler for internal users, whose needs can be determined.
+      *Provider-defined* APIs are suitable for in-house use.
+      
+      For external use, *Consumer-defined* APIs can __reduce network traffic__ and __minimize organizational dependencies.__
 
-But for a wider class of consumers (e.g., business partners), providers typically cannot predict consumer needs.  Consumers often resort to making multiple calls to obtain the data they need, or invoke APIs that return too much data.  These can increase network traffic.
+Consider 2 classes of APIs:
+
+* ***Provider-Defined APIs*** are predefined by server developers
+
+    *  These can be **simpler for internal users**, whose needs can be determined in advance.
+
+> But for a wider class of consumers (e.g., business partners, or other teams in a large organization), providers typically cannot predict consumer needs.  Given only predefined provider APIs, consumers are often forced to make multiple calls to obtain the data they need, or invoke APIs that return too much data.  These can increase network traffic.
+
+That leads to a second class of APIs such as GraphQL and [JSON:API](https://jsonapi.org){:target="_blank" rel="noopener"}:
+
+* ***Consumer-Defined APIs*** enable clients to provide parameters for exactly the fields and related data they need
+
+  * This can __reduce network traffic__ and __minimize organizational dependencies.__
 
 &nbsp;
 

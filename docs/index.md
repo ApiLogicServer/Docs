@@ -218,6 +218,8 @@ There are a variety of ways for getting value from API Logic Server:
 
 * __Admin App for your database__ - the Admin App is a create way to navigate through your database, particularly to explore data relationships
 
+* __Agile Integrations__ replace cumbersome and inefficent ETL approaches with [Agile Integrations](Tech-Agile-Integrations){:target="_blank" rel="noopener"}
+
 * __Data Repair__ - using the Admin App with logic to ensure integrity, repair data for which you may not have had time to create custom apps
 
 * __Project Creation__ - even if you do not intend to use the API, Admin App or logic, you can use API Logic Server to create projects you then edit by hand.  Created projects will include the SQLAlchemy Data Models, and project structure

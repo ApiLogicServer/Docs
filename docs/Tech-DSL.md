@@ -1,17 +1,24 @@
-!!! pied-piper ":bulb: TL;DR - Use Python (code completion) to declare behavior"
+!!! pied-piper ":bulb: TL;DR - Use Python (code completion, named arguments) to declare behavior"
 
-    Declarative specifications are captured in Python, providing:
+    Python works well at multiple levels:
+    
+    1. a **full OO language** for professional Developers
 
-    * Natural source control, code review etc.
+    2. a **scripting language** for Power Users
+    
+    3. a **Domain Specific Language (DSL)** for **capturing *declarative* logic and security specifications**, accessible to Business Users, providing:
 
-    * Type Checking, based on IDE support for Python typing
+        * Natural source control, code review etc.
 
-    * Lookups, based on IDE support for Code Completion
+        * Type Checking, based on IDE support for Python typing
 
+        * Lookups, based on IDE support for Code Completion
 
-Declarative is a powerful technology, designed to provide agility and transparency with high level definitions.  Such definitions comprise a DSL - a Domain Specific Language.  This article explores how such language elements are captured and stored.
+Declarative is a powerful technology, designed to provide agility and transparency with high level definitions.  Such definitions comprise a DSL - a Domain Specific Language.  This article explores how such language elements can be captured and stored using Python as a 4GL.
 
-## API Logic Server Declarative
+&nbsp;
+
+## API Logic Server is Declarative
 
 API Logic Server provides declarative support for:
 
@@ -23,9 +30,15 @@ API Logic Server provides declarative support for:
 
 &nbsp;
 
+### How To Capture Declarations
+
+Declarations express and document system behavior, so it's important how they are captured.  The following sections explore capturing these via a User Interface, or a programming language.
+
+&nbsp;
+
 ## Capture with a User Interface
 
-Declarations express and document system behavior, so it's important how they are captured.  One way is a user interface.  This affords the some opportunities to make things simple, but offer some challenges on persisting the language elements (meta data).  These are described below.
+One way is a user interface.  This affords the some opportunities to make things simple, but offer some challenges on persisting the language elements (meta data).  These are described below.
 
 ### Type checking, Lookups
 
@@ -49,23 +62,31 @@ However, such files represent a transformation from what the developer supplied 
 
 ## Capture as Python Code
 
-A completely different approach is to abandon a User Interface, and use the IDE and Python.  So, for example, a rule looks like this:
+A completely different approach is to abandon a User Interface, and use the IDE and Python.  So, for example, we can capture rules like this:
 
 ![Declaring Rules](images/logic/rule-declaration.png)
 
-This shows how a modern IDE provides virtually all of the advantages of a User Interface.
+Consider the rule that defines the customer balance.  It looks like design spec, or pseudocode - except it's fully executable:
 
-### Rule Learning
+```python
+        Rule.sum(derive=models.Customer.Balance,        # adjust iff...
+            as_sum_of=models.Order.AmountTotal,
+            where=lambda row: row.ShippedDate is None)  # adjusts...
+```
 
-Observe how code completion lists the possible rules, with documentation on their meaning, examples, etc.
+The following subsections explore how a modern IDE provides virtually all of the advantages of a User Interface.
+
+### Rule Type Discovery
+
+Observe how **code completion** lists the possible rule types, with documentation on their meaning, examples, etc.
 
 ### Transparent
 
-Python named arguments make the rules read very much like the design comments at the top of the screen shot.
+Python **named arguments** make the rules read very much like the design comments at the top of the screen shot.
 
 ### Code Completion
 
-Code completion addresses not only rule types, but the list of valid tables and columns.  These are derived from the (system-generated) `database/models.py` file.
+Code completion addresses not only rule types, but the *list of valid tables and columns*.  These are derived from the (system-generated) `database/models.py` file.
 
 ### Type Checking
 
@@ -84,3 +105,4 @@ A huge advantage is that debugging is built into the same IDE used for editing. 
 ### Integrated, Consistent Environment
 
 Well, that's what IDE means, isn't it?  Using Python as a DSL expands our notion of development from code, to include DSLs, all in one integrated environment.
+
