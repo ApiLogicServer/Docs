@@ -6,7 +6,7 @@ For reference, projects are created with this structure:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/generated-project.png?raw=true"></figure>
 
-To create using the source code (e.g, from an IDE), using the ```venv``` created from above:
+To create using the source code (e.g, from an IDE), using the ```venv``` created from above (note: to get the full log, you must must set `APILOGICSERVER_DEBUG` as in Run Config `1 - Create ApiLogicProject`):
 
 ```bash
 (venv) val@Vals-MPB-14 ApiLogicServer % ApiLogicServer create
@@ -212,8 +212,8 @@ The essence of the process is illustrated in the `key_module_map` at the end of 
     * It dynamically loads the created `models.py`
     * And builds the model using metadata create by the SAFRS package
 
-For more information, see the comments in `create_models_py()`, easily reached via the `key_module_map`
-in `ApiLogicServer/api_logic_cli/cli.py`:
+
+For more information, see the comments in `create_models_py()`, easily reached via the `key_module_map` in `ApiLogicServer/api_logic_cli/cli.py`:
 
 ```python
 def key_module_map():
@@ -234,13 +234,19 @@ def key_module_map():
     api_expose_api_models.create()                              # creates api/expose_api_models.py, key input to SAFRS        
     ui_admin_creator.create()                                   # creates ui/admin/admin.yaml from resource_list
     get_abs_db_url()                                            # nw set here, dbname```
+```
+
+&nbsp;
 
 #### Create `resource_list` - dynamic import database/models.py, inspect each class
+
 Called from `create_models`', this dynamically imports
 the created (or, rebuild, the existing) `models.py`,
 and creates teh `resource_list` used by the creator modules.
 
 > create_resource_model_from_safrs is a complex process due to dynamic import of models.py - failures may manifest here.
+
+![create resource list](images/internals/create_resource_list.png)
 
 #### If option: ```use_model```
 SQL dialects and bugs can result in failures here.  The system therefore enables you to provide your own model, as described in [TroubleShooting](wiki/Troubleshooting#manual-model-repair).
