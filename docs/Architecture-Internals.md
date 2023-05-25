@@ -133,6 +133,22 @@ If yu have more than one, separate them with *colon*s.
 
 > **Note:** you will need to perform a similar process if you want an *installed* local version of ApiLogicServer using the `tests/build_and_test` procedure.
 
+This procedure sometimes fails.  You can also try adding your package to the `env' in the Run Config:
+
+```json
+        {
+            "name": "No Security ApiLogicServer (e.g., simpler swagger)",
+            "type": "python",
+            "request": "launch",
+            "program": "api_logic_server_run.py",
+            "redirectOutput": true,
+            "env": {"PYTHONPATH": "/Users/val/dev/safrs", "SECURITY_ENABLED": "False", "PYTHONHASHSEED": "0", "OPT_LOCKING": "optional", "verbose": "True"},
+            "justMyCode": false,
+            "args": ["--flask_host=localhost", "--port=5656", "--swagger_host=localhost", "--verbose=False"],
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+```
 &nbsp;
 
 ### Simpler for LogicBank: local install
