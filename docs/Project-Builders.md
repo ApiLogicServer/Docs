@@ -1,8 +1,75 @@
+The **`extended_builder`** option enables you to extend the creation process with **user extensible creation**. It is intended to accommodate cases where DBMSs provide proprietary features - such as _Table Valued Functions_ (TVFs) - that should be exposed as APIs.
+
+# Overview
+
+Here is a general overview of creating projects using an extended builder.
 
 
-# User Extensible Creation
+## 1. Create `your_builder.py`
 
-The **`extended_builder`** option enables you to extend the creation process. It is intended to accommodate cases where DBMSs provide proprietary features - such as _Table Valued Functions_ (TVFs) - that should be exposed as APIs.
+This is a Python file that creates `<project_directory>/api/your_api_extension.py`, with:
+
+```python
+def extended_builder(db_url, project_directory):
+    """ called by ApiLogicServer CLI -- scan db_url schema, create your_api_extension.py
+            for each database object:
+                class t_<db-object-name> -- the model
+                class <db-object-name>   -- the service
+        args
+            db_url - use this to open the target database, e.g. for meta data
+            project_directory - the created project... create / alter files here
+
+    """
+```
+
+## 2. Create Project
+
+Specify the `--extended_builder=your_builder.py` option.  The system will invoke your builder, which operates as described below.
+
+### 2a. Database Introspection
+
+Use the `db_url` to open your database, and find database objects you wish to expose
+
+### 2b. Project File Creation
+
+Create `<project_directory>/api/your_api_extension.py`.  This executes your api extensions.  It generally contains
+
+* SQLAlchemy class definitions for results, e.g.
+
+```python
+t_udfEmployeeInLocation = Table(  # define result for udfEmployeeInLocation
+	"udfEmployeeInLocation", metadata,
+	Column("Id", Integer),
+	Column("Location", String(50)),
+	Column("Name", String(50)))
+```
+
+* API Implementations, e.g.
+
+```python
+class udfEmployeeInLocation(JABase):
+	"""
+		description: define service for udfEmployeeInLocation
+	"""
+
+	_s_type = "udfEmployeeInLocation"
+
+	@staticmethod
+	@jsonapi_rpc(http_methods=['POST'], valid_jsonapi=False)
+	def udfEmployeeInLocation(location):
+		"""
+		description: expose TVF - udfEmployeeInLocation
+		args:
+			location : value
+		"""
+```
+
+### 2c. Runtime activation
+
+Ensure `your_api_extension.py` is activated at server startup time, e.g. by updating `<project_directory>/api/customize_api.py`
+
+
+# Example - TVF
 
 Install as usual, and create your project using the `extended_builder` option, e.g:
 
@@ -20,7 +87,7 @@ ApiLogicServer run --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB
    --project_name=TVF
 ```
 
-to designate a file that implements your builder. After the creation process, the system will invoke `extended_builder(db_url, project_directory)` so you can add / alter files as required.
+to designate a file that implements your builder. During the creation process, the system will invoke `extended_builder(db_url, project_directory)` so you can add / alter files as required.  In this example, the output file `<project_directory>/api/your_api_extension.py` is named `<project_directory>/api/tvf.py`
 
 > Full automation for specific DBMS features was considered, but could not conceivably accommodate all the DBMS features that might be desired. We therefore provide this _extensible automation_ approach.
 
