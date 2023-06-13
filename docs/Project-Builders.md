@@ -74,7 +74,7 @@ Ensure `your_api_extension.py` is activated at server startup time, e.g. by upda
 Install as usual, and create your project using the `extended_builder` option, e.g:
 
 ```
-ApiLogicServer run --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB?driver=ODBC+Driver+17+for+SQL+Server?trusted_connection=no' \
+ApiLogicServer run --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no' \
    --extended_builder=extended_builder.py \
    --project_name=TVF
 ```
@@ -82,7 +82,7 @@ ApiLogicServer run --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB
 Or, use the default extended_builder:
 
 ```
-ApiLogicServer run --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB?driver=ODBC+Driver+17+for+SQL+Server?trusted_connection=no' \
+ApiLogicServer create --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no' \
    --extended_builder='*' \
    --project_name=TVF
 ```
@@ -99,7 +99,7 @@ Let's illustrate the use of extensible automation with this example.  Create the
 ```
 docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
 
-ApiLogicServer create --project_name=/localhost/sqlserver-types --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB?driver=ODBC+Driver+17+for+SQL+Server?trusted_connection=no
+ApiLogicServer create --project_name=/localhost/sqlserver-types --extended_builder='*' --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB?driver=ODBC+Driver+17+for+SQL+Server?trusted_connection=no
 ```
 
 This uses an example extended builder can be found [here](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/extended_builder.py). You can copy this file to a local directory, alter it as required, and specify its location in the CLI argument above. It is loosely based on [this example](https://gist.github.com/thomaxxl/f8cff63a80979b4a4da70fd835ec2b99).
