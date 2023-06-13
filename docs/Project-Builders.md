@@ -74,7 +74,7 @@ Ensure `your_api_extension.py` is activated at server startup time, e.g. by upda
 Install as usual, and create your project using the `extended_builder` option, e.g:
 
 ```
-ApiLogicServer run --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no' \
+ApiLogicServer run --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no' \
    --extended_builder=extended_builder.py \
    --project_name=TVF
 ```
@@ -82,7 +82,7 @@ ApiLogicServer run --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND
 Or, use the default extended_builder:
 
 ```
-ApiLogicServer create --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no' \
+ApiLogicServer create --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no' \
    --extended_builder='*' \
    --project_name=TVF
 ```
