@@ -19,12 +19,17 @@ Logic Bank operates as shown above:
 `Mapped Tables`, so executes on this ```session.commit()```
     
 
- 4. The logic engine operates much like a spreadsheet:
-    - **watch** for changes -  at the ___attribute___ level
-    - **react** by running rules that referenced changed attributes, which can
-    - **chain** to still other attributes that refer to
+ 4. The logic engine operates in 2 phases:
+
+    a. ***Initial Loop*** - the logic engine operates much like a spreadsheet, executing the following on each inserted, updated or deleted row:
+
+      * **watch** for changes -  at the ___attribute___ level
+      * **react** by running rules that referenced changed attributes, which can
+      * **chain** to still other attributes that refer to
 _those_ changes.  Note these might be in different tables,
 providing automation for _multi-table logic_
+
+    b. ***Commit Loop*** after *all* the rows have been initially processed, the engine executes commit constraints and events for each table that defines them
 
 Logic does not apply to updates outside SQLAlchemy,
 nor to SQLAlchemy batch updates or unmapped sql updates.

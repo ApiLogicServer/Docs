@@ -62,6 +62,7 @@ For this typical check credit design (in blue), the __5 rules shown below (lines
 <details markdown>
 
   <summary>See the code here</summary>
+  
 ```python
 """
 Logic Design ("Cocktail Napkin Design") for User Story Check Credit
