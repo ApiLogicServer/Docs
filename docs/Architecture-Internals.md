@@ -15,37 +15,34 @@ Follow these steps to:
 
 To create the projects:
 
-1. Create an empty folder (e.g., `~/dev`)
-2. Download and run [the install-ApiLogicServer-dev procedure](https://github.com/valhuber/ApiLogicServer/blob/main/install-ApiLogicServer-dev.sh) (note: Windows users use `install-ApiLogicServer-dev.ps1`), e.g.:
+1. Create an empty folder (e.g., `~/dev/ApiLogicServer`)
+2. Optionally, install the product there (creating a venv)
+      * You can use this venv as a shared venv for testing
+3. Download and run [the install-ApiLogicServer-dev procedure](https://github.com/valhuber/ApiLogicServer/blob/main/install-ApiLogicServer-dev.sh) (note: Windows users use `install-ApiLogicServer-dev.ps1`), e.g.:
 
 ```bash title="Install API Logic Server Development environment"
-cd ~/dev  # project directories created here
+cd ~/dev/ApiLogicServer/  # project directories created here
 sh install-ApiLogicServer-dev.sh vscode
 ```
 
-This will use `git clone` to create folders in `dev:`
-  
-  * ApiLogicServer
-  * safrs-react-admin, and 
-  * servers
+This will use `git clone` to create folders in `~/dev/ApiLogicServer/ApiLogicServer-dev/org/:`
+
+![dev structure](images/internals/dev-structure.png)
   
 It's basically straightforward, _though note_ the `cp` command which copies the `safrs-react-admin` runtime to API Logic Server for subsequent creation of API Logic Projects:
 
 ```bash
-    mkdir servers    # good place to create ApiLogicProjects
-    git clone https://github.com/valhuber/ApiLogicServer
-    git clone https://github.com/thomaxxl/safrs-react-admin
-    cd ApiLogicServer
-    cp -r ../safrs-react-admin/build api_logic_server_cli/create_from_model/safrs-react-admin-npm-build
+    echo "\ncopying build (sra - safrs-react-admin) --> ApiLogicServer"
+    cp -r ../build api_logic_server_cli/create_from_model/safrs-react-admin-npm-build
 ```
 
 > Note: `curl` must be installed for this procedure.
 
 &nbsp;
 
-## Open `~/dev/ApiLogicServer` in your IDE
+## Open the dev workspace in your IDE
 
-`install-ApiLogicServer...` will create a project, and open it VS Code or PyCharm.
+`install-ApiLogicServer...` will create a project (`~/dev/ApiLogicServer/ApiLogicServer-dev/org/ApiLogicServer-src/.vscode/ApiLogicServerDev.code-workspace`), and open it VS Code or PyCharm.
 
 Python requires a virtual environment; the procedure differs for `vscode` vs. `charm`:
 
@@ -54,7 +51,7 @@ Python requires a virtual environment; the procedure differs for `vscode` vs. `c
 
 It should look something like this:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/vscode/dev-project.png?raw=true"></figure>
+![dev structure](images/internals/dev-project.png)
 
 &nbsp;
 
