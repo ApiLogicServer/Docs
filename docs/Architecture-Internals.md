@@ -18,7 +18,7 @@ To create the projects:
 1. Create an empty folder (e.g., `~/dev/ApiLogicServer`)
 2. Optionally, install the product there (creating a venv)
       * You can use this venv as a shared venv for testing
-3. Download and run [the install-ApiLogicServer-dev procedure](https://github.com/valhuber/ApiLogicServer/blob/main/install-ApiLogicServer-dev.sh) (note: Windows users use `install-ApiLogicServer-dev.ps1`), e.g.:
+3. Download and run [the install-ApiLogicServer-dev procedure](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/install-ApiLogicServer-dev.sh) (note: Windows users use `install-ApiLogicServer-dev.ps1`), e.g.:
 
 ```bash title="Install API Logic Server Development environment"
 cd ~/dev/ApiLogicServer/  # project directories created here
