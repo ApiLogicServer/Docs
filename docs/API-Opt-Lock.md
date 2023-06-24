@@ -130,6 +130,9 @@ The approach is summarized in the table below.  See the the code in [`api/system
 
 &nbsp;
 
+![Optimistic Locking Implementation](images/api/opt-locking-impl.png)
+&nbsp;
+
 ----
 &nbsp;
 
