@@ -32,6 +32,7 @@ nav:
     - "Automatic Multi-Table API": API.md
     - "Multi-Table APIs": API-Multi-Table.md
     - "Custom APIs": API-Customize.md
+    - "Optimistic Locking": API-Opt-Lock.md
   - 3. Logic:
     - "Logic: Why": Logic-Why.md
     - "What Are the Rules": Logic.md
