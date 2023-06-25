@@ -298,9 +298,11 @@ Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServ
 
 ### Status
 
-We have tested several databases - see [status here.](Database-Connectivity)
+We have tested several databases - see [status here.](Database-Connectivity).
 
-We are tracking [issues in git](https://github.com/valhuber/ApiLogicServer/issues){:target="_blank" rel="noopener"}.
+We track [issues in git](https://github.com/ApiLogicServer/ApiLogicServer-src/issues){:target="_blank" rel="noopener"} (formerly [here](https://github.com/valhuber/ApiLogicServer/issues){:target="_blank" rel="noopener"}).
+
+
 
 We communicate [via slack](https://join.slack.com/t/apilogicserver/signup?x=x-p3388652117142-3395302306098-5241761647201).
 
