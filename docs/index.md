@@ -224,7 +224,7 @@ There are a variety of ways for getting value from API Logic Server:
 
 * __Project Creation__ - even if you do not intend to use the API, Admin App or logic, you can use API Logic Server to create projects you then edit by hand.  Created projects will include the SQLAlchemy Data Models, and project structure
 
-* __Learning__ - explore the [Learning Center](https://github.com/ApiLogicServer/.github/blob/main/profile/README.md){:target="_blank" rel="noopener"} to learn about key concepts of Flask and SQLAlchemy
+* __Learning__ - explore the [Learning Center](https://github.com/ApiLogicServer/API_Fiddle){:target="_blank" rel="noopener"} to learn about key concepts of Flask and SQLAlchemy
 
 &nbsp;
 
