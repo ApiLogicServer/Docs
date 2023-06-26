@@ -27,7 +27,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
         * Deploy: **containerize** your project - deploy on-premise or to the cloud <span style="background-color:Azure;">(Azure, AWS, etc)</span>.
         
-        * *Flexible as a framework, Faster then Low Code for Admin Apps*
+        * *Flexible as a framework, Faster than Low Code for Admin Apps*
 
     3. ***Declare* security and multi-table constraint/derivation logic**, using **declarative spreadsheet-like rules**.  Addressing the backend *half* of your system, logic consists of rules, extensible with Python event code.
 
