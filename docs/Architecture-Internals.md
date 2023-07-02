@@ -299,12 +299,9 @@ Using the above, use **Run Config:** `SQL Server nw (bypass vsc bug)` on ApiLogi
 
 &nbsp;
 
-Running a Docker with ODBC (currently **not arm**), a test might be:
+Running a ***Docker with ODBC*** (currently **not arm**), a test might be:
 
 ```
-ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw
-ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw-ip
-
 # docker requires IP addresses (note the different odbc driver version):
 ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyodbc://sa:Posey3861@10.0.0.234:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no
 
@@ -312,6 +309,12 @@ ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyod
 ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker
 ```
 
+Note: since the docker image is odbc17, the following commands fail in docker, but run in pip install when you've installed odbc18:
+
+```
+ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw
+ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw-ip
+```
 
 &nbsp;
 
