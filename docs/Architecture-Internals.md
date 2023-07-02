@@ -63,6 +63,23 @@ Once in your IDE, you can run the pre-defined launch configuration `0 - Create a
 
 &nbsp;
 
+## Introduce enhancements, test
+
+Add new code to the sample to get it working "manually", then:
+
+1. Run the behave tests to ensure it all works
+
+2. Update  the behave tests for enhancements
+
+&nbsp;
+
+## Update CLI creation
+
+Update `api_logic_server_cli/project_prototype` (and probably `api_logic_server_cli/project_prototype_nw`) for enchanced creation
+
+&nbsp;
+
+
 ## Build and Test
 
 As of version 6.02.20, test automation ([located here](https://github.com/valhuber/ApiLogicServer/tree/main/tests/build_and_test)) replaces a series of manually executed scripts ([located here](https://github.com/valhuber/ApiLogicServer/tree/main/tests/creation_tests)).  These have been verified on Mac, Linux (Ubuntu) and Windows.
@@ -234,6 +251,54 @@ sh /home/api_logic_server/bin/run-project.sh https://github.com/valhuber/Tutoria
 ```
 
 In both cases, the git load is performed by `bin/run-project.sh`, which you can explore on github.
+
+&nbsp;
+
+## SQL Server testing with VSC
+
+VSCode has a bug where it cannot parse Run Configs for SqlSvr:
+
+```bash
+zsh: no matches found: --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no
+```
+
+To get around this, hacks were made to the Run Configs, and the CLI, as described below.
+
+The run config has entries like this:
+
+```
+        {
+            "name": "SQL Server nw (bypass vsc bug)",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/api_logic_server_cli",
+            "program": "cli.py",
+            "redirectOutput": true,
+            "argsExpansion": "none",
+            "args": ["create",
+                "--project_name=../../../servers/sqlsvr_nw",
+                "--db_url=sqlsvr-nw"
+            ],
+            "console": "integratedTerminal"
+        },
+```
+
+The CLI detects db_url's like sqlsvr-nw, and converts them to strings like this:
+```
+    elif project.db_url.startswith('sqlsvr-sample'):  # work-around - VSCode run config arg parsing
+        rtn_abs_db_url = 'mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
+```
+
+So, a test might be:
+
+```
+ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw
+ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw-ip
+
+# docker requires IP addresses (note the different odbc driver version):
+ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyodbc://sa:Posey3861@10.0.0.234:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no
+```
+
 
 &nbsp;
 
