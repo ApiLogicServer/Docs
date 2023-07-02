@@ -295,11 +295,14 @@ The CLI detects db_url's like sqlsvr-nw, and converts them to strings like this:
         rtn_abs_db_url = rtn_abs_db_url.replace("HOST_IP", host_ip)
 ```
 
-Using the above, use **Run Config:** `SQL Server nw (bypass vsc bug)` on ApiLogicServer-dev, presuming your machine has odbc **18** (verify with `brew which`).
+So, on ApiLogicServer-dev:
+
+1. Verify your machine has odbc **18** (verify with `brew which`)
+2. Use **Run Config:** `SQL Server nw (bypass vsc bug)`
 
 &nbsp;
 
-Running a ***Docker with ODBC*** (currently **not arm**), a test might be:
+Alternatively, you can run a ***Docker with ODBC*** (currently **not arm**), and:
 
 ```
 # docker requires IP addresses (note the different odbc driver version):
