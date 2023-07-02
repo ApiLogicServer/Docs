@@ -286,10 +286,14 @@ The run config has entries like this:
 The CLI detects db_url's like sqlsvr-nw, and converts them to strings like this:
 ```
     elif project.db_url.startswith('sqlsvr-sample'):  # work-around - VSCode run config arg parsing
-        rtn_abs_db_url = 'mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
+        rtn_abs_db_url = 'mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
 ```
 
-So, a test might be:
+Using the above, use **Run Config:** `SQL Server nw (bypass vsc bug)` on ApiLogicServer-dev, presuming your machine has odbc **18** (verify with `brew which`).
+
+&nbsp;
+
+Running a Docker with ODBC (currently **not arm**), a test might be:
 
 ```
 ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw
@@ -297,6 +301,9 @@ ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw-ip
 
 # docker requires IP addresses (note the different odbc driver version):
 ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyodbc://sa:Posey3861@10.0.0.234:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no
+
+# or, using the abbreviation (amd ):
+ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker
 ```
 
 
