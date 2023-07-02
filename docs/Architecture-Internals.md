@@ -258,8 +258,17 @@ In both cases, the git load is performed by `bin/run-project.sh`, which you can 
 
 ### Background
 
-While Sql/Server itself runs nicely under docker, there is considerable complexity in installing OCBC.
+While Sql/Server itself runs nicely under docker, there is considerable complexity in installing OCBC.  As further described below, this led to a number of issues (over and above the several days to discover how to install odbc under docker):
 
+* `pyodbc` not installed by default (per dependence on odbc, which might not be installed and might not be needed)
+
+* ARM docker image does not contain odbc
+
+* multiple docker images
+
+* inconsistent odbc versions between local install (v18) and docker (v17)
+
+I am eager for suggestions to simplify / unify sql/server and odbc usage.  I'd hoped that `mcr.microsoft.com/devcontainers/python:3.11-bullseye` might include odbc, but it did not appear to be the case.  Since this image is considerably larger (1.77G) than python:3.9-slim-bullseye (816M), I went with the docker versions.
 
 &nbsp;
 
@@ -269,7 +278,7 @@ It's not just `pip` - users must install:
 
 * ODBC Driver: [using `brew` as described here](../install-pyodbc){:target="_blank" rel="noopener"}
 
-    * Since this is complicated and large, this is *not* part of either ApiLogicServer-dev, or the local installed version of ApiLogicServer
+    * Since this is complicated and potentially not required, this is *not* part of either ApiLogicServer-dev, or the local installed version of ApiLogicServer
 
 * `pip install pyodbc==4.0.34`
 
@@ -277,19 +286,24 @@ It's not just `pip` - users must install:
 
 #### ApiLogicServer-dev setup
 
-ApiLogicServer-dev `requirements.txt` does **not** install odbc.  If you wish to test Sql/Server in ApiLogicServer-dev, follow the user setup instructions.
+ApiLogicServer-dev `requirements.txt` does **not** install odbc.  If you wish to test Sql/Server in ApiLogicServer-dev, follow the user setup instructions above.
 
 &nbsp;
 
 #### Docker ODBC (not ARM)
 
-The above instructions depend on `brew`, which is not convenient within a dockerfile.  This led to:
+The above instructions depend on `brew`, which is not convenient within a dockerfile.  This led to 2 docker files:
 
 * **Non-ARM:** installed [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"}
+
+    * Note: this took days to discover.  Special thanks to Max Tardideau at [Gallium Data](https://www.galliumdata.com){:target="_blank" rel="noopener"}
 
 * **ARM:** I was not able to get this working, so Sql/Server is not available in ARM Dockers.
 
      * It *is* available for user installs and ApiLogicServer-dev as described above
+
+     * Eg, see [this link](https://learn.microsoft.com/en-us/answers/questions/1180640/issue-install-msodbcsql17-on-docker){:target="_blank" rel="noopener"}
+
 
 &nbsp;
 
@@ -301,6 +315,8 @@ VSCode has a bug where it cannot parse Run Configs for SqlSvr:
 zsh: no matches found: --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no
 ```
 
+&nbsp;
+
 ### Testing
 
 There are several important testing configurations.
@@ -309,7 +325,7 @@ There are several important testing configurations.
 
 #### 1. ApiLogicServer-dev
 
-To get around this, hacks were made to the Run Configs, and the CLI, as described below.
+To get around the *VSC bug*, hacks were made to the Run Configs, and the CLI, as described below.
 
 The run config has entries like this:
 
@@ -330,7 +346,7 @@ The run config has entries like this:
         },
 ```
 
-The CLI detects db_url's like sqlsvr-nw, and converts them to strings like this:
+The CLI detects db_url's like `sqlsvr-nw`, and converts them to strings like this for [Database Connectivity > Docker Databases](../Database-Connectivity/#docker-databases){:target="_blank" rel="noopener"}:
 ```
     elif project.db_url == 'sqlsvr-nw':  # work-around - VSCode run config arg parsing
         rtn_abs_db_url = 'mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
