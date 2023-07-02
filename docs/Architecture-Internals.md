@@ -256,11 +256,58 @@ In both cases, the git load is performed by `bin/run-project.sh`, which you can 
 
 ## SQL Server testing with VSC
 
+### Background
+
+While Sql/Server itself runs nicely under docker, there is considerable complexity in installing OCBC.
+
+
+&nbsp;
+
+#### Complex User Setup: ODBC
+
+It's not just `pip` - users must install:
+
+* ODBC Driver: [using `brew` as described here](../install-pyodbc){:target="_blank" rel="noopener"}
+
+    * Since this is complicated and large, this is *not* part of either ApiLogicServer-dev, or the local installed version of ApiLogicServer
+
+* `pip install pyodbc==4.0.34`
+
+&nbsp;
+
+#### ApiLogicServer-dev setup
+
+ApiLogicServer-dev `requirements.txt` does **not** install odbc.  If you wish to test Sql/Server in ApiLogicServer-dev, follow the user setup instructions.
+
+&nbsp;
+
+#### Docker ODBC (not ARM)
+
+The above instructions depend on `brew`, which is not convenient within a dockerfile.  This led to:
+
+* **Non-ARM:** installed [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"}
+
+* **ARM:** I was not able to get this working, so Sql/Server is not available in ARM Dockers.
+
+     * It *is* available for user installs and ApiLogicServer-dev as described above
+
+&nbsp;
+
+#### VSC Bug - Run Configs
+
 VSCode has a bug where it cannot parse Run Configs for SqlSvr:
 
 ```bash
 zsh: no matches found: --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no
 ```
+
+### Testing
+
+There are several important testing configurations.
+
+&nbsp;
+
+#### 1. ApiLogicServer-dev
 
 To get around this, hacks were made to the Run Configs, and the CLI, as described below.
 
@@ -302,7 +349,20 @@ So, on ApiLogicServer-dev:
 
 &nbsp;
 
-Alternatively, you can run a ***Docker with ODBC*** (currently **not arm**), and:
+
+#### 2. Local `pip` install
+
+Note: since the docker image is odbc17, the following commands fail in docker, but run in pip install when you've installed odbc18:
+
+```
+ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw
+ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw-ip
+```
+
+
+#### 3. Docker (not ARM)
+
+You can run a ***Docker with ODBC*** (currently **not arm**), and:
 
 ```
 # docker requires IP addresses (note the different odbc driver version):
@@ -310,13 +370,6 @@ ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyod
 
 # or, using the abbreviation (amd ):
 ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker
-```
-
-Note: since the docker image is odbc17, the following commands fail in docker, but run in pip install when you've installed odbc18:
-
-```
-ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw
-ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw-ip
 ```
 
 &nbsp;
