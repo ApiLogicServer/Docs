@@ -371,8 +371,7 @@ So, on ApiLogicServer-dev:
 Note: since the docker image is odbc17, the following commands fail in docker, but run in pip install when you've installed odbc18:
 
 ```
-ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw
-ApiLogicServer create --project_name=/localhost/SqlSvr --db_url=sqlsvr-nw-ip
+ApiLogicServer create --project_name=sqlsvr-nw --db_url=sqlsvr-nw
 ```
 
 
