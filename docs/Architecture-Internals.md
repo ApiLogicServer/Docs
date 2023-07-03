@@ -292,7 +292,9 @@ The above instructions depend on `brew`, which is not convenient within a docker
 
 * **Non-ARM:** installed [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"}
 
-    * Note: this took days to discover.  Special thanks to Max Tardideau at [Gallium Data](https://www.galliumdata.com){:target="_blank" rel="noopener"}
+    * Note: this took days to discover.  Special thanks to Max Tardideau at [Gallium Data](https://www.galliumdata.com){:target="_blank" rel="noopener"}.
+
+    * Issue: inconsistent odbc versions (this is odbc17; the arm and local-install versions use odbc18).  The arm procedure builds an image, but fails at runtime with *certificate verify failed:self signed certificate*.
 
 * **ARM:** installed [like this](lhttps://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/arm-slim.Dockerfile){:target="_blank" rel="noopener"}
 
@@ -381,14 +383,14 @@ ApiLogicServer create --project_name=sqlsvr-nw --db_url=sqlsvr-nw
 You can run a ***Docker with ODBC*** (soon for arm), and:
 
 ```
-# arm docker uses odbc18 (issue: currently failing in CLI command parsing - unknown)
-ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyodbc://sa:Posey3861@10.0.0.77:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no
+# arm docker uses odbc18 (note the quotes around the db_url):
+ApiLogicServer create  --project_name=/localhost/sqlserver --db_url='mssql+pyodbc://sa:Posey3861@10.0.0.77:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
 
 # or, using the abbrevation
 ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker-arm
 
 # amd docker requires IP addresses (note the different odbc17 driver version):
-ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyodbc://sa:Posey3861@10.0.0.234:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no
+ApiLogicServer create  --project_name=/localhost/sqlserver --db_url='mssql+pyodbc://sa:Posey3861@10.0.0.234:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no'
 
 # or, using the abbreviation (amd ):
 ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker
