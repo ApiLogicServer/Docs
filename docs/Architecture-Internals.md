@@ -258,17 +258,13 @@ In both cases, the git load is performed by `bin/run-project.sh`, which you can 
 
 ### Background
 
-While Sql/Server itself runs nicely under docker, there is considerable complexity in installing OCBC.  As further described below, this led to a number of issues (over and above the several days to discover how to install odbc under docker):
+While Sql/Server itself runs nicely under docker, there is considerable complexity in installing OCBC.  As further described below, this led to a number of issues (ignoring time spent):
 
-* `pyodbc` not installed by default (per dependence on odbc, which might not be installed and might not be needed)
-
-* ARM docker image does not contain odbc
-
-* multiple docker images
+* `pyodbc` not pip-installed by default (per dependence on odbc, which might not be installed and might not be needed)
 
 * inconsistent odbc versions between local install (v18) and docker (v17)
 
-I am eager for suggestions to simplify / unify sql/server and odbc usage.  I'd hoped that `mcr.microsoft.com/devcontainers/python:3.11-bullseye` might include odbc, but it did not appear to be the case.  Since this image is considerably larger (1.77G) than python:3.9-slim-bullseye (816M), I went with the docker versions.
+I am eager for suggestions to simplify / unify sql/server and odbc usage.  I'd hoped that `mcr.microsoft.com/devcontainers/python:3.11-bullseye` might include odbc, but it did not appear to be the case.  Since this image is considerably larger (1.77G) than python:3.9.4-slim-bullseye (895M), I went with the python versions.
 
 &nbsp;
 
@@ -298,11 +294,11 @@ The above instructions depend on `brew`, which is not convenient within a docker
 
     * Note: this took days to discover.  Special thanks to Max Tardideau at [Gallium Data](https://www.galliumdata.com){:target="_blank" rel="noopener"}
 
-* **ARM:** I was not able to get this working, so Sql/Server is not available in ARM Dockers.
+* **ARM:** installed [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/arm-slim-x.Dockerfile){:target="_blank" rel="noopener"}
 
      * It *is* available for user installs and ApiLogicServer-dev as described above
 
-     * Eg, see [this link](https://learn.microsoft.com/en-us/answers/questions/1180640/issue-install-msodbcsql17-on-docker){:target="_blank" rel="noopener"}
+     * [Special thanks](https://stackoverflow.com/questions/71414579/how-to-install-msodbcsql-in-debian-based-dockerfile-with-an-apple-silicon-host){:target="_blank" rel="noopener"}
 
 
 &nbsp;
@@ -356,11 +352,17 @@ The CLI detects db_url's like `sqlsvr-nw`, and converts them to strings like thi
         if os.getenv('HOST_IP'):
             host_ip = os.getenv('HOST_IP')  # type: ignore # type: str
         rtn_abs_db_url = rtn_abs_db_url.replace("HOST_IP", host_ip)
+    elif project.db_url == 'sqlsvr-nw-docker-arm':  # work-around - VSCode run config arg parsing
+        rtn_abs_db_url = 'mssql+pyodbc://sa:Posey3861@10.0.0.77:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
+        host_ip = "10.0.0.77"  # ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker-arm
+        if os.getenv('HOST_IP'):
+            host_ip = os.getenv('HOST_IP')  # type: ignore # type: str
+        rtn_abs_db_url = rtn_abs_db_url.replace("HOST_IP", host_ip)
 ```
 
 So, on ApiLogicServer-dev:
 
-1. Verify your machine has odbc **18** (verify with `brew which`)
+1. Verify your machine has odbc **18** (using `brew which`)
 2. Use **Run Config:** `SQL Server nw (bypass vsc bug)`
 
 &nbsp;
@@ -375,12 +377,18 @@ ApiLogicServer create --project_name=sqlsvr-nw --db_url=sqlsvr-nw
 ```
 
 
-#### 3. Docker (not ARM)
+#### 3. Docker (ARM soon)
 
-You can run a ***Docker with ODBC*** (currently **not arm**), and:
+You can run a ***Docker with ODBC*** (soon for arm), and:
 
 ```
-# docker requires IP addresses (note the different odbc driver version):
+# arm docker uses odbc18 (currently failing in CLI command parsing - unknown)
+ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyodbc://sa:Posey3861@10.0.0.77:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no
+
+# or, using the abbrevation
+ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker-arm
+
+# amd docker requires IP addresses (note the different odbc17 driver version):
 ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyodbc://sa:Posey3861@10.0.0.234:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no
 
 # or, using the abbreviation (amd ):
