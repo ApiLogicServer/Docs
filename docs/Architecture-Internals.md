@@ -286,7 +286,7 @@ ApiLogicServer-dev `requirements.txt` does **not** install odbc.  If you wish to
 
 &nbsp;
 
-#### Docker ODBC (not ARM)
+#### Docker ODBC (ARM soon)
 
 The above instructions depend on `brew`, which is not convenient within a dockerfile.  This led to 2 docker files:
 
@@ -294,12 +294,11 @@ The above instructions depend on `brew`, which is not convenient within a docker
 
     * Note: this took days to discover.  Special thanks to Max Tardideau at [Gallium Data](https://www.galliumdata.com){:target="_blank" rel="noopener"}
 
-* **ARM:** installed [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/arm-slim-x.Dockerfile){:target="_blank" rel="noopener"}
-
-     * It *is* available for user installs and ApiLogicServer-dev as described above
+* **ARM:** installed [like this](lhttps://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/arm-slim.Dockerfile){:target="_blank" rel="noopener"}
 
      * [Special thanks](https://stackoverflow.com/questions/71414579/how-to-install-msodbcsql-in-debian-based-dockerfile-with-an-apple-silicon-host){:target="_blank" rel="noopener"}
 
+     * Issue: on start, message: *WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested*
 
 &nbsp;
 
@@ -382,7 +381,7 @@ ApiLogicServer create --project_name=sqlsvr-nw --db_url=sqlsvr-nw
 You can run a ***Docker with ODBC*** (soon for arm), and:
 
 ```
-# arm docker uses odbc18 (currently failing in CLI command parsing - unknown)
+# arm docker uses odbc18 (issue: currently failing in CLI command parsing - unknown)
 ApiLogicServer create  --project_name=/localhost/sqlserver --db_url=mssql+pyodbc://sa:Posey3861@10.0.0.77:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no
 
 # or, using the abbrevation
