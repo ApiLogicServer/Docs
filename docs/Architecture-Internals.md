@@ -299,11 +299,15 @@ The above instructions depend on `brew`, which is not convenient within a docker
 
 * **ARM:** installed [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm.Dockerfile){:target="_blank" rel="noopener"}
 
-     * Issue: this image **does not include odbc** since it it **fails with VSC** (Python won't load); here is the current [failing test image for VSC and odbc](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm_x.Dockerfile){:target="_blank" rel="noopener"}
+     * Issue: the image above **does not include odbc** since it it **fails with VSC** (Python won't load - see below), using this [failing test image for VSC and odbc](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm_x.Dockerfile){:target="_blank" rel="noopener"}
 
         * [Special thanks](https://stackoverflow.com/questions/71414579/how-to-install-msodbcsql-in-debian-based-dockerfile-with-an-apple-silicon-host){:target="_blank" rel="noopener"} to Joshua Schlichting and Dale K for odbc approach using `FROM --platform=linux/amd64`
 
-     * Issue: on start, message: *WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested*
+        * That enables odbc access from docker, but observe that the Python extension is disabled in VSCode:
+
+        ![Unable to load Python](images/vscode/python-disabled.png)
+
+    * Issue: on start, message: *WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested*
 
 &nbsp;
 
