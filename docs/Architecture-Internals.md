@@ -317,11 +317,11 @@ The arm version is installed like this: [click to see dockerfile](https://github
 
 odbc inclusion was solved with [this finding](https://stackoverflow.com/questions/71414579/how-to-install-msodbcsql-in-debian-based-dockerfile-with-an-apple-silicon-host){:target="_blank" rel="noopener"}, using `FROM --platform=linux/amd64` (special thanks to Joshua Schlichting and Dale K).
 
-So, we created [this image **with odbc**](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm_x.Dockerfile){:target="_blank" rel="noopener"}.
+So, we created [this dockerfile **with odbc**](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm_x.Dockerfile){:target="_blank" rel="noopener"}.  Use it with a .devcontainer specifying `FROM apilogicserver/api_logic_server_arm_x`, or use [this test project](https://github.com/ApiLogicServer/beta){:target="_blank" rel="noopener"}.
 
 * That does indeed enable odbc access from docker...
 
-* But it ***fails with VSCode*** -- the Python extension is either disabled, or hangs on install (screen shots below), using [this test project](){:target="_blank" rel="noopener"} (**note:** you will need to alter .devcontainer/ForVSCode.dockerfile -- `FROM apilogicserver/api_logic_server_arm_x`)
+* But it ***fails with VSCode*** -- the Python extension is either disabled, or hangs on install (screen shots below).
 
 ![Unable to load Python](images/vscode/python-disabled.png)
 
