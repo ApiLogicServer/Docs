@@ -264,6 +264,8 @@ While Sql/Server itself runs nicely under docker, there is considerable complexi
 
 * multiple docker images (arm, amd)
 
+* arm image unable to load odbc *and* run in VSCode .devcontainer
+
 I am eager for suggestions to simplify / unify sql/server and odbc usage.  I'd hoped that `mcr.microsoft.com/devcontainers/python:3.11-bullseye` might include odbc, but it did not appear to be the case.  Since this image is considerably larger (1.77G) than python:3.9.4-slim-bullseye (895M), I went with the python versions.
 
 &nbsp;
@@ -286,7 +288,7 @@ ApiLogicServer-dev `requirements.txt` does **not** install odbc.  If you wish to
 
 &nbsp;
 
-#### Docker ODBC18 (ARM soon)
+#### Docker ODBC18 (ARM pending)
 
 The above instructions depend on `brew`, which is not convenient within a dockerfile.  This led to 2 docker files:
 
@@ -295,9 +297,11 @@ The above instructions depend on `brew`, which is not convenient within a docker
     * Note: this took days to discover.  Special thanks to Max Tardideau at [Gallium Data](https://www.galliumdata.com){:target="_blank" rel="noopener"}.
 
 
-* **ARM:** installed [like this](lhttps://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/arm-slim.Dockerfile){:target="_blank" rel="noopener"}
+* **ARM:** installed [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm.Dockerfile){:target="_blank" rel="noopener"}
 
-     * [Special thanks](https://stackoverflow.com/questions/71414579/how-to-install-msodbcsql-in-debian-based-dockerfile-with-an-apple-silicon-host){:target="_blank" rel="noopener"}
+     * Issue: this image **does not include odbc** since it it **fails with VSC** (Python won't load); here is the current [failing test image for VSC and odbc](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm_x.Dockerfile){:target="_blank" rel="noopener"}
+
+        * [Special thanks](https://stackoverflow.com/questions/71414579/how-to-install-msodbcsql-in-debian-based-dockerfile-with-an-apple-silicon-host){:target="_blank" rel="noopener"} to Joshua Schlichting and Dale K for odbc approach using `FROM --platform=linux/amd64`
 
      * Issue: on start, message: *WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested*
 
@@ -376,9 +380,9 @@ Note: since the docker image is odbc17, the following commands fail in docker, b
 ApiLogicServer create --project_name=sqlsvr-nw --db_url=sqlsvr-nw
 ```
 
-#### 3. Docker (ARM soon)
+#### 3. Docker (ARM pending)
 
-You can run a ***Docker with ODBC*** (soon for arm):
+You can run a ***Docker with ODBC*** (pending for arm with VSC):
 
 ```
 # arm docker uses odbc18 (note the quotes around the db_url):
