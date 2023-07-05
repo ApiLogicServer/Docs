@@ -100,6 +100,70 @@ If you see performance issues in loading the API, explore overriding s_count:
 
 ----
 
+# Appendix: Pre 9.1.0 (SQLAlchemy 2 typing)
+
+Release 9.1.0 enhanced data model attribute / relationship typing, based on SQLAlchemy 2.  Prior to that release, classes were created like this: 
+
+```python
+class Category(SAFRSBase, Base):                #  <--- singular/capitalized tablename
+    __tablename__ = 'CategoryTableNameTest'     #  <--- from schema
+    _s_collection_name = 'Category'             #  <--- defaults from class name - endpoint, admin 
+    __bind_key__ = 'None'
+
+    Id = Column(Integer, primary_key=True)
+    CategoryName = Column('CategoryName_ColumnName', String(8000))  # manual fix - alias
+    Description = Column(String(8000))
+    Client_id = Column(Integer)
+
+    @jsonapi_attr
+    def _check_sum_(self):                      # <--- optimistic locking
+        return None if isinstance(self, flask_sqlalchemy.model.DefaultMeta) \
+            else self._check_sum_property if hasattr(self,"_check_sum_property") \
+                else None  # property does not exist during initialization
+
+    @_check_sum_.setter
+    def _check_sum_(self, value):  # type: ignore [no-redef]
+        self._check_sum_property = value
+
+    S_CheckSum = _check_sum_
+
+
+
+class Order(SAFRSBase, Base):
+    __tablename__ = 'Order'
+    _s_collection_name = 'Order'  # type: ignore
+    __bind_key__ = 'None'
+    __table_args__ = (
+        ForeignKeyConstraint(['Country', 'City'], ['Location.country', 'Location.city']),
+    )
+
+    Id = Column(Integer, primary_key=True)
+    CustomerId = Column(ForeignKey('Customer.Id'), nullable=False, index=True)
+    EmployeeId = Column(ForeignKey('Employee.Id'), nullable=False, index=True)
+    OrderDate = Column(String(8000))
+    RequiredDate = Column(Date)
+    # etd
+    AmountTotal : DECIMAL = Column(DECIMAL(10, 2))  # <--- Observe typing
+    Country = Column(String(50))
+    City = Column(String(50))
+    Ready = Column(Boolean, server_default=text("TRUE"))
+    OrderDetailCount = Column(Integer, server_default=text("0"))
+    CloneFromOrder = Column(ForeignKey('Order.Id'))
+
+    # parent relationships (access parent)
+    Order : Mapped["Order"] = relationship(remote_side=[Id], back_populates=("OrderList"))
+    Location : Mapped["Location"] = relationship(back_populates=("OrderList"))
+    Customer : Mapped["Customer"] = relationship(back_populates=("OrderList"))
+    Employee : Mapped["Employee"] = relationship(back_populates=("OrderList"))
+
+    # child relationships (access children)
+    OrderList : Mapped[List["Order"]] = relationship(back_populates="Order")
+    OrderDetailList : Mapped[List["OrderDetail"]] = relationship(cascade="all, delete", back_populates="Order")  # manual fix
+
+```
+
+&nbsp;
+
 # Appendix: Pre 6.5.0 (End Point names from table names)
 
 This functionality was altered in version 6.4.6.  In prior versions, it operated as shown in the example below:
@@ -128,3 +192,5 @@ Relationship names are also part of your API:
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/model/relns-api-z.png?raw=true"></figure>
 
 > Each database has extensions which can introduce issues in model generation, so facilities are described in [Troubleshooting](../Troubleshooting) to edit models and rebuild.
+
+
