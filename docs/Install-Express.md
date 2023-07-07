@@ -99,7 +99,9 @@ Open the appropriate section below.
       $ # you are now active in the API Logic Server docker container to create projects
     ```
 
-    > Windows: use __Powershell__ (`PWD` is not supported in Command Line)
+    > **Mac ARM:** if you have an M1 or M2 Mac, change the last parameter to `apilogicserver/api_logic_server_arm`
+  
+    > **Windows:** use __Powershell__ (`PWD` is not supported in Command Line)
 
     &nbsp;
 
