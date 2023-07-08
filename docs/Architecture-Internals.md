@@ -65,11 +65,19 @@ Once in your IDE, you can run the pre-defined launch configuration `0 - Create a
 
 ## Introduce enhancements, test
 
-Add new code to the sample to get it working "manually", then:
+Note the Run Configurations below:
 
-1. Run the behave tests to ensure it all works
+![dev structure](images/internals/run-configs.png)
 
-2. Update  the behave tests for enhancements
+Consider using **Run Config #1** to create a project, alter it as desired.  Note:
+
+* You can use the debugger (inside the **IDE dev instance**) to debug the altered project
+
+* The created/altered project is **git-ignored**, so is *not* part of any branch
+
+You can then use **Run Config #2** to test it in a new project / ide instance.
+
+1. Run the **behave tests** to ensure existing functionality is not broken
 
 &nbsp;
 
