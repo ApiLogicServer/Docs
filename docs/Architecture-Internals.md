@@ -75,6 +75,8 @@ Consider using **Run Config #1** to create a project, alter it as desired.  Note
 
 * The created/altered project is **git-ignored**, so is *not* part of any branch
 
+* Note you can create 2 projects, eg, to test base vs. dev
+
 You can then use **Run Config #2** to test it in a new project / ide instance.
 
 1. Run the **behave tests** to ensure existing functionality is not broken
