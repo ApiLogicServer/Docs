@@ -128,6 +128,8 @@ These create projects from docker databases ([see here](../Database-Connectivity
 
     This in fact verifies that the `models.py` file is created and runs.
 
+If you don't wish to install or run the docker databases, edit your `tests/build_and_test/env.py` to disable `do_docker_creation_tests`.
+
 &nbsp;
 
 ## Get Docs working
