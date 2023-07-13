@@ -109,6 +109,9 @@ nav:
     - "Mkdocs Material": Tech-mkdocs-material.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "M1 Mac": Tech-m1.md
+    - Coming Soon:
+      - "Build Image": DevOps-Containers-Build-x.md
+      - "Run Container": DevOps-Containers-Run-x.md
     - Personal:
       - "PyCon23 Talk": Tech-Conference-PyCon23-Talk.md
       - "PyCon23 Tutorial": Tech-Conference-PyCon23-Tutorial.md
