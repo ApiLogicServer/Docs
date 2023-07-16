@@ -156,6 +156,14 @@ docker network create dev-network  # only required once
 docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 --net dev-network -v ${PWD}:/localhost apilogicserver/api_logic_server
 ```
 
+And then, you can refer to the container names (`sqlsvr-container` instead of an IP name) for your database uri, e.g.:
+
+```
+mssql+pyodbc://sa:Posey3861@sqlsvr-container:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no"
+```
+
+&nbsp;
+
 #### VSCode - enable network
 
 If you are running API Logic Server in a container, and accessing dockerized databases, you will need to enable connectivity by uncommenting the indicated line in the diagram below:
