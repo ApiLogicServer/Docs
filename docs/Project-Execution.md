@@ -7,7 +7,7 @@ As described in the Quick Start, Run Configurations are provided to start the se
 
 &nbsp;
 
-### Directly
+### Command Line - Python
 
 Recall that you execute your API Logic Project by __starting the server__, like this:
 
@@ -20,6 +20,7 @@ Note this presumes you have activated your `venv`.  The system also provides she
 sh run.sh  # windows - use run.ps1
 ```
 
+
 Then, __to run the Admin App and Swagger:__
 
 Run your browser at
@@ -28,18 +29,9 @@ Run your browser at
 http://localhost:5656/
 ```
 
-Or, to run the Basic Web App:
-
-```bash
-ApiLogicServer run-ui [--host=myhost --port=myport]  # or...
-my_new_project> python ui/basic_web_app/run.py [host port]
-```
-
-Try http://localhost:5002/, http://0.0.0.0:5002/
-
 &nbsp;
 
-### Using the Run script
+### Command Line - Scripts
 
 Alternatively, you can start the server using the run script, e.g.:
 
@@ -57,7 +49,23 @@ This can be useful in testing if you don't have access to the server console.  T
 
 &nbsp;
 
-## Host and Port Handling
+## Configuring the server
+
+Configuration parameters enable you to specify hosts and ports, database locations, debug settings, etc,, as described below.
+
+&nbsp;
+
+### Database Locations
+
+SQLAlchemy database URIs are set in your `config.py`` file, from your creation CLI arguments.  They apply to target database(s), and the authentication database.  For example:
+
+```python
+    SQLALCHEMY_DATABASE_URI : typing.Optional[str] = f"mysql+pymysql://root:p@localhost:3306/classicmodels"
+```
+
+&nbsp;
+
+### Hosts and Ports
 
 ApiLogicServer attempts to avoid port conflicts.  These can arise from:
 
@@ -80,22 +88,31 @@ Hosts are defaulted as follows:
 | Docker | `0.0.0.0` |
 | Local Install | `localhost` |
 
+These defaults are also stored in the `config.py` file.
+
 &nbsp;
 
-### Create time overrides
+### Defaults: Create Time
 
-You can override these defaults when you create the application like this:
+You can specify default values for hosts, ports and databases when you create the application.  Specify ApiLogicServer CLI arguments, like this:
 
 ```bash
 ApiLogicServer create --project_name=~/dev/servers/api_logic_server \
-                      --host=myhost --port=myport --swagger_host=mycloud
+                      --host=myhost --port=myport --swagger_host=mycloud \
+                      --db_url=mysql+pymysql://root:p@localhost:3306/classicmodels
 ```
 
 &nbsp;
 
-### Runtime overrides
+### Overrides: Config.py
 
-When you run created applications, you can provide arguments to override the defaults.  Discover the arguments using `--help`:
+As noted above, the defaults are stored in the `config.py` file.  You can override these values as required.
+
+&nbsp;
+
+### Overrides: Logic Project CLI
+
+When you run created applications, you can provide API Logic ***Project*** arguments to override the defaults.  Discover the arguments using `--help`:
 
 ```bash
 (venv) val@Vals-MBP-16 ApiLogicProject % python api_logic_server_run.py -h
@@ -133,16 +150,41 @@ __Notes:__
 * `swagger_host` maps to the ip address as seen by the clients
 
 For example, 127.0.0.1 (localhost) or 0.0.0.0 (any interface) only have meaning on your own computer.
+
 Also, it's possible to map hostname->IP DNS entries manually in /etc/hosts, but users on other computers are not aware of that mapping.
 
+### Overrides - env variables
+
+A common approach for host, port and database configuration is to use env variables.  These can be set in your OS, or container options such as env files or docker compose.  
+
+The names of the variables are those noted used in the `config.py` file, **preceded by** `APILOGICPROJECT_`.  These values override both the `config.py` values and the Api Logic Project CLI arguments.
+
+For example, to override the database location on mac:
+
+```bash
+export APILOGICPROJECT_SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:p@localhost:3306/
+```
+
+> env support was added in release 09.01.17.  Prior to GA, it's [available in preview](../#preview-version){:target="_blank" rel="noopener"}.
+
+### Debugging
+
+You can see the env variables in the sample `env_list` file - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/env.list){:target="_blank" rel="noopener"}.
+
+Use the `APILOGICPROJECT_VERBOSE` to log the values to the console log.
+
 &nbsp;
+
 ## Production Deployment
 
-As noted in the [gunicorn documentation](https://flask.palletsprojects.com/en/2.0.x/deploying/):
+As noted in the [gunicorn documentation](https://flask.palletsprojects.com/en/2.0.x/deploying/){:target="_blank" rel="noopener"}:
 
   > While lightweight and easy to use, Flask’s built-in server is not suitable for production as it doesn’t scale well. 
 
+&nbsp;
+
 #### gunicorn
+
 You can run API Logic Server servers under [gunicorn](https://flask.palletsprojects.com/en/2.2.x/deploying/gunicorn/){:target="_blank" rel="noopener"}.  To use the default API Logic Server ports:
 
 ```
@@ -160,5 +202,13 @@ You will also need to:
 1. Update the default server/port settings in `api_logic_server_run.py`
 2. Start your browser at [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
+&nbsp;
+
 #### PythonAnywhere
-Please see the [Install Instructions](../Install) for information on PythonAnywhere.
+Please see the [Install Instructions](../Install){:target="_blank" rel="noopener"} for information on PythonAnywhere.
+
+&nbsp;
+
+#### Docker
+
+You can use Docker compose files or env files to configure your project.  There is an example in the default project - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/run_image.sh){:target="_blank" rel="noopener"}.

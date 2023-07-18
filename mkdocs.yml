@@ -58,6 +58,7 @@ nav:
     - "Build Image": DevOps-Containers-Build.md
     - "Run Container": DevOps-Containers-Run.md
     - "Deploy Image: Azure": DevOps-Containers-Deploy.md
+    - "Configuration - Ports etc.": Project-Execution.md
     - "GitHub and Codespaces": DevOps-GitHub.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md
@@ -84,7 +85,6 @@ nav:
     - "Structure": Project-Structure.md
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
-    - "Execution - Hosts and Ports": Project-Execution.md
     - "Builders": Project-Builders.md
   - Troubleshooting.md
   - FAQs:
