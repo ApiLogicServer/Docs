@@ -4,22 +4,28 @@
 
 ## Running Containers
 
-Once you have `pushed` images to DockerHub, your fellow developers can run them in their local environments.
-
-For example, to run your project container directly...
-
-```bash
-docker run -it --name your_project --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost your_account/your_repository
-
-# start the image, but open terminal (e.g., for exploring docker container)
-docker run -it --name your_project --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost your_account/your_repository bash
-```
+You can run your container locally, or from DockerHub.  Running locally is clearly a good choice for development.
 
 &nbsp;
 
-### Testing
+### Local Testing
 
-Cloud container testing is significantly more challenging that in an IDE.  There are some steps we recommend that can make it easier:
+Once you have `pushed` images to DockerHub, your fellow developers can run them in their local environments.
+
+For example, to run your project container directly, you can use the [run-image](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/run_image.sh), as shown below[^1].
+
+* Note you can use env variables to configure your servers and ports.  The example below illustrates you can store such variables in a `devops/docker/env.list` file (be sure to edit these - they are to confirm settings during initial testing):
+
+```bash
+sh devops/docker/sh run_image.sh
+```
+![Running image locally](images/docker/container-run.png)
+
+&nbsp;
+
+### Cloud Testing
+
+Cloud container testing is significantly more challenging that in an IDE.  There are some steps we recommend that can make it easier[^1]:
 
 1. Test with `env` variables - cloud containers pass parameters using `env` variables, typically not with command line arguments.  These typically identify your database locations etc.
 
@@ -72,5 +78,10 @@ Instead of using a startup script, you can also use environment variables to ach
 ```bash
 docker run -it --name api_logic_server --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost   -e APILOGICSERVER_GIT='https://github.com/valhuber/Tutorial-ApiLogicProject.git' -e APILOGICSERVER_FIXUP='/localhost/Project-Fixup.sh' apilogicserver/api_logic_server
 ```
+
+
+[^1]:
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
+    
 
 

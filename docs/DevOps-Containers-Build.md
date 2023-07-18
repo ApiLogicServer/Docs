@@ -15,7 +15,7 @@ The diagram above identifies 3 important images you can build, described below.
 
 This is the image you will deploy for production.  It includes Python, API Logic Server, any additional packages your require, and your app (Python and logic).  These are defined by a `dockerfile`. 
 
-API Logic Projects include a `devops/docker/build-container.dockerfile` for containerizing your application, shown are right in the diagram below. [Click here to see it](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20ApiLogicProject_Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}.
+API Logic Projects[^1] include a `devops/docker/build-container.dockerfile` for containerizing your application, shown are right in the diagram below. [Click here to see it](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}.
 
 A key aspect of images is that you can *extend* an existing image: add new software to build another image.  See the line:
 
@@ -25,7 +25,7 @@ FROM apilogicserver/api_logic_server
 
 This builds your projects' image, starting with API Logic Server image.
 
-![Docker Repositories](images/docker/container-creation.png)
+![Docker Repositories](images/docker/container-creation-x.png)
 
 To build a container for your ApiLogicProject:
 
@@ -34,10 +34,12 @@ To build a container for your ApiLogicProject:
 3. Edit `ApiLogicProject.dockerfile`: change `your_account/your_repository` as appropriate
     * Here is [an example](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20ApiLogicProject_Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}
 4. In terminal (not in VSCode docker - docker CLI is not installed there), cd to your project
-5. Build a container for your project with terminal commands:
+5. Run [build-container.sh](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/build_image.sh){:target="_blank" rel="noopener"}: <br> `sh devops/docker/build_container.sh .   # builds the container locally
+`
+
+6. Deploy to Docker Hub
 
 ```bash
-docker build -f ApiLogicProject.dockerfile -t your_account/your_repository --rm .
 docker tag your_account/your_repository your_account/your_repository:1.00.00
 docker login
 docker push your_account/your_repository:1.00.00
@@ -66,3 +68,8 @@ If you wish, you can add your own database / test data to the pre-supplied [repo
 > [See here](../Tech-Docker/#preparing-a-database-image-for-self-contained-databases){:target="_blank" rel="noopener"} for notes on how to update / save a docker image.
 
 In most cases, images are code, not data.  The DBMS images, however, include their own data.  This enables fellow developers to `run` the image and get started, without having to understand and setup volumes for DBMS data.
+
+
+[^1]:
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
+    

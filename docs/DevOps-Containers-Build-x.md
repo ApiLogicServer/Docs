@@ -15,7 +15,7 @@ The diagram above identifies 3 important images you can build, described below.
 
 This is the image you will deploy for production.  It includes Python, API Logic Server, any additional packages your require, and your app (Python and logic).  These are defined by a `dockerfile`. 
 
-API Logic Projects include a `devops/docker/build-container.dockerfile` for containerizing your application, shown are right in the diagram below. [Click here to see it](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}.
+API Logic Projects[^1] include a `devops/docker/build-container.dockerfile` for containerizing your application, shown are right in the diagram below. [Click here to see it](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}.
 
 A key aspect of images is that you can *extend* an existing image: add new software to build another image.  See the line:
 
@@ -68,3 +68,6 @@ If you wish, you can add your own database / test data to the pre-supplied [repo
 > [See here](../Tech-Docker/#preparing-a-database-image-for-self-contained-databases){:target="_blank" rel="noopener"} for notes on how to update / save a docker image.
 
 In most cases, images are code, not data.  The DBMS images, however, include their own data.  This enables fellow developers to `run` the image and get started, without having to understand and setup volumes for DBMS data.
+
+[^1]:
+    See the [FAQ for Low Code](FAQ-Low-Code)
