@@ -34,8 +34,7 @@ To build a container for your ApiLogicProject:
 3. Edit `build-image.sh`: change `your_account/your_repository` as appropriate
     * Here is [an example](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20ApiLogicProject_Logic/devops/docker/build-image.sh){:target="_blank" rel="noopener"}
 4. In terminal (not in VSCode docker - docker CLI is not installed there), cd to your project
-5. Run [build-container.sh](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/build_image.sh){:target="_blank" rel="noopener"}: <br> `sh devops/docker/build_container.sh .   # builds the container locally
-`
+5. Run [build-container.sh](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/build_image.sh){:target="_blank" rel="noopener"}: <br> `sh devops/docker/build_container.sh .   # builds the container locally`
 
 6. Deploy to Docker Hub
 
