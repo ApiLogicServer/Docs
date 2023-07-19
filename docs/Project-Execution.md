@@ -157,7 +157,7 @@ Also, it's possible to map hostname->IP DNS entries manually in /etc/hosts, but 
 
 A common approach for host, port and database configuration is to use env variables.  These can be set in your OS, or container options such as env files or docker compose.  
 
-The names of the variables are those noted used in the `config.py` file, **preceded by** `APILOGICPROJECT_`.  These values override both the `config.py` values and the Api Logic Project CLI arguments.
+The names of the variables are those noted used in the `config.py` file, **preceded by** `APILOGICPROJECT_`[^1].  These values override both the `config.py` values and the Api Logic Project CLI arguments.
 
 For example, to override the database location on mac:
 
@@ -165,7 +165,7 @@ For example, to override the database location on mac:
 export APILOGICPROJECT_SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:p@localhost:3306/
 ```
 
-> env support was added in release 09.01.17.  Prior to GA, it's [available in preview](../#preview-version){:target="_blank" rel="noopener"}.
+To see a list of typical env variables, [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/env.list){:target="_blank" rel="noopener"}.
 
 ### Debugging
 
@@ -212,3 +212,7 @@ Please see the [Install Instructions](../Install){:target="_blank" rel="noopener
 #### Docker
 
 You can use Docker compose files or env files to configure your project.  There is an example in the default project - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/run_image.sh){:target="_blank" rel="noopener"}.
+
+[^1]:
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
+
