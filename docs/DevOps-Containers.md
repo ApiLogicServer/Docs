@@ -90,7 +90,7 @@ In any case, you'll be using a source control system such as `git`, so it's poss
 
 !!! pied-piper ":bulb: Best Practice for deployment, worth considering but *optional* for dev"
 
-    It's worth emphasizing that your decision to use *Dev Containers* has no effect on using containers *for deployment*.  Dev Containers for *deployment* are a best practice.  *Dev Containers* provide interesting value, and should be considered, but you can create deployment containers no matter what decision you take.
+    It's worth emphasizing that your decision to use *Dev Containers* has no effect on using containers *for deployment*.  *Containers for deployment* are a best practice.  *Dev Containers* provide interesting value, and should be considered, but you can create deployment containers no matter what decision you take.
 
     As you evalute Dev Containers, be aware API Logic Projects will run either way.  Or both: you can switch back and forth as you determine which approach is best for your team.
 
@@ -102,7 +102,11 @@ API Logic Server pre-supplies several [repositories](https://hub.docker.com/repo
 
 1. [Several DBMSs](../Database-Connectivity){:target="_blank" rel="noopener"}, so you can explore connectivity and as a quick-start for development
 
-2. API Logic Server itself (here is the [dockerfile](https://github.com/valhuber/ApiLogicServer/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"}), shown below: 
+2. API Logic Server itself is `apilogicserver/api_logic_server` (here is the [dockerfile](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"})
+
+    * as of release 9.01.17[^1], images are both arm and amd compatible.
+
+You can visualize the API Logic Server Container like this: 
 
 ![API Logic Server Intro](images/docker/docker-container.png)
 
@@ -110,6 +114,9 @@ You can use it in 2 ways:
 
    * for dev - as described in [Dev Containers](../DevOps-Docker){:target="_blank" rel="noopener"}
 
-   * to build images - to share with developers, or deploy to cloud providers (e.g., Microsoft Azure, Amazon AWS, etc)
+   * to build images - as described in [Build Image](../DevOps-Containers-Build){:target="_blank" rel="noopener"}, to share with developers, or deploy to cloud providers (e.g., Microsoft Azure, Amazon AWS, etc).
 
 For more information, see [Architecture](../Architecture-What_Is).
+
+[^1]:
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
