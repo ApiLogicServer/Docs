@@ -55,7 +55,7 @@ nav:
   - DevOps - Containers:
     - "Containers": DevOps-Containers.md
     - "Dev Containers": DevOps-Docker.md
-    - "Build Image": DevOps-Containers-Build.md
+    - "Build Project Image": DevOps-Containers-Build.md
     - "Run Container": DevOps-Containers-Run.md
     - "Deploy Image: Azure": DevOps-Containers-Deploy.md
     - "Configuration - Ports etc.": Project-Execution.md
