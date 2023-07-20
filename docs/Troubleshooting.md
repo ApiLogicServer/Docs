@@ -108,6 +108,41 @@ For more on rebuild, see [Rebuilding](https://github.com/valhuber/ApiLogicServer
 
 &nbsp;&nbsp;
 
+
+&nbsp;&nbsp;
+
+# Database Issues
+
+Database access requires:
+
+* **Connectivity:** for more information, see [connectivity](../Database-Connectivity)
+
+* **Configuration:** ensure your project is correctly configured; see [DevOps - Debugging](../Project-Execution/#debugging)
+
+
+
+&nbsp;
+
+## Docker API Logic Server connecting to dockerized databases
+
+Even when you can access the database to create the project, your dockerized project may fail to connect.  This is often caused by not enabling your project for network access.  See the link above.
+
+&nbsp;
+
+## SQL Server - requires `pyodbc'
+
+SqlServer requires the `pyodbc` package.  You can't just `pip install` it.  Attempting to do so will cause errors such as:
+
+```log
+sql.h not found - your console log might include:
+...
+    src/pyodbc.h:56:10: fatal error: 'sql.h' file not found
+```
+
+Resolve these as explained in the [Quick Start](../Install-pyodbc/).
+
+&nbsp;&nbsp;
+
 # Docker
 
 Docker can dramatically simplify installation, but be aware of the topics described in the sub-sections below:
@@ -177,34 +212,6 @@ As of release 5.02.10, you can run `venv_setup/py.py sys-info`, either
    * Note: this may properly update the Python `venv` information if it was not properly set
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/vscode/py-py.png?raw=true"></figure>
-
-&nbsp;&nbsp;
-
-# Database Issues
-
-## Docker API Logic Server connecting to dockerized databases
-Even when you can access the database to create the project, your dockerized project may fail to connect.  This is often caused by not enabling your project for network access.  For more information, see [connectivity](../Database-Connectivity).
-
-
-## MySQL
-
-You may need to install special packages, e.g.
-```
-pip install pymysql 
-pip install cryptography
-```
-
-## SQL Server - requires `pyodbc'
-
-SqlServer requires the `pyodbc` package.  You can't just `pip install` it.  Attempting to do so will cause errors such as:
-
-```log
-sql.h not found - your console log might include:
-...
-    src/pyodbc.h:56:10: fatal error: 'sql.h' file not found
-```
-
-Resolve these as explained in the [Quick Start](../Install-pyodbc/).
 
 &nbsp;&nbsp;
 
