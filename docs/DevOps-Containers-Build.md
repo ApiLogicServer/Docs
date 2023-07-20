@@ -2,7 +2,7 @@
 
 !!! pied-piper ":bulb: TL;DR - edit/use the pre-built dockerfile to `build` and `push` your project"
 
-    `devops/docker/build-container.dockerfile` is pre-built into your project.  Alter it for your organization and project name.  It contains instructions for using it via the command line to `build` and `push` your image.
+    `devops/docker/build-image.dockerfile` is pre-built into your project.  Alter it for your organization and project name.  It contains instructions for using it via the command line to `build` and `push` your image.
 
 
 ![Container Overview](images/docker/container-dev-deploy.png)
@@ -33,7 +33,7 @@ To build an image for your ApiLogicProject:
 2. Create / customize your project as your normally would
 3. Edit `build-image.sh`: change `your_account/your_repository` as appropriate
     * Here is [an example](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/build_image.sh){:target="_blank" rel="noopener"}
-4. In terminal (not in VSCode docker - docker CLI is not installed there), cd to your project
+4. In terminal (not in VSCode docker - docker CLI is not installed there), <br>`cd < your-project>`
 5. Run `build-image.sh`: <br> `sh devops/docker/build_image.sh .   # builds the image locally`
     * Test the image locally - [see Run Container](../DevOps-Containers-Run)
 

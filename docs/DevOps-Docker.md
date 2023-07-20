@@ -42,6 +42,8 @@ Once the project is created, open it in VSCode:
 
       > If you already skipped this option, no worries.  Use __View > Command Palette > Remote-Containers: Reopen in Container__
 
+Then, use normal development procedures to edit code, debug it, and manage in under source control.
+
 &nbsp;
 
 ## Project Files are Local

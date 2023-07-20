@@ -4,7 +4,7 @@
 
     * they contain the `.devcontainer` directory to enable **Dev Container** use
 
-    * they contain `devops/docker/build-container.dockerfile` for building your container for **deployment**
+    * they contain `devops/docker/build-image.dockerfile` for building  **deployment** images
 
 Containers are a best practice for deployment.  They *also* offer several advantages for development.  This page outlines a typical scenario for API Logic Server projects.
 
@@ -80,7 +80,7 @@ API Logic Server supports a variety of development models.  You can [install](..
     * This image contains Python and all the packages used by API Logic Server.
     * You can use it with VSCode `.devcontainer` support as described in the [install guide](../Install-Express){:target="_blank" rel="noopener"}.   This provides full IDE support: code editing, debugging, source control, etc.
     * For more information, see [Dev Containers](../DevOps-Docker){:target="_blank" rel="noopener"}.
-* Or, run in the cloud using **Codespaces** - no install at all
+* Or, develop in the cloud using **Codespaces** - no install at all
 
 In any case, you'll be using a source control system such as `git`, so it's possible to mix and match these configurations among developers.
 
@@ -90,7 +90,7 @@ In any case, you'll be using a source control system such as `git`, so it's poss
 
 !!! pied-piper ":bulb: Best Practice for deployment, worth considering but *optional* for dev"
 
-    It's worth emphasizing that your decision to use *Dev Containers* has no effect on using containers *for deployment*.  *Containers for deployment* are a best practice.  *Dev Containers* provide interesting value, and should be considered, but you can create deployment containers no matter what decision you take.
+    It's worth re-emphasizing that your decision to use *Dev Containers* has no effect on using containers *for deployment*.  *Containers for deployment* are a best practice.  *Dev Containers* provide interesting value, and should be considered, but you can create deployment containers no matter what decision you take.
 
     As you evalute Dev Containers, be aware API Logic Projects will run either way.  Or both: you can switch back and forth as you determine which approach is best for your team.
 
@@ -100,7 +100,7 @@ In any case, you'll be using a source control system such as `git`, so it's poss
 
 API Logic Server pre-supplies several [repositories](https://hub.docker.com/repositories/apilogicserver){:target="_blank" rel="noopener"} (images available on Docker Hub):
 
-1. [Several DBMSs](../Database-Connectivity){:target="_blank" rel="noopener"}, so you can explore connectivity and as a quick-start for development
+1. [Several DBMSs](../Database-Connectivity#docker-databases){:target="_blank" rel="noopener"}, so you can explore connectivity and as a quick-start for development
 
 2. API Logic Server itself is `apilogicserver/api_logic_server` (here is the [dockerfile](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"})
 

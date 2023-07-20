@@ -10,16 +10,54 @@ You can run your container locally, or from DockerHub.  Running locally is clear
 
 ### Local Testing
 
-Once you have `pushed` images to DockerHub, your fellow developers can run them in their local environments.
-
-For example, to run your project container directly, you can use the [run-image](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/run_image.sh), as shown below[^1].
+You will typically want to test your image before pushing it to DockerHub.  Use the [run-image](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/run_image.sh), as shown below[^1].
 
 * Note you can use env variables to configure your servers and ports.  The example below illustrates you can store such variables in a `devops/docker/env.list` file (be sure to edit these - they are to confirm settings during initial testing):
+
+![Running image locally](images/docker/container-run.png)
+
+For example, to run your project container directly, you can 
 
 ```bash
 sh devops/docker/sh run_image.sh
 ```
-![Running image locally](images/docker/container-run.png)
+
+&nbsp;
+
+#### Mixed arm/amd environments
+
+The procedures described here presume a team that uses amd (Intel) machines.  Docker has different procedures to deal with arm-based Macs (M1, M2...).
+
+If you use the procedures above, Docker will create images for the architecture you are using.  Such images will run slowly on other architectures.  
+
+> For example, it would be undersirable to create an arm image for cloud-based deployment on amd machines.
+
+You can build images that operate under either environment.  If your team has arm-based Macs, this is an important considerations.
+
+However, this is not done using the `docker build` command shown here.  Instead, you use `docker buildx`, which must be performed in the context of a build environment.  For an excellent article showing how to do this, [click here](https://medium.com/geekculture/docker-build-with-mac-m1-d668c802ab96#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjY3NmRhOWQzMTJjMzlhNDI5OTMyZjU0M2U2YzFiNmU2NTEyZTQ5ODMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2ODk1Mzk1NjgsImF1ZCI6IjIxNjI5NjAzNTgzNC1rMWs2cWUwNjBzMnRwMmEyamFtNGxqZGNtczAwc3R0Zy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwOTU2MTk5NTc1MzE3MTM0NTcyOSIsImVtYWlsIjoidmFsamh1YmVyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhenAiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJuYW1lIjoiVmFsIEh1YmVyIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FBY0hUdGZFeFUxNTllcVNUSGpXYm9qS2pfaG5WY3VZRjRxeXUtMkN6SGRzc1dTZmNvVT1zOTYtYyIsImdpdmVuX25hbWUiOiJWYWwiLCJmYW1pbHlfbmFtZSI6Ikh1YmVyIiwiaWF0IjoxNjg5NTM5ODY4LCJleHAiOjE2ODk1NDM0NjgsImp0aSI6Ijc0YWM4NGQ3YzhjNWEwZTE3YjMzMDdjYjRlOTJhMzFjNDMzZjdiMWQifQ.VvCoA5Dd2KYhOvlkh8ejR_gp-vt83rpSbKYfL5xImYxj_99fdZOaEJJVNfP3mzzzyRhiQousI2aPVEdv51TKwG4FxVAnTOikjYp88y1WE3cOk_46ci-kavsHH0vN3zK3CI3-FK889yxIPbna8Wo_A8USwbLZcwTRucG7dKceRL9J0UcVgLk4JRv5ZQ1TJ_y5yLcddvSo_79x4O7fIX6WmrDHOfK16EqPYtsqyE1PuSnJtdddyP_ZLsRcDJflb5iHAIuNkQz1soL4fdOlh5T57pl734igWdbJNSufSKpLm9RzVN_E-Dvkk7ND6tEuOMs09DUdXhArcS_PTprQmYqE2g).
+
+This procedure was used to create apilogicserver/api_logic_server, so this is a suitable basis for creating multi-architecture project images.
+
+This procedure is not only different, but it affects your test methodology.  Consider the commands we use the build API Logic Server:
+
+```bash
+# GA release
+# docker buildx build --push -f docker/api_logic_server_all.Dockerfile --tag apilogicserver/api_logic_server_all:9.01.17 -o type=image --platform=linux/arm64,linux/amd64 .
+
+# Beta - test codespaces with tutorial, API_Fiddle (change .devcontainer.json -> apilogicserver/api_logic_server_all_x)
+# docker buildx build --push -f docker/api_logic_server_all.Dockerfile --tag apilogicserver/api_logic_server_all_x:9.01.17 -o type=image --platform=linux/arm64,linux/amd64 .
+
+# Internal - verify what is done with build_and_test
+# docker build -f docker/api_logic_server_all.Dockerfile -t apilogicserver/api_logic_server_local --rm .
+```
+
+Note the `buildx` command *combines build and push* in single procedure.  This prevents local testing prior to push.  That is why we use the "Internal" docker build.
+
+&nbsp;
+
+### Team Testing
+
+Once you have `pushed` images to DockerHub, your fellow developers can run them in their local environments.
 
 &nbsp;
 
