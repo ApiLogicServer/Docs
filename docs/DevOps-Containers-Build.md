@@ -15,7 +15,7 @@ The diagram above identifies 3 important images you can build, described below.
 
 This is the image you will deploy for production.  It includes Python, API Logic Server, any additional packages your require, and your app (Python and logic).  These are defined by a `dockerfile`. 
 
-API Logic Projects[^1] include a `devops/docker/build-container.dockerfile` for containerizing your application, shown are right in the diagram below. [Click here to see the dockerfile](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/build-container.dockerfile){:target="_blank" rel="noopener"}.
+API Logic Projects[^1] include a `devops/docker/build-image.dockerfile` for containerizing your application, shown are right in the diagram below. [Click here to see the dockerfile](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/build_image.dockerfile){:target="_blank" rel="noopener"}.
 
 A key aspect of images is that you can *extend* an existing image: add new software to build another image.  See the line:
 
@@ -27,14 +27,15 @@ This builds your projects' image, starting with API Logic Server image.
 
 ![Docker Repositories](images/docker/container-creation.png)
 
-To build a container for your ApiLogicProject:
+To build an image for your ApiLogicProject:
 
 1. On Docker Hub, create a docker repository under your docker account. 
 2. Create / customize your project as your normally would
 3. Edit `build-image.sh`: change `your_account/your_repository` as appropriate
-    * Here is [an example](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20ApiLogicProject_Logic/devops/docker/build-image.sh){:target="_blank" rel="noopener"}
+    * Here is [an example](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/build_image.sh){:target="_blank" rel="noopener"}
 4. In terminal (not in VSCode docker - docker CLI is not installed there), cd to your project
-5. Run [build-container.sh](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/build_image.sh){:target="_blank" rel="noopener"}: <br> `sh devops/docker/build_container.sh .   # builds the container locally`
+5. Run `build-image.sh`: <br> `sh devops/docker/build_image.sh .   # builds the image locally`
+    * Test the image locally - [see Run Container](../DevOps-Containers-Run)
 
 6. Deploy to Docker Hub
 
