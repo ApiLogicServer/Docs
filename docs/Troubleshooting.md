@@ -115,7 +115,7 @@ For more on rebuild, see [Rebuilding](https://github.com/valhuber/ApiLogicServer
 
 Database access requires:
 
-* **Connectivity:** for more information, see [connectivity](../Database-Connectivity)
+* **Connectivity:** for more information, see [connectivity](../Database-Connectivity/#verify-database-connectivity)
 
 * **Configuration:** ensure your project is correctly configured; see [DevOps - Debugging](../Project-Execution/#debugging)
 
