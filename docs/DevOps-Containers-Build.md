@@ -20,10 +20,10 @@ API Logic Projects[^1] include a `devops/docker/build-image.dockerfile` for cont
 A key aspect of images is that you can *extend* an existing image: add new software to build another image.  See the line:
 
 ```
-FROM apilogicserver/api_logic_server
+FROM --platform=linux/amd64 apilogicserver/api_logic_server
 ```
 
-This builds your projects' image, starting with API Logic Server image.
+This builds your projects' image, starting with API Logic Server image, for amd (Intel) platforms.
 
 ![Docker Repositories](images/docker/container-creation.png)
 

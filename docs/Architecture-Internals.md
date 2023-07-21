@@ -234,7 +234,11 @@ cp -a /build/. ../ApiLogicServer/api_logic_server_cli/create_from_model/admin/
 
 &nbsp;
 
-# Docker Startup
+# Docker Setup
+
+&nbsp;
+
+## Docker Startup
 
 You can review the dockerfile on `github`.  Note that the normal operation is to start a terminal session as the last step:
 
@@ -266,27 +270,14 @@ In both cases, the git load is performed by `bin/run-project.sh`, which you can 
 
 &nbsp;
 
-## SQL Server testing with VSC
+## SQL Server testing with VSCode
 
-### Background
+While Sql/Server itself runs nicely under docker, there is considerable complexity in installing OCBC, regarding pyodbc:
 
-While Sql/Server itself runs nicely under docker, there is considerable complexity in installing OCBC.  As further described below, this led to a number of issues (ignoring time spent):
+> `pyodbc` is not pip-installed by default, since installs fail unless odbc is installed, which is complex and might not be needed
 
-* `pyodbc` not pip-installed by default (installs fail unless odbc is installed, which is complex and might not be needed)
 
-* multiple docker images (arm, amd)
-
-* arm image unable to load odbc *and* run in VSCode .devcontainer
-
-I am eager for suggestions to simplify / unify sql/server and odbc usage.  I'd hoped that `mcr.microsoft.com/devcontainers/python:3.11-bullseye` might include odbc, but it did not appear to be the case.  Since this image is considerably larger (1.77G) than python:3.9.4-slim-bullseye (895M), I went with the python versions.
-
-&nbsp;
-
-#### Complex ODBC Setup
-
-As noted above, `pip` installs of pyodbc fail unless the odbc is installed.  Since not all users need odbc, the `pip` install does not include pyodbc.
-
-##### For users
+### For users
 
 For users requiring pyodbc (SqlServer), there are 2 installs:
 
@@ -296,54 +287,36 @@ For users requiring pyodbc (SqlServer), there are 2 installs:
 
 &nbsp;
 
-##### For ApiLogicServer-dev
+### For ApiLogicServer-dev
 
 ApiLogicServer-dev `requirements.txt` does **not** install odbc.  If you wish to test Sql/Server in ApiLogicServer-dev, follow the user setup instructions above.
 
 &nbsp;
 
-#### Docker
+## Multi-arch Docker images
 
-Docker creation provides the opportunity to pre-install odbc and simplify life for Sql/Server users.  After considerable effort, we were able to create dockers with a *consistent* verisons of odbc (v18).  The procedure differs for amd/intel vs. arm, as described below.
+Docker creation provides the opportunity to pre-install odbc and simplify life for Sql/Server users.  [This procedure](../DevOps-Containers-Run/#multi-architecture-images){:target="_blank" rel="noopener"} was used to create `apilogicserver/api_logic_server`, providing an image that supports odbc, *and* supports devcontainers for both arm and amd.  
 
-&nbsp;
+```bash
+# GA release
+# docker buildx build --push -f docker/api_logic_server_all.Dockerfile --tag apilogicserver/api_logic_server_all:9.01.17 -o type=image --platform=linux/arm64,linux/amd64 .
 
-##### Docker amd works
+# Beta - test codespaces with tutorial, API_Fiddle (change .devcontainer.json -> apilogicserver/api_logic_server_all_x)
+# docker buildx build --push -f docker/api_logic_server_all.Dockerfile --tag apilogicserver/api_logic_server_all_x:9.01.17 -o type=image --platform=linux/arm64,linux/amd64 .
 
-The above instructions depend on `brew`, which is not convenient within a dockerfile.  So, it's installed as follows: [click to see dockerfile](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"}.  This works well with Sql/Server, running as a devcontainer under VSCode.
-
-* Note: this took days to discover.  Special thanks to Max Tardideau at [Gallium Data](https://www.galliumdata.com){:target="_blank" rel="noopener"}.
-
-
-&nbsp;
-
-##### Docker arm fails
-
-The arm version is installed like this: [click to see dockerfile](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm.Dockerfile){:target="_blank" rel="noopener"}.  This...
-
-* Works well with VSCode devcontainers, for *non-odbc* databases
-
-* But, **does not include odbc.**
-
-    * Attempting to introduce odbc fails with *ERROR: failed to solve: process "/bin/sh -c ACCEPT_EULA=Y apt-get install -y msodbcsql18" did not complete successfully: exit code: 100*.
-
-odbc inclusion was solved with [this finding](https://stackoverflow.com/questions/71414579/how-to-install-msodbcsql-in-debian-based-dockerfile-with-an-apple-silicon-host){:target="_blank" rel="noopener"}, using `FROM --platform=linux/amd64` (special thanks to Joshua Schlichting and Dale K).
-
-So, we created [this dockerfile **with odbc**](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server_arm_x.Dockerfile){:target="_blank" rel="noopener"}.  Use it with a .devcontainer specifying `FROM apilogicserver/api_logic_server_arm_x`, or use [this test project](https://github.com/ApiLogicServer/beta){:target="_blank" rel="noopener"}.
-
-* That does indeed enable odbc access from docker...
-
-* But it ***fails with VSCode*** -- the Python extension is either disabled, or hangs on install (screen shots below).
-
-![Unable to load Python](images/vscode/python-disabled.png)
-
-![Python install hangs](images/vscode/python-install-hangs.png)
-
-* Issue: on start, message: *WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested*
+# Internal - verify what is done with build_and_test
+# docker build -f docker/api_logic_server_all.Dockerfile -t apilogicserver/api_logic_server_local --rm .
+```
 
 &nbsp;
 
-#### VSC Bug - Run Configs
+### Pre-push testing
+
+In our (internal) case, we needed to build multi-arch images, but note the `buildx` command *combines build and push* in single procedure.  This prevents local testing prior to push.  That is why we use the "Internal" docker build, as shown above.
+
+&nbsp;
+
+## VSC Bug - Run Configs
 
 VSCode has a bug where it cannot parse Run Configs for SqlSvr:
 
@@ -353,13 +326,13 @@ zsh: no matches found: --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/NORTH
 
 &nbsp;
 
-### Testing
+# Testing
 
 There are several important testing configurations.
 
 &nbsp;
 
-#### 1. ApiLogicServer-dev
+## 1. ApiLogicServer-dev
 
 To get around the *VSC bug*, hacks were made to the Run Configs, and the CLI, as described below.
 
@@ -408,30 +381,12 @@ So, on ApiLogicServer-dev:
 &nbsp;
 
 
-#### 2. Local `pip` install
+## 2. Local `pip` install
 
 Note: since the docker image is odbc17, the following commands fail in docker, but run in pip install when you've installed odbc18:
 
 ```
 ApiLogicServer create --project_name=sqlsvr-nw --db_url=sqlsvr-nw
-```
-
-#### 3. Docker (ARM pending)
-
-You can run a ***Docker with ODBC*** (pending for arm with VSC):
-
-```
-# arm docker uses odbc18 (note the quotes around the db_url):
-ApiLogicServer create  --project_name=/localhost/sqlserver --db_url='mssql+pyodbc://sa:Posey3861@10.0.0.77:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
-
-# or, using the abbrevation
-ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker-arm
-
-# amd docker requires IP addresses:
-ApiLogicServer create --project_name=/localhost/sqlserver --db_url='mssql+pyodbc://sa:Posey3861@10.0.0.234:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
-
-# or, using the abbreviation (amd):
-ApiLogicServer create  --project_name=/localhost/sqlsvr-nw-docker --db_url=sqlsvr-nw-docker
 ```
 
 &nbsp;
