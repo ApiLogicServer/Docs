@@ -30,7 +30,7 @@ The database creation wizard requires that you create a [container group](https:
 
 ### database `nwlogic` 
 
-For this tutoroial we created the database `nwlogic`.  It is an exact replica of the sample (nw) [sample database](Sample-Database{:target="_blank" rel="noopener"}), using SqlServer.
+For this tutorial we created the database `nwlogic`.  It is an exact replica of the sample (nw) [sample database](Sample-Database{:target="_blank" rel="noopener"}), using SqlServer.
 
 &nbsp;
 
@@ -58,7 +58,7 @@ az container create --resource-group myResourceGroup --name mycontainer --image 
 
 Most of the arguments are straight-forward, identifying the Docker Hub repository (`apilogicserver/docker_api_logic_project:latest`), the container group.  
 
-    > Note the `--environment-variables` are used to communicate the database and server location.
+> Note the `--environment-variables` are used to communicate the database and server location.
 
 &nbsp;
 
