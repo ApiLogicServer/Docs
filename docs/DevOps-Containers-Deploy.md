@@ -58,7 +58,7 @@ az container create --resource-group myResourceGroup --name mycontainer --image 
 
 Most of the arguments are straight-forward, identifying the Docker Hub repository (`apilogicserver/docker_api_logic_project:latest`), the container group.  
 
-> Note the `--environment-variables` are used to communicate the database and server location.
+> Note the `--environment-variables` are used to communicate the database and server location: `--environment-variables 'FLASK_HOST'='mssql+pyodbc://valhuber:PWD@mysqlserver-nwlogic.database.windows.net:1433/nwlogic?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no' 'VERBOSE'='True'`
 
 &nbsp;
 
