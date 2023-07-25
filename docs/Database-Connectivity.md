@@ -260,7 +260,9 @@ In prior versions, note the datatype ```bpchar``` (blank-padded char) results in
 packages/sqlalchemy/dialects/postgresql/base.py:3185: SAWarning: Did not recognize type 'bpchar' of column 'customer_id'
 ```
 
-The current version uses `character varying(5)`, and should not exhibit issues such as [Element does not exist](https://github.com/valhuber/ApiLogicServer/issues/48).
+The current version uses `character varying(5)`, and should not exhibit issues such as [Element does not exist](https://github.com/valhuber/ApiLogicServer/issues/48){:target="_blank" rel="noopener"}.
+
+This is [under research](https://github.com/sqlalchemy/sqlalchemy/discussions/8592){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
