@@ -262,7 +262,14 @@ packages/sqlalchemy/dialects/postgresql/base.py:3185: SAWarning: Did not recogni
 
 The current version uses `character varying(5)`, and should not exhibit issues such as [Element does not exist](https://github.com/valhuber/ApiLogicServer/issues/48){:target="_blank" rel="noopener"}.
 
-This is [under research](https://github.com/sqlalchemy/sqlalchemy/discussions/8592){:target="_blank" rel="noopener"}.
+
+##### bpchar
+
+This [was researched](https://github.com/sqlalchemy/sqlalchemy/discussions/8592){:target="_blank" rel="noopener"}.  
+
+This database used `bpchar`` (an *old* datatype), with *no length* (a logical error - blank pad to unspecified length??).  So, the maintainers corrected the bogus example to eliminate the use of bpchar. 
+
+Here is the [revised standard](https://github.com/pthom/northwind_psql/blob/master/northwind.sql), which we are using as our [test example](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/tests/postgres_databases/northwind.sql){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
