@@ -1,12 +1,12 @@
 !!! pied-piper ":bulb: TL;DR - Migration from CA/Live API Creator (LAC)"
 
-      CA/Live API Creator was recently discontinued.  For customers seeking to migrate, API Logic Server offers a migration path worth considering:
+      CA/Live API Creator has reached end-of-life and soon end-of-support.  For customers seeking to migrate, API Logic Server offers a migration path worth considering:
 
       * Built by the same engineering leadership team, the products are quite similar.  They both offer instant **multi-table APIs**, **multi-page Admin Apps**, and **business logic** using rules extensible with code.
 
-      * LAC provides **Custom Resources**.  This is not provided by API Logic Server, which affects dependent clients.  
+      * LAC provides **Custom Resources**.  This is provided by API Logic Server, which affects dependent clients.  
       
-         * Migration tools are underway, and are past the proof-of-concept phase.
+         * Model Migration tools are available and are past the proof-of-concept phase.
 
       * API Logic Server offers superior services for:
 
@@ -52,7 +52,7 @@ The styles are different:
 
 #### Optimistic Locking
 
-This is provided by LAC, and currently under investigation.
+This is provided by both LAC and ALS.
 
 &nbsp;
 
@@ -86,11 +86,19 @@ Both products provide a code-by-exception approach for APIs and logic.  API Logi
 
 ## Migration Evaluation Services
 
-The sections above indentigy the highlights, but the needs of specific projects may differ.  As noted above, we served as lead engineers on both, so we are uniquely positioned to help explore migrating your project.  Please contact us.
+The sections above identify the highlights, but the needs of specific projects may differ.  As noted above, we served as lead engineers on both, so we are uniquely positioned to help explore migrating your project.  Please contact us.
 
-Such efforts are already underway.  Migration tools are past the proof-of-concept phase and are under development:
+The [Migration Migration Service](https://github.com/tylerm007/model_migration_service.git) provides LAC transformation for:
 
-* API Custom Resources
+* Custom Resources
+
+* FreeSQL
 
 * Rules
+
+* Functions
+
+* Security
+
+* Pipelines
 
