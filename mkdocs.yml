@@ -97,6 +97,7 @@ nav:
     - "Adoption Considerations?": Tech-Adoption.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
+    - "Working Software Now": Working-Software-Now.md
     - "Python as a DSL": Tech-DSL.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "Agile Integrations": Tech-Agile-Integrations.md

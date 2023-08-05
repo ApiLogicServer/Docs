@@ -8,7 +8,7 @@
 
          * **Integrated Logic Documentation:** the report integrates your logic, including a logic report showing your logic (rules and Python), and a Logic Log that shows exactly how the rules executed.  Logic Doc is transparent to business users, so can further contribute to Agile Collaboration.
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/behave/behave-summary.png?raw=true"  height="600"></figure>
+![Behave Summary](images/behave/behave-summary.png)
 
 [Behave](https://behave.readthedocs.io/en/stable/tutorial.html) is a framework for defining and executing tests.  It is based on [TDD (Test Driven Development)](http://dannorth.net/introducing-bdd/), an Agile approach for defining system requirements as executable tests.
 
@@ -16,7 +16,7 @@
 
 # Using Behave
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/behave/TDD-ide.png?raw=true"></figure>
+![Using Behave](images/behave/TDD-ide.png)
 
 Behave is pre-installed with API Logic Server.  Use it as shown above:
 
