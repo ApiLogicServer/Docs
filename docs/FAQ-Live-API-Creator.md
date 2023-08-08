@@ -1,20 +1,18 @@
 !!! pied-piper ":bulb: TL;DR - Migration from CA/Live API Creator (LAC)"
 
-      CA/Live API Creator has reached end-of-life and soon end-of-support.  For customers seeking to migrate, API Logic Server offers a migration path worth considering:
+      CA/Live API Creator has reached end-of-life and soon end-of-support.  Customers seeking to migrate have many options for creating APIs.  API Logic Server offers a migration path worth considering:
 
-      * Built by the same engineering leadership team, the products are quite similar.  They both offer instant **multi-table APIs**, **multi-page Admin Apps**, and **business logic** using rules extensible with code.
+      * API Logic Server provides ***unique* support for declarative logic and security**
 
-      * LAC provides **Custom Resources**.  This is provided by API Logic Server, which affects dependent clients.  
-      
-         * Model Migration tools are available and are past the proof-of-concept phase.
+      * We also provide a **migration utility** for logic and security
 
-      * API Logic Server offers superior services for:
+      * **Consulting services** are available to assess specific applications, and provide migration tools for LAC feature such as custom resources
 
-         * Development: uses standard IDEs for debugger and source code management.
+      * API Logic Server is **open source**, and offers superior services for:
 
-         * Deployment: scripts are provided to containerize applications for deployment.
+         * **Development:** uses standard IDEs for debugger and source code management.
 
-      Consulting services are available to assess specific applications, and provide migration tools.
+         * **Deployment:** scripts are provided to containerize applications for deployment.
 
 &nbsp;
 
@@ -22,11 +20,11 @@
 
 Both products provide:
 
-* Instant creation of projects with **multi-table APIs***.  The APIs both provide filtering, sorting, pagination, and multi-table retrieval
+* Instant creation of projects with ***multi-table APIs***.  The APIs both provide filtering, sorting, pagination, and multi-table retrieval
 
-* Instant creation of **multi-page Admin Apps**
+* Instant creation of ***multi-page Admin Apps***
 
-* Declarative business logic - **rules, extensible with code**
+* Declarative business logic - ***rules, extensible with code***
 
 &nbsp;
 
