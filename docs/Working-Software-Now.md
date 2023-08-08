@@ -6,9 +6,9 @@
 
       2. **Publish to GitHub:** for dev team collaboration
 
-      2. **Deploy to the Cloud:** use the working software to collaborate with Business Users
+      2. ***Dev Deploy* to the Cloud:** use the working software to collaborate with Business Users
 
-      With API Logic Server, if you have a database, you can create and deploy ***within an hour***.
+      With API Logic Server, if you have a database, you can create and dev deploy ***within an hour***.
 
 ![Behave Summary](images/devops/working-software-now.png)
 

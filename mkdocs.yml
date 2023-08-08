@@ -76,6 +76,7 @@ nav:
     - Data-Model-Keys.md
     - Data-Model-Customization.md
     - "Connection Examples": Database-Connectivity.md
+    - "Docker Test Databases": Database-Docker.md
     - "Multiple Databases": Data-Model-Multi.md
     - "Table Filters": Data-Model-Filters.md
     - "Explore SQLAlchemy": Data-Model-Explore-SQLAlchemy.md
