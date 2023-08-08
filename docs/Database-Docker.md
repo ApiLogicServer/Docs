@@ -13,7 +13,6 @@ General notes:
 You probably don't need _all_ these, but here's how you start the docker databases (schema details below):
 
 ```
-
 docker network create dev-network  # only required once
 
 docker run --name mysql-container --net dev-network -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=p apilogicserver/mysql8.0:latest
@@ -25,9 +24,7 @@ docker run --name sqlsvr-container --net dev-network -p 1433:1433 -d apilogicser
 docker run --name sqlsvr-container --net dev-network -p 1433:1433 -d apilogicserver/sqlsvr-m1:latest  # Mac M1
 ```
 
-
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/databases/docker-db-versions.png"></figure>
-
+![Docker databases](images/docker/databases/docker-db-versions.png)
 
 &nbsp;
 
