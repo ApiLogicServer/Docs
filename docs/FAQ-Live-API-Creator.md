@@ -48,12 +48,6 @@ The styles are different:
 
 &nbsp;
 
-#### Optimistic Locking
-
-This is provided by both LAC and ALS.
-
-&nbsp;
-
 #### Column Level Security
 
 Both provide role-based row security.  Additionally, LAC provides role-based column security.
