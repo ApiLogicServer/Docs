@@ -54,12 +54,13 @@ nav:
   - "Using Your IDE": IDE-Customize.md
   - DevOps - Containers:
     - "Containers": DevOps-Containers.md
-    - "Dev Containers": DevOps-Docker.md
     - "Build Project Image": DevOps-Containers-Build.md
     - "Run Container": DevOps-Containers-Run.md
     - "Deploy Image: Azure": DevOps-Containers-Deploy.md
     - "Configuration - Ports etc.": Project-Execution.md
-    - "GitHub and Codespaces": DevOps-GitHub.md
+    - Dev Containers:
+      - "Dev Containers": DevOps-Docker.md
+      - "GitHub and Codespaces": DevOps-GitHub.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md
     - "Project Operation": Architecture-Project-Operation.md

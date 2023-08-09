@@ -38,7 +38,7 @@ For this tutorial we created the database `nwlogic`.  It is an exact replica of 
 
 After creating the database, load the data using tools like [PyCharm Data Tools](Database-Connectivity/#pycharm-database-tools){:target="_blank" rel="noopener"}, or [DbVis](Database-Connectivity/#dbvis){:target="_blank" rel="noopener"}. 
 
-To find the sql scripts, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/sql_server){:target="_blank" rel="noopener"}.
+To find the sql scripts, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/test_databases/sql_server){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
