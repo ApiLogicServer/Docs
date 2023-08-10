@@ -1,12 +1,15 @@
-!!! pied-piper ":bulb: TL;DR - Single (App) Container with Managed Database"
+!!! pied-piper ":bulb: TL;DR - Dev Deploy: Multi-Container Systems"
 
-    This page explains how to: 
+    This page shows the simplest way to deploy a **dev system** to the cloud, to enable collaboration with Business User and fellow developers: 
 
     * create a resource group
 
-    * create a managed database
+    * create a database container (database server and data - for simplified management)
 
     * deploy an API Logic Project image from DockerHub
+
+
+***Under Construction***
 
 [Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
 
@@ -22,13 +25,9 @@ I created a free account, electing the $200 free option.  In the entire exercise
 
 &nbsp;
 
-## Create Managed Database
+## Deploy Database Image
 
-Creating the database was straightforward using Microsoft documentation.  To see it, [click here](https://learn.microsoft.com/en-us/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy?view=azuresql#create-a-database){:target="_blank" rel="noopener"}.
-
-> Note: we used the database name `nwlogic`.
-
-Note this is a *managed database*, which means that Azure will apply DBMS updates, take backups, etc.  Contrast this to running a database in a bare container, where you'd need to arrange such services yourself.
+The API Logic Server project provides several [docker databases](../Database-Docker){:target="_blank" rel="noopener"}.  A simple approach is to build on one of these, to add your own data, and to create your own database container for your team.  This provides a valuable "common starting place" for test database structure and test data.
 
 &nbsp;
 
@@ -38,17 +37,15 @@ The database creation wizard requires that you create a [container group](https:
 
 &nbsp;
 
-### database `nwlogic` 
+### database `apilogicserver/mysql8.0:latest` 
 
-For this tutorial we created the database `nwlogic`.  It is an exact replica of the sample (nw) [sample database](Sample-Database{:target="_blank" rel="noopener"}), using SqlServer.
+This image contains the `classicmodels` database, and `authdb`.  You can run it locally for testing, as described in [docker databases](../Database-Docker){:target="_blank" rel="noopener"}.
 
-&nbsp;
+This database as created using the scripts [shown here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/test_databases){:target="_blank" rel="noopener"}.   These directories include the sql to create the database and data, and the `docker_databases/Dockerfile-MySQL-container-data` to create and publish the image.
 
-### Load Data: Azure Data Tools
+You can use the same procedures to use the existing image, add you own database, and publish to your own DockerHub repository.
 
-After creating the database, load the data using tools like [PyCharm Data Tools](Database-Connectivity/#pycharm-database-tools){:target="_blank" rel="noopener"}, or [DbVis](Database-Connectivity/#dbvis){:target="_blank" rel="noopener"}. 
-
-To find the sql scripts, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/test_databases/sql_server){:target="_blank" rel="noopener"}.
+In this example, that's not required - we'll just use the pre-created `classicmodels`.
 
 &nbsp;
 
@@ -58,7 +55,11 @@ To find the sql scripts, [click here](https://github.com/ApiLogicServer/ApiLogic
 
 &nbsp;
 
-## Create Container
+*** The information below is under construction, not tested***
+
+&nbsp;
+
+## Create Api Logic Project Container
 
 ![Azure Data Tools](images/docker/azure/create-container.png)
 
