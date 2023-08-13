@@ -227,3 +227,9 @@ Important considerations for SQLAlchemy URIs:
 ```
 
 * In VSCode launch configurations, the `db_url` fails, a situation I have resolved and would welcome help on...
+
+&nbsp;
+
+## Create Your Own Database Image
+
+The API Logic Server project provides several [docker databases](../Database-Docker){:target="_blank" rel="noopener"}.  A simple approach is to build on one of these, to add your own data, and to create your own database container for your team.  This provides a valuable "common starting place" for test database structure and test data.

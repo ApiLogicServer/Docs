@@ -9,111 +9,28 @@
     * deploy an API Logic Project image from DockerHub
 
 
-***Under Construction***
-
 [Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
 
 This tutorial presumes you've already `push`ed an image, here called `apilogicserver/docker_api_logic_project:latest`.
 
 ![Container Overview](images/docker/container-dev-deploy.png)
 
-&nbsp;
 
-## Create Azure Account
-
-I created a free account, electing the $200 free option.  In the entire exercise, I used less than $2 of my allotment.
-
-&nbsp;
-
-## Deploy Database Image
-
-The API Logic Server project provides several [docker databases](../Database-Docker){:target="_blank" rel="noopener"}.  A simple approach is to build on one of these, to add your own data, and to create your own database container for your team.  This provides a valuable "common starting place" for test database structure and test data.
-
-&nbsp;
-
-### Container Group
-
-The database creation wizard requires that you create a [container group](https://learn.microsoft.com/en-us/azure/container-instances/container-instances-container-groups){:target="_blank" rel="noopener"}.
-
-&nbsp;
-
-### database `apilogicserver/mysql8.0:latest` 
-
-This image contains the `classicmodels` database, and `authdb`.  You can run it locally for testing, as described in [docker databases](../Database-Docker){:target="_blank" rel="noopener"}.
-
-This database as created using the scripts [shown here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/test_databases){:target="_blank" rel="noopener"}.   These directories include the sql to create the database and data, and the `docker_databases/Dockerfile-MySQL-container-data` to create and publish the image.
-
-You can use the same procedures to use the existing image, add you own database, and publish to your own DockerHub repository.
-
-In this example, that's not required - we'll just use the pre-created `classicmodels`.
-
-&nbsp;
-
-## Portal
-
-![Azure Data Tools](images/docker/azure/portal.png)
-
-&nbsp;
-
-*** The information below is under construction, not tested***
-
-&nbsp;
-
-## Create Api Logic Project Container
-
-![Azure Data Tools](images/docker/azure/create-container.png)
-
-```bash
-az container create --resource-group myResourceGroup --name mycontainer --image apilogicserver/docker_api_logic_project:latest --dns-name-label val-demo --ports 5656 --environment-variables 'FLASK_HOST'='mssql+pyodbc://valhuber:PWD@mysqlserver-nwlogic.database.windows.net:1433/nwlogic?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no' 'VERBOSE'='True'
-```
-
-Most of the arguments are straight-forward, identifying the Docker Hub repository (`apilogicserver/docker_api_logic_project:latest`), the container group.  
-
-> Note the `--environment-variables` are used to communicate the database and server location: `--environment-variables 'FLASK_HOST'='mssql+pyodbc://valhuber:PWD@mysqlserver-nwlogic.database.windows.net:1433/nwlogic?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no' 'VERBOSE'='True'`
-
-&nbsp;
-
-### Recreate the container
-
-If you need to recreate the container, you can use the portal, or this command:
-
-```bash
-az container delete --resource-group myResourceGroup --name mycontainer
-```
-
-&nbsp;
-
-## Trouble Shooting
-
-Use this command to view Azure logs:
-
-```bash
-az container logs --resource-group myResourceGroup --name mycontainer
-```
-
-For specific error conditions, see [Troubleshooting Azure](../Troubleshooting/#azure-cloud-deployment){:target="_blank" rel="noopener"}.
-
-&nbsp;
-
-&nbsp;
-
----
-
-&nbsp;
-
-# DevOps Readme - Rapid Cloud Preview
+# Rapid Cloud Preview
 
 This project illustrates using API Logic Server with Docker and docker-compose.  The objective is to provide a simple way to explore using docker with API Logic Server on your local machine.  These are *not* production procedures - they are designed for simple local machine operation.
 
 This doc explains:
 
-* **I. Creating the project** - create the project from a docker database and run under the IDE
+* **I. Create the Project, and Verify Local Operation** - run the project
 
-* **II. Running the project as an *image*** - create and run an image
+* **II. Add Security**
 
-* **III. Running the project as a *docker-compose*** - build, deploy and run
+* **III. Running the project as an *image*** - create and run an image
 
-* **IV. Status, Open Issues (eg, not working on windows)** 
+* **IV. Running the project as a *docker-compose*** - build, deploy and run
+
+* **V. Status, Open Issues (eg, not working on windows)** 
 
 This presumes you have Python, and docker.
 
@@ -121,32 +38,6 @@ This presumes you have Python, and docker.
 
 &nbsp;
 
-# General Setup
-
-Stop the docker-compose container, if it is running.
-
-&nbsp;
-
-## 1. Install API Logic Server
-
-Install the current (or [preview](https://apilogicserver.github.io/Docs/#preview-version)) release.  Use the `ApiLogicServer` command to verify the version > 9.1.33.
-
-&nbsp;
-
-## 2. Install this project from git
-
-Follow this procedure to obtain the *empty* project from git:
-
-```
-# git clone https://github.com/ApiLogicServer/docker-compose-mysql-classicmodels.git
-# cd docker-compose-mysql-classicmodels
-```
-
-Follow the directions in the readme.
-
-&nbsp;
-
-&nbsp;
 
 # I. Create the Project
 
@@ -154,7 +45,7 @@ Follow the steps below:
 
 &nbsp;
 
-## 1. Start the MySQL database container:
+## 1. Start the database container
 
 ```bash
 docker run --name mysql-container --net dev-network -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=p apilogicserver/mysql8.0:latest
@@ -192,7 +83,12 @@ The project should be ready to run without customization:
 
 &nbsp;
 
-## 4. Add Security - using the terminal window inside VSCode:
+&nbsp;
+
+
+# II. Add Security
+
+Using the terminal window inside VSCode:
 
 **Stop the server.**
 
@@ -218,7 +114,7 @@ Re-run the project (F5), observe you need to login (***admin, p***).
 
 &nbsp;
 
-# II. Running the git project as image
+# III. Running the project as image
 
 These scripts simplify creating and running docker containers for your project.  Their use is illustrated in the links above.
 
@@ -248,7 +144,7 @@ sh devops/docker-image/build_image.sh .
 
 &nbsp;
 
-## 3. Observe the pre-configured server
+## 3. Observe database config
 
 When run from a container, the database uri using `localhost` (from above) does not work.  Confirm the following in `devops/docker-image/env.list`:
 
@@ -279,14 +175,13 @@ You can also run the [Authentication Administration App](http://localhost:5656/a
 
 &nbsp;
 
-# III. Running the git project as docker-compose
+# IV. Running as docker-compose
 
 Use docker compose to choreograph multiple services (e.g, your application and a database) for a multi-tiered system.
 
-
 &nbsp;
 
-## 1. Stop the server and docker database
+## 1. Stop the system
 
 Press ctl-C to stop the API Logic Project container.
 
@@ -296,9 +191,9 @@ The procedure below will spin up *another* database container.  If the current d
 
 &nbsp;
 
-## 2. Observe the pre-configured database service
+## 2. Observe database service
 
-Open `devops/docker-image/docker-compose.yml`, and observe:
+Open `devops/docker-compose-dev-local/ddocker-compose-dev-local.yml`, and observe the database service:
 
 ```yaml
     mysql-service:
@@ -322,35 +217,34 @@ Open `devops/docker-image/docker-compose.yml`, and observe:
 
 &nbsp;
 
-## 3. Build, Deploy and Run
+## 3. Observe the app service
 
-The following will build, deploy and start the container stack locally:
+In `devops/docker-compose-dev-local/ddocker-compose-dev-local.yml`,  observe the database service uses the your application image, and has configured the database URIs to your database service, above:
 
+```yaml
+    api-logic-server:
+        image: apilogicserver/classicmodels
+        environment:
+          - APILOGICPROJECT_VERBOSE=true
+          # for testing
+          # - APILOGICPROJECT_CLIENT_URI=//10.0.0.77
+          # HOST_IP set in docker-compose.sh/ps1
+          # - APILOGICPROJECT_CLIENT_URI=//${HOST_IP}
+          - SECURITY_ENABLED=true
+          ## - APILOGICPROJECT_HTTP_SCHEME=https
+          ## - PYTHONPATH=/app/ApiLogicProject 
+          ## database uri's:
+          - APILOGICPROJECT_SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:p@mysql-service:3306/classicmodels
+          - APILOGICPROJECT_SQLALCHEMY_DATABASE_URI_AUTHENTICATION=mysql+pymysql://root:p@mysql-service:3306/authdb
+        expose:
+          - 5656
+        ports:
+          - 5656:5656
 ```
-# sh devops/docker-compose/docker-compose.sh
-```
-
-Then, in your browser, open [`localhost`](http://localhost).
 
 &nbsp;
 
-### Manual Port configuration (not required)
-
-The shell script above simply obtains your IP address, and stores in in an env file for server.
-
-Alternatively, you can enter your port into `devops/docker-image/env-docker-compose.env`.
-
-Then, use the following to build, deploy and start the default container stack locally:
-
-```
-# docker-compose -f ./devops/docker-compose/docker-compose.yml --env-file ./devops/docker-compose/env-docker-compose.env up
-```
-
-Then, in your browser, open [`localhost`](http://localhost).
-
-&nbsp;
-
-## 4. Observe Pre-configured Security
+## 4. Observe Security
 
 The database contains `authdb`.  To activate security, observe `devops/docker-compose/docker-compose.yml`:
 
@@ -363,56 +257,130 @@ The database contains `authdb`.  To activate security, observe `devops/docker-co
 
 &nbsp;
 
-## IV. Deploy to cloud
+## 5. Build, Deploy and Run
 
-***Under construction***
+The following will build, deploy and start the container stack locally:
 
-Steps to create:
+```
+# sh devops/docker-compose/docker-compose.sh
+```
 
-az login
-
-you will be redirected to a browser login page
-
-and then you will see your account information in the CLI
+Then, in your browser, open [`localhost:5656`](http://localhost:5656).
 
 &nbsp;
 
-### Create the database in azure:
+# V. Deploy to cloud
+
+This procedure is modeled after [this article](https://learn.microsoft.com/en-us/azure/app-service/tutorial-multi-container-app); it uses [this project](https://github.com/Azure-Samples/multicontainerwordpress).
+
+&nbsp;
+
+## 1. Acquire Project Files
+
+The following setup steps are required.  You will modify these for your own project.  You can use the apilogicserver project/image for this exercise.
+
+&nbsp;
+
+**a) Push Project to github**
+
+We've already pushed the `classicmodels` project.
+
+&nbsp;
+
+**b) Push Image to DockerHub**
+
+We've already pushed the `classicmodels` image, like this:
 
 ```bash
-az container create --resource-group <resource group name> --name postgresql-container --image apilogicserver/postgres:latest --dns-name-label postgresql-container --ports 5432 --environment-variables PGDATA=/pgdata POSTGRES_PASSWORD=p
-```
-
-
-```bash
-az container show --resource-group <resource group name> --name postgresql-container --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+docker tag apilogicserver/classicmodels apilogicserver/classicmodels:latest"
+docker push apilogicserver/classicmodels:latest"
 ```
 
 &nbsp;
 
-### Deploy the App Container
+**c) Acquire file in Azure**
+
+To obtain the project files (docker compose, etc), use the portal:
+
+![Azure Data Tools](images/docker/azure/portal.png)
+
+1. Login to the portal
+
+2. In the Portal CLI:
 
 ```bash
-az container create --resource-group <resource group name> --name <container name> --image <docker hub registry name>/<repository name>:<version> --dns-name-label <container name> --ports 5656 5002 --environment-variables SECURITY_ENABLED=True PYTHONPATH=/app/ApiLogicProject APILOGICPROJECT_SQLALCHEMY_DATABASE_URI=postgresql://postgres:p@postgresql-container.centralus.azurecontainer.io:5432/postgres APILOGICPROJECT_SQLALCHEMY_DATABASE_URI_AUTHENTICATION=postgresql://postgres:p@postgresql-container.centralus.azurecontainer.io:5432/authdb APILOGICPROJECT_SECURITY_ENABLED=True
-```
+mkdir classicmodels
+cd classicmodels
 
-Verify:
+git clone https://github.com/ApiLogicServer/classicmodels.git
 
-```bash
-az container show --resource-group <resource group name> --name <container name> --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+cd classicmodels
 ```
 
 &nbsp;
 
+## 2. Create container group
 
-# Status
+```bash
+az group create --name myResourceGroup --location "westus"
+```
 
-Works with API Logic Server > 9.1.33.
+&nbsp;
 
+## 3. Create service plan
 
+```bash
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
+```
 
+&nbsp;
 
+## 4. Create docker compose app
 
+Your create the multi-container system as shown below.  
 
+Note the argument `--name classicmodels`.  Your `docker-compose-dev-azure.yml` has been pre-configured to use your **lower cased** project name:
 
+```yaml
+          - APILOGICPROJECT_CLIENT_URI=//classicmodels.azurewebsites.net
+```
 
+This name must match `--name classicmodels` in the following command:
+
+```bash
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name classicmodels --multicontainer-config-type compose --multicontainer-config-file devops/docker-compose-dev-azure/docker-compose-dev-azure.yml
+```
+
+If you need to update the container:
+
+1. Update youur project locally
+2. Push to git
+3. In the Azure portal,
+   * `git pull`
+   * Repeat the `az webapp create`, above
+   
+If you need to recreate the container, you can use the portal, or this command:
+
+```bash
+az container delete --resource-group myResourceGroup --name mycontainer
+```
+
+&nbsp;
+
+## 5. Enable logging
+
+Use [this procedure](https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-diagnostic-logs#enable-application-logging-linuxcontainer); TL;DR:
+
+> To enable web server logging for Windows apps in the Azure portal, navigate to your app and select App Service logs.  For Web server logging, select Storage to store logs on blob storage, or File System to store logs on the App Service file system.
+
+```bash
+az container logs --resource-group myResourceGroup --name mycontainer
+```
+
+For specific error conditions, see [Troubleshooting Azure](../Troubleshooting/#azure-cloud-deployment){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+## 6. Browse to the app 
+
+To run the app, [https://classicmodels.azurewebsites.](https://classicmodels.azurewebsites).
