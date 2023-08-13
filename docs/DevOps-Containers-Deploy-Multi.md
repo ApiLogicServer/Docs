@@ -62,8 +62,10 @@ Verify it looks like this:
 Create the project with API Logic Server:
 
 ```bash
-ApiLogicServer create --project_name=. --db_url=mysql+pymysql://root:p@localhost:3306/classicmodels
+ApiLogicServer create --project_name=classicmodels --db_url=mysql+pymysql://root:p@localhost:3306/classicmodels
 ```
+
+Or, use postgres: `ApiLogicServer create --project_name=postgres --db_url=postgresql://postgres:p@localhost/postgres`.
 
 &nbsp;
 
@@ -109,6 +111,8 @@ Security databases must include certain tables and columns.  Your authdb can opt
 To help you get started, the `auth-db` folder provides starter kits for creating these databases.  Alter these files for your project, prepare database containers for your team, and use them in the `add-auth` command above.
 
 Re-run the project (F5), observe you need to login (***admin, p***).
+
+Or, use postgres: `ApiLogicServer add-auth --project_name=. --db_url=postgresql://postgres:p@localhost/authdb`
 
 &nbsp;
 
