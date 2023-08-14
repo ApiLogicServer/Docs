@@ -313,9 +313,6 @@ To obtain the project files (docker compose, etc), use the portal:
 2. In the Portal CLI:
 
 ```bash
-mkdir classicmodels
-cd classicmodels
-
 git clone https://github.com/ApiLogicServer/classicmodels.git
 
 cd classicmodels
