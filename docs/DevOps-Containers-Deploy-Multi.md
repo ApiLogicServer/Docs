@@ -355,6 +355,11 @@ This name must match `--name classicmodels` in the following command:
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name classicmodels --multicontainer-config-type compose --multicontainer-config-file devops/docker-compose-dev-azure/docker-compose-dev-azure.yml
 ```
 
+So, in the postgres example:
+```bash
+az webapp create --resource-group pgResourceGroup --plan pgAppServicePlan --name postgres-nw --multicontainer-config-type compose --multicontainer-config-file devops/docker-compose-dev-azure/docker-compose-dev-azure.yml
+```
+
 If you need to update the container:
 
 1. Update youur project locally
