@@ -65,7 +65,7 @@ Create the project with API Logic Server:
 ApiLogicServer create --project_name=classicmodels --db_url=mysql+pymysql://root:p@localhost:3306/classicmodels
 ```
 
-Or, use postgres: `ApiLogicServer create --project_name=postgres --db_url=postgresql://postgres:p@localhost/postgres`.
+Or, use postgres: `ApiLogicServer create --project_name=postgres-nw --db_url=postgresql://postgres:p@localhost/postgres`.
 
 &nbsp;
 
