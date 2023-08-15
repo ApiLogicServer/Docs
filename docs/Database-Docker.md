@@ -43,7 +43,7 @@ If you are using `pip install` version of API Logic Server.  Differences to note
 * Note related in install procedure, the SqlServer example illustrates you can single-quote the url, instead of using the `\` escapes
 
 ```
-ApiLogicServer create --project_name=sqlserver --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no'
+ApiLogicServer create --project_name=sqlserver --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/SampleDB?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
 
 ApiLogicServer create --project_name=classicmodels --db_url='mysql+pymysql://root:p@localhost:3306/classicmodels'
 
@@ -239,7 +239,7 @@ It also supports connecting to Azure-based databases:
 
 ## Create Your Own DB Image
 
-The API Logic Server project provides several [docker databases](../Database-Docker){:target="_blank" rel="noopener"}.  A simple approach is to build on one of these, to add your own data, and to create your own database container for your team.  This provides a valuable "common starting place" for test database structure and test data.
+The API Logic Server project provides several docker databasesas described above.  A simple approach is to build on one of these, to add your own data, and to create your own database container for your team.  This provides a valuable "common starting place" for test database structure and test data.
 
 &nbsp;
 
@@ -255,4 +255,4 @@ Created projects contain "cheat-sheet" instructions for logging into your databa
 
 ### 2. Push Docker Image
 
-The same created directory contains a `authdb_mysql.Dockerfile` with instructions to convert a running (database) container to an image, and push it to your own DockerHub account.
+The same created directory contains `authdb_mysql.Dockerfile`, with instructions to convert a running (database) container to an image, and push it to your own DockerHub account.
