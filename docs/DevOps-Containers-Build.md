@@ -32,10 +32,10 @@ To build an image for your ApiLogicProject:
 1. On Docker Hub, create a docker repository under your docker account. 
 2. Create / customize your project as your normally would
 3. Edit `build-image.sh`: change `your_account/your_repository` as appropriate
-    * Here is [an example](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/build_image.sh){:target="_blank" rel="noopener"}
+    * Here is [an example](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/build_image.sh){:target="_blank" rel="noopener"}
 4. In terminal (not in VSCode docker - docker CLI is not installed there), <br>`cd < your-project>`
-5. Run `build-image.sh`: <br> `sh devops/docker/build_image.sh .   # builds the image locally`
-    * Test the image locally - [see Run Container](../DevOps-Containers-Run)
+5. Run `build-image.sh`: <br> `sh devops/docker-image/build_image.sh .   # builds the image locally`
+    * Test the image locally - [see Run Container](../DevOps-Containers-Run){:target="_blank" rel="noopener"}
 
 6. Deploy to Docker Hub
 
@@ -61,13 +61,8 @@ Your project may require additional packages not already included with API Logic
 
 ## MyDB: Test Databases
 
-One of the great things about Docker is the ability to install popular databases, with no hassle.  Follow the procedures described in [Connection Examples](../Database-Connectivity/#docker-databases){:target="_blank" rel="noopener"}.
+One of the great things about Docker is the ability to install popular databases, with no hassle.  Follow the procedures described in [Connection Examples](../Database-Docker/#create-your-own-db-image){:target="_blank" rel="noopener"}.
 
-If you wish, you can add your own database / test data to the pre-supplied [repositories](https://hub.docker.com/repositories/apilogicserver){:target="_blank" rel="noopener"}, and then build an image from the updated result.
-
-> [See here](../Tech-Docker/#preparing-a-database-image-for-self-contained-databases){:target="_blank" rel="noopener"} for notes on how to update / save a docker image.
-
-In most cases, images are code, not data.  The DBMS images, however, include their own data.  This enables fellow developers to `run` the image and get started, without having to understand and setup volumes for DBMS data.
 
 
 [^1]:

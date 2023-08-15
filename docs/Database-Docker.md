@@ -249,6 +249,9 @@ You can access the database cli via Docker Desktop, to add databases, data etc a
 
 Created projects contain "cheat-sheet" instructions for logging into your database; [click here](https://github.com/ApiLogicServer/demo/tree/main/devops/auth-db).
 
+> [See here](../Tech-Docker/#preparing-a-database-image-for-self-contained-databases){:target="_blank" rel="noopener"} for another example on how to update / save a docker image.
+
+
 ![Authdb](images/devops/multi-tier/authdb.png)
 
 &nbsp;
