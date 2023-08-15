@@ -52,6 +52,18 @@ nav:
     - "Activation": Security-Activation.md
     - "Swagger": Security-Swagger.md
   - "Using Your IDE": IDE-Customize.md
+  - Database:
+    - "Examples": Data-Model-Examples.md
+    - Data-Model-Classes.md
+    - Data-Model-Keys.md
+    - Data-Model-Customization.md
+    - "Connection Examples": Database-Connectivity.md
+    - "Docker Test Databases": Database-Docker.md
+    - "Multiple Databases": Data-Model-Multi.md
+    - "Table Filters": Data-Model-Filters.md
+    - "Explore SQLAlchemy": Data-Model-Explore-SQLAlchemy.md
+    - "Install pyodbc: SqlServer": Install-pyodbc.md
+    - "Install psycopg2: Postgres": Install-psycopg2.md
   - DevOps - Containers:
     - "About Containers": DevOps-Containers.md
     - Create and Run Containers:
@@ -75,18 +87,6 @@ nav:
   - Agile / Testing:
     - "Agility With Behave": Behave.md
     - "Behave Logic Report": Behave-Logic-Report.md
-  - Database:
-    - "Examples": Data-Model-Examples.md
-    - Data-Model-Classes.md
-    - Data-Model-Keys.md
-    - Data-Model-Customization.md
-    - "Connection Examples": Database-Connectivity.md
-    - "Docker Test Databases": Database-Docker.md
-    - "Multiple Databases": Data-Model-Multi.md
-    - "Table Filters": Data-Model-Filters.md
-    - "Explore SQLAlchemy": Data-Model-Explore-SQLAlchemy.md
-    - "Install pyodbc: SqlServer": Install-pyodbc.md
-    - "Install psycopg2: Postgres": Install-psycopg2.md
   - Managing API Logic Projects:
     - "Structure": Project-Structure.md
     - "Rebuild": Project-Rebuild.md
