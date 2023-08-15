@@ -284,7 +284,7 @@ To get started, please see  the [Architecture](Architecture-Internals).
 You can try the pre-release at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==9.2.7
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==9.2.8
 
 Or use:
 
