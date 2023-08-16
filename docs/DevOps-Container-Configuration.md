@@ -193,7 +193,7 @@ To see a list of typical env variables, [click here](https://github.com/ApiLogic
 
 The example below illustrates you can store such variables in a `devops/docker-image/env.list` file (be sure to edit these - they are to confirm settings during initial testing):
 
-![Running image locally](images/docker-image/container-run.png)
+![Running image locally](images/docker/container-run.png)
 
 ### Debugging
 
@@ -239,7 +239,7 @@ Please see the [Install Instructions](../Install){:target="_blank" rel="noopener
 
 #### Docker
 
-You can use Docker compose files or env files to configure your project.  There is an example in the default project - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/run_image.sh){:target="_blank" rel="noopener"}.
+You can use Docker compose files or env files to configure your project.  There is an example in the default project - [click here to see run-image.sh](https://github.com/ApiLogicServer/demo/tree/main/devops/docker-image){:target="_blank" rel="noopener"}.
 
 [^1]:
     Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
