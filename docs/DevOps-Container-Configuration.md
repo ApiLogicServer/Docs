@@ -7,6 +7,23 @@
 
 ## Starting the Server
 
+### Via the Container
+
+Once the container [is created](../DevOps-Containers-Build){:target="_blank" rel="noopener"}, you can start it [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/run_image.sh){:target="_blank" rel="noopener"}, which contains:
+
+```bash
+docker run --env-file devops/docker-image/env.list -it --name api_logic_project --rm --net dev-network -p 5656:5656 -p 5002:5002 apilogicserver/<your project>
+```
+
+Note that:
+
+1. Execution begins automatically (the dockerfile runs `python api_logic_server_run.py`)
+
+2. Configuration is via `env.list`; configure as required
+
+
+&nbsp;
+
 ### Via the IDE
 
 As described in the Quick Start, Run Configurations are provided to start the server in your IDE.
@@ -188,7 +205,7 @@ For example, to override the database location on mac:
 export APILOGICPROJECT_SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:p@localhost:3306/
 ```
 
-To see a list of typical env variables, [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/env.list){:target="_blank" rel="noopener"}.
+To see a list of typical env variables, [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/env.list){:target="_blank" rel="noopener"}.
 
 
 The example below illustrates you can store such variables in a `devops/docker-image/env.list` file (be sure to edit these - they are to confirm settings during initial testing):
