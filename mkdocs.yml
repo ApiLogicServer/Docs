@@ -74,7 +74,7 @@ nav:
       - "Dev Preview in Cloud": DevOps-Containers-Preview.md
       - "Managed Database": DevOps-Containers-Deploy.md
       - "Container Database": DevOps-Containers-Deploy-Multi.md
-    - "Configuration - Ports etc.": Project-Execution.md
+    - "Container Configuration": DevOps-Container-Configuration.md
     - Dev Containers:
       - "Dev Containers": DevOps-Docker.md
       - "GitHub and Codespaces": DevOps-GitHub.md

@@ -117,7 +117,7 @@ Database access requires:
 
 * **Connectivity:** for more information, see [connectivity](../Database-Connectivity/#verify-database-connectivity)
 
-* **Configuration:** ensure your project is correctly configured; see [DevOps - Debugging](../Project-Execution/#debugging)
+* **Configuration:** ensure your project is correctly configured; see [Container Configuration](../DevOps-Container-Configuration/#debugging)
 
 
 

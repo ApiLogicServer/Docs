@@ -12,15 +12,17 @@ You can run your container locally, or from DockerHub.  Running locally is clear
 
 You will typically want to test your image before pushing it to DockerHub.  Use the [run-image](https://github.com/ApiLogicServer/tutorial/blob/main/3.%20Logic/devops/docker/run_image.sh), as shown below[^1].
 
-* Note you can use env variables to configure your servers and ports.  The example below illustrates you can store such variables in a `devops/docker/env.list` file (be sure to edit these - they are to confirm settings during initial testing):
-
-![Running image locally](images/docker/container-run.png)
-
 For example, to run your project container directly, you can 
 
 ```bash
 sh devops/docker/sh run_image.sh
 ```
+
+&nbsp;
+
+#### `environment` variables
+
+Note you can use **env variables** to configure your servers and ports.  For more information, [click here](../DevOps-Container-Configuration/#overrides-env-variables){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

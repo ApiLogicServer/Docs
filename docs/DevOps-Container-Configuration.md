@@ -1,4 +1,10 @@
 
+!!! pied-piper ":bulb: TL;DR - Configure Containers with env variables"
+
+    Containers are most commonly configured by environment variables, either in docker files, docker compose files, env files, or command line arguments.  The most common configuration parameters govern database / port locations - [click here](#overrides-env-variables).
+
+&nbsp;
+
 ## Starting the Server
 
 ### Via the IDE
@@ -159,6 +165,23 @@ A common approach for host, port and database configuration is to use env variab
 
 The names of the variables are those noted used in the `config.py` file, **preceded by** `APILOGICPROJECT_`[^1].  These values override both the `config.py` values and the Api Logic Project CLI arguments.
 
+Here are the most commonly set environment variables:
+
+```yaml
+services:
+
+    api-logic-server:
+        image: apilogicserver/classicmodels
+        environment:
+          - APILOGICPROJECT_VERBOSE=true
+          - SECURITY_ENABLED=true
+          - APILOGICPROJECT_CLIENT_URI=//classicmodels.azurewebsites.net
+          - PYTHONPATH=/app/ApiLogicProject 
+          ## specify Database uri's:
+          - APILOGICPROJECT_SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:p@mysql-service:3306/classicmodels
+          - APILOGICPROJECT_SQLALCHEMY_DATABASE_URI_AUTHENTICATION=mysql+pymysql://root:p@mysql-service:3306/authdb
+```
+
 For example, to override the database location on mac:
 
 ```bash
@@ -167,9 +190,14 @@ export APILOGICPROJECT_SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:p@localhost:
 
 To see a list of typical env variables, [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/env.list){:target="_blank" rel="noopener"}.
 
+
+The example below illustrates you can store such variables in a `devops/docker-image/env.list` file (be sure to edit these - they are to confirm settings during initial testing):
+
+![Running image locally](images/docker-image/container-run.png)
+
 ### Debugging
 
-You can see the env variables in the sample `env_list` file - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/env.list){:target="_blank" rel="noopener"}.
+You can see the env variables in the sample `env_list` file - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/env.list){:target="_blank" rel="noopener"}.
 
 Use the `APILOGICPROJECT_VERBOSE` to log the values to the console log.
 
@@ -211,7 +239,7 @@ Please see the [Install Instructions](../Install){:target="_blank" rel="noopener
 
 #### Docker
 
-You can use Docker compose files or env files to configure your project.  There is an example in the default project - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker/run_image.sh){:target="_blank" rel="noopener"}.
+You can use Docker compose files or env files to configure your project.  There is an example in the default project - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/run_image.sh){:target="_blank" rel="noopener"}.
 
 [^1]:
     Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
