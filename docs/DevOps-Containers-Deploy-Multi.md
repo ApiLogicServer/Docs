@@ -187,11 +187,13 @@ Use docker compose to choreograph multiple services (e.g, your application and a
 
 ## 1. Stop the system
 
-Press ctl-C to stop the API Logic Project container.
+You must now:
 
-The procedure below will spin up *another* database container.  If the current database container is running, you will see port conflicts.
+1. **Stop the API Logic Project container** - press ctl-C
 
-**Stop** the database container (e.g., using Docker Desktop).
+2. **Stop the database container** (e.g., using Docker Desktop).
+
+    * The procedure below will spin up *another* database container.  If the current database container is running, you will see port conflicts.
 
 &nbsp;
 
@@ -250,14 +252,15 @@ In `devops/docker-compose-dev-local/ddocker-compose-dev-local.yml`,  observe the
 
 ## 4. Observe Security
 
-The database contains `authdb`.  To activate security, observe `devops/docker-compose/docker-compose.yml`:
+The database contains `authdb`.  To see how it was configures, observe `devops/docker-compose/docker-compose.yml`:
 
-1. Set `- SECURITY_ENABLED=true`
+1. Observe `- SECURITY_ENABLED=true`
 
 2. Under api-logic-server-environment, observe:
 
-`          - APILOGICPROJECT_SQLALCHEMY_DATABASE_URI_AUTHENTICATION=mysql+pymysql://root:p@mysql-service:3306/authdb
-`
+```yaml
+  - APILOGICPROJECT_SQLALCHEMY_DATABASE_URI_AUTHENTICATION=mysql+pymysql://root:p@mysql-service:3306/authdb
+```
 
 &nbsp;
 
@@ -266,7 +269,7 @@ The database contains `authdb`.  To activate security, observe `devops/docker-co
 The following will build, deploy and start the container stack locally:
 
 ```
-# sh devops/docker-compose/docker-compose.sh
+# sh devops/docker-compose-dev-local/docker-compose.sh
 ```
 
 Then, in your browser, open [`localhost:5656`](http://localhost:5656).
@@ -291,7 +294,7 @@ We've already pushed the `classicmodels` project.
 
 &nbsp;
 
-**b) Push Image to DockerHub**
+**b) Push DB Image to DockerHub**
 
 We've already pushed the `classicmodels` image, like this:
 
