@@ -25,6 +25,7 @@ nav:
   - Tutorial:
     - "Tutorial": Tutorial.md
     - Sample-Database.md
+    - "Deployment Tutorial": Tutorial-Deployment.md
   - 1. Admin Web App:
     - "Automatic Admin App": Admin-Tour.md
     - Admin-Customization.md
