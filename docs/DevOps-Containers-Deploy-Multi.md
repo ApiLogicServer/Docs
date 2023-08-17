@@ -388,4 +388,6 @@ For specific error conditions, see [Troubleshooting Azure](../Troubleshooting/#a
 
 ## 6. Browse to the app 
 
-To run the app, [https://classicmodels.azurewebsites.](https://classicmodels.azurewebsites).
+To run the app, [https://classicmodels.azurewebsites.](https://classicmodels.azurewebsites){:target="_blank" rel="noopener"}.
+
+You will need to wait a bit on the first run while the containers are loaded.  Subsequent performance should be fine.
