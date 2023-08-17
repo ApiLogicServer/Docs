@@ -26,13 +26,13 @@ This doc explains:
 
 * **II. Add Security**
 
-* **III. Running the project as an *image*** - create and run an image
+* **III. Run as *image*** - create and run an image
 
-* **IV. Running the project as a *docker-compose*** - build, deploy and run
+* **IV. Run  as *docker-compose*** - multi-container -- build, deploy and run
 
-* **V. Status, Open Issues (eg, not working on windows)** 
+* **V. Deploy to Cloud** 
 
-This presumes you have Python, and docker.
+This presumes you have installed API Logic Server, and docker.  You will need an Azure account.
 
 &nbsp;
 
@@ -118,7 +118,7 @@ Or, use postgres: `ApiLogicServer add-auth --project_name=. --db_url=postgresql:
 
 &nbsp;
 
-# III. Running the project as image
+# III. Run as image
 
 These scripts simplify creating and running docker containers for your project.  Their use is illustrated in the links above.
 
@@ -161,7 +161,7 @@ APILOGICPROJECT_SQLALCHEMY_DATABASE_URI_AUTHENTICATION=mysql+pymysql://root:p@my
 
 ## 4. Start the Server, Test
 
-**1. Start the Server:** use the pre-created command line script:
+**1. Start the Server:** use the pre-created command line script to run the container from the image:
 
 ```bash
 sh devops/docker-image/run_image.sh
@@ -175,9 +175,9 @@ You can also run the [Authentication Administration App](http://localhost:5656/a
 
 &nbsp;
 
-# IV. Running as docker-compose
+# IV. Run as docker-compose
 
-Use docker compose to choreograph multiple services (e.g, your application and a database) for a multi-tiered system.
+Use docker compose to choreograph multiple services (e.g, your application and database) for a **multi-container system**.
 
 &nbsp;
 
@@ -316,6 +316,16 @@ git clone https://github.com/ApiLogicServer/classicmodels.git
 
 cd classicmodels
 ```
+
+### 1a. Automated Deploy
+
+Once you have acquired the project, you can perform all of the steps below with the created script:
+
+```bash
+sh devops/docker-compose-dev-azure/azure-deploy.sh
+```
+
+In the following sections, we'll perform these steps by hand so you can explore the underlying process.
 
 &nbsp;
 

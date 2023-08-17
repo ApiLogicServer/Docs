@@ -6,17 +6,17 @@ I created a free account, electing the $200 free option.  In the entire exercise
 
 &nbsp;
 
-## Managing your Account
-
-There are several ways of creating applications.  Key ones are noted below.
-
-&nbsp;
-
 ## Resource Groups
 
 A key concept in all of the steps below is a `Resource Group`, which manages the multiple containers and resources (databases, storage etc) that comprise your system.  
 
 For more information, [click here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+## Managing your Account
+
+There are several ways of creating applications.  Key ones are noted below.
 
 &nbsp;
 
