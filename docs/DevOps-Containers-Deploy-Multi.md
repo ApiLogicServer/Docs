@@ -81,7 +81,7 @@ The project should be ready to run without customization:
 
 3. Press F5 to run the server
 
-4. Run the [Admin App](http://localhost:5656), and Swagger.  Verify that `customers` returns data.
+4. Run the [Admin App](http://localhost:5656){:target="_blank" rel="noopener"}, and Swagger.  Verify that `customers` returns data.
 
 &nbsp;
 
@@ -159,21 +159,17 @@ APILOGICPROJECT_SQLALCHEMY_DATABASE_URI_AUTHENTICATION=mysql+pymysql://root:p@my
 
 &nbsp;
 
-## 4. Start the Server
+## 4. Start the Server, Test
 
-Use the pre-created command line script:
+**1. Start the Server:** use the pre-created command line script:
 
 ```bash
 sh devops/docker-image/run_image.sh
 ```
 
-&nbsp;
+**2. Test the App:** browse the [Admin App](http://localhost:5656){:target="_blank" rel="noopener"}, and Swagger
 
-## 5. Run the App
-
-Run the [Admin App](http://localhost:5656), and Swagger.
-
-You can also run the [Authentication Administration App](http://localhost:5656/admin/authentication_admin/) to define users and roles (though not required).
+You can also run the [Authentication Administration App](http://localhost:5656/admin/authentication_admin/){:target="_blank" rel="noopener"} to define users and roles (though not required).
 
 &nbsp;
 
@@ -199,7 +195,7 @@ You must now:
 
 ## 2. Observe database service
 
-Open `devops/docker-compose-dev-local/ddocker-compose-dev-local.yml`, and observe the database service:
+Open `devops/docker-compose-dev-local/docker-compose-dev-local.yml`, and observe the database service:
 
 ```yaml
     mysql-service:
@@ -272,7 +268,7 @@ The following will build, deploy and start the container stack locally:
 # sh devops/docker-compose-dev-local/docker-compose.sh
 ```
 
-Then, in your browser, open [`localhost:5656`](http://localhost:5656).
+Then, in your browser, open [`localhost:5656`](http://localhost:5656){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
