@@ -49,7 +49,7 @@ The database file is `security/authentication_provider/sql/authentication_db.sql
 * Roles (`Role` and `UserRole`)
 * User.client_id, to test multi-tenant (the test user is **aneu**).
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/security/authentication-db.png"></figure>
+![authdb](images/security/authdb.png)
 
 &nbsp;
 
