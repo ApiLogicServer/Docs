@@ -6,12 +6,14 @@
 
     2. Containerize your project
 
-    3. Deploy to Azure
+    3. Deploy to Azure two containers using docker compose:
+
+        1. Your project
+        2. A database container, with both the DBMS and data
 
 [Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
 
-
-
+&nbsp;
 
 # Rapid Cloud Preview
 
