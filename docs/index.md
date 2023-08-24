@@ -90,6 +90,21 @@ We think you'll find Codespaces pretty amazing - check it out!
 
 &nbsp;
 
+
+### Instant Cloud Deployment
+
+Follow [this procedure](DevOps-Containers-Deploy-Multi){:target="_blank" rel="noopener"} to
+
+1. Create a project from a sample dockerized database
+
+2. Containerize your project
+
+3. Deploy to Azure
+
+Once you are installed, the entire process takes well under an hour.  You will need an Azure account for cloud deployment (but the prior steps are useful to run).
+
+&nbsp;
+
 ### In a Nutshell
 
 Here is a quick screen-shot demo of the basic process:

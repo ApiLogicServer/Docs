@@ -1,19 +1,16 @@
 !!! pied-piper ":bulb: TL;DR - Dev Deploy: Multi-Container Systems"
 
-    This page shows the simplest way to deploy a **dev system** to the cloud, to enable collaboration with Business User and fellow developers: 
+    This page shows the simplest way to deploy a **dev system** to the cloud, to [enable collaboration](../Working-Software-Now){:target="_blank" rel="noopener"} with Business User and fellow developers: 
 
-    * create a resource group
+    1. Create a project from a sample dockerized database
 
-    * create a database container (database server and data - for simplified management)
+    2. Containerize your project
 
-    * deploy an API Logic Project image from DockerHub
-
+    3. Deploy to Azure
 
 [Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
 
-This tutorial presumes you've already `push`ed an image, here called `apilogicserver/docker_api_logic_project:latest`.
 
-![Container Overview](images/docker/container-dev-deploy.png)
 
 
 # Rapid Cloud Preview
@@ -33,6 +30,15 @@ This doc explains:
 * **V. Deploy to Cloud** 
 
 This presumes you have installed API Logic Server, and docker.  You will need an Azure account.
+
+!!! pied-piper ":bulb: Confirm the Happy Path"
+    You will will certainly use different procedures for dev and production deployment.  These introduce variables into a complication procedure.
+    
+    So, we encourage you to follow this "Happy Path" guide closely, to 
+    
+    1. **Confirm** you can deploy using a _known_ database / procedure, and
+    2. Establish a **reference example** for your procedures
+
 
 &nbsp;
 
@@ -55,9 +61,11 @@ Verify it looks like this:
 
 ![Authdb](images/devops/multi-tier/authdb.png)
 
+> Note: The [docker image](../Database-Docker){:target="_blank" rel="noopener"} contains the DBMS *and data* to simplify this tutorial.  You would almost certainly use volumes in normal practice, but this simplifies the tutorial.
+
 &nbsp;
 
-## 2. Create the Project:
+## 2. Create the Project
 
 Create the project with API Logic Server:
 
@@ -65,11 +73,13 @@ Create the project with API Logic Server:
 ApiLogicServer create --project_name=classicmodels --db_url=mysql+pymysql://root:p@localhost:3306/classicmodels
 ```
 
+The command above uses the pre-supplied [docker database](../Database-Connectivity/#docker-databases){:target="_blank" rel="noopener"}, here MySQL.
+
 Or, use postgres: `ApiLogicServer create --project_name=postgres-nw --db_url=postgresql://postgres:p@localhost/postgres`.
 
 &nbsp;
 
-## 3. Verify proper operation
+## 3. Start the Server, Test
 
 The project should be ready to run without customization:
 
@@ -77,7 +87,7 @@ The project should be ready to run without customization:
 
 ![Project Structure](images/devops/multi-tier/docker-compose.png)
 
-2. Establish your (possibly preview) virtual environment
+2. Establish your (possibly preview) [virtual environment](../Project-Env){:target="_blank" rel="noopener"}
 
 3. Press F5 to run the server
 
@@ -104,11 +114,9 @@ ApiLogicServer add-auth --project_name=. --db_url=mysql+pymysql://root:p@localho
 
 The system introspects your `--db_url` database, creates models for it, and configures your project to enable security.
 
-The command above uses the pre-supplied [docker database](https://apilogicserver.github.io/Docs/Database-Connectivity/#docker-databases), here MySQL.
-
 Security databases must include certain tables and columns.  Your authdb can optionally provide a superset of these.  Such extensions are useful in declaring role-based authorization.
 
-To help you get started, the `auth-db` folder provides starter kits for creating these databases.  Alter these files for your project, prepare database containers for your team, and use them in the `add-auth` command above.
+To help you get started, the `devops/auth-db` directory provides starter kits for creating these databases.  Alter these files for your project, prepare database containers for your team, and use them in the `add-auth` command above.
 
 Re-run the project (F5), observe you need to login (***admin, p***).
 
@@ -120,11 +128,11 @@ Or, use postgres: `ApiLogicServer add-auth --project_name=. --db_url=postgresql:
 
 # III. Run as image
 
-These scripts simplify creating and running docker containers for your project.  Their use is illustrated in the links above.
+These scripts simplify creating and running docker containers for your project.  See details in the sub-sections below.
 
 Important Notes:
 
-1. The docker compose steps use the created image, so you must perform this step first
+1. The docker compose steps (below) use the created image, so you must perform this step first
 
 2. The image must contain the security models created in the step above
 
@@ -274,19 +282,27 @@ Then, in your browser, open [`localhost:5656`](http://localhost:5656){:target="_
 
 # V. Deploy to cloud
 
-This procedure is modeled after [this article](https://learn.microsoft.com/en-us/azure/app-service/tutorial-multi-container-app); it uses [this project](https://github.com/Azure-Samples/multicontainerwordpress).
+This procedure is modeled after [this article](https://learn.microsoft.com/en-us/azure/app-service/tutorial-multi-container-app); it uses [this project](https://github.com/Azure-Samples/multicontainerwordpress).  We'll be performing the basic steps:
+
+* Create a resource group and service plan
+
+* Deploy an multi-container application:
+
+  1. API Logic Project image from DockerHub
+
+  2. A Database Container
 
 &nbsp;
 
 ## 1. Acquire Project Files
 
-The following setup steps are required.  You will modify these for your own project.  You can use the apilogicserver project/image for this exercise.
+The following setup steps are required.  You will modify these for your own project.  You can use the `apilogicserver project/image` for this exercise.
 
 &nbsp;
 
 **a) Push Project to github**
 
-We've already pushed the `classicmodels` project.
+We've already pushed the `classicmodels` project, so this step is not required in the tutorial.
 
 &nbsp;
 
@@ -298,6 +314,8 @@ We've already pushed the `classicmodels` image, like this:
 docker tag apilogicserver/classicmodels apilogicserver/classicmodels:latest"
 docker push apilogicserver/classicmodels:latest"
 ```
+
+As noted above, this database image includes you data, so there is no need to worry about volumes.  If you wish, you can create "DBMS + Data" images for your own projects, [like this](../Database-Docker/#create-your-own-db-image){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
