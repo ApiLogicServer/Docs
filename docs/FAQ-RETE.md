@@ -31,11 +31,13 @@ Such rules are typically graphs governing problem areas such as work flow and
 data flow integration.  These are completely appropriate applications.
 
 Process rules are not well suited to highly interdependent transaction logic:
+
 * they are user ordered, so logic changes require the diagrams be redesigned
 * they are not concise - a "flowchart" of thousands of lines of procedural logic
 is actually less readable than code.
 
 Transaction and process rules are synergistic:
+
 * process diagrams may need to update rows, leveraging transaction logic
 * transaction logic may need to start processes ("start order process"),
 or resume them ("order is approved - execute next steps").
@@ -45,6 +47,7 @@ or resume them ("order is approved - execute next steps").
 Decision rules look virtually identical to transaction rules -
 a set of chained derivations.  The difference is in the fundamental
 interface:
+
 * logic engine processes rows changed in a transaction
    * logic operation begins by obtaining _old_ values of these rows
    * these enable pruning and optimization (discussed below)

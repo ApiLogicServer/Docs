@@ -41,7 +41,7 @@ nav:
     - "Debugging Logic": "Logic-Debug.md"
     - "How: Logic and Agile": "Logic-Tutorial.md"
     - "Logic Operation": "Logic-Operation.md"
-    - Types:
+    - Rule Types:
       - "Constraints": "Logic-Type-Constraint.md"
       - "Allocation": "Logic-Allocation.md"
       - "Events": "Logic-Type-Events.md"
@@ -61,6 +61,7 @@ nav:
     - "Connection Examples": Database-Connectivity.md
     - "Docker Test Databases": Database-Docker.md
     - "Multiple Databases": Data-Model-Multi.md
+    - "Database Design": Data-Model-Design.md
     - "Table Filters": Data-Model-Filters.md
     - "Explore SQLAlchemy": Data-Model-Explore-SQLAlchemy.md
     - "Install pyodbc: SqlServer": Install-pyodbc.md
