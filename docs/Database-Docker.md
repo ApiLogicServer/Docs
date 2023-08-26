@@ -170,9 +170,9 @@ ApiLogicServer create --project_name=/localhost/chinook --db_url=mysql+pymysql:/
 
 #### Postgres
 
-Obtained from [pthom at git](https://github.com/pthom/northwind_psql) - many thanks!
+Obtained from [pthom at git](https://github.com/pthom/northwind_psql){:target="_blank" rel="noopener"} - many thanks!
 
-Installed in Docker per [these instructions](https://dev.to/shree_j/how-to-install-and-run-psql-using-docker-41j2).
+Installed in Docker per [these instructions](https://dev.to/shree_j/how-to-install-and-run-psql-using-docker-41j2){:target="_blank" rel="noopener"}.
 
 ```
 docker run -d --name postgresql-container --net dev-network -p 5432:5432 -e PGDATA=/pgdata -e POSTGRES_PASSWORD=p apilogicserver/postgres:latest
@@ -227,7 +227,7 @@ Then, under API Logic Server, Docker installed:
 ApiLogicServer create --project_name=/localhost/sqlserver --db_url=mssql+pyodbc://sa:Posey3861@sqlsvr-container:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server\&trusted_connection=no
 ```
 
-You will probably also want to get [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15), and configure a connection like this (password: posey3861):
+You will probably also want to get [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15){:target="_blank" rel="noopener"}, and configure a connection like this (password: posey3861):
 
 ![Azure Data Tools](images/docker/databases/sqlsvr-conn.png)
 
