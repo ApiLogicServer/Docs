@@ -98,7 +98,7 @@ Important considerations for SQLAlchemy URIs:
   mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no
 ```
 
-* Observe the additional parameter for encryption ([see here](https://stackoverflow.com/questions/71587239/operationalerror-when-trying-to-connect-to-sql-server-database-using-pyodbc))
+* Observe the additional parameter for encryption ([see here](https://stackoverflow.com/questions/71587239/operationalerror-when-trying-to-connect-to-sql-server-database-using-pyodbc){:target="_blank" rel="noopener"})
 
 * On Linux (and inside docker), the URI is:
 
@@ -119,7 +119,7 @@ Important considerations for SQLAlchemy URIs:
 
 #### classicmodels
 
-Docker below built from [MySQL Tutorials](https://www.mysqltutorial.org/mysql-sample-database.aspx/) - Customers, Orders...
+Docker below built from [MySQL Tutorials](https://www.mysqltutorial.org/mysql-sample-database.aspx/){:target="_blank" rel="noopener"} - Customers, Orders...
 
 ```
 docker run --name mysql-container --net dev-network -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=p apilogicserver/mysql8.0:version1.0.7
@@ -146,9 +146,9 @@ FLUSH PRIVILEGES;
 
 #### Sakila
 
-Obtained from [Sakila](https://github.com/LintangWisesa/Sakila_MySQL_Example) - Actors and Films.
+Obtained from [Sakila](https://github.com/LintangWisesa/Sakila_MySQL_Example){:target="_blank" rel="noopener"} - Actors and Films.
 
-Installed in Docker per [these instructions](https://medium.com/@crmcmullen/how-to-run-mysql-in-a-docker-container-on-macos-with-persistent-local-data-58b89aec496a).
+Installed in Docker per [these instructions](https://medium.com/@crmcmullen/how-to-run-mysql-in-a-docker-container-on-macos-with-persistent-local-data-58b89aec496a){:target="_blank" rel="noopener"}.
 
 ```
 ApiLogicServer create --project_name=/localhost/sakila --db_url=mysql+pymysql://root:p@mysql-container/sakila
@@ -158,7 +158,7 @@ ApiLogicServer create --project_name=/localhost/sakila --db_url=mysql+pymysql://
 
 #### Chinook
 
-Obtained from [Chinook](https://github.com/lerocha/chinook-database) - Artists and Tracks.
+Obtained from [Chinook](https://github.com/lerocha/chinook-database){:target="_blank" rel="noopener"}s.
 
 ```
 ApiLogicServer create --project_name=/localhost/chinook --db_url=mysql+pymysql://root:p@mysql-container/Chinook
