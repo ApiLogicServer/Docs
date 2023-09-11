@@ -28,6 +28,8 @@ If you don't have a database, but have an idea, you can
 
 You can [see an example here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/test_databases/ai-created){:target="_blank" rel="noopener"}.
 
+![chatgpt](images/model/employees%20and%20skills.png)
+
 &nbsp;
 
 ## Creating Sample Projects
