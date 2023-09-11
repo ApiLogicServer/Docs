@@ -19,6 +19,17 @@ So, API Logic Server supports the following `db_url` shortcuts:
 
 &nbsp;
 
+## Creating database with ChatGPT
+
+If you don't have a database, but have an idea, you can 
+
+* create databases with ChatGPT, and then 
+* turn these into projects with ApiLogicServer
+
+You can [see an example here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/test_databases/ai-created){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
 ## Creating Sample Projects
 
 You can use the abbreviations to create projects.  For example, create the sample project _without customizations_ to see how API Logic Server would support your own databases:
