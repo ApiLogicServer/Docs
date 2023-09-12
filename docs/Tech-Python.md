@@ -1,5 +1,3 @@
-# Python for a Java Developer
-
 I quite like Python.  I've used assembler, PL/1, and Java.  Python (particularly with good IDEs) is my favorite.
 
 Though, there were some surprises I wish I'd been told about.  So, here you go.
@@ -8,7 +6,7 @@ Though, there were some surprises I wish I'd been told about.  So, here you go.
 
 ## Python and ApiLogicServer
 
-Using ApiLogicServer means you'll be looking at levels of Python use:
+Using ApiLogicServer means you'll be looking at **levels of Python use:**
 
 1. **Automation:** automated project creation eliminates all the fiddly configuration required to build a web app -- without any Pyton at all
 
@@ -26,9 +24,11 @@ You'll discover these soon enough:
 
 1. Indents vs. braces - obvious, but the real implication is that _you need an IDE_, because they keep track of indents (vs. spaces).  I've used PyCharm and VSCode, both are wonderful: great editors, debuggers.
 
-2. Non-typed - well-known, but you can (should) use [Type Hints](https://docs.python.org/3/library/typing.html) for clarity, and code completion.
+2. Non-typed - well-known, but you can (should) use [Type Hints](https://docs.python.org/3/library/typing.html){:target="_blank" rel="noopener"}
+ for clarity, and code completion.
 
-3. CLI - Python includes great tools for making Command Line Interfaces, like __Click__.  A little fiddly, you might want to have a look at [these examples](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/cli.py) (near the end), which uses __ArgParse__.
+3. CLI - Python includes great tools for making Command Line Interfaces, like __Click__.  A little fiddly, you might want to have a look at [these examples](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/cli.py){:target="_blank" rel="noopener"}
+ (near the end), which uses __ArgParse__.
 
 4. Modules - are not packages.  There is a magic file `__init.py__` that makes a directory into a module.
 
@@ -36,7 +36,8 @@ You'll discover these soon enough:
 
 ## Pip, environments and PythonPath
 
-Pip is how to load libraries (packages) - not by setting up folder.  It's great, but quickly leads to Pyton's version of "DLL Hell" where libraries interfere from different projects.  So, the best practice is to set up [Virtual Environments](https://docs.python.org/3/library/venv.html?highlight=virtual%20environment).
+Pip is how to load libraries (packages) - not by setting up folder.  It's great, but quickly leads to Pyton's version of "DLL Hell" where libraries interfere from different projects.  So, the best practice is to set up [Virtual Environments](https://docs.python.org/3/library/venv.html?highlight=virtual%20environment){:target="_blank" rel="noopener"}
+.
 
 A related issue is loading classes / modules at runtime.  Be clear on your `PythonPath`.  And, be aware the some IDEs (PyCharm is one) provide super-friendly support to simplify things by setting this automatically.  Which is nice, until you discover that a program that runs in the IDE fails outside it.  Days of fun.
 
@@ -69,9 +70,18 @@ else:
 
 ### Imports often fail to compile
 
+> Note: import compile failures and circular imports are unlikely to be issues for API Logic Server projects, since these are created correctly.  The following alerts are for using full Python for complex requirements.
+
 I still do not understand where Python and the IDE figure out what I can import.  You'll find lots of Stack Overflow articles on imports (e.g., sibling imports).
 
-For me, it usually degenerates into a trial and error exercise.  You might find [sibling imports](https://github.com/valhuber/SiblingImports) a useful project to fiddle with.
+For me, it usually degenerates into a trial and error exercise.
+
+* You might find [sibling imports](https://github.com/valhuber/SiblingImports){:target="_blank" rel="noopener"}
+ a useful project to fiddle with.
+
+* You can also see many import examples in the created project.
+
+Note that imports often require a "module", which means you create a (usually empty) file called `__init.py__`.
 
 &nbsp;
 
