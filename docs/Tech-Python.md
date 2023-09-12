@@ -6,6 +6,20 @@ Though, there were some surprises I wish I'd been told about.  So, here you go.
 
 &nbsp;
 
+## Python and ApiLogicServer
+
+Using ApiLogicServer means you'll be looking at levels of Python use:
+
+1. **Automation:** automated project creation eliminates all the fiddly configuration required to build a web app -- without any Pyton at all
+
+2. **Python as a DSL:** declarative logic and the admin app require minimal Python - it's really a Domain Specific Language using Python keyword arguments and IDE code complation
+
+3. **Python as a 4GL:** creating custom endpoints requires Python at it's simplest level, particuarly when coupled with a moder IDE.
+
+4. **Full Python:** it's important that there are no restrictions on using full power of Python - objects etc.  In normal cases, this is probably less than 5 or 10% of the project.
+
+&nbsp;
+
 ## Basics
 
 You'll discover these soon enough:
@@ -92,3 +106,9 @@ Where I wound up was simple:
 python3 -m venv venv  # of course, it *might* be Python, not Python3 (!)
 python3 -m pip install ApiLogicServer
 ```
+
+## Debugging
+
+Python is very well supported by modern IDEs, with code completion, syntax checking, docstrings, and the debugger.
+
+In addition to expected debug support (break, inspect, step, watch etc), Python's fully interpretive nature means you can enter Python code while the program is running.  This enables you to test expressions etc.  See, for example, the `Debug Console` in VSCode.

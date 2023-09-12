@@ -30,6 +30,8 @@ You can [see an example here](https://github.com/ApiLogicServer/ApiLogicServer-s
 
 ![chatgpt](images/model/employees%20and%20skills.png)
 
+> No
+
 &nbsp;
 
 ## Creating Sample Projects
