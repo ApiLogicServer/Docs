@@ -14,7 +14,7 @@ Using ApiLogicServer means you'll be looking at **levels of Python use:**
 
 3. **Python as a 4GL:** creating custom endpoints requires Python at it's simplest level, particuarly when coupled with a moder IDE.
 
-4. **Full Python:** it's important that there are no restrictions on using full power of Python - objects etc.  In normal cases, this is probably less than 5 or 10% of the project.
+4. **Full Python:** it's important that there are no restrictions on using full power of Python - classes, exceptions, etc.  In normal cases, this is probably less than 5 or 10% of the project.
 
 &nbsp;
 
