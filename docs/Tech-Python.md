@@ -32,6 +32,14 @@ You'll discover these soon enough:
 
 4. Modules - are not packages.  There is a magic file `__init.py__` that makes a directory into a module.
 
+5.  Key Data Structures
+
+    * [Dict - keyword/value](https://www.w3schools.com/python/python_dictionaries.asp){:target="_blank" rel="noopener"}; easy to convert to json (for rest response)  -- ordered, [`for each_key, each_value in thisdict.items():`](https://www.w3schools.com/python/gloss_python_loop_dictionary_items.asp){:target="_blank" rel="noopener"}
+
+    * [List - ordered list](https://www.w3schools.com/python/python_lists.asp){:target="_blank" rel="noopener"} -- `for each_item in list`
+
+    * [Tuple - set of values](https://www.w3schools.com/python/python_tuples.asp){:target="_blank" rel="noopener"}
+
 &nbsp;
 
 ## Pip, environments and PythonPath
