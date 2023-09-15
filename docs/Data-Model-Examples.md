@@ -19,9 +19,9 @@ So, API Logic Server supports the following `db_url` shortcuts:
 
 &nbsp;
 
-## Creating database with ChatGPT
+## Creating databases with ChatGPT
 
-If you don't have a database, but have an idea, you can 
+If you don't have a database, but have an *idea*, you can 
 
 * create databases with ChatGPT, and then 
 * turn these into projects with ApiLogicServer
@@ -30,7 +30,7 @@ You can [see an example here](https://github.com/ApiLogicServer/ApiLogicServer-s
 
 ![chatgpt](images/model/employees%20and%20skills.png)
 
-> No
+> Note: such databases require *adult supervision*, for examples, they often fail to include primary keys on junction tables
 
 &nbsp;
 
