@@ -17,6 +17,7 @@ Examples:
   ApiLogicServer create-and-run --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no
   ApiLogicServer create-and-run --db_url=postgresql://postgres:p@10.0.0.234/postgres
   ApiLogicServer create --project_name=my_schema --db_url=postgresql://postgres:p@localhost/my_schema
+  ApiLogicServer create --project_name=oracle_hr --db_url='oracle+oracledb://hr:tiger@localhost:1521/?service_name=ORCL'
   ApiLogicServer create --db_url=postgresql+psycopg2://postgres:password@localhost:5432/postgres?options=-csearch_path%3Dmy_db_schema
   ApiLogicServer create --project_name=Chinook \
     --host=ApiLogicServer.pythonanywhere.com --port= \
