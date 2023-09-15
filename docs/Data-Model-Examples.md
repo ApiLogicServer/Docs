@@ -30,7 +30,7 @@ You can [see an example here](https://github.com/ApiLogicServer/ApiLogicServer-s
 
 ![chatgpt](images/model/employees%20and%20skills.png)
 
-> Note: such databases require *adult supervision*, for examples, they often fail to include primary keys on junction tables
+> Note: such databases require *adult supervision*, for example, they often fail to include primary keys on junction tables.
 
 &nbsp;
 
