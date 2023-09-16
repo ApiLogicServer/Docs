@@ -108,7 +108,7 @@ nav:
     - "About Tech Notes": Tech--Notes.md
     - "Working Software Now": Working-Software-Now.md
     - "Python as a DSL": Tech-DSL.md
-    - "Python developer alerts": Tech-Python.md
+    - "Python Tips": Tech-Python.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "Agile Integrations": Tech-Agile-Integrations.md
     - "Learning Flask": Tech-Learning-Flask.md
