@@ -91,7 +91,7 @@ INSERT INTO Products (ProductName, UnitPrice) VALUES
 
 ### Create the database
 
-Sqlite is already installed in ApiLogicServer, so we can use it like this:
+Sqlite is already installed in ApiLogicServer, so we avoid database installs by using it as our target database:
 
 ```bash
 sqlite3 ai_customer_orders.sqlite < ai_customer_orders.sql
