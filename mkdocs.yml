@@ -106,6 +106,7 @@ nav:
     - "Adoption Considerations?": Tech-Adoption.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
+    - "AI-driven Automation": Tech-AI.md
     - "Working Software Now": Working-Software-Now.md
     - "Python as a DSL": Tech-DSL.md
     - "Python Tips": Tech-Python.md

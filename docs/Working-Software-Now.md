@@ -20,5 +20,5 @@
 
       Use the [Deployment Tutorial](../Tutorial-Deployment) to see the complete cycle of creation through deployment.  Examples are provided for MySQL and Postgres.  No install - docker databases are pre-supplied.
 
-![Behave Summary](images/devops/working-software-now.png)
+![ai-driven-automation](images/ai-driven-automation/ai-driven-automation.png)
 

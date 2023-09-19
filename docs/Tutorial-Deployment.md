@@ -10,7 +10,7 @@
 
       With API Logic Server, if you have a database, you can create and dev deploy ***within an hour***.
 
-![Working Software Now](images/devops/working-software-now.png)
+![ai-driven-automation](images/ai-driven-automation/ai-driven-automation.png)
 
 
 # Deployment Tutorial
