@@ -142,8 +142,21 @@ In a terminal window for your project:
 ```bash
 sh devops/docker-image/build_image.sh .
 ```
+&nbsp;
 
-You would next upload the image to docker hub.  If you use the same names as here, you can use our image: `apilogicserver/aicustomerorders`.
+#### Test
+
+You can test the image in single container mode: `sh devops/docker-image/build_image.sh`.
+
+You can also test the image with docker compose: `sh ./devops/docker-compose-dev-local/docker-compose.sh`.
+
+&nbsp;
+
+#### Upload Image (optional)
+
+You would next upload the image to docker hub.  
+
+> If you use the same names as here, skip that, and use our image: `apilogicserver/aicustomerorders`.
 
 &nbsp;
 
@@ -154,6 +167,8 @@ It's also a good time to push your project to git.  Again, if you've used the sa
 &nbsp;
 
 ### Deploy to Azure
+
+> Note: This currently fails, and is under investigation.  See the Appendix below for more information.
 
 Then, login to the azure portal, and:
 
