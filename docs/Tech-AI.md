@@ -26,7 +26,7 @@
 
 &nbsp;
 
-### Use ChatGPT for schema creation
+### Obtain the sql
 
 Use ChapGPT to generate SQL commands for database creation:
 
@@ -145,7 +145,15 @@ sh devops/docker-image/build_image.sh .
 
 You would next upload the image to docker hub.  If you use the same names as here, you can use our image: `apilogicserver/aicustomerorders`.
 
+&nbsp;
+
+### Push the project
+
 It's also a good time to push your project to git.  Again, if you've used the same names as here, you can [use our project](https://github.com/ApiLogicServer/ApiLogicServer-src).
+
+&nbsp;
+
+### Deploy to Azure
 
 Then, login to the azure portal, and:
 
