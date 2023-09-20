@@ -117,7 +117,7 @@ python3 -m venv venv; . venv/bin/activate      # mac/linux
 pip install -r requirements.txt
 ```
 
-& nbsp;
+&nbsp;
 
 ## 3. Deploy for Collaboration
 
@@ -457,7 +457,7 @@ API Logic Server - Start Default App - redirect /admin-app/index.html
 10.92.0.24 - - [20/Sep/2023 15:36:06] "GET /ui/admin/admin.yaml HTTP/1.1" 200 -
 ```
 
-is the problem https?
+is the problem https?  Does the client_uri require the port?
 
 &nbsp;
 
