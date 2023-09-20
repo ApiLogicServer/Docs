@@ -36,7 +36,7 @@ Use ChapGPT to generate SQL commands for database creation:
 
     Create a few rows of customer and product data.
 
-    Maintain the customer's balance as the sum of the unshipped orders, and ensure it does not exceed the credit limit.  Derive items price from the product unit price.
+    Maintain the customer's balance as the sum of the unshipped orders amountotal, and ensure it does not exceed the credit limit.  Derive items price from the product unit price.
 
 
 Copy the generated SQL commands into a file, say, `ai_customer_orders.sql`:
@@ -200,22 +200,21 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 > Note: the names below require correction:
 
 ```python
-
     Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
         as_condition=lambda row: row.Balance <= row.CreditLimit,
         error_msg="balance ({round(row.Balance, 2)}) exceeds credit ({round(row.CreditLimit, 2)})")
 
     Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
         as_sum_of=models.Order.AmountTotal,
-        where=lambda row: row.ShippedDate is None)  # adjusts - *not* a sql select sum...
+        where=lambda row: row.ShipDate is None)  # adjusts - *not* a sql select sum...
 
     Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
-        as_sum_of=models.OrderDetail.Amount)
+        as_sum_of=models.OrderItem.Amount)
 
-    Rule.formula(derive=models.OrderDetail.Amount,  # compute price * qty
-        as_expression=lambda row: row.UnitPrice * row.Quantity)
+    Rule.formula(derive=models.OrderItem.Amount,  # compute price * qty
+        as_expression=lambda row: row.ItemPrice * row.Quantity)
 
-    Rule.copy(derive=models.OrderDetail.UnitPrice,  # get Product Price (e,g., on insert, or ProductId change)
+    Rule.copy(derive=models.OrderItem.ItemPrice,  # get Product Price (e,g., on insert, or ProductId change)
         from_parent=models.Product.UnitPrice)
 ```
 
