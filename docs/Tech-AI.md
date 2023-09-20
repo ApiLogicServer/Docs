@@ -267,7 +267,11 @@ az container create --resource-group aicustomerorders_rg --name aicustomerorders
 
 http://aicustomerorderscontainer.westus.azurecontainer.io:5656/admin-app/index.html#/Home
 
-comes up with
+&nbsp;
+
+#### Login fails
+
+It starts (after a while!), with:
 
 ```yaml
 about:
@@ -282,7 +286,11 @@ info:
   number_tables: 4
 ```
 
-It fails trying to login, with this server log:
+It fails trying to login:
+
+![Login Fails](images/devops/singe-tier/login-fails.png)
+
+And here with this server log:
 
 ```log
 
