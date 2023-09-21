@@ -55,11 +55,21 @@ Use ChapGPT to generate SQL commands for database creation:
 
 !!! pied-piper "Create database definitions from ChatGPT"
 
-    Create a MySQL database for customers, orders, items and product, with autonum keys.  
+    Create a mysql database for customers, orders, items and product, with autonum keys and Decimal types.  
 
     Create a few rows of customer and product data.
 
-    Maintain the customer's balance as the sum of the unshipped orders amountotal, and ensure it does not exceed the credit limit.  Derive items price from the product unit price.
+    Enforce the following logic:
+
+    1. Customer.Balance <= CreditLimit
+
+    2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
+
+    3. Order.AmountTotal = Sum(Items.Amount)
+
+    4. Items.Amount = Quantity * UnitPrice
+
+    5. Items.UnitPrice = copy from Product
 
 
 Copy the generated SQL commands into a file, say, `ai_customer_orders_mysql.sql`:
