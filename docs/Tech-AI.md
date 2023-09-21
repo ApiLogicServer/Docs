@@ -234,8 +234,6 @@ sh devops/docker-compose-dev-azure/azure-deploy.sh
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with these 5 rules:
 
-> Note: the names below require correction:
-
 ```python
     Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
         as_condition=lambda row: row.Balance <= row.CreditLimit,
