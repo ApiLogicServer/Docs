@@ -464,6 +464,20 @@ is the problem https?  Does the client_uri require the port?
 
 I also tried other alternatives:
 
+admin:
+```bash
+api_root: //aicustomerorders.westus.azurecontainer.io/api:5656
+authentication:
+  endpoint: //aicustomerorders.westus.azurecontainer.io/api:5656/auth/login
+
+```
+Single container:
+
+```bash
+az container create --resource-group aicustomerorders_rg --name aicustomerorderscontainer --image apilogicserver/aicustomerorders:latest --dns-name-label aicustomerorderscontainer --ports 5656 --environment-variables 'APILOGICPROJECT_VERBOSE'='True' 'APILOGICPROJECT_CLIENT_URI'='//aicustomerorders.westus.azurecontainer.io'
+```
+
+
 ```
 az container create --resource-group myResourceGroup --name aicustomerorders_rg --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
 
@@ -524,4 +538,13 @@ curl -X 'GET' \
   -H 'accept: application/vnd.api+json' \
   -H 'Content-Type: application/vnd.api+json'
 
+curl -X 'GET' \
+  'https://aicustomerorders.westus.azurecontainer.io/api/Customer/?include=OrderList&fields%5BCustomer%5D=CustomerID%2CFirstName%2CLastName%2CEmail%2CCreditLimit%2CBalance%2C_check_sum_%2CS_CheckSum&page%5Boffset%5D=0&page%5Blimit%5D=10&sort=id' \
+  -H 'accept: application/vnd.api+json' \
+  -H 'Content-Type: application/vnd.api+json'
+
+curl -X 'GET' \
+    'http://aicustomerorders.westus.azurecontainer.io:5656/api/Customer/?include=OrderList&fields%5BCustomer%5D=CustomerID%2CFirstName%2CLastName%2CEmail%2CCreditLimit%2CBalance%2C_check_sum_%2CS_CheckSum&page%5Boffset%5D=0&page%5Blimit%5D=10&sort=id' \
+  -H 'accept: application/vnd.api+json' \
+  -H 'Content-Type: application/vnd.api+json'
 ```
