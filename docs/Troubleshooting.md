@@ -173,6 +173,29 @@ You may encounter unexpected port changes, such as using `localhost:5657` instea
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/fix-vscode-ports.png?raw=true"></figure>
 
+## Permission denied: `/home/api_logic_project/instance`
+
+```bash
+Traceback (most recent call last):
+  File "/home/api_logic_project/./api_logic_server_run.py", line 323, in <module>
+    api_logic_server_setup(flask_app, args)
+  File "/home/api_logic_project/./api_logic_server_run.py", line 229, in api_logic_server_setup
+    db.init_app(flask_app)
+  File "/usr/local/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 325, in init_app
+    self._apply_driver_defaults(options, app)
+  File "/usr/local/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 576, in _apply_driver_defaults
+    os.makedirs(app.instance_path, exist_ok=True)
+  File "<frozen os>", line 225, in makedirs
+PermissionError: [Errno 13] Permission denied: '/home/api_logic_project/instance'
+```
+
+This appears to occur when:
+
+1. You create the same-named image from 2 different directories (e.g, a staging test)
+2. And you are using sqlite (default apps use the image for the database)
+
+Currently under investigation.
+
 # IDE Issues
 
 ## Code Completion fails
