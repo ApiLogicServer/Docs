@@ -260,12 +260,18 @@ That has failed inconsistently; sometimes with 500 errors, sometimes with compla
 So, I tried just a single container:
 
 ```bash
-az container create --resource-group aicustomerorders_rg --name aicustomerorderscontainer --image apilogicserver/aicustomerorders:latest --dns-name-label aicustomerorderscontainer --ports 5656 --environment-variables 'APILOGICPROJECT_VERBOSE'='True' 'APILOGICPROJECT_CLIENT_URI'='//aicustomerorders.westus.azurecontainer.io'
+az container create --resource-group aicustomerorders_rg --name aicustomerorderscontainer --image apilogicserver/aicustomerorders:latest --dns-name-label aicustomerorderscontainer.io --ports 5656 --environment-variables 'APILOGICPROJECT_VERBOSE'='True' 'APILOGICPROJECT_CLIENT_URI'='//aicustomerorders.westus.azurecontainer.io'
+```
+
+9/22:
+```bash
+az container create --resource-group aicustomerorders_rg --name api_logic_server/aicustomerorders --image apilogicserver/aicustomerorders:latest --dns-name-label aicustomerorders --ports 5656 --environment-variables VERBOSE=True APILOGICPROJECT_CLIENT_URI=//aicustomerorders.westus.azurecontainer.io
 ```
 
 http://aicustomerorderscontainer.westus.azurecontainer.io:5656/admin-app/index.html#/Home
 
 &nbsp;
+
 
 #### Login fails
 
