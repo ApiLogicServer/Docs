@@ -241,7 +241,7 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
 ### Sqlite and persistence
 
-For information on database and directory creation, [click here](..DevOps-Container-Configuration/#database-locations){:target="_blank" rel="noopener"}.  Since the database is stored and accessed in the container, cloud changes are not persisted over runs.  This is useful for demo systems where each run starts with fresh data.
+For information on database and directory creation, [click here](../DevOps-Container-Configuration/#database-locations){:target="_blank" rel="noopener"}.  Since the database is stored and accessed in the container, cloud changes are not persisted over runs.  This is useful for demo systems where each run starts with fresh data.
 
 An option for cloud sqlite persistence is under investigation.
 
