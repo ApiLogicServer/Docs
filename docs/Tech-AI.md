@@ -155,10 +155,59 @@ In a terminal window for your project:
 ```bash
 ApiLogicServer add-auth --project_name=. --db_url=authdb
 ```
+&nbsp;
+
+### Declare Logic
+
+Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with these 5 rules:
+
+```python
+    """
+    1. Customer.Balance <= CreditLimit
+
+    2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
+
+    3. Order.AmountTotal = Sum(Items.Amount)
+
+    4. Items.Amount = Quantity * UnitPrice
+
+    5. Items.UnitPrice = copy from Product
+
+    ###
+
+    Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
+        as_condition=lambda row: row.Balance <= row.CreditLimit,
+        error_msg="balance ({round(row.Balance, 2)}) exceeds credit ({round(row.CreditLimit, 2)})")
+
+    Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
+        as_sum_of=models.Order.AmountTotal,
+        where=lambda row: row.ShipDate is None)  # adjusts - *not* a sql select sum...
+
+    Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
+        as_sum_of=models.OrderItem.Amount)
+
+    Rule.formula(derive=models.OrderItem.Amount,  # compute price * qty
+        as_expression=lambda row: row.ItemPrice * row.Quantity)
+
+    Rule.copy(derive=models.OrderItem.ItemPrice,  # get Product Price (e,g., on insert, or ProductId change)
+        from_parent=models.Product.UnitPrice)
+```
 
 &nbsp;
 
-### Create the image
+#### Re-use and Optimization
+
+We can contrast this to the (not shown) ChatGPT attempt at logic.  With declarative logic, you get:
+
+1. ***Automatic* Reuse:** the logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc
+
+2. ***Automatic* Optimizations:** sql overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.
+
+ChatGPT created triggers that missed many Use Cases, and were inefficient.  They were also not transparent; Business Users can read the rules and spot issues (*"hey, where's the tax?"*), certainly not triggers.
+
+&nbsp;
+
+### Containerize
 
 In a terminal window for your project:
 
@@ -167,13 +216,13 @@ sh devops/docker-image/build_image.sh .
 ```
 &nbsp;
 
-#### Test your Image
+**Test your Image**
 
 You can test the image in single container mode: `sh devops/docker-image/run_image.sh`.
 
 &nbsp;
 
-#### Upload Image (optional)
+**Upload Image (optional)**
 
 You would next upload the image to docker hub.  
 
@@ -181,7 +230,7 @@ You would next upload the image to docker hub.
 
 &nbsp;
 
-### Push the project
+**Push the project**
 
 It's also a good time to push your project to git.  Again, if you've used the same names as here, you can [use our project](https://github.com/ApiLogicServer/ApiLogicServer-src).
 
@@ -203,39 +252,7 @@ sh devops/docker-compose-dev-azure/azure-deploy.sh
 
 ## 4. Iterate with Logic
 
-!!! pied-piper "Logic Design ('Cocktail Napkin Design')"
-
-    1. Customer.Balance <= CreditLimit
-
-    2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
-
-    3. Order.AmountTotal = Sum(Items.Amount)
-
-    4. Items.Amount = Quantity * UnitPrice
-
-    5. Items.UnitPrice = copy from Product
-
-
-Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with these 5 rules:
-
-```python
-    Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
-        as_condition=lambda row: row.Balance <= row.CreditLimit,
-        error_msg="balance ({round(row.Balance, 2)}) exceeds credit ({round(row.CreditLimit, 2)})")
-
-    Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
-        as_sum_of=models.Order.AmountTotal,
-        where=lambda row: row.ShipDate is None)  # adjusts - *not* a sql select sum...
-
-    Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
-        as_sum_of=models.OrderItem.Amount)
-
-    Rule.formula(derive=models.OrderItem.Amount,  # compute price * qty
-        as_expression=lambda row: row.ItemPrice * row.Quantity)
-
-    Rule.copy(derive=models.OrderItem.ItemPrice,  # get Product Price (e,g., on insert, or ProductId change)
-        from_parent=models.Product.UnitPrice)
-```
+TBD - automatic ordering
 
 ## Appendices
 
@@ -251,4 +268,4 @@ An option for cloud sqlite persistence is under investigation.  Preliminary thou
 
 There are also products that automate this, such as [LiteStream](https://litestream.io/guides/azure/){:target="_blank" rel="noopener"}.
 
-Of course, you can use a database such as MySQL, Postgres, Oracle or SqlServer, as [described here](..DevOps-Containers-Deploy-Multi/){:target="_blank" rel="noopener"}.
+Of course, you can use a database such as MySQL, Postgres, Oracle or SqlServer, as [described here](..DevOps-Containers-Deploy-Multi/){:target="_blank" rel="noopener"}.  Local databases can be migrated to Azure in a number of ways, such as [this example using MySqlWorkBench](https://www.youtube.com/watch?v=uxSDpZnFa18){:target="_blank" rel="noopener"}.
