@@ -30,14 +30,7 @@ You will need to:
 
 * Install API Logic Server (and Python)
 
-* Install docker, and start the database: 
-
-```bash
-docker network create dev-network
-docker run --name mysql-container --net dev-network -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=p apilogicserver/mysql8.0:latest
-```
-
-    * This is a MySQL we use for testing, simplified to store the data in the docker image to avoid managing docker volumes (useful for dev, not appropriate for production).
+* Install docker 
 
 * A GitHub account (though you can use ours for this demo)
 
@@ -55,7 +48,7 @@ Use ChapGPT to generate SQL commands for database creation:
 
 !!! pied-piper "Create database definitions from ChatGPT"
 
-    Create a mysql database for customers, orders, items and product, with autonum keys and Decimal types.  
+    Create a sqlite database for customers, orders, items and product, with autonum keys and Decimal types.  
 
     Create a few rows of customer and product data.
 
@@ -72,7 +65,7 @@ Use ChapGPT to generate SQL commands for database creation:
     5. Items.UnitPrice = copy from Product
 
 
-Copy the generated SQL commands into a file, say, `ai_customer_orders_mysql.sql`:
+Copy the generated SQL commands into a file, say, `ai_customer_orders.sql`:
 
 ```sql
 CREATE TABLE IF NOT EXISTS Customers (
@@ -153,13 +146,14 @@ python3 -m venv venv; . venv/bin/activate      # mac/linux
 pip install -r requirements.txt
 ```
 
+&nbsp;
 
 ### Add Security
 
 In a terminal window for your project:
 
 ```bash
-ApiLogicServer add-auth --project_name=. --db_url=mysql+pymysql://root:p@localhost:3306/authdb
+ApiLogicServer add-auth --project_name=. --db_url=authdb
 ```
 
 &nbsp;
@@ -179,19 +173,11 @@ You can test the image in single container mode: `sh devops/docker-image/run_ima
 
 &nbsp;
 
-#### Test - Multi-Container
-
-Stop your docker database.
-
-Test the image with docker compose: `sh ./devops/docker-compose-dev-local/docker-compose.sh`.
-
-&nbsp;
-
 #### Upload Image (optional)
 
 You would next upload the image to docker hub.  
 
-> If you use the same names as here, skip that, and use our image: `apilogicserver/aicustomerordersmysql`.
+> If you use the same names as here, skip that, and use our image: `apilogicserver/aicustomerorders`.
 
 &nbsp;
 
@@ -203,13 +189,9 @@ It's also a good time to push your project to git.  Again, if you've used the sa
 
 ## 3. Deploy for Collaboration
 
-API Logic Server also creates scripts for deployment, as shown below:
+API Logic Server also creates scripts for deployment.
 
-&nbsp;
-
-### Deploy to Azure
-
-Then, login to the azure portal, and:
+Login to the azure portal, and:
 
 ```bash
 git clone https://github.com/ApiLogicServer/ai_customer_orders.git
