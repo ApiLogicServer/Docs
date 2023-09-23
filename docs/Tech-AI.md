@@ -38,6 +38,26 @@ You will need to:
 
 &nbsp;
 
+## The Problem
+
+We've all lived the unpleasant reality below.  The harsh truth is that *only running screens communicate*, not docs, diagrams, etc.  But running screens are based on projects that are complex and time-consuming.
+
+![ai-driven-automation](images/ai-driven-automation/harsh.png){: style="height:350px;width:450px"; align=right }
+
+We can get to working software in **hours instead of weeks/months**, with the marriage of:
+
+* AI
+
+* API Logic Server automation
+
+* API Logic Server declarative logic
+
+* Existing IT infrastructure: your IDE, GitHub, the cloud, your database...
+
+Let's see how.
+
+&nbsp;
+
 ## 1. ChatGPT Database Generation
 
 &nbsp;
