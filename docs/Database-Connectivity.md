@@ -68,6 +68,8 @@ Other important notes:
 
 * As shown above, use the __full path__
 * So that such databases are included in your project, they are copied to the `database` folder, and renamed to `db.sqlite'
+* Sqlite databases are copied to your project, [as described here](../Database-Connectivity/#sqlite){:target="_blank" rel="noopener"}.  
+* The project URL is made *relative* to this location (`sqlite:///../database/db.sqlite`).  This keeps your projects portable, e.g., colleagues can pull your project from `GitHub` and run.
 
 
 ## Northwind - sqlite (default sample)

@@ -86,6 +86,16 @@ SQLAlchemy database URIs are set in your `config.py`` file, from your creation C
     SQLALCHEMY_DATABASE_URI : typing.Optional[str] = f"mysql+pymysql://root:p@localhost:3306/classicmodels"
 ```
 
+Special handling is provided for sqlite databases, [as described here](../Database-Connectivity/#sqlite){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+### Docker Directories
+
+Projects are created with a [`devops/docker-image/build-image/dockerfile`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/base/devops/docker-image/build_image.dockerfile){:target="_blank" rel="noopener"}, resulting in the following directory structure:  
+
+![docker-directories](images/docker/docker-directories.png)
+
 &nbsp;
 
 ### Hosts and Ports

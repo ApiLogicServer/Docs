@@ -236,3 +236,13 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
     Rule.copy(derive=models.OrderItem.ItemPrice,  # get Product Price (e,g., on insert, or ProductId change)
         from_parent=models.Product.UnitPrice)
 ```
+
+## Appendices
+
+### Sqlite and persistence
+
+For information on database and directory creation, [click here](..DevOps-Container-Configuration/#database-locations){:target="_blank" rel="noopener"}.  Since the database is stored and accessed in the container, cloud changes are not persisted over runs.  This is useful for demo systems where each run starts with fresh data.
+
+An option for cloud sqlite persistence is under investigation.
+
+You can use a database such as MySQL or Postgres, a [described here](..DevOps-Containers-Deploy-Multi/){:target="_blank" rel="noopener"}.
