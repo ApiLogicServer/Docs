@@ -207,22 +207,33 @@ ChatGPT created triggers that missed many Use Cases, and were inefficient.  They
 
 &nbsp;
 
-### Containerize
+## 3. Deploy for Collaboration
+
+API Logic Server also creates scripts for deployment.
+
+&nbsp;
+
+**a. Containerize**
 
 In a terminal window for your project:
 
 ```bash
 sh devops/docker-image/build_image.sh .
 ```
-&nbsp;
-
-**Test your Image**
-
-You can test the image in single container mode: `sh devops/docker-image/run_image.sh`.
 
 &nbsp;
 
-**Upload Image (optional)**
+**b. Test your Image**
+
+You can test the image in single container mode:
+
+```bash
+sh devops/docker-image/run_image.sh
+```
+
+&nbsp;
+
+**c. Upload Image (optional)**
 
 You would next upload the image to docker hub.  
 
@@ -230,15 +241,13 @@ You would next upload the image to docker hub.
 
 &nbsp;
 
-**Push the project**
+**d. Push the project**
 
 It's also a good time to push your project to git.  Again, if you've used the same names as here, you can [use our project](https://github.com/ApiLogicServer/ApiLogicServer-src).
 
 &nbsp;
 
-## 3. Deploy for Collaboration
-
-API Logic Server also creates scripts for deployment.
+**e. Deploy to Azure Cloud**
 
 Login to the azure portal, and:
 
@@ -253,6 +262,8 @@ sh devops/docker-compose-dev-azure/azure-deploy.sh
 ## 4. Iterate with Logic
 
 TBD - automatic ordering
+
+&nbsp;
 
 ## Appendices
 
