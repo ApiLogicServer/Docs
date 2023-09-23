@@ -107,6 +107,7 @@ nav:
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
     - "AI-driven Automation": Tech-AI.md
+    - "AI-driven Auto mysql": Tech-AI-mysql.md
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
     - "Working Software Now": Working-Software-Now.md
     - "Python as a DSL": Tech-DSL.md
