@@ -159,10 +159,10 @@ ApiLogicServer add-auth --project_name=. --db_url=authdb
 
 ### Declare Logic
 
-Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with these 5 rules:
+Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
 
 ```python
-    """
+    '''
     1. Customer.Balance <= CreditLimit
 
     2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
@@ -173,7 +173,7 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
     5. Items.UnitPrice = copy from Product
 
-    ###
+    '''
 
     Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
         as_condition=lambda row: row.Balance <= row.CreditLimit,
@@ -181,15 +181,15 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
     Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
         as_sum_of=models.Order.AmountTotal,
-        where=lambda row: row.ShipDate is None)  # adjusts - *not* a sql select sum...
+        where=lambda row: row.ShipDate is None)     # adjusts - *not* a sql select sum...
 
     Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
         as_sum_of=models.OrderItem.Amount)
 
-    Rule.formula(derive=models.OrderItem.Amount,  # compute price * qty
+    Rule.formula(derive=models.OrderItem.Amount,    # compute price * qty
         as_expression=lambda row: row.ItemPrice * row.Quantity)
 
-    Rule.copy(derive=models.OrderItem.ItemPrice,  # get Product Price (e,g., on insert, or ProductId change)
+    Rule.copy(derive=models.OrderItem.ItemPrice,    # get Product Price (e,g., on insert, or ProductId change)
         from_parent=models.Product.UnitPrice)
 ```
 
@@ -199,7 +199,7 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
 We can contrast this to the (not shown) ChatGPT attempt at logic.  With declarative logic, you get:
 
-1. ***Automatic* Reuse:** the logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc
+1. ***Automatic* Reuse:** the logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc.
 
 2. ***Automatic* Optimizations:** sql overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.
 
