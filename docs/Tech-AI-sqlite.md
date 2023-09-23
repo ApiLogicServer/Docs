@@ -265,9 +265,18 @@ az container create --resource-group aicustomerorders_rg --name aicustomerorders
 
 9/22:
 ```bash
-az container create --resource-group aicustomerorders_rg --name api_logic_server/aicustomerorders --image apilogicserver/aicustomerorders:latest --dns-name-label aicustomerorders --ports 5656 --environment-variables VERBOSE=True APILOGICPROJECT_CLIENT_URI=//aicustomerorders.westus.azurecontainer.io
+
+az group create --name aicustomerorders_rg --location "westus"
+
+az appservice plan create --name myAppServicePlan --resource-group aicustomerorders_rg --sku S1 --is-linux
+
+az container create --resource-group aicustomerorders_rg --name aicustomerorders --image apilogicserver/aicustomerorders:latest --dns-name-label aicustomerorders --ports 5656 --environment-variables VERBOSE=True APILOGICPROJECT_CLIENT_URI=//aicustomerorders.westus.azurecontainer.io:5656
 ```
 
+http://aicustomerorders.westus.azurecontainer.io:5656/admin-app/index.html#/Home
+
+
+old...
 http://aicustomerorderscontainer.westus.azurecontainer.io:5656/admin-app/index.html#/Home
 
 &nbsp;

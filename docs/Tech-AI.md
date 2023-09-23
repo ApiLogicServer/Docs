@@ -4,7 +4,7 @@
 
 !!! pied-piper ":bulb: TL;DR - Working Software, Now"
 
-      Agile correctly advises getting Working Software as fast as possible, to faciliate Business User Collaboration and Iteration.  Using AI and API Logic Server helps you achieve this:
+      Agile correctly advises getting **Working Software as fast as possible, to faciliate Business User Collaboration and Iteration**.  Using AI and API Logic Server helps you achieve this:
 
       1. **Create Database With ChatGPT** 
 
@@ -75,43 +75,37 @@ Use ChapGPT to generate SQL commands for database creation:
 Copy the generated SQL commands into a file, say, `ai_customer_orders_mysql.sql`:
 
 ```sql
-DROP DATABASE IF EXISTS ai_customer_orders;
-
-CREATE DATABASE ai_customer_orders;
-
-USE ai_customer_orders;
-
 CREATE TABLE IF NOT EXISTS Customers (
-    CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerID INTEGER PRIMARY KEY AUTOINCREMENT,
     FirstName TEXT,
     LastName TEXT,
     Email TEXT,
-    CreditLimit DECIMAL,
-    Balance DECIMAL DEFAULT 0.0
+    CreditLimit DECIMAL(10, 2),
+    Balance DECIMAL(10, 2) DEFAULT 0.0
 );
 
 CREATE TABLE IF NOT EXISTS Products (
-    ProductID INT AUTO_INCREMENT PRIMARY KEY,
+    ProductID INTEGER PRIMARY KEY AUTOINCREMENT,
     ProductName TEXT,
-    UnitPrice REAL
+    UnitPrice DECIMAL(10, 2)
 );
 
 CREATE TABLE IF NOT EXISTS Orders (
-    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    OrderID INTEGER PRIMARY KEY AUTOINCREMENT,
     CustomerID INTEGER,
-    AmountTotal DECIMAL,
     OrderDate DATE,
     ShipDate DATE,
+    AmountTotal DECIMAL(10, 2),
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
-CREATE TABLE IF NOT EXISTS OrderItems (
-    OrderItemID INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Items (
+    ItemID INTEGER PRIMARY KEY AUTOINCREMENT,
     OrderID INTEGER,
     ProductID INTEGER,
     Quantity INTEGER,
-    ItemPrice DECIMAL,
-    Amount DECIMAL,
+    UnitPrice DECIMAL(10, 2),
+    Amount DECIMAL(10, 2),
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
@@ -136,10 +130,7 @@ INSERT INTO Products (ProductName, UnitPrice) VALUES
 Sqlite is already installed in ApiLogicServer, so we avoid database installs by using it as our target database:
 
 ```bash
-docker exec -it mysql-container bash
-$ mysql -u root -p
-# password is  p
-# paste in the sql text to create your database
+sqlite3 ai_customer_orders.sqlite < ai_customer_orders.sql
 ```
 
 > Note: if you **use the names above**, you can save time by using the docker image and git project that we've already created.
@@ -151,7 +142,7 @@ $ mysql -u root -p
 Given a database, API Logic Server can create an executable, customizable project:
 
 ```bash
-ApiLogicServer create --project_name=ai_customer_orders_mysql --db_url=mysql+pymysql://root:p@localhost:3306/ai_customer_orders
+ApiLogicServer create --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders.sqlite
 ```
 
 This creates a project you can open with VSCode.  Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
@@ -162,13 +153,6 @@ python3 -m venv venv; . venv/bin/activate      # mac/linux
 pip install -r requirements.txt
 ```
 
-&nbsp;
-
-## 3. Deploy for Collaboration
-
-API Logic Server also creates scripts for deployment, as shown below:
-
-&nbsp;
 
 ### Add Security
 
@@ -193,6 +177,8 @@ sh devops/docker-image/build_image.sh .
 
 You can test the image in single container mode: `sh devops/docker-image/run_image.sh`.
 
+&nbsp;
+
 #### Test - Multi-Container
 
 Stop your docker database.
@@ -215,13 +201,19 @@ It's also a good time to push your project to git.  Again, if you've used the sa
 
 &nbsp;
 
+## 3. Deploy for Collaboration
+
+API Logic Server also creates scripts for deployment, as shown below:
+
+&nbsp;
+
 ### Deploy to Azure
 
 Then, login to the azure portal, and:
 
 ```bash
-git clone https://github.com/ApiLogicServer/ai_customer_orders_mysql.git
-cd ai_customer_orders_mysql
+git clone https://github.com/ApiLogicServer/ai_customer_orders.git
+cd ai_customer_orders
 sh devops/docker-compose-dev-azure/azure-deploy.sh
 ```
 
@@ -231,15 +223,15 @@ sh devops/docker-compose-dev-azure/azure-deploy.sh
 
 !!! pied-piper "Logic Design ('Cocktail Napkin Design')"
 
-    Customer.Balance <= CreditLimit
+    1. Customer.Balance <= CreditLimit
 
-    Customer.Balance = Sum(Order.AmountTotal where unshipped)
+    2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
 
-    Order.AmountTotal = Sum(OrderDetail.Amount)
+    3. Order.AmountTotal = Sum(Items.Amount)
 
-    OrderDetail.Amount = Quantity * UnitPrice
+    4. Items.Amount = Quantity * UnitPrice
 
-    OrderDetail.UnitPrice = copy from Product
+    5. Items.UnitPrice = copy from Product
 
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with these 5 rules:
