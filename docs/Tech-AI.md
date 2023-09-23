@@ -243,6 +243,10 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
 For information on database and directory creation, [click here](../DevOps-Container-Configuration/#database-locations){:target="_blank" rel="noopener"}.  Since the database is stored and accessed in the container, cloud changes are not persisted over runs.  This is useful for demo systems where each run starts with fresh data.
 
-An option for cloud sqlite persistence is under investigation.
+An option for cloud sqlite persistence is under investigation.  Preliminary thoughts:
+
+* Update the project to use [blob storage](https://pypi.org/project/azure-storage-blob/){:target="_blank" rel="noopener"}
+* On Server start, **restore** the database from blob storage to the image
+* On Server Exit, [use `atexit`](https://betterprogramming.pub/create-exit-handlers-for-your-python-appl-bc279e796b6b){:target="_blank" rel="noopener"} to **save** the database from the image to blob storage
 
 You can use a database such as MySQL or Postgres, a [described here](..DevOps-Containers-Deploy-Multi/){:target="_blank" rel="noopener"}.
