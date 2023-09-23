@@ -249,4 +249,6 @@ An option for cloud sqlite persistence is under investigation.  Preliminary thou
 * On Server start, **restore** the database from blob storage to the image
 * On Server Exit, [use `atexit`](https://betterprogramming.pub/create-exit-handlers-for-your-python-appl-bc279e796b6b){:target="_blank" rel="noopener"} to **save** the database from the image to blob storage
 
-You can use a database such as MySQL or Postgres, a [described here](..DevOps-Containers-Deploy-Multi/){:target="_blank" rel="noopener"}.
+There are also products that automate this, such as [LiteStream](https://litestream.io/guides/azure/){:target="_blank" rel="noopener"}.
+
+Of course, you can use a database such as MySQL, Postgres, Oracle or SqlServer, as [described here](..DevOps-Containers-Deploy-Multi/){:target="_blank" rel="noopener"}.
