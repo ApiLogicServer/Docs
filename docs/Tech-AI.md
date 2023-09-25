@@ -1,10 +1,8 @@
 **Under Construction - Preview**
 
-[**See this page**](../Tech-AI-sqlite){:target="_blank" rel="noopener"} for information on issues deploying a single-container sqlite version.
-
 !!! pied-piper ":bulb: TL;DR - Working Software, Now"
 
-      Agile correctly advises getting **Working Software as fast as possible, to faciliate Business User Collaboration and Iteration**.  Using AI and API Logic Server helps you achieve this:
+      Agile correctly advises getting **Working Software as fast as possible, to facilitate Business User Collaboration and Iteration**.  Using AI and API Logic Server helps you achieve this:
 
       1. **Create Database With ChatGPT** 
 
@@ -40,7 +38,9 @@ You will need to:
 
 ## The Problem
 
-We've all lived the unpleasant reality below.  The harsh truth is that *only running screens communicate*, not docs, diagrams, etc.  But running screens are based on projects that are complex and time-consuming.
+We've all lived the unpleasant reality below.  The harsh truth is that *only running screens communicate*, not docs, diagrams, etc.
+
+But running screens are based on projects that are complex and time-consuming.
 
 ![ai-driven-automation](images/ai-driven-automation/harsh.png){: style="height:350px;width:450px"; align=right }
 
@@ -182,6 +182,12 @@ ApiLogicServer add-auth --project_name=. --db_url=authdb
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
 
 ```python
+    ''' Declarative multi-table derivations and constraints, extensible with Python. 
+
+    Brief background: see readme_declare_logic.md
+    
+    Use code completion (Rule.) to declare rules here:
+    '''
     '''
     1. Customer.Balance <= CreditLimit
 
@@ -204,12 +210,12 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
         where=lambda row: row.ShipDate is None)     # adjusts - *not* a sql select sum...
 
     Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
-        as_sum_of=models.OrderItem.Amount)
+        as_sum_of=models.Item.Amount)
 
-    Rule.formula(derive=models.OrderItem.Amount,    # compute price * qty
-        as_expression=lambda row: row.ItemPrice * row.Quantity)
+    Rule.formula(derive=models.Item.Amount,    # compute price * qty
+        as_expression=lambda row: row.UnitPrice * row.Quantity)
 
-    Rule.copy(derive=models.OrderItem.ItemPrice,    # get Product Price (e,g., on insert, or ProductId change)
+    Rule.copy(derive=models.Item.UnitPrice,    # get Product Price (e,g., on insert, or ProductId change)
         from_parent=models.Product.UnitPrice)
 ```
 
@@ -282,6 +288,15 @@ sh devops/docker-compose-dev-azure/azure-deploy.sh
 ## 4. Iterate with Logic
 
 TBD - automatic ordering
+
+```sql
+alter table Products Add CarbonNeutral Boolean;
+```
+
+```bash
+cd ..  project parent directory
+ApiLogicServer rebuild-from-database --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders/database/db.sqlite
+```
 
 &nbsp;
 
