@@ -1,60 +1,94 @@
-**Under Construction - Preview - [More finished version here](https://docs.google.com/document/d/1Xc4EEaINOc2q7bulRkchqL8e2-AcTav_zfRHNixes-E/edit#heading=h.xjac4s1x029r){:target="_blank" rel="noopener"}**
+**Under Construction - Preview - [More finished version here](https://docs.google.com/document/d/1Xc4EEaINOc2q7bulRkchqL8e2-AcTav_zfRHNixes-E/edit#heading=h.xjac4s1x029r){:target="_blank"rel="noopener"}**
 
-!!! pied-piper ":bulb: TL;DR - Working Software, Now"
+## The Problem: Late, and Wrong
 
-      Agile correctly advises getting **Working Software as fast as possible, to facilitate Business User Collaboration and Iteration**.  Using AI and API Logic Server helps you achieve this:
+![ai-driven-automation](images/ai-driven-automation/harsh.png){: style="height:300px;width:450px"; align=right }
 
-      1. **Create Database With ChatGPT** 
+We've all lived the unpleasant reality depicted here:
 
-      2. **Create *Working Software Now* with API Logic Server:**  creates an API, and Admin screens from your database
+The harsh truth is that **working screens communicate best** - not docs, diagrams, etc.
 
-      3. **Deploy for *Collaboration* with API Logic Server:** automated cloud deployment enables collaboration:
-      
-         * Engage Business Users with running Admin screens - spot data model misunderstandings, and uncover logic requirements
-         * Unblock UI Developers with the API
+But working screens are based on projects that are complex and time-consuming.  So, misunderstandings are discovered late in the project, with significant loss of time and effort.
 
-      4. **Declarative Logic Automates *Iteration:*** use [declarative rules](../Logic-Why) for logic and [security](../Security-Overview), extensible with Python as required.  Rules are a unique aspect of API Logic Server:
-      
-         * logic is 40X more concise, and 
-         * automatically ordered per system-discovered dependencies, to facilite rapid iteration
+## Agile Vision: Working Software Drives Collaboration and Iteration
 
-      With API Logic Server, if you have a database, you can create and deploy for collaboration ***within hours***.
+Agile wisely advises getting **Working Software as fast as possible, to facilitate Business User Collaboration and Iteration**.  That’s not happening by coding to a framework… 
 
-![ai-driven-automation](images/ai-driven-automation/ai-driven-automation.png)
+> **So, How do we get Working Software, Now?**
 
-## Pre-reqs
+## Our Approach: AI-Driven Automation Delivers the Agile Vision
 
-You will need to:
+![ai-driven-automation](images/ai-driven-automation/ai-driven-automation-no-title.png)
 
-* Install API Logic Server (and Python)
+This article illustrates how create working software in hours instead of weeks/months, like this:
 
-* Install docker 
+1. **Create Database With ChatGPT**
+2. **Create Working Software *Now* with API Logic Server:**
+    * Creates customizable projects from databases
+    * Declare logic logic and security with spreadsheet-like rules using your IDE
+3. **Deploy for *Collaboration* with API Logic Server:** e.g. to the Azure Cloud
+4. **Iterate:** add additional rules, with Python as required
 
-* A GitHub account (though you can use ours for this demo)
+This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source
 
-* An Azure account
+Let's see how.
 
 &nbsp;
 
-## The Problem
+## TL;DR - in a Nutshell
 
-We've all lived the unpleasant reality below.  The harsh truth is that *only running screens communicate*, not docs, diagrams, etc.
+Here’s the basic process (details explained in remainder of article):
 
-But running screens are based on projects that are complex and time-consuming.
+** 1. Use ChatGPT to input a description, and create the database**
 
-![ai-driven-automation](images/ai-driven-automation/harsh.png){: style="height:350px;width:450px"; align=right }
+* Input [the description below](#1-chatgpt-database-generation), and save the DDL into: `ai_customer_orders.sql`.
+*  Create the database:
+```bash
+$ sqlite3  ai_customer_orders.sqlite < ai_customer_orders.sql
+```
 
-We can get to working software in **hours instead of weeks/months**, with the marriage of:
+&nbsp;
 
-* AI
+**2. Create an executable API Logic Project**
 
-* API Logic Server automation
+2a. Create the Project
+```bash
+$ ApiLogicServer create \
+--project_name=ai_customer_orders \
+--db_url=sqlite:///ai_customer_orders.sqlite
+```
+2b. Open the project in VSCode, create your virtual environment, and press F5 to run
 
-* API Logic Server declarative logic
+2c. In the VSCode terminal window, add security:
 
-* Existing IT infrastructure: your IDE, GitHub, the cloud, your database...
+```bash
+$ ApiLogicServer add-auth --project_name=. --db_url=authdb
+```
 
-Let's see how.
+2c. Add [5 rules](#declare-logic), using IDE code completion)
+
+&nbsp;
+
+**3. Deploy for Collaboration**
+
+3a. Push the Project to Git (or use ours)
+
+3b. Build the image
+```bash
+$ sh devops/docker-image/build_image.sh .
+```
+
+3c. Login to the Azure Portal, and
+
+```bash
+$ git clone https://github.com/ApiLogicServer/ai_customer_orders.git
+$ cd ai_customer_orders
+$ sh devops/docker-compose-dev-azure/azure-deploy.sh
+```
+
+&nbsp;
+
+**4. Iterate with Logic (automatic  ordering), and Python as required**
 
 &nbsp;
 
@@ -187,8 +221,8 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
     Brief background: see readme_declare_logic.md
     
     Use code completion (Rule.) to declare rules here:
-    '''
-    '''
+
+
     1. Customer.Balance <= CreditLimit
 
     2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
@@ -198,7 +232,6 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
     4. Items.Amount = Quantity * UnitPrice
 
     5. Items.UnitPrice = copy from Product
-
     '''
 
     Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
