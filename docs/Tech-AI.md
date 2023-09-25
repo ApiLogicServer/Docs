@@ -1,4 +1,4 @@
-**Under Construction - Preview**
+**Under Construction - Preview - [More finished version here](https://docs.google.com/document/d/1Xc4EEaINOc2q7bulRkchqL8e2-AcTav_zfRHNixes-E/edit#heading=h.xjac4s1x029r){:target="_blank" rel="noopener"}**
 
 !!! pied-piper ":bulb: TL;DR - Working Software, Now"
 
