@@ -33,13 +33,16 @@ Let's see how.
 
 &nbsp;
 
-## TL;DR - in a Nutshell
+## In a Nutshell
 
-Here’s the basic process (details explained in remainder of article):
+For the truly impatient, here’s the basic process (details explained in remainder of article):
 
 **1. Use ChatGPT to input a description, and create the database**
 
-* Input [the description below](#1-chatgpt-database-generation), and save the DDL into: `ai_customer_orders.sql`.  Edit the sql:
+* Input [the description below](#1-chatgpt-database-generation), copy the DDL and save it:
+```bash
+$ pbpaste > ai_customer_orders.sql
+```
     * Append the insert statements (as required)
 *  Create the database:
 ```bash
@@ -87,9 +90,38 @@ $ sh devops/docker-compose-dev-azure/azure-deploy.sh
 
 &nbsp;
 
-**4. Iterate with Logic (automatic  ordering), and Python as required**
+**4. Iterate with Logic, and Python as required**
+
+Now alter the app to give volume discounts for carbon neutral purchases.
 
 &nbsp;
+
+4a. Add a Database Column
+
+```bash
+$ sqlite3 database/db.sqlite
+>   alter table Products Add CarbonNeutral Boolean;
+>   .exit
+```
+
+&nbsp;
+
+4b. Rebuild the project, preserving customizations
+
+```bash
+cd ..  project parent directory
+ApiLogicServer rebuild-from-database --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders/database/db.sqlite
+```
+
+4c. Update `ui/admin/admin.yml`
+
+&nbsp;
+
+4d. Alter [the logic, as shown below](#4-iterate-with-logic)
+
+&nbsp;
+
+---
 
 ## 1. ChatGPT Database Generation
 
@@ -101,9 +133,13 @@ Use ChapGPT to generate SQL commands for database creation:
 
 !!! pied-piper "Create database definitions from ChatGPT"
 
-    Create a sqlite database for customers, orders, items and product, with autonum keys, allow nulls, Decimal types, and foreign keys.
+    Create a sqlite database for customers, orders, items and product
+    
+    Hints: use autonum keys, allow nulls, Decimal types, and foreign keys.
 
-    Create a few rows of customer and product data.
+    Include a notes field for orders.
+
+    Create a few rows of only customer and product data.
 
     Enforce the Check Credit requirement:
 
@@ -117,7 +153,6 @@ Use ChapGPT to generate SQL commands for database creation:
 Copy the generated SQL commands into a file, say, `ai_customer_orders.sql`:
 
 ```sql
--- Create the Customers table
 CREATE TABLE Customers (
     CustomerID INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL,
@@ -138,6 +173,7 @@ CREATE TABLE Orders (
     CustomerID INTEGER NULL,
     AmountTotal DECIMAL(10, 2) NULL,
     ShippedDate DATE NULL,
+    Notes TEXT NULL,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
@@ -152,8 +188,6 @@ CREATE TABLE Items (
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
-
-
 -- Insert sample customers
 INSERT INTO Customers (Name, Balance, CreditLimit) VALUES
     ('Customer 1', 1000.00, 2000.00),
@@ -162,8 +196,7 @@ INSERT INTO Customers (Name, Balance, CreditLimit) VALUES
 -- Insert sample products
 INSERT INTO Products (Name, UnitPrice) VALUES
     ('Product A', 10.00),
-    ('Product B', 20.00),
-    ('Product C', 8.50);
+    ('Product B', 20.00);
 ```
 
 &nbsp;
@@ -238,7 +271,7 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
     Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
         as_sum_of=models.Order.AmountTotal,
-        where=lambda row: row.ShippedDate is None)     # adjusts - *not* a sql select sum...
+        where=lambda row: row.Date is None)     # adjusts - *not* a sql select sum...
 
     Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
         as_sum_of=models.Item.Amount)
@@ -249,6 +282,8 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
     Rule.copy(derive=models.Item.UnitPrice,    # get Product Price (e,g., on insert, or ProductId change)
         from_parent=models.Product.UnitPrice)
 ```
+
+Observe rules are declared in Python.  Given IDE services for code completion, this is using Python as a DSL (Domain Specific Language).
 
 &nbsp;
 
@@ -318,16 +353,90 @@ sh devops/docker-compose-dev-azure/azure-deploy.sh
 
 ## 4. Iterate with Logic
 
-TBD - automatic ordering
+Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s take an example.
 
-```sql
-alter table Products Add CarbonNeutral Boolean;
+!!! pied-piper "Green Discounts"
+    Give a 10% discount for carbon-neutral products for 10 items or more.
+
+
+Automation still applies; we execute the steps below.
+
+
+&nbsp;
+
+**a. Add a Database Column**
+
+```bash
+$ sqlite3 database/db.sqlite
+>   alter table Products Add CarbonNeutral Boolean;
+>   .exit
 ```
+
+&nbsp;
+
+**b. Rebuild the project, preserving customizations**
 
 ```bash
 cd ..  project parent directory
 ApiLogicServer rebuild-from-database --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders/database/db.sqlite
 ```
+
+&nbsp;
+
+**c. Update your admin app**
+
+Use your IDE to merge `/ui/admin/admin-merge.yml` -> `/ui/admin/admin.yml`.`
+
+&nbsp;
+
+
+**d. Declare logic**
+
+```python
+   def derive_amount(row: models.Item, old_row: models.Item, logic_row: LogicRow):
+       amount = row.Quantity * row.UnitPrice
+       if row.Product.CarbonNeutral and row.Quantity >= 10:
+           amount = amount * Decimal(0.9)
+       return amount
+
+
+   Rule.formula(derive=models.Item.Amount, calling=derive_amount)
+```
+
+&nbsp;
+
+This simple example illustrates some significant aspects of iteration.
+
+&nbsp;
+
+### Maintenance: Logic Ordering
+
+Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but it’s mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines they’ll hopefully be called and function correctly.
+
+Rules change that, since they self-order their execution (and pruning) based on system-discovered dependencies.  So, to alter logic, you just “drop a new rule in the bucket”, and the system will ensure it’s called in the proper order, and re-used over all the Use Cases to which it applies.
+
+&nbsp;
+
+### Extensibility: Rules Plus Python
+
+In this case, we needed to do some if/else testing, and it was more convenient to add a dash of Python.  While you have the full object-oriented power of Python, this is simpler, more like Python as a 4GL.  
+
+What’s important is that once you are in such functions, you can utilize Python libraries, invoke shared code, make web service calls, send email or messages, etc.  You have all the power of rules, plus the unrestricted flexibility of Python.
+
+&nbsp;
+
+### Debugging: IDE, Logging
+
+The screen shot above illustrates that debugging logic is what you’d expect: use your IDE's debugger.
+
+In addition, the Logic Log lists every rule that fires, with indents for multi-table chaining (not visible in this screenshot).  Each line shows the old/new values of every attribute, so the transaction state is transparent.
+
+&nbsp;
+
+### Rebuild: Customizations Preserved
+
+Note we rebuilt the project from our altered database, without losing customizations.
+
 
 &nbsp;
 
