@@ -35,7 +35,7 @@ Let's see how.
 
 ## In a Nutshell
 
-For the truly impatient, here’s the basic process (details explained in remainder of article):
+For the truly impatient, here’s the basic process (takes under 10 minutes; details explained in remainder of article):
 
 **1. Use ChatGPT to input a description, and create the database**
 
@@ -92,7 +92,7 @@ $ sh devops/docker-compose-dev-azure/azure-deploy.sh
 
 **4. Iterate with Logic, and Python as required**
 
-Now alter the app to give volume discounts for carbon neutral purchases.
+Now let's alter the app to give volume discounts for carbon neutral purchases.
 
 &nbsp;
 
@@ -109,9 +109,13 @@ $ sqlite3 database/db.sqlite
 4b. Rebuild the project, preserving customizations
 
 ```bash
-cd ..  project parent directory
-ApiLogicServer rebuild-from-database --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders/database/db.sqlite
+cd ..  # project parent directory
+ApiLogicServer rebuild-from-database \
+    --project_name=ai_customer_orders \
+    --db_url=sqlite:///ai_customer_orders/database/db.sqlite
 ```
+
+&nbsp;
 
 4c. Update `ui/admin/admin.yml`
 
