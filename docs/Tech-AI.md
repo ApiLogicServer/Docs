@@ -41,7 +41,6 @@ Here’s the basic process (details explained in remainder of article):
 
 * Input [the description below](#1-chatgpt-database-generation), and save the DDL into: `ai_customer_orders.sql`.  Edit the sql:
     * Append the insert statements (as required)
-    * Change all `NOT NULL` to nothing (discussed further below)
 *  Create the database:
 ```bash
 $ sqlite3  ai_customer_orders.sqlite < ai_customer_orders.sql
@@ -102,67 +101,68 @@ Use ChapGPT to generate SQL commands for database creation:
 
 !!! pied-piper "Create database definitions from ChatGPT"
 
-    Create a sqlite database for customers, orders, items and product, with autonum keys, nullable columns, Decimal types, and foreign keys.
+    Create a sqlite database for customers, orders, items and product, with autonum keys, allow nulls, Decimal types, and foreign keys.
 
     Create a few rows of customer and product data.
 
     Enforce the Check Credit requirement:
 
-    Customer.Balance <= CreditLimit
-    Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
-    Order.AmountTotal = Sum(Items.Amount)
-    Items.Amount = Quantity * UnitPrice
-    Store the Items.UnitPrice as a copy from Product.UnitPrice
+    1. Customer.Balance <= CreditLimit
+    2. Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
+    3. Order.AmountTotal = Sum(Items.Amount)
+    4. Items.Amount = Quantity * UnitPrice
+    5. Store the Items.UnitPrice as a copy from Product.UnitPrice
 
 
 Copy the generated SQL commands into a file, say, `ai_customer_orders.sql`:
 
 ```sql
-CREATE TABLE IF NOT EXISTS Customers (
+-- Create the Customers table
+CREATE TABLE Customers (
     CustomerID INTEGER PRIMARY KEY AUTOINCREMENT,
-    FirstName TEXT,
-    LastName TEXT,
-    Email TEXT,
-    CreditLimit DECIMAL(10, 2),
-    Balance DECIMAL(10, 2) DEFAULT 0.0
+    Name TEXT NOT NULL,
+    Balance DECIMAL(10, 2) NULL,
+    CreditLimit DECIMAL(10, 2) NULL
 );
 
-CREATE TABLE IF NOT EXISTS Products (
+-- Create the Products table
+CREATE TABLE Products (
     ProductID INTEGER PRIMARY KEY AUTOINCREMENT,
-    ProductName TEXT,
-    UnitPrice DECIMAL(10, 2)
+    Name TEXT NOT NULL,
+    UnitPrice DECIMAL(10, 2) NULL
 );
 
-CREATE TABLE IF NOT EXISTS Orders (
+-- Create the Orders table
+CREATE TABLE Orders (
     OrderID INTEGER PRIMARY KEY AUTOINCREMENT,
-    CustomerID INTEGER,
-    OrderDate DATE,
-    ShipDate DATE,
-    AmountTotal DECIMAL(10, 2),
+    CustomerID INTEGER NULL,
+    AmountTotal DECIMAL(10, 2) NULL,
+    ShippedDate DATE NULL,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
-CREATE TABLE IF NOT EXISTS Items (
+-- Create the Items table
+CREATE TABLE Items (
     ItemID INTEGER PRIMARY KEY AUTOINCREMENT,
-    OrderID INTEGER,
-    ProductID INTEGER,
-    Quantity INTEGER,
-    UnitPrice DECIMAL(10, 2),
-    Amount DECIMAL(10, 2),
+    OrderID INTEGER NULL,
+    ProductID INTEGER NULL,
+    Quantity INTEGER NULL,
+    Amount DECIMAL(10, 2) NULL,
+    UnitPrice DECIMAL(10, 2) NULL,
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
 
--- Insert customer data
-INSERT INTO Customers (FirstName, LastName, Email, CreditLimit) VALUES
-    ('John', 'Doe', 'john@example.com', 1000.00),
-    ('Jane', 'Smith', 'jane@example.com', 1500.00);
+-- Insert sample customers
+INSERT INTO Customers (Name, Balance, CreditLimit) VALUES
+    ('Customer 1', 1000.00, 2000.00),
+    ('Customer 2', 1500.00, 3000.00);
 
--- Insert product data
-INSERT INTO Products (ProductName, UnitPrice) VALUES
+-- Insert sample products
+INSERT INTO Products (Name, UnitPrice) VALUES
     ('Product A', 10.00),
-    ('Product B', 15.00),
+    ('Product B', 20.00),
     ('Product C', 8.50);
 ```
 
@@ -185,7 +185,9 @@ sqlite3 ai_customer_orders.sqlite < ai_customer_orders.sql
 Given a database, API Logic Server can create an executable, customizable project:
 
 ```bash
-ApiLogicServer create --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders.sqlite
+$ ApiLogicServer create \
+--project_name=ai_customer_orders \
+--db_url=sqlite:///ai_customer_orders.sqlite
 ```
 
 This creates a project you can open with VSCode.  Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
