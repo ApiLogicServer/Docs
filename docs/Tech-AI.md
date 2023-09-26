@@ -39,7 +39,9 @@ Here’s the basic process (details explained in remainder of article):
 
 **1. Use ChatGPT to input a description, and create the database**
 
-* Input [the description below](#1-chatgpt-database-generation), and save the DDL into: `ai_customer_orders.sql`.
+* Input [the description below](#1-chatgpt-database-generation), and save the DDL into: `ai_customer_orders.sql`.  Edit the sql:
+    * Append the insert statements (as required)
+    * Change all `NOT NULL` to nothing (discussed further below)
 *  Create the database:
 ```bash
 $ sqlite3  ai_customer_orders.sqlite < ai_customer_orders.sql
@@ -100,21 +102,17 @@ Use ChapGPT to generate SQL commands for database creation:
 
 !!! pied-piper "Create database definitions from ChatGPT"
 
-    Create a sqlite database for customers, orders, items and product, with autonum keys, Decimal types and foreign keys.  
+    Create a sqlite database for customers, orders, items and product, with autonum keys, nullable columns, Decimal types, and foreign keys.
 
     Create a few rows of customer and product data.
 
-    In a separate file, Enforce the Check Credit business logic:
+    Enforce the Check Credit requirement:
 
-    1. Customer.Balance <= CreditLimit
-
-    2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
-
-    3. Order.AmountTotal = Sum(Items.Amount)
-
-    4. Items.Amount = Quantity * UnitPrice
-
-    5. Items.UnitPrice = copy from Product
+    Customer.Balance <= CreditLimit
+    Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
+    Order.AmountTotal = Sum(Items.Amount)
+    Items.Amount = Quantity * UnitPrice
+    Store the Items.UnitPrice as a copy from Product.UnitPrice
 
 
 Copy the generated SQL commands into a file, say, `ai_customer_orders.sql`:
@@ -238,7 +236,7 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
     Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
         as_sum_of=models.Order.AmountTotal,
-        where=lambda row: row.ShipDate is None)     # adjusts - *not* a sql select sum...
+        where=lambda row: row.ShippedDate is None)     # adjusts - *not* a sql select sum...
 
     Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
         as_sum_of=models.Item.Amount)
