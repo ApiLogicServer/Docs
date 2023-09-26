@@ -60,7 +60,7 @@ $ ApiLogicServer create \
 2c. In the VSCode terminal window, add security:
 
 ```bash
-$ ApiLogicServer add-auth --project_name=. --db_url=authdb
+$ ApiLogicServer add-auth --project_name=. --db_url=auth
 ```
 
 2c. Add [5 rules](#declare-logic), using IDE code completion)
@@ -100,11 +100,11 @@ Use ChapGPT to generate SQL commands for database creation:
 
 !!! pied-piper "Create database definitions from ChatGPT"
 
-    Create a sqlite database for customers, orders, items and product, with autonum keys and Decimal types.  
+    Create a sqlite database for customers, orders, items and product, with autonum keys, Decimal types and foreign keys.  
 
     Create a few rows of customer and product data.
 
-    Enforce the following logic:
+    In a separate file, Enforce the Check Credit business logic:
 
     1. Customer.Balance <= CreditLimit
 
@@ -205,7 +205,7 @@ pip install -r requirements.txt
 In a terminal window for your project:
 
 ```bash
-ApiLogicServer add-auth --project_name=. --db_url=authdb
+ApiLogicServer add-auth --project_name=. --db_url=auth
 ```
 &nbsp;
 
