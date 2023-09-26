@@ -37,7 +37,7 @@ Let's see how.
 
 Here’s the basic process (details explained in remainder of article):
 
-** 1. Use ChatGPT to input a description, and create the database**
+**1. Use ChatGPT to input a description, and create the database**
 
 * Input [the description below](#1-chatgpt-database-generation), and save the DDL into: `ai_customer_orders.sql`.
 *  Create the database:
