@@ -1,5 +1,3 @@
-**Under Construction - Preview - [More finished version here](https://docs.google.com/document/d/1Xc4EEaINOc2q7bulRkchqL8e2-AcTav_zfRHNixes-E/edit#heading=h.xjac4s1x029r){:target="_blank"rel="noopener"}**
-
 ## The Problem: Late, and Wrong
 
 ![ai-driven-automation](images/ai-driven-automation/harsh.png){: style="height:300px;width:450px"; align=right }
