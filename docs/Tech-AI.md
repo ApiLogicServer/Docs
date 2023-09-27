@@ -39,12 +39,13 @@ For the truly impatient, here’s the basic process (takes under 10 minutes; det
 
 **1. Use ChatGPT to input a description, and create the database**
 
-* Input [the description below](#1-chatgpt-database-generation), copy the DDL and save it:
+1a. Input [the system description below](#1-chatgpt-database-generation), copy the DDL and save it:
 ```bash
-$ pbpaste > ai_customer_orders.sql
+$ pbpaste > ai_customer_orders.sql    # copied DDL
+$ pbpaste >> ai_customer_orders.sql   # append copied insert statements
 ```
-    * Append the insert statements (as required)
-*  Create the database:
+
+1b. Create the database:
 ```bash
 $ sqlite3  ai_customer_orders.sqlite < ai_customer_orders.sql
 ```
