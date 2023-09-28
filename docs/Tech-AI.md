@@ -12,7 +12,7 @@ But working screens are based on projects that are complex and time-consuming.  
 
 Agile wisely advises getting **Working Software as fast as possible, to facilitate Business User Collaboration and Iteration**.  That’s not happening by coding to a framework… 
 
-> **So, How do we get Working Software, Now?**
+> **So, How do we get Working Software, Now?  And rapid iteration?**
 
 ## Our Approach: AI-Driven Automation Delivers the Agile Vision
 
@@ -441,6 +441,14 @@ In addition, the Logic Log lists every rule that fires, with indents for multi-t
 ### Rebuild: Customizations Preserved
 
 Note we rebuilt the project from our altered database, without losing customizations.
+
+&nbsp;
+
+## Summary
+
+![ai-driven-automation](images/ai-driven-automation/summary.png)
+
+In 6 minutes, you've used ChatGPT and API Logic Server to convert an idea into working software, deployed for collaboration, and iterated to meet new requirements.
 
 
 &nbsp;
