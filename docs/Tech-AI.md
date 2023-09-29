@@ -177,7 +177,7 @@ CREATE TABLE Orders (
     OrderID INTEGER PRIMARY KEY AUTOINCREMENT,
     CustomerID INTEGER NULL,
     AmountTotal DECIMAL(10, 2) NULL,
-    ShippedDate DATE NULL,
+    ShipDate DATE NULL,
     Notes TEXT NULL,
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
@@ -276,7 +276,7 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
     Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
         as_sum_of=models.Order.AmountTotal,
-        where=lambda row: row.Date is None)     # adjusts - *not* a sql select sum...
+        where=lambda row: row.ShipDate is None)     # adjusts - *not* a sql select sum...
 
     Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
         as_sum_of=models.Item.Amount)
