@@ -35,7 +35,7 @@ Let's see how.
 
 ## In a Nutshell
 
-For the truly impatient, here’s the basic process (takes under 10 minutes; details explained in remainder of article):
+For the truly impatient, here’s the basic process (takes under 10 minutes; details explained in remainder of article; [video here](https://www.youtube.com/watch?v=mJVBoKqtMPc&ab_channel=APILogicServer){:target="_blank" rel="noopener"}):
 
 **1. Use ChatGPT to input a description, and create the database**
 
