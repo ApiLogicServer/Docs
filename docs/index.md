@@ -273,8 +273,15 @@ Here are [some installed sample databases](Data-Model-Examples){:target="_blank"
 * **Dockerized Test Databases** - 
 Then, you might like to try out some of our [dockerized test databases](https://valhuber.github.io/ApiLogicServer/Database-Connectivity/){:target="_blank" rel="noopener"}.
 
-* **Your Database** - 
-Finally, try your own database.
+* **Your Database** - Finally, try your own database.
+
+&nbsp;
+
+In addition to this app dev oriented tutorial, you can also explore:
+
+* **Deployment:** the [Deployment Tutorial](../Tutorial-Deployment/){:target="_blank" rel="noopener"} illustrates various ways to containerize and deploy your applications
+
+* **Using AI:** the [AI-Driven Automation Tutorial](../Tech-AI/){:target="_blank" rel="noopener"} shows how you can use ChatGPT to create new databases from english descriptions, to bootstrap a very rapid create / collaborate / iterate Agile cycle.
 
 &nbsp;
 

@@ -26,6 +26,7 @@ nav:
     - "Tutorial": Tutorial.md
     - Sample-Database.md
     - "Deployment Tutorial": Tutorial-Deployment.md
+    - "AI-driven Automation": Tech-AI.md
   - 1. Admin Web App:
     - "Automatic Admin App": Admin-Tour.md
     - Admin-Customization.md
@@ -68,6 +69,7 @@ nav:
     - "Install psycopg2: Postgres": Install-psycopg2.md
   - DevOps - Containers:
     - "About Containers": DevOps-Containers.md
+    - "DevOps Automation": DevOps-Automation.md
     - Create and Run Containers:
       - "Build Project Image": DevOps-Containers-Build.md
       - "Run Container": DevOps-Containers-Run.md
@@ -106,7 +108,6 @@ nav:
     - "Adoption Considerations?": Tech-Adoption.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
-    - "AI-driven Automation": Tech-AI.md
     - "AI-driven Auto mysql": Tech-AI-mysql.md
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
     - "Working Software Now": Working-Software-Now.md
