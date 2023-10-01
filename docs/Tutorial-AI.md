@@ -1,4 +1,10 @@
-!!! pied-piper ":bulb: TL;DR - Working Software, Now"
+<style>
+.md-typeset h1 {
+    display: none;
+  }
+</style>
+
+!!! pied-piper ":bulb: AI-Driven Automation Delivers the Agile Vision"
 
       Agile wisely advises getting Working Software as fast as possible, to facilitate Business User Collaboration and Iteration:
 
@@ -12,7 +18,6 @@
 
       This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.
 
-      To begin, [**click here**](../Tech-AI).  Allow 20 minutes, a bit more if you are new to Azure.
+      > To begin, [**click here**](../Tech-AI).  Allow 20 minutes, a bit more if you are new to Azure.
 
-
-![ai-driven-automation](images/ai-driven-automation/ai-driven-automation.png)
+![ai-driven-automation](images/ai-driven-automation/ai-driven-automation-no-title.png)
