@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Working Software, Now"
 
-      Agile correctly advises getting Working Software as fast as possible, to faciliate Business User Collaboration and Iteration.  API Logic Server help you achieve this:
+      Agile correctly advises getting Working Software as fast as possible, to facilitate Business User Collaboration and Iteration.  API Logic Server help you achieve this:
 
       1. **Create Working Software *Now:*** API Logic Server creates an API, and Admin screens from your database
 

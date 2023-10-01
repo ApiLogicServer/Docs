@@ -2,7 +2,7 @@
 
 !!! pied-piper ":bulb: TL;DR - Working Software, Now"
 
-      Agile correctly advises getting Working Software as fast as possible, to faciliate Business User Collaboration and Iteration.  Using AI and API Logic Server helps you achieve this:
+      Agile correctly advises getting Working Software as fast as possible, to facilitate Business User Collaboration and Iteration.  Using AI and API Logic Server helps you achieve this:
 
       1. **Create Database With ChatGPT** 
 
