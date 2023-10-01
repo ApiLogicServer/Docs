@@ -23,7 +23,7 @@ This article illustrates how create working software in hours instead of weeks/m
 1. **Create Database With ChatGPT**
 2. **Create Working Software *Now* with API Logic Server:**
     * Creates executable, customizable projects from databases
-    * Declare logic logic and security with spreadsheet-like rules using your IDE
+    * Declare logic and security with spreadsheet-like rules using your IDE
 3. **Deploy for *Collaboration* with API Logic Server:** e.g. to the Azure Cloud
 4. **Iterate:** add additional rules, with Python as required
 
