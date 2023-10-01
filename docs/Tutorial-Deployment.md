@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Working Software, Now"
 
-      Agile correctly advises getting Working Software as fast as possible, to facilitate Business User Collaboration and Iteration:
+      Agile wisely advises getting Working Software as fast as possible, to facilitate Business User Collaboration and Iteration:
 
       1. **Instant Creation:** create working software from a database.
 
