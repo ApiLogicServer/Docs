@@ -10,7 +10,7 @@
 
       Use API Logic Server to create Dev Previews.
 
-![ai-driven-automation](images/ai-driven-automation/ai-driven-automation.png)
+![ai-driven-automation](images/devops/working-software-now.png)
 
 ## Dev Previews
 

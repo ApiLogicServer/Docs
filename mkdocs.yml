@@ -26,7 +26,7 @@ nav:
     - "Tutorial": Tutorial.md
     - Sample-Database.md
     - "Deployment Tutorial": Tutorial-Deployment.md
-    - "AI-driven Automation": Tech-AI.md
+    - "AI-driven Automation": Tutorial-AI.md
   - 1. Admin Web App:
     - "Automatic Admin App": Admin-Tour.md
     - Admin-Customization.md
