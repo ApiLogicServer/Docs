@@ -71,6 +71,23 @@ Other important notes:
 * Sqlite databases are copied to your project, [as described here](../Database-Connectivity/#sqlite){:target="_blank" rel="noopener"}.  
 * The project URL is made *relative* to this location (`sqlite:///../database/db.sqlite`).  This keeps your projects portable, e.g., colleagues can pull your project from `GitHub` and run.
 
+&nbsp;
+
+## Installation
+
+The sqlite runtime is installed with API Logic Server.  You might, however, wish to install the command line tools.
+
+These are typically already installed on Mac computers.
+
+For windows, download and unzip this file:
+
+![sqlite download](images/database/get-sqlite3.png)
+
+And copy the 3 exe files to a place where they can be run, such as `~/AppData/Local/Microsoft/WindowsApps`:
+
+![sqlite installation](images/database/install-sqlite3.png)
+
+&nbsp;
 
 ## Northwind - sqlite (default sample)
 
@@ -148,7 +165,7 @@ Pycharm provides excellent [database tools](https://www.jetbrains.com/help/pycha
 
 ## VSCode Database Tools
 
-I use [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools).  To use it, you must first install drivers:
+I also use [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools).  To use it, you must first install drivers:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/SQLTools/SQLTools-drivers.png"></figure>
 
