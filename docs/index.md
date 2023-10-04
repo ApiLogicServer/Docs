@@ -33,6 +33,8 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
         * *40X more concise than code - unique to API Logic Server* &nbsp;&nbsp; :trophy:
 
+    ***Check out the new AI-Driven Tutorial --*** [click here for Tutorial](Tech-AI), [or video](https://www.youtube.com/watch?v=EbSel3VlOQI&pp=ygUQQVBJIExvZ2ljIFNlcnZlcg%3D%3D){:target="_blank" rel="noopener"})
+
     &nbsp;
 
     <details markdown>

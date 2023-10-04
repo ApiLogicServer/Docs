@@ -35,7 +35,7 @@ Let's see how.
 
 ## In a Nutshell
 
-For the truly impatient, here’s the basic process (takes under 10 minutes; details explained in remainder of article; [video here](https://www.youtube.com/watch?v=mJVBoKqtMPc&t=8s){:target="_blank" rel="noopener"}):
+For the truly impatient, here’s the basic process (takes under 10 minutes; details explained in remainder of article; [video here](https://www.youtube.com/watch?v=EbSel3VlOQI&pp=ygUQQVBJIExvZ2ljIFNlcnZlcg%3D%3D){:target="_blank" rel="noopener"}):
 
 **1. Use ChatGPT to input a description, and create the database**
 
