@@ -198,11 +198,13 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 ### Increased Agility and Quality, Reduced Risk
 
+Agile wisely advises getting Working Software as fast as possible, to facilitate Business User Collaboration and Iteration.  This reduces requirements risk - substantial effort wasted in misunderstood requirements.
+
 ![Benefits](images/agile/why-it-matters.png)
 
 1. ***Instant Collaboration:*** with automated creation of an API and an Admin App,  collaboration and UI dev can begin on Day 1.
 
-    * In a traditional approach, **Initial Dev** (APIs, and a basic Admin UI) is required before Collaboration.  This might be weeks or months.
+    * In a traditional approach, **API and UI Dev** is required before Collaboration.  This might be weeks or months.
 
 2. ***Declarative Logic:*** rules are 40X more concise, and automatically ordered and reused.
 
@@ -221,11 +223,9 @@ Finally, ***automation drives quality*** automatic re-use and ordering eliminate
 
 &nbsp;
 
-### Faster, Simpler, Modern Architecture
+### Simpler, Modern Architecture
 
-API Logic Server can dramatically improve web app development:
-
-* Automation makes it __faster:__ what used to require weeks or months is now immediate.  Unblock UI Dev, and engage business users - _early_ - instead of wasting time on a misunderstanding.
+API Logic Server not only increases agility, it can make web app development simpler, and ensure the architectural result:
 
 * Automation makes it __simpler:__ this reduces the risk of architectural errors, e.g., no logic reuse between Apps / Services, APIs without pagination, etc.
 
