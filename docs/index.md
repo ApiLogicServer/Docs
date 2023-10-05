@@ -196,6 +196,31 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 # Why It Matters: 
 
+### Increased Agility and Quality, Reduced Risk
+
+![Benefits](images/agile/why-it-matters.png)
+
+1. ***Instant Collaboration:*** with automated creation of an API and an Admin App,  collaboration and UI dev can begin on Day 2.
+
+    * In a traditional approach, **Initial Dev** (APIs, and a basic (Admin) UI) is required before Collaboration.  This might be weeks or months.
+
+2. ***Declarative Logic:*** rules are 40X more concise, and automatically ordered and reused.
+
+    * In a traditional approach, **Logic Development** is by code.  This slows iterations, since the logic must be coded, manually ordered, and designed for reuse.
+
+3. ***Self-serve APIs:*** ongoing API needs can be met by consumers, since APIs are self-serve – use Swagger to formulate requests for filtering, sorting, and multi-table data content.
+
+    * In a traditional approach, API Consumers may **require new custom APIs**, which may result in bottlenecks for server developers.
+
+In addition to time, ***risk is also reduced:***
+
+1. ***Early Collaboration:*** reduces *requirements risk*  
+2. ***API Automation:*** reduces technical risk (e.g., pagination, optimistic locking, self-serve design).
+
+Finally, ***automation drives quality*** automatic re-use and ordering eliminates an entire class of error.
+
+&nbsp;
+
 ### Faster, Simpler, Modern Architecture
 
 API Logic Server can dramatically improve web app development:
