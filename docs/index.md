@@ -200,13 +200,13 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 ![Benefits](images/agile/why-it-matters.png)
 
-1. ***Instant Collaboration:*** with automated creation of an API and an Admin App,  collaboration and UI dev can begin on Day 2.
+1. ***Instant Collaboration:*** with automated creation of an API and an Admin App,  collaboration and UI dev can begin on Day 1.
 
-    * In a traditional approach, **Initial Dev** (APIs, and a basic (Admin) UI) is required before Collaboration.  This might be weeks or months.
+    * In a traditional approach, **Initial Dev** (APIs, and a basic Admin UI) is required before Collaboration.  This might be weeks or months.
 
 2. ***Declarative Logic:*** rules are 40X more concise, and automatically ordered and reused.
 
-    * In a traditional approach, **Logic Development** is by code.  This slows iterations, since the logic must be coded, manually ordered, and designed for reuse.
+    * In a traditional approach, **Logic Development** is by code.  This also slows iterations, since the logic must be coded, manually ordered, and designed for reuse.
 
 3. ***Self-serve APIs:*** ongoing API needs can be met by consumers, since APIs are self-serve – use Swagger to formulate requests for filtering, sorting, and multi-table data content.
 
