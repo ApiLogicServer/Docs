@@ -200,19 +200,21 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 Agile wisely advises getting Working Software as fast as possible, to facilitate Business User Collaboration and Iteration.  This reduces requirements risk - substantial effort wasted in misunderstood requirements.
 
-![Benefits](images/agile/why-it-matters.png)
+![Benefits](images/agile/why-it-matters-1.png)
 
 1. ***Instant Collaboration:*** with automated creation of an API and an Admin App,  collaboration and UI dev can begin on Day 1.
 
-    * In a traditional approach, **API and UI Dev** is required before Collaboration.  This might be weeks or months.
+    * Tradtionally, **API and UI Dev** is required before Collaboration.  This might be weeks or months.
 
-2. ***Declarative Logic:*** rules are 40X more concise, and automatically ordered and reused.
+2. ***Spreadsheet-like Rules, Self-Serve APIs:*** rules are 40X more concise, and automatically ordered and reused.  Also, APIs are self-serve -- UI developers can use Swagger to formulate requests for filtering, sorting, and multi-table data content.
 
-    * In a traditional approach, **Logic Development** is by code.  This also slows iterations, since the logic must be coded, manually ordered, and designed for reuse.
+    * Tradtionally, **Logic Development** is by code.  Manual approaches can miss Use Cases, or be coded in UI controllers instead of the server.
+    * Tradtionally, **Custom APIs** are required for each client app.  This can block UI deveopment.
 
-3. ***Self-serve APIs:*** ongoing API needs can be met by consumers, since APIs are self-serve – use Swagger to formulate requests for filtering, sorting, and multi-table data content.
 
-    * In a traditional approach, API Consumers may **require new custom APIs**, which may result in bottlenecks for server developers.
+3. ***Self-Serve APIs:*** ongoing API needs can be met by consumers, such as new application integration.
+
+    * Tradtionally, API Consumers may **require new custom APIs**, which may result in bottlenecks for server developers.
 
 In addition to time, ***risk is also reduced:***
 
