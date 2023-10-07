@@ -86,7 +86,7 @@ It's the Working Software Business Users need to collaborate on Day 1: confirm t
 
 The system automatically creates JSON:APIs, supporting related data access, pagination, optimistic locking, filtering, and sorting.
 
-UI Developers can use swagger to design their API call, and copy the URI into their JavaScript code.  APIs are thus self-server - no server coding is required.  UI development is unblocked, Day 1.
+UI Developers can use swagger to design their API call, and copy the URI into their JavaScript code.  APIs are thus ***self-serve*** no server coding is required.  UI development is unblocked, Day 1.
 
 ![Admin App](images/ui-admin/swagger.png)
 
