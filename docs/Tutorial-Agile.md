@@ -2,41 +2,29 @@
 
 ## The Problem: Late, and Wrong
 
-
 We've all lived the unpleasant reality depicted here:
 
-## Root Cause: Long Dev Cycle Before Showing Working Software
+## Why: Delayed Collaboration
 
-There were probably specs, but nothing commicates like working software - running screens.  The root problem is that timelines look like this: substantial api and UI development (1) before the first working software... and *then* we find out it's not right.
+There were probably specs, but nothing commicates like working software - running screens.  The root problem is that timelines look like this: substantial api and UI development (step 1) before the first working software... and *only then* we find out it's not right.
 
 ![ai-driven-automation](images/agile/old-timeline.png)
 
 &nbsp;
 
+## Need: Instant Working Software
 
-## Agile Vision: Working Software Drives Collaboration and Iteration
-
-![ai-driven-automation](images/agile/manifesto.png){: style="height:300px;width:350px"; align=right }
-
-Agile wisely advises getting **Working Software as fast as possible, to facilitate Business User Collaboration and Iteration**.  
-
-> **So, How do we get Working Software, Now?  And rapid iteration?**
-
-&nbsp;
-
-&nbsp;
-
-## Our Approach: API Logic Server Delivers the Agile Vision
+The Agile vision is shown on the right: getting **Working Software as fast as possible, to facilitate Business User Collaboration and Iteration**.  
 
 ![ai-driven-automation](images/agile/agile-automation.png)
 
-This article illustrates how create working software in hours instead of weeks/months, like this:
+And that's exactly why we  API Logic Server: it creates working software instantly, instead of weeks/months, like this:
 
 1. **Use your existing database, or create a new one with ChatGPT or your database tools**
-2. **Create Working Software *Now* with API Logic Server:**
-    * An Admin App for Business User to begin collaboration, Day 1
+2. **Create Working Software *Now*:**  API Logic Server creates an ApiLogicProject, providing:
+    * An Admin App for Business Users to begin collaboration, Day 1
     * An API that UI developers can use, Day 1, rather than waiting for server devolopment to complete
-3. **Deploy for *Collaboration* with API Logic Server:** e.g. to the Azure Cloud
+3. **Deploy for *Collaboration*:** e.g. to the Azure Cloud
 4. **Iterate:** declare logic and security, with Python as required
 
 This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source
@@ -84,11 +72,23 @@ Let's have a look.
 
 &nbsp;
 
-### Explore Admin App
+### a. Admin App
 
-### Explore Swagger - self-serve APIs
+This React-Admin web app is created automatically - no JavaScript, no HTML.
 
-## 4. Deploy for Collaboration
+It's the Working Software Business Users need to collaborate on Day 1: confirm the data model, and identify logic requirements.
+
+![API Logic Server Intro](images/ui-admin/Order-Page.png)
+
+### b. Self-serve APIs
+
+The system automatically creates JSON:APIs, supporting related data access, pagination, optimistic locking, filtering, and sorting.
+
+UI Developers can use swagger to design their API call, and copy the URI into their JavaScript code.  APIs are thus self-server - no server coding is required.  UI development is unblocked, Day 1.
+
+![Admin App](images/ui-admin/swagger.png)
+
+## 3. Deploy for Collaboration
 
 OK, running on our desktop.  We need to deploy it for collaboration. 
 
@@ -143,7 +143,9 @@ sh devops/docker-compose-dev-azure/azure-deploy.sh
 
 &nbsp;
 
-### Add Security
+## 4. Iterate: Declare Rules
+
+### a. Add Security
 
 In a terminal window for your project:
 
@@ -155,7 +157,7 @@ Users will now need to sign in to use the Admin App.
 
 &nbsp;
 
-### Declare Logic
+### b. Declare Logic
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
 
@@ -200,7 +202,7 @@ Observe rules are declared in Python.  Given IDE services for code completion, t
 
 &nbsp;
 
-#### Re-use and Optimization
+#### -> Re-use and Optimization
 
 We can contrast this to the (not shown) ChatGPT attempt at logic.  With declarative logic, you get:
 
@@ -212,7 +214,7 @@ ChatGPT created triggers that missed many Use Cases, and were inefficient.  They
 
 
 
-## 4. Iterate with Logic
+## 5. Next Iteration: Rules + Python
 
 Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s take an example.
 
@@ -270,7 +272,7 @@ This simple example illustrates some significant aspects of iteration.
 
 &nbsp;
 
-### Maintenance: Logic Ordering
+#### a. Maintenance: Logic Ordering
 
 Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but it’s mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines they’ll hopefully be called and function correctly.
 
@@ -278,7 +280,7 @@ Rules change that, since they self-order their execution (and pruning) based on 
 
 &nbsp;
 
-### Extensibility: Rules Plus Python
+#### b. Extensibility: Rules + Python
 
 In this case, we needed to do some if/else testing, and it was more convenient to add a dash of Python.  While you have the full object-oriented power of Python, this is simpler, more like Python as a 4GL.  
 
@@ -286,7 +288,7 @@ What’s important is that once you are in such functions, you can utilize Pytho
 
 &nbsp;
 
-### Debugging: IDE, Logging
+#### c. Debugging: IDE, Logging
 
 The screen shot above illustrates that debugging logic is what you’d expect: use your IDE's debugger.
 
@@ -294,7 +296,7 @@ In addition, the Logic Log lists every rule that fires, with indents for multi-t
 
 &nbsp;
 
-### Rebuild: Customizations Preserved
+#### d. Rebuild: Logic Preserved
 
 Note we rebuilt the project from our altered database, without losing customizations.
 
@@ -305,22 +307,3 @@ Note we rebuilt the project from our altered database, without losing customizat
 ![ai-driven-automation](images/ai-driven-automation/summary.png)
 
 In 6 minutes, you've used ChatGPT and API Logic Server to convert an idea into working software, deployed for collaboration, and iterated to meet new requirements.
-
-
-&nbsp;
-
-## Appendices
-
-### Sqlite and persistence
-
-For information on database and directory creation, [click here](../DevOps-Container-Configuration/#database-locations){:target="_blank" rel="noopener"}.  Since the database is stored and accessed in the container, cloud changes are not persisted over runs.  This is useful for demo systems where each run starts with fresh data.
-
-An option for cloud sqlite persistence is under investigation.  Preliminary thoughts:
-
-* Update the project to use [blob storage](https://pypi.org/project/azure-storage-blob/){:target="_blank" rel="noopener"}
-* On Server start, **restore** the database from blob storage to the image
-* On Server Exit, [use `atexit`](https://betterprogramming.pub/create-exit-handlers-for-your-python-appl-bc279e796b6b){:target="_blank" rel="noopener"} to **save** the database from the image to blob storage
-
-There are also products that automate this, such as [LiteStream](https://litestream.io/guides/azure/){:target="_blank" rel="noopener"}.
-
-Of course, you can use a database such as MySQL, Postgres, Oracle or SqlServer, as [described here](..DevOps-Containers-Deploy-Multi/){:target="_blank" rel="noopener"}.  Local databases can be migrated to Azure in a number of ways, such as [this example using MySqlWorkBench](https://www.youtube.com/watch?v=uxSDpZnFa18){:target="_blank" rel="noopener"}.
