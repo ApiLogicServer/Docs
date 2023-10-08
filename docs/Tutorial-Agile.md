@@ -2,11 +2,11 @@
 
 ## The Problem: Late, and Wrong
 
-We've all lived the unpleasant reality depicted here:
+So, why does this keep happening?
 
 ## Why: Delayed Collaboration
 
-There were probably specs, but nothing commicates like working software - running screens.  The root problem is that timelines look like this: substantial api and UI development (step 1) before the first working software... and *only then* we find out it's not right.
+It’s because Business Users need working software - running screens - but there’s a long dev cycle before that happens..
 
 ![ai-driven-automation](images/agile/old-timeline.png)
 
@@ -18,7 +18,7 @@ The Agile vision is shown on the right: getting **Working Software as fast as po
 
 ![ai-driven-automation](images/agile/agile-automation.png)
 
-And that's exactly why we  API Logic Server: it creates working software instantly, instead of weeks/months, like this:
+And that's exactly why we built API Logic Server: it creates working software instantly, instead of weeks/months, like this:
 
 1. **Use your existing database, or create a new one with ChatGPT or your database tools**
 2. **Create Working Software *Now*:**  API Logic Server creates an ApiLogicProject, providing:
@@ -41,7 +41,7 @@ Let's see how.
 
 You can use an existing database, or create a new one with ChapGPT or your database tools.
 
-For this Tutorial, to get a simple customers/orders database, [click here](https://github.com/ApiLogicServer/ai_customer_orders/blob/main/database/db.sqlite).
+For this Tutorial, to get a simple customers/orders database, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/tests/test_databases/ai-created/ai_customer_orders.sqlite){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
