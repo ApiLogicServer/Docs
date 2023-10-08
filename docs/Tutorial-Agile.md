@@ -52,7 +52,7 @@ Given a database, API Logic Server creates an executable, customizable project:
 ```bash
 $ ApiLogicServer create \
 --project_name=ai_customer_orders \
---db_url=sqlite:///db.sqlite
+--db_url=sqlite:///ai_customer_orders.sqlite
 ```
 
 This creates a project you can open with VSCode.  Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
@@ -78,7 +78,7 @@ Let's have a look.
 
 This React-Admin web app is created automatically - no JavaScript, no HTML.
 
-It's the Working Software Business Users need to collaborate on Day 1: confirm the data model, and identify logic requirements.
+It's the Working Software Business Users need to collaborate on Day 1: confirm the data model, and uncover logic requirements.
 
 ![API Logic Server Intro](images/ui-admin/Order-Page.png)
 
@@ -147,19 +147,9 @@ sh devops/docker-compose-dev-azure/azure-deploy.sh
 
 ## 4. Iterate: Declare Rules
 
-### a. Add Security
+Collaboration might uncover a requirement for **Check Credit**.  Let’s implement it…
 
-In a terminal window for your project:
-
-```bash
-ApiLogicServer add-auth --project_name=. --db_url=auth
-```
-
-Users will now need to sign in to use the Admin App.
-
-&nbsp;
-
-### b. Declare Logic
+### a. Declare Logic
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
 
@@ -214,7 +204,19 @@ We can contrast this to the (not shown) ChatGPT attempt at logic.  With declarat
 
 ChatGPT created triggers that missed many Use Cases, and were inefficient.  They were also not transparent; Business Users can read the rules and spot issues (*"hey, where's the tax?"*), certainly not triggers.
 
+&nbsp;
 
+### b. Add Security
+
+In a terminal window for your project:
+
+```bash
+ApiLogicServer add-auth --project_name=. --db_url=auth
+```
+
+Users will now need to sign in to use the Admin App.
+
+&nbsp;
 
 ## 5. Next Iteration: Rules + Python
 

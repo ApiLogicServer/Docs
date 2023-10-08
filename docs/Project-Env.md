@@ -23,6 +23,14 @@ If you wish to share a `venv` over multiple projects, use __Settings > Python: V
 
 Recall this does _not_ apply to docker or Codespace environments.  
 
+## Default `venv` from install
+
+You can also set up the default `venv` for VSCode.  For example, if you installed ApiLogicServer in `/dev/ApiLogicServer`:
+
+`bash
+export VIRTUAL_ENV=~/dev/ApiLogicServer/venv
+`
+Exercise caution - this might affect other projects.
 
 <details markdown>
 
