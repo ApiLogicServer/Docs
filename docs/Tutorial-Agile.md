@@ -260,14 +260,14 @@ Use your IDE to merge `/ui/admin/admin-merge.yml` -> `/ui/admin/admin.yml`.`
 **d. Declare logic**
 
 ```python
-   def derive_amount(row: models.Item, old_row: models.Item, logic_row: LogicRow):
-       amount = row.Quantity * row.UnitPrice
-       if row.Product.CarbonNeutral and row.Quantity >= 10:
-           amount = amount * Decimal(0.9)
-       return amount
+    def derive_amount(row: models.Item, old_row: models.Item, logic_row: LogicRow):
+        amount = row.Quantity * row.UnitPrice
+        if row.Product.CarbonNeutral and row.Quantity >= 10:
+            amount = amount * Decimal(0.9)
+        return amount
 
 
-   Rule.formula(derive=models.Item.Amount, calling=derive_amount)
+    Rule.formula(derive=models.Item.Amount, calling=derive_amount)
 ```
 
 &nbsp;
@@ -308,6 +308,6 @@ Note we rebuilt the project from our altered database, without losing customizat
 
 ## Summary
 
-![ai-driven-automation](images/ai-driven-automation/summary.png)
+![ai-driven-automation](images/agile/summary.png)
 
 In 6 minutes, you've used ChatGPT and API Logic Server to convert an idea into working software, deployed for collaboration, and iterated to meet new requirements.
