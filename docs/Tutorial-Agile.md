@@ -321,3 +321,5 @@ In 6 minutes, you've used ChatGPT and API Logic Server to convert an idea into w
 * Iterated the project in your IDE to implement new requirements
     * With Rules -- 40X more concise than code
     * And Python -- for complete flexibility
+
+It all works with standard tooling: Python, your IDE, and container-based deployment.
