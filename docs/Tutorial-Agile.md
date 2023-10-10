@@ -308,6 +308,16 @@ Note we rebuilt the project from our altered database, without losing customizat
 
 ## Summary
 
-![ai-driven-automation](images/agile/summary.png)
+![ai-driven-automation](images/agile/als-agile.png)
 
-In 6 minutes, you've used ChatGPT and API Logic Server to convert an idea into working software, deployed for collaboration, and iterated to meet new requirements.
+In 6 minutes, you've used ChatGPT and API Logic Server to convert an idea into working software -- 5 rules, 4 lines of Python.  The process was simple:
+
+* Used the `ApiLogicServer create` command to create an executable project
+    * A **Self-Serve API** to unblock UI Developers -- Day 1
+    * An **Admin App** for Business User Collaboration -- Day 1
+
+* Enabled **Collaboration** with automated deployment services
+
+* Iterated the project in your IDE to implement new requirements
+    * With Rules -- 40X more concise than code
+    * And Python -- for complete flexibility
