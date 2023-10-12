@@ -184,7 +184,7 @@ API Logic Server is an open source Python project, consisting of a CLI and set o
 
 It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is).
 
-Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tutorial-Agile){:target="_blank" rel="noopener"}).
+Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](../Tutorial-AI).
 
 [![Delivering the Agile Vision](images/agile/als-agile-video.png)](https://youtu.be/sD6RFp8S6Fg "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}
 
