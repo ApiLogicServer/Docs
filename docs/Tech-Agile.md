@@ -69,7 +69,7 @@ pip install -r requirements.txt
 ```
 ![Ready To Run](images/agile/open-in-ide.png)
 
-The project is now ready to run.  It includes a self-service API ready for UI developers, and an Admin app ready for Business User Collaboration.  We have eliminated the first project segment from our traditional project timeline, and can ***start collaboration on Day 1.***
+The project is now ready to run.  It includes a self-serve API ready for UI developers, and an Admin app ready for Business User Collaboration.  We have eliminated the first project segment from our traditional project timeline, and can ***start collaboration on Day 1.***
 
 Our timelines looks more like this:
 

@@ -14,7 +14,7 @@
 
          * **Deployment:** scripts are provided to containerize applications for deployment
 
-      * API Logic Server is a **self-service** API style, well suited for supporting other organizations without requiring central creation of customized APIs
+      * API Logic Server is a **self-serve** API style, well suited for supporting other organizations without requiring central creation of customized APIs
 
          * An **Extensible ORM** enables access to other data sources
 

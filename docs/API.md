@@ -36,36 +36,15 @@ Start the server, and open your Browser at `localhost:5656`.  Or, explore the sa
 
 &nbsp;
 
-## Provider-Defined vs. Consumer-Defined
+## Self-Serve
 
-!!! pied-piper ":bulb: TL;DR - Consumer-Defined APIs: __reduce network traffic__, __minimize organizational dependencies.__"
+Unlike Custom APIs which require server development, Self-Serve APIs can be used directly by consumers.  They use Swagger to retrieve the data they want, then copying the URI to their code.  API consumers include:
 
-      *Provider-defined* APIs are suitable for in-house use.
-      
-      For external use, *Consumer-defined* APIs can __reduce network traffic__ and __minimize organizational dependencies with _self-service APIs_.__
+* UI Developers - progress no longer blocked on custom server development
 
-Consider 2 classes of APIs:
+* Application Integration - remote customers and organizations can similarly meet their own needs
 
-* ***Provider-Defined APIs*** are predefined by server developers
-
-    *  These can be **simpler for internal users**, whose needs can be determined in advance.
-
-> But for a wider class of consumers (e.g., business partners, or other teams in a large organization), providers typically cannot predict consumer needs.  Given only predefined provider APIs, consumers are often forced to make multiple calls to obtain the data they need, or invoke APIs that return too much data.  These can increase network traffic.
-
-That leads to a second class of APIs such as GraphQL and [JSON:API](https://jsonapi.org){:target="_blank" rel="noopener"}:
-
-* ***Consumer-Defined APIs*** enable clients to provide parameters for exactly the fields and related data they need.  This can:
-
-    * __Reduce network traffic__ by eliminating multiple API calls, or calls for excessive data, and
-    * __Minimize organizational dependencies with _self-service APIs_.__
-
-&nbsp;
-
-## Swagger to construct API calls
-
-Provider-defined API calls typically have more/longer arguments.  To facilitate creating invoking APIs, use swagger to obtain the url.
-
-  > Tip: use Swagger to debug your API parameters, then use the copy/paste services to use these in your application.
+For more information, [see Self-Serve APIs.](../API-Self-Serve)
 
 &nbsp;
 

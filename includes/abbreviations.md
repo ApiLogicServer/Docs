@@ -43,3 +43,5 @@
 *[Domain Specific Language]: A language focused on a specific domain (e.g., logic), providing speed and transparency by using a high-level declarative approach to specify behavior.
 *[domain specific language]: A language focused on a specific domain (e.g., logic), providing speed and transparency by using a high-level declarative approach to specify behavior.
 *[DSL]: A domain specific language focuses on a specific domain (e.g., logic), providing speed and transparency by using a high-level declarative approach to specify behavior.
+*[self-serve]: Instead of relying on custom server development, UI developers can use Swagger to formulate requests for filtering, sorting, and multi-table data content.
+*[Self-Serve]: Instead of relying on custom server development, UI developers can use Swagger to formulate requests for filtering, sorting, and multi-table data content.

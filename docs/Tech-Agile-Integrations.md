@@ -14,5 +14,5 @@
 
     * **Logic-Enforced** APIs ensure that such accesses are subjected to security, and maintain data integrity
 
-    * JSON:APIs are **consumer-defined**, ensuring client organizations to **self-service**, without requiring ad hoc API development for each new integration
+    * JSON:APIs are **consumer-defined**, ensuring client organizations to **self-serve**, without requiring ad hoc API development for each new integration
 
