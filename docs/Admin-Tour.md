@@ -53,8 +53,7 @@ The Admin App is created in your ApiLogicProject, and operates as follows:
 
 For more information on Architecture, [see Architecture](../Architecture-What-Is).
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/admin-arch.png"></figure>
-
+![Admin Arch](images/ui-admin/admin-arch.png)
 
   > **Key Take-away:** instant admin apps, an api for custom apps, with enforcement of declarative logic.
 

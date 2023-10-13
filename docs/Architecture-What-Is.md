@@ -21,12 +21,13 @@ API Logic Server is a Python Application, consisting of:
 
 It executes either as a locally install (venv), or a Docker image (which includes Python).  In either case, the contents are the same:
 
-
 ![API Logic Server Intro](images/Architecture-What-Is.png)
 
 &nbsp;
 
 ## Key Runtime Components
+
+![API Logic Server Runtime Stack](images/Architecture-Runtime-Stack.png)
 
 The following 
 
@@ -36,7 +37,7 @@ The following
 | [SQLAlchemy](https://docs.sqlalchemy.org/en/14/core/engines.html){:target="_blank" rel="noopener"}    | Python-friendly ORM (analogous to Hiberate, JPA)                                                                      |
 | [Logic Bank](../Logic-Operation/#logic-architecture){:target="_blank" rel="noopener"} | Listens for SQLAlchemy updates, provides Multi-Table Derivation and Constraint Rules<br>Python Events (e.g., send mail, message)<br>Customizable with Python<br> |
 | [SAFRS](https://github.com/thomaxxl/safrs/wiki){:target="_blank" rel="noopener"}     | JSON:API and swagger, based on SQLAlchemy  |
-| [SAFRS-RA](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"}   | Executable React Admin UI, using SAFRS    |
+| [SAFRS-RA](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"}   | *Admin App*, using SAFRS    |
 
 
 ## Execution: 3-tiered architecture
