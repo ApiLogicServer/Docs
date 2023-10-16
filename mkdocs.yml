@@ -3,6 +3,9 @@ site_description: Instantly Create and Run Database Projects - Flask, APIs, SQLA
 repo_url: https://github.com/valhuber/ApiLogicServer
 docs_dir: docs
 strict: true
+
+# custom home: https://github.com/tylerdotrar/mkdocs-coverpage (but - header only, no content)
+
 theme:
   name: material
   custom_dir: docs/.overrides

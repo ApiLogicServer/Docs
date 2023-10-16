@@ -16,6 +16,8 @@
 
       * API Logic Server is a **self-serve** API style, well suited for supporting other organizations without requiring central creation of customized APIs
 
+         * Use standard Flask for custom APIs - still rule-enabled
+         
          * An **Extensible ORM** enables access to other data sources
 
 &nbsp;
@@ -46,7 +48,7 @@ The styles are different:
 
       * These are suitable for in-house clients whose needs are known in advance
 
-* ALS APIs are **client-defined** ([see here for more information](..API/#provider-defined-vs-consumer-defined)).  
+* ALS APIs are **self-serve, client-defined** ([see here for more information](../API-Self-Serve/)).  
 
       * These are suitable for general clients who can request exactly the data they require, without the performance costs and complexity of integrating several bespoke APIs
 
