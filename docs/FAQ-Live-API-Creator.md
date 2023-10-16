@@ -12,6 +12,8 @@
 
          * **Development:** uses standard IDEs for debugger and source code management
 
+             * **IDE-Driven Development**, not via a UI
+
          * **Deployment:** scripts are provided to containerize applications for deployment
 
       * API Logic Server is a **self-serve** API style, well suited for supporting other organizations without requiring central creation of customized APIs
