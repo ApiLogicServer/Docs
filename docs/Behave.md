@@ -8,13 +8,36 @@
 
          * **Integrated Logic Documentation:** the report integrates your logic, including a logic report showing your logic (rules and Python), and a Logic Log that shows exactly how the rules executed.  Logic Doc is transparent to business users, so can further contribute to Agile Collaboration.
 
+&nbsp;&nbsp;
+
+# Testing
+
+Experienced professionals advocate test suites, for answering key questions like:
+
+|   Key Question    | Best Practice   |
+:-------|:-----------------|
+| What is the formal definition of the systems' functionality? | The test suite defines the functionality |
+| Is the system ready to go-live | The test suite passes |
+| Did my maintenance change break something? | Run the test suite |
+
+## Popular Frameworks
+
+API Logic does not dictate any particular framework.  You can use (and we do internally) popular frameworks such as `PyUnit` (bundled with Python) and `unitest`.
+
+&nbsp;
+
+## The Behave Framework
+
+One such framework is `behave`.  Since it can produce documentation, we have built in support as described here.
+
 ![Behave Summary](images/behave/behave-summary.png)
 
 [Behave](https://behave.readthedocs.io/en/stable/tutorial.html) is a framework for defining and executing tests.  It is based on [TDD (Test Driven Development)](http://dannorth.net/introducing-bdd/), an Agile approach for defining system requirements as executable tests.
 
-&nbsp;&nbsp;
+&nbsp;
 
 # Using Behave
+
 
 ![Using Behave](images/behave/TDD-ide.png)
 
