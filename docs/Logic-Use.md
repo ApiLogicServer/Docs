@@ -1,9 +1,9 @@
 !!! pied-piper ":bulb: TL;DR - Using Logic: Understand functions vs. lambda, logic_row"
 
-        For constraints / formulas that require an expression, you can use
+    For constraints / formulas that require an expression, you can use
         lambdas or functions.
 
-        Functions have a `logic_row` arguments, providing access to old/new row, verb, etc.
+    Functions have a `logic_row` arguments, providing access to old/new row, verb, etc.
 
 &nbsp;
 
