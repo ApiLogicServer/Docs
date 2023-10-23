@@ -241,3 +241,13 @@ curl -X 'GET' \
   -H 'accept: application/vnd.api+json' \
   -H 'Content-Type: application/vnd.api+json'
 ```
+
+## Testing and `PYTHONHASHSEED`
+
+You may want to build tests that require you to supply checksums.  Checksum values differ from run to run (as they should), which can interfere with tests.
+
+For test runs, you can set an environment variable for predictable checksum values:
+
+```bash
+export PYTHONHASHSEED=0
+```

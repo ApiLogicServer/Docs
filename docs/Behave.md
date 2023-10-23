@@ -96,5 +96,6 @@ The server must be running for these tests.  Use the Launch Configuration `ApiLo
 Run this to create the wiki reports from the logs in step 3.
 
 
-&nbsp;
-&nbsp;
+## 5. Testing considerations
+
+Please [see here](../API-Opt-Lock/#testing-and-pythonhashseed){:target="_blank" rel="noopener"} for considerations on optimistic locking and testing.
