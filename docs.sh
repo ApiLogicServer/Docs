@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# custom home: https://github.com/tylerdotrar/mkdocs-coverpage (but - header only, no content)
+
 # e.g.:  sh ~/dev/Docs-ApiLogicServer/docs.sh
 echo "\n*** Org Docs ***\n"
 
