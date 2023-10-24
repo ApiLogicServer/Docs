@@ -19,7 +19,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
     1. **Instantly create** (`ApiLogicServer create`) a Flask/SQLAlchemy project from your database.  Zero learning curve.  Projects are **ready to run**, providing:
 
         * **an Admin App:** multi-page, multi-table apps -- ready for business user agile collaboration
-        * **an API:** end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- ready for custom app dev
+        * **an API:** end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- self-serve, ready for custom app dev
 
     2. **Open Flexibility:** leverage standards for development and deployment:
 
