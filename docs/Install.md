@@ -34,6 +34,9 @@ Then, open the appropriate section below, and see the [Installation Notes](#inst
       > Note: on Macs, you may need to use `python3` instead of `python`.
 
     If you need to install Python (it can be tricky), see [these notes](../Tech-Install-Python).
+
+    fixme md is now required??
+
     &nbsp;
 
     __Install API Logic Server in a virtual environment__

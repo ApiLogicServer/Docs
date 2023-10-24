@@ -2,7 +2,7 @@ site_name: API Logic Server
 site_description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 repo_url: https://github.com/valhuber/ApiLogicServer
 docs_dir: docs
-strict: true
+strict: false
 theme:
   name: material
   custom_dir: docs/.overrides
