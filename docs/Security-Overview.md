@@ -105,7 +105,7 @@ Security enables you to hide certain rows from designated roles, such as a list 
 
 ### Multi-Tenant
 
-Some systems require the data to be split between multiple customers.  One approach here is to 'stamp' each row with a client_id, associate client_id with each customers, and then add the client_id to each search.  The sample illustrates how this can be achieved with [authorization](../Security-Authorization){:target="_blank" rel="noopener"}:
+Some systems require the data to be split between multiple customers.  One approach here is to 'stamp' each row with a client_id, associate client_id with each customers, and then add the client_id to each search.  The sample illustrates how this can be achieved with [authorization](Security-Authorization.md){:target="_blank" rel="noopener"}:
 
 ```python
 Grant(  on_entity = models.Category,

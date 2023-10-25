@@ -9,7 +9,7 @@
 
 ### Via the Container
 
-Once the container [is created](../DevOps-Containers-Build){:target="_blank" rel="noopener"}, you can start it [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/run_image.sh){:target="_blank" rel="noopener"}, which contains:
+Once the container [is created](DevOps-Containers-Build.md){:target="_blank" rel="noopener"}, you can start it [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/run_image.sh){:target="_blank" rel="noopener"}, which contains:
 
 ```bash
 docker run --env-file devops/docker-image/env.list -it --name api_logic_project --rm --net dev-network -p 5656:5656 -p 5002:5002 apilogicserver/<your project>
@@ -86,7 +86,7 @@ SQLAlchemy database URIs are set in your `config.py`` file, from your creation C
     SQLALCHEMY_DATABASE_URI : typing.Optional[str] = f"mysql+pymysql://root:p@localhost:3306/classicmodels"
 ```
 
-Special handling is provided for sqlite databases, [as described here](../Database-Connectivity/#sqlite){:target="_blank" rel="noopener"}.
+Special handling is provided for sqlite databases, [as described here](Database-Connectivity.md#sqlite){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -260,7 +260,7 @@ You will also need to:
 &nbsp;
 
 #### PythonAnywhere
-Please see the [Install Instructions](../Install){:target="_blank" rel="noopener"} for information on PythonAnywhere.
+Please see the [Install Instructions](Install.md){:target="_blank" rel="noopener"} for information on PythonAnywhere.
 
 &nbsp;
 
@@ -269,5 +269,5 @@ Please see the [Install Instructions](../Install){:target="_blank" rel="noopener
 You can use Docker compose files or env files to configure your project.  There is an example in the default project - [click here to see run-image.sh](https://github.com/ApiLogicServer/demo/tree/main/devops/docker-image){:target="_blank" rel="noopener"}.
 
 [^1]:
-    Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](#preview-version.md){:target="_blank" rel="noopener"}
 

@@ -110,7 +110,7 @@ This:
 
 !!! pied-piper ":bulb: venv can be used for projects"
 
-    You will probably find it helpful to use this as a [shared venv](../Project-Env/#shared-venv).
+    You will probably find it helpful to use this as a [shared venv](Project-Env.md#shared-venv).
 
 #### `do_create_api_logic_project`...
 
@@ -124,7 +124,7 @@ This is a complex rule example.
 
 #### `do_docker_<database>`
 
-These create projects from docker databases ([see here](../Database-Connectivity/#docker-databases)) which are expected to be running.  They perform minimal validation to ensure the server starts by executing the _hello world_ API.  
+These create projects from docker databases ([see here](Database-Connectivity.md#docker-databases)) which are expected to be running.  They perform minimal validation to ensure the server starts by executing the _hello world_ API.  
 
     This in fact verifies that the `models.py` file is created and runs.
 
@@ -281,7 +281,7 @@ While Sql/Server itself runs nicely under docker, there is considerable complexi
 
 For users requiring pyodbc (SqlServer), there are 2 installs:
 
-* ODBC Driver: [using `brew` as described here](../install-pyodbc){:target="_blank" rel="noopener"}
+* ODBC Driver: [using `brew` as described here](Install-pyodbc.md){:target="_blank" rel="noopener"}
 
 * `pip install pyodbc==4.0.34`
 
@@ -295,7 +295,7 @@ ApiLogicServer-dev `requirements.txt` does **not** install odbc.  If you wish to
 
 ## Multi-arch Docker images
 
-Docker creation provides the opportunity to pre-install odbc and simplify life for Sql/Server users.  [This procedure](../DevOps-Containers-Run/#multi-architecture-images){:target="_blank" rel="noopener"} was used to create `apilogicserver/api_logic_server`, providing an image that supports odbc, *and* supports devcontainers for both arm and amd.  
+Docker creation provides the opportunity to pre-install odbc and simplify life for Sql/Server users.  [This procedure](DevOps-Containers-Run.md#multi-architecture-images){:target="_blank" rel="noopener"} was used to create `apilogicserver/api_logic_server`, providing an image that supports odbc, *and* supports devcontainers for both arm and amd.  
 
 ```bash
 # GA release
@@ -355,7 +355,7 @@ The run config has entries like this:
         },
 ```
 
-The CLI detects db_url's like `sqlsvr-nw`, and converts them to strings like this for [Database Connectivity > Docker Databases](../Database-Connectivity/#docker-databases){:target="_blank" rel="noopener"}:
+The CLI detects db_url's like `sqlsvr-nw`, and converts them to strings like this for [Database Connectivity > Docker Databases](Database-Connectivity.md#docker-databases){:target="_blank" rel="noopener"}:
 ```
     elif project.db_url == 'sqlsvr-nw':  # work-around - VSCode run config arg parsing
         rtn_abs_db_url = 'mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
@@ -395,5 +395,5 @@ ApiLogicServer create --project_name=sqlsvr-nw --db_url=sqlsvr-nw
 
 As a contributor, you will likely work with:
 
-* [Docker Databases](../Database-Connectivity)
-* [Shared virtual environments](../Project-Env)
+* [Docker Databases](Database-Connectivity.md)
+* [Shared virtual environments](Project-Env.md)

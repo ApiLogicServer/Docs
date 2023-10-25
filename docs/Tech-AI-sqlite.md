@@ -13,7 +13,7 @@
          * Engage Business Users with running Admin screens - spot data model misunderstandings, and uncover logic requirements
          * Unblock UI Developers with the API
 
-      4. **Declarative Logic Automates *Iteration:*** use [declarative rules](../Logic-Why) for logic and [security](../Security-Overview), extensible with Python as required.  Rules are a unique aspect of API Logic Server:
+      4. **Declarative Logic Automates *Iteration:*** use [declarative rules](Logic-Why.md) for logic and [security](Security-Overview.md), extensible with Python as required.  Rules are a unique aspect of API Logic Server:
       
          * logic is 40X more concise, and 
          * automatically ordered per system-discovered dependencies, to facilite rapid iteration

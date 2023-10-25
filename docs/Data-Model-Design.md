@@ -19,11 +19,11 @@ In general, add indices for your Foreign Keys.  Note performance may be fine in 
 
 ## Initialize Stored Derivations
 
-Recall that the logic engine uses [adjustments](../FAQ-RETE/#adjustments-sum-counts-adjusted-in-1-row-up){:target="_blank" rel="noopener"} to maintain aggregates, instead of expensive (possibly nested) aggregate queries.  This can result in order-of-magnitude performance advantage.
+Recall that the logic engine uses [adjustments](FAQ-RETE.md#adjustments-sum-counts-adjusted-in-1-row-up){:target="_blank" rel="noopener"} to maintain aggregates, instead of expensive (possibly nested) aggregate queries.  This can result in order-of-magnitude performance advantage.
 
 It does, however, rely currently stored values being accurate.  Logic will ensure *remains* true, but you must ensure it's *initially* true.  Introducing stored aggregates in an existing database with existing rows requires you initialize new sums and counts.
 
-For example, let's assume you introduced the `Customer.Balance` as a new column in the northwind [sample database](../Sample-Database).  You'd need to initialize the Balance like this:
+For example, let's assume you introduced the `Customer.Balance` as a new column in the northwind [sample database](Sample-Database.md).  You'd need to initialize the Balance like this:
 
 ```sql
 update Customer set Balance = (select AmountTotal from "Order" where Customer.Id = CustomerId and ShippedDate is null);

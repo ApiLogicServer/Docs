@@ -27,11 +27,11 @@ This file is created initially by the system, so it's not necessary to learn the
 
   > Press Browser refresh to reload the application after you make changes; it is not necessary to restart the server
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/admin-yaml.png?raw=true"></figure>
+![admin-cust](images/ui-admin/admin-yaml.png)
 
 #### Models and admin correlation
 
-See [this section](../Data-Model-Classes).
+See [this section](Data-Model-Classes.md).
 
 #### Not altered on `rebuild`
 The rebuild commands do not override your customizations.  They do recreate `admin-created.yaml`.  You can use this to merge into your `admin.yaml`, e.g., to pick up new tables, relationships, etc.
@@ -42,20 +42,19 @@ The rebuild commands do not override your customizations.  They do recreate `adm
 
 You can provide an expression that determines when a field (and its caption) are hidden.  For example, you might show the `Dues` only when the `EmployeeType` is _Hourly_, by declaring this in your `admin.yaml`:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/show-when/declare.png?raw=true"></figure>
+![admin-cust](images/ui-admin/show-when/declare.png)
 
 `Dues` is hidden for non Hourly:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/show-when/display-hidden.png?raw=true"></figure>
-
+![admin-cust](images/ui-admin/show-when/display-hidden.png)
 
 and is visible for Hourly:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/show-when/display-visible.png?raw=true"></figure>
+![admin-cust](images/ui-admin/show-when/display-visible.png)
 
 It also works on update, such as insert:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/show-when/insert.png?raw=true"></figure>
+![admin-cust](images/ui-admin/show-when/insert.png)
 
 ##### Hiding Fields in Insert Mode
 

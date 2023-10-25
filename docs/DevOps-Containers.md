@@ -72,14 +72,14 @@ For more information on containers, [see here](https://docker-curriculum.com){:t
 
 Containers are generally regarded as a deployment technology.  In addition, they offer several advantages for development.
 
-API Logic Server supports a variety of development models.  You can [install](../Install-Express){:target="_blank" rel="noopener"} API Logic Server either:
+API Logic Server supports a variety of development models.  You can [install](Install-Express.md){:target="_blank" rel="noopener"} API Logic Server either:
 
 * As a **Local** `pip` install,
 * Or, use **Dev Containers,** by running the pre-supplied API Logic Server image
     * This avoids the sometimes tricky Python install.
     * This image contains Python and all the packages used by API Logic Server.
-    * You can use it with VSCode `.devcontainer` support as described in the [install guide](../Install-Express){:target="_blank" rel="noopener"}.   This provides full IDE support: code editing, debugging, source control, etc.
-    * For more information, see [Dev Containers](../DevOps-Docker){:target="_blank" rel="noopener"}.
+    * You can use it with VSCode `.devcontainer` support as described in the [install guide](Install-Express.md){:target="_blank" rel="noopener"}.   This provides full IDE support: code editing, debugging, source control, etc.
+    * For more information, see [Dev Containers](DevOps-Docker.md){:target="_blank" rel="noopener"}.
 * Or, develop in the cloud using **Codespaces** - no install at all
 
 In any case, you'll be using a source control system such as `git`, so it's possible to mix and match these configurations among developers.
@@ -100,7 +100,7 @@ In any case, you'll be using a source control system such as `git`, so it's poss
 
 API Logic Server pre-supplies several [repositories](https://hub.docker.com/repositories/apilogicserver){:target="_blank" rel="noopener"} (images available on Docker Hub):
 
-1. [Several DBMSs](../Database-Connectivity#docker-databases){:target="_blank" rel="noopener"}, so you can explore connectivity and as a quick-start for development
+1. [Several DBMSs](Database-Connectivity.md#docker-databases){:target="_blank" rel="noopener"}, so you can explore connectivity and as a quick-start for development
 
 2. API Logic Server itself is `apilogicserver/api_logic_server` (here is the [dockerfile](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile){:target="_blank" rel="noopener"})
 
@@ -112,11 +112,11 @@ You can visualize the API Logic Server Container like this:
 
 You can use it in 2 ways:
 
-   * for dev - as described in [Dev Containers](../DevOps-Docker){:target="_blank" rel="noopener"}
+   * for dev - as described in [Dev Containers](DevOps-Docker.md){:target="_blank" rel="noopener"}
 
-   * to build images - as described in [Build Image](../DevOps-Containers-Build){:target="_blank" rel="noopener"}, to share with developers, or deploy to cloud providers (e.g., Microsoft Azure, Amazon AWS, etc).
+   * to build images - as described in [Build Image](DevOps-Containers-Build.md){:target="_blank" rel="noopener"}, to share with developers, or deploy to cloud providers (e.g., Microsoft Azure, Amazon AWS, etc).
 
-For more information, see [Architecture](../Architecture-What_Is).
+For more information, see [Architecture](Architecture-What-Is.md).
 
 [^1]:
-    Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](#preview-version){:target="_blank" rel="noopener"}

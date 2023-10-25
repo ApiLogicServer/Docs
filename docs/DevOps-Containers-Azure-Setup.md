@@ -52,4 +52,4 @@ Use this command to view Azure logs:
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-For specific error conditions, see [Troubleshooting Azure](../Troubleshooting/#azure-cloud-deployment){:target="_blank" rel="noopener"}.
+For specific error conditions, see [Troubleshooting Azure](Troubleshooting.md#azure-cloud-deployment){:target="_blank" rel="noopener"}.

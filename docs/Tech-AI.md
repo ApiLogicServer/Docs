@@ -457,7 +457,7 @@ In 6 minutes, you've used ChatGPT and API Logic Server to convert an idea into w
 
 ### Sqlite and persistence
 
-For information on database and directory creation, [click here](../DevOps-Container-Configuration/#database-locations){:target="_blank" rel="noopener"}.  Since the database is stored and accessed in the container, cloud changes are not persisted over runs.  This is useful for demo systems where each run starts with fresh data.
+For information on database and directory creation, [click here](DevOps-Container-Configuration.md#database-locations){:target="_blank" rel="noopener"}.  Since the database is stored and accessed in the container, cloud changes are not persisted over runs.  This is useful for demo systems where each run starts with fresh data.
 
 An option for cloud sqlite persistence is under investigation.  Preliminary thoughts:
 
@@ -467,4 +467,4 @@ An option for cloud sqlite persistence is under investigation.  Preliminary thou
 
 There are also products that automate this, such as [LiteStream](https://litestream.io/guides/azure/){:target="_blank" rel="noopener"}.
 
-Of course, you can use a database such as MySQL, Postgres, Oracle or SqlServer, as [described here](..DevOps-Containers-Deploy-Multi/){:target="_blank" rel="noopener"}.  Local databases can be migrated to Azure in a number of ways, such as [this example using MySqlWorkBench](https://www.youtube.com/watch?v=uxSDpZnFa18){:target="_blank" rel="noopener"}.
+Of course, you can use a database such as MySQL, Postgres, Oracle or SqlServer, as [described here](DevOps-Containers-Deploy-Multi.md){:target="_blank" rel="noopener"}.  Local databases can be migrated to Azure in a number of ways, such as [this example using MySqlWorkBench](https://www.youtube.com/watch?v=uxSDpZnFa18){:target="_blank" rel="noopener"}.

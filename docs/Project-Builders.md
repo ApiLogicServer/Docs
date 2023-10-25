@@ -93,7 +93,7 @@ to designate a file that implements your builder. During the creation process, t
 
 Let's illustrate the use of extensible automation with this example.  Create the sample project as follows:
 
-1.  Acquire [this sql/server docker database](../Database-Connectivity/#northwind-sqlserver-docker)
+1.  Acquire [this sql/server docker database](Database-Connectivity.md#northwind-sqlserver-docker.md)
 2.  Create the project
 
 ```

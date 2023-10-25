@@ -29,5 +29,5 @@ The entire process takes about 20 minutes.
 
 While your team is collaborating, you can proceed to declare logic and security, augmented with Python code.
 
-To begin, [click here](../DevOps-Containers-Deploy-Multi).
+To begin, [click here](DevOps-Containers-Deploy-Multi.md).
 

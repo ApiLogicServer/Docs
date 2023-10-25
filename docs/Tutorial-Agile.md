@@ -20,6 +20,6 @@
 
       This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.
 
-      > To give it a try, [**click here**](../Tech-Agile).  Allow 20 minutes, a bit more if you are new to Azure.
+      > To give it a try, [**click here**](Tech-Agile.md).  Allow 20 minutes, a bit more if you are new to Azure.
 ,
 [![Delivering the Agile Vision](images/agile/als-agile-video.png)](images/agile/als-agile-video.png "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}

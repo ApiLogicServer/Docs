@@ -20,7 +20,7 @@ It also makes things simpler if you temporarily disable security (unless that's 
 
 ## Use `include` for related data
 
-The `include` argument enables you to specify what related data is returned.  For example, in the [sample northwind database](../Sample-Database), you can obtain a Customer, their Orders, the OrderDetails, and the Product Data like this:
+The `include` argument enables you to specify what related data is returned.  For example, in the [sample northwind database](Sample-Database.md), you can obtain a Customer, their Orders, the OrderDetails, and the Product Data like this:
 
 ```bash
 curl -X GET "http://localhost:5656/api/Customer/ALFKI/?\
@@ -36,7 +36,7 @@ Note the `include` argument, repeated here with commas:
 include=OrderList,OrderList.OrderDetailList,OrderList.OrderDetailList.Product
 ```
 
-These terms are the Parent / Child Relationship names, from your data model.  Note they support multi-level navigations, such as `OrderList.OrderDetailList`.  For more on [relationship names, click here](../Data-Model-Classes/#relationship-names).
+These terms are the Parent / Child Relationship names, from your data model.  Note they support multi-level navigations, such as `OrderList.OrderDetailList`.  For more on [relationship names, click here](Data-Model-Classes.md#relationship-names).
 
 To explore the resultant json, [click here](https://github.com/ApiLogicServer/tutorial/tree/main/3.%20Logic/api/multi-table-example){:target="_blank" rel="noopener"}.
 

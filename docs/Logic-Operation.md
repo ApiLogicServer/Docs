@@ -6,7 +6,7 @@ Logic Bank operates as shown above:
 
  1. **Automatic Configuration**
 
-    a. Declare logic in `logic/declare_logic.py`.  Here is a [summary of the rule types](../Logic)
+    a. Declare logic in `logic/declare_logic.py`.  Here is a [summary of the rule types](Logic.md)
  
     b. The Basic Web App and JSON:API are already configured to load and execute this logic
     

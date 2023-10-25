@@ -45,14 +45,14 @@ Rules are a **declarative approach** that automates remarkable amounts of backen
 | **Ordering** | Execution ordered by automatic dependency analysis | **Maintenance** - eliminates code analysis for inserting new code |
 | **Optimization** | System prunes rules, optimizes SQL | Reduces effort for **scalability** |
 
-Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](../Logic-Operation/#watch-react-chain).
+Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](Logic-Operation.md#watch-react-chain).
 
 
 ### Rules: Executable Design
 
 API Logic -- unique to API Logic Server -- consists of __Rules, extensible with Python.__  
 
-> Rules typically automate over **95% of such logic,** and are **40X more concise**.  Rules are conceptually similar to [spreadsheet cell formulas](../Logic-Operation/#basic-idea-like-a-spreadsheet).
+> Rules typically automate over **95% of such logic,** and are **40X more concise**.  Rules are conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet).
 
 For this typical check credit design (in blue), the __5 rules shown below (lines 64-79) represent the same logic as [200 lines of code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}__:
 
@@ -127,7 +127,7 @@ Your IDE code completion services can aid in discovering logic services.  There 
 1. Discover _rules_ by `Rule.`
 2. Discovery _logic services_ made available through `logic_row`
 
-  > If these aren't working, ensure your `venv` setup is correct - consult the [Trouble Shooting](../Troubleshooting#code-completion-fails) Guide.
+  > If these aren't working, ensure your `venv` setup is correct - consult the [Trouble Shooting](Troubleshooting.md#code-completion-fails) Guide.
 
 You can find examples of these services in the sample `ApiLogicProject`.
 
@@ -190,7 +190,7 @@ While conciseness is the most immediately obvious aspect of logic, rules provide
 | Multi-Table Chaining | Multi-Table Transactions |__Simplicity:__ Eliminates and optimizes data access code |
 | Persistence | Automatic optimization |__Performance:__ Unlike Rete engines which have no concept of old values, transaction logic can prune rules for unchanged data, and optimize for adjustment logic based on the difference between old/new values.  This can literally result in sub-second performance instead of multiple minutes, and can be tuned without recoding.. |
 
-See also the [FAQs](../FAQ-RETE).
+See also the [FAQs](FAQ-RETE.md).
 
 ### Concise
 

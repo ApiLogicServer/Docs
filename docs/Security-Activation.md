@@ -37,9 +37,9 @@ You might want to begin by exploring the samples below.
 
 ### Nortwind Sample
 
-Security is automatically enabled when building the sample app.  Explore / test it as described in [Authorization](../Security-Authorization/#sample).
+Security is automatically enabled when building the sample app.  Explore / test it as described in [Authorization](Security-Authorization.md#sample).
 
-Or, you can create the sample application _without customizations_, and then add security using the `add-auth` command; [click here](../Sample-Database/#activate-security){:target="_blank" rel="noopener"}:
+Or, you can create the sample application _without customizations_, and then add security using the `add-auth` command; [click here](Sample-Database.md#activate-security){:target="_blank" rel="noopener"}:
 
 ```bash
 ApiLogicServer add-auth --project_name=. --db_url=auth
@@ -48,17 +48,17 @@ ApiLogicServer add-auth --project_name=. --db_url=auth
 The `add-auth` command will:
 
 1. Add the sqlite database and models, using `ApiLogicServer add-db --db_url=auth --bind_key=authentication`
-    * This uses [Multi-Database Support](../Data-Model-Multi){:target="_blank" rel="noopener"} for the sqlite authentication data
+    * This uses [Multi-Database Support](Data-Model-Multi.md){:target="_blank" rel="noopener"} for the sqlite authentication data
 2. Add `User.Login`` endpoint to the User model
 3. Set `SECURITY_ENABLED` in `config.py`
-4. Configure your Authentication-Provider, using your own [Authentication-Provider](../Security-Authentication-Provider){:target="_blank" rel="noopener"}
+4. Configure your Authentication-Provider, using your own [Authentication-Provider](Security-Authentication-Provider.md){:target="_blank" rel="noopener"}
 5. Add Sample authorizations to `security/declare_security.py`
 
 &nbsp;
 
 ### Docker Databases
 
-You can use the [docker databases](../Database-Docker){:target="_blank" rel="noopener"} as shown below.  (If you haven't already done so, recall you must first `docker network create dev-network  # only required once`)
+You can use the [docker databases](Database-Docker.md){:target="_blank" rel="noopener"} as shown below.  (If you haven't already done so, recall you must first `docker network create dev-network  # only required once`)
 
 &nbsp;
 
@@ -120,7 +120,7 @@ For example, use [this Dockerfile](https://github.com/valhuber/ApiLogicServer/tr
 
 ### Pre-created in Docker Samples
 
-A sample security database is pre-created in the MySQL and Postgres [Sample Docker Databases](../Database-Docker).
+A sample security database is pre-created in the MySQL and Postgres [Sample Docker Databases](Database-Docker.md).
 
 &nbsp;
 

@@ -1,4 +1,4 @@
-In most cases, Python and Python Projects are simple and fast to install, as described below.  If you encounter issues, open the [Detailed Install](../Install).
+In most cases, Python and Python Projects are simple and fast to install, as described below.  If you encounter issues, open the [Detailed Install](Install.md).
 
 Follow these instructions to:
 
@@ -32,7 +32,7 @@ Open the appropriate section below.
     python --version  # on macs, you may need to use Python3
     ```
 
-    If you need to install Python (it can be tricky), see [these notes](../Tech-Install-Python).
+    If you need to install Python (it can be tricky), see [these notes](Tech-Install-Python.md).
     &nbsp;
 
     __Install API Logic Server in a Virtual Environment__
@@ -45,7 +45,7 @@ Open the appropriate section below.
     python -m pip install ApiLogicServer
     ```
 
-    If you are using SqlServer, you also need to [install `pyodbc`](../Install-pyodbc).
+    If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md).
 
     &nbsp;
 
@@ -69,7 +69,7 @@ Open the appropriate section below.
 
     You have 2 choices:
 
-    * Use a shared `venv`; follow [this procedure](../Project-Env/#shared-venv), _or_
+    * Use a shared `venv`; follow [this procedure](Project-Env.md#shared-venv), _or_
     * Create a `venv` local to the project
         1. Open Folder `ApiLogicServer/tutorial` in VSCode
             * Decline options for Containers
@@ -144,4 +144,4 @@ Open the appropriate section below.
 
 ## Next Steps - Tutorial
 
-You're all set - the Tutorial is created, installed and ready to run.  Proceed to [Explore the Tutorial](../Tutorial).
+You're all set - the Tutorial is created, installed and ready to run.  Proceed to [Explore the Tutorial](Tutorial.md).

@@ -8,7 +8,7 @@
 
     * deploy an API Logic Project image from DockerHub
 
-[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
+[Containers](DevOps-Containers.md){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
 
 This tutorial presumes you've already `push`ed an image, here called `apilogicserver/docker_api_logic_project:latest`.
 
@@ -40,13 +40,13 @@ The database creation wizard requires that you create a [container group](https:
 
 ### database `nwlogic` 
 
-For this tutorial we created the database `nwlogic`.  It is an exact replica of the sample (nw) [sample database](Sample-Database{:target="_blank" rel="noopener"}), using SqlServer.
+For this tutorial we created the database `nwlogic`.  It is an exact replica of the sample (nw) [sample database](Sample-Database.md){:target="_blank" rel="noopener"}), using SqlServer.
 
 &nbsp;
 
 ### Load Data: Azure Data Tools
 
-After creating the database, load the data using tools like [PyCharm Data Tools](Database-Connectivity/#pycharm-database-tools){:target="_blank" rel="noopener"}, or [DbVis](Database-Connectivity/#dbvis){:target="_blank" rel="noopener"}. 
+After creating the database, load the data using tools like [PyCharm Data Tools](Database-Connectivity.md#pycharm-database-tools){:target="_blank" rel="noopener"}, or [DbVis](Database-Connectivity.md#dbvis){:target="_blank" rel="noopener"}. 
 
 To find the sql scripts, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/test_databases/sql_server){:target="_blank" rel="noopener"}.
 
@@ -96,7 +96,7 @@ Use this command to view Azure logs:
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-For specific error conditions, see [Troubleshooting Azure](../Troubleshooting/#azure-cloud-deployment){:target="_blank" rel="noopener"}.
+For specific error conditions, see [Troubleshooting Azure](Troubleshooting.md#azure-cloud-deployment){:target="_blank" rel="noopener"}.
 
 
 

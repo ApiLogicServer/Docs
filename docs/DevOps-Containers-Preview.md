@@ -32,6 +32,6 @@ The procedures here offer 2 alternatives for test databases:
 
 2. **Container Databases:** use docker container databases, and deploy as a docker compose, combining your App Server container and your docker database
 
-   * You can create these as [shown here](../Database-docker#create-your-own-db-image)
+   * You can create these as [shown here](Database-Docker.md#create-your-own-db-image)
 
-The examples below use pre-supplied MySQL and Postgres databases; for more information, [click here](../Database-docker).
+The examples below use pre-supplied MySQL and Postgres databases; for more information, [click here](Database-Docker.md).

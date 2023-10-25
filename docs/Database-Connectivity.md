@@ -68,7 +68,7 @@ Other important notes:
 
 * As shown above, use the __full path__
 * So that such databases are included in your project, they are copied to the `database` folder, and renamed to `db.sqlite'
-* Sqlite databases are copied to your project, [as described here](../Database-Connectivity/#sqlite){:target="_blank" rel="noopener"}.  
+* Sqlite databases are copied to your project, [as described here](Database-Connectivity.md#sqlite){:target="_blank" rel="noopener"}.  
 * The project URL is made *relative* to this location (`sqlite:///../database/db.sqlite`).  This keeps your projects portable, e.g., colleagues can pull your project from `GitHub` and run.
 
 &nbsp;
@@ -91,7 +91,7 @@ And copy the 3 exe files to a place where they can be run, such as `~/AppData/Lo
 
 ## Northwind - sqlite (default sample)
 
-See [Sample Database](../Sample-Database).
+See [Sample Database](Sample-Database.md).
 
 This is a sqlite database, packaged with API Logic Server, so you can explore without any installs.  It is obtained from [Northwind](https://github.com/jpwhite3/northwind-SQLite3), and altered to include several columns to demonstrate rules.
 
@@ -112,13 +112,13 @@ Designate this as follows: `--db_url={install}/Chinook_Sqlite.sqlite`, e.g.:
 
 ## SQLite Database Abbreviations
 
-To make experimenting easier, you can specify a [`db_url` shortcut](../Data-Model-Examples).
+To make experimenting easier, you can specify a [`db_url` shortcut](Data-Model-Examples.md).
 
 &nbsp;
 
 # Docker Databases
 
-See [Docker Test Databases](../Database-Docker).
+See [Docker Test Databases](Database-Docker.md).
 
 &nbsp;
 

@@ -33,7 +33,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
         * *40X more concise than code - unique to API Logic Server* &nbsp;&nbsp; :trophy:
 
-    ***Check out the new AI-Driven Tutorial --*** [click here for Tutorial](Tech-AI), [or video](https://youtu.be/Uon_ASZQ7BI?si=hW4F9DlqC6hIZ-Ew){:target="_blank" rel="noopener"})
+    ***Check out the new AI-Driven Tutorial --*** [click here for Tutorial](Tech-AI.md), [or video](https://youtu.be/Uon_ASZQ7BI?si=hW4F9DlqC6hIZ-Ew){:target="_blank" rel="noopener"})
 
     &nbsp;
 
@@ -45,7 +45,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     **Created Admin App**
 
-    The [Admin App](Admin-Tour){:target="_blank" rel="noopener"} is shown below:
+    The [Admin App](Admin-Tour.md){:target="_blank" rel="noopener"} is shown below:
 
     ![API Logic Server Intro](images/ui-admin/Order-Page.png)
 
@@ -53,7 +53,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     **Customize in IDE**
 
-    VSCode and PyCharm users can customize and run/debug within their IDE with [these steps](IDE-Execute){:target="_blank" rel="noopener"}.  Created projects include Launch and Docker configurations.  
+    VSCode and PyCharm users can customize and run/debug within their IDE with [these steps](IDE-Execute.md){:target="_blank" rel="noopener"}.  Created projects include Launch and Docker configurations.  
 
     ![Customize in your IDE](images/generated-project.png){ align=left }
 
@@ -95,7 +95,7 @@ We think you'll find Codespaces pretty amazing - check it out!
 
 ### Instant Cloud Deployment
 
-Follow [this procedure](DevOps-Containers-Deploy-Multi){:target="_blank" rel="noopener"} to
+Follow [this procedure](DevOps-Containers-Deploy-Multi.md){:target="_blank" rel="noopener"} to
 
 1. Create a project from a sample dockerized database
 
@@ -182,9 +182,9 @@ Here is a quick screen-shot demo of the basic process:
 
 API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
-It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is).
+It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is.md).
 
-Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](../Tutorial-AI).
+Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
 
 [![Delivering the Agile Vision](images/agile/als-agile-video.png)](https://youtu.be/sD6RFp8S6Fg "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}
 
@@ -262,7 +262,7 @@ There are a variety of ways for getting value from API Logic Server:
 
 * __Admin App for your database__ - the Admin App is a create way to navigate through your database, particularly to explore data relationships
 
-* __Agile Integrations__ replace cumbersome and inefficent ETL approaches with [Agile Integrations](Tech-Agile-Integrations){:target="_blank" rel="noopener"}
+* __Agile Integrations__ replace cumbersome and inefficent ETL approaches with [Agile Integrations](Tech-Agile-Integrations.md){:target="_blank" rel="noopener"}
 
 * __Data Repair__ - using the Admin App with logic to ensure integrity, repair data for which you may not have had time to create custom apps
 
@@ -276,13 +276,13 @@ There are a variety of ways for getting value from API Logic Server:
 
 |   | Feature    | Providing   | Why it Matters   |
 :-------|:-----------|:------------|:-----------------|
-| __Instant__ | 1. [**Admin App**](Admin-Tour){:target="_blank" rel="noopener"} | Instant **multi-page, multi-table** app  [(running here on PythonAnywhere)](http://apilogicserver.pythonanywhere.com/admin-app/index.html#/Home){:target="_blank" rel="noopener"}              | Business Users engaged early<br><br>Back-office Admin       |
-| | 2. [JSON:**API** and Swagger](API){:target="_blank" rel="noopener"}                     | Endpoint for each table, with... <br>Filtering, pagination, related data     | Custom UI Dev<br>App Integration                           |
+| __Instant__ | 1. [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"} | Instant **multi-page, multi-table** app  [(running here on PythonAnywhere)](http://apilogicserver.pythonanywhere.com/admin-app/index.html#/Home){:target="_blank" rel="noopener"}              | Business Users engaged early<br><br>Back-office Admin       |
+| | 2. [JSON:**API** and Swagger](API.md){:target="_blank" rel="noopener"}                     | Endpoint for each table, with... <br>Filtering, pagination, related data     | Custom UI Dev<br>App Integration                           |
 | | 3. Data Model Class Creation                                                     | Classes for Python-friendly ORM     | Custom Data Access<br>Used by API                |
-| __Customizable__ | 4. [**Customizable Project**](Project-Structure){:target="_blank" rel="noopener"}   | Custom Endpoints, Logic <br>Use Python and your IDE  | Customize and run <br><br>Re-creation *not* required |                                                                                      
-| __Unique Logic__ | 5. [Spreadsheet-like Business Rules](Logic-Why){:target="_blank" rel="noopener"}  &nbsp; :trophy:      | **40X more concise** - <br>compare [legacy code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"} | Unique backend automation <br> ... nearly half the system  |
+| __Customizable__ | 4. [**Customizable Project**](Project-Structure.md){:target="_blank" rel="noopener"}   | Custom Endpoints, Logic <br>Use Python and your IDE  | Customize and run <br><br>Re-creation *not* required |                                                                                      
+| __Unique Logic__ | 5. [Spreadsheet-like Business Rules](Logic-Why.md){:target="_blank" rel="noopener"}  &nbsp; :trophy:      | **40X more concise** - <br>compare [legacy code](https://github.com/valhuber/LogicBank/wiki/by-code.md){:target="_blank" rel="noopener"} | Unique backend automation <br> ... nearly half the system  |
 |  | Customizable with Python      | Familiar Event Model | Eg., Send messages, email  |
-| Testing | 6. [Behave **Test Framework**](Behave)         | Test Suite Automation<br><br>Behave Logic Report<br><br>Drive Automation with Agile  | Optimize Automation to get it fast<br><br>Get it Right with Agile Collaboration  |
+| Testing | 6. [Behave **Test Framework**](Behave.md)         | Test Suite Automation<br><br>Behave Logic Report<br><br>Drive Automation with Agile  | Optimize Automation to get it fast<br><br>Get it Right with Agile Collaboration  |
 
 &nbsp;
 
@@ -291,16 +291,16 @@ There are a variety of ways for getting value from API Logic Server:
 API Logic Server is designed to make it easy to get started:
 
 * **Install and run Tutorial** - 
-[install](https://valhuber.github.io/ApiLogicServer/Install-Express/){:target="_blank" rel="noopener"}, and explore the [tutorial](https://valhuber.github.io/ApiLogicServer/Tutorial/){:target="_blank" rel="noopener"}.  The tutorial creates 2 versions of the [sample database](https://valhuber.github.io/ApiLogicServer/Sample-Database){:target="_blank" rel="noopener"}
+[install](https://valhuber.github.io/ApiLogicServer/Install-Express.md){:target="_blank" rel="noopener"}, and explore the [tutorial](https://valhuber.github.io/ApiLogicServer/Tutorial/){:target="_blank" rel="noopener"}.  The tutorial creates 2 versions of the [sample database](https://valhuber.github.io/ApiLogicServer/Sample-Database.md){:target="_blank" rel="noopener"}
 
      * without customizations - so you to see exactly what is automated from the `ApiLogicServer create` command
      * with customizations - so you can see how to customize 
 
 * **Installed Sample Databases** -
-Here are [some installed sample databases](Data-Model-Examples){:target="_blank" rel="noopener"} you can use with simplified abbreviations for `db_url`.
+Here are [some installed sample databases](Data-Model-Examples.md){:target="_blank" rel="noopener"} you can use with simplified abbreviations for `db_url`.
 
 * **Dockerized Test Databases** - 
-Then, you might like to try out some of our [dockerized test databases](https://valhuber.github.io/ApiLogicServer/Database-Connectivity/){:target="_blank" rel="noopener"}.
+Then, you might like to try out some of our [dockerized test databases](https://valhuber.github.io/ApiLogicServer/Database-Connectivity.md){:target="_blank" rel="noopener"}.
 
 * **Your Database** - Finally, try your own database.
 
@@ -308,9 +308,9 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 In addition to this app dev oriented tutorial, you can also explore:
 
-* **Deployment:** the [Deployment Tutorial](../Tutorial-Deployment/){:target="_blank" rel="noopener"} illustrates various ways to containerize and deploy your applications
+* **Deployment:** the [Deployment Tutorial](Tutorial-Deployment.md){:target="_blank" rel="noopener"} illustrates various ways to containerize and deploy your applications
 
-* **Using AI:** the [AI-Driven Automation Tutorial](../Tech-AI/){:target="_blank" rel="noopener"} shows how you can use ChatGPT to create new databases from english descriptions, to bootstrap a very rapid create / collaborate / iterate Agile cycle.
+* **Using AI:** the [AI-Driven Automation Tutorial](Tech-AI.md){:target="_blank" rel="noopener"} shows how you can use ChatGPT to create new databases from english descriptions, to bootstrap a very rapid create / collaborate / iterate Agile cycle.
 
 &nbsp;
 
@@ -318,17 +318,17 @@ In addition to this app dev oriented tutorial, you can also explore:
 
 ### Making Contributions
 
-This is an [open source project](https://github.com/valhuber/ApiLogicServer){:target="_blank" rel="noopener"}.  We are open to suggestions for enhancements.  Some of our ideas include:
+This is an [open source project](https://github.com/valhuber/ApiLogicServer.md){:target="_blank" rel="noopener"}.  We are open to suggestions for enhancements.  Some of our ideas include:
 
 | Component           | Provides         | Consider Adding                                                                |
 |:---------------------------|:-----------------|:-------------------------------------------------------------------------------|
-| 1. [JSON:**API** and Swagger](https://github.com/thomaxxl/safrs){:target="_blank" rel="noopener"} | API Execution    | **Security** authenticate, role-based access control [active development](Security-Overview)<br/>**Multi-DB** support multiple databases [active development](Data-Model-Multi)/ API<br/>**Serverless** / **Kubernetes** - extend [containerization](DevOps-Docker/#create-docker-hub-from-api-logic-project){:target="_blank" rel="noopener"} | 
+| 1. [JSON:**API** and Swagger](https://github.com/thomaxxl/safrs){:target="_blank" rel="noopener"} | API Execution    | **Kubernetes** - extend [containerization](DevOps-Docker.md#create-docker-hub-from-api-logic-project.md){:target="_blank" rel="noopener"} | 
 | 2. [Transactional **Logic**](https://github.com/valhuber/logicbank#readme){:target="_blank" rel="noopener"}   | Rule Enforcement | New rule types |
 | 3. [SAFRS React Admin](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"} | Admin UI Enhancements | Maps, trees, ... |
 | 4. [This project](https://github.com/valhuber/ApiLogicServer){:target="_blank" rel="noopener"} | API Logic Project Creation | Support for features described above |
 
 
-To get started, please see  the [Architecture](Architecture-Internals).
+To get started, please see  the [Architecture](Architecture-Internals.md).
 
 ### Preview Version
 
@@ -350,7 +350,7 @@ Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServ
 
 ### Status
 
-We have tested several databases - see [status here.](Database-Connectivity).
+We have tested several databases - see [status here.](Database-Connectivity.md).
 
 We track [issues in git](https://github.com/ApiLogicServer/ApiLogicServer-src/issues){:target="_blank" rel="noopener"} (formerly [here](https://github.com/valhuber/ApiLogicServer/issues){:target="_blank" rel="noopener"}).
 
@@ -400,4 +400,4 @@ There are a few articles that provide some orientation to API Logic Server:
 
 
 [^1]:
-    See the [FAQ for Low Code](FAQ-Low-Code)
+    See the [FAQ for Low Code](FAQ-Low-Code.md)

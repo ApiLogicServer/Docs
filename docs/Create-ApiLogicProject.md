@@ -1,6 +1,6 @@
 Create projects by establishing your Python environment, then issuing `ApiLogicServer create ...`.  The process differs slighly on whether you are using Docker, or a local install.
 
-  > The procedures here will create the [Tutorial](../Tutorial), the recommended starting point.  You will then want to create a project with your own database.  For that, you will require a [SQLAlchemy URI](https://docs.sqlalchemy.org/en/14/core/engines.html).  You can see some examples with the command ```ApiLogicServer examples```.
+  > The procedures here will create the [Tutorial](Tutorial.md), the recommended starting point.  You will then want to create a project with your own database.  For that, you will require a [SQLAlchemy URI](https://docs.sqlalchemy.org/en/14/core/engines.html).  You can see some examples with the command ```ApiLogicServer examples```.
 
 === "Local Install"
 

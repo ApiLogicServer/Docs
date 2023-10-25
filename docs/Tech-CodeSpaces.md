@@ -2,5 +2,5 @@
 
 At this point, there are no outstanding issues in using Codespaces.  
 
-> To _use_ Codespaces, see the [procedure here](../DevOps-GitHub).
+> To _use_ Codespaces, see the [procedure here](DevOps-GitHub.md).
 

@@ -22,11 +22,11 @@ Declarative is a powerful technology, designed to provide agility and transparen
 
 API Logic Server provides declarative support for:
 
-* API - the `api/expose_api_models.py` file declares (lists) which tables are exposed in the [API](../API).
+* API - the `api/expose_api_models.py` file declares (lists) which tables are exposed in the [API](API.md).
 
-* Logic - using spreadsheet-like rules - [see here for more information](../Logic-Why).
+* Logic - using spreadsheet-like rules - [see here for more information](Logic-Why.md).
 
-* User Interface - using a yaml file  - [see here for more information](../Admin-Customization).
+* User Interface - using a yaml file  - [see here for more information](Admin-Customization.md).
 
 &nbsp;
 

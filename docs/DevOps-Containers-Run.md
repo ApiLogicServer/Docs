@@ -1,4 +1,4 @@
-[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for running and testing API Logic Server projects prior to deployment.
+[Containers](DevOps-Containers.md){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for running and testing API Logic Server projects prior to deployment.
 
 ![Container Overview](images/docker/container-dev-deploy.png)
 
@@ -22,7 +22,7 @@ sh devops/docker/sh run_image.sh
 
 #### `environment` variables
 
-Note you can use **env variables** to configure your servers and ports.  For more information, [click here](../DevOps-Container-Configuration/#overrides-env-variables){:target="_blank" rel="noopener"}.
+Note you can use **env variables** to configure your servers and ports.  For more information, [click here](DevOps-Container-Configuration.md#overrides-env-variables){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -107,7 +107,7 @@ docker run -it --name api_logic_server --rm --net dev-network -p 5656:5656 -p 50
 
 
 [^1]:
-    Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](#preview-version.md){:target="_blank" rel="noopener"}
     
 
 

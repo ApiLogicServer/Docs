@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Dev Deploy: Multi-Container Systems"
 
-    This page shows the simplest way to deploy a **dev system** to the cloud, to [enable collaboration](../Working-Software-Now){:target="_blank" rel="noopener"} with Business User and fellow developers: 
+    This page shows the simplest way to deploy a **dev system** to the cloud, to [enable collaboration](Logic-Tutorial.md#automation-collaboration-fast-right){:target="_blank" rel="noopener"} with Business User and fellow developers: 
 
     1. Create a project from a sample dockerized database
 
@@ -11,7 +11,7 @@
         1. Your project
         2. A database container, with both the DBMS and data
 
-[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
+[Containers](DevOps-Containers.md){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for deploying API Logic Server projects to Azure.
 
 &nbsp;
 
@@ -63,7 +63,7 @@ Verify it looks like this:
 
 ![Authdb](images/devops/multi-tier/authdb.png)
 
-> Note: The [docker image](../Database-Docker){:target="_blank" rel="noopener"} contains the DBMS *and data* to simplify this tutorial.  You would almost certainly use volumes in normal practice, but this simplifies the tutorial.
+> Note: The [docker image](Database-Docker.md){:target="_blank" rel="noopener"} contains the DBMS *and data* to simplify this tutorial.  You would almost certainly use volumes in normal practice, but this simplifies the tutorial.
 
 &nbsp;
 
@@ -75,7 +75,7 @@ Create the project with API Logic Server:
 ApiLogicServer create --project_name=classicmodels --db_url=mysql+pymysql://root:p@localhost:3306/classicmodels
 ```
 
-The command above uses the pre-supplied [docker database](../Database-Connectivity/#docker-databases){:target="_blank" rel="noopener"}, here MySQL.
+The command above uses the pre-supplied [docker database](Database-Connectivity.md#docker-databases){:target="_blank" rel="noopener"}, here MySQL.
 
 Or, use postgres: `ApiLogicServer create --project_name=postgres-nw --db_url=postgresql://postgres:p@localhost/postgres`.
 
@@ -89,7 +89,7 @@ The project should be ready to run without customization:
 
 ![Project Structure](images/devops/multi-tier/docker-compose.png)
 
-2. Establish your (possibly preview) [virtual environment](../Project-Env){:target="_blank" rel="noopener"}
+2. Establish your (possibly preview) [virtual environment](Project-Env.md){:target="_blank" rel="noopener"}
 
 3. Press F5 to run the server
 
@@ -317,7 +317,7 @@ docker tag apilogicserver/classicmodels apilogicserver/classicmodels:latest"
 docker push apilogicserver/classicmodels:latest"
 ```
 
-As noted above, this database image includes you data, so there is no need to worry about volumes.  If you wish, you can create "DBMS + Data" images for your own projects, [like this](../Database-Docker/#create-your-own-db-image){:target="_blank" rel="noopener"}.
+As noted above, this database image includes you data, so there is no need to worry about volumes.  If you wish, you can create "DBMS + Data" images for your own projects, [like this](Database-Docker.md#create-your-own-db-image){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -412,7 +412,7 @@ Use [this procedure](https://learn.microsoft.com/en-us/azure/app-service/trouble
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-For specific error conditions, see [Troubleshooting Azure](../Troubleshooting/#azure-cloud-deployment){:target="_blank" rel="noopener"}.
+For specific error conditions, see [Troubleshooting Azure](Troubleshooting.md#azure-cloud-deployment){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

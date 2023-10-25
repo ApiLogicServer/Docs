@@ -9,7 +9,7 @@
 
 ## Declaration and Activation
 
-Please see [Project Operation](../Architecture-Project-Operation){:target="_blank" rel="noopener"}.
+Please see [Project Operation](Architecture-Project-Operation.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

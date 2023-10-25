@@ -79,9 +79,9 @@ Relationship names are also part of your API:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/model/relns-api.png?raw=true"></figure>
 
-> Each database has extensions which can introduce issues in model generation, so facilities are described in [Troubleshooting](../Troubleshooting) to edit models and rebuild.
+> Each database has extensions which can introduce issues in model generation, so facilities are described in [Troubleshooting](Troubleshooting.md) to edit models and rebuild.
 
-Relationship names are derived from database foreign keys, as [described here](../Data-Model-Keys/#foreign-keys).  As described in the link, you can add missing foreign keys in your data model classes.
+Relationship names are derived from database foreign keys, as [described here](Data-Model-Keys.md#foreign-keys).  As described in the link, you can add missing foreign keys in your data model classes.
 
 ## Model Linkages
 
@@ -191,6 +191,6 @@ Relationship names are also part of your API:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/model/relns-api-z.png?raw=true"></figure>
 
-> Each database has extensions which can introduce issues in model generation, so facilities are described in [Troubleshooting](../Troubleshooting) to edit models and rebuild.
+> Each database has extensions which can introduce issues in model generation, so facilities are described in [Troubleshooting](Troubleshooting.md) to edit models and rebuild.
 
 

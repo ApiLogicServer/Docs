@@ -26,7 +26,7 @@ This page explains how API Logic Server Automation, coupled with an [Agile (TDD 
 
 1. **Automated Logic:** the Logic Design often translates directly into ***Executable* Rules,** which can be entered as customizations into the created API Logic Project.
 
-2. **Transparency:** the [Behave Logic Report](../Behave-Logic-Report){:target="_blank" rel="noopener"} documents the functionality of the system: Features (Stories) and Scenarios (tests) that confirm its operation.  The report includes the underlying Rules, extending transparency to the implementation level.
+2. **Transparency:** the [Behave Logic Report](Behave-Logic-Report.md){:target="_blank" rel="noopener"} documents the functionality of the system: Features (Stories) and Scenarios (tests) that confirm its operation.  The report includes the underlying Rules, extending transparency to the implementation level.
 
 &nbsp;&nbsp;
 
@@ -38,12 +38,12 @@ This page explains how API Logic Server Automation, coupled with an [Agile (TDD 
 
 # Resources
 
-After you've reviewed the [logic background](../Logic-Why), use this page to learn how to use logic.  Key resources:
+After you've reviewed the [logic background](Logic-Why.md), use this page to learn how to use logic.  Key resources:
 
-1. [Rule Summary](../Logic){:target="_blank" rel="noopener"}
-2. [Sample Database](../Sample-Database){:target="_blank" rel="noopener"}
+1. [Rule Summary](Logic.md){:target="_blank" rel="noopener"}
+2. [Sample Database](Sample-Database.md){:target="_blank" rel="noopener"}
 3. [Behave](https://behave.readthedocs.io/en/stable/tutorial.html){:target="_blank" rel="noopener"} is a framework for defining and executing tests.  It is based on [TDD (Test Driven Development)](http://dannorth.net/introducing-bdd/){:target="_blank" rel="noopener"}, an Agile approach for defining system requirements as executable tests.
-  * Here are some [details for using Behave with API Logic Server](../Behave){:target="_blank" rel="noopener"}.
+  * Here are some [details for using Behave with API Logic Server](Behave.md){:target="_blank" rel="noopener"}.
 
 &nbsp;&nbsp;
 
@@ -217,7 +217,7 @@ Execute the tests using the pre-supplied Launch Configurations:
 The rules fire as transactions are run, and produce Logic Log files later used in Report Behave Logic (described below): 
 
 1. `test/api_logic_server_behave/behave.log` - summarizes test success / failure
-2. `api_logic_server_behave/scenario_logic_logs/Bad_Order_Custom_Service.log` - [Logic Log output](../Logic-Why/#extend-python).
+2. `api_logic_server_behave/scenario_logic_logs/Bad_Order_Custom_Service.log` - [Logic Log output](Logic-Why.md#extend-python).
    * The code on line 161 signals the name of Logic Log
    * Note the Logic Log actually consists of 2 sections:
       * The first shows each rule firing, including complete old/new row values, with indentation for `multi-table chaining`
@@ -279,7 +279,7 @@ In addition to Behave, you can use manual approaches for testing:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/logic/run-server-test.png" title="run instructions"></figure>
 
-After you've [created the sample project](../Tutorial), you can execute pre-defined tests as shown above:
+After you've [created the sample project](Tutorial.md), you can execute pre-defined tests as shown above:
 
 1. Start the Server (e.g., under VS Code, Launch Configuration *ApiLogicServer*)
 2. Open a terminal window, and `cd test/basic; python server_test.py go`

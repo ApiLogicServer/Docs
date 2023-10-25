@@ -1,4 +1,4 @@
-API Logic Projects are simply directories, without restrictions on their location.  You can open them directly in your IDE. (You can also execute them from a [Terminal Window](../Execute)). 
+API Logic Projects are simply directories, without restrictions on their location.  You can open them directly in your IDE. (You can also execute them from a [Terminal Window](Execute.md)). 
 
 This page describes how to open your project, establish your Python environment, and execute your project.
 
@@ -44,7 +44,7 @@ IDE instructions depend on whether you are using a local install, or Docker.  Se
 
     > The install sometimes fails due on machines with an older version of `pip`.  If you see a message suggesting you upgrade  `pip` , do so.
 
-    For more information, see [Work with Environments](https://code.visualstudio.com/docs/python/environments#_work-with-environments), and [Project Environment](../Project-Env/).
+    For more information, see [Work with Environments](https://code.visualstudio.com/docs/python/environments#_work-with-environments), and [Project Environment](Project-Env.md).
 
     __4. Install Python Extension__
 
@@ -98,7 +98,7 @@ IDE instructions depend on whether you are using a local install, or Docker.  Se
 
     <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/open-in-container.png"></figure>
 
-    __Note:__ when you Execute your application (below), you may need to update your Docker container - see [Working with Docker](../DevOps-Docker).
+    __Note:__ when you Execute your application (below), you may need to update your Docker container - see [Working with Docker](DevOps-Docker.md).
 
 === "PyCharm"
 
@@ -162,7 +162,7 @@ When you run, you may encounter the message below; if so:
 
 ### 5. Proceed to the Tutorial
 
-The [Tutorial](../Tutorial) will walk you through the sample project.
+The [Tutorial](Tutorial.md) will walk you through the sample project.
 
 &nbsp;
 
@@ -178,4 +178,4 @@ Notes:
 
 ## Other Launch Configurations
 
-The `ApiLogicServer create` command also creates launch configurations for executing tests, and running the [Behave Logic Report](../Behave-Logic-Report). 
+The `ApiLogicServer create` command also creates launch configurations for executing tests, and running the [Behave Logic Report](Behave-Logic-Report.md). 

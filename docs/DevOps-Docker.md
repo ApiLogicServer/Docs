@@ -1,15 +1,15 @@
-As described in [Containers](../DevOps-Containers){:target="_blank" rel="noopener"}, you can ***develop* in a container**, including using VSCode.  This is optional, and *not* required to containerize your project for deployment.
+As described in [Containers](DevOps-Containers.md){:target="_blank" rel="noopener"}, you can ***develop* in a container**, including using VSCode.  This is optional, and *not* required to containerize your project for deployment.
 
 !!! pied-piper ":bulb: TL;DR - `.devcontainer` configurations are pre-built for API Logic Projects"
 
     The `.devcontainer` is pre-built into your project, so it is ready to use with VSCode for code editing, debugging, etc.
 
-    Recall that [devcontainers are valuable, but ***optional***](../DevOps-Containers/#dev-containers-optional){:target="_blank" rel="noopener"}.
+    Recall that [devcontainers are valuable, but ***optional***](DevOps-Containers.md#dev-containers-optional){:target="_blank" rel="noopener"}.
 
 
 ## Creating projects
 
-Recall from the [Install doc](../Install-Express) that you create projects like this:
+Recall from the [Install doc](Install.md) that you create projects like this:
 
 ### 1. Start Docker
 
@@ -83,7 +83,7 @@ Your docker container looks like this:
 
 ## Install - `docker run` arguments
 
-Once you've [installed Docker](../Tech-Docker){:target="_blank" rel="noopener"} itself, the `docker run` command above installs the ApiLogicServer docker (if it's not already there), and starts it, opening a terminal window on the Docker container.  Notes:
+Once you've [installed Docker](Tech-Docker.md){:target="_blank" rel="noopener"} itself, the `docker run` command above installs the ApiLogicServer docker (if it's not already there), and starts it, opening a terminal window on the Docker container.  Notes:
 
 * the `v ${PWD}:/localhost` argument is what enables the ApiLogicServer to create / access the project **on your local host**
    * Windows - Powershell must be used (due to the `$(PWD)` syntax)

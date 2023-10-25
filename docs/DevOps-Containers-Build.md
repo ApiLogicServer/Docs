@@ -1,4 +1,4 @@
-[Containers](../DevOps-Containers){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for building images for API Logic Server projects.
+[Containers](DevOps-Containers.md){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for building images for API Logic Server projects.
 
 !!! pied-piper ":bulb: TL;DR - edit/use the pre-built dockerfile to `build` and `push` your project"
 
@@ -35,7 +35,7 @@ To build an image for your ApiLogicProject:
     * Here is [an example](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/build_image.sh){:target="_blank" rel="noopener"}
 4. In terminal (not in VSCode docker - docker CLI is not installed there), <br>`cd < your-project>`
 5. Run `build-image.sh`: <br> `sh devops/docker-image/build_image.sh .   # builds the image locally`
-    * Test the image locally - [see Run Container](../DevOps-Containers-Run){:target="_blank" rel="noopener"}
+    * Test the image locally - [see Run Container](DevOps-Containers-Run.md){:target="_blank" rel="noopener"}
 
 6. Deploy to Docker Hub
 
@@ -61,10 +61,10 @@ Your project may require additional packages not already included with API Logic
 
 ## MyDB: Test Databases
 
-One of the great things about Docker is the ability to install popular databases, with no hassle.  Follow the procedures described in [Connection Examples](../Database-Docker/#create-your-own-db-image){:target="_blank" rel="noopener"}.
+One of the great things about Docker is the ability to install popular databases, with no hassle.  Follow the procedures described in [Connection Examples](Database-Docker.md#create-your-own-db-image){:target="_blank" rel="noopener"}.
 
 
 
 [^1]:
-    Several changes were made as of release 9.01.17.  It is available as preview; [click here](../#preview-version){:target="_blank" rel="noopener"}
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](#preview-version){:target="_blank" rel="noopener"}
     

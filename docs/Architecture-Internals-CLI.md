@@ -249,7 +249,7 @@ and creates teh `resource_list` used by the creator modules.
 ![create resource list](images/internals/create_resource_list.png)
 
 #### If option: ```use_model```
-SQL dialects and bugs can result in failures here.  The system therefore enables you to provide your own model, as described in [TroubleShooting](wiki/Troubleshooting#manual-model-repair).
+SQL dialects and bugs can result in failures here.  The system therefore enables you to provide your own model, as described in [TroubleShooting](Troubleshooting.md#manual-model-repair).
 
 If you elect this option, you should see the following in the console log:
 ```

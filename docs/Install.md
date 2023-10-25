@@ -48,7 +48,7 @@ Then, open the appropriate section below, and see the [Installation Notes](#inst
     python -m pip install ApiLogicServer
     ```
 
-    If you are using SqlServer, you also need to [install `pyodbc`](../Install-pyodbc).
+    If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md).
 
 === "With Docker"
 
@@ -69,9 +69,9 @@ Then, open the appropriate section below, and see the [Installation Notes](#inst
 
     The `api_logic_server` image supports startup arguments so you can control the `api_logic_server` container, by running a startup script or by supplying environment variables.  You might, for example, have automated test procedures that load projects from `GitHub` and run tests.
 
-    For more information, see [Working With Docker](../DevOps-Docker).
+    For more information, see [Working With Docker](DevOps-Docker.md).
 
-    > Already installed?  Upgrade to the latest: ```docker pull apilogicserver/api_logic_server``` (you may need to [rebuild your container](../DevOps-Containers-Run/#apilogicserver-container-upgrades)).
+    > Already installed?  Upgrade to the latest: ```docker pull apilogicserver/api_logic_server``` (you may need to [rebuild your container](DevOps-Containers-Run.md#apilogicserver-container-upgrades)).
 
 === "PythonAnyWhere"
 
@@ -149,10 +149,10 @@ Then, open the appropriate section below, and see the [Installation Notes](#inst
 
 ### Alert - Project fails to start
 
-Recent updates to included libs have broken previous versions of API Logic Server.  This is fixed in a new version (5.00.06), and is strongly recommended.  You can also repair broken installations as described in [Troubleshooting](../Troubleshooting).
+Recent updates to included libs have broken previous versions of API Logic Server.  This is fixed in a new version (5.00.06), and is strongly recommended.  You can also repair broken installations as described in [Troubleshooting](Troubleshooting.md).
 
 ### Heads up - Certificate Issues
-We sometimes see Python / Flask AppBuilder Certificate issues - see [Troubleshooting](../Troubleshooting#certificate-failures).
+We sometimes see Python / Flask AppBuilder Certificate issues - see [Troubleshooting](Troubleshooting.md#certificate-failures).
 
 ### Default Python version
 In some cases, your computer may have multiple Python versions, such as ```python3```.  ```ApiLogicServer run``` relies on the default Python being 3.8 or higher.  You can resolve this by:
@@ -163,4 +163,4 @@ In some cases, your computer may have multiple Python versions, such as ```pytho
 
 ## Next Steps - Create a Project
 
-Create, start and debug the sample project - see the [Creating a Project](../Create-ApiLogicProject).
+Create, start and debug the sample project - see the [Creating a Project](Create-ApiLogicProject.md).

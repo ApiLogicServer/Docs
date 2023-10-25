@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Executable Test Suite, Documentation"
 
-      You can optionally use the Behave test framework to (here is an [Agile Approach for using Behave](../Logic-Tutorial)):
+      You can optionally use the Behave test framework to (here is an [Agile Approach for using Behave](Logic-Tutorial.md)):
 
       1. **Create and Run an Executable Test Suite:** in your IDE, create test definitions (similar to what is shown in the report below), and Python code to execute tests.  You can then execute your test suite with 1 command.
 
@@ -98,4 +98,4 @@ Run this to create the wiki reports from the logs in step 3.
 
 ## 5. Testing considerations
 
-Please [see here](../API-Opt-Lock/#testing-and-pythonhashseed){:target="_blank" rel="noopener"} for important considerations on optimistic locking and testing.
+Please [see here](API-Opt-Lock.md#testing-and-pythonhashseed){:target="_blank" rel="noopener"} for important considerations on optimistic locking and testing.

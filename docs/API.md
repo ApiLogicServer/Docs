@@ -44,13 +44,13 @@ Unlike Custom APIs which require server development, Self-Serve APIs can be used
 
 * Application Integration - remote customers and organizations can similarly meet their own needs
 
-For more information, [see Self-Serve APIs.](../API-Self-Serve)
+For more information, [see Self-Serve APIs.](API-Self-Serve.md)
 
 &nbsp;
 
 ## Logic Enabled
 
-API Logic Server is so-named because all the update APIs automatically enforce your [business Logic](../Logic-Why){:target="_blank" rel="noopener"}.
+API Logic Server is so-named because all the update APIs automatically enforce your [business Logic](Logic-Why.md){:target="_blank" rel="noopener"}.
 
   > **Key Take-away:** your API encapsulates your logic, factoring it out of APIs for greater concisenss and sharing / consistency
 
@@ -58,7 +58,7 @@ API Logic Server is so-named because all the update APIs automatically enforce y
 
 ## Examples
 
-The [Behave Tests](../Behave){:target="_blank" rel="noopener"} provide several examples of using the API.  You can [review them here](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/project_prototype_nw/test/api_logic_server_behave/features/steps/place_order.py).
+The [Behave Tests](Behave.md){:target="_blank" rel="noopener"} provide several examples of using the API.  You can [review them here](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/project_prototype_nw/test/api_logic_server_behave/features/steps/place_order.py).
 
 
 &nbsp;

@@ -12,5 +12,5 @@ This is included in Docker, but not for local installs.  To install `psycopg2` (
 pip install psycopg2-binary==2.9.3
 ```
 
-Please see the examples on the [testing](../Database-Connectivity) for important considerations in specifying SQLAlchemy URIs.
+Please see the examples on the [testing](Database-Connectivity.md) for important considerations in specifying SQLAlchemy URIs.
 

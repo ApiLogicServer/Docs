@@ -47,7 +47,7 @@ Researching [this](https://stackoverflow.com/questions/71310357/multiarch-suppor
 
 Ran into significant drame with Postgres support - `psycopg2`.  [Under investigation](https://stackoverflow.com/questions/73042760/pip-install-psycopg2-on-macos-m1-and-python-3-10-5-not-working).  [Evidently](https://github.com/psycopg/psycopg/issues/344) this is not supported out of the box.  There are [various approaches](https://doesitarm.com/app/psycopg2) that work if you are willing to install Postgres locally.  I had been using Docker, so this remains an open item.
 
-So that M1 Macs work, API Logic Server version 05.03.34 has removed the psycopg2 from the install, so it needs to be [installed manually](../Install-psycopg2).
+So that M1 Macs work, API Logic Server version 05.03.34 has removed the psycopg2 from the install, so it needs to be [installed manually](Install-psycopg2.md).
 
 ### Resolved - M1 support released
 
@@ -55,7 +55,7 @@ Update: as of Oct 2022, the most recent release of `psycopg2` provides ARM suppo
 
 ## Docker Databases - running
 
-The [Docker database images](../Database-Connectivity/) work for M1 Macs, __except SQL/Server__ (it fails to start). It is architecture specific.
+The [Docker database images](Database-Connectivity.md) work for M1 Macs, __except SQL/Server__ (it fails to start). It is architecture specific.
 
 These solutions were successful [as described here](https://github.com/valhuber/ApiLogicServer/blob/main/tests/docker_databases/Dockerfile-SqlSvr-instructions-m1).  Many thanks for the following information:
 

@@ -50,7 +50,7 @@ The styles are different:
 
       * These are suitable for in-house clients whose needs are known in advance
 
-* ALS APIs are **self-serve, client-defined** ([see here for more information](../API-Self-Serve/)).  
+* ALS APIs are **self-serve, client-defined** ([see here for more information](API-Self-Serve.md)).  
 
       * These are suitable for general clients who can request exactly the data they require, without the performance costs and complexity of integrating several bespoke APIs
 
@@ -72,15 +72,15 @@ API Logic Server is open source.  Besides obvious pricing advantages, open sourc
 
 #### Leverage IDE, Containers
 
-API Logic Server does not provide a "studio UI", instead using a [Standard IDE](../IDE-Customize){:target="_blank" rel="noopener"} using [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"}.  This leverages signficant tooling, such as **standard debuggers and source control**.
+API Logic Server does not provide a "studio UI", instead using a [Standard IDE](IDE-Customize.md){:target="_blank" rel="noopener"} using [Python as a DSL](Tech-DSL.md){:target="_blank" rel="noopener"}.  This leverages signficant tooling, such as **standard debuggers and source control**.
 
-API Logic Server leverages [containers for Dev and Deploy](../DevOps-Containers){:target="_blank" rel="noopener"}, for more **more standards-based deployment**.
+API Logic Server leverages [containers for Dev and Deploy](DevOps-Containers.md){:target="_blank" rel="noopener"}, for more **more standards-based deployment**.
 
 &nbsp;
 
 #### Python (as a DSL)
 
-Both products provide a code-by-exception approach for APIs and logic.  API Logic Server uses Python.  While this may be new to some shops, the general approach is declarative using [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"} and scripting language.  This level of Python is extremely easy to pick up.
+Both products provide a code-by-exception approach for APIs and logic.  API Logic Server uses Python.  While this may be new to some shops, the general approach is declarative using [Python as a DSL](Tech-DSL.md){:target="_blank" rel="noopener"} and scripting language.  This level of Python is extremely easy to pick up.
 
 &nbsp;
 

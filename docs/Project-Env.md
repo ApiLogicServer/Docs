@@ -1,6 +1,6 @@
 This section applies only to `pip` installs.  Docker based installs eliminate such environment issues, and are therefore recommended.
 
-Important: in addition to Python environment, there are other configuration settings to consider as described in the [Quick Start](../IDE-Execute).
+Important: in addition to Python environment, there are other configuration settings to consider as described in the [Quick Start](IDE-Execute.md).
 
 ## Per-project `venv`
 
@@ -68,7 +68,7 @@ Exercise caution - this might affect other projects.
 
 ## `venv_setup` - shortcut setup procedures
 
-Ss of release 5.02.10, projects are created with a `venv_setup` directory which may be helpful in establishing and verifying your Python environment.  For more information, see the [Trouble Shooting Guide](../Troubleshooting#ide-issues).
+Ss of release 5.02.10, projects are created with a `venv_setup` directory which may be helpful in establishing and verifying your Python environment.  For more information, see the [Trouble Shooting Guide](Troubleshooting.md#ide-issues).
 
 &nbsp;
 

@@ -1,6 +1,6 @@
 ## Project Creation
 
-The ApiLogicServer CLI `create` (or `create-and-run`) command creates the project structure shown below - for more information, [see here](../Architecture-Internals-CLI).
+The ApiLogicServer CLI `create` (or `create-and-run`) command creates the project structure shown below - for more information, [see here](Architecture-Internals-CLI.md).
 
 &nbsp;
 

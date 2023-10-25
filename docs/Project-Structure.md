@@ -73,4 +73,4 @@ Projects are created from a [system-supplied prototype](https://github.com/valhu
 
 ## Architecture
 
-The resultant projects operates as a (typically containerized) 3-tiered architecture, as [described here](../Architecture-What-Is).
+The resultant projects operates as a (typically containerized) 3-tiered architecture, as [described here](Architecture-What-Is.md).

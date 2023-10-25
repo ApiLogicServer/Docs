@@ -75,7 +75,7 @@ the credit limit
     * E.g., users must enter a valid id and password to gain access
     * And, their roles determine what database rows they see (e.g., a multi-tenant application)
 
-API Logic Server enables you to ***declare spreadsheet-like rules*** to implement these.  [Rules](../Logic-Why) are a very significant technology, but perhaps the most striking characteristic is that they are *40X more concise than code*.  These 5 rules represent the same logic as [200 lines of Python](https://github.com/valhuber/LogicBank/wiki/by-code):
+API Logic Server enables you to ***declare spreadsheet-like rules*** to implement these.  [Rules](Logic-Why.md) are a very significant technology, but perhaps the most striking characteristic is that they are *40X more concise than code*.  These 5 rules represent the same logic as [200 lines of Python](https://github.com/valhuber/LogicBank/wiki/by-code):
 
 ```python title="5 Rules ~- 200 lines of code. Declare in IDE using code completion, debug in debugger."
 Rule.constraint(validate=models.Customer,       # logic design translates directly into rules

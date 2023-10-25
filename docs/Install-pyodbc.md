@@ -20,7 +20,7 @@ pip install pyodbc==4.0.34
 
 * Windows - not resolved - [this approach](https://github.com/mkleehammer/pyodbc/issues/1010) is not tested
 
-Please see the examples on the [testing](../Database-Connectivity) for important considerations in specifying SQLAlchemy URIs.
+Please see the examples on the [testing](Database-Connectivity.md) for important considerations in specifying SQLAlchemy URIs.
 
 &nbsp;
 

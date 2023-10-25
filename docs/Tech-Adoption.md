@@ -2,7 +2,7 @@
 
 Development and runtime architectures are what programmers expect:
 
-* As noted above, the [Key Project Components](../Architecture-What-Is){:target="_blank" rel="noopener"} are standard Python packages for APIs, data access.
+* As noted above, the [Key Project Components](Architecture-What-Is.md){:target="_blank" rel="noopener"} are standard Python packages for APIs, data access.
 * Projects developed in standard IDEs, and deployed in standard containers.
 
 ## Near-Zero Learning Curve - no frameworks, etc
@@ -43,8 +43,8 @@ Logic represents the starkest different between procedural code and declarative 
 
 ApiLogicServer automation creates a running project nearly instantly, but it also is designed to help you adapt to business changes more rapidly:
 
-* [Rebuild](../Project-Rebuild) support to update existing projects from database or data model changes
-* Logic provides automatic [reordering and reoptimization](../Logic-Why/#key-aspects-of-logic) as logic is altered
+* [Rebuild].mdProject-Rebuild.md) support to update existing projects from database or data model changes
+* Logic provides automatic [reordering and reoptimization](Logic-Why.md#key-aspects-of-logic) as logic is altered
 
 &nbsp;
 
@@ -69,7 +69,7 @@ The most troublesome bugs are silent failures - no stacktrace, but the wrong ans
 Automation address this by designing out whole classes of error:
 
 * the UI and API just work
-* logic is [automatically re-used](../Logic-Why/#automatic-reuse) over all Use Cases
+* logic is [automatically re-used](Logic-Why.md#automatic-reuse) over all Use Cases
 
 ### Architectural Risk
 
@@ -104,9 +104,9 @@ In particular:
 
 * **Business Users**
 
-      * Can _read_ rules (e.g. identify that *"the tax calculation is missing"*).  For more information, see [Python as a DSL](../Tech-DSL){:target="_blank" rel="noopener"}.
+      * Can _read_ rules (e.g. identify that *"the tax calculation is missing"*).  For more information, see [Python as a DSL](Tech-DSL.md){:target="_blank" rel="noopener"}.
       
-      * Oo not need to load an IDE - they can access the project on GitHub and use Shift + "." to view the rules, and the [BDD Report](../Behave-Logic-Report){:target="_blank" rel="noopener"}.
+      * Oo not need to load an IDE - they can access the project on GitHub and use Shift + "." to view the rules, and the [BDD Report](Behave-Logic-Report.md){:target="_blank" rel="noopener"}.
 
 * **Power Users** will be very comfortable with Python as a Scripting language, using the examples to quick become adept with enhancing declarative services
 

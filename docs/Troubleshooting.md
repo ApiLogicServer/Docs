@@ -25,7 +25,7 @@ sql.h not found - your console log might include:
     src/pyodbc.h:56:10: fatal error: 'sql.h' file not found
 ```
 
-Resolve these as [explained here](../Install-psycopg2/).
+Resolve these as [explained here](Install-psycopg2.md).
 
 
 ## Unsupported Architecture - MacOS
@@ -53,7 +53,7 @@ export ARCHFLAGS="-arch x86_64"  # <=== enable this line
 Project Creation involves 2 steps that can cause errors, described in the following sub-sections.
 
 ## Database failed to open
-The `db_url` argument is a [SQLAlchemy database uri](https://docs.sqlalchemy.org/en/14/core/engines.html).  For several examples we use in our testing, [click here](../Database-Connectivity).
+The `db_url` argument is a [SQLAlchemy database uri](https://docs.sqlalchemy.org/en/14/core/engines.html).  For several examples we use in our testing, [click here](Database-Connectivity.md).
 
 ### Check Connectivity using SQL Tools
 A typical cause is lack of connectivity to the database.  Use your local database tools to verify connectivity from your machine to the database.
@@ -115,9 +115,9 @@ For more on rebuild, see [Rebuilding](https://github.com/valhuber/ApiLogicServer
 
 Database access requires:
 
-* **Connectivity:** for more information, see [connectivity](../Database-Connectivity/#verify-database-connectivity)
+* **Connectivity:** for more information, see [connectivity](Database-Connectivity.md#verify-database-connectivity.md)
 
-* **Configuration:** ensure your project is correctly configured; see [Container Configuration](../DevOps-Container-Configuration/#debugging)
+* **Configuration:** ensure your project is correctly configured; see [Container Configuration](DevOps-Container-Configuration.md#debugging)
 
 
 
@@ -139,7 +139,7 @@ sql.h not found - your console log might include:
     src/pyodbc.h:56:10: fatal error: 'sql.h' file not found
 ```
 
-Resolve these as explained in the [Quick Start](../Install-pyodbc/).
+Resolve these as explained in the [Quick Start](Install-pyodbc.md).
 
 &nbsp;&nbsp;
 
@@ -219,7 +219,7 @@ In most cases, VSCode discovers `venv` environments, whether created prior to la
 
 However, this process occasionally fails.  For example, if you create the project successfully, then delete and recreate it, VSCode may not discover your `venv`.  This is usually resolved by:
 
-1. Create the `venv` as described in the [Quick Start](../Project-Env)
+1. Create the `venv` as described in the [Quick Start](Project-Env.md)
 2. Exit / restart VSCode
 3. Use __View > Command Palette > Python: Select Interpreter__, and select the entry `"venv”: venv`.  See the diagram below.
 

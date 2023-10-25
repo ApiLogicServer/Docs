@@ -7,7 +7,7 @@ Model files describe your database tables.  You can extend these, e.g. to __add 
 
 ### Edit ```models.py```: referential integrity (e.g., sqlite)
 
-[Rebuild support](../Project-Rebuild) enables you to rebuild your project, preserving customizations you have made to the api, logic and app.  You can rebuild from the database, or from the model.
+[Rebuild support](Project-Rebuild.md) enables you to rebuild your project, preserving customizations you have made to the api, logic and app.  You can rebuild from the database, or from the model.
 
 This enables you to edit the model to specify aspects not captured in creating the model from your schema.  For example, sqlite often is not configured to enforce referential integrity.  SQLAlchemy provides  support to fill such gaps.
 
