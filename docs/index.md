@@ -178,7 +178,7 @@ Here is a quick screen-shot demo of the basic process:
 
 ---
 
-### Video - Create, Run, Customize
+### Video: Create, Run, Customize
 
 API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
