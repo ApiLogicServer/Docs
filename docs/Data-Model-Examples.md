@@ -12,10 +12,12 @@ So, API Logic Server supports the following `db_url` shortcuts:
 
 * nw - same as the sample (customers and orders; you can also use an empty `db_url`)
 * nw- - same as nw, but no customizations
+* basic_demo - a similar, simpler example - [info here](https://apilogicserver.github.io/Docs/Tutorial-AI/)
 * chinook - albums and artists
 * classicmodels - customers and orders
 * auth - authentication data
 * todo - a simple 1 table database
+* BudgetApp - illustrates automatic creation of parent rows for rollups
 
 &nbsp;
 
