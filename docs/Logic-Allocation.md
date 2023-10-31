@@ -53,7 +53,8 @@ Use `sh test/test.sh`
 
 The test illustrates allocation logic for our inserted payment,
 which operates as follows:
-1. The triggering event is the insertion of a ```Payment```, which triggers:
+
+1. The initiating event is the insertion of a ```Payment```, which triggers:
 1. The ```allocate``` rule.  It performs the allocation:
    1. Obtains the list of recipient orders by calling the function```unpaid_orders```
    1. For each recipient (```Order```), the system...
