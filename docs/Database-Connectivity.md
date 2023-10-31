@@ -1,4 +1,16 @@
-This page lists some of the databases we have tested, including various (Mac-oriented) configuration notes.
+!!! pied-piper ":bulb: TL;DR - Project Creation: Identify Database (SQLAlchemy URI)"
+
+    You create API Logic Projects with the CLI, providing the `db_url` parameter -- a SQLAlchemy URI.
+
+    * See below for several examples
+
+    * Or use the abbrevations to explore pre-supplied test databases - [see here](Data-Model-Examples.md){:target="_blank" rel="noopener"}.
+
+    This page provides background on connecting, including database tools and debugging connections.
+
+&nbsp;
+
+# Examples
 
 Recall the `db_url` parameter is a SQLAlchemy URI.  To see some examples, see below, and use
 
@@ -7,29 +19,29 @@ ApiLogicServer examples
 ```
 
 This produces a console log like:
-```bash
-Creates and optionally runs a customizable Api Logic Project
 
-Examples:
+```bash
+  ApiLogicServer create
   ApiLogicServer create-and-run
-  ApiLogicServer create-and-run --db_url=sqlite:///nw.sqlite
-  ApiLogicServer create-and-run --db_url=mysql+pymysql://root:p@mysql-container:3306/classicmodels --project_name=/localhost/docker_db_project
-  ApiLogicServer create-and-run --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=no
-  ApiLogicServer create-and-run --db_url=postgresql://postgres:p@10.0.0.234/postgres
+  ApiLogicServer create --db_url=sqlite:////Users/val/dev/todo_example/todos.db --project_name=todo
+  ApiLogicServer create --db_url=sqlite:///c:\ApiLogicServer\nw.sqlite --project_name=nw
+  ApiLogicServer create --db_url=mysql+pymysql://root:p@mysql-container:3306/classicmodels --project_name=/localhost/docker_db_project
+  ApiLogicServer create --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
+  ApiLogicServer create --db_url=postgresql://postgres:p@10.0.0.234/postgres
   ApiLogicServer create --project_name=my_schema --db_url=postgresql://postgres:p@localhost/my_schema
-  ApiLogicServer create --project_name=oracle_hr --db_url='oracle+oracledb://hr:tiger@localhost:1521/?service_name=ORCL'
   ApiLogicServer create --db_url=postgresql+psycopg2://postgres:password@localhost:5432/postgres?options=-csearch_path%3Dmy_db_schema
   ApiLogicServer create --project_name=Chinook \
     --host=ApiLogicServer.pythonanywhere.com --port= \
     --db_url=mysql+pymysql://ApiLogicServer:@ApiLogicServer.mysql.pythonanywhere-services.com/ApiLogicServer\$Chinook
 
 Where --db_url is one of...
-   <default>                     Sample DB                    - https://valhuber.github.io/ApiLogicServer/Sample-Database/
-   nw-                           Sample DB, no customizations - add later with perform_customizations.py
+   <default>                     Sample DB                    - https://apilogicserver.github.io/Docs/Sample-Database/
+   <db_url abbreviation>         Other Samples                - https://apilogicserver.github.io/Docs/Data-Model-Examples/
    <SQLAlchemy Database URI>     Your own database            - https://docs.sqlalchemy.org/en/14/core/engines.html
-                                      Other URI examples:     - https://apilogicserver.github.io/Docs/Database-Connectivity/
+                                 Other URI examples:          - https://apilogicserver.github.io/Docs/Database-Connectivity//
  
-Docs: https://valhuber.github.io/ApiLogicServer/
+Docs: https://apilogicserver.github.io/Docs/
+
 ```
 
 Important notes:
@@ -57,6 +69,20 @@ If you are prompted for your database password, you have established connectivit
 
 &nbsp;
 
+## Explore SQLAlchemy
+
+To facilitate exploring SQLAlchemy, each project contains a `database/db_debug/db_debug.py`.
+
+Alter it to explore SQLAlchemy features and IDE support, as illustrated in the [sample project](https://github.com/ApiLogicServer/demo/blob/main/database/db_debug/db_debug.py){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+## Oracle debug
+
+For Oracle connections, `ApiLogicServer create` creates `database/db_debug/sa-pydb.py`.  You can use this to explore Oracle connections.
+
+&nbsp;
+
 # Sqlite
 
 You can use an existing sqlite database like this:
@@ -67,15 +93,14 @@ ApiLogicServer create --project_name=Allocation --db_url=sqlite:////Users/val/De
 Other important notes:
 
 * As shown above, use the __full path__
-* So that such databases are included in your project, they are copied to the `database` folder, and renamed to `db.sqlite'
-* Sqlite databases are copied to your project, [as described here](Database-Connectivity.md#sqlite){:target="_blank" rel="noopener"}.  
-* The project URL is made *relative* to this location (`sqlite:///../database/db.sqlite`).  This keeps your projects portable, e.g., colleagues can pull your project from `GitHub` and run.
+* So that such databases are included in your project, they are copied to the `database` folder, and renamed to `db.sqlite'`
+* The project URL in `Config.py` is made *relative* to this location (`sqlite:///../database/db.sqlite`).  This keeps your projects portable, e.g., colleagues can pull your project from `GitHub` and run.
 
 &nbsp;
 
-## Installation
+## CLI Installation
 
-The sqlite runtime is installed with API Logic Server.  You might, however, wish to install the command line tools.
+The sqlite runtime is installed with API Logic Server.  You might, however, wish to install the command line tools (**CLI**).
 
 These are typically already installed on Mac computers.
 

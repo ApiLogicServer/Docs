@@ -38,7 +38,7 @@ Create the project:
 ```
 ApiLogicServer create --project_name=allocation --db_url=allocation
 ```
-After you establish the venv in the usual manner, you canopen the project in your IDE and run launch configuration `ApiLogicServer`.
+After you establish the venv in the usual manner, you can open the project in your IDE and run launch configuration `ApiLogicServer`.
 
 
 # Test

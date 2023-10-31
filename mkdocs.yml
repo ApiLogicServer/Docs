@@ -57,16 +57,15 @@ nav:
     - "Swagger": Security-Swagger.md
   - "Using Your IDE": IDE-Customize.md
   - Database:
-    - "Examples": Data-Model-Examples.md
+    - "Connection Examples, Debug": Database-Connectivity.md
+    - "Sample Databases": Data-Model-Examples.md
     - Data-Model-Classes.md
     - Data-Model-Keys.md
     - Data-Model-Customization.md
-    - "Connection Examples": Database-Connectivity.md
     - "Docker Test Databases": Database-Docker.md
     - "Multiple Databases": Data-Model-Multi.md
     - "Database Design": Data-Model-Design.md
     - "Table Filters": Data-Model-Filters.md
-    - "Explore SQLAlchemy": Data-Model-Explore-SQLAlchemy.md
     - "Install pyodbc: SqlServer": Install-pyodbc.md
     - "Install psycopg2: Postgres": Install-psycopg2.md
   - DevOps - Containers:
