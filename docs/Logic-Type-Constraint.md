@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Specify expression / function that must be true, else exception"
 
-        Constraints declare an expression (lambda) or function that must be true for a transaction to complete.  You also provide a message that is returned in the exception that is raised if the expression is not true.
+    Constraints declare an expression (lambda) or function that must be true for a transaction to complete.  You also provide a message that is returned in the exception that is raised if the expression is not true.
 
 
 ## Provide expression as lambda

@@ -46,6 +46,9 @@ nav:
     - "Logic Operation": "Logic-Operation.md"
     - Rule Types:
       - "Constraints": "Logic-Type-Constraint.md"
+      - "Sum": "Logic-Type-Sum.md"
+      - "Formula": "Logic-Type-Formula.md"
+      - "Copy": "Logic-Type-Copy.md"
       - "Allocation": "Logic-Allocation.md"
       - "Events": "Logic-Type-Events.md"
   - 4. Security:
@@ -109,9 +112,11 @@ nav:
     - "Adoption Considerations?": Tech-Adoption.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
+    - Tech-AI.md
     - "AI-driven Auto mysql": Tech-AI-mysql.md
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
     - "Python as a DSL": Tech-DSL.md
+    - Tech-Budget-App.md
     - "Python Tips": Tech-Python.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "Agile Integrations": Tech-Agile-Integrations.md

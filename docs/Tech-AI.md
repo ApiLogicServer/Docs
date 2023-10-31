@@ -251,41 +251,42 @@ ApiLogicServer add-auth --project_name=. --db_url=auth
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
 
+
 ```python
-    ''' Declarative multi-table derivations and constraints, extensible with Python. 
+""" Declarative multi-table derivations and constraints, extensible with Python. 
 
-    Brief background: see readme_declare_logic.md
-    
-    Use code completion (Rule.) to declare rules here:
+Brief background: see readme_declare_logic.md
+
+Use code completion (Rule.) to declare rules here:
 
 
-    1. Customer.Balance <= CreditLimit
+1. Customer.Balance <= CreditLimit
 
-    2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
+2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
 
-    3. Order.AmountTotal = Sum(Items.Amount)
+3. Order.AmountTotal = Sum(Items.Amount)
 
-    4. Items.Amount = Quantity * UnitPrice
+4. Items.Amount = Quantity * UnitPrice
 
-    5. Items.UnitPrice = copy from Product
-    '''
+5. Items.UnitPrice = copy from Product
+"""
 
-    Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
-        as_condition=lambda row: row.Balance <= row.CreditLimit,
-        error_msg="balance ({round(row.Balance, 2)}) exceeds credit ({round(row.CreditLimit, 2)})")
+Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
+    as_condition=lambda row: row.Balance <= row.CreditLimit,
+    error_msg="balance ({round(row.Balance, 2)}) exceeds credit ({round(row.CreditLimit, 2)})")
 
-    Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
-        as_sum_of=models.Order.AmountTotal,
-        where=lambda row: row.ShipDate is None)     # adjusts - *not* a sql select sum...
+Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
+    as_sum_of=models.Order.AmountTotal,
+    where=lambda row: row.ShipDate is None)     # adjusts - *not* a sql select sum...
 
-    Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
-        as_sum_of=models.Item.Amount)
+Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
+    as_sum_of=models.Item.Amount)
 
-    Rule.formula(derive=models.Item.Amount,    # compute price * qty
-        as_expression=lambda row: row.UnitPrice * row.Quantity)
+Rule.formula(derive=models.Item.Amount,    # compute price * qty
+    as_expression=lambda row: row.UnitPrice * row.Quantity)
 
-    Rule.copy(derive=models.Item.UnitPrice,    # get Product Price (e,g., on insert, or ProductId change)
-        from_parent=models.Product.UnitPrice)
+Rule.copy(derive=models.Item.UnitPrice,    # get Product Price (e,g., on insert, or ProductId change)
+    from_parent=models.Product.UnitPrice)
 ```
 
 Observe rules are declared in Python.  Given IDE services for code completion, this is using Python as a DSL (Domain Specific Language).

@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Specify expression / function that must be true, else exception"
 
-        Events are callouts to Python functions, supplying `logic_row` as a argument.  Events provide extensibility, to address non-database logic (e.g., sending email and messages), and for complex logic that cannot be addressed in rules. 
+    Events are callouts to Python functions, supplying `logic_row` as a argument.  Events provide extensibility, to address non-database logic (e.g., sending email and messages), and for complex logic that cannot be addressed in rules. 
 
 &nbsp;
 
