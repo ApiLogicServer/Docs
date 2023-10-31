@@ -15,8 +15,14 @@ $code .
 ## Data Model
 The Budget table holds the monthly values by category, tenant_user, and date.  This will rollup into Category, Month, and Yr.  The Transactions table holds the actual values (one to many) so import from a CSV using the API will allow comparison with budget values. The database folder has the schema for both MySQL and SQLite.  
 
-![Budget DataModel](./images/Budget.png)
-![Category DataModel](./images/BudgetCategory.png)
+![Budget DataModel](images/budget-app/Budget.png)
+
+&nbsp;
+
+![Category DataModel](images/budget-app/BudgetCategory.png)
+
+&nbsp;
+
 ## Multi Tenant and Security
 The ability to filter users (tenant) to see only their own data is implemented in the declarative_security.py. The login user_id should match the tenant_user user_id.
 
