@@ -27,3 +27,9 @@ At the top of Swagger, locate the Authenticate button.  Copy the token, precede 
 ## Provide token in header
 
 The sample test apps use this token on API calls [as shown here](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/project_prototype_nw/test/api_logic_server_behave/features/steps/place_order.py){:target="_blank" rel="noopener"}.
+
+## Manage Users and Roles
+
+The system creates an Admin App for managing users and roles:
+
+![Manage Authorization](images/security/auth-admin.png)
