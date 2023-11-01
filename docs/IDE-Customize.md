@@ -1,10 +1,10 @@
 !!! pied-piper ":bulb: TL;DR - Standards-based Customization: **Your IDE**, standard packages"
 
-        The `ApiLogicServer create` command creates API Logic Projects: **customize in *your* IDE.**
+    The `ApiLogicServer create` command creates API Logic Projects: **customize in *your* IDE.**
 
-        Use standard packages, such as **Flask and SQLAlchemy**.
+    Use standard packages, such as **Flask and SQLAlchemy**.
 
-        Standard file-based projects: use **GitHub** for source control, etc.
+    Standard file-based projects: use **GitHub** for source control, etc.
 
 
 For more information on opening projects and establishing their Python Execution environment, see [Execute an API Logic Project](IDE-Execute.md){:target="_blank" rel="noopener"}.

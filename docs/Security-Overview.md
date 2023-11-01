@@ -1,8 +1,8 @@
 !!! pied-piper ":bulb: TL;DR - Row Level Security with Grant Permissions on User Roles"
 
-        Declarative security enables you to `Grant` row filters to user roles, providing **row level security:** users see only the rows to which they are authorized.  Grants can access user properties, such as their organization.  A common usage is to enforce **multi-tenant** access.
+    Declarative security enables you to `Grant` row filters to user roles, providing **row level security:** users see only the rows to which they are authorized.  Grants can access user properties, such as their organization.  A common usage is to enforce **multi-tenant** access.
 
-        Define users and roles with a SQL database using an Admin app, or, supply a **provider** to attach to existing corporate security (AD, LDAP, etc).
+    Define users and roles with a SQL database using an Admin app, or, supply a **provider** to attach to existing corporate security (AD, LDAP, etc).
 
 &nbsp;
 

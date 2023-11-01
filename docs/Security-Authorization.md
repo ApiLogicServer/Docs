@@ -1,18 +1,18 @@
 !!! pied-piper ":bulb: TL;DR - Role-based Grants and Permissions, Global Filters"
 
-        Declarative security enables you to control which rows are visible to which users, and their read/update permissions:
-                
-        **1. Grants:** declare filters for a class/role
+    Declarative security enables you to control which rows are visible to which users, and their read/update permissions:
+        
+    **1. Grants:** declare filters for a class/role
 
-        **2. Global Filters:** declare filters global to all tables, used for:
+    **2. Global Filters:** declare filters global to all tables, used for:
 
-           * Multi-Tenant
+       * Multi-Tenant
 
-           * Common patterns such as hiding rows marked for deletion, rows outside a users' territory, etc
+       * Common patterns such as hiding rows marked for deletion, rows outside a users' territory, etc
 
-        **3. Permissions:** define whether specific rows are create, read, update or delete rows
+    **3. Permissions:** define whether specific rows are create, read, update or delete rows
 
-        **Logging** is provided so you can see which filters are applied, and the resultant SQL.
+    **Logging** is provided so you can see which filters are applied, and the resultant SQL.
 
 
 

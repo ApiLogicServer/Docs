@@ -1,8 +1,8 @@
 !!! pied-piper ":bulb: TL;DR - Row Level Security with Grant Permissions on User Roles"
 
-        Security requires persistent store to identify valid users and their roles.  These can be stores such as LDAP or Microsoft AD, or a security sql database.
+    Security requires persistent store to identify valid users and their roles.  These can be stores such as LDAP or Microsoft AD, or a security sql database.
 
-        Projects are initially created without security.  Use the command below to add security using your own database, which enables you to *Add `User` properties for `Grant` declarations*,
+    Projects are initially created without security.  Use the command below to add security using your own database, which enables you to *Add `User` properties for `Grant` declarations*,
 
 For example:
 

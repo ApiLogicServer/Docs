@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Debugging Logic"
 
-        Debug rules using system-generated logging and your IDE debugger.
+    Debug rules using system-generated logging and your IDE debugger.
 
 &nbsp;
 

@@ -249,7 +249,7 @@ ApiLogicServer add-auth --project_name=. --db_url=auth
 
 ### Declare Logic
 
-Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
+Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules in `logic/declare_logic.py`.  Note they map exactly to our natural language design:
 
 
 ```python
