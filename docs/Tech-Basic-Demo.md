@@ -20,7 +20,7 @@ $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
 
 This creates a project you can open with VSCode by reading your schema.  The database looks like this:
 
-<img src="https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/images/basic_demo_data_model.jpeg?raw=true" height="400rm">
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true" height="400rm">
 
 Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
 
@@ -32,17 +32,17 @@ pip install -r requirements.txt
 
 &nbsp;
 
-### API with Swagger
+### API with Swagger - App Dev Nnblocked
 
-The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- self-serve, ready for custom app dev.
+The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- [self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for custom app dev.
 
-<img src="https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/images/api-swagger.jpeg?raw=true">
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/api-swagger.jpeg?raw=true" height="400rm">
 
-### Admin App
+### Admin App - Enables Agile Collaboration
 
-It also creates an Admin App: multi-page, multi-table apps -- ready for business user agile collaboration.  This complements custom UIs created with the API.
+It also creates an Admin App: multi-page, multi-table apps -- ready for [business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/), and back office data maintenance.  This complements custom UIs created with the API.
 
-<img src="https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/images/admin-app-initial.jpeg?raw=true">
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/admin-app-initial.jpeg?raw=true" height="400rm">
 
 ## 2. Customize - add declarative security and logic
 
@@ -62,6 +62,10 @@ ApiLogicServer add-auth --project_name=. --db_url=auth
 At this point, you'd use your IDE to declare grants and filters.  Simulate this as follows:
 
 1. Copy `customomizations/declare_security` over `security/declare_security`
+
+Observe the logging assists in debugging:
+
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true" height="400rm">
 
 &nbsp;
 
@@ -89,7 +93,7 @@ Declarative logic has significant advantages over procedural code:
 
 ## 3. Iterate with Rules and Python
 
-Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s take an example.
+Not only are spreadsheet-like rules [40X more concise](https://github.com/valhuber/LogicBank/wiki/by-code), they meaningfully simplify maintenance.  Let’s take an example.
 
 >> Give a 10% discount for carbon-neutral products for 10 items or more.
 
@@ -191,7 +195,7 @@ Of course, we all know that all businesses the world over depend on the `hello w
 
 ## Summary
 
-<img src="https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/images/summary.jpeg?raw=true">
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/summary.jpeg?raw=true" height="400rm">
 
 In minutes, you've used API Logic Server to convert an idea into working software, deployed for collaboration, and iterated to meet new requirements.
 
