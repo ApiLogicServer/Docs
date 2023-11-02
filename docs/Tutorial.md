@@ -139,6 +139,7 @@ The creation process builds not only the API, but also swagger so you can explor
 3. (Leave the swagger and server running)
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/swagger.png?raw=true"></figure>
+
 &nbsp;&nbsp;&nbsp;
 
   > **Key Take-away:** instant *rich* APIs, with filtering, sorting, pagination and swagger.  **Custom App Dev is unblocked.**

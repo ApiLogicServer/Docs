@@ -10,15 +10,15 @@ ApiLogicServer create --project_name=Allocation --db_url=sqlite:////Users/val/De
 
 So, API Logic Server supports the following `db_url` shortcuts:
 
-* nw - same as the sample (customers and orders; you can also use an empty `db_url`)
+* [nw](Tutorial.md){:target="_blank" rel="noopener"} - same as the sample (customers and orders; you can also use an empty `db_url`)
 * nw- - same as nw, but no customizations
-* basic_demo - a similar, simpler example - [info here](https://apilogicserver.github.io/Docs/Tutorial-AI/){:target="_blank" rel="noopener"}
+* [basic_demo](Tech-Basic-Demo.md){:target="_blank" rel="noopener"} - a similar, simpler example 
+* [allocation](Logic-Allocation.md){:target="_blank" rel="noopener"} - a rule to allocate a payment to a set of outstanding orders
+* [BudgetApp](Tech-Budget-App.md){:target="_blank" rel="noopener"} - illustrates automatic creation of parent rows for rollups
+* [auth](Security-Authentication-Provider.md#sqlite-auth-provider){:target="_blank" rel="noopener"} - sqlite authentication database
 * chinook - albums and artists
-* allocation - a rule to allocate a payment to a set of outstanding orders
 * classicmodels - customers and orders
-* auth - authentication data
 * todo - a simple 1 table database
-* BudgetApp - illustrates automatic creation of parent rows for rollups
 
 &nbsp;
 

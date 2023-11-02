@@ -28,6 +28,7 @@ nav:
     - "Deployment Tutorial": Tutorial-Deployment.md
     - "AI-driven Automation": Tutorial-AI.md
     - "Agile Tutorial": Tutorial-Agile.md
+    - "Sample Systems": Data-Model-Examples.md
   - 1. Admin Web App:
     - "Automatic Admin App": Admin-Tour.md
     - Admin-Customization.md
@@ -117,6 +118,7 @@ nav:
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
     - "Python as a DSL": Tech-DSL.md
     - Tech-Budget-App.md
+    - Tech-Basic-Demo.md
     - "Python Tips": Tech-Python.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "Agile Integrations": Tech-Agile-Integrations.md
