@@ -9,7 +9,9 @@ In this demo, we will build a complete, repsresentatively complex database syste
 We'll illustrate API Logic Server support for:
 
 **1. Automation:** instant project providing API, Admin web app with a single CLI command
+
 **2. Customization:** we'll add declarative security and logic - about a dozen rules
+
 **3. Iteration:**  we'll alter the schema, and add a new rule that leverages Python
 
 The entire demo takes 5 minutes, instead of manual development of several weeks.
