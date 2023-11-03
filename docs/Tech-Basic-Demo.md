@@ -8,11 +8,11 @@ In this demo, we will build a complete, repsresentatively complex database syste
 
 We'll illustrate API Logic Server support for:
 
-**1. Automation:** instant project providing API, Admin web app with a single CLI command
+* **Automation:** instant project providing API, Admin web app with a single CLI command
 
-**2. Customization:** we'll add declarative security and logic - about a dozen rules
+* **Customization:** we'll add declarative security and logic - about a dozen rules
 
-**3. Iteration:**  we'll alter the schema, and add a new rule that leverages Python
+* **Iteration:**  we'll alter the schema, and add a new rule that leverages Python
 
 The entire demo takes 5 minutes, instead of manual development of several weeks.
 
@@ -30,7 +30,8 @@ $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
 
 This creates a project you can open with VSCode by reading your schema.  The database looks like this:
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true"  height="450rm">
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true" width="500">
+
 
 Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
 
@@ -173,13 +174,11 @@ Use your IDE to merge `/ui/admin/admin-merge.yml` -> `/ui/admin/admin.yml`.`
 
 &nbsp;
 
-### Logic Significance
-
-This simple example illustrates some significant aspects of iteration.
+This simple example illustrates some significant aspects of iteration, described in the sub-sections bdelow.
 
 &nbsp;
 
-#### a. Maintenance Automation
+### a. Maintenance Automation
 
 Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but it’s mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines they’ll hopefully be called and function correctly.
 
@@ -187,7 +186,7 @@ Rules change that, since they self-order their execution (and pruning) based on 
 
 &nbsp;
 
-#### b. Extensibile with Python
+### b. Extensibile with Python
 
 In this case, we needed to do some if/else testing, and it was more convenient to add a dash of Python.  While you have the full object-oriented power of Python, this is simpler -- more like Python as a 4GL.  
 
@@ -195,7 +194,7 @@ What’s important is that once you are in such functions, you can utilize Pytho
 
 &nbsp;
 
-#### c. Debugging: IDE, Logging
+### c. Debugging: IDE, Logging
 
 The screen shot above illustrates that debugging logic is what you’d expect: use your IDE's debugger.
 
@@ -203,7 +202,7 @@ In addition, the Logic Log lists every rule that fires, with indents for multi-t
 
 &nbsp;
 
-#### d. Customizations Retained
+### d. Customizations Retained
 
 Note we rebuilt the project from our altered database, illustrating we can **iterate preserving customizations.**
 
