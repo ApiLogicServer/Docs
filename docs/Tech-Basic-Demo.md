@@ -1,14 +1,15 @@
 ---
 title: Instant Microservices - with Logic and Security
+notes: gold is proto (-- doc)
 ---
 
-In this article, we will build a complete, repsresentatively complex database system in minutes instead of weeks or months:
+Learn how build a complete database system -- in minutes instead of weeks or months:
 
 1. **An API**, and, we'll add ui and logic to make it a microservice...
 2. **Logic and Security:** multi-table constraints and derivations, and role-based security
 3. **An Admin App:** and finally, a multi-page, multi-table web app
 
-We'll illustrate API Logic Server support for:
+We'll use API Logic Server, providing:
 
 | Key Feature | Providing | Why It Matters|
 | :--- |:---|:---|
@@ -32,13 +33,15 @@ $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
 
 This creates a project you can open with VSCode by reading your schema.  The database is Customer, Orders, Items and Product, as shown in the Appendix.
 
-Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
+You can run as follows:
 
-```bash
-python -m venv venv; venv\Scripts\activate     # win
-python3 -m venv venv; . venv/bin/activate      # mac/linux
-pip install -r requirements.txt
-```
+1. **Virtual Environment:** create one as shown in the Appendix.
+
+2. **Start the Server:** also described in the Appendix
+
+3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/)
+
+The sections below describe what has been created.
 
 &nbsp;
 
@@ -62,6 +65,12 @@ While automation is always welcomed, it's critical to add logic and security.  H
 
 ### Declare Security
 
+To add security:
+
+**1. Stop the Server** (see Appendix)
+
+**2. Add Security**
+
 In a terminal window for your project:
 
 ```bash
@@ -71,9 +80,19 @@ ApiLogicServer add-auth --project_name=. --db_url=auth
 
 At this point, you'd use your IDE to declare grants and filters.  Simulate this as follows:
 
-1. Copy `customomizations/declare_security` over `security/declare_security`
+**3. Declare Grants:** Copy `customomizations/declare_security` over `security/declare_security`
 
-Observe the logging assists in debugging:
+To see security in action:
+
+**4. Start the Server**
+
+**5. Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/)
+
+**6. Login** as `s1`, password `p`
+
+**7. Click Customers**
+
+In the IDE Console Log, observe the logging assists in debugging:
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true">
 
@@ -85,9 +104,17 @@ Logic (multi-table derivations and constraints) is typically a significant porti
 
 Rules are declared in Python, simplified with IDE code completion.  Simulate this as follows:
 
-1. Copy `customomizations/declare_logic` over `logic/declare_logic`
+**1. Stop the Server**
+
+At this point, you'd use your IDE to declare grants and filters.  Simulate this as follows:
+
+**2. Declare Logic:** Copy `customomizations/declare_logic` over `logic/declare_logic`
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules in `logic/declare_logic.py`.  Note they map exactly to our natural language design.
+
+**3. Test using the Admin App - add an Order and Item**
+
+Observe the rules firing in the console log, as shown in the next screen shot.
 
 Logic provides significant improvements over procedural logic, as described below.
 
@@ -95,9 +122,9 @@ Logic provides significant improvements over procedural logic, as described belo
 
 #### a. Complexity Scaling
 
-The screen below shows our logid declarations, and a the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
+The screen below shows our logid declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
 
-Note that it's `Multi-Table Transaction`, as indicating by the indentation.  This is because **rules automatically chain**, including across tables.
+Note that it's `Multi-Table Transaction`, as indicating by the indentation.  This is because **rules automatically chain, *including across tables.***
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-chaining.jpeg?raw=true">
 
@@ -231,6 +258,43 @@ In minutes, you've used API Logic Server to convert an idea into working softwar
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true" width="500">
 
+&nbsp;
+
+## Appendix: Procedures
+
+You can use either VSCode or Pycharm.  You will need to:
+
+&nbsp;
+
+** Establish your Virtual Environment**
+
+Python employs a virtual environment for project-specific dependencies.  Create one as shown below, depending on your IDE.
+
+For VSCode:
+
+Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
+
+```bash
+python -m venv venv; venv\Scripts\activate     # win
+python3 -m venv venv; . venv/bin/activate      # mac/linux
+pip install -r requirements.txt
+```
+
+For PyCharm, you will get a dialog requesting to create the `venv`; say yes.
+
+See [here](https://apilogicserver.github.io/Docs/Install-Express/) for more information.
+
+&nbsp;
+
+** Start and Stop the Server **
+
+Both IDEs provide Run Configurations to start programs.  These are pre-built by `ApiLogicServer create`.
+
+For VSCode, start the Server with F5, Stop with Shift-F5 or the red stop button.
+
+For PyCharm, start the server with CTL-D, Stop with red stop button.
+
+&nbsp;
 
 ## Appendix: Containerize, Deploy for Collaboration
 
