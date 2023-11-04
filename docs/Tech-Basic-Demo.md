@@ -2,7 +2,7 @@
 title: Instant Microservices - with Logic and Security
 ---
 
-In this article, we will build a complete, repsresentatively complex database system:
+In this article, we will build a complete, repsresentatively complex database system in minutes instead of weeks or months:
 
 1. **An API**, and, we'll add ui and logic to make it a microservice...
 2. **Logic and Security:** multi-table constraints and derivations, and role-based security
@@ -13,7 +13,7 @@ We'll illustrate API Logic Server support for:
 | Key Feature | Providing | Why It Matters|
 | :--- |:---|:---|
 | **Automation** | Instant Project Creation, providing...<br>An API and an Admin web app  | Unblock UI App Dev<br>Instant Agile Collaboration |
-| **Customization** | Declarative security and logic <br> 5 rules vs. 200 lines of Python | Half the effort reduced 40X |
+| **Customization** | Declarative logic and security <br> 5 rules vs. 200 lines of Python | Half the effort reduced 40X |
 | **Iteration** | Revising the data model, and <br>Adding rules plus Python | Iterative development <br> Extensiblity with Python |
 
 The entire process takes 5 minutes, instead of several weeks using traditional  development.
