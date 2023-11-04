@@ -1,20 +1,22 @@
-# Basic Demo
+---
+title: Instant Microservices - with Logic and Security
+---
 
-In this demo, we will build a complete, repsresentatively complex database system:
+In this article, we will build a complete, repsresentatively complex database system:
 
-1. An API
-2. An Admin App
-3. Transactional Logic and Security
+1. **An API**, and, we'll add ui and logic to make it a microservice...
+2. **An Admin App:** a multi-page, multi-table web app
+3. **Logic and Security:** multi-table constraints and derivations, and role-based security
 
 We'll illustrate API Logic Server support for:
 
 * **Automation:** instant project providing API, Admin web app with a single CLI command
 
-* **Customization:** we'll add declarative security and logic - about a dozen rules
+* **Customization:** we'll add declarative security and logic - about a dozen spreadsheet-like rules
 
 * **Iteration:**  we'll alter the schema, and add a new rule that leverages Python
 
-The entire demo takes 5 minutes, instead of manual development of several weeks.
+The entire process takes 5 minutes, instead of several weeks using traditional  development.
 
 &nbsp;
 
