@@ -5,16 +5,16 @@ title: Instant Microservices - with Logic and Security
 In this article, we will build a complete, repsresentatively complex database system:
 
 1. **An API**, and, we'll add ui and logic to make it a microservice...
-2. **An Admin App:** a multi-page, multi-table web app
-3. **Logic and Security:** multi-table constraints and derivations, and role-based security
+2. **Logic and Security:** multi-table constraints and derivations, and role-based security
+3. **An Admin App:** and finally, a multi-page, multi-table web app
 
 We'll illustrate API Logic Server support for:
 
-* **Automation:** instant project providing API, Admin web app with a single CLI command
-
-* **Customization:** we'll add declarative security and logic - about a dozen spreadsheet-like rules
-
-* **Iteration:**  we'll alter the schema, and add a new rule that leverages Python
+| Key Feature | Providing | Why It Matters|
+| :--- |:---|:---|
+| **Automation** | Instant Project Creation, providing...<br>An API and an Admin web app  | Unblock UI App Dev<br>Instant Agile Collaboration |
+| **Customization** | Declarative security and logic <br> 5 rules vs. 200 lines of Python | Half the effort reduced 40X |
+| **Iteration** | Revising the data model, and <br>Adding rules plus Python | Iterative development <br> Extensiblity with Python |
 
 The entire process takes 5 minutes, instead of several weeks using traditional  development.
 
@@ -30,10 +30,7 @@ $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
 
 > Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/).  You would normally supply a SQLAlchemy URI.
 
-This creates a project you can open with VSCode by reading your schema.  The database looks like this:
-
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true" width="500">
-
+This creates a project you can open with VSCode by reading your schema.  The database is Customer, Orders, Items and Product, as shown in the Appendix.
 
 Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
 
@@ -227,6 +224,12 @@ Of course, we all know that all businesses the world over depend on the `hello w
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/summary.jpeg?raw=true">
 
 In minutes, you've used API Logic Server to convert an idea into working software, deployed for collaboration, and iterated to meet new requirements.
+
+&nbsp;
+
+## Appendix: Database Schema
+
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true" width="500">
 
 
 ## Appendix: Containerize, Deploy for Collaboration
