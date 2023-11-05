@@ -118,7 +118,7 @@ nav:
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
     - "Python as a DSL": Tech-DSL.md
     - Tech-Budget-App.md
-    - Tech-Basic-Demo.md
+    - Sample-Basic-Demo.md
     - "Python Tips": Tech-Python.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "Agile Integrations": Tech-Agile-Integrations.md
