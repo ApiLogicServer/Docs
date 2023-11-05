@@ -12,7 +12,7 @@ So, API Logic Server supports the following `db_url` shortcuts:
 
 * [nw](Tutorial.md){:target="_blank" rel="noopener"} - same as the sample (customers and orders; you can also use an empty `db_url`)
 * nw- - same as nw, but no customizations
-* [basic_demo](Tech-Basic-Demo.md){:target="_blank" rel="noopener"} - a similar, simpler example 
+* [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} - a similar, simpler example 
 * [allocation](Logic-Allocation.md){:target="_blank" rel="noopener"} - a rule to allocate a payment to a set of outstanding orders
 * [BudgetApp](Tech-Budget-App.md){:target="_blank" rel="noopener"} - illustrates automatic creation of parent rows for rollups
 * [auth](Security-Authentication-Provider.md#sqlite-auth-provider){:target="_blank" rel="noopener"} - sqlite authentication database

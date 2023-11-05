@@ -23,6 +23,7 @@ nav:
         - Execute in your IDE: IDE-Execute.md
         - Execute From Terminal: Execute.md
   - Tutorial:
+    - "Basic Demo": Sample-Basic-Demo.md
     - "Tutorial": Tutorial.md
     - Sample-Database.md
     - "Deployment Tutorial": Tutorial-Deployment.md
@@ -118,7 +119,6 @@ nav:
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
     - "Python as a DSL": Tech-DSL.md
     - Tech-Budget-App.md
-    - Sample-Basic-Demo.md
     - "Python Tips": Tech-Python.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "Agile Integrations": Tech-Agile-Integrations.md
