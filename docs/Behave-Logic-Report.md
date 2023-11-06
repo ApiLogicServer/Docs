@@ -7,6 +7,7 @@ This is the sample project from API Logic Server, based on the Northwind databas
 
 >  The sample Scenarios below were chosen to illustrate the basic patterns of using rules.  Open the disclosure box (_"Tests - and their logic..."_) to see the implementation and notes.
 
+The following report was created during test suite execution.
 
 &nbsp;
 
