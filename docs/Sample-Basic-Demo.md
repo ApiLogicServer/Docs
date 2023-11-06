@@ -1,7 +1,7 @@
 ---
 title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
-version: 0.4
+version: 0.5
 ---
 
 See how to build a complete database system -- in minutes instead of weeks or months:
@@ -18,7 +18,15 @@ We'll use API Logic Server, providing:
 | **Customization** | Declarative logic and security <br> 5 rules vs. 200 lines of Python | Half the effort reduced 40X |
 | **Iteration** | Revising the data model, and <br>Adding rules plus Python | Iterative development <br> Extensiblity with Python |
 
-The entire process takes 5 minutes, instead of several weeks using traditional  development.
+The entire process takes 5 minutes, instead of several weeks using traditional development.
+
+You can use this article in several ways:
+
+* Conceptual Overview - focus on the basic process.  Operational details are moved to the Appendix to retain focus on the concepts.
+
+* Self-demo - you can create this system yourself.
+
+* Self-demo with video - you can also use [this video](https://www.youtube.com/watch?v=sD6RFp8S6Fg) (it's the same system, but the database is created with ChapGPT).
 
 &nbsp;
 
@@ -40,9 +48,9 @@ You can open with VSCode, and run it as follows:
 
 2. **Start the Server:** F5 (also described in the Appendix).
 
-3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/)
+3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The screen shown below should appear in your Browser.
 
-The sections below describe what has been created.
+The sections below explore the system that has been created (which would be similar for your own database).
 
 &nbsp;
 
@@ -95,7 +103,7 @@ To see security in action:
 
 **7. Click Customers**
 
-In the IDE Console Log, observe the logging assists in debugging:
+In the IDE Console Log, observe the how the logging assists in debugging, by showing which Grants (`+ Grant:`) are applied:
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true">
 
@@ -105,11 +113,11 @@ In the IDE Console Log, observe the logging assists in debugging:
 
 Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
-Rules are declared in Python, simplified with IDE code completion.  Simulate this as follows:
+Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
+
+Instead of entering then, we simulate this as follows:
 
 **1. Stop the Server**
-
-At this point, you'd use your IDE to declare logic.  Simulate this as follows for **Check Credit Logic:**
 
 **2. Declare Logic:** Copy `customomizations/declare_logic` over `logic/declare_logic`
 
@@ -123,15 +131,15 @@ Logic provides significant improvements over procedural logic, as described belo
 
 #### a. Complexity Scaling
 
-The screen below shows our logid declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
+The screen below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
 
-Note that it's `Multi-Table Transaction`, as indicating by the indentation.  This is because **rules automatically chain, *including across tables.***
+Note that it's `Multi-Table Transaction`, as indicating by the indentation.  This is because, like a spreadsheet, **rules automatically chain, *including across tables.***
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-chaining.jpeg?raw=true">
 
 #### b. 40X More Concise
 
-Spreadsheet-like rules [40X more concise](https://github.com/valhuber/LogicBank/wiki/by-code).
+The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code).  That's a remarkable 40X decrease in the backend half of the system.
 
 &nbsp;
 
@@ -147,15 +155,17 @@ SQL overhead is minimized by pruning, and by elimination of expensive aggregate 
 
 &nbsp;
 
-#### 3. Transparent
+#### e. Transparent
 
-Rules are an executable design.  Note they map exactly to our natural language design (shown in comments) - readable by business users.  Optionally, you can use the Behave TDD approach to define tests, including the rules that execute.  For more information, [click here](https://apilogicserver.github.io/Docs/Behave/).
+Rules are an executable design.  Note they map exactly to our natural language design (shown in comments) - readable by business users.  
+
+Optionally, you can use the Behave TDD approach to define tests, and the system will show the rules that execute.  For more information, [click here](https://apilogicserver.github.io/Docs/Behave/).
 
 &nbsp;
 
 ## 3. Iterate with Rules and Python
 
-Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let's take an example.
+Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let's take an example:
 
 >> Give a 10% discount for carbon-neutral products for 10 items or more.
 
@@ -190,7 +200,7 @@ Use your IDE to merge `/ui/admin/admin-merge.yml` -> `/ui/admin/admin.yml`.`
 
 **d. Declare logic**
 
-In `logic/declare_logic.py`, replace the formula for `models.Item.Amount` with this (you may need to use the IDE for proper indents):
+In `logic/declare_logic.py`, replace the 2 lines for `models.Item.Amount` formula with this (you may need to use the IDE to ensure proper indents):
 
 ```python
     def derive_amount(row: models.Item, old_row: models.Item, logic_row: LogicRow):
@@ -210,7 +220,7 @@ In `logic/declare_logic.py`, replace the formula for `models.Item.Amount` with t
 
 **f. Test: Start the Server, and use the Admin App to update your Order by adding a `green` Item**
 
-At the breakpoint, note you can use debugger services to debug your logic (examine `Item` attributes, step, etc).
+At the breakpoint, note you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
 
 &nbsp;
 
@@ -220,31 +230,29 @@ This simple example illustrates some significant aspects of iteration, described
 
 ### a. Maintenance Automation
 
-Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That's because it's not about writing code, but it's mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines they'll hopefully be called and function correctly.
+Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That's because it's not about writing code, but it's mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that will hopefully be called and function correctly.
 
-Rules change that, since they self-order their execution (and pruning) based on system-discovered dependencies.  So, to alter logic, you just "drop a new rule in the bucket", and the system will ensure it's called in the proper order, and re-used over all the Use Cases to which it applies.
+Rules change that, since they **self-order their execution** (and pruning) based on system-discovered dependencies.  So, to alter logic, you just "drop a new rule in the bucket", and the system will ensure it's called in the proper order, and re-used over all the Use Cases to which it applies.
 
 &nbsp;
 
 ### b. Extensibile with Python
 
-In this case, we needed to do some if/else testing, and it was more convenient to add a dash of Python.  While you have the full object-oriented power of Python, this is simpler -- more like Python as a 4GL.  
+In this case, we needed to do some if/else testing, and it was more convenient to add a pinch of Python. So even if you are new to Python, you'll master this "4GL" level immediately.
 
-What's important is that once you are in such functions, you can utilize Python libraries, invoke shared code, make web service calls, send email or messages, etc.  You have all the power of rules, plus the unrestricted flexibility of Python.
+Of course, you have the full object-oriented power of Python and its many libraries, so there are *no automation penalty* restrictions.  
 
 &nbsp;
 
 ### c. Debugging: IDE, Logging
 
-The screen shot above illustrates that debugging logic is what you'd expect: use your IDE's debugger.
-
-In addition, the Logic Log lists every rule that fires, with indents for multi-table chaining (not visible in this screenshot).  Each line shows the old/new values of every attribute, so the transaction state is transparent.
+The screen shot above illustrates that debugging logic is what you'd expect: use your IDE's debugger.  This "standard-based" approach applies to other development activities, such as source code management, and container-based deployment.
 
 &nbsp;
 
 ### d. Customizations Retained
 
-Note we rebuilt the project from our altered database, illustrating we can **iterate preserving customizations.**
+Note we rebuilt the project from our altered database, illustrating we can **iterate, while *preserving customizations.***
 
 &nbsp;
 
@@ -279,8 +287,6 @@ In minutes, you've used API Logic Server to convert an idea into working softwar
 Specific procedures for running the demo are here, so they do not interrupt the conceptual discussion above.
 
 You can use either VSCode or Pycharm.
-
-For further details, see [this video](https://www.youtube.com/watch?v=sD6RFp8S6Fg).
 
 &nbsp;
 
