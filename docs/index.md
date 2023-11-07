@@ -12,28 +12,29 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-!!! pied-piper ":bulb: TL;DR - Instant App/API, Fully Flexible, *Unique* Declarative Rules"
+!!! pied-piper ":bulb: TL;DR - Working Software Now - Create, Customize, Deploy"
 
-    API Logic Server is the **fastest and simplest** way to create **modern, scalable API-based database systems:**
+    Are long dev cycles delaying Agile Collaboration, or blocking custom app dev?  AI Logic Server provides **Working Software, *Now***.
+    
+    Open source, it is the **fastest and simplest** way to create **modern, scalable API-based database systems:**
+    
+    1. **Create:** `ApiLogicServer create` builds an executable project from your database, instantly:
+    
+        * Multi-page web app - enable agile collaboration 
 
-    1. **Instantly create** (`ApiLogicServer create`) a Flask/SQLAlchemy project from your database.  Zero learning curve.  Projects are **ready to run**, providing:
+        * Self-serve API - unblock custom App Dev
+    
+    2. **Customize** using Python, your IDE and standard libraries such as Flask and SQLAlchemy:
+    
+        * Enforce business logic with rules that are 40X more concise than code -- unique to API Logic Server &nbsp;&nbsp; :trophy:
 
-        * **an Admin App:** multi-page, multi-table apps -- ready for business user agile collaboration.
-        * **an API:** end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- self-serve, ready for custom app dev.
+        * Extend with Python and your IDE, using standard libraries such as Flask and SQLAlchemy
 
-    2. **Open Flexibility:** leverage standards for development and deployment:
+        * Iterate from revised database designs, preserving customizations
+    
+    3. **Deploy:** to the cloud for agile collaboration with automated deployment scripts.
 
-        * Dev: customize and debug with **<span style="background-color:Azure;">standard dev tools</span>**.  Use *your IDE (e.g. <span style="background-color:Azure;">VSCode, PyCharm</span>)*, <span style="background-color:Azure;">Python</span>, and Flask/SQLAlchemy to create new services.  Manage projects with <span style="background-color:Azure;">GitHub</span>.
-
-        * Deploy: **containerize** your project - deploy on-premise or to the cloud <span style="background-color:Azure;">(Azure, AWS, etc)</span>.
-        
-        * *Flexible as a framework, Faster than Low Code for Admin Apps*
-
-    3. ***Declare* security and multi-table constraint/derivation logic**, using **declarative spreadsheet-like rules**.  Addressing the backend *half* of your system, logic consists of rules, extensible with Python event code.
-
-        * *40X more concise than code - unique to API Logic Server* &nbsp;&nbsp; :trophy:
-
-    ***Check out the new AI-Driven Tutorial --*** [click here for Tutorial](Tech-AI.md), [or video](https://youtu.be/Uon_ASZQ7BI?si=hW4F9DlqC6hIZ-Ew){:target="_blank" rel="noopener"})
+    ***Check out the new AI-Driven Tutorial --*** [click here for Tutorial](Tech-AI.md), [or video](https://www.youtube.com/watch?v=sD6RFp8S6Fg&t=7s){:target="_blank" rel="noopener"})
 
     &nbsp;
 
