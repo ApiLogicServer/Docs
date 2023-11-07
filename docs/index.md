@@ -12,11 +12,11 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-!!! pied-piper ":bulb: TL;DR - Instant Creation, Rules, Standard Tooling"
+!!! pied-piper ":bulb: TL;DR: Instant Creation, Rules, Standard Tooling.  &nbsp; Open Source."
 
-    Are long dev cycles delaying Agile Collaboration, or blocking custom app dev?  AI Logic Server provides **Working Software, *Now***.
+    Eliminate long dev cycles that delay Agile Collaboration and custom app dev with **Working Software, *Now.***
     
-    Open source, it is the **fastest and simplest** way to create **modern, scalable API-based database systems:**
+    API Logic Server is the **fastest and simplest** way to create **modern, scalable API-based database systems:**
     
     1. **Create:** `ApiLogicServer create` builds an executable project from your database, instantly:
     
@@ -26,13 +26,13 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
     
     2. **Customize:** using Python, your IDE and standard libraries such as Flask and SQLAlchemy:
     
-        * Declare rules that are 40X more concise than code -- unique to API Logic Server &nbsp;&nbsp; :trophy:
+        * Declare **`rules`** that are 40X more concise than code -- unique to API Logic Server &nbsp;&nbsp; :trophy:
 
         * Extend with standard Python
 
         * Iterate from revised database designs, preserving customizations
     
-    3. **Deploy:** automated deployment scripts create standard containers for deployment
+    3. **Deploy:** automated scripts create standard containers for deployment
 
     ***Check out the new AI-Driven Tutorial --*** [click here for Tutorial](Tech-AI.md), [or video](https://www.youtube.com/watch?v=sD6RFp8S6Fg&t=7s){:target="_blank" rel="noopener"})
 
