@@ -22,7 +22,7 @@ nav:
       - Execute an API Logic Project:
         - Execute in your IDE: IDE-Execute.md
         - Execute From Terminal: Execute.md
-  - Tutorial:
+  - Demos, Tutorial, Samples:
     - "Basic Demo": Sample-Basic-Demo.md
     - "Tutorial": Tutorial.md
     - Sample-Database.md
