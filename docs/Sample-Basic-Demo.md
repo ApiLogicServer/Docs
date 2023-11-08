@@ -1,7 +1,7 @@
 ---
 title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
-version: 0.6
+version: 0.8 from docsite
 ---
 
 See how to build a complete database system -- in minutes instead of weeks or months:
@@ -70,37 +70,38 @@ You can click Customer 2, see their Orders, and Items.
 
 ## 2. Customize in your IDE
 
-While api/UI automation is a great start, it's critical to enforce logic and security.  Here's how.
+While API/UI automation is a great start, it's critical to enforce logic and security.  Here's how.
 
+The follwing `apply_customizations` process simulates adding security to your project, and using your IDE to declare logic and security in `logic/declare_logic.sh` and `security/declare_security.py`.  You can diff these files to their created versions, and/or examine the declared logic.
+
+In a terminal window for your project:
+
+**1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
+
+**2. Apply Customizations**
+
+```bash
+# mac, linux
+sh apply_customizations.sh
+
+#windows
+./apply_customizations.ps1
+```
 &nbsp;
 
 ### Declare Security
 
-To add security:
-
-**1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
-
-**2. Add Security**
-
-In a terminal window for your project:
-
-```bash
-ApiLogicServer add-auth --project_name=. --db_url=auth
-```
-
-At this point, you'd use your IDE to declare grants and filters.  Simulate this as follows:
-
-**3. Declare Grants:** Copy `customomizations/declare_security` over `security/declare_security`
+The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_logic.sh`.
 
 To see security in action:
 
-**4. Start the Server**  F5
+**1. Start the Server**  F5
 
-**5. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
+**2. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
 
-**6. Login** as `s1`, password `p`
+**3. Login** as `s1`, password `p`
 
-**7. Click Customers**
+**4. Click Customers**
 
 In the IDE Console Log, observe the how the logging assists in debugging, by showing which Grants (`+ Grant:`) are applied:
 
@@ -114,13 +115,11 @@ Logic (multi-table derivations and constraints) is a significant portion of a sy
 
 Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
 
-Instead of entering them, we simulate this as follows:
+The `apply_customizations` process above has simulated the process of using your IDE to declare logic in `logic/declare_logic.sh`.
 
-**1. Stop the Server**
+To see logic in action:
 
-**2. Declare Logic:** Copy `customomizations/declare_logic` over `logic/declare_logic`
-
-**3. Test: Start the Server, and use the Admin App to add an Order and Item**
+**1. Test: Start the Server, and use the Admin App to add an Order and Item**
 
 Observe the rules firing in the console log, as shown in the next screenshot.
 
@@ -168,38 +167,13 @@ Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify
 
 >> Give a 10% discount for carbon-neutral products for 10 items or more.
 
-Automation still applies; we execute the steps below.
+The follwing `apply_iteration` process simulates an iteration:
 
-&nbsp;
+* acquires a new database with `Product.CarbonNeutral`
 
-**1. Add a Database Column**
+* and a revised `ui/admin/admin.yaml` that shows this new column
 
-We've already created a revised database with a new column `Pruduct.CarbonNeutral` (see Appendix); acquire it as follows:
-
-1. Copy `customizations/db.sqlite` over `database/db.sqlite`
-
-&nbsp;
-
-**2. Rebuild the project, preserving customizations**
-
-In your IDE terminal window:
-
-```bash
-cd ..  #  project parent directory
-ApiLogicServer rebuild-from-database --project_name=basic_demo --db_url=sqlite:///basic_demo/database/db.sqlite
-```
-
-&nbsp;
-
-**3. Update your admin app**
-
-Use your IDE to merge `/ui/admin/admin-merge.yml` -> `/ui/admin/admin.yml`.`
-
-&nbsp;
-
-**4. Declare logic**
-
-In `logic/declare_logic.py`, replace the 2 lines for the `models.Item.Amount` formula with this:
+* revised logic - in `logic/declare_logic.py`, we replace the 2 lines for the `models.Item.Amount` formula with this (next screenshot shows revised logic executing with breakpoint):
 
 ```python
     def derive_amount(row: models.Item, old_row: models.Item, logic_row: LogicRow):
@@ -211,17 +185,32 @@ In `logic/declare_logic.py`, replace the 2 lines for the `models.Item.Amount` fo
     Rule.formula(derive=models.Item.Amount, calling=derive_amount)
 ```
 
-> Note: you may need to use the IDE to ensure proper indents
+* issues the `ApiLogicServer rebuild-from-database` command that rebuilds your project (the database models, the api), while preserving the customizations we made above.
+
+In a terminal window for your project:
+
+**1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
+
+**2. Apply Iteration**
+
+```bash
+# mac, linux
+sh apply_iteration.sh
+
+#windows
+./apply_iteration.ps1
+```
+&nbsp;
+
+**3. Set the breakpoint as shown**
 
 &nbsp;
 
-**5. Set the breakpoint as shown**
-
-&nbsp;
-
-**6. Test: Start the Server, and use the Admin App to update your Order by adding a `green` Item**
+**4. Test: Start the Server, and use the Admin App to update your Order by adding a `Green` Item**
 
 At the breakpoint, note you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
+
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-debugging.jpeg?raw=true">
 
 &nbsp;
 
@@ -276,6 +265,7 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 1. Create a container from your project -- see `devops/docker-image/build_image.sh`
 2. Upload to Docker Hub, and
 3. Deploy for agile collaboration.
+
 &nbsp;
 
 ## Summary
