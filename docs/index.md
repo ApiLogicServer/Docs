@@ -34,7 +34,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
     
     3. **Deploy:** automated scripts create standard containers for deployment
 
-    ***Check out the new AI-Driven Tutorial --*** [click here for see it](Tech-AI.md), or watch [the video](https://www.youtube.com/watch?v=sD6RFp8S6Fg&t=7s){:target="_blank" rel="noopener"}, or try the [Basic Demo](Sample-Basic-Demo.md)
+    ***Check out the new AI-Driven Tutorial --*** [article here](Tech-AI.md), or watch [the video](https://www.youtube.com/watch?v=sD6RFp8S6Fg&t=7s){:target="_blank" rel="noopener"}.  Also, try the [Basic Demo](Sample-Basic-Demo.md).
 
     &nbsp;
 
