@@ -12,19 +12,19 @@ See how to build a complete database system -- in minutes instead of weeks or mo
 
 We'll use API Logic Server (open source), providing:
 
-| Key Feature | Providing | Why It Matters|
+| Key Feature | What It Means | Why It Matters|
 | :--- |:---|:---|
 | **Automation** | Instant Project Creation:<br>An API and an Admin web app  | Unblock UI App Dev<br>Instant Agile Collaboration |
 | **Customization** | Declarative logic and security <br> 5 rules vs. 200 lines of Python | 40X less backend code |
-| **Iteration** | Revising the data model, and <br>Adding rules plus Python | Iterative development <br> Extensiblity with Python |
+| **Iteration** | Revise the data model, and <br>Add rules, plus Python | Iterative development <br> Extensiblity with Python |
 
 The entire process takes 10 minutes, instead of several weeks using traditional development.
 
 You can use this article in several ways:
 
-* Conceptual Overview - focus on the basic process.  Operational details are moved to the Appendix to retain focus on the concepts.
+* Conceptual Overview - the main article focuses on the concepts and basic process.  Operational details are moved to the Appendix to retain focus.
 
-* Self-demo - you can create this system yourself.
+* Self-demo - [install FIXME](Install-Express.md){:target="_blank" rel="noopener"} and create this system yourself.
 
 * Self-demo with video - you can also use [this video](https://www.youtube.com/watch?v=sD6RFp8S6Fg) (it's the same system, but the database is created with ChatGPT).
 
@@ -62,9 +62,9 @@ The system creates an API with end points for each table, with filtering, sortin
 
 ### Admin App
 
-It also creates an Admin App: multi-page, multi-table apps -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
+It also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
 
-You can click Customer 2, see their Orders, and Items.
+You can click Customer 2, and see their Orders, and Items.
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/admin-app-initial.jpeg?raw=true">
 
@@ -72,9 +72,9 @@ You can click Customer 2, see their Orders, and Items.
 
 While API/UI automation is a great start, it's critical to enforce logic and security.  Here's how.
 
-The follwing `apply_customizations` process simulates adding security to your project, and using your IDE to declare logic and security in `logic/declare_logic.sh` and `security/declare_security.py`.  You can diff these files to their created versions, and/or examine the declared logic.
+The following `apply_customizations` process simulates adding security to your project, and using your IDE to declare logic and security in `logic/declare_logic.sh` and `security/declare_security.py`.  Declared security and logic are shown in the screenshots below.
 
-In a terminal window for your project:
+To apply customizations, in a terminal window for your project:
 
 **1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
 
@@ -103,7 +103,15 @@ To see security in action:
 
 **4. Click Customers**
 
-In the IDE Console Log, observe the how the logging assists in debugging, by showing which Grants (`+ Grant:`) are applied:
+Observe:
+
+1. The admin app now shows fewer customers
+
+2. The screenhot below illustrates security declaration and operation:
+
+    * The declarative Grants in the upper code panel, and
+
+    *  The logging in the lower panel, to assist in debugging by showing which Grants (`+ Grant:`) are applied:
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true">
 
@@ -119,7 +127,7 @@ The `apply_customizations` process above has simulated the process of using your
 
 To see logic in action:
 
-**1. **Logout (upper right), and login as admin, p**
+**1. In the admin app, Logout (upper right), and login as admin, p**
 
 **2. Use the Admin App to add an Order and Item for `Customer 1`** (see Appendix)
 
@@ -133,7 +141,7 @@ Logic provides significant improvements over procedural logic, as described belo
 
 The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
 
-Note that it's `Multi-Table Transaction`, as indicating by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
+Note that it's a `Multi-Table Transaction`, as indicating by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-chaining.jpeg?raw=true">
 
@@ -145,7 +153,7 @@ The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [sho
 
 #### c. Automatic Re-use
 
-The logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc.
+The logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc.  This reduces code, and promotes quality (no missed corner cases).
 
 &nbsp;
 
@@ -175,9 +183,11 @@ The follwing `apply_iteration` process simulates an iteration:
 
 * acquires a new database with `Product.CarbonNeutral`
 
-* and a revised `ui/admin/admin.yaml` that shows this new column
+* issues the `ApiLogicServer rebuild-from-database` command that rebuilds your project (the database models, the api), while preserving the customizations we made above.
 
-* revised logic - in `logic/declare_logic.py`, we replace the 2 lines for the `models.Item.Amount` formula with this (next screenshot shows revised logic executing with breakpoint):
+* acquires a revised `ui/admin/admin.yaml` that shows this new column in the admin app
+
+* acquires this revised logic - in `logic/declare_logic.py`, we replaced the 2 lines for the `models.Item.Amount` formula with this (next screenshot shows revised logic executing with breakpoint):
 
 ```python
     def derive_amount(row: models.Item, old_row: models.Item, logic_row: LogicRow):
@@ -189,9 +199,9 @@ The follwing `apply_iteration` process simulates an iteration:
     Rule.formula(derive=models.Item.Amount, calling=derive_amount)
 ```
 
-* issues the `ApiLogicServer rebuild-from-database` command that rebuilds your project (the database models, the api), while preserving the customizations we made above.
+&nbsp;
 
-In a terminal window for your project:
+To apply this iteration, in a terminal window for your project:
 
 **1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
 
@@ -207,8 +217,6 @@ sh apply_iteration.sh
 &nbsp;
 
 **3. Set the breakpoint as shown in the screenshot below**
-
-&nbsp;
 
 **4. Test: Start the Server, login as Admin**
 
@@ -228,7 +236,7 @@ This simple example illustrates some significant aspects of iteration, described
 
 Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That's because it's not about writing code, but it's mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that will hopefully be called and function correctly.
 
-Rules change that, since they **self-order their execution** (and pruning) based on system-discovered dependencies.  So, to alter logic, you just "drop a new rule in the bucket", and the system will ensure it's called in the proper order, and re-used over all the Use Cases to which it applies.
+Rules change that, since they **self-order their execution** (and pruning) based on system-discovered dependencies.  So, to alter logic, you just "drop a new rule in the bucket", and the system will ensure it's called in the proper order, and re-used over all the Use Cases to which it applies.  Maintenance is **faster, and higher quality.**
 
 &nbsp;
 
@@ -278,7 +286,7 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/summary.jpeg?raw=true">
 
-In minutes - not days or weeks - you've used API Logic Server to convert an idea into **working software,** added **logic and security,** and **iterated** to meet new requirements.
+In minutes - not days or weeks - you've used API Logic Server to convert an idea into **working software,** customized **logic and security,** and **iterated** to meet new requirements.
 
 To dive deeper, you can install [API Logic Server](https://apilogicserver.github.io/Docs) and execute this demo - or create a system from your own databases.
 
