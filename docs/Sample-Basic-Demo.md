@@ -1,7 +1,7 @@
 ---
 title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
-version: 0.8 from docsite
+version: 0.9 from docsite
 ---
 
 See how to build a complete database system -- in minutes instead of weeks or months:
@@ -119,7 +119,9 @@ The `apply_customizations` process above has simulated the process of using your
 
 To see logic in action:
 
-**1. Test: Start the Server, and use the Admin App to add an Order and Item**
+**1. **Logout (upper right), and login as admin, p**
+
+**2. Use the Admin App to add an Order and Item for `Customer 1`** (see Appendix)
 
 Observe the rules firing in the console log, as shown in the next screenshot.
 
@@ -167,6 +169,8 @@ Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify
 
 >> Give a 10% discount for carbon-neutral products for 10 items or more.
 
+&nbsp;
+
 The follwing `apply_iteration` process simulates an iteration:
 
 * acquires a new database with `Product.CarbonNeutral`
@@ -202,19 +206,21 @@ sh apply_iteration.sh
 ```
 &nbsp;
 
-**3. Set the breakpoint as shown**
+**3. Set the breakpoint as shown in the screenshot below**
 
 &nbsp;
 
-**4. Test: Start the Server, and use the Admin App to update your Order by adding a `Green` Item**
+**4. Test: Start the Server, login as Admin**
 
-At the breakpoint, note you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
+**5. Use the Admin App to update your Order by adding 12 `Green` Items**
+
+At the breakpoint, observe you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-debugging.jpeg?raw=true">
 
 &nbsp;
 
-This simple example illustrates some significant aspects of iteration, described in the sub-sections bdelow.
+This simple example illustrates some significant aspects of iteration, described in the sub-sections below.
 
 &nbsp;
 
