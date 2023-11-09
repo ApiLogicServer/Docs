@@ -179,7 +179,7 @@ Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify
 
 &nbsp;
 
-The follwing `apply_iteration` process simulates an iteration:
+The following `apply_iteration` process simulates an iteration:
 
 * acquires a new database with `Product.CarbonNeutral`
 
