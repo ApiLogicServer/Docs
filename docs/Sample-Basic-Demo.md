@@ -141,7 +141,7 @@ Logic provides significant improvements over procedural logic, as described belo
 
 The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
 
-Note that it's a `Multi-Table Transaction`, as indicating by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
+Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-chaining.jpeg?raw=true">
 
