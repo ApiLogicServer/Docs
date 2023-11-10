@@ -240,6 +240,7 @@ On Macs and Linux:
 ```
 
 As of release 5.02.10, you can run `venv_setup/py.py sys-info`, either
+
 * Using Command Line Python, or
 * In VSCode, select the file and use the Launch Configuration __Python: Current File__.
    * Note: this may properly update the Python `venv` information if it was not properly set
