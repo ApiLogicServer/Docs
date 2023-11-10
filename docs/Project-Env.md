@@ -72,6 +72,14 @@ Ss of release 5.02.10, projects are created with a `venv_setup` directory which 
 
 &nbsp;
 
+## `venv` Troubleshooting
+
+By far, most of the support calls we get involve `venv` setup.
+
+To find more information, please [click here](Troubleshooting.md#verify-your-python-environment).
+
+&nbsp;
+
 ## Notes
 
 ### Issues with `pip`

@@ -229,6 +229,16 @@ It's a good idea to verify your `venv`, as described in the next section.
 
 ## Verify your Python environment
 
+A common mistake is to install API Logic Server globally, with no `venv`.  This version might still be in use, even if there were subsequent installs of newer versions.  Note you need to install *and run* under the new versions' `venv`.
+
+On Macs and Linux:
+
+```bash
+% ApiLogicServer        # will identify version
+% which ApiLogicServer  # should include your venv in path, like this:
+/Users/val/dev/ApiLogicServer/venv/bin/ApiLogicServer
+```
+
 As of release 5.02.10, you can run `venv_setup/py.py sys-info`, either
 * Using Command Line Python, or
 * In VSCode, select the file and use the Launch Configuration __Python: Current File__.
