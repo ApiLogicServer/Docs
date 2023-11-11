@@ -229,7 +229,9 @@ It's a good idea to verify your `venv`, as described in the next section.
 
 ## Verify your Python environment
 
-A common mistake is to install API Logic Server globally, with no `venv`.  This global version might still be in use, even if there were subsequent installs of newer versions.  Note you need to install *and run* under the new versions of `venv`.
+A common mistake is to install API Logic Server globally, with no `venv`.  This global version might still be in use, even if there were subsequent installs of newer versions.  If you then run the recent install *without* a `venv`, you'll be running the older global version.
+
+> Note you need to install *and run* under the new version of `venv`.
 
 On Macs and Linux:
 

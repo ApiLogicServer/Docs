@@ -68,7 +68,7 @@ Exercise caution - this might affect other projects.
 
 ## `venv_setup` - shortcut setup procedures
 
-Ss of release 5.02.10, projects are created with a `venv_setup` directory which may be helpful in establishing and verifying your Python environment.  For more information, see the [Trouble Shooting Guide](Troubleshooting.md#ide-issues).
+Ss of release 5.02.10, projects are created with a `venv_setup` directory which may be helpful in establishing and verifying your Python environment.  For more information, see the [Trouble Shooting Guide](Troubleshooting.md#ide-issues){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -76,7 +76,7 @@ Ss of release 5.02.10, projects are created with a `venv_setup` directory which 
 
 By far, most of the support calls we get involve `venv` setup.
 
-To find more information, please [click here](Troubleshooting.md#verify-your-python-environment).
+To find more information, please [click here](Troubleshooting.md#verify-your-python-environment){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
