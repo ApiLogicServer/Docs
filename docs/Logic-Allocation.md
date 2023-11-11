@@ -4,12 +4,15 @@ This project is to illustrate the use of Allcation.
 
 Allocation is a pattern where:
 
-> A ```Provider``` allocates to a list of ```Recipients```,
+> A ```Provider``` allocates items to a list of ```Recipients```,
 >creating ```Allocation``` rows.
 
 
 For example, imagine a ```Customer``` has a set of outstanding
 ```Orders```, and pays all/several off with a single ```Payment```.
+
+Then, inserting a *provider* `Payment` allocates the `amount` to as set of *recipient* `Orders`,
+creating ```PaymentAllocation``` *allocation* rows.
 
 
 &nbsp;&nbsp;
@@ -20,6 +23,7 @@ For example, imagine a ```Customer``` has a set of outstanding
 
 ## Requirements
 When the ```Payment``` is inserted, our system must:
+
 1. Allocate the ```Payment``` to ```Orders``` that have ```AmountOwed```, oldest first
 1. Keep track of how the ```Payment``` is allocated, by creating 
 a ```PaymentAllocation```
