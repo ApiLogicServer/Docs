@@ -24,7 +24,7 @@ You can use this article in several ways:
 
 * Conceptual Overview - the main article focuses on the concepts and basic process.  Operational details are moved to the Appendix to retain focus.
 
-* Self-demo - [install FIXME](Install-Express.md){:target="_blank" rel="noopener"} and create this system yourself.
+* Self-demo - [install](Install-Express.md){:target="_blank" rel="noopener"} and create this system yourself.
 
 * Self-demo with video - you can also use [this video](https://www.youtube.com/watch?v=sD6RFp8S6Fg) (it's the same system, but the database is created with ChatGPT).
 
