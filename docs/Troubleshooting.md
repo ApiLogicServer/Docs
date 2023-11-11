@@ -254,6 +254,7 @@ As of release 5.02.10, you can run `venv_setup/py.py sys-info`, either
 ## MacOS Installs
 
 Such installs can be daunting:
+
 * __Which installer:__ Python.org installer, or brew?
 * __Additional utlities required:__ Rely on additional tooling, such as `pyenv` or `venv`?
 * __Install history:__ is the Mac default Python (2) installed?  Are there prior installs, using one or both of the methods above
@@ -261,6 +262,7 @@ Such installs can be daunting:
 
 #### Choose simple case
 With so many variables, I have researched the simplest possible scenario:
+
 * Clean Monterey install (no existing Python)
 * Using `zsh` (not `bash`)
 * Use _(only)_ the [Python.org installer](https://www.python.org/downloads/macos/)
