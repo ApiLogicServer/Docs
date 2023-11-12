@@ -93,6 +93,18 @@ We think you'll find Codespaces pretty amazing - check it out!
 
 &nbsp;
 
+### Self Demo
+
+You can build a sample app from a simple pre-installed database to see the key features:
+
+1. To install, [click here](Install-Express.md){:target="_blank" rel="noopener"}
+
+2. To demo the key features, [click here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}
+
+The navigation menu on the left contains the **[Tutorial](Tutorial.md){:target="_blank" rel="noopener"}** and other samples.  These all use pre-installed databases.
+
+&nbsp;
+
 
 ### Instant Cloud Deployment
 
