@@ -14,7 +14,7 @@ SQLAlchemy supports multiple databases by using the `bind_key` which is [support
 
 ```bash
 cd YourApiLogicProject
-ApiLogicServer add-db --db-url=todo --bind_key=Todo
+ApiLogicServer add-db --db_url=todo --bind_key=Todo
 ``` 
 
 &nbsp;
