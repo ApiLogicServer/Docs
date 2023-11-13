@@ -11,6 +11,12 @@ cd <project-root>  # typically done in your IDE
 ApiLogicServer add-auth --project_name=. --db_url=mysql+pymysql://root:p@localhost:3306/authdb
 ```        
 
+You can omit the `project_name`, and use the SQLite version:
+```bash
+cd <project-root>  # typically done in your IDE
+ApiLogicServer add-auth --db_url=auth 
+```
+
 &nbsp;
 
 ## Security Database Structure
