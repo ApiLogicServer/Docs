@@ -28,11 +28,13 @@ APIs are:
 
 ## Automatic Swagger Generation
 
-API creation includes automatic swagger generation.  
+API creation includes automatic swagger generation. Start the server, and open your Browser at `localhost:5656`.   
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/swagger.png?raw=true"></figure>
+![Swagger](images/basic_demo/api-swagger.jpeg)
 
-Start the server, and open your Browser at `localhost:5656`.  Or, explore the sample app [running at PythonAnyWhere](http://apilogicserver.pythonanywhere.com/api){:target="_blank" rel="noopener"}.
+Or, explore the sample app [running at PythonAnyWhere](http://apilogicserver.pythonanywhere.com/api){:target="_blank" rel="noopener"}.
+
+![Swagger](images/api/swagger-get-data.png)
 
 &nbsp;
 
@@ -66,3 +68,20 @@ The [Behave Tests](Behave.md){:target="_blank" rel="noopener"} provide several e
 ## Key Usage: custom apps
 
 The automatic Admin App is useful, but most systems will require custom User Interfaces.  Use your favorite framework (eg, React).
+
+&nbsp;
+
+## `ApiLogicServer` curl
+
+While swagger is the best way to explore your API, you may want to use curl during test cycles.  If you have activated security, this fails since the header is not provided.
+
+So, as of release 9.05.10, the API Logic Server provides CLI commands to:
+
+1. The **"login"** command:
+    * Gets a token from the server (it must must be running)
+    * Stores it in `api_logic_server_cli/api_logic_server_info.yaml` 
+2. The `curl` command is then enabled:
+    * Gets the token
+    * Appends security headers to the curl command provided as arg #2
+
+![Swagger](images/api/test-with-curl.png)
