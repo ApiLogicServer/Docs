@@ -75,13 +75,13 @@ The automatic Admin App is useful, but most systems will require custom User Int
 
 While swagger is the best way to explore your API, you may want to use curl during test cycles.  If you have activated security, this fails since the header is not provided.
 
-So, as of release 9.05.10, the API Logic Server provides CLI commands to:
+So, as of release 9.05.10, API Logic Server provides CLI commands for:
 
-1. The **"login"** command:
+1. `login`:
     * Gets a token from the server (it must must be running)
     * Stores it in `api_logic_server_cli/api_logic_server_info.yaml` 
-2. The `curl` command is then enabled:
-    * Gets the token
+2. `curl`:
+    * Gets the saved token (so, you must login first)
     * Appends security headers to the curl command provided as arg #2
 
 ![Swagger](images/api/test-with-curl.png)
