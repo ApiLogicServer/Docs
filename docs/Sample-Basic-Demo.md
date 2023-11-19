@@ -51,22 +51,25 @@ You can open with VSCode, and run it as follows:
 3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The screen shown below should appear in your Browser.
 
 The sections below explore the system that has been created (which would be similar for your own database).
+<br><br>
+
+!!! pied-piper ":bulb: Automation: Key Takeaways -- Instant API, Admin App"
+
+    ### a. API with Swagger
+
+    The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- **[self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for custom app dev.**
+
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/api-swagger.jpeg?raw=true">
+
+    ### b. Admin App
+
+    It also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
+
+    You can click Customer 2, and see their Orders, and Items.
+
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/admin-app-initial.jpeg?raw=true">
 
 &nbsp;
-
-### API with Swagger
-
-The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- **[self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for custom app dev.**
-
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/api-swagger.jpeg?raw=true">
-
-### Admin App
-
-It also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
-
-You can click Customer 2, and see their Orders, and Items.
-
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/admin-app-initial.jpeg?raw=true">
 
 ## 2. Customize in your IDE
 
