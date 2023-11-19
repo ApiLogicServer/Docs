@@ -146,6 +146,7 @@ markdown_extensions:
   - abbr
   - footnotes
   - md_in_html
+  - sane_lists
   - pymdownx.emoji:
       title: "long"
       emoji_index: !!python/name:materialx.emoji.twemoji

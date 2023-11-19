@@ -72,7 +72,12 @@ You can click Customer 2, and see their Orders, and Items.
 
 While API/UI automation is a great start, it's critical to enforce logic and security.  Here's how.
 
-The following `apply_customizations` process simulates adding security to your project, and using your IDE to declare logic and security in `logic/declare_logic.sh` and `security/declare_security.py`.  Declared security and logic are shown in the screenshots below.
+The following `apply_customizations` process simulates:
+
+* Adding security to your project, and
+* Using your IDE to declare logic and security in `logic/declare_logic.sh` and `security/declare_security.py`.
+
+> Declared security and logic are shown in the screenshots below.<br>It's quite short - 5 rules, 7 security settings.
 
 To apply customizations, in a terminal window for your project:
 
@@ -81,7 +86,7 @@ To apply customizations, in a terminal window for your project:
 **2. Apply Customizations**
 
 ```bash
-# mac, linux
+# mac, linux  (copies the code from the customizations directory)
 sh apply_customizations.sh
 
 #windows
