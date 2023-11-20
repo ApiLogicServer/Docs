@@ -111,17 +111,25 @@ To see security in action:
 
 **4. Click Customers**
 
-Observe:
+&nbsp;
 
-1. The admin app now shows fewer customers
+!!! pied-piper ":bulb: Security: Authentication, Role-based Filtering, Logging"
 
-2. The screenhot below illustrates security declaration and operation:
+    #### 1. Login now required
+
+    #### 2. Role-Based Filtering
+
+    Observe you now see fewer customers, since user `s1`` has role `sales`.  This role has a declared filter, as shown in the screenshot below.
+
+    #### 3. Transparent Logging
+
+    The screenhot below illustrates security declaration and operation:
 
     * The declarative Grants in the upper code panel, and
 
     *  The logging in the lower panel, to assist in debugging by showing which Grants (`+ Grant:`) are applied:
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true">
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true">
 
 &nbsp;
 
