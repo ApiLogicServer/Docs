@@ -53,7 +53,7 @@ You can open with VSCode, and run it as follows:
 The sections below explore the system that has been created (which would be similar for your own database).
 <br><br>
 
-!!! pied-piper ":bulb: Automation: Key Takeaways -- Instant API, Admin App"
+!!! pied-piper ":bulb: Automation: Instant API, Admin App (enable UI dev, agile collaboration)"
 
     ### a. API with Swagger
 
@@ -119,7 +119,7 @@ To see security in action:
 
     #### 2. Role-Based Filtering
 
-    Observe you now see fewer customers, since user `s1`` has role `sales`.  This role has a declared filter, as shown in the screenshot below.
+    Observe you now see fewer customers, since user `s1` has role `sales`.  This role has a declared filter, as shown in the screenshot below.
 
     #### 3. Transparent Logging
 
@@ -153,7 +153,7 @@ Logic provides significant improvements over procedural logic, as described belo
 
 &nbsp;
 
-!!! pied-piper ":bulb: Logic - Key Takeaways"
+!!! pied-piper ":bulb: Logic: Multi-table Derivation and Constraint Rules, 40X More Concise"
 
     #### a. Complexity Scaling
 
@@ -245,9 +245,9 @@ At the breakpoint, observe you can use standard debugger services to debug your 
 
 This simple example illustrates some significant aspects of iteration, described in the sub-sections below.
 
-!!! pied-piper ":bulb: Iteration - Key Takeaways"
+!!! pied-piper ":bulb: Iteration: Automatic Invocation/Ordering, Extensible, Rebuild Preserves Customizations"
 
-    ### a. Maintenance Automation
+    ### a. Dependency Automation
 
     Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That's because it's not about writing code, but it's mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that will hopefully be called and function correctly.
 
@@ -296,11 +296,13 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 
 ## Summary
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/summary.jpeg?raw=true">
+!!! pied-piper ":bulb: Summary: Instant Creation, Rules, Open Standards"
 
-In minutes - not days or weeks - you've used API Logic Server to convert an idea into **working software,** customized **logic and security,** and **iterated** to meet new requirements.
-
-To dive deeper, you can install [API Logic Server](https://apilogicserver.github.io/Docs) and execute this demo - or create a system from your own databases.
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/summary.jpeg?raw=true">
+    
+    In minutes - not days or weeks - you've used API Logic Server to convert an idea into **working software**, customized using **rule-based logic and security**, and **iterated** to meet new requirements.
+    
+    To dive deeper, you can install [API Logic Server](https://apilogicserver.github.io/Docs) and execute this demo - or create a system from your own databases.
 
 &nbsp;
 
