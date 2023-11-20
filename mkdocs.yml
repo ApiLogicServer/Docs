@@ -23,7 +23,7 @@ nav:
         - Execute in your IDE: IDE-Execute.md
         - Execute From Terminal: Execute.md
   - Demos, Tutorial, Samples:
-    - "Basic Demo": Sample-Basic-Demo.md
+    - "Basic Self-Demo": Sample-Basic-Demo.md
     - "Tutorial": Tutorial.md
     - Sample-Database.md
     - "Deployment Tutorial": Tutorial-Deployment.md
