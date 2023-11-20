@@ -1,8 +1,11 @@
 ## Preserving Customizations over Iterations
 Your customizations are made to the files in the following sections.  These are separate files from the core model and api files, so that (if you wish) you can recreate the system from a revised schema, then simply copy over the files described below.
 
-&nbsp;
+```bash
+ApiLogicServer rebuild-from-database --db_url=sqlite:///basic_demo/database/db.sqlite
+```
 
+&nbsp;
 
 ## Rebuilding
 
@@ -10,16 +13,13 @@ Ignoring the boxes labeled "rebuild", the key elements of the creation process a
 
 * the system reads the database schema to create `models.py`
 
-
 * `models.py` drives the creation process
-
 
 * you customize the created project, mainly by altering the files on the far right
 
 As shown in the diagram, creation is always driven from `models.py.`  Models differ from physical schemas in important ways:
 
-* the system ensure that class names are capitalized and singular
-
+* the system ensures that class names are capitalized and singular
 
 * there are good reasons to customize `models.py`:
    * to add foreign keys missing in the database - these are critical for multi-table apis and applications
