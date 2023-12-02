@@ -345,10 +345,10 @@ To get started, please see  the [Architecture](Architecture-Internals.md).
 
 ### Preview Version
 
-You can try the pre-release at (you may need to use `python3`):
+You can try the pre-release [with integration demo](./Sample-Integration.md) at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==9.5.12
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==9.5.23
 ```
 
 Or use (not available currently):

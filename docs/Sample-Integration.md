@@ -24,15 +24,10 @@ The **Shipping API Logic Server** listens on kafka, and stores the message which
 
 # Setup: Create Project
 
-To generate this app, *either:*
-
-1. Use Dev IDE, Run Config `2 - Create servers/ApiLogicProject (new IDE)` (it's near the top), *or*
-2. Use Preview Build (not currently working)
-    * `python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==9.5.10`
-    * Then, create as usual
+This is the sample app
 
 ```
-ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
+ApiLogicServer create --project_name= --db_url=
 ```
 
 &nbsp;
@@ -88,32 +83,13 @@ Here, the attribute names must exactly match the database / model names:
 
 ## B2B Order
 
+Discouraged, since requires client to provide Id.  Best practice is to use lookups - next example.,
+
 1. Swagger: `ServicesEndPoint` > `add_order_by_id`
 
 &nbsp;
 
 Or... 
-
-```bash
-curl -X  'POST' 'http://localhost:5656/api/ServicesEndPoint/add_order_by_id'  -H 'accept: application/vnd.api+json' -H 'Content-Type: application/json' -d '
-{"order": {
-            "AccountId": "ALFKI",
-            "SalesRepId": 1,
-            "Items": [
-                {
-                "ProductId": 1,
-                "QuantityOrdered": 1
-                },
-                {
-                "ProductId": 2,
-                "QuantityOrdered": 2
-                }
-                ]
-            }
-}'
-```
-
-Or, use the ApiLogicServer curl
 
 ```bash
 ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/add_order_by_id'" --data '
@@ -134,16 +110,16 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/add_orde
 }'
 ```
 
+&nbsp;
 
-## With Lookup
+## B2B Order With Lookup
 
-This is a TODO item.
-
-    """
+```bash
 ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/add_b2b_order'" --data '
 {"order": {
             "AccountId": "ALFKI",
-            "SalesRep": "??",
+            "Surname": "Buchanan",
+            "Given": "Steven",
             "Items": [
                 {
                 "ProductName": "Chai",
@@ -156,12 +132,12 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/add_b2b_
                 ]
             }
 }'
-        """
+```
 
 &nbsp;
 
 # Status
 
-11/28/2003 - `add_order_by_id` runs, printing stub message for shipping
+12/02/2003 - runs
 
 &nbsp;
