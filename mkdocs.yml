@@ -29,6 +29,7 @@ nav:
     - "Deployment Tutorial": Tutorial-Deployment.md
     - "AI-driven Automation": Tutorial-AI.md
     - "Agile Tutorial": Tutorial-Agile.md
+    - "Sample Integration": Sample-Integration.md
     - "Sample Systems": Data-Model-Examples.md
   - 1. Admin Web App:
     - "Automatic Admin App": Admin-Tour.md
