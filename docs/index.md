@@ -348,12 +348,12 @@ To get started, please see  the [Architecture](Architecture-Internals.md).
 This pre-release includes:
 
 * [Integration demo](./Sample-Integration.md)
-* Support for Oracle thick (**create *only**), using env variable `APILOGICSERVER_ORACLE_THICK=/Users/val/Downloads/instantclient_19_16` (or equiv)
+* Support for Oracle thick, using env variable `APILOGICSERVER_ORACLE_THICK=/Users/val/Downloads/instantclient_19_16` (or equiv)
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==9.5.26
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==9.5.27
 ```
 
 Or use (not available currently):
