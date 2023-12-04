@@ -75,6 +75,7 @@ nav:
     - "Table Filters": Data-Model-Filters.md
     - "Install pyodbc: SqlServer": Install-pyodbc.md
     - "Install psycopg2: Postgres": Install-psycopg2.md
+    - "Install Oracle Thick": Install-oracle-thick.md
   - DevOps - Containers:
     - "About Containers": DevOps-Containers.md
     - "DevOps Automation": DevOps-Automation.md

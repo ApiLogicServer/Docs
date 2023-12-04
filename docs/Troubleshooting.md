@@ -58,6 +58,11 @@ The `db_url` argument is a [SQLAlchemy database uri](https://docs.sqlalchemy.org
 ### Check Connectivity using SQL Tools
 A typical cause is lack of connectivity to the database.  Use your local database tools to verify connectivity from your machine to the database.
 
+### Oracle Connectivity
+You may require [thick mode](./Install-oracle-thick.md).
+
+Also, note that API Logic Server provides 2 diagnostic programs as shown in the link above.
+
 ## Dynamic model import failed
 
 After the database is opened, it is introspected to build `database/models.py`, classes used by SQLAlchemy and the API for database access.  The models file may fail to compile, often due to unexpected names.
