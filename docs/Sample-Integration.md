@@ -4,12 +4,17 @@ Coming Soon -- see preview.
 
 This app illustrates using IntegrationServices for B2B integrations with APIs, and internal integration with messages.
 
-There are 2 **transaction sources:**
+We have the following **Use Cases:**
 
-1. B2B partners
-2. Internal UI
+I. **Ad Hoc Requests** for information (Sales, Accounting) that cannot be antipated in advance.
 
-In addition, there are multiple **Ad Hoc Requests** for information (Sales, Accounting) that cannot be antipated in advance.
+II. 2 **Two Transaction Sources:**
+
+1. Order Entry UI for internal users
+2. B2B partners post APIs in an agreed-upon format
+
+
+![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/overview.jpg?raw=true)
 
 The **Northwind API Logic Server** provides APIs and the underlying logic for both transaction sources:
 
@@ -27,7 +32,6 @@ The **Northwind API Logic Server** provides APIs and the underlying logic for bo
 
 The **Shipping API Logic Server** listens on kafka, and stores the message which updates <whatever> using logic.
 
-![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/overview.jpg?raw=true)
 
 &nbsp;
 
