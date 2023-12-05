@@ -20,7 +20,7 @@ II. 2 **Two Transaction Sources:**
 
 The **Northwind API Logic Server** provides APIs and the underlying logic for both transaction sources:
 
-1. **Self-serve APIs**, to support
+1. **Self-Serve APIs**, to support
 
     1. UI developers to build the Order Entry UI
     2. Ad hoc Rquests
@@ -38,25 +38,24 @@ The **Shipping API Logic Server** listens on kafka, and stores the message which
 
 ## Architecture Requirements
 
-| Requirememnt | Worst Practice | Good Practice | Best Practice |
+| Requirement | Worst Practice | Good Practice | Best Practice |
 | :--- |:---|:---|:---|
 | **Ad Hoc Integration** | ETL | APIs | **Automated** Self-Serve APIs |
-| **UI App Dev** | Custom API Dev  | Self-Serve APIs | **Automated** Self-Serve APIs<br>**Automated Admin App** (as applies) |
+| **UI App Dev** | Custom API Dev  | Self-Serve APIs | **Automated** Self-Serve APIs<br>**Automated Admin App** <br>.. (where applicable) |
 | **Logic** | Logic in UI | Reusable Logic | **Declarative Business Rules**<br>.. extensible with Python |
 | **Custom Integration** | | Custom APIs | Reusable integration services |
 
 &nbsp;
 
+### Ad Hoc Integration
 
-### Ad Hoc Integrations
+It would be undesirable to require custom API development for ad integration: the inevitable series of requirements that do not stipulate an API contract.  So, our system should support **self-serve** APIs in addition to custom APIs.
 
-However, it would be undesirable to require custom API development for the inevitable series of requirements that do not stipulate an API contract.  So, our system should support **self-serve** APIs in addition to custom APIs.
-
-Unlike Custom APIs which require server development, Self-Serve APIs can be used directly by consumers.  Consumers use Swagger to retrieve the data they want, then copying the URI to their code.  API consumers include:
+Unlike Custom APIs which require server development, Self-Serve APIs can be used directly by consumers retrieve the attributes and related data they require.  API consumers include:
 
 * UI Developers - progress no longer blocked on custom server development
 
-* Application Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs
+* Ad Hoc Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs
 
 
 #### Avoid ETL
@@ -69,13 +68,13 @@ In many cases, this might be simply to lookup a client's address.  For such requ
 
 ### UI App Dev
 
-APIs are of course required.  While these can be custom, the sheer number of such requests places a burden on the server team.  As for ad hoc integrations, a better approach is self-server APIs.
+UI apps depend, of course, on APIs.  While these can be custom, the sheer number of such requests places a burden on the server team.  As for ad hoc integrations, a better approach is self-serve APIs.
 
-In many systems, basic Admin UI apps can be automated to address requirements when the UI needs are minimal.
+In many systems, basic *"Admin"* UI apps can be automated, to address requirements when the UI needs are minimal.
 
 &nbsp;
 
-### Shared Logic
+### Logic: Shared, Declarative
 
 A proper architecture must consider where to place business logic (check credit, reorder products).  Such multi-table logic often consitutes nearly half the development effort.
 
@@ -85,11 +84,21 @@ A worst practice is to place such logic on UI controller buttons.  It can be dif
 
 &nbsp;
 
-### Custom APIs
+### Reusable Integration Services
 
-Custom APIs are required to meet API contracts that define API request formats.  This system includes 2: one to integrate with external B2B partners, and 1 to integrate with internal organizations.
+Custom integrations require attribute map / alias services to transform data from remote formats to match our system objects.  In the sample here, this is required to transform incoming B2B APIs, and outgoing message publishing.
 
-#### Reusable Integration Services
+Ideally, our architecture can extract Integration Services for reuse, including attribute map / alias services, Lookups, and Cascade Add.  Details below.
+
+&nbsp;
+
+### Messaging
+
+Note the integration to Shipping is via message, not APIs.  While both APIs and messages may can send data, there is an important difference:
+
+* APIs are **synchronous**: if the remote server is down, the message fails.
+
+* Message systems such as Kafka ensure that messages are delivered eventualy when the remote server is brought back online
 
 &nbsp;
 
