@@ -40,9 +40,9 @@ The **Shipping API Logic Server** listens on kafka, and stores the message which
 
 | Requirememnt | Worst Practice | Good Practice | Best Practice |
 | :--- |:---|:---|:---|
-| **Ad hoc requests** | Custom Server Dev  | Self-Serve APIs | Automated Self-Service APIs |
-| **Logic** | Logic in UI | Reusable Logic | Declarative Business Rules, extensible with Python}
-| **Integration** | ETL | APIs | Automated Self-Serve APIs |
+| **Ad hoc requests** | Custom Server Dev  | Self-Serve APIs | **Automated** Self-Serve APIs |
+| **Logic** | Logic in UI | Reusable Logic | **Declarative Business Rules**, extensible with Python}
+| **Integration** | ETL | APIs | **Automated** Self-Serve APIs |
 
 &nbsp;
 
