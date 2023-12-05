@@ -2,6 +2,8 @@
 
 Coming Soon -- see preview.
 
+## System Requirements
+
 This app illustrates using IntegrationServices for B2B integrations with APIs, and internal integration with messages.
 
 We have the following **Use Cases:**
@@ -11,7 +13,7 @@ I. **Ad Hoc Requests** for information (Sales, Accounting) that cannot be antipa
 II. 2 **Two Transaction Sources:**
 
 1. Order Entry UI for internal users
-2. B2B partners post APIs in an agreed-upon format
+2. B2B partners post `OrderB2B` APIs in an agreed-upon format
 
 
 ![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/overview.jpg?raw=true)
@@ -32,6 +34,37 @@ The **Northwind API Logic Server** provides APIs and the underlying logic for bo
 
 The **Shipping API Logic Server** listens on kafka, and stores the message which updates <whatever> using logic.
 
+&nbsp;
+
+## Architecture Requirements
+
+### Custom APIs
+
+Custom APIs are required to meet API contracts that define API request formats.  This system includes 2: one to integrate with external B2B partners, and 1 to integrate with internal organizations.
+
+### Self-Serve APIs
+
+However, it would be undesirable to require custom API development for the inevitable series of requirements that do not stipulate an API contract.  So, our system should support **self-serve** APIs in addition to custom APIs.
+
+Unlike Custom APIs which require server development, Self-Serve APIs can be used directly by consumers.  Consumers use Swagger to retrieve the data they want, then copying the URI to their code.  API consumers include:
+
+* UI Developers - progress no longer blocked on custom server development
+
+* Application Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs
+
+&nbsp;
+
+#### Avoid ETL
+
+
+
+&nbsp;
+
+### Reusable Integration Services
+
+
+
+### Shared Logic
 
 &nbsp;
 
@@ -128,7 +161,7 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/add_orde
 ## B2B Order With Lookup
 
 ```bash
-ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/add_b2b_order'" --data '
+ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B'" --data '
 {"order": {
             "AccountId": "ALFKI",
             "Surname": "Buchanan",
