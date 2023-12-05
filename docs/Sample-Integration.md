@@ -56,7 +56,9 @@ Unlike Custom APIs which require server development, Self-Serve APIs can be used
 
 #### Avoid ETL
 
+Tradtional internal integration often involves ETL - Extract, Transfer and Load.  That is, each requesting system runs nightly programs to Extract the needed data, Transfer it to their location, and Load it for local access the next day.  This requires app dev for the extract, considerable bandwidth - all to see stale data.
 
+In many cases, this might be simply to lookup a client's address.  For such requests, self-serve APIs can avoid ETL overhead, and provide current data.
 
 &nbsp;
 
@@ -64,7 +66,14 @@ Unlike Custom APIs which require server development, Self-Serve APIs can be used
 
 
 
+
 ### Shared Logic
+
+A proper architecture must consider where to place business logic (check credit, reorder products).  Such multi-table logic often consitutes nearly half the development effort.
+
+A worst practice is to place such logic on UI controller buttons.  It can be difficult or impossile to share this with the OrderB2B service, leading to duplication of efforts and inconsistency.
+
+*Shared* logic is thus a requirement, to avoid duplication and ensure consistent results.  Ideally, such logic is declarative: much more concise, and automatically enforced, ordered and optimized.
 
 &nbsp;
 
@@ -184,6 +193,6 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
 
 # Status
 
-12/02/2003 - runs
+12/02/2003 - runs, messaging is a TODO.
 
 &nbsp;
