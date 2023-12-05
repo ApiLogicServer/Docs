@@ -40,17 +40,15 @@ The **Shipping API Logic Server** listens on kafka, and stores the message which
 
 | Requirememnt | Worst Practice | Good Practice | Best Practice |
 | :--- |:---|:---|:---|
-| **Ad hoc requests** | Custom Server Dev  | Self-Serve APIs | **Automated** Self-Serve APIs |
-| **Logic** | Logic in UI | Reusable Logic | **Declarative Business Rules**, extensible with Python}
-| **Integration** | ETL | APIs | **Automated** Self-Serve APIs |
+| **Ad Hoc Integration** | ETL | APIs | **Automated** Self-Serve APIs |
+| **UI App Dev** | Custom API Dev  | Self-Serve APIs | **Automated** Self-Serve APIs<br>**Automated Admin App** (as applies) |
+| **Logic** | Logic in UI | Reusable Logic | **Declarative Business Rules**<br>.. extensible with Python |
+| **Custom Integration** | | Custom APIs | Reusable integration services |
 
 &nbsp;
 
-### Custom APIs
 
-Custom APIs are required to meet API contracts that define API request formats.  This system includes 2: one to integrate with external B2B partners, and 1 to integrate with internal organizations.
-
-### Self-Serve APIs
+### Ad Hoc Integrations
 
 However, it would be undesirable to require custom API development for the inevitable series of requirements that do not stipulate an API contract.  So, our system should support **self-serve** APIs in addition to custom APIs.
 
@@ -60,7 +58,6 @@ Unlike Custom APIs which require server development, Self-Serve APIs can be used
 
 * Application Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs
 
-&nbsp;
 
 #### Avoid ETL
 
@@ -70,10 +67,13 @@ In many cases, this might be simply to lookup a client's address.  For such requ
 
 &nbsp;
 
-### Reusable Integration Services
+### UI App Dev
 
+APIs are of course required.  While these can be custom, the sheer number of such requests places a burden on the server team.  As for ad hoc integrations, a better approach is self-server APIs.
 
+In many systems, basic Admin UI apps can be automated to address requirements when the UI needs are minimal.
 
+&nbsp;
 
 ### Shared Logic
 
@@ -82,6 +82,14 @@ A proper architecture must consider where to place business logic (check credit,
 A worst practice is to place such logic on UI controller buttons.  It can be difficult or impossile to share this with the OrderB2B service, leading to duplication of efforts and inconsistency.
 
 *Shared* logic is thus a requirement, to avoid duplication and ensure consistent results.  Ideally, such logic is declarative: much more concise, and automatically enforced, ordered and optimized.
+
+&nbsp;
+
+### Custom APIs
+
+Custom APIs are required to meet API contracts that define API request formats.  This system includes 2: one to integrate with external B2B partners, and 1 to integrate with internal organizations.
+
+#### Reusable Integration Services
 
 &nbsp;
 
