@@ -38,6 +38,14 @@ The **Shipping API Logic Server** listens on kafka, and stores the message which
 
 ## Architecture Requirements
 
+| Requirememnt | Worst Practice | Good Practice | Best Practice |
+| :--- |:---|:---|:---|
+| **Ad hoc requests** | Custom Server Dev  | Self-Service APIs | Automated Self-Service APIs |
+| **Logic** | Logic in UI | Reusable Logic | Declarative Business Rules, extensible with Python}
+| **Integration** | ETL | APIs | Automated Self-Service APIs |
+
+&nbsp;
+
 ### Custom APIs
 
 Custom APIs are required to meet API contracts that define API request formats.  This system includes 2: one to integrate with external B2B partners, and 1 to integrate with internal organizations.
