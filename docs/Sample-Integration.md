@@ -51,7 +51,7 @@ The **Shipping API Logic Server** listens on kafka, and processes the message.
 
 &nbsp;
 
-### Ad Hoc Integration
+### Ad Hoc Integration (vs. ETL)
 
 It would be undesirable to require custom API development for ad integration: the inevitable series of requirements that do not stipulate an API contract.  So, our system should support **self-serve** APIs in addition to custom APIs.
 
@@ -62,15 +62,11 @@ Unlike Custom APIs which require server development, Self-Serve APIs can be used
 * Ad Hoc Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs
 
 
-#### Avoid ETL
-
-Tradtional internal integration often involves ETL - Extract, Transfer and Load.  That is, each requesting system runs nightly programs to Extract the needed data, Transfer it to their location, and Load it for local access the next day.  This requires app dev for the extract, considerable bandwidth - all to see stale data.
-
-In many cases, this might be simply to lookup a client's address.  For such requests, self-serve APIs can avoid ETL overhead, and provide current data.
+> **Avoid ETL:** Tradtional internal integration often involves ETL - Extract, Transfer and Load.  That is, each requesting system runs nightly programs to Extract the needed data, Transfer it to their location, and Load it for local access the next day.  This requires app dev for the extract, considerable bandwidth - all to see stale data.<br><br>In many cases, this might be simply to lookup a client's address.  For such requests, self-serve APIs can avoid ETL overhead, and provide current data.
 
 &nbsp;
 
-### UI App Dev
+### UI App Dev on self-serve APIs
 
 UI apps depend, of course, on APIs.  While these can be custom, the sheer number of such requests places a burden on the server team.  As for ad hoc integrations, a better approach is self-serve APIs.
 
@@ -82,11 +78,9 @@ In many systems, basic *"Admin"* UI apps can be automated, to address requiremen
 
 A proper architecture must consider where to place business logic (check credit, reorder products).  Such multi-table logic often consitutes nearly half the development effort.
 
+> A poor practice is to place such logic on UI controller buttons.  It can be difficult or impossible to share this with the OrderB2B service, leading to duplication of efforts and inconsistency.
+
 *Shared* logic is thus a requirement, to avoid duplication and ensure consistent results.  Ideally, such logic is declarative: much more concise, and automatically enforced, ordered and optimized.
-
-#### Avoid Logic in UI
-
-A poor practice is to place such logic on UI controller buttons.  It can be difficult or impossile to share this with the OrderB2B service, leading to duplication of efforts and inconsistency.
 
 &nbsp;
 
@@ -137,7 +131,7 @@ The sections below explore the system that has been created (which would be simi
 
 !!! pied-piper ":bulb: Automation: Instant API, Admin App (enable UI dev, agile collaboration)"
 
-    ### a. API with Swagger
+    ### a. Self-Serve API, Swagger
 
     The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- **[self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for custom app dev.**
 
