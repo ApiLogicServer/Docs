@@ -1,3 +1,9 @@
+---
+title: Declarative Application Integration
+notes: gold is proto (-- doc); alert for apostrophe
+version: 0.01 from docsite
+---
+
 # Purpose
 
 Coming Soon -- see preview.
@@ -15,30 +21,28 @@ II. 2 **Two Transaction Sources:**
 1. Order Entry UI for internal users
 2. B2B partners post `OrderB2B` APIs in an agreed-upon format
 
-
-![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/overview.jpg?raw=true)
-
-The **Northwind API Logic Server** provides APIs and the underlying logic for both transaction sources:
+The **Northwind API Logic Server** provides APIs *and logic* for both transaction sources:
 
 1. **Self-Serve APIs**, to support
 
-    1. UI developers to build the Order Entry UI
-    2. Ad hoc Rquests
+    1. Ad hoc Integration Requests
+    2. UI developers to build the Order Entry UI
 
 2. **Order Logic:** shared over both transaction sources, this logic
 
     1. Enforces database integrity (checks credit, reorders products)
-    2. Provides application integration services to format an order to alert shipping with a Kafka message.  Unlike APIs, messages are lost if the receiving server (Shipping) is down
+    2. Provides Application Integration (alert shipping with a formatted Kafka message)
 
 3. A **Custom API**, to match an agreed-upon format for B2B partners
 
-The **Shipping API Logic Server** listens on kafka, and stores the message which updates <whatever> using logic.
+The **Shipping API Logic Server** listens on kafka, and processes the message.
 
+![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/overview.jpg?raw=true)
 &nbsp;
 
 ## Architecture Requirements
 
-| Requirement | Worst Practice | Good Practice | Best Practice |
+| Requirement | Poor Practice | Good Practice | Best Practice |
 | :--- |:---|:---|:---|
 | **Ad Hoc Integration** | ETL | APIs | **Automated** Self-Serve APIs |
 | **UI App Dev** | Custom API Dev  | Self-Serve APIs | **Automated** Self-Serve APIs<br>**Automated Admin App** <br>.. (where applicable) |
@@ -78,9 +82,11 @@ In many systems, basic *"Admin"* UI apps can be automated, to address requiremen
 
 A proper architecture must consider where to place business logic (check credit, reorder products).  Such multi-table logic often consitutes nearly half the development effort.
 
-A worst practice is to place such logic on UI controller buttons.  It can be difficult or impossile to share this with the OrderB2B service, leading to duplication of efforts and inconsistency.
-
 *Shared* logic is thus a requirement, to avoid duplication and ensure consistent results.  Ideally, such logic is declarative: much more concise, and automatically enforced, ordered and optimized.
+
+#### Avoid Logic in UI
+
+A poor practice is to place such logic on UI controller buttons.  It can be difficult or impossile to share this with the OrderB2B service, leading to duplication of efforts and inconsistency.
 
 &nbsp;
 
@@ -98,17 +104,232 @@ Note the integration to Shipping is via message, not APIs.  While both APIs and 
 
 * APIs are **synchronous**: if the remote server is down, the message fails.
 
-* Message systems such as Kafka ensure that messages are delivered eventualy when the remote server is brought back online
+* Messages are **async**: systems such as Kafka ensure that messages are delivered *eventually*, when the remote server is brought back online.
 
 &nbsp;
 
+# Development Overview
+
+&nbsp;
+
+## 1. Automation: Instant Project
+
+This project was created with a command like:
+
+```bash
+$ ApiLogicServer create --project_name= db_url=nw-
+```
+
+> Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/).  You would normally supply a SQLAlchemy URI.
+
+This creates a project by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix.  
+
+You can open with VSCode, and run it as follows:
+
+1. **Create Virtual Environment:** as shown in the Appendix.
+
+2. **Start the Server:** F5 (also described in the Appendix).
+
+3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The screen shown below should appear in your Browser.
+
+The sections below explore the system that has been created (which would be similar for your own database).
+<br><br>
+
+!!! pied-piper ":bulb: Automation: Instant API, Admin App (enable UI dev, agile collaboration)"
+
+    ### a. API with Swagger
+
+    The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- **[self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for custom app dev.**
+
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/api-swagger.jpeg?raw=true">
+
+    ### b. Admin App
+
+    It also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
+
+    You can click Customer 2, and see their Orders, and Items.
+
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/admin-app-initial.jpeg?raw=true">
+
+&nbsp;
+
+## 2. Customize in your IDE
+
+While API/UI automation is a great start, we now require Custom APIs, Logic and Security.  Here's how.
+
+The following `apply_customizations` process simulates:
+
+* Adding security to your project, and
+* Using your IDE to declare logic and security in `logic/declare_logic.sh` and `security/declare_security.py`.
+
+> Declared security and logic are shown in the screenshots below.<br>It's quite short - 5 rules, 7 security settings.
+
+To apply customizations, in a terminal window for your project:
+
+**1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
+
+**2. Apply Customizations**
+
+```bash
+ApiLogicServer add-cust
+```
+&nbsp;
+
+### Declare Security
+
+The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_logic.sh`.
+
+To see security in action:
+
+**1. Start the Server**  F5
+
+**2. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
+
+**3. Login** as `s1`, password `p`
+
+**4. Click Customers**
+
+&nbsp;
+
+!!! pied-piper ":bulb: Security: Authentication, Role-based Filtering, Logging"
+
+    #### 1. Login now required
+
+    #### 2. Role-Based Filtering
+
+    Observe you now see fewer customers, since user `s1` has role `sales`.  This role has a declared filter, as shown in the screenshot below.
+
+    #### 3. Transparent Logging
+
+    The screenhot below illustrates security declaration and operation:
+
+    * The declarative Grants in the upper code panel, and
+
+    *  The logging in the lower panel, to assist in debugging by showing which Grants (`+ Grant:`) are applied:
+
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true">
+
+&nbsp;
+
+### Declare Logic
+
+Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
+
+Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
+
+The `apply_customizations` process above has simulated the process of using your IDE to declare logic in `logic/declare_logic.sh`.
+
+To see logic in action:
+
+**1. In the admin app, Logout (upper right), and login as admin, p**
+
+**2. Use the Admin App to add an Order and Item for `Customer 1`** (see Appendix)
+
+Observe the rules firing in the console log, as shown in the next screenshot.
+
+Logic provides significant improvements over procedural logic, as described below.
+
+&nbsp;
+
+!!! pied-piper ":bulb: Logic: Multi-table Derivation and Constraint Rules, 40X More Concise"
+
+    #### a. Complexity Scaling
+
+    The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
+
+    Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
+
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-chaining.jpeg?raw=true">
+
+    #### b. 40X More Concise
+
+    The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code).  That's a remarkable 40X decrease in the backend half of the system.
+    <br><br>
+
+    #### c. Automatic Re-use
+
+    The logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc.  This reduces code, and promotes quality (no missed corner cases).
+    <br><br>
+
+    #### d. Automatic Optimizations
+
+    SQL overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.
+    <br><br>
+
+    #### e. Transparent
+
+    Rules are an executable design.  Note they map exactly to our natural language design (shown in comments) - readable by business users.  
+
+    Optionally, you can use the Behave TDD approach to define tests, and the Rules Report will show the rules that execute for each test.  For more information, [click here](https://apilogicserver.github.io/Docs/Behave-Logic-Report/).
+
+&nbsp;
+
+## 3. Application Integration
+
+**1. Set the breakpoint as shown in the screenshot below**
+
+**2. Test: Start the Server, login as Admin**
+
+At the breakpoint, observe you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
+
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-debugging.jpeg?raw=true">
+
+&nbsp;
+
+This simple example illustrates some significant aspects of iteration, described in the sub-sections below.
+
+!!! pied-piper ":bulb: Iteration: Automatic Invocation/Ordering, Extensible, Rebuild Preserves Customizations"
+
+    ### a. Dependency Automation
+
+    Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That's because it's not about writing code, but it's mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that will hopefully be called and function correctly.
+
+    Rules change that, since they **self-order their execution** (and pruning) based on system-discovered dependencies.  So, to alter logic, you just "drop a new rule in the bucket", and the system will ensure it's called in the proper order, and re-used over all the Use Cases to which it applies.  Maintenance is **faster, and higher quality.**
+    <br><br>
+
+    ### b. Extensibile with Python
+
+    In this case, we needed to do some if/else testing, and it was convenient to add a pinch of Python. Using "Python as a 4GL" is remarkably simple, even if you are new to Python.
+
+    Of course, you have the full object-oriented power of Python and its many libraries, so there are *no automation penalty* restrictions.  
+    <br>
+
+    ### c. Debugging: IDE, Logging
+
+    The screenshot above illustrates that debugging logic is what you'd expect: use your IDE's debugger.  This "standard-based" approach applies to other development activities, such as source code management, and container-based deployment.
+    <br><br>
+
+    ### d. Customizations Retained
+
+    Note we rebuilt the project from our altered database, illustrating we can **iterate, while *preserving customizations.***
+
+&nbsp;
+
+## 4. API Customization: Standard
+
+Of course, we all know that all businesses the world over depend on the `hello world` app.  This is provided in `api/customize_api`.  Observe that it's:
+
+* standard Python
+
+* using Flask
+
+* and, for database access, SQLAlchemy.  Note all updates from custom APIs also enforce your logic.
+
+&nbsp;
+
+## 5. Deploy Containers: Collaborate
+
+API Logic Server also creates scripts for deployment.  While these are ***not required at this demo,*** this means you can enable collaboration with Business Users:
+
+1. Create a container from your project -- see `devops/docker-image/build_image.sh`
+2. Upload to Docker Hub, and
+3. Deploy for agile collaboration.
+
+&nbsp;
+
+
 # Setup: Create Project
 
-This is the sample app
-
-```
-ApiLogicServer create --project_name= --db_url=
-```
 
 &nbsp;
 
@@ -221,3 +442,9 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
 12/02/2003 - runs, messaging is a TODO.
 
 &nbsp;
+
+# Appendix
+
+## Customizations
+
+View them [here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/nw).
