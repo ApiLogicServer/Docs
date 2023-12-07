@@ -383,6 +383,7 @@ We communicate [via slack](https://join.slack.com/t/apilogicserver/signup?x=x-p3
 Many thanks to:
 
 - [Thomas Pollet](https://www.linkedin.com/in/pollet/), for SAFRS, SAFRS-react-admin, and invaluable design partnership
+- Tyler Band, for major contributions on security, testing, features and much more
 - Nitheish Munusamy, for contributions to Safrs React Admin
 - [Marelab](https://marmelab.com/en/), for [react-admin](https://marmelab.com/react-admin/)
 - Armin Ronacher, for Flask
@@ -395,7 +396,6 @@ Many thanks to:
 - Michael Holleran, for design collaboration and testing
 - Nishanth Shyamsundar, for review and testing
 - Thomas Peters, for review and testing
-- Tyler Band, for review, design input and functionality suggestions
 - Gloria Huber and Denny McKinney, for doc review
 
 &nbsp;
