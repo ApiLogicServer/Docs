@@ -347,7 +347,7 @@ To get started, please see  the [Architecture](Architecture-Internals.md).
 
 This pre-release includes:
 
-* Fix for MySQL CHAR/String import [Issue 11](https://github.com/ApiLogicServer/ApiLogicServer-src/issues/26){:target="_blank" rel="noopener"}
+* Fix for MySQL CHAR/String import [Issue 26](https://github.com/ApiLogicServer/ApiLogicServer-src/issues/26){:target="_blank" rel="noopener"}
 
 
 You can try it at (you may need to use `python3`):
