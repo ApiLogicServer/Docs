@@ -304,9 +304,9 @@ This simple example illustrates some significant aspects of iteration, described
 
 TODO: pre-supplied integration services
 
-<< screenshot - custom api >>
+![post order](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/post-orderb2b.jpg?raw=true)
 
-<< screenshot - send to shipping >>
+![send order to shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-to-shipping.jpg?raw=true)
 
 ```bash
 ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B'" --data '
