@@ -63,6 +63,9 @@ nav:
     - "Activation": Security-Activation.md
     - "Swagger": Security-Swagger.md
   - "Using Your IDE": IDE-Customize.md
+  - Integration:
+    - "Sample Integration": Sample-Integration.md
+    - "Integration Service": Integration-Service.md
   - Database:
     - "Connection Examples, Debug": Database-Connectivity.md
     - "Sample Databases": Data-Model-Examples.md
