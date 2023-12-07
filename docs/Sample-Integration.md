@@ -154,16 +154,20 @@ While API/UI automation is a great start, we now require Custom APIs, Logic and 
 
 The following `apply_customizations` process simulates:
 
-* Adding security to your project, and
-* Using your IDE to declare logic and security in `logic/declare_logic.sh` and `security/declare_security.py`.
+* Adding security to your project using a CLI command, and
+* Using your IDE to:
 
-> Declared security and logic are shown in the screenshots below.<br>It's quite short - 5 rules, 7 security settings.
+    * declare logic in `logic/declare_logic.sh`
+    * declare security in `security/declare_security.py`
+    * implement custom APIs in `api/customize_api.py`, using <br>IntegrationServices declared in `integration/integration_services`
+
+> These are shown in the screenshots below.<br>It's quite short - 5 rules, 7 security settings, and 120 lines for application integration.
 
 To apply customizations, in a terminal window for your project:
 
 **1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
 
-**2. Apply Customizations**
+**2. Apply Customizations:**
 
 ```bash
 ApiLogicServer add-cust
@@ -172,7 +176,7 @@ ApiLogicServer add-cust
 
 ### Declare Security
 
-The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_logic.sh`.
+The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_security.sh`.
 
 To see security in action:
 
@@ -208,9 +212,9 @@ To see security in action:
 
 ### Declare Logic
 
-Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
+Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
-Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
+Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for our **Check Credit Logic** noted in the initial diagram.
 
 The `apply_customizations` process above has simulated the process of using your IDE to declare logic in `logic/declare_logic.sh`.
 
@@ -218,7 +222,7 @@ To see logic in action:
 
 **1. In the admin app, Logout (upper right), and login as admin, p**
 
-**2. Use the Admin App to add an Order and Item for `Customer 1`** (see Appendix)
+**2. Use the Admin App to add an Order and Item for `Customer 1`** (see Appendix), where the rollup of Item Amount to the Order exceed the credit limit.
 
 Observe the rules firing in the console log, as shown in the next screenshot.
 
@@ -234,7 +238,7 @@ Logic provides significant improvements over procedural logic, as described belo
 
     Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-chaining.jpeg?raw=true">
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
 
     #### b. 40X More Concise
 
@@ -349,6 +353,76 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 
 # Appendix
 
-## Customizations
+## Apendix: Customizations
 
 View them [here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/nw).
+
+&nbsp;
+
+## Appendix: Procedures
+
+Specific procedures for running the demo are here, so they do not interrupt the conceptual discussion above.
+
+You can use either VSCode or Pycharm.
+
+&nbsp;
+
+**1. Establish your Virtual Environment**
+
+Python employs a virtual environment for project-specific dependencies.  Create one as shown below, depending on your IDE.
+
+For VSCode:
+
+Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
+
+```bash
+python -m venv venv; venv\Scripts\activate     # win
+python3 -m venv venv; . venv/bin/activate      # mac/linux
+
+pip install -r requirements.txt
+```
+
+For PyCharm, you will get a dialog requesting to create the `venv`; say yes.
+
+See [here](https://apilogicserver.github.io/Docs/Install-Express/) for more information.
+
+&nbsp;
+
+**2. Start and Stop the Server**
+
+Both IDEs provide Run Configurations to start programs.  These are pre-built by `ApiLogicServer create`.
+
+For VSCode, start the Server with F5, Stop with Shift-F5 or the red stop button.
+
+For PyCharm, start the server with CTL-D, Stop with red stop button.
+
+&nbsp;
+
+**3. Entering a new Order**
+
+To enter a new Order:
+
+1. Click `Customer 1``
+
+2. Click `+ ADD NEW ORDER`
+
+3. Set `Notes` to "hurry", and press `SAVE AND SHOW`
+
+4. Click `+ ADD NEW ITEM`
+
+5. Enter Quantity 1, lookup "Product 1", and click `SAVE AND ADD ANOTHER`
+
+6. Enter Quantity 2000, lookup "Product 2", and click `SAVE`
+
+7. Observe the constraint error, triggered by rollups from the `Item` to the `Order` and `Customer`
+
+8. Correct the quantity to 2, and click `Save`
+
+
+**4. Update the Order**
+
+To explore our new logic for green products:
+
+1. Access the previous order, and `ADD NEW ITEM`
+
+2. Enter quantity 11, lookup product `Green`, and click `Save`.
