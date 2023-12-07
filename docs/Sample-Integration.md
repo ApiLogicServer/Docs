@@ -136,7 +136,7 @@ The sections below explore the system that has been created (which would be simi
 
     The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- **[self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for custom app dev.**
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/api-swagger.jpeg?raw=true">
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/api-swagger.jpeg?raw=true">
 
     ### b. Admin App
 
@@ -144,7 +144,7 @@ The sections below explore the system that has been created (which would be simi
 
     You can click Customer 2, and see their Orders, and Items.
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/admin-app-initial.jpeg?raw=true">
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/admin-app-initial.jpeg?raw=true">
 
 &nbsp;
 
@@ -206,7 +206,7 @@ To see security in action:
 
     *  The logging in the lower panel, to assist in debugging by showing which Grants (`+ Grant:`) are applied:
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true">
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpeg?raw=true">
 
 &nbsp;
 
@@ -271,7 +271,7 @@ Logic provides significant improvements over procedural logic, as described belo
 
 At the breakpoint, observe you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-debugging.jpeg?raw=true">
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-debugging.jpeg?raw=true">
 
 &nbsp;
 
