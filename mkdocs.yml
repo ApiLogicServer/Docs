@@ -24,12 +24,12 @@ nav:
         - Execute From Terminal: Execute.md
   - Demos, Tutorial, Samples:
     - "Basic Self-Demo": Sample-Basic-Demo.md
+    - "Sample Integration": Sample-Integration.md
     - "Tutorial": Tutorial.md
     - Sample-Database.md
     - "Deployment Tutorial": Tutorial-Deployment.md
     - "AI-driven Automation": Tutorial-AI.md
     - "Agile Tutorial": Tutorial-Agile.md
-    - "Sample Integration": Sample-Integration.md
     - "Sample Systems": Data-Model-Examples.md
   - 1. Admin Web App:
     - "Automatic Admin App": Admin-Tour.md

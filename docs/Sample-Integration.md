@@ -1,6 +1,6 @@
 ---
 title: Declarative Application Integration
-notes: gold docsite, 1700 words
+notes: gold docsite, 2100 words (goal: 1500)
 version: 0.01 from docsite
 ---
 
@@ -27,6 +27,7 @@ The **Northwind API Logic Server** provides APIs *and logic* for both transactio
 
     1. Ad hoc Integration Requests
     2. UI developers to build the Order Entry UI
+    3. Security (e.g, only managers see discontinued products)
 
 2. **Order Logic:** shared over both transaction sources, this logic
 
@@ -67,7 +68,7 @@ Unlike Custom APIs which require server development, **Self-Serve APIs can be us
 
 &nbsp;
 
-### UI App Dev on self-serve APIs
+### UI Dev on self-serve APIs
 
 UI apps depend, of course, on APIs.  While these can be custom, the sheer number of such requests places a burden on the server team.  As for ad hoc integrations, a better approach is self-serve APIs.
 
@@ -107,9 +108,9 @@ Note the integration to Shipping is via message, not APIs.  While both APIs and 
 
 &nbsp;
 
-## 1. Automation: Instant Project
+## 1. Create: Instant Project
 
-This project was created with a command like:
+Project creation is automated with a command like:
 
 ```bash
 $ ApiLogicServer create --project_name= db_url=nw-
@@ -119,7 +120,16 @@ $ ApiLogicServer create --project_name= db_url=nw-
 
 This creates a project by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix.  
 
-You can open with VSCode, and run it as follows:
+You can then open the project in your IDE, and run it.
+
+
+<details markdown>
+
+<summary> Show me how </summary>
+
+&nbsp;
+
+To run the ApiLogicProject app:
 
 1. **Create Virtual Environment:** as shown in the Appendix.
 
@@ -127,22 +137,30 @@ You can open with VSCode, and run it as follows:
 
 3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The screen shown below should appear in your Browser.
 
-The sections below explore the system that has been created (which would be similar for your own database).
+</details>
+
+The sections below explore the system that has been created.
 <br><br>
 
 !!! pied-piper ":bulb: Automation: Instant API, Admin App (enable UI dev, agile collaboration)"
 
-    ### a. Self-Serve API, Swagger
+    ### Self-Serve API
 
-    The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- **[self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for ad hoc integration custom app dev.**
+    The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access.
+    
+    The API is [**self-serve**](https://apilogicserver.github.io/Docs/API-Self-Serve/), consumers can select their own attributes and related data, wihout requiring custom API development.
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/api-swagger.jpeg?raw=true">
 
-    ### b. Admin App
+    ### Ad hoc Integration
 
-    It also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
+    Our self-serve API meets our needs for Ad Hoc Integration, and Custom UI Dev.
 
-    You can click Customer 2, and see their Orders, and Items.
+    ### Admin App
+
+    The `create` command also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
+
+    You can click Customer 2, and see their Orders, and Items.  FIXME
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/admin-app-initial.jpeg?raw=true">
 
@@ -150,7 +168,13 @@ The sections below explore the system that has been created (which would be simi
 
 ## 2. Customize in your IDE
 
-While API/UI automation is a great start, we now require Custom APIs, Logic and Security.  Here's how.
+While API/UI automation is a great start, we now require Custom APIs, Logic and Security.  You normally apply such customizations using your IDE, leveraging code completion, etc.  To accelerate this sample, you can apply the customizations with `ApiLogicServer add-cust`.   We'll review the customizations below.
+
+<details markdown>
+
+<summary> Show me how -- apply customizations </summary>
+
+&nbsp;
 
 The following `apply_customizations` process simulates:
 
@@ -172,9 +196,13 @@ To apply customizations, in a terminal window for your project:
 ```bash
 ApiLogicServer add-cust
 ```
+
+</details>
+
+
 &nbsp;
 
-### Declare Security
+### Declare Row-Level Security
 
 The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_security.sh`.
 
@@ -186,31 +214,22 @@ To see security in action:
 
 **3. Login** as `s1`, password `p`
 
-**4. Click Customers**
+**4. Click Products**
 
 &nbsp;
 
-!!! pied-piper ":bulb: Security: Authentication, Role-based Filtering, Logging"
+!!! pied-piper ":bulb: Security: Discontinued Products Filtered"
 
-    #### 1. Login now required
+    #### Login, Row Filtering
 
-    #### 2. Role-Based Filtering
-
-    Observe you now see fewer customers, since user `s1` has role `sales`.  This role has a declared filter, as shown in the screenshot below.
-
-    #### 3. Transparent Logging
-
-    The screenhot below illustrates security declaration and operation:
-
-    * The declarative Grants in the upper code panel, and
-
-    *  The logging in the lower panel, to assist in debugging by showing which Grants (`+ Grant:`) are applied:
+    Observe you now see fewer Products, per the `GlobalFilter` declared below.
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpeg?raw=true">
 
+
 &nbsp;
 
-### Declare Logic
+### Declare Check Credit Logic
 
 Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
@@ -224,87 +243,30 @@ To see logic in action:
 
 **2. Use the Admin App to add an Order and Item for `Customer 1`** (see Appendix), where the rollup of Item Amount to the Order exceed the credit limit.
 
-Observe the rules firing in the console log, as shown in the next screenshot.
-
-Logic provides significant improvements over procedural logic, as described below.
+Observe the rules firing in the console log, as shown in the next screenshot.  FIX ME
 
 &nbsp;
 
 !!! pied-piper ":bulb: Logic: Multi-table Derivation and Constraint Rules, 40X More Concise"
 
-    #### a. Complexity Scaling
+    #### 40X More Concise
 
-    The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
+    Logic provides significant improvements over procedural logic, as described below.
 
-    Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
+
+    | CHARACTERISTIC | PROCEDURAL | DECLARATIVE | WHY IT MATTERS |
+    | :--- |:---|:---|:---|
+    | **Reuse** | Not Automatic | Automatic - all Use Cases | **40X Code Reduction** |
+    | **Invocation** | Passive - only if called  | Active - call not required | Quality |
+    | **Ordering** | Manual | Automatic | Agile Maintenance |
+    | **Optimizations** |Manual | Automatic | Agile Design |
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
-
-    #### b. 40X More Concise
-
-    The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code).  That's a remarkable 40X decrease in the backend half of the system.
-    <br><br>
-
-    #### c. Automatic Re-use
-
-    The logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc.  This reduces code, and promotes quality (no missed corner cases).
-    <br><br>
-
-    #### d. Automatic Optimizations
-
-    SQL overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.
-    <br><br>
-
-    #### e. Transparent
-
-    Rules are an executable design.  Note they map exactly to our natural language design (shown in comments) - readable by business users.  
-
-    Optionally, you can use the Behave TDD approach to define tests, and the Rules Report will show the rules that execute for each test.  For more information, [click here](https://apilogicserver.github.io/Docs/Behave-Logic-Report/).
+    
 
 &nbsp;
 
-## 4. Iterate
-
-**1. Set the breakpoint as shown in the screenshot below**
-
-**2. Test: Start the Server, login as Admin**
-
-At the breakpoint, observe you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
-
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-debugging.jpeg?raw=true">
-
-&nbsp;
-
-This simple example illustrates some significant aspects of iteration, described in the sub-sections below.
-
-!!! pied-piper ":bulb: Iteration: Automatic Invocation/Ordering, Extensible, Rebuild Preserves Customizations"
-
-    ### a. Dependency Automation
-
-    Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That's because it's not about writing code, but it's mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that will hopefully be called and function correctly.
-
-    Rules change that, since they **self-order their execution** (and pruning) based on system-discovered dependencies.  So, to alter logic, you just "drop a new rule in the bucket", and the system will ensure it's called in the proper order, and re-used over all the Use Cases to which it applies.  Maintenance is **faster, and higher quality.**
-    <br><br>
-
-    ### b. Extensibile with Python
-
-    In this case, we needed to do some if/else testing, and it was convenient to add a pinch of Python. Using "Python as a 4GL" is remarkably simple, even if you are new to Python.
-
-    Of course, you have the full object-oriented power of Python and its many libraries, so there are *no automation penalty* restrictions.  
-    <br>
-
-    ### c. Debugging: IDE, Logging
-
-    The screenshot above illustrates that debugging logic is what you'd expect: use your IDE's debugger.  This "standard-based" approach applies to other development activities, such as source code management, and container-based deployment.
-    <br><br>
-
-    ### d. Customizations Retained
-
-    Note we rebuilt the project from our altered database, illustrating we can **iterate, while *preserving customizations.***
-
-&nbsp;
-
-## 4. Integration
+## 3. Integrate B2B and Shipping
 
 TODO: pre-supplied integration services
 
@@ -321,7 +283,7 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
     "Items": [
         {
         "ProductName": "Chai",
-        "QuantityOrdered": 1
+        "QuantityOrdered": 1000
         },
         {
         "ProductName": "Chang",
@@ -335,13 +297,9 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
 
 &nbsp;
 
-## 5. Deploy Containers: Collaborate
+# Summary
 
-API Logic Server also creates scripts for deployment.  While these are ***not required at this demo,*** this means you can enable collaboration with Business Users:
-
-1. Create a container from your project -- see `devops/docker-image/build_image.sh`
-2. Upload to Docker Hub, and
-3. Deploy for agile collaboration.
+Note: rebuild, deployment
 
 &nbsp;
 
