@@ -10,29 +10,17 @@ Coming Soon -- see preview.
 
 ## System Requirements
 
-This app illustrates using IntegrationServices for B2B integrations with APIs, and internal integration with messages.
-
-We have the following **Use Cases:**
+This app illustrates using IntegrationServices for B2B integrations with APIs, and internal integration with messages.  We have the following **Use Cases:**
 
 I. **Ad Hoc Requests** for information (Sales, Accounting) that cannot be anticipated in advance.
 
-II. 2 **Two Transaction Sources:**
-
-1. Order Entry UI for internal users
-2. B2B partners post `OrderB2B` APIs in an agreed-upon format
+II. **Two Transaction Sources:** A) internal Order Entry UI, and B) B2B partner `OrderB2B` API
 
 The **Northwind API Logic Server** provides APIs *and logic* for both transaction sources:
 
-1. **Self-Serve APIs**, to support
+1. **Self-Serve APIs**, to support ad hoc integration and UI dev, providing security (e.g, only managers see discontinued products)
 
-    1. Ad hoc Integration Requests
-    2. UI developers to build the Order Entry UI
-    3. Security (e.g, only managers see discontinued products)
-
-2. **Order Logic:** shared over both transaction sources, this logic
-
-    1. Enforces database integrity (checks credit, reorders products)
-    2. Provides Application Integration (alert shipping with a formatted Kafka message)
+2. **Order Logic:** enforcing database integrity and application Integration (alert shipping)
 
 3. A **Custom API**, to match an agreed-upon format for B2B partners
 
@@ -46,33 +34,33 @@ The **Shipping API Logic Server** listens on kafka, and processes the message.
 | Requirement | Poor Practice | Good Practice | Best Practice |
 | :--- |:---|:---|:---|
 | **Ad Hoc Integration** | ETL | APIs | **Automated** Self-Serve APIs |
-| **UI App Dev** | Custom API Dev  | Self-Serve APIs | **Automated** Self-Serve APIs<br>**Automated Admin App** <br>.. (where applicable) |
+| **UI Dev** | Custom API Dev  | Self-Serve APIs | **Automated** Self-Serve APIs<br>**Automated Admin App** <br>.. (where applicable) |
 | **Logic** | Logic in UI | Reusable Logic | **Declarative Business Rules**<br>.. extensible with Python |
 | **Custom Integration** | | Custom APIs | Reusable integration services |
+
+This typical system illustrates the need for a modern software architecture, further described below.
 
 &nbsp;
 
 ### Ad Hoc Integration (vs. ETL)
 
-It would be undesirable to require custom API development for ad integration: the inevitable series of requirements that do not stipulate an API contract.  So, our system should support **self-serve** APIs in addition to custom APIs.
+Many systems need to support ad hoc integration: the inevitable series of requests that do not stipulate an API contract.  It's important to **avoid custom app dev for each new request**.
 
-Unlike Custom APIs which require server development, **Self-Serve APIs can be used directly by consumers to retrieve the attributes and related data they require.**  API consumers include:
+So, our system should support **self-serve** APIs (in addition to custom APIs).  Unlike Custom APIs which require server development, **Self-Serve APIs can be used directly by consumers to retrieve the attributes and related data they require.**  These can be used by:
 
 * UI Developers - progress no longer blocked on custom server development
 
-* Ad Hoc Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs
+* Ad Hoc Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs<br>
 
-&nbsp;
-
-> **Avoid ETL:** Tradtional internal integration often involves ETL - Extract, Transfer and Load.  That is, each requesting system runs nightly programs to Extract the needed data, Transfer it to their location, and Load it for local access the next day.  This requires app dev for the extract, considerable bandwidth - all to see stale data.<br><br>In many cases, this might be simply to lookup a client's address.  For such requests, self-serve APIs can avoid ETL overhead, and provide current data.
+> **Avoid ETL:** Tradtional internal integration often involves ETL - Extract, Transfer and Load.  That is, each requesting system runs nightly programs to Extract the needed data, Transfer it to their location, and Load it for local access the next day.  This requires app dev for the extract, considerable bandwidth - all to see stale data.<br><br>In many cases, this might be simply to lookup a client's address.  For such requests, **self-serve APIs can avoid ETL overhead, and provide current data**.
 
 &nbsp;
 
 ### UI Dev on self-serve APIs
 
-UI apps depend, of course, on APIs.  While these can be custom, the sheer number of such requests places a burden on the server team.  As for ad hoc integrations, a better approach is self-serve APIs.
+UI apps depend, of course, on APIs.  As described above, *self-serve APIs* reduce the load on the server team, and unblock the UI team.
 
-In many systems, basic *"Admin"* UI apps can be automated, to address requirements when the UI needs are minimal.
+For many internal requirements where UI needs are minimal, basic *"Admin"* UI apps can be automated.
 
 &nbsp;
 
@@ -80,9 +68,9 @@ In many systems, basic *"Admin"* UI apps can be automated, to address requiremen
 
 A proper architecture must consider where to place business logic (check credit, reorder products).  Such multi-table logic often consitutes nearly half the development effort.
 
-> A poor practice is to place such logic on UI controller buttons.  It can be difficult or impossible to share this with the OrderB2B service, leading to duplication of efforts and inconsistency.
+> A poor practice is to place such logic on UI controller buttons.  It can be difficult or impossible to share this with the OrderB2B service, leading to duplication of effort and inconsistency.
 
-*Shared* logic is thus a requirement, to avoid duplication and ensure consistent results.  Ideally, such logic is declarative: much more concise, and automatically enforced, ordered and optimized.
+*Shared* logic is thus a requirement, to avoid duplication and ensure consistent results.  Ideally, such logic is declarative: significantly more concise.
 
 &nbsp;
 
@@ -110,15 +98,11 @@ Note the integration to Shipping is via message, not APIs.  While both APIs and 
 
 ## 1. Create: Instant Project
 
-Project creation is automated with a command like:
+The command below creates a project by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix (the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/).  You would normally supply a SQLAlchemy URL).  
 
 ```bash
-$ ApiLogicServer create --project_name= db_url=nw-
+$ ApiLogicServer create --project_name= db_url=nw-   # creates project from db
 ```
-
-> Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/).  You would normally supply a SQLAlchemy URI.
-
-This creates a project by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix.  
 
 You can then open the project in your IDE, and run it.
 
@@ -142,7 +126,7 @@ To run the ApiLogicProject app:
 The sections below explore the system that has been created.
 <br><br>
 
-!!! pied-piper ":bulb: Automation: Instant API, Admin App (enable UI dev, agile collaboration)"
+!!! pied-piper ":bulb: Instant Self-Serve API - ad hoc integration - and Admin App"
 
     ### Self-Serve API
 
@@ -156,17 +140,17 @@ The sections below explore the system that has been created.
 
     Our self-serve API meets our needs for Ad Hoc Integration, and Custom UI Dev.
 
-    ### Admin App
+    ### Admin App: Order Entry UI
 
     The `create` command also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
 
-    You can click Customer 2, and see their Orders, and Items.  FIXME
+    You can click the first Customer, and see their Orders, and Items.
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/admin-app-initial.jpeg?raw=true">
 
 &nbsp;
 
-## 2. Customize in your IDE
+## 2. Customize: in your IDE
 
 While API/UI automation is a great start, we now require Custom APIs, Logic and Security.  You normally apply such customizations using your IDE, leveraging code completion, etc.  To accelerate this sample, you can apply the customizations with `ApiLogicServer add-cust`.   We'll review the customizations below.
 
@@ -222,9 +206,9 @@ To see security in action:
 
     #### Login, Row Filtering
 
-    Observe you now see fewer Products, per the `GlobalFilter` declared below.
+    Observe you now see fewer Products, per the `GlobalFilter` declared below.  Note the console log at the bottom shows how the filter worked.
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpeg?raw=true">
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpg?raw=true">
 
 
 &nbsp;
@@ -266,7 +250,7 @@ Observe the rules firing in the console log, as shown in the next screenshot.  F
 
 &nbsp;
 
-## 3. Integrate B2B and Shipping
+## 3. Integrate: B2B and Shipping
 
 TODO: pre-supplied integration services
 
