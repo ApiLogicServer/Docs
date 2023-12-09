@@ -12,9 +12,9 @@ Coming Soon -- see preview.
 
 This app illustrates using IntegrationServices for B2B integrations with APIs, and internal integration with messages.  We have the following **Use Cases:**
 
-I. **Ad Hoc Requests** for information (Sales, Accounting) that cannot be anticipated in advance.
+1. **Ad Hoc Requests** for information (Sales, Accounting) that cannot be anticipated in advance.
 
-II. **Two Transaction Sources:** A) internal Order Entry UI, and B) B2B partner `OrderB2B` API
+2. **Two Transaction Sources:** A) internal Order Entry UI, and B) B2B partner `OrderB2B` API
 
 The **Northwind API Logic Server** provides APIs *and logic* for both transaction sources:
 
