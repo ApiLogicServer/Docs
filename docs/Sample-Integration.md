@@ -80,17 +80,13 @@ The sections below explore the system that has been created.
 
 !!! pied-piper ":bulb: Instant Self-Serve API - ad hoc integration - and Admin App"
 
-    ### Self-Serve API
+    ### API: Ad hoc Integration
 
     The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access.
     
-    The API is [**self-serve**](https://apilogicserver.github.io/Docs/API-Self-Serve/), consumers can select their own attributes and related data, wihout requiring custom API development.
+    The API is [**self-serve**](https://apilogicserver.github.io/Docs/API-Self-Serve/): consumers can select their own attributes and related data, eliminating reliance on custom API development.  In this sample, our self-serve API meets our needs for Ad Hoc Integration, and Custom UI Dev.
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/api-swagger.jpeg?raw=true">
-
-    ### Ad hoc Integration
-
-    Our self-serve API meets our needs for Ad Hoc Integration, and Custom UI Dev.
 
     ### Admin App: Order Entry UI
 
@@ -138,7 +134,7 @@ ApiLogicServer add-cust
 
 &nbsp;
 
-### Declare Row-Level Security
+### Declare Security
 
 The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_security.sh`.
 
@@ -161,7 +157,6 @@ To see security in action:
     Observe you now see only customer ALFKI, per the secuity declared below.  Note the console log at the bottom shows how the filter worked.
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpg?raw=true">
-
 
 &nbsp;
 
@@ -198,7 +193,14 @@ Observe the rules firing in the console log, as shown in the next screenshot.  F
     | **Optimizations** |Manual | Automatic | Agile Design |
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
+
+&nbsp;
+
+### Customize Order Entry UI
     
+We can customize the Admin App initially created (e.g., hide fields), as shown below.  Note the automation for **automatic joins** (Product Name) and **lookups** (select from a list of Products to obtain the foreign key):
+
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-entry-ui.jpg?raw=true">
 
 &nbsp;
 
