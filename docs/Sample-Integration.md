@@ -24,71 +24,23 @@ The **Northwind API Logic Server** provides APIs *and logic* for both transactio
 
 3. A **Custom API**, to match an agreed-upon format for B2B partners
 
-The **Shipping API Logic Server** listens on kafka, and processes the message.
+The **Shipping API Logic Server** listens on kafka, and processes the message.<br><br>
 
 ![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/overview.jpg?raw=true)
 &nbsp;
 
-## Architecture Requirements
+## Architecture: Self-serve APIs, Shared Logic
 
-| Requirement | Poor Practice | Good Practice | Best Practice |
-| :--- |:---|:---|:---|
-| **Ad Hoc Integration** | ETL | APIs | **Automated** Self-Serve APIs |
-| **UI Dev** | Custom API Dev  | Self-Serve APIs | **Automated** Self-Serve APIs<br>**Automated Admin App** <br>.. (where applicable) |
-| **Logic** | Logic in UI | Reusable Logic | **Declarative Business Rules**<br>.. extensible with Python |
-| **Custom Integration** | | Custom APIs | Reusable integration services |
+| Requirement | Poor Practice | Good Practice | Best Practice | Ideal
+| :--- |:---|:---|:---|:---|
+| **Ad Hoc Integration** | ETL | APIs | Self-Serve APIs |  **Automated** Self-Serve APIs |
+| **Logic** | Logic in UI | | Reusable Logic | **Declarative Rules**<br>.. Extensible with Python |
 
-This typical system illustrates the need for a modern software architecture, further described below.
+We'll further expand of these topics as we build the system, but we summarize the key points:
 
-&nbsp;
+* APIs are preferrable to ETL, and should be self-serve: not requiring continuing server development
+* Logic should be re-used over the UI and API transaction sources, not in UI controls
 
-### Ad Hoc Integration (vs. ETL)
-
-Many systems need to support ad hoc integration: the inevitable series of requests that do not stipulate an API contract.  It's important to **avoid custom app dev for each new request**.
-
-So, our system should support **self-serve** APIs (in addition to custom APIs).  Unlike Custom APIs which require server development, **Self-Serve APIs can be used directly by consumers to retrieve the attributes and related data they require.**  These can be used by:
-
-* UI Developers - progress no longer blocked on custom server development
-
-* Ad Hoc Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs<br>
-
-> **Avoid ETL:** Tradtional internal integration often involves ETL - Extract, Transfer and Load.  That is, each requesting system runs nightly programs to Extract the needed data, Transfer it to their location, and Load it for local access the next day.  This requires app dev for the extract, considerable bandwidth - all to see stale data.<br><br>In many cases, this might be simply to lookup a client's address.  For such requests, **self-serve APIs can avoid ETL overhead, and provide current data**.
-
-&nbsp;
-
-### UI Dev on self-serve APIs
-
-UI apps depend, of course, on APIs.  As described above, *self-serve APIs* reduce the load on the server team, and unblock the UI team.
-
-For many internal requirements where UI needs are minimal, basic *"Admin"* UI apps can be automated.
-
-&nbsp;
-
-### Logic: Shared, Declarative
-
-A proper architecture must consider where to place business logic (check credit, reorder products).  Such multi-table logic often consitutes nearly half the development effort.
-
-> A poor practice is to place such logic on UI controller buttons.  It can be difficult or impossible to share this with the OrderB2B service, leading to duplication of effort and inconsistency.
-
-*Shared* logic is thus a requirement, to avoid duplication and ensure consistent results.  Ideally, such logic is declarative: significantly more concise.
-
-&nbsp;
-
-### Reusable Integration Services
-
-Custom integrations require attribute map / alias services to transform data from remote formats to match our system objects.  In the sample here, this is required to transform incoming B2B APIs, and outgoing message publishing.
-
-Ideally, our architecture can extract Integration Services for reuse, including attribute map / alias services, Lookups, and Cascade Add.  Details below.
-
-&nbsp;
-
-### Messaging
-
-Note the integration to Shipping is via message, not APIs.  While both APIs and messages may can send data, there is an important difference:
-
-* APIs are **synchronous**: if the remote server is down, the message fails.
-
-* Messages are **async**: systems such as Kafka ensure that messages are delivered *eventually*, when the remote server is brought back online.
 
 &nbsp;
 
@@ -283,7 +235,65 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
 
 # Summary
 
-Note: rebuild, deployment
+Internal Note: rebuild, deployment
+
+
+| Requirement | Poor Practice | Good Practice | Best Practice | Ideal
+| :--- |:---|:---|:---|:---|
+| **Ad Hoc Integration** | ETL | APIs | Self-Serve APIs |  **Automated** Self-Serve APIs |
+| **UI Dev** | Custom API Dev  | Self-Serve APIs | **Automated** Self-Serve APIs<br>**Automated 
+| **Logic** | Logic in UI | | Reusable Logic | **Declarative Rules**<br>.. Extensible with Python |
+| **Custom Integration** | | Custom APIs |  | Reusable integration services |
+
+&nbsp;
+
+**Ad Hoc Integration (vs. ETL)**
+
+Many systems need to support ad hoc integration: the inevitable series of requests that do not stipulate an API contract.  It's important to **avoid custom app dev for each new request**.
+
+So, our system should support **self-serve** APIs (in addition to custom APIs).  Unlike Custom APIs which require server development, **Self-Serve APIs can be used directly by consumers to retrieve the attributes and related data they require.**  These can be used by:
+
+* UI Developers - progress no longer blocked on custom server development
+
+* Ad Hoc Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs<br>
+
+> **Avoid ETL:** Tradtional internal integration often involves ETL - Extract, Transfer and Load.  That is, each requesting system runs nightly programs to Extract the needed data, Transfer it to their location, and Load it for local access the next day.  This requires app dev for the extract, considerable bandwidth - all to see stale data.<br><br>In many cases, this might be simply to lookup a client's address.  For such requests, **self-serve APIs can avoid ETL overhead, and provide current data**.
+
+&nbsp;
+
+**UI Dev on self-serve APIs**
+
+UI apps depend, of course, on APIs.  As described above, *self-serve APIs* reduce the load on the server team, and unblock the UI team.
+
+For many internal requirements where UI needs are minimal, basic *"Admin"* UI apps can be automated.
+
+&nbsp;
+
+**Logic: Shared, Declarative**
+
+A proper architecture must consider where to place business logic (check credit, reorder products).  Such multi-table logic often consitutes nearly half the development effort.
+
+> A poor practice is to place such logic on UI controller buttons.  It can be difficult or impossible to share this with the OrderB2B service, leading to duplication of effort and inconsistency.
+
+*Shared* logic is thus a requirement, to avoid duplication and ensure consistent results.  Ideally, such logic is declarative: significantly more concise.
+
+&nbsp;
+
+**Reusable Integration Services**
+
+Custom integrations require attribute map / alias services to transform data from remote formats to match our system objects.  In the sample here, this is required to transform incoming B2B APIs, and outgoing message publishing.
+
+Ideally, our architecture can extract Integration Services for reuse, including attribute map / alias services, Lookups, and Cascade Add.  Details below.
+
+&nbsp;
+
+**Messaging**
+
+Note the integration to Shipping is via message, not APIs.  While both APIs and messages may can send data, there is an important difference:
+
+* APIs are **synchronous**: if the remote server is down, the message fails.
+
+* Messages are **async**: systems such as Kafka ensure that messages are delivered *eventually*, when the remote server is brought back online.
 
 &nbsp;
 
