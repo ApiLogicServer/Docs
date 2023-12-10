@@ -10,7 +10,7 @@ Coming Soon -- see preview.
 
 ## System Requirements
 
-This app illustrates using IntegrationServices for B2B integrations with APIs, and internal integration with messages.  We have the following **Use Cases:**
+This app illustrates using IntegrationServices for B2B push-style integrations with APIs, and internal integration with messages.  We have the following **Use Cases:**
 
 1. **Ad Hoc Requests** for information (Sales, Accounting) that cannot be anticipated in advance.
 
@@ -36,10 +36,10 @@ The **Shipping API Logic Server** listens on kafka, and processes the message.<b
 | **Ad Hoc Integration** | ETL | APIs | Self-Serve APIs |  **Automated** Self-Serve APIs |
 | **Logic** | Logic in UI | | Reusable Logic | **Declarative Rules**<br>.. Extensible with Python |
 
-We'll further expand of these topics as we build the system, but we summarize the key points:
+We'll further expand of these topics as we build the system, but we note some Best Practices:
 
-* APIs are preferrable to ETL, and should be self-serve: not requiring continuing server development
-* Logic should be re-used over the UI and API transaction sources, not in UI controls
+* **APIs should be self-serve:** not requiring continuing server development; preferrable to ETL
+* **Logic should be re-used** over the UI and API transaction sources, not in UI controls
 
 
 &nbsp;
@@ -50,10 +50,10 @@ We'll further expand of these topics as we build the system, but we summarize th
 
 ## 1. Create: Instant Project
 
-The command below creates a project by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix (the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/).  You would normally supply a SQLAlchemy URL).  
+The command below creates an `ApiLogicProject` by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix.  Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/); you would normally supply a SQLAlchemy URL.  
 
 ```bash
-$ ApiLogicServer create --project_name= db_url=nw-   # creates project from db
+$ ApiLogicServer create --project_name= db_url=nw-    # create ApiLogicProject
 ```
 
 You can then open the project in your IDE, and run it.
