@@ -154,9 +154,9 @@ To see logic in action:
 
 **1. In the admin app, Logout (upper right), and login as admin, p**
 
-**2. Use the Admin App to add an Order and Item for `Customer 1`** (see Appendix), where the rollup of Item Amount to the Order exceed the credit limit.
+**2. Use the Admin App to add an Order and Item for `Customer 1`** (see Appendix), where the rollup of Item Amount to the Order exceed the credit limit.  See the screenshot above.
 
-Observe the rules firing in the console log, as shown in the next screenshot.  FIX ME
+Observe the rules firing in the console log, as shown in the next screenshot.
 
 &nbsp;
 
@@ -166,13 +166,18 @@ Observe the rules firing in the console log, as shown in the next screenshot.  F
 
     Logic provides significant improvements over procedural logic, as described below.
 
-
     | CHARACTERISTIC | PROCEDURAL | DECLARATIVE | WHY IT MATTERS |
     | :--- |:---|:---|:---|
     | **Reuse** | Not Automatic | Automatic - all Use Cases | **40X Code Reduction** |
     | **Invocation** | Passive - only if called  | Active - call not required | Quality |
     | **Ordering** | Manual | Automatic | Agile Maintenance |
     | **Optimizations** |Manual | Automatic | Agile Design |
+
+    &nbsp;
+
+    #### IDE: Declare and Debug
+
+    The check credit rules are shown below.  Observe they are entered in your IDE (code completion etc), and can be debugged using standard logging and the debugger.
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
 
