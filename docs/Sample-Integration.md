@@ -117,7 +117,7 @@ The following `apply_customizations` process simulates:
     * declare security in `security/declare_security.py`
     * implement custom APIs in `api/customize_api.py`, using <br>IntegrationServices declared in `integration/integration_services`
 
-> These are shown in the screenshots below.<br>It's quite short - 5 rules, 7 security settings, and 120 lines for application integration.
+> These customizations are shown in the screenshots below.
 
 To apply customizations, in a terminal window for your project:
 
@@ -128,17 +128,33 @@ To apply customizations, in a terminal window for your project:
 ```bash
 ApiLogicServer add-cust
 ```
+
+**3. Restart the server, login as `admin`**
 </details>
 
 &nbsp;
 
 ### Customize Order Entry UI
     
-We can customize the Admin App initially created (e.g., hide fields), as shown below.  Note the automation for **automatic joins** (Product Name) and **lookups** (select from a list of Products to obtain the foreign key):
+We can customize the Admin App initially created (e.g., hide fields), as shown below.  Customization is by editing a created `yml` file, *not* by complex html / javascript:
+
+```yml
+  Order:
+    attributes:
+      - name: AmountTotal
+        type: DECIMAL
+        info: derived as sum(OrderDetail.Amount)
+        show_when: isInserting == false
+```
+
+&nbsp;
+
+This makes it convenient to use the Admin App to enter an Order and OrderDetails:
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-entry-ui.jpg?raw=true">
 
-If we attempt to order so many boxes of Chai, the transaction properly fails due to the Check Credit logic described below.
+
+Note the automation for **automatic joins** (Product Name, not ProductId) and **lookups** (select from a list of Products to obtain the foreign key).  If we attempt to order too much Chai, the transaction properly fails due to the Check Credit logic, described below.
 
 &nbsp;
 
@@ -153,15 +169,17 @@ Such logic (multi-table derivations and constraints) is a significant portion of
 
     #### IDE: Declare and Debug
 
-    The check credit rules are shown below.  Rules are declared in Python, simplified with IDE code completion.  The `apply_customizations` process above has simulated the process of using your IDE to declare logic.
+    The 5 check credit rules are shown below.  Rules are 40X more concise than legacy code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}.
     
-    The screen below shows the 5 rules for our **Check Credit Logic** noted in the initial diagram  Observe they can be debugged using standard logging and the debugger.
+    Rules are declared in Python, simplified with IDE code completion.  The `apply_customizations` process above has simulated the process of using your IDE to declare logic.
+    
+    Observe rules can be debugged using standard logging and the debugger:
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
 
     &nbsp;
 
-    #### 40X More Concise
+    #### Agility, Quality
 
     Logic provides significant improvements over procedural logic, as described below.
 
