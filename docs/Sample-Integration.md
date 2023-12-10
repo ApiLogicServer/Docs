@@ -128,35 +128,17 @@ To apply customizations, in a terminal window for your project:
 ```bash
 ApiLogicServer add-cust
 ```
-
 </details>
 
-
 &nbsp;
 
-### Declare Security
+### Customize Order Entry UI
+    
+We can customize the Admin App initially created (e.g., hide fields), as shown below.  Note the automation for **automatic joins** (Product Name) and **lookups** (select from a list of Products to obtain the foreign key):
 
-The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_security.sh`.
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-entry-ui.jpg?raw=true">
 
-To see security in action:
-
-**1. Start the Server**  F5
-
-**2. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
-
-**3. Login** as `AFLKI`, password `p`
-
-**4. Click Customer**
-
-&nbsp;
-
-!!! pied-piper ":bulb: Security: Customers Filtered"
-
-    #### Login, Row Filtering
-
-    Observe you now see only customer ALFKI, per the secuity declared below.  Note the console log at the bottom shows how the filter worked.
-
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpg?raw=true">
+If we attempt to order so many boxes of Chai, the transaction properly fails due to the Check Credit logic described below.
 
 &nbsp;
 
@@ -194,13 +176,32 @@ Observe the rules firing in the console log, as shown in the next screenshot.  F
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
 
+
 &nbsp;
 
-### Customize Order Entry UI
-    
-We can customize the Admin App initially created (e.g., hide fields), as shown below.  Note the automation for **automatic joins** (Product Name) and **lookups** (select from a list of Products to obtain the foreign key):
+### Declare Security
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-entry-ui.jpg?raw=true">
+The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_security.sh`.
+
+To see security in action:
+
+**1. Start the Server**  F5
+
+**2. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
+
+**3. Login** as `AFLKI`, password `p`
+
+**4. Click Customer**
+
+&nbsp;
+
+!!! pied-piper ":bulb: Security: Customers Filtered"
+
+    #### Login, Row Filtering
+
+    Observe you now see only customer ALFKI, per the secuity declared below.  Note the console log at the bottom shows how the filter worked.
+
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpg?raw=true">
 
 &nbsp;
 
