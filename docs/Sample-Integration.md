@@ -18,7 +18,7 @@ This app illustrates using IntegrationServices for B2B integrations with APIs, a
 
 The **Northwind API Logic Server** provides APIs *and logic* for both transaction sources:
 
-1. **Self-Serve APIs**, to support ad hoc integration and UI dev, providing security (e.g, only managers see discontinued products)
+1. **Self-Serve APIs**, to support ad hoc integration and UI dev, providing security (e.g, customers see only their account)
 
 2. **Order Logic:** enforcing database integrity and application Integration (alert shipping)
 
@@ -148,17 +148,17 @@ To see security in action:
 
 **2. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
 
-**3. Login** as `s1`, password `p`
+**3. Login** as `AFLKI`, password `p`
 
-**4. Click Products**
+**4. Click Customer**
 
 &nbsp;
 
-!!! pied-piper ":bulb: Security: Discontinued Products Filtered"
+!!! pied-piper ":bulb: Security: Customers Filtered"
 
     #### Login, Row Filtering
 
-    Observe you now see fewer Products, per the `GlobalFilter` declared below.  Note the console log at the bottom shows how the filter worked.
+    Observe you now see only customer ALFKI, per the secuity declared below.  Note the console log at the bottom shows how the filter worked.
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpg?raw=true">
 
