@@ -146,21 +146,20 @@ If we attempt to order so many boxes of Chai, the transaction properly fails due
 
 Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
-Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for our **Check Credit Logic** noted in the initial diagram.
-
-The `apply_customizations` process above has simulated the process of using your IDE to declare logic in `logic/declare_logic.sh`.
-
-To see logic in action:
-
-**1. In the admin app, Logout (upper right), and login as admin, p**
-
-**2. Use the Admin App to add an Order and Item for `Customer 1`** (see Appendix), where the rollup of Item Amount to the Order exceed the credit limit.  See the screenshot above.
-
-Observe the rules firing in the console log, as shown in the next screenshot.
-
 &nbsp;
 
 !!! pied-piper ":bulb: Logic: Multi-table Derivation and Constraint Rules, 40X More Concise"
+
+
+    #### IDE: Declare and Debug
+
+    The check credit rules are shown below.  Rules are declared in Python, simplified with IDE code completion.  The `apply_customizations` process above has simulated the process of using your IDE to declare logic.
+    
+    The screen below shows the 5 rules for our **Check Credit Logic** noted in the initial diagram  Observe they can be debugged using standard logging and the debugger.
+
+    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
+
+    &nbsp;
 
     #### 40X More Concise
 
@@ -172,15 +171,6 @@ Observe the rules firing in the console log, as shown in the next screenshot.
     | **Invocation** | Passive - only if called  | Active - call not required | Quality |
     | **Ordering** | Manual | Automatic | Agile Maintenance |
     | **Optimizations** |Manual | Automatic | Agile Design |
-
-    &nbsp;
-
-    #### IDE: Declare and Debug
-
-    The check credit rules are shown below.  Observe they are entered in your IDE (code completion etc), and can be debugged using standard logging and the debugger.
-
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
-
 
 &nbsp;
 
