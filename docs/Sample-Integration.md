@@ -90,7 +90,7 @@ The sections below explore the system that has been created.
 
     ### Admin App: Order Entry UI
 
-    The `create` command also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
+    The `create` command also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs you can create with the API.
 
     You can click the first Customer, and see their Orders, and Items.
 
@@ -169,7 +169,9 @@ Such logic (multi-table derivations and constraints) is a significant portion of
 
     #### IDE: Declare and Debug
 
-    The 5 check credit rules are shown below.  Rules are 40X more concise than legacy code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}.
+    The 5 check credit rules are shown below.  
+    
+    > Rules are 40X more concise than legacy code, as [shown here](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}.
     
     Rules are declared in Python, simplified with IDE code completion.  The `apply_customizations` process above has simulated the process of using your IDE to declare logic.
     
@@ -181,7 +183,7 @@ Such logic (multi-table derivations and constraints) is a significant portion of
 
     #### Agility, Quality
 
-    Logic provides significant improvements over procedural logic, as described below.
+    Rules are a unique and signnifcant innovation, providing significant improvements over procedural logic, as described below.
 
     | CHARACTERISTIC | PROCEDURAL | DECLARATIVE | WHY IT MATTERS |
     | :--- |:---|:---|:---|
@@ -190,21 +192,19 @@ Such logic (multi-table derivations and constraints) is a significant portion of
     | **Ordering** | Manual | Automatic | Agile Maintenance |
     | **Optimizations** |Manual | Automatic | Agile Design |
 
+    > For more on rules, [click here](https://apilogicserver.github.io/Docs/Logic-Why/){:target="_blank" rel="noopener"}.
+
 &nbsp;
 
 ### Declare Security
 
-The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_security.sh`.
+The `add-cust` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_security.sh`.
 
 To see security in action:
 
-**1. Start the Server**  F5
+**1. Logout (upper right), and Login** as `AFLKI`, password `p`
 
-**2. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
-
-**3. Login** as `AFLKI`, password `p`
-
-**4. Click Customer**
+**2. Click Customer**
 
 &nbsp;
 
@@ -220,11 +220,41 @@ To see security in action:
 
 ## 3. Integrate: B2B and Shipping
 
-TODO: pre-supplied integration services
+We now have a running system - an API, logic, security, and a UI.  We have 2 application integration tasks, described below.
+
+### B2B Custom Resource
+
+The self-serve API, however, does not conform to B2B format in an existing B2B partnership.  So, we define a custom resource as shown below.
+
+The main task here is to ***map*** a B2B payload onto our logic-enabled SQLAlchemy rows.  API Logic Server provides a declarative `ApplicationIntegration`` service you can use to:
+
+1. Declare the mapping -- see the `OrderB2B` class in the right pane
+
+    * Note the support for **lookup**, so partners can send ProductNames, not ProductIds
+
+2. Create the custom API endpoint -- see the left pane:
+
+    * Add `def OrderB2B` to `customize_api/py` to create a new endpoint
+    * Use the `OrderB2B` class to transform a api request data to SQLAlchemy rows
+    * The automatic commit initiates the same shared logic described above to check credit and reorder products
 
 ![post order](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/post-orderb2b.jpg?raw=true)
 
+So, we create our customn endpoint with about 7 lines of code, along with the API specification on the right.
+
+&nbsp;
+
+### Shipping Logic
+
+Successful orders need to be sent to Shipping, again in a predesignated format.
+
+
+
 ![send order to shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-to-shipping.jpg?raw=true)
+
+&nbsp;
+
+### Test it
 
 ```bash
 ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B'" --data '
@@ -235,7 +265,7 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
     "Items": [
         {
         "ProductName": "Chai",
-        "QuantityOrdered": 1000
+        "QuantityOrdered": 1
         },
         {
         "ProductName": "Chang",
@@ -245,8 +275,6 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
     }
 }}}'
 ```
-
-
 &nbsp;
 
 # Summary
