@@ -179,11 +179,13 @@ Such logic (multi-table derivations and constraints) is a significant portion of
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
 
+    Rules operate by handling SQLAlchemy events, so apply to all ORM access, whether by the api engine, or your custom code.
+
     &nbsp;
 
     #### Agility, Quality
 
-    Rules are a unique and signnifcant innovation, providing significant improvements over procedural logic, as described below.
+    Rules are a unique and signifcant innovation, providing meaningful improvements over procedural logic:
 
     | CHARACTERISTIC | PROCEDURAL | DECLARATIVE | WHY IT MATTERS |
     | :--- |:---|:---|:---|
@@ -222,11 +224,15 @@ To see security in action:
 
 We now have a running system - an API, logic, security, and a UI.  We have 2 application integration tasks, described below.
 
+&nbsp;
+
 ### B2B Custom Resource
 
-The self-serve API, however, does not conform to B2B format in an existing B2B partnership.  In addition to the automatic self-serve api, you can use Python, Flask and SQLAlchemy to create custom resources by editing `customize_api.py`.  So, we define a custom resource as shown below.
+The self-serve API, however, does not conform to the format required for a B2B partnership.  We need to create a custom resource.
 
-The main task here is to ***map*** a B2B payload onto our logic-enabled SQLAlchemy rows.  API Logic Server provides a declarative `ApplicationIntegration`` service you can use to:
+You can create custom resources by editing `customize_api.py`, using standard Python, Flask and SQLAlchemy.  A custom `OrderB2B` resource is shown below.
+
+The main task here is to ***map*** a B2B payload onto our logic-enabled SQLAlchemy rows.  API Logic Server provides a declarative `ApplicationIntegration` service you can use as follows:
 
 1. Declare the mapping -- see the `OrderB2B` class in the right pane
 
@@ -240,7 +246,7 @@ The main task here is to ***map*** a B2B payload onto our logic-enabled SQLAlche
 
 ![post order](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/post-orderb2b.jpg?raw=true)
 
-So, we create our custom endpoint with about 7 lines of code, along with the API specification on the right.
+So, our custom endpoint required about 7 lines of code, along with the API specification on the right.
 
 &nbsp;
 
@@ -250,15 +256,19 @@ Successful orders need to be sent to Shipping, again in a predesignated format.
 
 Just as you can customize apis, you can complement rule-based logic using Python events:
 
-1. Declare the mapping -- see the `OrderShipping` class in the right pane
+1. Declare the mapping -- see the `OrderShipping` class in the right pane.
 
-2. Define a Python event as shown in the left pane, employing `OrderShipping` to map our SQLAlchemy row (parameter to our event) to a dict (`row_to_dict`).
+2. Define a Python `after_flush` event, which invokes `send_order_to_shipping`.  This is called by the logic engine, which passes the SQLAlchemy `models.Order`` row.
+
+3. `send_order_to_shipping` uses the `OrderShipping` class, which maps our SQLAlchemy order row to a dict (`row_to_dict`).
 
 ![send order to shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-to-shipping.jpg?raw=true)
 
 &nbsp;
 
 ### Test it
+
+Use your IDE terminal window to simulate a business partner posting a B2BOrder.  You can set breakpoints in the code described above to explore system operation.
 
 ```bash
 ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B'" --data '
@@ -284,6 +294,14 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
 # Summary
 
 Internal Note: rebuild, deployment
+
+Instant Business Relationship: by the clock...
+
+* Instantly: Ad hoc integration, Admin App
+
+* Under an hour: declare logic and security
+
+* An afternoon or so: application integration (mainly the mapping class)
 
 
 | Requirement | Poor Practice | Good Practice | Best Practice | Ideal
