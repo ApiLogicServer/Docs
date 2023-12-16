@@ -139,7 +139,7 @@ ApiLogicServer add-cust
 
 To enable Kafka:
 
-1. In `config.py`, find and comment out: `KAFKA_CONNECT = None  # comment out to enable Kafka`
+1. In `config.py`, find and comment out: `KAFKA_PRODUCER = None  # comment out to enable Kafka`
 
 2. Update your `etc/conf` to include the lines shown below (e.g., `sudo nano /etc/hosts`).
 
@@ -304,6 +304,17 @@ Just as you can customize apis, you can complement rule-based logic using Python
 ![send order to shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-to-shipping.jpg?raw=true)
 
 &nbsp;
+
+## 4. Consuming Messages
+
+The Shipping system can be created like this:
+
+```bash
+ApiLogicServer create --project_name=shipping --db_url=shipping
+```
+
+Note the logic in `integration/kafka/kafka_consumer.py`.
+
 
 ### Test it
 
