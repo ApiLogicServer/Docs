@@ -124,7 +124,7 @@ The following `add-cust` process simulates:
 
     * declare logic in `logic/declare_logic.sh`
     * declare security in `security/declare_security.py`
-    * implement custom APIs in `api/customize_api.py`, using <br>IntegrationServices declared in `integration/integration_services`
+    * implement custom APIs in `api/customize_api.py`, using <br>`OrderShipping` declared in `integration/row_dict_maps`
 
 > These customizations are shown in the screenshots below.
 
@@ -187,7 +187,7 @@ The admin app is not built with complex html and javascript.  Instead, it is con
 
 You can customize this file in your IDE to control which fields are shown (including joins), hide/show conditions, help text etc.  The `add-cust` process above has simulated such customizations.
 
-To see customized Admin app in action:
+To see customized Admin app in action, with the restarted server:
 
 **1. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
 
@@ -270,7 +270,7 @@ To see security in action:
 
 ## 3. Integrate: B2B and Shipping
 
-We now have a running system - an API, logic, security, and a UI.  We have 2 application integration tasks, described below.
+We now have a running system - an API, logic, security, and a UI.  To integrate with B2B partners and Shipping, we have 2 tasks, described below.
 
 &nbsp;
 
@@ -298,7 +298,7 @@ So, our custom endpoint required about 7 lines of code, along with the API speci
 
 &nbsp;
 
-### Shipping Logic
+### Send `OrderShipping` Message
 
 Successful orders need to be sent to Shipping, again in a predesignated format.
 
