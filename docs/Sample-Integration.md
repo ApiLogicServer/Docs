@@ -163,7 +163,7 @@ To enable Kafka:
 127.0.0.1 kubernetes.docker.internal
 # End of section
 ```
-3. Start Kafks: in a terminal window: `docker compose -f integration/kafka/docker_compose_start_kafka up`
+3. Start Kafks: in a terminal window: `docker compose -f integration/kafka/dockercompose_start_kafka.yml up`
 
 </details>
 
@@ -349,11 +349,23 @@ Internal Note: rebuild, deployment
 
 Instant Business Relationship: by the clock...
 
-* Instantly: Ad hoc integration, Admin App
+Customize with Python, Flask, SQLAlchemy, libraries (Kafka...)
 
-* Under an hour: declare logic and security
+* Instantly: Ad hoc integration, Admin App (zero code)
 
-* An afternoon or so: application integration (mainly the mapping class)
+* Under an hour: declare logic and security (5 rules, 1 security definition)
+
+* An afternoon or so: application integration: this required the most code
+
+    * Custom B2B API: 10 lines
+
+    * Send Order to Shipping: 20 lines
+
+    * Process Order in Shipping: 30 lines
+
+    * Mapping configurations to transform rows and dicts:  120 
+
+
 
 
 | Requirement | Poor Practice | Good Practice | Best Practice | Ideal
@@ -417,7 +429,7 @@ Note the integration to Shipping is via message, not APIs.  While both APIs and 
 
 # Status
 
-12/02/2003 - runs, messaging is a TODO.
+12/17/2003 - runs.
 
 &nbsp;
 
