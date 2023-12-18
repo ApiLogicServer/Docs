@@ -315,7 +315,7 @@ ApiLogicServer create --project_name=shipping --db_url=shipping
 
 Note the logic in `integration/kafka/kafka_consumer.py`.
 
-![send order to shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/kafka-consumer.jpg?raw=true)
+![process in shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/kafka-consumer.jpg?raw=true)
 
 
 ### Test it
