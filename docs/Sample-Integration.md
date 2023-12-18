@@ -29,17 +29,24 @@ The **Shipping API Logic Server** listens on kafka, and processes the message.<b
 ![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/overview.jpg?raw=true)
 &nbsp;
 
-## Architecture: Self-serve APIs, Shared Logic
+## Self-serve APIs, Shared Logic
+
+This sample illustrates some key architectural considerations:
 
 | Requirement | Poor Practice | Good Practice | Best Practice | Ideal
 | :--- |:---|:---|:---|:---|
-| **Ad Hoc Integration** | ETL | APIs | Self-Serve APIs |  **Automated** Self-Serve APIs |
-| **Logic** | Logic in UI | | Reusable Logic | **Declarative Rules**<br>.. Extensible with Python |
+| **Ad Hoc Integration** | ETL | APIs | **Self-Serve APIs** |  **Automated** Self-Serve APIs |
+| **Logic** | Logic in UI | | **Reusable Logic** | **Declarative Rules**<br>.. Extensible with Python |
 
 We'll further expand of these topics as we build the system, but we note some Best Practices:
 
-* **APIs should be self-serve:** not requiring continuing server development; preferrable to ETL
-* **Logic should be re-used** over the UI and API transaction sources, not in UI controls
+* **APIs should be self-serve:** not requiring continuing server development
+
+    * APIs avoid the overhead of nightly Extract, Transfer and Load (ETL)
+
+* **Logic should be re-used** over the UI and API transaction sources
+
+    * Logic in UI controls is undesirable, since it cannot be shared with APIs and messages
 
 
 &nbsp;
@@ -75,7 +82,7 @@ To run the ApiLogicProject app:
 
 </details>
 
-The sections below explore the system that has been created.
+One command has created meaningful elements of our system:
 <br><br>
 
 !!! pied-piper ":bulb: Instant Self-Serve API - ad hoc integration - and Admin App"
@@ -90,7 +97,7 @@ The sections below explore the system that has been created.
 
     ### Admin App: Order Entry UI
 
-    The `create` command also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs you can create with the API.
+    The `create` command also creates an Admin App: multi-page, multi-table with automatic joins -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs you can create with the API.
 
     You can click the first Customer, and see their Orders, and Items.
 
@@ -100,7 +107,9 @@ The sections below explore the system that has been created.
 
 ## 2. Customize: in your IDE
 
-While API/UI automation is a great start, we now require Custom APIs, Logic and Security.  You normally apply such customizations using your IDE, leveraging code completion, etc.  To accelerate this sample, you can apply the customizations with `ApiLogicServer add-cust`.   We'll review the customizations below.
+While API/UI automation is a great start, we now require Custom APIs, Logic and Security.
+
+You normally apply such customizations using your IDE, leveraging code completion, etc.  To accelerate this sample, you can apply the customizations with `ApiLogicServer add-cust`.   We'll review the customizations below.
 
 <details markdown>
 
@@ -108,7 +117,7 @@ While API/UI automation is a great start, we now require Custom APIs, Logic and 
 
 &nbsp;
 
-The following `apply_customizations` process simulates:
+The following `add-cust` process simulates:
 
 * Adding security to your project using a CLI command, and
 * Using your IDE to:
@@ -172,19 +181,19 @@ To enable Kafka:
 
 </details>
 
-### Declare Security
+### Declare UI Customizations
 
-The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_security.sh`.
+The admin app is not built with complex html and javascript.  Instead, it is configured with the ui/admin/admin.yml`, automatically created from your data model by `ApiLogicServer create`.
 
-To see security in action:
+You can customize this file in your IDE to control which fields are shown (including joins), hide/show conditions, help text etc.  The `add-cust` process above has simulated such customizations.
 
-**1. Start the Server**  F5
+To see customized Admin app in action:
 
-**2. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
+**1. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
 
-**3. Login** as `s1`, password `p`
+**2. Login** as `s1`, password `p`
 
-**4. Click Customers**
+**3. Click Customers**
 
 &nbsp;
 
@@ -212,7 +221,7 @@ Such logic (multi-table derivations and constraints) is a significant portion of
     
     > Rules are 40X more concise than legacy code, as [shown here](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}.
     
-    Rules are declared in Python, simplified with IDE code completion.  The `apply_customizations` process above has simulated the process of using your IDE to declare logic.
+    Rules are declared in Python, simplified with IDE code completion.  The `add-cust` process above has simulated the process of using your IDE to declare logic.
     
     Observe rules can be debugged using standard logging and the debugger:
 
