@@ -316,16 +316,27 @@ Just as you can customize apis, you can complement rule-based logic using Python
 
 ## 4. Consuming Messages
 
-The Shipping system can be created like this:
+### Create/Start Shipping
+
+To explore Shipping:
+
+**1. Create the Shipping Project:**
 
 ```bash
 ApiLogicServer create --project_name=shipping --db_url=shipping
 ```
 
+**2. Start the Shipping Server: F5** (it's configured to use a different port)
+
+&nbsp;
+
+### Consuming Logic
+
 Note the logic in `integration/kafka/kafka_consumer.py`.
 
 ![process in shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/kafka-consumer.jpg?raw=true)
 
+&nbsp;
 
 ### Test it
 
