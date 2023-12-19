@@ -271,7 +271,10 @@ To see security in action:
 
 ## 3. Integrate: B2B and Shipping
 
-We now have a running system - an API, logic, security, and a UI.  To integrate with B2B partners and Shipping, we have 2 tasks, described below.
+We now have a running system - an API, logic, security, and a UI.  Now we must integrate with:
+
+* B2B partners -- we'll create a **B2B Custom Resource**
+* OrderShipping -- we add logic to **Send an OrderShipping Message**
 
 &nbsp;
 
@@ -303,9 +306,16 @@ So, our custom endpoint required about 7 lines of code, along with the API speci
 
 Successful orders need to be sent to Shipping, again in a predesignated format.
 
+We could certainly POST an API, but Messaging (here, Kafka) provides significant advantages:
+
+* **Async:** Our system will not be impacted if the Shipping system is down.  Kafka will save the message, and deliver it when Shipping is back up.
+* **Multi-cast:** We can send a message that multiple systems (e.g., Accounting) can consume.
+
+The content of the message is a JSON string, just like an API.
+
 Just as you can customize apis, you can complement rule-based logic using Python events:
 
-1. Declare the mapping -- see the `OrderShipping` class in the right pane.
+1. Declare the mapping -- see the `OrderShipping` class in the right pane.  This formats our Kafka message content in the format agreed upon with Shipping.
 
 2. Define a Python `after_flush` event, which invokes `send_order_to_shipping`.  This is called by the logic engine, which passes the SQLAlchemy `models.Order`` row.
 
@@ -316,6 +326,10 @@ Just as you can customize apis, you can complement rule-based logic using Python
 &nbsp;
 
 ## 4. Consuming Messages
+
+The Shipping system illustrates how to consume messages.  This system was [created from AI](Tutorial-AI.md), here customized to add message consumption.
+
+&nbsp;
 
 ### Create/Start Shipping
 
@@ -333,9 +347,27 @@ ApiLogicServer create --project_name=shipping --db_url=shipping
 
 ### Consuming Logic
 
-Note the logic in `integration/kafka/kafka_consumer.py`.
+To consume messages:
+
+**1. Enable Consumption**
+
+Shipping is pre-configured to enable message consumption with a setting in `config.py`:
+
+```python
+KAFKA_CONSUMER = '{"bootstrap.servers": "localhost:9092", "group.id": "als-default-group1", "auto.offset.reset":"smallest"}'
+```
+
+**2. Configure a mapping**
+
+As we did for our OrderB2B Custom Resource, we configure an `OrderToShip` mapping class to map the message onto our SQLAlchemy Order object.
+
+**3. Provide a Message Handler**
+
+We provide the `order_shipping` handler in `integration/kafka/kafka_consumer.py`.
 
 ![process in shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/kafka-consumer.jpg?raw=true)
+
+The pre-supplied `FlaskKafka` takes care of the Kafka listening and thread management.
 
 &nbsp;
 
