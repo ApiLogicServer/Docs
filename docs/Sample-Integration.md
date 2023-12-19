@@ -6,9 +6,7 @@ version: 0.01 from docsite
 
 # Purpose
 
-Coming Soon -- see preview.
-
-## System Requirements
+**System Requirements**
 
 This app illustrates using IntegrationServices for B2B push-style integrations with APIs, and internal integration with messages.  We have the following **Use Cases:**
 
@@ -29,7 +27,7 @@ The **Shipping API Logic Server** listens on kafka, and processes the message.<b
 ![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/overview.jpg?raw=true)
 &nbsp;
 
-## Self-serve APIs, Shared Logic
+**Self-serve APIs, Shared Logic**
 
 This sample illustrates some key architectural considerations:
 
@@ -47,7 +45,6 @@ We'll further expand of these topics as we build the system, but we note some Be
 * **Logic should be re-used** over the UI and API transaction sources
 
     * Logic in UI controls is undesirable, since it cannot be shared with APIs and messages
-
 
 &nbsp;
 
@@ -89,7 +86,7 @@ One command has created meaningful elements of our system:
 
     ### API: Ad hoc Integration
 
-    The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access.
+    The system creates an API with end points for each table, providing filtering, sorting, pagination, optimistic locking and related data access.
     
     The API is [**self-serve**](https://apilogicserver.github.io/Docs/API-Self-Serve/): consumers can select their own attributes and related data, eliminating reliance on custom API development.  In this sample, our self-serve API meets our needs for Ad Hoc Integration, and Custom UI Dev.
 
@@ -113,7 +110,7 @@ You normally apply such customizations using your IDE, leveraging code completio
 
 <details markdown>
 
-<summary> Show me how -- apply customizations </summary>
+<summary> Show me how -- apply customizations, start Kafka </summary>
 
 &nbsp;
 
@@ -140,11 +137,12 @@ ApiLogicServer add-cust
 
 **3. Enable and Start Kafka**
 
-&nbsp;
 
 <details markdown>
 
 <summary>Show me how</summary>
+
+&nbsp;
 
 To enable Kafka:
 
@@ -210,8 +208,6 @@ Note the automation for **automatic joins** (Product Name, not ProductId) and **
 
 Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
-&nbsp;
-
 !!! pied-piper ":bulb: Logic: Multi-table Derivation and Constraint Rules, 40X More Concise"
 
 
@@ -227,7 +223,12 @@ Such logic (multi-table derivations and constraints) is a significant portion of
 
     <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
 
-    Rules operate by handling SQLAlchemy events, so apply to all ORM access, whether by the api engine, or your custom code.
+    Rules operate by handling SQLAlchemy events, so apply to all ORM access, whether by the api engine, or your custom code.  Once declared, you don't need to remember to call them, which promotes quality.
+
+    The rules shown above prevented the too-big order with *multi-table logic* to copy the Product Price, compute the Amount, roll it up to the AmountTotal and Balance, and check the CreditLimit.  
+    
+    These same rules also govern changing orders, deleting them, picking different parts - about 9 transactions, all automated.  Implementing all this by hand would otherwise require about 200 lines of code.
+    
 
     &nbsp;
 
@@ -276,23 +277,23 @@ We now have a running system - an API, logic, security, and a UI.  To integrate 
 
 ### B2B Custom Resource
 
-The self-serve API, however, does not conform to the format required for a B2B partnership.  We need to create a custom resource.
+The self-serve API does not conform to the format required for a B2B partnership.  We need to create a custom resource.
 
 You can create custom resources by editing `customize_api.py`, using standard Python, Flask and SQLAlchemy.  A custom `OrderB2B` resource is shown below.
 
 The main task here is to ***map*** a B2B payload onto our logic-enabled SQLAlchemy rows.  API Logic Server provides a declarative `ApplicationIntegration` service you can use as follows:
 
-1. Declare the mapping -- see the `OrderB2B` class in the right pane
+1. Declare the mapping -- see the `OrderB2B` class in the lower pane
 
     * Note the support for **lookup**, so partners can send ProductNames, not ProductIds
 
-2. Create the custom API endpoint -- see the left pane:
+2. Create the custom API endpoint -- see the upper pane:
 
     * Add `def OrderB2B` to `customize_api/py` to create a new endpoint
     * Use the `OrderB2B` class to transform a api request data to SQLAlchemy rows (`dict_to_row`)
     * The automatic commit initiates the same shared logic described above to check credit and reorder products
 
-![post order](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/post-orderb2b.jpg?raw=true)
+![dict to row](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/dict-to-row.jpg?raw=true)
 
 So, our custom endpoint required about 7 lines of code, along with the API specification on the right.
 
