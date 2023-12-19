@@ -347,7 +347,7 @@ To get started, please see  the [Architecture](Architecture-Internals.md).
 
 This pre-release includes:
 
-* Running [Kafka publish](Sample-Integration.md); consume to follow.
+* Running [Kafka publish](Sample-Integration.md); consume now working.
 
 * Fix for MySQL CHAR/String import [Issue 26](https://github.com/ApiLogicServer/ApiLogicServer-src/issues/26){:target="_blank" rel="noopener"}
 
@@ -355,7 +355,7 @@ This pre-release includes:
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==9.6.10
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==9.6.16
 ```
 
 Or use (not available currently):
