@@ -146,6 +146,12 @@ sql.h not found - your console log might include:
 
 Resolve these as explained in the [Quick Start](Install-pyodbc.md).
 
+&nbsp;
+
+## Sqlite delete adjustments fail
+
+Sqlite requires special considerations for cascade delete.  For more information, [click here](./Data-Model-Customization.md/#edit-modelspy-referential-integrity-eg-sqlite).
+
 &nbsp;&nbsp;
 
 # Docker
