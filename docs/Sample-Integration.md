@@ -60,7 +60,7 @@ We'll further expand of these topics as we build the system, but we note some Be
 The command below creates an `ApiLogicProject` by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix.  Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/); you would normally supply a SQLAlchemy URL.  
 
 ```bash
-$ ApiLogicServer create --project_name= --db_url=nw-    # create ApiLogicProject
+$ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw-    # create ApiLogicProject
 ```
 
 You can then open the project in your IDE, and run it.
