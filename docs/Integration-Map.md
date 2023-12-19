@@ -15,7 +15,7 @@
 
 ## `dict_to_row`
 
-This is the definition of a `row_dict_map` called `OrderB2B`.  It defines the *shape* of orders received from business partners.  It extends the system-supplied `RowDictMapper`.
+This is the definition of a `RowDictMapper` called `OrderB2B`.  It defines the *shape* of orders received from business partners.  It extends the system-supplied `RowDictMapper`.
 
 Notes:
 
