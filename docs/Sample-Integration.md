@@ -46,6 +46,8 @@ We'll further expand of these topics as we build the system, but we note some Be
 
     * Logic in UI controls is undesirable, since it cannot be shared with APIs and messages
 
+This sample was developed with API Logic Server - [open source, available here](https://apilogicserver.github.io/Docs/).
+
 &nbsp;
 
 # Development Overview
@@ -359,6 +361,8 @@ KAFKA_CONSUMER = '{"bootstrap.servers": "localhost:9092", "group.id": "als-defau
 
 When the server is started in `api_logic_server_run.py`, it invokes `integration/kafka/kafka_consumer.py#flask_consumer`.  This calls the pre-supplied `FlaskKafka`, which takes care of the Kafka listening, thread management, and the `handle` annotation used below.
 
+> `FlaskKafka` was inspired by the work of Nimrod (Kevin) Maina, in [this project](https://pypi.org/project/flask-kafka/).
+
 &nbsp;
 
 **2. Configure a mapping**
@@ -408,91 +412,49 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
 
 # Summary
 
-Internal Note: rebuild, deployment
+These applications have demonstrated several types of application integration:
 
-Instant Business Relationship: by the clock...
+* **Ad Hoc Integration** via self-serve APIs
 
-Customize with Python, Flask, SQLAlchemy, libraries (Kafka...)
+* **Custom Integration** to support business agreements with B2B partners
 
-* Instantly: Ad hoc integration, Admin App (zero code)
+* **Message-Based Integration** to decouple internal systems by reducing dependencies that all systems must always be running
 
-* Under an hour: declare logic and security (5 rules, 1 security definition)
+&nbsp;
+---
 
-* An afternoon or so: application integration: this required the most code
-
-    * Custom B2B API: 10 lines
-
-    * Send Order to Shipping: 20 lines
-
-    * Process Order in Shipping: 30 lines
-
-    * Mapping configurations to transform rows and dicts:  120 
-
-
-
+We have also illustrated some technologies noted in the *Ideal* column:
 
 | Requirement | Poor Practice | Good Practice | Best Practice | Ideal
 | :--- |:---|:---|:---|:---|
-| **Ad Hoc Integration** | ETL | APIs | Self-Serve APIs |  **Automated** Self-Serve APIs |
-| **UI Dev** | Custom API Dev  | Self-Serve APIs | **Automated** Self-Serve APIs<br>**Automated 
-| **Logic** | Logic in UI | | Reusable Logic | **Declarative Rules**<br>.. Extensible with Python |
-| **Custom Integration** | | Custom APIs |  | Reusable integration services |
+| **Ad Hoc Integration** | ETL | APIs | **Self-Serve APIs** |  **Automated** Self-Serve APIs |
+| **Logic** | Logic in UI | | **Reusable Logic** | **Declarative Rules**<br>.. Extensible with Python |
 
-&nbsp;
 
-**Ad Hoc Integration (vs. ETL)**
+API Logic Server supports the *Ideal Practices* noted above: 
 
-Many systems need to support ad hoc integration: the inevitable series of requests that do not stipulate an API contract.  It's important to **avoid custom app dev for each new request**.
+* **Automation:** instant ad hoc API (and Admin UI) with the `ApiLogicServer create` command
 
-So, our system should support **self-serve** APIs (in addition to custom APIs).  Unlike Custom APIs which require server development, **Self-Serve APIs can be used directly by consumers to retrieve the attributes and related data they require.**  These can be used by:
+* **Declarative Rules** - security and multi-table logic, providing a 40X reduction for bakend half of these systems
 
-* UI Developers - progress no longer blocked on custom server development
+* **Standards-based Customization:**
 
-* Ad Hoc Integration - remote customers and organizations (Accounting, Sales) can similarly meet their own needs<br>
+    * Standard packages: Python, Flask, SQLAlchemy, Kafka...
 
-> **Avoid ETL:** Tradtional internal integration often involves ETL - Extract, Transfer and Load.  That is, each requesting system runs nightly programs to Extract the needed data, Transfer it to their location, and Load it for local access the next day.  This requires app dev for the extract, considerable bandwidth - all to see stale data.<br><br>In many cases, this might be simply to lookup a client's address.  For such requests, **self-serve APIs can avoid ETL overhead, and provide current data**.
+    * Using standard IDEs
 
-&nbsp;
+As a result, we built 2 non-trivial systems with a remarkably small amount of Python code:
 
-**UI Dev on self-serve APIs**
+| Type | Code |
+| :--- |:--|
+| Custom B2B API | 10 lines |
+| Check Credit Logic | 5 rules |
+| Row Level Security | 1 security declaration |
+| Send Order to Shipping | 20 lines |
+| Process Order in Shipping | 30 lines |
+| Mapping configurations <br>to transform rows and dicts |  45 lines |
 
-UI apps depend, of course, on APIs.  As described above, *self-serve APIs* reduce the load on the server team, and unblock the UI team.
-
-For many internal requirements where UI needs are minimal, basic *"Admin"* UI apps can be automated.
-
-&nbsp;
-
-**Logic: Shared, Declarative**
-
-A proper architecture must consider where to place business logic (check credit, reorder products).  Such multi-table logic often consitutes nearly half the development effort.
-
-> A poor practice is to place such logic on UI controller buttons.  It can be difficult or impossible to share this with the OrderB2B service, leading to duplication of effort and inconsistency.
-
-*Shared* logic is thus a requirement, to avoid duplication and ensure consistent results.  Ideally, such logic is declarative: significantly more concise.
-
-&nbsp;
-
-**Reusable Integration Services**
-
-Custom integrations require attribute map / alias services to transform data from remote formats to match our system objects.  In the sample here, this is required to transform incoming B2B APIs, and outgoing message publishing.
-
-Ideally, our architecture can extract Integration Services for reuse, including attribute map / alias services, Lookups, and Cascade Add.  Details below.
-
-&nbsp;
-
-**Messaging**
-
-Note the integration to Shipping is via message, not APIs.  While both APIs and messages may can send data, there is an important difference:
-
-* APIs are **synchronous**: if the remote server is down, the message fails.
-
-* Messages are **async**: systems such as Kafka ensure that messages are delivered *eventually*, when the remote server is brought back online.
-
-&nbsp;
-
-# Status
-
-12/17/2003 - runs.
+For more information on API Logic Server, [click here](https://apilogicserver.github.io/Docs/).
 
 &nbsp;
 
