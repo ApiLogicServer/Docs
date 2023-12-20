@@ -1,7 +1,7 @@
 ---
 title: Declarative Application Integration
 notes: gold docsite, 2100 words (goal: 1500)
-version: 0.01 from docsite
+version: 10.0.1 from docsite
 ---
 
 # Purpose
@@ -35,6 +35,7 @@ This sample illustrates some key architectural considerations:
 | :--- |:---|:---|:---|:---|
 | **Ad Hoc Integration** | ETL | APIs | **Self-Serve APIs** |  **Automated** Self-Serve APIs |
 | **Logic** | Logic in UI | | **Reusable Logic** | **Declarative Rules**<br>.. Extensible with Python |
+| **Messages** | | | Kafka | **Kafka Logic Integration** |
 
 We'll further expand of these topics as we build the system, but we note some Best Practices:
 
@@ -412,7 +413,7 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
 
 # Summary
 
-These applications have demonstrated several types of application integration:
+These applications have demonstrated several **types of application integration:**
 
 * **Ad Hoc Integration** via self-serve APIs
 
@@ -420,24 +421,35 @@ These applications have demonstrated several types of application integration:
 
 * **Message-Based Integration** to decouple internal systems by reducing dependencies that all systems must always be running
 
-&nbsp;
----
 
-We have also illustrated some technologies noted in the *Ideal* column:
+We have also illustrated some technologies noted in the **Ideal** column:
 
-| Requirement | Poor Practice | Good Practice | Best Practice | Ideal
+| Requirement | Poor Practice | Good Practice | Best Practice | **Ideal**
 | :--- |:---|:---|:---|:---|
 | **Ad Hoc Integration** | ETL | APIs | **Self-Serve APIs** |  **Automated** Self-Serve APIs |
 | **Logic** | Logic in UI | | **Reusable Logic** | **Declarative Rules**<br>.. Extensible with Python |
+| **Messages** | | | Kafka | **Kafka Logic Integration** |
 
 
-API Logic Server supports the *Ideal Practices* noted above: 
+API Logic Server supports the **Ideal Practices** noted above: 
 
-* **Automation:** instant ad hoc API (and Admin UI) with the `ApiLogicServer create` command
+1. **Automation:** instant ad hoc API (and Admin UI) with the `ApiLogicServer create` command
 
-* **Declarative Rules** - security and multi-table logic, providing a 40X reduction for bakend half of these systems
+2. **Declarative Rules** - security and multi-table logic, providing a 40X reduction for bakend half of these systems
 
-* **Standards-based Customization:**
+3. **Kafka Logic Integration**
+
+    * **Send** from logic events
+
+    * **Consume** by extending `kafka_consumer`
+
+    * Services, including:
+
+        * `Mapper` services to transform rows and dict
+
+        * `FlaskKafka` for Kafka listening, threading, and annotation invocation
+
+4. **Standards-based Customization:**
 
     * Standard packages: Python, Flask, SQLAlchemy, Kafka...
 
@@ -459,6 +471,10 @@ For more information on API Logic Server, [click here](https://apilogicserver.gi
 &nbsp;
 
 # Appendix
+
+## Status
+
+Tested on Mac
 
 ## Apendix: Customizations
 
@@ -509,7 +525,7 @@ For PyCharm, start the server with CTL-D, Stop with red stop button.
 
 To enter a new Order:
 
-1. Click `Customer 1``
+1. Click `ALFKI``
 
 2. Click `+ ADD NEW ORDER`
 
@@ -517,11 +533,11 @@ To enter a new Order:
 
 4. Click `+ ADD NEW ITEM`
 
-5. Enter Quantity 1, lookup "Product 1", and click `SAVE AND ADD ANOTHER`
+5. Enter Quantity 1, lookup "Chai", and click `SAVE AND ADD ANOTHER`
 
-6. Enter Quantity 2000, lookup "Product 2", and click `SAVE`
+6. Enter Quantity 2000, lookup "Chang", and click `SAVE`
 
-7. Observe the constraint error, triggered by rollups from the `Item` to the `Order` and `Customer`
+7. Observe the constraint error, triggered by rollups from the `OrderDetail` to the `Order` and `Customer`
 
 8. Correct the quantity to 2, and click `Save`
 
@@ -532,4 +548,4 @@ To explore our new logic for green products:
 
 1. Access the previous order, and `ADD NEW ITEM`
 
-2. Enter quantity 11, lookup product `Green`, and click `Save`.
+2. Enter quantity 11, lookup product `Chang`, and click `Save`.
