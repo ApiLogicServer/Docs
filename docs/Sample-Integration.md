@@ -357,17 +357,27 @@ Shipping is pre-configured to enable message consumption with a setting in `conf
 KAFKA_CONSUMER = '{"bootstrap.servers": "localhost:9092", "group.id": "als-default-group1", "auto.offset.reset":"smallest"}'
 ```
 
+When the server is started in `api_logic_server_run.py`, it invokes `integration/kafka/kafka_consumer.py#flask_consumer`.  This calls the pre-supplied `FlaskKafka`, which takes care of the Kafka listening, thread management, and the `handle` annotation used below.
+
+&nbsp;
+
 **2. Configure a mapping**
 
 As we did for our OrderB2B Custom Resource, we configure an `OrderToShip` mapping class to map the message onto our SQLAlchemy Order object.
 
+&nbsp;
+
 **3. Provide a Message Handler**
 
-We provide the `order_shipping` handler in `integration/kafka/kafka_consumer.py`.
+We provide the `order_shipping` handler in `integration/kafka/kafka_consumer.py`:
+
+1. Annotate the topic handler method, providing the topic name.
+
+    * This is used by `FlaskKafka` establish a Kafka listener
+
+2. Provide the topic handler code, leveraging the mapper noted above.  It is called by `Flaskkafka` per the method annotations.
 
 ![process in shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/kafka-consumer.jpg?raw=true)
-
-The pre-supplied `FlaskKafka` takes care of the Kafka listening and thread management.
 
 &nbsp;
 
