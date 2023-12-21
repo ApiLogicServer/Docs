@@ -342,7 +342,9 @@ To explore Shipping:
 ApiLogicServer create --project_name=shipping --db_url=shipping
 ```
 
-**2. Start the Shipping Server: F5** (it's configured to use a different port)
+**2. Start your IDE (e.g., `code shipping`) and establish your `venv`**
+
+**3. Start the Shipping Server: F5** (it's configured to use a different port)
 
 &nbsp;
 
@@ -415,7 +417,7 @@ These applications have demonstrated several **types of application integration:
 
 * **Ad Hoc Integration** via self-serve APIs
 
-* **Custom Integration** to support business agreements with B2B partners
+* **Custom Integration** via custom APIs, to support business agreements with B2B partners
 
 * **Message-Based Integration** to decouple internal systems by reducing dependencies that all systems must always be running
 
