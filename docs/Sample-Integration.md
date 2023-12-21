@@ -362,7 +362,7 @@ KAFKA_CONSUMER = '{"bootstrap.servers": "localhost:9092", "group.id": "als-defau
 
 When the server is started in `api_logic_server_run.py`, it invokes `integration/kafka/kafka_consumer.py#flask_consumer`.  This calls the pre-supplied `FlaskKafka`, which takes care of the Kafka listening, thread management, and the `handle` annotation used below.
 
-> `FlaskKafka` was inspired by the work of Nimrod (Kevin) Maina, in [this project](https://pypi.org/project/flask-kafka/).
+> `FlaskKafka` was inspired by the work of Nimrod (Kevin) Maina, in [this project](https://pypi.org/project/flask-kafka/).  Many thanks.
 
 &nbsp;
 
@@ -422,7 +422,7 @@ These applications have demonstrated several **types of application integration:
 * **Message-Based Integration** to decouple internal systems by reducing dependencies that all systems must always be running
 
 
-We have also illustrated some technologies noted in the **Ideal** column:
+We have also illustrated several technologies noted in the **Ideal** column:
 
 | Requirement | Poor Practice | Good Practice | Best Practice | **Ideal**
 | :--- |:---|:---|:---|:---|
