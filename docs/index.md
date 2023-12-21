@@ -417,6 +417,14 @@ There are a few articles that provide some orientation to API Logic Server:
 * [Agile Design Automation With Logic Bank](https://dzone.com/articles/logical-data-indendence){:target="_blank" rel="noopener"} - focuses on automation, design flexibility and agile iterations
 * [Instant Web Apps](https://dzone.com/articles/instant-db-web-apps){:target="_blank" rel="noopener"} 
 
+&nbsp;
+
+## Contact Us
+
+We'd love to hear from you.
+
+1. email: val@apilogicserver.com
+2. slack: [https://apilogicserver.slack.com](https://apilogicserver.slack.com)
 
 
 [^1]:
