@@ -423,7 +423,7 @@ There are a few articles that provide some orientation to API Logic Server:
 
 We'd love to hear from you.
 
-1. email: val@apilogicserver.com
+1. email: apilogicserver@gmail.com
 2. slack: [https://apilogicserver.slack.com](https://apilogicserver.slack.com)
 
 
