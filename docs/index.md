@@ -72,10 +72,13 @@ In addition to this app dev oriented tutorial, you can also explore:
 
 &nbsp;
 
-# Project Information
+# Preview Version
 
+<details markdown>
 
-### Preview Version
+<summary> Show me how </summary>
+
+&nbsp;
 
 This pre-release includes:
 
@@ -98,9 +101,11 @@ docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ~/dev/s
 
 Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServer/beta){:target="_blank" rel="noopener"}.
 
+</details>
+
 &nbsp;
 
-## Contact Us
+# Contact Us
 
 We'd love to hear from you.
 
