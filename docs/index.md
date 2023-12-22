@@ -64,7 +64,7 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 In addition to this app dev oriented tutorial, you can also explore:
 
-* **Messaging:** the [Application Integration Tutorial](sample-Integration.md){:target="_blank" rel="noopener"} illustrates using messaging, self-serve APIs and customized APIs, choreographed with rules and Python.
+* **Messaging:** the [Application Integration Tutorial](Sample-Integration.md){:target="_blank" rel="noopener"} illustrates using messaging, self-serve APIs and customized APIs, choreographed with rules and Python.
 
 * **Deployment:** the [Deployment Tutorial](Tutorial-Deployment.md){:target="_blank" rel="noopener"} illustrates various ways to containerize and deploy your applications
 
