@@ -2,7 +2,12 @@
 title: API Logic Server
 Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 ---
-
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
 [![Downloads](https://static.pepy.tech/badge/apilogicserver)](https://pepy.tech/project/apilogicserver)
 [![Latest Version](https://img.shields.io/pypi/v/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
@@ -12,11 +17,11 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-!!! pied-piper ":bulb: Positioning"
+!!! pied-piper ":bulb: Fastest, Easiest Way to Create Database Backends"
 
-    For Developers and their organizations seeking to reduce delivery and maintenance cycles,
+    For Developers and their organizations seeking to **increase business agility,**
 
-    API Logic Server creates executable projects from a database with a single command, **customizable with standards:** Python, Flask, SQLAlchemy, and tools such as GitHub and your IDE.
+    API Logic Server provides ***instant* creation of executable projects** from a database with a single command, **customizable with standards:** Python, Flask, SQLAlchemy, and tools such as GitHub and your IDE.
 
     Unlike Frameworks, API Logic Server provides **unique spreadsheet-like rules** that decrease backend code by **40X**, and promote quality.
 
@@ -93,9 +98,6 @@ Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServ
 
 &nbsp;
 
-
-
-
 We communicate [via slack](https://join.slack.com/t/apilogicserver/signup?x=x-p3388652117142-3395302306098-5241761647201).
 
 &nbsp;
@@ -107,3 +109,6 @@ We'd love to hear from you.
 1. email: apilogicserver@gmail.com
 2. slack: [https://apilogicserver.slack.com](https://apilogicserver.slack.com)
 
+## Detailed Product Information
+
+For more, [click here](Product-Detail.md).

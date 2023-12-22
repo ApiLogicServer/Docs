@@ -137,7 +137,7 @@ nav:
     - "Mkdocs Material": Tech-mkdocs-material.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "M1 Mac": Tech-m1.md
-    - "Overview": Overview.md
+    - "Product Detail": Product-Detail.md
     - "Geoffrey Moore": OverviewMoore.md
     - Personal:
       - "PyCon23 Talk": Tech-Conference-PyCon23-Talk.md
