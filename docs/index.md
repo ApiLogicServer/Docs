@@ -36,6 +36,14 @@ API Logic Server is an open source Python project, consisting of a CLI and set o
 
 It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is.md).
 
+The `ApiLogicServer create` CLI command creates an executable project, providing a JSON:API and an Admin App.  For example, this will create the sample database:
+
+```bash
+ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
+```
+
+As shown below, you can open the project in your IDE, and customize it with Python and rules for logic and security.
+
 Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
 
 [![API Logic Server](images/nutshell/als-nutshell.png)](https://youtu.be/sD6RFp8S6Fg "API Logic Server"){:target="_blank" rel="noopener"}
@@ -46,13 +54,13 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 &nbsp;
 
-`ApiLogicServer create` creates an executable project, providing an API and an Admin App.  In particular, the API is a *JSON:API* -- a standard for self-serve APIs where clients can select the columns and the related data they require.
+*JSON:API* are a standard for self-serve APIs -- where clients can select the columns and the related data they require.
 
 > Self-serve APIs reduce the need for ongoing custom API development.  Analogous to GraphQL, they fulfill requirements for custom UI development and ad hoc integration.
 
 You can use Python, Flask and SQLAlchemy to create Custom APIs, e.g. for B2B Partners.  In addition to the underlying logic, API Logic Server provides mapping services as described under **Application Integration.**
 
-Appication Integration support also provides automation for producing and consuming Kafka messages.
+Appication Integration support also provides automation for producing and consuming Kafka messages.  To see these services in a running sample, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
 
 </details>
 
