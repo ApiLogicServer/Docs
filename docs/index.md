@@ -42,7 +42,7 @@ The `ApiLogicServer create` CLI command creates an executable project, providing
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
 ```
 
-As shown below, you can open the project in your IDE, and customize it with Python and rules for logic and security.
+As shown below, you can open the project in your IDE, and customize it with Python and rules for logic and security.  Rules are significant - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}.
 
 Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
 
