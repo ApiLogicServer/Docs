@@ -62,10 +62,10 @@ nav:
     - "Authentication Provider": Security-Authentication-Provider.md
     - "Activation": Security-Activation.md
     - "Swagger": Security-Swagger.md
-  - "Using Your IDE": IDE-Customize.md
-  - Integration:
+  - 5. Application Integration:
     - "Sample Integration": Sample-Integration.md
     - "Integration Mapping": Integration-Map.md
+  - "Using Your IDE": IDE-Customize.md
   - Database:
     - "Connection Examples, Debug": Database-Connectivity.md
     - "Sample Databases": Data-Model-Examples.md

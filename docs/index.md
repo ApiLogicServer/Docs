@@ -38,7 +38,23 @@ It runs as a standard pip install, or under Docker. For more on API Logic Server
 
 Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
 
-[![Delivering the Agile Vision](images/agile/als-agile-video.png)](https://youtu.be/sD6RFp8S6Fg "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}
+[![API Logic Server](images/nutshell/als-nutshell.png)](https://youtu.be/sD6RFp8S6Fg "API Logic Server"){:target="_blank" rel="noopener"}
+
+<details markdown>
+
+<summary>Application Integration -- JSON:APIs, Custom APIs and Messaging</summary>
+
+&nbsp;
+
+`ApiLogicServer create` creates an executable project, providing an API and an Admin App.  In particular, the API is a *JSON:API* -- a standard for self-serve APIs where clients can select the columns and the related data they require.
+
+> Self-serve APIs reduce the need for ongoing custom API development.  Analogous to GraphQL, they fulfill requirements for custom UI development and ad hoc integration.
+
+You can use Python, Flask and SQLAlchemy to create Custom APIs, e.g. for B2B Partners.  In addition to the underlying logic, API Logic Server provides mapping services as described under **Application Integration.**
+
+Appication Integration support also provides automation for producing and consuming Kafka messages.
+
+</details>
 
 &nbsp;
 
