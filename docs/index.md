@@ -30,39 +30,76 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 ---
 
-### Video: Create, Run, Customize
+# Usage: Create, Run, Customize
 
 API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
 It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is.md).
 
-The `ApiLogicServer create` CLI command creates an executable project, providing a JSON:API and an Admin App.  For example, this will create the sample database:
+**1. Create: Single CLI Command**
+
+The `ApiLogicServer create` CLI command creates an executable project by reading the database schema in the `db_url` argument.  For example, this will create the sample database:
 
 ```bash
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
 ```
 
-As shown below, you can open the project in your IDE, and customize it with Python and rules for logic and security.  Rules are significant - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}.
+&nbsp;
 
-Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
+**2. Run: JSON:API, Admin App**
 
-[![API Logic Server](images/nutshell/als-nutshell.png)](https://youtu.be/sD6RFp8S6Fg "API Logic Server"){:target="_blank" rel="noopener"}
+The project is ready to run, providing a JSON:API and an Admin App.
 
 <details markdown>
 
-<summary>Application Integration -- JSON:APIs, Custom APIs and Messaging</summary>
+<summary>Running JSON:API and Admin App</summary>
 
 &nbsp;
 
+![Admin App](images/ui-admin/Order-Page.png)
+
+The Admin App provides a link to the Swagger:
+
+![Swagger](images/api/swagger-get-data.png)
+
+</details>
+
+&nbsp;
+
+**3. Customize: Rules and Python**
+
+You can open the project in your IDE, and customize it with Python and rules for logic and security, and custom APIs and messages.
+
+> Rules are significant - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+
+---
+
+# Scenarios
+
+As illustrated below, API Logic Server supports transactions from User Interfaces, and Application Integration - both via custom APIs and Kafka messages.
+
+![API Logic Server](images/nutshell/als-nutshell.png)
+
 *JSON:API* are a standard for self-serve APIs -- where clients can select the columns and the related data they require.
 
-> Self-serve APIs reduce the need for ongoing custom API development.  Analogous to GraphQL, they fulfill requirements for custom UI development and ad hoc integration.
+> Self-serve APIs reduce the need for ongoing custom API development.  Analogous to GraphQL, they fulfill requirements for UI development and ad hoc integration.
 
 You can use Python, Flask and SQLAlchemy to create Custom APIs, e.g. for B2B Partners.  In addition to the underlying logic, API Logic Server provides mapping services as described under **Application Integration.**
 
 Appication Integration support also provides automation for producing and consuming Kafka messages.  To see these services in a running sample, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
 
-</details>
+&nbsp;
+
+---
+
+# Video: Agile Collaboration
+
+Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
+
+[![Delivering the Agile Vision](images/agile/als-agile-video.png)](https://youtu.be/sD6RFp8S6Fg "Using VS Code with the ApiLogicServer container"){:target="_blank" rel="noopener"}
 
 &nbsp;
 
