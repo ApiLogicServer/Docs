@@ -19,14 +19,29 @@ python3 -m pip install -r requirements.txt
 
 ## Shared `venv`
 
-If you wish to share a `venv` over multiple projects, use __Settings > Python: Venv Path__, and specify a directory containing `venv` directories (e.g, where you installed API Logic Server).  This is a convenient way to get started.
+VSCode users may wish to share a `venv` over multiple projects.  Two altermnatives are described below.
 
-Recall this does _not_ apply to docker or Codespace environments.  
+&nbsp;
 
+### From Create
+
+Projects created starting with version 10.0.8 (see preview) have a preset `python.defaultInterpreterPath` in `.vscode/settings.json`.  The Python interpreter used to create the project (i.e, your ApiLogicServer install location) will be the default interpreter / venv.  Note this only takes effect when you start VSCode; you can override in manually.
 
 <details markdown>
 
 <summary> Show me how </summary>
+
+![Installed venv](images/tutorial/setup/default-interpreter.png)
+
+</details>
+
+&nbsp;
+
+### From Settings
+
+Use __Settings > Python: Venv Path__, and specify a directory containing `venv` directories (e.g, where you installed API Logic Server).  This is a convenient way to get started.
+
+Recall this does _not_ apply to docker or Codespace environments.  
 
 &nbsp;
 
