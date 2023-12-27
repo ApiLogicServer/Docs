@@ -1,4 +1,4 @@
-This section applies only to `pip` installs.  Docker based installs eliminate such environment issues, and are therefore recommended.
+This section applies only to `pip` installs.  Docker based installs eliminate such environment issues, and are therefore worth a look.
 
 Important: in addition to Python environment, there are other configuration settings to consider as described in the [Quick Start](IDE-Execute.md).
 
