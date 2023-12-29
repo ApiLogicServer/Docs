@@ -1,3 +1,55 @@
+---
+hide:
+ - title
+---
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
+!!! pied-piper ":bulb: TL;DR - ApiLogicServer create"
+
+    The `ApiLogicServer create` CLI command creates a customizable / executable API Logic Project providing:
+
+    * **A [JSON:API](API.md){:target="_blank" rel="noopener"} -** Endpoint for each table, with filtering, sorting, pagination, optimistic locking, including __related data access__, based on relationships in the models file (typically derived from foreign keys)
+
+    * **[An Admin App](Admin-Tour.md){:target="_blank" rel="noopener"} -** multi-page, multi-table, with automatic joins
+
+    Customize the project in your IDE to add custom endpoints, rules and Python for logic and security.  Projects are fully configured for development (e.g. run configurations) and deployment (e.g., image creation, env variables).
+
+## ApiLogicServer create
+
+The key `ApiLogicServer create` options are:
+
+* `--project_name` defines the directory created for your project
+
+* `--db_url` identifies the database.  Specify a [SQLAlchemy url](Database-Connectivity.md){:target="_blank" rel="noopener"}, or one of the [preloaded sample database abbreviations](Data-Model-Examples.md){:target="_blank" rel="noopener"}
+
+Discover other options with `ApiLogicServer create --help`.
+
+Discover other commands with `ApiLogicServer --help`.
+
+The key files that drive execution are described below.  Note they are models - instead of lengthy generated code (*what*), they are Python declarations of *how".
+
+&nbsp;
+
+### 1. Data Model Classes
+
+The [Data Model Classes](Data-Model-Classes.md){:target="_blank" rel="noopener"} enable SQLAlchemy database operations for the system and your custom code.  They are created automatically on project creation.
+
+See [rebuild](Project-Rebuild.md){:target="_blank" rel="noopener"} for more information.
+
+### 2. API
+
+The [JSON:API](API.md){:target="_blank" rel="noopener"} is driven by the model classes, so is very short.
+
+### 3. Admin App
+
+The [Admin App](Admin-Customization.md/#edit-adminyaml) is also a model (not extensive html and javascript), expressed in yaml.
+
+&nbsp;
 
 ## Project Structure
 
@@ -14,6 +66,8 @@ Note the entire project is file-based, which makes it easy to perform typical pr
 When you create an ApiLogicProject, the system creates a project like this, pre-configured for Developer Oprations.  See the notes below.
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/devops/devops.png?raw=true"></figure>
+
+&nbsp;
 
 ### 1. Dev Container
 
@@ -51,19 +105,23 @@ Your project includes a suggested `.gitignore` file (alter as desired).  You can
 
 &nbsp;
 
-### 6. `env` support
+### 6. Configuration, env variables
 
-Most deployment procedures discourage database names / passwords to be in project files and GitHub, instead preferring to specify these via `env` variables.  The `config.py` file is designed to use the environment variable `SQLALCHEMY_DATABASE_URI` if it is provided.
+Most deployment procedures discourage database names / passwords to be in project files and GitHub, instead preferring to specify these via `env` variables; [click here for more information](DevOps-Container-Configuration.md/#overrides-env-variables){:target="_blank" rel="noopener"}
 
 &nbsp;
 
 ### IDE Friendly
 
-The project structure above can be loaded into any IDE for code editing, debugging, etc.  For more information on using IDEs, [see here](https://github.com/valhuber/ApiLogicServer/wiki#using-your-ide).
+The project structure above can be loaded into any IDE for code editing, debugging, etc.  For more information on using IDEs, [see here](https://github.com/valhuber/ApiLogicServer/wiki#using-your-ide){:target="_blank" rel="noopener"}.
+
+&nbsp;
 
 ### Tool-friendly - file-based
 
 All project elements are files - no database or binary objects.  So, you can store objects in source control systems like git, diff/merge them, etc.
+
+&nbsp;
 
 ## Customizing ApiLogicProjects
 
