@@ -36,7 +36,7 @@ API Logic Server is an open source Python project, consisting of a CLI and set o
 
 It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is.md){:target="_blank" rel="noopener"}.
 
-**1. Create: Single CLI Command**
+**1. Create: Automate Project Creation With a Single CLI Command**
 
 The [**`ApiLogicServer create`**](Project-Structure.md){:target="_blank" rel="noopener"} CLI command creates an executable project by reading the database schema in the `db_url` argument.  For example, this will create an executable, customizable project from the pre-installed sample database:
 
@@ -46,7 +46,7 @@ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
 
 &nbsp;
 
-**2. Run: JSON:API, Admin App**
+**2. Run: Automated JSON:API, Admin App**
 
 The **project is executable**, providing a [**JSON:API**](API.md){:target="_blank" rel="noopener"} and an [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}:
 

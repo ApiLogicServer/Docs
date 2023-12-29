@@ -435,7 +435,7 @@ API Logic Server supports the **Ideal Practices** noted above:
 
 1. **Automation:** instant ad hoc API (and Admin UI) with the `ApiLogicServer create` command
 
-2. **Declarative Rules** - security and multi-table logic, providing a 40X reduction for bakend half of these systems
+2. **Declarative Rules** - security and multi-table logic, providing a 40X code reduction for backend half of these systems
 
 3. **Kafka Logic Integration**
 
