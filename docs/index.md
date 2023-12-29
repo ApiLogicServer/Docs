@@ -38,7 +38,7 @@ It runs as a standard pip install, or under Docker. For more on API Logic Server
 
 **1. Create: Single CLI Command**
 
-The [**`ApiLogicServer create`**](Project-Structure.md){:target="_blank" rel="noopener"} CLI command creates an executable project by reading the database schema in the `db_url` argument.  For example, this will create the sample database:
+The [**`ApiLogicServer create`**](Project-Structure.md){:target="_blank" rel="noopener"} CLI command creates an executable project by reading the database schema in the `db_url` argument.  For example, this will create an executable, customizable project from the pre-installed sample database:
 
 ```bash
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
@@ -48,13 +48,15 @@ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
 
 **2. Run: JSON:API, Admin App**
 
-The project is ready to run, providing a [**JSON:API**](API.md){:target="_blank" rel="noopener"} and an [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}:
+The **project is executable**, providing a [**JSON:API**](API.md){:target="_blank" rel="noopener"} and an [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}:
 
 <details markdown>
 
 <summary>Running JSON:API and Admin App</summary>
 
 &nbsp;
+
+You can run directly (`python api_logic_server_run.py`), or open it in your IDE and use the pre-created run configurations:
 
 ![Admin App](images/ui-admin/Order-Page.png)
 
@@ -68,7 +70,7 @@ The Admin App provides a link to the Swagger:
 
 **3. Customize: Rules and Python**
 
-You can open the project in your IDE.  Use Python and rules to customize it: logic and security, and custom APIs and messages.
+The **project is customizable in your IDE**.  Use Python and rules to customize it: logic and security, and custom APIs and messages.
 
 > Rules are significant - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}.
 
@@ -135,6 +137,10 @@ In addition to this app dev oriented tutorial, you can also explore:
 
 &nbsp;
 
+## Release Notes
+
+To see Release Notes, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/releases){:target="_blank" rel="noopener"}.
+
 ## Preview Version
 
 <details markdown>
@@ -170,13 +176,13 @@ Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServ
 
 # Contact Us
 
-We'd love to hear from you.
+We'd love to hear from you:
 
-1. email: apilogicserver@gmail.com
-2. slack: [https://apilogicserver.slack.com](https://join.slack.com/t/apilogicserver/signup?x=x-p3388652117142-3395302306098-5241761647201)
+1. Email: apilogicserver@gmail.com
+2. Slack: [https://apilogicserver.slack.com](https://join.slack.com/t/apilogicserver/signup?x=x-p3388652117142-3395302306098-5241761647201)
 
 &nbsp;
 
 # Detailed Product Information
 
-For more product information, [click here](Product-Detail.md).
+For more product information, [click here](Product-Detail.md){:target="_blank" rel="noopener"}.

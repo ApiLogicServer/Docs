@@ -16,7 +16,7 @@ Consider 2 classes of APIs:
 
 * ***Provider-Defined APIs*** are predefined by server developers
 
-    *  These are useful when API structure is dictated by an external system, such as a web hook.
+    *  These are useful when API structure is dictated by an external system, such as a pre-defined application integration ([example here](Sample-Integration.md){:target="_blank" rel="noopener"})
 
 But, providers typically cannot predict needs for a large class of API consumers (e.g., UI Developers, business partners, or other teams in a large organization).   Given only predefined provider APIs, consumers are often forced to make multiple calls to obtain the data they need, or invoke APIs that return too much data.  These can increase network traffic.
 
@@ -37,7 +37,7 @@ API Consumers can obtain the data they want as shown below.
 
 ### Create Request With Swagger
 
-![Create Request](images/api/swagger-get-data.png)
+![Create Request](images/integration/api-swagger.jpeg)
 
 First,
 
