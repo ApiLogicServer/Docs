@@ -52,7 +52,7 @@ The **project is executable**, providing a [**JSON:API**](API.md){:target="_blan
 
 <details markdown>
 
-<summary>See Running JSON:API and Admin App</summary>
+<summary>See JSON:API and Admin App</summary>
 
 &nbsp;
 
@@ -72,7 +72,7 @@ The Admin App provides a link to the Swagger:
 
 The **project is customizable in your IDE**.  Use Python and rules to customize it: logic and security, and custom APIs and messages.
 
-> Rules are significant - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}.
+> Rules are unique and significant - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}.
 
 
 <details markdown>
