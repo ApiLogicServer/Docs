@@ -31,7 +31,7 @@ Discover other options with `ApiLogicServer create --help`.
 
 Discover other commands with `ApiLogicServer --help`.
 
-The key files that drive execution are described below.  Note they are models - instead of lengthy generated code (*what*), they are Python declarations of *how".
+The key files that drive execution are described below.  Note they are models - instead of lengthy generated code (*what*), they are Python declarations of ***how***.
 
 &nbsp;
 

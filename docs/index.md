@@ -38,7 +38,7 @@ It runs as a standard pip install, or under Docker. For more on API Logic Server
 
 **1. Create: Single CLI Command**
 
-The [`ApiLogicServer create`](Project-Structure.md){:target="_blank" rel="noopener"} CLI command creates an executable project by reading the database schema in the `db_url` argument.  For example, this will create the sample database:
+The [**`ApiLogicServer create`**](Project-Structure.md){:target="_blank" rel="noopener"} CLI command creates an executable project by reading the database schema in the `db_url` argument.  For example, this will create the sample database:
 
 ```bash
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
@@ -48,7 +48,7 @@ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
 
 **2. Run: JSON:API, Admin App**
 
-The project is ready to run, providing a JSON:API and an Admin App.
+The project is ready to run, providing a [**JSON:API**](API.md){:target="_blank" rel="noopener"} and an [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}:
 
 <details markdown>
 
@@ -90,6 +90,8 @@ As illustrated below, API Logic Server supports transactions from User Interface
 You can use Python, Flask and SQLAlchemy to create Custom APIs, e.g. for B2B Partners.  In addition to the underlying logic, API Logic Server provides mapping services as described under **Application Integration.**
 
 Appication Integration support also provides automation for producing and consuming Kafka messages.  To see these services in a running sample, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
+
+For various Use Cases, [click here](Product-Detail.md/#use-cases){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
