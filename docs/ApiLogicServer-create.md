@@ -72,6 +72,8 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 ### Instant Evaluation - _no install_
 
+> Codespaces unavavailable - please use [Express Install](Install-Express.md).
+
 Run in the cloud: VSCode via your Browser, courtesy Codespaces.  Use your existing GitHub account (no signup is required), and:
 
 1. [__Click here__](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=593459232){:target="_blank" rel="noopener"} to open the *Create Codespace* page.

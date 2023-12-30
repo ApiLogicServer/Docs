@@ -1,3 +1,5 @@
+> Codespaces unavavailable - please use [Express Install](Install-Express.md).
+
 The fastest way to explore API Logic Server - *with __no install__* - is to follow this guide to create, explore and customize a project using Codespaces.
 
 <details markdown>

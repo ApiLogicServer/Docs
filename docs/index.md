@@ -179,7 +179,7 @@ You can try it at (you may need to use `python3`):
 python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.0.9
 ```
 
-Or use (not available currently):
+Or use (neither available currently):
 
 ```bash
 docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ~/dev/servers:/localhost apilogicserver/api_logic_server_x
