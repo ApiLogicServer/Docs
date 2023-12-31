@@ -16,3 +16,8 @@
     -webkit-mask-image: var(--md-admonition-icon--pied-piper);
             mask-image: var(--md-admonition-icon--pied-piper);
   }
+  blockquote {
+    border-left: 4px solid gray;
+    font-style: italic;
+    padding-left: 1em;
+  }
