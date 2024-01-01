@@ -8,14 +8,20 @@ SQLAlchemy URIs can be fiddly.  For example, the sample database is specified li
 ApiLogicServer create --project_name=Allocation --db_url=sqlite:////Users/val/Desktop/database.sqlite
 ```
 
-So, API Logic Server supports the following `db_url` shortcuts:
+So, API Logic Server supports the following `db_url` shortcuts for these pre-installed sqlite sample databases:
 
 * [nw](Tutorial.md){:target="_blank" rel="noopener"} - same as the sample (customers and orders; you can also use an empty `db_url`)
+
+    * This includes many examples of customization, so it's an excellent idea to create and explore it
+
 * nw- - same as nw, but no customizations
 * [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} - a similar, simpler example 
 * [allocation](Logic-Allocation.md){:target="_blank" rel="noopener"} - a rule to allocate a payment to a set of outstanding orders
 * [BudgetApp](Tech-Budget-App.md){:target="_blank" rel="noopener"} - illustrates automatic creation of parent rows for rollups
 * [auth](Security-Authentication-Provider.md#sqlite-auth-provider){:target="_blank" rel="noopener"} - sqlite authentication database
+
+In addition to the pre-installed sqlite samples, there are also abbreviations for a few [docker databases](Database-Docker.md){:target="_blank" rel="noopener"}:
+
 * chinook - albums and artists
 * classicmodels - customers and orders
 * todo - a simple 1 table database
