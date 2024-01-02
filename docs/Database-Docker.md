@@ -327,6 +327,20 @@ Notes:
 
 &nbsp;
 
+#### New user/database
+
+Some basic SqlPlus commands for creating a user / schema:
+
+```sql
+create user STRESS identified by tiger;
+
+GRANT CONNECT, RESOURCE, DBA TO STRESS;
+
+connect STRESS;
+
+SELECT table_name FROM all_tables WHERE owner = 'STRESS';
+```
+
 ## Create Your Own DB Image
 
 The API Logic Server project provides several docker databasesas described above.  A simple approach is to build on one of these, to add your own data, and to create your own database container for your team.  This provides a valuable "common starting place" for test database structure and test data.
