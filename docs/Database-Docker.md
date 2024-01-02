@@ -339,7 +339,10 @@ GRANT CONNECT, RESOURCE, DBA TO STRESS;
 connect STRESS;
 
 SELECT table_name FROM all_tables WHERE owner = 'STRESS';
+
 ```
+
+You can create tables now (note user prefix not required per `connect`).
 
 ## Create Your Own DB Image
 
