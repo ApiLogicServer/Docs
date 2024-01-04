@@ -78,6 +78,7 @@ nav:
     - Data-Model-Classes.md
     - Data-Model-Keys.md
     - Data-Model-Customization.md
+    - "Data Model Quoted Columns": Data-Model-Quotes.md
     - "Docker Test Databases": Database-Docker.md
     - "Multiple Databases": Data-Model-Multi.md
     - "Database Design": Data-Model-Design.md
