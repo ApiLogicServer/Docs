@@ -96,6 +96,25 @@ Projects are designed for customization:
 
 ---
 
+
+# Key Features
+
+| Feature | Notes   |
+:-------|:-----------|
+| [Instant Project Creation](Project-Structure.md){:target="_blank" rel="noopener"} | Unblock Agile Collaboration, Custom App Dev |
+| [AI-Driven Automation](Tutorial-Agile.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
+| [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
+| [Rule-based Transaction Logic](Logic-Why.md){:target="_blank" rel="noopener"} | 40X More Concise than procedural code |
+| [Rule-Base Row Level Security](Security-Overview.md){:target="_blank" rel="noopener"} | Authorization and Authentication |
+| [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
+| [Admin Web App](Admin-Tour.md){:target="_blank" rel="noopener"} | Agile Collaboration, Prototyping, Testing, Back Office Data Entry |
+| [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
+| [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
+
+&nbsp;
+
+---
+
 # Scenarios
 
 As illustrated below, API Logic Server supports transactions from User Interfaces, and Application Integration - both via custom APIs and Kafka messages.
