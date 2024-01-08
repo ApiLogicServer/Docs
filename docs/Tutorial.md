@@ -1,6 +1,16 @@
+---
+title: Detailed Tutorial
+notes: from Docs (gold)
+version: 1.00 from docsite
+---
+
 ## About this Detailed Tutorial
 
-This Detailed Tutorial is designed for these scenarios:
+Use this Detail Tutorial to introduce using API Logic facilities, and for coding examples.  Use your IDE to search for `#als` -- you'll a list of examples we believe you'll find useful.
+
+<figure><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/tutorial/search-examples.png?raw=true"></figure>
+
+It is designed for these scenarios:
 
 * You are using **codespaces** / VSCode, open to either the [tutorial project](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=593459232), or [app_fiddle](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=594296622).
 
@@ -243,7 +253,7 @@ To review the implementation:
 ### Logic
 API and UI automation are impressive answers to _familiar_ challenges.  Logic automation is a _unique_ answer to a significant and unaddressed problem:
 
-> For transaction systems, backend constraint and derivation logic is often nearly *half* the system.  This is not addressed by conventional approaches of "your code goes here".
+> For transaction systems, backend constraint and derivation logic is often nearly *half* the system.  This is not addressed by conventional approaches consisting only of "your code goes here".
  
 The *logic* portion of API *Logic* server is a declarative approach - you declare spreadsheet-like rules for multi-table constraints and derivations.  The 5 rules shown below represent the same logic as 200 lines of Python - a remarkable **40X.**
 
