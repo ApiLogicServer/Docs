@@ -2,7 +2,7 @@
 
     `RowDictMapper` is a system-supplied class that provides methods to convert between SQLAlchemy `rows` and `Dict`.
 
-    Services include selecting columns / related data, providing aliases, and Lookups.  Activate these by extending `RowDictMapper` and configuring your row / mapping.
+    Services include selecting columns / related data joins, providing aliases, and Lookups.  Activate these by extending `RowDictMapper` and configuring your row / mapping.
 
 ## Overview
 
