@@ -27,7 +27,7 @@ Observe:
     * The `bind-key` is inserted into the table class.
     * Sqlite databases are copied to your database folder, simplifying source control.
     * This example uses the shorthand for sqlite databases: `todo`, `classicmodels`, `chinook` and `nw`.  These are included in the install, so you can experiment with them.
-2. The `config.py` file is altered per your `db-url`
+2. The `conf/config.py` file is altered per your `db-url`
     * You can use environment variables to override these assignments, to avoid placing passwords in projects.
 3. The `bind_databases.py` file is created to bind the `bind_key` to the database url.   This enables SQLAlchemy to access the proper database.
 
@@ -67,7 +67,7 @@ ApiLogicServer 6.90.08 Creation Log:
 Notes:
 
 1. In step 2:
-    1. Updating `config.py` file with the location of the new database
+    1. Updating `conf/config.py` file with the location of the new database
     2. Updating `database/bind_databases.py` to open this database for SQLAlchemy access
 2. In Step 3:
     1. Creating a `models.py` file; note:

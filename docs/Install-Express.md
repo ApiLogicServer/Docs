@@ -49,10 +49,10 @@ Open the appropriate section below.
 
     &nbsp;
 
-    __Create the Tutorial Project__
+    __Create the Sample Project__
 
     ```bash title="Create Tutorial"
-    ApiLogicServer tutorial
+    ApiLogicServer create --project_name=  --db_url=
     ```
 
     &nbsp;
@@ -69,9 +69,9 @@ Open the appropriate section below.
 
     You have 2 choices:
 
-    * Use a shared `venv`; follow [this procedure](Project-Env.md#shared-venv), _or_
+    * Use the default shared `venv` (recommended); follow [this procedure](Project-Env.md#shared-venv), _or_
     * Create a `venv` local to the project
-        1. Open Folder `ApiLogicServer/tutorial` in VSCode
+        1. Open Folder `ApiLogicServer/ApiLogicProject` in VSCode
             * Decline options for Containers
         2. Establish your Virtual Environment - open __Terminal > New Terminal__, and
 
@@ -144,4 +144,4 @@ Open the appropriate section below.
 
 ## Next Steps - Tutorial
 
-You're all set - the Tutorial is created, installed and ready to run.  Proceed to [Explore the Tutorial](Tutorial.md).
+You're all set - the Sample is created, installed and ready to run.  Open the readme for a walk-through.

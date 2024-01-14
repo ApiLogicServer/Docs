@@ -16,7 +16,7 @@ To ensure that Authentication-Providers implement the api expected by the system
 
 ### Configure Authentication Provider
 
-You select the _authentication_provider_ in `config.py`:
+You select the _authentication_provider_ in `conf/config.py`:
 
 ```python
     from security.authentication_provider.sql.auth_provider import Authentication_Provider

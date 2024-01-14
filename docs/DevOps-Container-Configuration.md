@@ -80,7 +80,7 @@ Configuration parameters enable you to specify hosts and ports, database locatio
 
 ### Database Locations
 
-SQLAlchemy database URIs are set in your `config.py`` file, from your creation CLI arguments.  They apply to target database(s), and the authentication database.  For example:
+SQLAlchemy database URIs are set in your `conf/config.py`` file, from your creation CLI arguments.  They apply to target database(s), and the authentication database.  For example:
 
 ```python
     SQLALCHEMY_DATABASE_URI : typing.Optional[str] = f"mysql+pymysql://root:p@localhost:3306/classicmodels"
@@ -121,7 +121,7 @@ Hosts are defaulted as follows:
 | Docker | `0.0.0.0` |
 | Local Install | `localhost` |
 
-These defaults are also stored in the `config.py` file.
+These defaults are also stored in the `conf/config.py` file.
 
 &nbsp;
 
@@ -139,7 +139,7 @@ ApiLogicServer create --project_name=~/dev/servers/api_logic_server \
 
 ### Overrides: Config.py
 
-As noted above, the defaults are stored in the `config.py` file.  You can override these values as required.
+As noted above, the defaults are stored in the `conf/config.py` file.  You can override these values as required.
 
 &nbsp;
 
@@ -190,7 +190,7 @@ Also, it's possible to map hostname->IP DNS entries manually in /etc/hosts, but 
 
 A common approach for host, port and database configuration is to use env variables.  These can be set in your OS, or container options such as env files or docker compose.  
 
-The names of the variables are those noted used in the `config.py` file, **preceded by** `APILOGICPROJECT_`[^1].  These values override both the `config.py` values and the Api Logic Project CLI arguments.
+The names of the variables are those noted used in the `conf/config.py` file, **preceded by** `APILOGICPROJECT_`[^1].  These values override both the `conf/config.py` values and the Api Logic Project CLI arguments.
 
 Here are the most commonly set environment variables:
 

@@ -39,7 +39,7 @@ Developers must:
 
     * Provide this class
 
-    * Identify the class in `config.py`
+    * Identify the class in `conf/config.py`
 
 &nbsp;
 

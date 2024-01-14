@@ -89,7 +89,7 @@ You will need to edit it to reflect your project and Docker account names.
 
 These are created so you can run the API Logic Server, run tests, etc.  You should not need to modify these, but you may wish to extend them.  
 
-Note the file that starts the project is `api_logic_server_run.py`, which obtains arguments from `config.py` and environmental variables.
+Note the file that starts the project is `api_logic_server_run.py`, which obtains arguments from `conf/config.py` and environmental variables.
 
 &nbsp;
 

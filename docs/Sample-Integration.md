@@ -153,7 +153,7 @@ ApiLogicServer add-cust
 
 To enable Kafka:
 
-1. In `config.py`, find and comment out: `KAFKA_PRODUCER = None  # comment out to enable Kafka`
+1. In `conf/config.py`, find and comment out: `KAFKA_PRODUCER = None  # comment out to enable Kafka`
 
 2. Update your `etc/conf` to include the lines shown below (e.g., `sudo nano /etc/hosts`).
 
@@ -366,7 +366,7 @@ To consume messages:
 
 **1. Enable Consumption**
 
-Shipping is pre-configured to enable message consumption with a setting in `config.py`:
+Shipping is pre-configured to enable message consumption with a setting in `conf/config.py`:
 
 ```python
 KAFKA_CONSUMER = '{"bootstrap.servers": "localhost:9092", "group.id": "als-default-group1", "auto.offset.reset":"smallest"}'

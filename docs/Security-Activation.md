@@ -56,7 +56,7 @@ The `add-auth` command will:
 1. Add the sqlite database and models, using `ApiLogicServer add-db --db_url=auth --bind_key=authentication`
     * This uses [Multi-Database Support](Data-Model-Multi.md){:target="_blank" rel="noopener"} for the sqlite authentication data
 2. Add `User.Login`` endpoint to the User model
-3. Set `SECURITY_ENABLED` in `config.py`
+3. Set `SECURITY_ENABLED` in `conf/config.py`
 4. Configure your Authentication-Provider, using your own [Authentication-Provider](Security-Authentication-Provider.md){:target="_blank" rel="noopener"}
 5. Add Sample authorizations to `security/declare_security.py`
 
