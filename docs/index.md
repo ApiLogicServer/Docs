@@ -148,10 +148,7 @@ Click the image below for a video tutorial, showing complete project creation, e
 API Logic Server is designed to make it easy to get started:
 
 * **Install and run Tutorial** - 
-[install](https://valhuber.github.io/ApiLogicServer/Install-Express.md){:target="_blank" rel="noopener"}, and explore the [tutorial](https://valhuber.github.io/ApiLogicServer/Tutorial/){:target="_blank" rel="noopener"}.  The tutorial creates 2 versions of the [sample database](https://valhuber.github.io/ApiLogicServer/Sample-Database.md){:target="_blank" rel="noopener"}
-
-     * without customizations - so you to see exactly what is automated from the `ApiLogicServer create` command
-     * with customizations - so you can see how to customize 
+[install](Install-Express.md){:target="_blank" rel="noopener"}, and explore the [tutorial](Tutorial.md){:target="_blank" rel="noopener"} for the [sample database](Sample-Database.md){:target="_blank" rel="noopener"}.
 
 * **Installed Sample Databases** -
 Here are [some installed sample databases](Data-Model-Examples.md){:target="_blank" rel="noopener"} you can use with simplified abbreviations for `db_url`.
