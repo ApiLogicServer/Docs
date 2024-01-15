@@ -22,7 +22,7 @@ API Logic Server is designed to provide a significantly faster and simpler __low
     * a multi-page, multi-table [Admin Web App](https://valhuber.github.io/ApiLogicServer/Tutorial/#admin-app-multi-page-multi-table-automatic-joins){:target="_blank" rel="noopener"}, and 
     * SQLAlchemy model classes
 
-* __Fully Customizable:__ you get a [customizable project](https://valhuber.github.io/ApiLogicServer/Tutorial.md#customize-and-debug){:target="_blank" rel="noopener"} you can use in your IDE to create custom services with all the flexibility and power of Python, Flask and SQLAlchemy
+* __Fully Customizable:__ you get a [customizable project](https://valhuber.github.io/ApiLogicServer/Tutorial.md#3-customize-and-debug-in-your-ide){:target="_blank" rel="noopener"} you can use in your IDE to create custom services with all the flexibility and power of Python, Flask and SQLAlchemy
 
 * __:trophy: Declarative Business Logic:__ unique spreadsheet-like rules that are [40X more concise than legacy code](https://valhuber.github.io/ApiLogicServer/Logic-Why/#customize-and-debug){:target="_blank" rel="noopener"}, extensible with Python
 

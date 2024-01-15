@@ -21,7 +21,7 @@ The `ApiLogicServer create` command creates an API Logic Project, which you can 
 
 ## Customize
 
-[Customize](Tutorial.md#customize-and-debug.md) API Logic Projects using standard IDE Code Editors, including code completion (particularly useful for [declaring logic](Logic-Why.md#code-completion){:target="_blank" rel="noopener"}):
+[Customize](Tutorial.md#3-customize-and-debug-in-your-ide){:target="_blank" rel="noopener"} API Logic Projects using standard IDE Code Editors, including code completion (particularly useful for [declaring logic](Logic-Why.md#code-completion){:target="_blank" rel="noopener"}):
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/vscode/venv.png?raw=true"></figure>
 
@@ -40,6 +40,6 @@ The `ApiLogicServer create` command also creates:
 
 ## Debug
 
-Utilize IDE Debuggers, including for declarative rules, as described in the [Tutorial](Tutorial.md#customize-and-debug):
+Utilize IDE Debuggers, including for declarative rules, as described in the [Tutorial](Tutorial.md#3-customize-and-debug-in-your-ide):
 
 <figure><img src="https://github.com/valhuber/ApiLogicServer/raw/main/images/docker/VSCode/nw-readme/declare-logic.png"></figure>

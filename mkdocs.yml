@@ -25,11 +25,11 @@ nav:
   - Demos, Tutorial, Samples:
     - "Basic Self-Demo": Sample-Basic-Demo.md
     - "Sample Integration": Sample-Integration.md
-    - "Tutorial": Tutorial.md
-    - Sample-Database.md
+    - "Sample DB, Project": Sample-Database.md
     - "Deployment Tutorial": Tutorial-Deployment.md
     - "AI-driven Automation": Tutorial-AI.md
     - "Agile Tutorial": Tutorial-Agile.md
+    - "Tutorial": Tutorial.md
     - "Sample Systems": Data-Model-Examples.md
   - 0. ApiLogicServer create:
     - "Create": Project-Structure.md
