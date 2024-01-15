@@ -4,14 +4,14 @@
 
     Projects are initially created without security.  Use the command below to add security using your own database, which enables you to *Add `User` properties for `Grant` declarations*,
 
-For example:
+For example, use your IDE's terminal window positioned at your project root:
 
 ```bash
 cd <project-root>  # typically done in your IDE
-ApiLogicServer add-auth --project_name=. --db_url=mysql+pymysql://root:p@localhost:3306/authdb
+ApiLogicServer add-auth --db_url=mysql+pymysql://root:p@localhost:3306/authdb
 ```        
 
-You can omit the `project_name`, and use the SQLite version:
+You can use the SQLite version:
 ```bash
 cd <project-root>  # typically done in your IDE
 ApiLogicServer add-auth --db_url=auth 
@@ -48,7 +48,7 @@ Security is automatically enabled when building the sample app.  Explore / test 
 Or, you can create the sample application _without customizations_, and then add security using the `add-auth` command; [click here](Sample-Database.md#activate-security){:target="_blank" rel="noopener"}:
 
 ```bash
-ApiLogicServer add-auth --project_name=. --db_url=auth
+ApiLogicServer add-auth --db_url=auth
 ```
 
 The `add-auth` command will:

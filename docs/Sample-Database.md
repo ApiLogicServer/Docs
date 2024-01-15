@@ -1,45 +1,52 @@
-The sample application [(run it here)](http://apilogicserver.pythonanywhere.com/admin-app/index.html) is created from the database shown below [(tutorial here)](Tutorial.md).  It is an extension to Northwind that includes additional relationships:
+The sample application [(run it here)](http://apilogicserver.pythonanywhere.com/admin-app/index.html) is created from the **pre-installed sample database** shown below [(tutorial here)](Tutorial.md).  It is an extension to Northwind that includes additional relationships:
 
 * multiple relationships between Department / Employee
 * multi-field relationships between Order / Location
 * self-relationships in Department
 
-## Northwind with Logic
-
-The integrity of this database is enforced with [this logic](Logic-Why.md#solution-rules-are-an-executable-design).
-
 ![Sample Database](images/model/sample-database.png)
 
-
-## Northwind without logic
-
-Specify your database as `nw-` to use the same database, but _without pre-installed customizations_ for the API and Logic.  See below for an example.
+You can create projects for it with or without logic, as described below.
 
 &nbsp;
 
-### Activate Security
+## Northwind without logic
 
-Activate security using the `ApiLogicServer add-auth` command.
-
-So, to create the sample _without customizations_ and then add security:
+To install _without pre-installed customizations_ for the API and Logic:
 
 ```bash
-ApiLogicServer create --project_name=nw --db_url=nw-
-cd nw
-ApiLogicServer add-auth --project_name=. --db_url=auth
+ApiLogicServer create --project_name=ApiLogicProject --db_url=nw-
+```
+Open the project in your IDE, and open the `readme` for a walk-through:
+
+![Tutorial Welcome](images/tutorial/welcome.png)
+
+&nbsp;
+
+### Add Customizations
+
+The tour begins with a review of the uncustomized project.  
+
+> This illustrates the level of automation you can expect with your own projects.
+
+The tutorial then shows how to add customizations:
+
+```bash
+ApiLogicServer add-cust
 ```
 
-Test it as described in [Authorization](Security-Authorization.md#sample).
+This installs:
 
-Note the use of `--db_url=nw-` to create the sample, _without customization or security._
+1. **Logic:** The integrity of this database is enforced with [this logic](Logic-Why.md#solution-rules-are-an-executable-design){:target="_blank" rel="noopener"}
+2. **Security:** [this sqlite-based security](Security-Activation.md){:target="_blank" rel="noopener"}
+3. **Integration:** [this Kafka logic](Sample-Integration.md){:target="_blank" rel="noopener"}
 
-> If you are new to API Logic Server, this is a good way to observe basic project creation.
+&nbsp;
 
-This command will:
+## Northwind with Logic
 
-1. Add the sqlite database and models, using `ApiLogicServer add-db --db_url=auth --bind_key=authentication`
-    * This uses [Multi-Database Support](Data-Model-Multi.md){:target="_blank" rel="noopener"} for the sqlite authentication data
-2. Add `User.Login`` endpoint to the User model
-3. Set `SECURITY_ENABLED` in `conf/config.py`
-4. Add Sample authorizations to `security/declare_security.py`
+You can also create the project with the logic pre-installed:
 
+```bash
+ApiLogicServer create --project_name=ApiLogicProject --db_url=nw+
+```
