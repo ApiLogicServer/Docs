@@ -213,13 +213,13 @@ API Logic Server works with key elements of your existing infrastructure:
 
 | Works With | Notes   |
 :-------|:-----------|
-| [AI](Tutorial-AI.md) | Use ChatGPT to create databases, and use API Logic Server to turn these into projects |
-| [Databases](Database-Connectivity.md) | Tested with MySQL, Sql/Server, Postgres, and Oracle |
+| [AI](Tutorial-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to create databases, and use API Logic Server to turn these into projects |
+| [Databases](Database-Connectivity.md){:target="_blank" rel="noopener"} | Tested with MySQL, Sql/Server, Postgres, and Oracle |
 | Client Frameworks | Creates instant APIs that factors out business logic, where it is automatically shared for User Interfaces, APIs, and Messages |
-| [Your IDE](IDE-Customize.md) | Creates standard projects you can customize in your IDE, such as VSCode and PyCharm |
-| [Messaging](Sample-Integration.md) | Produce and Consume Kafka Messages
-| [Deployment](Tutorial-Deployment.md) | Scripts to create container images, and deploy them to the cloud |
-| [Agile and Test Methodologies](Logic-Tutorial.md) | Use Behave to capture requirements, rapidly implement them with API Logic Server, and test them with the Behave framework |
+| [Your IDE](IDE-Customize.md){:target="_blank" rel="noopener"} | Creates standard projects you can customize in your IDE, such as VSCode and PyCharm |
+| [Messaging](Sample-Integration.md){:target="_blank" rel="noopener"} | Produce and Consume Kafka Messages
+| [Deployment](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Scripts to create container images, and deploy them to the cloud |
+| [Agile and Test Methodologies](Logic-Tutorial.md){:target="_blank" rel="noopener"} | Use Behave to capture requirements, rapidly implement them with API Logic Server, and test them with the Behave framework |
 
 &nbsp;
 
