@@ -184,15 +184,12 @@ To see Release Notes, [click here](https://github.com/ApiLogicServer/ApiLogicSer
 
 This pre-release includes:
 
-* Running [Kafka publish](Sample-Integration.md); consume now working.
-
-* Fix for MySQL CHAR/String import [Issue 26](https://github.com/ApiLogicServer/ApiLogicServer-src/issues/26){:target="_blank" rel="noopener"}
-
+* Many simplfications for Tutorial
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.01.17
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.01.18
 ```
 
 Or use (neither available currently):
