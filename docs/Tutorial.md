@@ -156,7 +156,19 @@ To see customized Admin app in action, with the restarted server:
 
 **3. Click Customers**
 
-One customization has been to hide several Order fields (search for `show_when: isInserting == false`).  This makes it convenient to use the Admin App to enter an Order and OrderDetails:
+**4. Click the first Customer**
+
+**5. Click `Add New Order`** (bottom of page)
+
+**6. Click `Employee` and choose the first one**
+
+**7. Click `SAVE AND SHOW`**
+
+**8. Click `ADD NEW ORDER DETAIL`**
+
+**9. Lookup `CHAI` and enter an excessive Quantity** as shown below
+
+One customization has been to hide several Order fields (search `ui/admin/admin.yml` for `show_when: isInserting == false`).  This makes it convenient to use the Admin App to enter an Order and OrderDetails:
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-entry-ui.jpg?raw=true">
 
