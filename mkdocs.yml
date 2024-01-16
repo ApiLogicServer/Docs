@@ -140,8 +140,8 @@ nav:
     - "CodeSpaces": Tech-CodeSpaces.md
     - "M1 Mac": Tech-m1.md
     - "Product Detail": Product-Detail.md
-    - "Geoffrey Moore": OverviewMoore.md
     - Personal:
+      - "Product Overview": Product-Overview.md
       - "PyCon23 Talk": Tech-Conference-PyCon23-Talk.md
       - "PyCon23 Tutorial": Tech-Conference-PyCon23-Tutorial.md
       - "Conference": Tech-Conference.md
