@@ -185,7 +185,7 @@ Such logic (multi-table derivations and constraints) is a significant portion of
 
 #### IDE: Declare and Debug
 
-The 5 check credit rules are shown below.  
+The 5 check credit rules are shown below in `logic/declare_logic.py`.  
 
 > Rules are 40X more concise than legacy code, as [shown here](https://github.com/valhuber/LogicBank/wiki/by-code).
 
@@ -276,7 +276,7 @@ The main task here is to ***map*** a B2B payload onto our logic-enabled SQLAlche
 
 
 &nbsp;
-> **Key Takeway -  Custom Endpoint - 7 lines of code**<br>So, our custom endpoint required about 7 lines of code, along with the API specification.  Note the logic is automatically factored out, and re-used for all APIs, both custom and self-serve.
+> **Key Takeway -  Custom Endpoint - 7 lines of code**<br>So, our custom endpoint required about 7 lines of code, along with the API specification.  We use standard Python, Flask and SQLAlchemy.  Note the **logic is automatically factored out,** and re-used for all APIs, both custom and self-serve.
 
 &nbsp;
 
@@ -356,7 +356,9 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
 
 After the Tutorial, these are excellent next steps:
 
-* Further explore Application Integration - to see how to _consume_ Kafaka messages, [open the Sample Integration tutorial](integration/Sample-Integration.md)
+* Further explore Application Integration - [open the Sample Integration tutorial](integration/Sample-Integration.md)
+    * It will show how to activate Kafka so that the message above is actually sent
+    * It will ilustrate to the _consume_ Kafka messages
     * You've already created most of it, so...
         * Scan the intro
         * See _Show me how -- apply customizations, start Kafka_
