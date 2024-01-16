@@ -1,7 +1,7 @@
 ---
 title: Sample Application Tutorial
 Description: Create, Run and Customize the pre-installed sqlite Northwind database
-Version: 1.0
+Version: 1.01
 ---
 # API Logic Server Sample Tutorial
 
@@ -11,11 +11,11 @@ This is the sample app.  It was created from the pre-installed sqlite [Northwind
 
 In this tutorial, we will explore:
 
-* **create** - we will briefly review what actually happened during the create process.
+1. **Create** - we will briefly review what actually happened during the create process.
 
-* **run** - we will first run the Admin App and the JSON:API.  These will illustrate how automation creates an app and API from a database.  Use this to infer what you'd get for one of your databases.
+2. **Run** - we will first run the Admin App and the JSON:API.  These will illustrate how automation creates an app and API from a database.  Use this to infer what you'd get for one of your databases.
 
-* **customize** - we will then explore customizing and debugging the project.
+3. **Customize** - we will then explore customizing and debugging the project.
 
 &nbsp;
 
