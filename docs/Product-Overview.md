@@ -7,7 +7,7 @@
 
 # Instantly Create and Run Database APIs - Flask, SQLAlchemy.  Customize with Python and Rules.
 
-Python, Flask and SQLAlchemy are a great foundation for building servers.  And it's straight-forward to build a single endpoint -- many great courses, articles on building a basic `Hello World` server.
+Python, Flask and SQLAlchemy are a great foundation for building servers.  And it's straight-forward to build a single endpoint -- many great courses and articles on building a basic `Hello World` server.
 
 But, it's a long way from `Hello World` to a running system, with a full API (filtering, pagination, optimistic locking), a usable UI, integration, etc.  And then there's the business logic, often nearly half the effort.  There's *got* to be a better way.
 
