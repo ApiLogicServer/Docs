@@ -85,7 +85,7 @@ Rules are 40X more concise than code, and are extensible with Python:
 
 ![Logic](images/logic/5-rules-cocktail.png)
 
-Projects are designed for customization:
+Projects are designed for customization, such as `Your Code Goes Here` markers:
 
 ![Customize](images/nutshell/your-code-here.png)
 
@@ -93,6 +93,25 @@ Projects are designed for customization:
 
 &nbsp;
 
+<details markdown>
+
+<summary>Integrate: APIs and Messages</summary>
+
+&nbsp;
+
+Integrate with B2B Partners, using Python and Flask to create custom endpoints with under 10 lines of code:
+
+![APIs](images/integration/dict-to-row.jpg)
+
+<br>
+
+Integrate internal systems using Kafka, with business logic events:
+
+![Messages](images/integration/order-to-shipping.jpg)
+
+</details>
+
+&nbsp;
 
 ---
 
