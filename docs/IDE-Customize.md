@@ -15,7 +15,7 @@ For more information on opening projects and establishing their Python Execution
 
 The `ApiLogicServer create` command creates an API Logic Project, which you can open in your IDE as shown below.  As illustrated in the [Tutorial](Tutorial.md){:target="_blank" rel="noopener"}, you can use the expected features of your IDE to customize, run and debug your project:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/generated-project.png?raw=true"></figure>
+![generated project](images/generated-project.png)
 
 &nbsp;
 
