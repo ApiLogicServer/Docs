@@ -70,7 +70,7 @@ The Admin App provides a link to the Swagger:
 
 **3. Customize: Rules and Python**
 
-The **project is customizable in your IDE**.  Use Python and rules to customize it: logic and security, and custom APIs and messages.
+The **project is customizable in your IDE**.  Use Python and rules to customize it: logic and security, plus custom APIs and messages.
 
 > Rules are unique and significant - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}.
 
@@ -85,9 +85,7 @@ Rules are 40X more concise than code, and are extensible with Python:
 
 ![Logic](images/logic/5-rules-cocktail.png)
 
-Projects are designed for customization, such as `Your Code Goes Here` markers:
-
-![Customize](images/nutshell/your-code-here.png)
+For more on customization, [click here](IDE-Customize.md#customize){:target="_blank" rel="noopener"}.
 
 </details>
 
@@ -95,19 +93,29 @@ Projects are designed for customization, such as `Your Code Goes Here` markers:
 
 <details markdown>
 
-<summary>Integrate: APIs and Messages</summary>
+<summary>Integrate: APIs and Messages -- Instant Business Relationships</summary>
 
 &nbsp;
 
-Integrate with B2B Partners, using Python and Flask to create custom endpoints with under 10 lines of code:
+The automatically created JSON:API provides **no-code ad hoc integrations**.  For example, other applications might require a customer record, and their addresses.  This requires no code, and reduces future custom API development:
+
+1. Create the API
+2. Declare [security](Security-Overview.md){:target="_blank" rel="noopener"}, to control access and row level authorization
+
+Integrate with B2B Partners by creating **custom endpoints** using Python and Flask, with under 10 lines of code.  *Instant business relationships.*  Observe that:
+
+1. Update logic is partitioned out of each service - or UI - into shared [Logic](Logic.md){:target="_blank" rel="noopener"}
+2. Mapping between SQLAlchemy rows and requests is automated with the [RowDictMapper](Integration-Map.md){:target="_blank" rel="noopener"}
 
 ![APIs](images/integration/dict-to-row.jpg)
 
 <br>
 
-Integrate internal systems using Kafka, with business logic events:
+Integrate internal systems with **Kafka**, using business logic events:
 
 ![Messages](images/integration/order-to-shipping.jpg)
+
+For more on integration, explore running code in the [Application Integration Sample Tutorial](Sample-Integration.md){:target="_blank" rel="noopener"}.
 
 </details>
 
