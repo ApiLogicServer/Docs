@@ -30,11 +30,15 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 ---
 
-# Usage: Create, Run, Customize
+# Visual Tour
 
 API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
 It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is.md){:target="_blank" rel="noopener"}.
+
+Here's a quick tour of using API Logic Server: ***Create, Run, Customize***
+
+&nbsp;
 
 **1. Create: Automate Project Creation With a Single CLI Command**
 
@@ -48,7 +52,7 @@ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
 
 **2. Run: Automated JSON:API, Admin App**
 
-The **project is executable**, providing a [**JSON:API**](API.md){:target="_blank" rel="noopener"} and an [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}:
+The created **project is ready to run**, providing a [**JSON:API**](API.md){:target="_blank" rel="noopener"} and an [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}:
 
 <details markdown>
 
