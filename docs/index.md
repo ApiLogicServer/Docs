@@ -54,8 +54,8 @@ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
 
 The created **project is ready to run**, providing a [**JSON:API**](API.md){:target="_blank" rel="noopener"} and an [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}.
 
-> The Admin App can be used for **instant business user collaboration**.<br><br>The API **unblocks UI Developers** from waiting on lengthy API development cycles.
-
+> The API **unblocks UI Developers** from waiting on lengthy API development cycles.
+<br>The Admin App can be used for **instant business user collaboration**.
 <details markdown>
 
 <summary>See JSON:API and Admin App</summary>
