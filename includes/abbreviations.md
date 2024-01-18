@@ -46,3 +46,6 @@
 *[self-serve]: Instead of relying on custom server development, UI developers can use Swagger to formulate requests for filtering, sorting, and multi-table data content.
 *[Self-Serve]: Instead of relying on custom server development, UI developers can use Swagger to formulate requests for filtering, sorting, and multi-table data content.
 *[Self-serve]: Instead of relying on custom server development, UI developers can use Swagger to formulate requests for filtering, sorting, and multi-table data content.
+*[ad hoc integration]: Self-serve APIs support unplanned integrations - authorized users can retrieve the attributes and related data they want, without custom server development
+*[ad hoc integrations]: Self-serve APIs support unplanned integrations - authorized users can retrieve the attributes and related data they want, without custom server development
+*[Ad Doc Integration]: Self-serve APIs support unplanned integrations - authorized users can retrieve the attributes and related data they want, without custom server development
