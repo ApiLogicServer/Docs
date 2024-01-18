@@ -105,9 +105,9 @@ For more on customization, [click here](IDE-Customize.md#customize){:target="_bl
 
 &nbsp;
 
-The automatically created JSON:API provides **no-code ad hoc integrations**.  For example, other applications might require a customer record, and their addresses.  This requires no code, and reduces future custom API development:
+The automatically created JSON:API provides **no-code ad hoc integrations**, enabling organizations to move beyond ETL.  For example, other applications might require a customer record, and their addresses.  The automatically created self-serve JSON:API requires no code, and reduces future custom API development:
 
-1. Create the API
+1. Create the JSON:API
 2. Declare [security](Security-Overview.md){:target="_blank" rel="noopener"}, to control access and row level authorization
 
 Integrate with B2B Partners by creating **custom endpoints** using Python and Flask, with under 10 lines of code.  *Instant business relationships.*  Observe that:
