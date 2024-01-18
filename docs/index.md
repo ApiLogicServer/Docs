@@ -30,7 +30,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 ---
 
-# Visual Tour
+# Quick Tour
 
 API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
@@ -52,7 +52,9 @@ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
 
 **2. Run: Automated JSON:API, Admin App**
 
-The created **project is ready to run**, providing a [**JSON:API**](API.md){:target="_blank" rel="noopener"} and an [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}:
+The created **project is ready to run**, providing a [**JSON:API**](API.md){:target="_blank" rel="noopener"} and an [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}.
+
+> The Admin App can be used for **instant business user collaboration**.<br><br>The API **unblocks UI Developers** from waiting on lengthy API development cycles.
 
 <details markdown>
 
@@ -74,14 +76,14 @@ The Admin App provides a link to the Swagger:
 
 **3. Customize: Rules and Python**
 
-The **project is customizable in your IDE**.  Use Python and rules to customize it: logic and security, plus custom APIs and messages.
+The **project is customizable in your IDE** - logic and security using Python and Rules.
 
-> Rules are unique and significant - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}.
+> Rules are unique and confer **significant business agility** - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}.
 
 
 <details markdown>
 
-<summary>See Customizations</summary>
+<summary>See Logic With Rules and Python</summary>
 
 &nbsp;
 
@@ -95,9 +97,11 @@ For more on customization, [click here](IDE-Customize.md#customize){:target="_bl
 
 &nbsp;
 
+> Customization also provides **no-code ad hoc integrations**,<br>and enables **Instant Business Relationships**
+
 <details markdown>
 
-<summary>Integrate: APIs and Messages -- Instant Business Relationships</summary>
+<summary>See Integration: APIs and Messages</summary>
 
 &nbsp;
 
