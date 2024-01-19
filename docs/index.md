@@ -36,7 +36,7 @@ API Logic Server is an open source Python project, consisting of a CLI and set o
 
 It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is.md){:target="_blank" rel="noopener"}.
 
-Here's a quick tour of using API Logic Server: ***Create, Run, Customize***
+Here's a quick tour of using API Logic Server: ***Create, Run, Customize.***
 
 &nbsp;
 
@@ -97,7 +97,7 @@ For more on customization, [click here](IDE-Customize.md#customize){:target="_bl
 
 &nbsp;
 
-> Customization also provides **no-code ad hoc integrations**,<br>and enables **Instant Business Relationships**
+> Customization also provides **no-code ad hoc integrations**,<br>and enables **Instant Business Relationships.**
 
 <details markdown>
 
