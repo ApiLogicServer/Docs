@@ -66,7 +66,7 @@ You can run directly (`python api_logic_server_run.py`), or open it in your IDE 
 
 ![Admin App](images/ui-admin/Order-Page.png)
 
-The Admin App provides a link to the Swagger:
+Unlike frameworks which require significant time and expertise, the create command builds a complete API for your database, with endpoints for each table, including swagger.  The Admin App provides a link to the Swagger:
 
 ![Swagger](images/api/swagger-get-data.png)
 
