@@ -23,7 +23,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     API Logic Server provides ***instant* API creation** from a database with one CLI command, **customizable with standards:** Python, Flask, SQLAlchemy, and tools such as GitHub and your IDE.
 
-    Weeks-to-months of framework-based development is no longer necessary.  API Logic Server provides **unique automation** for instant integrations and App Backends, and **unique spreadsheet-like rules** that decrease backend logic by **40X**.
+    Weeks-to-months of framework-based development is no longer necessary.  API Logic Server provides **unique API automation for instant integrations and app backends,** and **unique spreadsheet-like rules** that decrease backend logic by **40X**.
 
 &nbsp;
 
