@@ -136,12 +136,12 @@ For more on integration, explore running code in the [Application Integration Sa
 
 | Feature | Notes   |
 :-------|:-----------|
-| [Instant Project Creation](Project-Structure.md){:target="_blank" rel="noopener"} | Unblock Agile Collaboration, Custom App Dev |
-| [AI-Driven Automation](Tutorial-Agile.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
+| [API Automation](Project-Structure.md){:target="_blank" rel="noopener"} | Unblock Agile Collaboration, Custom App Dev |
+| [Logic Automation](Logic-Why.md){:target="_blank" rel="noopener"} | 40X More Concise than procedural code |
 | [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
-| [Rule-based Transaction Logic](Logic-Why.md){:target="_blank" rel="noopener"} | 40X More Concise than procedural code |
 | [Rule-Base Row Level Security](Security-Overview.md){:target="_blank" rel="noopener"} | Authorization and Authentication |
 | [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
+| [AI-Driven Automation](Tutorial-Agile.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
 | [Admin Web App](Admin-Tour.md){:target="_blank" rel="noopener"} | Agile Collaboration, Prototyping, Testing, Back Office Data Entry |
 | [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
 | [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
@@ -151,6 +151,12 @@ For more on integration, explore running code in the [Application Integration Sa
 ---
 
 # Scenarios
+
+<details markdown>
+
+<summary>Application Integration</summary>
+
+&nbsp;
 
 As illustrated below, API Logic Server supports transactions from User Interfaces, and Application Integration - both via custom APIs and Kafka messages.
 
@@ -164,7 +170,29 @@ You can use Python, Flask and SQLAlchemy to create Custom APIs, e.g. for B2B Par
 
 Appication Integration support also provides automation for producing and consuming Kafka messages.  To see these services in a running sample, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
 
-For various Use Cases, [click here](Product-Detail.md/#use-cases){:target="_blank" rel="noopener"}.
+
+</details>
+
+<details markdown>
+
+<summary>Unblock Client App Dev</summary>
+
+&nbsp;
+
+Framework-based API development is time-consuming and complex.  Since client App Dev depends on APIs, front-end dev is often blocked.  This serialized dev process reduces business agility, and increases pressure on the team.
+
+API Logic server can change that.  
+
+1. **API Automation** means client App Dev can start as soon as you have a database
+
+2. **Logic Automation** means that
+
+    1. Such logic - a substantial element of the system - is **automatically partitioned** out of each client into server-based logic.  This reduces client coding, and enables the logic to be shared between user interfaces and services.
+    2. Logic development can proceed **in parallel** with client App Dev
+
+</details>
+
+For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
