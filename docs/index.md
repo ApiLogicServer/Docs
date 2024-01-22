@@ -168,10 +168,10 @@ As illustrated below, API Logic Server supports transactions from User Interface
 
 You can use Python, Flask and SQLAlchemy to create Custom APIs, e.g. for B2B Partners.  In addition to the underlying logic, API Logic Server provides mapping services as described under **Application Integration.**
 
-Appication Integration support also provides automation for producing and consuming Kafka messages.  To see these services in a running sample, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
-
+Appication Integration support also provides automation for producing and consuming Kafka messages.  Here's an article: [click here](https://dzone.com/articles/instant-integrations-with-api-automation){:target="_blank" rel="noopener"}.  To see these services in a tutorial, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
 
 </details>
+
 
 <details markdown>
 
@@ -192,6 +192,44 @@ API Logic server can change that.
 
 </details>
 
+
+<details markdown>
+
+<summary>1 day projects with AI-Driven Schema Automation</summary>
+
+&nbsp;
+
+API and Logic Automation begins with a database.  But what if it's a new project, and there is no database.
+
+You can certainly use your SQL tools.  But we all know that SQL can be... tiresome.
+
+AI provides a solution: ***Schema Automation***.  You can use ChatGPT to create the SQL DDL like this:
+
+!!! pied-piper "Create database definitions from ChatGPT"
+
+    Create a sqlite database for customers, orders, items and product
+    
+    Hints: use autonum keys, allow nulls, Decimal types, and foreign keys.
+
+    Include a notes field for orders.
+
+    Create a few rows of only customer and product data.
+
+    Enforce the Check Credit requirement:
+
+    1. Customer.Balance <= CreditLimit
+    2. Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
+    3. Order.AmountTotal = Sum(Items.Amount)
+    4. Items.Amount = Quantity * UnitPrice
+    5. Store the Items.UnitPrice as a copy from Product.UnitPrice
+
+Then, employ API Logic Server API and Logic Automation, and use Python and standard frameworks to finish the job.
+
+Here's a tutorial you can to explore this: [click here](Tech-AI.md){:target="_blank" rel="noopener"}.
+
+</details>
+
+&nbsp;
 For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_blank" rel="noopener"}.
 
 &nbsp;
