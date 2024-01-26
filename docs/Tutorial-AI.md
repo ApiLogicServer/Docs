@@ -1,8 +1,14 @@
+---
+title: API Logic Server
+Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
+---
 <style>
-.md-typeset h1 {
+  .md-typeset h1,
+  .md-content__button {
     display: none;
   }
 </style>
+
 
 !!! pied-piper ":bulb: AI-Driven Automation Delivers the Agile Vision"
 
