@@ -25,6 +25,7 @@ This produces a console log like:
   ApiLogicServer create-and-run
   ApiLogicServer create --db_url=sqlite:////Users/val/dev/todo_example/todos.db --project_name=todo
   ApiLogicServer create --db_url=sqlite:///c:\ApiLogicServer\nw.sqlite --project_name=nw
+  ApiLogicServer create --db_url=sqlite:///ai.sqlite --project_name=ai --open_with=code
   ApiLogicServer create --db_url=mysql+pymysql://root:p@mysql-container:3306/classicmodels --project_name=/localhost/docker_db_project
   ApiLogicServer create --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
   ApiLogicServer create --project_name=oracle_hr --db_url='oracle+oracledb://hr:tiger@localhost:1521/?service_name=ORCL'
