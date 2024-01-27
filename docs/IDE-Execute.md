@@ -110,6 +110,7 @@ IDE instructions depend on whether you are using a local install, or Docker.  Se
 
     PyCharm will ask you to configure a Python Interpreter.  Do so as shown below.
 
+    ![PyCharm venv](images/PyCharm/PyCharm-create-venv.png)
     <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/PyCharm/PyCharm-create-venv.png"></figure>
 
     __4. `pip` install__

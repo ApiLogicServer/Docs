@@ -222,7 +222,9 @@ Code completion depends on a properly installed `venv`.  The digram below shows 
 
 ### PyCharm
 
-In some installations, PyCharm may fail when your `venv` is pre-created.  I have found it best to let PyCharm create the `venv`.
+In some installations, PyCharm may fail when your `venv` is pre-created.  I have found it best to let PyCharm create the `venv`, like this:
+
+![PyCharm venv](images/PyCharm/PyCharm-create-venv.png)
 
 ## VSCode fails to discover `venv`
 

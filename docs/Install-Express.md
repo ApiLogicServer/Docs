@@ -69,7 +69,7 @@ Open the appropriate section below.
 
     You have 2 choices:
 
-    * Use the default shared `venv` (recommended); follow [this procedure](Project-Env.md#shared-venv), _or_
+    * Accept the default shared `venv` (recommended); follow [this procedure](Project-Env.md#shared-venv), _or_
     * Create a `venv` local to the project
         1. Open Folder `ApiLogicServer/ApiLogicProject` in VSCode
             * Decline options for Containers
