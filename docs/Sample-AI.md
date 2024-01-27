@@ -1,28 +1,25 @@
-![ai-driven-automation](images/ai-driven-automation/harsh.png){: style="height:300px;width:450px"; align=right }
+---
+title: Sample - AI
+Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
+---
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
 
-## The Problem: Late, and Wrong
+*** Under Construction***
 
-So, why does this keep happening?
+Intro...
 
-## Why: Delayed Collaboration
+Automation: Schema, App, API
 
-It’s because Business Users need working software - running screens - but there’s a long dev cycle before that happens..
+Customization: Logic Automation, Python
 
-![ai-driven-automation](images/agile/old-timeline.png)
+Low Code: Transaction-oriented complements BI-oriented
 
-&nbsp;
-
-![agile-manifesto](images/agile/manifesto.png){: style="height:300px;width:300px"; align=right }
-
-## Need: Instant Working Software.. *Now*
-
-The Agile vision is shown on the right: getting **Working Software** as fast as possible, to facilitate Business User **Collaboration** and **Iteration**.  
-
-&nbsp;<br><br>
-
-And that's exactly why we built API Logic Server: it creates working software instantly, instead of weeks/months, as shown below:
-
-![ai-driven-automation](images/agile/als-agile.png)
+![ai-driven-automation](images/sample-ai/als-agile.png)
 
 1. **Use your existing database, or create a new one with ChatGPT or your database tools**
 2. **Create Working Software *Now*:**  API Logic Server creates an ApiLogicProject, providing:
@@ -45,7 +42,8 @@ Let's see how.
 
 You can use an existing database, or create a new one with ChapGPT or your database tools.
 
-For this Tutorial, to get a simple customers/orders database, [click the download link here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/tests/test_databases/ai-created/ai_customer_orders-begin.sqlite){:target="_blank" rel="noopener"}.
+For this Tutorial, to get a simple customers/orders database, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/tests/test_databases/ai-created/ai_customer_orders-begin
+.sqlite){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
