@@ -26,7 +26,7 @@ nav:
     - "Basic Self-Demo": Sample-Basic-Demo.md
     - "Sample Integration": Sample-Integration.md
     - "Sample DB, Project": Sample-Database.md
-    - "Sample AI": Sample-AI.md
+    - "Microservice Automation": Sample-AI.md
     - "Deployment Tutorial": Tutorial-Deployment.md
     - "AI Drives Agile Vision": Tutorial-AI.md
     - "Agile Tutorial": Tutorial-Agile.md

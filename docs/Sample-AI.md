@@ -1,13 +1,7 @@
 ---
-title: Sample - AI
+title: Microservice Automation
 Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 ---
-<style>
-  .md-typeset h1,
-  .md-content__button {
-    display: none;
-  }
-</style>
 
 *** Under Construction***
 
@@ -36,7 +30,7 @@ Let's see how.
 
 ---
 
-## 1. Acquire Database
+## 1. AI: Database Automation
 
 &nbsp;
 
@@ -122,7 +116,7 @@ You may not have the sqlite cli; you can proceed to step 2 and the system will u
 
 &nbsp;
 
-## 2. Create Working Software
+## 2. API / App Automation
 
 Given a database, API Logic Server creates an executable, customizable project:
 
@@ -169,7 +163,7 @@ UI Developers can use swagger to design their API call, and copy the URI into th
 
 &nbsp;
 
-## 4. Iterate: Declare Rules
+## 3. Logic Automation
 
 Collaboration might uncover a requirement for **Check Credit**.  Let’s implement it…
 
@@ -242,7 +236,7 @@ Users will now need to sign in to use the Admin App.
 
 &nbsp;
 
-## 5. Next Iteration: Rules + Python
+## 4. Next Iteration: Rules + Python
 
 Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s take an example.
 
