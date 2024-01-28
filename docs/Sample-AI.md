@@ -42,8 +42,83 @@ Let's see how.
 
 You can use an existing database, or create a new one with ChapGPT or your database tools.
 
-For this Tutorial, to get a simple customers/orders database, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/tests/test_databases/ai-created/ai_customer_orders-begin
-.sqlite){:target="_blank" rel="noopener"}.
+Use ChapGPT to generate SQL commands for database creation:
+
+!!! pied-piper ":bulb: Create database definitions from ChatGPT"
+
+    Create a sqlite database for customers, orders, items and product
+    
+    Hints: use autonum keys, allow nulls, Decimal types, foreign keys, no check constraints.
+
+    Include a notes field for orders.
+
+    Create a few rows of only customer and product data.
+
+    Enforce the Check Credit requirement:
+
+    1. Customer.Balance <= CreditLimit
+    2. Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
+    3. Order.AmountTotal = Sum(Items.Amount)
+    4. Items.Amount = Quantity * UnitPrice
+    5. Store the Items.UnitPrice as a copy from Product.UnitPrice
+
+
+Copy the generated SQL commands into a file, say, `sample-ai.sql`:
+
+```sql
+CREATE TABLE Customers (
+    CustomerID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL,
+    Balance DECIMAL(10, 2) NULL,
+    CreditLimit DECIMAL(10, 2) NULL
+);
+
+-- Create the Products table
+CREATE TABLE Products (
+    ProductID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL,
+    UnitPrice DECIMAL(10, 2) NULL
+);
+
+-- Create the Orders table
+CREATE TABLE Orders (
+    OrderID INTEGER PRIMARY KEY AUTOINCREMENT,
+    CustomerID INTEGER NULL,
+    AmountTotal DECIMAL(10, 2) NULL,
+    ShipDate DATE NULL,
+    Notes TEXT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+-- Create the Items table
+CREATE TABLE Items (
+    ItemID INTEGER PRIMARY KEY AUTOINCREMENT,
+    OrderID INTEGER NULL,
+    ProductID INTEGER NULL,
+    Quantity INTEGER NULL,
+    Amount DECIMAL(10, 2) NULL,
+    UnitPrice DECIMAL(10, 2) NULL,
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+-- Insert sample customers
+INSERT INTO Customers (Name, Balance, CreditLimit) VALUES
+    ('Customer 1', 1000.00, 2000.00),
+    ('Customer 2', 1500.00, 3000.00);
+
+-- Insert sample products
+INSERT INTO Products (Name, UnitPrice) VALUES
+    ('Product A', 10.00),
+    ('Product B', 20.00);
+```
+
+Create the db
+
+```bash
+sqlite3 sample_ai.sqlite < sample_ai.sql
+```
+
+You may not have the sqlite cli; you can proceed to step 2 and the system will use a pre-installed database.
 
 &nbsp;
 
@@ -53,8 +128,8 @@ Given a database, API Logic Server creates an executable, customizable project:
 
 ```bash
 $ ApiLogicServer create \
---project_name=ai_customer_orders \
---db_url=sqlite:///ai_customer_orders_begin.sqlite
+--project_name=sample_ai \
+--db_url=sqlite:///sample_ai.sqlite
 ```
 
 This creates a project you can open with VSCode.  Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
@@ -91,59 +166,6 @@ The system automatically creates JSON:APIs, supporting related data access, pagi
 UI Developers can use swagger to design their API call, and copy the URI into their JavaScript code.  APIs are thus ***self-serve*** no server coding is required.  UI development is unblocked, Day 1.
 
 ![Admin App](images/ui-admin/swagger.png)
-
-## 3. Deploy for Collaboration
-
-OK, running on our desktop.  We need to deploy it for collaboration. 
-
-API Logic Server also creates scripts for deployment.
-
-&nbsp;
-
-**a. Containerize**
-
-We'll create a container and deploy to Azure.
-In a terminal window for your project:
-
-```bash
-sh devops/docker-image/build_image.sh .  # creates container
-```
-
-&nbsp;
-
-**b. Test your Image**
-
-You can test the image in single container mode:
-
-```bash
-sh devops/docker-image/run_image.sh
-```
-
-&nbsp;
-
-**c. Upload Image (optional)**
-
-You would next upload the image to docker hub.  
-
-> If you use the same names as here, skip that, and use our image: `apilogicserver/aicustomerorders`.
-
-&nbsp;
-
-**d. Push the project**
-
-It's also a good time to push your project to git.  Again, if you've used the same names as here, you can [use our project](https://github.com/ApiLogicServer/ApiLogicServer-src).
-
-&nbsp;
-
-**e. Deploy to Azure Cloud**
-
-Login to the azure portal, and:
-
-```bash
-git clone https://github.com/ApiLogicServer/ai_customer_orders.git
-cd ai_customer_orders
-sh devops/docker-compose-dev-azure/azure-deploy.sh
-```
 
 &nbsp;
 
@@ -224,7 +246,7 @@ Users will now need to sign in to use the Admin App.
 
 Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s take an example.
 
-!!! pied-piper "Green Discounts"
+!!! pied-piper ":bulb: Green Discounts"
     Give a 10% discount for carbon-neutral products for 10 items or more.
 
 
