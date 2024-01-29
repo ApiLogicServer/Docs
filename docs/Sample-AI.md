@@ -5,34 +5,25 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 *** Under Construction***
 
-Intro...
+Here's how to use AI and API Logic Server to create complete running systems in minutes:
 
-Automation: Schema, App, API
+1. Use **ChatGPT for Schema Automation:** create a database schema from natural language
+2. Use **API Logic Server:** create working software with 1 command
+    * **App Automation:** a multi-page, multi-table admin app
+    * **API Automation:** a JSON:API - crud for each table, with filtering, sorting, optimistic locking and pagination
+3. Use **your IDE** to customize the project:
+    * **Logic Automation using rules:** declare spreadsheet-like rules in Python for multi-table derivations and constraints - **40X more concise** than code
+    * Use Python and standard libraries (Flask, SQLAlchemy), and debug in your IDE
 
-Customization: Logic Automation, Python
+![ai-driven-automation](images/sample-ai//ai-driven-automation.jpg)
 
-Low Code: Transaction-oriented complements BI-oriented
-
-![ai-driven-automation](images/sample-ai/als-agile.png)
-
-1. **Use your existing database, or create a new one with ChatGPT or your database tools**
-2. **Create Working Software *Now*:**  API Logic Server creates an ApiLogicProject, providing:
-    * A ***Self-Serve* API** that UI developers can use, Day 1 - no waiting for server dev
-    * An **Admin App** for Business Users to begin collaboration, Day 1
-3. **Deploy for *Collaboration*:** e.g. to the Azure Cloud
-4. **Iterate:** declare logic and security, with Python as required
-
-This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source
-
-Let's see how.
+This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.  Let's see how.
 
 &nbsp;
 
 ---
 
-## 1. AI: Database Automation
-
-&nbsp;
+## 1. AI: Schema Automation
 
 You can use an existing database, or create a new one with ChapGPT or your database tools.
 
@@ -57,7 +48,7 @@ Use ChapGPT to generate SQL commands for database creation:
     5. Store the Items.UnitPrice as a copy from Product.UnitPrice
 
 
-This creates standard SQL, [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/sample_ai/database/chatgpt/sample_ai.sql).  Copy the generated SQL commands into a file, say, `sample-ai.sql`:
+This creates standard SQL, [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/sample_ai/database/chatgpt/sample_ai.sql){:target="_blank" rel="noopener"}.  Copy the generated SQL commands into a file, say, `sample-ai.sql`:
 
 To create the database:
 
@@ -74,26 +65,15 @@ sqlite3 sample_ai.sqlite < sample_ai.sql
 Given a database, API Logic Server creates an executable, customizable project:
 
 ```bash
-$ ApiLogicServer create \
---project_name=sample_ai \
---db_url=sqlite:///sample_ai.sqlite
+$ ApiLogicServer create --project_name=sample_ai --db_url=sqlite:///sample_ai.sqlite
 ```
 
-This creates a project you can open with VSCode.  Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
-
-```bash
-python -m venv venv; venv\Scripts\activate     # win
-python3 -m venv venv; . venv/bin/activate      # mac/linux
-pip install -r requirements.txt
-```
-![Ready To Run](images/agile/open-in-ide.png)
-
-The project is now ready to run.  It includes
+This creates a project you can open with VSCode, shown below.  The project is now ready to run - press F5.  It includes:
 
 * a self-serve **API** ready for UI developers, and
 * an **Admin app** ready for Business User Collaboration
 
-Let's have a look.
+![Ready To Run](images/sample-ai/created-project.jpg)
 
 &nbsp;
 
@@ -101,17 +81,21 @@ Let's have a look.
 
 This React-Admin web app is created automatically - no JavaScript, no HTML.
 
-Use this app 
+Use this app for business user collaboration, back-office data maintenance, etc.
 
-![API Logic Server Intro](images/ui-admin/Order-Page.png)
+![API Logic Server Intro](images/sample-ai/Order-Page.jpg)
+
+&nbsp;
 
 ### b. API Automation
 
 The system automatically creates JSON:APIs, supporting related data access, pagination, optimistic locking, filtering, and sorting.
 
-UI Developers can use swagger to design their API call, and copy the URI into their JavaScript code.  APIs are thus ***self-serve*** no server coding is required.  UI development is unblocked, Day 1.
+UI Developers can use swagger to design their API call, and copy the URI into their JavaScript code.  APIs are thus ***self-serve*** no server coding is required.  
 
-![Admin App](images/ui-admin/swagger.png)
+> UI development is unblocked, Day 1.
+
+![Swagger](images/sample-ai/swagger.jpg)
 
 &nbsp;
 
@@ -119,46 +103,13 @@ UI Developers can use swagger to design their API call, and copy the URI into th
 
 Collaboration might uncover a requirement for **Check Credit**.  Let’s implement it…
 
-### a. Declare Logic
+&nbsp;
+
+### a. Declare Multi-Table Rules
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
 
-```python
-    ''' Declarative multi-table derivations and constraints, extensible with Python. 
-
-    Brief background: see readme_declare_logic.md
-    
-    Use code completion (Rule.) to declare rules here:
-
-
-    1. Customer.Balance <= CreditLimit
-
-    2. Customer.Balance = Sum(Order.AmountTotal where unshipped)
-
-    3. Order.AmountTotal = Sum(Items.Amount)
-
-    4. Items.Amount = Quantity * UnitPrice
-
-    5. Items.UnitPrice = copy from Product
-    '''
-
-    Rule.constraint(validate=models.Customer,       # logic design translates directly into rules
-        as_condition=lambda row: row.Balance <= row.CreditLimit,
-        error_msg="balance ({round(row.Balance, 2)}) exceeds credit ({round(row.CreditLimit, 2)})")
-
-    Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
-        as_sum_of=models.Order.AmountTotal,
-        where=lambda row: row.ShipDate is None)     # adjusts - *not* a sql select sum...
-
-    Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
-        as_sum_of=models.Item.Amount)
-
-    Rule.formula(derive=models.Item.Amount,    # compute price * qty
-        as_expression=lambda row: row.UnitPrice * row.Quantity)
-
-    Rule.copy(derive=models.Item.UnitPrice,    # get Product Price (e,g., on insert, or ProductId change)
-        from_parent=models.Product.UnitPrice)
-```
+![Swagger](images/sample-ai/rules.jpg)
 
 Observe rules are declared in Python.  Given IDE services for code completion, this is using Python as a DSL (Domain Specific Language).
 
@@ -176,7 +127,7 @@ ChatGPT created triggers that missed many Use Cases, and were inefficient.  They
 
 &nbsp;
 
-### b. Add Security
+### b. Declare Security
 
 In a terminal window for your project:
 
