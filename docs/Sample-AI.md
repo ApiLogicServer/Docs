@@ -57,62 +57,15 @@ Use ChapGPT to generate SQL commands for database creation:
     5. Store the Items.UnitPrice as a copy from Product.UnitPrice
 
 
-Copy the generated SQL commands into a file, say, `sample-ai.sql`:
+This creates standard SQL, [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/sample_ai/database/chatgpt/sample_ai.sql).  Copy the generated SQL commands into a file, say, `sample-ai.sql`:
 
-```sql
-CREATE TABLE Customers (
-    CustomerID INTEGER PRIMARY KEY AUTOINCREMENT,
-    Name TEXT NOT NULL,
-    Balance DECIMAL(10, 2) NULL,
-    CreditLimit DECIMAL(10, 2) NULL
-);
-
--- Create the Products table
-CREATE TABLE Products (
-    ProductID INTEGER PRIMARY KEY AUTOINCREMENT,
-    Name TEXT NOT NULL,
-    UnitPrice DECIMAL(10, 2) NULL
-);
-
--- Create the Orders table
-CREATE TABLE Orders (
-    OrderID INTEGER PRIMARY KEY AUTOINCREMENT,
-    CustomerID INTEGER NULL,
-    AmountTotal DECIMAL(10, 2) NULL,
-    ShipDate DATE NULL,
-    Notes TEXT NULL,
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
-);
-
--- Create the Items table
-CREATE TABLE Items (
-    ItemID INTEGER PRIMARY KEY AUTOINCREMENT,
-    OrderID INTEGER NULL,
-    ProductID INTEGER NULL,
-    Quantity INTEGER NULL,
-    Amount DECIMAL(10, 2) NULL,
-    UnitPrice DECIMAL(10, 2) NULL,
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
-);
--- Insert sample customers
-INSERT INTO Customers (Name, Balance, CreditLimit) VALUES
-    ('Customer 1', 1000.00, 2000.00),
-    ('Customer 2', 1500.00, 3000.00);
-
--- Insert sample products
-INSERT INTO Products (Name, UnitPrice) VALUES
-    ('Product A', 10.00),
-    ('Product B', 20.00);
-```
-
-Create the db
+To create the database:
 
 ```bash
 sqlite3 sample_ai.sqlite < sample_ai.sql
 ```
 
-You may not have the sqlite cli; you can proceed to step 2 and the system will use a pre-installed database.
+> You may not have the sqlite cli; you can proceed to step 2 and the system will use a pre-installed database.
 
 &nbsp;
 
@@ -135,25 +88,24 @@ pip install -r requirements.txt
 ```
 ![Ready To Run](images/agile/open-in-ide.png)
 
-The project is now ready to run.  It includes a self-serve API ready for UI developers, and an Admin app ready for Business User Collaboration.  We have eliminated the first project segment from our traditional project timeline, and can ***start collaboration on Day 1.***
+The project is now ready to run.  It includes
 
-Our timelines looks more like this:
-
-![Benefits](images/agile/why-it-matters-1.png)
+* a self-serve **API** ready for UI developers, and
+* an **Admin app** ready for Business User Collaboration
 
 Let's have a look.
 
 &nbsp;
 
-### a. Admin App
+### a. App Automation
 
 This React-Admin web app is created automatically - no JavaScript, no HTML.
 
-It's the Working Software Business Users need to collaborate on Day 1: confirm the data model, and uncover logic requirements.
+Use this app 
 
 ![API Logic Server Intro](images/ui-admin/Order-Page.png)
 
-### b. Self-serve APIs
+### b. API Automation
 
 The system automatically creates JSON:APIs, supporting related data access, pagination, optimistic locking, filtering, and sorting.
 
