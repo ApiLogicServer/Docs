@@ -73,7 +73,7 @@ This creates a project you can open with VSCode, shown below.  The project is no
 * a self-serve **API** ready for UI developers, and
 * an **Admin app** ready for Business User Collaboration
 
-![Ready To Run](images/sample-ai/created-project.jpg)
+![Ready To Run](images/sample-ai/created-project.png)
 
 &nbsp;
 
@@ -83,7 +83,7 @@ This React-Admin web app is created automatically - no JavaScript, no HTML.
 
 Use this app for business user collaboration, back-office data maintenance, etc.
 
-![API Logic Server Intro](images/sample-ai/Order-Page.jpg)
+![API Logic Server Intro](images/sample-ai/Order-Page.png)
 
 &nbsp;
 
@@ -109,7 +109,7 @@ Collaboration might uncover a requirement for **Check Credit**.  Let’s impleme
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
 
-![Swagger](images/sample-ai/rules.jpg)
+![Swagger](images/sample-ai/rules.png)
 
 Observe rules are declared in Python.  Given IDE services for code completion, this is using Python as a DSL (Domain Specific Language).
 
