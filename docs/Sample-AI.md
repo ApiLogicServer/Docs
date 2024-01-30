@@ -15,7 +15,7 @@ Here's how to use AI and API Logic Server to create complete running systems in 
     * **Logic Automation using rules:** declare spreadsheet-like rules in Python for multi-table derivations and constraints - **40X more concise** than code
     * Use Python and standard libraries (Flask, SQLAlchemy), and debug in your IDE
 
-![ai-driven-automation](images/sample-ai//ai-driven-automation.jpg)
+![ai-driven-automation](images/sample-ai/ai-driven-automation.jpg)
 
 This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.  Let's see how.
 
