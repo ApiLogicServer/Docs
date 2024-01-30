@@ -79,9 +79,9 @@ This creates a project you can open with VSCode, shown below.  The project is no
 
 ### a. App Automation
 
-This React-Admin web app is created automatically - no JavaScript, no HTML.
+App Automation means that `ApiLogicServer create` creates a multi-page, multi-table Admin App -- automatically.  This React-Admin does *not* consist of hundreds of lines of complex html and javascript - it's a simple json file that's easy to customize.
 
-Use this app for business user collaboration, back-office data maintenance, etc.
+> Ready for business user collaboration, back-office data maintenance - Day 1.
 
 ![API Logic Server Intro](images/sample-ai/Order-Page.png)
 
@@ -89,11 +89,13 @@ Use this app for business user collaboration, back-office data maintenance, etc.
 
 ### b. API Automation
 
-The system automatically creates JSON:APIs, supporting related data access, pagination, optimistic locking, filtering, and sorting.
+App Automation means that `ApiLogicServer create` creates a JSON:API -- automatically.  Your API supports related data access, pagination, optimistic locking, filtering, and sorting.
 
-UI Developers can use swagger to design their API call, and copy the URI into their JavaScript code.  APIs are thus ***self-serve*** no server coding is required.  
+> It would take days to months to create such an API using frameworks.
 
-> UI development is unblocked, Day 1.
+UI Developers can  to create custom apps immediately, using swagger to design their API call, and copying the URI into their JavaScript code.  APIs are thus ***self-serve*** no server coding is required.  
+
+> UI development is unblocked - Day 1.
 
 ![Swagger](images/sample-ai/swagger.jpg)
 
@@ -101,7 +103,7 @@ UI Developers can use swagger to design their API call, and copy the URI into th
 
 ## 3. Logic Automation
 
-Collaboration might uncover a requirement for **Check Credit**.  Let’s implement it…
+Logic Automation means that you can declare spreadsheet-like rules using Python.  Such logic maintains database integrity with multi-table derivations and constraints, and security.  Rules are 40X more concise than traditional code, and can be extended with Python.
 
 &nbsp;
 
@@ -135,11 +137,18 @@ In a terminal window for your project:
 ApiLogicServer add-auth --project_name=. --db_url=auth
 ```
 
-Users will now need to sign in to use the Admin App.
+Users will now need to sign in to use the Admin App.  Security also provide row-level authoriation - here, we ensure that inactive accounts are hidden:
+
+```python
+Grant(  on_entity = models.Customer,
+        to_role = Roles.sales,
+        filter = lambda : models.Customer.CreditLimit > 300,
+        filter_debug = "CreditLimit > 0")
+```
 
 &nbsp;
 
-## 4. Next Iteration: Rules + Python
+## 4. Iteration: Rules + Python
 
 Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s take an example.
 
@@ -149,51 +158,40 @@ Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify
 
 Automation still applies; we execute the steps below.
 
-
 &nbsp;
 
-**a. Add a Database Column**
+**a. Add a Database Column and rebuild the data model**
 
-```bash
-$ sqlite3 database/db.sqlite
->   alter table Products Add CarbonNeutral Boolean;
->   .exit
-```
-
-&nbsp;
-
-**b. Rebuild the project, preserving customizations**
+You can use database tools to add the Product.CarbonNeutral column, and then rebuild your data model; customizations are preserved.
 
 ```bash
 cd ..  project parent directory
 ApiLogicServer rebuild-from-database --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders/database/db.sqlite
 ```
 
-&nbsp;
+We can also provide application integration services, for example:
 
-**c. Update your admin app**
+!!! pied-piper ":bulb: Application Integration"
+    Send new Orders to Shipping with a Kafka message.
 
-Use your IDE to merge `/ui/admin/admin-merge.yml` -> `/ui/admin/admin.yml`.`
-
-&nbsp;
-
-
-**d. Declare logic**
-
-```python
-    def derive_amount(row: models.Item, old_row: models.Item, logic_row: LogicRow):
-        amount = row.Quantity * row.UnitPrice
-        if row.Product.CarbonNeutral and row.Quantity >= 10:
-            amount = amount * Decimal(0.9)
-        return amount
-
-
-    Rule.formula(derive=models.Item.Amount, calling=derive_amount)
-```
+    Enable B2B partners to place orders with a custom API.
 
 &nbsp;
 
-This simple example illustrates some significant aspects of iteration.
+
+**b. Declare logic**
+
+We revise our logic:
+
+![rules-plus-python](images/sample-ai/rules-plus-python.png)
+
+And use Python and Flask to create a new endpoint:
+
+![custom-endpoint](images/sample-ai/custom-api.png)
+
+&nbsp;
+
+This illustrates some significant aspects of logic.
 
 &nbsp;
 
@@ -229,9 +227,9 @@ Note we rebuilt the project from our altered database, without losing customizat
 
 ## Summary
 
-![ai-driven-automation](images/agile/als-agile.png)
+![ai-driven-automation](images/sample-ai/ai-driven-automation.jpg)
 
-In 6 minutes, you've used ChatGPT and API Logic Server to convert an idea into working software -- 5 rules, 4 lines of Python.  The process was simple:
+In minutes, you've used ChatGPT and API Logic Server to convert an idea into working software -- 5 rules, 4 lines of Python.  The process was simple:
 
 * Used the `ApiLogicServer create` command to create an executable project
     * A **Self-Serve API** to unblock UI Developers -- Day 1
