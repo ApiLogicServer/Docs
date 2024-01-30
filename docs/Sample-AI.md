@@ -238,7 +238,7 @@ Note we rebuilt the project from our altered database (`ApiLogicServer rebuild-f
 
 ## Summary
 
-![ai-driven-automation](images/sample-ai/ai-driven-automation.jpg)
+![ai-driven-automation](images/sample-ai/ai-driven-automation.png)
 
 In minutes, you've used ChatGPT and API Logic Server to convert an idea into working software -- 5 rules, 4 lines of Python.  The process was simple:
 
