@@ -12,8 +12,11 @@ Here's how to use AI and API Logic Server to create complete running systems in 
 3. Use **your IDE** to customize the project:
     * **Logic Automation using rules:** declare spreadsheet-like rules in Python for multi-table derivations and constraints - **40X more concise** than code
     * Use Python and standard libraries (Flask, SQLAlchemy), and debug in your IDE
+4. **Iterate** your project:
+    * Revise your database design and logic
+    * **Integrate** with B2B partners and internal systems
 
-![ai-driven-automation](images/sample-ai/ai-driven-automation.jpg)
+![ai-driven-automation](images/sample-ai/ai-driven-automation.png)
 
 This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.  Let's see how.
 
@@ -58,7 +61,7 @@ sqlite3 sample_ai.sqlite < sample_ai.sql
 
 &nbsp;
 
-## 2. API / App Automation
+## 2. API Logic Server: create
 
 Given a database, API Logic Server creates an executable, customizable project:
 
@@ -99,13 +102,13 @@ UI Developers can  to create custom apps immediately, using swagger to design th
 
 &nbsp;
 
-## 3. Logic Automation
+## 3. Customize
 
 Logic Automation means that you can declare spreadsheet-like rules using Python.  Such logic maintains database integrity with multi-table derivations and constraints, and security.  Rules are 40X more concise than traditional code, and can be extended with Python.
 
 &nbsp;
 
-### a. Declare Multi-Table Rules
+### a. Logic Automation
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
 
@@ -146,7 +149,7 @@ Grant(  on_entity = models.Customer,
 
 &nbsp;
 
-## 4. Iteration: Rules + Python
+## 4. Iterate: Rules + Python
 
 Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s take an example.
 
