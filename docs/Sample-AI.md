@@ -95,7 +95,7 @@ UI Developers can  to create custom apps immediately, using swagger to design th
 
 > UI development is unblocked - Day 1.
 
-![Swagger](images/sample-ai/swagger.jpg)
+![Swagger](images/sample-ai/swagger.png)
 
 &nbsp;
 

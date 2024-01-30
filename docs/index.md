@@ -227,7 +227,7 @@ AI provides a solution: ***Schema Automation***.  You can use ChatGPT to create 
 
 Then, employ API Logic Server API and Logic Automation, and use Python and standard frameworks to finish the job.
 
-Here's a tutorial you can to explore this: [click here](Tech-AI.md){:target="_blank" rel="noopener"}.
+Here's a tutorial you can to explore this: [click here](Sample-AI.md){:target="_blank" rel="noopener"}.
 
 </details>
 
@@ -292,7 +292,7 @@ This pre-release includes:
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.01.24
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.01.25
 ```
 
 Or use (neither available currently):
