@@ -3,8 +3,6 @@ title: Microservice Automation
 Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 ---
 
-*** Under Construction***
-
 Here's how to use AI and API Logic Server to create complete running systems in minutes:
 
 1. Use **ChatGPT for Schema Automation:** create a database schema from natural language
