@@ -104,11 +104,23 @@ UI Developers can  to create custom apps immediately, using swagger to design th
 
 ## 3. Customize
 
-Logic Automation means that you can declare spreadsheet-like rules using Python.  Such logic maintains database integrity with multi-table derivations and constraints, and security.  Rules are 40X more concise than traditional code, and can be extended with Python.
+Projects are designed for customization, using standards: Python, frameworks (e.g., Flask, SQLAlchemy), and your IDE.  To explore, let's customize this project.  To speed things up, follow this procedure:
+
+1. Stop the Server
+
+2. Execute the following in your IDE terminal window:
+
+```bash
+ApiLogicServer sample-ai
+```
+
+This applies customized logic and security, which we examine below.
 
 &nbsp;
 
 ### a. Logic Automation
+
+Logic Automation means that you can ***declare spreadsheet-like rules*** using Python.  Such logic maintains database integrity with multi-table derivations and constraints, and security.  Rules are 40X more concise than traditional code, and can be extended with Python.
 
 Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
 
@@ -156,37 +168,35 @@ Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify
 !!! pied-piper ":bulb: Green Discounts"
     Give a 10% discount for carbon-neutral products for 10 items or more.
 
-
-Automation still applies; we execute the steps below.
-
-&nbsp;
-
-**a. Add a Database Column and rebuild the data model**
-
-You can use database tools to add the Product.CarbonNeutral column, and then rebuild your data model; customizations are preserved.
-
-```bash
-cd ..  project parent directory
-ApiLogicServer rebuild-from-database --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders/database/db.sqlite
-```
-
-We can also provide application integration services, for example:
+In this iteration, we'll also introduce some application iteration:
 
 !!! pied-piper ":bulb: Application Integration"
     Send new Orders to Shipping with a Kafka message.
 
     Enable B2B partners to place orders with a custom API.
 
-&nbsp;
+Automation still applies; we execute the steps below:
 
+1. Stop the Server
+
+2. Execute the following in your IDE terminal window:
+
+```bash
+ApiLogicServer sample-ai-iteration
+ApiLogicServer rebuild-from-database --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders/database/db.sqlite
+```
+
+This revises your database to add the new Product.CarbonNeutral column, and installs some new code we'll explore below.
+
+&nbsp;
 
 **b. Declare logic**
 
-We revise our logic:
+We revise our logic to apply the discount, and send the Kafka message:
 
 ![rules-plus-python](images/sample-ai/rules-plus-python.png)
 
-And use Python and Flask to create a new endpoint:
+We can also extend our API for our new B2BOrder endpoint, using standard Python and Flask:
 
 ![custom-endpoint](images/sample-ai/custom-api.png)
 
@@ -222,7 +232,7 @@ In addition, the Logic Log lists every rule that fires, with indents for multi-t
 
 #### d. Rebuild: Logic Preserved
 
-Note we rebuilt the project from our altered database, without losing customizations.
+Note we rebuilt the project from our altered database (`ApiLogicServer rebuild-from-database`), without losing customizations.
 
 &nbsp;
 
