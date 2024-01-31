@@ -52,3 +52,4 @@
 *[ETL]: A traditional application integration approach - nightly Extract runs to obtain data, Transfer it to other systems, and Load it for local access.
 *[API Automation]: Create APIs with 1 command, instead of time-consuming and complex framework-based development
 *[Logic Automation]: Declare logic with spreadsheet-like Rules that are 40X more concise than code, add Python as required
+*[Maintenance Automation]: Rules are automatically re-ordered based on dependencies, and re-used over all relevant transactions

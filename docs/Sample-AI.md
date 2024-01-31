@@ -2,6 +2,14 @@
 title: Microservice Automation
 Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 ---
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
+# One Day Projects
 
 Here's how to use AI and API Logic Server to create complete running systems in minutes:
 
@@ -233,15 +241,20 @@ This illustrates some significant aspects of logic.
 
 &nbsp;
 
-#### a. Maintenance: Logic Ordering
+#### a. Maintenance Automation
 
 Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that’ll hopefully be called and function correctly.
 
-Rules change that, since they ***self-order*** their execution (and pruning) based on system-discovered dependencies.  So, to alter logic, you just *“drop a new rule in the bucket”,* and the system will ensure it’s called in the proper order, and *re-used* over all the relevant Use Cases.
+Logic Automation changes that, with ***Maintenance Automation:***
+
+* Rules *automatically order* their execution (and pruning) based on system-discovered dependencies
+* Rules are "automatically reused* for all relevant transations
+
+So, to alter logic, you just *“drop a new rule in the bucket”,* and the system will ensure it’s called in the proper order, and *re-used* over all the relevant Use Cases.
 
 &nbsp;
 
-#### b. Extensibility: Rules + Python
+#### b. Extensibility: With Python
 
 In the first case, we needed to do some if/else testing, and it was more convenient to add a dash of Python.  While this is pretty simple *Python as a 4GL*, you have full power of object-oriented Python and its many libraries.
 
