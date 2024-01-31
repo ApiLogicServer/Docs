@@ -216,13 +216,13 @@ This revises your database to add the new Product.CarbonNeutral column, and inst
 
 &nbsp;
 
-**Revise Logic - with Python**
+**Iterate Logic - Add Python**
 
 Here is our revised logic to apply the discount, and send the Kafka message:
 
 ![rules-plus-python](images/sample-ai/rules-plus-python.png)
 
-We can also extend our API for our new B2BOrder endpoint, using standard Python and Flask:
+We can also **extend our API** for our new B2BOrder endpoint, using standard Python and Flask:
 
 ![custom-endpoint](images/sample-ai/custom-api.png)
 
@@ -235,29 +235,21 @@ This illustrates some significant aspects of logic.
 
 #### a. Maintenance: Logic Ordering
 
-Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but it’s mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that’ll hopefully be called and function correctly.
+Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that’ll hopefully be called and function correctly.
 
-Rules change that, since they ***self-order*** their execution (and pruning) based on system-discovered dependencies.  So, to alter logic, you just *“drop a new rule in the bucket”,* and the system will ensure it’s called in the proper order, and re-used over all the Use Cases to which it applies.
+Rules change that, since they ***self-order*** their execution (and pruning) based on system-discovered dependencies.  So, to alter logic, you just *“drop a new rule in the bucket”,* and the system will ensure it’s called in the proper order, and *re-used* over all the relevant Use Cases.
 
 &nbsp;
 
 #### b. Extensibility: Rules + Python
 
-In this case, we needed to do some if/else testing, and it was more convenient to add a dash of Python.  While this is pretty simple *Python as a 4GL*, you have full power of object-oriented Python.
+In the first case, we needed to do some if/else testing, and it was more convenient to add a dash of Python.  While this is pretty simple *Python as a 4GL*, you have full power of object-oriented Python and its many libraries.
 
-What’s important is that once you are in such functions, you can utilize Python libraries, invoke shared code, make web service calls, send email or messages, etc.  You have all the power of rules, plus the unrestricted flexibility of Python.
-
-&nbsp;
-
-#### c. Debugging: IDE, Logging
-
-The screen shot above illustrates that debugging logic is what you’d expect: use your IDE's debugger.
-
-In addition, the Logic Log lists every rule that fires, with indents for multi-table chaining (not visible in this screenshot).  Each line shows the old/new values of every attribute, so the transaction state is transparent.
+For example, our extended API leverages Flask and open source libraries for Kafka messages.
 
 &nbsp;
 
-#### d. Rebuild: Logic Preserved
+#### c. Rebuild: Logic Preserved
 
 Note we rebuilt the project from our altered database (`ApiLogicServer rebuild-from-database`), without losing customizations.
 
@@ -269,14 +261,17 @@ Note we rebuilt the project from our altered database (`ApiLogicServer rebuild-f
 
 In minutes, you've used ChatGPT and API Logic Server to convert an idea into working software.  It required only 5 rules, and 20 lines of Python.  The process was simple:
 
-* Used the `ApiLogicServer create` command to create an executable project
+* **Created the Schema** with `ChatGPT`
+
+* **Created the Project** with `ApiLogicServer`
     * A **Self-Serve API** to unblock UI Developers -- Day 1
     * An **Admin App** for Business User Collaboration -- Day 1
 
-* Enabled **Collaboration** with automated deployment services
-
-* Iterated the project in your IDE to implement new requirements
+* **Customized** the project
     * With Rules -- 40X more concise than code
-    * And Python -- for complete flexibility
+
+* **Iterated** the project in your IDE to implement new requirements
+    * Rules, *with Python* for complete flexibility
+    * Prior customizations are preserved
 
 It all works with standard tooling: Python, your IDE, and container-based deployment.
