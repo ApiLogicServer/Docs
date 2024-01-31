@@ -211,7 +211,7 @@ AI provides a solution: ***Schema Automation***.  You can use ChatGPT to create 
 
     Create a sqlite database for customers, orders, items and product
     
-    Hints: use autonum keys, allow nulls, Decimal types, and foreign keys.
+    Hints: use autonum keys, allow nulls, Decimal types, foreign keys, no check constraints.
 
     Include a notes field for orders.
 

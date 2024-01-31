@@ -30,7 +30,7 @@ You can use an existing database, or create a new one with ChapGPT or your datab
 
 Use ChapGPT to generate SQL commands for database creation:
 
-!!! pied-piper "Create database definitions from ChatGPT"
+!!! pied-piper "Create database schemas from ChatGPT"
 
     Create a sqlite database for customers, orders, items and product
     
@@ -51,7 +51,7 @@ Use ChapGPT to generate SQL commands for database creation:
 
 This creates standard SQL, [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/sample_ai/database/chatgpt/sample_ai.sql){:target="_blank" rel="noopener"}.  Copy the generated SQL commands into a file, say, `sample-ai.sql`:
 
-To create the database:
+Then, create the database:
 
 ```bash
 sqlite3 sample_ai.sqlite < sample_ai.sql
@@ -63,13 +63,13 @@ sqlite3 sample_ai.sqlite < sample_ai.sql
 
 ## 2. API Logic Server: create
 
-Given a database, API Logic Server creates an executable, customizable project:
+Given a database, API Logic Server creates an executable, customizable project with the following single command:
 
 ```bash
 $ ApiLogicServer create --project_name=sample_ai --db_url=sqlite:///sample_ai.sqlite
 ```
 
-This creates a project you can open with VSCode, shown below.  The project is now ready to run - press F5.  It includes:
+This creates a project you can open with your IDE, such as VSCode (see below).  The project is now ready to run - press F5.  It includes:
 
 * a self-serve **API** ready for UI developers, and
 * an **Admin app** ready for Business User Collaboration
@@ -80,7 +80,7 @@ This creates a project you can open with VSCode, shown below.  The project is no
 
 ### a. App Automation
 
-App Automation means that `ApiLogicServer create` creates a multi-page, multi-table Admin App -- automatically.  This React-Admin does *not* consist of hundreds of lines of complex html and javascript - it's a simple json file that's easy to customize.
+App Automation means that `ApiLogicServer create` creates a multi-page, multi-table Admin App -- automatically.  This React-Admin does *not* consist of hundreds of lines of complex html and javascript - it's a simple yaml file that's easy to customize.
 
 > Ready for business user collaboration, back-office data maintenance - Day 1.
 
@@ -94,9 +94,9 @@ App Automation means that `ApiLogicServer create` creates a JSON:API -- automati
 
 > It would take days to months to create such an API using frameworks.
 
-UI Developers can  to create custom apps immediately, using swagger to design their API call, and copying the URI into their JavaScript code.  APIs are thus ***self-serve*** no server coding is required.  
+UI App Developers can create custom apps immediately, using swagger to design their API call, and copying the URI into their JavaScript code.  APIs are thus ***self-serve:*** no server coding is required.  
 
-> UI development is unblocked - Day 1.
+> Custom App Dev is unblocked - Day 1.
 
 ![Swagger](images/sample-ai/swagger.png)
 
@@ -104,7 +104,9 @@ UI Developers can  to create custom apps immediately, using swagger to design th
 
 ## 3. Customize
 
-Projects are designed for customization, using standards: Python, frameworks (e.g., Flask, SQLAlchemy), and your IDE.  To explore, let's customize this project.  To speed things up, follow this procedure:
+Projects are designed for customization, using standards: Python, frameworks (e.g., Flask, SQLAlchemy), and your IDE for code editing and debugging.
+
+To explore, let's customize this project.  To speed things up, instead of the normal procedure of declaring rules in your IDE, follow this procedure:
 
 1. Stop the Server
 
@@ -132,14 +134,18 @@ Observe rules are declared in Python, leveraging IDE services for code completio
 
 **a. Chaining**
 
-The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
+The screenshot above shows our logic declarations
 
-Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
+1. Execution is paused at a **breakpoint** in the debugger, where we can examine state, and execute step by step.
+
+2. Note the **logging** for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.  
+
+Note that it's a `Multi-Table Transaction`, as indicated by the log indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
 <br><br>
 
 **b. 40X More Concise**
 
-The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code).  That's a remarkable 40X decrease in the backend half of the system.
+The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}.  That's a remarkable 40X decrease in the backend *half* of the system.
 <br><br>
 
 **c. Automatic Re-use**
@@ -149,7 +155,7 @@ The logic above, perhaps conceived for Place order, applies automatically to all
 
 **d. Automatic Optimizations**
 
-SQL overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.
+SQL overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.  This is because the rule engine is not a Rete algorithn, but highly optimized for transaction processing, and integrated with the SQLAlchemy ORM (Object Relational Manager).
 <br><br>
 
 **e. Transparent**
@@ -166,13 +172,13 @@ In a terminal window for your project:
 ApiLogicServer add-auth --project_name=. --db_url=auth
 ```
 
-Users will now need to sign in to use the Admin App.  Security also provide row-level authorization - here, we ensure that inactive accounts are hidden:
+Users will now need to sign in to use the Admin App.  Security also provide row-level authorization - here, we ensure that less active accounts are hidden:
 
 ```python
 Grant(  on_entity = models.Customer,
         to_role = Roles.sales,
-        filter = lambda : models.Customer.CreditLimit > 300,
-        filter_debug = "CreditLimit > 0")
+        filter = lambda : models.Customer.CreditLimit > 3000,
+        filter_debug = "CreditLimit > 3000")
 ```
 
 &nbsp;
