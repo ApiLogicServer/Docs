@@ -104,9 +104,9 @@ UI App Developers can create custom apps immediately, using swagger to design th
 
 ## 3. Customize
 
-So, we have working software, in minutes.  It's running, but we really can't deploy it until we customize it with logic and security.
+So, we have working software, in minutes.  It's running, but we really can't *deploy* it until we have logic and security.  Which brings us to customization.
 
-Projects are designed for customization, using standards: Python, frameworks (e.g., Flask, SQLAlchemy), and your IDE for code editing and debugging.  Not only Python *code*, but ***Rules***.
+Projects are designed for customization, using standards: Python, frameworks (e.g., Flask, SQLAlchemy), and your IDE for code editing and debugging.  Not only Python *code*, but also ***Rules***.
 
 To explore, let's customize this project.  To speed things up, instead of the normal procedure of declaring rules in your IDE, follow this procedure:
 
@@ -130,20 +130,18 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
 ![Swagger](images/sample-ai/rules.png)
 
-Observe rules are declared in Python, leveraging IDE services for code completion.
-
 &nbsp;
 
-**1. Debuggging**
+**1. Debugging**
 
-The screenshot above shows our logic declarations:
+The screenshot above shows our logic declarations, and how we debug them:
 
 1. Execution is paused at a **breakpoint** in the debugger, where we can examine state, and execute step by step.
 
 2. Note the **logging** for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
 <br><br>
 
-**2. Chaining - Multi-Table Transactin Automation**
+**2. Chaining - Multi-Table Transaction Automation**
 
 Note that it's a `Multi-Table Transaction`, as indicated by the log indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
 <br><br>
@@ -160,7 +158,7 @@ The logic above, perhaps conceived for Place order, applies automatically to all
 
 **5. Automatic Optimizations**
 
-SQL overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.  This is because the rule engine is not a Rete algorithn, but highly optimized for transaction processing, and integrated with the SQLAlchemy ORM (Object Relational Manager).
+SQL overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.  This is because the rule engine is not a Rete algorithm, but highly optimized for transaction processing, and integrated with the SQLAlchemy ORM (Object Relational Manager).
 <br><br>
 
 **6. Transparent**
@@ -173,13 +171,7 @@ Rules are an executable design.  Note they map exactly to our natural language d
 
 Security Automation means you activate security, and declare grants (using Python) to control row access for user roles.
 
-In a terminal window for your project:
-
-```bash
-ApiLogicServer add-auth --project_name=. --db_url=auth
-```
-
-Users will now need to sign in to use the Admin App.  Security also provide row-level authorization - here, we ensure that less active accounts are hidden:
+Security requires login to use the Admin App and Swagger.  Security also provide **row-level authorization** - here, we ensure that less active accounts are hidden:
 
 ```python
 Grant(  on_entity = models.Customer,
@@ -224,7 +216,7 @@ This revises your database to add the new Product.CarbonNeutral column, and inst
 
 &nbsp;
 
-**Declare logic**
+**Revise Logic - with Python**
 
 Here is our revised logic to apply the discount, and send the Kafka message:
 
