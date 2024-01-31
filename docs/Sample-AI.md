@@ -6,7 +6,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 Here's how to use AI and API Logic Server to create complete running systems in minutes:
 
 1. Use **ChatGPT for Schema Automation:** create a database schema from natural language
-2. Use **API Logic Server:** create working software with 1 command
+2. Use **API Logic Server:** create working software *with 1 command*
     * **App Automation:** a multi-page, multi-table admin app
     * **API Automation:** a JSON:API - crud for each table, with filtering, sorting, optimistic locking and pagination
 3. Use **your IDE** to customize the project:
@@ -150,7 +150,7 @@ In a terminal window for your project:
 ApiLogicServer add-auth --project_name=. --db_url=auth
 ```
 
-Users will now need to sign in to use the Admin App.  Security also provide row-level authoriation - here, we ensure that inactive accounts are hidden:
+Users will now need to sign in to use the Admin App.  Security also provide row-level authorization - here, we ensure that inactive accounts are hidden:
 
 ```python
 Grant(  on_entity = models.Customer,
