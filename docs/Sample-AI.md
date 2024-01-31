@@ -61,7 +61,7 @@ sqlite3 sample_ai.sqlite < sample_ai.sql
 
 &nbsp;
 
-## 2. API Logic Server: create
+## 2. API Logic Server: Create
 
 Given a database, API Logic Server creates an executable, customizable project with the following single command:
 
@@ -104,7 +104,9 @@ UI App Developers can create custom apps immediately, using swagger to design th
 
 ## 3. Customize
 
-Projects are designed for customization, using standards: Python, frameworks (e.g., Flask, SQLAlchemy), and your IDE for code editing and debugging.
+So, we have working software, in minutes.  It's running, but we really can't deploy it until we customize it with logic and security.
+
+Projects are designed for customization, using standards: Python, frameworks (e.g., Flask, SQLAlchemy), and your IDE for code editing and debugging.  Not only Python *code*, but ***Rules***.
 
 To explore, let's customize this project.  To speed things up, instead of the normal procedure of declaring rules in your IDE, follow this procedure:
 
@@ -167,7 +169,9 @@ Rules are an executable design.  Note they map exactly to our natural language d
 
 &nbsp;
 
-### b. Declare Security
+### b. Security Automation
+
+Security Automation means you activate security, and declare grants (using Python) to control row access for user roles.
 
 In a terminal window for your project:
 
@@ -188,13 +192,14 @@ Grant(  on_entity = models.Customer,
 
 ## 4. Iterate: Rules + Python
 
-Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s make two changes:
+So we have completed our 1 day project.  We can deploy it, as [described here](Tutorial-Deployment.md){:target="_blank" rel="noopener"}, for *agile collaboration* with business users.
+
+Which leads to *agile iterations.*  Automation helps here too: not only are spreadsheet-like rules 40X more concise, they meaningfully simplify iterations and maintenance.  Let’s explore this with two changes:
 
 !!! pied-piper "Green Discounts"
 
     Give a 10% discount for carbon-neutral products for 10 items or more.
 &nbsp;
-
 And:
 
 !!! pied-piper "Application Integration"
