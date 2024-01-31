@@ -36,7 +36,7 @@ This process **leverages your existing IT infrastructure:** your IDE, GitHub, th
 
 You can use an existing database, or create a new one with ChapGPT or your database tools.
 
-Use ChapGPT to generate SQL commands for database creation:
+Use ChatGPT to generate SQL commands for database creation:
 
 !!! pied-piper "Create database schemas from ChatGPT"
 
