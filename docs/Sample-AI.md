@@ -9,7 +9,7 @@ Here's how to use AI and API Logic Server to create complete running systems in 
 2. Use **API Logic Server:** create working software *with 1 command*
     * **App Automation:** a multi-page, multi-table admin app
     * **API Automation:** a JSON:API - crud for each table, with filtering, sorting, optimistic locking and pagination
-3. Use **your IDE** to customize the project:
+3. **Customize** the project with *your IDE*:
     * **Logic Automation using rules:** declare spreadsheet-like rules in Python for multi-table derivations and constraints - **40X more concise** than code
     * Use Python and standard libraries (Flask, SQLAlchemy), and debug in your IDE
 4. **Iterate** your project:
@@ -30,7 +30,7 @@ You can use an existing database, or create a new one with ChapGPT or your datab
 
 Use ChapGPT to generate SQL commands for database creation:
 
-!!! pied-piper ":bulb: Create database definitions from ChatGPT"
+!!! pied-piper "Create database definitions from ChatGPT"
 
     Create a sqlite database for customers, orders, items and product
     
@@ -47,7 +47,7 @@ Use ChapGPT to generate SQL commands for database creation:
     3. Order.AmountTotal = Sum(Items.Amount)
     4. Items.Amount = Quantity * UnitPrice
     5. Store the Items.UnitPrice as a copy from Product.UnitPrice
-
+&nbsp;
 
 This creates standard SQL, [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/sample_ai/database/chatgpt/sample_ai.sql){:target="_blank" rel="noopener"}.  Copy the generated SQL commands into a file, say, `sample-ai.sql`:
 
@@ -126,19 +126,35 @@ Rules are an executable design.  Use your IDE (code completion, etc), to replace
 
 ![Swagger](images/sample-ai/rules.png)
 
-Observe rules are declared in Python.  Given IDE services for code completion, this is using Python as a DSL (Domain Specific Language).
+Observe rules are declared in Python, leveraging IDE services for code completion.
 
 &nbsp;
 
-#### -> Re-use and Optimization
+**a. Chaining**
 
-We can contrast this to the (not shown) ChatGPT attempt at logic.  With declarative logic, you get:
+The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
 
-1. ***Automatic* Reuse:** the logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc.
+Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
+<br><br>
 
-2. ***Automatic* Optimizations:** sql overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.
+**b. 40X More Concise**
 
-ChatGPT created triggers that missed many Use Cases, and were inefficient.  They were also not transparent; Business Users can read the rules and spot issues (*"hey, where's the tax?"*), certainly not triggers.
+The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code).  That's a remarkable 40X decrease in the backend half of the system.
+<br><br>
+
+**c. Automatic Re-use**
+
+The logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc.  This reduces code, and promotes quality (no missed corner cases).
+<br><br>
+
+**d. Automatic Optimizations**
+
+SQL overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.
+<br><br>
+
+**e. Transparent**
+
+Rules are an executable design.  Note they map exactly to our natural language design (shown in comments) - readable by business users.  
 
 &nbsp;
 
@@ -165,15 +181,19 @@ Grant(  on_entity = models.Customer,
 
 Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s take an example.
 
-!!! pied-piper ":bulb: Green Discounts"
+!!! pied-piper "Green Discounts"
+
     Give a 10% discount for carbon-neutral products for 10 items or more.
+&nbsp;
 
 In this iteration, we'll also introduce some application iteration:
 
-!!! pied-piper ":bulb: Application Integration"
+!!! pied-piper "Application Integration"
+
     Send new Orders to Shipping with a Kafka message.
 
     Enable B2B partners to place orders with a custom API.
+&nbsp;
 
 Automation still applies; we execute the steps below:
 
@@ -190,7 +210,7 @@ This revises your database to add the new Product.CarbonNeutral column, and inst
 
 &nbsp;
 
-**b. Declare logic**
+**Declare logic**
 
 We revise our logic to apply the discount, and send the Kafka message:
 
@@ -208,7 +228,7 @@ This illustrates some significant aspects of logic.
 
 #### a. Maintenance: Logic Ordering
 
-Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but it’s mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines they’ll hopefully be called and function correctly.
+Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but it’s mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that’ll hopefully be called and function correctly.
 
 Rules change that, since they self-order their execution (and pruning) based on system-discovered dependencies.  So, to alter logic, you just “drop a new rule in the bucket”, and the system will ensure it’s called in the proper order, and re-used over all the Use Cases to which it applies.
 
@@ -240,7 +260,7 @@ Note we rebuilt the project from our altered database (`ApiLogicServer rebuild-f
 
 ![ai-driven-automation](images/sample-ai/ai-driven-automation.png)
 
-In minutes, you've used ChatGPT and API Logic Server to convert an idea into working software -- 5 rules, 4 lines of Python.  The process was simple:
+In minutes, you've used ChatGPT and API Logic Server to convert an idea into working software.  It required only 5 rules, and 20 lines of Python.  The process was simple:
 
 * Used the `ApiLogicServer create` command to create an executable project
     * A **Self-Serve API** to unblock UI Developers -- Day 1

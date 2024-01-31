@@ -155,7 +155,7 @@ Logic provides significant improvements over procedural logic, as described belo
 
 !!! pied-piper ":bulb: Logic: Multi-table Derivation and Constraint Rules, 40X More Concise"
 
-    #### a. Complexity Scaling
+    #### a. Chaining
 
     The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
 
