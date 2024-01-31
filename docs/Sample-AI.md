@@ -132,33 +132,36 @@ Observe rules are declared in Python, leveraging IDE services for code completio
 
 &nbsp;
 
-**a. Chaining**
+**1. Debuggging**
 
-The screenshot above shows our logic declarations
+The screenshot above shows our logic declarations:
 
 1. Execution is paused at a **breakpoint** in the debugger, where we can examine state, and execute step by step.
 
-2. Note the **logging** for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.  
+2. Note the **logging** for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
+<br><br>
+
+**2. Chaining - Multi-Table Transactin Automation**
 
 Note that it's a `Multi-Table Transaction`, as indicated by the log indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
 <br><br>
 
-**b. 40X More Concise**
+**3. 40X More Concise**
 
 The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}.  That's a remarkable 40X decrease in the backend *half* of the system.
 <br><br>
 
-**c. Automatic Re-use**
+**4. Automatic Re-use**
 
 The logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc.  This reduces code, and promotes quality (no missed corner cases).
 <br><br>
 
-**d. Automatic Optimizations**
+**5. Automatic Optimizations**
 
 SQL overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.  This is because the rule engine is not a Rete algorithn, but highly optimized for transaction processing, and integrated with the SQLAlchemy ORM (Object Relational Manager).
 <br><br>
 
-**e. Transparent**
+**6. Transparent**
 
 Rules are an executable design.  Note they map exactly to our natural language design (shown in comments) - readable by business users.  
 
@@ -185,23 +188,23 @@ Grant(  on_entity = models.Customer,
 
 ## 4. Iterate: Rules + Python
 
-Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s take an example.
+Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let’s make two changes:
 
 !!! pied-piper "Green Discounts"
 
     Give a 10% discount for carbon-neutral products for 10 items or more.
 &nbsp;
 
-In this iteration, we'll also introduce some application iteration:
+And:
 
 !!! pied-piper "Application Integration"
 
-    Send new Orders to Shipping with a Kafka message.
+    Send new Orders to Shipping using a Kafka message.
 
     Enable B2B partners to place orders with a custom API.
 &nbsp;
 
-Automation still applies; we execute the steps below:
+As above, we speed things up with the following procedure:
 
 1. Stop the Server
 
@@ -218,7 +221,7 @@ This revises your database to add the new Product.CarbonNeutral column, and inst
 
 **Declare logic**
 
-We revise our logic to apply the discount, and send the Kafka message:
+Here is our revised logic to apply the discount, and send the Kafka message:
 
 ![rules-plus-python](images/sample-ai/rules-plus-python.png)
 
@@ -226,7 +229,8 @@ We can also extend our API for our new B2BOrder endpoint, using standard Python 
 
 ![custom-endpoint](images/sample-ai/custom-api.png)
 
-&nbsp;
+Note: Kafka is not activated in this example.  To explore a running Tutorial for application integration with running Kafka, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
+
 
 This illustrates some significant aspects of logic.
 
@@ -236,13 +240,13 @@ This illustrates some significant aspects of logic.
 
 Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but it’s mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that’ll hopefully be called and function correctly.
 
-Rules change that, since they self-order their execution (and pruning) based on system-discovered dependencies.  So, to alter logic, you just “drop a new rule in the bucket”, and the system will ensure it’s called in the proper order, and re-used over all the Use Cases to which it applies.
+Rules change that, since they ***self-order*** their execution (and pruning) based on system-discovered dependencies.  So, to alter logic, you just *“drop a new rule in the bucket”,* and the system will ensure it’s called in the proper order, and re-used over all the Use Cases to which it applies.
 
 &nbsp;
 
 #### b. Extensibility: Rules + Python
 
-In this case, we needed to do some if/else testing, and it was more convenient to add a dash of Python.  While you have the full object-oriented power of Python, this is simpler, more like Python as a 4GL.  
+In this case, we needed to do some if/else testing, and it was more convenient to add a dash of Python.  While this is pretty simple *Python as a 4GL*, you have full power of object-oriented Python.
 
 What’s important is that once you are in such functions, you can utilize Python libraries, invoke shared code, make web service calls, send email or messages, etc.  You have all the power of rules, plus the unrestricted flexibility of Python.
 
