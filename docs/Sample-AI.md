@@ -245,10 +245,10 @@ This illustrates some significant aspects of logic.
 
 Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That’s because it’s not about writing code, but archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that’ll hopefully be called and function correctly.
 
-Logic Automation changes that, with ***Maintenance Automation:***
+Logic Automation changes that, with ***Maintenance Automation,*** which means:
 
 * Rules *automatically order* their execution (and pruning) based on system-discovered dependencies
-* Rules are "automatically reused* for all relevant transations
+* Rules are *automatically reused* for all relevant transactions
 
 So, to alter logic, you just *“drop a new rule in the bucket”,* and the system will ensure it’s called in the proper order, and *re-used* over all the relevant Use Cases.
 
