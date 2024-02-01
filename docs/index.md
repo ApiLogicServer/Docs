@@ -227,7 +227,7 @@ AI provides a solution: ***Schema Automation***.  You can use ChatGPT to create 
 
 Then, employ API Logic Server API and Logic Automation, and use Python and standard frameworks to finish the job.
 
-Here's a tutorial you can to explore this: [click here](Sample-AI.md){:target="_blank" rel="noopener"}.
+Here's a tutorial you can to explore this: [click here](Sample-AI.md){:target="_blank" rel="noopener"},or see [this article](https://dzone.com/articles/ai-and-rules-for-agile-microserves){:target="_blank" rel="noopener"}.
 
 </details>
 

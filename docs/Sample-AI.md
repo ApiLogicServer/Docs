@@ -1,6 +1,7 @@
 ---
-title: Microservice Automation
-Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
+title: One Day Projects
+Description: Create a project instantly using AI and API/Logic Automation. Customize later with Python, Rules, and Flask, which is open-source
+Version: 1.1
 ---
 <style>
   .md-typeset h1,
@@ -134,7 +135,11 @@ This applies customized logic and security, which we examine below.
 
 Logic Automation means that you can ***declare spreadsheet-like rules*** using Python.  Such logic maintains database integrity with multi-table derivations and constraints, and security.  Rules are 40X more concise than traditional code, and can be extended with Python.
 
-Rules are an executable design.  Use your IDE (code completion, etc), to replace 280 lines of code with the 5 spreadsheet-like rules below.  Note they map exactly to our natural language design:
+Below we implement the **Check Credit** requirement - see the comments at top.  Their implementation follows: 5 rules, instead of 200 lines of Python.
+
+1. Use the Admin App to add an Item for 1000 Widgets, observe how the constraint prevents the transaction
+
+Rules are an executable design.  Note they map exactly to our natural language design:
 
 ![Swagger](images/sample-ai/rules.png)
 
@@ -179,7 +184,7 @@ Rules are an executable design.  Note they map exactly to our natural language d
 
 Security Automation means you activate security, and declare grants (using Python) to control row access for user roles.
 
-Security requires login to use the Admin App and Swagger.  Security also provide **row-level authorization** - here, we ensure that less active accounts are hidden:
+Security requires login to use the Admin App and Swagger.  Security also provide **row-level authorization** - here, we ensure that less active accounts are hidden if we login as user s1.p:
 
 ```python
 Grant(  on_entity = models.Customer,
@@ -230,7 +235,9 @@ Here is our revised logic to apply the discount, and send the Kafka message:
 
 ![rules-plus-python](images/sample-ai/rules-plus-python.png)
 
-We can also **extend our API** for our new B2BOrder endpoint, using standard Python and Flask:
+We can also **extend our API** for our new B2BOrder endpoint, using standard Python and Flask as shown below.  The code includes the swagger example, so we can now test our endpoint:
+
+1. Use Swagger (**ServicesEndPoint > POST /ServicesEndPoint/OrderB2B)**
 
 ![custom-endpoint](images/sample-ai/custom-api.png)
 
