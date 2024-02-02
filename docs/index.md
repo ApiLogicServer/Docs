@@ -131,25 +131,6 @@ For more on integration, explore running code in the [Application Integration Sa
 
 ---
 
-
-# Key Features
-
-| Feature | Notes   |
-:-------|:-----------|
-| [API Automation](Project-Structure.md){:target="_blank" rel="noopener"} | Unblock Agile Collaboration, Custom App Dev |
-| [Logic Automation](Logic-Why.md){:target="_blank" rel="noopener"} | 40X More Concise than procedural code |
-| [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
-| [Rule-Base Row Level Security](Security-Overview.md){:target="_blank" rel="noopener"} | Authorization and Authentication |
-| [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
-| [AI-Driven Automation](Tutorial-Agile.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
-| [Admin Web App](Admin-Tour.md){:target="_blank" rel="noopener"} | Agile Collaboration, Prototyping, Testing, Back Office Data Entry |
-| [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
-| [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
-
-&nbsp;
-
----
-
 # Scenarios
 
 <details markdown>
@@ -233,6 +214,25 @@ Here's a tutorial you can to explore this: [click here](Sample-AI.md){:target="_
 
 &nbsp;
 For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+---
+
+
+# Key Features
+
+| Feature | Notes   |
+:-------|:-----------|
+| [API Automation](Project-Structure.md){:target="_blank" rel="noopener"} | Unblock Agile Collaboration, Custom App Dev |
+| [Logic Automation](Logic-Why.md){:target="_blank" rel="noopener"} | 40X More Concise than procedural code |
+| [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
+| [Rule-Base Row Level Security](Security-Overview.md){:target="_blank" rel="noopener"} | Authorization and Authentication |
+| [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
+| [AI-Driven Automation](Sample-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
+| [Admin Web App](Admin-Tour.md){:target="_blank" rel="noopener"} | Agile Collaboration, Prototyping, Testing, Back Office Data Entry |
+| [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
+| [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
 
 &nbsp;
 
