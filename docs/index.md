@@ -38,13 +38,11 @@ It runs as a standard pip install, or under Docker. For more on API Logic Server
 
 Here's a quick tour of using API Logic Server: ***Create, Run, Customize.***
 
-The [**`ApiLogicServer create`**](Project-Structure.md){:target="_blank" rel="noopener"} CLI command creates an executable project by reading the database schema in the `db_url` argument.  For example, this will create an executable, customizable project from the pre-installed sample database:
-
 &nbsp;
 
 **1. Create: *Microservice Automation***
 
-Create executable, customizable projects instantly:
+Create executable, [customizable projects](Project-Structure.md){:target="_blank" rel="noopener"} instantly:
 
 * ***Microservice Automation*** means create projects with a single CLI command
 
