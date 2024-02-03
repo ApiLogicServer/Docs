@@ -53,3 +53,5 @@
 *[API Automation]: Create APIs with 1 command, instead of time-consuming and complex framework-based development
 *[Logic Automation]: Declare logic with spreadsheet-like Rules that are 40X more concise than code, add Python as required
 *[Maintenance Automation]: Rules are automatically re-ordered based on dependencies, and re-used over all relevant transactions
+*[App Automation]: Automatic creation of multi-page, multi-table admin apps with a single command
+*[Microservice Automation]: Creation of customizable, executable projects with a single command, providing App Automation and API Automation

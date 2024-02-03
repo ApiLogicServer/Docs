@@ -410,6 +410,7 @@ There are a few articles that provide some orientation to API Logic Server:
 
 &nbsp;
 
+A variant of the home page is [here](Home.md).
 
 
 [^1]:
