@@ -38,11 +38,15 @@ It runs as a standard pip install, or under Docker. For more on API Logic Server
 
 Here's a quick tour of using API Logic Server: ***Create, Run, Customize.***
 
+The [**`ApiLogicServer create`**](Project-Structure.md){:target="_blank" rel="noopener"} CLI command creates an executable project by reading the database schema in the `db_url` argument.  For example, this will create an executable, customizable project from the pre-installed sample database:
+
 &nbsp;
 
-**1. Create: *Microservice Automation* Means Create Projects With a Single CLI Command**
+**1. Create: *Microservice Automation***
 
-The [**`ApiLogicServer create`**](Project-Structure.md){:target="_blank" rel="noopener"} CLI command creates an executable project by reading the database schema in the `db_url` argument.  For example, this will create an executable, customizable project from the pre-installed sample database:
+Create executable, customizable projects instantly:
+
+* ***Microservice Automation*** means create projects with a single CLI command
 
 ```bash
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
@@ -52,10 +56,10 @@ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
 
 **2. Run: *API Automation and App Automation***
 
-Microservice Automation has created a project that is *executable,* with:
+Microservice Automation creates a project that is *executable,* with:
 
-* ***API Automation*** means you have a running [**JSON:API**](API.md){:target="_blank" rel="noopener"} - filtering, sorting, pagination and optimistic locking
-* ***App Automation*** means you have running [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"} - multi-page, multi-table, with automatic joins and lookups
+* ***API Automation*** means you have a running [**JSON:API**](API.md){:target="_blank" rel="noopener"}
+* ***App Automation*** means you have a running [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"}
 
 > The API **unblocks UI Developers** from waiting on lengthy API development cycles.
 <br>The Admin App can be used for **instant business user collaboration**.
@@ -81,7 +85,7 @@ Unlike frameworks which require significant time and expertise, the create comma
 
 Customize created projects in your IDE, with Python and standard libaries.  Significantly, Microservice Automation also includes:.
 
-* ***Logic Automation*** means you customize logic and security, using **Rules and Python** in your IDE
+* ***Logic Automation*** means you customize logic using **Rules and Python** in your IDE
 
 > Rules are unique and confer **significant business agility** - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}, <br>for security and multi-table derivation and constraints.
 
