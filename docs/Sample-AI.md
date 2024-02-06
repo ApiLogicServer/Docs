@@ -125,6 +125,7 @@ To explore, let's customize this project.  To speed things up, instead of the no
 
 ```bash
 ApiLogicServer sample-ai
+ApiLogicServer add-auth --db_url=auth
 ```
 
 This applies customized logic and security, which we examine below.
