@@ -294,12 +294,12 @@ To see Release Notes, [click here](https://github.com/ApiLogicServer/ApiLogicSer
 
 This pre-release includes:
 
-* Many simplfications for Tutorial
+* [Fix for Column vs Parent Accesor](https://github.com/ApiLogicServer/ApiLogicServer-src/issues/38){:target="_blank" rel="noopener"}
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.01.25
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.02.00
 ```
 
 Or use (neither available currently):
