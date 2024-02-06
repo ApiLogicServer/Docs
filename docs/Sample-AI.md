@@ -209,9 +209,11 @@ And:
 
 !!! pied-piper "Application Integration"
 
-    Send new Orders to Shipping using a Kafka message.
+    1. Provide read access for internal applications.
 
-    Enable B2B partners to place orders with a custom API.
+    2. Enable B2B partners to place orders with a custom API.
+
+    3. Send new Orders to Shipping using a Kafka message.
 &nbsp;
 
 As above, we speed things up with the following procedure:

@@ -185,7 +185,7 @@ Here's an [article, here](https://dzone.com/articles/instant-app-backends-with-a
 
 <details markdown>
 
-<summary>1 day projects with AI-Driven Schema Automation</summary>
+<summary>Instant Microservices with AI-Driven Schema Automation</summary>
 
 &nbsp;
 
