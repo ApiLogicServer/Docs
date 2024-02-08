@@ -30,7 +30,36 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 ---
 
-# Quick Tour
+# Product Overview - Videos, Tour
+
+<details markdown>
+
+<summary>See a Microservices Running -- In Seconds</summary>
+
+See how **Microservice Automation** creates and runs a microservice - a multi-page app, and an API.
+
+Then, customize with **Logic Automation:** spreadsheet-like rules.
+
+&nbsp;
+
+![quick tour](images/nutshell/gif.gif)
+
+</details>
+
+
+&nbsp;
+
+<details markdown>
+
+<summary>Video Tutorial (6 min)</summary>
+
+&nbsp;
+
+Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
+
+[![Delivering the Agile Vision](images/sample-ai/ai-driven-automation-video.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
+
+</details>
 
 API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
@@ -222,10 +251,9 @@ Here's a tutorial you can to explore this: [click here](Sample-AI.md){:target="_
 &nbsp;
 For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_blank" rel="noopener"}.
 
-&nbsp;
-
 ---
 
+&nbsp;
 
 # Key Features
 
@@ -244,14 +272,6 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 &nbsp;
 
 ---
-
-# Video: Agile Collaboration
-
-Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
-
-[![Delivering the Agile Vision](images/sample-ai/ai-driven-automation-video.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
-
-&nbsp;
 
 # Getting Started - Install, Tutorial
 
