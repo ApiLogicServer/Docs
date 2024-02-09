@@ -28,7 +28,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     **Customize in your IDE:** use standard tools (Python, Flask, SQLAlchemy, GitHub and Docker), plus<br>
 
-    3. ***Logic Automation:*** unique spreadsheet-like rules that decrease backend logic by **40X**.
+    3. ***Logic Automation:*** unique spreadsheet-like **rules - 40X** more concise multi-table derivations and constraints.
 
     Unlike frameworks, weeks-to-months of complex development is no longer necessary.  <br>
     API Logic Server provides unique automation **for instant integrations and app backends**.
