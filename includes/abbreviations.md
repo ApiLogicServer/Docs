@@ -50,8 +50,8 @@
 *[ad hoc integrations]: Self-serve APIs support unplanned integrations - authorized users can retrieve the attributes and related data they want, without custom server development
 *[Ad Doc Integration]: Self-serve APIs support unplanned integrations - authorized users can retrieve the attributes and related data they want, without custom server development
 *[ETL]: A traditional application integration approach - nightly Extract runs to obtain data, Transfer it to other systems, and Load it for local access.
-*[API Automation]: Create APIs with 1 command, instead of time-consuming and complex framework-based development
+*[API Automation]: Create JSON:APIs with 1 command - self-serve (analogous to GrpahQL), with pagination, optimistic locking, filtering, sorting, and related data access
 *[Logic Automation]: Declare logic with spreadsheet-like Rules that are 40X more concise than code, add Python as required
 *[Maintenance Automation]: Rules are automatically re-ordered based on dependencies, and re-used over all relevant transactions
-*[App Automation]: Automatic creation of multi-page, multi-table admin apps with a single command
+*[App Automation]: Create Admin Apps with 1 command - multi-page, multi-table
 *[Microservice Automation]: Creation of customizable, executable projects with a single command, providing App Automation, API Automation and Logic Automation.

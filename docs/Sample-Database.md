@@ -50,3 +50,14 @@ You can also create the project with the logic pre-installed:
 ```bash
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw+
 ```
+
+## Sample-ai
+
+The ChatGPT-based sample is structured as follows:
+
+![Sample-ai Database](images/sample-ai/db-diagram.png){: style="height:600px;";  }
+
+
+
+
+
