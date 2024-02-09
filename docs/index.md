@@ -21,7 +21,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     For Developers and their organizations seeking to **increase business agility,**
 
-    API Logic Server provides ***Microservice Automation:***  with a single command, it provides:
+    API Logic Server provides ***Microservice Automation:***  with a single command, with:
     
     1. ***API Automation:*** crud for each table, with pagination, optimistic locking, filtering and sorting, and
     2.  ***App Automation:*** a multi-page, multi-table Admin App.  <br>
@@ -31,7 +31,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
     3. ***Logic Automation:*** unique spreadsheet-like rules that decrease backend logic by **40X**.
 
     Unlike frameworks, weeks-to-months of complex development is no longer necessary.  <br>
-    API Logic Server provides unique automation for **instant integrations and app backends**.
+    API Logic Server provides unique automation **for instant integrations and app backends**.
 
 &nbsp;
 
