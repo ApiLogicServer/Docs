@@ -296,9 +296,9 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 
 ## Summary
 
-!!! pied-piper ":bulb: Summary: Instant Creation, Rules, Open Standards"
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/summary.jpeg?raw=true">
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/summary.jpeg?raw=true">
+!!! pied-piper ":bulb: Instant Creation, Rules, Open Standards"
     
     In minutes - not days or weeks - you've used API Logic Server to convert an idea into **working software**, customized using **rule-based logic and security**, and **iterated** to meet new requirements.
     

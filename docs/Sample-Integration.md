@@ -217,7 +217,6 @@ Such logic (multi-table derivations and constraints) is a significant portion of
 
 !!! pied-piper ":bulb: Logic: Multi-table Derivation and Constraint Rules, 40X More Concise"
 
-
     #### IDE: Declare and Debug
 
     The 5 check credit rules are shown below.  

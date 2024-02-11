@@ -58,6 +58,11 @@ The ChatGPT-based sample is structured as follows:
 ![Sample-ai Database](images/sample-ai/db-diagram.png){: style="height:600px;";  }
 
 
+## Basic Demo
+
+The ChatGPT-based sample is structured as follows:
+
+![Sample-ai Database](images/basic_demo/basic_demo_data_model.jpeg){: style="height:600px;";  }
 
 
 
