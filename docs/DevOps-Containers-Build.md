@@ -15,7 +15,7 @@ The diagram above identifies 3 important images you can build, described below.
 
 This is the image you will deploy for production.  It includes Python, API Logic Server, any additional packages your require, and your app (Python and logic).  These are defined by a `dockerfile`. 
 
-API Logic Projects[^1] include a `devops/docker-image/build-image.dockerfile` for containerizing your application, shown are right in the diagram below. [Click here to see the key files](https://github.com/ApiLogicServer/demo/tree/main/devops/docker-image){:target="_blank" rel="noopener"}.
+API Logic Projects[^1] include a `devops/docker-image/build-image.dockerfile` for containerizing your application, shown at right in the diagram below. [Click here to see the key files](https://github.com/ApiLogicServer/demo/tree/main/devops/docker-image){:target="_blank" rel="noopener"}.
 
 A key aspect of images is that you can *extend* an existing image: add new software to build another image.  See the line:
 
