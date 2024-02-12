@@ -61,10 +61,11 @@ Your project may require additional packages not already included with API Logic
 
 ## MyDB: Test Databases
 
-One of the great things about Docker is the ability to install popular databases, with no hassle.  Follow the procedures described in [Connection Examples](Database-Docker.md#create-your-own-db-image){:target="_blank" rel="noopener"}.
+One of the great things about Docker is the ability to install popular databases, with no hassle.  Follow the procedures described in [Connection Examples](Database-Docker.md#create-your-own-db-image){:target="_blank" rel="noopener"}.\
 
+You can use this to optionally manage your test databases with containers that can run both locally, or on a cloud / server.
 
 
 [^1]:
-    Several changes were made as of release 9.01.17.  It is available as preview; [click here](#preview-version){:target="_blank" rel="noopener"}
+    Several changes were made as of release 9.01.17.
     
