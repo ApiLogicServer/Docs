@@ -27,7 +27,7 @@ $ # you are now active in the API Logic Server docker container to create projec
 Typical project creation identifies the database and target project name:
 ```bash title="Create Typical project"
 $ cd /localhost/             # a directory on your local file system for project creation
-$ ApiLogicServer create-and-run --project_name=ApiLogicProject --db_url=
+$ ApiLogicServer create-and-run --project_name=/localhost/ApiLogicProject --db_url=
 $ exit                       # return to local host 
 ```
 
@@ -38,7 +38,8 @@ $ exit                       # return to local host
 Once the project is created, open it in VSCode:
 
 1. Open Folder `ApiLogicServer/ApiLogicProject` in VSCode
-   * Accept option to "Reopen in Container"
+
+       * Accept option to "Reopen in Container"
 
       > If you already skipped this option, no worries.  Use __View > Command Palette > Remote-Containers: Reopen in Container__
 
