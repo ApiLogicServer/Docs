@@ -111,9 +111,9 @@ Important considerations for SQLAlchemy URIs:
 &nbsp;
 
 
-## Sample DBs: `apilogicserver``
+## Sample DBs: `apilogicserver`
 
-& nbsp;
+&nbsp;
 
 ### MySQL
 
