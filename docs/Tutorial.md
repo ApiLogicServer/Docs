@@ -23,10 +23,10 @@ In this tutorial, we will explore:
 This tutorial illustrates some key concepts:
 
 #### _Declarative Models_, not code
-Observe that the files for the Admin App and API are models that describe _what, not how_.  This is much easier to understand than large amounts of generated code.
+Observe that the files for the Admin App and API are models that describe _what, not how_.  This level of abstratction is much easier to understand than large amounts of generated code.
 
 #### Customize - using standard tools
-The system is designed for you to customize the UI, Logic, Security and API, using standard tools - your IDE for code editing/debugging, git, etc.
+The system is designed for you to customize the UI, Logic, Security and API, using standard tools - your IDE for code editing / debugging, git, etc.
 
 #### Iterate - Preserve Customizations
 The system is designed to enable `rebuild`, so you can iterate the data model - _without losing your customizations._  In general, such customizations are kept in separate files from the model files.  So, the model files can be rebuilt without affecting customization files.
@@ -48,7 +48,9 @@ The diagram above summarizes the create / run / customize process.
 
 ## 1. Create: Instant Project
 
-The CLI command below creates an `ApiLogicProject` by reading your schema.  Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/); you would normally supply a SQLAlchemy URL.  
+The CLI command below creates an `ApiLogicProject` by reading your schema.  
+
+Note: the `db_url` value is defaulted to the pre-installed sample project; you would normally supply a SQLAlchemy URL.  
 
 ```bash
 $ ApiLogicServer create --project_name= --db_url=    # create ApiLogicProject
@@ -97,7 +99,7 @@ After starting the server and browser, explore the Admin App in your browser:
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/run-admin-app.png?raw=true"></figure>
 
-> **Key Takeaway: API/UI *Automation***<br>With 1 command, we have created an executable project with a self-serve API, for ad hoc application integration and custom UI development.  Our Admin App can be used for agile business user collaboration.
+> **Key Takeaway: *Microservice Automation***<br>With **1 command**, we have created an executable project with a **self-serve API**, for ad hoc application integration and custom UI development.  Our **Admin App** can be used for agile business user collaboration.
 
 &nbsp;
 
