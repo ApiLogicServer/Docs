@@ -275,6 +275,7 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 | Feature | Notes   |
 :-------|:-----------|
+| API Automation | Unlike Frameworks, API created automatically |
 | Logic Enforcement | Update requests execute relevant logic |
 | Security Enforcement | Role-based result filtering |
 | [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
@@ -292,7 +293,7 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 | Feature | Notes   |
 :-------|:-----------|
-| Multi-table: Aggregate | Sums, Counts provide efficient aggregation  of child data, with optional qualification |
+| Multi-table: Aggregate | Sum / Count Rules provide efficient aggregation of child data, with optional qualification |
 | Multi-table: Parent Access | Child rows can access parent data, with optional cascade |
 | Formulas | Multi-field derivations |
 | Automatic Ordering | Simplifies Maintenance |
@@ -322,6 +323,7 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 | Feature | Notes   |
 :-------|:-----------|
+| App Automation | Unlike frameworks, App is created automatically |
 | Multi-Page | Page for each table, with transitions to see related data |
 | Multi-Table - Parents | Automatic Joins (e.g., Items show Product Name, not Product Id) |
 | Multi-Table - Children | Parent pages provide tab sheets for related child data (e,g, Customer / Order List) |
