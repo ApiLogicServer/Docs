@@ -278,6 +278,7 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 | Logic Enforcement | Update requests execute relevant logic |
 | Security Enforcement | Role-based result filtering |
 | [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
+| Standards-based | JSON:API |
 | Optimistic Locking | Ensure User-1 does not overwrite changes from user-2 |
 | Multi-table | Retrieve related data (e.g. customers, *with orders*) |
 | Pagination | Performance - deliver large result sets a page at a time |
