@@ -40,6 +40,12 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 # Product Overview - Videos, Tour
 
+API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
+
+It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is.md){:target="_blank" rel="noopener"}.
+
+Explore it below.
+
 <details markdown>
 
 <summary>See a Microservice Created, in Seconds -- Click Here</summary>
@@ -54,9 +60,6 @@ Then, customize with **Logic Automation:** spreadsheet-like rules.
 
 </details>
 
-
-&nbsp;
-
 <details markdown>
 
 <summary>Video Tutorial (6 min)</summary>
@@ -69,11 +72,11 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 </details>
 
-API Logic Server is an open source Python project, consisting of a CLI and set of runtimes (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
-It runs as a standard pip install, or under Docker. For more on API Logic Server Architecture, [see here](Architecture-What-Is.md){:target="_blank" rel="noopener"}.
 
-Here's a quick tour of using API Logic Server: ***Create, Run, Customize.***
+<details markdown>
+
+<summary>Quick Screenshot Tour of using API Logic Server: Create, Run, Customize</summary>
 
 &nbsp;
 
@@ -171,6 +174,7 @@ For more on integration, explore running code in the [Application Integration Sa
 
 </details>
 
+</details>
 &nbsp;
 
 ---
@@ -269,9 +273,6 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 <summary>API Features</summary>
 
-&nbsp;
-
-
 | Feature | Notes   |
 :-------|:-----------|
 | Logic Enforcement | Update requests execute relevant logic |
@@ -284,13 +285,9 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 </details>
 
-&nbsp;
-
 <details markdown>
 
 <summary>Logic Features</summary>
-
-&nbsp;
 
 | Feature | Notes   |
 :-------|:-----------|
@@ -301,16 +298,26 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 | Automatic Optimizations | Reduce SQLs by pruning and aggregates by adjustment |
 | Automatic Invocation | Rules called automatically to help ensure quality |
 | Extensible | Formulas, Constraints and Events can invoke Python |
+| Debugging | Use IDE Debugger, and logic log to see which rules fire |
 
 </details>
-&nbsp;
+
+<details markdown>
+
+<summary>Security Features</summary>
+
+| Feature | Notes   |
+:-------|:-----------|
+| Authentication | Control login access |
+| Authorization | Row level access based on roles, or user properties |
+| Authorization | Global filters (e.g, multi-tenant) |
+| Extensible | Use sql for authentication, or your own provider |
+
+</details>
 
 <details markdown>
 
 <summary>Admin App Features</summary>
-
-&nbsp;
-
 
 | Feature | Notes   |
 :-------|:-----------|
@@ -326,13 +333,9 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 </details>
 
-&nbsp;
-
 <details markdown>
 
 <summary>Other Features</summary>
-
-&nbsp;
 
 | Feature | Notes   |
 :-------|:-----------|
@@ -342,15 +345,50 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 | [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
 | [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
 
-&nbsp;</details>
+</details>
 ---
 
-# Getting Started - Install, Tutorial
+# Getting Started
 
-API Logic Server is designed to make it easy to get started:
+[Install as described here](Install-Express.md){:target="_blank" rel="noopener"}, then explore the table below.
 
-* **Install and run Tutorial** - 
-[install](Install-Express.md){:target="_blank" rel="noopener"}, and explore the [tutorial](Tutorial.md){:target="_blank" rel="noopener"} for the [sample database](Sample-Database.md){:target="_blank" rel="noopener"}.
+<details markdown>
+
+Type:
+
+* Demo: Small Databases, Introduces Key Features
+* Tutorial: Detailed Walk-throughs
+* Samples: other databases (brief description)
+
+> Recommendation: **start with the first 2 items**
+
+<summary>Demos, Tutorials, Samples</summary>
+
+| Project | Notes   |  Type  |
+:-------|:-----------|:-------|
+| [**AI Sample**](Sample-AI.md){:target="_blank" rel="noopener"} | 1. Use ChatGPT to create new databases from natural language<br>2. Illustrate a very rapid create / customize / iterate cycle<br>3. Introduce Integration | Demo |
+| [**Tutorial**](Tutorial.md){:target="_blank" rel="noopener"}  | 1. How to Use the Key Features<br>2. Key code samples for adapting into your project | Tutorial |
+| | | |
+| [App Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Illustrates *running* Kafka messaging, self-serve and customized APIs, choreographed with rules and Python | Tutorial |
+| [Deployment](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Containerize and deploy your applications | Tutorial |
+| [Agile](Tech-Agile.md){:target="_blank" rel="noopener"} | Behavior Driven Design and testing, using Behave | Tutorial |
+| [AI Drives Agile Vision](Tech-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to create new databases from natural language, to bootstrap an agile create / deploy and collaborate / iterate cycle | Demo |
+| [Basic Demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} | Focused use of API, Admin App and Rules on small customer/orders database | Demo |
+| [Allocation](Logic-Allocation.md){:target="_blank" rel="noopener"} | *Power Rule* to allocate a payment to a set of outstanding orders | Sample |
+| [MySQL Docker](Database-Connectivity.md){:target="_blank" rel="noopener"} | Create projects from sample databases: *chinook* (albums and artists), and *classicmodels* (customers and orders) | Sample |
+| Sqlite databases | Create projects from pre-installed databases via [abbreviations](Data-Model-Examples.md){:target="_blank" rel="noopener"}:<br>- chinook, classicmodels, todo | Sample |
+| [BudgetApp](Tech-Budget-App.md){:target="_blank" rel="noopener"} | illustrates automatic creation of parent rows for rollups | Sample |
+
+
+Finally, try your own database.
+
+</details>
+
+&nbsp;
+
+## Resources
+
+You might find the following helpful in exploring the project:
 
 * **Installed Sample Databases** -
 Here are [some installed sample databases](Data-Model-Examples.md){:target="_blank" rel="noopener"} you can use with simplified abbreviations for `db_url`.
@@ -358,17 +396,7 @@ Here are [some installed sample databases](Data-Model-Examples.md){:target="_bla
 * **Dockerized Test Databases** - 
 Then, you might like to try out some of our [dockerized test databases](https://valhuber.github.io/ApiLogicServer/Database-Connectivity.md){:target="_blank" rel="noopener"}.
 
-* **Your Database** - Finally, try your own database.
-
-&nbsp;
-
-In addition to this app dev oriented tutorial, you can also explore:
-
-* **Messaging:** the [Application Integration Tutorial](Sample-Integration.md){:target="_blank" rel="noopener"} illustrates using messaging, self-serve APIs and customized APIs, choreographed with rules and Python.
-
-* **Deployment:** the [Deployment Tutorial](Tutorial-Deployment.md){:target="_blank" rel="noopener"} illustrates various ways to containerize and deploy your applications
-
-* **Using AI:** the [AI-Driven Automation Tutorial](Tech-AI.md){:target="_blank" rel="noopener"} shows how you can use ChatGPT to create new databases from english descriptions, to bootstrap a very rapid create / collaborate / iterate Agile cycle.
+* [auth](Security-Authentication-Provider.md#sqlite-auth-provider){:target="_blank" rel="noopener"} - sqlite authentication database (you can also use other DBMSs)
 
 &nbsp;
 
