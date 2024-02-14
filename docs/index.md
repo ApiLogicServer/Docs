@@ -327,7 +327,9 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 | Lookups | E.g., Item Page provides pick-lists for Product |
 | Cascade Add | E.g., Add Order defaults the Customer Id |
 | Declarative Hide/Show | Hide fields based on expression, or insert/update/delete state |
-| Simple Customization | Simple yaml file (not complex html + JavaScript) |
+| Intelligent Layout | Names and join fields at the start, Ids at the end
+| Simple and Automatic Creation | No framework knowlege, project organization required |
+| Simple Customization | Simple yaml file (not complex html, framework, JavaScript) |
 | Images | Show image for fields containing URLs |
 | Data Types | Define customfields for your data types |
 
