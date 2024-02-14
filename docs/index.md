@@ -265,20 +265,84 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 # Key Features
 
-| Feature | Notes   |
-:-------|:-----------|
-| [API Automation](Project-Structure.md){:target="_blank" rel="noopener"} | Unblock Agile Collaboration, Custom App Dev |
-| [Logic Automation](Logic-Why.md){:target="_blank" rel="noopener"} | 40X More Concise than procedural code |
-| [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
-| [Rule-Base Row Level Security](Security-Overview.md){:target="_blank" rel="noopener"} | Authorization and Authentication |
-| [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
-| [AI-Driven Automation](Sample-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
-| [Admin Web App](Admin-Tour.md){:target="_blank" rel="noopener"} | Agile Collaboration, Prototyping, Testing, Back Office Data Entry |
-| [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
-| [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
+<details markdown>
+
+<summary>API Features</summary>
 
 &nbsp;
 
+
+| Feature | Notes   |
+:-------|:-----------|
+| Logic Enforcement | Update requests execute relevant logic |
+| Security Enforcement | Role-based result filtering |
+| [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
+| Optimistic Locking | Ensure User-1 does not overwrite changes from user-2 |
+| Multi-table | Retrieve related data (e.g. customers, *with orders*) |
+| Pagination | Performance - deliver large result sets a page at a time |
+| Filtering | Injection-safe filtering |
+
+</details>
+
+&nbsp;
+
+<details markdown>
+
+<summary>Logic Features</summary>
+
+&nbsp;
+
+| Feature | Notes   |
+:-------|:-----------|
+| Multi-table: Aggregate | Sums, Counts provide efficient aggregation  of child data, with optional qualification |
+| Multi-table: Parent Access | Child rows can access parent data, with optional cascade |
+| Formulas | Multi-field derivations |
+| Automatic Ordering | Simplifies Maintenance |
+| Automatic Optimizations | Reduce SQLs by pruning and aggregates by adjustment |
+| Automatic Invocation | Rules called automatically to help ensure quality |
+| Extensible | Formulas, Constraints and Events can invoke Python |
+
+</details>
+&nbsp;
+
+<details markdown>
+
+<summary>Admin App Features</summary>
+
+&nbsp;
+
+
+| Feature | Notes   |
+:-------|:-----------|
+| Multi-Page | Page for each table, with transitions to see related data |
+| Multi-Table - Parents | Automatic Joins (e.g., Items show Product Name, not Product Id) |
+| Multi-Table - Children | Parent pages provide tab sheets for related child data (e,g, Customer / Order List) |
+| Lookups | E.g., Item Page provides pick-lists for Product |
+| Cascade Add | E.g., Add Order defaults the Customer Id |
+| Declarative Hide/Show | Hide fields based on expression, or insert/update/delete state |
+| Simple Customization | Simple yaml file (not complex html + JavaScript) |
+| Images | Show image for fields containing URLs |
+| Data Types | Define customfields for your data types |
+
+</details>
+
+&nbsp;
+
+<details markdown>
+
+<summary>Other Features</summary>
+
+&nbsp;
+
+| Feature | Notes   |
+:-------|:-----------|
+| Microservice Automation | One-command API / App Projects |
+| [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
+| [AI-Driven Automation](Sample-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
+| [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
+| [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
+
+&nbsp;</details>
 ---
 
 # Getting Started - Install, Tutorial
