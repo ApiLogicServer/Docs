@@ -33,10 +33,10 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
     Unlike frameworks, weeks-to-months of complex development is no longer necessary.  <br>
     API Logic Server provides unique automation **for instant integrations and app backends**.
 
-&nbsp;
-
 
 ---
+
+&nbsp;
 
 # Product Overview - Videos, Tour
 
@@ -175,9 +175,10 @@ For more on integration, explore running code in the [Application Integration Sa
 </details>
 
 </details>
-&nbsp;
 
 ---
+
+&nbsp;
 
 # Scenarios
 
@@ -345,7 +346,10 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 | [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
 
 </details>
+
 ---
+
+&nbsp;
 
 # Getting Started
 
@@ -383,8 +387,6 @@ Finally, try your own database.
 
 </details>
 
-&nbsp;
-
 ## Resources
 
 You might find the following helpful in exploring the project:
@@ -396,8 +398,6 @@ Here are [some installed sample databases](Data-Model-Examples.md){:target="_bla
 Then, you might like to try out some of our [dockerized test databases](https://valhuber.github.io/ApiLogicServer/Database-Connectivity.md){:target="_blank" rel="noopener"}.
 
 * [auth](Security-Authentication-Provider.md#sqlite-auth-provider){:target="_blank" rel="noopener"} - sqlite authentication database (you can also use other DBMSs)
-
-&nbsp;
 
 ## Release Notes
 
@@ -431,11 +431,15 @@ Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServ
 
 </details>
 
+---
+
 &nbsp;
 
 # Works With
 
-API Logic Server works with key elements of your existing infrastructure:
+<details markdown>
+
+<summary>API Logic Server works with key elements of your existing infrastructure</summary>
 
 | Works With | Notes   |
 :-------|:-----------|
@@ -448,6 +452,10 @@ API Logic Server works with key elements of your existing infrastructure:
 | [Deployment](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Scripts to create container images, and deploy them to the cloud |
 | [Agile and Test Methodologies](Logic-Tutorial.md){:target="_blank" rel="noopener"} | Use Behave to capture requirements, rapidly implement them with API Logic Server, collaborate with Business Users, and test with the Behave framework |
 
+</details>
+
+---
+
 &nbsp;
 
 # Contact Us
@@ -458,8 +466,55 @@ We'd love to hear from you:
 2. Issues: [github](https://github.com/ApiLogicServer/ApiLogicServer-src/issues){:target="_blank" rel="noopener"}
 3. Slack: [https://apilogicserver.slack.com](https://join.slack.com/t/apilogicserver/signup?x=x-p3388652117142-3395302306098-5241761647201)
 
+---
+
 &nbsp;
 
-# Detailed Product Information
+# More Information
 
-For more product information, [click here](Product-Detail.md){:target="_blank" rel="noopener"}.
+<details markdown>
+
+<summary>Acknowledgements</summary>
+
+Many thanks to
+
+- [Thomas Pollet](https://www.linkedin.com/in/pollet/), for SAFRS, SAFRS-react-admin, and invaluable design partnership
+- Tyler Band, for leadership on security
+- [Marelab](https://marmelab.com/en/), for [react-admin](https://marmelab.com/react-admin/)
+- Armin Ronacher, for Flask
+- Mike Bayer, for SQLAlchemy
+- Alex Grönholm, for Sqlacodegen
+- Thomas Peters, for review and testing
+- [Meera Datey](https://www.linkedin.com/in/meeradatey/), for React Admin prototyping
+- Denny McKinney, for Tutorial review
+- Achim Götz, for design collaboration and testing
+- Max Tardiveau, for testing and help with Docker
+- Michael Holleran, for design collaboration and testing
+- Nishanth Shyamsundar, for review and testing
+- Gloria Huber and Denny McKinney, for doc review
+
+</details>
+
+<details markdown>
+
+<summary>Articles</summary>
+
+There are several articles that provide some orientation to API Logic Server:
+
+* [Instant App Backends With API and Logic Automation](https://dzone.com/articles/instant-app-backends-with-api-and-logic-automation)
+* [Instant Integrations With API and Logic Automation](https://dzone.com/articles/instant-integrations-with-api-automation)
+* [AI and Rules for Agile Microservices in Minutes](https://dzone.com/articles/ai-and-rules-for-agile-microserves)
+
+Also:
+
+* [How Automation Activates Agile](https://modeling-languages.com/logic-model-automation/)
+* [How Automation Activates Agile](https://dzone.com/articles/automation-activates-agile) - providing working software rapidly drives agile collaboration to define systems that meet actual needs, reducing requirements risk
+* [How to create application systems in moments](https://dzone.com/articles/create-customizable-database-app-systems-with-1-command)
+* [Stop coding database backends…Declare them with one command.](https://medium.com/@valjhuber/stop-coding-database-backends-declare-them-with-one-command-938cbd877f6d)
+* [Instant Database Backends](https://dzone.com/articles/instant-api-backends)
+* [Extensible Rules](https://dzone.com/articles/logic-bank-now-extensible-drive-95-automation-even) - defining new rule types, using Python
+* [Declarative](https://dzone.com/articles/agile-design-automation-how-are-rules-different-fr) - exploring _multi-statement_ declarative technology
+* [Automate Business Logic With Logic Bank](https://dzone.com/articles/automate-business-logic-with-logic-bank) - general introduction, discussions of extensibility, manageability and scalability
+* [Agile Design Automation With Logic Bank](https://dzone.com/articles/logical-data-indendence) - focuses on automation, design flexibility and agile iterations
+* [Instant Web Apps](https://dzone.com/articles/instant-db-web-apps)
+</details>

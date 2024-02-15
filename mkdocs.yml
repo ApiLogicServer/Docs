@@ -149,6 +149,7 @@ nav:
       - "PyCon23 Tutorial": Tech-Conference-PyCon23-Tutorial.md
       - "Conference": Tech-Conference.md
       - "Optimistic Locking": Optimistic-Locking.md
+      - "Old Home": Product-Detail.md
 markdown_extensions:
   - toc:
       baselevel: 2
