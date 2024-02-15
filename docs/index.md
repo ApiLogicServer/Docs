@@ -185,19 +185,19 @@ For more on integration, explore running code in the [Application Integration Sa
 
 <summary>Application Integration</summary>
 
-&nbsp;
+As illustrated below, API Logic Server supports transactions from User Interfaces, and 3 alternatives for Application Integration:
 
-As illustrated below, API Logic Server supports transactions from User Interfaces, and Application Integration - both via custom APIs and Kafka messages.
+1. **Ad Hoc Integration:** the automatically created JSON:API provides **no-code ad hoc integrations**, enabling organizations to move beyond ETL.  For example, other applications might require a customer record, and their addresses from an existing database.
+
+    * *JSON:API* are a standard for self-serve APIs -- where clients can select the columns and the related data they require.
+
+    * Analogous to GraphQL, self-serve APIs reduce the need for ongoing custom API development.
+
+2. **B2B Partners:** you can use Python, Flask and SQLAlchemy to create Custom APIs, e.g. for B2B Partners.  These are simplified by automatic reuse of [Logic](Logic-Why.md){:target="_blank" rel="noopener"}, and [Integration Mapping](Integration-Map.md){:target="_blank" rel="noopener"}.
+
+3. **Messages:** Application Integration support also provides automation for producing and consuming Kafka messages.  Here's an article: [click here](https://dzone.com/articles/instant-integrations-with-api-automation){:target="_blank" rel="noopener"}.  To see these services in a tutorial, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
 
 ![API Logic Server](images/nutshell/als-nutshell.png)
-
-*JSON:API* are a standard for self-serve APIs -- where clients can select the columns and the related data they require.
-
-> Self-serve APIs reduce the need for ongoing custom API development.  Analogous to GraphQL, they fulfill requirements for UI development and ad hoc integration.
-
-You can use Python, Flask and SQLAlchemy to create Custom APIs, e.g. for B2B Partners.  In addition to the underlying logic, API Logic Server provides mapping services as described under **Application Integration.**
-
-Appication Integration support also provides automation for producing and consuming Kafka messages.  Here's an article: [click here](https://dzone.com/articles/instant-integrations-with-api-automation){:target="_blank" rel="noopener"}.  To see these services in a tutorial, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
 
 </details>
 
@@ -205,8 +205,6 @@ Appication Integration support also provides automation for producing and consum
 <details markdown>
 
 <summary>Unblock Client App Dev</summary>
-
-&nbsp;
 
 Framework-based API development is time-consuming and complex.  Since client App Dev depends on APIs, front-end dev is often blocked.  This serialized dev process reduces business agility, and increases pressure on the team.
 
@@ -227,8 +225,6 @@ Here's an [article, here](https://dzone.com/articles/instant-app-backends-with-a
 <details markdown>
 
 <summary>Instant Microservices with AI-Driven Schema Automation</summary>
-
-&nbsp;
 
 API and Logic Automation begins with a database.  But what if it's a new project, and there is no database.
 
