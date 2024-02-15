@@ -276,11 +276,11 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 | Feature | Notes   |
 :-------|:-----------|
 | API Automation | Unlike Frameworks, API created automatically |
-| Logic Enforcement | Update requests execute relevant logic |
-| Security Enforcement | Role-based result filtering |
+| Logic | Update requests automatically enforce relevant logic |
+| Security | Role-based result filtering |
 | [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
 | Standards-based | JSON:API |
-| Optimistic Locking | Ensure User-1 does not overwrite changes from user-2 |
+| Optimistic Locking | Ensure User-1 does not overwrite changes from User-2 |
 | Multi-table | Retrieve related data (e.g. customers, *with orders*) |
 | Pagination | Performance - deliver large result sets a page at a time |
 | Filtering | Injection-safe filtering |
@@ -293,13 +293,12 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 | Feature | Notes   |
 :-------|:-----------|
-| Conciseness | Rules are 40X more concise for the backend half of your system |
+| Conciseness | Rules reduce the backend half your system by 40X |
 | Automatic Ordering | Simplifies Maintenance |
-| Automatic Optimization | Reduce SQLs by pruning and aggregates by adjustment |
+| Automatic Optimization | Reduce SQLs by pruning and adjustment-based aggregates |
 | Automatic Invocation | Rules called automatically to help ensure quality |
 | Multi-Field | Formulas and contraints can access parent data, with optional cascade |
 | Multi-table | Sum / Count Rules can aggregate child data, with optional qualification |
-| Formulas | Multi-field derivations |
 | Extensible | Formulas, Constraints and Events can invoke Python |
 | Debugging | Use IDE Debugger, and logic log to see which rules fire |
 
@@ -324,15 +323,13 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 | Feature | Notes   |
 :-------|:-----------|
-| App Automation | Unlike frameworks, App is created automatically |
-| Multi-Page | Page for each table, with transitions to see related data |
+| App Automation | Unlike frameworks, Multi-Page App is created automatically |
 | Multi-Table - Parents | Automatic Joins (e.g., Items show Product Name, not Product Id) |
 | Multi-Table - Children | Parent pages provide tab sheets for related child data (e,g, Customer / Order List) |
 | Lookups | E.g., Item Page provides pick-lists for Product |
 | Cascade Add | E.g., Add Order defaults the Customer Id |
-| Declarative Hide/Show | Hide fields based on expression, or insert/update/delete state |
+| Declarative Hiding | Hide fields based on expression, or insert/update/delete state |
 | Intelligent Layout | Names and join fields at the start, Ids at the end
-| Simple and Automatic Creation | No framework knowlege, project organization required |
 | Simple Customization | Simple yaml file (not complex html, framework, JavaScript) |
 | Images | Show image for fields containing URLs |
 | Data Types | Define customfields for your data types |
