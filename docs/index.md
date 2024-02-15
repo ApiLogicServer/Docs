@@ -48,13 +48,15 @@ Explore it below.
 
 <details markdown>
 
-<summary>See a Microservice Created, in Seconds -- Click Here</summary>
+<summary>See Microservice Automation (40 sec) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click Here</summary>
 
-See how **Microservice Automation** creates and runs a microservice - a multi-page app, and an API.
+See how **Microservice Automation** creates and runs a microservice - a multi-page app, and an API. 
 
-Then, customize with **Logic Automation:** spreadsheet-like rules.
+* This is an uncustomized app, **created / running in real time**
 
-&nbsp;
+    * It would be similar for your databases
+
+* Then, customize with Python and **Logic Automation:** spreadsheet-like rules
 
 ![quick tour](images/nutshell/gif.gif)
 
