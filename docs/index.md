@@ -293,12 +293,13 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 | Feature | Notes   |
 :-------|:-----------|
-| Multi-table: Aggregate | Sum / Count Rules provide efficient aggregation of child data, with optional qualification |
-| Multi-table: Parent Access | Child rows can access parent data, with optional cascade |
-| Formulas | Multi-field derivations |
+| Conciseness | Rules are 40X more concise for the backend half of your system |
 | Automatic Ordering | Simplifies Maintenance |
-| Automatic Optimizations | Reduce SQLs by pruning and aggregates by adjustment |
+| Automatic Optimization | Reduce SQLs by pruning and aggregates by adjustment |
 | Automatic Invocation | Rules called automatically to help ensure quality |
+| Multi-Field | Formulas and contraints can access parent data, with optional cascade |
+| Multi-table | Sum / Count Rules can aggregate child data, with optional qualification |
+| Formulas | Multi-field derivations |
 | Extensible | Formulas, Constraints and Events can invoke Python |
 | Debugging | Use IDE Debugger, and logic log to see which rules fire |
 
@@ -461,7 +462,8 @@ API Logic Server works with key elements of your existing infrastructure:
 We'd love to hear from you:
 
 1. Email: apilogicserver@gmail.com
-2. Slack: [https://apilogicserver.slack.com](https://join.slack.com/t/apilogicserver/signup?x=x-p3388652117142-3395302306098-5241761647201)
+2. Issues: [github](https://github.com/ApiLogicServer/ApiLogicServer-src/issues){:target="_blank" rel="noopener"}
+3. Slack: [https://apilogicserver.slack.com](https://join.slack.com/t/apilogicserver/signup?x=x-p3388652117142-3395302306098-5241761647201)
 
 &nbsp;
 
