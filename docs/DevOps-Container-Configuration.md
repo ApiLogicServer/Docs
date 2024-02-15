@@ -269,5 +269,5 @@ Please see the [Install Instructions](Install.md){:target="_blank" rel="noopener
 You can use Docker compose files or env files to configure your project.  There is an example in the default project - [click here to see run-image.sh](https://github.com/ApiLogicServer/demo/tree/main/devops/docker-image){:target="_blank" rel="noopener"}.
 
 [^1]:
-    Several changes were made as of release 9.01.17.  It is available as preview; [click here](#preview-version.md){:target="_blank" rel="noopener"}
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](index.md#getting-started){:target="_blank" rel="noopener"}
 

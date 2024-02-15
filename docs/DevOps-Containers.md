@@ -119,4 +119,4 @@ You can use it in 2 ways:
 For more information, see [Architecture](Architecture-What-Is.md).
 
 [^1]:
-    Several changes were made as of release 9.01.17.  It is available as preview; [click here](#preview-version){:target="_blank" rel="noopener"}
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](index.md#getting-started){:target="_blank" rel="noopener"}

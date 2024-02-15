@@ -107,7 +107,7 @@ docker run -it --name api_logic_server --rm --net dev-network -p 5656:5656 -p 50
 
 
 [^1]:
-    Several changes were made as of release 9.01.17.  It is available as preview; [click here](#preview-version.md){:target="_blank" rel="noopener"}
+    Several changes were made as of release 9.01.17.  It is available as preview; [click here](index.md#getting-started){:target="_blank" rel="noopener"}
     
 
 
