@@ -359,7 +359,7 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 <summary>Install</summary>
 
-If you have the right Python version, install is standard ([more detailed instructions are here](Install-Express.md){:target="_blank" rel="noopener"}), typically:
+If you have the Python (version 3.8-3.11), install is standard ([more detailed instructions are here](Install-Express.md){:target="_blank" rel="noopener"}), typically:
 
 ```bash title="Install API Logic Server in a Virtual Environment"
 python -m venv venv                  # may require python3 -m venv venv
@@ -367,7 +367,7 @@ source venv/bin/activate             # windows: venv\Scripts\activate
 python -m pip install ApiLogicServer
 ```
 
-Then explore the demos, samples and tutorials below.
+Then explore the *demos, samples and tutorials*, below.
 
 </details>
 
@@ -541,7 +541,7 @@ Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServ
 :-------|:-----------|
 | [AI](Tutorial-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to create databases, and use API Logic Server to turn these into projects |
 | [Other Systems](Sample-Integration.md){:target="_blank" rel="noopener"} | APIs and Messages - with logic |
-| [Databases](Database-Connectivity.md){:target="_blank" rel="noopener"} | Tested with MySQL, Sql/Server, Postgres, and Oracle |
+| [Databases](Database-Connectivity.md){:target="_blank" rel="noopener"} | Tested with MySQL, Sql/Server, Postgres, SQLite and Oracle |
 | Client Frameworks | Creates instant APIs that factors out business logic, where it is automatically shared for User Interfaces, APIs, and Messages |
 | [Your IDE](IDE-Customize.md){:target="_blank" rel="noopener"} | Creates standard projects you can customize in your IDE, such as VSCode and PyCharm |
 | [Messaging](Sample-Integration.md){:target="_blank" rel="noopener"} | Produce and Consume Kafka Messages
