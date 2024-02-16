@@ -56,7 +56,7 @@ See how **Microservice Automation** creates and runs a microservice - a multi-pa
 
     * It would be similar for your databases
 
-* Then, customize with Python and **Logic Automation:** spreadsheet-like rules
+* Then, customize in your IDE with Python and **Logic Automation:** spreadsheet-like rules
 
 ![quick tour](images/nutshell/gif.gif)
 
