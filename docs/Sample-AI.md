@@ -110,12 +110,12 @@ UI App Developers can create custom apps immediately, using swagger to design th
 
 ![Swagger](images/sample-ai/swagger.png)
 
-!!! pied-piper ":bulb: Key Take Away -- Ready to run"
+!!! pied-piper ":bulb: Key Take Away -- Microservice Automation"
 
-    With 1 command, we have a running microservice.
+    Microservice Automation means that With 1 command, we have a running API and Admin App.
 
-    * With a *framework*, you are ready to *code*
-    * With *automation*, you are ready to *run*
+    * With a **framework**, you are ready to **code**
+    * With **automation**, you are ready to **run**
 
         * UI Developers unblocked
         * Ad Hoc Integration
