@@ -25,7 +25,8 @@ Here's how to use AI and API Logic Server to create complete running systems in 
     * Revise your database design and logic
     * **Integrate** with B2B partners and internal systems
 
-![ai-driven-automation](images/sample-ai/ai-driven-automation.png)
+
+[![Microservice Automation](images/sample-ai/ai-driven-automation-video.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
 
 This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.  Let's see how.
 
@@ -89,7 +90,7 @@ This creates a project you can open with your IDE, such as VSCode (see below).  
 
 ### a. App Automation
 
-App Automation means that `ApiLogicServer create` creates a multi-page, multi-table Admin App -- automatically.  This React-Admin does *not* consist of hundreds of lines of complex html and javascript - it's a simple yaml file that's easy to customize.
+App Automation means that `ApiLogicServer create` creates a multi-page, multi-table Admin App -- automatically.  This React-Admin app does *not* consist of hundreds of lines of complex html and javascript - it's a simple yaml file that's easy to customize.
 
 > Ready for business user collaboration, back-office data maintenance - Day 1.
 
@@ -99,7 +100,7 @@ App Automation means that `ApiLogicServer create` creates a multi-page, multi-ta
 
 ### b. API Automation
 
-App Automation means that `ApiLogicServer create` creates a JSON:API -- automatically.  Your API supports related data access, pagination, optimistic locking, filtering, and sorting.
+API Automation means that `ApiLogicServer create` creates a JSON:API -- automatically.  Your API supports related data access, pagination, optimistic locking, filtering, and sorting.
 
 > It would take days to months to create such an API using frameworks.
 
@@ -108,6 +109,16 @@ UI App Developers can create custom apps immediately, using swagger to design th
 > Custom App Dev is unblocked - Day 1.
 
 ![Swagger](images/sample-ai/swagger.png)
+
+!!! pied-piper ":bulb: Key Take Away -- Ready to run"
+
+    With 1 command, we have a running microservice.
+
+    * With a *framework*, you are ready to *code*
+    * With *automation*, you are ready to *run*
+
+        * UI Developers unblocked
+        * Ad Hoc Integration
 
 &nbsp;
 
@@ -225,7 +236,7 @@ As above, we speed things up with the following procedure:
 
 ```bash
 ApiLogicServer sample-ai-iteration
-ApiLogicServer rebuild-from-database --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders/database/db.sqlite
+ApiLogicServer rebuild-from-database --project_name=. --db_url=sqlite:///database/db.sqlite
 ```
 
 This revises your database to add the new Product.CarbonNeutral column, and installs some new code we'll explore below.

@@ -38,7 +38,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-# Product Overview - Videos, Tour
+# Overview - Videos, Tour
 
 API Logic Server is an open source Python project.  It is a **CLI** for project creation, and set of **runtimes** (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
@@ -70,7 +70,7 @@ See how **Microservice Automation** creates and runs a microservice - a multi-pa
 
 Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
 
-[![Delivering the Agile Vision](images/sample-ai/ai-driven-automation-video.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
+[![Microservice Automation](images/sample-ai/ai-driven-automation-video.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
 
 </details>
 
