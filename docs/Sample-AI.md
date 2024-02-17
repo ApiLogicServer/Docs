@@ -14,12 +14,12 @@ Version: 1.1
 
 Here's how to use AI and API Logic Server to create complete running systems in minutes:
 
-1. Use **ChatGPT for Schema Automation:** create a database schema from natural language
-2. Use **API Logic Server:** create working software *with 1 command*
-    * **App Automation:** a multi-page, multi-table admin app
-    * **API Automation:** a JSON:API - crud for each table, with filtering, sorting, optimistic locking and pagination
+1. Use **ChatGPT for *Schema Automation:*** create a database schema from natural language
+2. Use **API Logic Server *Microservice Automation*:** create working software *with 1 command:*
+    * ***App Automation:*** a multi-page, multi-table admin app
+    * ***API Automation:*** a JSON:API - crud for each table, with filtering, sorting, optimistic locking and pagination
 3. **Customize** the project with *your IDE*:
-    * **Logic Automation using rules:** declare spreadsheet-like rules in Python for multi-table derivations and constraints - **40X more concise** than code
+    * ***Logic Automation* using rules:** declare spreadsheet-like rules in Python for multi-table derivations and constraints - **40X more concise** than code
     * Use Python and standard libraries (Flask, SQLAlchemy), and debug in your IDE
 4. **Iterate** your project:
     * Revise your database design and logic
@@ -40,7 +40,7 @@ You can use an existing database, or create a new one with ChapGPT or your datab
 
 Use ChatGPT to generate SQL commands for database creation:
 
-!!! pied-piper "Create database schemas from ChatGPT"
+!!! pied-piper "Create database schemas from ChatGPT -- provide this prompt"
 
     Create a sqlite database for customers, orders, items and product
     

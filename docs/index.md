@@ -266,93 +266,6 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 &nbsp;
 
-# Key Features
-
-<details markdown>
-
-<summary>API Features</summary>
-
-| Feature | Notes   |
-:-------|:-----------|
-| API Automation | Unlike Frameworks, API created automatically |
-| Logic | Update requests automatically enforce relevant logic |
-| Security | Role-based result filtering |
-| [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
-| Standards-based | JSON:API |
-| Optimistic Locking | Ensure User-1 does not overwrite changes from User-2 |
-| Multi-table | Retrieve related data (e.g. customers, *with orders*) |
-| Pagination | Performance - deliver large result sets a page at a time |
-| Filtering | Injection-safe filtering |
-
-</details>
-
-<details markdown>
-
-<summary>Logic Features</summary>
-
-| Feature | Notes   |
-:-------|:-----------|
-| Conciseness | Rules reduce the backend half your system by 40X |
-| Automatic Ordering | Simplifies Maintenance |
-| Automatic Optimization | Reduce SQLs by pruning and adjustment-based aggregates |
-| Automatic Invocation | Rules called automatically to help ensure quality |
-| Multi-Field | Formulas and contraints can access parent data, with optional cascade |
-| Multi-table | Sum / Count Rules can aggregate child data, with optional qualification |
-| Extensible | Formulas, Constraints and Events can invoke Python |
-| Debugging | Use IDE Debugger, and logic log to see which rules fire |
-
-</details>
-
-<details markdown>
-
-<summary>Security Features</summary>
-
-| Feature | Notes   |
-:-------|:-----------|
-| Authentication | Control login access |
-| Authorization | Row level access based on roles, or user properties |
-| Authorization | Global filters (e.g, multi-tenant) |
-| Extensible | Use sql for authentication, or your own provider |
-
-</details>
-
-<details markdown>
-
-<summary>Admin App Features</summary>
-
-| Feature | Notes   |
-:-------|:-----------|
-| App Automation | Unlike frameworks, Multi-Page App is created automatically |
-| Multi-Table - Parents | Automatic Joins (e.g., Items show Product Name, not Product Id) |
-| Multi-Table - Children | Parent pages provide tab sheets for related child data (e,g, Customer / Order List) |
-| Lookups | E.g., Item Page provides pick-lists for Product |
-| Cascade Add | E.g., Add Order defaults the Customer Id |
-| Declarative Hiding | Hide fields based on expression, or insert/update/delete state |
-| Intelligent Layout | Names and join fields at the start, Ids at the end
-| Simple Customization | Simple yaml file (not complex html, framework, JavaScript) |
-| Images | Show image for fields containing URLs |
-| Data Types | Define customfields for your data types |
-
-</details>
-
-<details markdown>
-
-<summary>Other Features</summary>
-
-| Feature | Notes   |
-:-------|:-----------|
-| Microservice Automation | One-command API / App Projects |
-| [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
-| [AI-Driven Automation](Sample-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
-| [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
-| [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
-
-</details>
-
----
-
-&nbsp;
-
 # Getting Started
 
 <details markdown>
@@ -524,6 +437,93 @@ docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ~/dev/s
 ```
 
 Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServer/beta){:target="_blank" rel="noopener"}.
+
+</details>
+
+---
+
+&nbsp;
+
+# Key Features
+
+<details markdown>
+
+<summary>API Features</summary>
+
+| Feature | Notes   |
+:-------|:-----------|
+| API Automation | Unlike Frameworks, API created automatically |
+| Logic | Update requests automatically enforce relevant logic |
+| Security | Role-based result filtering |
+| [Self-Serve JSON:API](API.md){:target="_blank" rel="noopener"} | UI Developers and Partners don't require API Dev |
+| Standards-based | JSON:API |
+| Optimistic Locking | Ensure User-1 does not overwrite changes from User-2 |
+| Multi-table | Retrieve related data (e.g. customers, *with orders*) |
+| Pagination | Performance - deliver large result sets a page at a time |
+| Filtering | Injection-safe filtering |
+
+</details>
+
+<details markdown>
+
+<summary>Logic Features</summary>
+
+| Feature | Notes   |
+:-------|:-----------|
+| Conciseness | Rules reduce the backend half your system by 40X |
+| Automatic Ordering | Simplifies Maintenance |
+| Automatic Optimization | Reduce SQLs by pruning and adjustment-based aggregates |
+| Automatic Invocation | Rules called automatically to help ensure quality |
+| Multi-Field | Formulas and contraints can access parent data, with optional cascade |
+| Multi-table | Sum / Count Rules can aggregate child data, with optional qualification |
+| Extensible | Formulas, Constraints and Events can invoke Python |
+| Debugging | Use IDE Debugger, and logic log to see which rules fire |
+
+</details>
+
+<details markdown>
+
+<summary>Security Features</summary>
+
+| Feature | Notes   |
+:-------|:-----------|
+| Authentication | Control login access |
+| Authorization | Row level access based on roles, or user properties |
+| Authorization | Global filters (e.g, multi-tenant) |
+| Extensible | Use sql for authentication, or your own provider |
+
+</details>
+
+<details markdown>
+
+<summary>Admin App Features</summary>
+
+| Feature | Notes   |
+:-------|:-----------|
+| App Automation | Unlike frameworks, Multi-Page App is created automatically |
+| Multi-Table - Parents | Automatic Joins (e.g., Items show Product Name, not Product Id) |
+| Multi-Table - Children | Parent pages provide tab sheets for related child data (e,g, Customer / Order List) |
+| Lookups | E.g., Item Page provides pick-lists for Product |
+| Cascade Add | E.g., Add Order defaults the Customer Id |
+| Declarative Hiding | Hide fields based on expression, or insert/update/delete state |
+| Intelligent Layout | Names and join fields at the start, Ids at the end
+| Simple Customization | Simple yaml file (not complex html, framework, JavaScript) |
+| Images | Show image for fields containing URLs |
+| Data Types | Define customfields for your data types |
+
+</details>
+
+<details markdown>
+
+<summary>Other Features</summary>
+
+| Feature | Notes   |
+:-------|:-----------|
+| Microservice Automation | One-command API / App Projects |
+| [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
+| [AI-Driven Automation](Sample-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
+| [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
+| [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
 
 </details>
 
