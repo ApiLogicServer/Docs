@@ -28,6 +28,12 @@ docker run --name sqlsvr-container --net dev-network -p 1433:1433 -d apilogicser
 
 &nbsp;
 
+## Managing Docker DBs
+
+For some internal notes on using Docker command line tools with Docker databases, [click here.](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/test_databases/docker_databases){:target="_blank" rel="noopener"}
+
+&nbsp;
+
 ## Connecting to Docker DBs
 
 The examples below illustrate connecting _to_ dockerized databases.  You can connect _from_ `pip` installs, or from API Logic Server containers, as described below.
