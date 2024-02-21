@@ -1,7 +1,7 @@
 ---
 title: Declarative Application Integration
 notes: gold docsite, 2100 words (goal: 1500)
-version: 10.0.1 from docsite
+version: 10.03.01 from docsite
 ---
 
 # Purpose
