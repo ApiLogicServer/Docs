@@ -266,7 +266,7 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 &nbsp;
 
-# Getting Started
+# Getting Started - Install, Samples
 
 <details markdown>
 
@@ -422,12 +422,12 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 This pre-release includes:
 
-* [Fix for Column vs Parent Accesor](https://github.com/ApiLogicServer/ApiLogicServer-src/issues/38){:target="_blank" rel="noopener"}
+* Support for parent fields in RowDictMapper (see issues - breaking change)
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.02.07
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.00
 ```
 
 Or use (neither available currently):
