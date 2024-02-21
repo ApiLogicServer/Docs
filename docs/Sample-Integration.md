@@ -185,18 +185,15 @@ Here some useful Kafka commands:
 
 ```bash
 # use Docker Desktop > exec, or docker exec -it broker1 bash -c "sh"  
-# PS1="kafka > "
-# in docker terminal, create a topic, list topics, monitor order_shipping
+# PS1="kafka > "  # reset promot
+# in docker terminal, create a topic, list topics, delete topic, monitor order_shipping
 kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3  --topic order_shipping
 kafka-topics.sh --bootstrap-server localhost:9092 --list
+kafka-topics.sh --bootstrap-server localhost:9092 --topic order_shipping --delete
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic order_shipping --from-beginning
 ```
 
-Finally, to clear all messages
-
-* delete the container, and 
-* reissue `docker compose`
-
+Finally, to clear all messages, delete and recreate the topic.
 
 </details>
 
