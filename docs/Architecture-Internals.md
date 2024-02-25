@@ -40,6 +40,18 @@ It's basically straightforward, _though note_ the `cp` command which copies the 
 
 &nbsp;
 
+## Determine your IDE
+
+API Logic Server has been developed with both VSCode and PyCharm.  While in many cases we prefer PyCharm, we have gravitated to VSCode since it supports an "initial `venv`".  
+
+This means that for the many test projects, there is no need to create a per-project `venv`.  This speeds unit testing considerably.
+
+> Importantly, this relies on the Build and Test procedure to create the "initial `venv`".
+
+You will find that the VSCode install has a large number of Run Configs for these test projects.  In general, the created project can be run immediately in another window of VSCode, using the "initial `venv`".
+
+&nbsp;
+
 ## Open the dev workspace in your IDE
 
 `install-ApiLogicServer...` will create a project (`~/dev/ApiLogicServer/ApiLogicServer-dev/org/ApiLogicServer-src/.vscode/ApiLogicServerDev.code-workspace`), and open it VS Code or PyCharm.
@@ -55,11 +67,30 @@ It should look something like this:
 
 &nbsp;
 
+## Create the "initial `venv`"
+
+Execute the 2nd Run Config (*BLT - Hold the Tomato*) to create the `venv` used for created projects, such as the Sample (see next section).
+
+&nbsp;
+
 ## Create the Sample (`~/dev/servers/ApiLogicProject`)
 
-Once in your IDE, you can run the pre-defined launch configuration `0 - Create and Run ApiLogicProject` to create and run the sample.  This creates `~/dev/servers/ApiLogicProject`.
+Once in your IDE, you can run the pre-defined launch configuration `2 - Create servers/ApiLogicProject (new IDE)` to create and run the sample.  This creates `~/dev/servers/ApiLogicProject`.
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/vscode/dev-run.png?raw=true"></figure>
+![dev-run](images/vscode/dev-run.png)
+
+Open it in another window of VSCode and ensure it runs.  
+
+&nbsp;
+
+### Critical "Smoke Test"
+
+You can run the admin app, and use the documented procedures to add customizations for APIs, Logic and Security.
+
+A critical test is the ***Behave Test***.  It tests a dozen or so transactions, exercising the API and Logic.  Use the Run Config in the created project: `Behave Run`.
+
+> This is the "smoke test" of API Logic Server.  In general, this should be successful prior to pushing changes.
+
 
 &nbsp;
 
@@ -69,7 +100,7 @@ Note the Run Configurations below:
 
 ![dev structure](images/internals/run-configs.png)
 
-Consider using **Run Config #1** to create a project, alter it as desired.  Note:
+Consider using **Run Config #1** to create project *inside* your current IDE instance.  Note:
 
 * You can use the debugger (inside the **IDE dev instance**) to debug the altered project
 
@@ -92,43 +123,14 @@ Update `api_logic_server_cli/project_prototype` (and probably `api_logic_server_
 
 ## Build and Test
 
-As of version 6.02.20, test automation ([located here](https://github.com/valhuber/ApiLogicServer/tree/main/tests/build_and_test)) replaces a series of manually executed scripts ([located here](https://github.com/valhuber/ApiLogicServer/tree/main/tests/creation_tests)).  These have been verified on Mac, Linux (Ubuntu) and Windows.
+This is a VSCode Run Configuration used for final pre-release testing.  It builds the project, installs, it, and runs several dozen tests.
 
-The automated test (use the launch configuration `BUILD AND TEST`) performs a number of steps.  You can configure the test to run some or all of these by editing the ``env_xxx.py` files shown here:
-
-![Test env files](images/internals/test-env-files.png)
-
-&nbsp;
-
-#### `do_install_api_logic_server`
-
-This:
-
-1. Runs the standard Python build: `python3 setup.py sdist bdist_wheel`
-2. Installs it into a Python environment `dev/servers/install/ApiLogicServer/venv`
-3. Installs `pyodbc`.  Note this requires you have installed `odbc`, but install failures are intentionally ignored (instead, skip the Sql/Server database with`do_docker_sqlserver = False` )
 
 !!! pied-piper ":bulb: venv can be used for projects"
 
     You will probably find it helpful to use this as a [shared venv](Project-Env.md#shared-venv).
 
-#### `do_create_api_logic_project`...
-
-This creates the sample project, runs the server, and tests the logic using the behave tests.  It produces quite a lot of output which you can ignore.  The test is designed to terminate if the tests fail.
-
-These are extensive tests which verify project creation, server startup, logic and some minimal API testing (the Behave tests issue APIs to read/write data).
-
-#### `do_allocation_test`
-
-This is a complex rule example.
-
-#### `do_docker_<database>`
-
-These create projects from docker databases ([see here](Database-Connectivity.md#docker-databases)) which are expected to be running.  They perform minimal validation to ensure the server starts by executing the _hello world_ API.  
-
-    This in fact verifies that the `models.py` file is created and runs.
-
-If you don't wish to install or run the docker databases, edit your `tests/build_and_test/env.py` to disable `do_docker_creation_tests`.
+For more information, [see here](Architecture-Internals-BLT.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -240,7 +242,7 @@ cp -a /build/. ../ApiLogicServer/api_logic_server_cli/create_from_model/admin/
 
 ## Docker Startup
 
-You can review the dockerfile on `github`.  Note that the normal operation is to start a terminal session as the last step:
+You can review the [dockerfile on `github`](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/docker){:target="_blank" rel="noopener"}.  Note that the normal operation is to start a terminal session as the last step:
 
 ```bash
 CMD ["bash"]

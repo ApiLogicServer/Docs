@@ -109,6 +109,7 @@ nav:
     - "Declarative Automation": Architecture-Declarative-Automation.md
     - Internals:
       - "API Logic Server Development": Architecture-Internals.md
+      - "Build, Load and Test": Architecture-Internals-BLT.md
       - "Internals - CLI": Architecture-Internals-CLI.md
   - Agile / Testing:
     - "Agility With Behave": Behave.md
