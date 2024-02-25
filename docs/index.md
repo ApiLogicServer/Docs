@@ -336,6 +336,8 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 <summary> Release Notes </summary>
 
+02/24/2024 - 10.03.04: Issue 45 (RowDictMapper joins), Issue 44 (defaulting), Issue 43 (rebuild no yaml), Tests
+
 02/13/2024 - 10.02.04: kafka_producer.send_kafka_message, sample md fixes, docker ENV, pg authdb
 
 02/07/2024 - 10.02.00: BugFix[38]: foreign-key/getter collision
