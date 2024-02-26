@@ -108,7 +108,7 @@ nav:
     - "Project Operation": Architecture-Project-Operation.md
     - "Declarative Automation": Architecture-Declarative-Automation.md
     - Internals:
-      - "API Logic Server Development": Architecture-Internals.md
+      - "Internal Dev Procedures": Architecture-Internals.md
       - "Build, Load and Test": Architecture-Internals-BLT.md
       - "Internals - CLI": Architecture-Internals-CLI.md
   - Agile / Testing:

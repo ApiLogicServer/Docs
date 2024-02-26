@@ -52,7 +52,7 @@ You will find that the VSCode install has a large number of Run Configs for thes
 
 &nbsp;
 
-## Open the dev workspace in your IDE
+## Open the dev workspace
 
 `install-ApiLogicServer...` will create a project (`~/dev/ApiLogicServer/ApiLogicServer-dev/org/ApiLogicServer-src/.vscode/ApiLogicServerDev.code-workspace`), and open it VS Code or PyCharm.
 
@@ -67,32 +67,45 @@ It should look something like this:
 
 &nbsp;
 
-## Create the "initial `venv`"
+## Critical "Smoke Test"
+
+> This is the "smoke test" of API Logic Server.  In general, this should be successful prior to pushing changes.
+
+&nbsp;
+
+### Create the "initial `venv`"
 
 Execute the 2nd Run Config (*BLT - Hold the Tomato*) to create the `venv` used for created projects, such as the Sample (see next section).
 
 &nbsp;
 
-## Create the Sample (`~/dev/servers/ApiLogicProject`)
+### Create the Sample
 
 Once in your IDE, you can run the pre-defined launch configuration `2 - Create servers/ApiLogicProject (new IDE)` to create and run the sample.  This creates `~/dev/servers/ApiLogicProject`.
 
 ![dev-run](images/vscode/dev-run.png)
 
-Open it in another window of VSCode and ensure it runs.  
+&nbsp;
+
+### Run the Sample
+
+Open it in another window of VSCode and ensure it runs. 
+
+1. Run the admin app, and
+2. Use the documented procedures to [add customizations](Tutorial.md#3-customize-and-debug-in-your-ide){:target="_blank" rel="noopener"} for APIs, Logic and Security.
 
 &nbsp;
 
-### Critical "Smoke Test"
+### Run Behave Tests
 
-You can run the admin app, and use the documented procedures to add customizations for APIs, Logic and Security.
+A critical test is the ***Behave Test***.  It tests a dozen or so transactions, exercising the API and Logic.  
 
-A critical test is the ***Behave Test***.  It tests a dozen or so transactions, exercising the API and Logic.  Use the Run Config in the created project: `Behave Run`.
+1. Use the Run Config in the created project: `Behave Run`.
 
-> This is the "smoke test" of API Logic Server.  In general, this should be successful prior to pushing changes.
+---
 
+# Ongoing dev
 
-&nbsp;
 
 ## Introduce enhancements, test
 
@@ -138,7 +151,7 @@ For more information, [see here](Architecture-Internals-BLT.md){:target="_blank"
 
 The install procedure also installs `Org-ApiLogicServer/Docs`.  Follow it's readme.
 
-&bnsp;
+&nbsp;
 
 ## Testing Packages
 
@@ -397,5 +410,5 @@ ApiLogicServer create --project_name=sqlsvr-nw --db_url=sqlsvr-nw
 
 As a contributor, you will likely work with:
 
-* [Docker Databases](Database-Connectivity.md)
-* [Shared virtual environments](Project-Env.md)
+* [Docker Databases](Database-Connectivity.md){:target="_blank" rel="noopener"}
+* [Shared virtual environments](Project-Env.md){:target="_blank" rel="noopener"}

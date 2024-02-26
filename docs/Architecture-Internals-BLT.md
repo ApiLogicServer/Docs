@@ -1,45 +1,71 @@
 !!! pied-piper ":bulb: TL;DR - rebuild, local install, run tests"
 
-    The **Build Load and Test** Run Configuration rebuilds the project locally, and runs a series of tests.  Tests are configurable, which can reduce setup.  
+    The **Build Load and Test** Run Configuration:
+    
+    1. Rebuilds the project locally
+    2. Installs it from the local build 
+    
+        * At: `ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer`
+    3. Runs a series of tests
+
+        * Tests are configurable, which can reduce setup.  
     
     The resultant install provides a `venv` which is used in unit testing as the **default venv**.  A Run Configuration is provided for build-only, to enable such unit testing. 
 
 
 As of version 6.02.20, [test automation](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/build_and_test){:target="_blank" rel="noopener"} provides automated regression testing.  These have been verified on Mac, Linux (Ubuntu) and Windows.
 
-The automated test (use the launch configuration `Build Load & Test`) performs a number of steps.  You can configure the test to run some or all of these by editing the ``env_xxx.py` files shown here:
+&nbsp;
 
-![Test env files](images/internals/test-env-files.png)
+## Best Practice: Smoke Test First
+
+The tests take several minutes, and errors can be slightly difficult to diagnose.
+
+The bulk of the tests are in the Sample Projects's Behave tests. These reveal most of the errors, and are simplest to debug using a created project. 
+
+We therefore recommend that, before you run the full regression, first:
+
+1. [Verify the smoke test with the Sample App](Architecture-Internals.md#critical-smoke-test){:target="_blank" rel="noopener"}
+
+
+## Optional Docker Setup
+
+Full testing requires Docker:
+
+* To build docker projects
+* To build the API Logic Server Docker container
+* For [docker test databases](Database-Docker.md){:target="_blank" rel="noopener"}
+
+You can reduce or completely eliminate docker requirements by configuring the tests as described in the next section.
 
 &nbsp;
 
-## Best Practice: Behave First
+## Configuring the Tests
 
-The tests take several minutes, and errors can be slightly difficult to diagnose.  We therefore recommend that you begin testing with the Sample App.
+The automated test (use the launch configuration `Build Load & Test`) performs a number of steps.  You can configure the test to run some or all of these by editing the `env_xxx.py` files shown here:
 
-1. Execute the Build Only Run Configuration (it's 2nd on the list).  
+![Test env files](images/internals/test-env-files.png)
 
-2. Execute Run Configuration `2 - Create servers/ApiLogicProject (new IDE)`
+Key aspects are described in the sub-sections below.
 
-## Setup
-
-## Test Configuration
-
-## Unit Test Default `venv`
-
-eg, see 2 - Create servers/ApiLogicProject (new IDE)
+&nbsp;
 
 #### `do_install_api_logic_server`
 
 This:
 
 1. Runs the standard Python build: `python3 setup.py sdist bdist_wheel`
-2. Installs it into a Python environment `dev/servers/install/ApiLogicServer/venv`
+2. Installs it into a Python environment
+
+    * `ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer`
+
 3. Installs `pyodbc`.  Note this requires you have installed `odbc`, but install failures are intentionally ignored (instead, skip the Sql/Server database with`do_docker_sqlserver = False` )
 
-!!! pied-piper ":bulb: venv can be used for projects"
+!!! pied-piper ":bulb: venv can be used for created projects"
 
-    You will probably find it helpful to use this as a [shared venv](Project-Env.md#shared-venv).
+    You will find it helpful to use this as a [shared venv](Project-Env.md#shared-venv){:target="_blank" rel="noopener"}.
+
+&nbsp;
 
 #### `do_create_api_logic_project`...
 
@@ -47,9 +73,13 @@ This creates the sample project, runs the server, and tests the logic using the 
 
 These are extensive tests which verify project creation, server startup, logic and some minimal API testing (the Behave tests issue APIs to read/write data).
 
+&nbsp;
+
 #### `do_allocation_test`
 
 This is a complex rule example.
+
+&nbsp;
 
 #### `do_docker_<database>`
 
