@@ -239,10 +239,6 @@ Events are passed the `row` and `old_row`, as well as `logic_row` which enables 
 
 You can set breakpoints in events, and inspect these.
 
-#als: Behave Test, Invoking API from Python
-
-
-
 &nbsp;
 &nbsp;
 
