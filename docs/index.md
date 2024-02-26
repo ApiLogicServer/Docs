@@ -316,6 +316,21 @@ Finally, try your own database.
 
 </details>
 
+
+<details markdown>
+
+<summary> Training </summary>
+
+After installing, you can optionally run the first demo, above.  The key training activities are:
+
+1. Perform the [**Tutorial**](Tutorial.md){:target="_blank" rel="noopener"}
+    * Keep this project installed; you can find code samples by searching `#als`
+2. **API Customization:** explore the code in `api/customize_api.py`
+    * Note this is largely standard Flask
+3. Perform [**Logic Training**](Logic.md){:target="_blank" rel="noopener"}
+
+</details>
+
 <details markdown>
 
 <summary> Resources </summary>

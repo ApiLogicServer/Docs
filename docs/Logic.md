@@ -1,6 +1,6 @@
 
 ## What Are the Rules
-The table shows excerpts only; see the ```nw``` sample for full syntax.
+The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample for full syntax.
 
 | Rule | Summary   | Example | Notes |
 | :-------------: |:-------------:| :-----:| :-----:|
@@ -21,9 +21,11 @@ The table shows excerpts only; see the ```nw``` sample for full syntax.
 
 Inside the larger process above, here is the best way to learn how to use rules:
 
-1. [Rule Summary](https://github.com/valhuber/LogicBank/wiki/Examples): there are a small number of rules, since their power lies in chaining (duplicated below)
+1. **Rule Summary**: review the table above; there are a small number of rules, since their power lies in chaining
 
-2. Be aware of the [rule patterns](https://github.com/valhuber/LogicBank/wiki/Rule-Summary#rule-patterns), duplicated below
+    * **Alert:** Logic consists of rules and Python.  You will quickly learn to use logic events; focus on the *rules as the preferred* approach, using Python (events, etc) as a *fallback*.
+
+2. Review the **Rule Patterns**, below
 
 3. Use the _case study_ approach to learn about using rules, by exploring the examples in the report, below.
 
@@ -31,14 +33,6 @@ Inside the larger process above, here is the best way to learn how to use rules:
 
 &nbsp;&nbsp;
 
-
-### Case Study
-
-The best way to learn the rules is by a Case Study approach:
-
-1. See the [Behave Logic Report](Behave-Logic-Report.md)
-
-2. On each, open the disclosure box: "Tests - and their logic - are transparent.. click to see Logic"
 
 ### Rule Patterns
 
@@ -50,5 +44,19 @@ The best way to learn the rules is by a Case Study approach:
 | **Auditing** | Note the Copy Row rule | [Salary Audit](Behave-Logic-Report.md#scenario-audit-salary-change)
 | **old_row** | useful for state transition logic | [Meaningful Raise](Behave-Logic-Report.md#scenario-audit-salary-change.md)
 
-&nbsp;&nbsp;
+&nbsp;
+
+### Case Study
+
+The best way to learn the rules is by a Case Study approach:
+
+1. Print this page, for reference
+
+2. Print the [Database Diagram](Sample-Database.md){:target="_blank" rel="noopener"}
+
+    * Most of the examples are drawn from this database
+
+3. See the [Behave Logic Report](Behave-Logic-Report.md){:target="_blank" rel="noopener"}
+
+4. On each, open the disclosure box: "Tests - and their logic - are transparent.. click to see Logic"
 

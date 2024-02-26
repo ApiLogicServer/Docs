@@ -49,7 +49,7 @@ nav:
     - "Optimistic Locking": API-Opt-Lock.md
   - 3. Logic:
     - "Logic: Why": Logic-Why.md
-    - "What Are the Rules": Logic.md
+    - "Logic: Learning": Logic.md
     - "Using Logic": "Logic-Use.md"
     - "Debugging Logic": "Logic-Debug.md"
     - "How: Logic and Agile": "Logic-Tutorial.md"
