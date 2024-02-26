@@ -58,5 +58,11 @@ The best way to learn the rules is by a Case Study approach:
 
 3. See the [Behave Logic Report](Behave-Logic-Report.md){:target="_blank" rel="noopener"}
 
-4. On each, open the disclosure box: "Tests - and their logic - are transparent.. click to see Logic"
+4. For each scenario
+
+    * Take the Scenario as your requirements
+
+    * Spend 5 minutes, paper-designing your solution
+
+    * Reveal the solution: open the disclosure box: "Tests - and their logic - are transparent.. click to see Logic"
 
