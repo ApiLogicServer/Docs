@@ -209,6 +209,21 @@ Logic Phase:		ROW LOGIC		(session=0x10840c550) (sqlalchemy before_flush)			 - 20
 
 **Logic Doc** for scenario: Good Order Custom Service
    
+Familiar logic patterns:
+
+* Constrain a derived result
+* Chain up, to adjust parent sum/count aggregates
+
+Logic Design ("Cocktail Napkin Design")
+
+* Customer.Balance <= CreditLimit
+* Customer.Balance = Sum(Order.AmountTotal where unshipped)
+* Order.AmountTotal = Sum(OrderDetail.Amount)
+* OrderDetail.Amount = Quantity * UnitPrice
+* OrderDetail.UnitPrice = copy from Product
+
+&nbsp;
+&nbsp;
 We place an Order with an Order Detail.  It's one transaction.
 
 Note how the `Order.OrderTotal` and `Customer.Balance` are *adjusted* as Order Details are processed.
@@ -315,7 +330,7 @@ Logic Phase:		AFTER_FLUSH LOGIC	(session=0x108435e90)   										 - 2024-02-26 
 
 **Logic Doc** for scenario: Bad Order Custom Service
    
-Familiar logic patterns:
+Re-use - Same rules as declared for a good order:
 
 * Constrain a derived result
 * Chain up, to adjust parent sum/count aggregates
@@ -327,8 +342,6 @@ Logic Design ("Cocktail Napkin Design")
 * Order.AmountTotal = Sum(OrderDetail.Amount)
 * OrderDetail.Amount = Quantity * UnitPrice
 * OrderDetail.UnitPrice = copy from Product
-
-
 
 &nbsp;
 &nbsp;
