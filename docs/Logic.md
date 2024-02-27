@@ -42,7 +42,9 @@ Inside the larger process above, here is the best way to learn how to use rules:
 | **Chain Down** | child copy and parent references mean that parent row changes can ***cascade*** to children | [Ship Order](Behave-Logic-Report.md#scenario-set-shipped-adjust-logic-reuse) 
 | **Constrain a Derived Result** | constraints may require derived values | [Balance < creditLimit](Behave-Logic-Report.md#scenario-bad-order-custom-service)
 | **Auditing** | Note the Copy Row rule | [Salary Audit](Behave-Logic-Report.md#scenario-audit-salary-change)
-| **old_row** | useful for state transition logic | [Meaningful Raise](Behave-Logic-Report.md#scenario-audit-salary-change.md)
+| **old_row** | useful for state transition logic | [Meaningful Raise](Behave-Logic-Report.md#scenario-audit-salary-change.md) |
+| **Counts as Existence Checks** | Use counts to check if any children exist | Don't Ship Empty Orders |
+| **Ready Flag** | Multi-session editing, then adjust related data when ready (aka checkout) | |
 
 &nbsp;
 
