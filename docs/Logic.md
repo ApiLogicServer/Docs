@@ -62,7 +62,11 @@ The best way to learn the rules is by a Case Study approach:
 
     * Take the Scenario as your requirements
 
-    * Spend 5 minutes, paper-designing your solution
+    * Spend 5 minutes and **paper-design** your solution, using
+    
+        * The data model diagram
+        * List of Rule Types, and 
+        * Rule Patterns
 
     * Reveal the solution: open the disclosure box: "Tests - and their logic - are transparent.. click to see Logic"
 
