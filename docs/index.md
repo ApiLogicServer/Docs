@@ -324,6 +324,7 @@ Finally, try your own database.
 After installing, you can optionally run the first demo, above.  The key training activities are:
 
 1. Perform the [**Tutorial**](Tutorial.md){:target="_blank" rel="noopener"}
+    * `ApiLogicServer create --project_name= --db_url=`
     * Keep this project installed; you can find code samples by searching `#als`
 2. Perform [**Logic Training**](Logic.md){:target="_blank" rel="noopener"}
     * Spreadsheet-like rules and Python for integration, and multi-table derivations / constraints
