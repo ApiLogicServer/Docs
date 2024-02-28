@@ -213,8 +213,9 @@ Logic Phase:		ROW LOGIC		(session=0x110a4fe10) (sqlalchemy before_flush)			 - 20
    
 Familiar logic patterns:
 
-* Constrain a derived result
-* Chain up, to adjust parent sum/count aggregates
+* Constrain a derived result (Credit Check)
+* Chain up, to adjust parent sum/count aggregates (AmountTotal, Balance)
+* Events for Lib Access (Send Kafka Message)
 
 Logic Design ("Cocktail Napkin Design")
 
@@ -226,7 +227,7 @@ Logic Design ("Cocktail Napkin Design")
 
 We place an Order with an Order Detail.  It's one transaction.
 
-Note how the `Order.OrderTotal` and `Customer.Balance` are *adjusted* as Order Details are processed.
+Note how the `Order.AmountTotal` and `Customer.Balance` are *adjusted* as Order Details are processed.
 Similarly, the `Product.UnitsShipped` is adjusted, and used to recompute `UnitsInStock`
 
 <figure><img src="https://github.com/valhuber/ApiLogicServer/wiki/images/behave/declare-logic.png?raw=true"></figure>
