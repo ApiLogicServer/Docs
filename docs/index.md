@@ -325,9 +325,10 @@ After installing, you can optionally run the first demo, above.  The key trainin
 
 1. Perform the [**Tutorial**](Tutorial.md){:target="_blank" rel="noopener"}
     * Keep this project installed; you can find code samples by searching `#als`
-2. **API Customization:** explore the code in `api/customize_api.py`
+2. Perform [**Logic Training**](Logic.md){:target="_blank" rel="noopener"}
+    * Leverage spreadsheet-like rules and Python
+3. **API Customization:** explore the code in `api/customize_api.py`
     * Note this is largely standard Flask
-3. Perform [**Logic Training**](Logic.md){:target="_blank" rel="noopener"}
 
 </details>
 
