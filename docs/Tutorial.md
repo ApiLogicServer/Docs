@@ -72,7 +72,7 @@ The system has created an API and an Admin App.  Let's explore them.
 
 ### 2.a Self-Serve API: Ad hoc Integration
 
-The system creates an API with end points for each table, providing filtering, sorting, pagination, optimistic locking and related data access.
+The system creates a JSON:API with end points for each table, providing filtering, sorting, pagination, optimistic locking and related data access.
 
 The API is [**self-serve**](https://apilogicserver.github.io/Docs/API-Self-Serve/): consumers can select their own attributes and related data, eliminating reliance on custom API development.  Our self-serve API meets requirements for Ad Hoc Application Integration, and Custom UI Dev.
 
@@ -87,7 +87,7 @@ After starting the server and browser, explore the Admin App in your browser:
 1. Navigate to `Customer`
       * Depending on your screen size, you may need to hit the "hamburger menu" (top left) to see the left menu<br/><br/>
 2. Click the first Customer row  to see Customer Details
-3. Observe the `ORDERLIST` tab at the bottom
+3. Click the `ORDERLIST` tab at the bottom
 4. Click the first Order row
 5. Observe the `ORDERDETAILLIST` tab at the bottom
 6. Observe the elements shown in the diagram
@@ -151,7 +151,7 @@ In the sections below, we will explore:
 
 ### 3.a Customize UI: Declare UI Behavior
 
-The admin app is not built with complex html and javascript.  Instead, it is configured with the `ui/admin/admin.yml`, automatically created from your data model by `ApiLogicServer create`.
+The admin app is not built with complex html and javascript.  Instead, it is *configured* with  `ui/admin/admin.yml`, automatically created from your data model by `ApiLogicServer create`.
 
 You can customize this file in your IDE to control which fields are shown (including joins), hide/show conditions, help text etc.  The `add-cust` process above has simulated such customizations.
 
