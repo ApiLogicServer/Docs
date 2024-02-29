@@ -1,5 +1,5 @@
 
-## What Are the Rules
+# What Are the Rules
 The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample for full syntax.
 
 | Rule | Summary   | Example | Notes |
@@ -14,10 +14,19 @@ The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample 
 | Allocation      | Allocate a provider amount to recipients | allocate a payment to outstanding orders | See [Allocation](https://github.com/valhuber/LogicBank/wiki/Sample-Project---Allocation) for an example |
 | Copy Row      | Create child row by copying parent | audit Employee Salary changes to EmployeeAudit | See [Rule Extensibility](https://github.com/valhuber/LogicBank/wiki/Rule-Extensibility) |
 
+## Rule Operation
+
+Rules are:
+
+1. Declared in your IDE
+2. Activated on server start
+3. Executed on updates (using SQLAlchemy events)
+4. Debugged in your IDE, and with the console log
+
 &nbsp;
 
 
-## Learning Rules
+# Learning Rules
 
 Inside the larger process above, here is the best way to learn how to use rules:
 
@@ -34,7 +43,7 @@ Inside the larger process above, here is the best way to learn how to use rules:
 &nbsp;&nbsp;
 
 
-### Rule Patterns
+## Rule Patterns
 
 | Pattern | Notes | Example
 | :------------- | :-----| :---- |
@@ -49,7 +58,7 @@ Inside the larger process above, here is the best way to learn how to use rules:
 
 &nbsp;
 
-### Case Study
+## Case Study
 
 The best way to learn the rules is by a Case Study approach:
 
