@@ -224,7 +224,9 @@ Rules are a unique and significant innovation, providing meaningful improvements
 
 &nbsp;
 
-> Key Takeway -  Logic: Multi-table Derivation and Constraint Rules, 40X More Concise.  <br>For more on rules, [click here](https://apilogicserver.github.io/Docs/Logic-Why/).
+> Key Takeway -  Logic: Multi-table Derivation and Constraint Rules, 40X More Concise. 
+<br>Debug them with your IDE and the console log.
+<br>For more on rules, [click here](https://apilogicserver.github.io/Docs/Logic-Why/).
 
 &nbsp;
 
@@ -236,7 +238,9 @@ To see security in action:
 
 **1. Logout (upper right), and Login** as `AFLKI`, password `p`
 
-**2. Click Customer** - observe you now see only 1 customer
+    * This authorized user has 2 roles: `customer` and 'tenant`
+
+**2. Click Customer** - observe you now see only 1 customer (per the `customer` role)
 
 <br>
 
