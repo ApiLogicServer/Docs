@@ -18,7 +18,7 @@ The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample 
 
 Rules are:
 
-1. **Declared** in your IDE
+1. **Declared** in your IDE - 40X more concise
 2. **Activated** on server start
 3. **Executed** - *automatically* -  on updates (using SQLAlchemy events)
 4. **Debugged** in your IDE, and with the console log
