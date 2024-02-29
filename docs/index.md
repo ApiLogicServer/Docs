@@ -266,7 +266,7 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 &nbsp;
 
-# Getting Started - Install, Samples
+# Start: Install, Samples, Training
 
 <details markdown>
 
