@@ -63,17 +63,17 @@ Feature (aka Story) files are designed to promote IT / business user collaborati
 
 ## 2. Code `.py` file to implement test
 
-Implement your tests in Python.  Here, the tests are largely _read existing data_, _run transaction_, and _test results_, using the API.  You can obtain the URLs from the swagger.
+Implement your tests in Python.  Here, the tests are largely _1. read existing data_, _2. run transaction_, and _3. test results_, using the API.  You can obtain the URLs for reading/updatind data from the swagger.
 
-Key points:
+Key points (see items 2.1, 2.2 etc in the diagram above):
 
-* Link your scenario / implementations with annotations, as shown for _Order Placed with excessive quantity_.
+1. Link your scenario / implementations with `@when` annotations, as shown for _Order Placed with excessive quantity_.
 
-* Include the `test_utils.prt()` call; be sure to use specify the scenario name as the 2nd argument.  This is what drives the name of the Logic Log file, discussed below.
+2. Optionally, include a ___Python docstring___ on your `@when` implementation as shown above, delimited by `"""` strings (see _"Familiar logic pattern"_ in the screen shot, above). If provided, this will be written into the wiki report.
 
-* Optionally, include a Python docstring on your `when` implementation as shown above, delimited by `"""` strings (see _"Familiar logic pattern"_ in the screen shot, above). If provided, this will be written into the wiki report.
+3. Important: the system assumes the line following the docstring identifies the `scenario_name`; be sure to include it.
 
-* Important: the system assumes the following line identifies the scenario_name; be sure to include it.
+4. Include the `test_utils.prt()` call; be sure to use specify the scenario name as the 2nd argument.  This is what drives the name of the Logic Log file, discussed below.
 
 &nbsp;&nbsp;
 

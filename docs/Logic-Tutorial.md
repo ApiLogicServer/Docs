@@ -166,6 +166,7 @@ Note this "cocktail napkin spec" is short, yet clear.  That's because instead of
 Business Logic is the heart of the system, enforcing our business policies.  Logic consists of multi-table constraints and derivations, and actions such as sending email and messages.  A core Behave objective is to define and test such behavior.
 
 It's generally accepted that such domain-specific logic _must_ require domain-specific code.  The problem is that this is:
+
 * **slow** (it's often nearly half the system).
 * **opaque** to business users.
 * **painful to maintain** - it's no secret that developers hate maintenance, since it's less coding than _"archaeology"._  A painful amount of time is spent reading the existing code, to understand where to insert the new logic.
@@ -218,9 +219,12 @@ The rules fire as transactions are run, and produce Logic Log files later used i
 
 1. `test/api_logic_server_behave/behave.log` - summarizes test success / failure
 2. `api_logic_server_behave/scenario_logic_logs/Bad_Order_Custom_Service.log` - [Logic Log output](Logic-Why.md#extend-python).
+
    * The code on line 161 signals the name of Logic Log
    * Note the Logic Log actually consists of 2 sections:
-      * The first shows each rule firing, including complete old/new row values, with indentation for `multi-table chaining`
+
+      * The first shows each rule firing, including complete old/new row values, with 
+      indentation for `multi-table chaining`
       * The "Rules Fired" summarizes which rules actually fired, representing a _confirmation of our Logic Design_
 
 >  You can use the debugger to stop in a test and verify results
@@ -239,6 +243,7 @@ To run it, use Launch Configuration `Behave Logic Report`:
 
 1. Reads your current `readme.md` file (text like you are reading now), and
 2. Appends the [Behave Logic Report:](#behave-logic-report) by processing the files created in step 3b
+
    1. Reading the `behave.log`, and
    2. Injecting the `scenario_logic_logs` files
 3. Creates the output report as a wiki file named `report_behave_logic.md`
