@@ -49,7 +49,7 @@ Behave is pre-installed with API Logic Server.  Use it as shown above:
 
 3. Run Test Suite: Launch Configuration `Behave Run`.  This runs all your Scenarios, and produces a summary report of your Features and the test results.
 
-4. Report: Launch Configuration `Behave Report` to create the wiki file shown at the top of this page.
+4. Report: Launch Configuration `Behave Report` to create the wiki file shown [here](Behave-Logic-Report.md){:target="_blank" rel="noopener"}.
 
 These steps are further defined, below.  Explore the samples in the sample project.
 
@@ -81,7 +81,7 @@ Key points (see items 2.1, 2.2 etc in the diagram above):
 
 You can now execute your Test Suite.  Run the `Behave Run` Launch Configuration, and Behave will run all of the tests, producing the outputs (`behave.log` and `<scenario.logs>` shown above.
 
-* Windows users will need to run `Windows Behave Run`
+* Windows users may need to run `Windows Behave Run`
 
 * You can run just 1 scenario using `Behave Scenario`
 

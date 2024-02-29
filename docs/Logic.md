@@ -47,12 +47,12 @@ Inside the larger process above, here is the best way to learn how to use rules:
 
 | Pattern | Notes | Example
 | :------------- | :-----| :---- |
-| **Chain Up** | parent sums and counts mean that child row changes can ***adjust*** parents | [Derive Balance](Behave-Logic-Report.md#scenario-bad-order-custom-service){:target="_blank" rel="noopener"} |
-| **Chain Down** | child copy and parent references mean that parent row changes can ***cascade*** to children | [Ship Order](Behave-Logic-Report.md#scenario-set-shipped-adjust-logic-reuse){:target="_blank" rel="noopener"} |
+| **Chain Up** | parent sums and counts mean that child row changes can ***adjust*** parents | [Derive Balance](Behave-Logic-Report.md/#scenario-good-order-custom-service){:target="_blank" rel="noopener"} |
 | **Constrain a Derived Result** | constraints may require derived values | [Balance < creditLimit](Behave-Logic-Report.md#scenario-bad-order-custom-service){:target="_blank" rel="noopener"} |
-| **Auditing** | Note the Copy Row rule (and alternatives) | [Salary Audit](Behave-Logic-Report.md#scenario-audit-salary-change){:target="_blank" rel="noopener"} |
-| **old_row** | useful for state transition logic | [Meaningful Raise](Behave-Logic-Report.md#scenario-raise-must-be-meaningful){:target="_blank" rel="noopener"} |
+| **Chain Down** | child copy and parent references mean that parent row changes can ***cascade*** to children | [Ship Order](Behave-Logic-Report.md#scenario-set-shipped-adjust-logic-reuse){:target="_blank" rel="noopener"} |
+| **State Transition Logic** | `old_row` useful comparing old/current values | [Meaningful Raise](Behave-Logic-Report.md#scenario-raise-must-be-meaningful){:target="_blank" rel="noopener"} |
 | **Counts as Existence Checks** | Use counts to check if any children exist | [Don't Ship Empty Orders](Behave-Logic-Report.md#scenario-bad-ship-of-empty-order){:target="_blank" rel="noopener"} |
+| **Auditing** | Note the Copy Row rule (and alternatives) | [Salary Audit](Behave-Logic-Report.md#scenario-audit-salary-change){:target="_blank" rel="noopener"} |
 | **Ready Flag** | Multi-session editing, then adjust related data when ready (aka checkout) | [Ship Order](Behave-Logic-Report.md#scenario-set-shipped-adjust-logic-reuse){:target="_blank" rel="noopener"} |
 | **Events for Lib Access** | Events enable Python, use of standard libs (e.g., Kafka) | [Ship Order](Behave-Logic-Report.md#scenario-good-order-custom-service){:target="_blank" rel="noopener"} |
 
@@ -70,11 +70,13 @@ The best way to learn the rules is by a Case Study approach:
 
 3. See the [Behave Logic Report](Behave-Logic-Report.md){:target="_blank" rel="noopener"}
 
-4. For each scenario
+4. For each Rule Pattern, above:
 
-    * Take the Scenario as your requirements
+    * Click the Example link to open the Behave Logic Report
 
-    * Spend 5 minutes and **cocktail-napkin design** your solution, using
+    * Review the Scenario -- take these as your requirements
+
+    * Spend 5 minutes (perhaps in pairs) and **cocktail-napkin design** your solution, using
     
         * The data model diagram
         * List of Rule Types, and 
