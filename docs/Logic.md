@@ -68,11 +68,11 @@ The best way to learn the rules is by a Case Study approach:
 
     * Most of the examples are drawn from this database
 
-3. See the [Behave Logic Report](Behave-Logic-Report.md){:target="_blank" rel="noopener"}
-
-4. For each Rule Pattern, above:
+3. For each Rule Pattern, above:
 
     * Click the Example link to open the Behave Logic Report
+
+        * Aside: later, you can prepare such documentation for your own projects, ([like this](Behave.md){:target="_blank" rel="noopener"}).
 
     * Review the Scenario -- take these as your requirements
 
