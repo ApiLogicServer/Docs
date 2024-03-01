@@ -41,6 +41,8 @@ Inside the larger process above, here is the best way to learn how to use rules:
 
 4. Be aware of [Rule Extensibility](https://github.com/valhuber/LogicBank/wiki/Rule-Extensibility).
 
+> Pre-req: before learning rules, use the [Tutorial](Tutorial.md){:target="_blank" rel="noopener"} to familiarize yourself with basic capabilities and procedures.
+
 &nbsp;&nbsp;
 
 

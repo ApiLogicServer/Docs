@@ -84,3 +84,127 @@ Note the `log` method, which enables you to write row/old_row into the log with 
 ```python
 logic_row.log("no manager for this order's salesrep")
 ```
+
+&nbsp;
+
+## Inserting
+
+Inserting coding depends on whether you are already in the context of a logic_row ("in logic"), or not ("in APIs and Messages").  These are described below.
+
+&nbsp;
+
+### In APIs and Messages
+
+In API/Message development, you can submit transaction payloads as shown below:
+
+```python
+class ServicesEndPoint(safrs.JABase):
+
+    @classmethod
+    @jsonapi_rpc(http_methods=["POST"])
+    def OrderB2B(self, *args, **kwargs):  # yaml comment => swagger description
+        """ # yaml creates Swagger description
+            args :
+                order:
+                    AccountId: "ALFKI"
+                    Given: "Steven"
+                    Surname: "Buchanan"
+                    Items :
+                    - ProductName: "Chai"
+                      QuantityOrdered: 1
+                    - ProductName: "Chang"
+                      QuantityOrdered: 2
+            ---
+
+        Note attribute alias, Lookup automation in OrderB2B
+
+        See: https://apilogicserver.github.io/Docs/Sample-Integration/
+        Test with swagger, or, from command line:
+
+        $(venv) ApiLogicServer login --user=admin --password=p
+        $(venv) ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B'" --data '
+        {"meta": {"args": {"order": {
+            "AccountId": "ALFKI",
+            "Surname": "Buchanan",
+            "Given": "Steven",
+            "Items": [
+                {
+                "ProductName": "Chai",
+                "QuantityOrdered": 1
+                },
+                {
+                "ProductName": "Chang",
+                "QuantityOrdered": 2
+                }
+                ]
+            }
+        }}}'
+
+        """
+
+        db = safrs.DB         # Use the safrs.DB, not db!
+        session = db.session  # sqlalchemy.orm.scoping.scoped_session
+
+        order_b2b_def = OrderB2B()
+        request_dict_data = request.json["meta"]["args"]["order"]
+        sql_alchemy_row = order_b2b_def.dict_to_row(row_dict = request_dict_data, session = session)
+
+        session.add(sql_alchemy_row)
+        return {"Thankyou For Your OrderB2B"}  # automatic commit, which executes transaction logic
+```
+
+Salient points:
+
+1. Note the process of obtaining a `session` from safrs (the api engine)
+2. Note the use of the `OrderB2B` "RowDictMapper" to transform payload  data into row instances
+3. Observe that you add the row to the session; logic execution is automatic
+
+&nbsp;
+
+### In Logic
+
+In logic development, before you save a new row, you will first need to instantiate a new row instance.  Consider the following code from the sample app `logic/declare_logic.py`:
+
+```python
+    if preferred_approach:  # #als: AUDITING can be as simple as 1 rule
+        RuleExtension.copy_row(copy_from=models.Employee,
+                            copy_to=models.EmployeeAudit,
+                            copy_when=lambda logic_row: logic_row.ins_upd_dlt == "upd" and 
+                                    logic_row.are_attributes_changed([models.Employee.Salary, models.Employee.Title]))
+    else:
+        def audit_by_event(row: models.Employee, old_row: models.Employee, logic_row: LogicRow):
+            tedious = False  # tedious code to repeat for every audited class
+            if tedious:      # see instead the RuleExtension.copy_row above (you can create similar rule extensions)
+                if logic_row.ins_upd_dlt == "upd" and logic_row.are_attributes_changed([models.Employee.Salary, models.Employee.Title]):
+                    # #als: triggered inserts  
+                    copy_to_logic_row = logic_row.new_logic_row(models.EmployeeAudit)
+                    copy_to_logic_row.link(to_parent=logic_row)
+                    copy_to_logic_row.set_same_named_attributes(logic_row)
+                    copy_to_logic_row.insert(reason="Manual Copy " + copy_to_logic_row.name)  # triggers rules...
+
+        Rule.commit_row_event(on_class=models.Employee, calling=audit_by_event)
+```
+
+If you are doing auditing (a common pattern), we recommend you consider `copy_row`.  The alternative coding illustrates how do do insert manually, using `logic_row.new_logic_row(models.EmployeeAudit)`.
+
+&nbsp;
+
+### Insert defaulting
+
+In either case, the new logic row is returned with default values.  These are obtained from your database schema, via `database/models.py`.  For example:
+
+![transfer_funds](images/logic/funds-transfer.png)
+
+Observe the `server_default` property.  This value is used by LogicBank, as follows:
+
+1. Defaults are applied when instantiating a new row, and for default values when saving an inserted row
+
+2. Only constant values are defaulting, and dates and datetimes with the value `CURRENT_TIMESTAMP`
+
+3. Defaulted values are depicted on the server console
+
+&nbsp;
+
+## Updating and Deleting
+
+These require you first obtain the row, either through a model class accessor (e.g., retrieve a parent row), or a SQLAlchemy call.  In any case, alter the row as required, and issue `logic_row.update()' (or delete).  As for insert, this triggers logic execution.
