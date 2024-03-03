@@ -23,14 +23,15 @@ nav:
         - Execute in your IDE: IDE-Execute.md
         - Execute From Terminal: Execute.md
   - Demos, Tutorial, Samples:
-    - "Basic Self-Demo": Sample-Basic-Demo.md
+    - "AI Sample": Sample-AI.md
+    - "Tutorial": Tutorial.md
+    - "Sample DB, Project": Sample-Database.md
     - "Sample Integration": Sample-Integration.md
     - "Sample DB, Project": Sample-Database.md
-    - "AI - 1 Day Projects": Sample-AI.md
     - "Deployment Tutorial": Tutorial-Deployment.md
-    - "AI Drives Agile Vision": Tutorial-AI.md
     - "Agile Tutorial": Tutorial-Agile.md
-    - "Tutorial": Tutorial.md
+    - "Basic Self-Demo": Sample-Basic-Demo.md
+    - "AI Drives Agile Vision": Tutorial-AI.md
     - "Sample Systems": Data-Model-Examples.md
   - 0. ApiLogicServer create:
     - "Create": Project-Structure.md

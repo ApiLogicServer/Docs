@@ -134,6 +134,7 @@ To apply customizations, in a terminal window for your project:
 
 ```bash
 ApiLogicServer add-cust
+ApiLogicServer add-auth --db_url=auth  # version 10.3.14 or greater
 ```
 
 **3. Restart the server, login as `admin`**

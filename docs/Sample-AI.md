@@ -10,7 +10,7 @@ Version: 1.1
   }
 </style>
 
-# One Day Projects
+# AI Sample
 
 Here's how to use AI and API Logic Server to create complete running systems in minutes:
 
