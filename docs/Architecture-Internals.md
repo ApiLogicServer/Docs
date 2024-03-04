@@ -4,11 +4,10 @@ This page does _not_ address created projects, rather, it is about the API Logic
 
 Follow these steps to:
 
-* Obtain the software from GitHub
-* Open it in your IDE
-* Perform basic testing
-* Build and release (including automated testing)
-* Change and integrate Safrs React Admin (Admin app)
+1. Obtain the software from GitHub
+2. Open the dev workspace in your IDE
+3. Create the "initial 'venv'"
+4. Perform critical "Smoke Test" to ensure system operation
 
 
 ## Obtain the projects from GitHub
@@ -17,11 +16,13 @@ To create the projects:
 
 1. Create an empty folder (e.g., `~/dev/ApiLogicServer`)
 2. Optionally, install the product there (creating a venv)
-      * You can use this venv as a shared venv for testing
-3. Download and run [the install-ApiLogicServer-dev procedure](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/install-ApiLogicServer-dev.sh) (note: Windows users use `install-ApiLogicServer-dev.ps1`), e.g.:
+    * You can use this venv as a shared venv for testing
+3. Download and run [the install-ApiLogicServer-dev procedure](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/install-ApiLogicServer-dev.sh)
+    * Note: Windows users use `install-ApiLogicServer-dev.ps1`) 
+4. Run the installer,, e.g.:
 
 ```bash title="Install API Logic Server Development environment"
-cd ~/dev/ApiLogicServer/  # project directories created here
+cd ~/dev/ApiLogicServer/                     # project directories created here
 sh install-ApiLogicServer-dev.sh vscode
 ```
 
@@ -40,7 +41,7 @@ It's basically straightforward, _though note_ the `cp` command which copies the 
 
 &nbsp;
 
-## Determine your IDE
+### Determine your IDE
 
 API Logic Server has been developed with both VSCode and PyCharm.  While in many cases we prefer PyCharm, we have gravitated to VSCode since it supports an "initial `venv`".  
 
@@ -70,6 +71,8 @@ It should look something like this:
 ## Create the "initial `venv`"
 
 Execute the 2nd Run Config (*BLT - Hold the Tomato*) to create the `venv` used for created projects, such as the Sample (see next section).
+
+> Verify you have a `venv` at as shown above at:<br>`ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer`
 
 &nbsp;
 
@@ -107,6 +110,9 @@ A critical test is the ***Behave Test***.  It tests a dozen or so transactions, 
 
 # Ongoing dev
 
+Follow these procesures to introduce changes, test them, and perform releases.
+
+&nbsp;
 
 ## Introduce enhancements, test
 
@@ -139,12 +145,42 @@ Update `api_logic_server_cli/project_prototype` (and probably `api_logic_server_
 
 This is a VSCode Run Configuration used for final pre-release testing.  It builds the project, installs, it, and runs several dozen tests.
 
+1. Update the version number first in `api_logic_server_cli/api_logic_server.py`
+
 
 !!! pied-piper ":bulb: venv can be used for projects"
 
-    You will probably find it helpful to use this as a [shared venv](Project-Env.md#shared-venv).
+    You will be using this as a [shared venv](Project-Env.md#shared-venv).
 
 For more information, [see here](Architecture-Internals-BLT.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+## Releasing
+
+Build and Test should run on Macs, Linux (Ubuntu) and Windows 11.  Once these are successful, release as follows:
+
+1. At the root of `ApiLogicServer-src`, with **no `venv`**
+2. Run
+```bash
+python3 setup.py sdist bdist_wheel
+
+python3 -m twine upload  --skip-existing dist/* 
+```
+
+This will upload to Pypi.  You of course need credentials.
+
+3. Delete the build folders: `ApiLogicServer.egg-info`, `build`, `dist`
+4. Open `docker/api_logic_server.Dockerfile`
+5. Update the build number (line 4: `--tag apilogicserver/api_logic_server:10.03.16`)
+6. Copy/paste/run the instructions at the top:
+```bash
+
+# GA release -- DELETE BUILD DIRS FIRST
+
+# docker buildx build --push -f docker/api_logic_server.Dockerfile --tag apilogicserver/api_logic_server:10.03.16 -o type=image --platform=linux/arm64,linux/amd64 .
+# docker buildx build --push -f docker/api_logic_server.Dockerfile --tag apilogicserver/api_logic_server:latest -o type=image --platform=linux/arm64,linux/amd64 .
+```
 
 &nbsp;
 
