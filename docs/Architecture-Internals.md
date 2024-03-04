@@ -29,13 +29,19 @@ sh install-ApiLogicServer-dev.sh vscode
 This will use `git clone` to create folders in `~/dev/ApiLogicServer/ApiLogicServer-dev/org/:`
 
 ![dev structure](images/internals/dev-structure.png)
-  
+
+&nbsp;
+
+### Admin App Source
+
 It's basically straightforward, _though note_ the `cp` command which copies the `safrs-react-admin` runtime to API Logic Server for subsequent creation of API Logic Projects:
 
 ```bash
     echo "\ncopying build (sra - safrs-react-admin) --> ApiLogicServer"
     cp -r ../build api_logic_server_cli/create_from_model/safrs-react-admin-npm-build
 ```
+
+For more information, [see Admin App Reuse](Arthitecture-add-app-reuse.md){:target="_blank" rel="noopener"}.
 
 > Note: `curl` must be installed for this procedure.
 

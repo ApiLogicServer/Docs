@@ -14,7 +14,6 @@ theme:
 nav:
   - " ": index.md
   - Quick Start:
-    - Express Eval: Install-Eval.md
     - Express Install: Install-Express.md
     - Detailed Install:
       - "Install API Logic Server": Install.md
@@ -22,6 +21,7 @@ nav:
       - Execute an API Logic Project:
         - Execute in your IDE: IDE-Execute.md
         - Execute From Terminal: Execute.md
+    - Express Eval (unavail): Install-Eval.md
   - Demos, Tutorial, Samples:
     - "AI Sample": Sample-AI.md
     - "Tutorial": Tutorial.md
@@ -110,7 +110,9 @@ nav:
     - "Declarative Automation": Architecture-Declarative-Automation.md
     - Internals:
       - "Internal Dev Procedures": Architecture-Internals.md
+      - "Admin App Reuse": Architecture-admin-app-reuse.md
       - "Build, Load and Test": Architecture-Internals-BLT.md
+      - "VENV internals": Architecture-venv.md
       - "Internals - CLI": Architecture-Internals-CLI.md
   - Agile / Testing:
     - "Agility With Behave": Behave.md
