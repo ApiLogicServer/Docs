@@ -372,7 +372,7 @@ ApiLogicServer curl "'POST' 'http://localhost:5656/api/ServicesEndPoint/OrderB2B
 
 After the Tutorial, these are excellent next steps:
 
-* Further explore Application Integration - [open the Sample Integration tutorial](integration/Sample-Integration.md)
+* Further explore Application Integration - [open the Sample Integration tutorial](Sample-Integration.md)
     * It will show how to activate Kafka so that the message above is actually sent
     * It will ilustrate to the _consume_ Kafka messages
     * You've already created most of it, so...
