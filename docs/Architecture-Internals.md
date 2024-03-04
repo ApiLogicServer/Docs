@@ -67,15 +67,16 @@ It should look something like this:
 
 &nbsp;
 
+## Create the "initial `venv`"
+
+Execute the 2nd Run Config (*BLT - Hold the Tomato*) to create the `venv` used for created projects, such as the Sample (see next section).
+
+&nbsp;
+
 ## Critical "Smoke Test"
 
 > This is the "smoke test" of API Logic Server.  In general, this should be successful prior to pushing changes.
 
-&nbsp;
-
-### Create the "initial `venv`"
-
-Execute the 2nd Run Config (*BLT - Hold the Tomato*) to create the `venv` used for created projects, such as the Sample (see next section).
 
 &nbsp;
 
