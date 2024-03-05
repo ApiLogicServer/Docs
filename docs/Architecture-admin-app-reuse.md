@@ -15,5 +15,14 @@ Moreover, we don't want it to take up space in the ApiLogicServer git repository
 
 So, when you create the dev project, the [installer places a copy into your source tree](Architecture-Internals.md#admin-app-source), but denotes it as `.gitignore`.
 
+It looks like this in the dev source:
+
+![admin-app-code](images/internals/admin-app-code.png)
+
+It looks like this in the run-venv (though, your project may be using a [shared venv](Project-Env.md#shared-venv){:target="_blank" rel="noopener"}):
+
+![admin-app-code](images/internals/admin-app-created-project.png)
+
+
 
 
