@@ -38,7 +38,6 @@ nav:
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
     - "Builders": Project-Builders.md
-    - "INFO": ApiLogicServer-create.md
   - 1. Admin Web App:
     - "Automatic Admin App": Admin-Tour.md
     - Admin-Customization.md
@@ -104,19 +103,19 @@ nav:
     - Dev Containers:
       - "Dev Containers": DevOps-Docker.md
       - "GitHub and Codespaces": DevOps-GitHub.md
+  - Agile / Testing:
+    - "Agility With Behave": Behave.md
+    - "Behave Logic Report": Behave-Logic-Report.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md
     - "Project Operation": Architecture-Project-Operation.md
     - "Declarative Automation": Architecture-Declarative-Automation.md
-    - Internals:
-      - "Internal Dev Procedures": Architecture-Internals.md
-      - "Admin App Reuse": Architecture-admin-app-reuse.md
-      - "Build, Load and Test": Architecture-Internals-BLT.md
-      - "VENV internals": Architecture-venv.md
-      - "Internals - CLI": Architecture-Internals-CLI.md
-  - Agile / Testing:
-    - "Agility With Behave": Behave.md
-    - "Behave Logic Report": Behave-Logic-Report.md
+  - Internals:
+    - "Internal Dev Procedures": Architecture-Internals.md
+    - "Admin App Reuse": Architecture-admin-app-reuse.md
+    - "Build, Load and Test": Architecture-Internals-BLT.md
+    - "VENV (internals)": Architecture-venv.md
+    - "Internals - CLI": Architecture-Internals-CLI.md
   - Troubleshooting.md
   - FAQs:
     - "Is this a Low Code approach?": FAQ-Low-Code.md
@@ -148,6 +147,7 @@ nav:
     - "Product Overview": Product-Overview.md
     - Personal:
       - "Home": Home.md
+      - "INFO": ApiLogicServer-create.md
       - "Recompute": Logic-Recompute.md
       - "PyCon23 Talk": Tech-Conference-PyCon23-Talk.md
       - "PyCon23 Tutorial": Tech-Conference-PyCon23-Tutorial.md

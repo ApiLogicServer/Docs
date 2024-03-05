@@ -22,7 +22,3 @@ It looks like this in the dev source:
 It looks like this in the run-venv (though, your project may be using a [shared venv](Project-Env.md#shared-venv){:target="_blank" rel="noopener"}):
 
 ![admin-app-code](images/internals/admin-app-created-project.png)
-
-
-
-
