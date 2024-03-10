@@ -442,12 +442,12 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 This pre-release includes:
 
-* Improved Logic Training, Bug Fix for Numeric defaults
+* Initial keycloak integration
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.14
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.19
 ```
 
 Or use (neither available currently):
