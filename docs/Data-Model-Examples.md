@@ -12,9 +12,13 @@ So, API Logic Server supports the following `db_url` shortcuts for these pre-ins
 
 * [nw](Tutorial.md){:target="_blank" rel="noopener"} - same as the sample (customers and orders; you can also use an empty `db_url`)
 
+    * With no customizations, the default nw example illustrates the level of automation you should expect for your own projects
+
+* nw- - same as nw
+* nw+ - same as nw, but no customizations
+
     * This includes many examples of customization, so it's an excellent idea to create and explore it
 
-* nw- - same as nw, but no customizations
 * [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} - a similar, simpler example 
 * [allocation](Logic-Allocation.md){:target="_blank" rel="noopener"} - a rule to allocate a payment to a set of outstanding orders
 * [BudgetApp](Tech-Budget-App.md){:target="_blank" rel="noopener"} - illustrates automatic creation of parent rows for rollups
