@@ -10,6 +10,8 @@
 
 ## 1. Plug It In
 
+Here's how you plug the docker appliance into your database:
+
 ```bash
 > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
 
@@ -20,7 +22,7 @@ $ ApiLogicServer create-and-run --project_name=/localhost/sample_ai --db_url=sql
 
 &nbsp;
 
-### It Runs
+### It Runs: Admin App and API
 
 You have a running system: a multi-page ***Admin App:***
 
@@ -34,13 +36,15 @@ The app is supported by a multi-table ***JSON:API with Swagger***, supporting cu
 
 &nbsp;
 
-## 2. Add Logic Using Your IDE
+## 2. Add Logic Using Rules
 
 Behind the running application is a project you can open with your IDE, and add logic:
 
 ![Logic](images/sample-ai/rules.jpg)
 
 The 5 spreadsheet-like rules above perform the same logic as 200 lines of Python: the bakend half of your system is ***40X more concise.***
+
+Similar rules are provided for granting row-level access to user roles.
 
 &nbsp;
 
