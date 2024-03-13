@@ -444,11 +444,13 @@ This pre-release includes:
 
 * Initial [keycloak integration](Keycloak-devnotes.md){:target="_blank" rel="noopener"} (wip - technology preview)
 * CLI options now support dashes (eg, --project-name or --project_name)
+* Keycloak operates from import (not data)
+* Keycloak does not require dev-network
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.21
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.21\3
 ```
 
 Or use (neither available currently):

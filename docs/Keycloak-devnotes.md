@@ -15,27 +15,27 @@ Status - 3/10:
 ## Setup
 
 ```bash
-ApiLogicServer add-auth --provider_type=keycloak --db_url=
+ApiLogicServer add-auth --provider_type=keycloak --db-url=
 ```
 
 ## Iterim Additional Setup
 
 ```bash
-ApiLogicServer add-auth --provider_type=keycloak --db_url=  # if not already done
+ApiLogicServer add-auth --provider-type=keycloak --db-url=  # if not already done
 cp -r devops/keycloak/nginx/admin-app ui/safrs-react-admin
 ```
 
 Or, the entire sequence, using the testpy release (aside - the dev ide has run configs for this under **2. Create servers/ApiLogicProject**):
 
 ```bash
-ApiLogicServer create --project_name= --db_url=
+ApiLogicServer create --project-name= --db-url=
 code ApiLogicProject  # then, in VSC terminal...
 ApiLogicServer add-cust
-ApiLogicServer add-auth --provider_type=keycloak --db_url=
+ApiLogicServer add-auth --provider-type=keycloak --db-url=
 cp -r devops/keycloak/nginx/admin-app ui/safrs-react-admin
 cd devops/keycloak
 docker compose up
-# start the server
+# start ApiLogicServer server from the IDE (F5)
 ```
 
 
@@ -192,6 +192,17 @@ docker cp keycloak:/opt/keycloak/data ~/Desktop/keycloak
 
 ```
 
+Export the data
+
+```bash
+docker exec -it keycloak bash
+$ cd /opt/keycloak
+$ bin/kc.sh export --help
+$ bin/kc.sh export --dir export
+$ exit
+docker cp keycloak:/opt/keycloak/export ~/Desktop/keycloak-export
+
+```
 &nbsp;
 
 ## Notes: Accessing the jwt at runtime
