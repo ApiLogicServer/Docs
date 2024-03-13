@@ -170,7 +170,7 @@ Then,
 
 * Customize your projects in standard IDEs such as VSCode or PyCharm
 
-* Declare multi-table derivation and constraint logic using spreadsheet-like rules
+* Declare multi-table derivations and constraint logic using spreadsheet-like rules
 
     * :trophy: 40X more concise than code
     * Extend with Python

@@ -240,7 +240,7 @@ Note the automation for **automatic joins** (Product Name, not ProductId) and **
 
 Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
-!!! pied-piper ":bulb: Logic: Multi-table Derivation and Constraint Rules, 40X More Concise"
+!!! pied-piper ":bulb: Logic: Multi-table Derivations and Constraint Rules, 40X More Concise"
 
     #### IDE: Declare and Debug
 

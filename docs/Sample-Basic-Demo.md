@@ -153,7 +153,7 @@ Logic provides significant improvements over procedural logic, as described belo
 
 &nbsp;
 
-!!! pied-piper ":bulb: Logic: Multi-table Derivation and Constraint Rules, 40X More Concise"
+!!! pied-piper ":bulb: Logic: Multi-table Derivations and Constraint Rules, 40X More Concise"
 
     #### a. Chaining
 

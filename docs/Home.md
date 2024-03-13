@@ -83,7 +83,7 @@ Customize created projects in your IDE, with Python and standard libaries.  Sign
 
 * ***Logic Automation*** means you customize logic and security, using **Rules and Python** in your IDE
 
-> Rules are unique and confer **significant business agility** - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}, <br>for security and multi-table derivation and constraints.
+> Rules are unique and confer **significant business agility** - [40X more concise than code](Logic-Why.md){:target="_blank" rel="noopener"}, <br>for security and multi-table derivations and constraints.
 
 
 <details markdown>

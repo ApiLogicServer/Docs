@@ -225,7 +225,7 @@ Rules are a unique and significant innovation, providing meaningful improvements
 
 &nbsp;
 
-> **Key Takeway -  Logic:** Multi-table Derivation and Constraint Rules, Extensible with Python 
+> **Key Takeway -  Logic:** Multi-table Derivations and Constraint Rules, Extensible with Python 
 <br><br>Rules are:
 <br>1. **Declared** in your IDE - 40X more concise
 <br>2. **Activated** on server start
