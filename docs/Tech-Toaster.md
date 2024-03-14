@@ -15,10 +15,10 @@ Here's how you plug the docker appliance into your database:
 ```bash
 > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
 
-$ ApiLogicServer create-and-run --project_name=/localhost/sample_ai --db_url=sqlite:///sample_ai.sqlite
+$ ApiLogicServer create-and-run --project-name=/localhost/sample_ai --db-url=sqlite:///sample_ai.sqlite
 ```
 
-> Note: API Logic Server can run as a container (shown above), or a standard pip install.  In either case, you can containerize your project for deployment, e.g. to the cloud.
+> Note: API Logic Server can run as a container (shown above), or a standard pip install.  <br>In either case, you can containerize your project for deployment, e.g. to the cloud.
 
 &nbsp;
 
