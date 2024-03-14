@@ -446,11 +446,12 @@ This pre-release includes:
 * CLI options now support dashes (eg, --project-name or --project_name)
 * Keycloak operates from import (not data)
 * Keycloak does not require dev-network
+* view generation (table objects in classes, not supported for APIs)
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.23
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.24
 ```
 
 Or use (neither available currently):
