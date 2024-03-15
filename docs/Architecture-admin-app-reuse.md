@@ -1,11 +1,50 @@
 !!! pied-piper ":bulb: TL;DR: Admin App Runtime stored in `venv`"
 
-    To save project space, the admin app source (JavaScript, CSS etc) is not stored in each created app.  Instead, it is stored in the `venv`.
+    A Microservice bundles all the elements to deliver value.  For API Logic Server, this means:
 
-    Further, so that admin app changes do not cause unnecessary changes to ApiLogicServer git, these files are not stored in the GitHub project.
+    * Using Shared Data / API Models to drive automation
 
-    
-## Admin App Runtime
+    * A single integrated server to simplify deployment and administration
+
+    * A single shared source code repository for models and code
+
+    * System resources extracted from the shared repository
+
+&nbsp;
+
+## Model Driven Automation
+
+To maintain simplicity through a high level of abstraction, we seek to maximize automation based on declarative models.  This applies to:
+
+* shared use of the underlying data model
+
+* expressing application behavior by a yaml file, instead of complex html, JavaScript and CSS
+
+&nbsp;
+
+## Integrated Server
+
+Deployment and application adminstration are simplified if there is 1 server to deploy and administer, serving both APIs and Apps... a microservice.
+
+This is provided by `admin_loader.py`, which: 
+
+* finds (see `get_sra_directory()`) the minified Admin App,
+* returns (see `return_spa()`) the minified Admin App, and
+* returns the `admin.yaml` file
+
+&nbsp;
+
+## Integrated Source Control
+
+Apps are dependent on the models and APIs, so administration is simplified if these are in the same git repository.
+
+&nbsp;
+
+## Admin App Runtime in `venv`
+
+To save project space, the admin app source (JavaScript, CSS etc) is not stored in each created app.  This would "pollute" the git repository.  Instead, it is stored in the `venv`.
+
+Further, so that admin app changes do not cause unnecessary changes to ApiLogicServer git, these files are not stored in the GitHub project.
 
 Recall that the Admin App is defined by a yaml file.  The actual app is a minified React Admin JavaScript app, [safrs-react-admin](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"}.
 
@@ -24,12 +63,3 @@ It looks like this in the run-venv (though, your project may be using a [shared 
 ![admin-app-code](images/internals/admin-app-created-project.png)
 
 &nbsp;
-
-## Loaded by `admin_loader.py`
-
-This module 
-
-* finds (see `get_sra_directory()`) the minified Admin App,
-* returns (see `return_spa()`) the minified Admin App, and
-* returns the `admin.yaml` file
-
