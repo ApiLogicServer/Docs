@@ -8,7 +8,9 @@
     You can plug this appliance into your database, and 
     <br>add Rules and Python.
 
-    Automation can provide remarkable agility and simplicity, with all the flexibility of a framework.
+    Automation can provide:
+    * Remarkable agility and simplicity
+    * With all the flexibility of a framework
 
 ## 1. Plug It Into Your Database
 
@@ -32,7 +34,10 @@ You have a running system: a multi-page ***Admin App:***
 
 &nbsp;
 
-The app is supported by a multi-table ***JSON:API with Swagger***, supporting custom client app deve and hoc integration, out of the box.
+The app is supported by a multi-table ***JSON:API with Swagger**.  So, right out of the box, you can support
+
+* Custom client app dev, and 
+* Ad hoc application integration
 
 ![Swagger](images/sample-ai/swagger.jpg)
 
@@ -44,15 +49,17 @@ Behind the running application is a project you can open with your IDE, and add 
 
 ![Logic](images/sample-ai/rules.jpg)
 
-The 5 spreadsheet-like rules above perform the same logic as 200 lines of Python: the bakend half of your system is ***40X more concise.***
+The 5 spreadsheet-like rules above perform the same logic as 200 lines of Python: the backend half of your system is ***40X more concise.***
 
-Similar rules are provided for granting row-level access to user roles.
+> Similar rules are provided for granting row-level access, based on user roles.
 
 &nbsp;
 
 ## 3. Add Python for Flexibility
 
-Automation and Rules provide remarkable agility, but you need flexibility to deliver a complete result.  Use Python and popular packages to complete the job.  Here we customize for pricing discounts, and sending Kafka messages:
+Automation and Rules provide remarkable agility, but you need flexibility to deliver a complete result.  Use Python and popular packages to complete the job.  
+
+Here we customize for pricing discounts, and sending Kafka messages:
 
 ![Rules Plus Python](images/sample-ai/rules-plus-python.png)
 
@@ -60,9 +67,9 @@ Automation and Rules provide remarkable agility, but you need flexibility to del
 
 # Extensible Declarative Automation
 
-The screenshots above illustrate remarkable agility.  This system might have taken weeks or mnnths.
+The screenshots above illustrate remarkable agility.  This system might have taken weeks or mnnths using frameworks.
 
-But it's more than agility.  The level of abstraction here is very high... you can create microservices even if you are new to Python, or Frameworks such as Flask or SQLAlchemy.
+But it's more than agility.  The *level of abstraction* here is very high... you can create microservices even if you are new to Python, or Frameworks such as Flask or SQLAlchemy.
 
 We call this XDA - Extensible Declarative Automation:
 
