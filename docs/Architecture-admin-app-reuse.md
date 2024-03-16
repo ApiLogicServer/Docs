@@ -1,18 +1,22 @@
 !!! pied-piper ":bulb: TL;DR: Admin App Runtime stored in `venv`"
 
-    A Microservice bundles all the elements to deliver value.  For API Logic Server, this means:
+    The Admin App is implemented by [SRA (Safrs React Admin)](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"}, a separate project in GitHub.  Yet, the user experience makes API Logic Server and SRA feel like a single, integrated system.
+    
+    That is because we have followed key Microservice principles, bundling all the elements to deliver value in a single service.  For API Logic Server/SRA, this means:
 
-    * Using Shared Data / API Models to drive automation
+    1. Using Shared Data / API Models to drive automation
 
-    * A single integrated server to simplify deployment and administration
+    2. A single integrated server to simplify deployment and administration
 
-    * A single shared source code repository for models and code
+    3. A single shared source code repository for models and code
 
-    * System resources extracted from the shared repository
+    4. System resources extracted from the shared repository
+
+    API Logic Server supports [extended builders](Project-Builders.md){:target="_blank" rel="noopener"}, which enables you to introduce additional client technologies.  We encourage this, and suggest these principles merit strong consideration.
 
 &nbsp;
 
-## Model Driven Automation
+## 1. Model Driven Automation
 
 To maintain simplicity through a high level of abstraction, we seek to maximize automation based on declarative models.  This applies to:
 
@@ -22,7 +26,7 @@ To maintain simplicity through a high level of abstraction, we seek to maximize 
 
 &nbsp;
 
-## Integrated Server
+## 2. Single Integrated Server
 
 Deployment and application adminstration are simplified if there is 1 server to deploy and administer, serving both APIs and Apps... a microservice.
 
@@ -34,13 +38,13 @@ This is provided by `admin_loader.py`, which:
 
 &nbsp;
 
-## Integrated Source Control
+## 3. Integrated Source Control
 
 Apps are dependent on the models and APIs, so administration is simplified if these are in the same git repository.
 
 &nbsp;
 
-## Admin App Runtime in `venv`
+## 4. SRA runtime extraced from project
 
 To save project space, the admin app source (JavaScript, CSS etc) is not stored in each created app.  This would "pollute" the git repository.  Instead, it is stored in the `venv`.
 
