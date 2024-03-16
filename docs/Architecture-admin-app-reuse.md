@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR: Admin App Runtime stored in `venv`"
 
-    The Admin App is implemented by [SRA (Safrs React Admin)](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"}, a separate project in GitHub.  Yet, the user experience makes API Logic Server and SRA feel like a single, integrated system.
+    The Admin App is implemented by [SRA (Safrs React Admin)](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"}, a separate / stand-alone project in GitHub.  Yet, the user experience makes API Logic Server and SRA feel like a single, integrated system.
     
     That is because we have followed key Microservice principles, bundling all the elements to deliver value in a single service.  For API Logic Server/SRA, this means:
 

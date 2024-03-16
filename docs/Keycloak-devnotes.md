@@ -129,13 +129,13 @@ Several changes to adapt the original poc to API Logic Server structure:
 5. To login, see the `Auth` object in the admin app: demo, demo
 
 
-![Attempt](images/keycloak/kc-integrate-keycloak.png)
+![Attempt](images/keycloak/integrate-keycloak.png)
 
 ### Inspecting Access Tokens
 
 You can use jwt.io:
 
-![jwt.io](images/keycloak/kc-jwt.io.png)
+![jwt.io](images/keycloak/jwt.io.png)
 
 
 ## Initial Implementation (for reference)
