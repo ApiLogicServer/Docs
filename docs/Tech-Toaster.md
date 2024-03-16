@@ -1,14 +1,16 @@
 !!! pied-piper ":bulb: TL;DR - An API Appliance"
 
-    ![Toaster](images/sample-ai/toaster.jpg){: style="height:300px;width:300px"; align=right }
+    ![Toaster](images/sample-ai/toaster.jpg){: style="height:201px;width:300px"; align=right }
     
-    Just as you plug in a toaster and add bread,
+    Just as you can plug in a toaster, and 
+    <br>add bread,
 
-    You can plug this appliance into your database, and add rules and Python
+    You can plug this appliance into your database, and 
+    <br>add Rules and Python.
 
     Automation can provide remarkable agility and simplicity, with all the flexibility of a framework.
 
-## 1. Plug It In
+## 1. Plug It Into Your Database
 
 Here's how you plug the docker appliance into your database:
 
@@ -29,14 +31,14 @@ You have a running system: a multi-page ***Admin App:***
 ![Runs](images/sample-ai/Order-Page.jpg)
 
 &nbsp;
----
+
 The app is supported by a multi-table ***JSON:API with Swagger***, supporting custom client app deve and hoc integration, out of the box.
 
 ![Swagger](images/sample-ai/swagger.jpg)
 
 &nbsp;
 
-## 2. Add Logic Using Rules
+## 2. Add Rules for Logic
 
 Behind the running application is a project you can open with your IDE, and add logic:
 
@@ -48,19 +50,21 @@ Similar rules are provided for granting row-level access to user roles.
 
 &nbsp;
 
-## 3. Customize With Python
+## 3. Add Python for Flexibility
 
-Automation and Rules provide remarkable agility, but you need flexibility to deliver.  Use Python and popular packages to complete the job.  Here we customize for pricing discounts, and sending Kafka messages:
+Automation and Rules provide remarkable agility, but you need flexibility to deliver a complete result.  Use Python and popular packages to complete the job.  Here we customize for pricing discounts, and sending Kafka messages:
 
 ![Rules Plus Python](images/sample-ai/rules-plus-python.png)
 
 &nbsp;
 
-# Summary
+# Extensible Declarative Automation
 
-The screenshots above illustrate remarkable agility.  Note also the simplicity -- you can create microservices even if you are new to Python.
+The screenshots above illustrate remarkable agility.  This system might have taken weeks or mnnths.
 
-We call this XDA: Extensible Declarative Automation
+But it's more than agility.  The level of abstraction here is very high... you can create microservices even if you are new to Python, or Frameworks such as Flask or SQLAlchemy.
+
+We call this XDA - Extensible Declarative Automation:
 
 * Automation - instead of slow and complex framework coding, just plug in your database for a running API and Admin App
 
