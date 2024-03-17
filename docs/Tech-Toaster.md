@@ -9,6 +9,7 @@
     <br>add Rules and Python.
 
     Automation can provide:
+
     * Remarkable agility and simplicity
     * With all the flexibility of a framework
 
@@ -19,21 +20,17 @@
 Here's how you plug the docker appliance into your database:
 
 ```bash
-> docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
-
-$ ApiLogicServer create-and-run --project-name=/localhost/sample_ai --db-url=sqlite:///sample_ai.sqlite
+$ ApiLogicServer create-and-run --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
 ```
-
-> Note: API Logic Server can run as a container (shown above), or a standard pip install.  <br>In either case, you can containerize your project for deployment, e.g. to the cloud.
 
 &nbsp;
 
 ### It Runs: Admin App and API
 
-You have a running system: 
+You have a running system as shown on the split-screen below: 
 
-* a multi-page ***Admin App***, supported by...
-* a multi-table ***JSON:API with Swagger***
+* a multi-page ***Admin App*** (shown on the left), supported by...
+* a multi-table ***JSON:API with Swagger*** (shown on the right)
 
 ![Runs](images/sample-ai/Microservice-Automation.png)
 
@@ -43,20 +40,30 @@ So, right out of the box, you can support
 * Ad hoc application integration
 * Agile Collaboration, based on Working Software
 
+It's worth reflecting on what you *didn't do* to get working software.  Using UI and server frameworks would require several weeks of work, and substantial expertise.
+
 &nbsp;
+
+### Containerize
+
+API Logic Server can run as a container, or a standard pip install.  In either case, you can containerize your project for deployment, e.g. to the cloud.
 
 
 &nbsp;
 
 ## 2. Add Rules for Logic
 
+Instant working software is great, but without logic enforcement it's little more than a cool demo. 
+
 Behind the running application is a project you can open with your IDE, and add logic:
 
 ![Logic](images/sample-ai/rules.jpg)
 
-The 5 spreadsheet-like rules above perform the same logic as 200 lines of Python: the backend half of your system is ***40X more concise.***
+Instead of conventional procedural logic, the code above is *declarative.*  Like a spreadsheet, you declare ***rules*** for multi-table derivations and constraints.  The rules handlle all the database access, the dependencies, and logic ordering.
 
-> Similar rules are provided for granting row-level access, based on user roles.
+> The result is quite remarkable: the 5 spreadsheet-like rules above perform the same logic as 200 lines of Python.  The backend half of your system is ***40X more concise.***
+
+Similar rules are provided for granting row-level access, based on user roles.
 
 &nbsp;
 
@@ -72,17 +79,17 @@ Here we customize for pricing discounts, and sending Kafka messages:
 
 # Extensible Declarative Automation
 
-The screenshots above illustrate remarkable agility.  This system might have taken weeks or mnnths using frameworks.
+The screenshots above illustrate remarkable agility.  This system might have taken weeks or mnnths using conventional frameworks.
 
-But it's more than agility.  The *level of abstraction* here is very high... you can create microservices even if you are new to Python, or Frameworks such as Flask or SQLAlchemy.
+But it's more than agility.  The *level of abstraction* here is very high, brings a level of simplicity that enables you to create microservices -- even if you are new to Python, or Frameworks such as Flask or SQLAlchemy.
 
-We call this XDA - Extensible Declarative Automation:
+There are 3 pillars that deliver this speed and simoplicity:
 
-* Automation - instead of slow and complex framework coding, just plug in your database for a running API and Admin App
+1. Automation - instead of slow and complex framework coding, just plug in your database for a running API and Admin App
 
-* Declarative - instead of tedious code that describe ***how*** logic operates, rules express ***what*** you want to accomplish
+2. Declarative - instead of tedious code that describe ***how*** logic operates, rules express ***what*** you want to accomplish
 
-* Extensible - finish the remaining elements with your IDE, Python and standard packages such as Flask and SQLAlchemy.
+3. Extensible - finish the remaining elements with your IDE, Python and standard packages such as Flask and SQLAlchemy.
 
 
 
