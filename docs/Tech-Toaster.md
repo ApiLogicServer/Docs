@@ -12,6 +12,8 @@
     * Remarkable agility and simplicity
     * With all the flexibility of a framework
 
+&nbsp;
+
 ## 1. Plug It Into Your Database
 
 Here's how you plug the docker appliance into your database:
@@ -28,18 +30,21 @@ $ ApiLogicServer create-and-run --project-name=/localhost/sample_ai --db-url=sql
 
 ### It Runs: Admin App and API
 
-You have a running system: a multi-page ***Admin App:***
+You have a running system: 
 
-![Runs](images/sample-ai/Order-Page.jpg)
+* a multi-page ***Admin App***, supported by...
+* a multi-table ***JSON:API with Swagger***
 
-&nbsp;
+![Runs](images/sample-ai/Microservice-Automation.png)
 
-The app is supported by a multi-table ***JSON:API with Swagger**.  So, right out of the box, you can support
+So, right out of the box, you can support
 
 * Custom client app dev, and 
 * Ad hoc application integration
+* Agile Collaboration, based on Working Software
 
-![Swagger](images/sample-ai/swagger.jpg)
+&nbsp;
+
 
 &nbsp;
 
