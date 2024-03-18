@@ -15,7 +15,7 @@ Status - 3/10:
 ## Setup
 
 ```bash
-ApiLogicServer add-auth --provider_type=keycloak --db-url=
+ApiLogicServer add-auth --provider-type=keycloak --db-url=
 ```
 
 ## Iterim Additional Setup
