@@ -17,7 +17,7 @@
 
 ## 1. Plug It Into Your Database
 
-Here's how you plug the docker appliance into your database:
+Here's how you plug the appliance into your database:
 
 ```bash
 $ ApiLogicServer create-and-run --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
@@ -59,8 +59,8 @@ Instant working software is great, but without logic enforcement it's little mor
 
 Behind the running application is a standard project.  Open it with your IDE, and 
 
-* declare logic with code completion
-* debug it with your debugger
+* Declare logic with code completion
+* Debug it with your debugger
 
 ![Logic](images/sample-ai/rules.jpg)
 
@@ -86,11 +86,11 @@ Here we customize for pricing discounts, and sending Kafka messages:
 
 The screenshots above illustrate remarkable agility.  This system might have taken weeks or months using conventional frameworks.
 
-But it's more than agility.  The *level of abstraction* here is very high, brings a level of simplicity that enables you to create microservices -- even if you are new to Python, or Frameworks such as Flask or SQLAlchemy.
+But it's more than agility.  The *level of abstraction* here is very high, bringing a level of simplicity that enables you to create microservices -- even if you are new to Python, or Frameworks such as Flask or SQLAlchemy.
 
 There are 3 key elements that deliver this speed and simplicity:
 
-1. **Microservice Automation:** instead of slow and complex framework coding, just plug in your database for a running API and Admin App
+1. **Microservice Automation:** instead of slow and complex framework coding, just plug into your database for a running API and Admin App
 
 2. **Logic Automation with Declarative Rules:** instead of tedious code that describe ***how*** logic operates, rules express ***what*** you want to accomplish
 

@@ -15,7 +15,7 @@ You will typically want to test your image before pushing it to DockerHub.  Use 
 For example, to run your project container directly, you can 
 
 ```bash
-sh devops/docker/sh run_image.sh
+sh devops/docker-image/run_image.sh run_image.sh
 ```
 
 &nbsp;
