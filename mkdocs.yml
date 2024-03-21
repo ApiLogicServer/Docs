@@ -129,6 +129,7 @@ nav:
     - "About Tech Notes": Tech--Notes.md
     - "Keycloak DevNotes": Keycloak-devnotes.md
     - "API Appliance": Tech-Toaster.md
+    - "Ontimize Overview": Ontimize-Overview.md
     - Tech-AI.md
     - "AI-driven Auto mysql": Tech-AI-mysql.md
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
