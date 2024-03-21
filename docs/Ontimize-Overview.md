@@ -12,7 +12,7 @@
     
     API Logic Server automation can simplify app dev by eliminating the daunting "clean sheet of paper".  This can make it difficult.  By contrast, automated app creation means you **alter what's been built** through automation.
 
-    > It should be possible for users with limited Python, Flask, SQLAlchemy or Ontimize knowledge to <br>1. Create a backend API<br>2. Declare rules for multi-table derivations and constraints<br>3. Create a front office Ontimize app, and<br>4. Make significant customizations
+    > It should be possible for users with limited Python, Flask, SQLAlchemy, JavaScipt technology (`npm` build, etc), or Ontimize knowledge to <br>1. Create a backend API<br>2. Declare rules for multi-table derivations and constraints<br>3. Create a front office Ontimize app, and<br>4. Make significant customizations
 
 
 ## Basic Work Flow
