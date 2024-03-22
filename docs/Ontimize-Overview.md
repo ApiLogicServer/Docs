@@ -46,7 +46,7 @@ Edit to remove unwanted entities, order columns, set templates, etc.
 
 <details markdown>
 
-<summary> Show me how -- apply customizations </summary>
+<summary> Show me how -- Edit Model </summary>
 
 &nbsp;
 
@@ -64,3 +64,14 @@ ApiLogicServer app-build --app=app1
 This will the the data model to build out the Ontimize app.  It's executable.
 
 You can then use your IDE or other tooling (e.g., Ontimize CLI) to edit the artifacts to customize the look and feel.
+
+
+<details markdown>
+
+<summary> Show me how -- Customize Application </summary>
+
+&nbsp;
+
+![app_create](images/ontimize/app-create.png)
+
+</details>
