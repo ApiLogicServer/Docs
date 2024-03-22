@@ -75,3 +75,13 @@ You can then use your IDE or other tooling (e.g., Ontimize CLI) to edit the arti
 ![app_create](images/ontimize/app-create.png)
 
 </details>
+
+### 5. Run
+
+Execution is standard to Ontimize:
+
+```bash
+cd ui/app1
+npm install
+npm start
+```
