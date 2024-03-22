@@ -36,13 +36,23 @@ At this point, distinct dev teams can safely proceed in parallel:
 
 Salient points:
 
-* logic is automatically factored out of ui code (in particular, not in controllers).  This increases re-use across apps, and re-use for integration
+* logic is **automatically factored out of ui code** (in particular, not in controllers).  This increases re-use across apps, and re-use for integration
 
-* ui dev is not dependent on server api creation -- JSON:APIs are self-serve, so ui developers are not blocked by backend api dev
+* **ui dev is not dependent on server api creation** -- JSON:APIs are self-serve, so ui developers are not blocked by backend api dev
 
 ### 2. Edit Model
 
-Edit to remove unwanted tables, order columns, set styles, etc.
+Edit to remove unwanted entities, order columns, set templates, etc.
+
+<details markdown>
+
+<summary> Show me how -- apply customizations </summary>
+
+&nbsp;
+
+![app_create](images/ontimize/app-create.png)
+
+</details>
 
 ### 3. Build Application
 
