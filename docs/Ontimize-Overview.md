@@ -22,10 +22,18 @@ After creating your project in the usual manner, follow the steps below.
 ### 1. Create Application
 
 ```bash
-ApiLogicServer app-create --app=app1
+ApiLogicServer app-create --app=ont_1
 ```
 
-This creates `ui/app1/app_model.yaml`.  
+This creates `ui/ont_1/app_model.yaml`.
+
+For the prototype, we also need to:
+
+```bash
+cd ApiLogicProject
+ApiLogicServer add-cust
+ApiLogicServer add-auth
+```
 
 #### Parallel dev
 
@@ -57,7 +65,7 @@ Edit to remove unwanted entities, order columns, set templates, etc.
 ### 3. Build Application
 
 ```bash
-ApiLogicServer app-build --app=app1
+ApiLogicServer app-build --app=ont_1
 ```
 ### 4. Customize Application
 
@@ -85,3 +93,5 @@ cd ui/app1
 npm install
 npm start
 ```
+
+Browse to [localhost:4299](http://localhost:4299), and login as `admin/p`.
