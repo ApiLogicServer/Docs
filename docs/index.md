@@ -80,13 +80,11 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 <summary>Quick Screenshot Tour of using API Logic Server: Create, Run, Customize</summary>
 
-&nbsp;
+![Toaster](images/sample-ai/toaster.jpg){: style="height:201px;width:300px"; align=right }
 
 **1. Create: *Microservice Automation***
 
-Create executable, [customizable projects](Project-Structure.md){:target="_blank" rel="noopener"} instantly:
-
-* ***Microservice Automation*** means create projects with a single CLI command
+Plug into your database: ***Microservice Automation*** means create projects instantly, with a single CLI command:
 
 ```bash
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
@@ -123,7 +121,7 @@ Unlike frameworks which require significant time and expertise, the create comma
 
 **3. Customize: Logic Automation, Python Flexibility**
 
-Customize created projects in your IDE, with Python and standard libaries.  Significantly, Microservice Automation also includes:.
+Customize [created projects](Project-Structure.md){:target="_blank" rel="noopener"} in your IDE, with Python and standard libaries.  Significantly, Microservice Automation also includes:.
 
 * ***Logic Automation*** means you customize logic using **Rules and Python** in your IDE
 

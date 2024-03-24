@@ -115,6 +115,7 @@ nav:
     - "Admin App Architecture": Architecture-admin-app-reuse.md
     - "Build, Load and Test": Architecture-Internals-BLT.md
     - "VENV (internals)": Architecture-venv.md
+    - "Python (internals)": Architecture-python.md
     - "Internals - CLI": Architecture-Internals-CLI.md
   - Troubleshooting.md
   - FAQs:
