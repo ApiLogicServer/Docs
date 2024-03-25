@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR: 2 venvs: Run-venv, Dev-venv (no CLI)"
 
-    Upgrading to major versions of Python (e.g., 3.12) is [non-trivial](https://pythonspeed.com/articles/upgrade-python-3.12/){:target="_blank" rel="noopener"}.  Key risk areas revolve around [dependencies](https://pyreadiness.org/3.12/){:target="_blank" rel="noopener"}:
+    Upgrading to major versions of [Python](https://www.python.org/downloads/){:target="_blank" rel="noopener"} (e.g., 3.12) is [non-trivial](https://pythonspeed.com/articles/upgrade-python-3.12/){:target="_blank" rel="noopener"}.  Key risk areas revolve around [dependencies](https://pyreadiness.org/3.12/){:target="_blank" rel="noopener"}:
 
     1. [pyodbc](https://pypi.org/project/pyodbc/){:target="_blank" rel="noopener"}
 
@@ -15,4 +15,27 @@
 &nbsp;
 
 **Under Construction**
+
+Verify psycoopg - create a venv and test pip install
+
+Install unixobdbc, you might get:
+
+```bash
+==> Running `brew cleanup unixodbc`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+Removing: /opt/homebrew/Cellar/unixodbc/2.3.11... (48 files, 2.3MB)
+Warning: The following dependents of upgraded formulae are outdated but will not
+be upgraded because they are not bottled:
+  msodbcsql18
+(venv) val@Vals-MPB-14 Desktop % 
+```
+
+but seemed to work
+
+setup has psycopg[binary], yields:<br>
+psycopg-binary==3.1.18
+
+install setuptools:<br>
+ha.  Totally gone.  Rewrite your entire build and test.
 
