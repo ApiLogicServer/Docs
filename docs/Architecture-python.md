@@ -33,9 +33,30 @@ be upgraded because they are not bottled:
 
 but seemed to work
 
+bizarre show BLT when running app
+
+DocNotes no longer support \B (geesh) - used extensively to format help
+
 setup has psycopg[binary], yields:<br>
 psycopg-binary==3.1.18
 
-install setuptools:<br>
-ha.  Totally gone.  Rewrite your entire build and test.
+## Setup is gone
+
+You can no longer do this:
+
+```bash
+python3 setup.py sdist bdist_wheel
+
+python3 -m twine upload  --repository-url https://test.pypi.org/legacy/ --skip-existing dist/* 
+```
+
+
+install setuptools:
+
+* Totally gone.  Rewrite your entire build and test.
+* [Guide](https://packaging.python.org/en/latest/guides/modernize-setup-py-project/)
+* [Migration?](https://stackoverflow.com/questions/72832052/is-there-a-simple-way-to-convert-setup-py-to-pyproject-toml)
+  * [PDM](https://pdm-project.org/latest/) - another venv?
+  * [Hatch](https://hatch.pypa.io/latest/intro/#existing-project)
+
 
