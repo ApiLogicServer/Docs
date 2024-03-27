@@ -40,6 +40,19 @@ You can reduce or completely eliminate docker requirements by configuring the te
 
 &nbsp;
 
+## Install SetupTools
+
+As of release, the system uses setuptools.
+
+You may need verify build is installed.  You can install it manually:
+
+```bash
+python -m pip install build
+python -m pip install setuptools
+```
+
+&nbsp;
+
 ## Configuring the Tests
 
 The automated test (use the launch configuration `Build Load & Test`) performs a number of steps.  You can configure the test to run some or all of these by editing the `env_xxx.py` files shown here:
