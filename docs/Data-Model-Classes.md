@@ -96,6 +96,14 @@ If you see performance issues in loading the API, explore overriding s_count:
 
 ![performance - override s_count](images/model/override%20_s_count.png)
 
+## View Support
+
+Views are supported with the following restrictions:
+
+* They are created in `models.py` as tables, not classes
+* They are not part of API automation
+    * You can expose views with custom APIs, as [shown here](https://github.com/ApiLogicServer/demo/blob/main/api/customize_api.py){:target="_blank" rel="noopener"} -- search for *view
+
 &nbsp;
 
 ----

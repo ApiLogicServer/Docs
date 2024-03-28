@@ -127,8 +127,23 @@ All project elements are files - no database or binary objects.  So, you can sto
 
 You will typically want to customize and extend the created project.  Edit the files noted ih the diagram at the top of this page.
 
-Projects are created from a [system-supplied prototype](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype).  You can use your own prototype from git (or a local directory) using the ```from_git``` parameter.
+Projects are created from a [system-supplied prototype](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype){:target="_blank" rel="noopener"}.  You can use your own prototype from git (or a local directory) using the ```from_git``` parameter.
 
 ## Architecture
 
-The resultant projects operates as a (typically containerized) 3-tiered architecture, as [described here](Architecture-What-Is.md).
+The resultant projects operates as a (typically containerized) 3-tiered architecture, as [described here](Architecture-What-Is.md){:target="_blank" rel="noopener"}.
+
+## ApiLogicServer CLI
+
+API Logic Server consists of a CLI and various runtimes, as [described here](Architecture-What-Is.md){:target="_blank" rel="noopener"}.  The commands on this page (`ApiLogicServer create` etc) are part of the ApiLogicServer CLI.  
+
+The CLI operates in a standard way.  Consider the following command:
+
+```bash
+ApiLogicServer create --project-name=my-project --db-url=sqlite3-url
+```
+
+1. `create` is a command; discover the commands with `ApiLogicServer`
+2. `--project-name` is an option; discover the options with `ApiLogicServer create --help`
+
+> Note: as of release 10.3.45, you can use the abbreviation `als` instead of `ApiLogicServer`

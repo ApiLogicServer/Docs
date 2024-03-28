@@ -440,16 +440,17 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 This pre-release includes:
 
+* Python 3.12
 * Initial [keycloak integration](Keycloak-devnotes.md){:target="_blank" rel="noopener"} (wip - technology preview)
+    * Keycloak operates from import (not data), without requiring dev-network
 * CLI options now support dashes (eg, --project-name or --project_name)
-* Keycloak operates from import (not data)
-* Keycloak does not require dev-network
-* view generation (table objects in classes, not supported for APIs)
+* View generation (table objects in classes, not supported for API automation)
+* Early support for future UI enhancements with CLI commands `app-create` and `app-build`.  Do not use these.
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.24
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.45
 ```
 
 Or use (neither available currently):

@@ -28,9 +28,11 @@ Open the appropriate section below.
 
     Ensure you have these pre-reqs:
 
-    ```bash title="Verify 3.8 - 3.11"
+    ```bash title="Verify 3.8 - 3.12"
     python --version  # on macs, you may need to use Python3
     ```
+
+    > Note: Python 3.12 is supported as of release 10.3.45.
 
     If you need to install Python (it can be tricky), see [these notes](Tech-Install-Python.md).
     &nbsp;
