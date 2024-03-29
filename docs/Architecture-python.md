@@ -1,27 +1,20 @@
 
-Upgrading to major versions of [Python](https://www.python.org/downloads/){:target="_blank" rel="noopener"} (e.g., 3.12) is [non-trivial](https://pythonspeed.com/articles/upgrade-python-3.12/){:target="_blank" rel="noopener"}.  
+Upgrading to major versions of [Python](https://www.python.org/downloads/){:target="_blank" rel="noopener"} (e.g., 3.12) is [non-trivial](https://pythonspeed.com/articles/upgrade-python-3.12/){:target="_blank" rel="noopener"}.  I recently upgraded API Logic Server, and offer this information in hopes it can make things a bit easier for you.
 
-I recently upgraded API Logic Server, and offer this information in hopes in can make things a bit easier for you.
+There were 2 areas that required attention:
 
-My project is database oriented (using SQLAlchemy), so key risk areas usually revolve around [database library dependencies](https://pyreadiness.org/3.12/){:target="_blank" rel="noopener"}:
+1. **Packaging:** preparing a project for `pip install` access.  This issue was unique to Python 3.12 -- the old setup procedures have been removed
+2. **Dependent Libraries:** this is a consideration for any new release.  In general, I found [this page helpful](https://pyreadiness.org/3.12/)
 
-1. [Postgres - psycopg](https://stackoverflow.com/questions/77241353/psycopg2-importerror-python3-12-on-windows/77269958#77269958){:target="_blank" rel="noopener"}
+My project is database oriented (using SQLAlchemy), so key risk areas usually revolve database access.  MySQL and Oracle are generally straight-forward, but I always need to address [Postgres (psycopg)](https://stackoverflow.com/questions/77241353/psycopg2-importerror-python3-12-on-windows/77269958#77269958) and [Sql/Server (pyodbc)](https://pypi.org/project/pyodbc/).
 
-2. [Sql/Server - pyodbc](https://pypi.org/project/pyodbc/){:target="_blank" rel="noopener"}
-
-These affect:
-
-1. `requirements.txt`
-2. `setup.py`
-3. build and test procedures (e.g., per pyodbc install)
-
-In Python 3.12, there were additional issues with package and release.
+These affect `requirements.txt`, and product packaging.  Let's consider packaging first.
 
 &nbsp;
 
 ## Project Packaging
 
-My project requires I package it to [PyPi](https://pypi.org/project/ApiLogicServer/).  This has changed in Python 3.12.
+My project requires packaging for [PyPi](https://pypi.org/project/ApiLogicServer/).  This has changed in Python 3.12.
 
 Some quick background:
 
@@ -29,16 +22,16 @@ Some quick background:
 
 * This is 2 step process
 
-    1. Build local install files - this gathers your dependent libraries, CLI entry points, and so forth
-    2. Upload - this is changed: `python3 -m twine upload  --skip-existing dist/* `
+    1. **Build local install files:** this gathers your dependent libraries, CLI entry points, and so forth
+    2. **Upload to PyPi:** this is unchanged -- `python3 -m twine upload  --skip-existing dist/* `
 
-The first step has change in two ways - how you specify your dependent libraries, and how you run the setup process.
+The first step has changed in two ways - how you run the setup process, and how you specify your dependent libraries.
 
 &nbsp;
 
 ### Run setup (dependencies etc)
 
-This process prepares for the `python3 -m twine upload  --skip-existing dist/* ` by preparing local files that identify the libraries you require, CLI entry points, and so forth.
+This process prepares for `python3 -m twine upload...`, by creating local files that identify the libraries you require, CLI entry points, and so forth.
 
 In the past, you ran `python3 setup.py sdist bdist_wheel`; that's no longer supported.  It's replaced by:
 
@@ -50,11 +43,13 @@ python3 -m build
 
 ### `pyproject.toml` (not `setup.py`)
 
-In the last, you provided a `setup.py` file to identify the libraries you require, CLI entry points, and so forth.  `setup.py` is no longer supported in Python 3.12.  Instead, you must provide a `pyproject.toml` file, as described in [this guide](https://packaging.python.org/en/latest/guides/modernize-setup-py-project/).  The `python3 -m build` uses this file.
+In the past, your `setup.py` file identified the libraries you require, CLI entry points, and so forth.  `setup.py` is no longer supported in Python 3.12.  
 
-For me, this set off a mild panic - I was unable to find a migration utility, except for those looking to replace the entire `pip install` workflow.
+Instead, you must provide a `pyproject.toml` file, as described in [this guide](https://packaging.python.org/en/latest/guides/modernize-setup-py-project/).  The `python3 -m build` uses this file.
 
-As it turned out, migrating `setup.py` was not so painful by hand -- mainly a series of copy/paste procedures as shown above.  Here's a [working `pyproject.toml` shown in the diagram below](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/pyproject.toml).
+For me, this set off a mild panic - I was unable to find a setup-to-toml migration utility, except for those looking to replace the entire `pip install` workflow.
+
+As it turned out, migrating `setup.py` was not so painful by hand -- mainly a series of copy/paste procedures as shown below.  Here's a [working `pyproject.toml` shown in the diagram below](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/pyproject.toml).
 
 
 ![setup](images/internals/python-3-12.png)
@@ -63,14 +58,13 @@ As it turned out, migrating `setup.py` was not so painful by hand -- mainly a se
 
 ## `psycopg2-binary` - Postgres
 
-This is used by SQLAlchemy for Postgres access.  In `requirements.txt` and `pyproject.toml`, I had to change
+This is used by SQLAlchemy for Postgres access.  In addition to `pyproject.toml`, I had to change `requirements.txt`, as [shown here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/requirements.txt).  I changed `psycopg2-binary==2.9.5` to:
 
 ```python
-# psycopg2-binary==2.9.5  <--- 3.11
 psycopg2-binary==2.9.9
 ```
 
-My project is large, so I found it convenient to create a small `venv`, and test the install.
+My project is large, so I found it convenient to create a small `venv`, and test the install.  It tokk a few tries to straighten out the *-binary* bit.
 
 &nbsp;
 
@@ -101,8 +95,7 @@ but, it seemed to work.
 
 ### odbc driver
 
-I required the Microsoft 
-[odbc driver](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-ver16)
+I required the Microsoft [odbc driver](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-ver16)
 
 &nbsp;
 
