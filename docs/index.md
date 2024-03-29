@@ -270,7 +270,7 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 <summary>Install</summary>
 
-If you have the Python (version 3.8-3.11), install is standard ([more detailed instructions are here](Install-Express.md){:target="_blank" rel="noopener"}), typically:
+If you have the Python (version 3.8-3.12), install is standard ([more detailed instructions are here](Install-Express.md){:target="_blank" rel="noopener"}), typically:
 
 ```bash title="Install API Logic Server in a Virtual Environment"
 python -m venv venv                  # may require python3 -m venv venv
@@ -351,6 +351,8 @@ Then, you might like to try out some of our [dockerized test databases](https://
 <details markdown>
 
 <summary> Release Notes </summary>
+
+03/28/2024 - 10.03.46: Python 3.12, View support, CLI option-names, Keycloak preview
 
 02/24/2024 - 10.03.04: Issue 45 (RowDictMapper joins), Issue 44 (defaulting), Issue 43 (rebuild no yaml), Tests
 
