@@ -1,14 +1,16 @@
 
 Upgrading to major versions of [Python](https://www.python.org/downloads/){:target="_blank" rel="noopener"} (e.g., 3.12) is [non-trivial](https://pythonspeed.com/articles/upgrade-python-3.12/){:target="_blank" rel="noopener"}.  I recently upgraded API Logic Server, and offer this information in hopes it can make things a bit easier for you.
 
+> Aside: [API Logic Server](https://apilogicserver.github.io/Docs/) is open source.  It creates executable API / Admin App projects from a database with 1 command; customize with rules and Python in your IDE.
+
 There were 2 areas that required attention:
 
 1. **Packaging:** preparing a project for `pip install` access.  This issue was unique to Python 3.12 -- the old setup procedures have been removed
 2. **Dependent Libraries:** this is a consideration for any new release.  In general, I found [this page helpful](https://pyreadiness.org/3.12/)
 
-My project is database oriented (using SQLAlchemy), so key risk areas usually revolve database access.  MySQL and Oracle are generally straight-forward, but I always need to address [Postgres (psycopg)](https://stackoverflow.com/questions/77241353/psycopg2-importerror-python3-12-on-windows/77269958#77269958) and [Sql/Server (pyodbc)](https://pypi.org/project/pyodbc/).
+My project is database oriented (using SQLAlchemy), so key risk areas usually revolve database access.  MySQL and Oracle are generally straight-forward, but I always need to address [Postgres (psycopg)](https://stackoverflow.com/questions/77241353/psycopg2-importerror-python3-12-on-windows/77269958#77269958) and [Sql/Server (pyodbc)](https://pypi.org/project/pyodbc/).  These affect `requirements.txt`, and product packaging.  
 
-These affect `requirements.txt`, and product packaging.  Let's consider packaging first.
+Let's consider packaging first.
 
 &nbsp;
 
@@ -52,7 +54,7 @@ For me, this set off a mild panic - I was unable to find a setup-to-toml migrati
 As it turned out, migrating `setup.py` was not so painful by hand -- mainly a series of copy/paste procedures as shown below.  Here's a [working `pyproject.toml` shown in the diagram below](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/pyproject.toml).
 
 
-![setup](images/internals/python-3-12.png)
+![setup](images/internals/python-3-12.jpg)
 
 &nbsp;
 
