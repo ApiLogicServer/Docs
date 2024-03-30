@@ -272,7 +272,7 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 ## Install and Verify
 
-If you have the Python (version 3.8-3.12), install is standard ([more detailed instructions are here](Install-Express.md){:target="_blank" rel="noopener"}), typically:
+If you have the correct Python (version 3.8-3.12), install is standard ([more detailed instructions here](Install-Express.md){:target="_blank" rel="noopener"}):
 
 ```bash title="Install API Logic Server in a Virtual Environment"
 python3 -m venv venv                 # windows: python -m venv venv
@@ -280,9 +280,9 @@ source venv/bin/activate             # windows: venv\Scripts\activate
 python -m pip install ApiLogicServer
 ```
 
-<br>Now, verify it's working - create and run the demo:
+<br>Then, verify it's working - create and run the demo:
 
-```bash title="Create and Run Demo"
+```bash title="Verify - Create and Run Demo"
 ApiLogicServer create --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
 code sample_ai
 ```
