@@ -8,13 +8,13 @@ For example, use your IDE's terminal window positioned at your project root:
 
 ```bash
 cd <project-root>  # typically done in your IDE
-ApiLogicServer add-auth --db_url=mysql+pymysql://root:p@localhost:3306/authdb
+ApiLogicServer add-auth --db-url=mysql+pymysql://root:p@localhost:3306/authdb
 ```        
 
 You can use the SQLite version:
 ```bash
 cd <project-root>  # typically done in your IDE
-ApiLogicServer add-auth --db_url=auth 
+ApiLogicServer add-auth --db-url=auth 
 ```
 
 &nbsp;
@@ -41,7 +41,7 @@ You might want to begin by exploring the samples below.
 
 &nbsp;
 
-### Nortwind Sample
+### Northwind Sqlite Sample
 
 Security is automatically enabled when building the sample app.  Explore / test it as described in [Authorization](Security-Authorization.md#sample).
 
@@ -62,25 +62,9 @@ The `add-auth` command will:
 
 &nbsp;
 
-### Docker Databases
+### Postgres Docker `northwind`
 
-You can use the [docker databases](Database-Docker.md){:target="_blank" rel="noopener"} as shown below.  (If you haven't already done so, recall you must first `docker network create dev-network  # only required once`)
-
-&nbsp;
-
-**1. MySQL `classicmodels`**
-
-```bash
-docker run --name mysql-container --net dev-network -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=p apilogicserver/mysql8.0:latest
-
-ApiLogicServer create --project_name=classicmodels  --db_url=classicmodels
-
-cd classicmodels
-ApiLogicServer add-auth --project_name=. --db_url=mysql+pymysql://root:p@localhost:3306/authdb
-```
-&nbsp;
-
-**2. Postgres `northwind`**
+You can use the [docker databases](Database-Docker.md){:target="_blank" rel="noopener"} as shown below.  (If you haven't already done so, recall you must first `docker network create dev-network  # only required once`).
 
 ```bash
 docker run -d --name postgresql-container --net dev-network -p 5432:5432 -e PGDATA=/pgdata -e POSTGRES_PASSWORD=p apilogicserver/postgres:latest
@@ -91,6 +75,33 @@ cd postgres-nw
 ApiLogicServer add-auth --project_name=. --db_url=postgresql://postgres:p@localhost/authdb
 ```
 
+Let's review how this database was created.
+
+**1. Create the Postgres NW database**
+
+You can find the creation information here:
+
+![PostgreSQL-authdb-create](images/security/postgres/PostgreSQL-authdb-create.png)
+
+After using the Postgres CLI to create the database, verify it exists:
+
+![PostgreSQL-authdb](images/security/postgres/PostgreSQL-authdb.png)
+
+
+&nbsp;
+
+### MySQL docker `classicmodels`
+
+As noted above, you can use the [docker databases](Database-Docker.md){:target="_blank" rel="noopener"} as shown below.  (If you haven't already done so, recall you must first `docker network create dev-network  # only required once`).
+
+```bash
+docker run --name mysql-container --net dev-network -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=p apilogicserver/mysql8.0:latest
+
+ApiLogicServer create --project_name=classicmodels  --db_url=classicmodels
+
+cd classicmodels
+ApiLogicServer add-auth --project_name=. --db_url=mysql+pymysql://root:p@localhost:3306/authdb
+```
 
 &nbsp;
 
