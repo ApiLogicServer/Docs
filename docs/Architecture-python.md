@@ -37,6 +37,11 @@ In the past, you ran `python3 setup.py sdist bdist_wheel`; that's no longer supp
 python3 -m build
 ```  
 
+You may first need:
+```bash
+python -m pip install build
+```
+
 &nbsp;
 
 ### `pyproject.toml` (not `setup.py`)
