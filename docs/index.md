@@ -289,6 +289,11 @@ code sample_ai
 
 Then explore the *demos, samples and tutorials*, below.
 
+<br>Or, try out the new [API Logic Project Manager](Manager.md){:target="_blank" rel="noopener"}:
+
+```bash title="API Logic Project Manager"
+als start
+```
 </details>
 
 <details markdown>

@@ -35,6 +35,7 @@ nav:
     - "Sample Systems": Data-Model-Examples.md
   - 0. ApiLogicServer create:
     - "Create": Project-Structure.md
+    - "Manager": Manager.md
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
     - "Builders": Project-Builders.md

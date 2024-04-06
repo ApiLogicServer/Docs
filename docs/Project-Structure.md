@@ -51,6 +51,19 @@ The [Admin App](Admin-Customization.md/#edit-adminyaml) is also a model (not ext
 
 &nbsp;
 
+## Create From Model
+
+In addition to creating projects from databases, you can also create them from SQLAlchemy models.  For example:
+
+* Copilot can produce models
+* Many Python programmers prefer to use SQLAlchemy as their database tool
+
+```bash title="Create from Model"
+als create --project-name=sample_ai --from-model=sample_ai.py --db-url=sqlite
+```
+
+&nbsp;
+
 ## Project Structure
 
 When you create an ApiLogicProject, the system creates a project like this that you customize in your IDE:
