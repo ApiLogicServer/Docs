@@ -1,4 +1,6 @@
-As of release 10.03.66, you can:
+Modern IDEs are remarkably powerful and user-friendly.  Many developers use them as an alternative the their OS finder/explorer.
+
+As of release 10.03.66, you can use your IDE to create and customize API Logic Projects:
 
 ```bash title="Start the API Logic Project Manager"
 als start
