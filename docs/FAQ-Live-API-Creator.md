@@ -1,5 +1,13 @@
 !!! pied-piper ":bulb: TL;DR - Migration from CA/Live API Creator (LAC)"
 
+      CA/Live API Creator was a compelling product that offered instant API creation.  We believe API Logic Server is a superior approach, because:
+
+      1.  **IDE-driven vs Studio: **
+
+      2. **Self-serve API: **
+
+      3. **File-based vs. repository: **
+      
       CA/Live API Creator has reached end-of-life and soon end-of-support.  Customers seeking to migrate have many options for creating APIs.  API Logic Server offers a migration path worth considering:
 
       * API Logic Server provides ***unique* support for declarative logic and security**
