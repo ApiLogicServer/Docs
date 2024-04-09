@@ -2,11 +2,11 @@
 
       CA/Live API Creator was a compelling product that offered instant API creation.  We believe API Logic Server is a superior approach, because:
 
-      1.  **IDE-driven vs Studio: **
+      1.  **IDE-driven vs Studio:** modern IDEs provide all the services required to maintain ease of use in a standards-based environment
 
-      2. **Self-serve API: **
+      2. **Self-serve API:** users (for apps, integration, remote access) are not reliant on custom server development for multi-table APIs
 
-      3. **File-based vs. repository: **
+      3. **File-based vs. repository:** all artifacts, including rules, are expressed in files that can be managed in GitHub
       
       CA/Live API Creator has reached end-of-life and soon end-of-support.  Customers seeking to migrate have many options for creating APIs.  API Logic Server offers a migration path worth considering:
 
