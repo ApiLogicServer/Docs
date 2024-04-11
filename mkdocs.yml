@@ -36,6 +36,7 @@ nav:
   - 0. ApiLogicServer create:
     - "Create": Project-Structure.md
     - "Manager": Manager.md
+    - "Create With Copilot": Project-Create-Copilot.md
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
     - "Builders": Project-Builders.md

@@ -50,7 +50,7 @@ Use ChatGPT to generate SQL commands for database creation:
 
     Create a few rows of only customer and product data.
 
-    Enforce the Check Credit requirement:
+    Use Logic Bank to enforce the Check Credit requirement:
 
     1. Customer.Balance <= CreditLimit
     2. Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
@@ -59,7 +59,7 @@ Use ChatGPT to generate SQL commands for database creation:
     5. Store the Items.UnitPrice as a copy from Product.UnitPrice
 &nbsp;
 
-This creates standard SQL, [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/sample_ai/database/chatgpt/sample_ai.sql){:target="_blank" rel="noopener"}.  Copy the generated SQL commands into a file, say, `sample-ai.sql`:
+This creates standard SQL, [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/sample_ai/database/chatgpt/sample_ai.sql){:target="_blank" rel="noopener"}.  Copy the generated SQL commands into a file, say, `sample-ai.sql`.  (As always with AI, eyeball the result - for example, you may need to remove a command like "CREATE DATABASE store.db;").
 
 Then, create the database:
 
