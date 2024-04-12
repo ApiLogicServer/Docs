@@ -152,7 +152,7 @@ docker run  $PWD/projects:/projects -it apilogicserver/api_logic_server bash -c 
 For users to be able to authenticate with JWTs signed by keycloak, we have to download the JWK signing key from keycloak and use that to validate the JWTs. 
 JWT validation is implemented in [projects/KCALS/security/system/authentication.py](projects/KCALS/security/system/authentication.py). 
 
-By default, apilogicserver authentication uses a user database. Our users are defined in keycloak however. I had to change [auth_provider.py](auth_provider.py) for this to (kinda) work.
+By default, apilogicserver authentication uses a user database. Our users are defined in keycloak however. I had to change auth_provider.py for this to (kinda) work.
 
 &nbsp;
 

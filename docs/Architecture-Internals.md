@@ -41,7 +41,7 @@ It's basically straightforward, _though note_ the `cp` command which copies the 
     cp -r ../build api_logic_server_cli/create_from_model/safrs-react-admin-npm-build
 ```
 
-For more information, [see Admin App Reuse](Arthitecture-add-app-reuse.md){:target="_blank" rel="noopener"}.
+For more information, [see Admin App Reuse](Architecture-admin-app-reuse.md/#4-sra-runtime-extraced-from-project){:target="_blank" rel="noopener"}.
 
 > Note: `curl` must be installed for this procedure.
 

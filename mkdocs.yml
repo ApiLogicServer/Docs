@@ -160,6 +160,10 @@ nav:
       - "Conference": Tech-Conference.md
       - "Optimistic Locking": Optimistic-Locking.md
       - "Old Home": Product-Detail.md
+      - Page Links:
+        - Tech-Agile.md
+        - Tech-Learning.md
+        - Tutorial-3.md
 markdown_extensions:
   - toc:
       baselevel: 2
