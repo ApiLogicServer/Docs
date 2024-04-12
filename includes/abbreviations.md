@@ -55,3 +55,4 @@
 *[Maintenance Automation]: Rules are automatically re-ordered based on dependencies, and re-used over all relevant transactions.
 *[App Automation]: Create Admin Apps with 1 command - multi-page, multi-table.
 *[Microservice Automation]: Creation of customizable, executable projects with a single command, providing App Automation, API Automation and Logic Automation.
+*[Deployment Automation]: Scripts automatically created to containerize your project, and deploy to Azure.

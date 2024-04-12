@@ -30,6 +30,8 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     3. ***Logic Automation:*** unique **rules - 40X** more concise multi-table derivations and constraints.
 
+    4. ***Deployment Automation:*** scripts created to containerize your system, and deploy to Azure.
+
     Unlike frameworks, weeks-to-months of complex development is no longer necessary.  <br>
     API Logic Server provides unique automation **for instant integrations and app backends**.
 
@@ -78,7 +80,7 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 <details markdown>
 
-<summary>Quick Screenshot Tour of using API Logic Server: Create, Run, Customize</summary>
+<summary>Quick Screenshot Tour of using API Logic Server: Create, Run, Customize, Deploy</summary>
 
 ![Toaster](images/sample-ai/toaster.jpg){: style="height:201px;width:300px"; align=right }
 
@@ -171,6 +173,24 @@ Integrate internal systems with **Kafka**, using business logic events:
 ![Messages](images/integration/order-to-shipping.jpg)
 
 For more on integration, explore running code in the [Application Integration Sample Tutorial](Sample-Integration.md){:target="_blank" rel="noopener"}.
+
+</details>
+
+&nbsp;
+
+**4. Deploy: Deployment Automation**
+
+The system [creates scripts](DevOps-Automation.md) to containerize your project, and deploy it to Azure.
+
+<details markdown>
+
+<summary>See Deployment Automation</summary>
+
+&nbsp;
+
+The `ApiLogicServer create` command builds scripts for containerizing your project, testing it locally, and deploying to Azure:
+
+![Container Overview](images/devops/devops-azure.png)
 
 </details>
 
