@@ -86,7 +86,7 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 **1. Create: *Microservice Automation***
 
-Plug into your database: ***Microservice Automation*** means create projects instantly, with a single CLI command:
+Plug into your database, or database model: ***Microservice Automation*** means create projects instantly, with a single CLI command:
 
 ```bash
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw
