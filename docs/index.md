@@ -28,7 +28,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
     **Customize in your IDE:** use standard tools (Python, Flask, SQLAlchemy, GitHub and Docker), plus<br>
 
-    3. ***Logic Automation:*** unique **rules - 40X** more concise multi-table derivations and constraints.
+    3. ***Logic Automation:*** unique **rules - 40X** more concise multi-table derivations and constraints. :trophy:
 
     4. ***Deployment Automation:*** scripts created to containerize your system, and deploy to Azure.
 
