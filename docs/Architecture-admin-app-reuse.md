@@ -52,7 +52,7 @@ Further, so that admin app changes do not cause unnecessary changes to ApiLogicS
 
 Recall that the Admin App is defined by a yaml file.  The actual app is a minified React Admin JavaScript app, [safrs-react-admin](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"}.
 
-It's about 34MB.  Not huge, but 10X bigger than most API Logic Projects.  So, we want to share it, making it available in the [run-venv](Architecture-venv/#run-venv){:target="_blank" rel="noopener"}.
+It's about 34MB.  Not huge, but 10X bigger than most API Logic Projects.  So, we want to share it, making it available in the [run-venv](Architecture-venv.md/#run-venv){:target="_blank" rel="noopener"}.
 
 Moreover, we don't want it to take up space in the ApiLogicServer git repository.
 
