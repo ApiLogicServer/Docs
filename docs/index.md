@@ -19,14 +19,14 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 !!! pied-piper ":bulb: Instant Microservices, for Integration and App Backends"
 
-    For Developers and their organizations seeking to **increase business agility,**
+    For Developers and their organizations seeking to **increase business agility,** API Logic Server provides 
 
-    API Logic Server provides ***Microservice Automation:*** create executable projects with *1 command*:
+    ***Microservice Automation:*** create executable projects with *1 command*:
     
     1. ***API Automation:*** crud for each table, with pagination, optimistic locking, filtering and sorting, and
-    2.  ***App Automation:*** a multi-page, multi-table Admin App.  <br>
+    2.  ***App Automation:*** a multi-page, multi-table Admin App.  <br><br>
 
-    **Customize in your IDE:** use standard tools (Python, Flask, SQLAlchemy, GitHub and Docker), plus<br>
+    **Customization in your IDE:** use standard tools (Python, Flask, SQLAlchemy, GitHub and Docker), plus
 
     3. ***Logic Automation:*** unique **rules - 40X** more concise multi-table derivations and constraints. :trophy:
 
