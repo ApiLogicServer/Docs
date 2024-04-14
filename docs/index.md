@@ -40,6 +40,61 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
+# Positioning
+
+<details markdown>
+
+<summary>Enterprise Low Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click Here</summary>
+
+We are aware you have many choices for delivering systems.  API Logic Server provides Enterprise-class features, with the agility associated with Low Code.
+
+![quick tour](images/nutshell/positioning.png)
+
+**Enterprise-class Architecture, Standards and Flexiblity**
+
+API Logic Server creates projects with a ***modern, service-based architecture***.  Systems are:
+
+* 3-tiered by default, with logic shared and enforced in the middle tier.  This unlocks value beyond traditional forms, including services, AI-driven bots, etc.
+
+* Servers are stateless for scalability
+
+* Scripts are provided to automate containterization
+
+Developers appreciate a ***standards-based development*** approach.
+
+* Projects are customized using standard IDEs, leveraging code completion for declaring logic. 
+
+* Projects can utilize modern tooling, such as Git for source control, testing tools, etc.
+
+Projects provide the ***flexibility of a framework.*** In fact, 
+
+* Servers are based on Flask, so you can add new endpoints as required.  
+
+* You have the full power of Python and its many libaries to address requirements such as integration (e,g, with message-based integration with systems like Kafka)
+
+&nbsp;
+
+**Agility of Low Code** 
+
+Unlike Low Code systems, API Logic Server:
+
+* Provides declarative logic: 
+
+* Automates standard archictures
+
+* Is IDE based, unlocking a wealth of tooling for customization
+
+* Automates Instant Admin Apps, eliminating the need to use (and learn) a screen painter, and are executeable instantly after the `ApiLogicServer create` command.
+
+And, for systems requiring highly customized interfaces for Business Intelligence, API Logic Server works with Low Code. 
+
+> Flexibility of a framework, Agility of Low Code
+
+</details>
+---
+
+&nbsp;
+
 # Overview - Videos, Tour
 
 API Logic Server is an open source Python project.  It is a **CLI** for project creation, and set of **runtimes** (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
