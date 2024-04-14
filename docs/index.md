@@ -46,15 +46,18 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 <summary>Enterprise Low Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click Here</summary>
 
-We are aware you have many choices for delivering systems.  API Logic Server provides Enterprise-class features, with the agility associated with Low Code.
+We are aware you have many choices for delivering systems.  API Logic Server provides Enterprise-class features, with the **flexibility of a framework, and the agility of Low Code.**
 
 ![quick tour](images/nutshell/positioning.png)
 
 **Enterprise-class Architecture, Standards and Flexiblity**
 
 API Logic Server creates projects with a ***modern, service-based architecture***.  Systems are:
+![Iceberg](images/api/iceberg-api.jpg){: style="height:200px;width:200px"; align=right }
 
-* 3-tiered by default, with logic *shared and enforced in the middle tier.*  Unlike manually coded frameworks which may result in non-sharable logic on UI controllers, this unlocks value beyond traditional forms, including services, AI-driven bots, etc.
+* API-enabled by default; self-serve means most new requests will not require custom api development
+
+* *Shared logic enforced in the middle tier:*  unlike manually coded frameworks which may result in non-sharable logic on UI controllers, shared logic enables not only traditional forms, but also services, AI-driven bots, etc.
 
 * Servers are stateless for scalability
 
@@ -66,7 +69,7 @@ Developers appreciate a ***standards-based development*** approach.
 
 * Projects can utilize modern tooling, such as Git for source control, testing tools, etc.
 
-Projects provide the ***flexibility of a framework.*** In fact, 
+Developers require the ***flexibility of a framework.*** In fact, 
 
 * Servers are based on Flask, so you can add new endpoints as required.  
 
@@ -78,17 +81,17 @@ Projects provide the ***flexibility of a framework.*** In fact,
 
 Unlike Low Code systems, API Logic Server:
 
-* Provides *unique* :trophy: Logic Automation: if your system requires anything more than trivial logic, conventional Low Code is not addressing the backend half of your system
+![Not Moving](images/nutshell/why-not-moving.png){: style="height:150px;width:250px"; align=right }
 
-* Automates standard archictures
+* Provides *unique* :trophy: Logic Automation: if your system requires anything beyond trivial logic, conventional Low Code front end automation is not enough.  You simply won't move at the speed you need.
+
+* Automates standard architectures
 
 * Is IDE based, unlocking a wealth of tooling for customization
 
 * Automates Instant Admin Apps, eliminating the need to use (and learn) a screen painter, and are executeable instantly after the `ApiLogicServer create` command.
 
 And, for systems requiring highly customized interfaces for Business Intelligence, API Logic Server works with Low Code. 
-
-> Flexibility of a framework, Agility of Low Code
 
 </details>
 ---
@@ -137,7 +140,7 @@ Click the image below for a video tutorial, showing complete project creation, e
 
 <summary>Quick Screenshot Tour of using API Logic Server: Create, Run, Customize, Deploy</summary>
 
-![Toaster](images/sample-ai/toaster.jpg){: style="height:201px;width:300px"; align=right }
+![Toaster](images/sample-ai/toaster.jpg){: style="height:150px;width:250px"; align=right }
 
 **1. Create: *Microservice Automation***
 
@@ -178,7 +181,7 @@ Unlike frameworks which require significant time and expertise, the create comma
 
 **3. Customize: Logic Automation, Python Flexibility**
 
-Customize [created projects](Project-Structure.md){:target="_blank" rel="noopener"} in your IDE, with Python and standard libaries.  Significantly, Microservice Automation also includes:.
+Customize [created projects](Project-Structure.md){:target="_blank" rel="noopener"} in your IDE, with Python and standard libaries.  Significantly, Microservice Automation also includes:
 
 * ***Logic Automation*** means you customize logic using **Rules and Python** in your IDE
 
