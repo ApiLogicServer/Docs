@@ -54,7 +54,7 @@ We are aware you have many choices for delivering systems.  API Logic Server pro
 
 API Logic Server creates projects with a ***modern, service-based architecture***.  Systems are:
 
-* 3-tiered by default, with logic shared and enforced in the middle tier.  This unlocks value beyond traditional forms, including services, AI-driven bots, etc.
+* 3-tiered by default, with logic *shared and enforced in the middle tier.*  Unlike manually coded frameworks which may result in non-sharable logic on UI controllers, this unlocks value beyond traditional forms, including services, AI-driven bots, etc.
 
 * Servers are stateless for scalability
 
@@ -78,7 +78,7 @@ Projects provide the ***flexibility of a framework.*** In fact,
 
 Unlike Low Code systems, API Logic Server:
 
-* Provides declarative logic: 
+* Provides *unique* :trophy: Logic Automation: if your system requires anything more than trivial logic, conventional Low Code is not addressing the backend half of your system
 
 * Automates standard archictures
 
