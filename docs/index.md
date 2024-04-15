@@ -709,6 +709,7 @@ Many thanks to
 
 There are several articles that provide some orientation to API Logic Server:
 
+* [Instant APIs With Copilot and API Logic Server](https://dzone.com/articles/instant-apis-with-copilot-and-api-logic-server)
 * [Instant App Backends With API and Logic Automation](https://dzone.com/articles/instant-app-backends-with-api-and-logic-automation)
 * [Instant Integrations With API and Logic Automation](https://dzone.com/articles/instant-integrations-with-api-automation)
 * [AI and Rules for Agile Microservices in Minutes](https://dzone.com/articles/ai-and-rules-for-agile-microserves)
