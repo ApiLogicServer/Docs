@@ -40,13 +40,13 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 &nbsp;
 
-# Positioning
+# Enterprise Low Code
 
 <details markdown>
 
-<summary>Enterprise Low Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click Here</summary>
+<summary>Enterprise Low Code - Flexibility of a framework, and the agility of Low Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click Here</summary>
 
-We are aware you have many choices for delivering systems.  API Logic Server provides Enterprise-class features, with the **flexibility of a framework, and the agility of Low Code.**
+We are aware you have many choices for delivering systems.  API Logic Server provides Enterprise-class features that provide developers the agility of Low Code.
 
 ![quick tour](images/nutshell/positioning.png)
 
@@ -71,9 +71,9 @@ Developers appreciate a ***standards-based development*** approach.
 
 Developers require the ***flexibility of a framework.*** In fact, 
 
-* Servers are based on Flask, so you can add new endpoints as required.  
+* API Logic Server is based on Flask, so you can add new endpoints as required.  
 
-* You have the full power of Python and its many libaries to address requirements such as integration (e,g, with message-based integration with systems like Kafka)
+* You have the full power of Python and its many libaries, enabling you to address requirements such as integration (e,g, with message-based integration with systems like Kafka)
 
 &nbsp;
 
@@ -83,13 +83,13 @@ Unlike Low Code systems, API Logic Server:
 
 ![Not Moving](images/nutshell/why-not-moving.png){: style="height:150px;width:250px"; align=right }
 
-* Provides *unique* :trophy: Logic Automation: if your system requires anything beyond trivial logic, conventional Low Code front end automation is not enough.  You simply won't move at the speed you need.
+* Provides *unique* :trophy: Logic Automation: for anything beyond trivial logic, missing backend logic automation means your project will simply not get moving.
 
-* Automates standard architectures
+* Automates modern, standard architectures
 
 * Is IDE based, unlocking a wealth of tooling for customization
 
-* Automates Instant Admin Apps, eliminating the need to use (and learn) a screen painter, and are executeable instantly after the `ApiLogicServer create` command.
+* Automates Instant Admin Apps, eliminating the need to use (and learn) a screen painter, and are executeable instantly
 
 And, for systems requiring highly customized interfaces for Business Intelligence, API Logic Server works with Low Code. 
 
