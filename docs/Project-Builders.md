@@ -122,7 +122,7 @@ def extended_builder(db_url, project_directory):
     tvf_builder.run()
 ```
 
-This particular example creates this [tvf file](https://github.com/valhuber/ApiLogicServer/blob/main/tvf.txt) in the api folder.
+This particular example creates this [tvf file](https://github.com/valhuber/ApiLogicServer/blob/main/examples/tvf.txt) in the api folder.
 
 Updates `api/customize_api.py` to expose it, as shown below:
 
