@@ -35,6 +35,7 @@ Open the appropriate section below.
     > Note: Python 3.12 is supported as of release 10.3.45.
 
     If you need to install Python (it can be tricky), see [these notes](Tech-Install-Python.md).
+
     &nbsp;
 
     __Install API Logic Server in a Virtual Environment__
@@ -47,11 +48,25 @@ Open the appropriate section below.
     python -m pip install ApiLogicServer
     ```
 
-    If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md).
+    Notes:
+    
+    1. Windows users will need to run the terminal in Admin mode, with scripts enabled
+    2. If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md)
 
     &nbsp;
 
-    __Create the Sample Project__
+    __Start the ApiLogicServer manager__
+
+    ```bash title="Start Manager"
+    ApiLogicServer start
+    ```
+
+    This will open your IDE; open the readme and follow the directions to create projects.
+
+
+    &nbsp;
+    
+    __Or, create the Sample Project__
 
     ```bash title="Create Tutorial"
     ApiLogicServer create --project_name=  --db_url=
