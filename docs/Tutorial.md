@@ -38,7 +38,7 @@ A unique feature of API Logic Server is provision for spreadsheet-like rules, cu
 
 # Development Overview
 
-[![Using VS Code](https://github.com/valhuber/apilogicserver/wiki/images//creates-and-runs-video.jpg?raw=true?raw=true)](https://youtu.be/tOojjEAct4M "Using VS Code with the ApiLogicServer container - click for video")
+[![Using VS Code](images/creates-and-runs-video.png)](https://youtu.be/tOojjEAct4M "Using VS Code with the ApiLogicServer container - click for video")
 
 The diagram above summarizes the create / run / customize process.
 
