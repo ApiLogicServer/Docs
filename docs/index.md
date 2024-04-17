@@ -50,7 +50,7 @@ We are aware you have many choices for delivering systems.  API Logic Server pro
 
 ![quick tour](images/nutshell/positioning.png)
 
-**Enterprise-class Architecture, Standards and Flexiblity**
+**Enterprise-class Architecture, Standards and Flexibility**
 
 API Logic Server creates projects with a ***modern, service-based architecture***.  Systems are:
 ![Iceberg](images/api/iceberg-api.jpg){: style="height:200px;width:200px"; align=right }
