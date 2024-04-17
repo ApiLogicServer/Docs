@@ -444,6 +444,10 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 <summary> Release Notes </summary>
 
+04/16/2024 - 10.03.80: cli issues in create-and-run/run, Oracledb 2.1.12
+
+04/05/2024 - 10.03.66: ApiLogicServer start, als create from-model (eg copilot) 
+
 03/28/2024 - 10.03.46: Python 3.12, View support, CLI option-names, Keycloak preview
 
 02/24/2024 - 10.03.04: Issue 45 (RowDictMapper joins), Issue 44 (defaulting), Issue 43 (rebuild no yaml), Tests
