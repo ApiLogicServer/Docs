@@ -23,7 +23,7 @@ nav:
         - Execute From Terminal: Execute.md
     - Express Eval (unavail): Install-Eval.md
   - Demos, Tutorial, Samples:
-    - "AI Sample": Sample-AI.md
+    - "AI Demo": Sample-AI.md
     - "Tutorial": Tutorial.md
     - "Sample DB, Project": Sample-Database.md
     - "Sample Integration": Sample-Integration.md
@@ -133,7 +133,8 @@ nav:
     - "Keycloak DevNotes": Keycloak-devnotes.md
     - "API Appliance": Tech-Toaster.md
     - "Ontimize Overview": Ontimize-Overview.md
-    - Tech-AI.md
+    - "AI Delivers Agile": Tech-AI.md
+    - "Sample AI Demo ChatGPT": Sample-AI-ChatGPT.md
     - "AI-driven Auto mysql": Tech-AI-mysql.md
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
     - "Python as a DSL": Tech-DSL.md

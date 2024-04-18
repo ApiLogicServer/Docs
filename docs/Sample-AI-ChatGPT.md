@@ -1,62 +1,85 @@
-!!! pied-piper ":bulb: Instant API Services with Copilot and API Logic Server"
+---
+title: One Day Projects
+Description: Create a project instantly using AI and API/Logic Automation. Customize later with Python, Rules, and Flask, which is open-source
+Version: 1.1
+---
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
 
-    Creating an API and an admin app using a framework takes too long, and is far too complex. AI and automation can create systems in minutes rather than weeks or months, dramatically simpler, and fully customizable with tools and approaches you already know.
+# AI Sample
 
-    In this tutorial, we'll show how to create a complete system using VS Code, Copilot, and API Logic Server (open source). We'll then add business logic with rules, and use Python to add a custom endpoint and Kafka integration.
+Here's how to use AI and API Logic Server to create complete running systems in minutes:
 
-# Overview
+1. Use **ChatGPT for *Schema Automation:*** create a database schema from natural language
+2. Use **API Logic Server *Microservice Automation*:** create working software *with 1 command:*
+    * ***App Automation:*** a multi-page, multi-table admin app
+    * ***API Automation:*** a JSON:API - crud for each table, with filtering, sorting, optimistic locking and pagination
+3. **Customize** the project with *your IDE*:
+    * ***Logic Automation* using rules:** declare spreadsheet-like rules in Python for multi-table derivations and constraints - **40X more concise** than code
+    * Use Python and standard libraries (Flask, SQLAlchemy), and debug in your IDE
+4. **Iterate** your project:
+    * Revise your database design and logic
+    * **Integrate** with B2B partners and internal systems
 
-As shown below, you can submit a Natural Language description of a database to Copilot. This creates a Python data model (SQLAlchemy classes).  
 
-You then use API Logic Server CLI to create an executable project from the model. Alternatively, you can create a project by identifying an existing database.
-
-The project is executable, providing an API and an admin app, enabling agile collaboration and unblocking custom app dev.
-
-
-[![Microservice Automation](images/sample-ai/copilot/overview.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
+[![Microservice Automation](images/sample-ai/ai-driven-automation-video.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
 
 This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.  Let's see how.
 
 &nbsp;
 
-**Setup**
-
-To begin, install Python and VSCode. Optionally, install Copilot: it's moderately priced and you can execute this tutorial without it. But, it provides the Natural Language services shown here - it's quite a lot of fun to explore, so you might just want to splurge and acquire it.
-
-Then, install the API Logic Server and start it:
-
-```bash title="Install and start API Logic Server"
-python3 -m venv venv                 # windows: python -m venv venv 
-source venv/bin/activate             # windows: venv\Scripts\activate 
-python -m pip install ApiLogicServer
-
-ApiLogicServer start
-```
-
-This will launch the API Logic Server in VSCode. We've moved the Copilot chat pane to the right.
-
-![Welcome](images/sample-ai/copilot/welcome.jpg)
 ---
 
-## 1. Create Database Model with Copilot
+## 1. AI: Schema Automation
 
-The README page includes the Natural Language Text to supply to Copilot; paste it, and press enter. It's shown in the diagram below in dark gray ("Use SQLAlchemy to...").
+You can use an existing database, or create a new one with ChapGPT or your database tools.
 
-Copilot creates the SQLAlchemy model code.
+Use ChatGPT to generate SQL commands for database creation:
 
-Paste the generated code into a new model file called `sample_ai.py` (step 2 in the screenshot below):
+!!! pied-piper "Create database schemas from ChatGPT -- provide this prompt"
 
-![Welcome](images/sample-ai/copilot/copilot.jpg)
+    Create a sqlite database for customers, orders, items and product
+    
+    Hints: use autonum keys, allow nulls, Decimal types, foreign keys, no check constraints.
+
+    Include a notes field for orders.
+
+    Create a few rows of only customer and product data.
+
+    Use Logic Bank to enforce the Check Credit requirement:
+
+    1. Customer.Balance <= CreditLimit
+    2. Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
+    3. Order.AmountTotal = Sum(Items.Amount)
+    4. Items.Amount = Quantity * UnitPrice
+    5. Store the Items.UnitPrice as a copy from Product.UnitPrice
+&nbsp;
+
+This creates standard SQL, [like this](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/sample_ai/database/chatgpt/sample_ai.sql){:target="_blank" rel="noopener"}.  Copy the generated SQL commands into a file, say, `sample-ai.sql`.  (As always with AI, eyeball the result - for example, you may need to remove a command like "CREATE DATABASE store.db;").
+
+Then, create the database:
+
+```bash
+sqlite3 sample_ai.sqlite < sample_ai.sql
+```
+
+> You may not have the sqlite cli; you can proceed to step 2 and the system will use a pre-installed database.
+
+&nbsp;
 
 ## 2. API Logic Server: Create
 
-Create your project (step 3 in the screenshot above) by entering the following into the bottom terminal pane (als is a synonym for ApiLogicServer):
+Given a database, API Logic Server creates an executable, customizable project with the following single command:
 
 ```bash
-$  als create --project-name=sample_ai --from-model=sample_ai.py --db-url=sqlite
+$ ApiLogicServer create --project_name=sample_ai --db_url=sqlite:///sample_ai.sqlite
 ```
 
-This creates a project and opens it in your IDE, such as VSCode (see below).  The project is now ready to run - press F5.  It includes:
+This creates a project you can open with your IDE, such as VSCode (see below).  The project is now ready to run - press F5.  It includes:
 
 * a self-serve **API** ready for UI developers, and
 * an **Admin app** ready for Business User Collaboration
