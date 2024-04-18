@@ -103,6 +103,18 @@ UI App Developers can create custom apps immediately, using swagger to design th
 
 So, we have working software, in minutes.  It's running, but we really can't *deploy* it until we have logic and security.  Which brings us to customization.
 
+API Logic Server contains a rule engine. You can declare rules in Python, using IDE code completion services.  
+
+It also provides value: spreadsheet-like rules reduce logic code (half the app) by 40X.
+
+But, we can have much more fun.  As shown below, we can ask Copilot to create these rules for us, and paste them into a pre-created file:
+
+![Swagger](images/sample-ai/copilot/add-rules.png)
+
+&nbsp;
+
+**Apply Remaining Customizations**
+
 Projects are designed for customization, using standards: Python, frameworks (e.g., Flask, SQLAlchemy), and your IDE for code editing and debugging.  Not only Python *code*, but also ***Rules***.
 
 To explore, let's customize this project.  To speed things up, instead of the normal procedure of declaring rules in your IDE, follow this procedure:
@@ -266,20 +278,28 @@ Note we rebuilt the project from our altered database (`ApiLogicServer rebuild-f
 
 &nbsp;
 
+## 5. Deploy
+
+Value is not realized until the system is deployed, whether for final production, or early collaboration with stakeholders. API Logic Server creates scripts to containerize your project, and deploy to Azure with Docker Compose:
+
+![deployment](images/devops/devops-azure.png)
+
+&nbsp;
+
 ## Summary
 
-![ai-driven-automation](images/sample-ai/ai-driven-automation.png)
+![Microservice Automation](images/sample-ai/copilot/overview.png)
 
-In minutes, you've used ChatGPT and API Logic Server to convert an idea into working software.  It required only 5 rules, and 20 lines of Python.  The process was simple:
+In minutes, you've used Copilot and API Logic Server to convert an idea into working software.  It required only 5 rules, and 20 lines of Python.  The process was simple:
 
-* **Created the Schema** with `ChatGPT`
+* **Created the Schema** with `Copilot`
 
 * **Created the Project** with `ApiLogicServer`
     * A **Self-Serve API** to unblock UI Developers -- Day 1
     * An **Admin App** for Business User Collaboration -- Day 1
 
 * **Customized** the project
-    * With Rules -- 40X more concise than code
+    * With Rules -- 40X more concise than code, declared with Copilot or IDE code completion
 
 * **Iterated** the project in your IDE to implement new requirements
     * Rules, *with Python* for complete flexibility
