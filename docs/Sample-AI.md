@@ -2,7 +2,7 @@
 
     Creating an API and an admin app using a framework takes too long, and is far too complex. AI and automation can create systems in minutes rather than weeks or months, dramatically simpler, and fully customizable with tools and approaches you already know.
 
-    In this tutorial, we'll show how to create a complete system using VS Code, Copilot, and API Logic Server (open source). We'll then add business logic with rules, and use Python to add a custom endpoint and Kafka integration.
+    In this demo, we'll show how to create a complete system using VS Code, Copilot, and API Logic Server (open source). We'll then add business logic with rules, and use Python to add a custom endpoint and Kafka integration.
 
 # Overview
 
@@ -10,18 +10,22 @@ As shown below, you can submit a Natural Language description of a database to C
 
 You then use API Logic Server CLI to create an executable project from the model. Alternatively, you can create a project by identifying an existing database.
 
-The project is executable, providing an API and an admin app, enabling agile collaboration and unblocking custom app dev.
+* The project is ***executable,*** providing an API and an admin app, enabling agile collaboration and unblocking custom app dev.
 
+* The project is ***customizable,*** using rules and Python, in your existing IT infrastructure - your IDE, GitHub, the cloud, your database, etc.  
+
+Let's see how.
 
 [![Microservice Automation](images/sample-ai/copilot/overview.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
 
-This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.  Let's see how.
 
 &nbsp;
 
 **Setup**
 
-To begin, install Python and VSCode. Optionally, install Copilot: it's moderately priced and you can execute this tutorial without it. But, it provides the Natural Language services shown here - it's quite a lot of fun to explore, so you might just want to splurge and acquire it.
+To begin, install Python and VSCode. 
+
+> Optionally, install Copilot: it's moderately priced and you can execute this demo without it. But, it provides the Natural Language services shown here - it's quite a lot of fun to explore, so you might just want to splurge and acquire it.
 
 Then, install the API Logic Server and start it:
 
@@ -38,7 +42,9 @@ This will launch the API Logic Server in VSCode. We've moved the Copilot chat pa
 ![Welcome](images/sample-ai/copilot/welcome.jpg)
 ---
 
-## 1. Create Database Model with Copilot
+## 1. Create DB Model with Copilot
+
+If you are **using Copilot..**
 
 The README page includes the Natural Language Text to supply to Copilot; paste it, and press enter. It's shown in the diagram below in dark gray ("Use SQLAlchemy to...").
 
@@ -48,18 +54,34 @@ Paste the generated code into a new model file called `sample_ai.py` (step 2 in 
 
 ![Welcome](images/sample-ai/copilot/copilot.jpg)
 
+
 ## 2. API Logic Server: Create
+
+If you are **using Copilot...**
 
 Create your project (step 3 in the screenshot above) by entering the following into the bottom terminal pane (als is a synonym for ApiLogicServer):
 
-```bash
+```bash title="Create Project with Copilot"
 $  als create --project-name=sample_ai --from-model=sample_ai.py --db-url=sqlite
 ```
 
-This creates a project and opens it in your IDE, such as VSCode (see below).  The project is now ready to run - press F5.  It includes:
+&nbsp;
 
-* a self-serve **API** ready for UI developers, and
-* an **Admin app** ready for Business User Collaboration
+If you are **not using Copilot...**,
+
+Use the pre-installed database to create your project in the terminal window:
+
+```bash title="Create Project from Existing Database"
+$  als create --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
+```
+
+&nbsp;
+
+In either case, this creates a project and opens it in your IDE, such as VSCode (see below).  The project is now ready to run - press F5.  It provides *Microservice Automation:*
+
+&nbsp;&nbsp;&nbsp;&nbsp;**a. App Automation:** an Admin App, ready for Business User Collaboration, and
+
+&nbsp;&nbsp;&nbsp;&nbsp;**b. Api Automation:** a self-serve JSON:API, ready for UI developers
 
 ![Ready To Run](images/sample-ai/created-project.png)
 
