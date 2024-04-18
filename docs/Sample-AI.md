@@ -2,13 +2,13 @@
 
     Creating an API and an admin app using a framework takes too long, and is far too complex. AI and automation can create systems in minutes rather than weeks or months, dramatically simpler, and fully customizable with tools and approaches you already know.
 
-    In this demo, we'll show how to create a complete system using VS Code, Copilot, and API Logic Server (open source). We'll then add business logic with rules, and use Python to add a custom endpoint and Kafka integration.
+    In this demo, we'll show how to create a complete system using VS Code, Copilot, and API Logic Server. We'll then add business logic with rules, and use Python to add a custom endpoint and Kafka integration.
 
 # Overview
 
 As shown below, you can submit a Natural Language description of a database to Copilot. This creates a Python data model (SQLAlchemy classes).  
 
-You then use API Logic Server CLI to create an executable project from the model. Alternatively, you can create a project by identifying an existing database.
+You then use API Logic Server CLI to create an executable project from the model. Alternatively, you can create a project by identifying an existing database (pre-installed).
 
 * The project is ***executable,*** providing an API and an admin app, enabling agile collaboration and unblocking custom app dev.
 
@@ -67,7 +67,7 @@ $  als create --project-name=sample_ai --from-model=sample_ai.py --db-url=sqlite
 
 &nbsp;
 
-If you are **not using Copilot...**,
+**Or,** if you are **not using Copilot...**,
 
 Use the pre-installed database to create your project in the terminal window:
 
@@ -127,7 +127,7 @@ So, we have working software, in minutes.  It's running, but we really can't *de
 
 API Logic Server contains a rule engine. You can declare rules in Python, using IDE code completion services.  
 
-It also provides value: spreadsheet-like rules reduce logic code (half the app) by 40X.
+It provides signficant value: spreadsheet-like rules reduce logic code (half the app) by 40X.
 
 But, we can have much more fun.  As shown below, we can ask Copilot to create these rules for us, and paste them into a pre-created file:
 
@@ -139,7 +139,7 @@ But, we can have much more fun.  As shown below, we can ask Copilot to create th
 
 Projects are designed for customization, using standards: Python, frameworks (e.g., Flask, SQLAlchemy), and your IDE for code editing and debugging.  Not only Python *code*, but also ***Rules***.
 
-To explore, let's customize this project.  To speed things up, instead of the normal procedure of declaring rules in your IDE, follow this procedure:
+To explore, let's customize this project.  To speed things up, instead of the normal procedure of declaring rules and entering Python code in your IDE, follow this procedure:
 
 1. Stop the Server
 
@@ -158,9 +158,10 @@ This applies customized logic and security, which we examine below.
 
 Logic Automation means that you can ***declare spreadsheet-like rules*** using Python.  Such logic maintains database integrity with multi-table derivations and constraints, and security.  Rules are 40X more concise than traditional code, and can be extended with Python.
 
-Below we implement the **Check Credit** requirement - see the comments at top.  Their implementation follows: 5 rules, instead of 200 lines of Python.
+Below we implement the **Check Credit** requirement - see the comments at top.  Their implementation follows: 5 rules, instead of 200 lines of Python.  It's ready to test:
 
-1. Use the Admin App to add an Item for 1000 Widgets, observe how the constraint prevents the transaction
+1. Restart the Server (F5)
+2. Use the Admin App to add an Item for 1000 Widgets, observe how the constraint prevents the transaction
 
 Rules are an executable design.  Note they map exactly to our natural language design:
 

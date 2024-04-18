@@ -93,6 +93,15 @@ Unlike Low Code systems, API Logic Server:
 
 And, for systems requiring highly customized interfaces for Business Intelligence, API Logic Server works with Low Code. 
 
+&nbsp;
+
+**AI Powered** 
+
+This automation technology is further simplified with exciting technology such as Copilot:
+
+* Use Natural Language to create databases
+* Use Natural Language to declare rules
+
 </details>
 ---
 
@@ -309,9 +318,9 @@ API and Logic Automation begins with a database.  But what if it's a new project
 
 You can certainly use your SQL tools.  But we all know that SQL can be... tiresome.
 
-AI provides a solution: ***Schema Automation***.  You can use ChatGPT to create the SQL DDL like this:
+AI provides a solution: ***Schema Automation***.  You can use Copilot to create the SQL DDL like this:
 
-!!! pied-piper "Create database definitions from ChatGPT"
+!!! pied-piper "Create database definitions from Copilot"
 
     Create a sqlite database for customers, orders, items and product
     
@@ -388,13 +397,13 @@ Type:
 
 | Project | Notes   |  Type  |
 :-------|:-----------|:-------|
-| [**AI Sample**](Sample-AI.md){:target="_blank" rel="noopener"} | 1. Use ChatGPT to create new databases from natural language<br>2. Illustrate a very rapid create / customize / iterate cycle<br>3. Introduce Integration | Demo |
+| [**AI Sample**](Sample-AI.md){:target="_blank" rel="noopener"} | 1. Use Copilot to create new databases from natural language<br>2. Illustrate a very rapid create / customize / iterate cycle<br>3. Introduce Integration | Demo |
 | [**Tutorial**](Tutorial.md){:target="_blank" rel="noopener"}  | 1. How to Use the Key Features<br>2. Key code samples for adapting into your project | Tutorial |
 | | | |
 | [App Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Illustrates *running* Kafka messaging, self-serve and customized APIs, choreographed with rules and Python | Tutorial |
 | [Deployment](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Containerize and deploy your applications | Tutorial |
 | [Agile](Tech-Agile.md){:target="_blank" rel="noopener"} | Behavior Driven Design and testing, using Behave | Tutorial |
-| [AI Drives Agile Vision](Tech-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to create new databases from natural language, to bootstrap an agile create / deploy and collaborate / iterate cycle | Demo |
+| [AI Drives Agile Vision](Tech-AI.md){:target="_blank" rel="noopener"} | Use Copilot to create new databases from natural language, to bootstrap an agile create / deploy and collaborate / iterate cycle | Demo |
 | [Basic Demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} | Focused use of API, Admin App and Rules on small customer/orders database | Demo |
 | [Allocation](Logic-Allocation.md){:target="_blank" rel="noopener"} | *Power Rule* to allocate a payment to a set of outstanding orders | Sample |
 | [MySQL Docker](Database-Connectivity.md){:target="_blank" rel="noopener"} | Create projects from sample databases: *chinook* (albums and artists), and *classicmodels* (customers and orders) | Sample |
@@ -637,7 +646,7 @@ Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServ
 :-------|:-----------|
 | Microservice Automation | One-command API / App Projects |
 | [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
-| [AI-Driven Automation](Sample-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to automate database creation |
+| [AI-Driven Automation](Sample-AI.md){:target="_blank" rel="noopener"} | Use Copilot to automate database creation |
 | [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
 | [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
 
@@ -655,7 +664,7 @@ Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServ
 
 | Works With | Notes   |
 :-------|:-----------|
-| [AI](Tutorial-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to create databases, and use API Logic Server to turn these into projects |
+| [AI](Tutorial-AI.md){:target="_blank" rel="noopener"} | Use Copilot to create databases, and use API Logic Server to turn these into projects |
 | [Other Systems](Sample-Integration.md){:target="_blank" rel="noopener"} | APIs and Messages - with logic |
 | [Databases](Database-Connectivity.md){:target="_blank" rel="noopener"} | Tested with MySQL, Sql/Server, Postgres, SQLite and Oracle |
 | Client Frameworks | Creates instant APIs that factors out business logic, where it is automatically shared for User Interfaces, APIs, and Messages |
