@@ -46,7 +46,27 @@ This will launch the API Logic Server in VSCode. We've moved the Copilot chat pa
 
 If you are **using Copilot..**
 
-The README page includes the Natural Language Text to supply to Copilot; paste it, and press enter. It's shown in the diagram below in dark gray ("Use SQLAlchemy to...").
+The Sample-AI page includes the Natural Language Text to supply to Copilot; paste it, and press enter. It's shown in the diagram below in dark gray ("Use SQLAlchemy to...").
+
+
+!!! pied-piper "Create database schemas from ChatGPT -- provide this prompt"
+
+    Create a sqlite database for customers, orders, items and product
+    
+    Hints: use autonum keys, allow nulls, Decimal types, foreign keys, no check constraints.
+
+    Include a notes field for orders.
+
+    Create a few rows of only customer and product data.
+
+    Use Logic Bank to enforce the Check Credit requirement:
+
+    1. Customer.Balance <= CreditLimit
+    2. Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
+    3. Order.AmountTotal = Sum(Items.Amount)
+    4. Items.Amount = Quantity * UnitPrice
+    5. Store the Items.UnitPrice as a copy from Product.UnitPrice
+&nbsp;
 
 Copilot creates the SQLAlchemy model code.
 
