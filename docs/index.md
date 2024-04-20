@@ -365,9 +365,11 @@ If you have the correct Python (version 3.8-3.12), install is standard ([more de
 python3 -m venv venv                 # windows: python -m venv venv
 source venv/bin/activate             # windows: venv\Scripts\activate
 python -m pip install ApiLogicServer
+
+als start                            # optionally, start the project manager
 ```
 
-<br>Then, verify it's working - create and run the demo:
+<br>Verification test - create and run the demo:
 
 ```bash title="Verify - Create and Run Demo"
 ApiLogicServer create --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
@@ -376,11 +378,6 @@ code sample_ai
 
 Then explore the *demos, samples and tutorials*, below.
 
-<br>Or, try out the new [API Logic Project Manager](Manager.md){:target="_blank" rel="noopener"}:
-
-```bash title="API Logic Project Manager"
-als start
-```
 </details>
 
 <details markdown>
