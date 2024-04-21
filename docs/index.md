@@ -366,7 +366,7 @@ python3 -m venv venv                 # windows: python -m venv venv
 source venv/bin/activate             # windows: venv\Scripts\activate
 python -m pip install ApiLogicServer
 
-als start                            # optionally, start the project manager under VSCode
+ApiLogicServer start                 # optionally, start the project manager under VSCode
 ```
 
 > Note: this requires you've activate VSCode `code` CLI
@@ -374,7 +374,7 @@ als start                            # optionally, start the project manager und
 <br>Verification test - create and run the demo:
 
 ```bash title="Verify - Create and Run Demo"
-ApiLogicServer create --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
+als create --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
 code sample_ai
 ```
 
