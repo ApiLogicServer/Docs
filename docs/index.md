@@ -366,8 +366,10 @@ python3 -m venv venv                 # windows: python -m venv venv
 source venv/bin/activate             # windows: venv\Scripts\activate
 python -m pip install ApiLogicServer
 
-als start                            # optionally, start the project manager
+als start                            # optionally, start the project manager under VSCode
 ```
+
+> Note: this requires you've activate VSCode `code` CLI
 
 <br>Verification test - create and run the demo:
 
