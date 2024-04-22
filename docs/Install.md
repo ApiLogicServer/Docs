@@ -15,17 +15,17 @@ Then, open the appropriate section below, and see the [Installation Notes](#inst
 
 === "Local Install"
 
-    API Logic Server requires Python 3.8 or higher, since it relies on `from future import annotations`.
+    API Logic Server requires Python 3.11 or higher.
 
     The first section below verifies whether your Python environment is current.  
 
     The following section explains how to install a current Python environment.
 
-    __Verify Pre-reqs: Python 3.8+__
+    __Verify Pre-reqs: Python 3.11+__
 
     Ensure you have these pre-reqs:
 
-    ```bash title="Verify 3.8 - 3.10"
+    ```bash title="Verify 3.11 - 3.12"
     python --version
 
     python -m venv -h  # also verify these work
