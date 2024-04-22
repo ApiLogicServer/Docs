@@ -157,7 +157,7 @@ Various IDEs provide tools for managing databases.
 
 ## dbvis
 
-A very popular tool, with support for exporting tables and data.
+[dbvis](https://www.dbvis.com) is a very popular tool, with support for exporting tables and data.
 
 For local connections, consider resetting `trustServerCertificate`:
 

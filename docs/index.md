@@ -700,6 +700,7 @@ Many thanks to
 
 - [Thomas Pollet](https://www.linkedin.com/in/pollet/), for SAFRS, SAFRS-react-admin, and invaluable design partnership
 - Tyler Band, for leadership on security
+- [dbvis](https://www.dbvis.com), for a complimentary license in support of this open source project
 - [Marelab](https://marmelab.com/en/), for [react-admin](https://marmelab.com/react-admin/)
 - Armin Ronacher, for Flask
 - Mike Bayer, for SQLAlchemy
@@ -711,7 +712,8 @@ Many thanks to
 - Max Tardiveau, for testing and help with Docker
 - Michael Holleran, for design collaboration and testing
 - Nishanth Shyamsundar, for review and testing
-- Gloria Huber and Denny McKinney, for doc review
+- Gloria Huber and Denny McKinney, for doc revie
+
 
 </details>
 
