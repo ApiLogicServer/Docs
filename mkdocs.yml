@@ -88,6 +88,7 @@ nav:
     - "Table Filters": Data-Model-Filters.md
     - "Install pyodbc: SqlServer": Install-pyodbc.md
     - "Install psycopg2: Postgres": Install-psycopg2.md
+    - "Using Postgresql": Data-Model-Postgresql.md
     - "Install Oracle Thick": Install-oracle-thick.md
     - "Sqlite": Data-Model-Sqlite.md
   - DevOps - Containers:
