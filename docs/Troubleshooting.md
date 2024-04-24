@@ -124,6 +124,8 @@ Database access requires:
 
 * **Configuration:** ensure your project is correctly configured; see [Container Configuration](DevOps-Container-Configuration.md#debugging)
 
+* **Proper database definition:** see [these notes](Data-Model-Postgresql.md){:target="_blank" rel="noopener"} on Postgresql auto-generated keys.
+
 
 
 &nbsp;
