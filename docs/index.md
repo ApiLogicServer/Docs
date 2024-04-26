@@ -139,7 +139,7 @@ See how **Microservice Automation** creates and runs a microservice - a multi-pa
 
 Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI: [click here](Tutorial-AI.md).
 
-[![Microservice Automation](images/sample-ai/ai-driven-automation-video.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
+[![Microservice Automation](images/sample-ai/copilot/overview.png)](https://youtu.be/laENat77nXw?si=XDvUMpFIsdI1guPA "Microservice Automation"){:target="_blank" rel="noopener"}
 
 </details>
 
