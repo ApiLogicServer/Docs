@@ -18,9 +18,6 @@ Let's see how.
 
 [![Microservice Automation](images/sample-ai/copilot/overview.png)](https://youtu.be/laENat77nXw?si=XDvUMpFIsdI1guPA "Microservice Automation"){:target="_blank" rel="noopener"}
 
-[![Microservice Automation](images/sample-ai/copilot/overview.png)](https://youtu.be/-7aZPWz849I "Microservice Automation"){:target="_blank" rel="noopener"}
-
-
 &nbsp;
 
 **Setup**
