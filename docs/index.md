@@ -546,12 +546,12 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 This pre-release includes:
 
-* Improved Manager support
+* genai, using chatgpt & copilot for hands-free create/run (no copy/paste, no cli...)
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.75
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.92
 ```
 
 Or use (neither available currently):
