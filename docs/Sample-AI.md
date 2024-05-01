@@ -38,7 +38,7 @@ ApiLogicServer start
 
 This will launch the API Logic Server in VSCode. We've moved the Copilot chat pane to the right.
 
-![Welcome](images/sample-ai/copilot/welcome.jpg)
+![Welcome](images/sample-ai/copilot/welcome.png)
 ---
 
 ## 1. Create DB Model with Copilot
