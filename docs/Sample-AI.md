@@ -49,7 +49,7 @@ If you are **using Copilot..**
 The Sample-AI page includes the Natural Language Text to supply to Copilot; paste it, and press enter. It's shown in the diagram below in dark gray ("Use SQLAlchemy to...").
 
 
-!!! pied-piper "Create database schemas from ChatGPT -- provide this prompt"
+!!! pied-piper "Create database model from Copilot -- provide this prompt"
 
     Use SQLAlchemy to create a sqlite database named sample_ai.sqlite, with customers, orders, items and product
 
@@ -77,7 +77,7 @@ Paste the generated code into a new model file called `sample_ai.py` (step 2 in 
 
 ## 2. API Logic Server: Create
 
-If you are **using CoPilot:**
+If you are **using Copilot:**
 
 Create your project (step 3 in the screenshot above) by entering the following into the bottom terminal pane (als is a synonym for ApiLogicServer):
 
