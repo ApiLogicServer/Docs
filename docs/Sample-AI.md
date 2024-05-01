@@ -73,10 +73,11 @@ Paste the generated code into a new model file called `sample_ai.py` (step 2 in 
 
 ![Welcome](images/sample-ai/copilot/copilot.png)
 
+&nbsp;
 
 ## 2. API Logic Server: Create
 
-If you are **using Copilot...**
+If you are **using CoPilot:**
 
 Create your project (step 3 in the screenshot above) by entering the following into the bottom terminal pane (als is a synonym for ApiLogicServer):
 
