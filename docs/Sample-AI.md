@@ -39,6 +39,7 @@ ApiLogicServer start
 This will launch the API Logic Server in VSCode. We've moved the Copilot chat pane to the right.
 
 ![Welcome](images/sample-ai/copilot/welcome.png)
+
 ---
 
 ## 1. Create DB Model with Copilot
@@ -70,7 +71,7 @@ Copilot creates the SQLAlchemy model code.
 
 Paste the generated code into a new model file called `sample_ai.py` (step 2 in the screenshot below):
 
-![Welcome](images/sample-ai/copilot/copilot.jpg)
+![Welcome](images/sample-ai/copilot/copilot.png)
 
 
 ## 2. API Logic Server: Create
