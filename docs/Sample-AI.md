@@ -64,7 +64,7 @@ The Sample-AI page includes the Natural Language Text to supply to Copilot; past
     2. Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
     3. Order.AmountTotal = Sum(Items.Amount)
     4. Items.Amount = Quantity * UnitPrice
-    5. Store the Items.UnitPrice as a copy from Product.UnitPrice&nbsp;
+    5. Store the Items.UnitPrice as a copy from Product.UnitPrice
 
 Copilot creates the SQLAlchemy model code.
 
