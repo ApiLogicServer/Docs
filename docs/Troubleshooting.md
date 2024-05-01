@@ -107,7 +107,9 @@ ApiLogicServer rebuild-from-model\
    * `api/expose_api_models_created.py` - this file is not used in actual operation, but provided so you can merge or copy it over `api/expose_api_models.py`
    * `ui/admin/admin-created.yaml` - this file is not used in actual operation, but provided so you can merge or copy it over `ui/admin/admin.yaml`
 
-For more on rebuild, see [Rebuilding](https://github.com/valhuber/ApiLogicServer/wiki#rebuilding).
+For more on rebuild, see [Rebuilding](Project-Rebuild.md).
+
+
 
 <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/model/model-repair-rebuild.png?raw=true"></figure>
 
