@@ -34,9 +34,10 @@ Pycharm Notes: your value may be *charm* or *pycharm*, depending on your install
 
 Or, use "" to disable auto_open.
 
-You can set other environment variables here, e.g.
+You can set other environment variables here; these defaults are provided:
 
 ```bash title="Set Environment Variables"
+export APILOGICSERVER_VERBOSE=true
 export APILOGICSERVER_VERBOSE=true
 ```
 
@@ -46,9 +47,11 @@ Here's a useful link about [environment variables](https://www3.ntu.edu.sg/home/
 
 &nbsp;
 
-## Customizing Projects
+## Managing Your Projects
 
-If you want to customize/run the project, do so in another instance of VSCode. You may find it helpful to acquire this extension: `Open Folder Context Menus for VS Code`. It will enable you to open the project in another instance of VSCode.
+Created projects will show up here as directories.  (You create projects anywhere, and move them; this is just the default).
+
+If you want to customize/run the project, do so in *another instance* of VSCode.  You may find it helpful to acquire this extension: `Open Folder Context Menus for VS Code`.  It will enable you to open the project in another instance of VSCode.
 
 &nbsp;
 
