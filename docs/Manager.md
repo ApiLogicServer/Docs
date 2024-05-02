@@ -38,7 +38,6 @@ You can set other environment variables here; these defaults are provided:
 
 ```bash title="Set Environment Variables"
 export APILOGICSERVER_VERBOSE=true
-export APILOGICSERVER_VERBOSE=true
 ```
 
 > Note: your `venv` is defaulted for VSCode.  It must be [configured](Project-Env.md){:target="_blank" rel="noopener"} in PyCharm.
