@@ -4,6 +4,8 @@
     
     API Logic Server can use these to create databases and projects, from single command.
 
+&nbsp;
+
 ## Project Creation
 
 You can explore genai using the [Manager](Manager.md){:target="_blank" rel="noopener"}.  Optionally, you can sign-up for ChatGPT API and Copilot, or simulate the process as described below.
@@ -15,7 +17,7 @@ als genai --using=genai_demo.prompt
 ```
 
 
-2. ***Or,*** you can simulate the process using:
+2. ***Or,*** you can simulate the process using a pre-installed response file:
 
 
 ```bash
@@ -28,7 +30,7 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 `genai` processing is shown below (internal steps denoted in grey):
 
-1. You create your.prompt file, and invoke `als genai --using=your.prompt`.  genai then creates your project as follows:
+1. You create your.prompt file, and invoke `als genai --using=your.prompt`.  genai then creates your database and project as follows:
 
     a. Submits your prompt to the `ChatGPT API`
 
@@ -42,8 +44,45 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 &nbsp;
 
-![Microservice Automation](images/sample-ai/copilot/genai.png)]
+![Microservice Automation](images/sample-ai/copilot/genai.png)
 
+&nbsp;
+
+## Next Steps: Explore Customization
+
+Rapid Creation of working software is interesting, but real value requires that you can customize the resultant project in standard ways: your IDE, standard languages, standard libraries, standard source control, etc.
+
+You customize API Logic Project in two ways, both performed in your IDE:
+
+* **Declare Rules:** spreadsheet like rules address multi-table derivations and constraints.  These constitute nearly half of a typical database-oriented system.   Declarative rules are 40X more concise than procedural code.
+
+* **Standard Python:** as noted above
+
+Explore these as described below.
+
+&nbsp;
+
+### Explore rules
+
+To explore rules:
+
+1. Open `logic/declare_logic.py`
+
+2. Copy the comments to your Copilot window, starting with the line with **GenAI:**
+
+3. Paste them into the Copilot Chat windows
+
+4. Paste the generated code back into `logic/declare_logic.py`.  You will need to make a few small repairs.
+
+&nbsp;
+
+### Explore Code
+
+To save time, issue the follow command to mimic changes you might make in your IDE, e.g., to send Kafka messages.
+
+```bash title="Mimic IDE Customization"
+als genai-cust
+```
 
 &nbsp;
 
