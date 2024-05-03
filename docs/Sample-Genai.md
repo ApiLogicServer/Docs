@@ -26,7 +26,7 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 &nbsp;
 
-## What Just Happened?
+### What Just Happened?
 
 `genai` processing is shown below (internal steps denoted in grey):
 
@@ -48,7 +48,7 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 &nbsp;
 
-## Next Steps: Explore Customization
+## Explore Customization
 
 Rapid Creation of working software is interesting, but real value requires that you can customize the resultant project in standard ways: your IDE, standard languages, standard libraries, standard source control, etc.
 
@@ -62,7 +62,7 @@ Explore these as described below.
 
 &nbsp;
 
-### Explore rules
+### Explore Spreadsheet-like Rules
 
 To explore rules:
 
@@ -74,9 +74,11 @@ To explore rules:
 
 4. Paste the generated code back into `logic/declare_logic.py`.  You will need to make a few small repairs.
 
+![Add Rules](images/sample-ai/copilot/add-rules.png)
+
 &nbsp;
 
-### Explore Code
+### Explore Using Standard Code
 
 To save time, issue the follow command to mimic changes you might make in your IDE, e.g., to send Kafka messages.
 
@@ -86,7 +88,7 @@ als genai-cust
 
 &nbsp;
 
-## AI somtimes fails - here's how to recover
+## Restart if AI Fails
 
 AI results are not consistent, so the model file may need corrections.  You can find it at `system/genai/temp/model.py`.  You can correct the model file, and then run:
 
@@ -103,12 +105,10 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 We have seen failures such as:
 
 * duplicate definition of `DECIMAL`
-* use of `Decimal` vs. `DECIMAL` (latter required, work-around in place)
 * unclosed parentheses
 * data type errors in test data creation
 * wrong engine import: from logic_bank import Engine, constraint
-* bogus test data creation: with Engine() as engine...
-* Numeric --> String (fixed product bug)
+* bad test data creation: with Engine() as engine...
 * Bad load code (no session)
 
 
