@@ -22,6 +22,28 @@ als start charm
 
 &nbsp;
 
+## Pre-created projects
+
+We have pre-created 2 important projects you will want to review at some point:
+
+* [tutorial](https://apilogicserver.github.io/Docs/Tutorial/) - short (< 1 hour) walk-through of using API Logic Server using the northwind (customers, orders...) database
+* sample - the completed tutorial.  It's the same database, but with logic/Python ***customizations added***.  It's a great resource for exploring.  
+
+    * Hint: use your IDE to search for `#als`
+
+You can always re-create them as follows:
+
+1. Open a terminal window (**Terminal > New Terminal**), and paste the following CLI command:
+
+```bash
+ApiLogicServer create --project-name=tutorial --db-url=
+ApiLogicServer create --project-name=sample --db-url=nw+
+
+```
+
+
+&nbsp;
+
 ## Creating Projects: auto_open
 
 By default, the Manager starts with an environment variable `APILOGICSERVER_AUTO_OPEN`.  It's defaulted to *code*; you can set it:

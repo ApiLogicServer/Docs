@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - GENAI leverages AI for 'hands-free' project creation"
 
-    ChatGPT APIs enable API Logic Server to submit prompts and obtain data model class responses.  
+    API Logic Server use ChatGPT APIs, to submit prompts and obtain data model class responses.  
     
     API Logic Server can use these to create databases and projects, from single command.
 
@@ -26,7 +26,7 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 &nbsp;
 
-### What Just Happened?
+### What Just Happened? &nbsp;&nbsp;&nbsp;Next Steps...
 
 `genai` processing is shown below (internal steps denoted in grey):
 
@@ -72,7 +72,10 @@ To explore rules:
 
 3. Paste them into the Copilot Chat windows
 
-4. Paste the generated code back into `logic/declare_logic.py`.  You will need to make a few small repairs.
+4. Paste the generated code back into `logic/declare_logic.py`.  You will need to make a few small repairs:
+
+    * change *import models* to *import database.models*, and 
+    * change *as_formula* to *as_expression*
 
 ![Add Rules](images/sample-ai/copilot/add-rules.png)
 
@@ -80,7 +83,7 @@ To explore rules:
 
 ### Explore Using Standard Code
 
-To save time, issue the follow command to mimic changes you might make in your IDE, e.g., to send Kafka messages.
+To save time, issue the follow command to simulate changes you might make in your IDE, e.g., to send Kafka messages.
 
 ```bash title="Mimic IDE Customization"
 als genai-cust
@@ -88,9 +91,21 @@ als genai-cust
 
 &nbsp;
 
-## Restart if AI Fails
+## Explore Deployment, for Collaboration
 
-AI results are not consistent, so the model file may need corrections.  You can find it at `system/genai/temp/model.py`.  You can correct the model file, and then run:
+One of the best ways to de-risk projects is to verify the sponsors are in sync with what is happening.  This is best addressed with *working software*, which often occurs project.  Issues here can result in considerable rework... and frustrations.
+
+GenAI Automation produces *working software, **now***, so you can find misunderstanding before investing serious effort ("fail fast").  To expose the working software, it's often desirable to deploy to the cloud.
+
+API Logic Server creates the `devops` directory, which scripts to containerize your project, and deploy it to Azure.  For more information, see [DevOps Automation](DevOps-Automation.md).
+
+## Appendices
+
+&nbsp;
+
+### GenAI Restart Procedures
+
+AI results are not consistent, so the created model file may need corrections.  You can find it at `system/genai/temp/model.py`.  You can correct the model file, and then run:
 
 ```bash
 als create --project-name=genai_demo --from-model=system/genai/temp/model.py --db-url=sqlite
@@ -111,10 +126,11 @@ We have seen failures such as:
 * bad test data creation: with Engine() as engine...
 * Bad load code (no session)
 
-
 &nbsp;
 
-**Postgresql Example**
+### GenAI Using Postgresql
+
+The above examples use *s1lite* since it requires no install.  The GenAI process works for other database, such as Postgresql.
 
 You can test this as follows:
 
@@ -128,3 +144,4 @@ als create --project-name=genai_demo_pg.prompt --db-url=postgresql://postgres:p@
 Provisos:
 
 * You have to create the database first
+
