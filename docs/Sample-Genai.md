@@ -84,7 +84,9 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 API/App Autmation means the created project is executable.  To run:
 
 1. Press **F5** to run
-2. Start your [Browser](http://localhost:5656/) to view the Admin App and the JSON:API
+2. Start your [Browser](http://localhost:5656/) to view:
+    * App Automation: the Admin App, and
+    * API Automation: JSON:API, with Swagger
 3. Stop the server when you are done (red box on VSCode Debugger panel)
 
 ![Microservice Automation](images/sample-ai/Microservice-Automation.png)
@@ -99,11 +101,11 @@ It's a modern, 3-tiered architecture, using standard Python libraries:
 
 The development environment is also standard: your IDE, standard languages, standard libraries, standard source control, etc.  You customize API Logic Project in two ways, both performed in your IDE:
 
-* **Logic Automation:** delcare spreadsheet like rules to address multi-table derivations and constraints.  These constitute nearly half of a typical database-oriented system.   Declarative rules are 40X more concise than procedural code.
+* **Logic Automation:** declare spreadsheet-like rules to address multi-table derivations and constraints.  These constitute nearly half of a typical database-oriented system.   Declarative rules are 40X more concise than procedural code.
 
 * **Standard Python:** e.g, to create a new custom endpoint, and send a Kafka message
 
-Explore these as described below.
+Explore these below.
 
 &nbsp;
 
@@ -128,7 +130,7 @@ To explore rules:
 
 ### Standard Python, Libraries
 
-To save time, issue the follow command to simulate changes you might make in your IDE, e.g., to send Kafka messages.
+To save time, issue the follow command to simulate changes you might make in your IDE, e.g., to create a new custom endpoint, and send a Kafka message.
 
 ```bash title="Simulate IDE Customization"
 als genai-cust
