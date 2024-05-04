@@ -159,7 +159,7 @@ We have seen failures such as:
 
 &nbsp;
 
-### GenAI Using Postgresql  #val broken
+### GenAI Using Postgresql
 
 The above examples use *sqlite,* since it requires no install.  The GenAI process works for other database, such as Postgresql.
 
