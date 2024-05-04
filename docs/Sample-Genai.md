@@ -10,7 +10,35 @@
 
 &nbsp;
 
-## Project Creation
+![Microservice Automation](images/sample-ai/copilot/genai-automation.png)
+
+&nbsp;
+
+## 1. Description (or Database)
+
+To create a microservice, identify an existing database, or provide a natural language "prompt" description.  For example, here is the `genai_demo.prompt` file:
+
+!!! pied-piper ":bulb: TL;DR - GenAI Prompt"
+
+    Use SQLAlchemy to create a sqlite database named sample_ai.sqlite, with customers, orders, items and product
+
+    Hints: use autonum keys, allow nulls, Decimal types, foreign keys, no check constraints.
+
+    Include a notes field for orders.
+
+    Create a few rows of only customer and product data.
+
+    Enforce the Check Credit requirement (do not generate check constraints):
+
+    1. Customer.Balance <= CreditLimit
+    2. Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
+    3. Order.AmountTotal = Sum(Items.Amount)
+    4. Items.Amount = Quantity * UnitPrice
+    5. Store the Items.UnitPrice as a copy from Product.UnitPrice
+
+&nbsp;
+
+## 2. GenAI Creation
 
 You can explore genai_demo using the [Manager](https://apilogicserver.github.io/Docs/Manager/){:target="_blank" rel="noopener"}.  Optionally, you can sign-up for ChatGPT API and Copilot, or simulate the process as described below.
 
@@ -51,9 +79,9 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 &nbsp;
 
-## Execute
+### API/App Automation
 
-The app is ready to run:
+API/App Autmation means the created project is executable.  To run:
 
 1. Press **F5** to run
 2. Start your [Browser](http://localhost:5656/) to view the Admin App and the JSON:API
@@ -67,11 +95,11 @@ It's a modern, 3-tiered architecture, using standard Python libraries:
 
 &nbsp;
 
-## Explore Customization
+## 3. Customize: Rules and Python
 
 The development environment is also standard: your IDE, standard languages, standard libraries, standard source control, etc.  You customize API Logic Project in two ways, both performed in your IDE:
 
-* **Declare Rules:** spreadsheet like rules address multi-table derivations and constraints.  These constitute nearly half of a typical database-oriented system.   Declarative rules are 40X more concise than procedural code.
+* **Logic Automation:** delcare spreadsheet like rules to address multi-table derivations and constraints.  These constitute nearly half of a typical database-oriented system.   Declarative rules are 40X more concise than procedural code.
 
 * **Standard Python:** e.g, to create a new custom endpoint, and send a Kafka message
 
@@ -79,7 +107,7 @@ Explore these as described below.
 
 &nbsp;
 
-### Explore Spreadsheet-like Rules
+### Logic Automation
 
 To explore rules:
 
@@ -98,7 +126,7 @@ To explore rules:
 
 &nbsp;
 
-### Explore Using Standard Code
+### Standard Python, Libraries
 
 To save time, issue the follow command to simulate changes you might make in your IDE, e.g., to send Kafka messages.
 
@@ -122,13 +150,15 @@ Note: Kafka is not activated in this example.  To explore a running Tutorial for
 
 &nbsp;
 
-## Explore Deployment, for Agile Collaboration
+## 4. Deployment: Containers, Cloud
 
 One of the best ways to de-risk projects is to verify the sponsors are in sync with what is happening.  This is best addressed with *working software*, which often occurs late in project development.  Surprises here can result in considerable rework... and frustrations.
 
 GenAI Automation produces *working software, now*, so you can find misunderstandings before investing serious effort ("fail fast").  To expose the working software, it's often desirable to deploy to the cloud so business users can run it.
 
 API Logic Server creates the `devops` directory, which scripts to containerize your project, and deploy it to Azure.  For more information, see [DevOps Automation](https://apilogicserver.github.io/Docs/DevOps-Automation/){:target="_blank" rel="noopener"}.
+
+&nbsp;
 
 ## Appendices
 
