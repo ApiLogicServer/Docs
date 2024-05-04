@@ -4,7 +4,7 @@
     
     API Logic Server uses these to create databases and projects, from single command.
 
-    This document illustrates how to create, run and customize projects.
+    This document illustrates how to create, run and customize the genai_demo project.
 
     > Note: if you have already created the project, proceed to "What Just Happened?".
 
@@ -57,15 +57,13 @@ The app is ready to run:
 
 1. Press **F5** to run
 2. Start your [Browser](http://localhost:5656/) to view the Admin App and the JSON:API
+3. Stop the server when you are done (red box on VSCode Debugger panel)
 
 ![Microservice Automation](images/sample-ai/Microservice-Automation.png)
 
-It's a modern, 3-tiered architecture:
+It's a modern, 3-tiered architecture, using standard Python libraries:
 
 ![Microservice Architecture](images/Architecture-Runtime-Stack.png)
-- it's a modern 3T arch
-- std api, libs
-- arch diagram
 
 &nbsp;
 
@@ -104,9 +102,23 @@ To explore rules:
 
 To save time, issue the follow command to simulate changes you might make in your IDE, e.g., to send Kafka messages.
 
-```bash title="Mimic IDE Customization"
+```bash title="Simulate IDE Customization"
 als genai-cust
 ```
+
+![Customize](images/sample-ai/copilot/genai_cust.png)
+
+### Try it out
+
+Set a breakpoint in the code above, and:
+
+1. Start the Server (**F5**)
+2. Use the Admin app to alter the first Customer, first Order, first Item, and change the quantity to 11111
+    * Observe the error message, from the rules.
+3. To test the new endpoint, use Swagger (**ServicesEndPoint > POST /ServicesEndPoint/OrderB2B)**.
+    * Observe the swagger response - "Thankyou For Your OrderB2B".
+
+Note: Kafka is not activated in this example.  To explore a running Tutorial for application integration with running Kafka, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -114,7 +126,7 @@ als genai-cust
 
 One of the best ways to de-risk projects is to verify the sponsors are in sync with what is happening.  This is best addressed with *working software*, which often occurs late in project development.  Surprises here can result in considerable rework... and frustrations.
 
-GenAI Automation produces *working software, **now***, so you can find misunderstandings before investing serious effort ("fail fast").  To expose the working software, it's often desirable to deploy to the cloud so business users can run it.
+GenAI Automation produces *working software, now*, so you can find misunderstandings before investing serious effort ("fail fast").  To expose the working software, it's often desirable to deploy to the cloud so business users can run it.
 
 API Logic Server creates the `devops` directory, which scripts to containerize your project, and deploy it to Azure.  For more information, see [DevOps Automation](https://apilogicserver.github.io/Docs/DevOps-Automation/){:target="_blank" rel="noopener"}.
 
