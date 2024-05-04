@@ -81,7 +81,7 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 ### API/App Automation
 
-API/App Autmation means the created project is executable.  To run:
+API/App Automation means the created project is executable.  To run:
 
 1. Press **F5** to run
 2. Start your [Browser](http://localhost:5656/) to view:
