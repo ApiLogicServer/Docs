@@ -4,6 +4,10 @@
 
     In this demo, we'll show how to create a complete system using VS Code, Copilot, and API Logic Server. We'll then add business logic with rules, and use Python to add a custom endpoint and Kafka integration.
 
+    > Note: if you have already created the project, proceed to "Run the Created Application".
+
+&nbsp;
+
 # Overview
 
 As shown below, you can submit a Natural Language description of a database to Copilot. This creates a Python data model (SQLAlchemy classes).  
@@ -96,6 +100,8 @@ $  als create --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
 ```
 
 &nbsp;
+
+### Run the Created Application
 
 In either case, this creates a project and opens it in your IDE, such as VSCode (see below).  The project is now ready to run - press F5.  It provides *Microservice Automation:*
 

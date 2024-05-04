@@ -38,7 +38,6 @@ You can always re-create them as follows:
 ```bash
 ApiLogicServer create --project-name=tutorial --db-url=
 ApiLogicServer create --project-name=sample --db-url=nw+
-
 ```
 
 

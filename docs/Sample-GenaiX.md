@@ -1,27 +1,27 @@
-!!! pied-piper ":bulb: TL;DR - GENAI leverages AI for 'hands-free' project creation"
 
-    API Logic Server uses ChatGPT APIs, to submit prompts and obtain data model class responses.  
+&nbsp;
+**Key Takeways - TL;DR - GENAI leverages AI for 'hands-free' project creation**
+&nbsp;
+
+    API Logic Server use ChatGPT APIs, to submit prompts and obtain data model class responses.  
     
-    API Logic Server uses these to create databases and projects, from single command.
-
-    This document illustrates how to create, run and customize projects.
-
-    > Note: if you have already created the project, proceed to "What Just Happened?".
+    API Logic Server can use these to create databases and projects, from single command.
 
 &nbsp;
 
-## Project Creation
+## Project Creation (#val Completed)
 
-You can explore genai_demo using the [Manager](https://apilogicserver.github.io/Docs/Manager/){:target="_blank" rel="noopener"}.  Optionally, you can sign-up for ChatGPT API and Copilot, or simulate the process as described below.
+You can explore genai using the [Manager](Manager.md).  Optionally, you can sign-up for ChatGPT API and Copilot, or simulate the process as described below.
 
-1. If you have signed up for ChatGPT API and Copilot, this command will create and open a project called `genai_demo` from `genai_demo.prompt`:
+1. If you have signed up for #val that, this will create and open a project called `genai_demo` from `genai_demo.prompt`:
 
 ```bash
 als genai --using=genai_demo.prompt
 ```
 
 
-2. ***Or,*** if you have not signed up, you can simulate the process using a pre-installed response file:
+2. ***Or,*** , #val without signup, you can simulate the process using a pre-installed response file:
+
 
 ```bash
 als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_retry.txt
@@ -29,7 +29,7 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 &nbsp;
 
-### What Just Happened?
+### What Just Happened? &nbsp;&nbsp;&nbsp;Next Steps...
 
 `genai` processing is shown below (internal steps denoted in grey):
 
@@ -47,35 +47,28 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 &nbsp;
 
-![Microservice Automation](images/sample-ai/copilot/genai.png)
+![Microservice Automation](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/sample-ai/copilot/genai.png?raw=true)
 
 &nbsp;
 
-## Execute
+## Run it
 
-The app is ready to run:
-
-1. Press **F5** to run
-2. Start your [Browser](http://localhost:5656/) to view the Admin App and the JSON:API
-
-![Microservice Automation](images/sample-ai/Microservice-Automation.png)
-
-It's a modern, 3-tiered architecture:
-
-![Microservice Architecture](images/Architecture-Runtime-Stack.png)
+#val 
 - it's a modern 3T arch
 - std api, libs
 - arch diagram
 
-&nbsp;
-
 ## Explore Customization
 
-The development environment is also standard: your IDE, standard languages, standard libraries, standard source control, etc.  You customize API Logic Project in two ways, both performed in your IDE:
+Rapid Creation of working software is interesting, but real value requires that you can customize the resultant project in standard ways: your IDE, standard languages, standard libraries, standard source control, etc.
+
+#val eg, rules, add endpoint, kafka
+
+You customize API Logic Project in two ways, both performed in your IDE:
 
 * **Declare Rules:** spreadsheet like rules address multi-table derivations and constraints.  These constitute nearly half of a typical database-oriented system.   Declarative rules are 40X more concise than procedural code.
 
-* **Standard Python:** e.g, to create a new custom endpoint, and send a Kafka message
+* **Standard Python:** as noted above  #val do do WHAT??
 
 Explore these as described below.
 
@@ -96,7 +89,7 @@ To explore rules:
     * change *import models* to *import database.models*, and 
     * change *as_formula* to *as_expression*
 
-![Add Rules](images/sample-ai/copilot/add-rules.png)
+![Add Rules](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/sample-ai/copilot/add-rules.png?raw=true)
 
 &nbsp;
 
@@ -110,15 +103,23 @@ als genai-cust
 
 &nbsp;
 
-## Explore Deployment, for Agile Collaboration
+## Explore Deployment, for Agile # val agile Collaboration
 
-One of the best ways to de-risk projects is to verify the sponsors are in sync with what is happening.  This is best addressed with *working software*, which often occurs late in project development.  Surprises here can result in considerable rework... and frustrations.
+One of the best ways to de-risk projects is to verify the sponsors are in sync with what is happening.  This is best addressed with *working software*, which often occurs project #val eh?.  Issues here can result in considerable rework... and frustrations.
 
-GenAI Automation produces *working software, **now***, so you can find misunderstandings before investing serious effort ("fail fast").  To expose the working software, it's often desirable to deploy to the cloud so business users can run it.
+GenAI Automation produces *working software, **now***, so you can find misunderstanding #val plural before investing serious effort ("fail fast").  To expose the working software, it's often desirable to deploy to the cloud.  #val so users can run it
 
-API Logic Server creates the `devops` directory, which scripts to containerize your project, and deploy it to Azure.  For more information, see [DevOps Automation](https://apilogicserver.github.io/Docs/DevOps-Automation/){:target="_blank" rel="noopener"}.
+API Logic Server creates the `devops` directory, which # val with scripts to containerize your project, and deploy it to Azure.  For more information, see [DevOps Automation](DevOps-Automation.md).  #val bad link
 
 ## Appendices
+
+#val
+
+genai automation extensible
+
+prometheus griffana (api monitoring - latency, cllas --> dashboard)
+
+coummity enablement...
 
 &nbsp;
 
@@ -149,11 +150,11 @@ We have seen failures such as:
 
 ### GenAI Using Postgresql  #val broken
 
-The above examples use *sqlite,* since it requires no install.  The GenAI process works for other database, such as Postgresql.
+The above examples use *sqlite* since it requires no install.  The GenAI process works for other database, such as Postgresql.
 
 You can test this as follows:
 
-1. Use [our docker image](https://apilogicserver.github.io/Docs/Database-Docker/){:target="_blank" rel="noopener"}
+1. Use [our docker image](Database-Docker.md)
 2. And:
 
 ```bash

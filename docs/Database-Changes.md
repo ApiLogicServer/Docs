@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Executable Test Suite, Documentation"
 
-      You can change your database schema and rebuild your project, preserving customizations to your api and admin app.  You can drive changes from either:
+      You can change your database schema and rebuild your project ("schema migration"), preserving customizations to your api and admin app.  You can drive changes from either:
 
       * Your database, using your database tools
 
