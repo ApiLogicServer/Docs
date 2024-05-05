@@ -1,8 +1,8 @@
-!!! pied-piper ":bulb: TL;DR - GENAI leverages AI for 'hands-free' project creation"
+!!! pied-piper ":bulb: TL;DR - GenAI leverages AI for 'hands-free' project creation"
 
     API Logic Server uses ChatGPT APIs, to submit prompts and obtain data model class responses.  
     
-    API Logic Server uses these to create databases and projects, from single command.
+    API Logic Server uses these to create databases and projects, from a single `genai` command.
 
     This document illustrates how to create, run and customize the genai_demo project.
 
