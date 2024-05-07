@@ -10,7 +10,7 @@
 
 &nbsp;
 
-![Microservice Automation](images/sample-ai/copilot/genai-automation.png)
+[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=LSh7mqGiT0k&t=5s "Microservice Automation"){:target="_blank" rel="noopener"}
 
 &nbsp;
 
