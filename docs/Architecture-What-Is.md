@@ -54,19 +54,27 @@ This *model driven* approach has substantial advantages, as described below.
 
 In traditional framework-based implementations, the amount of code required is massive.  The last thing you want to take a high level of abstraction turned into low level code you need to understand and maintain.
 
+By contrast, the models above are concise and clear.  They are declarative: they state *what* is to be done, not *how*:
+
+* the [rules](Logic-Why.md){:target="_blank" rel="noopener"} are 40X more concise than code
+
+* for APIs, just the line `api.expose_object(database.models.Category` represents multiple verbs -- and the swagger
+
+* for apps, you just list the attributes; JavaScript and HTML would be massive (and unitelligable to most).
+
 By way of analogy, you would not want a compiler to generate machine code, and then have to maintain the machine code.
 
 &nbsp;
 
 ### Platform Independent
 
-Given rapid technology advancement, it is strategic advantage to preserve IT investment over such change.  That is simply impossible if there is massive code that is technology-depedent.
+Given rapid technology advancement, it is strategic advantage to ***preserve IT investment over such change.***  That is simply impossible if there is massive code that is technology-dependent.
 
 By contrast, the models can be translated into different languages and architectures.
 
-This is not a thoeretical propistion.  In fact, past implementations of this techology have proved the migration:
+This is not a thoeretical proposition.  In fact, past implementations of this techology have *proved* the migration:
 
-* from minicomputers to Visual Basic to J2EE
+* from minicomputers, to Visual Basic, to J2EE
 
 * from JavaScript to Python
 
