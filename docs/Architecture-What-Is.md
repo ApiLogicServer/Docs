@@ -40,6 +40,38 @@ The following
 | [SAFRS-RA](https://github.com/thomaxxl/safrs-react-admin){:target="_blank" rel="noopener"}   | *Admin App*, using SAFRS    |
 
 
+## Model Execution Engines
+
+When you create a project (`als create` or `als genai`), the system creates models shown below.  These model files are "executed" by the corresponding **Model Execution Engines**, as noted.
+
+![Model Exec Engines](images/model/model-exec-engines.png)
+
+This *model driven* approach has substantial advantages, as described below.
+
+&nbsp;
+
+### Maintainable
+
+In traditional framework-based implementations, the amount of code required is massive.  The last thing you want to take a high level of abstraction turned into low level code you need to understand and maintain.
+
+By way of analogy, you would not want a compiler to generate machine code, and then have to maintain the machine code.
+
+&nbsp;
+
+### Platform Independent
+
+Given rapid technology advancement, it is strategic advantage to preserve IT investment over such change.  That is simply impossible if there is massive code that is technology-depedent.
+
+By contrast, the models can be translated into different languages and architectures.
+
+This is not a thoeretical propistion.  In fact, past implementations of this techology have proved the migration:
+
+* from minicomputers to Visual Basic to J2EE
+
+* from JavaScript to Python
+
+&nbsp;
+
 ## Execution: 3-tiered architecture
 
 The API Logic Server executes as an application server, accessed by an API, in a standard 3-tiered architecture.  
