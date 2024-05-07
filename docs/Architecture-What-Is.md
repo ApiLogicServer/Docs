@@ -68,15 +68,19 @@ By way of analogy, you would not want a compiler to generate machine code, and t
 
 ### Platform Independent
 
-Given rapid technology advancement, it is strategic advantage to ***preserve IT investment over such change.***  That is simply impossible if there is massive code that is technology-dependent.
+Given rapid technology advancement, it is strategic advantage to ***preserve IT investment over such change.***  This enables organizations to take advantage of new languages, new architectures, etc.  That has simply impossible in the past - existing procedural systems are necessarilty technology-dependent.
 
-By contrast, the models can be translated into different languages and architectures.
+By contrast, the models are architecture-independant.  For example, the rule `Derive the Customer.Balance as sum(Orders where Date_shipped is None)` is architecture neutral.  So, it can be translated into different languages and architectures.
 
 This is not a thoeretical proposition.  In fact, past implementations of this techology have *proved* the migration:
 
 * from minicomputers, to Visual Basic, to J2EE
 
 * from JavaScript to Python
+
+As shown below, your investment is preserved with a Model Migrator, and a Logic Engine.  The Logic Engine provides the ordering, optimizations and data access (possibly using an ORM) for logic execution.
+
+![Model Migrator](images/architecture/Model-Migrator.png)
 
 &nbsp;
 
