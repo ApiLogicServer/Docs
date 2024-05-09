@@ -2,7 +2,7 @@
 
 There are many excellent frameworks for developing web apps.  They provide tools for writing code to handle API and application events.
 
-API Logic Server is not a framework - it is _built_ on frameworks (Flask currently, more are possible).  It is a __low-code approach__ for creating customizable microservices - Apps, APIs, _and_ the underlying business logic.
+API Logic Server is not a framework - it is _built_ on frameworks (Flask currently, more are possible).  It is a __low-code approach__ for creating customizable microservices - Apps, APIs, _and (uniquely)_ the underlying business logic.
 
 &nbsp;
 

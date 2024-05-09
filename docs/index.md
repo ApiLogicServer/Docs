@@ -14,6 +14,66 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 [![API Logic Server Intro](images/hero-banner.png)](#instant-evaluation-no-install "Click for instant cloud-based, no-install eval")
 
+# API Logic Server - In Action
+
+## 1. AI Simplicity
+
+To create system, specify it *in business terms:*
+
+<details markdown>
+
+<summary>Create an AI Prompt file named genai_demo.prompt</summary>
+
+```bash title="Create an AI Prompt file named genai_demo.prompt"
+Use SQLAlchemy to create a sqlite database named system/genai/temp/model.sqlite,
+with customers, orders, items and product
+
+Hints: use autonum keys, allow nulls, Decimal types, foreign keys, no check constraints.
+
+Include a notes field for orders.
+
+Create a few rows of only customer and product data.
+
+Enforce the Check Credit requirement (do not generate check constraints):
+1. Customer.balance <= credit_limit
+2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
+3. Order.amount_total = Sum(Item.mount)
+4. Item.amount = quantity * unit_price
+5. Store the Item.unit_price as a copy from Product.unit_price
+```
+&nbsp;
+
+> Note: this is a ***high-level, business-oriented*** description of the system.  You do *not* need to know about, or provide, low-level framework details.
+</details>
+
+&nbsp;
+
+## 2. Low Code Speed
+
+Then, create the project (you can also create from an existing database):
+
+```bash title="Create the project"
+als genai --using=genai_demo.prompt
+```
+
+&nbsp;
+
+### Instant Microservice
+
+The system creates the database, and an executable project providing an API and Admin App.  
+
+![Created Microservice](images/sample-ai/copilot/created-microservice.png)
+
+&nbsp;
+
+## 3. Flexibility of a Framework
+
+You can then customize the project in your IDE.  Here, for example, extend the rules with Python code to send a Kafka message, and use the framework to create a custom endpoint:
+
+![Flexibility of a Framework](images/sample-ai/copilot/genai_cust.png)
+
+&nbsp;
+
 
 &nbsp;
 

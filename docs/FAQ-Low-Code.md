@@ -2,9 +2,9 @@ API Logic Server is a Low Code approach for creating database systems.
 
 There are many excellent low-code products that focus on User Interfaces.
 
-API Logic Server differs from these with a no-comprimise Enteprise / Developer focus:
+API Logic Server differs from these with a no-compromise Enteprise / Developer focus:
 
-* Strong focus on __backend logic,__ with rules
+* Strong focus on __backend logic,__ with unique rules
 
 * Uses your __existing tooling: IDE. languages, libraries, deployment, etc__
 

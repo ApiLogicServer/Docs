@@ -126,8 +126,10 @@ nav:
   - FAQs:
     - "Is this a Low Code approach?": FAQ-Low-Code.md
     - "Is this a Framework?": FAQ-Frameworks.md
+    - "Is this an AI Approach?": FAQ-AI.md
     - "Is this a RETE Engine?": FAQ-RETE.md
     - "Is this a 4GL?": Tech-4GL.md
+    - "Is this a strategic investment?": FAQ-Strategic.md
     - "Is this a Proven Technology?": Tech-Proven.md
     - "Is this like Live API Creator?": "FAQ-Live-API-Creator.md"
     - "Adoption Considerations?": Tech-Adoption.md
