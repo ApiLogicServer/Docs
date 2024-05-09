@@ -16,13 +16,13 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 # API Logic Server - In Action
 
-API Logic Server is the fastest, simplest and most flexible way to create, run and customize microservices.  Create a microservice from a Natural Language prompt or existing database, literally in seconds.  Shown below.
+API Logic Server is the simplest, fastest, and most flexible way to create, run and customize microservices.  Create from a Natural Language prompt or existing database, literally in seconds.  Standards-based customization and deployment provide full flexibility.
 
 &nbsp;
 
 ## 1. Simplicity of AI
 
-To create system, specify it *in business terms:*
+To create system, **provide this prompt *in business terms:***
 
 <details markdown>
 
@@ -62,7 +62,7 @@ That's all it take to create a system.  Note:
 
 ## 2. Speed of Low Code
 
-Then, create the project (you can also create from an existing database):
+Then, **1 command** to create the project (you can also create from an existing database):
 
 ```bash title="Create the project"
 als genai --using=genai_demo.prompt
@@ -70,9 +70,9 @@ als genai --using=genai_demo.prompt
 
 &nbsp;
 
-### Instant Microservice
+### --> Instant Microservice
 
-The system creates the database, and an executable project proving API and App Automation.  The microservice is ready to run, instantly
+The system creates the database, and an executable project providing API and App Automation.  The microservice is ready to run, instantly:
 
 ![Created Microservice](images/sample-ai/copilot/created-microservice.png)
 
@@ -80,11 +80,15 @@ The system creates the database, and an executable project proving API and App A
 
 ## 3. Flexibility of a Framework
 
-You can then customize the project in your IDE.  Create executable **spreadsheet-like rules** from our prompt - 40X more concise than code.  Extend the rules with Python code to send a Kafka message, and use the framework to create a custom endpoint:
+You can then **customize the project with Python in your IDE.**  Create executable **spreadsheet-like rules** from our prompt - 40X more concise than code.  Use Python to extend the rules (e.g, to send a Kafka message), and use the framework to create a custom endpoint:
 
 ![Flexibility of a Framework](images/sample-ai/copilot/customize.png)
 
 &nbsp;
+
+# Video - 1 minute
+    
+[![GenAI Automation](images/sample-ai/copilot/genai-automation-video-60.png)](https://www.youtube.com/watch?v=6wnPsI5S6NM "Microservice Automation"){:target="_blank" rel="noopener"}
 
 
 &nbsp;
@@ -106,12 +110,6 @@ You can then customize the project in your IDE.  Create executable **spreadsheet
 
     Unlike frameworks, weeks-to-months of complex development is no longer necessary.  <br>
     API Logic Server provides unique automation **for instant integrations and app backends**.
-
-
-## Watch it &nbsp;&nbsp; - &nbsp;&nbsp; 1 minute video
-    
-[![GenAI Automation](images/sample-ai/copilot/genai-automation-video-60.png)](https://www.youtube.com/watch?v=6wnPsI5S6NM "Microservice Automation"){:target="_blank" rel="noopener"}
-
 
 ---
 
