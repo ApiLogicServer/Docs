@@ -20,7 +20,7 @@ API Logic Server is the fastest, simplest and most flexible way to create, run a
 
 &nbsp;
 
-## 1. AI Simplicity
+## 1. Simplicity of AI
 
 To create system, specify it *in business terms:*
 
@@ -60,7 +60,7 @@ That's all it take to create a system.  Note:
 
 &nbsp;
 
-## 2. Low Code Speed
+## 2. Spped of Low Code
 
 Then, create the project (you can also create from an existing database):
 
@@ -82,7 +82,7 @@ The system creates the database, and an executable project proving API and App A
 
 You can then customize the project in your IDE.  Create executable **spreadsheet-like rules** from our prompt - 40X more concise than code.  Extend the rules with Python code to send a Kafka message, and use the framework to create a custom endpoint:
 
-![Flexibility of a Framework](images/sample-ai/copilot/genai_cust.png)
+![Flexibility of a Framework](images/sample-ai/copilot/customize.png)
 
 &nbsp;
 
