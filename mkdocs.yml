@@ -8,6 +8,7 @@ theme:
   custom_dir: docs/.overrides
   features:
     - navigation.instant
+#    - navigation.tabs
     - kramdown
     - content.tooltips
     - navigation.footer

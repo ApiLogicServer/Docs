@@ -47,11 +47,15 @@ Enforce the Check Credit requirement (do not generate check constraints):
 ```
 &nbsp;
 
-This is all it take to create a system.  Note:
+
+That's all it take to create a system.  Note:
 
 * This is a ***high-level, business-oriented*** description of the system - not just the database, but the multi-table business logic too.
-* It is not "tecnno-babble" of low-level framework details.  You don't need to learn framework details, and supply such information.
-* The key take-way: Natural Language must be coupled with logic automation to deliver real simplicity and speed.
+![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:200px;width:250px"; align=right }
+* It is not "tecnno-babble" of low-level framework details (routes...).  You don't need to learn framework details, or supply such information.  That would be a **failure to communicate.**
+* The key take-way: ***Natural Language must be enhanced with logic automation*** to deliver real simplicity and speed.  API Logic Server provides this automation, with:
+    * API and App Automation (see Step 2)
+    * Logic Automation (step 3), enabling us to execute the check credit requirement above
 </details>
 
 &nbsp;
@@ -68,7 +72,7 @@ als genai --using=genai_demo.prompt
 
 ### Instant Microservice
 
-The system creates the database, and an executable project providing an API and Admin App:
+The system creates the database, and an executable project proving API and App Automation.  The microservice is ready to run, instantly
 
 ![Created Microservice](images/sample-ai/copilot/created-microservice.png)
 
@@ -76,7 +80,7 @@ The system creates the database, and an executable project providing an API and 
 
 ## 3. Flexibility of a Framework
 
-You can then customize the project in your IDE.  Here, for example, extend the rules with Python code to send a Kafka message, and use the framework to create a custom endpoint:
+You can then customize the project in your IDE.  Create executable **spreadsheet-like rules** from our prompt - 40X more concise than code.  Extend the rules with Python code to send a Kafka message, and use the framework to create a custom endpoint:
 
 ![Flexibility of a Framework](images/sample-ai/copilot/genai_cust.png)
 
