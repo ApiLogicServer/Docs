@@ -16,6 +16,10 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 # API Logic Server - In Action
 
+API Logic Server is the fastest, simplest and most flexible way to create, run and customize microservices.  Create a microservice from a Natural Language prompt or existing database, literally in seconds.  Shown below.
+
+&nbsp;
+
 ## 1. AI Simplicity
 
 To create system, specify it *in business terms:*
@@ -43,7 +47,11 @@ Enforce the Check Credit requirement (do not generate check constraints):
 ```
 &nbsp;
 
-> Note: this is a ***high-level, business-oriented*** description of the system.  You do *not* need to know about, or provide, low-level framework details.
+This is all it take to create a system.  Note:
+
+* This is a ***high-level, business-oriented*** description of the system - not just the database, but the multi-table business logic too.
+* It is not "tecnno-babble" of low-level framework details.  You don't need to learn framework details, and supply such information.
+* The key take-way: Natural Language must be coupled with logic automation to deliver real simplicity and speed.
 </details>
 
 &nbsp;
@@ -60,7 +68,7 @@ als genai --using=genai_demo.prompt
 
 ### Instant Microservice
 
-The system creates the database, and an executable project providing an API and Admin App.  
+The system creates the database, and an executable project providing an API and Admin App:
 
 ![Created Microservice](images/sample-ai/copilot/created-microservice.png)
 
@@ -94,6 +102,11 @@ You can then customize the project in your IDE.  Here, for example, extend the r
 
     Unlike frameworks, weeks-to-months of complex development is no longer necessary.  <br>
     API Logic Server provides unique automation **for instant integrations and app backends**.
+
+
+## Watch it &nbsp;&nbsp; - &nbsp;&nbsp; 1 minute video
+    
+[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=6wnPsI5S6NM "Microservice Automation"){:target="_blank" rel="noopener"}
 
 
 ---
@@ -199,7 +212,7 @@ See how **Microservice Automation** creates and runs a microservice - a multi-pa
 
 Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI (more detailed video): [click here](Sample-Genai.md).
 
-[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=6wnPsI5S6NM "Microservice Automation"){:target="_blank" rel="noopener"}
+[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=LSh7mqGiT0k&t=5s "Microservice Automation"){:target="_blank" rel="noopener"}
 
 
 </details>
