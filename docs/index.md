@@ -60,7 +60,7 @@ That's all it take to create a system.  Note:
 
 &nbsp;
 
-## 2. Spped of Low Code
+## 2. Speed of Low Code
 
 Then, create the project (you can also create from an existing database):
 
