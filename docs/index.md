@@ -1,5 +1,7 @@
 ---
 title: API Logic Server
+hide:
+  - navigation
 Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 ---
 <style>
@@ -12,12 +14,12 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 [![Latest Version](https://img.shields.io/pypi/v/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 
-[![API Logic Server Intro](images/hero-banner.png)](#instant-evaluation-no-install "Click for instant cloud-based, no-install eval")
+
+[![API Logic Server Intro](images/hero-banner.png)](Doc-Home.md "Click for Docs")
 
 # API Logic Server - In Action
 
-API Logic Server is the simplest, fastest, and most flexible way to create and customize microservices.  Create from a Natural Language prompt or existing database, literally in seconds, for an Admin App and JSON:API.  Unique Logic Automation.  Standards-based customization and deployment provide full flexibility.
-
+Create microservices instantly, as shown below.  [Click here](Doc-Home.md) for documentation.
 &nbsp;
 
 ## 1. Simplicity of AI
@@ -70,11 +72,15 @@ als genai --using=genai_demo.prompt
 
 &nbsp;
 
-### --> Instant Microservice
+<details markdown>
+
+<summary>App and API are ready to run</summary>
 
 The system creates the database, and an executable project providing API and App Automation.  The microservice is ready to run, instantly:
 
 ![Created Microservice](images/sample-ai/copilot/created-microservice.png)
+
+</details>
 
 &nbsp;
 
@@ -85,6 +91,16 @@ You can then **customize the project with Python in your IDE.**  Create executab
 ![Flexibility of a Framework](images/sample-ai/copilot/customize.png)
 
 &nbsp;
+
+# Pick Up Where Others Leave Off
+
+API Logic Server **differentiates** from traditional approaches:
+
+* Unlike basic GenAI, API Logic Server creates systems from prompts **at the business level**, instead of low-level framework details.
+
+* Unlike frameworks, API Logic Servers preserves full flexibility and standard Dev Tools, with **automation** to eliminate weeks-to-months of complex development.
+
+* Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**
 
 # Video - 1 minute
     
@@ -751,7 +767,7 @@ We'd love to hear from you:
 
 1. Email: apilogicserver@gmail.com
 2. Issues: [github](https://github.com/ApiLogicServer/ApiLogicServer-src/issues){:target="_blank" rel="noopener"}
-3. Slack: [https://apilogicserver.slack.com](https://join.slack.com/t/apilogicserver/signup?x=x-p3388652117142-3395302306098-5241761647201)
+3. Slack: contact us on apilogicserver.slack.com
 
 ---
 
