@@ -16,7 +16,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 # API Logic Server - In Action
 
-API Logic Server is the simplest, fastest, and most flexible way to create, run and customize microservices.  Create from a Natural Language prompt or existing database, literally in seconds, for an Admin App and JSON:API.  Unique Logic Automation.  Standards-based customization and deployment provide full flexibility.
+API Logic Server is the simplest, fastest, and most flexible way to create and customize microservices.  Create from a Natural Language prompt or existing database, literally in seconds, for an Admin App and JSON:API.  Unique Logic Automation.  Standards-based customization and deployment provide full flexibility.
 
 &nbsp;
 
@@ -51,8 +51,8 @@ Enforce the Check Credit requirement (do not generate check constraints):
 That's all it take to create a system.  Note:
 
 * This is a ***high-level, business-oriented*** description of the system - not just the database, but the multi-table business logic too.
-![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:230px;width:280px"; align=right }
-* It is not "techno-babble" of low-level framework details (routes...).  You don't need to learn framework details, or supply such information.  That would be a **failure to communicate.**
+![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:200px;width:280px"; align=right }
+* It is not "techno-babble" of low-level framework details (routes...).  You don't need to provide. or even learn such details.  That would be a **failure to communicate.**
 * The key take-way: ***Natural Language must be enhanced with logic automation*** to deliver real simplicity and speed.  API Logic Server provides this automation, with:
     * API and App Automation (see Step 2)
     * Logic Automation (step 3), enabling us to execute the check credit requirement above
@@ -62,7 +62,7 @@ That's all it take to create a system.  Note:
 
 ## 2. Speed of Low Code
 
-Then, **1 command** to create the project (you can also create from an existing database):
+Then, **1 command** creates the project (you can also create from an existing database):
 
 ```bash title="Create the project"
 als genai --using=genai_demo.prompt
