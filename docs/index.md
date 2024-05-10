@@ -97,19 +97,26 @@ You can then **customize the project with Python in your IDE.**  Create executab
 
     For Developers and their organizations seeking to **increase business agility,** API Logic Server provides 
 
-    ***Microservice Automation:*** create executable projects with *1 command*:
+    * ***AI Simplicity:*** create projects from a Natural Language business oriented prompts, or existing database, in seconds
+
+    * ***Microservice Automation:*** create executable projects with *1 command*:
     
-    1. ***API Automation:*** crud for each table, with pagination, optimistic locking, filtering and sorting, and
-    2.  ***App Automation:*** a multi-page, multi-table Admin App.  <br><br>
+        1. ***API Automation:*** crud for each table, with pagination, optimistic locking, filtering and sorting, and
+        2.  ***App Automation:*** a multi-page, multi-table Admin App.
 
-    **Customization in your IDE:** use standard tools (Python, Flask, SQLAlchemy, GitHub and Docker), plus
+    * **Standards-Based Customization:** use standard tools (your IDE, Python, Flask, SQLAlchemy, GitHub and Docker), with API Logic Server support for:
 
-    3. ***Logic Automation:*** unique **rules - 40X** more concise multi-table derivations and constraints. :trophy:
+        3. ***Logic Automation:*** unique **rules - 40X** more concise multi-table derivations and constraints. :trophy:
 
-    4. ***Deployment Automation:*** scripts created to containerize your system, and deploy to Azure.
+        4. ***Deployment Automation:*** scripts created to containerize your system, and deploy to Azure. <br><br>
 
-    Unlike frameworks, weeks-to-months of complex development is no longer necessary.  <br>
-    API Logic Server provides unique automation **for instant integrations and app backends**.
+    API Logic Server **differentiates** from traditional approaches:
+    
+    * Unlike basic GenAI, API Logic Server creates systems from prompts **at the business level**, instead of low-level framework details.
+
+    * Unlike frameworks, API Logic Servers preserves full flexibility and standard Dev Tools, with **automation** to eliminate weeks-to-months of complex development.
+
+    * Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**
 
 ---
 
@@ -192,29 +199,13 @@ Explore it below.
 
 <details markdown>
 
-<summary>See Microservice Automation (40 sec) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click Here</summary>
-
-See how **Microservice Automation** creates and runs a microservice - a multi-page app, and an API. 
-
-* Here is a microservice -- api and admin app - **created / running in 5 seconds**
-
-    * It would be similar for your databases
-
-* Then, customize in your IDE with Python and **Logic Automation:** spreadsheet-like rules
-
-![quick tour](images/nutshell/gif.gif)
-
-</details>
-
-<details markdown>
-
-<summary>Video Tutorial (1 min)</summary>
+<summary>Video Tutorial (4 min)</summary>
 
 &nbsp;
 
-Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging ([instructions here](Tech-Agile.md){:target="_blank" rel="noopener"}).  Or, see it using AI (more detailed video): [click here](Sample-Genai.md).
+Click the image below for a video tutorial, showing complete project creation, execution, customization and debugging.  Or, see this article: [click here](Sample-Genai.md).
 
-[![GenAI Automation](images/sample-ai/copilot/genai-automation-video-60.png)](https://www.youtube.com/watch?v=LSh7mqGiT0k&t=5s "Microservice Automation"){:target="_blank" rel="noopener"}
+[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=LSh7mqGiT0k&t=5s "Microservice Automation"){:target="_blank" rel="noopener"}
 
 
 </details>
