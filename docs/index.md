@@ -16,13 +16,13 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 # API Logic Server - In Action
 
-API Logic Server is the simplest, fastest, and most flexible way to create, run and customize microservices.  Create from a Natural Language prompt or existing database, literally in seconds.  Standards-based customization and deployment provide full flexibility.
+API Logic Server is the simplest, fastest, and most flexible way to create, run and customize microservices.  Create from a Natural Language prompt or existing database, literally in seconds, for an Admin App and JSON:API.  Unique Logic Automation.  Standards-based customization and deployment provide full flexibility.
 
 &nbsp;
 
 ## 1. Simplicity of AI
 
-To create system, **provide this prompt *in business terms:***
+To create system, **provide a prompt *in business terms:***
 
 <details markdown>
 
@@ -51,8 +51,8 @@ Enforce the Check Credit requirement (do not generate check constraints):
 That's all it take to create a system.  Note:
 
 * This is a ***high-level, business-oriented*** description of the system - not just the database, but the multi-table business logic too.
-![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:200px;width:250px"; align=right }
-* It is not "tecnno-babble" of low-level framework details (routes...).  You don't need to learn framework details, or supply such information.  That would be a **failure to communicate.**
+![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:230px;width:280px"; align=right }
+* It is not "techno-babble" of low-level framework details (routes...).  You don't need to learn framework details, or supply such information.  That would be a **failure to communicate.**
 * The key take-way: ***Natural Language must be enhanced with logic automation*** to deliver real simplicity and speed.  API Logic Server provides this automation, with:
     * API and App Automation (see Step 2)
     * Logic Automation (step 3), enabling us to execute the check credit requirement above
@@ -122,13 +122,13 @@ You can then **customize the project with Python in your IDE.**  Create executab
 
 &nbsp;
 
-# Enterprise Low Code
+# Enterprise Perspective
 
 <details markdown>
 
-<summary>Enterprise Low Code - Flexibility of a framework, and the agility of Low Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click Here</summary>
+<summary>Simplicity of AI, Speed of Low Code, Flexibility of a Framework, Modern Software Architecture</summary>
 
-We are aware you have many choices for delivering systems.  API Logic Server provides Enterprise-class features that provide developers the agility of Low Code.
+We are aware you have many choices for delivering systems.  API Logic Server provides Enterprise-class features that provide developers the speed of Low Code, the flexibility of a Framework, in a standards-based architecture.
 
 ![quick tour](images/nutshell/positioning.png)
 
@@ -159,7 +159,7 @@ Developers require the ***flexibility of a framework.*** In fact,
 
 &nbsp;
 
-**Agility of Low Code** 
+**Speed of Low Code - *including logic*** 
 
 Unlike Low Code systems, API Logic Server:
 
@@ -177,9 +177,9 @@ And, for systems requiring highly customized interfaces for Business Intelligenc
 
 &nbsp;
 
-**AI Powered** 
+**Simplicity of AI** 
 
-This automation technology is further simplified with exciting technology such as Copilot:
+Technology only becomes useful when it's simple enough for teams to be effective.  API Logic Server employs AI:
 
 * Use Natural Language to create databases
 * Use Natural Language to declare rules
