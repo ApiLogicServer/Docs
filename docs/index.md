@@ -107,11 +107,13 @@ API Logic Server **differentiates** from traditional approaches:
 
     * For systems providing update, logic automation is critical.  It's nearly half the effort.  The promise of Low Code *requires logic automation.* 
 
-* Unlike basic GenAI, API Logic Server creates systems from prompts **at the business level**, instead of low-level framework details.
+* Unlike basic GenAI, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**
 
 <details markdown>
 
-<summary>Comparing GenAI with GenAI Automation</summary>
+<summary>Comparing GenAI with GenAI Microservice Automation</summary>
+
+First, GenAOI creates only the database.  It does not create the microservice, the project, the API, or the App.  And it certainly does not create the logic.  GenAI Automation does all of this.
 
 As noted above, nearly half the effort in a system is the logic.  GenAI provides a simple way to create databases, but does not provide the automation to create the logic.  
 
@@ -120,8 +122,6 @@ In most cases, AI responses simply ignore the logic requirement.  Attempts to ad
 &nbsp;
 
 **Triggers**
-
-&nbsp;
 
 The trigger solution typically looks something like this:
 
@@ -155,8 +155,6 @@ Addressing this level of logic is why rules are 40X more concise than code.
 &nbsp;
 
 **Logic Bank Code**
-
-&nbsp;
 
 If we engineer prompt to suggest using Logic Bank (a component of API Logic Server), we get a response like this:
 
