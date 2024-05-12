@@ -117,7 +117,7 @@ First, GenAOI creates only the database.  It does not create the microservice, t
 
 As noted above, nearly half the effort in a system is the logic.  GenAI provides a simple way to create databases, but does not provide the automation to create the logic.  
 
-In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 2 categories: triggers and Logic Bank code.
+In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
 
 &nbsp;
 
@@ -154,9 +154,9 @@ Addressing this level of logic is why rules are 40X more concise than code.
 
 &nbsp;
 
-**Logic Bank Code**
+**Logic Bank Code, without context**
 
-If we engineer prompt to suggest using Logic Bank (a component of API Logic Server), we get a response like this:
+If we engineer prompt to suggest using Logic Bank (a component of API Logic Server), we get a response like this if there is no project context:
 
 ```python
 def declare_logic():
@@ -184,7 +184,15 @@ def declare_logic():
             raise Exception(f"Customer {row.name}'s balance exceeds their credit limit.")
 ```
 
-This code does not use Logic Bank APIs.  It does not even compile, much less run.
+This code does not use Logic Bank APIs.  It does not even compile, much less run.  It is, as they say, an hallucination.
+
+&nbsp;
+
+**Logic Bank Code, *With Context***
+
+Much better results are obtained when the prompt has available context.  Copilot turns our Natural Language requirements into Logic Bank code, requiring only minor adjustments.  
+
+Of course, the Logic Bank engine (part of API Logic Server) is required for actual execution.  Watch it in the video below.
 
 </details>
 
