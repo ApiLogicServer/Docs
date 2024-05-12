@@ -103,11 +103,11 @@ API Logic Server **differentiates** from traditional approaches:
 
 * Unlike Frameworks, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**.  You're ready to run.  With frameworks, you're ready to code -- weeks-to-months of complex development.
 
-* Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**  
+* Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**  With Low Code, you have to code your logic, quite likely in a non-standard IDE.
 
     * For systems providing update, logic automation is critical.  It's nearly half the effort.  The promise of Low Code *requires logic automation.* 
 
-* Unlike basic GenAI, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**  You have working software.  With GenAI, you have a database.
+* Unlike basic GenAI, API Logic Server creates **complete microservices**, **including logic automation.**  You have working software.  With GenAI, you have a database.
 
 <details markdown>
 
