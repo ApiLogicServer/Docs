@@ -70,7 +70,6 @@ Then, **1 command** creates the project (you can also create from an existing da
 als genai --using=genai_demo.prompt
 ```
 
-&nbsp;
 
 <details markdown>
 
@@ -88,7 +87,13 @@ The system creates the database, and an executable project providing API and App
 
 You can then **customize the project with Python in your IDE.**  Create executable **spreadsheet-like rules** from our prompt - 40X more concise than code.  Use Python to extend the rules (e.g, to send a Kafka message), and use the framework to create a custom endpoint:
 
+<details markdown>
+
+<summary>Customize the Logic and API</summary>
+
 ![Flexibility of a Framework](images/sample-ai/copilot/customize.png)
+
+</details>
 
 &nbsp;
 
@@ -96,11 +101,96 @@ You can then **customize the project with Python in your IDE.**  Create executab
 
 API Logic Server **differentiates** from traditional approaches:
 
+* Unlike Frameworks, API Logic Servers preserves full flexibility and standard Dev Tools, with **automation** to eliminate weeks-to-months of complex development.
+
+* Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**  
+
+    * For systems providing update, logic automation is critical.  It's nearly half the effort.  The promise of Low Code *requires logic automation.* 
+
 * Unlike basic GenAI, API Logic Server creates systems from prompts **at the business level**, instead of low-level framework details.
 
-* Unlike frameworks, API Logic Servers preserves full flexibility and standard Dev Tools, with **automation** to eliminate weeks-to-months of complex development.
+<details markdown>
 
-* Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**
+<summary>Comparing GenAI with GenAI Automation</summary>
+
+As noted above, nearly half the effort in a system is the logic.  GenAI provides a simple way to create databases, but does not provide the automation to create the logic.  
+
+In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 2 categories: triggers and Logic Bank code.
+
+&nbsp;
+
+**Triggers**
+
+&nbsp;
+
+The trigger solution typically looks something like this:
+
+```sql
+-- Note: The enforcement of the Check Credit requirement is complex and might be better handled in application logic.
+-- However, you can create a stored procedure or use triggers to enforce these rules, keeping in mind the performance implications.
+
+-- Example of a trigger to enforce Customer.balance <= credit_limit (simplified version)
+DELIMITER //
+CREATE TRIGGER CheckCreditBeforeCustomerUpdate
+BEFORE UPDATE ON Customers
+FOR EACH ROW
+BEGIN
+    IF NEW.Balance > NEW.Credit_Limit THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Customer balance exceeds credit limit.';
+    END IF;
+END;
+//
+DELIMITER ;
+```
+
+This is simply not a solution: it does not address the triggering event - some change to the order.  By contrast, our logic automates about a dozen Use Cases, including:
+
+* Customer balance is adjusted when the order is inserted, deleted, shipped, or re-assigned.
+
+* The orders is adjusted when items are inserted, deleted, or updated with new quantities or different products.
+
+Addressing this level of logic is why rules are 40X more concise than code.
+
+
+&nbsp;
+
+**Logic Bank Code**
+
+&nbsp;
+
+If we engineer prompt to suggest using Logic Bank (a component of API Logic Server), we get a response like this:
+
+```python
+def declare_logic():
+    LogicBank.activate(session=session, activator=logic_bank_util.register_rules)
+
+    @LogicBank.rule("order", "before_flush")
+    def order_amount_total(row: LogicRow):
+        row.amount_total = sum([item.quantity * item.unit_price for item in row.items])
+
+    @LogicBank.rule("customer", "before_flush")
+    def customer_balance(row: LogicRow):
+        row.balance = sum([order.amount_total for order in row.orders if order.date_shipped is None])
+
+    @LogicBank.rule("item", "before_flush")
+    def item_amount(row: LogicRow):
+        row.amount = row.quantity * row.unit_price
+
+    @LogicBank.rule("item", "before_flush")
+    def copy_unit_price_from_product(row: LogicRow):
+        row.unit_price = row.product.unit_price
+
+    @LogicBank.rule("customer", "before_flush")
+    def check_credit_limit(row: LogicRow):
+        if row.balance > row.credit_limit:
+            raise Exception(f"Customer {row.name}'s balance exceeds their credit limit.")
+```
+
+This code does not use Logic Bank APIs.  It does not even compile, much less run.
+
+</details>
+
+&nbsp;
 
 # Video - 1 minute
     
