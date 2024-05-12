@@ -1,0 +1,72 @@
+-- Step 1: Create the database structure
+
+-- Create Customers table
+CREATE TABLE Customers (
+    CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Balance DECIMAL(10, 2) NOT NULL,
+    Credit_Limit DECIMAL(10, 2) NOT NULL
+);
+
+-- Create Products table
+CREATE TABLE Products (
+    ProductID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Unit_Price DECIMAL(10, 2) NOT NULL
+);
+
+-- Create Orders table
+CREATE TABLE Orders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerID INT,
+    Date_Shipped DATE,
+    Amount_Total DECIMAL(10, 2),
+    Notes TEXT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+-- Create Items table
+CREATE TABLE Items (
+    ItemID INT AUTO_INCREMENT PRIMARY KEY,
+    OrderID INT,
+    ProductID INT,
+    Quantity INT NOT NULL,
+    Amount DECIMAL(10, 2),
+    Unit_Price DECIMAL(10, 2),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+-- Step 2: Insert sample data for Customers and Products
+
+INSERT INTO Customers (Name, Balance, Credit_Limit) VALUES
+('John Doe', 100.00, 500.00),
+('Jane Smith', 200.00, 1000.00);
+
+INSERT INTO Products (Name, Unit_Price) VALUES
+('Product 1', 10.00),
+('Product 2', 20.00);
+
+-- Step 3: Enforce Check Credit requirement with triggers or application logic
+
+-- Note: The enforcement of the Check Credit requirement is complex and might be better handled in application logic.
+-- However, you can create a stored procedure or use triggers to enforce these rules, keeping in mind the performance implications.
+
+-- Example of a trigger to enforce Customer.balance <= credit_limit (simplified version)
+DELIMITER //
+CREATE TRIGGER CheckCreditBeforeCustomerUpdate
+BEFORE UPDATE ON Customers
+FOR EACH ROW
+BEGIN
+    IF NEW.Balance > NEW.Credit_Limit THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Customer balance exceeds credit limit.';
+    END IF;
+END;
+//
+DELIMITER ;
+
+-- Note: The remaining checks involve more complex logic that would typically be handled in the application layer,
+-- especially calculations involving sums across multiple rows and tables.
+
+-- Ed.
+--  1. Fails re-use: update order, items

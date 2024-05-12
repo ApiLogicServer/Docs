@@ -1,0 +1,71 @@
+-- Step 1: Create the database and tables with the specified requirements
+
+-- Create table 'customers'
+CREATE TABLE IF NOT EXISTS customers (
+    customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    balance DECIMAL(10, 2) NOT NULL,
+    credit_limit DECIMAL(10, 2) NOT NULL
+);
+
+-- Create table 'products'
+CREATE TABLE IF NOT EXISTS products (
+    product_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    unit_price DECIMAL(10, 2) NOT NULL
+);
+
+-- Create table 'orders'
+CREATE TABLE IF NOT EXISTS orders (
+    order_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id INTEGER,
+    date_shipped DATE,
+    amount_total DECIMAL(10, 2) NOT NULL,
+    notes TEXT,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+-- Create table 'items'
+CREATE TABLE IF NOT EXISTS items (
+    item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    order_id INTEGER,
+    product_id INTEGER,
+    quantity INTEGER NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    unit_price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+-- Step 2: Insert sample data into 'customers' and 'products'
+
+-- Insert into 'customers'
+INSERT INTO customers (name, balance, credit_limit) VALUES
+('John Doe', 100.00, 500.00),
+('Jane Smith', 150.00, 700.00);
+
+-- Insert into 'products'
+INSERT INTO products (name, unit_price) VALUES
+('Product A', 20.00),
+('Product B', 30.00);
+
+-- Step 3: Enforce the Check Credit requirement through triggers or application logic
+
+-- Note: SQLite does not support complex logic directly in the database for enforcing all the Check Credit requirements.
+-- It's recommended to handle these requirements in the application logic.
+-- Below is an example of how you might enforce the first requirement through a trigger.
+
+-- Example trigger to enforce Customer.balance <= credit_limit
+-- This is a simplistic example and might need to be adjusted based on actual application logic.
+CREATE TRIGGER IF NOT EXISTS check_credit_before_insert_order
+BEFORE INSERT ON orders
+FOR EACH ROW
+BEGIN
+    SELECT CASE
+        WHEN (SELECT balance FROM customers WHERE customer_id = NEW.customer_id) > (SELECT credit_limit FROM customers WHERE customer_id = NEW.customer_id) THEN
+            RAISE(ABORT, 'Customer balance exceeds credit limit.')
+    END;
+END;
+
+-- Ed.
+--  1. Fails re-use: update order, items

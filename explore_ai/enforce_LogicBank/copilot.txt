@@ -1,0 +1,100 @@
+# Step 1: Import necessary packages
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Numeric, Date, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, relationship
+import logic_bank_utils.util as logic_bank_util
+from logic_bank.logic_bank import LogicBank
+from logic_bank.exec_row_logic.logic_row import LogicRow
+from decimal import Decimal
+
+# Step 2: Define the database connection
+engine = create_engine('sqlite:///system/genai/temp/model.sqlite', echo=True)
+Base = declarative_base()
+
+# Step 3: Define the models
+class Customer(Base):
+    __tablename__ = 'customers'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String, nullable=True)
+    balance = Column(Numeric(10, 2), nullable=True)
+    credit_limit = Column(Numeric(10, 2), nullable=True)
+
+class Product(Base):
+    __tablename__ = 'products'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String, nullable=True)
+    unit_price = Column(Numeric(10, 2), nullable=True)
+
+class Order(Base):
+    __tablename__ = 'orders'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    customer_id = Column(Integer, ForeignKey('customers.id'), nullable=True)
+    date_shipped = Column(Date, nullable=True)
+    amount_total = Column(Numeric(10, 2), nullable=True)
+    notes = Column(Text, nullable=True)
+    customer = relationship("Customer", back_populates="orders")
+
+class Item(Base):
+    __tablename__ = 'items'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    order_id = Column(Integer, ForeignKey('orders.id'), nullable=True)
+    product_id = Column(Integer, ForeignKey('products.id'), nullable=True)
+    quantity = Column(Integer, nullable=True)
+    unit_price = Column(Numeric(10, 2), nullable=True)
+    amount = Column(Numeric(10, 2), nullable=True)
+    order = relationship("Order", back_populates="items")
+    product = relationship("Product")
+
+Customer.orders = relationship("Order", order_by=Order.id, back_populates="customer")
+Order.items = relationship("Item", order_by=Item.id, back_populates="order")
+
+# Step 4: Create the database
+Base.metadata.create_all(engine)
+
+# Step 5: Insert initial data
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# Add some customers
+customer1 = Customer(name="John Doe", balance=0, credit_limit=1000)
+customer2 = Customer(name="Jane Doe", balance=0, credit_limit=1500)
+session.add(customer1)
+session.add(customer2)
+
+# Add some products
+product1 = Product(name="Laptop", unit_price=Decimal('1200.00'))
+product2 = Product(name="Smartphone", unit_price=Decimal('800.00'))
+session.add(product1)
+session.add(product2)
+
+session.commit()
+
+# Step 6: Define Logic Bank rules
+def declare_logic():
+    LogicBank.activate(session=session, activator=logic_bank_util.register_rules)
+
+    @LogicBank.rule("order", "before_flush")
+    def order_amount_total(row: LogicRow):
+        row.amount_total = sum([item.quantity * item.unit_price for item in row.items])
+
+    @LogicBank.rule("customer", "before_flush")
+    def customer_balance(row: LogicRow):
+        row.balance = sum([order.amount_total for order in row.orders if order.date_shipped is None])
+
+    @LogicBank.rule("item", "before_flush")
+    def item_amount(row: LogicRow):
+        row.amount = row.quantity * row.unit_price
+
+    @LogicBank.rule("item", "before_flush")
+    def copy_unit_price_from_product(row: LogicRow):
+        row.unit_price = row.product.unit_price
+
+    @LogicBank.rule("customer", "before_flush")
+    def check_credit_limit(row: LogicRow):
+        if row.balance > row.credit_limit:
+            raise Exception(f"Customer {row.name}'s balance exceeds their credit limit.")
+
+declare_logic()
+
+# Ed.
+#   - Does not conform to LogicBank or any known library.
