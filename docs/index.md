@@ -101,13 +101,13 @@ You can then **customize the project with Python in your IDE.**  Create executab
 
 API Logic Server **differentiates** from traditional approaches:
 
-* Unlike Frameworks, API Logic Servers preserves full flexibility and standard Dev Tools, with **automation** to eliminate weeks-to-months of complex development.
+* Unlike Frameworks, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**.  You're ready to run.  With frameworks, you're ready to code -- weeks-to-months of complex development.
 
 * Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**  
 
     * For systems providing update, logic automation is critical.  It's nearly half the effort.  The promise of Low Code *requires logic automation.* 
 
-* Unlike basic GenAI, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**
+* Unlike basic GenAI, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**  You have working software.  With GenAI, you have a database.
 
 <details markdown>
 
@@ -156,7 +156,7 @@ Addressing this level of logic is why rules are 40X more concise than code.
 
 **Logic Bank Code, without context**
 
-If we engineer prompt to suggest using Logic Bank (a component of API Logic Server), we get a response like this if there is no project context:
+If we engineer our prompt to suggest using Logic Bank (a component of API Logic Server), we get a response like this if there is no project context:
 
 ```python
 def declare_logic():
