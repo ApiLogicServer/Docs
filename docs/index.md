@@ -113,11 +113,9 @@ API Logic Server **differentiates** from traditional approaches:
 
 <summary>Comparing GenAI with GenAI Microservice Automation</summary>
 
-First, GenAOI creates only the database.  It does not create the microservice, the project, the API, or the App.  And it certainly does not create the logic.  GenAI Automation does all of this.
+First, GenAOI creates only the database.  It does not create the microservice, the project, the API, or the App.  And it certainly does not create the logic.  GenAI Microservice Automation does all of this.
 
-As noted above, nearly half the effort in a system is the logic.  GenAI provides a simple way to create databases, but does not provide the automation to create the logic.  
-
-In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
+As noted above, nearly half the effort in a system is the logic.  In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
 
 &nbsp;
 
@@ -145,12 +143,11 @@ DELIMITER ;
 
 This is simply not a solution: it does not address the triggering event - some change to the order.  By contrast, our logic automates about a dozen Use Cases, including:
 
-* Customer balance is adjusted when the order is inserted, deleted, shipped, or re-assigned.
+* The customer balance is adjusted (and credit is checked) when an order is inserted, deleted, shipped, or re-assigned to a different customer.  Importantly, the logic (and its overhead) is pruned on other changes, such as changing the shipping address.
 
-* The orders is adjusted when items are inserted, deleted, or updated with new quantities or different products.
+* This dependency management chains: the *order* is adjusted when items are inserted, deleted, or updated with new quantities or different products.
 
 Addressing this level of logic is why rules are 40X more concise than code.
-
 
 &nbsp;
 
