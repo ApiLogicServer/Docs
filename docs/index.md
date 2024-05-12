@@ -2,7 +2,7 @@
 title: API Logic Server
 hide:
   - navigation
-Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
+Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps
 ---
 <style>
   .md-typeset h1,
