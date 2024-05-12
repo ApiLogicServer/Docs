@@ -15,7 +15,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 
 
-[![API Logic Server Intro](images/hero-banner.png)](Doc-Home.md "Click for Docs")
+[![API Logic Server Intro](images/hero-banner.png)](#install-and-verify "Click for Setup")
 
 # API Logic Server - In Action
 
@@ -461,7 +461,7 @@ als create --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
 code sample_ai
 ```
 
-Then explore the *demos, samples and tutorials*, below.
+Then explore the *demos, samples and tutorials*, below.  For docs, [click here](Doc-Home.md){:target="_blank" rel="noopener"}.
 
 </details>
 
@@ -629,12 +629,12 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 This pre-release includes:
 
-* genai, using chatgpt & copilot for hands-free create/run (no copy/paste, no cli...)
+* [logic and service discovery](IDE-Customize.md#discoverability-logic-services){:target="_blank" rel="noopener"}.
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.03.99
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.06
 ```
 
 Or use (neither available currently):

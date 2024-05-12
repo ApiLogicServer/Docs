@@ -42,6 +42,16 @@ The `ApiLogicServer create` command also creates:
 
 &nbsp;
 
+### Discoverability - Logic, Services
+
+In addition to altering the files noted above, you can use discovery.  This enables logic and services to be broken up into multiple files, which are auto-discovered.  
+
+These can help teams integrate their work, with reduced conflict.
+
+![Discovability](images/architecture/discovery.png)
+
+&nbsp;
+
 ## Debug
 
 Utilize IDE Debuggers, including for declarative rules, as described in the [Tutorial](Tutorial.md#3-customize-and-debug-in-your-ide):
