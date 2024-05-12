@@ -775,6 +775,8 @@ We'd love to hear from you:
 
 # More Information
 
+For docs, [click here](Doc-Home.md){:target="_blank" rel="noopener"}.
+
 <details markdown>
 
 <summary>Acknowledgements</summary>
