@@ -24,7 +24,7 @@ nav:
         - Execute From Terminal: Execute.md
     - Express Eval (unavail): Install-Eval.md
   - Demos, Tutorial, Samples:
-    - "Generative AI Automation": Sample-Genai.md
+    - "GenAI Microservice Automation": Sample-Genai.md
     - "Tutorial": Tutorial.md
     - "AI Demo": Sample-AI.md
     - "Sample DB, Project": Sample-Database.md

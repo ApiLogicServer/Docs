@@ -107,7 +107,7 @@ API Logic Server **differentiates** from traditional approaches:
 
     * For systems providing update, logic automation is critical.  It's nearly half the effort.  The promise of Low Code *requires logic automation.* 
 
-* Unlike basic GenAI, API Logic Server creates **complete microservices**, **including logic automation.**  You have working software.  With GenAI, you have a database.
+* Unlike basic GenAI, API Logic Server creates **complete microservices -- including logic automation.**  You have working software.  With GenAI, you have a database.
 
 <details markdown>
 
@@ -121,7 +121,7 @@ As noted above, nearly half the effort in a system is the logic.  In most cases,
 
 **Triggers**
 
-The trigger solution typically looks something like this:
+The trigger solution GenAI response typically looks something like this:
 
 ```sql
 -- Note: The enforcement of the Check Credit requirement is complex and might be better handled in application logic.
