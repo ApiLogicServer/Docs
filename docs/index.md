@@ -109,6 +109,21 @@ API Logic Server **differentiates** from traditional approaches:
 
 * Unlike basic GenAI, API Logic Server creates **complete microservices -- including logic automation.**  You have working software.  With GenAI, you have a database.
 
+For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noopener"}.
+
+<details markdown>
+
+<summary>Promises Kept</summary>
+
+
+| Technology Promises | But...   |  Deliver the Promise With API Logic Server  |
+:-------|:-----------|:-------|
+| Framework: Flexibility | No Automation - months of complex development | - Microservice Automation<br>- Full framework access |
+| Low Code: Speed | - No Logic Automation (nearly half the effort)<br>- Proprietary IDE, Framework | - Logic Automation<br>- Open IDE, Tools, Libraries |
+| GenAI: Simplicity | Only Database Automation | - API Logic Server uses GenAI<br>- Microservice Automation |
+
+</details>
+
 <details markdown>
 
 <summary>Comparing GenAI with GenAI Microservice Automation</summary>
