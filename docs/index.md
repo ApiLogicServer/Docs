@@ -19,7 +19,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 # API Logic Server - In Action
 
-Create microservices instantly, as shown below.  **[Click here](Doc-Home.md) for documentation.**
+Create microservices instantly, as shown below.  **[Click here for documentation.](Doc-Home.md)**
 &nbsp;
 
 ## 1. Simplicity of AI
@@ -113,12 +113,12 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 
 <details markdown>
 
-<summary>Promises Kept</summary>
+<summary>Delivering on the Promises of Simplicity and Speed</summary>
 
 
 | Technology Promises | But...   |  Deliver the Promise With API Logic Server  |
 :-------|:-----------|:-------|
-| Framework: Flexibility | No Automation - months of complex development | - Microservice Automation<br>- Full framework access |
+| Framework: Flexibility | No Automation - months of complex development | - Microservice Automation<br>- With Full framework access |
 | Low Code: Speed | - No Logic Automation (nearly half the effort)<br>- Proprietary IDE, Framework | - Logic Automation<br>- Open IDE, Tools, Libraries |
 | GenAI: Simplicity | Only Database Automation | - API Logic Server uses GenAI<br>- Microservice Automation |
 
