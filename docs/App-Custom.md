@@ -35,7 +35,7 @@ Components are a key element.  As you can see from the [grid component](https://
 
 Creating a complete application requires an extensive number of components.  API Logic Server creates a complete app from the data model, which you can then customize.
 
-## Templates: Automated Components
+## Automation: Templates, Models
 
 Each component has its own unique html code (including properties), css and typescript.  So, changing from a list to a grid would be a complex task.
 
@@ -44,6 +44,8 @@ So, API Logic Server introduces a template-based application model:
 * **Template**: a macro-expansible version of a template, bundling its html, css and typescript.  The template is a 'generation ready' component.
 
 * **Model**: a YAML file that designates the templates for tables (grid, card, tree, dialog) and fields (text, image, combo, etc).  The creation process macro-expands the designated templates, creating the full app, which you can then customize.
+
+> So, typical dev cycle would be to tune the model to designate the templates, then fine-tune the generated app by editing components.
 
 
 ## Procedures
