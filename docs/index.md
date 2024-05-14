@@ -19,7 +19,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 # API Logic Server - In Action
 
-Create microservices instantly, as shown below.  [Click here](Doc-Home.md) for documentation.
+Create microservices instantly, as shown below.  **[Click here](Doc-Home.md) for documentation.**
 &nbsp;
 
 ## 1. Simplicity of AI
@@ -50,7 +50,7 @@ Enforce the Check Credit requirement (do not generate check constraints):
 &nbsp;
 
 
-That's all it take to create a system.  Note:
+That's all it takes to create a system.  Note:
 
 * This is a ***high-level, business-oriented*** description of the system - not just the database, but the multi-table business logic too.
 ![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:200px;width:280px"; align=right }
@@ -738,6 +738,8 @@ Then, you might like to try out some of our [dockerized test databases](https://
 This pre-release includes:
 
 * [logic and service discovery](IDE-Customize.md#discoverability-logic-services){:target="_blank" rel="noopener"}.
+
+* tecnology preview of [Ontimize rich web app](App-Custom.md){:target="_blank" rel="noopener"}.
 
 You can try it at (you may need to use `python3`):
 
