@@ -126,7 +126,7 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 
 <details markdown>
 
-<summary>Comparing GenAI with GenAI Microservice Automation</summary>
+<summary>Comparing GenAI with GenAI-Powered Microservice Automation</summary>
 
 First, GenAOI creates only the database.  It does not create the microservice, the project, the API, or the App.  And it certainly does not create the logic.  GenAI Microservice Automation does all of this.
 
