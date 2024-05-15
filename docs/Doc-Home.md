@@ -18,6 +18,32 @@
     * Logic is **automatically reused**, factored out of web apps and custom services
     * **Containerized** for scalable cloud deployment - the project includes a dockerfile to containerize it to DockerHub.
 
+&nbsp;
+
+## Install and Verify
+
+If you have the correct Python (version 3.8-3.12), install is standard ([more detailed instructions here](Install-Express.md){:target="_blank" rel="noopener"}):
+
+```bash title="Install API Logic Server in a Virtual Environment"
+python3 -m venv venv                 # windows: python -m venv venv
+source venv/bin/activate             # windows: venv\Scripts\activate
+python -m pip install ApiLogicServer
+
+ApiLogicServer start                 # optionally, start the project manager under VSCode
+```
+
+> Note: this requires you've activate VSCode `code` CLI (to get it: Open the Command Palette (Cmd+Shift+P) and type 'shell command')
+
+<br>Verification test - create and run the demo:
+
+```bash title="Verify - Create and Run Demo"
+als create --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
+code sample_ai
+```
+
+Then explore the *demos, samples and tutorials*, below.  For docs, [click here](Doc-Home.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
 
 ## Runtimes and CLI
 

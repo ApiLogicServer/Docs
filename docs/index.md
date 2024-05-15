@@ -118,9 +118,9 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 
 | Technology Promises | But...   |  Deliver the Promise With API Logic Server  |
 :-------|:-----------|:-------|
-| Framework: Flexibility | No Automation - months of complex development | - Microservice Automation<br>- With Full framework access |
-| Low Code: Speed | - No Logic Automation (nearly half the effort)<br>- Proprietary IDE, Framework | - Logic Automation<br>- Open IDE, Tools, Libraries |
-| GenAI: Simplicity | Only Database Automation | - API Logic Server uses GenAI<br>- Microservice Automation |
+| Framework Promises Flexibility | - No API, Logic or App Automation<br>- Months of complex development | - Full Microservice Automation<br>- Preserves Full framework access |
+| Low Code Promises Speed | - No Logic Automation (nearly half the effort)<br>- Proprietary IDE, Framework | - Logic Automation<br>- Open IDE, Tools, Libraries |
+| GenAI Promises Simplicity | - No API, Logic or App Automation<br>- Only Database Automation | - API Logic Server uses GenAI<br>- Full Microservice Automation |
 
 </details>
 
@@ -560,7 +560,7 @@ python -m pip install ApiLogicServer
 ApiLogicServer start                 # optionally, start the project manager under VSCode
 ```
 
-> Note: this requires you've activate VSCode `code` CLI
+> Note: this requires you've activate VSCode `code` CLI (to get it: Open the Command Palette (Cmd+Shift+P) and type 'shell command')
 
 <br>Verification test - create and run the demo:
 
