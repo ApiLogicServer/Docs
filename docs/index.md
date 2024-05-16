@@ -60,7 +60,7 @@ That's all it takes to create a system.  Note:
 * This is a ***high-level, business-oriented*** description of the system - not just the database, but the multi-table business logic too.
 ![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:200px;width:280px"; align=right }
 * It is not "techno-babble" of low-level framework details (routes...).  You don't need to provide. or even learn such details.  That would be a **failure to communicate.**
-* The key take-way: ***Natural Language must be enhanced with logic automation*** to deliver real simplicity and speed.  API Logic Server provides this automation, with:
+* The key take-way: ***Natural Language must be enhanced with microservice automation*** to deliver real simplicity and speed.  API Logic Server provides this automation, with:
     * API and App Automation (see Step 2)
     * Logic Automation (step 3), enabling us to execute the check credit requirement above
 </details>
@@ -107,7 +107,7 @@ You can then **customize the project with Python in your IDE.**  Create executab
 :-------|:-----------|:-------|
 | Framework Promises Flexibility | - No API, Logic or App Automation<br>- Months of complex development | - Full Microservice Automation<br>- Preserves Full framework access |
 | Low Code Promises Speed | - No Logic Automation (nearly half the effort)<br>- Proprietary IDE, Framework | - Logic Automation<br>- Open IDE, Tools, Libraries |
-| GenAI Promises Simplicity | - No API, Logic or App Automation<br>- Only Database Automation | - API Logic Server uses GenAI<br>- Full Microservice Automation |
+| GenAI Promises Simplicity | - No API, Logic or App Automation<br>- Only Database Automation | - API Logic Server uses GenAI, adding...<br>- Full Microservice Automation |
 
 API Logic Server **differentiates** from traditional approaches:
 
@@ -123,13 +123,13 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 
 <details markdown>
 
-<summary>Why GenAI requires Microservice Automation</summary>
+<summary>Does GenAI require Microservice Automation?</summary>
 
 GenAI brings well-known value to app development.  It's great for generating code snippets, including code snippets for other sub-systems, such as sql (e.g., *"create a database..."*).  API Logic Server leverages both of these strengths.
 
 While GenAI is great for *driving* engines (like sql), it's not appropropriate for creating sub-systems.  For example, you would not want to generate a DBMS using GenAI.
 
-And so it is with microservices - *particularly the logic".  As noted above, nearly half the effort in a system is the logic.  In fact, we tried it, and the results were... not compelling.
+But what about microservices, and their logic?  We investigated, and here's what we found...
 
 In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
 
@@ -211,7 +211,7 @@ Of course, the Logic Bank engine (part of API Logic Server) is required for actu
 
 **Conclusion**
 
-As expected, large scale sub-system creation from GenAI is not practical.  However, it is a great driver for engines, and for coding.  API Logic Server leverages these strengths, and provides the missing microserve and logic automation.
+As perhaps expected, large scale sub-system creation from GenAI is not practical.  However, it is a great driver for engines, and for coding.  API Logic Server leverages these strengths, and provides the missing microservice logic automation.
 </details>
 
 &nbsp;
