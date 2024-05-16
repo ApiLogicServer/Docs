@@ -23,6 +23,8 @@ Microservice Automation means you can create microservices from a database with 
 
 Power it with GenAI to make it even simpler.  Just describe the system in business terms, and the system is created.  Then, declare rules in natural language.
 
+Let's have a look.
+
 &nbsp;
 
 ## 1. Simplicity of AI
@@ -99,7 +101,7 @@ You can then **customize the project with Python in your IDE.**  Create executab
 
 &nbsp;
 
-# Pick Up Where Others Leave Off
+# Fully Delivering on Simplicity, Speed, Flexibility
 
 | Technology Promises | Limited By...   |  Deliver the Promise With API Logic Server  |
 :-------|:-----------|:-------|
@@ -209,6 +211,15 @@ Of course, the Logic Bank engine (part of API Logic Server) is required for actu
     
 [![GenAI Automation](images/sample-ai/copilot/genai-automation-video-60.png)](https://www.youtube.com/watch?v=6wnPsI5S6NM "Microservice Automation"){:target="_blank" rel="noopener"}
 
+---
+
+&nbsp;
+
+# In Depth
+
+<details markdown>
+
+<summary>Simplicity of AI, Speed of Low Code, Flexibility of a Framework, Modern Software Architecture</summary>
 
 &nbsp;
 
@@ -231,25 +242,13 @@ Of course, the Logic Bank engine (part of API Logic Server) is required for actu
 
     API Logic Server **differentiates** from traditional approaches:
     
-    * Unlike basic GenAI, API Logic Server creates systems from prompts **at the business level**, instead of low-level framework details.
+    * Unlike basic GenAI, API Logic Server creates systems from prompts **at the business level**, without tedious framework-level AI prompt engineering.
 
-    * Unlike frameworks, API Logic Servers preserves full flexibility and standard Dev Tools, with **automation** to eliminate weeks-to-months of complex development.
+    * Unlike frameworks, API Logic Servers preserves full flexibility and standard Dev Tools, with **microservice automation** to eliminate weeks-to-months of complex development.
 
     * Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**
 
----
-
 &nbsp;
-
-# Enterprise Perspective
-
-<details markdown>
-
-<summary>Simplicity of AI, Speed of Low Code, Flexibility of a Framework, Modern Software Architecture</summary>
-
-We are aware you have many choices for delivering systems.  API Logic Server provides Enterprise-class features that provide developers the speed of Low Code, the flexibility of a Framework, in a standards-based architecture.
-
-![quick tour](images/nutshell/positioning.png)
 
 **Enterprise-class Architecture, Standards and Flexibility**
 
