@@ -307,7 +307,7 @@ Technology only becomes useful when it's simple enough for teams to be effective
 
 &nbsp;
 
-# Overview - Videos, Tour
+# Videos, Tour
 
 API Logic Server is an open source Python project.  It is a **CLI** for project creation, and set of **runtimes** (SAFRS API, Flask, SQLAlchemy ORM, business logic engine) for project execution.
 
