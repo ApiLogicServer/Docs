@@ -123,11 +123,15 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 
 <details markdown>
 
-<summary>Comparing GenAI with GenAI-Powered Microservice Automation</summary>
+<summary>Why GenAI requires Microservice Automation</summary>
 
-First, GenAOI creates only the database.  It does not create the microservice, the project, the API, or the App.  And it certainly does not create the logic.  GenAI Microservice Automation does all of this.
+GenAI brings well-known value to app development.  It's great for generating code snippets, including code snippets for other sub-systems, such as sql (e.g., *"create a database..."*).  API Logic Server leverages both of these strengths.
 
-As noted above, nearly half the effort in a system is the logic.  In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
+While GenAI is great for *driving* engines (like sql), it's not appropropriate for creating sub-systems.  For example, you would not want to generate a DBMS using GenAI.
+
+And so it is with microservices - *particularly the logic".  As noted above, nearly half the effort in a system is the logic.  In fact, we tried it, and the results were... not compelling.
+
+In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
 
 &nbsp;
 
@@ -203,6 +207,11 @@ Much better results are obtained when the prompt has available context.  Copilot
 
 Of course, the Logic Bank engine (part of API Logic Server) is required for actual execution.  Watch it in the video below.
 
+&nbsp;
+
+**Conclusion**
+
+As expected, large scale sub-system creation from GenAI is not practical.  However, it is a great driver for engines, and for coding.  API Logic Server leverages these strengths, and provides the missing microserve and logic automation.
 </details>
 
 &nbsp;
