@@ -228,7 +228,7 @@ And, you'll need to create your SQLAlchemy models.
 
 And, you'll need to create your Admin App.
 
-And, you'll need to create your logic.
+And, you'll need to create your updata APIs... *and their logic.*
 
 Microservice automation does all of this, automatically.  It's a complete system, ready to run.
 </details>
