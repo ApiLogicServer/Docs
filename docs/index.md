@@ -125,11 +125,11 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 
 <summary>Does GenAI require Microservice Automation?</summary>
 
-GenAI brings well-known value to app development.  It's great for generating code snippets, including code snippets for other sub-systems, such as sql (e.g., *"create a database..."*).  API Logic Server leverages both of these strengths.
+GenAI brings well-known value to app development.  It's great for generating code snippets, including code snippets for *driving other sub-systems,* such as sql (e.g., "*create a database...*").  API Logic Server leverages both of these strengths.
 
-While GenAI is great for *driving* engines (like sql), it's not appropropriate for creating sub-systems.  For example, you would not want to generate a DBMS using GenAI.
+While GenAI is great for *driving sub-systems* (like sql), it's not appropriate for *creating sub-systems.*  For example, you would not want to generate a DBMS using GenAI.
 
-But what about microservices, and their logic?  We investigated, and here's what we found...
+But what about microservices, and their logic?  It is like code snippets, or more like a sub-system?  We investigated GenAI creation, and here's what we found...
 
 In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
 
@@ -203,15 +203,17 @@ This code does not use Logic Bank APIs.  It does not even compile, much less run
 
 **Logic Bank Code, *With Context***
 
-Much better results are obtained when the prompt has available context.  Copilot turns our Natural Language requirements into Logic Bank code, requiring only minor adjustments.  
+Excellent results are obtained when the prompt has available context.  Copilot turns our Natural Language requirements into Logic Bank code, requiring only minor adjustments.
 
-Of course, the Logic Bank engine (part of API Logic Server) is required for actual execution.  Watch it in the video below.
+And this is ***far preferable** to generating logic code -- it's much better to understand and maintain the 5 rules than the 200 lines of generated code.
 
 &nbsp;
 
 **Conclusion**
 
-As perhaps expected, large scale sub-system creation from GenAI is not practical.  However, it is a great driver for engines, and for coding.  API Logic Server leverages these strengths, and provides the missing microservice logic automation.
+As perhaps expected, large scale sub-system creation from GenAI is not practical.  However, it is a great driver for engines, and for creating code snippets.  API Logic Server leverages these strengths, and provides the missing microservice logic automation.
+
+Of course, the Logic Bank engine (part of API Logic Server) is required for actual execution.  Watch it in the video below.
 </details>
 
 &nbsp;
