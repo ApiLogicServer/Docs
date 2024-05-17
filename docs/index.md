@@ -129,9 +129,9 @@ GenAI brings well-known value to app development.  It's great for generating cod
 
 While GenAI is great for *driving sub-systems* (like sql), it's not appropriate for *creating sub-systems.*  For example, you would not want to generate a DBMS using GenAI.
 
-But what about microservices, and their logic?  It is like code snippets, or more like a sub-system?  We investigated GenAI creation, and here's what we found...
+But what about microservices, and their logic?  It is like code snippets, or more like a sub-system?  We investigated GenAI logic creation, and here's what we found...
 
-In most cases, AI responses simply ignore the logic requirement.  Attempts to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
+In most cases, GenAI responses simply ignores the logic requirement.  *Attempts* to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
 
 &nbsp;
 
@@ -197,7 +197,7 @@ def declare_logic():
             raise Exception(f"Customer {row.name}'s balance exceeds their credit limit.")
 ```
 
-This code does not use Logic Bank APIs.  It does not even compile, much less run.  It is, as they say, an hallucination.
+There are no existing Logic Bank APIs remotely like those above.  This code does not even compile, much less run.  It is, as they say, an hallucination.
 
 &nbsp;
 
