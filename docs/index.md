@@ -216,6 +216,22 @@ As perhaps expected, large scale sub-system creation from GenAI is not practical
 Of course, the Logic Bank engine (part of API Logic Server) is required for actual execution.  Watch it in the video below.
 </details>
 
+<details markdown>
+
+<summary>Don't frameworks make it easy to create endpoints...?</summary>
+
+They do.  But your code will need to provide filtering, pagination... for *all* the tables.  
+
+And, you'll need to design the API.
+
+And, you'll need to create your SQLAlchemy models.
+
+And, you'll need to create your Admin App.
+
+And, you'll need to create your logic.
+
+Microservice automation does all of this, automatically.  It's a complete system, ready to run.
+</details>
 &nbsp;
 
 # Video - 1 minute
