@@ -138,6 +138,7 @@ nav:
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
     - "Keycloak DevNotes": Keycloak-devnotes.md
+    - "Custom Web Apps": App-Custom-Ont.md
     - "API Appliance": Tech-Toaster.md
     - "Ontimize Overview": Ontimize-Overview.md
     - "AI Delivers Agile": Tech-AI.md
