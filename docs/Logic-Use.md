@@ -85,6 +85,10 @@ Note the `log` method, which enables you to write row/old_row into the log with 
 logic_row.log("no manager for this order's salesrep")
 ```
 
+Use code completion to see the full list of methods and properties:
+
+![customize](images/vscode/venv.png)
+
 &nbsp;
 
 ## Inserting

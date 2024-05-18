@@ -1,21 +1,26 @@
-!!! pied-piper ":bulb: TL;DR - Standards-based Customization: **Your IDE**, standard packages"
+## Customize: Rules, Python
 
-    The `ApiLogicServer create` command creates *API Logic Projects:* **customize in *your* IDE.**
+[Customize API Logic Projects](Tutorial.md#3-customize-and-debug-in-your-ide){:target="_blank" rel="noopener"} using:
 
-    Use standard packages, such as **Flask and SQLAlchemy**.
+* **[Rules](Logic-Why.md#3){:target="_blank" rel="noopener"} and Python,** with standard Python packages, such as **Flask and SQLAlchemy**.
 
-    Standard file-based projects: use **GitHub** for source control, etc.
+* In **your IDE**, using **standard IDE features,** such as code editors with code completion, source control, debuggers, Natural Language, etc.
 
+![Flexibility of a Framework](images/sample-ai/copilot/customize.png)
 
-For more information on opening projects and establishing their Python Execution environment, see [Execute an API Logic Project](IDE-Execute.md){:target="_blank" rel="noopener"}.
+1. You can find **customization points** by searching your project for `Your Code Goes Here`.
+
+2. You can find **customization examples** by creating the [Tutorial](Tutorial.md){:target="_blank" rel="noopener"}, and searching for `#als`.
 
 &nbsp;
 
-## Use your IDE
+### Discoverability - Logic, Services
 
-The `ApiLogicServer create` command creates an API Logic Project, which you can open in your IDE as shown below.  As illustrated in the [Tutorial](Tutorial.md){:target="_blank" rel="noopener"}, you can use the expected features of your IDE to customize, run and debug your project:
+In addition to altering the files noted above, you can use discovery.  This enables logic and services to be broken up into multiple files, which are auto-discovered.  
 
-![generated project](images/generated-project.png)
+These can help teams integrate their work, with reduced conflict.
+
+![Discovability](images/architecture/discovery.png)
 
 &nbsp;
 
@@ -28,27 +33,7 @@ The `ApiLogicServer create` command also creates:
 
 ![customize](images/ui-admin/run-admin-app.png)
 
-&nbsp;
-
-## Customize
-
-[Customize](Tutorial.md#3-customize-and-debug-in-your-ide){:target="_blank" rel="noopener"} API Logic Projects using standard IDE Code Editors, including code completion (particularly useful for [declaring logic](Logic-Why.md#code-completion){:target="_blank" rel="noopener"}).
-
-1. You can find **customization points** by searching your project for `Your Code Goes Here`.
-
-2. You can find **customization examples** by creating the [Tutorial](Tutorial.md){:target="_blank" rel="noopener"}, and searching for `#als`.
-
-![customize](images/vscode/venv.png)
-
-&nbsp;
-
-### Discoverability - Logic, Services
-
-In addition to altering the files noted above, you can use discovery.  This enables logic and services to be broken up into multiple files, which are auto-discovered.  
-
-These can help teams integrate their work, with reduced conflict.
-
-![Discovability](images/architecture/discovery.png)
+For more information on opening projects and establishing their Python Execution environment, see [Execute an API Logic Project](IDE-Execute.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
