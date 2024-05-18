@@ -554,7 +554,7 @@ The `ApiLogicServer create` command builds scripts for containerizing your proje
 | Feature | Notes   |
 :-------|:-----------|
 | Microservice Automation | One-command API / App Projects |
-| [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Automation with APIs and Kafka Messages |
+| [Application Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Microservice support API Automation, and Kafka Messages |
 | [AI-Driven Automation](Sample-AI.md){:target="_blank" rel="noopener"} | Use Copilot to automate database creation |
 | [Multiple Databases](Data-Model-Multi.md){:target="_blank" rel="noopener"} | Application Integration |
 | [Deployment Automation](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Automated Container Creation, Azure Deployment |
