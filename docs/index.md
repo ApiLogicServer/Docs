@@ -52,17 +52,17 @@ Enforce the Check Credit requirement (do not generate check constraints):
 4. Item.amount = quantity * unit_price
 5. Store the Item.unit_price as a copy from Product.unit_price
 ```
-&nbsp;
 
+![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:200px;width:280px"; align=right }
+
+&nbsp;
 
 That's all it takes to create a system.  Note:
 
-* This is a ***high-level, business-oriented*** description of the system - not just the database, but the multi-table business logic too.
-![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:200px;width:280px"; align=right }
+* This prompt is a ***high-level, business-oriented*** description of the system - not just the database, but the multi-table business logic too.
+
 * It is not "techno-babble" of low-level framework details (routes...).  You don't need to provide. or even learn such details.  That would be a **failure to communicate.**
-* The key take-way: ***Natural Language must be enhanced with microservice automation*** to deliver real simplicity and speed.  API Logic Server provides this automation, with:
-    * API and App Automation (see Step 2)
-    * Logic Automation (step 3), enabling us to execute the check credit requirement above
+
 </details>
 
 &nbsp;
@@ -221,9 +221,9 @@ Of course, the Logic Bank engine (part of API Logic Server) is required for actu
 
 ![Iceberg](images/api/iceberg-api.jpg){: style="height:200px;width:200px"; align=right }
 
-Note the business logic in the screenshot above under *Customize the Logic and API*.  Multi-table derivations and constraints are nearly half the effort.  It's the iceberg under the surface of the API.
+Note the business logic in the screenshot above (*Customize the Logic and API*).  Multi-table derivations and constraints are **nearly half the effort** -- the iceberg under the surface of the API.
 
-Logic automation means they are expressed in **spreadsheet-like rules, not code.**  
+**Logic automation** means logic is expressed in **spreadsheet-like *rules,* not code.**  
 
 These rules are 40X more concise than code, and are extensible with Python.  They are automatically invoked, and are multi-table, multi-field.  They are the key to business agility.
 
@@ -231,20 +231,20 @@ These rules are 40X more concise than code, and are extensible with Python.  The
 
 <details markdown>
 
-<summary>Don't frameworks make it easy to create endpoints...?</summary>
+<summary>Don't frameworks make it easy to create endpoints?</summary>
 
 ![Flask Fiddle](images/vscode/app-fiddle/horse-feathers.jpg){: style="height:250px;width:250px"; align=right }
 They do.  But a microservice is far more than a single endpoint.  It's a horse of an entirely different feather, requiring:
 
-* Filtering, pagination... for *all* the tables
+* Filtering, pagination, optimistic locking... for *all* the tables
 
 * API design
 
-* SQLAlchemy models.
+* SQLAlchemy models
 
-* Admin App.
+* Admin App
 
-* Update APIs... *and their logic.*
+* Update APIs... *and their logic*
 
 Microservice automation does all of this, automatically.  It's a complete system, ready to run.
 </details>

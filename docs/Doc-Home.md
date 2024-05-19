@@ -1,25 +1,4 @@
-!!! pied-piper ":bulb: TL;DR - Open Source, CLI, Standard IDE, Standard Runtime"
-
-    Weclcome to API Logic Server.  It's an open source project designed to create microservices quickly and easily.
-    
-    This page provides a project summary.  For more detailed information, select a page from the list at left.
-
-    **Creation**
-
-    * Create projects using the CLI, from a database, a SQLAlchemy model, or an AI description.
-    
-    **Development**
-
-    * **Standards-based customization** - debug in a standard IDE (VSCode, PyCharm), using standard packages (Flask, SQLAlchemy)
-
-    **Deployment**
-
-    * A modern 3-tiered architecture, accessed by **APIs**
-    * Logic is **automatically reused**, factored out of web apps and custom services
-    * **Containerized** for scalable cloud deployment - the project includes a dockerfile to containerize it to DockerHub.
-
-&nbsp;
-
+Welcome to API Logic Server documentation.  In sufficent large browsers, the pages are shown at left, and the page contents are at right.
 
 # Start: Install, Samples, Training
 
