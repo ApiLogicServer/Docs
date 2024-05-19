@@ -128,13 +128,41 @@ GenAI brings well-known value to app development.  It's great for generating cod
 
 While GenAI is great for *driving sub-systems* (like sql), it's not appropriate for *creating sub-systems.*  For example, you would not want to generate a DBMS using GenAI.
 
-But what about microservices, and their logic?  It is like code snippets, or more like a sub-system?  We investigated GenAI logic creation, and here's what we found...
+But what about microservices - APIs, and their logic?  It is like code snippets, or more like a sub-system?  We investigated GenAI API and logic creation, and here's what we found...
+
+![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:200px;width:280px"; align=right }
+&nbsp;
+
+**APIs**
+
+It is possible to create rudimentary APIs using GenAI.   However:
+
+1. **Not enterprise-class:** the APIs are incomplete or incorrect for required features such as security, fitering, pagination, optimistic locking, etc.  For example, this filtering code only works for the primary key, and pagination is stubbed out:
+
+```python
+# Endpoint to get customers with filtering and pagination
+@app.route('/customers', methods=['GET'])
+def get_customers():
+    page = int(request.args.get('page', 1))
+    per_page = int(request.args.get('per_page', 10))
+    query = session.query(Customer)
+    customers = paginate(query, page, per_page).all()
+    return jsonify([{'id': c.id, 'name': c.name, 'email': c.email, 'phone': c.phone} for c in customers])
+```
+
+2. **Complex:** it requires a great deal of prompt engineering to "program" the target framework to get a better result.  That requires detailed knowledge of the target -  *failure to communicate* - defeats the simplicity objective of using GenAI.
+
+&nbsp;
+
+---
+
+**Logic**
 
 In most cases, GenAI responses simply ignores the logic requirement.  *Attempts* to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
 
 &nbsp;
 
-**Triggers**
+**Logic: Triggers**
 
 The trigger solution GenAI response typically looks something like this:
 
@@ -166,7 +194,7 @@ Addressing this level of logic is why rules are 40X more concise than code.
 
 &nbsp;
 
-**Logic Bank Code, without context**
+**Logic: Logic Bank, without context**
 
 If we engineer our prompt to suggest using Logic Bank (a component of API Logic Server), we get a response like this if there is no project context:
 
@@ -200,7 +228,7 @@ There are no existing Logic Bank APIs remotely like those above.  This code does
 
 &nbsp;
 
-**Logic Bank Code, *With Context***
+**Logic: Logic Bank, *With Context***
 
 Excellent results are obtained when the prompt has available context.  Copilot turns our Natural Language requirements into Logic Bank code, requiring only minor adjustments.
 
@@ -212,14 +240,14 @@ And this is ***far preferable** to generating logic code -- it's much better to 
 
 As perhaps expected, large scale sub-system creation from GenAI is not practical.  However, it is a great driver for engines, and for creating code snippets.  API Logic Server leverages these strengths, and provides the missing microservice logic automation.
 
-Of course, the Logic Bank engine (part of API Logic Server) is required for actual execution.  Watch it in the video below.
+Of course, the Logic Bank and SAFRS engines are required for actual execution, just as sql queries require a DBMS.  Watch it in the video below.
 </details>
 
 <details markdown>
 
 <summary> Doesn't Low Code Make It Fast? </summary>
 
-![Iceberg](images/api/iceberg-api.jpg){: style="height:200px;width:200px"; align=right }
+![Not Moving](images/nutshell/why-not-moving.png){: style="height:150px;width:250px"; align=right }
 
 Yes, for *retrieval-oriented systems.*  But, if your system requires update logic, the multi-table derivations and constraints are **nearly half the effort** -- the iceberg under the surface of the API.  
     
@@ -227,7 +255,7 @@ See the screenshot above: *Customize the Logic and API*.  **Logic automation** m
 
 These rules are 40X more concise than code, and are extensible with Python.  They are automatically invoked, and are multi-table, multi-field.  
 
-Such automation is required to fulfill the promise of *fast*.
+Such automation is required to fulfill the promise of *fast*.  Without it, your project will simply not get moving.
 </details>
 
 <details markdown>

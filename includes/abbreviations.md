@@ -56,3 +56,4 @@
 *[App Automation]: Create Admin Apps with 1 command - multi-page, multi-table.
 *[Microservice Automation]: Creation of customizable, executable projects with a single command, providing App Automation, API Automation and Logic Automation.
 *[Deployment Automation]: Scripts automatically created to containerize your project, and deploy to Azure.
+*[optimistic locking]: ensuring that updates do not overwrite changes made by others, by checking that the data has not changed since the user last read it; ideally done with a checksum so that no schema changes are required.
