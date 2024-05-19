@@ -96,7 +96,6 @@ You can then **customize the project with Python in your IDE.**  Create executab
 <summary>Customize the Logic and API</summary>
 
 ![Flexibility of a Framework](images/sample-ai/copilot/customize.png)
-
 </details>
 
 &nbsp;
@@ -218,17 +217,34 @@ Of course, the Logic Bank engine (part of API Logic Server) is required for actu
 
 <details markdown>
 
+<summary> Doesn't Low Code Make It Fast? </summary>
+
+![Iceberg](images/api/iceberg-api.jpg){: style="height:200px;width:200px"; align=right }
+
+Note the business logic in the screenshot above under *Customize the Logic and API*.  Multi-table derivations and constraints are nearly half the effort.  It's the iceberg under the surface of the API.
+
+Logic automation means they are expressed in **spreadsheet-like rules, not code.**  
+
+These rules are 40X more concise than code, and are extensible with Python.  They are automatically invoked, and are multi-table, multi-field.  They are the key to business agility.
+
+</details>
+
+<details markdown>
+
 <summary>Don't frameworks make it easy to create endpoints...?</summary>
 
-They do.  But your code will need to provide filtering, pagination... for *all* the tables.  
+![Flask Fiddle](images/vscode/app-fiddle/horse-feathers.jpg){: style="height:250px;width:250px"; align=right }
+They do.  But a microservice is far more than a single endpoint.  It's a horse of an entirely different feather, requiring:
 
-And, you'll need to design the API.
+* Filtering, pagination... for *all* the tables
 
-And, you'll need to create your SQLAlchemy models.
+* API design
 
-And, you'll need to create your Admin App.
+* SQLAlchemy models.
 
-And, you'll need to create your updata APIs... *and their logic.*
+* Admin App.
+
+* Update APIs... *and their logic.*
 
 Microservice automation does all of this, automatically.  It's a complete system, ready to run.
 </details>
