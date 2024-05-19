@@ -146,7 +146,7 @@ Set a breakpoint in the code above, and:
 2. Use the Admin app to alter the first Customer, first Order, first Item, and change the quantity to 11111
     * Observe the error message, from the rules.
 3. To test the new endpoint, use Swagger (**ServicesEndPoint > POST /ServicesEndPoint/OrderB2B)**.
-    * Observe the swagger response - "Thankyou For Your OrderB2B".
+    * Observe the swagger response - "Sending Order to Shipping sends:".
 
 Note: Kafka is not activated in this example.  To explore a running Tutorial for application integration with running Kafka, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
 
