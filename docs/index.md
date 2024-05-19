@@ -221,12 +221,13 @@ Of course, the Logic Bank engine (part of API Logic Server) is required for actu
 
 ![Iceberg](images/api/iceberg-api.jpg){: style="height:200px;width:200px"; align=right }
 
-Note the business logic in the screenshot above (*Customize the Logic and API*).  Multi-table derivations and constraints are **nearly half the effort** -- the iceberg under the surface of the API.
+Yes, for *retrieval-oriented systems.*  But, if your system requires update logic, the multi-table derivations and constraints are **nearly half the effort** -- the iceberg under the surface of the API.  
+    
+See the screenshot above: *Customize the Logic and API*.  **Logic automation** means logic is expressed in **spreadsheet-like *rules,* not code.**  
 
-**Logic automation** means logic is expressed in **spreadsheet-like *rules,* not code.**  
+These rules are 40X more concise than code, and are extensible with Python.  They are automatically invoked, and are multi-table, multi-field.  
 
-These rules are 40X more concise than code, and are extensible with Python.  They are automatically invoked, and are multi-table, multi-field.  They are the key to business agility.
-
+Such automation is required to fulfill the promise of *fast*.
 </details>
 
 <details markdown>
@@ -246,7 +247,7 @@ They do.  But a microservice is far more than a single endpoint.  It's a horse o
 
 * Update APIs... *and their logic*
 
-Microservice automation does all of this, automatically.  It's a complete system, ready to run.
+**Microservice automation** does all of this, *automatically.*  It's a complete system, ready to run.
 </details>
 &nbsp;
 
