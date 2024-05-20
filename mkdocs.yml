@@ -45,7 +45,6 @@ nav:
   - 1. Apps:
     - "Automatic Admin App": Admin-Tour.md
     - Admin-Customization.md
-    - "Custom Web Apps": App-Custom.md
   - 2. API:
     - "Automatic Multi-Table API": API.md
     - "Multi-Table APIs": API-Multi-Table.md
