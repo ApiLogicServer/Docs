@@ -69,7 +69,7 @@ That's all it takes to create a system.  Note:
 
 ## 2. Speed of Low Code
 
-Then, **1 command** creates the project (you can also create from an existing database):
+Then, **1 command** creates the project (you can also create from an existing database), providing remarkable *business agility:*
 
 ```bash title="Create the project"
 als genai --using=genai_demo.prompt
@@ -79,7 +79,7 @@ als genai --using=genai_demo.prompt
 
 <summary>App and API are ready to run</summary>
 
-The system creates the database, and an executable project providing API and App Automation.  The microservice is ready to run, instantly:
+The system creates the database, and an **executable project** providing API and App Automation.  The microservice is ready to run, instantly:
 
 ![Created Microservice](images/sample-ai/copilot/created-microservice.png)
 
@@ -89,11 +89,23 @@ The system creates the database, and an executable project providing API and App
 
 ## 3. Flexibility of a Framework
 
-You can then **customize the project with Python in your IDE.**  Create executable **spreadsheet-like rules** from our prompt - 40X more concise than code.  Use Python to extend the rules (e.g, to send a Kafka message), and use the framework to create a custom endpoint:
+Agility includes **maintenance automation**, using **GenAI and Logic Automation**, with **standard tooling** such as Python and your IDE:
 
 <details markdown>
 
 <summary>Customize the Logic and API</summary>
+
+Declare executable **spreadsheet-like rules** - 40X more concise than code - using GenAI or code completion.  These address multi-table derivations and constraints, and role-based row filtering.
+
+Logic plays a significant role in iterative development with support for **maintenance automation:**
+
+* Rule are **automically invoked, and ordered.**  So, unlike code, you can add/alter rules without worrying about where to place them so they run, and in the proper order, with automatic chaining (dependency management).
+
+* Rules are **automatically optimized,** reducing SQLs by pruning and adjustment-based aggregates.
+
+* Debug rules using the IDE **debugger,** and the **logic trace,** which shows which rules fire.
+
+Use Python to **extend the rules** (e.g, to send a Kafka message), and use the Flask framework to **extend the API:**
 
 ![Flexibility of a Framework](images/sample-ai/copilot/customize.png)
 </details>
