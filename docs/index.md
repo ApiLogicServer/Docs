@@ -133,7 +133,7 @@ But what about microservices - APIs, and their logic?  It is like code snippets,
 ![Failure to Communicate](images/sample-ai/copilot/failure-to-communicate.png){: style="height:200px;width:280px"; align=right }
 &nbsp;
 
-**APIs**
+**1. GenAI for APIs**
 
 It is possible to create rudimentary APIs using GenAI.   However:
 
@@ -156,13 +156,13 @@ def get_customers():
 
 ---
 
-**Logic**
+**2. GenAI for Logic**
 
 In most cases, GenAI responses simply ignores the logic requirement.  *Attempts* to address it fall in 3 categories: triggers, Logic Bank code with no context,  and Logic Bank code *with* context.
 
 &nbsp;
 
-**Logic: Triggers**
+**2a. Logic: Triggers**
 
 The trigger solution GenAI response typically looks something like this:
 
@@ -194,7 +194,7 @@ Addressing this level of logic is why rules are 40X more concise than code.
 
 &nbsp;
 
-**Logic: Logic Bank, without context**
+**2b. Logic: Logic Bank, without context**
 
 If we engineer our prompt to suggest using Logic Bank (a component of API Logic Server), we get a response like this if there is no project context:
 
@@ -228,7 +228,7 @@ There are no existing Logic Bank APIs remotely like those above.  This code does
 
 &nbsp;
 
-**Logic: Logic Bank, *With Context***
+**2c. Logic: Logic Bank, *With Context***
 
 Excellent results are obtained when the prompt has available context.  Copilot turns our Natural Language requirements into Logic Bank code, requiring only minor adjustments.
 
@@ -236,7 +236,7 @@ And this is ***far* preferable** to generating logic code -- it's much better to
 
 &nbsp;
 
-**Conclusion**
+**2d. Conclusion: Abstraction Level is Critical**
 
 As perhaps expected, large scale sub-system creation from GenAI is not practical.  However, it is a great driver for engines, and for creating code snippets.  API Logic Server leverages these strengths, and provides the missing microservice logic automation.
 
