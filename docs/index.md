@@ -97,7 +97,7 @@ Agility includes **maintenance automation**, using **GenAI and Logic Automation*
 
 Declare executable **spreadsheet-like rules** - 40X more concise than code - using GenAI or code completion.  These address multi-table derivations and constraints, and role-based row filtering.
 
-Logic plays a significant role in iterative development with support for **maintenance automation:**
+Declarative rules play a significant role in iterative development with support for **maintenance automation:**
 
 * Rule are **automically invoked, and ordered.**  So, unlike code, you can add/alter rules without worrying about where to place them so they run, and in the proper order, with automatic chaining (dependency management).
 
