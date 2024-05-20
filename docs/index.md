@@ -2,7 +2,7 @@
 title: API Logic Server
 hide:
   - navigation
-Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps
+Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps, Microservice
 ---
 <style>
   .md-typeset h1,
@@ -110,7 +110,7 @@ You can then **customize the project with Python in your IDE.**  Create executab
 
 API Logic Server **differentiates** from traditional approaches:
 
-* Unlike Frameworks, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**.  You're ready to run.  With frameworks, you're ready to code -- weeks-to-months of complex development.
+* Unlike Frameworks, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**  You're ready to run.  With frameworks, you're ready to code -- weeks-to-months of complex development.
 
 * Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**  With Low Code, you have to code your logic, quite likely in a non-standard IDE.
 
@@ -232,7 +232,7 @@ There are no existing Logic Bank APIs remotely like those above.  This code does
 
 Excellent results are obtained when the prompt has available context.  Copilot turns our Natural Language requirements into Logic Bank code, requiring only minor adjustments.
 
-And this is ***far preferable** to generating logic code -- it's much better to understand and maintain the 5 rules than the 200 lines of generated code.
+And this is ***far* preferable** to generating logic code -- it's much better to understand and maintain the 5 rules than the 200 lines of generated code.
 
 &nbsp;
 

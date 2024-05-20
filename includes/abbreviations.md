@@ -53,7 +53,9 @@
 *[API Automation]: Create JSON:APIs with 1 command - self-serve (analogous to GraphQL), with pagination, optimistic locking, filtering, sorting, and related data access.
 *[Logic Automation]: Declare logic with spreadsheet-like Rules that are 40X more concise than code for multi-table derivations and constraints; add Python as required.
 *[Maintenance Automation]: Rules are automatically re-ordered based on dependencies, and re-used over all relevant transactions.
-*[App Automation]: Create Admin Apps with 1 command - multi-page, multi-table.
+*[App Automation]: Create Admin Apps automatically - multi-page, multi-table.
 *[Microservice Automation]: Creation of customizable, executable projects with a single command, providing App Automation, API Automation and Logic Automation.
 *[Deployment Automation]: Scripts automatically created to containerize your project, and deploy to Azure.
 *[optimistic locking]: ensuring that updates do not overwrite changes made by others, by checking that the data has not changed since the user last read it; ideally done with a checksum so that no schema changes are required.
+*[microservice]: self-contained, independently deployable, and scalable services that can be combined to create a larger application, with each service running in its own process and communicating with lightweight mechanisms, often an HTTP resource API.  Often provide an API, Logic, Data and UI.
+*[Microservice]: self-contained, independently deployable, and scalable services that can be combined to create a larger application, with each service running in its own process and communicating with lightweight mechanisms, often an HTTP resource API.  Often provide an API, Logic, Data and UI.
