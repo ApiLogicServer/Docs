@@ -9,7 +9,7 @@
 
 ## Declaration and Activation
 
-Please see [Project Operation](Architecture-Project-Operation.md){:target="_blank" rel="noopener"}.
+Declared rules are automatically activated by `api_logic_server_run..py` when it starts the server.  For more information, please see [Project Operation](Architecture-Project-Operation.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

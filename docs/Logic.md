@@ -4,13 +4,13 @@
 
     **Rules** are:
 
-    1. **Declared** in your IDE - 40X more concise
+    1. **Declared** in your IDE - 40X more concise - with GenAI or Code Completion
     2. **Activated** on server start
     3. **Executed** - *automatically* -  on updates (using SQLAlchemy events)
     4. **Debugged** in your IDE, and with the console log
 
 
-# What Are the Rules
+# Rule Types
 The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample for full syntax.
 
 | Rule | Summary   | Example | Notes |
@@ -24,6 +24,43 @@ The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample 
 | Parent Check      | Ensure Parent row exists | Orders must have a Customer | See [Referential Integrity](https://github.com/valhuber/LogicBank/wiki/Referential-Integrity) |
 | Allocation      | Allocate a provider amount to recipients | allocate a payment to outstanding orders | See [Allocation](https://github.com/valhuber/LogicBank/wiki/Sample-Project---Allocation) for an example |
 | Copy Row      | Create child row by copying parent | audit Employee Salary changes to EmployeeAudit | See [Rule Extensibility](https://github.com/valhuber/LogicBank/wiki/Rule-Extensibility) |
+
+&nbsp;
+
+# Declaring Rules
+
+Rules are declared in your IDE, using GenAI or Code Completion.  Edit the file `declare_logic.py` in your project, or, one of the files in the [discovery directory](IDE-Customize.md/#discoverability-logic-services){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+## With GenAI
+
+If you have Copilot installed, you can use GenAI to generate rules.  Enter your GenAI prompt, and use Copilot's **Insert at Cursor** button to pasted into `declare_logic.py`
+
+You will typically need to make some small changes, such as the import statements.
+
+In the example below, we have pasted the prompt from the GenAI Automation prompt used to create the system.  You can of course enter new text, or paste from any source.
+
+![Add Rules GenAI](images/sample-ai/copilot/add-rules.png)
+
+&nbsp;
+
+## Iterative Rules
+
+Logic definition is an incremental process.  You can start with a few rules, and add more as needed.  There is no need to define all rules at once, or rebuild the project.
+
+Note rules are automatically ordered and invoked, so you can add new ones in any location.
+
+Similarly, you can change rules without worrying about the order of execution.
+
+&nbsp;
+
+## With Code Completion
+
+You can also use Code Completion to add rules.
+
+![Add Rules Code Completion](images/vscode/code-completion.png)
+
 
 &nbsp;
 
