@@ -15,6 +15,7 @@ theme:
 nav:
   - " ": index.md
   - Quick Start:
+    - Doc-Home.md
     - Express Install: Install-Express.md
     - Detailed Install:
       - "Install API Logic Server": Install.md
@@ -158,7 +159,6 @@ nav:
     - "Mkdocs Material": Tech-mkdocs-material.md
     - "CodeSpaces": Tech-CodeSpaces.md
     - "M1 Mac": Tech-m1.md
-    - Doc-Home.md
     - "Product Detail": Product-Detail.md
     - "Product Overview": Product-Overview.md
     - Personal:
