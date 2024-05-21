@@ -287,8 +287,10 @@ They do.  But a microservice is far more than a single endpoint.  It's a horse o
 
 * Update APIs... *and their logic*
 
-**Microservice automation** does all of this, *automatically.*  It's a complete system, ready to run.
+**GenAI Microservice Automation** does all of this, *automatically.*  It's a complete system, ready to run.
+
 </details>
+
 &nbsp;
 
 # Video - 1 minute
