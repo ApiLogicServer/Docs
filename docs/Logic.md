@@ -33,7 +33,7 @@ Rules are declared in your IDE, using GenAI or Code Completion.  Edit the file `
 
 &nbsp;
 
-## With GenAI
+## With GenAI Logic Automation
 
 If you have Copilot installed, you can use GenAI to generate rules.  Enter your GenAI prompt, and use Copilot's **Insert at Cursor** button to pasted into `declare_logic.py`
 
@@ -45,6 +45,15 @@ In the example below, we have pasted the prompt from the GenAI Automation prompt
 
 &nbsp;
 
+## With Code Completion
+
+You can also use Code Completion to add rules, and their arguments.
+
+![Add Rules Code Completion](images/vscode/code-completion.png)
+
+
+&nbsp;
+
 ## Iterative Rules
 
 Logic definition is an incremental process.  You can start with a few rules, and add more as needed.  There is no need to define all rules at once, or rebuild the project.
@@ -52,15 +61,6 @@ Logic definition is an incremental process.  You can start with a few rules, and
 Note rules are automatically ordered and invoked, so you can add new ones in any location.
 
 Similarly, you can change rules without worrying about the order of execution.
-
-&nbsp;
-
-## With Code Completion
-
-You can also use Code Completion to add rules.
-
-![Add Rules Code Completion](images/vscode/code-completion.png)
-
 
 &nbsp;
 
@@ -110,7 +110,7 @@ The best way to learn the rules is by a Case Study approach:
 
 3. For each Rule Pattern, above:
 
-    * Click the Example link to open the Behave Logic Report
+    * Click the Example link in the table above to open the Behave Logic Report
 
         * Aside: later, you can prepare such documentation for your own projects, ([like this](Behave.md){:target="_blank" rel="noopener"}).
 
