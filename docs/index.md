@@ -131,18 +131,19 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 <details markdown>
 
 <summary>Does GenAI require Microservice Automation?</summary>
-
+![Not Moving](images/nutshell/puzzle.jpg){: style="height:150px;width:250px"; align=right }
 GenAI brings well-known value to app development.  It's great for generating code snippets, including code snippets for *driving other sub-systems,* such as sql (e.g., "*create a database...*").  API Logic Server leverages both of these strengths, including [GenAI Logic Automation](Logic/#with-genai-logic-automation){:target="_blank" rel="noopener"}.
 
 Despite these advantages, organizations are wary of using GenAI for development since the value often does not scale as the problems become more complex.  Results can be inconsistent, sometimes wrong, ocassionally head-scratching hallunications.  Addressing these requires providing **missing context** to the AI model, which can be complex and time-consuming.
 
-Microservice Automation complements GenAI by addressing this:
+Microservice Automation complements GenAI by addressing this ([click here for more information](FAQ-AI.md){:target="_blank" rel="noopener"}):
 
 1. **Provides Context:** using GenAI in the context of a project, including a Data Model and well-defined logic and api libraries, provides the context to make AI predictable
 
 2. **Maintains Business Abstraction:**  the last thing you want is for AI to turn your 5 rules into 200 lines of code: hard to read, verify correctness, and change.  By contrast, creating declarative rules create logic that is concise, easy to understand, and provides Maintenance Automation.
 
-For more information on how GenAI and Microservice are complementary, [click here](FAQ-AI.md){:target="_blank" rel="noopener"}.
+So, Microserve Automation not only **leverages the value of GenAI**, but ***extends it*** to address complex system creation.
+
 </details>
 
 <details markdown>
