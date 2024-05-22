@@ -35,7 +35,7 @@ Rules are declared in your IDE, using GenAI or Code Completion.  Edit the file `
 
 ## With GenAI Logic Automation
 
-If you have Copilot installed, you can use GenAI to generate rules.  Enter your GenAI prompt, and use Copilot's **Insert at Cursor** button to pasted into `declare_logic.py`
+If you have Copilot installed, you can use GenAI to create rules.  Enter your GenAI prompt, and use Copilot's **Insert at Cursor** button to pasted into `declare_logic.py`
 
 You will typically need to make some small changes, such as the import statements.
 
