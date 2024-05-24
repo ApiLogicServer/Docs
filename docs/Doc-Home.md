@@ -21,7 +21,7 @@ ApiLogicServer start                 # optionally, start the project manager und
 
 ```bash title="Verify - Create and Run Demo"
 als create --project-name=basic_demo --db-url=sqlite:///sample_ai.sqlite
-code sample_ai
+code basic_demo
 ```
 
 The resultant project contains a `readme` which will walk you through the process of exploring the API, app, and customization.
