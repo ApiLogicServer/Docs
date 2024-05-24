@@ -20,11 +20,15 @@ ApiLogicServer start                 # optionally, start the project manager und
 <br>Verification test - create and run the demo:
 
 ```bash title="Verify - Create and Run Demo"
-als create --project-name=sample_ai --db-url=sqlite:///sample_ai.sqlite
+als create --project-name=basic_demo --db-url=sqlite:///sample_ai.sqlite
 code sample_ai
 ```
 
-Then explore the *demos, samples and tutorials*, below.  
+The resultant project contains a `readme` which will walk you through the process of exploring the API, app, and customization.
+
+The manager also contains a readme that introduces you to several key samples.
+
+Finally, explore the *demos, samples and tutorials*, below.  
 
 
 <details markdown>
@@ -41,7 +45,7 @@ Type:
 
 | Project | Notes   |  Type  |
 :-------|:-----------|:-------|
-| [**AI Sample**](Sample-AI.md){:target="_blank" rel="noopener"} | 1. Use Copilot to create new databases from natural language<br>2. Illustrate a very rapid create / customize / iterate cycle<br>3. Introduce Integration | Demo |
+| [**AI Demo**](Sample-AI.md){:target="_blank" rel="noopener"} | 1. Use Copilot to create new databases from natural language<br>2. Illustrate a very rapid create / customize / iterate cycle<br>3. Introduce Integration | Demo |
 | [**Tutorial**](Tutorial.md){:target="_blank" rel="noopener"}  | 1. How to Use the Key Features<br>2. Key code samples for adapting into your project | Tutorial |
 | | | |
 | [App Integration](Sample-Integration.md){:target="_blank" rel="noopener"} | Illustrates *running* Kafka messaging, self-serve and customized APIs, choreographed with rules and Python | Tutorial |

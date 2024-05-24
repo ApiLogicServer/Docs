@@ -596,6 +596,6 @@ For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_b
 
 ---
 
-# Docs
+# Docs, Install, Eval Guide
 
 To see the docs, [click here](Doc-Home.md).
