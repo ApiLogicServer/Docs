@@ -199,12 +199,14 @@ This pre-release includes:
 
 * technology preview of [Ontimize rich web app](App-Custom.md){:target="_blank" rel="noopener"}.
 
-* run from Manager (Run/Debug Entry: `API Logic Server Run (run project from manager)`).
+* run from Manager (Run/Debug Entry: `API Logic Server Run (run project from manager)`)
+
+* Manager support for PyCharm
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.20
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.28
 ```
 
 Or use (not available currently):
