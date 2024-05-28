@@ -17,19 +17,8 @@ Created projects will show up here as directories. (You create projects anywhere
 The default IDE is VSCode.  You can specify your favorite IDE, e.g.
 
 ```bash title="Choose IDE"
-als start charm
+als start pycharm   # For Mac, you may need use charm, not pycharm
 ```
-
-<details markdown>
-
-<summary>Using PyCharm?</summary>
-
-The Manager defaults to VSCode.  If you are using PyCharm, start the mananager like this:
-
-```bash title="To use Pycharm"
-ApiLogicServer start --open-with=pycharm  # For Mac, you may need use charm, not pycharm
-```
-</details>
 
 &nbsp;
 
