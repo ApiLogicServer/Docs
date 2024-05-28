@@ -20,6 +20,17 @@ The default IDE is VSCode.  You can specify your favorite IDE, e.g.
 als start charm
 ```
 
+<details markdown>
+
+<summary>Using PyCharm?</summary>
+
+The Manager defaults to VSCode.  If you are using PyCharm, start the mananager like this:
+
+```bash title="To use Pycharm"
+ApiLogicServer start --open-with=pycharm  # For Mac, you may need use charm, not pycharm
+```
+</details>
+
 &nbsp;
 
 ## Pre-created projects
