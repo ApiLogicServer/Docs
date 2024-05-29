@@ -88,7 +88,7 @@ Then, open the appropriate section below, and see the [Installation Notes](#inst
 
     __1. Create Application__
 
-    Here is an example using a pythonanywhere-hosted MySQL database (__note__ the escape character for the $ in the database name:  
+    Here is an example using a pythonanywhere-hosted MySQL database (__note__ the escape character for the $ in the database name):  
     ```  
     ApiLogicServer create --project_name=Chinook \
     --host=ApiLogicServer.pythonanywhere.com --port= \

@@ -280,7 +280,7 @@ There are a variety of ways for getting value from API Logic Server:
 
 |   | Feature    | Providing   | Why it Matters   |
 :-------|:-----------|:------------|:-----------------|
-| __Instant__ | 1. [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"} | Instant **multi-page, multi-table** app  [(running here on PythonAnywhere)](http://apilogicserver.pythonanywhere.com/admin-app/index.html#/Home){:target="_blank" rel="noopener"}              | Business Users engaged early<br><br>Back-office Admin       |
+| __Instant__ | 1. [**Admin App**](Admin-Tour.md){:target="_blank" rel="noopener"} | Instant **multi-page, multi-table** app  | Business Users engaged early<br><br>Back-office Admin       |
 | | 2. [JSON:**API** and Swagger](API.md){:target="_blank" rel="noopener"}                     | Endpoint for each table, with... <br>Filtering, pagination, related data     | Custom UI Dev<br>App Integration                           |
 | | 3. Data Model Class Creation                                                     | Classes for Python-friendly ORM     | Custom Data Access<br>Used by API                |
 | __Customizable__ | 4. [**Customizable Project**](Project-Structure.md){:target="_blank" rel="noopener"}   | Custom Endpoints, Logic <br>Use Python and your IDE  | Customize and run <br><br>Re-creation *not* required |                                                                                      

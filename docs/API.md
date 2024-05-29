@@ -32,10 +32,6 @@ API creation includes automatic swagger generation. Start the server, and open y
 
 ![Swagger](images/basic_demo/api-swagger.jpeg)
 
-Or, explore the sample app [running at PythonAnyWhere](http://apilogicserver.pythonanywhere.com/api){:target="_blank" rel="noopener"}.
-
-![Swagger](images/api/swagger-get-data.png)
-
 &nbsp;
 
 ## Self-Serve
