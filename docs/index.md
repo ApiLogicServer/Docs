@@ -136,9 +136,9 @@ GenAI brings well-known value to app development.  It's great for generating cod
  
 For large, complex systems (e.g., microservices and their logic), [GenAI breaks down](FAQ-AI.md){:target="_blank" rel="noopener"} -- results can be inconsistent, sometimes wrong, occasionally head-scratching hallunications.
 
-Microservice Automation provides the missing pieces, with **[logic, api and app automation engines](Architecture-What-Is.md/#model-execution-engines){:target="_blank" rel="noopener"}** (analogous to SQL) enabling **GenAI to scale up to complex microservice creation:**
+Microservice Automation provides the missing pieces: **[logic, api and app automation engines](Architecture-What-Is.md/#model-execution-engines){:target="_blank" rel="noopener"}** (analogous to SQL), enabling **GenAI to scale up to complex microservice creation**, avoiding:
 
-1. **Avoids "Franken-response":** the last thing you want is for AI to turn your 5 rules into 200 lines of code: hard to read, verify correctness, and change.  By contrast, creating declarative rules results in logic that is concise, easy to understand, and provides Maintenance Automation.
+1. **Avoids "Franken-response":** the last thing you want is for AI to turn your 5 simple rules into 200 lines of code: hard to read, verify correctness, and change.  By contrast, creating declarative rules results in logic that is concise,  understandable, and provides Maintenance Automation.
 
 1. **Avoids the "Franken-prompt":** in the absence of automation engines, developers are forced into complex *prompt engineering*, requiring detailed knowledge of the target code.  This defeats the objective of simplicity.
 
