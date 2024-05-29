@@ -132,17 +132,17 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 
 <summary>Does GenAI require Microservice Automation?</summary>
 ![Not Moving](images/nutshell/puzzle.jpg){: style="height:150px;width:250px"; align=right }
-GenAI brings well-known value to app development.  It's great for generating code snippets, including code snippets for *driving other sub-systems,* such as sql (e.g., "*create a database...*").  API Logic Server leverages both of these strengths, including [GenAI Logic Automation](Logic/#with-genai-logic-automation){:target="_blank" rel="noopener"}.
+GenAI brings well-known value to app development.  It's great for generating code snippets, particularly for *driving automation engines,* such as sql (e.g., "*create a database...*").  API Logic Server leverages both of these strengths, including [GenAI Logic Automation](Logic/#with-genai-logic-automation){:target="_blank" rel="noopener"}.
+ 
+For large, complex systems (e.g., microservices and their logic), [GenAI breaks down](FAQ-AI.md){:target="_blank" rel="noopener"} -- results can be inconsistent, sometimes wrong, occasionally head-scratching hallunications.
 
-Despite these advantages, organizations are wary of using GenAI for development since the value often does not scale as the problems become more complex.  Results can be inconsistent, sometimes wrong, ocassionally head-scratching hallunications.  Addressing these requires providing **missing context** to the AI model, which can be complex and time-consuming.
+Microservice Automation provides the missing pieces, with **[logic, api and app automation engines](Architecture-What-Is.md/#model-execution-engines){:target="_blank" rel="noopener"}** (analogous to SQL) enabling **GenAI to scale up to complex microservice creation:**
 
-Microservice Automation complements GenAI by addressing this ([click here for more information](FAQ-AI.md){:target="_blank" rel="noopener"}):
+1. **Avoids "Franken-response":** the last thing you want is for AI to turn your 5 rules into 200 lines of code: hard to read, verify correctness, and change.  By contrast, creating declarative rules results in logic that is concise, easy to understand, and provides Maintenance Automation.
 
-1. **Provides Context:** using GenAI in the context of a project, including a Data Model and well-defined logic and api libraries, provides the context to make AI predictable
+1. **Avoids the "Franken-prompt":** in the absence of automation engines, developers are forced into complex *prompt engineering*, requiring detailed knowledge of the target code.  This defeats the objective of simplicity.
 
-2. **Maintains Business Abstraction:**  the last thing you want is for AI to turn your 5 rules into 200 lines of code: hard to read, verify correctness, and change.  By contrast, creating declarative rules create logic that is concise, easy to understand, and provides Maintenance Automation.
-
-So, Microserve Automation not only **leverages the value of GenAI**, but ***extends it*** to address complex system creation.
+So, Microserve Automation not only **leverages the value of GenAI**, but ***extends it to address complex system creation, preserving simplicity.***
 
 </details>
 
@@ -154,11 +154,16 @@ So, Microserve Automation not only **leverages the value of GenAI**, but ***exte
 
 Yes, for *retrieval-oriented systems.*  But, if your system requires update logic, the multi-table derivations and constraints are **nearly half the effort** -- the iceberg under the surface of the API.  
     
-See the screenshot above: *Customize the Logic and API*.  **Logic automation** means logic is expressed in **spreadsheet-like *rules,* not code.**  
+> See the screenshot above: *Customize the Logic and API*.  **Logic automation** means logic is expressed in **spreadsheet-like *rules,* not code.**  These rules are 40X more concise than code, and are extensible with Python.  They are automatically invoked, and are multi-table, multi-field.  
 
-These rules are 40X more concise than code, and are extensible with Python.  They are automatically invoked, and are multi-table, multi-field.  
+So:
 
-Such automation is required to fulfill the promise of *fast*.  Without it, your project will simply not get moving.
+1. **Logic automation** is required to fulfill the promise of *fast*.  Without it, your project will simply not get moving.
+
+2. **GenAI simplifies database creation**.  In the past, Low Code tools have found it challenging to make it easy for users to define foreign keys, indices, etc.
+
+3. Developers will appreciate that **API Logic Server is standards-based** - use your own IDE, familiar tools such as source control, etc.
+
 </details>
 
 <details markdown>
