@@ -27,14 +27,14 @@ nav:
   - Demos, Tutorial, Samples:
     - "GenAI Microservice Automation": Sample-Genai.md
     - "Tutorial": Tutorial.md
-    - "AI Demo": Sample-AI.md
+    - "AI - Copilot": Sample-AI.md
     - "Sample DB, Project": Sample-Database.md
     - "Sample Integration": Sample-Integration.md
     - "Sample DB, Project": Sample-Database.md
     - "Deployment Tutorial": Tutorial-Deployment.md
     - "Agile Tutorial": Tutorial-Agile.md
     - "Basic Self-Demo": Sample-Basic-Demo.md
-    - "AI Drives Agile Vision": Tutorial-AI.md
+    - "AI - ChatPGT, Agile": Tutorial-AI.md
     - "Sample Systems": Data-Model-Examples.md
   - 0. ApiLogicServer create:
     - "Create": Project-Structure.md
