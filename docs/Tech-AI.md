@@ -1,5 +1,5 @@
 ---
-title: API Logic Server
+title: AI-Driven Automation with ChatGPT Delivers the Agile Vision
 Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 ---
 <style>
@@ -11,7 +11,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
 
 
-!!! pied-piper ":bulb: Tutorial AI-Driven Automation Delivers the Agile Vision"
+!!! pied-piper ":bulb: AI-Driven Automation with ChatGPT Delivers the Agile Vision"
 
       Agile wisely advises getting Working Software as fast as possible, to facilitate Business User Collaboration and Iteration.  ChatGPT and API Logic Server deliver this vision, with 1 hour project cycles:
 
