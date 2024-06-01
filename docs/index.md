@@ -132,7 +132,7 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 
 <summary>Does GenAI require Microservice Automation?</summary>
 ![Not Moving](images/nutshell/puzzle.jpg){: style="height:150px;width:250px"; align=right }
-GenAI brings well-known value to app development.  It's great for generating code snippets, particularly for *driving automation engines,* such as sql (e.g., "*create a database...*").  API Logic Server leverages both of these strengths, including [GenAI Logic Automation](Logic/#with-genai-logic-automation){:target="_blank" rel="noopener"}.
+GenAI brings well-known value to app development.  It's great for generating code snippets, particularly for *driving automation engines,* such as sql (e.g., "*create a database...*").  API Logic Server leverages both of these strengths, including [GenAI Logic Automation](Logic.md/#with-genai-logic-automation){:target="_blank" rel="noopener"}.
  
 For large, complex systems (e.g., microservices and their logic), [GenAI breaks down](FAQ-AI.md){:target="_blank" rel="noopener"} -- results can be inconsistent, sometimes wrong, occasionally head-scratching hallunications.
 
@@ -142,7 +142,7 @@ Microservice Automation provides the missing pieces: **[logic, api and app autom
 
 1. **Avoids the "Franken-prompt":** in the absence of automation engines, developers are forced into complex *prompt engineering*, requiring detailed knowledge of the target code.  This defeats the objective of simplicity.
 
-So, Microserve Automation not only **leverages the value of GenAI**, but ***extends it to address complex system creation, preserving simplicity.***
+So, Microserve Automation not only **leverages the value of GenAI**, but ***enables it to address complex system creation, preserving simplicity.***
 
 </details>
 
