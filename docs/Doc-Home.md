@@ -51,6 +51,7 @@ Type:
 * Demo: Small Databases, Introduces Key Features
 * Tutorial: Detailed Walk-throughs
 * Samples: other databases (brief description)
+* Article: shows basic steps without detail (an article reprint)
 
 > Recommendation: **start with the first 2 items**
 
@@ -63,7 +64,7 @@ Type:
 | [Deployment](Tutorial-Deployment.md){:target="_blank" rel="noopener"} | Containerize and deploy your applications | Tutorial |
 | [Basic Demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} | Focused use of API, Admin App and Rules on small customer/orders database | Demo |
 | [AI Demo](Sample-AI.md){:target="_blank" rel="noopener"} | 1. Use Copilot to create new databases from natural language<br>2. Illustrate a very rapid create / customize / iterate cycle<br>3. Introduce Integration | Demo |
-| [AI Drives Agile Vision](Tech-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to create new databases from natural language, to bootstrap an agile *create / deploy / collaborate / iterate* cycle | Demo |
+| [AI Drives Agile Vision](Tech-AI.md){:target="_blank" rel="noopener"} | Use ChatGPT to create new databases from natural language, to bootstrap an agile *create / deploy / collaborate / iterate* cycle | Article |
 | [Agile](Tech-Agile.md){:target="_blank" rel="noopener"} | Behavior Driven Design and testing, using Behave | Tutorial |
 | [Allocation](Logic-Allocation.md){:target="_blank" rel="noopener"} | *Power Rule* to allocate a payment to a set of outstanding orders | Sample |
 | [MySQL Docker](Database-Connectivity.md){:target="_blank" rel="noopener"} | Create projects from sample databases: *chinook* (albums and artists), and *classicmodels* (customers and orders) | Sample |

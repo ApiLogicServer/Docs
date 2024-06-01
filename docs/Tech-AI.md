@@ -25,7 +25,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
       This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.
 
-      > To give it a try, follow the procedure below.  Allow 20 minutes, a bit more if you are new to Azure.
+      > To give it a try, follow the procedure below.  Allow 20 minutes, a bit more if you are new to Azure.  This page is an article reprint, so does not have detailed testing instructions.  For a more guided tour, see [GenAI Microservices Automation](Sample-Genai/){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -141,10 +141,8 @@ $ sqlite3 database/db.sqlite
 4b. Rebuild the project, preserving customizations
 
 ```bash
-cd ..  # project parent directory
 ApiLogicServer rebuild-from-database \
-    --project_name=ai_customer_orders \
-    --db_url=sqlite:///ai_customer_orders/database/db.sqlite
+    --db_url=sqlite:///database/db.sqlite
 ```
 
 &nbsp;
@@ -320,7 +318,7 @@ Rule.copy(derive=models.Item.UnitPrice,    # get Product Price (e,g., on insert,
     from_parent=models.Product.UnitPrice)
 ```
 
-Observe rules are declared in Python.  Given IDE services for code completion, this is using Python as a DSL (Domain Specific Language).
+Observe rules are declared in Python.  Given IDE services for code completion, this is using Python as a DSL (Domain Specific Language).  You can paste the code above into `logic/declare_logic.py` (you will need to adjust tabs).
 
 &nbsp;
 
@@ -415,7 +413,7 @@ $ sqlite3 database/db.sqlite
 
 ```bash
 cd ..  project parent directory
-ApiLogicServer rebuild-from-database --project_name=ai_customer_orders --db_url=sqlite:///ai_customer_orders/database/db.sqlite
+ApiLogicServer rebuild-from-database --db_url=sqlite:///database/db.sqlite
 ```
 
 &nbsp;
