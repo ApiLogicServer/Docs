@@ -20,6 +20,8 @@ $ # you are now active in the API Logic Server docker container to create projec
 
 > Windows: use __Powershell__ (`PWD` is not supported in Command Line)
 
+> To [update your container](DevOps-Containers-Run.md/#apilogicserver-container-upgrades){:target="_blank" rel="noopener"}: `docker pull apilogicserver/api_logic_server`
+
 &nbsp;
 
 ### 2. Create a Project
@@ -132,6 +134,6 @@ To use the Manager with Docker ("%" is a command from your local machine, "$" is
 $ als start
 $ exit
 % code . (and open container)
-$ sudo chmod a+rwx /workspaces/dockers
+$ chmod a+rwx /workspaces/dockers
 $ als create --project-name=/workspaces/dockers/nw+ --db-url=nw+
 ```
