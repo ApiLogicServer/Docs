@@ -123,3 +123,15 @@ docker inspect api_logic_server  # you will find the ip, e.g., 172.17.0.2
 </details>
 
 
+## Using the Manager
+
+To use the Manager with Docker ("%" is a command from your local machine, "$" is a command in the docker container):
+
+```bash title="Using the Manager with Docker"
+% docker run -it --name api_logic_server_local --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
+$ als start
+$ exit
+% code . (and open container)
+$ sudo chmod a+rwx /workspaces/dockers
+$ als create --project-name=/workspaces/dockers/nw+ --db-url=nw+
+```

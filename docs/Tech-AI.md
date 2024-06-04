@@ -25,7 +25,7 @@ Description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchem
 
       This process **leverages your existing IT infrastructure:** your IDE, GitHub, the cloud, your database… open source.
 
-      > To give it a try, follow the procedure below.  Allow 20 minutes, a bit more if you are new to Azure.  This page is an article reprint, so does not have detailed testing instructions.  For a more guided tour, see [GenAI Microservices Automation](Sample-Genai/){:target="_blank" rel="noopener"}.
+      > To give it a try, follow the procedure below.  Allow 20 minutes, a bit more if you are new to Azure.  This page is an article reprint, so does not have detailed testing instructions.  For a more guided tour, see [GenAI Microservices Automation](Sample-Genai.md/){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
