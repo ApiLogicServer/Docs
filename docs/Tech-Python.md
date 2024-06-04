@@ -42,6 +42,16 @@ You'll discover these soon enough:
 
 &nbsp;
 
+### Using the `Debug Console`
+
+A truly wonderful by-product of having an interpreter is that you issue language commands - in the context of the currently running program.  Your IDE supports this; use it at breakpoints to:
+
+1. Evaulate expressions
+2. Test methods
+3. Explore objects, and their APIs - I have saved days of time using API discovery
+
+&nbsp;
+
 ## Pip, environments and PythonPath
 
 Pip is how to load libraries (packages) - not by setting up folder.  It's great, but quickly leads to Pyton's version of "DLL Hell" where libraries interfere from different projects.  So, the best practice is to set up [Virtual Environments](https://docs.python.org/3/library/venv.html?highlight=virtual%20environment){:target="_blank" rel="noopener"}
