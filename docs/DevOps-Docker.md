@@ -47,6 +47,7 @@ $ exit
 $ chmod a+rwx /workspaces/ApiLogicServer
 $ als create --project-name=nw+ --db-url=nw+
 ```
+![Docker Manager](images/docker/VSCode/manager.png)
 
 &nbsp;
 
