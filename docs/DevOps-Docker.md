@@ -14,7 +14,7 @@ Recall from the [Install doc](Install.md) that you create projects like this:
 ### 1. Start Docker
 
 ```bash title="Start (might install) API Logic Server Docker"
-> docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
+> docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/ApiLogicServer apilogicserver/api_logic_server
 $ # you are now active in the API Logic Server docker container to create projects
 ```
 
@@ -28,9 +28,24 @@ $ # you are now active in the API Logic Server docker container to create projec
 
 Typical project creation identifies the database and target project name:
 ```bash title="Create Typical project"
-$ cd /localhost/             # a directory on your local file system for project creation
-$ ApiLogicServer create-and-run --project_name=/localhost/ApiLogicProject --db_url=
+$ cd /ApiLogicServer         # volume mapped to a directory on your local file system for project creation
+$ ApiLogicServer create-and-run --project_name=ApiLogicProject --db_url=
 $ exit                       # return to local host 
+```
+
+&nbsp;
+
+#### 2a. Using the Manager
+
+You can also use the Manager with Docker ("%" is a command from your local machine, "$" is a command in the docker container):
+
+```bash title="Using the Manager with Docker"
+% docker run -it --name api_logic_server_local --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/ApiLogicServer apilogicserver/api_logic_server
+$ als start
+$ exit
+% code . (and open container)
+$ chmod a+rwx /workspaces/ApiLogicServer
+$ als create --project-name=nw+ --db-url=nw+
 ```
 
 &nbsp;
@@ -53,7 +68,7 @@ Then, use normal development procedures to edit code, debug it, and manage in un
 
 Recall that docker containers are self-contained.  So, we should ask: are the project files in the container, or on the local host?
 
-Project files (and VSCode) are on the local host:
+As [explained in VSCode docs](https://code.visualstudio.com/docs/devcontainers/containers#_trusting-your-workspace){:target="_blank" rel="noopener"}, project files (and VSCode) are on the local host:
 
 * That is why you provided `-v ${PWD}:/localhost`
     * This gives the container permission to access the current folder
@@ -124,16 +139,3 @@ docker inspect api_logic_server  # you will find the ip, e.g., 172.17.0.2
 
 </details>
 
-
-## Using the Manager
-
-To use the Manager with Docker ("%" is a command from your local machine, "$" is a command in the docker container):
-
-```bash title="Using the Manager with Docker"
-% docker run -it --name api_logic_server_local --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
-$ als start
-$ exit
-% code . (and open container)
-$ chmod a+rwx /workspaces/dockers
-$ als create --project-name=/workspaces/dockers/nw+ --db-url=nw+
-```
