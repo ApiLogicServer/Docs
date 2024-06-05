@@ -133,6 +133,8 @@ Browse to [localhost:4299](http://localhost:4299), and login as `admin/p`.
 
 The simplest way to introduce rich components is to specify them in the app model, and the rebuild the app.  Iterate this process until you have the right templates, then customize the created app.
 
+![customize](images/ontimize/customize-overview.png)
+
 #### 3a. Edit Model
 
 Edit to remove unwanted entities, order columns, set templates, etc.
