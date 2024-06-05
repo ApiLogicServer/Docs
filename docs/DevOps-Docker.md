@@ -63,6 +63,8 @@ Once the project is created, open it in VSCode:
 
 Then, use normal development procedures to edit code, debug it, and manage in under source control.
 
+> Note: the `auto_open` option does not work in Docker Project Manager.  You need to manually open a new VSCode instance on your local host.
+
 &nbsp;
 
 ## Project Files are Local
