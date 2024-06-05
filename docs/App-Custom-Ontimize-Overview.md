@@ -135,7 +135,7 @@ The simplest way to introduce rich components is to specify them in the app mode
 
 ![customize](images/ontimize/customize-overview.png)
 
-#### 3a. Edit Model
+#### 3a. Edit App Model
 
 Edit to remove unwanted entities, order columns, set templates, etc.
 
@@ -151,7 +151,7 @@ You can edit the yaml file directly, or use the [provided model editor gui](#mod
 
 </details>
 
-#### 3b. Rebuild
+#### 3b. Rebuild App
 
 Then, rebuild your application:
 
@@ -159,11 +159,13 @@ Then, rebuild your application:
 ApiLogicServer app-build --app=ont_1
 ```
 
-#### 3c. Customize Application
+#### 3c. Customize Created App
 
 This will the the data model to build out the Ontimize app.  It's executable.
 
 You can then use your IDE or other tooling (e.g., Ontimize CLI) to edit the artifacts to customize the look and feel.
+
+Then, repeat [2. Run](#2-run), above.
 
 <details markdown>
 
