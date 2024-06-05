@@ -68,21 +68,29 @@ A default Ontimize app is created automatically when you create projects with se
 
 &nbsp;
 
-### 0. Create Project - Automatic Default App
+### 0. Create Project With Auth
 
-The simplist way is to `create` a project, specifying `--auth-provider-type=keycloak`.  This will create a `ui/app` directory with a full Ontimize default app:
+The simplist way is to `create` a project, specifying `--auth-provider-type=keycloak`:
 
 ```bash
 als create --project_name=ApiLogicProject --db-url= --auth-provider-type=keycloak
 ```
 
-Initially, you may wish to skip to step 5 to see the default application.
+This creates a project from your database (here, the [default sample](Sample-Database.md){:target="_blank" rel="noopener"}), which you can open and execute in your IDE.  It includes an API, the Admin App, and the default custom app.
+
+Initially, you may wish to skip to [step 2 to run the default custom app](#2-run).
 
 &nbsp;
 
-### 1. Create Application Manually
+#### &emsp;&emsp;Default Custom App Created
 
-With the project open in your idea, use the **terminal window** to create an app:
+If you create your app with authorization, a default Ontimize app will be created as a `ui/app` directory, with a full Ontimize default app.
+
+&nbsp;
+
+### 1. Create App Manually
+
+With the project open in your IDE, use the **terminal window** to create an app:
 
 ```bash
 ApiLogicServer app-create --app=ont_1
@@ -90,8 +98,9 @@ ApiLogicServer app-create --app=ont_1
 
 This creates `ui/ont_1/app_model.yaml`.
 
+&nbsp;
 
-#### Parallel dev
+#### &emsp;&emsp;Parallel dev
 
 At this point, distinct dev teams can safely proceed in parallel:
 
@@ -106,9 +115,29 @@ As noted earlier:
 
 &nbsp;
 
-### 2. Edit Model
+### 2. Run
+
+Execution is standard to Ontimize:
+
+```bash
+cd ui/app
+npm install
+npm start
+```
+
+Browse to [localhost:4299](http://localhost:4299), and login as `admin/p`.
+
+&nbsp;
+
+### 3. Customize
+
+The simplest way to introduce rich components is to specify them in the app model, and the rebuild the app.  Iterate this process until you have the right templates, then customize the created app.
+
+#### 3a. Edit Model
 
 Edit to remove unwanted entities, order columns, set templates, etc.
+
+You can edit the yaml file directly, or use the [provided model editor gui](#model-editor).
 
 <details markdown>
 
@@ -116,16 +145,19 @@ Edit to remove unwanted entities, order columns, set templates, etc.
 
 &nbsp;
 
-![app_create](images/ontimize/app-create.png)
+![app_create](images/ontimize/app-model.png)
 
 </details>
 
-### 3. Build Application
+#### 3b. Rebuild
+
+Then, rebuild your application:
 
 ```bash
 ApiLogicServer app-build --app=ont_1
 ```
-### 4. Customize Application
+
+#### 3c. Customize Application
 
 This will the the data model to build out the Ontimize app.  It's executable.
 
@@ -137,18 +169,12 @@ You can then use your IDE or other tooling (e.g., Ontimize CLI) to edit the arti
 
 &nbsp;
 
-![app_create](images/ontimize/app-create.png)
+![app_create](images/ontimize/app-cust.png)
 
 </details>
 
-### 5. Run
+# Appendices
 
-Execution is standard to Ontimize:
+## Model Editor
 
-```bash
-cd ui/app1
-npm install
-npm start
-```
-
-Browse to [localhost:4299](http://localhost:4299), and login as `admin/p`.
+To be supplied.
