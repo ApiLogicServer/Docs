@@ -18,9 +18,9 @@
 
 # Ontimize - Angular Starter Kit
 
-What is Ontimize Web?  From the [Ontimize Web site](https://try.imatia.com/ontimizeweb/v15/playground/main/home){:target="_blank" rel="noopener"}:
+What is Ontimize Web?  See the Playground [Ontimize Web site](https://try.imatia.com/ontimizeweb/v15/playground/main/home){:target="_blank" rel="noopener"}:
 
-> Ontimize Web is web application framework based on Angular for building business software. Ontimize Web makes use of Angular framework and its UI Component framework (Angular Material) to provide a set of reusable, well-tested and accesible components apart from a number of standard services and functionalities.  This includes a wealth of rich UI components (editable grid, graph, tree, etc).
+> Ontimize Web is web application framework based on Angular for building business software. Ontimize Web makes use of Angular framework and its UI Component framework (Angular Material) to provide a set of reusable, well-tested and accessible components apart from a number of standard services and functionalities.  This includes a wealth of rich UI components (editable grid, graph, tree, etc).
 
 &nbsp;
 
@@ -32,7 +32,7 @@ While a separate product, Ontimize is highly integrated with API Logic Server:
 2. **Unified Repository:** Artifacts are files stored in your project directory for unified source, and managed by any standard IDE
 3. **Shared Dev Server:** the API Logic Server serves the API, the Admin App, and the Ontimize App.  This simplfies development
 
-> It should be possible for users with limited Python, Flask, SQLAlchemy, JavaScipt technology (`npm` build, etc), or Ontimize knowledge to <br>1. Create a backend API<br>2. Declare rules for multi-table derivations and constraints<br>3. Create a front office Ontimize app, and<br>4. Make significant customizations
+> It should be possible for users with limited Python, Flask, SQLAlchemy, JavaScript technology (`npm` build, etc), or Ontimize knowledge to <br>1. Create a backend API<br>2. Declare rules for multi-table derivations and constraints<br>3. Create a front office Ontimize app, and<br>4. Make HTML UX page customizations
 
 As you can see below, you are no longer limited to simple master/detail screens, as illustrated by the *nested grid* example below which nests an Item grid within an Order grid:
 
@@ -56,7 +56,7 @@ So, API Logic Server introduces a template-based application model:
 
 * **Template**: a macro-expansible version of a template, bundling its html, css and typescript.  The template is a 'generation ready' component.
 
-* **Model**: a YAML file that designates the templates for tables (grid, card, tree, dialog) and fields (text, image, combo, etc).  The creation process macro-expands the designated templates, creating the full app, which you can then customize.
+* **Model**: a YAML file that designates the templates for tables (grid, card, tree, dialog) and fields (text, image, combo, date, currency, etc).  The creation process macro-expands the designated templates, creating the full app, which you can then customize.
 
 > So, typical dev cycle would be to tune the model to designate the templates, then fine-tune the generated app by editing components.
 
@@ -68,9 +68,9 @@ A default Ontimize app is created automatically when you create projects with se
 
 &nbsp;
 
-### 0. Create Project With Auth
+### 0. Create Project With Keycloak Auth
 
-The simplist way is to `create` a project, specifying `--auth-provider-type=keycloak`:
+One way is to `create` an ApiLogicServer project, specifying `--auth-provider-type=keycloak`:
 
 ```bash
 als create --project_name=ApiLogicProject --db-url= --auth-provider-type=keycloak
@@ -90,13 +90,15 @@ If you create your app with authorization, a default Ontimize app will be create
 
 ### 1. Create App Manually
 
-With the project open in your IDE, use the **terminal window** to create an app:
+With the project open in your IDE, use the **terminal window** to create a new Ontimize application in a named directory under 'ui':
 
 ```bash
-ApiLogicServer app-create --app=ont_1
+ApiLogicServer app-create --app=app
+cd ui/app
+npm install
 ```
 
-This creates `ui/ont_1/app_model.yaml`.
+This creates `ui/ont_1/app_model.yaml` and installs the Omtimize 'seed' NodejS package and dependent node_modules.
 
 &nbsp;
 
@@ -121,11 +123,10 @@ Execution is standard to Ontimize:
 
 ```bash
 cd ui/app
-npm install
 npm start
 ```
 
-Browse to [localhost:4299](http://localhost:4299), and login as `admin/p`.
+Browse to [localhost:4299](http://localhost:4299), and login as `user: admin password:p`.
 
 &nbsp;
 
@@ -137,7 +138,13 @@ The simplest way to introduce rich components is to specify them in the app mode
 
 #### 3a. Edit App Model
 
-Edit to remove unwanted entities, order columns, set templates, etc.
+Edit to remove unwanted entities, order columns, set templates, etc. 
+To enable Keycloak - in the ui/app/admin_model.yaml file - go to the settings/style_guide and change these values:
+
+    use_keycloak: true
+    keycloak_url: http://localhost:8080
+    keycloak_realm: kcals
+    keycloak_client_id: alsclient
 
 You can edit the yaml file directly, or use the [provided model editor gui](#model-editor).
 
@@ -156,7 +163,7 @@ You can edit the yaml file directly, or use the [provided model editor gui](#mod
 Then, rebuild your application:
 
 ```bash
-ApiLogicServer app-build --app=ont_1
+ApiLogicServer app-build --app=app
 ```
 
 #### 3c. Customize Created App
@@ -179,6 +186,6 @@ Then, repeat [2. Run](#2-run), above.
 
 # Appendices
 
-## Model Editor
+## Yaml Model Editor
 
 To be supplied.
