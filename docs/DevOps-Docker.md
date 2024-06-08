@@ -40,12 +40,19 @@ $ exit                       # return to local host
 You can also use the Manager with Docker ("%" is a command from your local machine, "$" is a command in the docker container):
 
 ```bash title="Using the Manager with Docker"
-% docker run -it --name api_logic_server_local --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/ApiLogicServer apilogicserver/api_logic_server
+% cd ~/dev/ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer/dockers/ApiLogicServer # your ApiLogicServer dir
+% docker run -it --name api_logic_server --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/ApiLogicServer apilogicserver/api_logic_server
 $ als start
 $ exit
 % code . (and open container)
+$
 $ chmod a+rwx /workspaces/ApiLogicServer
+$ cd /workspaces/ApiLogicServer
+$
 $ als create --project-name=nw+ --db-url=nw+
+$ #
+$ # to run genai - update your secrets file, and
+$ als genai --using=genai_demo.prompt
 ```
 ![Docker Manager](images/docker/VSCode/manager.png)
 

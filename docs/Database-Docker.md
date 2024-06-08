@@ -71,7 +71,7 @@ Start the docker machine like this (Windows users - use Powershell) to enable co
 ```
 cd ~/dev/servers  # project directories will be created here
 docker network create dev-network  # only required once
-docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 --net dev-network -v ${PWD}:/localhost apilogicserver/api_logic_server
+docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 --net dev-network -v ${PWD}:/ApiLogicServer apilogicserver/api_logic_server
 ```
 
 And then, you can refer to the container names (`sqlsvr-container` instead of an IP name) for your database uri, e.g.:
