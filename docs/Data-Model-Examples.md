@@ -15,7 +15,7 @@ So, API Logic Server supports the following `db_url` shortcuts for these pre-ins
     * With no customizations, the default nw example illustrates the level of automation you should expect for your own projects
 
 * nw- - same as nw
-* nw+ - same as nw, but no customizations
+* nw+ - same as nw, but with customizations
 
     * This includes many examples of customization, so it's an excellent idea to create and explore it
 
