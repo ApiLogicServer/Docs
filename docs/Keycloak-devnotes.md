@@ -12,11 +12,51 @@ Status - 3/10:
 
 &nbsp;
 
-## Setup
+## Configuring Security
+
+With your project open, use the **Terminal > New Terminal** window:
 
 ```bash
-ApiLogicServer add-auth --provider-type=keycloak --db-url=
+ApiLogicServer add-auth --provider-type=[ keycloak | sql | none ] --db-url=
 ```
+
+&nbsp;
+
+### Anticipated Usage
+
+We anticipate that developers will probably 
+
+1. start with no auth
+    * just to get running
+2. then configure sqlite (`als add-auth --provider-type=sql --db-url=`)
+    * simplest way to get started with auth - nothing to install or configure
+        * declare your grants (which is not trivial)
+    * switching to other sql dbms (e.g,. Postgresql) is now more tricky (doc to follow)
+3. then configure keycloak (`als add-auth --provider-type=keycloak --db-url=`)
+4. often switch back and forth during testing, or for different developers
+    * It's important this be fast and easy - in particular, just 1 step to reduce errors
+
+&nbsp;
+
+### System Support
+
+Therefore, as of 10.04.55, several changes **faciliate switching** between no / sql / keycloak authentication:
+
+1.  All projects are created sql auth fully configured for sqlite.  This includes the SQLAlchemy models, the api auth endpoints, the database, etc.  
+
+    * See the screenshot below
+    * But, auth is initially ***disabled***
+        * so, user behavior is still no security, just as now
+        * they then use the `add-auth` command to configure, as described above
+
+2. The auth setting in `ui/admin/admin.yaml` is created as `authentication: '{system-default}'`, and updated on load with the config values (overridden by env settings).
+
+    * This means you do *not* have to alter your `admin.yanl` when you reconfigure auth
+
+
+![auth-config](images/keycloak/auth-config.png)
+
+
 
 ## Iterim Additional Setup
 
