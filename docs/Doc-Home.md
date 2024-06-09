@@ -210,16 +210,18 @@ This pre-release includes:
 
 * [logic and service discovery](IDE-Customize.md#discoverability-logic-services){:target="_blank" rel="noopener"}.
 
-* technology preview of [Ontimize rich web app](App-Custom.md){:target="_blank" rel="noopener"}.
+* technology preview of [Ontimize rich web app](App-Custom.md){:target="_blank" rel="noopener"} is ***not working** in this release
 
 * run from Manager (Run/Debug Entry: `API Logic Server Run (run project from manager)`)
 
 * Manager support for PyCharm
 
+* [simplified auth config](Keycloak-devnotes.md/#integration-apilogicserver-keycloak){:target="_blank" rel="noopener"}.
+
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.30
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.56
 ```
 
 Or use (not available currently):
