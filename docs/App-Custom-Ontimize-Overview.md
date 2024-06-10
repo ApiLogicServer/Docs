@@ -46,9 +46,7 @@ Components (like nested grid) are a key element.  As you can see from the [grid 
 
 &nbsp;
 
-# Custom App Automation
-
-## Concepts: Templates, Models
+# Concepts: Templates, Models
 
 Each component has its own unique html code (including properties), css and typescript.  So, changing from a list to a grid would be a complex task.
 
@@ -58,17 +56,18 @@ So, API Logic Server introduces a template-based application model:
 
 * **Model**: a YAML file that designates the templates for tables (grid, card, tree, dialog) and fields (text, image, combo, date, currency, etc).  The creation process macro-expands the designated templates, creating the full app, which you can then customize.
 
-> So, typical dev cycle would be to tune the model to designate the templates, then fine-tune the generated app by editing components.
+> So, typical dev cycle would be to tune the model to designate the templates, </br>
+then fine-tune the generated app by editing components.
 
 &nbsp;
 
-## Procedures
+# Custom App Procedures
 
 A default Ontimize app is created automatically when you create projects with security.  You can also create additional apps using the `als app-create` as described below.
 
 &nbsp;
 
-### 0. Create Project With Keycloak Auth
+## 1. Create Project
 
 One way is to `create` an ApiLogicServer project, specifying `--auth-provider-type=keycloak`:
 
@@ -82,27 +81,13 @@ Initially, you may wish to skip to [step 2 to run the default custom app](#2-run
 
 &nbsp;
 
-#### &emsp;&emsp;Default Custom App Created
+### &emsp;&emsp;- Default App Created
 
 If you create your app with authorization, a default Ontimize app will be created as a `ui/app` directory, with a full Ontimize default app.
 
 &nbsp;
 
-### 1. Create App Manually
-
-With the project open in your IDE, use the **terminal window** to create a new Ontimize application in a named directory under 'ui':
-
-```bash
-ApiLogicServer app-create --app=app
-cd ui/app
-npm install
-```
-
-This creates `ui/ont_1/app_model.yaml` and installs the Omtimize 'seed' NodejS package and dependent node_modules.
-
-&nbsp;
-
-#### &emsp;&emsp;Parallel dev
+### &emsp;&emsp;- Parallel Logic/API Dev
 
 At this point, distinct dev teams can safely proceed in parallel:
 
@@ -117,7 +102,7 @@ As noted earlier:
 
 &nbsp;
 
-### 2. Run
+## 2. Run
 
 Execution is standard to Ontimize:
 
@@ -130,21 +115,26 @@ Browse to [localhost:4299](http://localhost:4299), and login as `user: admin pas
 
 &nbsp;
 
-### 3. Customize
+## 3. Customize
 
 The simplest way to introduce rich components is to specify them in the app model, and the rebuild the app.  Iterate this process until you have the right templates, then customize the created app.
 
 ![customize](images/ontimize/customize-overview.png)
 
-#### 3a. Edit App Model
+### 3a. Enable Security
 
-Edit to remove unwanted entities, order columns, set templates, etc. 
 To enable Keycloak - in the ui/app/admin_model.yaml file - go to the settings/style_guide and change these values:
 
     use_keycloak: true
     keycloak_url: http://localhost:8080
     keycloak_realm: kcals
     keycloak_client_id: alsclient
+
+&nbsp;
+
+### 3b. Edit App Model
+
+Edit to remove unwanted entities, order columns, set templates, etc. 
 
 You can edit the yaml file directly, or use the [provided model editor gui](#model-editor).
 
@@ -158,7 +148,7 @@ You can edit the yaml file directly, or use the [provided model editor gui](#mod
 
 </details>
 
-#### 3b. Rebuild App
+### 3c. Rebuild App
 
 Then, rebuild your application:
 
@@ -166,7 +156,7 @@ Then, rebuild your application:
 ApiLogicServer app-build --app=app
 ```
 
-#### 3c. Customize Created App
+### 3d. Customize Created App
 
 This will the the data model to build out the Ontimize app.  It's executable.
 
@@ -183,6 +173,21 @@ Then, repeat [2. Run](#2-run), above.
 ![app_create](images/ontimize/app-cust.png)
 
 </details>
+
+
+&nbsp;
+
+## 4. Create Additional Apps
+
+With the project open in your IDE, use the **terminal window** to create a new Ontimize application in a named directory under 'ui':
+
+```bash
+ApiLogicServer app-create --app=app
+cd ui/app
+npm install
+```
+
+This creates `ui/ont_1/app_model.yaml` and installs the Omtimize 'seed' NodejS package and dependent node_modules.
 
 # Appendices
 
