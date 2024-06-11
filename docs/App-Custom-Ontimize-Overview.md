@@ -2,7 +2,7 @@
 
 !!! pied-piper ":bulb: TL;DR - Front Office App Dev"
 
-    To complement the Admin App, API Logic Server can automatically create a 'starter kit' Angular app, using [**Ontimize**](https://ontimizeweb.github.io/docs/v8/), a proven app framework.  This approach provides the features outined in [Custom Web Apps](App-Custom.md){:target="_blank" rel="noopener"}:
+    To complement the Admin App, API Logic Server can automatically create a 'starter kit' Angular app, using [**Ontimize**](https://ontimizeweb.github.io/docs/v15/introduction/), a proven app framework.  This approach provides the features outlined in [Custom Web Apps](App-Custom.md){:target="_blank" rel="noopener"}:
 
     1. **Faster and simpler automated creation:** the system creates a default app model, and uses that to create a default app, in seconds.
     
@@ -10,7 +10,7 @@
     
         a. **The generated app for full control:** you can edit the generated app (html, typescript, css).
         
-        b. **The app model:** the app is generated from a model that designates the components for tables (grid, card, tree, dialog) and fields (text, image, combo, etc).  You can modify the model to rebuild the app.
+        b. **The app model:** the app is generated from a yaml model that designates the components for tables (grid, card, tree, dialog) and fields (text, image, combo, etc).  You can modify the yaml model to rebuild the app.
     
     This technology is currently in preview state - *not* ready for production.  Please contact us if you would like to try it, and provide feedback.
 
@@ -30,7 +30,7 @@ While a separate product, Ontimize is highly integrated with API Logic Server:
 
 1. **Unified Database:** driven by the same Data Model, and underlying JSON:API / logic
 2. **Unified Repository:** Artifacts are files stored in your project directory for unified source, and managed by any standard IDE
-3. **Shared Dev Server:** the API Logic Server serves the API, the Admin App, and the Ontimize App.  This simplfies development
+3. **Shared Dev Server:** the API Logic Server serves the API, the Admin App, and the Ontimize App.  This simplifies development
 
 > It should be possible for users with limited Python, Flask, SQLAlchemy, JavaScript technology (`npm` build, etc), or Ontimize knowledge to <br>1. Create a backend API<br>2. Declare rules for multi-table derivations and constraints<br>3. Create a front office Ontimize app, and<br>4. Make HTML UX page customizations
 
@@ -69,10 +69,10 @@ A default Ontimize app is created automatically when you create projects with se
 
 ## 1. Create Project
 
-One way is to `create` an ApiLogicServer project, specifying `--auth-provider-type=keycloak`:
+One way is to `create` an ApiLogicServer project, specifying `--auth-provider-type=sql`:
 
 ```bash
-als create --project_name=ApiLogicProject --db-url= --auth-provider-type=keycloak
+als create --project_name=ApiLogicProject --db-url= --auth-provider-type=sql
 ```
 
 This creates a project from your database (here, the [default sample](Sample-Database.md){:target="_blank" rel="noopener"}), which you can open and execute in your IDE.  It includes an API, the Admin App, and the default custom app.
@@ -104,10 +104,11 @@ As noted earlier:
 
 ## 2. Run
 
-Execution is standard to Ontimize:
+Execution is standard to Ontimize (assumes the installation of NPM and NodeJS). 
 
 ```bash
 cd ui/app
+npm install
 npm start
 ```
 
@@ -123,7 +124,7 @@ The simplest way to introduce rich components is to specify them in the app mode
 
 ### 3a. Enable Security
 
-To enable Keycloak - in the ui/app/admin_model.yaml file - go to the settings/style_guide and change these values:
+To enable Keycloak - in the ui/app/admin_model.yaml file - go to the settings/style_guide and change these values and use the app-build to activate keyloak.
 
     use_keycloak: true
     keycloak_url: http://localhost:8080
@@ -131,7 +132,9 @@ To enable Keycloak - in the ui/app/admin_model.yaml file - go to the settings/st
     keycloak_client_id: alsclient
 
 &nbsp;
-
+Enable keycloak for the ALS server use
+    als add-auth --provider-type=keycloak
+&nbsp;   
 ### 3b. Edit App Model
 
 Edit to remove unwanted entities, order columns, set templates, etc. 
@@ -182,15 +185,27 @@ Then, repeat [2. Run](#2-run), above.
 With the project open in your IDE, use the **terminal window** to create a new Ontimize application in a named directory under 'ui':
 
 ```bash
-ApiLogicServer app-create --app=app
-cd ui/app
+ApiLogicServer app-create --app=app2
+cd ui/app2
 npm install
 ```
 
-This creates `ui/ont_1/app_model.yaml` and installs the Omtimize 'seed' NodejS package and dependent node_modules.
+This creates `ui/app2/app_model.yaml` and installs the Ontimize 'seed' NodejS package and dependent node_modules.
 
 # Appendices
 
 ## Yaml Model Editor
+The Yaml editor allows the developer the ability to manage yaml files for editing using an Ontimize built application. Use the "Manage yaml files" New - to add your yaml file and then click upload to populate the screens with entities, attributes, and tab groups. Once complete, use the download flag to export the yaml to the 'ui' directory (ui/admin_model_merge.yaml) and compare to your original admin_model.yaml in the ontimize application folder.
+```
+git clone https://github.com/tylerm007/ontimize_yaml_view
+cd ontimize_yaml_view
 
-To be supplied.
+code .
+#press F5 to start ApiLogicServer
+
+cd ui/yaml
+npm install
+npm start
+
+#go to http://localhost:5655 (user: admin password: p)
+```
