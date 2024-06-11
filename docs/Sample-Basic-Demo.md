@@ -284,6 +284,14 @@ Of course, we all know that all businesses the world over depend on the `hello w
 
 &nbsp;
 
+### Messaging With Kafka
+
+Along with APIs, messaging is another technology commonly employed for application integration.  See the screenshot below; for more information, see [Sample Integration](Sample-Integration.md##produce-ordershipping-message){:target="_blank" rel="noopener"}.
+
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-to-shipping.jpg?raw=true">
+
+&nbsp;
+
 ## 5. Deploy Containers: Collaborate
 
 API Logic Server also creates scripts for deployment.  While these are ***not required at this demo,*** this means you can enable collaboration with Business Users:
