@@ -114,6 +114,8 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 <summary> Release Notes </summary>
 
+06/11/2024 - 10.04.60: Ontimize Beta
+
 04/16/2024 - 10.03.80: cli issues in create-and-run/run, Oracledb 2.1.12
 
 04/05/2024 - 10.03.66: ApiLogicServer start, als create from-model (eg copilot) 
@@ -221,7 +223,7 @@ This pre-release includes:
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.57
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.60
 ```
 
 Or use (not available currently):
