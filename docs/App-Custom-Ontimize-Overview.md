@@ -59,6 +59,10 @@ So, API Logic Server introduces a template-based application model:
 > So, typical dev cycle would be to tune the model to designate the templates, </br>
 then fine-tune the generated app by editing components.
 
+Templates are created into your project:
+
+![models and templates](images/ontimize/templates-and-models.png)
+
 &nbsp;
 
 # Custom App Procedures
