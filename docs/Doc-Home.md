@@ -114,7 +114,7 @@ Then, you might like to try out some of our [dockerized test databases](https://
 
 <summary> Release Notes </summary>
 
-06/11/2024 - 10.04.61: Ontimize Rich Client Beta
+06/11/2024 - 10.04.61: Ontimize Rich Client Tech Preview
 
 06/04/2024 - 10.04.43: Improved Ontimize support
 
