@@ -53,9 +53,17 @@ Therefore, as of 10.04.55, several changes **faciliate switching** between no / 
 
     * This means you do *not* have to alter your `admin.yanl` when you reconfigure auth
 
+3. You can hard-code authentication, eg,
+
+```yaml title="Hardcoded authentication"
+authentication:
+  keycloak:
+    url: https://kc.hardened.be
+    realm: kcals
+    clientId: alsclient
+```
 
 ![auth-config](images/keycloak/auth-config.png)
-
 
 
 ## Iterim Additional Setup
