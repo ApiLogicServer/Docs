@@ -4,7 +4,7 @@ This page does _not_ address created projects, rather, it is about the API Logic
 
 For reference, projects are created with this structure:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/generated-project.png?raw=true"></figure>
+![generated project](images/generated-project.png)
 
 To create using the source code (e.g, from an IDE), using the ```venv``` created from above (note: to get the full log, you must must set `APILOGICSERVER_DEBUG` as in Run Config `1 - Create ApiLogicProject`):
 
@@ -163,7 +163,7 @@ Customize using your IDE:
 
 The ApiLogicServer source code looks like this:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/apilogicserver-ide.png?raw=true"></figure>
+![ide](images/apilogicserver-ide.png)
 
 Execution begins at `ApiLogicServer/api_logic_server_cli/cli.py`.  It gathers command line arguments and creates an instance of `ProjectRun(Project)`, which proceeds to `ProjectRun.create_project() `.  Its operation is described in the sections below.
 
@@ -259,7 +259,7 @@ If you elect this option, you should see the following in the console log:
 #### Extensible generate from models
 The ```models.py``` file provides `resource_list` metadata used to create APIs, a basic web app, and a react-admin app (steps 31, 3b and 3c), as shown below:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/apilogicserver-ide-create-from-model.png?raw=true"></figure>
+![create-from-model](images/apilogicserver-ide-create-from-model.png)
 
 ### 3b. Create ```api/expose_api_models.py``` (import / iterate models) 
 

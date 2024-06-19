@@ -12,7 +12,6 @@
 
 This page describes the Admin App automatically created during `ApiLogicServer create`.
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/Order-Page.png"></figure>
 ![Admin Arch](images/ui-admin/Order-Page.png)
 
 &nbsp;
@@ -103,7 +102,7 @@ Explore basic data browsing:
       * You can customize your model if these are absent in your database
 4. On the Customer page (shown below), click the first Placed Order row
    * Observe you can navigate through your database, based on the foreign key relationships
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/admin-pa.png?raw=true"></figure>
+
 ![Admin Arch](images/ui-admin/admin-pa.png)
 
 5. On the Order Page
@@ -113,7 +112,7 @@ Explore basic data browsing:
          * You can tune this (e.g. for different languages) using the `--favorites` argument when creating your project.
    * Click one of the `Product Id` values
       * Observe the modal dialog
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/admin-pa-order.png?raw=true"></figure>
+
 ![admin-cust](images/ui-admin/admin-pa-order.png)
 &nbsp;&nbsp;
 
@@ -132,23 +131,19 @@ Click the left menu to see the Customer list again
 
 You can provide an expression that determines when a field (and its caption) are hidden.  For example, you might show the `Dues` only when the `EmployeeType` is _Hourly_, by declaring this in your `admin.yaml`:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/show-when/declare.png?raw=true"></figure>
 ![admin-cust](images/ui-admin/show-when/declare.png)
 
 `Dues` is hidden for non Hourly:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/show-when/display-hidden.png?raw=true"></figure>
 ![admin-cust](images/ui-admin/show-when/display-hidden.png)
 
 
 and is visible for Hourly:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/show-when/display-visible.png?raw=true"></figure>
 ![admin-cust](images/ui-admin/show-when/display-visible.png)
 
 It also works on update, such as insert:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/show-when/insert.png?raw=true"></figure>
 ![admin-cust](images/ui-admin/show-when/insert.png)
 
 &nbsp;
@@ -181,7 +176,6 @@ Edit your `ui/admin/admin.yaml` to designate images, e.g.:
 
 Images can be stored on the server, by placing them as shown in the diagram below:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/admin-image.png?raw=true"></figure>
 ![admin-cust](images/ui-admin/admin-image.png)
 
 #### URL-based Images
@@ -204,7 +198,6 @@ Users can elect to hide/show this info:
 
 2. Info Dialog - click this to show a pop-up dialog for help
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/admin-info.png?raw=true"></figure>
 ![admin-cust](images/ui-admin/admin-info.png)
 
 # Update
@@ -232,7 +225,6 @@ To explore Lookup support:
    * Internally, the system will obtain the `Product.Id` and update the `OrderDetail.ProductId`
 6. Click save
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/lookups.png?raw=true"></figure>
 ![admin-cust](images/ui-admin/lookups.png)
 
 #### Cascade Add
@@ -247,16 +239,13 @@ For example:
 4. On the ensuing Add, note the defaulted Customer at the bottom of the page
 5. __Lookup Employee__ (Sales Rep)
 6. Click __Save and Show__ - you should see this page
-   <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/cascade-add/added-order.png?raw=true"></figure>
    ![admin-cust](images/ui-admin/cascade-add/added-order.png)
 7. Click __Add New Order Detail__
 8. __Lookup Product__
 9. Click __Save and Add Another__
-   <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/cascade-add/add-orderdetail.png?raw=true"></figure>
    ![admin-cust](images/ui-admin/cascade-add/add-orderdetail.png)
 10. __Lookup { start=10 } Product__ (choose a different one)
 11. Click __Save__
-   <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/cascade-add/added-order-with-details.png?raw=true"></figure>
    ![admin-cust](images/ui-admin/cascade-add/added-order-with-details.png)
 
 Observe that Logic Enforcement has computed the `Order Amount`.

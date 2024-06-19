@@ -68,7 +68,7 @@ als create --project-name=sample_ai --from-model=sample_ai.py --db-url=sqlite
 
 When you create an ApiLogicProject, the system creates a project like this that you customize in your IDE:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/generated-project.png?raw=true"></figure>
+![gen-proj](images/generated-project.png)
 
 [Explore the Tutorial Project](https://github.com/valhuber/Tutorial-ApiLogicProject#readme), and observe that the projects are rather small.  That is because the system creates _models_ that define _what, not now_.  Explore the project and you will find it easy to understand the API, data model, app and logic files.
 
@@ -78,7 +78,7 @@ Note the entire project is file-based, which makes it easy to perform typical pr
 
 When you create an ApiLogicProject, the system creates a project like this, pre-configured for Developer Oprations.  See the notes below.
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/devops/devops.png?raw=true"></figure>
+![devops](images/devops/devops.png)
 
 &nbsp;
 

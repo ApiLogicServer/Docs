@@ -41,4 +41,4 @@ Create projects by establishing your Python environment, then issuing `ApiLogicS
 
 In either case, the `create` command builds an `ApiLogicProject` - a directory, shown here in VSCode:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/generated-project.png?raw=true"></figure>
+![generated-proj](images/generated-project.png)
