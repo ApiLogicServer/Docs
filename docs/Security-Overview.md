@@ -1,35 +1,74 @@
 !!! pied-piper ":bulb: TL;DR - Row Level Security with Grant Permissions on User Roles"
 
-    Declarative security enables you to `Grant` row filters to user roles, providing **row level security:** users see only the rows to which they are authorized.  Grants can access user properties, such as their organization.  A common usage is to enforce **multi-tenant** access.
+    Declarative security enables you to `Grant` row filters to user roles, providing **row level security:** users see only the rows to which they are authorized.  
+    
+    Grants declarations reference not only roles, but also user properties (e.g., their organization).  A common usage is to enforce **multi-tenant** access.
 
-    Define users and roles with a SQL database using an Admin app, or, supply a **provider** to attach to existing corporate security (AD, LDAP, etc).
+    Define users and roles with:
+    
+    * a SQL database using an Admin app,
+    * [Keycloak](https://www.keycloak.org){:target="_blank" rel="noopener"}, or,
+    * supply a **provider** to attach to existing corporate security (AD, LDAP, etc).
 
 &nbsp;
 
-## Scope
+## Key Concepts
 
-Security consists of many aspects (http headers, cookie settings, etc.); here, we focus on the following key concepts:
+Security consists of many aspects (http headers, cookie settings, etc.); here, we focus on the following key concepts.
 
-* **Authentication:** a login function that confirms a user has access, usually by posting credentials and obtaining a JWT token identifying the users' roles.
+### Authentication - system access
 
-* **Authorization:** controlling access to row/columns based on assigned roles.
+A login function that confirms a user has access, usually by posting credentials and obtaining a JWT token identifying the users' roles.
 
-* **Role:** in security, users are assigned one or many roles.  Roles are authorized for access to data, down to the row level.
+### Authorization - data access
+
+Controls access to row/columns based on assigned roles.
+
+### Users
+
+Authorized users have a list of roles, and optionally a set of attributes.
+
+#### User Roles
+
+Users are assigned one or many roles (e.g, `sales`).  Rather than dealing with thousands of users, security adminstrators focus on authorization Roles to access data.
+
+#### User Attributes
+
+Each user may also have a set of site-specific attributes, such as their `region`, or their (multi-tenant) `client_id`.
+
+### Auth-Providers
+
+Authorized Users can be defined in a database, in keycloak, or via a developer-implemented ```auth provider```.  This enables you to use external stores such as LDAP, AD, etc.
+
+### Grant Filters
+
+Security Administrators declaring Grant filters, which filter retrieval based on roles and user properties.  This provides authorization down to the row level.  For example, we might want to filter "small" customers so the sales team can focus on high revenue accounts:
+
+```python title='Focus Sales on high-revenue customers'
+Grant(  on_entity = models.Customer,
+        to_role = Roles.sales,
+        filter = lambda : models.Customer.CreditLimit > 300)
+```
+
+### Global Filters
+
+Global filters apply to all roles.  For example, you might enforce multi-tenant access with:
+
+```python title='Global Filters apply to all roles'
+GlobalFilter(   global_filter_attribute_name = "Client_id", 
+                roles_not_filtered = ["sa"],
+                filter = '{entity_class}.Client_id == Security.current_user().client_id')
+```
 
 &nbsp;
 
 ## Process Overview
 
-The overall flow is shown below, where:
-
-* __Green__ - represents __developer__ responsibilities
-* __Blue__ - __System__ processing
-
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/security/overview.png"></figure>
+The overall flow is described below.
 
 ### Developers Configure Security
 
-Developers are responsible for providing (or using system defaults).
+Developers are responsible for providing (or using system defaults) the following:
 
 #### Authentication-Provider
 

@@ -127,6 +127,8 @@ nav:
     - "VENV (internals)": Architecture-venv.md
     - "Python (internals)": Architecture-python.md
     - "Internals - CLI": Architecture-Internals-CLI.md
+    - Security:
+      - "Authentication": Architecture-Security-Auth.md
   - Troubleshooting.md
   - FAQs:
     - "Is this a Low Code approach?": FAQ-Low-Code.md
