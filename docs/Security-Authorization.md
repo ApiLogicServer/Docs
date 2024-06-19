@@ -16,11 +16,15 @@
 
 
 
-## Declaring Logic
+## Declaring Security Logic
 
-Analogous to logic declarations, Developers declare filters for users' roles (role-based access control).  A user can have multiple roles; a users' filters are **OR**ed together.
+Analogous to logic declarations, Developers declare filters for users' roles (role-based access control).  As shown below, these are declared in `security/declare_security.py`.
 
-Roles are typically defined elsewhere (LDAP, AD, external SQL database), and accessed at runtime via the Authentication-Provider.  Roles simplify administration, since there are typically many fewer roles that users, and they are less subject to change.  You may elect to define the roles in your code for code completion, as shown below.
+A user can have multiple roles; a users' filters are **OR**ed together.
+
+Roles are typically defined elsewhere (Keycloak, LDAP, AD, external SQL database), and accessed at runtime via the Authentication-Provider.  Roles simplify administration, since there are typically many fewer roles that users, and they are less subject to change.  
+
+> You may elect to define the roles in your code for code completion, as shown below in the `Roles` class.  In any case, the "source of truth" is the Authentication-Provider.
 
 ![Declare Security](images/security/declare-security.png){ align=left }
 

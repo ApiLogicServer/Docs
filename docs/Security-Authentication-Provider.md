@@ -1,10 +1,16 @@
-Authentication Providers are developer-supplied code, called by the system during login.  It is passed the id/password, and returns a user row and list of roles.
+!!! pied-piper ":bulb: TL;DR - Providers access external stores (sql, Keycloak, LDAP, AD) to return roles"
 
-The underlying presumptions:
+    Authentication Providers are called by the system during login.  They are passed the id/password, and return a user row and list of roles.
 
-1. Multiple systems will share the same authentication data, so this data will be separate from each application
+    As shown below, the system provides **default providers** for sql and keycloak.   You can **create your own provider** to interface with your authentication system (LDAP, AD etc)
 
-2. Organizations will utilize a wide variety of techniques to maintain authorization data (databases, LDAP, AD etc), so an open "interface" approach is required.
+    The underlying presumptions:
+
+    1. Multiple systems will share the same authentication data, so this data will be separate from each application
+
+    2. Organizations will utilize a wide variety of techniques to maintain authorization data (databases, LDAP, AD etc), so an open "interface" approach is required.
+
+![providers](images/security/auth-providers.png)
 
 &nbsp;
 

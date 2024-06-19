@@ -16,7 +16,7 @@ python -m pip install ApiLogicServer
 ApiLogicServer start                 # optionally, start the project manager
 ```
 
-> Note: this requires you've activate VSCode `code` CLI (to get it: Open the Command Palette (Cmd+Shift+P) and type 'shell command')
+> Note: this requires you've activated VSCode `code` CLI (to get it: Open the Command Palette (Cmd+Shift+P) and type 'shell command')
 
 <details markdown>
 
