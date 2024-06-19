@@ -186,7 +186,7 @@ Then you can hit http://localhost:8080 or http://host-ip:8080 in your browser:
 
 Pycharm provides excellent [database tools](https://www.jetbrains.com/help/pycharm/2021.3/database-tool-window.html), as shown below:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/PyCharm/database-tools.png"></figure>
+![database-tools](images/PyCharm/database-tools.png)
 
 &nbsp;
 
@@ -194,13 +194,13 @@ Pycharm provides excellent [database tools](https://www.jetbrains.com/help/pycha
 
 I also use [SQLTools](https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools).  To use it, you must first install drivers:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/SQLTools/SQLTools-drivers.png"></figure>
+![sqltools](images/docker/VSCode/SQLTools/SQLTools-drivers.png)
 
 You may want to install extensions for MySQL and Postgres.
 
 Then, you can explore the sample:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/SQLTools/SQLTools-sample.png"></figure>
+![sqltools-sample](images/docker/VSCode/SQLTools/SQLTools-sample.png)
 
 &nbsp;
 

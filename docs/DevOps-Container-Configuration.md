@@ -58,7 +58,7 @@ http://localhost:5656/
 
 Alternatively, you can start the server using the run script, e.g.:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/server-run.png"></figure>
+![server-run](images/server-run.png)
 
 ### Stopping the server
 

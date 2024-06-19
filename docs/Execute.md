@@ -30,5 +30,5 @@ python api_logic_server_run.py       # options exist to override URL, port
 
 The server should start, and suggest the URL for your Browser.  That will open a page like this, where you can explore your data using the automatically created [Admin app](Admin-Tour.md), and explore the API with automatically generated Swagger:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/admin-home.png?raw=true"></figure>
+![admin-home](images/ui-admin/admin-home.png)
 

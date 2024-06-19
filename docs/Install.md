@@ -97,7 +97,7 @@ Then, open the appropriate section below, and see the [Installation Notes](#inst
 
     __2. Create and configure a web app__
 
-    <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/python-anywhere.png?raw=true"></figure>
+    ![python-anywhere](images/python-anywhere.png)
 
     __3. Update the wsgi__
     And copy the contents of ```/home/ApiLogicServer/api_logic_server/python_anywhere_wsgi.py``` over the wsgi file created by pythonanywhere.

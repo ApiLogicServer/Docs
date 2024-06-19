@@ -19,7 +19,7 @@ ApiLogicServer add-db --db_url=todo --bind_key=Todo
 
 &nbsp;
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/model/multi-db.png?raw=true"></figure>
+![multi-db](images/model/multi-db.png)
 
 Observe:
 

@@ -129,7 +129,7 @@ Your IDE code completion services can aid in discovering logic services.  There 
 
 You can find examples of these services in the sample `ApiLogicProject`.
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/vscode/venv.png?raw=true"></figure>
+![venv](images/vscode/venv.png)
 
 
 ### Extend: Python
@@ -170,7 +170,7 @@ In addition, the system creates a ""logic log** of all rules that fire, to aid i
 
 In VSCode, set `"redirectOutput": true` in your **Launch Configuration.**  This directs logging output to the Debug Console, where it is not word-wrapped (word-wrap obscures the multi-table chaining).
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/no-line-wrap.png"></figure>
+![no-line-wrap](images/docker/VSCode/no-line-wrap.png)
 
 
 &nbsp;

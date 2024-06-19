@@ -104,7 +104,7 @@ VSCode will open in your Browser, and the project will perform various initializ
 3. 3 Sample projects created
 3. `readme` opened, showing next step
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/git-codespaces/verify-codespaces-tutorial.png?raw=true"></figure>
+![verify-codespaces](images/git-codespaces/verify-codespaces-tutorial.png)
 
 </details>
 

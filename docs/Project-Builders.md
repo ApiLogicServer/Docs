@@ -126,8 +126,7 @@ This particular example creates this [tvf file](https://github.com/valhuber/ApiL
 
 Updates `api/customize_api.py` to expose it, as shown below:
 
-![](https://github.com/valhuber/apilogicserver/wiki/images/extended_builder/activate.png?raw=true)
-
+![activate](images/extended_builder/activate.png)
 
 This example illustrates the extended builder approach; the resultant services runs as shown below.
 
@@ -135,7 +134,7 @@ This example illustrates the extended builder approach; the resultant services r
 
 It generates Swagger, with arguments:
 
-![](https://github.com/valhuber/apilogicserver/wiki/images/extended_builder/swagger.png?raw=true)
+![swagger](images/extended_builder/swagger.png)
 
 You can run it with this cURL:
 

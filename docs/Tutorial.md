@@ -96,8 +96,7 @@ After starting the server and browser, explore the Admin App in your browser:
       * Multi-Table - database relationships (typically from foreign keys) used to build master/detail pages
       * Automatic Joins - the Order Detail table contains `ProductId`, but the system has joined in the `Product Name`.  You can edit the `admin.yaml` file to control such behavior.
 
-
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/run-admin-app.png?raw=true"></figure>
+![run-admin-app](images/ui-admin/run-admin-app.png)
 
 > **Key Takeaway: *Microservice Automation***<br>With **1 command**, we have created an executable project with a **self-serve API**, for ad hoc application integration and custom UI development.  Our **Admin App** can be used for agile business user collaboration.
 

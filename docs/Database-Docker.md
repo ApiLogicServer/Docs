@@ -86,7 +86,7 @@ mssql+pyodbc://sa:Posey3861@sqlsvr-container:1433/NORTHWND?driver=ODBC+Driver+18
 
 If you are running API Logic Server in a container, and accessing dockerized databases, you will need to enable connectivity by uncommenting the indicated line in the diagram below:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/databases/docker-db-access.png"></figure>
+![docker-db-access](images/docker/databases/docker-db-access.png)]
 
 The diagram above, and the examples below, presume you have created a docker network called `dev-network`, as shown at the top of this page.
 

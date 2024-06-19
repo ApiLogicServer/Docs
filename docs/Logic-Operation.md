@@ -40,7 +40,7 @@ Rules are spreadsheet-like expressions for multi-table derivations and constrain
 
     The Customer Balance is the sum of the unshipped Order AmountTotals
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/logic/like-a-spreadsheet.png?raw=true"></figure>
+![like-a-spreadsheet](images/logic/like-a-spreadsheet.png)
 
 > You can imagine that the spreadsheet __watches__ for changes to referenced cells, __reacts__ by recomputing the cell, which may __chain__ to other cells.
 
@@ -55,7 +55,7 @@ Let's see how logic operates on a typical, multi-table transaction.
 
 Let's consider a typical multi-table transaction.  Here is the 5 rule solution for check credit:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/logic/5-rules-cocktail.png?raw=true"></figure>
+![5-rules-cocktail](images/logic/5-rules-cocktail.png)
 
 As Order Details are inserted, the rule flow is shown below.
 
