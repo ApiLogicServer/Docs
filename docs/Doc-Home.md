@@ -1,5 +1,7 @@
 Welcome to API Logic Server documentation.  In sufficent large browsers, the pages are shown at left, and the page contents are at right.
 
+> ***Alert:*** many images are missing.  I expect to fix that today, 6/19/2024.  Sorry for the inconvenience.
+
 # Start: Install, Samples, Training
 
 

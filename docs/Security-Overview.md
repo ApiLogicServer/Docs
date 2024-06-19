@@ -40,7 +40,7 @@ Each user may also have a set of site-specific attributes, such as their `region
 
 Authorized Users can be defined in a database, in keycloak, or via a developer-implemented ```auth provider```.  This enables you to use external stores such as LDAP, AD, etc.
 
-### Grant Filters
+### Grant Role Filters
 
 Security Administrators declaring Grant filters, which filter retrieval based on roles and user properties.  This provides authorization down to the row level.  For example, we might want to filter "small" customers so the sales team can focus on high revenue accounts:
 
@@ -66,6 +66,8 @@ GlobalFilter(   global_filter_attribute_name = "Client_id",
 
 The overall flow is described below.
 
+&nbsp;
+
 ### Developers Configure Security
 
 Developers are responsible for providing (or using system defaults) the following:
@@ -76,17 +78,13 @@ This class, given a user/password, returns the list of authorized roles (on None
 
 Developers must:
 
-    * Provide this class
+* Provide this class (or use the system-supplied providers for `sql` and `keycloak`)
 
-    * Identify the class in `conf/config.py`
-
-&nbsp;
+* Identify the class in `conf/config.py`
 
 #### Authentication Data
 
 Developers must determine the data required to authenticate users.  This can be a SQL Database, LDAP, AD, etc.  It is separate from user databases so it can be shared between systems.  The Authentication-Provider uses it to authenticate a user/password, and return their roles.
-
-&nbsp;
 
 #### `declare_security`
 
@@ -98,8 +96,6 @@ Add code to the pre-created (empty) Python module that defines table/role filter
 
 System processing is summarized below.
 
-&nbsp;
-
 #### Startup: `declare_security`
 
 When you start the server, the system (`api_logic_server_run.py`) imports `declare_security`.  This:
@@ -108,13 +104,9 @@ When you start the server, the system (`api_logic_server_run.py`) imports `decla
 
 2. Creates `Grant` objects, internally maintained for subsequent use on API calls (SQLAlchemy read events).
 
-&nbsp;
-
 #### Login: Call Auth-Provider
 
 When users log in, the app `POST`s their id/password to the system, which invokes the Authentication-Provider to autthenticate and return a set of roles.  These are tokenized and returned to the client, and passed in the header of subsequent requests.
-
-&nbsp;
 
 #### API: Security Manager
 
@@ -123,8 +115,6 @@ This provides:
 * __The `Grant` function__, to save the filters for each table/role
 
 * __Filtering,__ by registering for and processing the SQLAlchemy `receive_do_orm_execute` event to enforce filters.
-
-&nbsp;
 
 #### Server: User State
 
