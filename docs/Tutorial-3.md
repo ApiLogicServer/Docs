@@ -52,7 +52,8 @@ A unique feature of API Logic Server is provision for spreadsheet-like rules, cu
 
 ## Create
 
-[![Using VS Code](https://github.com/valhuber/apilogicserver/wiki/images//creates-and-runs-video.jpg?raw=true?raw=true)](https://youtu.be/tOojjEAct4M "Using VS Code with the ApiLogicServer container - click for video")
+[![Using VS Code](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/creates-and-runs-video.jpg?raw=true)](https://youtu.be/tOojjEAct4M "Using VS Code with the ApiLogicServer container - click for video")
+
 
 The diagram above summarizes the create / run / customize process.  When you issue the `ApiLogicServer create` CLI command, the system reads your schema and creates a customizable API Logic Project.
 
@@ -128,7 +129,7 @@ After starting the server and browser, explore the Admin App in your browser:
 
 7. __Leave the server and browser running__
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/run-admin-app.png?raw=true"></figure>
+![run-adm](images/ui-admin/run-admin-app.png)
 
 &nbsp;&nbsp;
 
@@ -148,7 +149,7 @@ The creation process builds not only the API, but also swagger so you can explor
 2. Click "2. API with __oas/Swagger__" to see the swagger
 3. (Leave the swagger and server running)
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/ui-admin/swagger.png?raw=true"></figure>
+![swa](images/ui-admin/swagger.png)
 
 &nbsp;&nbsp;&nbsp;
 
@@ -247,7 +248,7 @@ To review the implementation:
    1. You can examine the variables, step, etc.
 6. Click **Continue** on the floating debug menu (upper right in screen shot below)
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/tutorial/customize-api.png?raw=true"></figure>
+![cust-api](images/tutorial/customize-api.png)
 
 &nbsp;
 
@@ -269,7 +270,7 @@ The *logic* portion of API *Logic* server is a declarative approach - you declar
 3. Using swagger, re-execute the `add_order` endpoint
 4. When you hit the breakpoint, expand `row` VARIABLES list (top left)
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/tutorial/debug-logic.png?raw=true"></figure>
+![debug-logic](images/tutorial/debug-logic.png)
 
 Internally, rules execute by listening to SQLAlchemy `before_flush` events, as [described here](https://valhuber.github.io/ApiLogicServer/Logic-Operation/#how-usage-and-operation-overview).
 

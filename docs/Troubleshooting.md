@@ -109,9 +109,7 @@ ApiLogicServer rebuild-from-model\
 
 For more on rebuild, see [Rebuilding](Project-Rebuild.md).
 
-
-
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/model/model-repair-rebuild.png?raw=true"></figure>
+![model-repair](images/model/model-repair-rebuild.png)
 
 &nbsp;&nbsp;
 
@@ -186,7 +184,7 @@ You may need to rebuild your container, as [described here](https://stackoverflo
 
 You may encounter unexpected port changes, such as using `localhost:5657` instead of the usual `localhost:5656`.  Resolve this as shown below:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/fix-vscode-ports.png?raw=true"></figure>
+![ports](images/docker/VSCode/fix-vscode-ports.png)
 
 ## Permission denied: `/home/api_logic_project/instance`
 
@@ -217,8 +215,7 @@ Currently under investigation.
 
 Code completion depends on a properly installed `venv`.  The digram below shows how code completion exposes valuable services provided by `logic_row`, and how to verify your `venv` setting for VSCode:
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/vscode/venv.png?raw=true"></figure>
-
+![venv](images/vscode/venv.png)
 
 ## `venv` Setup
 
@@ -242,7 +239,7 @@ However, this process occasionally fails.  For example, if you create the projec
 
 It's a good idea to verify your `venv`, as described in the next section.
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/vscode/select-venv.png?raw=true"></figure>
+![select-venv](images/vscode/select-venv.png)
 
 ## Verify your Python environment
 
@@ -264,7 +261,7 @@ As of release 5.02.10, you can run `venv_setup/py.py sys-info`, either
 * In VSCode, select the file and use the Launch Configuration __Python: Current File__.
    * Note: this may properly update the Python `venv` information if it was not properly set
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/vscode/py-py.png?raw=true"></figure>
+![py-py](images/vscode/py-py.png)
 
 &nbsp;&nbsp;
 

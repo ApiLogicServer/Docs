@@ -50,7 +50,7 @@ IDE instructions depend on whether you are using a local install, or Docker.  Se
 
     You may be prompted for this (recent versions of VSCode might auto-detect language support):
 
-    <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/4-install-python-extension.png"></figure>
+    ![4-install-py-ext](images/docker/VSCode/4-install-python-extension.png)
 
 === "VS Code -- Docker Install"
 
@@ -95,8 +95,7 @@ IDE instructions depend on whether you are using a local install, or Docker.  Se
 
     > If you already skipped this option, no worries.  Use __View > Command Palette > Remote-Containers: Reopen in Container__
 
-
-    <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/open-in-container.png"></figure>
+    ![open-in-cont](images/docker/VSCode/open-in-container.png)
 
     __Note:__ when you Execute your application (below), you may need to update your Docker container - see [Working with Docker](DevOps-Docker.md).
 
@@ -111,7 +110,6 @@ IDE instructions depend on whether you are using a local install, or Docker.  Se
     PyCharm will ask you to configure a Python Interpreter.  Do so as shown below.
 
     ![PyCharm venv](images/PyCharm/PyCharm-create-venv.png)
-    <figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/PyCharm/PyCharm-create-venv.png"></figure>
 
     __4. `pip` install__
 
@@ -136,7 +134,8 @@ IDE instructions depend on whether you are using a local install, or Docker.  Se
 Once you have established your Python environment, you are ready to run.  The `ApiLogicServer create` command has built launch configurations, so you can start your server like this:
 
 ### 1. Click **Run and Debug**
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/run-debug.png"></figure>
+
+![run-debug](images/docker/VSCode/run-debug.png)
 
 ### 2. Select Launch Configuation
 
@@ -153,7 +152,7 @@ When you run, you may encounter the message below; if so:
 1. Click Extensions (as shown)
 2. Ensure Python support is installed and enabled
 
-<figure><img src="https://github.com/valhuber/apilogicserver/wiki/images/docker/VSCode/docker-install-python-extension.png"></figure>
+![docker-ins](images/docker/VSCode/docker-install-python-extension.png)
 
 
 ### 4. Start the Browser
