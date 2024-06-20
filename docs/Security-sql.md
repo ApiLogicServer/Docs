@@ -1,6 +1,12 @@
 !!! pied-piper ":bulb: TL;DR - Authorize using sql databases"
 
-    Use sqlite (good start) or your own.
+    You can store the user / roles information in a sql database, and use it for authentication.
+    
+    The database can be sqlite, or your own authdb.  The sqlite apparatus is pre-installed into each project, so it's a good place to start.
+
+    In most cases, the database/schema is *separate* from your project's database/schema, so the auth information can be shared over multiple projects.
+
+    It's extensible: you can add additional attributes to the `Users` table, and reference these in `Grant` statements.
 
 
 &nbsp;
