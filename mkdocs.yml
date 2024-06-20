@@ -71,11 +71,14 @@ nav:
       - "Events": "Logic-Type-Events.md"
       - "Time/Date Stamping": Logic-Allocation-Time-Date.md
   - 4. Security:
-    - "Role-based Authorization": Security-Overview.md
-    - "Authorization": Security-Authorization.md
-    - "Authentication": Security-Authentication.md
-    - "Authentication Provider": Security-Authentication-Provider.md
-    - "Activation": Security-Activation.md
+    - "Overview": Security-Overview.md
+    - "Role-based Authorization": Security-Authorization.md
+    - "Login Authentication": Security-Authentication.md
+    - "Activating and Configuring":
+      - "Activation: add-auth": Security-Activation.md
+      - "Configure sql auth": Security-sql.md
+      - "Configure Keycloak auth": Security-Keycloak.md
+    - "Getting Started with Security": Security-Exploring.md
     - "Swagger": Security-Swagger.md
   - 5. Application Integration:
     - "Sample Integration": Sample-Integration.md

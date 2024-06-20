@@ -34,9 +34,16 @@ While a separate product, Ontimize is highly integrated with API Logic Server:
 
 > It should be possible for users with limited Python, Flask, SQLAlchemy, JavaScript technology (`npm` build, etc), or Ontimize knowledge to <br>1. Create a backend API<br>2. Declare rules for multi-table derivations and constraints<br>3. Create a front office Ontimize app, and<br>4. Make HTML UX page customizations
 
-As you can see below, you are no longer limited to simple master/detail screens, as illustrated by the *nested grid* example below which nests an Item grid within an Order grid:
+As you can see below, you are no longer limited to simple master/detail screens:
+
+1. A Chart (via the hamburger window)
+
+![Ontimize Chart](images/ontimize/charts.png)
+
+2. A *nested grid* example below which nests an Item grid within an Order grid:
 
 ![Ontimize Nested Grid](images/ontimize/nested-grids.png)
+
 
 &nbsp;
 

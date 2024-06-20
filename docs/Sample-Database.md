@@ -35,11 +35,20 @@ The tutorial then shows how to add customizations:
 ApiLogicServer add-cust
 ```
 
+![sample-customize](images/model/sample-customize.png)
+
 This installs:
 
 1. **Logic:** The integrity of this database is enforced with [this logic](Logic-Why.md#solution-rules-are-an-executable-design){:target="_blank" rel="noopener"}
-2. **Security:** [this sqlite-based security](Security-Activation.md){:target="_blank" rel="noopener"}
-3. **Integration:** [this Kafka logic](Sample-Integration.md){:target="_blank" rel="noopener"}
+2. **Integration:** [this Kafka logic](Sample-Integration.md){:target="_blank" rel="noopener"}
+
+### Add Security
+
+Finally, as shown above, add security (defaulting to sqlite-based authorization):
+
+```bash
+ApiLogicServer add-auth
+```
 
 &nbsp;
 
@@ -50,6 +59,7 @@ You can also create the project with the logic pre-installed:
 ```bash
 ApiLogicServer create --project_name=ApiLogicProject --db_url=nw+
 ```
+&nbsp;
 
 ## Sample-ai
 
@@ -57,6 +67,7 @@ The ChatGPT-based sample is structured as follows:
 
 ![Sample-ai Database](images/sample-ai/db-diagram.png){: style="height:600px;";  }
 
+&nbsp;
 
 ## Basic Demo
 
