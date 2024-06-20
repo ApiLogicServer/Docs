@@ -11,6 +11,23 @@
 
 &nbsp;
 
+&nbsp;
+
+## Security Database Structure
+
+![authdb](images/security/authdb.png){:height="500px" width="500px"}
+
+Except for the sample project, projects are created with security disabled.  So, a typical project creation sequence might be:
+
+1. Create your project without security
+
+    * Verify connectivity, API operation, Admin App operation, etc.
+
+2. Activate Security
+
+This page describes how to activate security.
+
+
 ## Using your own `authdb`
 
 In most cases, you will create your own `authdb`:
@@ -47,20 +64,21 @@ A sample security database is pre-created in the MySQL and Postgres [Sample Dock
 
 &nbsp;
 
-## Security Database Structure
+### Accessed via SQLAlchemy
 
-![authdb](images/security/authdb.png){:height="500px" width="500px"}
+Like your project database(s), authorization data is accessed internally via SQLAlchemy, and externally using JSON:API. As such, it requires database model files. 
 
-Except for the sample project, projects are created with security disabled.  So, a typical project creation sequence might be:
+These are pre-created for the sqlite database, and are created during `add-auth` for non-sqlite auth databases. 
 
-1. Create your project without security
+&nbsp;
 
-    * Verify connectivity, API operation, Admin App operation, etc.
+### Administer via Admin App
 
-2. Activate Security
+The system creates `ui/admin/authentication_admin.yaml` which you can use to manage users and their roles.  It's an admin app - access it at [http://localhost:5656/admin/authentication_admin/](http://localhost:5656/admin/authentication_admin/){:target="_blank" rel="noopener"}.
 
-This page describes how to activate security.
+This is pre-created for the sqlite database, and created during `add-auth` for non-sqlite auth databases. 
 
+&nbsp;
 
 ---
 

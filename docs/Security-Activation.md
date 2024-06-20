@@ -1,3 +1,11 @@
+!!! pied-piper ":bulb: TL;DR - Use add-auth to activate security"
+
+    You activate security by activating authentication using the `add-auth` CLI command to designate the `authentication-type` (sql or keycloak), and its database location (`db_url`).
+    
+&nbsp;
+
+## add-auth
+
 Use the `add-auth` command to activate security.  Specify:
 
 1. `--provider-type`: sql, keycloak, or your custom auth provider
@@ -27,8 +35,11 @@ Internally, this updates `conf/config.py`:
 
 ![config](images/security/add-auth.png)
 
+&nbsp;
+
 ### Creates auth models
 
+See [this information for sql authentication](Security-sql.md#accessed-via-sqlalchemy){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
