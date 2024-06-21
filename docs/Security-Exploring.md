@@ -5,6 +5,17 @@
     We recommend exploring the security examples below.
 
 
+ 
+
+So, a typical project creation sequence might be:
+
+1. Create your project without security
+
+    * Verify connectivity, API operation, Admin App operation, etc.
+
+2. Activate Security
+
+
 
 ## Northwind Sqlite Sample
 

@@ -2,7 +2,7 @@
 
     You can store the user / roles information in a sql database, and use it for authentication.
     
-    The database can be sqlite, or your own authdb.  The sqlite apparatus is pre-installed into each project, so it's a good place to start.
+    The database can be sqlite, or your own authdb.  The sqlite apparatus is pre-installed and pre-configured into each project, so it's a good place to start.
 
     In most cases, the database/schema is *separate* from your project's database/schema, so the auth information can be shared over multiple projects.
 
@@ -11,22 +11,34 @@
 
 &nbsp;
 
-&nbsp;
-
 ## Security Database Structure
+
+Auth databases must be a superset of the following:
 
 ![authdb](images/security/authdb.png){:height="500px" width="500px"}
 
-Except for the sample project, projects are created with security disabled.  So, a typical project creation sequence might be:
+Note this database includes:
 
-1. Create your project without security
+* Users
+* Roles (`Role` and `UserRole`)
 
-    * Verify connectivity, API operation, Admin App operation, etc.
+&nbsp;
 
-2. Activate Security
+## sqlite Authentication DB
 
-This page describes how to activate security.
+Projects are pre-configured with sqlite database security, initially disabled.  This simplifes getting started with security.  The database file is `security/authentication_provider/sql/authentication_db.sqlite`.
 
+> Exception: Security is **enabled** for the [sample nw+ project](Sample-Database.md#northwind-with-logic){:target="_blank" rel="noopener"}.
+
+In addition to `Users`, `Roles` and `UserRole`, this database includes:
+
+* User.client_id, to illustrate multi-tenant (use the test user: **aneu**).
+
+It's structure:
+
+![authdb](images/security/authdb-sqlite.png){:height="500px" width="500px"}
+
+&nbsp;
 
 ## Using your own `authdb`
 
@@ -36,6 +48,19 @@ In most cases, you will create your own `authdb`:
 
 2. To introduce additional properties for use in `Grants` -- see the first section below
 
+&nbsp;
+
+### Configuring your authdb
+
+Configure with a command like:
+
+```bash title='Configure postgres auth db'
+als add-auth --provider-type=sql --db_url=postgresql://postgres:p@localhost/authdb
+```
+
+![postgres-auth-db](images/security/postgres/postgres-auth-db.png)
+
+&nbsp;
 
 ### Add `User` properties for `Grants`
 
@@ -52,15 +77,17 @@ Here, our custom `authdb` has added the `client_id` column to the `User` table, 
 
 ### Pre-created `authdb` scripts
 
-For example, use [this Dockerfile](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype/devops/docker) to create a MySQL docker image for your project, including `authdb`.
+Your project contains some example sql to create the auth db:
 
-> After release 08.00.05, those files are created in new projects.  For earlier versions, create these files in devops/docker.
+![create auth db](images/security/devops-providers.png)
+
+> Prior release 08.00.05, those files were not created in new projects.  For earlier versions, create these files in devops/docker with [this Dockerfile](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype/devops/docker).
 
 &nbsp;
 
 ### Pre-created in Docker Samples
 
-A sample security database is pre-created in the MySQL and Postgres [Sample Docker Databases](Database-Docker.md).
+A sample security database is pre-created in the MySQL and Postgres [Sample Docker Databases](Database-Docker.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -70,43 +97,15 @@ Like your project database(s), authorization data is accessed internally via SQL
 
 These are pre-created for the sqlite database, and are created during `add-auth` for non-sqlite auth databases. 
 
+Note this uses [Multi-DB Support](Data-Model-Multi.md){:target="_blank" rel="noopener"}.  
+
 &nbsp;
 
 ### Administer via Admin App
 
 The system creates `ui/admin/authentication_admin.yaml` which you can use to manage users and their roles.  It's an admin app - access it at [http://localhost:5656/admin/authentication_admin/](http://localhost:5656/admin/authentication_admin/){:target="_blank" rel="noopener"}.
 
-This is pre-created for the sqlite database, and created during `add-auth` for non-sqlite auth databases. 
+This auth admin app is...
 
-&nbsp;
-
----
-
-## sql Auth Provider
-
-You can the sql Auth Provider if you want to authenticate based on database rows.  The database structure is shown below.
-
-For User Attributes (e.g, Region, Client_id), add columns to your `User` table.  You can reference these in the `Grant` statements.
-
-&nbsp;
-
-### sqlite Authentication DB
-
-Note this uses [Multi-DB Support](Data-Model-Multi.md).  
-
-The database file is `security/authentication_provider/sql/authentication_db.sqlite`.  This database includes:
-
-* Users
-* Roles (`Role` and `UserRole`)
-* User.client_id, to test multi-tenant (the test user is **aneu**).
-
-![authdb](images/security/authdb.png){:height="500px" width="500px"}
-
-&nbsp;
-
-### Postgres and MySQL Auth DB
-
-Your project contains some example sql to create the auth db:
-
-![create auth db](images/security/devops-providers.png)
-
+* pre-created for the sqlite auth database, and 
+* created during `add-auth` for non-sqlite auth databases
