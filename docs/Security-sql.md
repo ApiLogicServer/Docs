@@ -109,3 +109,9 @@ This auth admin app is...
 
 * pre-created for the sqlite auth database, and 
 * created during `add-auth` for non-sqlite auth databases
+
+## Admin Login Screen
+
+When you run the admin app, you will see the following login screen; it confirms you are running using sql auth:
+
+![create auth db](images/security/login-sql.png)

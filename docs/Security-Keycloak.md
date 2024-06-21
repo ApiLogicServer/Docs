@@ -98,8 +98,36 @@ You can use the [Keycloak admin console](http://localhost:8080/){:target="_blank
 
 ![kc-attrs-acccess](images/keycloak/kc-attrs-access.png)
 
+![kc-dedicated-scopes](images/keycloak/clients-dedicated-scopes.png)
+
 &nbsp;
 
-### Export Settings
+### Export Auth Data
 
-TBD
+Export the revised auth data:
+
+1. In the terminal window of your project:
+
+```bash title='Export the revised auth data'
+% docker exec -it keycloak bash
+
+$ cd /opt/keycloak
+$ bin/kc.sh export --help
+$ bin/kc.sh export --dir export
+$ exit
+```
+
+This creates a directory in the keycloak docker: `keycloak:/opt/keycloak/export`.  We can import this back into our project as described next.
+
+&nbsp;
+
+### Use Exported Auth Data in Project
+
+You can make this saved auth data part of your project (and saved to `git` for your team) as follows:
+
+1. In the terminal window of your project
+
+```bash title='Use Exported Auth Data in Project'
+mv devops/keycloak/import-save devops/keycloak/import-backup
+docker cp keycloak:/opt/keycloak/export devops/keycloak/import
+```
