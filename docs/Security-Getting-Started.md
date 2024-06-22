@@ -47,6 +47,32 @@ In either case, you will have a project using the default [sqlite security](Secu
 
 &nbsp;
 
+### Experiment with various auth databases
+
+Depending on your ultimate objectives, explore alternative auth databases:
+
+| **AuthDB** | **Try**  | Test |
+:-------|:-----------|:-----------|
+| **sql (default sqlite)** | Pre-configured from creation, above | See next section |
+| **sql (Postgress example)** | [Postgres Northwind with Docker](#postgres-docker-northwind) | Basic retrieval |
+| **Keycloak** | [Keycloak - pre-configured](Security-Keycloak.md#keycloak-hardened)<br> [Keycloak - local using Docker](Security-Keycloak.md##keycloak-local)| See next section |
+
+&nbsp;
+
+### Verify
+
+After configuring, you should now be able to run the admin app:
+
+1. login as **s1/p** -- note the login screen indicates whether or not you are using keycloak (*kcals*):
+
+![kc-user-roles](images/keycloak/kc-login-local.png)
+
+2. Verify there is only 1 customer
+
+3. Logout and login as **admin/p**, and there should be more customers
+
+&nbsp;
+
 ## Using your own `authdb`
 
 In most cases, you will create your own `authdb`:
@@ -107,7 +133,6 @@ You can find the creation information here:
 After using the Postgres CLI to create the database, verify it exists:
 
 ![PostgreSQL-authdb](images/security/postgres/PostgreSQL-authdb.png)
-
 
 &nbsp;
 
