@@ -12,7 +12,7 @@
 
 # Keycloak: `hardened`
 
-The hardened site is available at [https://kc.hardened.be]{https://kc.hardened.be}
+The hardened site is available at [https://kc.hardened.be](https://kc.hardened.be)
 
 &nbsp;
 

@@ -26,9 +26,9 @@ Note this database includes:
 
 ## sqlite Authentication DB
 
-Projects are pre-configured with sqlite database security, initially disabled.  This simplifes getting started with security.  The database file is `security/authentication_provider/sql/authentication_db.sqlite`.
+Projects are pre-configured with sqlite database security, initially disabled (exception: Security is **enabled** for the [sample nw+ project](Sample-Database.md#northwind-with-logic){:target="_blank" rel="noopener"}).  This simplifes getting started with security.  
 
-> Exception: Security is **enabled** for the [sample nw+ project](Sample-Database.md#northwind-with-logic){:target="_blank" rel="noopener"}.
+The sqlite database file is `database/authentication_db.sqlite`.  Models are located in `database/database_discovery/authentication_models.py`.
 
 In addition to `Users`, `Roles` and `UserRole`, this database includes:
 
@@ -40,7 +40,7 @@ It's structure:
 
 &nbsp;
 
-## Using your own `authdb`
+## Using your own sql `authdb`
 
 In most cases, you will create your own `authdb`:
 
@@ -52,7 +52,13 @@ In most cases, you will create your own `authdb`:
 
 ### Configuring your authdb
 
-Configure with a command like:
+To use your own sql authdb:
+
+1. Create the physical databse
+
+    * See [Getting Started With Security](Security-Getting-Started.md#sql-authdb-resources){:target="_blank" rel="noopener"} for resources: sql ddl, and pre-created docker databases.
+
+2. Configure your project with a command like:
 
 ```bash title='Configure postgres auth db'
 als add-auth --provider-type=sql --db_url=postgresql://postgres:p@localhost/authdb
@@ -62,7 +68,7 @@ als add-auth --provider-type=sql --db_url=postgresql://postgres:p@localhost/auth
 
 &nbsp;
 
-### Add `User` properties for `Grants`
+### Add `User` Attributes for `Grants`
 
 For example, the `nw` security example has the following mulit-tenant example:
 
@@ -73,21 +79,6 @@ Grant(  on_entity = models.Category,    # illustrate multi-tenant - u1 shows onl
 ```
 
 Here, our custom `authdb` has added the `client_id` column to the `User` table, and we are using that to restrict _tenants_ to their own companies' data.
-
-
-### Pre-created `authdb` scripts
-
-Your project contains some example sql to create the auth db:
-
-![create auth db](images/security/devops-providers.png)
-
-> Prior release 08.00.05, those files were not created in new projects.  For earlier versions, create these files in devops/docker with [this Dockerfile](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype/devops/docker).
-
-&nbsp;
-
-### Pre-created in Docker Samples
-
-A sample security database is pre-created in the MySQL and Postgres [Sample Docker Databases](Database-Docker.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -109,6 +100,8 @@ This auth admin app is...
 
 * pre-created for the sqlite auth database, and 
 * created during `add-auth` for non-sqlite auth databases
+
+&nbsp;
 
 ## Admin Login Screen
 

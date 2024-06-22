@@ -72,13 +72,13 @@ nav:
       - "Time/Date Stamping": Logic-Allocation-Time-Date.md
   - 4. Security:
     - "Overview": Security-Overview.md
+    - "Getting Started with Security": Security-Getting-Started.md
     - "Role-based Authorization": Security-Authorization.md
     - "Login Authentication": Security-Authentication.md
     - "Activating and Configuring":
       - "Activation: add-auth": Security-Activation.md
       - "Configure sql auth": Security-sql.md
       - "Configure Keycloak auth": Security-Keycloak.md
-    - "Getting Started with Security": Security-Exploring.md
     - "Swagger": Security-Swagger.md
   - 5. Application Integration:
     - "Sample Integration": Sample-Integration.md
