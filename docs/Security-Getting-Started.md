@@ -31,7 +31,7 @@ For your own projects, consider introducing security gradually:
 Security is automatically enabled when building the [sample app, with customizations](Sample-Database.md##northwind-with-logic){:target="_blank" rel="noopener"}:
 
 ```bash title='Create a sample project to Explore Security'
-ApiLogicServer create --project_name=ApiLogicProject --db_url=nw+
+ApiLogicServer create --project_name=nw_sample --db_url=nw+
 ```
 
 To explore the Grants in `security/declare_security.py` - [click here](https://github.com/ApiLogicServer/demo/blob/main/security/declare_security.py){target="_blank" rel="noopener"}.

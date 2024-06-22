@@ -15,7 +15,7 @@ You can create projects for it with or without logic, as described below.
 To install _without pre-installed customizations_ for the API and Logic:
 
 ```bash
-ApiLogicServer create --project_name=ApiLogicProject --db_url=nw-
+ApiLogicServer create --project_name=nw_sample_nocust --db_url=nw-
 ```
 Open the project in your IDE, and open the `readme` for a walk-through:
 
@@ -57,7 +57,7 @@ ApiLogicServer add-auth
 You can also create the project with the logic pre-installed:
 
 ```bash
-ApiLogicServer create --project_name=ApiLogicProject --db_url=nw+
+ApiLogicServer create --project_name=nw_sample --db_url=nw+
 ```
 &nbsp;
 

@@ -4,7 +4,7 @@
     
     Grants declarations reference not only roles, but also user properties (e.g., their organization).  A common usage is to enforce **multi-tenant** access.
 
-    Define users and roles with:
+    Define  authentication data **(auth data)** - users and roles - with:
     
     * a SQL database using an Admin app,
     * [Keycloak](https://www.keycloak.org){:target="_blank" rel="noopener"}, or,
@@ -131,7 +131,7 @@ Developers must determine the data required to authenticate users.  This can be 
 
 #### `declare_security`
 
-Add code to the pre-created (empty) Python module that defines table/role filters.  The system merges these into each retrieval.  These declarations are processed on system startup as described below.
+Add code to the pre-created (empty) Python module `security/declare_security.py` to define table/role filters.  The system merges these filters into each retrieval.  These declarations are processed on system startup as described below.
 
 &nbsp;
 
@@ -159,7 +159,7 @@ When users log in, the app `POST`s their id/password to the system, which invoke
 
 #### API: Security Manager
 
-This provides:
+`security/system/authorization.py` provides:
 
 * __The `Grant` function__, to save the filters for each table/role
 
@@ -197,4 +197,4 @@ Grant(  on_entity = models.Category,
 
 ## Appendix: Resources
 
-The Security Manager and sqlite Authentication-Provider are built into created projects from the [system's prototype project](https://github.com/valhuber/ApiLogicServer/tree/main/api_logic_server_cli/project_prototype) -- see the `security` directory.
+The Security Manager and sqlite Authentication-Provider are built into created projects from the [system's prototype project](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/base/security){:target="_blank" rel="noopener"} -- see the `security` directory.
