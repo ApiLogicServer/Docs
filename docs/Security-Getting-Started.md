@@ -28,7 +28,7 @@ For your own projects, consider introducing security gradually:
 
 ## Northwind Sqlite Sample
 
-Security is automatically enabled when building the [sample app, with customizations](Sample-Database.md##northwind-with-logic){:target="_blank" rel="noopener"}:
+Security is automatically enabled when building the [sample app, *with customizations*](Sample-Database.md##northwind-with-logic){:target="_blank" rel="noopener"}:
 
 ```bash title='Create a sample project to Explore Security'
 ApiLogicServer create --project_name=nw_sample --db_url=nw+
@@ -36,7 +36,7 @@ ApiLogicServer create --project_name=nw_sample --db_url=nw+
 
 To explore the Grants in `security/declare_security.py` - [click here](https://github.com/ApiLogicServer/demo/blob/main/security/declare_security.py){target="_blank" rel="noopener"}.
 
-You can test it via the Admin App, or via Swagger.
+You can test it via the Admin App, or via Swagger.  See the *Verify* section, below.
 
 Or, to see the process from scratch:
 
@@ -44,18 +44,6 @@ Or, to see the process from scratch:
 2. Then, as shown in that link, add customizations and security
 
 In either case, you will have a project using the default [sqlite security](Security-sql.md#sqlite-authentication-db){:target="_blank" rel="noopener"}, including Grants and test data.
-
-&nbsp;
-
-### Experiment with various auth databases
-
-Depending on your ultimate objectives, explore alternative auth databases:
-
-| **AuthDB** | **Try**  | Test |
-:-------|:-----------|:-----------|
-| **sql (default sqlite)** | Pre-configured from creation, above | See next section |
-| **sql (Postgress example)** | [Postgres Northwind with Docker](#postgres-docker-northwind) | Basic retrieval |
-| **Keycloak** | [Keycloak - pre-configured](Security-Keycloak.md#keycloak-hardened)<br> [Keycloak - local using Docker](Security-Keycloak.md##keycloak-local)| See next section |
 
 &nbsp;
 
@@ -70,6 +58,19 @@ After configuring, you should now be able to run the admin app:
 2. Verify there is only 1 customer
 
 3. Logout and login as **admin/p**, and there should be more customers
+
+&nbsp;
+
+### Experiment with auth dbs
+
+Depending on your ultimate objectives, explore alternative auth databases:
+
+| **AuthDB** | **Try**  | Test |
+:-------|:-----------|:-----------|
+| **sql (default sqlite)** | Pre-configured from creation, above | See *Verify*, above |
+| **sql (Postgress example)** | [Postgres Northwind with Docker](#postgres-docker-northwind) | Basic retrieval |
+| **Keycloak (preconfigured)** | [Keycloak - hardened](Security-Keycloak.md#keycloak-hardened) | See *Verify* |
+| **Keycloak (local using Docker)** | [Keycloak - local using Docker](Security-Keycloak.md##keycloak-local)| See *Verify* |
 
 &nbsp;
 
