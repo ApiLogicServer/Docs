@@ -16,7 +16,7 @@ The hardened site is available at [https://kc.hardened.be](https://kc.hardened.b
 
 &nbsp;
 
-### Configure
+## Configure
 
 There is nothing to install; configure as follows:
 
@@ -38,7 +38,7 @@ The config settings for the admin app are set in `ui/admin/admin_loader.py`.  Th
 
 &nbsp;
 
-### Verify
+## Verify
 
 You should now be able to run the admin app:
 
@@ -56,7 +56,7 @@ You should now be able to run the admin app:
 
 &nbsp;
 
-### Install and Configure
+## Install and Configure
 
 To activate keycloak running locally:
 
@@ -74,19 +74,38 @@ als add-auth --provider-type=keycloak --db-url=localhost
 
 &nbsp;
 
-### Verify (as above)
+## Verify (as above)
 
 As described above.
 
 &nbsp;
 
+## Keycloak Admin
+
+
+You can use the [Keycloak admin console](http://localhost:8080/){:target="_blank" rel="noopener"} to define Users and their Roles / Attributes.
+
+&nbsp;
+
 ### User Administration
 
-You can use the [Keycloak admin console](http://localhost:8080/){:target="_blank" rel="noopener"} to define Users and their Roles / Attributes:
+To define Users and their Roles / Attributes:
 
 1. Note the selected realm (`kcals`)
 
-![kc-user-roles](images/keycloak/kc-users.png)
+![kc-users](images/keycloak/kc-users.png)
+
+### User Roles
+
+Define Roles for your realm:
+
+![kc-roles](images/keycloak/kc-roles.png)
+
+&nbsp;
+
+And assign them to users:
+
+![kc-user-roles](images/keycloak/kc-user-roles.png)
 
 ### User Attributes
 

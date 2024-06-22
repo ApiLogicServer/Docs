@@ -75,10 +75,9 @@ nav:
     - "Getting Started with Security": Security-Getting-Started.md
     - "Role-based Authorization": Security-Authorization.md
     - "Login Authentication": Security-Authentication.md
-    - "Activating and Configuring":
-      - "Activation: add-auth": Security-Activation.md
-      - "Configure sql auth": Security-sql.md
-      - "Configure Keycloak auth": Security-Keycloak.md
+    - "Activation: add-auth": Security-Activation.md
+    - "Configure sql auth": Security-sql.md
+    - "Configure Keycloak auth": Security-Keycloak.md
     - "Swagger": Security-Swagger.md
   - 5. Application Integration:
     - "Sample Integration": Sample-Integration.md
