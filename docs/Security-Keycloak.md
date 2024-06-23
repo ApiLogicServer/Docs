@@ -156,3 +156,18 @@ You can make this saved auth data part of your project (and saved to `git` for y
 mv devops/keycloak/import-save devops/keycloak/import-backup
 docker cp keycloak:/opt/keycloak/export devops/keycloak/import
 ```
+
+
+# Appendix
+
+## Internals
+
+Authentication and the keycloak provider interact as shown below:
+
+![keycloak provider](images/keycloak/integrate-keycloak.png)
+
+## Inspecting Access Tokens
+
+You can use jwt.io:
+
+![jwt.io](images/keycloak/jwt.io.png)
