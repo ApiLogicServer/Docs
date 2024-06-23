@@ -109,21 +109,27 @@ And assign them to users:
 
 ### User Attributes
 
-![kc-user-attr-mapper-def](images/keycloak/kc-client-attr-mapper-def.png)
+#### Valid Attributes
 
-![kc-client-attr-mapper](images/keycloak/kc-client-attr-mapper.png)
+First, define attributes types:
+
+![kc-dedicated-scopes](images/keycloak/kc-client-attr-mapper-def.png)
+
+#### Link Attributes to Scopes
+
+![kc-client-attr-mapper](images/keycloak/clients-dedicated-scopes.png)
+
+#### Assign User Attribute Values
 
 ![kc-attrs](images/keycloak/kc-attrs.png)
-
-![kc-attrs-acccess](images/keycloak/kc-attrs-access.png)
-
-![kc-dedicated-scopes](images/keycloak/clients-dedicated-scopes.png)
 
 &nbsp;
 
 ### Export Auth Data
 
-Export the revised auth data:
+After defining your users, attributes and roles, you will want to save this keycloak auth data into your project, for source control and sharing.
+
+Export your revised auth data:
 
 1. In the terminal window of your project:
 
@@ -136,13 +142,13 @@ $ bin/kc.sh export --dir export
 $ exit
 ```
 
-This creates a directory in the keycloak docker: `keycloak:/opt/keycloak/export`.  We can import this back into our project as described next.
+This creates a directory *in the keycloak docker:* `keycloak:/opt/keycloak/export`.  We can import this back into our project, as described next.
 
 &nbsp;
 
 ### Use Exported Auth Data in Project
 
-You can make this saved auth data part of your project (and saved to `git` for your team) as follows:
+You can make this saved auth data part of your project (and saved to `git` for your team), as follows:
 
 1. In the terminal window of your project
 
