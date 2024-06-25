@@ -1,30 +1,36 @@
 !!! pied-piper ":bulb: TL;DR - Authorize using Keycloak"
 
-    You can use Keycloak for authentication.  You can configure your own keycloak, or use either of the pre-supplied options:
+    You can use Keycloak for authentication.  You can configure your own keycloak, or use the procedure below to
+    
+    1. Install keycloak using a Docker container: `cd devops/keycloak; docker compose up`
 
-    1. local, using Docker
-    2. hardened, a web-accessible site
-        * This does not support adding auth data (Users, Roles, User Attributes etc) - it is intended to confirm operation with minimal setup to explore keycloak usage
+    2. Activate: `als add-auth --provider-type=keycloak --db-url=localhost`
 
     This page is ***under construction***.  
 
 &nbsp;
 
-# Keycloak: `hardened`
+## Keycloak: `local` config
 
-The hardened site is available at [https://kc.hardened.be](https://kc.hardened.be)
+Use this procedure to install and configure a local version of keycloak, running under Docker.
 
 &nbsp;
 
-## Configure
+### Install and Configure
 
-There is nothing to install; configure as follows:
+Projects are pre-created with scripts start Keycloak under Docker.
 
-```bash title='Configure Keycloak - hardened'
-als add-auth --provider-type=keycloak --db-url=hardened
+To activate keycloak running under a docker container:
+
+1. Install Keycloak with Docker (imports settings from `devops/keycloak/data/import`):
+
+![kc-user-roles](images/keycloak/kc-config-local-install-kc.png)
+
+2. Configure your project
+
+```bash title='Configure Keycloak - local'
+als add-auth --provider-type=keycloak --db-url=localhost
 ```
-
-![kc-user-roles](images/keycloak/kc-config-hardened.png)
 
 <details markdown>
 
@@ -36,9 +42,11 @@ The config settings for the admin app are set in `ui/admin/admin_loader.py`.  Th
 
 </details>
 
+![kc-user-roles](images/keycloak/kc-config-local.png)
+
 &nbsp;
 
-## Verify
+### Verify
 
 You should now be able to run the admin app:
 
@@ -52,36 +60,7 @@ You should now be able to run the admin app:
 
 &nbsp;
 
-# Keycloak: `local`
-
-&nbsp;
-
-## Install and Configure
-
-To activate keycloak running locally:
-
-1. Install Keycloak with Docker (imports settings from `devops/keycloak/data/import`):
-
-![kc-user-roles](images/keycloak/kc-config-local-install-kc.png)
-
-2. Configure your project
-
-```bash title='Configure Keycloak - local'
-als add-auth --provider-type=keycloak --db-url=localhost
-```
-
-![kc-user-roles](images/keycloak/kc-config-local.png)
-
-&nbsp;
-
-## Verify (as above)
-
-As described above.
-
-&nbsp;
-
 ## Keycloak Admin
-
 
 You can use the [Keycloak admin console](http://localhost:8080/){:target="_blank" rel="noopener"} to define Users and their Roles / Attributes.
 
