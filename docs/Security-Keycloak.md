@@ -22,6 +22,10 @@ Projects are pre-created with scripts start Keycloak under Docker.  Use this pro
 
 Install Keycloak with Docker (imports settings from `devops/keycloak/data/import`):
 
+```bash title='Start [install] Keycloak'
+cd devops/keycloak; docker compose up
+```
+
 ![kc-user-roles](images/keycloak/kc-config-local-install-kc.png)
 
 &nbsp;
