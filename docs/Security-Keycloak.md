@@ -1,10 +1,12 @@
 !!! pied-piper ":bulb: TL;DR - Authorize using Keycloak"
 
-    You can use Keycloak for authentication.  You can configure your own keycloak, or use the procedure below to
+    You can use Keycloak for authentication.  You can configure your own keycloak, or use the procedure below to **install Keycloak:**
     
     1. Install keycloak using a Docker container: `cd devops/keycloak; docker compose up`
 
     2. Activate: `als add-auth --provider-type=keycloak --db-url=localhost`
+
+    In addition, this page describes how to **administer User/Roles in your Keycloak**, and export these settings into your project for source control and team development.
 
     This page is ***under construction***.  
 
@@ -12,21 +14,21 @@
 
 ## Keycloak: `local` config
 
-Use this procedure to install and configure a local version of keycloak, running under Docker.
+Projects are pre-created with scripts start Keycloak under Docker.  Use this procedure to install and configure a local version of keycloak, running under Docker.
 
 &nbsp;
 
-### Install and Configure
+### Install Keycloak under Docker
 
-Projects are pre-created with scripts start Keycloak under Docker.
-
-To activate keycloak running under a docker container:
-
-1. Install Keycloak with Docker (imports settings from `devops/keycloak/data/import`):
+Install Keycloak with Docker (imports settings from `devops/keycloak/data/import`):
 
 ![kc-user-roles](images/keycloak/kc-config-local-install-kc.png)
 
-2. Configure your project
+&nbsp;
+
+### Configure Project for Keycloak
+
+Execute the following.  Optionally, observe the settings in `config/config.py`:
 
 ```bash title='Configure Keycloak - local'
 als add-auth --provider-type=keycloak --db-url=localhost
@@ -34,7 +36,7 @@ als add-auth --provider-type=keycloak --db-url=localhost
 
 <details markdown>
 
-<summary>Internals - verify admin Configuration </summary>
+<summary>Internals - verify Configuration in running Admin App </summary>
 
 The config settings for the admin app are set in `ui/admin/admin_loader.py`.  This reduces the number of settings to change when altering your configuration.  You can verify them as shown below:
 
@@ -46,7 +48,7 @@ The config settings for the admin app are set in `ui/admin/admin_loader.py`.  Th
 
 &nbsp;
 
-### Verify
+### Verify With the Admin App
 
 You should now be able to run the admin app:
 
