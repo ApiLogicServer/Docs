@@ -12,6 +12,8 @@ API Logic Server differs from these with a no-compromise Enterprise / Developer 
 
 * Uses your __existing tooling: IDE. languages, libraries, deployment, etc__
 
+    * This "Dev / IT friendly" approach can help promote Low Code adoption more widely in their organizations
+
 * __Automated Modern Software Architeture__ - APIs, Messages, Logic Sharing
 
 * __Promotes Agile__ with Working Software, Instantly
