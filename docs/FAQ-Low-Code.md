@@ -12,7 +12,11 @@ API Logic Server differs from these with a no-compromise Enterprise / Developer 
 
 * Uses your __existing tooling: IDE. languages, libraries, deployment, etc__
 
-    * This "Dev / IT friendly" approach can help promote Low Code adoption more widely in their organizations
+    * This "designed for standards-based extensibility" provides the flexibility to deal with the "last mile" problems often encountered by automation.
+
+    * This "Dev / IT friendly" approach can help promote Low Code adoption more widely in their organizations.
+
+    * While GenAI is employed, it is for dev, not production.  This means that there is no runtime overhead, and developers are able to assess any AI "hallunications" prior to production.
 
 * __Automated Modern Software Architeture__ - APIs, Messages, Logic Sharing
 
