@@ -37,7 +37,7 @@ The following table contrasts traditional "Business User" Low Code with "Develop
 | Rich UI | Via Screen Painter | **Declarative App Models** |
 | Instant Working Software<br>for Agile Collaboration | Can be tedious | **Instant App Automation**<br>No Screen Painting Required |
 | Database Creation | Via Forms <br>Can be complicated | **Gen AI** Natural Language<br>Break-through simplicity |
-| Business Logic<br>(It's nearly half the system) | Proprietary Code<br>Procedural | **Unique Spreadsheet-like Rules**<br>Declarative - 40X More Concise |
+| Business Logic<br>(It's nearly half the system) | Proprietary Code<br>Procedural | :trophy:&nbsp;&nbsp;**Unique Spreadsheet-like Rules**<br>Declarative - 40X More Concise |
 | Architecture | Proprietary - rigid | **Automated Microservice**<br>**Standard Docker**<br>**Flexibile: Cloud, Internal** |
 
 
