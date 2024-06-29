@@ -6,7 +6,7 @@ Welcome to API Logic Server documentation.  In sufficent large browsers, the pag
 
 ## Install and Verify
 
-If you have the correct Python (version 3.8-3.12), install is standard ([more detailed instructions here](Install-Express.md){:target="_blank" rel="noopener"}):
+If you have the correct Python (version 3.10-3.12), install is standard ([more detailed instructions here](Install-Express.md){:target="_blank" rel="noopener"}):
 
 ```bash title="Install API Logic Server in a Virtual Environment"
 python3 -m venv venv                 # windows: python -m venv venv
