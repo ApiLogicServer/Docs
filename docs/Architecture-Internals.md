@@ -74,11 +74,25 @@ It should look something like this:
 
 &nbsp;
 
-## Create the "initial `venv`"
+## Create the BLT `venv`
 
-Execute the 2nd Run Config (*BLT - Hold the Tomato*) to create the `venv` used for created projects, such as the Sample (see next section).
+It is tiresome to create a `venv` for each project.  So, the system creates projects with a VSCode property identifying the `venv`.
 
-> Verify you have a `venv` at as shown above at:<br>`ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer`
+* In actual practice, this is the [manager's `venv`](Manager.md){:target="_blank" rel="noopener"}.  
+
+* For the dev environment, it is calculated to the `venv` of the [BLT](#build-and-test): 
+
+    * Note: the dev env BLT is not valid here, since it does not contain the CLI (which is needed for projects)
+
+![default-interpreter-path](images/architecture/default-interpreter-path.png)
+
+1. So, your first task is to [***run the BLT***](#build-and-test).  It is simplest to run it without testing, just to create the `venv` (and verify your installation).  
+
+    * Execute the **2nd Run Config (*BLT - Hold the Tomato*)** to create the `venv` used for created projects, such as the Sample (see next section):
+
+![BLT Hold Tomato](images/architecture/blt-no-tomato.png)
+
+2. Verify you have a `venv` at as shown above at:<br>`ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer`
 
 &nbsp;
 

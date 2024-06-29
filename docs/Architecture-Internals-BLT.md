@@ -25,7 +25,11 @@ The bulk of the tests are in the Sample Projects's Behave tests. These reveal mo
 
 We therefore recommend that, before you run the full regression, first:
 
-1. [Verify the smoke test with the Sample App](Architecture-Internals.md#critical-smoke-test){:target="_blank" rel="noopener"}
+1. Create the BLT `venv` (useful for running the smoke test app - [see here](Architecture-Internals.md#create-the-BLT-venv))
+
+![BLT Hold Tomato](images/architecture/blt-no-tomato.png)
+
+2. [Verify the smoke test with the Sample App](Architecture-Internals.md#critical-smoke-test){:target="_blank" rel="noopener"}
 
 
 ## Optional Docker Setup
