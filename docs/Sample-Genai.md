@@ -182,12 +182,14 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 We have seen failures such as:
 
-* duplicate definition of `DECIMAL`
+* duplicate definition of `DECIMAL` (we hand-fix the response to fix this)
 * unclosed parentheses
 * data type errors in test data creation
 * wrong engine import: from logic_bank import Engine, constraint
 * bad test data creation: with Engine() as engine...
 * Bad load code (no session)
+* missing datetime import
+* relationship property errors ("mapper has no property...")
 
 &nbsp;
 
