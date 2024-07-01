@@ -34,11 +34,13 @@ This will use `git clone` to create folders in `~/dev/ApiLogicServer/ApiLogicSer
 
 ### Admin App Source
 
+This section is only if you did not load from the script.  You need to obtain the build of safrs react admin.
+
 It's basically straightforward, _though note_ the `cp` command which copies the `safrs-react-admin` runtime to API Logic Server for subsequent creation of API Logic Projects:
 
 ```bash
-    echo "\ncopying build (sra - safrs-react-admin) --> ApiLogicServer"
-    cp -r ../build api_logic_server_cli/create_from_model/safrs-react-admin-npm-build
+echo "\ncopying build (sra - safrs-react-admin) --> ApiLogicServer"
+cp -r ../build api_logic_server_cli/create_from_model/safrs-react-admin-npm-build
 ```
 
 For more information, [see Admin App Reuse](Architecture-admin-app-reuse.md/#4-sra-runtime-extraced-from-project){:target="_blank" rel="noopener"}.
@@ -61,7 +63,13 @@ You will find that the VSCode install has a large number of Run Configs for thes
 
 ## Open the dev workspace
 
-`install-ApiLogicServer...` will create a project (`~/dev/ApiLogicServer/ApiLogicServer-dev/org/ApiLogicServer-src/.vscode/ApiLogicServerDev.code-workspace`), and open it VS Code or PyCharm.
+`install-ApiLogicServer...` will create a project workspace (`~/dev/ApiLogicServer/ApiLogicServer-dev/org_git/ApiLogicServer-src/.vscode/ApiLogicServerDev.code-workspace`), and open it VS Code or PyCharm.
+
+```bash title='open the dev project'
+cd ~/dev/ApiLogicServer/ApiLogicServer-dev/org_git/ApiLogicServer-src/.vscode
+code ApiLogicServerDev.code-workspace
+```
+
 
 Python requires a virtual environment; the procedure differs for `vscode` vs. `charm`:
 
