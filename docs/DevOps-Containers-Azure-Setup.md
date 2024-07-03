@@ -39,7 +39,11 @@ You can install the CLI locally, as [described here](https://learn.microsoft.com
 The Azure Portal also offers many UI options to create accounts, databases, etc.
 
 
+## Sample Scripts
 
+You can explore / adapt the automatically created sample scripts:
+
+![docker-compose-dev-azure](images/devops/multi-tier/docker-compose-dev-azure.png)
 
 
 &nbsp;
