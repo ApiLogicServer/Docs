@@ -28,6 +28,12 @@ At the top of Swagger, locate the Authenticate button.  Copy the token, precede 
 
 The sample test apps use this token on API calls [as shown here](https://github.com/valhuber/ApiLogicServer/blob/main/api_logic_server_cli/project_prototype_nw/test/api_logic_server_behave/features/steps/place_order.py){:target="_blank" rel="noopener"}.
 
+## `public` role
+
+For each user, you define their roles.  Depending on your authentication provider, this can be in a sql database, keycloak, or your own custom provider (e.g., LDAP, AD).
+
+If you define no roles, authenticated users are automatically assigned with the `public` role.  You must still authorize this role, as illustrated in the [nw sample](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/nw/security/declare_security.py){:target="_blank" rel="noopener"}.
+
 ## Password Encryption with flask_bcrypt
 
 It is generally not a good idea to store user passwords in plain text.  The Python package flask_bcrypt is included and can be used to generate encrypted passwords. Note: each time you run the encryption - you will get a different value but the check password hash will return true if the plain text matches.
