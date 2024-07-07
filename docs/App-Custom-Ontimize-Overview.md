@@ -20,7 +20,7 @@
 
 What is Ontimize Web?  See the Playground [Ontimize Web site](https://try.imatia.com/ontimizeweb/v15/playground/main/home){:target="_blank" rel="noopener"}:
 
-> Ontimize Web is web application framework based on Angular for building business software. Ontimize Web makes use of Angular framework and its UI Component framework (Angular Material) to provide a set of reusable, well-tested and accessible components apart from a number of standard services and functionalities.  This includes a wealth of rich UI components (editable grid, graph, tree, etc).
+> Ontimize Web is web application framework based on Angular for building business software. Ontimize Web makes use of Angular framework and its UI Component framework (Angular Material) to provide a set of reusable, well-tested and accessible components apart from a number of standard services and functionalities.  This includes a wealth of rich UI components (editable grid, charts, reports, tree, etc).
 
 &nbsp;
 
@@ -85,6 +85,7 @@ One way is to `create` an ApiLogicServer project, specifying `--auth-provider-ty
 ```bash
 als create --project_name=ApiLogicProject --db-url= --auth-provider-type=sql
 ```
+Note: Security must be enabled for Ontimize client (see: als add-auth)
 
 This creates a project from your database (here, the [default sample](Sample-Database.md){:target="_blank" rel="noopener"}), which you can open and execute in your IDE.  It includes an API, the Admin App, and the default custom app.
 
@@ -135,22 +136,24 @@ The simplest way to introduce rich components is to specify them in the app mode
 
 ### 3a. Enable Security
 
-To enable Keycloak - in the ui/app/admin_model.yaml file - go to the settings/style_guide and change these values and use the app-build to activate keyloak.
+To enable Keycloak - both ApiLogicServer and your Ontimize application need to be configured for Keycloak. 
+Go to config/configy.py and modify the Keycloak settings below (if you are running our local Keycloak Docker container use these defaults.)
 
-    use_keycloak: true
     keycloak_url: http://localhost:8080
     keycloak_realm: kcals
     keycloak_client_id: alsclient
 
 &nbsp;
-Enable keycloak for the ALS server use
+Enable Keycloak for the ALS server and Ontimize client to use:
+```
     als add-auth --provider-type=keycloak
+```
 &nbsp;   
-### 3b. Edit App Model
+### 3b. Edit the YAML Model
 
 Edit to remove unwanted entities, order columns, set templates, etc. 
 
-You can edit the yaml file directly, or use the [provided model editor gui](#model-editor).
+You can edit the ui/app/app_model.yaml file directly, or use the [provided model editor gui](#model-editor).
 
 <details markdown>
 
@@ -164,7 +167,7 @@ You can edit the yaml file directly, or use the [provided model editor gui](#mod
 
 ### 3c. Rebuild App
 
-Then, rebuild your application:
+Then, rebuild your application (Note: this will overwrite all files in your Ontimize app directory):
 
 ```bash
 ApiLogicServer app-build --app=app
@@ -172,7 +175,7 @@ ApiLogicServer app-build --app=app
 
 ### 3d. Customize Created App
 
-This will the the data model to build out the Ontimize app.  It's executable.
+This will use the data model to build an Ontimize app.
 
 You can then use your IDE or other tooling (e.g., Ontimize CLI) to edit the artifacts to customize the look and feel.
 
@@ -193,6 +196,8 @@ Then, repeat [2. Run](#2-run), above.
 
 ## 4. Create Additional Apps
 
+To create a new Ontimize application (perhaps the model or database has changed) or you have new templates to test.
+
 With the project open in your IDE, use the **terminal window** to create a new Ontimize application in a named directory under 'ui':
 
 ```bash
@@ -203,10 +208,112 @@ npm install
 
 This creates `ui/app2/app_model.yaml` and installs the Ontimize 'seed' NodejS package and dependent node_modules.
 
+```bash
+ApiLogicServer app-build --app=app2
+cd ui/app2
+npm start
+```
+
 # Appendices
 
-&nbsp;
+## Yaml Model Editor
+The Yaml editor allows the developer the ability to manage yaml files for editing using an Ontimize built application. Use the "Manage yaml files" New - to add your yaml file and then click upload (save) to populate the screens with entities, attributes, and tab groups. Once complete, use the download_flag (save)  to export the yaml to the 'ui' directory (ui/admin_model_merge.yaml) and compare/merge to your original admin_model.yaml in your ontimize application folder.
+```
+git clone https://github.com/tylerm007/ontimize_yaml_view
+cd ontimize_yaml_view
+code .
+press f5
+```
 
-## App Model Editor
+## Start Ontimize App Model Editor
 The App Model Editor simplifies managing yaml files, using an Ontimize built application.  See [App Model Editor](App-Model-Editor.md){:target="_blank" rel="noopener"} for more information.
+```
+cd ui/yaml
+npm install
+npm start
 
+#go to http://localhost:5655 (user: admin password: p)
+```
+## Ontimize app_model.yaml 
+The app_model.yaml file is created during the "app-create" or "create" phase and is based on the ui/admin.yaml file. Each entity, column, and tab_group is exposed with additional metadata.  When the "app-build" is invoked, these properties are used to populate the templates (html, scss, and typescript) for each page. If the "exclude" flag is set to 'false' - the entity or attribute will be excluded from the page. The "visible" column flag only applies to the Home table columns appearing in the grid.
+
+## Entity
+Use the Ontimize editor to exclude a selected entity or change the titles.
+![](ui/templates/Entity.png)
+
+### Edit Entity
+|field|Description|
+:------|:---------------|
+|Entity name|name of API endpoint {{ entity }}|
+|Title|display name used for {{ title }} |
+|Primary Key|array of primary keys {{ primaryKeys }}|
+|Favorite|used for list-picker display|
+|Mode|tab or dialog style {{ editMode }}|
+|Menu Group|used to organize entity into menu groups|
+|Exclude|if true - skip this API endpoint in the first page generation|
+
+## Attributes
+Use the Ontimize editor to change the label, tooltip, exclude selected attributes, include attribute in the search or sort, enable or mark fields as required, and include visible in the home table display.
+![](ui/templates/EntityAttr.png)
+### Edit Attributes
+|field|Description|
+:------|:---------------|
+|Entity Name|name of api endpoint|
+|Attribute|name of API attribute {{ attr }}|
+|Title|label used for this attribute {{ label }} |
+|Template Name|column template (pick list)|
+|Search|is this field included in search|
+|Sort|is this field included in sort|
+|Required|is this field marked as required|
+|Excluded|exclude this attribute from detail/new/home pages|
+|Visible|is this attribute visible on home table {{ visibleColumns }}|
+|DataType|the internal datatype|
+|Tooltip|hover value for attribute|
+|Default Value|value to show on new page|
+
+## Relationships (TabGroup)
+Use the Ontimize editor to exclude tab on detail page (tomany) or change the tile used to display.
+![](ui/templates/TabGroup.png)
+### Edit Tab Groups
+|field|Description|
+:------|:---------------|
+|Entity Name|name of api endpoint|
+|Tab Entity|the name of the other end of the relationship|
+|Direction|toone (parent) or tomnay (children)|
+|Relationship name|defined in SQLAlchemy|
+|label|Tab Display name|
+|Exclude|skip this relationship for all tabs and lookups|
+|Foreign Keys|array of values|
+
+## Global Settings
+These values are injected into the various entity and attribute to provide and set global values.  New values can be added for new templates.
+
+### Values
+|field|Description|
+:------|:---------------|
+|Include Translation|set to true and then do an app-build to generate Spanish translation (assets/Ii8n/es.json)|
+|Currency Symbol|set for locale $ |
+
+### Existing Column Templates
+```
+    ("checkbox", "o_checkbox.html"),
+    ("check_circle", "check_circle_template.html"),
+    ("combo", "o_combo_input.html"),
+    ("currency", "currency_template.html"),
+    ("date", "date_template.html"),
+    ("email", "email_template.html"),
+    ("file", "file_template.html"),
+    ("html", "html_template.html"),
+    ("integer", "integer_template.html"),
+    ("list", "list-picker.html"),
+    ("nif", "o_nif_input.html"),
+    ("password", "password_template.html"),
+    ("percent", "percent_template.html"),
+    ("phone", "phone_template.html"),
+    ("real", "real_template.html"),
+    ("text", "text_template.html"),
+    ("textarea", "textarea_template.html"),
+    ("time", "time_template.html"),
+    ("timestamp", "timestamp_template.html"),
+    ("toggle", "o_slide_toggle.html")
+```
