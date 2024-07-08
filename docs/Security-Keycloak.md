@@ -38,6 +38,13 @@ Execute the following.  Optionally, observe the settings in `config/config.py`:
 als add-auth --provider-type=keycloak --db-url=localhost
 ```
 
+The above uses the `localhost` abbreviation for the server location.  To use a non-default, be sure to speccify your port:
+
+```bash title='Configure Keycloak - local (not default location)'
+als add-auth --provider-type=keycloak --db-url=http://10.0.0.77:8080
+```
+
+
 <details markdown>
 
 <summary>Internals - verify Configuration in running Admin App </summary>
