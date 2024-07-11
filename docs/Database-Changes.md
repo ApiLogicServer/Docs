@@ -11,23 +11,43 @@
 
 &nbsp;
 
-## Rebuilding
+## Project Creation: Models
 
-Ignoring the boxes labeled "rebuild", the key elements of the creation process are illustrated below:
+When you intially create your project:
 
 * the system reads the database schema to create `models.py`
 
-* `models.py` drives the creation process
+* `models.py` drives the creation process of APIs, Apps etc.
 
-* you customize the created project, mainly by altering the files on the far right
+* you customize the created project, mainly by altering the files on the far right shown in the diagram below
+
+### Model Customization
 
 As shown in the diagram, creation is always driven from `models.py.`  Models differ from physical schemas in important ways:
 
 * the system ensures that class names are capitalized and singular
 
 * there are good reasons to customize `models.py`:
-   * to add foreign keys missing in the database - these are critical for multi-table apis and applications
-   * to provide better naming
+
+      * to add foreign keys missing in the database - these are critical for multi-table apis and applications
+      * to provide better naming, e.g. alias column names as shown below from the northwind sample
+
+```python title='alias column names'
+class Category(SAFRSBaseX, Base):
+    __tablename__ = 'CategoryTableNameTest'
+    _s_collection_name = 'Category'  # type: ignore
+    __bind_key__ = 'None'
+
+    Id = Column(Integer, primary_key=True)
+    CategoryName = Column('CategoryName_ColumnName', String(8000))  # manual fix - alias
+    Description = Column(String(8000))
+    Client_id = Column(Integer)
+```
+
+
+## Rebuild from Model or Database
+
+It is highly likely you will need to alter your database design.  This poses the question: do I alter the schema (using a database tool), or `models.py`?  As shown below, the system supports both, so you can decide what strategy works best for you:
 
 ![rebuild-from](images/extended_builder/rebuild-from.png)
 

@@ -90,7 +90,7 @@ nav:
     - Data-Model-Classes.md
     - Data-Model-Keys.md
     - Data-Model-Customization.md
-    - "Database Changes": Database-Changes.md
+    - "Database Design Changes": Database-Changes.md
     - "Data Model Quoted Columns": Data-Model-Quotes.md
     - "Multiple Databases": Data-Model-Multi.md
     - "Database Design": Data-Model-Design.md
