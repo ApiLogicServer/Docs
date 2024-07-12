@@ -406,6 +406,19 @@ zsh: no matches found: --db_url=mssql+pyodbc://sa:Posey3861@localhost:1433/NORTH
 
 &nbsp;
 
+# Behave Reports
+
+The doc file `Behave-Logic-Report.md` is derived from using the behave tests from nw+ (run the test, then create the report).
+
+The report is copied into:
+
+1. `api_logic_server_cli/prototypes/base/test/api_logic_server_behave/reports/Behave Logic Report Sample.md'
+2. `Behave-Logic-Report.md` --
+    a. Edit the report and remove the path information at the end
+    b. Paste the report into `Behave-Logic-Report.md` ***over the old contents***.
+
+&nbsp;
+
 # Testing
 
 There are several important testing configurations.
