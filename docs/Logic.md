@@ -93,9 +93,9 @@ Inside the larger process above, here is the best way to learn how to use rules:
 | **State Transition Logic** | `old_row` useful comparing old/current values | [Meaningful Raise](Behave-Logic-Report.md#scenario-raise-must-be-meaningful){:target="_blank" rel="noopener"} |
 | **Counts as Existence Checks** | Use counts to check if any children exist | [Don't Ship Empty Orders](Behave-Logic-Report.md#scenario-bad-ship-of-empty-order){:target="_blank" rel="noopener"} |
 | **Auditing** | Note the Copy Row rule (and alternatives) | [Salary Audit](Behave-Logic-Report.md#scenario-audit-salary-change){:target="_blank" rel="noopener"} |
-| **Ready Flag** | Multi-session editing, then adjust related data when ready (aka checkout) | [Ship Order](Behave-Logic-Report.md#scenario-set-shipped-adjust-logic-reuse){:target="_blank" rel="noopener"} |
+| **Ready Flag** | Multi-session editing, then , when ready...<br>adjust related data / enforce constraints | [Ship Order](Behave-Logic-Report.md#scenario-set-shipped-adjust-logic-reuse){:target="_blank" rel="noopener"},<br>[Make Order Ready](Behave-Logic-Report.md/#scenario-order-made-ready){:target="_blank" rel="noopener"} |
 | **Events for Lib Access** | Events enable Python, use of standard libs (e.g., Kafka) | [Ship Order](Behave-Logic-Report.md#scenario-good-order-custom-service){:target="_blank" rel="noopener"} |
-| **Ready Flag** | Defer derivations/constraints until user marks row _ready_ | [Make Order Ready](Behave-Logic-Report.md/#scenario-order-made-ready){:target="_blank" rel="noopener"} |
+
 
 &nbsp;
 
