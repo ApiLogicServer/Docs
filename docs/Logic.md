@@ -95,6 +95,7 @@ Inside the larger process above, here is the best way to learn how to use rules:
 | **Auditing** | Note the Copy Row rule (and alternatives) | [Salary Audit](Behave-Logic-Report.md#scenario-audit-salary-change){:target="_blank" rel="noopener"} |
 | **Ready Flag** | Multi-session editing, then adjust related data when ready (aka checkout) | [Ship Order](Behave-Logic-Report.md#scenario-set-shipped-adjust-logic-reuse){:target="_blank" rel="noopener"} |
 | **Events for Lib Access** | Events enable Python, use of standard libs (e.g., Kafka) | [Ship Order](Behave-Logic-Report.md#scenario-good-order-custom-service){:target="_blank" rel="noopener"} |
+| **Ready Flag** | Defer derivations/constraints until user marks row _ready_ | [Make Order Ready](Behave-Logic-Report.md/#scenario-order-made-ready){:target="_blank" rel="noopener"} |
 
 &nbsp;
 
