@@ -34,7 +34,7 @@ This doc explains:
 This presumes you have installed API Logic Server, and docker.  You will need an Azure account.
 
 !!! pied-piper ":bulb: Confirm the Happy Path"
-    You will will certainly use different procedures for dev and production deployment.  These introduce variables into a complication procedure.
+    You will will certainly use different procedures for dev and production deployment.  These introduce variables into a complicated procedure.
     
     So, we encourage you to follow this "Happy Path" guide closely, to 
     
