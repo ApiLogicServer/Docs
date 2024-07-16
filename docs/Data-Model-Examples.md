@@ -22,7 +22,7 @@ So, API Logic Server supports the following `db_url` shortcuts for these pre-ins
 * [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} - a similar, simpler example 
 * [allocation](Logic-Allocation.md){:target="_blank" rel="noopener"} - a rule to allocate a payment to a set of outstanding orders
 * [BudgetApp](Tech-Budget-App.md){:target="_blank" rel="noopener"} - illustrates automatic creation of parent rows for rollups
-* [auth](Security-Authentication-Provider.md#sqlite-auth-provider){:target="_blank" rel="noopener"} - sqlite authentication database
+* [auth](Security-Overview.md#auth-providers){:target="_blank" rel="noopener"} - sqlite authentication database
 
 In addition to the pre-installed sqlite samples, there are also abbreviations for a few [docker databases](Database-Docker.md){:target="_blank" rel="noopener"}:
 

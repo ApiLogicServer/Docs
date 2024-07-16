@@ -105,9 +105,9 @@ You might find the following helpful in exploring the project:
 Here are [some installed sample databases](Data-Model-Examples.md){:target="_blank" rel="noopener"} you can use with simplified abbreviations for `db_url`.
 
 * **Dockerized Test Databases** - 
-Then, you might like to try out some of our [dockerized test databases](https://valhuber.github.io/ApiLogicServer/Database-Connectivity.md){:target="_blank" rel="noopener"}.
+Then, you might like to try out some of our [dockerized test databases](Database-Connectivity.md){:target="_blank" rel="noopener"}.
 
-* [auth](Security-Authentication-Provider.md#sqlite-auth-provider){:target="_blank" rel="noopener"} - sqlite authentication database (you can also use other DBMSs)
+* [auth](Security-sql.md#sqlite-authentication-db){:target="_blank" rel="noopener"} - sqlite authentication database (you can also use other DBMSs)
 
 </details>
 

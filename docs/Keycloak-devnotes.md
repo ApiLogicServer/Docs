@@ -116,7 +116,7 @@ I can enter User Attributes:
 
 And, [using this](https://www.baeldung.com/keycloak-custom-user-attributes), register mappers:
 
-![kc-client-attr-mapper](images/keycloak/kc-client-attr-mapper.png)
+![kc-client-attr-mapper](images/keycloak/kc-client-attr-mapper-def.png)
 
 You must provide the `Token Claim Name`:
 

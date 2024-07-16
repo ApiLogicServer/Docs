@@ -49,6 +49,7 @@ nav:
     - "Automatic Custom Apps":
       - "Custom Web Apps": App-Custom.md
       - "Ontimize Overview": App-Custom-Ontimize-Overview.md
+      - "App Model Edtior": App-Model-Editor.md
   - 2. API:
     - "Automatic Multi-Table API": API.md
     - "Multi-Table APIs": API-Multi-Table.md
@@ -141,6 +142,7 @@ nav:
     - "Is this a strategic investment?": FAQ-Strategic.md
     - "Is this a Proven Technology?": Tech-Proven.md
     - "Is this like Live API Creator?": "FAQ-Live-API-Creator.md"
+    - "What about Maintenance?": FAQ-Maintenance.md
     - "Adoption Considerations?": Tech-Adoption.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md

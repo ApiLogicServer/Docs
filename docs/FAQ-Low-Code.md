@@ -6,9 +6,9 @@ There are many excellent low-code products that focus on User Interfaces.
 
 API Logic Server differs from these with a no-compromise Enterprise / Developer focus:
 
-* __GenAI-based__ database and rules creation
+* __GenAI-based__ database and rules creation - instant working software
 
-* Strong focus on __backend logic,__ with unique rules
+* Strong focus on __backend logic,__ with unique rules - 40X more concise then code
 
 * Uses your __existing tooling: IDE. languages, libraries, deployment, etc__
 
@@ -18,7 +18,7 @@ API Logic Server differs from these with a no-compromise Enterprise / Developer 
 
     * While GenAI is employed, it is for dev, not production.  This means that there is no runtime overhead, and developers are able to assess any AI "hallunications" prior to production.
 
-* __Automated Modern Software Architeture__ - APIs, Messages, Logic Sharing
+* __Automated Modern Software Architeture__ - APIs, Messages, Logic Sharing, containers
 
 * __Promotes Agile__ with Working Software, Instantly
 
