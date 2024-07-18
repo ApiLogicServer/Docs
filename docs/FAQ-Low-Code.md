@@ -1,36 +1,83 @@
-## TL;DR - a Low Code approach for creating database systems
+## TL;DR - Low Code *For Developers*: Standards, Unique Bus Rules
 
-API Logic Server is a Low Code approach for creating database systems, particularly those providing transactional updates.
+Realizing the Low Code promise of business agility requires adoption across the organization: Business Users *and Developers*:
 
-There are many excellent low-code products that focus on User Interfaces.
+* For Business Users, API Logic Server provides the fastest and simplest way to create Working Software, directly from an existing database or a GenAI prompt.  
+    * **No screen painting is required**
+    * **Database definition is automated from GenAI**
+* For Developers, API Logic Server leverages your existing infrastructure, including 
+    * **Your IDE**, existing libraries, and
+    * **Flexible container-based deployment**
+* API Logic Server provides unique Logic Automation with **spreadsheet-like rules - 40X more concise** 
+    * Such backend logic is *half* of your system - front-end-only automation falls short
 
-API Logic Server differs from these with a no-compromise Enterprise / Developer focus:
+&nbsp;
 
-* __GenAI-based__ database and rules creation - instant working software
+## Current Approaches
 
-* Strong focus on __backend logic,__ with unique rules - 40X more concise then code
+### Enable Business Users
 
-* Uses your __existing tooling: IDE. languages, libraries, deployment, etc__
+Typical Low Code approaches provide a Studio with designers for databases and screens, so that citizen developers can create systems.  Products are typically cloud based, to enable sharing/collaboration without the complexity of traditional IT deployment.
 
-    * This "designed for standards-based extensibility" provides the flexibility to deal with the "last mile" problems often encountered by automation.
+&nbsp;
 
-    * This "Dev / IT friendly" approach can help promote Low Code adoption more widely in their organizations.
+### Issues: Standards, Cost
 
-    * While GenAI is employed, it is for dev, not production.  This means that there is no runtime overhead, and developers are able to assess any AI "hallunications" prior to production.
+Developers share the basic business agility objective of reducing time and cost.  Developers have been understandably reluctant to embrace Low Code, because they require:
 
-* __Automated Modern Software Architeture__ - APIs, Messages, Logic Sharing, containers
+* Proprietary Studio - modern IDEs provide "must-have" services for debugging, code management, profiling, using external libraries, etc.
+* Proprietary Deployment - developers expect to create containers that can be deployed anywhere, able to leverage extensive functionality such as Kubernetes
+* A modern and flexible application architecture, for integration (eg., APIs and Messaging), and maximizing re-use (e.g., shared logic between apps and headless services)
+* Cost
 
-* __Promotes Agile__ with Working Software, Instantly
+&nbsp;
 
-    * Creates admin apps even faster - automatically, no screen painting required
+## ALS: Developer Low Code
 
-    * Enables early discovery of misunderstood requirements, incomplete business concept
+ALS is designed for Developers, to address these challenges.
 
-The API Logic server Admin App is designed for instant Agile collaboration, and back office data maintenance.  For richer applications, utilize the automated API.  Importantly, this dramatically simplifies UI development since the API encapsulates business logic.
+&nbsp;
 
-The following table contrasts traditional "Business User" Low Code with "Developer" Low Code:
+### Devs: Standards, Architecture
 
-| **Aspect** | ***Business User* Low Code**  | ***Developer* Low Code** |
+ALS meets the basic requirements for Developers:
+
+* Standard IDE - use your debugger, libraries, etc
+* Standard Container-based Deployment - local, cloud, etc, compatible with enterprise options such as Kubernetes for dynamic scaling
+* Architecture - APIs are created automatically, enabling basic application integration and unblocking UI development.  Messaging is also supported, for robust application integration.
+
+&nbsp;
+
+### Unique Logic
+
+Backend logic is typically nearly half the effort for systems providing update capabilities.  Procedural approaches - whether code-based or graphical - do not provide meaningful automation.
+
+A declarative approach is required.  API Logic Server provides spreadsheet-like rules, leveraging Python as a Domain Specific Language, are 40X more concise for such logic.
+
+&nbsp;
+
+### Business Users: GenAI 
+
+While API Logic Server is focused on Developers, extreme levels of automation provide important benefits for business users. 
+
+* Instant Working Software is created directly from an existing database, or a GenAI prompt.  This eliminates tedious database design and screen painting, for earlier collaboration and more rapid iterations.
+* Business Logic is transparent and readable - much like a design document, *but executable*
+
+#### Web/GenAI
+
+An important element of collaboration is rapid deployment so colleagues can review screens.  While API Logic Server targets local development, we have working prototypes that can be deployed on your infrastructure or cloud:
+
+> In your browser, provide a GenAI prompt describing your system.  Press create, and it runs in a few seconds... *zero* deployment required. Then, Developers can download the project to customize, integrate, etc. 
+
+Please contact us if you would like to preview this software.
+
+&nbsp;
+
+## Summary
+
+The following table contrasts traditional "Current" Low Code with "Developer" Low Code:
+
+| **Aspect** | ***Current* Low Code**  | ***Developer* Low Code** |
 :-------|:-----------|:-----------|
 | Screen Painter | **Commonly Provided** | Not Provided |
 | Customizations | Proprietary Studio | Standard IDE |
@@ -39,5 +86,4 @@ The following table contrasts traditional "Business User" Low Code with "Develop
 | Database Creation | Via Forms <br>Can be complicated | **Gen AI** Natural Language<br>Break-through simplicity |
 | Business Logic<br>(It's nearly half the system) | Proprietary Code<br>Procedural | :trophy:&nbsp;&nbsp;**Unique Spreadsheet-like Rules**<br>Declarative - 40X More Concise |
 | Architecture | Proprietary - rigid | **Automated Microservice**<br>**Standard Docker**<br>**Flexibile: Cloud, Internal** |
-
 
