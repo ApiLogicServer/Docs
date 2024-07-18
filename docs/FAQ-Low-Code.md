@@ -1,8 +1,8 @@
 ## TL;DR - Low Code *For Developers*: Standards, Unique Bus Rules
 
-Realizing the Low Code promise of business agility requires adoption across the organization: Business Users *and Developers*:
+The Low Code promise of business agility has tremendous potential.  To realize it, we must enlist developers by addressing their concerns:
 
-* For Business Users, API Logic Server provides the fastest and simplest way to create Working Software, directly from an existing database or a GenAI prompt.  
+* For Business Users, API Logic Server (ALS) provides the fastest and simplest way to create Working Software, directly from an existing database or a GenAI prompt.  
     * **No screen painting is required**
     * **Database definition is automated from GenAI**
 * For Developers, API Logic Server leverages your existing infrastructure, including 
@@ -28,7 +28,8 @@ Developers share the basic business agility objective of reducing time and cost.
 * Proprietary Studio - modern IDEs provide "must-have" services for debugging, code management, profiling, using external libraries, etc.
 * Proprietary Deployment - developers expect to create containers that can be deployed anywhere, able to leverage extensive functionality such as Kubernetes
 * A modern and flexible application architecture, for integration (eg., APIs and Messaging), and maximizing re-use (e.g., shared logic between apps and headless services)
-* Cost
+
+And finally, there are issues of cost.
 
 &nbsp;
 
@@ -42,9 +43,9 @@ ALS is designed for Developers, to address these challenges.
 
 ALS meets the basic requirements for Developers:
 
-* Standard IDE - use your debugger, libraries, etc
-* Standard Container-based Deployment - local, cloud, etc, compatible with enterprise options such as Kubernetes for dynamic scaling
-* Architecture - APIs are created automatically, enabling basic application integration and unblocking UI development.  Messaging is also supported, for robust application integration.
+* **Standard IDE:** use your debugger, libraries, etc
+* **Standard Container-based Deployment:** local, cloud, etc, compatible with enterprise options such as Kubernetes for dynamic scaling
+* **Architecture:** APIs are created automatically, enabling basic application integration and unblocking UI development.  Messaging is also supported, for robust application integration.
 
 &nbsp;
 
@@ -58,10 +59,12 @@ A declarative approach is required.  API Logic Server provides spreadsheet-like 
 
 ### Business Users: GenAI 
 
-While API Logic Server is focused on Developers, extreme levels of automation provide important benefits for business users. 
+While API Logic Server is focused on Developers, extreme levels of automation provide important benefits for business users: 
 
-* Instant Working Software is created directly from an existing database, or a GenAI prompt.  This eliminates tedious database design and screen painting, for earlier collaboration and more rapid iterations.
-* Business Logic is transparent and readable - much like a design document, *but executable*
+* **Instant Working Software** is created directly from an existing database, or a GenAI prompt.  This eliminates tedious database design and screen painting, for earlier collaboration and more rapid iteration.
+* **Business Logic is transparent** and readable - much like a design document, *but executable*
+
+&nbsp;
 
 #### Web/GenAI
 
