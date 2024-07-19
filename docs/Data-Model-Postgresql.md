@@ -19,7 +19,12 @@ CREATE DATABASE northwind;
 CREATE TABLE employees (
     employee_id SERIAL,
     last_name character varying(20) NOT NULL,
-    first_name character varying(10) NOT NULL,
+    first_name character varying(10) NOT NULL...
+
+ALTER TABLE ONLY employees
+    ADD CONSTRAINT pk_employees PRIMARY KEY (employee_id);
+
+SELECT setval('employees_employee_id_seq', (SELECT MAX(employee_id) FROM employees));
 ```
 
 &nbsp;
