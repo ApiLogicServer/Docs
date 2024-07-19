@@ -4,7 +4,7 @@ The Low Code promise of business agility has tremendous potential.  To realize i
 
 * For Business Users, API Logic Server (ALS) provides the fastest and simplest way to create Working Software, directly from an existing database or a GenAI prompt.  
     * **No screen painting is required**
-    * **Database definition is automated from GenAI**
+    * **Database definition -- *and the full system* -- is automated from GenAI**
 * For Developers, API Logic Server leverages your existing infrastructure, including 
     * **Your IDE**, existing libraries, and
     * **Flexible container-based deployment**
