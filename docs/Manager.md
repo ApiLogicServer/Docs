@@ -75,3 +75,6 @@ If you want to customize/run the project, do so in *another instance* of VSCode.
 
 &nbsp;
 
+## Manager Using Docker
+
+Please see [this page](DevOps-Docker.md#2a-using-the-manager){:target="_blank" rel="noopener"}.
