@@ -115,6 +115,8 @@ First, define attributes types:
 
 ![kc-attrs](images/keycloak/kc-attrs.png)
 
+> **Warning:** do not specify None or Null for attribute values; these lead to unpredictable results.
+
 &nbsp;
 
 ### Export Auth Data
