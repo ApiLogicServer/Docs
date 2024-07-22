@@ -163,16 +163,18 @@ Then, you might like to try out some of our [dockerized test databases](Database
 
 This pre-release includes:
 
-* Fixes for multiple relationships between 2 tables
+* Version 10.4.96
+    * Fixes for multiple relationships between 2 tables
 
-* Changes to GenAI
-    * The managers' system/genai/work/temp files now use extensions `.prompt` and `.response` (instead of `.txt`)
-    * The managers' system/genai directory now includes examples, in particular the Airport example which had failed earlier; it was in fact due to  multiple relationships between 2 tables
-* `rebuild` now addresses Ontimize apps
-* The Manager now includes the App Model Editor (edits the yaml model file for Ontimize apps)
-* [logic and service discovery](IDE-Customize.md#discoverability-logic-services){:target="_blank" rel="noopener"}.
-* SRA version Jul 11
-* System tests (Build, Load and Test) now test GenAI, and multiple relationships.
+    * Changes to GenAI
+        * The managers' system/genai/work/temp files now use extensions `.prompt` and `.response` (instead of `.txt`)
+        * The managers' system/genai directory now includes examples, in particular the Airport example which had failed earlier; it was in fact due to  multiple relationships between 2 tables
+    * `rebuild` now addresses Ontimize apps
+    * The Manager now includes the App Model Editor (edits the yaml model file for Ontimize apps)
+    * [logic and service discovery](IDE-Customize.md#discoverability-logic-services){:target="_blank" rel="noopener"}.
+    * SRA version Jul 11
+    * System tests (Build, Load and Test) now test GenAI, and multiple relationships.
+    * Bug corrected in the Kafka Shipping example; now working
 
 * technology preview of [Ontimize rich web app](App-Custom.md){:target="_blank" rel="noopener"} (working again post build 56)
 
