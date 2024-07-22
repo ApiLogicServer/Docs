@@ -172,6 +172,7 @@ This pre-release includes:
 * The Manager now includes the App Model Editor (edits the yaml model file for Ontimize apps)
 * [logic and service discovery](IDE-Customize.md#discoverability-logic-services){:target="_blank" rel="noopener"}.
 * SRA version Jul 11
+* System tests (Build, Load and Test) now test GenAI, and multiple relationships.
 
 * technology preview of [Ontimize rich web app](App-Custom.md){:target="_blank" rel="noopener"} (working again post build 56)
 
