@@ -163,7 +163,7 @@ Then, you might like to try out some of our [dockerized test databases](Database
 
 This pre-release includes:
 
-* Version 10.4.96
+* Version 10.4.97
     * Fixes for multiple relationships between 2 tables
 
     * Changes to GenAI
@@ -187,7 +187,7 @@ This pre-release includes:
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.96
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.97
 ```
 
 Or use (not available currently):
