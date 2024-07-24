@@ -118,6 +118,14 @@ Explore basic data browsing:
 
   > **Key Take-away:** instant multi-page / multi-table admin apps, suitable for **back office, and instant agile collaboration.**
 
+<details markdown>
+
+<summary>Without Automatic Joins</summary>
+
+![No Automatic Joins](images/ui-admin/no-auto-join.png)
+
+</details>  
+
 ### Search and Sort
 
 Click the left menu to see the Customer list again
