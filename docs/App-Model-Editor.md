@@ -91,11 +91,13 @@ entities:
     home_template: home_template.html
     new_template:: new_template.html
     favorite: {SomeAttribute}
-    mode: tab | dialog
+    mode: {tab | dialog}
     primary_key: 
-        {SomeAttribute(s)}
+       - {SomeAttribute(s)}
     type: {Entity}
+    title: {title}
     info_list: {Html}
+    group: menu_group 
     columns:
         enabled: true
         exclude: false
@@ -107,6 +109,7 @@ entities:
         template: {template}
         type: {DataType}
         visible: true
+        default: 'some string'
     tab_groups:
         direction: tomany | toone
         exclude: false
@@ -145,3 +148,52 @@ settings:
     ("timestamp", "timestamp_template.html"),
     ("toggle", "o_slide_toggle.html")
 ```
+
+## Entity Fields
+|field|Description|
+:------|:---------------|
+|Entity name|name of API endpoint {{ entity }}|
+|Title|display name used for {{ title }} |
+|Primary Key|array of primary keys {{ primaryKeys }}|
+|Favorite|used for list-picker display|
+|Mode|tab or dialog style {{ editMode }}|
+|Menu Group|used to organize entity into side bar menu groups|
+|Exclude|if true - skip this API endpoint in the first page generation|
+
+## Attribute Fields
+Use the Ontimize editor to change the label, tooltip, exclude selected attributes, include attribute in the search or sort, enable or mark fields as required, and include visible in the home table display.
+
+|field|Description|
+:------|:---------------|
+|Entity Name|name of api endpoint|
+|Attribute|name of API attribute {{ attr }}|
+|Title|label used for this attribute {{ label }} |
+|Template Name|column template (pick list)|
+|Search|is this field included in search|
+|Sort|is this field included in sort|
+|Required|is this field marked as required|
+|Excluded|exclude this attribute from detail/new/home pages|
+|Visible|is this attribute visible on home table {{ visibleColumns }}|
+|DataType|the internal datatype|
+|Tooltip|hover value for attribute|
+|Default Value|value to show on new page|
+
+## Relationship Fields (aka TabGroup)
+Use the Ontimize editor to exclude tab on detail page (tomany) or change the tile used to display.
+|field|Description|
+:------|:---------------|
+|Entity Name|name of api endpoint|
+|Tab Entity|the name of the other end of the relationship|
+|Direction|toone (parent) or tomnay (children)|
+|Relationship name|defined in SQLAlchemy|
+|label|Tab Display name|
+|Exclude|skip this relationship for all tabs and lookups|
+|Foreign Keys|array of values|
+
+## Global Settings
+These values are injected into the various entity and attribute to provide and set global values.  New values can be added for new templates.
+
+|field|Description|
+:------|:---------------|
+|Include Translation|set to true and then do an app-build to generate Spanish translation (assets/Ii8n/es.json)|
+|Currency Symbol|set for locale $ |
