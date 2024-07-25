@@ -36,7 +36,7 @@ Execute **Run Config > `Start`**.  This starts the App Model Editor (an Ontimize
 
 ### 4. Open in the Browser
 
-Browse to [http://localhost:4298](http://localhost:4298)
+Browse to [http://localhost:4298](http://localhost:4298){:target="_blank" rel="noopener"}
 
 ![ame-browse](images/app-model-editor/4%20-%20Browse.png)
 
@@ -65,7 +65,7 @@ The big Process Yaml button will take the 'original content' and process this in
 
 ### 9. Copy to your app
 
-Copy the downloaded yaml file to your ontimize app_model.yaml project, as shown below.
+Copy the downloaded yaml file to your ontimize `app_model.yaml` project, as shown in the screenshot below.
 
 ### 10. Rebuild
 
