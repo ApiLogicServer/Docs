@@ -221,11 +221,17 @@ Code completion depends on a properly installed `venv`.  The digram below shows 
 
 `venv` setup is automatic for Docker installs.  For local installs, we have seen the issues below.
 
+&nbsp;
+
 ### PyCharm
 
 In some installations, PyCharm may fail when your `venv` is pre-created.  I have found it best to let PyCharm create the `venv`, like this:
 
 ![PyCharm venv](images/PyCharm/PyCharm-create-venv.png)
+
+If you encounter issues, [consider these suggestions](https://intellij-support.jetbrains.com/hc/en-us/community/posts/4417161898258-Unable-to-add-Python-Interpreter-in-PyCharm){:target="_blank" rel="noopener"}.
+
+&nbsp;
 
 ## VSCode fails to discover `venv`
 
