@@ -83,6 +83,31 @@ Relationship names are also part of your API:
 
 Relationship names are derived from database foreign keys, as [described here](Data-Model-Keys.md#foreign-keys).  As described in the link, you can add missing foreign keys in your data model classes.
 
+&nbsp;
+
+### Multi-reln
+
+In the [sample database](Sample-Database.md){:target="_blank" rel="noopener"}, there are 2 relationships between `Department` and `Employee`.  The default names described above would clearly create name collisions.  These are avoided with 2 strategies:
+
+* basic: the first relationship is named as above; subsequent accessor names are appended with a number (1, 2)
+
+* advanced: if the foreign key is single-field, and ends with `id` or `_id`, the foreign key names is used:
+
+```python title='advanced relationship names`
+
+    # parent relationships (access parent) -- example: self-referential
+    # .. https://docs.sqlalchemy.org/en/20/orm/self_referential.html
+    Department : Mapped["Department"] = relationship(remote_side=[Id], back_populates=("DepartmentList"))
+
+    # child relationships (access children)
+    DepartmentList : Mapped[List["Department"]] = relationship(back_populates="Department")
+    EmployeeList : Mapped[List["Employee"]] = relationship(foreign_keys='[Employee.OnLoanDepartmentId]', back_populates="OnLoanDepartment")
+    WorksForEmployeeList : Mapped[List["Employee"]] = relationship(foreign_keys='[Employee.WorksForDepartmentId]', back_populates="WorksForDepartment")
+```
+
+&nbsp;
+
+
 ## Model Linkages
 
 The diagram below illustrates how the class aspects and the admin app tie together:
