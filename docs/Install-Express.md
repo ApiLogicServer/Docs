@@ -24,11 +24,11 @@ Open the appropriate section below.
 
 === "Local Install"
 
-    __Verify Pre-reqs: Python 3.11+__
+    __Verify Pre-reqs: Python 3.10+__
 
     Ensure you have these pre-reqs:
 
-    ```bash title="Verify 3.11 - 3.12"
+    ```bash title="Verify 3.10 - 3.12"
     python --version  # on macs, you may need to use Python3
     ```
 
