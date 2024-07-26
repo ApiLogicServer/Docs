@@ -94,12 +94,9 @@ Note this uses [Multi-DB Support](Data-Model-Multi.md){:target="_blank" rel="noo
 
 ### Administer via Admin App
 
-The system creates `ui/admin/authentication_admin.yaml` which you can use to manage users and their roles.  It's an admin app - access it at [http://localhost:5656/admin/authentication_admin/](http://localhost:5656/admin/authentication_admin/){:target="_blank" rel="noopener"}.
+The system creates `ui/admin/authentication_admin.yaml` which you can use to manage users and their roles.  It's an admin app - access it at [http://localhost:5656/admin-app/index.html#/Configuration?load=http://localhost:5656/ui/admin/authentication_admin.yaml](http://localhost:5656/admin-app/index.html#/Configuration?load=http://localhost:5656/ui/admin/authentication_admin.yaml){:target="_blank" rel="noopener"}.
 
-This auth admin app is...
-
-* pre-created for the sqlite auth database, and 
-* created during `add-auth` for non-sqlite auth databases
+This auth admin app is automatically created.
 
 &nbsp;
 
