@@ -6,6 +6,6 @@
 	],
 	"settings": {
 		"workbench.colorTheme": "Arduino",
-		"workbench.preferredLightColorTheme": "Arduino"
+		"workbench.preferredLightColorTheme": "Arduino light"
 	}
 }
