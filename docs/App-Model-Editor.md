@@ -54,20 +54,28 @@ And upload
 
 ![ame-upload](images/app-model-editor/6%20-%20Upload.png)
 
-### 7. Edit Model
+### 7. Process Yaml
+
+![process-yanl](images/app-model-editor/7%20-%20Process.png)
+
+### 8. Edit Model
 
 Edit your `Entities`, `Attributes` and `Relationships`.
 
-### 8. Process or Download
+![ame-edit](images/app-model-editor/8%20-%20Edit.png)
+
+### 9. Process or Download
 The big Process Yaml button will take the 'original content' and process this into entities, attributes, and relationships. Once you have edited these values, use the download flag (and save) to populate the downloaded content box.
 
-![ame-download](images/app-model-editor/11%20-%20ProcessYaml.png)
+![ame-download](images/app-model-editor/9%20-%20Download.png)
 
-### 9. Copy to your app
+### 10. Copy to your app
 
 Copy the downloaded yaml file to your ontimize `app_model.yaml` project, as shown in the screenshot below.
 
-### 10. Rebuild
+![ame-copy](images/app-model-editor/10%20-%20Copy.png)
+
+### 11. Rebuild
 
 Rebuild the Ontimize app.
 ```
