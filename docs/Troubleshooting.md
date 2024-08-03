@@ -368,4 +368,16 @@ Login failed for user '<token-identified principal>'. The server is not currentl
 
 ### pyodbc version
 
+&nbsp;
 
+## Browser Cache
+
+Browser caches can interfere with changes to Apps and Keycloak security.  You can completely clear your Browser cache, or clear it just for your local dev:
+
+* Safari
+
+![cache](images/security/cache-safari.png)
+
+* Chrome
+
+![cache](images/security/cache-chrome.png)

@@ -154,6 +154,10 @@ docker cp keycloak:/opt/keycloak/export devops/keycloak/import
 
 # Appendix
 
+## Browser Cache
+
+Keycloak caches security data (e.g., for single sign-on).  This may required you to [clear your Browser cache](Troubleshooting.md#browser-cache){:target="_blank" rel="noopener"}.
+
 ## Internals
 
 Authentication and the keycloak provider interact as shown below:

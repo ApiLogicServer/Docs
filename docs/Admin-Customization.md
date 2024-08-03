@@ -77,3 +77,11 @@ Note you can hide fields depending on the state of the form, e.g. for `OrderDeta
 When creating your own admin files, we recommend starting with the created one.
 
 Also, use caution in removing resources, since these may be used in joins and lookups.
+
+&nbsp;
+
+# Appendix
+
+## Browser Cache
+
+Browsers cache data for performance.  This may required you to [clear your Browser cache](Troubleshooting.md#browser-cache){:target="_blank" rel="noopener"}.
