@@ -25,7 +25,8 @@ This tutorial illustrates some key concepts:
 #### _Declarative Models_, not code
 Observe that the files for the Admin App and API are models that describe _what, not how_.  This level of abstratction is much easier to understand than large amounts of generated code.
 
-> Not only do models automate functionality, the **models themselves are automated**, created instantly when you create a project.  That means you have instant Working Software.
+##### Automated Automation
+Not only do models automate functionality, the *models themselves* are automated, created instantly when you create a project.  That means you have instant Working Software.
 
 #### Customize - using standard tools
 The system is designed for you to customize the UI, Logic, Security and API, using standard tools - your IDE for code editing / debugging, git, etc.
