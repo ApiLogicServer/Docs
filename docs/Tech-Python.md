@@ -107,6 +107,8 @@ Note that imports often require a "module", which means you create a (usually em
 
 I understand that Python's 1-pass nature means your imports have to be in a certain order to work.  I have spent days battling this.  I hope you have better luck, but at least you have a heads up.  As always, introduce changes in small numbers to avoid having lots of potential problems.
 
+One technique is to put the offending import into a class or function, instead of at the top.  See, for example, "circular import" comment in `security/authentication_provider/keycloak/auth_provider.py`.
+
 &nbsp;
 
 ## Mac Installs
