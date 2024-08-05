@@ -48,3 +48,15 @@ Utilize IDE Debuggers, including for declarative rules, as described in the [Tut
 ## Rebuild
 
 If you change your database / data model, you can rebuild the project, preserving customizations.  For more information, [click here.](Project-Rebuild.md){:target="_blank" rel="noopener"}
+
+&nbsp;
+
+## Appendix - IDE Notes
+
+### Virtual Environments
+
+Be sure you are clear on how to setup your [project venv](Project-Env.md){:target="_blank" rel="noopener"}.
+
+### VSCode CLI
+
+You can launch VSCode from the command line.  It's often pre-installed on Windows; for Mac, you must activate VSCode `code` CLI (to get it: Open the Command Palette (Cmd+Shift+P) and type 'shell command').
