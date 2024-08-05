@@ -158,7 +158,7 @@ This illustrates that you can stop in your rule logic (the red dot on line 111),
 
 ##### Logic Logging
 
-In addition, the system creates a ""logic log** of all rules that fire, to aid in debugging by visualizing rule execution:
+In addition, the system creates a **logic log** of all rules that fire, to aid in debugging by visualizing rule execution:
 
 *   Each line represents a rule execution, showing row state (old/new values), and the _{reason}_ that caused the update (e.g., client, sum adjustment)
 *   Log indention shows multi-table chaining

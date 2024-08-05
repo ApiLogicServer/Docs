@@ -329,7 +329,7 @@ Just as you can customize apis, you can complement rule-based logic using Python
 
 ### Behave
 
-You can test using standard api and ui test tools.  We recommend exploring the [Behave framework](https://valhuber.github.io/ApiLogicServer/Behave/).  This can be used as part of an overall agile approach as described in the [Logic Tutorial](https://valhuber.github.io/ApiLogicServer/Logic-Tutorial/).
+You can test using standard api and ui test tools.  We recommend exploring the [Behave framework](https://apilogicserver.github.io/Docs/Behave/).  This can be used as part of an overall agile approach as described in the [Logic Tutorial](https://apilogicserver.github.io/Docs/Logic-Tutorial/).
 
 TL;DR - features and test scripts are predefined in the sample; to run them (with the server running):
 
@@ -341,7 +341,7 @@ TL;DR - features and test scripts are predefined in the sample; to run them (wit
 
    > The sample Scenarios below were chosen to illustrate the basic patterns of using rules. Open the disclosure box ("Tests - and their logic...") to see the implementation and notes.   
 
-For more information, see [Testing with Behave](https://valhuber.github.io/ApiLogicServer/Behave/).
+For more information, see [Testing with Behave](https://apilogicserver.github.io/Docs/Behave/).
 
 &nbsp;
 
