@@ -58,6 +58,49 @@ See [these notes](IDE-Customize.md#appendix-ide-notes){:target="_blank" rel="noo
 
 &nbsp;
 
+### Extensions
+
+You can do `code --list-extensions` to find VSCode Extensions.  I use these:
+
+```
+akamud.vscode-theme-onedark
+anandabibekray.intellij-idea-new-ui-theme
+chrisdias.vscode-opennewinstance
+daniel-lvovsky.mintlight-theme
+electropol-fr.coloredtheme
+garytyler.darcula-pycharm
+github.copilot
+github.copilot-chat
+github.vscode-pull-request-github
+magicstack.magicpython
+mhutchie.git-graph
+moshfeu.compare-folders
+ms-azuretools.vscode-docker
+ms-python.debugpy
+ms-python.isort
+ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+ms-toolsai.vscode-jupyter-cell-tags
+ms-toolsai.vscode-jupyter-slideshow
+ms-vscode-remote.remote-containers
+ms-vscode.wordcount
+ms-vsliveshare.vsliveshare
+msnilshartmann.blue-light
+mtxr.sqltools
+mtxr.sqltools-driver-sqlite
+njpwerner.autodocstring
+oscarewenstudent.arduino-themes-vsc
+rokoroku.vscode-theme-darcula
+sandcastle.vscode-open
+thakkeross.thakker-light-mist-hc
+zhuangtongfa.material-theme
+```
+
+&nbsp;
+
 ## Pip, environments and PythonPath
 
 Pip is how to load libraries (packages) - not by setting up folder.  It's great, but quickly leads to Pyton's version of "DLL Hell" where libraries interfere from different projects.  So, the best practice is to set up [Virtual Environments](https://docs.python.org/3/library/venv.html?highlight=virtual%20environment){:target="_blank" rel="noopener"}
