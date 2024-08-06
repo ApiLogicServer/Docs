@@ -217,7 +217,7 @@ npm start
 # Appendices
 
 ## Yaml Model Editor
-The Yaml editor allows the developer the ability to manage yaml files for editing using an Ontimize built application. Use the "Manage yaml files" New - to add your yaml file and then click upload (save) to populate the screens with entities, attributes, and tab groups. Once complete, use the download_flag (save)  to export the yaml to the 'ui' directory (ui/admin_model_merge.yaml) and compare/merge to your original admin_model.yaml in your ontimize application folder.
+The Yaml editor allows the developer the ability to manage yaml files for editing using an Ontimize built application. Use the "Manage yaml files" New - to add your yaml file and then click upload (save) to populate the screens with entities, attributes, and tab groups. Once complete, use the download_flag (save)  to export the yaml to the 'ui' directory (ui/admin_model_merge.yaml) and compare/merge to your original admin_model.yaml in your ontimize application folder. The open source application can be found here:
 ```
 git clone https://github.com/tylerm007/ontimize_yaml_view
 cd ontimize_yaml_view
@@ -232,7 +232,7 @@ cd ui/yaml
 npm install
 npm start
 
-#go to http://localhost:5655 (user: admin password: p)
+#go to http://localhost:4298 (user: admin password: p)
 ```
 ## Ontimize app_model.yaml 
 The app_model.yaml file is created during the "app-create" or "create" phase and is based on the ui/admin.yaml file. Each entity, column, and tab_group is exposed with additional metadata.  When the "app-build" is invoked, these properties are used to populate the templates (html, scss, and typescript) for each page. If the "exclude" flag is set to 'false' - the entity or attribute will be excluded from the page. The "visible" column flag only applies to the Home table columns appearing in the grid.

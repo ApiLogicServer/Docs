@@ -50,22 +50,23 @@ Create a new entry:
 
 ### 6. Upload 
 
-And upload
+And upload your app_model.yaml file to the server.
 
 ![ame-upload](images/app-model-editor/6%20-%20Upload.png)
 
 ### 7. Process Yaml
+The process button will replace all the Entities, Attributes, and Relationships with the uploaded content.
 
 ![process-yanl](images/app-model-editor/7%20-%20Process.png)
 
 ### 8. Edit Model
 
-Edit your `Entities`, `Attributes` and `Relationships`.
+Edit your `Entities`, `Attributes` and `Relationships` using the various screens.
 
 ![ame-edit](images/app-model-editor/8%20-%20Edit.png)
 
 ### 9. Process or Download
-The big Process Yaml button will take the 'original content' and process this into entities, attributes, and relationships. Once you have edited these values, use the download flag (and save) to populate the downloaded content box.
+The big Process Yaml button will take the 'original content' and process this into entities, attributes, and relationships. Once you have edited these values, use the download flag (and save) to populate the downloaded content box.  
 
 ![ame-download](images/app-model-editor/9%20-%20Download.png)
 
@@ -77,7 +78,7 @@ Copy the downloaded yaml file to your ontimize `app_model.yaml` project, as show
 
 ### 11. Rebuild
 
-Rebuild the Ontimize app.
+Rebuild your Ontimize app using the command line below.
 ```
 als app-build --app=${name_of_ontimize_app}
 ```
@@ -85,12 +86,11 @@ als app-build --app=${name_of_ontimize_app}
 ![ame-rebuild](images/app-model-editor/10%20-%20Rebuild.png)
 
 
-
 &nbsp;
 
 ## Ontimize app_model.yaml 
 
-The app_model.yaml file is created during the "app-create" or "create" phase and is based on the ui/admin.yaml file. Each entity, column, and tab_group is exposed with additional metadata.  When the "app-build" is invoked, these properties are used to populate the templates (html, scss, and typescript) for each page. If the "exclude" flag is set to 'false' - the entity or attribute will be excluded from the page. The "visible" column flag only applies to the Home table columns appearing in the grid.
+The app_model.yaml file is created during the "app-create" or "create" phase and is based on the react-admin ui/admin.yaml file. Each entity, column, and tab_group is exposed with additional metadata.  When the Ontimize "app-build" is invoked, these properties are used to populate the templates (html, scss, and typescript) for each page. If the "exclude" flag is set to 'true' - the entity or attribute will be excluded from the page. The "visible" column flag only applies to the Home table columns appearing in the grid (all columns are true by default).
 
 ```
 entities:
@@ -167,24 +167,27 @@ settings:
 |Mode|tab or dialog style {{ editMode }}|
 |Menu Group|used to organize entity into side bar menu groups|
 |Exclude|if true - skip this API endpoint in the first page generation|
+|home_template|This is the grid or home template used for the Entity|
+|detail_template|This is the drill down page from home for each row - it can include relationships (tabgroup)|
+|new_template|This template is used to insert new rows into the selected Entity|
 
 ## Attribute Fields
 Use the Ontimize editor to change the label, tooltip, exclude selected attributes, include attribute in the search or sort, enable or mark fields as required, and include visible in the home table display.
 
 |field|Description|
 :------|:---------------|
-|Entity Name|name of api endpoint|
+|Entity Name|name of api endpoint (case sensitive)|
 |Attribute|name of API attribute {{ attr }}|
 |Title|label used for this attribute {{ label }} |
-|Template Name|column template (pick list)|
+|Template Name|column template (used by template pick list)|
 |Search|is this field included in search|
 |Sort|is this field included in sort|
 |Required|is this field marked as required|
 |Excluded|exclude this attribute from detail/new/home pages|
 |Visible|is this attribute visible on home table {{ visibleColumns }}|
-|DataType|the internal datatype|
-|Tooltip|hover value for attribute|
-|Default Value|value to show on new page|
+|DataType|the internal datatype (do not change)|
+|Tooltip|hover value for the attribute|
+|Default Value|string value to show on new page|
 
 ## Relationship Fields (aka TabGroup)
 Use the Ontimize editor to exclude tab on detail page (tomany) or change the tile used to display.
@@ -192,16 +195,41 @@ Use the Ontimize editor to exclude tab on detail page (tomany) or change the til
 :------|:---------------|
 |Entity Name|name of api endpoint|
 |Tab Entity|the name of the other end of the relationship|
-|Direction|toone (parent) or tomnay (children)|
-|Relationship name|defined in SQLAlchemy|
+|Direction|toone (to parent - used by list_picker) or tomnay (to children - used by tab panel)|
+|Relationship name|defined in SQLAlchemy database/models.py|
 |label|Tab Display name|
 |Exclude|skip this relationship for all tabs and lookups|
-|Foreign Keys|array of values|
+|Foreign Keys|array of values (do not change)|
 
 ## Global Settings
-These values are injected into the various entity and attribute to provide and set global values.  New values can be added for new templates.
+These values are injected into the various entity and attribute to provide and set global values.  New values will be added for any templates created.
 
 |field|Description|
 :------|:---------------|
 |Include Translation|set to true and then do an app-build to generate Spanish translation (assets/Ii8n/es.json)|
 |Currency Symbol|set for locale $ |
+
+### Existing Column Templates 
+These templates can be found in the directory ui/app/templates and can be modified or cloned. When the app-build is invoked these local templates are used first (then the global system templates are used).
+```
+    ("checkbox", "o_checkbox.html"),
+    ("check_circle", "check_circle_template.html"),
+    ("combo", "o_combo_input.html"),
+    ("currency", "currency_template.html"),
+    ("date", "date_template.html"),
+    ("email", "email_template.html"),
+    ("file", "file_template.html"),
+    ("html", "html_template.html"),
+    ("integer", "integer_template.html"),
+    ("list", "list-picker.html"),
+    ("nif", "o_nif_input.html"),
+    ("password", "password_template.html"),
+    ("percent", "percent_template.html"),
+    ("phone", "phone_template.html"),
+    ("real", "real_template.html"),
+    ("text", "text_template.html"),
+    ("textarea", "textarea_template.html"),
+    ("time", "time_template.html"),
+    ("timestamp", "timestamp_template.html"),
+    ("toggle", "o_slide_toggle.html")
+```
