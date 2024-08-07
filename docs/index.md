@@ -206,6 +206,18 @@ They do.  But a microservice is far more than a single endpoint.  It's a horse o
 
 </details>
 
+
+## Web/GenAI - Zero Install
+
+<details markdown>
+
+<summary>Create and run with zero-install - coming soon</summary>
+
+Please see [FAQ - Low Code](FAQ-Low-Code.md#webgenai){:target="_blank" rel="noopener"}.
+
+</details>
+
+
 ---
 
 &nbsp;
