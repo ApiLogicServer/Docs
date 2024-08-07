@@ -189,9 +189,22 @@ They do.  But a microservice is far more than a single endpoint.  It's a horse o
 
 &nbsp;
 
-# Video - 1 minute
+# Watch it
+
+## Create from GenAI
     
 [![GenAI Automation](images/sample-ai/copilot/genai-automation-video-60.png)](https://www.youtube.com/watch?v=6wnPsI5S6NM "Microservice Automation"){:target="_blank" rel="noopener"}
+
+
+## Create from Existing Database
+
+<details markdown>
+
+<summary>Create and Customize Microservices from an existing database</summary>
+
+[![GenAI Automation](images/creates-and-runs-video.png)](https://www.youtube.com/watch?v=tOojjEAct4M&t=1s "Microservice Automation"){:target="_blank" rel="noopener"}
+
+</details>
 
 ---
 
@@ -519,11 +532,11 @@ The `ApiLogicServer create` command builds scripts for containerizing your proje
 
 &nbsp;
 
-# Scenarios
+# Business Scenarios
 
 <details markdown>
 
-<summary>Application Integration</summary>
+<summary>Application Integration, B2B</summary>
 
 As illustrated below, API Logic Server supports transactions from User Interfaces, and 3 alternatives for Application Integration:
 
