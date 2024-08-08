@@ -113,7 +113,7 @@ Use your IDE debugger and the logic log to debug logic.
 | Technology Promises | Limited By...   |  Deliver the Promise With API Logic Server  |
 :-------|:-----------|:-------|
 | Framework Promises Flexibility | - No API, Logic or App Automation<br>- Months of complex development | - Full Microservice Automation<br>- Preserves Full framework access |
-| Low Code Promises Speed | - No Logic Automation (nearly half the effort)<br>- Manual Screen Painting<br>- Proprietary IDE, Framework | - Logic Automation<br>- App Automation<br>- Open IDE, Tools, Libraries |
+| Low Code Promises Speed | - No Logic Automation (nearly half the effort)<br>- Manual Screen Painting<br>- Proprietary IDE, Framework | - Logic Automation :bulb: <br>- App Automation<br>- Open IDE, Tools, Libraries |
 | GenAI Promises Simplicity | - No API, Logic or App Automation<br>- Only Database Automation | - API Logic Server uses GenAI, adding...<br>- Full Microservice Automation |
 
 API Logic Server **differentiates** from traditional approaches:
