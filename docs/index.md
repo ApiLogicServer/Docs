@@ -113,14 +113,14 @@ Use your IDE debugger and the logic log to debug logic.
 | Technology Promises | Limited By...   |  Deliver the Promise With API Logic Server  |
 :-------|:-----------|:-------|
 | Framework Promises Flexibility | - No API, Logic or App Automation<br>- Months of complex development | - Full Microservice Automation<br>- Preserves Full framework access |
-| Low Code Promises Speed | - No Logic Automation (nearly half the effort)<br>- Proprietary IDE, Framework | - Logic Automation<br>- Open IDE, Tools, Libraries |
+| Low Code Promises Speed | - No Logic Automation (nearly half the effort)<br>- Manual Screen Painting<br>- Proprietary IDE, Framework | - Logic Automation<br>- App Automation<br>- Open IDE, Tools, Libraries |
 | GenAI Promises Simplicity | - No API, Logic or App Automation<br>- Only Database Automation | - API Logic Server uses GenAI, adding...<br>- Full Microservice Automation |
 
 API Logic Server **differentiates** from traditional approaches:
 
 * Unlike Frameworks, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**  You're ready to run.  With frameworks, you're ready to code -- weeks-to-months of complex development.
 
-* Unlike Low Code, API Logic Server provides **logic automation,** and preserves the **framework flexibility.**  With Low Code, you have to code your logic, quite likely in a non-standard IDE.
+* Unlike Low Code, API Logic Server provides **Logic Automation,** **App Automation,** and preserves the **framework flexibility.**  With Low Code, you have to code your logic, quite likely in a non-standard IDE.
 
     * For systems providing update, logic automation is critical.  It's nearly half the effort.  The promise of Low Code *requires logic automation.* 
 
