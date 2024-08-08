@@ -17,6 +17,7 @@ Recall from the [Install doc](Install.md) that you create projects like this:
 > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/ApiLogicServer apilogicserver/api_logic_server
 $ # you are now active in the API Logic Server docker container to create projects
 ```
+&nbsp;
 
 > Windows: use __Powershell__ (`PWD` is not supported in Command Line)
 
@@ -32,6 +33,10 @@ $ cd /ApiLogicServer         # volume mapped to a directory on your local file s
 $ ApiLogicServer create-and-run --project_name=ApiLogicProject --db_url=
 $ exit                       # return to local host 
 ```
+
+&nbsp;
+
+> Note the use of the mapped volume `cd /ApiLogicServer`.  This creates the projects files on your host computer, so can manage the source locally (e.g., use `git`).
 
 &nbsp;
 
