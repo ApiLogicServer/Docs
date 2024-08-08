@@ -168,6 +168,7 @@ nav:
     - "Product Detail": Product-Detail.md
     - "Product Overview": Product-Overview.md
     - Personal:
+      - "WebGenAI": WebGenAI.md
       - "Home": Home.md
       - "INFO": ApiLogicServer-create.md
       - "Recompute": Logic-Recompute.md
