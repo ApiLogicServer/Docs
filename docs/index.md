@@ -114,7 +114,7 @@ Use your IDE debugger and the logic log to debug logic.
 :-------|:-----------|:-------|
 | Framework Promises Flexibility | - No API, Logic or App Automation<br>- Months of complex development | - Full Microservice Automation :bulb: <br>- Preserves Full framework access |
 | Low Code Promises Speed | - No Logic Automation (nearly half the effort)<br>- Manual Screen Painting<br>- Proprietary IDE, Framework | - Logic Automation :bulb: <br>- App Automation<br>- Open IDE, Tools, Libraries :bulb: |
-| GenAI Promises Simplicity | - No API, Logic or App Automation<br>- Only Database Automation | - API Logic Server uses GenAI, adding...<br>- Full Microservice Automation |
+| GenAI Promises Simplicity | - No API, Logic or App Automation<br>- Only Database Automation | - API Logic Server uses GenAI, adding...<br>- Full Microservice Automation<br>&nbsp;&nbsp;&nbsp;- No FrankenPrompt :bulb: |
 
 API Logic Server **differentiates** from traditional approaches:
 
@@ -130,7 +130,7 @@ For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noop
 
 <details markdown>
 
-<summary>Does GenAI require Microservice Automation?</summary>
+<summary>How Does GenAI - With Microservice Automation - Avoid the FrankenPrompt?</summary>
 ![Not Moving](images/nutshell/puzzle.jpg){: style="height:150px;width:250px"; align=right }
 GenAI brings well-known value to app development.  It's great for generating code snippets, particularly for *driving automation engines,* such as sql (e.g., "*create a database...*").  API Logic Server leverages both of these strengths, including [GenAI Logic Automation](Logic.md/#with-genai-logic-automation){:target="_blank" rel="noopener"}.
  
