@@ -13,3 +13,7 @@ Under construction
     Use the slider to suggest complexity (number of tables).
 
 ## More Info here.
+
+https://youtu.be/6HB22ujmSvs
+
+[![Web/GenAI Automation](images/sample-ai/copilot/genai-automation-video-60.png)](https://www.youtube.com/watch?v=6HB22ujmSvs "Microservice Automation"){:target="_blank" rel="noopener"}
