@@ -16,4 +16,6 @@ Under construction
 
 https://youtu.be/6HB22ujmSvs
 
-[![Web/GenAI Automation](images/sample-ai/copilot/genai-automation-video-60.png)](https://www.youtube.com/watch?v=6HB22ujmSvs "Microservice Automation"){:target="_blank" rel="noopener"}
+https://github.com/ApiLogicServer/Docs/blob/main/docs/images/web_genai/Concept-Validation.png?raw=true
+
+[![Web/GenAI Automation](images/web_genai/Concept-Validation.png)](https://www.youtube.com/watch?v=6HB22ujmSvs "Microservice Automation"){:target="_blank" rel="noopener"}
