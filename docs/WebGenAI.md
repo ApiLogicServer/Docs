@@ -14,4 +14,4 @@ Under construction
 
 ## Video
 
-[![Web/GenAI Automation](images/web_genai/Concept-Validation.png)](https://www.youtube.com/watch?v=6HB22ujmSvs "Microservice Automation"){:target="_blank" rel="noopener"}
+[![Web/GenAI Automation](images/web_genai/Web-GenAI-Demo.png)](https://youtu.be/YSjQPDYPdGE "Microservice Automation"){:target="_blank" rel="noopener"}
