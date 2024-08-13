@@ -163,31 +163,13 @@ Then, you might like to try out some of our [dockerized test databases](Database
 
 This pre-release includes:
 
-* Version 10.4.97
-    * Fixes for multiple relationships between 2 tables
-
-    * Changes to GenAI
-        * The managers' system/genai/work/temp files now use extensions `.prompt` and `.response` (instead of `.txt`)
-        * The managers' system/genai directory now includes examples, in particular the Airport example which had failed earlier; it was in fact due to  multiple relationships between 2 tables
-    * `rebuild` now addresses Ontimize apps
-    * The Manager now includes the App Model Editor (edits the yaml model file for Ontimize apps)
-    * [logic and service discovery](IDE-Customize.md#discoverability-logic-services){:target="_blank" rel="noopener"}.
-    * SRA version Jul 11
-    * System tests (Build, Load and Test) now test GenAI, and multiple relationships.
-    * Bug corrected in the Kafka Shipping example; now working
-
-* technology preview of [Ontimize rich web app](App-Custom.md){:target="_blank" rel="noopener"} (working again post build 56)
-
-* run from Manager (Run/Debug Entry: `API Logic Server Run (run project from manager)`)
-
-* Manager support for PyCharm
-
-* [simplified auth config](Keycloak-devnotes.md/#integration-apilogicserver-keycloak){:target="_blank" rel="noopener"}.
+* Version 11.00.22
+    * See [GenAI Restart Procedures](Sample-Genai.md#genai-restart-procedures){:target="_blank" rel="noopener"}
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.04.100
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==11.00.22
 ```
 
 Or use (not available currently):
