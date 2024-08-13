@@ -193,6 +193,23 @@ We have seen failures such as:
 
 &nbsp;
 
+#### Diagnosis Tips
+
+The system saves files used for creation: 
+
+![Customize](images/sample-ai/copilot/diagnostic_info.png)
+
+Note there are multiple diagostic directories.  recall GenAI results are not always predictable, so we make 3 attempts to get a successful result.  This is often enough, but examining the failures can be useful.
+
+A good technique is to:
+
+1. **Open the response file in the Manager**, and
+2. Use your IDE to run the file 
+
+It's usage create the sqlite database, but running it in this mode can provide more insight into causes.
+
+&nbsp;
+
 ### GenAI Using Postgresql
 
 The above examples use *sqlite,* since it requires no install.  The GenAI process works for other database, such as Postgresql.

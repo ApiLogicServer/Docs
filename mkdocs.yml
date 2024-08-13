@@ -34,7 +34,7 @@ nav:
     - "Deployment Tutorial": Tutorial-Deployment.md
     - "Agile Tutorial": Tutorial-Agile.md
     - "Basic Self-Demo": Sample-Basic-Demo.md
-    - "AI - ChatPGT, Agile": Tutorial-AI.md
+    - "AI - ChatGPT, Agile": Tutorial-AI.md
     - "Sample Systems": Data-Model-Examples.md
   - 0. ApiLogicServer create:
     - "Create": Project-Structure.md
