@@ -180,6 +180,14 @@ Or, correct the chatgpt response, and
 als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_retry.txt
 ```
 
+&nbsp;
+
+CLI Notes (effective as of release 11.00.22):
+
+* Projects are created in the your current working folder (typically the manager root directory).  They were formerly created adjacent to the `gen-using-file`.
+
+* The project name is the last node of `--using`.  This is a required argument, since it denotes the project directory name.
+
 We have seen failures such as:
 
 * duplicate definition of `DECIMAL` (we hand-fix the response to fix this)
