@@ -212,7 +212,7 @@ They do.  But a microservice is far more than a single endpoint.  It's a horse o
 [![Web/GenAI Automation](images/web_genai/Web-GenAI-Demo.png)](https://youtu.be/miOj00SiGxQ "Microservice Automation"){:target="_blank" rel="noopener"}
 
 
-Please see [FAQ - Low Code](FAQ-Low-Code.md#webgenai){:target="_blank" rel="noopener"}.
+Please see [Web/GenAI](WebGenAI.md){:target="_blank" rel="noopener"} for more information, including how to access.
 
 
 ---

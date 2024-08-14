@@ -39,6 +39,7 @@ nav:
   - 0. ApiLogicServer create:
     - "Create": Project-Structure.md
     - "Manager": Manager.md
+    - "Create with Gen/AI on Web": WebGenAI.md
     - "Create With Copilot": Project-Create-Copilot.md
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
@@ -168,7 +169,6 @@ nav:
     - "Product Detail": Product-Detail.md
     - "Product Overview": Product-Overview.md
     - Personal:
-      - "WebGenAI": WebGenAI.md
       - "Home": Home.md
       - "INFO": ApiLogicServer-create.md
       - "Recompute": Logic-Recompute.md

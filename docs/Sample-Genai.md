@@ -216,6 +216,8 @@ A good technique is to:
 
 It's usage create the sqlite database, but running it in this mode can provide more insight into causes.
 
+If you are using [Web/GenAI](WebGenAI.md){:target="_blank" rel="noopener"}, project files are always under /projects/gen_$ID.
+
 &nbsp;
 
 ### GenAI Using Postgresql
