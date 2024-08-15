@@ -12,7 +12,7 @@
 
     2. Declare **spreadsheet-like rules** for logic and security - [***40x***](Logic-Why.md){:target="_blank" rel="noopener"} more concise than code &nbsp; :trophy:
 
-    3. Create **containers** using supplied scripts, and deploy anywhere
+    3. Create **containers** using supplied scripts, and deploy anywhere and scale
 
 &nbsp;
 
