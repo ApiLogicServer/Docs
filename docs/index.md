@@ -618,6 +618,23 @@ Here's a tutorial you can to explore this: [click here](Sample-AI.md){:target="_
 
 </details>
 
+
+
+<details markdown>
+
+<summary>Back Office - Admin Data Maintenance, Data Correction</summary>
+
+Api Logic Server creates an executable multi-table [Admin App](Admin-Tour.md){:target="_blank" rel="noopener"}.  Optionally add [Logic](Logic-Why.md){:target="_blank" rel="noopener"} and [Security](Security-Overview.md){:target="_blank" rel="noopener"}.
+
+Use this app for:
+
+* **Admin Data Management:** for lookup tables, table-driven meta data (e.g., General Ledger allocation definitions), etc.  These often fall off the schedule, requiring the use of SQL tools that are hard to use, and don't provide logic or security.
+
+* **Data Correction:** the realities of database use can result in invalid data (data loading, poor quality feeds).  These often require manual effort with SQL tools to find and correct such data.  This requires manual data validation which may be inconsistent.  You can provide professional interface, back by logic and security.
+
+
+</details>
+
 &nbsp;
 For additional Use Cases, [click here](Product-Detail.md/#use-cases){:target="_blank" rel="noopener"}.
 
