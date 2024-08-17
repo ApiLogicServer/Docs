@@ -118,18 +118,20 @@ Use your IDE debugger and the logic log to debug logic.
 
 API Logic Server offers a **fresh approach**, relative to traditional technology:
 
-* Unlike Frameworks, API Logic Server...
+* Unlike Frameworks, API Logic Server:
 
     1. Eliminates weeks-to-months of complex development with **Microservice Automation** (APIs and App in a customizable project).  You're ready to *run*, not *code*.
     2. Provides **Logic Automation**.  <br><br>
 
 
-* Unlike Low Code, API Logic Server
+* Unlike Low Code, API Logic Server:
 
-    1. Eliminates tedious and complex database definition and screen painting, providing **Microservice Automation.** :bulb: 
+    1. Eliminates tedious screen painting and complex database definition, providing **Microservice Automation.** :bulb: 
     2. Provides **Logic Automation**.  For systems providing update, this is critical - nearly half the effort.  The promise of Low Code *requires logic automation.*  :bulb:  
-    3. Leverages the value of **standard dev languages and tools** (IDE, source control).  All the flexibility of a framework.
-    4. Provides **deployment flexibility**, creating containers you can deploy anywhere.<br><br>
+    3. Not just faster/easier for business users, but IT friendly:
+
+        * Leverages **standard dev languages and tools** (IDE, source control).  All the power and flexibility of a framework.
+        * Provides **deployment flexibility**, creating containers you can deploy anywhere.<br><br>
 
 
 * Unlike basic GenAI, API Logic Server creates:
