@@ -116,15 +116,26 @@ Use your IDE debugger and the logic log to debug logic.
 | Low Code Promises Speed | - No Logic Automation (nearly half the effort)<br>- Manual Screen Painting<br>- Proprietary IDE, Framework | - Logic Automation :bulb: <br>- App Automation<br>- Open IDE, Tools, Libraries :bulb: |
 | GenAI Promises Simplicity | - No API, Logic or App Automation<br>- Only Database Automation | - API Logic Server uses GenAI, adding...<br>- Full Microservice Automation<br>&nbsp;&nbsp;&nbsp;- No FrankenPrompt :bulb: |
 
-API Logic Server **differentiates** from traditional approaches:
+API Logic Server offers a **fresh approach**, relative to traditional technology:
 
-* Unlike Frameworks, API Logic Server creates **complete microservices** (APIs and App in a customizable project), **including logic automation.**  You're ready to run.  With frameworks, you're ready to code -- weeks-to-months of complex development.
+* Unlike Frameworks, API Logic Server...
 
-* Unlike Low Code, API Logic Server provides **Logic Automation,** **App Automation,** and preserves the **framework flexibility.**  With Low Code, you have to code your logic, quite likely in a non-standard IDE.
+    1. Eliminates weeks-to-months of complex development with **Microservice Automation** (APIs and App in a customizable project).  You're ready to *run*, not *code*.
+    2. Provides **Logic Automation**.  <br><br>
 
-    * For systems providing update, logic automation is critical.  It's nearly half the effort.  The promise of Low Code *requires logic automation.* 
 
-* Unlike basic GenAI, API Logic Server creates **complete microservices -- including logic automation.**  You have working software.  With GenAI, you have a database.
+* Unlike Low Code, API Logic Server
+
+    1. Eliminates tedious and complex database definition and screen painting, providing **Microservice Automation.** :bulb: 
+    2. Provides **Logic Automation**.  For systems providing update, this is critical - nearly half the effort.  The promise of Low Code *requires logic automation.*  :bulb:  
+    3. Leverages the value of **standard dev languages and tools** (IDE, source control).  All the flexibility of a framework.
+    4. Provides **deployment flexibility**, creating containers you can deploy anywhere.<br><br>
+
+
+* Unlike basic GenAI, API Logic Server creates:
+
+    1.  **Complete microservices -- including logic automation.**  You have working software.  With GenAI, you have a database.
+    2. Avoids the **FrankenPrompt.**
 
 For more information, see [the FAQs](FAQ-Low-Code.md){:target="_blank" rel="noopener"}.
 
