@@ -36,19 +36,14 @@ To create system, **provide a prompt *in business terms:***
 <summary>Create an AI Prompt file named genai_demo.prompt</summary>
 
 ```bash title="Create an AI Prompt file named genai_demo.prompt"
-Use SQLAlchemy to create a sqlite database named system/genai/temp/model.sqlite,
-with customers, orders, items and product
-
-Hints: use autonum keys, allow nulls, Decimal types, foreign keys, no check constraints.
+Create a system with customers, orders, items and products.
 
 Include a notes field for orders.
-
-Create a few rows of only customer and product data.
 
 Enforce the Check Credit requirement (do not generate check constraints):
 1. Customer.balance <= credit_limit
 2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
-3. Order.amount_total = Sum(Item.mount)
+3. Order.amount_total = Sum(Item.amount)
 4. Item.amount = quantity * unit_price
 5. Store the Item.unit_price as a copy from Product.unit_price
 ```
@@ -609,21 +604,18 @@ AI provides a solution: ***Schema Automation***.  You can use Copilot to create 
 
 !!! pied-piper "Create database definitions from Copilot"
 
-    Create a sqlite database for customers, orders, items and product
-    
-    Hints: use autonum keys, allow nulls, Decimal types, foreign keys, no check constraints.
+    Create a system with customers, orders, items and products.
 
     Include a notes field for orders.
 
-    Create a few rows of only customer and product data.
+    Enforce the Check Credit requirement (do not generate check constraints):
+    
+    1. Customer.balance <= credit_limit
+    2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
+    3. Order.amount_total = Sum(Item.amount)
+    4. Item.amount = quantity * unit_price
+    5. Store the Item.unit_price as a copy from Product.unit_price
 
-    Enforce the Check Credit requirement:
-
-    1. Customer.Balance <= CreditLimit
-    2. Customer.Balance = Sum(Order.AmountTotal where date shipped is null)
-    3. Order.AmountTotal = Sum(Items.Amount)
-    4. Items.Amount = Quantity * UnitPrice
-    5. Store the Items.UnitPrice as a copy from Product.UnitPrice
 
 Then, employ API Logic Server API and Logic Automation, and use Python and standard frameworks to finish the job.
 

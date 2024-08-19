@@ -93,7 +93,7 @@ In the [sample database](Sample-Database.md){:target="_blank" rel="noopener"}, t
 
 * advanced: if the foreign key is single-field, and ends with `id` or `_id`, the foreign key names is used:
 
-```python title='advanced relationship names`
+```python title="advanced relationship names"
 
     # parent relationships (access parent) -- example: self-referential
     # .. https://docs.sqlalchemy.org/en/20/orm/self_referential.html
