@@ -61,7 +61,7 @@ $ als genai --using=genai_demo.prompt
 ```
 &nbsp;
 
-> Unlike local installes, the manager does not automatically launch VSCode on created projects.  Proceed as noted in Step 3, below.
+> Unlike local installs, the manager does not automatically launch VSCode on created projects.  Proceed as noted in Step 3, below.
 
 
 ![Docker Manager](images/docker/VSCode/manager.png)

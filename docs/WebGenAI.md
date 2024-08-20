@@ -30,6 +30,8 @@ Please email `ApiLogicServer@gmail.com`.
 
 ## How does it work
 
+![how does it work](images/web_genai/how-does-it-work.png)
+
 Web/GenAI
 
 1. Uses GenAI APIs to create databases
