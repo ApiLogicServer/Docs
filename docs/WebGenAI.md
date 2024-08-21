@@ -1,10 +1,10 @@
 !!! pied-piper ":bulb: TL;DR - Create a running system from a Natural Language prompt - zero install"
-
-    Provide a **prompt**, and you have **instant working software:** database and API-based Web App.
     
-    * Far faster and simpler than frameworks, or Low Code database designers and screen painters.
+    **Far faster and simpler** for business users, analysts and product managers.
 
-    **Collaborate** with your colleagues.  It's on the web.  Just submit another prompt and **iterate.**
+    1. **Ideas run:** provide a **prompt**, and you have **instant working software:** database and API-based Web App.  No data design or screen painting.  Not just a wire frame.
+    
+    2. **Collaborate** with your colleagues.  It's on the web.  Just submit another prompt and **iterate.**
 
     **Build-out** your system by downloading the complete running project.
 
