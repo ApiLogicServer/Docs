@@ -163,13 +163,13 @@ Then, you might like to try out some of our [dockerized test databases](Database
 
 This pre-release includes:
 
-* Version 11.00.22
-    * See [GenAI Restart Procedures](Sample-Genai.md#genai-restart-procedures){:target="_blank" rel="noopener"}
+* Version 11.01.03
+    * Fixes some sporadic issues in Web/GenAI using Decimals.
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==11.00.22
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==11.01.03
 ```
 
 Or use (not available currently):
