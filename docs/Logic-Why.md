@@ -172,7 +172,7 @@ See also the [FAQs](FAQ-RETE.md).
 
 &nbsp;
 
-### Concise
+### Concise: Dependencies
 
 Automatic dependency management means that this logic is eliminated, so rules can be n-fold more concise as explained at the top of this page.
 
@@ -184,7 +184,7 @@ to inserts, updates and deletes to a summed column,
 rules automate _adding_, _deleting_ and _updating_ orders.
 This is how 5 rules represent the same logic as 200 lines of code.
 
-Our cocktail napkin spec is really nothing more than a set of spreadsheet-like rules that govern how to derive and constrain our data.  And by conceiving of the rules as associated with the _data_ (instead of a UI button), rules conceived for Place Order _automatically_ address these related transactions:
+Our cocktail napkin spec is conceptually similar to a set of spreadsheet-like rules that govern how to derive and constrain our data.  And by conceiving of the rules as associated with the _data_ (instead of a UI button), rules conceived for Place Order _automatically_ address these related transactions:
 
 *   add order
 * [**Ship Order**](https://github.com/valhuber/LogicBank/wiki/Ship-Order){:target="_blank" rel="noopener"} illustrates *cascade*, another form of multi-table logic
@@ -192,6 +192,8 @@ Our cocktail napkin spec is really nothing more than a set of spreadsheet-like r
 *   assign order to different customer
 *   re-assign an Order Detail to a different Product, with a different quantity
 *   add/delete Order Detail
+
+> By contrast, traditional coding requires *manual* dependency management: event handlers on order to see if the values above were changed -- very code intensive.  This ***dependency management is automated by declarative rules.***
 
 &nbsp;
 
@@ -228,7 +230,7 @@ balance = sum(order.amount_total for order in customer.orders if order.date_ship
 
 The code above implies an expensive multi-row query to read the orders for a customer.  There are several problems:
 
-* It's not even declarative - you still need to provide **depencency analysis**
+* It's not even declarative - if you must write code that determines when to call this (aka **dependency management**), your logic is procedural, not declarative.  Not concise, not ordered to facilitate maintenance, and error prone.
 * It's expensive if there are many orders
 * It doesn't even work if `order.amount_total` is not stored.  Adding up all the `Item.Amount` values - for *each* of the orders - makes in n times more expensive.
 
