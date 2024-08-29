@@ -226,8 +226,9 @@ It may be tempting to compute aggregates instead of storing them, and derive the
 balance = sum(order.amount_total for order in customer.orders if order.date_shipped is None)
 ```
 
-The code above implies an expensive multi-row query to read the orders for a customer.  There are 2 problems:
+The code above implies an expensive multi-row query to read the orders for a customer.  There are several problems:
 
+* It's not even declarative - you still need to provide **depencency analysis**
 * It's expensive if there are many orders
 * It doesn't even work if `order.amount_total` is not stored.  Adding up all the `Item.Amount` values - for *each* of the orders - makes in n times more expensive.
 
