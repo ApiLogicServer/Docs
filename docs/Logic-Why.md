@@ -170,10 +170,13 @@ While conciseness is the most immediately obvious aspect of logic, rules provide
 
 See also the [FAQs](FAQ-RETE.md).
 
+&nbsp;
+
 ### Concise
 
 Automatic dependency management means that this logic is eliminated, so rules can be n-fold more concise as explained at the top of this page.
 
+&nbsp;
 
 ### Automatic Reuse
 Just as a spreadsheet reacts
@@ -190,6 +193,7 @@ Our cocktail napkin spec is really nothing more than a set of spreadsheet-like r
 *   re-assign an Order Detail to a different Product, with a different quantity
 *   add/delete Order Detail
 
+&nbsp;
 
 ### Scalability: Prune and Optimize
 Scalability requires more than clustering - SQLs must be pruned
