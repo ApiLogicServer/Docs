@@ -10,7 +10,7 @@
 
     Rules are **architected for re-use, automatically** applied to all UI Apps, Services, and your custom APIs.
 
-    Rules are **architected for multi-table performance**, with automatic *pruning* and use of *adjustment* logic to avoid expensive aggregate queries.
+    Rules are **architected for scalable multi-table performance**, with automatic *pruning* and use of *adjustment* logic to avoid expensive aggregate queries.
 
     * Such optimizations can easily represent *multiple orders of magnitude* - contrast to [Rete engines and `iterator` verbs](#scalability-prune-and-optimize)
 
@@ -52,7 +52,7 @@ Rules are a **declarative approach** that automates remarkable amounts of backen
 | **Ordering** | Execution ordered by automatic dependency analysis | **Maintenance** - eliminates code analysis for inserting new code |
 | **Optimization** | System prunes rules, optimizes SQL | Reduces effort for **scalability** |
 
-Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](Logic-Operation.md#watch-react-chain).
+Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](Logic-Operation.md#watch-react-chain){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -60,7 +60,7 @@ Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __wa
 
 API Logic -- unique to API Logic Server -- consists of __Rules, extensible with Python.__  
 
-> Rules typically automate over **95% of such logic,** and are **40X more concise**.  Rules are conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet).
+> Rules typically automate over **95% of such logic,** and are **40X more concise**.  Rules are conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet){:target="_blank" rel="noopener"}.
 
 For this typical check credit design (in blue), the __5 rules shown below (lines 64-79) represent the same logic as [200 lines of code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}__:
 
@@ -184,7 +184,7 @@ This is how 5 rules represent the same logic as 200 lines of code.
 Our cocktail napkin spec is really nothing more than a set of spreadsheet-like rules that govern how to derive and constrain our data.  And by conceiving of the rules as associated with the _data_ (instead of a UI button), rules conceived for Place Order _automatically_ address these related transactions:
 
 *   add order
-* [**Ship Order**](https://github.com/valhuber/LogicBank/wiki/Ship-Order) illustrates *cascade*, another form of multi-table logic
+* [**Ship Order**](https://github.com/valhuber/LogicBank/wiki/Ship-Order){:target="_blank" rel="noopener"} illustrates *cascade*, another form of multi-table logic
 *   delete order
 *   assign order to different customer
 *   re-assign an Order Detail to a different Product, with a different quantity
@@ -193,14 +193,22 @@ Our cocktail napkin spec is really nothing more than a set of spreadsheet-like r
 
 ### Scalability: Prune and Optimize
 Scalability requires more than clustering - SQLs must be pruned
-and optimized.  For example, the balance rule:
+and optimized.  
+
+!!! note "When Performance Matters"
+
+    Modern computers are incredibly fast, and modern architectures can provide clustering.  Productive languages (like Python) should no longer be a concern.
+
+    That said, it is still important to consider algorithms that can incur substantial database / network overhead.  That is why the issues discussed here are important.  Experience has shown these can result in response times of ***seconds instead of minutes.***
+
+For example, the balance rule:
 
 * is **pruned** if only a non-referenced column is altered (e.g., Shipping Address)
 * is **optimized** into a 1-row _adjustment_ update instead of an
 expensive SQL aggregate
 
 For more on how logic automates and optimizes multi-table transactions,
-[click here](https://github.com/valhuber/LogicBank/wiki#scalability-automatic-pruning-and-optimization).
+[click here](https://github.com/valhuber/LogicBank/wiki#scalability-automatic-pruning-and-optimization){:target="_blank" rel="noopener"}.
 
 #### Rete engines
 
@@ -217,7 +225,7 @@ balance = sum(order.amount_total for order in customer.orders if order.date_ship
 The code above implies an expensive multi-row query to read the orders for a customer.  There are 2 problems:
 
 * It's expensive if there are many orders
-* It doesn't even work if `order.amount_total` is not stored.  Adding up all the `Item.Amount` values makes in n times more expensive.
+* It doesn't even work if `order.amount_total` is not stored.  Adding up all the `Item.Amount` values - for *each* of the orders - makes in n times more expensive.
 
 &nbsp;
 
