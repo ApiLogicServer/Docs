@@ -1,10 +1,19 @@
-!!! pied-piper ":bulb: TL;DR - n-fold Reduction of Backend Logic With Spreadsheet-like Rules"
+!!! pied-piper ":bulb: TL;DR - n-fold Reduction of Backend Logic With Declarative (Spreadsheet-like) Rules"
 
     For transaction systems, backend **multi-table constraint and derivation logic** is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**. 
     
     **Declare in Python**, debug with your IDE, extend with Python events as needed.
 
     Rules are **40X more concise than code**, and can improve quality.
+
+    Rules help **automate maintenance**, since they are automatically called and ordered.
+
+    Rules are **architected for re-use, automatically** applied to all UI Apps, Services, and your custom APIs.
+
+    Rules are **architected for multi-table performance**, with automatic *pruning* and use of *adjustment* logic to avoid expensive aggregate queries.
+
+    * Such optimizations can easily represent *multiple orders of magnitude* - contrast to [Rete engines and `iterator` verbs](#scalability-prune-and-optimize)
+
 
 ## Problem: Code Explosion
 
@@ -45,6 +54,7 @@ Rules are a **declarative approach** that automates remarkable amounts of backen
 
 Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](Logic-Operation.md#watch-react-chain).
 
+&nbsp;
 
 ### Rules: Executable Design
 
@@ -109,7 +119,6 @@ Rule.commit_row_event(on_class=models.Order, calling=congratulate_sales_rep)
 
 &nbsp;
 
-
 ## Declare, Extend, Manage
 
 Use standard tools - standard language (Python), IDEs, and tools as described below.
@@ -123,11 +132,11 @@ Rules are declared in Python, using your IDE as shown above.
 Your IDE code completion services can aid in discovering logic services.  There are 2 key elements:
 
 1. Discover _rules_ by `Rule.`
-2. Discovery _logic services_ made available through `logic_row`
+2. Discovery _logic services_ made available through [`logic_row`](Logic-Use.md#logicrow-old_row-verb-etc){:target="_blank" rel="noopener"}
 
-  > If these aren't working, ensure your `venv` setup is correct - consult the [Trouble Shooting](Troubleshooting.md#code-completion-fails) Guide.
+  > If these aren't working, ensure your `venv` setup is correct - consult the [Trouble Shooting](Troubleshooting.md#code-completion-fails){:target="_blank" rel="noopener"} Guide.
 
-You can find examples of these services in the sample `ApiLogicProject`.
+You can find examples of these services in the [sample `ApiLogicProject`](Sample-Database.md#northwind-with-logic){:target="_blank" rel="noopener"}.
 
 ![venv](images/vscode/venv.png)
 
@@ -138,40 +147,11 @@ While 95% is certainly remarkable, it's not 100%.  Automating most of the logic 
 
 That provision is standard Python, provided as standard events (lines 84-100 in the first screen shot above).  This will be typically be used for non-database oriented logic such as files and messages, and for extremely complex database logic.
 
+&nbsp;
 
+### Debugging Rules
 
-### Manage: Your IDE, SCCS
-
-The screen shot above illustrates you use your IDE (e.g., VSCode, PyCharm) to declare logic using Python, with all the familiar features of code completion and syntax high-lighting.  You can also use the debugger, and familiar Source Code Control tools such as `git`.
-
-
-
-#### Logic Debugging
-
-If we use Swagger and run `ServicesEndPoint - Post/add_order`, we get the following :
-
-![Logic Debug](images/logic/logic-debug.png)
-
-##### IDE Debugger
-
-This illustrates that you can stop in your rule logic (the red dot on line 111), and use your **IDE debugger** (here, VSCode) to see variables, step through execution, etc.
-
-##### Logic Logging
-
-In addition, the system creates a **logic log** of all rules that fire, to aid in debugging by visualizing rule execution:
-
-*   Each line represents a rule execution, showing row state (old/new values), and the _{reason}_ that caused the update (e.g., client, sum adjustment)
-*   Log indention shows multi-table chaining
-
-> Logging is performed using standard Python logging, with a logger named `logic_logger`.  Use `info` for tracing, and `debug` for additional information (e.g., a declared rules are logged).
-
-
-##### VSCode debugging
-
-In VSCode, set `"redirectOutput": true` in your **Launch Configuration.**  This directs logging output to the Debug Console, where it is not word-wrapped (word-wrap obscures the multi-table chaining).
-
-![no-line-wrap](images/docker/VSCode/no-line-wrap.png)
-
+As shown in [Logic Debugging](Logic-Use/#logic-debugging){:target="_blank" rel="noopener"}, you can use your IDE debugger to logic rules.  In addition, logic execution creates a useful Logic Log, showing the rules that execute, the row state, and nesting.
 
 &nbsp;
 
@@ -221,6 +201,25 @@ expensive SQL aggregate
 
 For more on how logic automates and optimizes multi-table transactions,
 [click here](https://github.com/valhuber/LogicBank/wiki#scalability-automatic-pruning-and-optimization).
+
+#### Rete engines
+
+Rete engines provide similar inference rules.   Experienced developers know they can be useful (e.g., Decision Tables), but should be avoided for multi-table logic.  This is because they do not - *cannot* - provide *adjustment* logic.  For more information, see [RETE](FAQ-RETE.md){:target="_blank" rel="noopener"}.
+
+#### Iterator Verbs
+
+It may be tempting to compute aggregates instead of storing them, and derive them when needed with code such as:
+
+```python title="Caution - poor practice"
+balance = sum(order.amount_total for order in customer.orders if order.date_shipped is None)
+```
+
+The code above implies an expensive multi-row query to read the orders for a customer.  There are 2 problems:
+
+* It's expensive if there are many orders
+* It doesn't even work if `order.amount_total` is not stored.  Adding up all the `Item.Amount` values makes in n times more expensive.
+
+&nbsp;
 
 ### Automatic Ordering
 

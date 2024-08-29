@@ -51,7 +51,7 @@ To get access to `old_row` and `logic_row`, specify a function, e.g.:
 
 ## LogicRow: old_row, verb, etc
 
-From the online documentation (use code completion):
+`LogicRow` is a system object you can access in declaring rules.  From the online documentation (use code completion):
 
 !!! pied-piper ":bulb: TL;DR - LogicRow provides access to `old_row`, `ins_upd_dlt` etc."
 
@@ -91,7 +91,7 @@ Use code completion to see the full list of methods and properties:
 
 &nbsp;
 
-## Inserting
+## Inserting New Rows
 
 Inserting coding depends on whether you are already in the context of a logic_row ("in logic"), or not ("in APIs and Messages").  These are described below.
 
@@ -212,3 +212,43 @@ Observe the `server_default` property.  This value is used by LogicBank, as foll
 ## Updating and Deleting
 
 These require you first obtain the row, either through a model class accessor (e.g., retrieve a parent row), or a SQLAlchemy call.  In any case, alter the row as required, and issue `logic_row.update()' (or delete).  As for insert, this triggers logic execution.
+
+&nbsp;
+
+## Managing Logic: Your IDE, SCCS
+
+[Declare Rules in your IDE](Logic-Why.md#declare-extend-manage){:target="_blank" rel="noopener"} (e.g., VSCode, PyCharm) to declare logic using Python, with all the familiar features of code completion and syntax high-lighting.  You can also use the debugger, and familiar Source Code Control tools such as `git`.
+
+&nbsp;
+
+### Logic Debugging
+
+If we use Swagger and run `ServicesEndPoint - Post/add_order`, we get the following :
+
+![Logic Debug](images/logic/logic-debug.png)
+
+#### IDE Debugger
+
+This illustrates that you can stop in your rule logic (the red dot on line 111), and use your **IDE debugger** (here, VSCode) to see variables, step through execution, etc.
+
+#### Logic Logging
+
+In addition, the system creates a **logic log** of all rules that fire, to aid in debugging by visualizing rule execution:
+
+*   Each line represents a rule execution, showing row state (old/new values), and the _{reason}_ that caused the update (e.g., client, sum adjustment)
+*   Log indention shows multi-table chaining
+
+> Logging is performed using standard Python logging, with a logger named `logic_logger`.  Use `info` for tracing, and `debug` for additional information (e.g., a declared rules are logged).
+
+
+#### VSCode debugging
+
+In VSCode, set `"redirectOutput": true` in your **Launch Configuration.**  This directs logging output to the Debug Console, where it is not word-wrapped (word-wrap obscures the multi-table chaining).
+
+![no-line-wrap](images/docker/VSCode/no-line-wrap.png)
+
+&nbsp;
+
+### Managing Logic
+
+Logic is Python code, so is managed using your existing SCSS approach (e.g., `git`), with related services for diff, merge, history, versioning, etc.
