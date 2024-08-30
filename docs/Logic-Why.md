@@ -2,17 +2,17 @@
 
     For transaction systems, backend **multi-table constraint and derivation logic** is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**. 
     
-    **Declare in Python**, debug with your IDE, extend with Python events as needed.
+    **Declare in Python**, **debug** with your IDE, **extend** with Python events as needed.
 
-    Rules are **40X more concise than code**, and can improve quality.
+    Rules are **40X more concise than code**.
 
     Rules help **automate maintenance**, since they are automatically called and ordered.
 
-    Rules are **architected for re-use, automatically** applied to all UI Apps, Services, and your custom APIs.
+    Rules are **architected for re-use, automatically applied** to all UI Apps, Services, and your custom APIs.
 
-    Rules are **architected for scalable multi-table performance**, with automatic *pruning* and use of *adjustment* logic to avoid expensive aggregate queries.
+    Rules are **architected for scalable multi-table performance**, with automatic *pruning* and use of *adjustment* logic to avoid expensive aggregate / multi-row queries.
 
-    * Such optimizations can easily represent *multiple orders of magnitude* - contrast to [Rete engines and `iterator` verbs](#scalability-prune-and-optimize)
+    * Such optimizations can easily represent *multiple orders of magnitude* - contrast to [Rete engines, ORM services and `iterator` verbs](#scalability-prune-and-optimize)
 
 
 ## Problem: Code Explosion
@@ -21,7 +21,7 @@ In conventional approaches, such logic is **nearly half the system,** due to cod
 
 Let's imagine we have a "cocktail napkin spec" for checking credit, shown (in blue) in the diagram below.  How might we enforce such logic?
 
-* In UI controllers - this is the most common choice.  It's actually the worst choice, since it offers little re-use, and does not apply to non-UI cases such as API-based application integration.
+* In UI controllers - this is the most common choice.  It's actually the worst choice, since it offers little re-use between forms, and does not apply to non-UI cases such as API-based application integration.
 
 * Centralized in the server - in the past, we might have written triggers, but a modern software architecture centralizes such logic in an App Server tier.  If you are using an ORM such as SQLAlchemy, you can _ensure sharing_ with `before_flush` events as shown below.
 
@@ -34,35 +34,22 @@ It's also incredibly repetitive - you often get the feeling you're doing the sam
 And you're right.  It's because backend logic follows patterns of "what" is supposed to happen.
 And your code is the "how". 
 
-&nbsp;
-
-## Solution: Rules
-
-So, API Logic Server provides **unique spreadsheet-like rules** for multi-table derivations and constraints, extensible with Python.
-
-&nbsp;
-
-### Rules: Declarative
-
-Rules are a **declarative approach** that automates remarkable amounts of backend logic:
-
-| Declarative &nbsp;&nbsp;&nbsp;&nbsp;Rules Automate | <br><br>Which Means | <br><br>Why It Matters |
-| :--- |:---|:---|
-| **Invocation** | Rules fire when referenced data changes<br><br>Eg., Customer balance adjusted when order amount (or Customer-id) changes | **Quality** - no missed "corner cases"<br><br>**Conciseness** - watch/react and data access code eliminated |
-| **Ordering** | Execution ordered by automatic dependency analysis | **Maintenance** - eliminates code analysis for inserting new code |
-| **Optimization** | System prunes rules, optimizes SQL | Reduces effort for **scalability** |
-
-Rules operate by listening to SQLAlchemy events.  Like a spreadsheet, rules __watch__ for changes, __react__ by automatically executing relevant rules, which can __chain__ to activate other rules.  You can [visualize the watch/react/chain process here](Logic-Operation.md#watch-react-chain){:target="_blank" rel="noopener"}.
+!!! note "So, API Logic Server provides Declarative Business Rules for multi-table derivations and constraints"
+    Rules typically automate over **95% of such logic,** and are **40X more concise**.  You can think of rules as conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet){:target="_blank" rel="noopener"}, applied to your database.  
+    
+    FIXME name change rules, and #rules-executable-design and #code-completion #debugging-rules
 
 &nbsp;
 
-### Rules: Executable Design
+## Rules: Declare, Extend, Debug
 
-API Logic -- unique to API Logic Server -- consists of __Rules, extensible with Python.__  
+Use your IDE to declare rules, extend them with Python, and debug them as described below.
 
-> Rules typically automate over **95% of such logic,** and are **40X more concise**.  Rules are conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet){:target="_blank" rel="noopener"}.
+&nbsp;
 
-For this typical check credit design (in blue), the __5 rules shown below (lines 64-79) represent the same logic as [200 lines of code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}__:
+### Declare: Python
+
+For this typical check credit design (in blue), the __5 rules shown below (lines 90-105) represent the same logic as [200 lines of code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}__:
 
 ![5 rules not 200 lines](images/logic/5-rules-cocktail.png)
 
@@ -117,41 +104,48 @@ Rule.commit_row_event(on_class=models.Order, calling=congratulate_sales_rep)
 ```
 </details>
 
+
+Notes:
+
+1. Use your **IDE code completion services** for logic declaration - just type `Rule.`  
+
+2. See here for the [list of rule types](Logic){:target="_blank" rel="noopener"}, and recommended training for learning to use rules.
+
+3. Unlike procedural code, you neither "call" the rules, nor order their execution
+
+    * The Logic Bank rule engine ensures watches SQLAlchemy updates, and ensures the relevant rules are optimized and executed in the proper order per system-discovered rule dependencies.
+
 &nbsp;
-
-## Declare, Extend, Manage
-
-Use standard tools - standard language (Python), IDEs, and tools as described below.
-
-### Declare: Python
-
-Rules are declared in Python, using your IDE as shown above.
-
-#### Code Completion
-
-Your IDE code completion services can aid in discovering logic services.  There are 2 key elements:
-
-1. Discover _rules_ by `Rule.`
-2. Discovery _logic services_ made available through [`logic_row`](Logic-Use.md#logicrow-old_row-verb-etc){:target="_blank" rel="noopener"}
-
-  > If these aren't working, ensure your `venv` setup is correct - consult the [Trouble Shooting](Troubleshooting.md#code-completion-fails){:target="_blank" rel="noopener"} Guide.
-
-You can find examples of these services in the [sample `ApiLogicProject`](Sample-Database.md#northwind-with-logic){:target="_blank" rel="noopener"}.
-
-![venv](images/vscode/venv.png)
-
 
 ### Extend: Python
 
 While 95% is certainly remarkable, it's not 100%.  Automating most of the logic is of no value unless there are provisions to address the remainder.
 
-That provision is standard Python, provided as standard events (lines 90-105 in the first screen shot above).  This will be typically be used for non-database oriented logic such as files and messages, and for extremely complex database logic.
+That provision is standard Python, provided as standard events (lines 87-100 in the `event` example, below).  This will be typically be used for non-database oriented logic such as files and messages, and for extremely complex database logic.
+
+The system provides [`logic_row`](Logic-Use.md#logicrow-old_row-verb-etc){:target="_blank" rel="noopener"} to access the `old_row`, determine the verb, etc.  For more information, see [Logic Row](Logic-Use.md#logicrow-old_row-verb-etc){:target="_blank" rel="noopener"}.
+
+<details markdown>
+
+  <summary>`event` example</summary>
+
+![venv](images/vscode/venv.png)
+
+  > If code completion isn't working, ensure your `venv` setup is correct - consult the [Trouble Shooting](Troubleshooting.md#code-completion-fails){:target="_blank" rel="noopener"} Guide.
+
+</details>
 
 &nbsp;
 
-### Debugging Rules
+### Debug: your IDE
 
 As shown in [Logic Debugging](Logic-Use/#logic-debugging){:target="_blank" rel="noopener"}, you can use your IDE debugger to logic rules.  In addition, logic execution creates a useful Logic Log, showing the rules that execute, the row state, and nesting.
+
+&nbsp;
+
+### Iterate: alter rules
+
+To iterate (debug cycles and maintenance), simply alter the rules and add new ones - in any order.  The system ensures they will be called, in the proper order.  This helps to ensure correctness, and eliminates the need to determine *where* to insert new logic.
 
 &nbsp;
 

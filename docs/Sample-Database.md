@@ -39,7 +39,7 @@ ApiLogicServer add-cust
 
 This installs:
 
-1. **Logic:** The integrity of this database is enforced with [this logic](Logic-Why.md#solution-rules-are-an-executable-design){:target="_blank" rel="noopener"}
+1. **Logic:** The integrity of this database is enforced with [this logic](Logic-Why.md##declare-python){:target="_blank" rel="noopener"}
 2. **Integration:** [this Kafka logic](Sample-Integration.md){:target="_blank" rel="noopener"}
 
 ### Add Security

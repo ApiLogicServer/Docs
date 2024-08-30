@@ -55,13 +55,13 @@ To get access to `old_row` and `logic_row`, specify a function, e.g.:
 
 !!! pied-piper ":bulb: TL;DR - LogicRow provides access to `old_row`, `ins_upd_dlt` etc."
 
-        Wraps row and old_row, plus methods for insert, update and delete - rule enforcement
+    Wraps `row` and `old_row`, plus methods for detecting insert, update and delete
 
-        Additional instance variables: ins_upd_dlt, nest_level, session, etc.
+    Additional instance variables: ins_upd_dlt, nest_level, session, etc.
 
-        Helper Methods
+    Helper Methods:
 
-            are_attributes_changed, set_same_named_attributes, get_parent_logic_row(role_name), get_derived_attributes, log, etc
+    * are_attributes_changed, set_same_named_attributes, get_parent_logic_row(role_name), get_derived_attributes, log, etc
 
 Here is an example:
 
@@ -74,6 +74,7 @@ def raise_over_20_percent(row: models.Employee, old_row: models.Employee, logic_
         return row.Salary >= Decimal('1.20') * old_row.Salary
     else:
         return True
+
 Rule.constraint(validate=models.Employee,
                 calling=raise_over_20_percent,
                 error_msg="{row.LastName} needs a more meaningful raise")
@@ -88,6 +89,8 @@ logic_row.log("no manager for this order's salesrep")
 Use code completion to see the full list of methods and properties:
 
 ![customize](images/vscode/venv.png)
+
+You can find examples of these services in the [sample `ApiLogicProject`](Sample-Database.md#northwind-with-logic){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -217,7 +220,7 @@ These require you first obtain the row, either through a model class accessor (e
 
 ## Managing Logic: Your IDE, SCCS
 
-[Declare Rules in your IDE](Logic-Why.md#declare-extend-manage){:target="_blank" rel="noopener"} (e.g., VSCode, PyCharm) to declare logic using Python, with all the familiar features of code completion and syntax high-lighting.  You can also use the debugger, and familiar Source Code Control tools such as `git`.
+[Declare Rules in your IDE](Logic-Why.md##rules-declare-extend-debug){:target="_blank" rel="noopener"} (e.g., VSCode, PyCharm) to declare logic using Python, with all the familiar features of code completion and syntax high-lighting.  You can also use the debugger, and familiar Source Code Control tools such as `git`.
 
 &nbsp;
 

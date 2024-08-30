@@ -2,7 +2,7 @@
 
 [Customize API Logic Projects](Tutorial.md#3-customize-and-debug-in-your-ide){:target="_blank" rel="noopener"} using:
 
-* **[Rules](Logic-Why.md#3){:target="_blank" rel="noopener"} and Python,** with standard Python packages, such as **Flask and SQLAlchemy**.
+* **[Rules](Logic-Why.md){:target="_blank" rel="noopener"} and Python,** with standard Python packages, such as **Flask and SQLAlchemy**.
 
 * In **your IDE**, using **standard IDE features,** such as code editors with code completion, source control, debuggers, Natural Language, etc.
 
