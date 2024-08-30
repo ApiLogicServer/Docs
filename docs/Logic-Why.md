@@ -145,7 +145,7 @@ You can find examples of these services in the [sample `ApiLogicProject`](Sample
 
 While 95% is certainly remarkable, it's not 100%.  Automating most of the logic is of no value unless there are provisions to address the remainder.
 
-That provision is standard Python, provided as standard events (lines 84-100 in the first screen shot above).  This will be typically be used for non-database oriented logic such as files and messages, and for extremely complex database logic.
+That provision is standard Python, provided as standard events (lines 90-105 in the first screen shot above).  This will be typically be used for non-database oriented logic such as files and messages, and for extremely complex database logic.
 
 &nbsp;
 

@@ -61,3 +61,5 @@
 *[Microservice]: self-contained, independently deployable, and scalable services that can be combined to create a larger application, with each service running in its own process and communicating with lightweight mechanisms, often an HTTP resource API.  Often provide an API, Logic, Data and UI.
 *[Maintenance Automation]: rules are automatically invoked across insert/delete/update stories, automatically ordered per dependencies, and automatically chain to manage complexity.
 *[maintenance automation]: rules are automatically invoked across insert/delete/update stories, automatically ordered per dependencies, and automatically chain to manage complexity.
+*[Automatic Dependency Management]: declarative logic is 1) Automatically Executed when referenced data is changed, 2) in the proper order.  This reduces code by 40X, promotes quality, and automates maintenance.
+*[dependency management]: declarative logic is 1) Automatically Executed when referenced data is changed, 2) in the proper order.  This reduces code by 40X, promotes quality, and automates maintenance.
