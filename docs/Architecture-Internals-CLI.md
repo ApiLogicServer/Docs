@@ -199,7 +199,7 @@ If you elect this option, you should see the following in the console log:
 ```
 
 #### Extensible generate from models
-The ```models.py``` file provides `resource_list` metadata used to create APIs, a basic web app, and a react-admin app (steps 31, 3b and 3c), as shown below:
+The ```models.py``` file provides `resource_list` metadata used to create APIs, the admin app, and a react-admin app (steps 31, 3b and 3c), as shown below:
 
 ![create-from-model](images/apilogicserver-ide-create-from-model.png)
 
@@ -216,7 +216,7 @@ The remaining steps make small updates to the created code to insert database na
 The main thing in `ui_admin_creator` is to create a ```admin.yaml``` file - an executable description of the pages and content.
 
 ### 3d. Create ```ui/basic_web_app``` with command: ```flask fab create-app```
-The system then creates the basic web app.  The main thing here is to create the ```views.py``` file.
+The system then creates the admin app.  The main thing here is to create the ```views.py``` file.
 
 &nbsp;
 

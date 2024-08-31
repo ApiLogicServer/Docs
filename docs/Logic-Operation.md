@@ -8,10 +8,10 @@ Logic Bank operates as shown above:
 
     a. Declare logic in `logic/declare_logic.py`.  Here is a [summary of the rule types](Logic.md)
  
-    b. The Basic Web App and JSON:API are already configured to load and execute this logic
+    b. The Admin App and JSON:API are already configured to load and execute this logic
     
     
- 2. Basic Web App and JSON:API operate as usual: makes calls on `SQLAlchemy` for inserts, updates and deletes
+ 2. Admin App and JSON:API operate as usual: makes calls on `SQLAlchemy` for inserts, updates and deletes
     and issues `session.commit()`
       
 

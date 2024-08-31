@@ -111,12 +111,11 @@ To avoid conflicts, ports are defaulted as follows:
 | For |  Port |
 |:--------------|:--------------|
 | ApiLogicServer | `5656` |
-| Basic Web App | `5002` |
 
 
 Hosts are defaulted as follows:
 
-| Installed as |  Basic Web App Host |
+| Installed as |  Host |
 |:--------------|:--------------|
 | Docker | `0.0.0.0` |
 | Local Install | `localhost` |

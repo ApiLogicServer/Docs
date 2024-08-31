@@ -36,8 +36,6 @@ And your code is the "how".
 
 !!! note "So, API Logic Server provides Declarative Business Rules for multi-table derivations and constraints"
     Rules typically automate over **95% of such logic,** and are **40X more concise**.  You can think of rules as conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet){:target="_blank" rel="noopener"}, applied to your database.  
-    
-    FIXME name change rules, and #rules-executable-design and #code-completion #debugging-rules
 
 &nbsp;
 
@@ -62,7 +60,7 @@ For this typical check credit design (in blue), the __5 rules shown below (lines
 """
 Logic Design ("Cocktail Napkin Design") for User Story Check Credit
     Customer.Balance <= CreditLimit
-    Customer.Balance = Sum(Order.AmountTotal where unshipped)
+    Customer.Balance = Sum(Order.AmountTotal where unshipped and ready)
     Order.AmountTotal = Sum(OrderDetail.Amount)
     OrderDetail.Amount = Quantity * UnitPrice
     OrderDetail.UnitPrice = copy from Product
@@ -74,7 +72,7 @@ Rule.constraint(validate=models.Customer,       # logic design translates direct
 
 Rule.sum(derive=models.Customer.Balance,        # adjust iff AmountTotal or ShippedDate or CustomerID changes
     as_sum_of=models.Order.AmountTotal,
-    where=lambda row: row.ShippedDate is None)  # adjusts - *not* a sql select sum...
+    where=lambda row: row.ShippedDate is None and row.Ready == True  # adjusts - *not* a sql select sum...
 
 Rule.sum(derive=models.Order.AmountTotal,       # adjust iff Amount or OrderID changes
     as_sum_of=models.OrderDetail.Amount)
@@ -109,7 +107,7 @@ Notes:
 
 1. Use your **IDE code completion services** for logic declaration - just type `Rule.`  
 
-2. See here for the [list of rule types](Logic){:target="_blank" rel="noopener"}, and recommended training for learning to use rules.
+2. See here for the [list of rule types](Logic.md){:target="_blank" rel="noopener"}, and recommended training for learning to use rules.
 
 3. Unlike procedural code, you neither "call" the rules, nor order their execution
 
@@ -139,7 +137,9 @@ The system provides [`logic_row`](Logic-Use.md#logicrow-old_row-verb-etc){:targe
 
 ### Debug: your IDE
 
-As shown in [Logic Debugging](Logic-Use/#logic-debugging){:target="_blank" rel="noopener"}, you can use your IDE debugger to logic rules.  In addition, logic execution creates a useful Logic Log, showing the rules that execute, the row state, and nesting.
+Test your logic by making updates using the Admin App, Swagger API documentation, cURL, etc.
+
+As shown in [Logic Debugging](Logic-Use.md#logic-debugging){:target="_blank" rel="noopener"}, you can use your IDE debugger to logic rules.  In addition, logic execution creates a useful Logic Log, showing the rules that execute, the row state, and nesting.
 
 &nbsp;
 
@@ -168,32 +168,54 @@ See also the [FAQs](FAQ-RETE.md).
 
 ### Concise: Dependencies
 
-Automatic dependency management means that this logic is eliminated, so rules can be n-fold more concise as explained at the top of this page.
+Consider the rule `Customer.Balance = Sum(Order.AmountTotal where unshipped)`.  In a procedural system, you would write dependency mangement code, checking:
+
+* Did the `Order.AmountTotal` change?
+* Did the `Order.DateShippedDate` change?
+* Was the Order inserted?
+* Was the Order deleted?
+* Did the `Order.CustomerId` (foreign key) change?
+
+**In a declarative system, dependency management is automated,** eliminating this effort.  This is a signifcant reason that rulea are n-fold more concise as explained at the top of this page.
+
+&nbsp;
+
+### Automatic Ordering
+
+While the conciseness of rules is probably their most striking aspect, automatic ordering provides significant value in automating maintenance.  In a procedural system, introducing a change requires *archaeology:* read the existing code to determine where to insert the new code.
+
+**In a declarative system, ordering is automated.**  The system parses your _derivation rules_ to determine dependencies, and uses this to order execution.  This occurs once per session on activation, so rule declaration changes automatically determine a new order.  
+
+This is significant for iterative development and maintenance, eliminating the *archaeology time* spent determining _where do I insert this new logic_.
 
 &nbsp;
 
 ### Automatic Reuse
-Just as a spreadsheet reacts
+
+In a procedural system, reuse is achieved with careful *manual* design.  **In a declarative system, reuse occurs *automatically,*** at multiple levels:
+
+* **Architectural Reuse:** rules are defined for your data, *not* a specific page or service.  They therefore to apply to all transaction sources.
+
+* **Use Case Reuse:** just as a spreadsheet reacts
 to inserts, updates and deletes to a summed column,
 rules automate _adding_, _deleting_ and _updating_ orders.
-This is how 5 rules represent the same logic as 200 lines of code.
+This results in a "design one / solve many" scenario.
 
 Our cocktail napkin spec is conceptually similar to a set of spreadsheet-like rules that govern how to derive and constrain our data.  And by conceiving of the rules as associated with the _data_ (instead of a UI button), rules conceived for Place Order _automatically_ address these related transactions:
 
 *   add order
-* [**Ship Order**](https://github.com/valhuber/LogicBank/wiki/Ship-Order){:target="_blank" rel="noopener"} illustrates *cascade*, another form of multi-table logic
+* [**Ship Order**](Behave-Logic-Report.md#scenario-set-shipped-adjust-logic-reuse){:target="_blank" rel="noopener"} illustrates *cascade*, another form of multi-table logic
 *   delete order
 *   assign order to different customer
 *   re-assign an Order Detail to a different Product, with a different quantity
 *   add/delete Order Detail
 
-> By contrast, traditional coding requires *manual* dependency management: event handlers on order to see if the values above were changed -- very code intensive.  This ***dependency management is automated by declarative rules.***
 
 &nbsp;
 
 ### Scalability: Prune and Optimize
-Scalability requires more than clustering - SQLs must be pruned
-and optimized.  
+
+In a procedural system, you write code to read and write rows, optimize such access, and bundle transactions.  **In a declarative system, persistence is automated - and optimized.**  
 
 !!! note "When Performance Matters"
 
@@ -204,8 +226,7 @@ and optimized.
 For example, the balance rule:
 
 * is **pruned** if only a non-referenced column is altered (e.g., Shipping Address)
-* is **optimized** into a 1-row _adjustment_ update instead of an
-expensive SQL aggregate
+* is **optimized** into a 1-row _adjustment_ update instead of an expensive SQL aggregate
 
 For more on how logic automates and optimizes multi-table transactions,
 [click here](https://github.com/valhuber/LogicBank/wiki#scalability-automatic-pruning-and-optimization){:target="_blank" rel="noopener"}.
@@ -227,14 +248,3 @@ The code above implies an expensive multi-row query to read the orders for a cus
 * It's not even declarative - if you must write code that determines when to call this (aka **dependency management**), your logic is procedural, not declarative.  Not concise, not ordered to facilitate maintenance, and error prone.
 * It's expensive if there are many orders
 * It doesn't even work if `order.amount_total` is not stored.  Adding up all the `Item.Amount` values - for *each* of the orders - makes in n times more expensive.
-
-&nbsp;
-
-### Automatic Ordering
-
-The system parses your _derivation rules_ to determine dependencies, and uses this to order execution.  This occurs once per session on activation, so rule declaration changes automatically determine a new order.  
-
-This is significant for iterative development and maintenance, eliminating the bulk of time spent determining _where do I insert this new logic_.
-
-#### Control for actions and constraints
-Constraint and action rules are executed in their declaration order.

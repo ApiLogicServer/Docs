@@ -273,8 +273,10 @@ Logic Phase:		AFTER_FLUSH LOGIC	(session=0x10d963020)   										 - 2024-07-12 
 **Logic Doc** for scenario: Order Made Ready
    
 This illustrates the _ready flag_ pattern:
+
 1. Add a ready flag to the Order
 2. Make logic contingent on the ready flag:
+
     * Customer.Balance is increased only if the Order is ready
     * Empty Orders are not rejected
 
