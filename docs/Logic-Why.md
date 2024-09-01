@@ -263,9 +263,11 @@ Customer.Balance = Sum(Order.AmountTotal where unshipped and ready)
 
 ### SQL: declarative read, not logic
 
-SQL itself has a `select sum()` that looks equivalent.  And, in fact, provides *decarative read*.
+SQL itself has a `select sum()` that looks equivalent.  It's a *declarative read* that you call from your *procedural code*.
 
-The difference is not the syntax, it's that the ***calling code is procedural.***  Procedural Logic robs you of all the advantages noted above: not concise, not ordered to facilitate maintenance, and error prone.
+So, the difference is not the syntax, it's that the ***calling code is procedural.***  Procedural Logic robs you of all the advantages noted above: not concise, not ordered to facilitate maintenance, and error prone.
+
+The `sum` rule is, in fact, not a "read" at all.  It's an ***end condition**, that the system guarantees will be true* when the transaction is committed.  Declarative logic is a set of such rules managed by the system - you neither call nor order them.
 
 &nbsp;
 
@@ -279,7 +281,7 @@ balance = sum(order.amount_total for order in customer.orders if order.date_ship
 
 The code above implies an expensive multi-row query to read the orders for a customer.  There are several problems:
 
-* It's often not declarative - if you must write code that determines *when* to call this (aka **dependency management**), your logic is procedural, not declarative.  .
+* It's often not declarative - if you must write code that determines *when* to call this (aka **dependency management**), your logic is *procedural,* not declarative.
 * It's expensive if there are many orders
 * It doesn't even work if `order.amount_total` is not stored.  Adding up all the `Item.Amount` values - for *each* of the orders - makes it n times more expensive.
 
