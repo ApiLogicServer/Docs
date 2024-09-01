@@ -149,6 +149,21 @@ To iterate (debug cycles and maintenance), simply alter the rules and add new on
 
 &nbsp;
 
+## Watch, React, Chain
+
+The LogicBank rule engine opertes by plugging into SQLAlchemy `beforeFLush` events, to:
+
+* **watch** for changes -  at the ___attribute___ level; for changed attributes...
+* **react** by running rules that referenced changed attributes, which can...
+* **chain** to still other attributes that refer to _those_ changes.  
+
+    * Note these might be in **different tables,** providing automation for _multi-table logic_
+    * Special optimizations are provided for performance, as [described below](#scalability-prune-and-optimize).
+
+For more information, see [Logic Operation](Logic-Operation.md#watch-react-chain){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
 ## Key Aspects of Logic
 
 While conciseness is the most immediately obvious aspect of logic, rules provide deeper value as summarized below.
@@ -162,7 +177,7 @@ While conciseness is the most immediately obvious aspect of logic, rules provide
 | Multi-Table Chaining | Multi-Table Transactions |__Simplicity:__ Eliminates and optimizes data access code |
 | Persistence | Automatic optimization |__Performance:__ Unlike Rete engines which have no concept of old values, transaction logic can prune rules for unchanged data, and optimize for adjustment logic based on the difference between old/new values.  This can literally result in sub-second performance instead of multiple minutes, and can be tuned without recoding.. |
 
-See also the [FAQs](FAQ-RETE.md).
+See also the [FAQs](FAQ-RETE.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -195,6 +210,8 @@ This is significant for iterative development and maintenance, eliminating the *
 In a procedural system, reuse is achieved with careful *manual* design.  **In a declarative system, reuse occurs *automatically,*** at multiple levels:
 
 * **Architectural Reuse:** rules are defined for your data, *not* a specific page or service.  They therefore to apply to all transaction sources.
+
+    * Internally, the LogicBank rule engine plugs into SQLAlchemy `beforeFlush` events.
 
 * **Use Case Reuse:** just as a spreadsheet reacts
 to inserts, updates and deletes to a summed column,
@@ -231,20 +248,52 @@ For example, the balance rule:
 For more on how logic automates and optimizes multi-table transactions,
 [click here](https://github.com/valhuber/LogicBank/wiki#scalability-automatic-pruning-and-optimization){:target="_blank" rel="noopener"}.
 
-#### Rete engines
+&nbsp;
 
-Rete engines provide similar inference rules.   Experienced developers know they can be useful (e.g., Decision Tables), but should be avoided for multi-table logic.  This is because they do not - *cannot* - provide *adjustment* logic.  For more information, see [RETE](FAQ-RETE.md){:target="_blank" rel="noopener"}.
+## FAQ: Similar Looking Alternatives
 
-#### Iterator Verbs
+At first glance, declarative logic looks quite similar to other familiar approaches.  But while the code may *look* similar, the differences are quite significant.
 
-It may be tempting to compute aggregates instead of storing them, and derive them when needed with code such as:
+For example, consider the rule:
+``` title="Customer Balance Rule Example"
+Customer.Balance = Sum(Order.AmountTotal where unshipped and ready)
+```
 
-```python title="Caution - poor practice"
+&nbsp;
+
+### SQL: declarative read, not logic
+
+SQL itself has a `select sum()` that looks equivalent.  And, in fact, provides *decarative read*.
+
+The difference is not the syntax, it's that the ***calling code is procedural.***  Procedural Logic robs you of all the advantages noted above: not concise, not ordered to facilitate maintenance, and error prone.
+
+&nbsp;
+
+### Iterator Verb: declarative logic?
+
+Python (and several Low Code scripting languages) provide power verbs like:
+
+```python title="Iterator Verb (caution: poor practice)"
 balance = sum(order.amount_total for order in customer.orders if order.date_shipped is None)
 ```
 
 The code above implies an expensive multi-row query to read the orders for a customer.  There are several problems:
 
-* It's not even declarative - if you must write code that determines when to call this (aka **dependency management**), your logic is procedural, not declarative.  Not concise, not ordered to facilitate maintenance, and error prone.
+* It's often not declarative - if you must write code that determines *when* to call this (aka **dependency management**), your logic is procedural, not declarative.  .
 * It's expensive if there are many orders
-* It doesn't even work if `order.amount_total` is not stored.  Adding up all the `Item.Amount` values - for *each* of the orders - makes in n times more expensive.
+* It doesn't even work if `order.amount_total` is not stored.  Adding up all the `Item.Amount` values - for *each* of the orders - makes it n times more expensive.
+
+&nbsp;
+
+### Rete: too coarse
+
+Rete engines provide similar inference rules.   Experienced developers know they can be useful (e.g., Decision Tables), but should be avoided for multi-table logic.  This is because they do not - *cannot* - provide *adjustment* logic.  For more information, see [RETE](FAQ-RETE.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+### ORM: too coarse
+
+Some ORMs (Object Relational Managers), such as Hibernate, allow similar verbs.  But again, experienced developers avoid these because they perform poorly:
+
+1. They are too coarse: a `select sum` is issued when *any* order change is made (no pruning)
+2. Cost: as above, it's expensive if there are many orders
