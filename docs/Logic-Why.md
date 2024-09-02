@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - n-fold Reduction of Backend Logic With Declarative (Spreadsheet-like) Rules"
 
-    For transaction systems, backend **multi-table constraint and derivation logic** is often nearly *half* the system.  API Logic Server automates such logic with unique **spreadsheet-like rules**. 
+    For transaction systems, backend **multi-table constraint and derivation logic** is often nearly *half* the system.  API Logic Server automates such logic with unique **declarative (spreadsheet-like) rules**, which can be extended with Python. 
     
     **Declare in Python**, **debug** with your IDE, **extend** with Python events as needed.
 
@@ -14,6 +14,15 @@
 
     * Such optimizations can easily represent *multiple orders of magnitude* - contrast to [Rete engines, ORM services and `iterator` verbs](#scalability-prune-and-optimize)
 
+This page describes:
+
+* how "code explosion" makes logic important to your project
+* how you use rules: delcare, extend, debug
+* how the rules operate: watch, react, chain
+* several key aspects of rules, and
+* how rules compare to similar-looking technologies
+
+&nbsp;
 
 ## Problem: Code Explosion
 
