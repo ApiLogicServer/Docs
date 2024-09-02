@@ -120,7 +120,7 @@ Notes:
 
 3. Unlike procedural code, you neither "call" the rules, nor order their execution
 
-    * The Logic Bank rule engine ensures watches SQLAlchemy updates, and ensures the relevant rules are optimized and executed in the proper order per system-discovered rule dependencies.
+    * The Logic Bank rule engine watches SQLAlchemy updates, and ensures the relevant rules are optimized and executed in the proper order per system-discovered rule dependencies.
 
 &nbsp;
 
@@ -155,6 +155,12 @@ As shown in [Logic Debugging](Logic-Use.md#logic-debugging){:target="_blank" rel
 ### Iterate: alter rules
 
 To iterate (debug cycles and maintenance), simply alter the rules and add new ones - in any order.  The system ensures they will be called, in the proper order.  This helps to ensure correctness, and eliminates the need to determine *where* to insert new logic.
+
+&nbsp;
+
+### Documentation and Testing
+
+Use any standard test framework for system testing.  One option is to use the [Behave framework](Behave.md){:target="_blank" rel="noopener"} to capture requirements as tests, and then execute your test suite.  API Logic server can generate a wiki [Behave Logic Report](Behave-Logic-Report.md){:target="_blank" rel="noopener"}, reflecting the requirements, including the rules that execute in each test.
 
 &nbsp;
 
