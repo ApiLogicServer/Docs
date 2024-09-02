@@ -317,3 +317,21 @@ These values are injected into the various entity and attribute to provide and s
     ("timestamp", "timestamp_template.html"),
     ("toggle", "o_slide_toggle.html")
 ```
+## Custom Templates
+Ontimize templates can be modified in the local /templates directory.  There are a few examples of using advanced template customizations.  Once the local template is changed use the 'als app-build --app={myApp}' to rebuild your entire app.  If you wish to preserve your prior customizations, we suggest building a new application and merge changes back into your customized Ontimize app.
+
+### Home Expandable Grid
+This will show the normal Home page grid but it will select the first tabgroup (onetomany) to include as an expandable grid. In the Northwind admin_model.yaml file - change the Order home_template.
+```
+    home_template: home_template_expand.html
+```
+
+### Grid Template
+This will show employees as image cards. The grid_items are the attributes to show below the image. The grid_image is the path to display the image using an href style path.
+
+```
+    home_template: grid_template.html
+    grid_items: 'LastName,FirstName,HomePhone'
+    grid_image: PhotoPath
+
+```
