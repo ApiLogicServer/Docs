@@ -114,7 +114,7 @@ Rule.commit_row_event(on_class=models.Order, calling=congratulate_sales_rep)
 
 Notes:
 
-1. Use your **IDE code completion services** for logic declaration - just type `Rule.`  
+1. Use your **IDE code completion services** for logic declaration - just type `Rule.`   Your IDE and Python combine to enable [Python as a DSL](Tech-DSL){:target="_blank" rel="noopener"}. 
 
 2. See here for the [list of rule types](Logic.md){:target="_blank" rel="noopener"}, and recommended training for learning to use rules.
 
