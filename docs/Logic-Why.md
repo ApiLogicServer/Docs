@@ -128,7 +128,7 @@ Notes:
 
 While 95% is certainly remarkable, it's not 100%.  Automating most of the logic is of no value unless there are provisions to address the remainder.
 
-That provision is standard Python, provided as standard events (lines 87-100 in the `event` example, below).  This will be typically be used for non-database oriented logic such as files and messages, and for extremely complex database logic.
+That provision is standard Python, provided as standard events:  ***Logic = Rules + Python.***  (See lines 87-100 in the `event` example, below).  This will be typically be used for non-database oriented logic such as files and messages, and for extremely complex database logic.
 
 The system provides [`logic_row`](Logic-Use.md#logicrow-old_row-verb-etc){:target="_blank" rel="noopener"} to access the `old_row`, determine the verb, etc.  For more information, see [Logic Row](Logic-Use.md#logicrow-old_row-verb-etc){:target="_blank" rel="noopener"}.
 
