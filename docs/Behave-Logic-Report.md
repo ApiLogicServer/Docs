@@ -1,7 +1,17 @@
+!!! pied-piper ":bulb: TL;DR - Executable Test Suite, Documentation"
 
-# Behave Logic Report
+      You can optionally use the Behave test framework to (here is an [Agile Approach for using Behave](Logic-Tutorial.md)) to capture requirements, and execute a test suite.  
+      
+      * As shown below, you can then create a wiki **Behave Logic Report** report that documents your requirements (**Features**), and the tests (**Scenarios**) that confirm their proper operation.
 
-This is the sample project from API Logic Server, based on the Northwind database (sqlite database located in the `database` folder - no installation required):
+        * **Integrated Logic Documentation:** the report integrates your logic, including a logic report showing your logic (rules and Python), and a Logic Log that shows exactly how the rules executed.  Logic Doc is transparent to business users, so can further contribute to Agile Collaboration.
+
+
+&nbsp;&nbsp;
+
+# Northwind Sample
+
+This is the sample project from API Logic Server, based on the [Northwind database](Sample-Database.md){:target="_blank" rel="noopener"} (sqlite database located in the `database` folder - no installation required):
 
 ![Sample Database](images/model/sample-database.png)
 
@@ -15,6 +25,7 @@ The following report was created during test suite execution.
 
 
 # Behave Logic Report
+
 &nbsp;
 &nbsp;
 ## Feature: About Sample  
