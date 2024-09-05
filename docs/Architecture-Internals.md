@@ -104,6 +104,14 @@ It is tiresome to create a `venv` for each project.  So, the system creates proj
 
 &nbsp;
 
+### Setup Required
+
+If this fails, a common error is that sra is not installed at `api_logic_server_cli/create_from_model/safrs-react-admin-npm-build`.  This can happen if the install procedure was not followed, or failed.
+
+Obtain the sra build folder, and copy it to the location above.
+
+&nbsp;
+
 ## Critical "Smoke Test"
 
 > This is the "smoke test" of API Logic Server.  In general, this should be successful prior to pushing changes.
