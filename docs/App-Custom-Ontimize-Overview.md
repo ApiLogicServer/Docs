@@ -36,14 +36,30 @@ While a separate product, Ontimize is highly integrated with API Logic Server:
 
 As you can see below, you are no longer limited to simple master/detail screens:
 
-1. A Chart (via the hamburger window)
+1. A Chart (via the hamburger window - charts on demand)
 
 ![Ontimize Chart](images/ontimize/charts.png)
 
-2. A *nested grid* example below which nests an Item grid within an Order grid:
+
+2. Card/Grid Template
+This will show employees as image cards. The grid_items are the attributes to show below the image. The grid_image is the path to display the image using an href style path.
+
+![Ontimize Grid](images/ontimize/grid.png)
+
+&nbsp;
+
+```
+    home_template: grid_template.html
+    grid_items: 'EmployeeType, LastName,FirstName,Address, Country, HomePhone'
+    grid_image: PhotoPath
+
+```
+3. A *nested grid* example below which nests an Item grid within an Order grid:
 
 ![Ontimize Nested Grid](images/ontimize/nested-grids.png)
-
+```
+ home_template: home_template_expand.html
+```
 
 &nbsp;
 
@@ -151,7 +167,7 @@ Enable Keycloak for the ALS server and Ontimize client to use:
 &nbsp;   
 ### 3b. Edit the YAML Model
 
-Edit to remove unwanted entities, order columns, set templates, etc. 
+Edit to remove unwanted entities, order columns, define column or page templates, etc. 
 
 You can edit the ui/app/app_model.yaml file directly, or use the [provided model editor gui](#model-editor).
 
@@ -324,14 +340,4 @@ Ontimize templates can be modified in the local /templates directory.  There are
 This will show the normal Home page grid but it will select the first tabgroup (onetomany) to include as an expandable grid. In the Northwind admin_model.yaml file - change the Order home_template.
 ```
     home_template: home_template_expand.html
-```
-
-### Grid Template
-This will show employees as image cards. The grid_items are the attributes to show below the image. The grid_image is the path to display the image using an href style path.
-
-```
-    home_template: grid_template.html
-    grid_items: 'LastName,FirstName,HomePhone'
-    grid_image: PhotoPath
-
 ```
