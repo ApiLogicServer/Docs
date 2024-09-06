@@ -106,3 +106,7 @@ The install sometimes fails due on machines with an older version of `pip`.  If 
 If VSCode does not find your `venv`, you can [specify it manually](https://code.visualstudio.com/docs/python/environments#_manually-specify-an-interpreter) using `Python: Select Interpreter`
 
 For more information, see [Work with Environments](https://code.visualstudio.com/docs/python/environments#_work-with-environments).
+
+### Copy Not Recommended
+
+Recommend re-creating a venv rather than moving/copying; for more information, [see here](https://stackoverflow.com/questions/7438681/how-to-duplicate-virtualenv){:target="_blank" rel="noopener"}.
