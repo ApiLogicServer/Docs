@@ -54,7 +54,9 @@ Important notes:
 
 # Verify Database Connectivity
 
-Database connectivity can be... trying.  Before attempting the SQLAlchemy connectivity discussed here, it's a best practice to make sure your computer can connec to the database server.  One possible approach is a command line utility called `telnet`.
+Database connectivity can be... trying.  We recommend, if possible, that you verify local machine operation before trying docker.
+
+Before attempting the SQLAlchemy connectivity discussed here, it's a best practice to make sure your computer can connect to the database server.  One possible approach is a command line utility called `telnet`.
 
 First, ensure your machine has telnet installed.  Consult the documentation for your OS type.  Note that Windows 11 requires this command (use Powershell, and **run as adminstrator**):
 
