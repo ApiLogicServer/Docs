@@ -1,7 +1,7 @@
 
 !!! pied-piper ":bulb: TL;DR - Configure Containers with env variables"
 
-    Containers are most commonly configured by environment variables, either in docker files, docker compose files, env files, or command line arguments.  The most common configuration parameters govern database / port locations - [click here](#overrides-env-variables).
+    Containers are most commonly configured by environment variables, either in docker files, docker compose files, env files, or command line arguments.  The most common configuration parameters govern database / port locations - [click here](#overridden-by-env-variables).
 
 &nbsp;
 
@@ -80,7 +80,7 @@ Configuration parameters enable you to specify hosts and ports, database locatio
 
 ### Database Locations
 
-SQLAlchemy database URIs are set in your `conf/config.py`` file, from your creation CLI arguments.  They apply to target database(s), and the authentication database.  For example:
+SQLAlchemy database URIs are set in your `conf/config.py` file, from your creation CLI arguments.  They apply to target database(s), and the authentication database.  For example:
 
 ```python
     SQLALCHEMY_DATABASE_URI : typing.Optional[str] = f"mysql+pymysql://root:p@localhost:3306/classicmodels"
@@ -136,13 +136,13 @@ ApiLogicServer create --project_name=~/dev/servers/api_logic_server \
 
 &nbsp;
 
-### Overrides: Config.py
+### Overridden by: Config.py
 
 As noted above, the defaults are stored in the `conf/config.py` file.  You can override these values as required.
 
 &nbsp;
 
-### Overrides: Logic Project CLI
+### Overridden by: run args
 
 When you run created applications, you can provide API Logic ***Project*** arguments to override the defaults.  Discover the arguments using `--help`:
 
@@ -185,9 +185,15 @@ For example, 127.0.0.1 (localhost) or 0.0.0.0 (any interface) only have meaning 
 
 Also, it's possible to map hostname->IP DNS entries manually in /etc/hosts, but users on other computers are not aware of that mapping.
 
-### Overrides - env variables
+### Overridden by: env variables
 
 A common approach for host, port and database configuration is to use env variables.  These can be set in your OS, or container options such as env files or docker compose.  
+
+!!! note "Best Practice: env variables"
+    
+    We recommend the use of environmental variables when running Docker containers.
+
+    You can see the env variables in the sample `env_list` file - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/env.list){:target="_blank" rel="noopener"}.  
 
 The names of the variables are those noted used in the `conf/config.py` file, **preceded by** `APILOGICPROJECT_`[^1].  These values override both the `conf/config.py` values and the Api Logic Project CLI arguments.
 
@@ -216,14 +222,46 @@ export APILOGICPROJECT_SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:p@localhost:
 
 To see a list of typical env variables, [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/env.list){:target="_blank" rel="noopener"}.
 
+&nbsp;
 
-The example below illustrates you can store such variables in a `devops/docker-image/env.list` file (be sure to edit these - they are to confirm settings during initial testing):
+#### Docker project `env.list` file
+
+The example below illustrates you can store such variables in a `classicmodels/devops/docker-image/env.list` file (be sure to edit these - the current values are commented out, intended to confirm settings during initial testing).  Some of the most common settings are noted below:
+
+```python title="env.list env variables - initially commented out"
+
+# ip to which flask will be bound (default: 0.0.0.0)
+# APILOGICPROJECT_FLASK_HOST=flask-host-e
+
+# port (Flask) (default: 5656)
+# APILOGICPROJECT_PORT=port-e
+
+# ip clients use to access API (default: localhost)
+# APILOGICPROJECT_SWAGGER_HOST=swagger-host-e
+
+# swagger port (eg, 443 for codespaces) (default: 5656)
+# APILOGICPROJECT_SWAGGER_PORT=swagger-port-e
+
+# http or https (default: http)
+# APILOGICPROJECT_HTTP_SCHEME=http-scheme-e
+
+# APILOGICPROJECT_HTTP_SCHEME=http
+
+# for reverse proxy cases where the entire URI must be specified
+# APILOGICPROJECT_CLIENT_URI=httpe://hoste:porte
+```
+
+<details markdown>
+
+<summary> Env variables in the `env.list` file </summary>
+
+APILOGICPROJECT_SWAGGER_PORT
 
 ![Running image locally](images/docker/container-run.png)
 
-### Debugging
+</details>
 
-You can see the env variables in the sample `env_list` file - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/env.list){:target="_blank" rel="noopener"}.
+### Debugging
 
 Use the `APILOGICPROJECT_VERBOSE` to log the values to the console log.
 

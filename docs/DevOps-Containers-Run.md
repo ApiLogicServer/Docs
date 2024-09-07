@@ -22,7 +22,7 @@ sh devops/docker-image/run_image.sh run_image.sh
 
 #### `environment` variables
 
-Note you can use **env variables** to configure your servers and ports.  For more information, [click here](DevOps-Container-Configuration.md#overrides-env-variables){:target="_blank" rel="noopener"}.
+Note you can use **env variables** to configure your servers and ports.  For more information, [click here](DevOps-Container-Configuration.md#overridden-by-env-variables){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

@@ -120,7 +120,7 @@ Your project includes a suggested `.gitignore` file (alter as desired).  You can
 
 ### 6. Configuration, env variables
 
-Most deployment procedures discourage database names / passwords to be in project files and GitHub, instead preferring to specify these via `env` variables; [click here for more information](DevOps-Container-Configuration.md/#overrides-env-variables){:target="_blank" rel="noopener"}
+Most deployment procedures discourage database names / passwords to be in project files and GitHub, instead preferring to specify these via `env` variables; [click here for more information](DevOps-Container-Configuration.md/#overridden-by-env-variables){:target="_blank" rel="noopener"}
 
 &nbsp;
 
