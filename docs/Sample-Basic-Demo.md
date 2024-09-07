@@ -7,8 +7,10 @@ version: 0.10 from docsite
 See how to build a complete database system -- in minutes instead of weeks or months:
 
 1. **An API**, and, we'll add ui and logic to make it a microservice...
-2. **Logic and Security:** multi-table constraints and derivations, and role-based security
+2. **Logic and Security:** multi-table constraints and derivations, role-based security, and application integration
 3. **An Admin App:** and finally, a multi-page, multi-table web app
+
+&nbsp;
 
 We'll use API Logic Server (open source), providing:
 
@@ -18,7 +20,7 @@ We'll use API Logic Server (open source), providing:
 | **Customization** | Declarative logic and security <br> 5 rules vs. 200 lines of Python | 40X less backend code |
 | **Iteration** | Revise the data model, and <br>Add rules, plus Python | Iterative development <br> Extensiblity with Python |
 
-The entire process takes 10 minutes, instead of several weeks using traditional development.
+The entire process takes 20 minutes, instead of several weeks using traditional development.
 
 You can use this article in several ways:
 
@@ -318,7 +320,39 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 
 ## Appendix: Database Schema
 
+Initial version:
+
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true" width="500">
+
+End version:
+
+<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model_end.png?raw=true" width="500">
+
+&nbsp;
+
+## Appendix: Quick Basic Demo
+
+This is a "cheat sheet" for experienced ALS users, e.g., to show your colleagues:
+
+```bash title="Quick Basic Demo"
+
+# Microserice Automation
+# Admin App, API, Project
+als create --project-name=basic_demo --db-url=basic_demo
+
+# Logic and Security
+# see logic (logic/declare_logic.py, logic/cocktail-napkin.jpg);  add an Order and Item
+# see security (security/declare_security.py); compare customers, s1 vs. admin
+als add-cust
+als add-auth --project_name=. --db_url=auth
+
+# Python Extensibility
+# see logic/declare_logic.py (breakpoint for Kafka)
+# Swagger: ServicesEndPoint.OrderB2B
+als add-cust
+als rebuild-from-database --db_url=sqlite:///basic_demo/database/db.sqlite
+
+
 
 &nbsp;
 
