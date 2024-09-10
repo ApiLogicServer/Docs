@@ -336,7 +336,7 @@ This is a "cheat sheet" for experienced ALS users, e.g., to show your colleagues
 
 ```bash title="Quick Basic Demo"
 
-# Microserice Automation
+# Microservice Automation
 # Admin App, API, Project
 als create --project-name=basic_demo --db-url=basic_demo
 
@@ -344,15 +344,14 @@ als create --project-name=basic_demo --db-url=basic_demo
 # see logic (logic/declare_logic.py, logic/cocktail-napkin.jpg);  add an Order and Item
 # see security (security/declare_security.py); compare customers, s1 vs. admin
 als add-cust
-als add-auth --project_name=. --db_url=auth
+als add-auth --db_url=auth
 
-# Python Extensibility
+# Python Extensibility, Kafka Integration, Rebuild Iteration
 # see logic/declare_logic.py (breakpoint for Kafka)
 # Swagger: ServicesEndPoint.OrderB2B
 als add-cust
-als rebuild-from-database --db_url=sqlite:///basic_demo/database/db.sqlite
-
-
+als rebuild-from-database --db_url=sqlite:///database/db.sqlite
+```
 
 &nbsp;
 
