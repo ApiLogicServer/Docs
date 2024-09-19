@@ -82,8 +82,8 @@ Review the altered files, edit (if required), and copy them over the original fi
 
 As of release 5.02.03, created API Logic Projects integrate [Alembic](https://alembic.sqlalchemy.org/en/latest/index.html) to perform database migrations.
 
-* Manual: create migration scripts by hand, or
 * Autogenerate: alter your `database/models.py`, and have alembic create the migration scripts for you
+* Manual: create migration scripts by hand, or
 
 Preconfiguration includes:
 
@@ -91,4 +91,37 @@ Preconfiguration includes:
 * configured `database/alembic/env.py` for autogenerations
 * configured `database/alembic.ini` for directory structure
 
-See the `readme` in your `database/alembic` for more information.
+You can Alembic in a more-automated *Autogenerate* mode, or *Manual*, as described below.  Then, use `rebuild-from-model` as described above.
+
+#### Autogenerate
+
+The diagram below illustrates a simple path for enacting changes to the data model, and using alembic to automate the database changes:
+
+1. Update `database/models.py` (e.g., add columns, tables)
+2. Use alembic to compute the revisions
+```bash
+cd database
+alembic revision --autogenerate -m "Added Tables and Columns"
+```
+3. Edit the revision file to signify your understanding
+4. Activate the change
+```bash
+alembic upgrade head 
+```
+
+![alembic example](images/database/alembic/alembic-overview.png)
+
+
+#### Manual
+As described in the [Tutorial](https://alembic.sqlalchemy.org/en/latest/tutorial.html):
+```
+cd database
+alembic revision -m "my revision"
+```
+This will create `database/alembic/versions/xxx_my_revision.py`.
+* edit the `upgrade()` and `downgrade()` functions as shown in the Tutorial
+
+Then, to run the script
+```
+alembic upgrade head
+```
