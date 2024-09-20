@@ -46,8 +46,6 @@ This will show employees as image cards. The grid_items are the attributes to sh
 
 ![Ontimize Grid](images/ontimize/grid.png)
 
-&nbsp;
-
 ```
     home_template: grid_template.html
     grid_items: 'EmployeeType, LastName,FirstName,Address, Country, HomePhone'
@@ -57,6 +55,9 @@ This will show employees as image cards. The grid_items are the attributes to sh
 3. A *nested grid* example below which nests an Item grid within an Order grid:
 
 ![Ontimize Nested Grid](images/ontimize/nested-grids.png)
+&nbsp;
+This will show the normal Home page grid but it will select the first tabgroup (onetomany) to include as an expandable grid. In the Northwind admin_model.yaml file - change the entity Order home_template.
+
 ```
  home_template: home_template_expand.html
 ```
@@ -335,9 +336,3 @@ These values are injected into the various entity and attribute to provide and s
 ```
 ## Custom Templates
 Ontimize templates can be modified in the local /templates directory.  There are a few examples of using advanced template customizations.  Once the local template is changed use the 'als app-build --app={myApp}' to rebuild your entire app.  If you wish to preserve your prior customizations, we suggest building a new application and merge changes back into your customized Ontimize app.
-
-### Home Expandable Grid
-This will show the normal Home page grid but it will select the first tabgroup (onetomany) to include as an expandable grid. In the Northwind admin_model.yaml file - change the Order home_template.
-```
-    home_template: home_template_expand.html
-```
