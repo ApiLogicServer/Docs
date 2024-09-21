@@ -1,4 +1,4 @@
-Welcome to API Logic Server documentation.  In sufficent large browsers, the pages are shown at left, and the page contents are at right.
+Welcome to API Logic Server documentation.  In sufficently large browsers, the pages are shown at left, and the page contents are at right.
 
 
 # Start: Install, Samples, Training
