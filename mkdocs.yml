@@ -91,6 +91,7 @@ nav:
   - "Customize Using Your IDE": IDE-Customize.md
   - Database:
     - "Connection Examples, Debug": Database-Connectivity.md
+    - "Database Diagram": Database-Diagram.md
     - "Sample Databases": Data-Model-Examples.md
     - "Docker Test Databases": Database-Docker.md
     - Data-Model-Classes.md
