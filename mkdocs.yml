@@ -14,6 +14,10 @@ theme:
     - navigation.footer
 nav:
   - " ": index.md
+  - GenAI:
+    - "GenAI Website": GenAI.md
+    - "GenAI CLI": GenAI-CLI.md    
+    - "Sample": Sample-Genai.md
   - Quick Start:
     - Doc-Home.md
     - Express Install: Install-Express.md
