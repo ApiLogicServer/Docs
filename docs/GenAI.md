@@ -1,4 +1,4 @@
-!!! pied-piper ":bulb: TL;DR - Create Microservice from Natural Language Prompt"
+!!! pied-piper ":bulb: TL;DR - Create Microservice from Natural Language Prompt Using website"
 
     API Logic Server / GenAI is a [website]() that accepts a Natural Language prompt (e.g, CRM system), and produces:
 
@@ -6,7 +6,7 @@
     * a project you can download and customize in your IDE using rules and python
     * deploy as a container using automatically generated scripts.
 
-    API Logic Server / GenAI uses 
+    API Logic Server / GenAI uses:
     
     * GenAI services for data model creation, and 
     * API Logic Server for project creation.
