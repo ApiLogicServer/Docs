@@ -49,6 +49,8 @@ You can use either conversation-directory
 
 1. add a new prompt to this directory (above, using the manager's directory)
 
+    * Note: here we provided the prompt (*add payments*) in the argument; alternatively, we could have added an `conv002.prompt`.
+
 2. use `als genai-iterate --using=conversation-directory`
 
 This will recreate the project based on the existing context.
