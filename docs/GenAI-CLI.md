@@ -49,7 +49,10 @@ You can use either conversation-directory
 
 1. add a new prompt to this directory (above, using the manager's directory)
 
-    * Note: here we provided the prompt (*add payments*) in the argument; alternatively, we could have added an `conv002.prompt`.
+    * Note: here we provided the prompt (*add payments*) in the argument (see 2nd highlit cli command in the figure above); alternatively, we could have:
+    
+        1. added a file: `system/genai/temp/conv/conv002.prompt`
+        2. used: `als genai --using=system/genai/temp/conv`
 
 2. use `als genai-iterate --using=conversation-directory`
 
