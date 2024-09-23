@@ -44,6 +44,7 @@ nav:
     - "Create": Project-Structure.md
     - "Manager": Manager.md
     - "Create with Gen/AI on Web": WebGenAI.md
+    - "Model Driven": Tech-DSL.md
     - "Create With Copilot": Project-Create-Copilot.md
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
@@ -158,7 +159,6 @@ nav:
     - "Sample AI Demo ChatGPT": Sample-AI-ChatGPT.md
     - "AI-driven Auto mysql": Tech-AI-mysql.md
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
-    - "Python as a DSL": Tech-DSL.md
     - Tech-Budget-App.md
     - "Python Tips": Tech-Python.md
     - "CodeSpaces": Tech-CodeSpaces.md
