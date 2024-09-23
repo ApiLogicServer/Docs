@@ -8,7 +8,7 @@
 
 Use the debugger as shown below.  Note you can stop in lambda functions.
 
-![Logic Debugger](images/logic/logic-debug.png)
+![Logic Debugger](images/logic/logic-debug-cc.png) 
 
 &nbsp;
 
