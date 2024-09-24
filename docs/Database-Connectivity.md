@@ -218,6 +218,12 @@ See [discussion above](#northwind-sqlserver-docker).
 
 &nbsp;
 
+## DB Browser for SQLite
+
+Quite a nice tool [for sqlite](https://sqlitebrowser.org){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
 # PythonAnywhere
 
 PythonAnyWhere provides the ability to create and connect to databases.  For example, create a project like this from within PythonAnyWhere:
