@@ -58,7 +58,16 @@ You can use either conversation-directory
 
 This will recreate the project based on the existing context.
 
-> In both cases, the target project is recreated.  If you have customized the project, do not use GenAI, iterate your project as shown in [Database Design Changes](Database-Changes.md){:target="_blank" rel="noopener"}.
+&nbsp;
+
+### Customized Project Sync
+
+In the prior section, the result was a recreated project.  If you have customized the project, you can preserve your customizations as follows:
+
+1. Copy `database/models.py` and `db.sqlite` from the GenAI to your customized project
+2. In your customized project, use `als rebuild-from-model` 
+
+    * For further infomration, see [Database Design Changes](Database-Changes.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
