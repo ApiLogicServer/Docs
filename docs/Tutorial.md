@@ -323,6 +323,13 @@ Just as you can customize apis, you can complement rule-based logic using Python
 &nbsp;
 > **Key Takeway -  Extensible Rules, Kafka Message Produced**<br>Rule-based logic is extensible with Python, here producing a Kafka message with 20 lines of code.
 
+
+&nbsp;
+
+### 3.e Customize the Data Model
+
+You can also alter the data model, while preserving customizations.  For more information, see [Database Design Changes](https://apilogicserver.github.io/Docs/Database-Changes/).
+
 &nbsp;
 
 ## Testing

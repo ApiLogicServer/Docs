@@ -41,6 +41,8 @@ The [Data Model Classes](Data-Model-Classes.md){:target="_blank" rel="noopener"}
 
 See [rebuild](Project-Rebuild.md){:target="_blank" rel="noopener"} for more information.
 
+The system also creates a [database diagram](Database-Diagram.md){:target="_blank" rel="noopener"}.
+
 ### 2. API
 
 The [JSON:API](API.md){:target="_blank" rel="noopener"} is driven by the model classes, so is very short.
