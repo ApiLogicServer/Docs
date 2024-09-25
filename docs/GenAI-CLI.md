@@ -47,7 +47,7 @@ You can iterate interative prompts, or by adding files to the  manager's `system
 
 &nbsp;
 
-### Conversations - interative
+### Conversations - Interative
 
 The figure below creates and iterates a project, using the manager:
 
@@ -71,8 +71,7 @@ Alternatively, you can iterate projects by adding files to Manager's temp direct
 als genai --using=system/genai/temp/conv
 ```
 
-
-This will recreate the project based on the existing context.
+This will recreate the project based on the existing context.  The project name is the last node of the directory name, here, *conv*.
 
 &nbsp;
 
