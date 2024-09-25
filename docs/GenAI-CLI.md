@@ -20,7 +20,7 @@
 To use GenAI to create projects
 
 1. Establish your virtual environment (suggestion: [use the Manager](Manager.md){:target="_blank" rel="noopener"})
-2. Provide a prompt in either a file, or a CLI argument:
+2. Provide a prompt in either a file (`als genai`), or a CLI argument (`als genai-create`):
 
 ```bash title='Project creation with GenAI'
 als genai --using=system/genai/examples/genai_demo/genai_demo.prompt
@@ -43,18 +43,34 @@ When you create a project, the API Logic Server / GenAI saves your prompt and re
 
 * the created project's `doc` directory.
 
+You can iterate interative prompts, or by adding files to the  manager's `system/genai/temp/<project>` directory.
+
+&nbsp;
+
+### Conversations - interative
+
+The figure below creates and iterates a project, using the manager:
+
+```bash title='create and iterate project with interactive prompts using genai-iterate'
+als genai-create -project-name=conv —-using='customer orders'
+als genai-iterate —-project-name=conv —using='add payments'
+```
+
 ![GenAI Automation](images/web_genai/conversations.png)
 
-You can use either conversation-directory
+&nbsp;
 
-1. add a new prompt to this directory (above, using the manager's directory)
+### Conversations - Files
 
-    * Note: here we provided the prompt (*add payments*) in the argument (see 2nd highlit cli command in the figure above); alternatively, we could have:
+Alternatively, you can iterate projects by adding files to Manager's temp directory:
     
-        1. added a file: `system/genai/temp/conv/conv002.prompt`
-        2. used: `als genai --using=system/genai/temp/conv`
+1. Add a file: `system/genai/temp/conv/conv002.prompt` (contents: "add payments")
+2. Iterate
 
-2. use `als genai-iterate --using=conversation-directory`
+```bash title='iterate project using files (Note: genai, not genai-iterate)'
+als genai --using=system/genai/temp/conv
+```
+
 
 This will recreate the project based on the existing context.
 
@@ -62,12 +78,12 @@ This will recreate the project based on the existing context.
 
 ### Customized Project Sync
 
-In the prior section, the result was a recreated project.  If you have customized the project, you can preserve your customizations as follows:
+In the prior section, the result was a *recreated* project.  If you have customized the project, you can preserve your customizations as follows:
 
 1. Copy `database/models.py` and `db.sqlite` from the GenAI to your customized project
 2. In your customized project, use `als rebuild-from-model` 
 
-    * For further infomration, see [Database Design Changes](Database-Changes.md){:target="_blank" rel="noopener"}.
+    * For further information, see [Database Design Changes](Database-Changes.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
