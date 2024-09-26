@@ -29,6 +29,8 @@ als genai --using=system/genai/examples/genai_demo/genai_demo.prompt
 als genai-create --project-name='customer_orders' --using='customer orders'
 ```
 
+Projects are created in the currrent working directory, here, the manager.
+
 &nbsp;
 
 ## Conversations vs. resubmit
@@ -63,9 +65,6 @@ als genai-iterate —-project-name=conv —using='add payments'
 ### Conversations - Files
 
 Alternatively, you can iterate projects by adding files to Manager's temp directory:
-    
-1. Add a file: `system/genai/temp/conv/conv002.prompt` (contents: "add payments")
-2. Iterate
 
 ```bash title='iterate project using files (Note: genai, not genai-iterate)'
 als genai-create --project-name=conv --using='customer orders'
