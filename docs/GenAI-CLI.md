@@ -68,6 +68,8 @@ Alternatively, you can iterate projects by adding files to Manager's temp direct
 2. Iterate
 
 ```bash title='iterate project using files (Note: genai, not genai-iterate)'
+als genai-create --project-name=conv --using='customer orders'
+echo "add payments" | cat >> system/genai/temp/conv/conv_002.prompt
 als genai --using=system/genai/temp/conv
 ```
 
