@@ -72,7 +72,9 @@ echo "add payments" | cat >> system/genai/temp/conv/conv_002.prompt
 als genai --using=system/genai/temp/conv
 ```
 
-This will recreate the project based on the existing context.  The project name is the last node of the directory name, here, *conv*.
+The project name can be provided with the `--project-name` argument (as of release 11.02.01).  If omitted, it is defaulted to the last node of the directory name, here, *conv*.
+
+This will recreate the project based on the existing context.  See the next section, below.
 
 &nbsp;
 

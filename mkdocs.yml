@@ -15,8 +15,9 @@ theme:
 nav:
   - " ": index.md
   - GenAI:
-    - "GenAI Website": GenAI.md
-    - "GenAI CLI": GenAI-CLI.md    
+    - "GenAI Website": WebGenAI.md
+    - "GenAI Life Cycle": WebGenAI-About.md    
+    - "GenAI CLI": WebGenAI-CLI.md    
     - "Sample": Sample-Genai.md
   - Quick Start:
     - Doc-Home.md
