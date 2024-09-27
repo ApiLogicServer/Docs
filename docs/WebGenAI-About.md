@@ -18,7 +18,9 @@ Which leads to our premise:
 
 ## Life Cycle
 
-As shown in the Life Cycle outline below, this approach is complimentary to your existing UI Dev tools such as UI frameworks or Low Code Screen Painters.  
+As shown in the Life Cycle outline below, this approach is complimentary to your existing UI Dev tools such as UI frameworks or Low Code Screen Painters. 
+
+* In addition to existing UI Dev tools, please explore automation support for [Ontimize](App-Custom-Ontimize-Overview.md){:target="_blank" rel="noopener"}.
 
 As illustrated by the green graphics below, we seek to provide value in the Inception Phase (get the requirements right), and for backend development. 
 
