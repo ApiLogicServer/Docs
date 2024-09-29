@@ -41,26 +41,25 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 ## About
 
 <details markdown>
-</br>
 
 <summary>1. Instant Working Software - Get the Requirements Right</summary>
 
-Automation has turned your prompt into a microservice: a working **application**, and a **standard API.**
+Automation has turned your prompt into a microservice: a **database**, a working **application**, and a **standard API.**
 
 It simply cannot be faster or simpler.
 
 * Eliminate weeks to months of complex framework coding, db design, or screen painting.  
+* Far more effective than 'dead` wireframes, you can...
 
-* Iterate 15 times... before lunch.
+    * Collaborate with stakeholders using Working Software, live data
 
-</br>
+    * Iterate 15 times... before lunch.
 
 </details>
 
 </br>
 
 <details markdown>
-</br>
 
 <summary>2. Microservice Development - Declarative Rules and Python in your IDE</summary>
 
@@ -74,13 +73,10 @@ The speed and simplicity of AI, plus all the flexibility of a framework.
 
 * [Declarative business logic](https://apilogicserver.github.io/Docs/Logic-Why/): multi-table constraints and derivations using ***unique rules*** that are 40X more concise than code, extensible with Python<br>
 
-<br>
-
 </details>
 </br>
 
 <details markdown>
-</br>
 
 <summary>3. Deploy - Standard container, no fees, no lock-in</summary>
 
