@@ -98,7 +98,7 @@ You can explore the created microservice on your own computer.
 
 2. Executable Docker Image
 
-    * The website provides a docker command to run the created project.
+    * The website provides a docker command to run the created project
 
 
 &nbsp;
