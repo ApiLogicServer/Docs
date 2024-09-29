@@ -15,42 +15,26 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 [![API Logic Server Intro](images/hero-banner-wg.png)](Doc-Home.md "Click for Docs, Getting Started")
 
-    
-
-## Example
-
-Enter a prompt describing the system you have in mind:
-
-![create](images/web_genai/create.png)
-
-The system creates and executes this multi-page application and API.  It is live, including test data, so can evalute your business idea and iterate.
-
-![run](images/web_genai/run.png)
 
 &nbsp;
 
-## Contact for full access
+## Video
 
-To create unlimited projects in your environment, contact `ApiLogicServer@gmail.com` for a free docker image, and project support.
+To use GenAI:
 
-&nbsp;
+1. Provide a prompt, and
+2. The system creates a microservice: a database, an API, and a multi-page application.  
 
-## Develop
+  * Review the project - running screens - with data - and the database diagram
+  * Iterate to ***get the requirements right***
 
-You can explore the created microservice on your own computer.
+3. Download the project to continue development
 
-1. [Download]() your project (customize in your IDE to add logic & security)
+**Click** the image below to watch a 3 minute video:
 
-    * Observe the project is a set of [models]() - not a huge pile of difficult-to-understand code
-
-2. Executable Docker Image
-
-    * The website provides a docker command to run the created project.
-
-</br>
+[![Web/GenAI Automation](images/web_genai/wg-1280x720.png)](https://youtu.be/miOj00SiGxQ "Microservice Automation"){:target="_blank" rel="noopener"}
 
 ## About
-
 
 <details markdown>
 </br>
@@ -74,7 +58,7 @@ It simply cannot be faster or simpler.
 <details markdown>
 </br>
 
-<summary>2. Customize - Declarative Rules and Python in your IDE</summary>
+<summary>2. Microservice Development - Declarative Rules and Python in your IDE</summary>
 
 The speed and simplicity of AI, plus all the flexibility of a framework.  
 
@@ -102,16 +86,26 @@ There are no runtime fees, no lock-in.
 
 </details>
 </br>
+&nbsp;
 
-To create unlimited projects on your cloud/network, contact `apilogicserver@gmail.com` for a free docker image, and project support.
+## Develop
+
+You can explore the created microservice on your own computer.
+
+1. [Download]() your project (customize in your IDE to add logic & security)
+
+    * Observe the project is a set of [models]() - not a huge pile of difficult-to-understand code
+
+2. Executable Docker Image
+
+    * The website provides a docker command to run the created project.
+
 
 &nbsp;
 
-## Video
+## Contact for full access
 
-Provide a prompt, and the system creates a microservice: a database, an API, and a multi-page application.  **Click** the image below to watch a 3 minute video:
-
-[![Web/GenAI Automation](images/web_genai/wg-1280x720.png)](https://youtu.be/miOj00SiGxQ "Microservice Automation"){:target="_blank" rel="noopener"}
+To create unlimited projects in your environment, contact `ApiLogicServer@gmail.com` for a free docker image, and project support.
 
 &nbsp;
 
@@ -124,3 +118,41 @@ Notes reqarding prompts:
 2. You can *iterate* your prompt to include more tables etc, while preserving the design you have already created.
 
   * This enables you to break your system down into a set of "Use Cases", solving one at a time, and integrating back to the others.
+
+&nbsp;
+
+## Context
+
+This explains the premise behind GenAI, and how it fits into a project life cycle.
+
+&nbsp;
+
+### Why GenAI
+
+A common project experience is:
+
+* Weeks (or months) to get running screens
+* Then, when Business Users explore the screens, it becomes clear there were basic misunderstandings
+
+Which leads to our premise:
+
+1. **Instant screens** (Agile "Working Software"); collaborate, and iterate to ***get the requirements right***
+2. Kickstart the project with a **solid backend** - a Database, API and Logic from declarative / Natural Language models
+
+    * Logic in particular is key: security and multi-table derivations / constraints constitute as much as half your project: declarative rules make them 40X more concise  &nbsp; :trophy:
+
+    * The remaining logic is built in your IDE using standard Python, providing the speed and simplicity of AI - including logic - with the flexibility of a framework
+
+&nbsp;
+
+### Life Cycle
+
+As shown in the Life Cycle outline below, this approach is complementary to your existing UI Dev tools such as UI frameworks or Low Code Screen Painters. 
+
+* In addition to existing UI Dev tools, please explore automation support for [Ontimize](App-Custom-Ontimize-Overview.md){:target="_blank" rel="noopener"}.
+
+As illustrated by the green graphics below, we seek to provide value in the Inception Phase (get the requirements right), and for backend development. 
+
+![life-cycle](images/web_genai/life-cycle.png)
+
+&nbsp;

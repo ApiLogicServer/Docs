@@ -16,7 +16,6 @@ nav:
   - " ": index.md
   - GenAI:
     - "GenAI Website": WebGenAI.md
-    - "GenAI Life Cycle": WebGenAI-About.md    
     - "GenAI CLI": WebGenAI-CLI.md    
     - "Sample": Sample-Genai.md
   - Quick Start:
