@@ -1,6 +1,8 @@
 ---
 title: Fast App GenAI
-Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps, Microservice
+hide:
+  - navigation
+Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps, Microservice, Declarative
 ---
 <style>
   .md-typeset h1,
@@ -106,6 +108,8 @@ You can explore the created microservice on your own computer.
 ## Contact for full access
 
 To create unlimited projects in your environment, contact `ApiLogicServer@gmail.com` for a free docker image, and project support.
+
+The underlying services are also available in the [genai CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
