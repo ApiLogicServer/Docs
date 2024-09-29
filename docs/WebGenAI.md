@@ -20,9 +20,9 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 &nbsp;
 
-## Video
+## Access GenAI
 
-To use GenAI:
+***[Access the site here]()*** to use GenAI:
 
 1. Provide a prompt, and
 2. The system creates a microservice: a database, an API, and a multi-page application
@@ -32,7 +32,9 @@ To use GenAI:
 
 3. Download the project to continue development with rules and Python in your IDE
 
-**Click** the image below to watch a 3 minute video:
+&nbsp;
+
+*Click* the image below to watch a 3 minute video:
 
 [![Web/GenAI Automation](images/web_genai/wg-1280x720.png)](https://youtu.be/miOj00SiGxQ "Microservice Automation"){:target="_blank" rel="noopener"}
 
