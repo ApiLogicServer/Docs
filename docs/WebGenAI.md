@@ -23,12 +23,12 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 To use GenAI:
 
 1. Provide a prompt, and
-2. The system creates a microservice: a database, an API, and a multi-page application.  
+2. The system creates a microservice: a database, an API, and a multi-page application
 
-  * Review the project - running screens - with data - and the database diagram
+  * Review the project - running screens, with data - and the database diagram
   * Iterate to ***get the requirements right***
 
-3. Download the project to continue development
+3. Download the project to continue development with rules and Python in your IDE
 
 **Click** the image below to watch a 3 minute video:
 
@@ -145,7 +145,7 @@ Which leads to our premise:
 
 &nbsp;
 
-### Life Cycle
+### Project Life Cycle
 
 As shown in the Life Cycle outline below, this approach is complementary to your existing UI Dev tools such as UI frameworks or Low Code Screen Painters. 
 
