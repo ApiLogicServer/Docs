@@ -1,5 +1,5 @@
 ---
-title: Fast App GenAI
+title: Web GenAI
 hide:
   - navigation
 Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps, Microservice, Declarative
