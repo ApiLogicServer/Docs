@@ -27,8 +27,8 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 1. Provide a prompt, and
 2. The system creates a microservice: a database, an API, and a multi-page application
 
-  * Review the project - running screens, with data - and the database diagram
-  * Iterate to ***get the requirements right***
+    * Review the project - running screens, with data - and the database diagram
+    * Iterate to ***get the requirements right***
 
 3. Download the project to continue development with rules and Python in your IDE
 
