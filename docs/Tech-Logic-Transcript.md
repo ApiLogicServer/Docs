@@ -1,3 +1,10 @@
+# About This Page
+Our next target for GenAI is to build on microservice automation to include ***logic***.
+
+This is a transcript of a ChatGPT session to ["teach" ChatGPT about Logic](#request-logic-bank-api-def), and to then see if it turn Natural Language text into rules.  It did pretty well: [see here](#request-solve-this).
+
+We'll be looking to fold these concepts into API Logic Server GenAI.
+
 # Request - What is Logic Bank
 What do you know about LogicBank
 
