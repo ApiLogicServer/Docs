@@ -155,6 +155,7 @@ nav:
     - "About Tech Notes": Tech--Notes.md
     - "Keycloak DevNotes": Keycloak-devnotes.md
     - "API Appliance": Tech-Toaster.md
+    - "Nat Lang Logic": Tech-Logic-Transcript.md
     - "AI Delivers Agile": Tech-AI.md
     - "Sample AI Demo ChatGPT": Sample-AI-ChatGPT.md
     - "AI-driven Auto mysql": Tech-AI-mysql.md
