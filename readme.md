@@ -17,3 +17,9 @@ These start a process that monitors changes to the docs folder, whereupon the do
 To see the doc build locally, [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 The public docs are automatically rebuilt whenever you push changes to GitHub.
+
+To push, you will need to:
+
+```bash
+git config --global http.postBuffer 1048576000
+```
