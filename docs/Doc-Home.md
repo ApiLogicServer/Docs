@@ -163,15 +163,17 @@ Then, you might like to try out some of our [dockerized test databases](Database
 
 This pre-release includes:
 
-* Version 11.01.27
-    * Initial support for genai conversations (folder of prompt/response files)
-    * E/R diagram creation in docs folder (`db.dmbl`)
-    * Adding genai-create, genai-iterate
+* Version 11.02.07
+    * Tech Preview of Natural Language Logic; to try, use the Manager:
+
+```bash title='Tech Preview of Natural Language Logic' 
+als genai --using=system/genai/examples/genai_demo/genai_demo.prompt
+```
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==11.01.27
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==11.02.07
 ```
 
 Or use (not available currently):
