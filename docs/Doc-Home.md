@@ -163,7 +163,7 @@ Then, you might like to try out some of our [dockerized test databases](Database
 
 This pre-release includes:
 
-* Version 11.02.07
+* Version 11.02.08
     * Tech Preview of Natural Language Logic; to try, use the Manager:
 
 ```bash title='Tech Preview of Natural Language Logic' 
@@ -173,7 +173,7 @@ als genai --using=system/genai/examples/genai_demo/genai_demo.prompt
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==11.02.07
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==11.02.08
 ```
 
 Or use (not available currently):
