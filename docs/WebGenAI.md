@@ -15,7 +15,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 
 
-[![API Logic Server Intro](images/hero-banner-wg.png)](Doc-Home.md "Click for Docs, Getting Started")
+[![API Logic Server Intro](images/hero-banner-wg.png)](https://apifabric.ai/admin-app/ "Click to enter Web/GenAI site")
 
 
 &nbsp;
@@ -34,9 +34,9 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 &nbsp;
 
-*Click* the image below to watch a 3 minute video:
+*Click* the image below to watch a 2 minute video:
 
-[![Web/GenAI Automation](images/web_genai/wg-1280x720.png)](https://youtu.be/miOj00SiGxQ "Microservice Automation"){:target="_blank" rel="noopener"}
+[![Web/GenAI Automation](images/web_genai/wg-1280x720-video.jpg)](https://www.youtube.com/watch?v=-tMGqDzxd2A&t=3s "Microservice Automation"){:target="_blank" rel="noopener"}
 
 ## About
 
