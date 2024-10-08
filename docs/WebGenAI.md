@@ -22,7 +22,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 ## Access GenAI
 
-***[Access the site here]()*** to use GenAI:
+***[Access the site here](https://apifabric.ai/admin-app/){:target="_blank" rel="noopener"}*** to use GenAI:
 
 1. Provide a prompt, and
 2. The system creates a microservice: a database, an API, and a multi-page application
