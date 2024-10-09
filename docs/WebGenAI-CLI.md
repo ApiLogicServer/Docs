@@ -89,6 +89,60 @@ In the prior section, the result was a *recreated* project.  If you have customi
 
 &nbsp;
 
+## Natural Language Logic
+
+As of release 11.2.10, you can declare Natural Language Logic when you create projects, and for existing projects.
+
+> Status: Technology Preview.  Current implementation presumes projects are running in the Manager directory.
+
+&nbsp;
+
+### Create Projects with Logic
+
+As shown below, you can the CLI `als genai` command to designate a prompt file that contains logic.
+
+![Create Projects wit Logic](images/web_genai/logic/new-projects.png)
+
+Note:
+
+1. Logic files can contain derivations and constraints
+2. Use 'strict' `entity.attribute` references (e.g, `Employee.TotalSalaries`)
+
+    * The system does not recognize implicit references like *sum of employee salaries*
+&nbsp;
+
+3. The system will create model attributes for derived columns.  Note these can dramatically improve performance.
+
+&nbsp;
+
+### Add Logic to Existing Projects
+
+As shown below, in an existing project located under the Manager:
+
+1. Create a prompt such as `docs/logic/check_credit.prompt`
+
+    * Create logic files in `docs/logic`
+    * Use a descriptive name to denote the purpose of the logic
+    * Your `docs/logic` can contain multiple files; only `.prompt` files are processed
+
+2. In the terminal window:
+
+```bash title='Create logic from docs/logic prompt files'
+cd <project root>
+als genai-logic
+```
+
+3. Your logic is created in `logic/logic_discovery`
+
+Notes:
+
+* See the notes above for creating new projects with logic
+* Unlike new projects, columns are not created automatically for derived attributes.  You can create these as described in [data model changes](Database-Changes.md){:target="_blank" rel="noopener"}.
+
+![Add logic to Existing Project](images/web_genai/logic/existing-projects.png)
+
+
+&nbsp;
 
 
 ----
