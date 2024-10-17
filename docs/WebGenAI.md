@@ -34,6 +34,8 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 &nbsp;
 
+> Web/GenAI is based on API Logic Server - [docs here.](Doc-Home.md){:target="_blank" rel="noopener"}
+
 *Click* the image below to watch a 2 minute video:
 
 [![Web/GenAI Automation](images/web_genai/wg-1280x720-video.jpg)](https://www.youtube.com/watch?v=-tMGqDzxd2A&t=3s "Microservice Automation"){:target="_blank" rel="noopener"}

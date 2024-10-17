@@ -74,7 +74,7 @@ As of release 5.02.03, ```rebuild``` services provide support for updating custo
 | API | `api/expose_api_models_created.py` created with new `database/models.py` classes |
 | Admn App | `ui/admin/admin-merge.yaml` is the merge of `ui/admin/admin.yaml` and new `database/models.py` classes |
 
-Review the altered files, edit (if required), and copy them over the original files.
+Review the altered files, edit (if required), and merge, or copy them over the original files.
 
 &nbsp;
 
