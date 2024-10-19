@@ -93,13 +93,13 @@ In the prior section, the result was a *recreated* project.  If you have customi
 
 As of release 11.2.10, you can declare Natural Language Logic when you create projects, and for existing projects.
 
-> Status: Technology Preview.  Current implementation presumes projects are running in the Manager directory.
+> Status: Beta.  Current implementation presumes projects are running in the Manager directory.
 
 &nbsp;
 
 ### Create Projects with Logic
 
-As shown below, you can the CLI `als genai` command to designate a prompt file that contains logic.
+As shown below, you can the CLI `als genai` command to designate a prompt file that generates a system, including logic.
 
 ![Create Projects wit Logic](images/web_genai/logic/new-projects.png)
 
