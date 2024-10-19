@@ -115,13 +115,65 @@ The underlying services are also available in the [genai CLI](WebGenAI-CLI.md){:
 
 ## Prompt Design
 
-Notes reqarding prompts:
+Prompt design is "AI Programming".  Consider the following.
 
-1. You can provide a very general prompt (*an auto dealership*), or a specific one that identifies specific tables, columns and relationships (for example, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/tests/test_databases/ai-created/budget_allocation/budget_allocations/genai.prompt){:target="_blank" rel="noopener"}).
+&nbsp;
 
-2. You can *iterate* your prompt to include more tables etc, while preserving the design you have already created.
+### Business Area
 
-  * This enables you to break your system down into a set of "Use Cases", solving one at a time, and integrating back to the others.
+You can provide a very general prompt, for example:
+
+* `an auto dealership`, or
+* `a restaurant`
+
+&nbsp;
+
+### Database Oriented
+
+Or, you can provide a specific prompt that identifies specific tables, columns and relationships (for example, 
+
+```bash title='Database, API and Web App'
+Create a system for Customer, Orders, Items and Products
+```
+
+&nbsp;
+
+### With Logic
+
+Particularly interesting is that you can declare backend behavior with rules:
+
+```bash title='Database, API, Web App and Logic'
+Create a system with customers, orders, items and products.
+
+Include a notes field for orders.
+
+Use LogicBank to create declare_logic() to enforce the Check Credit requirement (do not generate check constraints):
+1. Customer.balance <= credit_limit
+2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
+3. Order.amount_total = Sum(Item.amount)
+4. Item.amount = quantity * unit_price
+5. Store the Item.unit_price as a copy from Product.unit_price
+```
+
+You can verify this by altering a sample order/item with a very high quantity, and verifying the credit limit is checked.  (Note this is not trivial - 3 table transaction.)
+
+> Note: at the time of this writing, the sample data sometimes does not totally reflect the derivation rules.  This is under investigation.
+
+&nbsp;
+
+### Iterations
+
+You can *iterate* your prompt to include more tables etc, while preserving the design you have already created.
+
+* This enables you to break your system down into a set of "Use Cases", solving one at a time, and integrating back to the others.
+
+&nbsp;
+
+### Limitations
+
+The created systems are basic database applications, not completed systems with sophisticated functionality such as images, custom screens, etc.
+
+You can "build out" the project by downloading it and using your IDE with Python and rules, or perform the same functions using Codespaces (a browser-based version of VSCode - a link is provided for this).
 
 &nbsp;
 
