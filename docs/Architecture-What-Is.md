@@ -93,3 +93,11 @@ Observe that logic plugs into SQLAlchemy.  **Logic is thus automatically shared*
 In most cases, the API Logic Server executes in a **container**, so scales horizontally like any other Flask-based server.
 
 ![API Logic Server Intro](images/Architecture.png)
+
+&nbsp;
+
+## Standard Containers
+
+Scripts are created to [create standard containers](DevOps-Containers-Build.md){:target="_blank" rel="noopener"}, for deployment to the cloud or your local site.
+
+![container](images/Architecture-What-Is.png)
