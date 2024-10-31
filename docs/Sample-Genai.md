@@ -24,8 +24,7 @@ To create a microservice, identify an existing database, or provide a natural la
 
     Include a notes field for orders.
 
-    Enforce the Check Credit requirement (do not generate check constraints):
-    
+    Use LogicBank to create declare_logic() to enforce the Check Credit requirement (do not generate check constraints):
     1. Customer.balance <= credit_limit
     2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
     3. Order.amount_total = Sum(Item.amount)
@@ -101,7 +100,9 @@ The development environment is also standard: your IDE, standard languages, stan
 
 * **Standard Python:** e.g, to create a new custom endpoint, and send a Kafka message
 
-Explore these below.
+> Note: projects are model-driven, resulting in a very small amount of code.  This simlifies debugging and customizing your system.
+
+Explore rules and Python customization below.
 
 &nbsp;
 
@@ -111,16 +112,11 @@ To explore rules:
 
 1. Open `logic/declare_logic.py`
 
-2. Copy the comments to your Copilot window, starting with the line with **GenAI:**
+2. View the Python-based rules created by GenAI
 
-3. Paste them into the Copilot Chat windows
+> You can add more rules, with Python (code completion), and/or GenAI.
 
-4. Paste the generated code back into `logic/declare_logic.py`.  You will need to make a few small repairs:
-
-    * change *import models* to *import database.models*, and 
-    * change *as_formula* to *as_expression*
-
-![Add Rules](images/sample-ai/copilot/add-rules.png)
+![Add Rules](images/sample-ai/genai/genai-rules.png)
 
 &nbsp;
 

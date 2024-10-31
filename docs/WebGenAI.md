@@ -157,7 +157,7 @@ Use LogicBank to create declare_logic() to enforce the Check Credit requirement 
 
 You can verify this by altering a sample order/item with a very high quantity, and verifying the credit limit is checked.  (Note this is not trivial - 3 table transaction.)
 
-> Note: at the time of this writing, the sample data sometimes does not totally reflect the derivation rules.  This is under investigation.
+> Note: at the time of this writing, the sample data sometimes does not totally reflect the derivation rules.  This is under investigation.  You can sometimes resolve this using iterations, eg, `please initialize the customer balance properly`.
 
 &nbsp;
 

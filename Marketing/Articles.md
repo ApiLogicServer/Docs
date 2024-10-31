@@ -21,11 +21,12 @@ Issues:
 1. Incorrect (chg part, move order)
 2. Inefficient (pull all kids)
 3. Debug?
+4. Omits Data Access, Transactions
 
-Observe:
+Also:
 
 1. Obscures intent
-2. Omits Data Access, Transactions
+
 
 ### Declarative Logic as DSL
 
