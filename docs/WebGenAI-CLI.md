@@ -101,17 +101,91 @@ As of release 11.2.10, you can declare Natural Language Logic when you create pr
 
 As shown below, you can the CLI `als genai` command to designate a prompt file that generates a system, including logic.
 
-![Create Projects wit Logic](images/web_genai/logic/new-projects.png)
 
 Note:
 
 1. Logic files can contain derivations and constraints
-2. Use 'strict' `entity.attribute` references (e.g, `Employee.TotalSalaries`)
+2. The system will create model attributes for derived columns.  Note these can dramatically improve performance.
 
-    * The system does not recognize implicit references like *sum of employee salaries*
+You can declare logic formally, or informally.
+
 &nbsp;
 
-3. The system will create model attributes for derived columns.  Note these can dramatically improve performance.
+#### Formal Rules
+
+You can use familiar dot notation in declaring rules, e.g.
+
+![Create Projects with Logic](images/web_genai/logic/new-projects.png)
+
+```bash title='Formal Logic - Familar Dot Notation'
+Create a system with customers, orders, items and products.
+
+Include a notes field for orders.
+
+Use LogicBank to enforce the Check Credit requirement:
+1. Customer.balance <= credit_limit
+2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
+3. Order.amount_total = Sum(Item.amount)
+4. Item.amount = quantity * unit_price
+5. Store the Item.unit_price as a copy from Product.unit_price
+```
+
+&nbsp;
+
+#### Informal Rules
+
+You can also use a more relaxed declaration.  For example, you can create a system (database, API, Admin App and Logic) with the following prompt (see `system/genai/examples/genai_demo/genai_demo_informal.prompt`):
+
+```bash title='Prompt With Informal Logic'
+Create a system with customers, orders, items and products.
+
+Include a notes field for orders.
+
+Use LogicBank to enforce the Check Credit requirement:
+    1. The Customer's balance is less than the credit limit
+    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+    3. The Order's amount_total is the sum of the Item amount
+    4. The Item amount is the quantity * unit_price
+    5. The Item unit_price is copied from the Product unit_price
+```
+
+&nbsp;
+
+#### Multi-rule Logic
+
+You can even declare logic that is transformed into 2 rules:
+
+```bash title='Prompt with Multi-Rule Logic'
+System for Departments and Employees.
+
+LogicBank:
+1. Sum of employee salaries cannot exceed department budget
+```
+
+This creates a running system: a database, an API, an Admin App, and logic.  From the Manager:
+
+```bash title='CLI Command to Create a microservice, with logic'
+als genai --using=system/genai/examples/emp_depts/emp_dept.prompt
+```
+
+The logic is non-trivial:
+
+1. A `Department.total_salaries` is created
+2. Two rules are created in `logic/declare_logic.py`
+
+```python title='Logic Creates 2 Rules'
+    # Logic from GenAI: (or, use your IDE w/ code completion)
+
+    # Aggregate the total salaries of employees for each department.
+    Rule.sum(derive=Department.total_salaries, as_sum_of=Employee.salary)
+
+    # Ensure the sum of employee salaries does not exceed the department budget.
+    Rule.constraint(validate=Department, as_condition=lambda row: row.total_salaries <= row.budget, error_msg="Total salaries ({row.total_salaries}) exceed the department budget ({row.budget})")
+
+    # End Logic from GenAI
+```
+
+> This support is in technology-preview state.  
 
 &nbsp;
 
