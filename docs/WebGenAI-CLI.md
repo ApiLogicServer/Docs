@@ -2,9 +2,9 @@
 
     API Logic Server / GenAI provides CLI commands that accepts a Natural Language prompt (e.g, CRM system), and produces:
 
-    * a Microservice: an Admin App and a JSON:API
-    * a project you can download and customize in your IDE using rules and python
-    * deploy as a container using automatically generated scripts.
+    * a Microservice, an Admin App and a JSON API
+    * a project that you can download and customize in your IDE using rules and Python
+    * which can be deployed as a container using automatically generated scripts.
 
     API Logic Server / GenAI uses: 
     
@@ -37,19 +37,19 @@ Projects are created in the currrent working directory, here, the manager.
 
 You can review created projects by using the app, and/or reviewing the [data model](Database-Connectivity.md){:target="_blank" rel="noopener"}.  Of course, it's simple to resubmit a new prompt and re-create the project.
 
-However, this will be completely new rendition of your idea, and it may change things you like about the project.  ***Conversations*** enable you to keep what you already have, while making desired changed.
+However, this will be a completely new rendition of your idea, and it may change things you like about the project.  ***Conversations*** enable you to keep what you already have, while making desired changes.
 
-When you create a project, the API Logic Server / GenAI saves your prompt and response in a conversatation-directory.  Conversations are saved in 2 different conversations-directories:
+When you create a project, the API Logic Server / GenAI saves your prompt and response in a conversation-directory.  Conversations are saved in 2 different conversation-directories:
 
 * the manager's `system/genai/temp/<project>` directory
 
 * the created project's `doc` directory.
 
-You can iterate interative prompts, or by adding files to the  manager's `system/genai/temp/<project>` directory.
+You can iterate with interactive prompts, or by adding files to the  manager's `system/genai/temp/<project>` directory.
 
 &nbsp;
 
-### Conversations - Interative
+### Conversations - Interactive
 
 The figure below creates and iterates a project, using the manager:
 
@@ -64,7 +64,7 @@ als genai-iterate —-project-name=conv —using='add payments'
 
 ### Conversations - Files
 
-Alternatively, you can iterate projects by adding files to Manager's temp directory:
+Alternatively, you can iterate projects by adding files to the Manager's temp directory:
 
 ```bash title='iterate project using files (Note: genai, not genai-iterate)'
 als genai-create --project-name=conv --using='customer orders'
@@ -99,13 +99,13 @@ As of release 11.2.10, you can declare Natural Language Logic when you create pr
 
 ### Create Projects with Logic
 
-As shown below, you can the CLI `als genai` command to designate a prompt file that generates a system, including logic.
+As shown below, you can use the CLI `als genai` command to designate a prompt file that generates a system, including logic.
 
 
 Note:
 
 1. Logic files can contain derivations and constraints
-2. The system will create model attributes for derived columns.  Note these can dramatically improve performance.
+2. The system will create model attributes for derived columns.  Note that these can dramatically improve performance.
 
 You can declare logic formally, or informally.
 
@@ -117,7 +117,7 @@ You can use familiar dot notation in declaring rules, e.g.
 
 ![Create Projects with Logic](images/web_genai/logic/new-projects.png)
 
-```bash title='Formal Logic - Familar Dot Notation'
+```bash title='Formal Logic - Familiar Dot Notation'
 Create a system with customers, orders, items and products.
 
 Include a notes field for orders.
@@ -235,13 +235,13 @@ GenAI is part of API Logic Server.  As shown below:
 * GenAI
 
     * Use ChatGPT APIs, and creates a model file from the response
-    * Submits that to `als create --from-model=my_model.py`
+    * Submit that to `als create --from-model=my_model.py`
 
 
 
 ![GenAI Automation](images/web_genai/how-does-it-work.png)
 
-### Error Revovery
+### Error Recovery
 
 AI results are not consistent, so you may sometimes need to correct errors and resume.  This requires a bit of background about genai processing.
 
@@ -251,7 +251,7 @@ AI results are not consistent, so you may sometimes need to correct errors and r
 
 `genai` processing is shown below (internal steps denoted in grey):
 
-1. You create your.prompt file, and invoke `als genai --using=your.prompt`.  genai then creates your project as follows:
+1. You create your .prompt file, and invoke `als genai --using=your.prompt`.  genai then creates your project as follows:
 
     a. Submits your prompt to the `ChatGPT API`
 
@@ -271,7 +271,7 @@ AI results are not consistent, so you may sometimes need to correct errors and r
 
 #### Recovery options
 
-AI somtimes fails - here's how to recover after your correct the response or the model file.
+AI somtimes fails - here's how to recover after you correct the response or the model file.
 
 ##### From the Model File
 
