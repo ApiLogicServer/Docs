@@ -33,6 +33,15 @@ Projects are created in the currrent working directory, here, the manager.
 
 &nbsp;
 
+## Configuration
+
+GenAI uses ChatGPT, which requires an API Key.  The simplest approach is to
+
+1. obtain one from [here](), and 
+2. create an environmental variable `APILOGICSERVER_CHATGPT_MODEL`
+
+&nbsp;
+
 ## Conversations vs. resubmit
 
 You can review created projects by using the app, and/or reviewing the [data model](Database-Connectivity.md){:target="_blank" rel="noopener"}.  Of course, it's simple to resubmit a new prompt and re-create the project.
