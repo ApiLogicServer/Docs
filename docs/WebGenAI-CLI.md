@@ -37,8 +37,9 @@ Projects are created in the currrent working directory, here, the manager.
 
 GenAI uses ChatGPT, which requires an API Key.  The simplest approach is to
 
-1. obtain one from [here](), and 
-2. create an environmental variable `APILOGICSERVER_CHATGPT_MODEL`
+1. Obtain one from [here](https://platform.openai.com/account/api-keys) or [here](https://platform.openai.com/api-keys)
+2. Authorize payments [here](https://platform.openai.com/settings/organization/billing/overview)
+3. Create an environmental variable `APILOGICSERVER_CHATGPT_MODEL`
 
 &nbsp;
 
