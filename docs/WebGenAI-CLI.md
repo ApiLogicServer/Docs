@@ -195,7 +195,38 @@ The logic is non-trivial:
     # End Logic from GenAI
 ```
 
-> This support is in technology-preview state.  
+&nbsp;
+
+#### Cardinality Patterns
+
+Logic GenAI training has enabled the following:
+
+```
+Products have Notices, with severity 0-5.
+
+Raise and error if product is orderable == True and there are any severity 5 Notices, or more than 3 Notices.
+```
+
+Notes:
+
+1. Note the use of a "qualified any", resulting in a count with a where condition:
+
+```python title='Logic Recognizes "qualified any"'
+    # Logic from GenAI: (or, use your IDE w/ code completion)
+
+    # Derive product notice count from related notices.
+    Rule.count(derive=Product.notice_count, as_count_of=Notice)
+
+    # Derive count of severity 5 notices for products.
+    Rule.count(derive=Product.class_5_notice_count, as_count_of=Notice, where=lambda row: row.severity == 5)
+
+    # Ensure product is not orderable if conditions on notices are met.
+    Rule.constraint(validate=Product,
+    as_condition=lambda row: not (row.orderable and (row.class_5_notice_count > 0 or row.notice_count > 3)),
+    error_msg="Orderable product contains severity 5 or excessive notices.")
+
+    # End Logic from GenAI
+```
 
 &nbsp;
 
