@@ -8,7 +8,7 @@
     
     2. **Simpler customization:** it is orders of magnitude simpler to tweak the properties of a generated app than to create the app by hand.  You can customize at 2 levels: 
     
-        a. **The generated app for full control:** you can edit the generated app (html, typescript, css).
+        a. **The generated app for full control:** you can edit the generated app (HTML, Typescript, CSS).
         
         b. **The app model:** the app is generated from a yaml model that designates the components for tables (grid, card, tree, dialog) and fields (text, image, combo, etc).  You can modify the yaml model to rebuild the app.
     
@@ -161,6 +161,21 @@ Go to config/configy.py and modify the Keycloak settings below (if you are runni
     keycloak_client_id: alsclient
 
 &nbsp;
+This will inject into src/app.module.ts the keycloak settings.
+```
+    {% if use_keycloak %}
+    const keycloakOptions: KeycloakOptions = {
+    config: {
+        url: "{{ keycloak_url }}",
+        realm: "{{ keycloak_realm }}",
+        clientId: "{{ keycloak_client_id }}"
+    },
+    initOptions: {
+        onLoad: 'login-required'
+    }
+    };
+{% endif %}
+```
 Enable Keycloak for the ALS server and Ontimize client to use:
 ```
     als add-auth --provider-type=keycloak
