@@ -201,6 +201,7 @@ You can edit the ui/app/app_model.yaml file directly, or use the [provided model
 
 Then, rebuild your application (Note: this will overwrite all files in your Ontimize app directory):
 
+PRO TIP: create a new application (app-create) with the edited app_model.yaml and merge the changes for the selected components back into the original app.
 ```bash
 ApiLogicServer app-build --app=app
 ```
@@ -245,7 +246,12 @@ ApiLogicServer app-build --app=app2
 cd ui/app2
 npm start
 ```
-
+# Dockerize Yaml
+Each application already has a Dockerfile (which can be edited) 
+```
+cd ui/{myapp}
+docker build -f Dockerfile -t {gitrepo}/{myappname} --rm .  
+```
 # Appendices
 
 ## Yaml Model Editor
@@ -267,7 +273,7 @@ npm start
 #go to http://localhost:4298 (user: admin password: p)
 ```
 ## Ontimize app_model.yaml 
-The app_model.yaml file is created during the "app-create" or "create" phase and is based on the ui/admin.yaml file. Each entity, column, and tab_group is exposed with additional metadata.  When the "app-build" is invoked, these properties are used to populate the templates (html, scss, and typescript) for each page. If the "exclude" flag is set to 'false' - the entity or attribute will be excluded from the page. The "visible" column flag only applies to the Home table columns appearing in the grid.
+The app_model.yaml file is created during the "app-create" or "create" phase and is based on the react-admin ui/admin.yaml file. Each entity, column, and tab_group is exposed with additional metadata.  When the "app-build" is invoked, these properties are used to populate the templates (html, scss, and typescript) for each page. If the "exclude" flag is set to 'false' - the entity, attribute, or relationship will be excluded from the page. The "visible" column flag only applies to the Home table columns appearing in the grid.
 
 ## Entity
 Use the Ontimize editor to exclude a selected entity or change the titles.
