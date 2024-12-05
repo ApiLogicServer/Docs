@@ -204,6 +204,9 @@ Then, rebuild your application (Note: this will overwrite all files in your Onti
 PRO TIP: create a new application (app-create) with the edited app_model.yaml and merge the changes for the selected components back into the original app.
 ```bash
 ApiLogicServer app-build --app=app
+
+# Build or ReBuild a single API Endpoint
+ApiLogicServer app-build --app=app --api-endpoint=Customer
 ```
 
 ### 3d. Customize Created App
