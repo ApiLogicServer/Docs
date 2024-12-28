@@ -105,3 +105,23 @@ These create projects from docker databases ([see here](Database-Connectivity.md
     This in fact verifies that the `models.py` file is created and runs.
 
 If you don't wish to install or run the docker databases, edit your `tests/build_and_test/env.py` to disable `do_docker_creation_tests`.
+
+## Windows Issues
+
+I was able to build in Windows (12/27/2024), with the following non-trivial provisos.
+
+### Path Length
+
+For many Windows installs, the path length exceeds the max.
+
+1. Prevents git pull for the `api_logic_server_cli/prototypes/manager/system/genai/examples/genai_demo/wg_dev_merge/base_genai_demo_no_logic`.  I had to download the zip and skip these files on unzip.
+
+    * If you do that, don't forget the setup procedure for SafrsReactAdmin
+
+2. The BLT recognizes that the Ont app (`api_logic_server_cli/prototypes/manager/system/app_model_editor`) is too big, and deletes it.
+
+    * So, you can *build* on Windows, but you cannot *release*.
+
+### Logging in genai_svcs
+
+Recent changes (as of 12/27/2024) in logging in `api_logic_server_cli/genai/genai_svcs.py` must be commented out.  This is a serious bug which must be addressed before we can release another version.
