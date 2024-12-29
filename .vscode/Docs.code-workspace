@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"workbench.colorTheme": "Arduino",
-		"workbench.preferredLightColorTheme": "Arduino light"
+		"workbench.colorTheme": "Colored Theme (Green malachite)",
+		"workbench.preferredLightColorTheme": "Colored Theme (Green malachite)"
 	}
 }
