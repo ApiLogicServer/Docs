@@ -24,7 +24,7 @@ To create a microservice, identify an existing database, or provide a natural la
 
     Include a notes field for orders.
 
-    Use LogicBank to create declare_logic() to enforce the Check Credit requirement (do not generate check constraints):
+    Enforce Check Credit:
     1. Customer.balance <= credit_limit
     2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
     3. Order.amount_total = Sum(Item.amount)

@@ -108,7 +108,7 @@ If you don't wish to install or run the docker databases, edit your `tests/build
 
 ## Windows Issues
 
-I was able to build in Windows (12/27/2024), with the following non-trivial provisos.
+I was able to build in Windows (12/27/2024), with the following issues.
 
 ### Path Length
 
@@ -122,6 +122,4 @@ For many Windows installs, the path length exceeds the max.
 
     * So, you can *build* on Windows, but you cannot *release*.
 
-### Logging in genai_svcs
 
-Recent changes (as of 12/27/2024) in logging in `api_logic_server_cli/genai/genai_svcs.py` must be commented out.  This is a serious bug which must be addressed before we can release another version.

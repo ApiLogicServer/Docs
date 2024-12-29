@@ -1,21 +1,18 @@
 ---
 title: Web GenAI
-hide:
-  - navigation
 Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps, Microservice, Declarative
 ---
-<style>
-  .md-typeset h1,
-  .md-content__button {
-    display: none;
-  }
-</style>
-[![Downloads](https://static.pepy.tech/badge/apilogicserver)](https://pepy.tech/project/apilogicserver)
-[![Latest Version](https://img.shields.io/pypi/v/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
-[![Supported Python versions](https://img.shields.io/pypi/pyversions/apilogicserver.svg)](https://pypi.python.org/pypi/apilogicserver/)
 
 
-[![API Logic Server Intro](images/hero-banner-wg.png)](https://apifabric.ai/admin-app/ "Click to enter Web/GenAI site")
+!!! pied-piper ":bulb: WebGenAI - Web Interface for GenAI-Logic"
+
+      Access WebGenAI via your browser to
+
+      * Create systems from a Natural Language prompt: databases, APIs, an Admin Web App
+      * Iterate them (add new tables, columns etc)
+      * Add Logic
+      * Download the project to your local desktop
+      * Execute the project in GitHub Codespaces
 
 
 &nbsp;
@@ -147,7 +144,8 @@ Create a system with customers, orders, items and products.
 
 Include a notes field for orders.
 
-Use LogicBank to create declare_logic() to enforce the Check Credit requirement (do not generate check constraints):
+Use LogicBank to enforce the Check Credit:
+
 1. Customer.balance <= credit_limit
 2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
 3. Order.amount_total = Sum(Item.amount)
@@ -158,6 +156,8 @@ Use LogicBank to create declare_logic() to enforce the Check Credit requirement 
 You can verify this by altering a sample order/item with a very high quantity, and verifying the credit limit is checked.  (Note this is not trivial - 3 table transaction.)
 
 > Note: at the time of this writing, the sample data sometimes does not totally reflect the derivation rules.  This is under investigation.  You can sometimes resolve this using iterations, eg, `please initialize the customer balance properly`.
+
+For more, see the [logic editor](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
