@@ -205,8 +205,11 @@ PRO TIP: create a new application (app-create) with the edited app_model.yaml an
 ```bash
 ApiLogicServer app-build --app=app
 
-# Build or ReBuild a single API Endpoint
+# Build or Rebuild a single API Endpoint
 ApiLogicServer app-build --app=app --api-endpoint=Customer
+
+# Build or Rebuild a user defined template directory
+ApiLogicServer app-build --app=app --template-dir=/User/{username}/templates
 ```
 
 ### 3d. Customize Created App
@@ -247,7 +250,11 @@ This creates `ui/app2/app_model.yaml` and installs the Ontimize 'seed' NodejS pa
 ```bash
 ApiLogicServer app-build --app=app2
 cd ui/app2
+npm install
 npm start
+
+# Build or Rebuild a user defined template directory
+ApiLogicServer app-build --app=app2 --template-dir=/User/{username}/user_templates
 ```
 # Dockerize Yaml
 Each application already has a Dockerfile (which can be edited) 
