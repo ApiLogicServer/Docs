@@ -78,6 +78,9 @@ When creating your own admin files, we recommend starting with the created one.
 
 Also, use caution in removing resources, since these may be used in joins and lookups.
 
+To run the app, the url would be something like: `localhost:5656/admin/my-app-name`.
+
+
 &nbsp;
 
 # Appendix
