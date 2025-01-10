@@ -90,7 +90,11 @@ nav:
   - 5. Application Integration:
     - "Sample Integration": Sample-Integration.md
     - "Integration Mapping": Integration-Map.md
-  - "Customize Using Your IDE": IDE-Customize.md
+  - IDE - Customize, Manage:
+    - "Customize Using Your IDE": IDE-Customize.md
+    - "Fixup - missing attributes": IDE-Fixup-Attrs.md
+    - "Import / Merge WebGenai": IDE-Import-WebGenAI.md
+    - "Rebuild Test Data": IDE-Rebuild-Test-Data.md
   - Database:
     - "Connection Examples, Debug": Database-Connectivity.md
     - "Database Diagram": Database-Diagram.md
