@@ -91,11 +91,7 @@ To apply customizations, in a terminal window for your project:
 **2. Apply Customizations**
 
 ```bash
-# mac, linux  (copies the code from the customizations directory)
-sh apply_customizations.sh
-
-#windows
-./apply_customizations.ps1
+als add-cust
 ```
 &nbsp;
 
@@ -225,11 +221,7 @@ To apply this iteration, in a terminal window for your project:
 **2. Apply Iteration**
 
 ```bash
-# mac, linux
-sh apply_iteration.sh
-
-#windows
-./apply_iteration.ps1
+als add-cust
 ```
 &nbsp;
 
