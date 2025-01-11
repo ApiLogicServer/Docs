@@ -7,7 +7,7 @@
 
     1. Collects the latest model, rules, and test data from the project. 
     2. Calls ChatGPT (or similar) to resolve missing columns or data in the project.
-    3. Saves the fixup request/response under a 'fixup' folder.
+    3. Saves the fixup request/response under a `docs/fixup` folder.
     4. You then use this to create a new project
 
 ## Using Fixup
