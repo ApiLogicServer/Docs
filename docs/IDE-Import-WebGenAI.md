@@ -72,8 +72,11 @@ Imports are performed from with the dev project, using the `import-genai` CLI co
 cd system/genai/examples/genai_demo/wg_dev_merge/dev_demo_no_logic_fixed
 als genai-utils --import-genai --using=../wg_demo_no_logic_fixed
 ```
+Observe:
+1. The [data model](system/genai/examples/genai_demo/wg_dev_merge/dev_demo_no_logic_fixed/database) contains `Customer.balance` and `Product.carbon_neutral`
+2. The test data has been updated to include these attributes, with proper values
 
-That will leave things in this state:
+In this example, `als genai-utils --import-genai ...` will leave things in this state:
 
 ![genai-process](images/sample-ai/genai/genai-process-merged-models.png)
 
