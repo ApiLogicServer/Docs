@@ -42,7 +42,7 @@ nav:
     - "AI - ChatGPT, Agile": Tutorial-AI.md
     - "Sample Systems": Data-Model-Examples.md
   - 0. ApiLogicServer create:
-    - "Create": Project-Structure.md
+    - "Create with CLI": Project-Structure.md
     - "Manager": Manager.md
     - "Create with Gen/AI on Web": WebGenAI.md
     - "Model Driven": Tech-DSL.md

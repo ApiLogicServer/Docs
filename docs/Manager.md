@@ -2,13 +2,22 @@ Modern IDEs are remarkably powerful and user-friendly.  Many developers use them
 
 As of release 10.03.66, you can use your IDE to create and customize API Logic Projects:
 
-```bash title="Start the API Logic Project Manager"
+```bash title="Install API Logic Server, Start the API Logic Project Manager"
+mkdir ApiLogicServer
+cd ApiLogicServer
+
+python -m venv venv                  # may require python3 -m venv venv
+source venv/bin/activate             # windows: venv\Scripts\activate
+python -m pip install ApiLogicServer
+
 als start
 ```
 
 ![Manager](images/manager/readme.png)
 
-Created projects will show up here as directories. (You create projects anywhere, and move them; this is just the default).
+Created projects will show up here as directories.  You create projects anywhere, and move them; this is just the default.
+
+> `als genai` commands require projects be located inside the Manager directory.
 
 &nbsp;
 

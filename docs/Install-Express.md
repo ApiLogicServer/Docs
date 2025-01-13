@@ -52,6 +52,7 @@ Open the appropriate section below.
     
     1. Windows users will need to run the terminal in Admin mode, with scripts enabled
     2. If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md)
+    3. If you are using VSCode, we ***strongly recommend*** you create the [VSCode CLI](IDE-Customize.md#vscode-cli){:target="_blank" rel="noopener"}.
 
     &nbsp;
 
@@ -61,24 +62,18 @@ Open the appropriate section below.
     ApiLogicServer start
     ```
 
-    This will open your IDE; open the readme and follow the directions to create projects.
+    This will open your IDE and install the samples and Tutorial; open the readme and follow the directions to create projects.
 
 
     &nbsp;
     
-    __Or, create the Sample Project__
+    __Create the Sample Project__
 
     ```bash title="Create Tutorial"
     ApiLogicServer create --project_name=  --db_url=
     ```
 
-    &nbsp;
-
-    __Or, Create a Normal Project__
-
-    ```bash title="Create Typical Project"
-    ApiLogicServer create --project_name=ApiLogicProject --db_url=  # or, create-and-run
-    ```
+    This project provides a Tutorial to walk you through key aspects of API Logic Server.  For more information, [click here](Tutorial.md){:target="_blank" rel="noopener"}.
 
     &nbsp;
 
