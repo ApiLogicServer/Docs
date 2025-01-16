@@ -1,58 +1,24 @@
 !!! pied-piper ":bulb: TL;DR - GenAI leverages AI and Microservice Automation for 'hands-free' project creation"
 
-    API Logic Server uses ChatGPT APIs, to submit prompts and obtain data model class responses.  
+    To create projects, the system (either WebGenAI or API Logic Server CLI - for more information, [click here](https://apilogicserver.github.io/Docs/Architecture-What-Is/){:target="_blank" rel="noopener"}) performs the following:
     
-    API Logic Server uses these to create a database and project, from a single `genai` command.
+    1. Uses ChatGPT APIs  to submit prompts and obtain data model class responses
+    
+    2. It then uses these to create a database and project
 
-    This document illustrates how to create, run and customize the genai_demo project.
+    This document presumes you have already created the project, and are using VSCode or GitHub to explore it.  It illustrates how to run and customize the genai_demo project.
 
-    > Note: if you have already created the project, proceed to "What Just Happened?".
-
-&nbsp;
-
-[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=LSh7mqGiT0k&t=5s "Microservice Automation"){:target="_blank" rel="noopener"}
+    > Note: if you *not* already created the project, proceed to [the Appendix](#creating-the-genai_demo-project)
 
 &nbsp;
 
-## 1. Description (or Database)
+## Setup Codespaces
 
-To create a microservice, identify an existing database, or provide a natural language "prompt" description.  For example, here is the `genai_demo.prompt` file:
-
-!!! pied-piper ":bulb: TL;DR - GenAI Prompt"
-
-    Create a system with customers, orders, items and products.
-
-    Include a notes field for orders.
-
-    Enforce Check Credit:
-    1. Customer.balance <= credit_limit
-    2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
-    3. Order.amount_total = Sum(Item.amount)
-    4. Item.amount = quantity * unit_price
-    5. Store the Item.unit_price as a copy from Product.unit_price
+Coming soon.
 
 &nbsp;
 
-## 2. GenAI Creation
-
-You can explore genai_demo using the [Manager](https://apilogicserver.github.io/Docs/Manager/){:target="_blank" rel="noopener"}.  Optionally, you can sign-up for ChatGPT API and Copilot, or simulate the process as described below.
-
-1. If you have signed up for ChatGPT API and Copilot, this command will create and open a project called `genai_demo` from `genai_demo.prompt`:
-
-```bash
-als genai --using=genai_demo.prompt
-```
-
-
-2. ***Or,*** if you have not signed up, you can simulate the process using a pre-installed response file:
-
-```bash
-als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_retry.txt
-```
-
-&nbsp;
-
-### What Just Happened?
+## What Just Happened?
 
 `genai` processing is shown below (internal steps denoted in grey):
 
@@ -60,9 +26,9 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
     a. Submits your prompt to the `ChatGPT API`
 
-    b. Writes the response to file, so you can correct and retry if anything goes wrong
+    b. Writes the response to file (`system/genai/temp/response.json`), so you can correct and retry if anything goes wrong
 
-    c. Extracts model.py from the response
+    c. Extracts `system/genai/temp/create_db_models.py` from the response
 
     d. Invokes `als create-from-model`, which creates the database and your project
 
@@ -74,25 +40,23 @@ als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_r
 
 &nbsp;
 
-### API/App Automation
+## 1. API/App Automation
 
 API/App Automation means the created project is executable.  To run:
 
 1. Press **F5** to run
-2. Start your [Browser](http://localhost:5656/) to view:
+2. Start your Browser (use the codespaces button, or [locally](http://localhost:5656/)) to view:
     * App Automation: the Admin App, and
     * API Automation: JSON:API, with Swagger
 3. Stop the server when you are done (red box on VSCode Debugger panel)
 
-![Microservice Automation](images/sample-ai/Microservice-Automation.png)
+![Microservice Automation](images/sample-ai/copilot/created-microservice.png)
 
-It's a modern, 3-tiered architecture, using standard Python libraries:
-
-![Microservice Architecture](images/Architecture-Runtime-Stack.png)
-
+It's a modern, 3-tiered architecture, using standard Python libraries.  For more information, [click here - slide 2](https://www.genai-logic.com/architecture).
+ 
 &nbsp;
 
-## 3. Customize: Rules and Python
+## 2. Customize: Rules and Python
 
 The development environment is also standard: your IDE, standard languages, standard libraries, standard source control, etc.  You customize API Logic Project in two ways, both performed in your IDE:
 
@@ -144,7 +108,7 @@ Note: Kafka is not activated in this example.  To explore a running Tutorial for
 
 &nbsp;
 
-## 4. Deployment: Containers, Cloud
+## 3. Deployment: Containers, Cloud
 
 One of the best ways to de-risk projects is to verify the sponsors are in sync with what is happening.  This is best addressed with *working software*, which often occurs late in project development.  Surprises here can result in considerable rework... and frustrations.
 
@@ -209,6 +173,62 @@ A good technique is to:
 It's usage create the sqlite database, but running it in this mode can provide more insight into causes.
 
 If you are using [Web/GenAI](WebGenAI.md){:target="_blank" rel="noopener"}, project files are always under /projects/gen_$ID.
+
+&nbsp;
+
+### Creating `genai_demo`
+
+#### Using WebGenAI
+
+[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=7I33Fa9Ulos "Microservice Automation"){:target="_blank" rel="noopener"}
+
+&nbsp;
+
+#### Using the ALS CLI
+
+[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=LSh7mqGiT0k&t=5s "Microservice Automation"){:target="_blank" rel="noopener"}
+
+
+To create a microservice, identify an existing database, or provide a natural language "prompt" description.  
+
+You can explore genai_demo using the [Manager](https://apilogicserver.github.io/Docs/Manager/){:target="_blank" rel="noopener"}.  Optionally, you can sign-up for ChatGPT API and Copilot, or simulate the process as described below.
+
+1. If you have signed up for ChatGPT API and Copilot, this command will create and open a project called `genai_demo` from `system/genai/examples/genai_demo/genai_demo.prompt`:
+
+```bash
+als genai --using=system/genai/examples/genai_demo/genai_demo.prompt
+```
+
+
+2. ***Or,*** if you have not signed up, you can simulate the process using a pre-installed response file:
+
+```bash
+als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_retry.txt
+```
+
+Here is the `system/genai/examples/genai_demo/genai_demo.prompt` file:
+
+!!! pied-piper ":bulb: TL;DR - GenAI Prompt"
+
+    Create a system with customers, orders, items and products.
+
+    Include a notes field for orders.
+
+    Use LogicBank to enforce business logic.
+
+    Use case: Check Credit
+        1. The Customer's balance is less than the credit limit
+        2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+        3. The Order's amount_total is the sum of the Item amount
+        4. The Item amount is the quantity * unit_price
+        5. The Item unit_price is copied from the Product unit_price
+
+    Ensure each customer has a unique name.
+
+    Ensure each Item quantity is not null.
+
+    Ensure each order has a valid customer_id that exists in the Customer table.
+
 
 &nbsp;
 

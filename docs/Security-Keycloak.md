@@ -28,6 +28,10 @@ cd devops/keycloak; docker compose up
 
 ![kc-user-roles](images/keycloak/kc-config-local-install-kc.png)
 
+You may see: `Failed to load jwks_uri http://localhost:8080/realms/kcals/protocol/openid-connect/certs`.
+
+* coming soon
+
 &nbsp;
 
 ### Configure Project for Keycloak
