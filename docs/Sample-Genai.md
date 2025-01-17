@@ -180,7 +180,7 @@ If you are using [Web/GenAI](WebGenAI.md){:target="_blank" rel="noopener"}, proj
 
 #### Using WebGenAI
 
-[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=7I33Fa9Ulos "Microservice Automation"){:target="_blank" rel="noopener"}
+[![GenAI Automation](images/ai-driven-automation/GenAI-Logic-Means.png)](https://www.youtube.com/watch?v=7I33Fa9Ulos "Microservice Automation"){:target="_blank" rel="noopener"}
 
 &nbsp;
 
