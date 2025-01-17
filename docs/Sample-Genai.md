@@ -8,7 +8,8 @@
 
     This document presumes you have already created the project, and are using VSCode or GitHub to explore it.  It illustrates how to run and customize the genai_demo project.
 
-    > Note: if you *not* already created the project, proceed to [the Appendix](#creating-the-genai_demo-project)
+    > Note: if you *not* already created the project, proceed to [the Appendix](#creating-genai_demo)
+
 
 &nbsp;
 
@@ -20,23 +21,15 @@ Coming soon.
 
 ## What Just Happened?
 
-`genai` processing is shown below (internal steps denoted in grey):
+Your prompt (whether provided in a file to the CLI, or the WebGenAI website) 
+is sent to ChatGPT to create a schema.  This schema is then processed by als to create 
+and run a project that provides a JSON:API, a Web App, a database, and
+business logic that runs in the API.
 
-1. You create your.prompt file, and invoke `als genai --using=your.prompt`.  genai then creates your database and project as follows:
+For more information, [see below](#how-does-it-work).  For more information on the architecture,
+[click here](https://www.genai-logic.com/architecture).
 
-    a. Submits your prompt to the `ChatGPT API`
-
-    b. Writes the response to file (`system/genai/temp/response.json`), so you can correct and retry if anything goes wrong
-
-    c. Extracts `system/genai/temp/create_db_models.py` from the response
-
-    d. Invokes `als create-from-model`, which creates the database and your project
-
-2. Your created project is opened in your IDE, ready to execute and customize
-
-&nbsp;
-
-![Microservice Automation](images/sample-ai/copilot/genai.png)
+Let's have a look at the created project.
 
 &nbsp;
 
@@ -64,7 +57,7 @@ The development environment is also standard: your IDE, standard languages, stan
 
 * **Standard Python:** e.g, to create a new custom endpoint, and send a Kafka message
 
-> Note: projects are model-driven, resulting in a very small amount of code.  This simlifies debugging and customizing your system.
+> Note: projects are model-driven, resulting in a very small amount of code.  This simplifies debugging and customizing your system.
 
 Explore rules and Python customization below.
 
@@ -72,11 +65,11 @@ Explore rules and Python customization below.
 
 ### Logic Automation
 
-To explore rules:
+The project creation provided natural language logic.  This is translated (not into lots of code, but) rules expressed in Python.  To explore rules created from your prompt:
 
 1. Open `logic/declare_logic.py`
 
-2. View the Python-based rules created by GenAI
+2. View the Python-based rules created by GenAI.  Observe you
 
 > You can add more rules, with Python (code completion), and/or GenAI.
 
@@ -180,6 +173,10 @@ If you are using [Web/GenAI](WebGenAI.md){:target="_blank" rel="noopener"}, proj
 
 #### Using WebGenAI
 
+![Creation from WebGenAI](images/sample-ai/genai/genai-prompt.png)
+
+View the process in this video:
+
 [![GenAI Automation](images/ai-driven-automation/GenAI-Logic-Means.png)](https://www.youtube.com/watch?v=7I33Fa9Ulos "Microservice Automation"){:target="_blank" rel="noopener"}
 
 &nbsp;
@@ -229,6 +226,26 @@ Here is the `system/genai/examples/genai_demo/genai_demo.prompt` file:
 
     Ensure each order has a valid customer_id that exists in the Customer table.
 
+&nbsp;
+
+### How does it work
+
+When you use the WebGenAI website, it captures your prompt, and submits to the als system
+using its provided CLI (`als genai').  `genai` processing is shown below (internal steps denoted in grey):
+
+1. You create your.prompt file, and invoke `als genai --using=your.prompt`.  genai then creates your database and project as follows:
+
+    a. Submits your prompt to the `ChatGPT API`
+
+    b. Writes the response to file (`system/genai/temp/response.json`), so you can correct and retry if anything goes wrong
+
+    c. Extracts `system/genai/temp/create_db_models.py` from the response
+
+    d. Invokes `als create-from-model`, which creates the database and your project
+
+2. Your created project is opened in your IDE, ready to execute and customize.
+
+![Microservice Automation](images/sample-ai/copilot/genai.png)
 
 &nbsp;
 
