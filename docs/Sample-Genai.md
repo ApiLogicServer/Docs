@@ -15,11 +15,36 @@
 
 ## Setup Codespaces
 
-Coming soon.
+Codespaces enables you to run in the cloud: VSCode via your Browser, courtesy Codespaces.  You can use codespaces on your GenAI project:
+
+1. Open your project on GitHub
+
+![API Logic Server Intro](images/sample-ai/genai/open-github.png)
+
+2. Open it in Codespaces (takes a minute or 2):
+
+![API Logic Server Intro](images/sample-ai/genai/start-codespaces.png)
+
+> You will now see your project - running in VSCode, _in the Browser._  But that's just what you _see..._
+
+> Behind the scenes, Codespaces has requisitioned a cloud machine, and loaded your project - with a _complete development environment_ - Python, your dependencies, git, etc.  
+
+> You are attached to this machine in your Browser, running VSCode.
+
+> :trophy: Pretty remarkable.
+
+__3. Start the Server and open the App in the Browser__
+
+* Use the pre-defined Launch Configuration
+
+![API Logic Server Intro](images/git-codespaces/start-codespaces.png)
+
+
+We think you'll find Codespaces pretty amazing - check it out!
 
 &nbsp;
 
-## What Just Happened?
+## How was the project created?
 
 Your prompt (whether provided in a file to the CLI, or the WebGenAI website) 
 is sent to ChatGPT to create a schema.  This schema is then processed by als to create 
