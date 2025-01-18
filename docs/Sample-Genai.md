@@ -1,15 +1,15 @@
-!!! pied-piper ":bulb: TL;DR - GenAI leverages AI and Microservice Automation for 'hands-free' project creation"
+!!! pied-piper ":bulb: TL;DR - GenAI leverages AI and Microservice Automation for project creation"
 
-    To create projects, the system (either WebGenAI or API Logic Server CLI - for more information, [click here](https://apilogicserver.github.io/Docs/Architecture-What-Is/){:target="_blank" rel="noopener"}) performs the following:
+    To create projects, the system (either the WebGenAI web app, or API Logic Server CLI) performs the following:
     
-    1. Uses ChatGPT APIs  to submit prompts and obtain data model class responses
+    1. Uses ChatGPT APIs to submit prompts and obtain data model class responses
     
     2. It then uses these to create a database and project
 
     This document presumes you have already created the project, and are using VSCode or GitHub to explore it.  It illustrates how to run and customize the genai_demo project.
 
-    > Note: if you *not* already created the project, proceed to [the Appendix](#creating-genai_demo)
-
+    > Note: if you have *not* already created the project, proceed to the Appendix ("Creating GenAI Demo").
+    
 
 &nbsp;
 
@@ -51,8 +51,8 @@ is sent to ChatGPT to create a schema.  This schema is then processed by als to 
 and run a project that provides a JSON:API, a Web App, a database, and
 business logic that runs in the API.
 
-For more information, [see below](#how-does-it-work).  For more information on the architecture,
-[click here](https://www.genai-logic.com/architecture).
+For more information, Appendix ("how does it work").  For more information on the architecture,
+please see: https://www.genai-logic.com/architecture.
 
 Let's have a look at the created project.
 
@@ -63,14 +63,14 @@ Let's have a look at the created project.
 API/App Automation means the created project is executable.  To run:
 
 1. Press **F5** to run
-2. Start your Browser (use the codespaces button, or [locally](http://localhost:5656/)) to view:
+2. Start your Browser (use the codespaces button, or locally: http://localhost:5656/) to view:
     * App Automation: the Admin App, and
     * API Automation: JSON:API, with Swagger
 3. Stop the server when you are done (red box on VSCode Debugger panel)
 
 ![Microservice Automation](images/sample-ai/copilot/created-microservice.png)
 
-It's a modern, 3-tiered architecture, using standard Python libraries.  For more information, [click here - slide 2](https://www.genai-logic.com/architecture).
+It's a modern, 3-tiered architecture, using standard Python libraries.  For more information, see slide 2: https://www.genai-logic.com/architecture.
  
 &nbsp;
 
@@ -122,7 +122,7 @@ Set a breakpoint in the code above, and:
 3. To test the new endpoint, use Swagger (**ServicesEndPoint > POST /ServicesEndPoint/OrderB2B)**.
     * Observe the swagger response - "Sending Order to Shipping sends:".
 
-Note: Kafka is not activated in this example.  To explore a running Tutorial for application integration with running Kafka, [click here](Sample-Integration.md){:target="_blank" rel="noopener"}.
+Note: Kafka is not activated in this example.  To explore a running Tutorial for application integration with running Kafka, see: https://apilogicserver.github.io/Docs/Sample-Integration.
 
 &nbsp;
 
@@ -132,7 +132,7 @@ One of the best ways to de-risk projects is to verify the sponsors are in sync w
 
 GenAI Automation produces *working software, now*, so you can find misunderstandings before investing serious effort ("fail fast").  To expose the working software, it's often desirable to deploy to the cloud so business users can run it.
 
-API Logic Server creates the `devops` directory, which scripts to containerize your project, and deploy it to Azure.  For more information, see [DevOps Automation](https://apilogicserver.github.io/Docs/DevOps-Automation/){:target="_blank" rel="noopener"}.
+API Logic Server creates the `devops` directory, which scripts to containerize your project, and deploy it to Azure.  For more information, see DevOps Automation: https://apilogicserver.github.io/Docs/DevOps-Automation/.
 
 &nbsp;
 
@@ -190,7 +190,7 @@ A good technique is to:
 
 It's usage create the sqlite database, but running it in this mode can provide more insight into causes.
 
-If you are using [Web/GenAI](WebGenAI.md){:target="_blank" rel="noopener"}, project files are always under /projects/gen_$ID.
+If you are using Web/GenAI (see: https://apilogicserver.github.io/Docs/WebGenAI/), project files are always under /projects/gen_$ID.
 
 &nbsp;
 
@@ -200,20 +200,17 @@ If you are using [Web/GenAI](WebGenAI.md){:target="_blank" rel="noopener"}, proj
 
 ![Creation from WebGenAI](images/sample-ai/genai/genai-prompt.png)
 
-View the process in this video:
-
-[![GenAI Automation](images/ai-driven-automation/GenAI-Logic-Means.png)](https://www.youtube.com/watch?v=7I33Fa9Ulos "Microservice Automation"){:target="_blank" rel="noopener"}
+View the process in this video: https://www.youtube.com/watch?v=7I33Fa9Ulos 
 
 &nbsp;
 
 #### Using the ALS CLI
 
-[![GenAI Automation](images/sample-ai/copilot/genai-automation-video.png)](https://www.youtube.com/watch?v=LSh7mqGiT0k&t=5s "Microservice Automation"){:target="_blank" rel="noopener"}
-
+View: https://www.youtube.com/watch?v=LSh7mqGiT0k&t=5s.
 
 To create a microservice, identify an existing database, or provide a natural language "prompt" description.  
 
-You can explore genai_demo using the [Manager](https://apilogicserver.github.io/Docs/Manager/){:target="_blank" rel="noopener"}.  Optionally, you can sign-up for ChatGPT API and Copilot, or simulate the process as described below.
+You can explore genai_demo using the Manager https://apilogicserver.github.io/Docs/Manager/.  Optionally, you can sign-up for ChatGPT API and Copilot, or simulate the process as described below.
 
 1. If you have signed up for ChatGPT API and Copilot, this command will create and open a project called `genai_demo` from `system/genai/examples/genai_demo/genai_demo.prompt`:
 
@@ -280,7 +277,7 @@ The above examples use *sqlite,* since it requires no install.  The GenAI proces
 
 You can test this as follows:
 
-1. Use [our docker image](https://apilogicserver.github.io/Docs/Database-Docker/){:target="_blank" rel="noopener"}
+1. Use our docker image: https://apilogicserver.github.io/Docs/Database-Docker/
 2. And:
 
 ```bash
