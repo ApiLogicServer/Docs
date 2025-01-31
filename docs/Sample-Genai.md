@@ -107,7 +107,7 @@ The project creation provided natural language logic.  This is translated (not i
 To save time, issue the follow command to simulate changes you might make in your IDE, e.g., to create a new custom endpoint, and send a Kafka message.
 
 ```bash title="Simulate IDE Customization"
-als genai-cust
+als cust
 ```
 
 ![Customize](images/sample-ai/copilot/genai_cust.png)
