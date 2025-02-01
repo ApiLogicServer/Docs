@@ -206,7 +206,9 @@ Provide a 10% discount when buying more than 10 carbon neutral products
 
 The Item carbon neutral is copied from the Product carbon neutral
 ```
-You can find this example in the Manager Readme; see **2. New Database** > **You can iterate the logic and data model**.
+You can find this example in the Manager Readme; see **2. New Database** > **You can iterate the logic and data model**:
+
+![if-based-formulas](images/web_genai/logic/if-based%20formula.png)
 
 &nbsp;
 
