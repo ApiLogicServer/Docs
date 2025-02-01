@@ -31,7 +31,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 &nbsp;
 
-> Web/GenAI is based on API Logic Server - [docs here.](Doc-Home.md){:target="_blank" rel="noopener"}
+> Web/GenAI is based on API Logic Server - [docs home here.](Doc-Home.md){:target="_blank" rel="noopener"}.  API Logic Server provides the CLI functions used by WebGenAI - for more on the GenAI CLI, [click here](WebGenAI-CLI.md){:target="_blank" rel="noopener"}.
 
 *Click* the image below to watch a 2 minute video:
 
@@ -155,9 +155,10 @@ Use LogicBank to enforce the Check Credit:
 
 You can verify this by altering a sample order/item with a very high quantity, and verifying the credit limit is checked.  (Note this is not trivial - 3 table transaction.)
 
-> Note: at the time of this writing, the sample data sometimes does not totally reflect the derivation rules.  This is under investigation.  You can sometimes resolve this using iterations, eg, `please initialize the customer balance properly`.
+For more, see 
 
-For more, see the [logic editor](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"}.
+* the [logic editor](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"}
+* [natural languge logic](WebGenAI-CLI.md#natural-language-logic){:target="_blank" rel="noopener"}
 
 &nbsp;
 

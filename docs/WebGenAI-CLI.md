@@ -197,11 +197,24 @@ The logic is non-trivial:
 
 &nbsp;
 
+#### Conditional Derivations
+
+You can make derivations conditional, for example:
+
+```html title='conditional logic'
+Provide a 10% discount when buying more than 10 carbon neutral products
+
+The Item carbon neutral is copied from the Product carbon neutral
+```
+You can find this example in the Manager Readme; see **2. New Database** > **You can iterate the logic and data model**.
+
+&nbsp;
+
 #### Cardinality Patterns
 
 Logic GenAI training has enabled the following:
 
-```
+```html title='Cardinality Patterns'
 Products have Notices, with severity 0-5.
 
 Raise and error if product is orderable == True and there are any severity 5 Notices, or more than 3 Notices.

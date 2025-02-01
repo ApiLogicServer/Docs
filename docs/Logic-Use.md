@@ -212,6 +212,18 @@ Observe the `server_default` property.  This value is used by LogicBank, as foll
 
 &nbsp;
 
+#### Aggregates defaulted to 0
+
+Aggregate derivations (sums and counts) are defaulted to 0.
+
+&nbsp;
+
+#### All Defaults
+
+You can set the environment variable `ALL_DEFAULTS` to force numeric values to 0, and string values to the null string.  This has no effect on dates.
+
+&nbsp;
+
 ## Updating and Deleting
 
 These require you first obtain the row, either through a model class accessor (e.g., retrieve a parent row), or a SQLAlchemy call.  In any case, alter the row as required, and issue `logic_row.update()' (or delete).  As for insert, this triggers logic execution.
