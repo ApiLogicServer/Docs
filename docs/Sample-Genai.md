@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - GenAI leverages AI and Microservice Automation for project creation"
 
-    To create projects, the system (either the WebGenAI web app, or API Logic Server CLI) performs the following:
+    To create projects (either the WebGenAI web app, or API Logic Server CLI), the system performs the following:
     
     1. Uses ChatGPT APIs to submit prompts and obtain data model class responses
     
@@ -8,14 +8,14 @@
 
     This document presumes you have already created the project, and are using VSCode or GitHub to explore it.  It illustrates how to run and customize the genai_demo project.
 
-    > Note: if you have *not* already created the project, proceed to the Appendix ("Creating GenAI Demo").
+    > Note: if you have *not* already created the project, see the Appendix ("Creating GenAI Demo").
     
 
 &nbsp;
 
 ## Setup Codespaces
 
-Codespaces enables you to run in the cloud: VSCode via your Browser, courtesy Codespaces.  You can use codespaces on your GenAI project:
+Codespaces enables you to run in the cloud: VSCode via your Browser, courtesy GitHub.  You can use codespaces on your GenAI project:
 
 1. Open your project on GitHub
 
@@ -90,7 +90,7 @@ Explore rules and Python customization below.
 
 ### Logic Automation
 
-The project creation provided natural language logic.  This is translated (not into lots of code, but) rules expressed in Python.  To explore rules created from your prompt:
+The project creation provided natural language logic.  This is translated into ***rules*** (vs. lots of code) expressed in Python.  To explore rules created from your prompt:
 
 1. Open `logic/declare_logic.py`
 
@@ -104,13 +104,21 @@ The project creation provided natural language logic.  This is translated (not i
 
 ### Standard Python, Libraries
 
-To save time, issue the follow command to simulate changes you might make in your IDE, e.g., to create a new custom endpoint, and send a Kafka message.
+To save time, issue the follow command to simulate changes you might make in your IDE, e.g., to create a new custom endpoint, and send a Kafka message.  
 
 ```bash title="Simulate IDE Customization"
-als cust
+als add-cust
 ```
 
 ![Customize](images/sample-ai/copilot/genai_cust.png)
+
+The customization is this code in the diagram above:
+
+```python title="Send Kafka Message"
+
+    # Sends the order to Kafka topic 'order_shipping' if the date shipped is not None.
+    Rule.after_flush_row_event(on_class=Order, calling=kafka_producer.send_row_to_kafka, if_condition=lambda row: row.date_shipped is not None, with_args={"topic": "order_shipping"})
+```
 
 ### Try it out
 
