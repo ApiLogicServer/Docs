@@ -101,7 +101,33 @@ In the prior section, the result was a *recreated* project.  If you have customi
 
 ## Natural Language Logic
 
-As of release 11.2.10, you can declare Natural Language Logic when you create projects, and for existing projects.
+As of release 11.2.10, you can declare Natural Language Logic when you create projects, and for existing projects.  Natural Language support includes derivation (sum, count, formula), constraints, and send.  Additional rules are provided via the CLI; for more information, see [Logic](Logic.md){:target="_blank" rel="noopener"}.
+
+For example:
+
+```text title='Sample Natural Language Logic'
+Create a system with customers, orders, items and products.
+
+Include a notes field for orders.
+
+Use LogicBank to enforce business logic.
+
+Use case: Check Credit    
+    1. The Customer's balance is less than the credit limit
+    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+    3. The Order's amount_total is the sum of the Item amount
+    4. The Item amount is the quantity * unit_price
+    5. The Item unit_price is copied from the Product unit_price
+
+Use case: App Integration
+    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+
+Ensure each customer has a unique name.
+
+Ensure each Item quantity is not null.
+
+Ensure each order has a valid customer_id that exists in the Customer table.
+```
 
 > Status: Beta.  Current implementation presumes projects are running in the Manager directory.
 
@@ -158,6 +184,17 @@ Use LogicBank to enforce the Check Credit requirement:
     4. The Item amount is the quantity * unit_price
     5. The Item unit_price is copied from the Product unit_price
 ```
+
+&nbsp;
+
+#### Integration Logic
+In the example above, note the rule:
+
+```text title ='Integration Logic'
+Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None
+```
+
+This sends all the columns of the Order object to the Kafka topic if date_shipped is not None.
 
 &nbsp;
 
@@ -334,7 +371,66 @@ Observe:
 3. Revised test database, initialized to reflect the derivations in the suggested logic
 
 
+## Export
 
+You can export project from WebGenAI, either from the Browser or from GitHub:
+
+![export](images/web_genai/export/webg-export.png)
+
+This enables you to verify all aspects of project operation, and extend GenAI functionality in your local IDE.
+
+&nbsp;
+
+### Open in your IDE
+
+Once have exported and expanded the tar file:
+
+1. Setup your virtual environment - see [Virual Environment](Project-Env.md){:target="_blank" rel="noopener"}
+
+    * Note: in some configurations of VSCode (e.g., mac multiple projects in the same window), it may not allow you specif your virtual environment.  You can fix this:
+
+        * Set the proper virtual environment in `.vscode/settings.json`: `    "python.defaultInterpreterPath": "~/dev/ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer/venv/bin/python"`
+        * Rename the project
+
+2. You should then be able to open and run the exported project in your IDE, 
+
+&nbsp;
+
+### wg_rules and IDE rules
+
+The system is designed to support concurrent ongoing Multi-Team Development from WebGenAI, and from traditional development.  For more information, see [Import / Merge WebGenai](IDE-Import-WebGenAI.md){:target="_blank" rel="noopener"}.
+
+To simplify the file mechanics during merge, WebGenAI rules are stored separately from rules created in the IDE:
+
+| Logic Source | Stored   | Source of Truth - Manage In |
+| :-------------: |:-------------:| :-----:|
+| IDE Rules | `logic/declare_logic.py`, and (perhaps preferably) as files in `logic/logic_discovery` | **IDE** / Source control |
+| WebGenAI Rules | `logic/wg_rules` | The **WebGenAI system.**  Import / merge projects into local dev environment using [Import / Merge WebGenAI](IDE-Import-WebGenAI.md){:target="_blank" rel="noopener"} |
+
+![wg-rules](images/web_genai/logic/wg_rules.png)
+
+&nbsp;
+
+### wg_rules
+
+Consider that WebGenAI and IDEs are quite different environments.  For example, IDEs support code completion and highlight errors, while WebGenAI uses Natural Language (which does not have 'syntax errors').
+
+Without an IDE, WebGenAI users still require diagnostics about which rules fail to properly compile.  This requires the system to break each rule into a separate file, as shown above.
+
+Since the source of truth is the WebGenAI system, you should not alter the wg_rules.  You can and should use these files to:
+
+* Review and verify the logic created by WebGenAI
+* Debug the logic using debugger and the logic log; see [Debugging Logic](Logic-Debug.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+#### active_rules_export
+
+The separate wg_rules files are gathered into a single `active_rules_export.py` file.  This simplifies verification / debugging (see above).  
+
+This is a different execution path for IDE execution vs. WebGenAI execution.  You can force the WebGenAI execution path using the environment variables shown above.  This is normally not necessary.
+
+&nbsp;
 
 ----
 
