@@ -424,7 +424,7 @@ Since the source of truth is the WebGenAI system, you should not alter the wg_ru
 
 &nbsp;
 
-#### active_rules_export
+#### active_rules_export.py
 
 The separate wg_rules files are gathered into a single `active_rules_export.py` file.  This simplifies verification / debugging (see above).  
 
