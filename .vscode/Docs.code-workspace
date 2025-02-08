@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"workbench.colorTheme": "Blue Light Theme",
-		"workbench.preferredLightColorTheme": "Blue Light Theme"
+		"workbench.colorTheme": "MintLight Theme",
+		"workbench.preferredLightColorTheme": "MintLight Theme"
 	}
 }
