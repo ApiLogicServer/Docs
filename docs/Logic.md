@@ -33,9 +33,12 @@ Rules are declared in your IDE, using GenAI or Code Completion.  Edit the file `
 
 &nbsp;
 
-## With GenAI Logic Automation
+## GenAI Natural Language Logic
 
-You can use Natural Language to create logic during project creation, or for existing projects.  For more information, [see here](WebGenAI-CLI.md#create-projects-with-logic){:target="_blank" rel="noopener"}.
+You can also use Natural Language to create logic during project creation, or for existing projects.  For example: `The Customer's balance is the sum of the Order amount_total where date_shipped is null`.
+
+* For more information on using Natural Language Logic, [see Natural Language Logic](WebGenAI-CLI.md#natural-language-logic){:target="_blank" rel="noopener"}.
+* For more information on Managing IDE logic and Natural Language Logic, [see WebGenAI Rules and IDE Rules](WebGenAI-CLI.md#wg_rules-and-ide-rules){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

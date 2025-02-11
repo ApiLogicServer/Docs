@@ -14,11 +14,6 @@ theme:
     - navigation.footer
 nav:
   - " ": index.md
-  - GenAI:
-    - "WebGenAI Website": WebGenAI.md
-    - "WebGenAI Logic Editor": WebGenAI-logic-editor.md
-    - "GenAI CLI": WebGenAI-CLI.md    
-    - "Sample": Sample-Genai.md
   - Quick Start:
     - Doc-Home.md
     - Express Install: Install-Express.md
@@ -41,6 +36,11 @@ nav:
     - "Basic Self-Demo": Sample-Basic-Demo.md
     - "AI - ChatGPT, Agile": Tutorial-AI.md
     - "Sample Systems": Data-Model-Examples.md
+  - GenAI:
+    - "WebGenAI Website": WebGenAI.md
+    - "WebGenAI Logic Editor": WebGenAI-logic-editor.md
+    - "GenAI CLI": WebGenAI-CLI.md    
+    - "Sample": Sample-Genai.md
   - 0. ApiLogicServer create:
     - "Create with CLI": Project-Structure.md
     - "Manager": Manager.md
@@ -90,6 +90,7 @@ nav:
   - 5. Application Integration:
     - "Sample Integration": Sample-Integration.md
     - "Integration Mapping": Integration-Map.md
+    - "Kafka Messaging": Integration-Kafka.md
   - IDE - Customize, Manage:
     - "Customize Using Your IDE": IDE-Customize.md
     - "Fixup - missing attributes": IDE-Fixup-Attrs.md
