@@ -242,6 +242,7 @@ Use LogicBank to enforce the Check Credit requirement:
     3. The Order's amount_total is the sum of the Item amount
     4. The Item amount is the quantity * unit_price
     5. The Item unit_price is copied from the Product unit_price
+    6. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None
 ```
 
 &nbsp;
@@ -249,7 +250,7 @@ Use LogicBank to enforce the Check Credit requirement:
 #### Integration Logic
 In the example above, note the rule:
 
-```text title ='Integration Logic'
+```bash title='Integration Logic'
 Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None
 ```
 
