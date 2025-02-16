@@ -288,21 +288,15 @@ To see Release Notes, [click here](https://github.com/ApiLogicServer/ApiLogicSer
 
 This pre-release includes:
 
-* Many simplfications for Tutorial
+* devops directory has new subdirectory for using Docker w/ std apilogicserver container
+* Manager support for local WebGenAI
 
 You can try it at (you may need to use `python3`):
 
 ```bash
-python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==10.01.25
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ApiLogicServer==14.03.12
 ```
 
-Or use (neither available currently):
-
-```bash
-docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ~/dev/servers:/localhost apilogicserver/api_logic_server_x
-```
-
-Or, you can use [the beta version on codespaces](https://github.com/ApiLogicServer/beta){:target="_blank" rel="noopener"}.
 
 </details>
 

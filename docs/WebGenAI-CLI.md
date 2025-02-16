@@ -410,7 +410,7 @@ To simplify the file mechanics during merge, WebGenAI rules are stored separatel
 
 &nbsp;
 
-### Multiple wg_rules files
+### Multi read-only wg_rules files
 
 Consider that WebGenAI and IDEs are quite different environments.  For example, IDEs support code completion and highlight errors, while WebGenAI uses Natural Language (which does not have 'syntax errors').
 
@@ -419,7 +419,7 @@ Without an IDE, WebGenAI users still require diagnostics about which rules fail 
 Since the source of truth is the WebGenAI system, you should not alter the wg_rules.  You can and should use these files to:
 
 * Review and verify the logic created by WebGenAI
-* Debug the logic using debugger and the logic log; see [Debugging Logic](Logic-Debug.md){:target="_blank" rel="noopener"}.
+* Debug the logic using the debugger and the logic log; see [Debugging Logic](Logic-Debug.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
