@@ -77,18 +77,18 @@ The sections below explore the system that has been created (which would be simi
 
 While API/UI automation is a great start, it's critical to enforce logic and security.  Here's how.
 
-The following `apply_customizations` process simulates:
+The following `add_customizations` process simulates:
 
 * Adding security to your project, and
 * Using your IDE to declare logic and security in `logic/declare_logic.sh` and `security/declare_security.py`.
 
 > Declared security and logic are shown in the screenshots below.<br>It's quite short - 5 rules, 7 security settings.
 
-To apply customizations, in a terminal window for your project:
+To add customizations, in a terminal window for your project:
 
 **1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
 
-**2. Apply Customizations**
+**2. Add Customizations**
 
 ```bash
 als add-cust
@@ -97,7 +97,7 @@ als add-cust
 
 ### Declare Security
 
-The `apply_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_logic.sh`.
+The `add_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_logic.sh`.
 
 To see security in action:
 
@@ -137,7 +137,7 @@ Logic (multi-table derivations and constraints) is a significant portion of a sy
 
 Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
 
-The `apply_customizations` process above has simulated the process of using your IDE to declare logic in `logic/declare_logic.sh`.
+The `add_customizations` process above has simulated the process of using your IDE to declare logic in `logic/declare_logic.sh`.
 
 To see logic in action:
 
@@ -192,7 +192,7 @@ Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify
 
 &nbsp;
 
-The following `apply_iteration` process simulates an iteration:
+The following `add_iteration` process simulates an iteration:
 
 * acquires a new database with `Product.CarbonNeutral`
 
@@ -214,11 +214,11 @@ The following `apply_iteration` process simulates an iteration:
 
 &nbsp;
 
-To apply this iteration, in a terminal window for your project:
+To add this iteration, repeat the process above - in a terminal window for your project:
 
 **1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
 
-**2. Apply Iteration**
+**2. Add Iteration**
 
 ```bash
 als add-cust
