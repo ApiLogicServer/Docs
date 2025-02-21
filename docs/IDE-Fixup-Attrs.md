@@ -42,5 +42,7 @@ Finally, rebuild the project:
 cd ../
 als genai --using=genai_demo.prompt --repaired-response=genai_demo_fixup_required/docs/fixup/response_fixup.json
 ```
+
+> Fixup does not update your `ui/admin/admin.yaml`; you can update it manually.
     
 &nbsp;

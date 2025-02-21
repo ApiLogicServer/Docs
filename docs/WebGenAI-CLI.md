@@ -178,12 +178,14 @@ als genai-logic --suggest --logic='*'
 ```
 
 Important notes about suggestions and generated code:
+
 * `--suggest --logic='*'` is intended to enable you to identify logic that does not translate into proper code
 * The example above was pretty good, but sometimes the results are downright silly:
     * Just run suggest again, or
     * Repair `docs/logic_suggestions/002_logic_suggestions.prompt`
 
 Also...
+
 * It is not advised to paste the code into `logic/declare_logic.py`
     * The suggested logic may result in new data model attributes
     * These are created automatically by running `als genai` (next step)
@@ -199,6 +201,7 @@ als genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/doc
 ```
 
 Observe:
+
 1. The created project has the rule suggestions in `logic/declare_logic.py`
 2. A revised Data Model in `database/models.py` that includes attributes introduced by the logic suggestions
 3. Revised test database, initialized to reflect the derivations in the suggested logic
