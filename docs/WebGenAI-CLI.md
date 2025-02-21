@@ -347,7 +347,7 @@ Notes:
 
 ### Add Logic to Existing Projects
 
-As shown below, in an existing project located under the Manager:
+As shown below, you can add Natural Language logic to existing projects.  Using an existing project located under the Manager:
 
 1. Create a prompt such as `docs/logic/check_credit.prompt`
 
@@ -368,6 +368,8 @@ Notes:
 
 * See the notes above for creating new projects with logic
 * Unlike new projects, columns are not created automatically for derived attributes.  You can create these as described in [data model changes](Database-Changes.md){:target="_blank" rel="noopener"}.
+* Most likely, you will maintain the logic in the `logic_discovery` directory.
+    * When you are done, you might want to rename the `docs/logic` files (e.g., change the file extension) so they are not processed on future runs.
 
 ![Add logic to Existing Project](images/web_genai/logic/existing-projects.png)
 
