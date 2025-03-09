@@ -343,6 +343,10 @@ Notes:
     # End Logic from GenAI
 ```
 
+#### Logic Patterns
+
+See [Logic Patterns](Logic.md#logic-patterns){:target="_blank" rel="noopener"}.
+
 &nbsp;
 
 ### Add Logic to Existing Projects

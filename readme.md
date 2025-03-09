@@ -2,7 +2,7 @@
 
 There are the official docs of [API Logic Server](https://apilogicserver.github.io/Docs/).  Docs are built with mkdocs, which requires special setup to operate locally.
 
-* Mac: run `docs.sh`
+* Mac: run `sh docs.sh`
     * I find it helpful to copy this to my `/usr/local/bin` folder.
 * Windows: execute this in Powershell:
 
