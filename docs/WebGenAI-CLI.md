@@ -440,6 +440,14 @@ This is a different execution path for IDE execution vs. WebGenAI execution.  Yo
 
 &nbsp;
 
+### Multi-Team Development
+
+Since the logic is in separate directories, the system is able to support ongoing development in both WebGenAI and your IDE.
+
+> Please see [Import / Merge GenAI](IDE-Import-WebGenAI.md){:target="_blank" rel="noopener"}.
+
+<br>
+
 ----
 
 

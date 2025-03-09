@@ -38,13 +38,13 @@ nav:
     - "Sample Systems": Data-Model-Examples.md
   - GenAI:
     - "WebGenAI Website": WebGenAI.md
+    - "GenAI CLI": WebGenAI-CLI.md      
     - "WebGenAI Logic Editor": WebGenAI-logic-editor.md
-    - "GenAI CLI": WebGenAI-CLI.md    
     - "Sample": Sample-Genai.md
   - 0. ApiLogicServer create:
     - "Create with CLI": Project-Structure.md
     - "Manager": Manager.md
-    - "Create with Gen/AI on Web": WebGenAI.md
+    - "Create with Gen/AI on Web": WebGenAI-create.md
     - "Model Driven": Tech-DSL.md
     - "Create With Copilot": Project-Create-Copilot.md
     - "Rebuild": Project-Rebuild.md

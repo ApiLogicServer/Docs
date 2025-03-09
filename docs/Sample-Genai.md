@@ -156,30 +156,11 @@ AI results are not consistent, so the created model file may need corrections.  
 als create --project-name=genai_demo --from-model=system/genai/temp/model.py --db-url=sqlite
 ```
 
-Or, correct the chatgpt response, and
+Or, correct the chatgpt response in `system/genai/temp/genai_demo<your project>response.json`, and
 
 ```bash
-als genai --using=genai_demo.prompt --gen-using-file=system/genai/temp/chatgpt_retry.txt
+als genai --repaired-response=system/genai/temp/genai_demo/response.json --project-name=genai_demo
 ```
-
-&nbsp;
-
-CLI Notes (effective as of release 11.00.22):
-
-* Projects are created in the your current working folder (typically the manager root directory).  They were formerly created adjacent to the `gen-using-file`.
-
-* The project name is the last node of `--using`.  This is a required argument, since it denotes the project directory name.
-
-We have seen failures such as:
-
-* duplicate definition of `DECIMAL` (we hand-fix the response to fix this)
-* unclosed parentheses
-* data type errors in test data creation
-* wrong engine import: from logic_bank import Engine, constraint
-* bad test data creation: with Engine() as engine...
-* Bad load code (no session)
-* missing datetime import
-* relationship property errors ("mapper has no property...")
 
 &nbsp;
 

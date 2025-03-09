@@ -9,6 +9,8 @@
     3. **Executed** - *automatically* -  on updates (using SQLAlchemy events)
     4. **Debugged** in your IDE, and with the console log
 
+    Rules can be declared using WebGenAI and/or Python.  For more on WebGenAI, [click here](WebGenAI.md){:target="_blank" rel="noopener"}.
+
 
 # Rule Types
 The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample for full syntax.
@@ -31,7 +33,7 @@ The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample 
 
 The table below illustrates that:
 
-* You can declare rules in Natural Language and/or Python.  
+* You can declare rules in Natural Language using [WebGenAI](WebGenAI.md){:target="_blank" rel="noopener"} and/or Python.  
 * Rules are stored in your project depending on how they were defined
 
 <br>
