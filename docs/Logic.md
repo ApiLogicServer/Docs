@@ -45,7 +45,7 @@ The table below illustrates that:
 
 &nbsp;
 
-## GenAI Natural Language Logic
+## GenAI: Natural Language Logic
 
 You can use Natural Language to create logic during project creation, or for existing projects.  For example: `The Customer's balance is the sum of the Order amount_total where date_shipped is null`.
 
@@ -58,7 +58,7 @@ Think of Natural Language Logic as a translation process down onto underlying ru
 
 &nbsp;
 
-## With Code Completion
+## IDE: With Code Completion
 
 You can also use your IDE with Code Completion to add rules, and their arguments.
 
@@ -81,7 +81,7 @@ Similarly, you can change rules without worrying about the order of execution.
 
 Inside the larger process above, here is the best way to learn how to use rules:
 
-1. **Rule Summary**: review the table above; there are a small number of rules, since their power lies in chaining
+1. **Rule Summary**: review the Rule Types table above; there are a small number of rules, since their power lies in chaining
 
     * **Alert:** Logic consists of rules and Python.  You will quickly learn to use logic events; focus on the *rules as the preferred* approach, using Python (events, etc) as a *fallback*.
 
@@ -95,8 +95,9 @@ Inside the larger process above, here is the best way to learn how to use rules:
 
 &nbsp;&nbsp;
 
-
 ## Rule Patterns
+
+Rules support *chaining:* a rule may change a value that triggers other rules, including across tables.  Mastering such ***multi-table logic*** is the key to using rules effectively.  The most typical examples are described below.
 
 | Pattern | Notes | Example
 | :------------- | :-----| :---- |
@@ -109,26 +110,9 @@ Inside the larger process above, here is the best way to learn how to use rules:
 | **Ready Flag** | Multi-session editing, then , when ready...<br>adjust related data / enforce constraints | [Make Order Ready](Behave-Logic-Report.md/#scenario-order-made-ready){:target="_blank" rel="noopener"} |
 | **Events for Lib Access** | Events enable Python, use of standard libs (e.g., Kafka) | [Ship Order](Behave-Logic-Report.md#scenario-good-order-custom-service){:target="_blank" rel="noopener"} |
 
-
-## Logic Patterns
-
-WebGenAI was trained to understand the Natural Language Logic problems shown below.  Please see [Natural Language Logic](WebGenAI-CLI.md#natural-language-logic){:target="_blank" rel="noopener"}.
-
-| Example | Notes |
-| :------------- | :------------- |
-| Airport - at least 10 tables<br>A flight's passengers must be less than its Airplane's seating capacity |
-| System for Departments and Employees.<br>Sum of employee salaries cannot exceed department budget |
-| Create a system with Employees and their Skills.<br>More than One Employee can have the same Skill.<br>EmployeeSkill.rating = Skill.rating<br>An Employee's skill-rating is the sum of the Employee Skills rating, plus 2 * years of service. |
-| Students have probations and sick days.<br>Signal an error if a Student's can-graduate is True, and there are more 2 probations, or more than 100 sick days.
-| Applicant have felonies and bankruptcies.<br>Signal error if is-hirable is true and there are more than 3 bankruptcies, or 2 felonies.
-| Students have Grades and belong to Clubs.<br>Copy the name from Club to Student Club<br>The student's service activity is the count of Student Clubs where name contains 'service'. <br>Signal error if student is eligible for the honor society == True, and their grade point average is under 3.5, or they have less than 2 service activities
-| Products have Notices, with severity 0-5.<br>Raise and error if product is orderable == True and there are any severity 5 Notices, or more than 3 Notices.
-| Create a system with customers, orders, items and products.<br>Include a notes field for orders.<br><br>Use Case: enforce the Check Credit for ready orders:<br>1. Customer.balance <= credit_limit<br>2. Customer.balance = Sum(Order.amount_total where date_shipped is null and ready is True)<br>3. Order.amount_total = Sum(Item.amount)<br>4. Item.amount = quantity * unit_price<br>5. Store the Item.unit_price as a copy from Product.unit_price<br><br>Use Case: Compute Products ordered<br>1. Item.ready = Order.ready<br>2. Product.total_ordered = sum(Item.quantity) where ready == True<br>3. Product.reorder_required = quantity_on_hand <= total_ordered<br><br>Use Case: No Empty Orders<br>1. Order.item_count = Count(Items)<br>2. When setting the date_shipped, item_count must be > 0. | Ready Flag
-| Teachers, courses which have offerings, and students who have offerings.<br><br>Use Case: capacity<br>teachers cannot be assigned to more than 5 courses<br>students cannot have more enrollments than 6<br><br>Use Case: budget control<br>courses have a charge, which is copied to enrollments charge<br>a student's total enrollment charges cannot exceed their budget
-
 &nbsp;
 
-## Case Study
+## Rules Case Study
 
 The best way to learn the rules is by a Case Study approach:
 
@@ -154,3 +138,95 @@ The best way to learn the rules is by a Case Study approach:
 
     * Reveal the solution: open the disclosure box: "Tests - and their logic - are transparent.. click to see Logic"
 
+
+&nbsp;
+
+# Learning Natural Language
+
+As noted above, it is important to be clear on the rules generated for logic.  Use the examples below to test your understanding.
+
+WebGenAI provides the [Logic Editor](WebGenAI-logic-editor.md) so you can see/edit the translation:
+
+![logic Editor](images/web_genai/logic/logic-editor.png)
+
+## Natural Language Patterns
+| Pattern | Notes | Example
+| :------------- | :-----| :---- |
+| Formal vs Informal | You can: *Customer.balance = Sum(Order.amount_total where date_shipped is null)* | Or, more simply: *The Customer's balance is the sum of the Order amount_total where date_shipped is null* 
+| Integration Logic | Kafka | *Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None*
+| Multi-rule Logic | See Multi-rule Logic - Generatd Rules, below | *Sum of employee salaries cannot exceed department budget*
+| Conditional Derivations | See Conditional Derivation - Generated Rules, below | Provide a 10% discount when buying more than 10 carbon neutral products<br>The Item carbon neutral is copied from the Product carbon neutral
+| Cardinality Patterns<br>- *Qualified Any* | See Cardinality Patterns - Generated Rules, below  | Products have Notices, with severity 0-5.<br>Raise and error if product is orderable == True and there are any severity 5 Notices, or more than 3 Notices.
+
+
+<details markdown>
+
+<summary> Multi-rule Logic - Generated Rules </summary>
+```python title='Logic Recognizes "conditional derivations"'
+# Aggregate the total salaries of employees for each department.
+Rule.sum(derive=Department.total_salaries, as_sum_of=Employee.salary)
+
+# Ensure the sum of employee salaries does not exceed the department budget
+Rule.constraint(validate=Department, as_condition=lambda row: row.total_salaries <= row.budget, error_msg="xxx")
+# End Logic from GenAI
+```
+</details>
+
+&nbsp;
+
+<details markdown>
+
+<summary> Conditional Derivation - Generated Rules </summary>
+```python title='Logic Recognizes "conditional derivations"'
+# Provide a 10% discount when buying more than 10 carbon neutral products.
+Rule.formula(derive=Item.amount,
+             as_expression=lambda row: 0.9 * row.unit_price * row.quantity \
+                if row.Product.is_carbon_neutral and row.quantity > 10
+                else row.unit_price * row.quantity)
+# End Logic from GenAI
+```
+</details>
+
+&nbsp;
+<details markdown>
+
+<summary> Cardinality Patterns - Generated Rules </summary>
+```python title='Logic Recognizes "qualified any"'
+    # Logic from GenAI: (or, use your IDE w/ code completion)
+
+    # Derive product notice count from related notices.
+    Rule.count(derive=Product.notice_count, as_count_of=Notice)
+
+    # Derive count of severity 5 notices for products.
+    Rule.count(derive=Product.class_5_notice_count, as_count_of=Notice, where=lambda row: row.severity == 5)
+
+    # Ensure product is not orderable if conditions on notices are met.
+    Rule.constraint(validate=Product,
+    as_condition=lambda row: not (row.orderable and (row.class_5_notice_count > 0 or row.notice_count > 3)),
+    error_msg="Orderable product contains severity 5 or excessive notices.")
+
+    # End Logic from GenAI
+```
+</details>
+
+&nbsp;
+
+## Natural Language Examples
+
+WebGenAI was trained to understand the Natural Language Logic problems shown below.  These automate many of the rule patters described above.
+
+Please see [Natural Language Logic](WebGenAI-CLI.md#natural-language-logic){:target="_blank" rel="noopener"}.
+
+| Example | Notes |
+| :------------- | :------------- |
+| Airport - at least 10 tables<br>A flight's passengers must be less than its Airplane's seating capacity |
+| System for Departments and Employees.<br>Sum of employee salaries cannot exceed department budget |
+| Create a system with Employees and their Skills.<br>More than One Employee can have the same Skill.<br>EmployeeSkill.rating = Skill.rating<br>An Employee's skill-rating is the sum of the Employee Skills rating, plus 2 * years of service. |
+| Students have probations and sick days.<br>Signal an error if a Student's can-graduate is True, and there are more 2 probations, or more than 100 sick days.
+| Applicant have felonies and bankruptcies.<br>Signal error if is-hirable is true and there are more than 3 bankruptcies, or 2 felonies.
+| Students have Grades and belong to Clubs.<br>Copy the name from Club to Student Club<br>The student's service activity is the count of Student Clubs where name contains 'service'. <br>Signal error if student is eligible for the honor society == True, and their grade point average is under 3.5, or they have less than 2 service activities
+| Products have Notices, with severity 0-5.<br>Raise and error if product is orderable == True and there are any severity 5 Notices, or more than 3 Notices.
+| Create a system with customers, orders, items and products.<br>Include a notes field for orders.<br><br>Use Case: enforce the Check Credit for ready orders:<br>1. Customer.balance <= credit_limit<br>2. Customer.balance = Sum(Order.amount_total where date_shipped is null and ready is True)<br>3. Order.amount_total = Sum(Item.amount)<br>4. Item.amount = quantity * unit_price<br>5. Store the Item.unit_price as a copy from Product.unit_price<br><br>Use Case: Compute Products ordered<br>1. Item.ready = Order.ready<br>2. Product.total_ordered = sum(Item.quantity) where ready == True<br>3. Product.reorder_required = quantity_on_hand <= total_ordered<br><br>Use Case: No Empty Orders<br>1. Order.item_count = Count(Items)<br>2. When setting the date_shipped, item_count must be > 0. | Ready Flag
+| Teachers, courses which have offerings, and students who have offerings.<br><br>Use Case: capacity<br>teachers cannot be assigned to more than 5 courses<br>students cannot have more enrollments than 6<br><br>Use Case: budget control<br>courses have a charge, which is copied to enrollments charge<br>a student's total enrollment charges cannot exceed their budget
+
+&nbsp;

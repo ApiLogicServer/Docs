@@ -3,116 +3,47 @@ title: Web GenAI
 Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps, Microservice, Declarative
 ---
 
-
 !!! pied-piper ":bulb: WebGenAI - Web Interface for GenAI-Logic"
 
-      Access WebGenAI via your browser to
+      GenAI is a web app that creates database systems from a Natural Language prompt.  The site includes the code, and storage for the created projects and their SQLite datbases.
+      
+      ***[Access the site here](https://apifabric.ai/admin-app/){:target="_blank" rel="noopener"}*** to use GenAI:
 
-      * Create systems from a Natural Language prompt: databases, APIs, an Admin Web App
-      * Iterate them (add new tables, columns etc)
-      * Add Logic
-      * Download the project to your local desktop
-      * Execute the project in GitHub Codespaces
+      1. **Create** systems from a Natural Language prompt: databases, APIs, an Admin Web App
+        * Prompts describe the database structure and business logic, including application integration
+      2. **Iterate** them (add new tables, columns etc) to *get the requirements right*
+      3. **Export** the project to your local desktop to customize (add endpoints, complex logic, etc)
 
-
-&nbsp;
-
-## Access GenAI
-
-***[Access the site here](https://apifabric.ai/admin-app/){:target="_blank" rel="noopener"}*** to use GenAI:
-
-1. Provide a prompt, and
-2. The system creates a microservice: a database, an API, and a multi-page application
-
-    * Review the project - running screens, with data - and the database diagram
-    * Iterate to ***get the requirements right***
-
-3. Download the project to continue development with rules and Python in your IDE
+      Web/GenAI is based on API Logic Server.  API Logic Server provides the CLI functions used by WebGenAI - for more on the GenAI CLI, [click here](WebGenAI-CLI.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
-> Web/GenAI is based on API Logic Server - [docs home here.](Doc-Home.md){:target="_blank" rel="noopener"}.  API Logic Server provides the CLI functions used by WebGenAI - for more on the GenAI CLI, [click here](WebGenAI-CLI.md){:target="_blank" rel="noopener"}.
+## Create
 
 *Click* the image below to watch a 2 minute video:
 
 [![Web/GenAI Automation](images/web_genai/wg-1280x720-video.jpg)](https://www.youtube.com/watch?v=-tMGqDzxd2A&t=3s "Microservice Automation"){:target="_blank" rel="noopener"}
 
-## About
+In addition to running in the browser, the website provides a docker command to run the created project locally.
 
-<details markdown>
-
-<summary>1. Instant Working Software - Get the Requirements Right</summary>
-
-Automation has turned your prompt into a microservice: a **database**, a working **application**, and a **standard API.**
-
-It simply cannot be faster or simpler.
-
-* Eliminate weeks to months of complex framework coding, db design, or screen painting.  
-* Far more effective than 'dead` wireframes, you can...
-
-    * Collaborate with stakeholders using Working Software, live data
-
-    * Iterate 15 times... before lunch.
-
-</details>
-
-</br>
-
-<details markdown>
-
-<summary>2. Microservice Development - Declarative Rules and Python in your IDE</summary>
-
-The speed and simplicity of AI, plus all the flexibility of a framework.  
-
-* Download the standard project, and [**customize in your IDE**](https://apilogicserver.github.io/Docs/Tutorial/#3-customize-and-debug-in-your-ide)
-
-* Use standard Python: e.g. provide [Application integration](https://apilogicserver.github.io/Docs/Sample-Integration/) (custom APIs and kafka messaging) 
-
-* [Declarative security](https://apilogicserver.github.io/Docs/Security-Overview/): configure keycloak authentication, declare role-based row authorization<br>
-
-* [Declarative business logic](https://apilogicserver.github.io/Docs/Logic-Why/): multi-table constraints and derivations using ***unique rules*** that are 40X more concise than code, extensible with Python<br>
-
-</details>
-</br>
-
-<details markdown>
-
-<summary>3. Deploy - Standard container, no fees, no lock-in</summary>
-
-Created projects include scripts to automate docker creation, so you can deploy anywhere.  
-
-There are no runtime fees, no lock-in.
-
-</details>
-</br>
 &nbsp;
 
-## Develop
+## Export / Customize
 
 You can explore the created microservice on your own computer.
 
-1. [Download]() your project (customize in your IDE to add logic & security)
+1. [Export](WebGenAI-CLI.md#export){:target="_blank" rel="noopener"} your project (customize in your IDE to add logic & security)
 
     * Observe the project is a set of [models]() - not a huge pile of difficult-to-understand code
 
-2. Executable Docker Image
+2. Use Python and your IDE services
 
-    * The website provides a docker command to run the created project
-
-
-&nbsp;
-
-## Contact for full access
-
-To create unlimited projects in your environment, contact `ApiLogicServer@gmail.com` for a free docker image, and project support.
-
-The underlying services are also available in the [genai CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
 ## Prompt Design
 
-Prompt design is "AI Programming".  Consider the following.
+Prompt design is "AI Programming".  Your prompt can be very general, or quite specific.  Consider the alternatives and examples described below.
 
 &nbsp;
 
@@ -233,6 +164,69 @@ Task is_completed is sum of InvoiceItem is_completed
 Create at least 8 tables (models).
 ```
 
+&nbsp;
+
+### Logic Suggestions
+
+You can ask GenAI to suggest logic for your system.  This can help you learn about rules, and can inspire your own imagination about required logic.
+
+It's AI, so or course you will want to review the suggestions carefully.
+
+Explore suggestions using the [Manager](Manger.md){:target="_blank" rel="noopener"}:
+
+
+```bash title='1. Create Project, without Rules'
+# 1. Create Project, without Rules
+als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
+```
+
+```bash title="2. Request Rule Suggestions"
+# 2. Request Rule Suggestions
+cd genai_demo_no_logic
+als genai-logic --suggest
+```
+
+You can review the resultant logic suggestions in the `genai_demo_no_logic` project:
+
+ * See and edit: `docs/logic_suggestions/002_logic_suggestions.prompt` (used in step 3, below)
+    * This corresponds to the WebGenAI Logic Editor - Logic View in the WebGenAI web app
+
+```bash title="3. See the rules for the logic"
+# 3. See the rule code for the logic
+als genai-logic --suggest --logic='*'
+```
+
+Important notes about suggestions and generated code:
+
+* `--suggest --logic='*'` is intended to enable you to identify logic that does not translate into proper code
+* The example above was pretty good, but sometimes the results are downright silly:
+    * Just run suggest again, or
+    * Repair `docs/logic_suggestions/002_logic_suggestions.prompt`
+
+Also...
+
+* It is not advised to paste the code into `logic/declare_logic.py`
+    * The suggested logic may result in new data model attributes
+    * These are created automatically by running `als genai` (next step)
+
+The [logic suggestions directory](genai_demo_no_logic/docs/logic_suggestions) now contains the prompts to create a new project with the suggested logic.  
+When you are ready to proceed:
+1. Execute the following to create a *new project* (iteration), with suggested logic:
+
+```bash title="4. Create a new project with the Rule Suggestions"
+# 4. Create a new project with the Rule Suggestions
+cd ..  # important - back to manager root dir
+als genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/docs/logic_suggestions
+```
+
+Observe:
+
+1. The created project has the rule suggestions in `logic/declare_logic.py`
+2. A revised Data Model in `database/models.py` that includes attributes introduced by the logic suggestions
+3. Revised test database, initialized to reflect the derivations in the suggested logic
+
+
+&nbsp;
 ### Iterations
 
 You can *iterate* your prompt to include more tables etc, while preserving the design you have already created.

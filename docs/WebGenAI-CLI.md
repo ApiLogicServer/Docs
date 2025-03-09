@@ -43,313 +43,30 @@ GenAI uses ChatGPT, which requires an API Key.  The simplest approach is to
 
 &nbsp;
 
-## Conversations vs. resubmit
 
-You can review created projects by using the app, and/or reviewing the [data model](Database-Connectivity.md){:target="_blank" rel="noopener"}.  Of course, it's simple to resubmit a new prompt and re-create the project.
+## Create Projects
 
-However, this will be a completely new rendition of your idea, and it may change things you like about the project.  ***Conversations*** enable you to keep what you already have, while making desired changes.
+You can use the als cli to create projects with logic.  See the example provided in the Manager:
 
-When you create a project, the API Logic Server / GenAI saves your prompt and response in a conversation-directory.  Conversations are saved in 2 different conversation-directories:
-
-* the manager's `system/genai/temp/<project>` directory
-
-* the created project's `doc` directory.
-
-You can iterate with interactive prompts, or by adding files to the  manager's `system/genai/temp/<project>` directory.
-
-&nbsp;
-
-### Conversations - Interactive
-
-The figure below creates and iterates a project, using the manager:
-
-```bash title='create and iterate project with interactive prompts using genai-iterate'
-als genai-create -project-name=conv —-using='customer orders'
-als genai-iterate —-project-name=conv —using='add payments'
-```
-
-![GenAI Automation](images/web_genai/conversations.png)
-
-&nbsp;
-
-### Conversations - Files
-
-Alternatively, you can iterate projects by adding files to the Manager's temp directory:
-
-```bash title='iterate project using files (Note: genai, not genai-iterate)'
-als genai-create --project-name=conv --using='customer orders'
-echo "add payments" | cat >> system/genai/temp/conv/conv_002.prompt
-als genai --using=system/genai/temp/conv
-```
-
-The project name can be provided with the `--project-name` argument (as of release 11.02.01).  If omitted, it is defaulted to the last node of the directory name, here, *conv*.
-
-This will recreate the project based on the existing context.  See the next section, below.
-
-&nbsp;
-
-### Customized Project Sync
-
-In the prior section, the result was a *recreated* project.  If you have customized the project, you can preserve your customizations as follows:
-
-1. Copy `database/models.py` and `db.sqlite` from the GenAI to your customized project
-2. In your customized project, use `als rebuild-from-model` 
-
-    * For further information, see [Database Design Changes](Database-Changes.md){:target="_blank" rel="noopener"}.
-
-&nbsp;
-
-## Natural Language Logic
-
-As of release 11.2.10, you can declare Natural Language Logic when you create projects, and for existing projects.  Natural Language support includes derivation (sum, count, formula), constraints, and send.  Additional rules are provided via the CLI; for more information, see [Logic](Logic.md){:target="_blank" rel="noopener"}.
-
-For example:
-
-```python title='Sample Natural Language Logic'
-Create a system with customers, orders, items and products.
-
-Include a notes field for orders.
-
-Use LogicBank to enforce business logic.
-
-Use case: Check Credit    
-    1. The Customer's balance is less than the credit limit
-    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
-    3. The Order's amount_total is the sum of the Item amount
-    4. The Item amount is the quantity * unit_price
-    5. The Item unit_price is copied from the Product unit_price
-
-Use case: App Integration
-    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
-
-Ensure each customer has a unique name.
-
-Ensure each Item quantity is not null.
-
-Ensure each order has a valid customer_id that exists in the Customer table.
-```
-
-> Status: Beta.  Current implementation presumes projects are running in the Manager directory.
-
-&nbsp;
-
-### Create Projects with Logic
-
-As shown below, you can use the CLI `als genai` command to designate a prompt file that generates a system, including logic.
-
+![create-projects](images/web_genai/logic/new-projects.png)
 
 Note:
 
 1. Logic files can contain derivations and constraints
-2. The system will create model attributes for derived columns.  Note that these can dramatically improve performance.
-
-You can declare logic formally, or informally.
+2. The system will create model attributes for derived columns.
 
 &nbsp;
 
-#### Logic Suggestions
 
-You can ask GenAI to suggest logic for your system.  This can help you learn about rules, and can inspire your own imagination about required logic.
+### Key Directories: Temp and Docs
 
-It's AI, so or course you will want to review the suggestions carefully.
+When you create projects, the system saves prompts and responses.  This provided for documentation, error recovery, and iterations (described below):
 
-Explore suggestions using the [Manager](Manger.md){:target="_blank" rel="noopener"}:
-
-
-```bash title='1. Create Project, without Rules'
-# 1. Create Project, without Rules
-als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
-```
-
-```bash title="2. Request Rule Suggestions"
-# 2. Request Rule Suggestions
-cd genai_demo_no_logic
-als genai-logic --suggest
-```
-
-You can review the resultant logic suggestions in the `genai_demo_no_logic` project:
-
- * See and edit: `docs/logic_suggestions/002_logic_suggestions.prompt` (used in step 3, below)
-    * This corresponds to the WebGenAI Logic Editor - Logic View in the WebGenAI web app
-
-```bash title="3. See the rules for the logic"
-# 3. See the rule code for the logic
-als genai-logic --suggest --logic='*'
-```
-
-Important notes about suggestions and generated code:
-
-* `--suggest --logic='*'` is intended to enable you to identify logic that does not translate into proper code
-* The example above was pretty good, but sometimes the results are downright silly:
-    * Just run suggest again, or
-    * Repair `docs/logic_suggestions/002_logic_suggestions.prompt`
-
-Also...
-
-* It is not advised to paste the code into `logic/declare_logic.py`
-    * The suggested logic may result in new data model attributes
-    * These are created automatically by running `als genai` (next step)
-
-The [logic suggestions directory](genai_demo_no_logic/docs/logic_suggestions) now contains the prompts to create a new project with the suggested logic.  
-When you are ready to proceed:
-1. Execute the following to create a *new project* (iteration), with suggested logic:
-
-```bash title="4. Create a new project with the Rule Suggestions"
-# 4. Create a new project with the Rule Suggestions
-cd ..  # important - back to manager root dir
-als genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/docs/logic_suggestions
-```
-
-Observe:
-
-1. The created project has the rule suggestions in `logic/declare_logic.py`
-2. A revised Data Model in `database/models.py` that includes attributes introduced by the logic suggestions
-3. Revised test database, initialized to reflect the derivations in the suggested logic
-
+![key dirs](images/web_genai/conversations.png)
 
 &nbsp;
 
-#### Formal Rules
-
-You can use familiar dot notation in declaring rules, e.g.
-
-![Create Projects with Logic](images/web_genai/logic/new-projects.png)
-
-```bash title='Formal Logic - Familiar Dot Notation'
-Create a system with customers, orders, items and products.
-
-Include a notes field for orders.
-
-Use LogicBank to enforce the Check Credit requirement:
-1. Customer.balance <= credit_limit
-2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
-3. Order.amount_total = Sum(Item.amount)
-4. Item.amount = quantity * unit_price
-5. Store the Item.unit_price as a copy from Product.unit_price
-```
-
-&nbsp;
-
-#### Informal Rules
-
-You can also use a more relaxed declaration.  For example, you can create a system (database, API, Admin App and Logic) with the following prompt (see `system/genai/examples/genai_demo/genai_demo_informal.prompt`):
-
-```bash title='Prompt With Informal Logic'
-Create a system with customers, orders, items and products.
-
-Include a notes field for orders.
-
-Use LogicBank to enforce the Check Credit requirement:
-    1. The Customer's balance is less than the credit limit
-    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
-    3. The Order's amount_total is the sum of the Item amount
-    4. The Item amount is the quantity * unit_price
-    5. The Item unit_price is copied from the Product unit_price
-    6. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None
-```
-
-&nbsp;
-
-#### Integration Logic
-In the example above, note the rule:
-
-```bash title='Integration Logic'
-Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None
-```
-
-This sends all the columns of the Order object to the Kafka topic if date_shipped is not None.
-
-&nbsp;
-
-#### Multi-rule Logic
-
-You can even declare logic that is transformed into 2 rules:
-
-```bash title='Prompt with Multi-Rule Logic'
-System for Departments and Employees.
-
-LogicBank:
-1. Sum of employee salaries cannot exceed department budget
-```
-
-This creates a running system: a database, an API, an Admin App, and logic.  From the Manager:
-
-```bash title='CLI Command to Create a microservice, with logic'
-als genai --using=system/genai/examples/emp_depts/emp_dept.prompt
-```
-
-The logic is non-trivial:
-
-1. A `Department.total_salaries` is created
-2. Two rules are created in `logic/declare_logic.py`
-
-```python title='Logic Creates 2 Rules'
-    # Logic from GenAI: (or, use your IDE w/ code completion)
-
-    # Aggregate the total salaries of employees for each department.
-    Rule.sum(derive=Department.total_salaries, as_sum_of=Employee.salary)
-
-    # Ensure the sum of employee salaries does not exceed the department budget.
-    Rule.constraint(validate=Department, as_condition=lambda row: row.total_salaries <= row.budget, error_msg="Total salaries ({row.total_salaries}) exceed the department budget ({row.budget})")
-
-    # End Logic from GenAI
-```
-
-&nbsp;
-
-#### Conditional Derivations
-
-You can make derivations conditional, for example:
-
-```html title='conditional logic'
-Provide a 10% discount when buying more than 10 carbon neutral products
-
-The Item carbon neutral is copied from the Product carbon neutral
-```
-You can find this example in the Manager Readme; see **2. New Database** > **You can iterate the logic and data model**:
-
-![if-based-formulas](images/web_genai/logic/if-based%20formula.png)
-
-&nbsp;
-
-#### Cardinality Patterns
-
-Logic GenAI training has enabled the following:
-
-```html title='Cardinality Patterns'
-Products have Notices, with severity 0-5.
-
-Raise and error if product is orderable == True and there are any severity 5 Notices, or more than 3 Notices.
-```
-
-Notes:
-
-1. Note the use of a "qualified any", resulting in a count with a where condition:
-
-```python title='Logic Recognizes "qualified any"'
-    # Logic from GenAI: (or, use your IDE w/ code completion)
-
-    # Derive product notice count from related notices.
-    Rule.count(derive=Product.notice_count, as_count_of=Notice)
-
-    # Derive count of severity 5 notices for products.
-    Rule.count(derive=Product.class_5_notice_count, as_count_of=Notice, where=lambda row: row.severity == 5)
-
-    # Ensure product is not orderable if conditions on notices are met.
-    Rule.constraint(validate=Product,
-    as_condition=lambda row: not (row.orderable and (row.class_5_notice_count > 0 or row.notice_count > 3)),
-    error_msg="Orderable product contains severity 5 or excessive notices.")
-
-    # End Logic from GenAI
-```
-
-#### Logic Patterns
-
-See [Logic Patterns](Logic.md#logic-patterns){:target="_blank" rel="noopener"}.
-
-&nbsp;
-
-### Add Logic to Existing Projects
+### Logic for Existing Projects: `docs/logic`
 
 As shown below, you can add Natural Language logic to existing projects.  Using an existing project located under the Manager:
 
@@ -376,6 +93,41 @@ Notes:
     * When you are done, you might want to rename the `docs/logic` files (e.g., change the file extension) so they are not processed on future runs.
 
 ![Add logic to Existing Project](images/web_genai/logic/existing-projects.png)
+
+&nbsp;
+
+## Iterating Projects
+
+You can review created projects by using the app, and/or reviewing the [data model](Database-Connectivity.md){:target="_blank" rel="noopener"}.  Of course, it's simple to resubmit a new prompt and re-create the project.
+
+However, this will be a completely new rendition of your idea, and it may change things you like about the project.  ***Iterations*** enable you to keep what you already have, while making desired changes.
+
+When you create a project, the API Logic Server / GenAI saves your prompt and response in a conversation-directory.  Iterations are saved in 2 different conversation-directories:
+
+* the manager's `system/genai/temp/<project>` directory
+
+* the created project's `doc` directory.
+
+The `--using` argument can be a file, or a directory.  That means you can iterate by adding files to the  manager's `system/genai/temp/<project>` directory.  See the example provided in the Manager:
+
+![iterate-cli](images/web_genai/logic/genai-iteration-cli.png)
+
+&nbsp;
+
+### Customized Project Sync
+
+In the prior section, the result was a *recreated* project.  If you have customized the project, you can preserve your customizations as follows:
+
+1. Copy `database/models.py` and `db.sqlite` from the GenAI to your customized project
+2. In your customized project, use `als rebuild-from-model` 
+
+    * For further information, see [Database Design Changes](Database-Changes.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+### Rebuild Test Data
+
+### Add Missing Attributes
 
 &nbsp;
 
@@ -411,7 +163,7 @@ The system is designed to support concurrent ongoing Multi-Team Development from
 To simplify the file mechanics during merge, WebGenAI rules are stored separately from rules created in the IDE:
 
 | Logic Source | Stored   | Source of Truth - Manage In |
-| :-------------: |:-------------:| :-----:|
+| :------------- |:------------- | :----- |
 | WebGenAI Rules | `logic/wg_rules` | The **WebGenAI system.**  Import / merge projects into local dev environment using [Import / Merge WebGenAI](IDE-Import-WebGenAI.md){:target="_blank" rel="noopener"} |
 | IDE Rules | `logic/declare_logic.py`, and (optionally) as files in `logic/logic_discovery` | **IDE** / Source control |
 
