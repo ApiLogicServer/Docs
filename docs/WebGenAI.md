@@ -224,7 +224,9 @@ You can explore the created microservice on your own computer.
 
     * Observe the project is a set of [models]() - not a huge pile of difficult-to-understand code
 
-2. Use Python and your IDE services&nbsp;
+2. Use Python and your IDE services.  For more information, see [Customize in Your IDE](IDE-Customize.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
 
 &nbsp;
 

@@ -145,9 +145,12 @@ Logic Bank Activation Error -- see https://apilogicserver.github.io/Docs/WebGenA
 Invalid Rules:  [AttributeError("type object 'Customer' has no attribute 'balance'")]
 Missing Attrs (try als genai-utils --fixup): ['Customer.balance: constraint']
 ```
+
+For more information, see [Fixup](IDE-Fixup-Attrs.md){:target="_blank" rel="noopener"}.
+
 &nbsp;
 
-### Rebuild Test Data
+### Rebuild Test Datage
 
 The following is provided to fix project issues by rebuilding the database to conform to the derivation rules.  This procedure is available in the Manager README (see *Explore Creating Projects > Rebuild the test data*).
 
