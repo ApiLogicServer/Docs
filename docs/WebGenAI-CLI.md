@@ -302,7 +302,6 @@ GenAI is part of API Logic Server.  As shown below:
     * Submit that to `als create --from-model=my_model.py`
 
 
-
 ![GenAI Automation](images/web_genai/how-does-it-work.png)
 
 ### Error Recovery
