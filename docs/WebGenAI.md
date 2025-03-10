@@ -14,7 +14,11 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
       2. **Iterate** them (add new tables, columns etc) to *get the requirements right*
       3. **Export** the project to your local desktop to customize (add endpoints, complex logic, etc)
 
-      Web/GenAI is based on API Logic Server.  API Logic Server provides the CLI functions used by WebGenAI - for more on the GenAI CLI, [click here](WebGenAI-CLI.md){:target="_blank" rel="noopener"}.
+      Web/GenAI is based on API Logic Server.  API Logic Server provides the CLI functions used by WebGenAI
+      
+      * For more on the GenAI CLI, [click here](WebGenAI-CLI.md){:target="_blank" rel="noopener"}
+
+      * For Web/GenAI architecture, [click here](Architecture-What-Is-GenAI.md){:target="_blank" rel="noopener"}
 
 &nbsp;
 
@@ -160,59 +164,19 @@ You can ask GenAI to suggest logic for your system.  This can help you learn abo
 
 It's AI, so or course you will want to review the suggestions carefully.
 
-Explore suggestions using the [Manager](Manger.md){:target="_blank" rel="noopener"}:
+![logic Editor](images/web_genai/logic/logic-editor.png)
 
+For more information, see [Suggestions CLI](WebGenAI-CLI.md#logic-suggestions).
 
-```bash title='1. Create Project, without Rules'
-# 1. Create Project, without Rules
-als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
-```
+&nbsp;
 
-```bash title="2. Request Rule Suggestions"
-# 2. Request Rule Suggestions
-cd genai_demo_no_logic
-als genai-logic --suggest
-```
+### Fixup
 
-You can review the resultant logic suggestions in the `genai_demo_no_logic` project:
+Fixes project issues by updating the Data Model and Test Data.
+When adding rules, such as using suggestions, you may introduce new attributes.
+If these are missing, you will see exceptions when you start your project.
 
- * See and edit: `docs/logic_suggestions/002_logic_suggestions.prompt` (used in step 3, below)
-    * This corresponds to the WebGenAI Logic Editor - Logic View in the WebGenAI web app
-
-```bash title="3. See the rules for the logic"
-# 3. See the rule code for the logic
-als genai-logic --suggest --logic='*'
-```
-
-Important notes about suggestions and generated code:
-
-* `--suggest --logic='*'` is intended to enable you to identify logic that does not translate into proper code
-* The example above was pretty good, but sometimes the results are downright silly:
-    * Just run suggest again, or
-    * Repair `docs/logic_suggestions/002_logic_suggestions.prompt`
-
-Also...
-
-* It is not advised to paste the code into `logic/declare_logic.py`
-    * The suggested logic may result in new data model attributes
-    * These are created automatically by running `als genai` (next step)
-
-The [logic suggestions directory](genai_demo_no_logic/docs/logic_suggestions) now contains the prompts to create a new project with the suggested logic.  
-When you are ready to proceed:
-1. Execute the following to create a *new project* (iteration), with suggested logic:
-
-```bash title="4. Create a new project with the Rule Suggestions"
-# 4. Create a new project with the Rule Suggestions
-cd ..  # important - back to manager root dir
-als genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/docs/logic_suggestions
-```
-
-Observe:
-
-1. The created project has the rule suggestions in `logic/declare_logic.py`
-2. A revised Data Model in `database/models.py` that includes attributes introduced by the logic suggestions
-3. Revised test database, initialized to reflect the derivations in the suggested logic
-
+Use the **Update Model** button on the screen shot above.
 
 &nbsp;
 

@@ -11,7 +11,7 @@
     * GenAI services for data model creation, and 
     * API Logic Server for project creation.
 
-    You can also use GenAI services via the [GenAI WebSite](GenAI.md){:target="_blank" rel="noopener"}.
+    You can also use GenAI services via the [GenAI WebSite](WebGenAI.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -20,13 +20,10 @@
 To use GenAI to create projects
 
 1. Establish your virtual environment (suggestion: [use the Manager](Manager.md){:target="_blank" rel="noopener"})
-2. Provide a prompt in either a file (`als genai`), or a CLI argument (`als genai-create`):
+2. Provide a `--using` prompt in either a file or a directory:
 
 ```bash title='Project creation with GenAI'
 als genai --using=system/genai/examples/genai_demo/genai_demo.prompt
-
-# or, provide the prompt in an **quoted** argument:
-als genai-create --project-name='customer_orders' --using='customer orders'
 ```
 
 Projects are created in the currrent working directory, here, the manager.
@@ -115,42 +112,83 @@ Notes:
 
 &nbsp;
 
+### Logic Suggestions
+
+You can ask GenAI to suggest logic for your system.  This can help you learn about rules, and can inspire your own imagination about required logic.
+
+It's AI, so or course you will want to review the suggestions carefully.
+
+
+![logic Editor](images/web_genai/logic/logic-editor.png)
+
+Explore suggestions using the [Manager](Manger.md){:target="_blank" rel="noopener"}:
+
+
+```bash title='1. Create Project, without Rules'
+# 1. Create Project, without Rules
+als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
+```
+
+```bash title="2. Request Rule Suggestions"
+# 2. Request Rule Suggestions
+cd genai_demo_no_logic
+als genai-logic --suggest
+```
+
+You can review the resultant logic suggestions in the `genai_demo_no_logic` project:
+
+ * See and edit: `docs/logic_suggestions/002_logic_suggestions.prompt` (used in step 3, below)
+    * This corresponds to the WebGenAI Logic Editor - Logic View in the WebGenAI web app
+
+```bash title="3. See the rules for the logic"
+# 3. See the rule code for the logic
+als genai-logic --suggest --logic='*'
+```
+
+Important notes about suggestions and generated code:
+
+* `--suggest --logic='*'` is intended to enable you to identify logic that does not translate into proper code
+* The example above was pretty good, but sometimes the results are downright silly:
+    * Just run suggest again, or
+    * Repair `docs/logic_suggestions/002_logic_suggestions.prompt`
+
+Also...
+
+* It is not advised to paste the code into `logic/declare_logic.py`
+    * The suggested logic may result in new data model attributes
+    * These are created automatically by running `als genai` (next step)
+
+The [logic suggestions directory](genai_demo_no_logic/docs/logic_suggestions) now contains the prompts to create a new project with the suggested logic.  
+When you are ready to proceed:
+1. Execute the following to create a *new project* (iteration), with suggested logic:
+
+```bash title="4. Create a new project with the Rule Suggestions"
+# 4. Create a new project with the Rule Suggestions
+cd ..  # important - back to manager root dir
+als genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/docs/logic_suggestions
+```
+
+Observe:
+
+1. The created project has the rule suggestions in `logic/declare_logic.py`
+2. A revised Data Model in `database/models.py` that includes attributes introduced by the logic suggestions
+3. Revised test database, initialized to reflect the derivations in the suggested logic
+
+
+&nbsp;
+&nbsp;
+
 ### Fixup: Add Missing Attributes
 
-Fixes project issues by updating the Data Model and Test Data:
-when adding rules, such as using suggestions, you may introduce new attributes.
+Fixes project issues by updating the Data Model and Test Data. 
+When adding rules, such as using suggestions, you may introduce new attributes.
 If these are missing, you will see exceptions when you start your project.
 
-The `genai-utils --fixup` fixes such project issues by updating the Data Model and Test Data:
-
-1. Collects the latest model, rules, and test data from the project. 
-2. Calls ChatGPT (or similar) to resolve missing columns or data in the project.
-3. Saves the fixup request/response under a 'fixup' folder.
-4. You then use this to create a new project
-
-This procedure is available in the Manager README (see *Explore Creating Projects > Fixup - update data model with new attributes from rules*).
-
-***Setup***
-
-After starting the [Manager](https://apilogicserver.github.io/Docs/Manager): 
-
-```bash title="0. Create Project Requiring Fixup"
-# 0. Create a project requiring fixup
-als genai --repaired-response=system/genai/examples/genai_demo/genai_demo_fixup_required.json --project-name=genai_demo_fixup_required
-```
-
-If you run this project, you will observe that it fails with:
-```bash
-Logic Bank Activation Error -- see https://apilogicserver.github.io/Docs/WebGenAI-CLI/#recovery-options
-Invalid Rules:  [AttributeError("type object 'Customer' has no attribute 'balance'")]
-Missing Attrs (try als genai-utils --fixup): ['Customer.balance: constraint']
-```
-
-For more information, see [Fixup](IDE-Fixup-Attrs.md){:target="_blank" rel="noopener"}.
+The `genai-utils --fixup` fixes such project issues by updating the Data Model and Test Data.  For more information, see [Fixup](IDE-Fixup-Attrs.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
-### Rebuild Test Datage
+### Rebuild Test Data
 
 The following is provided to fix project issues by rebuilding the database to conform to the derivation rules.  This procedure is available in the Manager README (see *Explore Creating Projects > Rebuild the test data*).
 
@@ -192,8 +230,6 @@ The created project may still report some attributes as missing.
 
 
 Internal Note: this sequence available in the run configs (f1/f2).
-
-&nbsp;
 
 &nbsp;
 

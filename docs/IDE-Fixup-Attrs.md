@@ -12,6 +12,21 @@
 
 ## Using Fixup
 
+Fixes project issues by updating the Data Model and Test Data.
+When adding rules, such as using suggestions, you may introduce new attributes.
+If these are missing, you will see exceptions when you start your project.
+
+The `genai-utils --fixup` fixes such project issues by updating the Data Model and Test Data:
+
+1. Collects the latest model, rules, and test data from the project. 
+2. Calls ChatGPT (or similar) to resolve missing columns or data in the project.
+3. Saves the fixup request/response under a 'fixup' folder.
+4. You then use this to create a new project
+
+This procedure is available in the Manager README (see *Explore Creating Projects > Fixup - update data model with new attributes from rules*).
+
+&nbsp;
+
 ### Setup
 After starting the [Manager](Manager.md){:target="_blank" rel="noopener"}: 
 
