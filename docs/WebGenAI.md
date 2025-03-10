@@ -28,47 +28,22 @@ In addition to running in the browser, the website provides a docker command to 
 
 &nbsp;
 
-## Export / Customize
-
-You can explore the created microservice on your own computer.
-
-1. [Export](WebGenAI-CLI.md#export){:target="_blank" rel="noopener"} your project (customize in your IDE to add logic & security)
-
-    * Observe the project is a set of [models]() - not a huge pile of difficult-to-understand code
-
-2. Use Python and your IDE services
-
-
-&nbsp;
-
-## Prompt Design
+### Prompt Design
 
 Prompt design is "AI Programming".  Your prompt can be very general, or quite specific.  Consider the alternatives and examples described below.
 
-&nbsp;
-
-### Business Area
-
-You can provide a very general prompt, for example:
-
-* `an auto dealership`, or
-* `a restaurant`
+| Approach | Notes | Example
+| :------------- | :-----| :---- |
+| Business Area | Provide a very general prompt | * `an auto dealership`, or<br>* `a restaurant`
+| Database Oriented | Provide a specific prompt that identifies specific tables, columns and relationships | `Create a system for Customer, Orders, Items and Products`
+| With Logic | Declare backend behavior with rules | See below - *With Logic*
+| Detailed Database and Logic | Complete Natural Language projects | See below - *Detailed Database and Logic*
 
 &nbsp;
 
-### Database Oriented
+<details markdown>
 
-Or, you can provide a specific prompt that identifies specific tables, columns and relationships (for example, 
-
-```bash title='Database, API and Web App'
-Create a system for Customer, Orders, Items and Products
-```
-
-&nbsp;
-
-### With Logic
-
-Particularly interesting is that you can declare backend behavior with rules:
+<summary> With Logic </summary>
 
 ```bash title='Database, API, Web App and Logic'
 Create a system with customers, orders, items and products.
@@ -91,9 +66,13 @@ For more, see
 * the [logic editor](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"}
 * [natural languge logic](WebGenAI-CLI.md#natural-language-logic){:target="_blank" rel="noopener"}
 
+</details>
+
 &nbsp;
 
-### Detailed Database and Logic
+<details markdown>
+
+<summary> Detailed Database and Logic </summary>
 
 This example illustates:
 
@@ -163,6 +142,15 @@ Task is_completed is sum of InvoiceItem is_completed
 
 Create at least 8 tables (models).
 ```
+</details>
+
+&nbsp;
+
+## Iterate
+
+You can *iterate* your prompt to include more tables etc, while preserving the design you have already created.
+
+* This enables you to break your system down into a set of "Use Cases", solving one at a time, and integrating back to the others.
 
 &nbsp;
 
@@ -227,13 +215,20 @@ Observe:
 
 
 &nbsp;
-### Iterations
 
-You can *iterate* your prompt to include more tables etc, while preserving the design you have already created.
+## Export / Customize
 
-* This enables you to break your system down into a set of "Use Cases", solving one at a time, and integrating back to the others.
+You can explore the created microservice on your own computer.
+
+1. [Export](WebGenAI-CLI.md#export){:target="_blank" rel="noopener"} your project (customize in your IDE to add logic & security)
+
+    * Observe the project is a set of [models]() - not a huge pile of difficult-to-understand code
+
+2. Use Python and your IDE services&nbsp;
 
 &nbsp;
+
+## Appendices
 
 ### Limitations
 
@@ -243,13 +238,13 @@ You can "build out" the project by downloading it and using your IDE with Python
 
 &nbsp;
 
-## Context
+### Context
 
 This explains the premise behind GenAI, and how it fits into a project life cycle.
 
 &nbsp;
 
-### Why GenAI
+#### Why GenAI
 
 A common project experience is:
 
@@ -267,7 +262,7 @@ Which leads to our premise:
 
 &nbsp;
 
-### Project Life Cycle
+#### Project Life Cycle
 
 As shown in the Life Cycle outline below, this approach is complementary to your existing UI Dev tools such as UI frameworks or Low Code Screen Painters. 
 

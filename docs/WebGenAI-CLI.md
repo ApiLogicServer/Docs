@@ -64,9 +64,28 @@ When you create projects, the system saves prompts and responses.  This provided
 
 ![key dirs](images/web_genai/conversations.png)
 
+
 &nbsp;
 
-### Logic for Existing Projects: `docs/logic`
+## Iterating Projects
+
+You can review created projects by using the app, and/or reviewing the [data model](Database-Connectivity.md){:target="_blank" rel="noopener"}.  Of course, it's simple to resubmit a new prompt and re-create the project.
+
+However, this will be a completely new rendition of your idea, and it may change things you like about the project.  ***Iterations*** enable you to keep what you already have, while making desired changes.
+
+When you create a project, the API Logic Server / GenAI saves your prompt and response in a conversation-directory.  Iterations are saved in 2 different conversation-directories:
+
+* the manager's `system/genai/temp/<project>` directory
+
+* the created project's `doc` directory.
+
+The `--using` argument can be a file, or a directory.  That means you can iterate by adding files to the  manager's `system/genai/temp/<project>` directory.  See the example provided in the Manager:
+
+![iterate-cli](images/web_genai/logic/genai-iteration-cli.png)
+
+&nbsp;
+
+### IDE Nat Language: `docs/logic`
 
 As shown below, you can add Natural Language logic to existing projects.  Using an existing project located under the Manager:
 
@@ -96,21 +115,82 @@ Notes:
 
 &nbsp;
 
-## Iterating Projects
+### Fixup: Add Missing Attributes
 
-You can review created projects by using the app, and/or reviewing the [data model](Database-Connectivity.md){:target="_blank" rel="noopener"}.  Of course, it's simple to resubmit a new prompt and re-create the project.
+Fixes project issues by updating the Data Model and Test Data:
+when adding rules, such as using suggestions, you may introduce new attributes.
+If these are missing, you will see exceptions when you start your project.
 
-However, this will be a completely new rendition of your idea, and it may change things you like about the project.  ***Iterations*** enable you to keep what you already have, while making desired changes.
+The `genai-utils --fixup` fixes such project issues by updating the Data Model and Test Data:
 
-When you create a project, the API Logic Server / GenAI saves your prompt and response in a conversation-directory.  Iterations are saved in 2 different conversation-directories:
+1. Collects the latest model, rules, and test data from the project. 
+2. Calls ChatGPT (or similar) to resolve missing columns or data in the project.
+3. Saves the fixup request/response under a 'fixup' folder.
+4. You then use this to create a new project
 
-* the manager's `system/genai/temp/<project>` directory
+This procedure is available in the Manager README (see *Explore Creating Projects > Fixup - update data model with new attributes from rules*).
 
-* the created project's `doc` directory.
+***Setup***
 
-The `--using` argument can be a file, or a directory.  That means you can iterate by adding files to the  manager's `system/genai/temp/<project>` directory.  See the example provided in the Manager:
+After starting the [Manager](https://apilogicserver.github.io/Docs/Manager): 
 
-![iterate-cli](images/web_genai/logic/genai-iteration-cli.png)
+```bash title="0. Create Project Requiring Fixup"
+# 0. Create a project requiring fixup
+als genai --repaired-response=system/genai/examples/genai_demo/genai_demo_fixup_required.json --project-name=genai_demo_fixup_required
+```
+
+If you run this project, you will observe that it fails with:
+```bash
+Logic Bank Activation Error -- see https://apilogicserver.github.io/Docs/WebGenAI-CLI/#recovery-options
+Invalid Rules:  [AttributeError("type object 'Customer' has no attribute 'balance'")]
+Missing Attrs (try als genai-utils --fixup): ['Customer.balance: constraint']
+```
+&nbsp;
+
+### Rebuild Test Data
+
+The following is provided to fix project issues by rebuilding the database to conform to the derivation rules.  This procedure is available in the Manager README (see *Explore Creating Projects > Rebuild the test data*).
+
+1. Create genai_demo: 
+```
+als genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
+```
+2. Rebuild:
+```
+cd genai_demo
+als genai-utils --rebuild-test-data
+```
+
+&nbsp;
+
+***Fixup***
+
+To Fix it:
+```bash title="1. Run FixUp to add missing attributes to the fixup response data model"
+# 1. Run FixUp to add missing attributes to the data model
+cd genai_demo_fixup_required
+als genai-utils --fixup
+```
+
+Finally, use the created [fixup files](genai_demo_fixup_required/docs/fixup/) to rebuild the project:
+```bash title="2. Rebuild the project from the fixup response data model"
+# 2. Rebuild the project from the fixup response data model
+cd ../
+als genai --repaired-response=genai_demo_fixup_required/docs/fixup/response_fixup.json --project-name=fixed_project
+```
+    
+&nbsp;
+The created project may still report some attributes as missing.  
+(ChatGPT seems to often miss attributes mentioned in sum/count where clauses.)  To fix:
+
+1. Note the missing attributes(s) from the log
+2. Add them to `docs/003_suggest.prompt`
+3. Rebuild the project: `als genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/docs`
+
+
+Internal Note: this sequence available in the run configs (f1/f2).
+
+&nbsp;
 
 &nbsp;
 
@@ -125,15 +205,9 @@ In the prior section, the result was a *recreated* project.  If you have customi
 
 &nbsp;
 
-### Rebuild Test Data
-
-### Add Missing Attributes
-
-&nbsp;
-
 ## Export
 
-You can export project from WebGenAI, either from the Browser or from GitHub:
+You can export your project from WebGenAI, either from the Browser or from GitHub:
 
 ![export](images/web_genai/export/webg-export.png)
 

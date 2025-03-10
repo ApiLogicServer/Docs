@@ -64,7 +64,11 @@ You can also use your IDE with Code Completion to add rules, and their arguments
 
 ![Add Rules Code Completion](images/vscode/code-completion.png)
 
+&nbsp;
 
+### IDE: Natural Language
+
+You can use Natural Language in your IDE.  See [IDE: Natural Language](WebGenAI-CLI.md#ide-nat-language-docslogic){:target="_blank" rel="noopener"}.
 &nbsp;
 
 ## Iterative Rules
@@ -154,7 +158,7 @@ WebGenAI provides the [Logic Editor](WebGenAI-logic-editor.md) so you can see/ed
 | :------------- | :-----| :---- |
 | Formal vs Informal | You can: *Customer.balance = Sum(Order.amount_total where date_shipped is null)* | Or, more simply: *The Customer's balance is the sum of the Order amount_total where date_shipped is null* 
 | Integration Logic | Kafka | *Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None*
-| Multi-rule Logic | See Multi-rule Logic - Generatd Rules, below | *Sum of employee salaries cannot exceed department budget*
+| Multi-rule Logic | See Multi-rule Logic - Generated Rules, below | *Sum of employee salaries cannot exceed department budget*
 | Conditional Derivations | See Conditional Derivation - Generated Rules, below | Provide a 10% discount when buying more than 10 carbon neutral products<br>The Item carbon neutral is copied from the Product carbon neutral
 | Cardinality Patterns<br>- *Qualified Any* | See Cardinality Patterns - Generated Rules, below  | Products have Notices, with severity 0-5.<br>Raise and error if product is orderable == True and there are any severity 5 Notices, or more than 3 Notices.
 
