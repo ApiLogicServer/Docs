@@ -219,14 +219,20 @@ This enables you to verify all aspects of project operation, and extend GenAI fu
 
 Once have exported and expanded the tar file:
 
-1. Setup your virtual environment - see [Virual Environment](Project-Env.md){:target="_blank" rel="noopener"}
+![exported](images/web_genai/export/downloaded.png)
 
-    * Note: in some configurations of VSCode (e.g., mac multiple projects in the same window), it may not allow you specif your virtual environment.  You can fix this:
+1. Setup your virtual environment - see [Virual Environment](Project-Env.md){:target="_blank" rel="noopener"}.  
+
+    * You can create a new venv, but it's simplest just to use the one used by the Manager.
+
+    * Note: in some configurations of VSCode (e.g., mac multiple projects in the same window), it may not allow you to specify your virtual environment.  You can fix this:
 
         * Set the proper virtual environment in `.vscode/settings.json`: `    "python.defaultInterpreterPath": "~/dev/ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer/venv/bin/python"`
         * Rename the project
 
 2. You should then be able to open and run the exported project in your IDE, 
+
+
 
 &nbsp;
 

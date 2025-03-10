@@ -8,6 +8,10 @@
 
 Use the debugger as shown below.  Note you can stop in lambda functions.
 
+* Key point: ***rows are instances of your Data Model classes*** (`database/models.py`).  These classes define the attributes and relationships; this information powers IDE code completion, the debugger, etc.
+
+    * Recall the Data Model classes were built by API Logic Server, by introspecing the database
+
 ![Logic Debugger](images/logic/logic-debug.png) 
 
 &nbsp;
