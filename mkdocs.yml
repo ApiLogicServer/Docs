@@ -39,7 +39,6 @@ nav:
   - GenAI:
     - "WebGenAI Website": WebGenAI.md
     - "GenAI CLI": WebGenAI-CLI.md      
-    - "WebGenAI Logic Editor": WebGenAI-logic-editor.md
     - "Sample": Sample-Genai.md
   - 0. ApiLogicServer create:
     - "Create with CLI": Project-Structure.md

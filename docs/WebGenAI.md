@@ -67,7 +67,7 @@ You can verify this by altering a sample order/item with a very high quantity, a
 
 For more, see 
 
-* the [logic editor](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"}
+* the [logic editor](#using-the-logic-editor)
 * [natural languge logic](WebGenAI-CLI.md#natural-language-logic){:target="_blank" rel="noopener"}
 
 </details>
@@ -150,23 +150,68 @@ Create at least 8 tables (models).
 
 &nbsp;
 
+### Using Logic
+
+Backend Logic is nearly half the effort in a transactional system.  Instead of procedural code, WeGenAI provides declarative rules that are 40X more concise.  They can be expressed in Python, or Natural Language as described here.
+
+It's often a good idea to create your project with an initial focus on structure: tables, columns, relationships.  As you review and iterate, you will likely want to introduce multi-table derivations and constraints. 
+
+You can use normal iterations, or the Logic Editor.
+
+For more on logic, including patterns and examples, see [Logic](Logic-Why.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+#### Using Iterations
+
+You can iterate your project, and include logic.  This is a good approach when you are familiar with logic, and reasonably clear on what you want to do.
+
+&nbsp;
+
+#### Using the Logic Editor
+
+You can also the the Logic Editor:
+
+![logic Editor](images/web_genai/logic/logic-editor.png)
+
+Create logic by clicking **Rule Prompt**, or **Suggest**.  For each element, you can **reject** or **accept**.
+
+* When you accept, the system translates the logic prompt (Natural Language) into Code (a Logic Bank Rule expressed in Python), shown in back.
+
+Errors shown in red.  Correct errors in Natural Language using the **black icon button** by providing a new / altered prompt.
+
+Logic may introduce new attributes.  These must be added to the data model, using **Update Data Model**.  When you run, this will update the database and test data.
+
+&nbsp;
+
+##### Logic Suggestions
+
+You can ask GenAI to suggest logic for your system.  See **Suggest Rules** in the diagram above.  This can help you learn about rules, and can inspire your own imagination about required logic.
+
+It's AI, so or course you will want to review the suggestions carefully.
+
+For more information, see [Suggestions CLI](WebGenAI-CLI.md#logic-suggestions).
+
+&nbsp;
+
+#### Debugging Logic
+
+Logic can fail to load at runtime.  The system will
+
+* restart the project with rules disabled, so you can still see your data.  You should generally not update when logic is in error.
+
+* report the errors back to the Logic Editor, where you can correct them.
+
+Logic can also fail when you make an update.  Review the log to see the state of the row(s) as each rule fires.
+
+
+&nbsp;
+
 ## Iterate
 
 You can *iterate* your prompt to include more tables etc, while preserving the design you have already created.
 
 * This enables you to break your system down into a set of "Use Cases", solving one at a time, and integrating back to the others.
-
-&nbsp;
-
-### Logic Suggestions
-
-You can ask GenAI to suggest logic for your system.  This can help you learn about rules, and can inspire your own imagination about required logic.
-
-It's AI, so or course you will want to review the suggestions carefully.
-
-![logic Editor](images/web_genai/logic/logic-editor.png)
-
-For more information, see [Suggestions CLI](WebGenAI-CLI.md#logic-suggestions).
 
 &nbsp;
 
