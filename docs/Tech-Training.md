@@ -74,8 +74,9 @@ The ability to secure your application is an important part of the creation of a
 ## Integration
 Some applications may require integration with other services (e.g. email, payment, workflow, etc) 
 In this lab - explore how to use the existing services to integration with Kafka or Workflow.
+
 1. Integration and Configuration [Kafka](Integration-Kafka.md){:target="_blank" rel="noopener"}
-2.Integration with Workflow (n8n)
+2. Integration with Workflow (n8n)
 
 ## Ontimize
 OntimizeWeb from Imatia is an Angular application that is automatically created from the command line.
@@ -99,13 +100,13 @@ ApiLogicServer has a suite of tools for [devops](DevOps-Docker.md){:target="_bla
 ## Adv Project
 
 1. Adding attributes if they are not added automatically
-2. SQLIte to PostgreSQL migration
-1. Rebuild test data (?)
+2. SQLIte to PostgreSQL migration (sqlite3 db.sqlite .dump > postgres.sql)
+3. Rebuild test data (?)
 
 &nbsp;
 
 ## Be Aware Of
 
-1. Behave Testing (optional)
-2. Alembic Schema Migration
+1. [Behave Testing](Behave.md){:target="_blank" rel="noopener"} (optional)
+2. [Alembic](Database-Changes.md/#use-alembic-to-update-database-schema-from-model){:target="_blank" rel="noopener"} Schema Migration
 
