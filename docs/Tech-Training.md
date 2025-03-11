@@ -25,7 +25,8 @@ Make sure you are clear on the `venv`.
 ## Customizing with Python
 
 1. Creating custom endpoint
-    * Review NW, #als examples heads up, B2B example
+    * [NW Tutorial](Tutorial.md), #als examples heads up, B2B example
+    * [GenAI Demo Tutorial](Sample-Genai.md)
 2. Custom logic
 3. Data Model Classes (attr/reln accessors) - Python ‘beans'
 
