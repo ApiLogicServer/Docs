@@ -60,22 +60,46 @@ ApiLogicServer start
 
 &nbsp;
 
-## Adv Config
+## Configure Security
+The ability to secure your application is an important part of the creation of any API Microservice application.  In this lab - review and try:
 
-1. Configuring Security
-1. Configuring Kafka
+1. Who Can Access - [Authentication](Security-Authentication.md){:target="_blank" rel="noopener"}
+2. What can they Do - [Authorization (role-based access control)](Security-Authorization.md){:target="_blank" rel="noopener"}
+3. Use [KeyCloak](Security-Keycloak.md){:target="_blank" rel="noopener"} local docker image
+4. Use [SQL](Security-sql.md){:target="_blank" rel="noopener"} login
+
 
 &nbsp;
 
-## Deployment
-1. Create containers
-1. Postgres migration
+## Integration
+Some applications may require integration with other services (e.g. email, payment, workflow, etc) 
+In this lab - explore how to use the existing services to integration with Kafka or Workflow.
+1. Integration and Configuration [Kafka](Integration-Kafka.md){:target="_blank" rel="noopener"}
+2.Integration with Workflow (n8n)
+
+## Ontimize
+OntimizeWeb from Imatia is an Angular application that is automatically created from the command line.
+In this lab - review the Ontimize process [here](App-Custom-Ontimize-Overview.md){:target="_blank" rel="noopener"}
+
+1. Create an Ontimize application
+2. Build (rebuild) Ontimize Pages
+3. Yaml File Basics
+4. Working with Templates 
+5. Application Model Editor
+
+&nbsp;
+
+## Deployment (devops)
+ApiLogicServer has a suite of tools for [devops](DevOps-Docker.md){:target="_blank" rel="noopener"} to build and deploy Docker containers. 
+
+1. [Build a Docker Image](DevOps-Build.md){:target="_blank" rel="noopener"}
 
 &nbsp;
 
 ## Adv Project
 
 1. Adding attributes if they are not added automatically
+2. SQLIte to PostgreSQL migration
 1. Rebuild test data (?)
 
 &nbsp;
