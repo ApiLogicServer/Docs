@@ -160,6 +160,7 @@ nav:
     - "Adoption Considerations?": Tech-Adoption.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
+    - "Training": Tech-Training.md
     - "Keycloak DevNotes": Keycloak-devnotes.md
     - "API Appliance": Tech-Toaster.md
     - "Nat Lang Logic": Tech-Logic-Transcript.md

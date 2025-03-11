@@ -11,7 +11,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
       1. **Create** systems from a Natural Language prompt: databases, APIs, an Admin Web App
         * Prompts describe the database structure and business logic, including application integration
-      2. **Iterate** them (add new tables, columns etc) to *get the requirements right*
+      2. **Iterate** them (add new tables, columns, rules etc) to *get the requirements right*
       3. **Export** the project to your local desktop to customize (add endpoints, complex logic, etc)
 
       Web/GenAI is based on API Logic Server.  API Logic Server provides the CLI functions used by WebGenAI

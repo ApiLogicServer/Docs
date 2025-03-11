@@ -2,20 +2,11 @@
 
     **WebGenAI:**
 
-    Uses ChatGPT for:
-    
-    * Data Model (Data Base)
-    * Natural Language Logic - translation to rules
-    * Test Data 
+    **Uses ChatGPT** for Data Model (Data Base), Natural Language Logic - translation to rules, and Test Data.
 
-    It includes storage for downloadable projects and SQLite databases.
+    It **includes storage** for downloadable projects and SQLite databases.
 
-    It uses API Logic Server to create and run projects from the Data Model (Data Base)
-
-    **API Logic Server** provides:
-
-    * CLI-based creation - from Data Model (Data Base)
-    * Execution - API, Logic and UI engines
+    It **uses API Logic Server** to create and run projects from the Data Model (Data Base).
 
 
 ## What is GenAI Logic

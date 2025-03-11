@@ -11,7 +11,7 @@
     * GenAI services for data model creation, and 
     * API Logic Server for project creation.
 
-    You can also use GenAI services via the [GenAI WebSite](WebGenAI.md){:target="_blank" rel="noopener"}.
+    You can also use GenAI services via the [GenAI WebSite](WebGenAI.md){:target="_blank" rel="noopener"}.  For Web/GenAI architecture, [click here](Architecture-What-Is-GenAI.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -323,22 +323,6 @@ Since the logic is in separate directories, the system is able to support ongoin
 
 
 ## Appendices
-
-### GenAI and API Logic Server
-
-GenAI is part of API Logic Server.  As shown below:
-
-* API Logic Server can create microservices (Admin Apps, APIs, and Logic) from databases.
-
-* It can also create microservices from database models (`als create --from-model=my_model.py`)
-
-* GenAI
-
-    * Use ChatGPT APIs, and creates a model file from the response
-    * Submit that to `als create --from-model=my_model.py`
-
-
-![GenAI Automation](images/web_genai/how-does-it-work.png)
 
 ### Error Recovery
 

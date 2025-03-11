@@ -1,15 +1,13 @@
 !!! pied-piper ":bulb: TL;DR - Logic: multi-table derivations and constraints, using Rules and Python"
 
-    Logic addresses __multi-table derivations and constraints__, using Rules and Python.  
+    Logic addresses __multi-table derivations and constraints__, using Rules and Python.  **Rules** are:
 
-    **Rules** are:
-
-    1. **Declared** in your IDE - 40X more concise - with GenAI or Code Completion
+    1. **Declared** with WebGenAI or IDE and Code Completion - 40X more concise 
     2. **Activated** on server start
-    3. **Executed** - *automatically* -  on updates (using SQLAlchemy events)
+    3. **Executed** - *automatically* - on updates (using SQLAlchemy events)
     4. **Debugged** in your IDE, and with the console log
 
-    Rules can be declared using WebGenAI and/or Python.  For more on WebGenAI, [click here](WebGenAI.md){:target="_blank" rel="noopener"}.
+    For more on WebGenAI, [click here](WebGenAI.md){:target="_blank" rel="noopener"}.
 
 
 # Rule Types
