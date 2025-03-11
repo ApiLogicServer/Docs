@@ -147,7 +147,7 @@ The best way to learn the rules is by a Case Study approach:
 
 As noted above, it is important to be clear on the rules generated for logic.  Use the examples below to test your understanding.
 
-WebGenAI provides the [Logic Editor](WebGenAI-logic-editor.md) so you can see/edit the translation:
+WebGenAI provides the [Logic Editor](WebGenAI.md#using-the-logic-editor){:target="_blank" rel="noopener"} so you can see/edit the translation:
 
 ![logic Editor](images/web_genai/logic/logic-editor.png)
 
