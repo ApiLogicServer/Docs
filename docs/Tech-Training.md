@@ -18,6 +18,7 @@ While WebGenAI is available via your browser - you will want to have a local ver
 4. [VSCode for Python](https://code.visualstudio.com/docs/python/python-tutorial){:target="_blank" rel="noopener"}
 5. [Docker Desktop Install](https://docs.docker.com/desktop/){:target="_blank" rel="noopener"}
 6. [Sample Docker Databases](Database-Docker.md){:target="_blank" rel="noopener"} are available for learning.
+7. Explore the documentation 
 
 &nbsp;
 
@@ -57,7 +58,7 @@ In a terminal window or powershell:
 mkdir ApiLogicServer
 cd ApiLogicServer
 python -m venv venv
-source venv/bin/activate 
+source venv/bin/activate      # windows: venv\Scripts\activate
 pip install ApiLogicServer
 ApiLogicServer start
 ```
@@ -67,11 +68,11 @@ Explore the NorthWind (nw) example to learn about ApiLogicServer.  Each folder r
 
 1. Config/config.py - runtime settings
 2. [Database/models.py](Data-Model-Customization.md){:target="_blank" rel="noopener"} - SQLAlchemy ORM 
-3. [Api/custom_api.py](API-Customize.md){:target="_blank" rel="noopener"} - Custom API endpoints
+3. [Api/custom_api.py](API.md){:target="_blank" rel="noopener"} - Custom API endpoints
 4. logic/declare_logic.py
 5. [security](Security-Overview.md){:target="_blank" rel="noopener"} declare_security.py and security/system/authentication.py 
 6. [devops containers](DevOps-Containers.md){:target="_blank" rel="noopener"} - various docker scripts 
-7. [ui/admin admin.yaml](Admin-Tour.md){:target="_blank" rel="noopener"} - React back office and Ontimize Angular (ui/app)
+7. [ui/admin admin.yaml](Admin-Tour.md){:target="_blank" rel="noopener"} - React back office
 8. [test - behave testing](Behave.md){:target="_blank" rel="noopener"}
 
 Manager - Explore examples
@@ -81,22 +82,70 @@ Manager - Explore examples
 &nbsp;
 
 ## Command Line Basics
-The command line (cli) is the most key to use the features of ApiLogicServer.
+The command line (cli) is the most key to use the features of ApiLogicServer.  Note that each command may have a set of additional arguments: use --help to see the additional features (e.g. als genai --help).
 
 ```
 als --help
+Welcome to API Logic Server {version}
+
+Usage: als [OPTIONS] COMMAND [ARGS]...
+
+      Creates [and runs] logic-enabled Python database API Logic Projects.
+
+          Creation is from your database (--db-url identifies a SQLAlchemy database)
+
+          Doc: https://apilogicserver.github.io/Docs
+          And: https://apilogicserver.github.io/Docs/Database-Connectivity/
+  
+      Suggestions:
+
+          ApiLogicServer start                                # create and manage projects
+          ApiLogicServer create --db-url= --project-name=     # defaults to Northwind sample
+      
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  about                  Recent Changes, system information.
+  add-auth               Adds authorization/authentication to curr project.
+  add-cust               Adds customizations to northwind, genai,...
+  add-db                 Adds db (model, binds, api, app) to curr project.
+  app-build              Builds runnable app from: ui/<app>/app-model.yaml
+  app-create             Creates Ontomize app model: ui/<app>/app-model.yaml
+  create                 Creates new customizable project (overwrites).
+  create-and-run         Creates new project and runs it (overwrites).
+  create-ui              Creates models.yaml from models.py (internal).
+  curl                   Execute cURL command, providing auth headers...
+  curl-test              Test curl commands (nw only; must be r)
+  examples               Example commands, including SQLAlchemy URIs.
+  genai                  Creates new customizable project (overwrites).
+  genai-create           Create new project from --using prompt text.
+  genai-iterate          Iterate current project from --using prompt text.
+  genai-logic            Adds (or suggests) logic to current project.
+  genai-utils            Utilities for GenAI.
+  login                  Login and save token for curl command.
+  rebuild-from-database  Updates database, api, and ui from changed db.
+  rebuild-from-model     Updates database, api, and ui from changed models.
+  run                    Runs existing project.
+  start                  Create and Manage API Logic Projects.
+  tutorial               Creates (updates) Tutorial.
+  welcome                Just print version and exit.
 ```
 
 1. Explore [cli](Project-Structure.md){:target="_blank" rel="noopener"} create, add-auth, app-build, app-create, rebuild-from-database
-2. GenAI [cli](WebGenAI-CLI.md){:target="_blank" rel="noopener"} genai
+2. GenAI [cli](WebGenAI-CLI.md){:target="_blank" rel="noopener"} 
 
-## Configure Security
-The ability to secure your application is an important part of the creation of any API Microservice application.  In this lab - review and try:
+&nbsp;
 
-1. Who Can Access - [Authentication](Security-Authentication.md){:target="_blank" rel="noopener"}
-2. What can they Do - [Authorization (role-based access control)](Security-Authorization.md){:target="_blank" rel="noopener"}
-3. Use [KeyCloak](Security-Keycloak.md){:target="_blank" rel="noopener"} local docker image
-4. Use [SQL](Security-sql.md){:target="_blank" rel="noopener"} login
+## Connect to SQL
+If the project has an existing SQL DBMS (MySQL, PostgreSQL, SQL Server, Oracle) - ApiLogicServer can connect to SQL and build a detailed API. Review the documentation of Data-Model design, examples, keys, quoted identifiers, etc.
+
+1. [Data-Model-Design](Data-Model-Design.md)){:target="_blank" rel="noopener"} 
+2. Primary Keys
+3. Relationships (foreign keys)
+4. Accented characters (--quote) quoted identifiers
+5. SQLAlchemy ORM model.py
 
 
 &nbsp;
@@ -108,17 +157,32 @@ In this lab - explore how to use the existing services to integration with Kafka
 1. Integration and Configuration [Kafka](Integration-Kafka.md){:target="_blank" rel="noopener"}
 2. Integration with Workflow (n8n)
 
-## Ontimize
+## Ontimize Angular Application
 OntimizeWeb from Imatia is an Angular application that is automatically created from the command line.
 In this lab - review the Ontimize process [here](App-Custom-Ontimize-Overview.md){:target="_blank" rel="noopener"}
 
+Start ApiLogicServer first (note: must enable security: als add-auth --provider-type=sql)
 ```
 als app-create --app=app
 als app-build --help
+ example:
+
+      ApiLogicServer app-build —app=name=app1
+
+      ApiLogicServer app-build —app=name=app1 —api-endpoint=Orders 
+      # only build Orders          This creates app1/app-model.yml. 
+
+Options:
+  --project-name TEXT  Project containing App
+  --app TEXT           App directory name
+  --api-endpoint TEXT  API endpoint name
+  --template-dir TEXT  Directory of user defined Ontimize templates
+  --help               Show this message and exit.
+
 
 als app-build --app=app
 cd ui/app
-npm install && npm start
+npm install && npm start  # http://localhost:4299
 ```
 
 1. Create an Ontimize application
@@ -126,8 +190,19 @@ npm install && npm start
 3. Yaml File Basics
 4. Working with Templates 
 5. Application Model Editor
+6. Advanced Filters (enable)
 
 &nbsp;
+
+## Configure Security
+The ability to secure your application is an important part of the creation of any API Microservice application.  In this lab - review and try:
+
+1. Who Can Access - [Authentication](Security-Authentication.md){:target="_blank" rel="noopener"}
+2. What can they Do - [Authorization (role-based access control)](Security-Authorization.md){:target="_blank" rel="noopener"}
+3. Use [KeyCloak](Security-Keycloak.md){:target="_blank" rel="noopener"} local docker image
+4. Use [SQL](Security-sql.md){:target="_blank" rel="noopener"} login
+
+
 
 ## Deployment (devops)
 ApiLogicServer has a suite of tools for [devops](DevOps-Docker.md){:target="_blank" rel="noopener"} to build and deploy Docker containers. 
