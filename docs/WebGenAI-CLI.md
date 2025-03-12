@@ -262,7 +262,7 @@ Once have exported and expanded the tar file:
 
 1. Optionally, copy the project folder to your manager folder (where you installed API Logic Server).
     * This is not required, but it keeps your projects organized, and provide quick access to the Samples that illustrate typical customizations.
-2. Setup your virtual environment - see [Virual Environment](Project-Env.md){:target="_blank" rel="noopener"}.  
+2. Setup your virtual environment - see [Virtual Environment](Project-Env.md){:target="_blank" rel="noopener"}.  
 
     * You can create a new venv, but it's simplest just to use the one used by the Manager.
 
@@ -272,7 +272,9 @@ Once have exported and expanded the tar file:
         * Rename the project
 
 3. Verify your default value settings, as shown below (typically True)
-4. You should then be able to open and run the exported project in your IDE, 
+4. You should then be able to open and run the exported project in your IDE.  In the terminal window of your IDE:
+    * `cd <your project>
+    * `code .`
 
 ![defaulting](images/web_genai/export/defaulting.png)
 
@@ -333,7 +335,7 @@ AI results are not consistent, so you may sometimes need to correct errors and r
 
 &nbsp;
 
-#### GemAI Processing
+#### GenAI Processing
 
 `genai` processing is shown below (internal steps denoted in grey):
 

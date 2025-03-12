@@ -23,25 +23,31 @@ While WebGenAI is available via your browser - you will want to have a local ver
 
 ## Core WebGenAI
 
-tbd
+In this series of labs, you will 
 
-### The Basics: Create, Run, Debug
-You can run WebGenAI locally on your desktop or your company may have a cloud version running. WebGenAI uses OpenAI ChatGPT and requires the configuration of both a license and an OpenAI API Key.  Watch the video [here](https://www.youtube.com/watch?v=7I33Fa9Ulos){:target="_blank" rel="noopener"}
-
-In this lab, we will learn the following:
-
-1. Create the demo project from a prompt [Prompt Engineering Basics](https://apifabric.ai/admin-app/index.html#/Home?demo=genai_demo){:target="_blank" rel="noopener"}
-2. Verify the logic by navigating to a Customer with an unshipped order, and altering one of the items to have a very large quantity
-3. Explore [debugging logic](WebGenAI.md#debugging-logic){:target="_blank" rel="noopener"}
-
+1. create and run projects
+2. debug them, both in WebGanAI and the IDE
+3. explore iterations
 
 &nbsp;
 
-### IDE Basics
+### Using WebGenAI in the Browser
+
+You can run WebGenAI locally on your desktop or your company may have a cloud version running. WebGenAI uses OpenAI ChatGPT and requires the configuration of both a license and an OpenAI API Key.  Watch the video [here](https://www.youtube.com/watch?v=7I33Fa9Ulos){:target="_blank" rel="noopener"}
+
+In this lab:
+
+1. Create the demo project from a prompt [Prompt Engineering Basics](https://apifabric.ai/admin-app/index.html#/Home?demo=genai_demo){:target="_blank" rel="noopener"}
+2. Verify the logic by navigating to a Customer with an unshipped order, and altering one of the items to have a very large quantity
+3. Explore [debugging logic](WebGenAI.md#debugging-logic){:target="_blank" rel="noopener"} using your Browser
+
+&nbsp;
+
+### Using your IDE
 
 #### Download (aka Export)
 
-The web-based interface is great for rapid creation, but you will enjoy much better debugging using your IDE.  We'll explore that in this lab.
+The web-based interface is great for rapid creation, but you will enjoy much better debugging using your IDE.  We'll explore that in these next labs.
 
 Please see [Export](WebGenAI-CLI.md#export){:target="_blank" rel="noopener"}.
 
@@ -53,41 +59,7 @@ Use the 'Project Download' link from the '2> develop' page or the project page (
 
 The Manager is a pre-configured VSCode with samples used to help new developers learn about ApiLogicServer.  See the [Manager](Manager.md){:target="_blank" rel="noopener"} documentation.
 
-Recall you installed the manager when you installed API Logic Server.
-In a terminal window or powershell:
-```
-mkdir ApiLogicServer
-cd ApiLogicServer
-python -m venv venv
-source venv/bin/activate      # windows: venv\Scripts\activate
-pip install ApiLogicServer
-ApiLogicServer start
-```
-> Explore the NorthWind (nw) example to learn about ApiLogicServer.  Each folder represents a key concepts (e.g. config, api, database, logic, security, devops, test, ui)
-
-Later, when you exit VSCode, you can restart the Manager:
-
-```bash
-cd ApiLogicServer
-code .
-```
-
-&nbsp;
-
-##### Explore the folders
-
-1. Config/config.py - runtime settings
-2. [Database/models.py](Data-Model-Customization.md){:target="_blank" rel="noopener"} - SQLAlchemy ORM 
-3. [Api/custom_api.py](API.md){:target="_blank" rel="noopener"} - Custom API endpoints
-4. logic/declare_logic.py
-5. [security](Security-Overview.md){:target="_blank" rel="noopener"} declare_security.py and security/system/authentication.py 
-6. [devops containers](DevOps-Containers.md){:target="_blank" rel="noopener"} - various docker scripts 
-7. [ui/admin admin.yaml](Admin-Tour.md){:target="_blank" rel="noopener"} - React back office
-8. [test - behave testing](Behave.md){:target="_blank" rel="noopener"}
-
-Manager - Explore examples
-    * samples/nw_sample - [NW Tutorial](Tutorial.md){:target="_blank" rel="noopener"}, search for #als to see examples, B2B example
-    * system/genai [GenAI Demo Tutorial](Sample-Genai.md){:target="_blank" rel="noopener"}
+See the procedure below (`cd ApiLogicServer; code .`)
 
 &nbsp;
 
@@ -108,14 +80,32 @@ code .
 
 &nbsp;
 
-#### Explore Rule Concepts
+#### Explore Logic Debugging
+
+Refer to the [docs on logic debugging](ogic-Debug.md){:target="_blank" rel="noopener"}.
+
+1. Put a breakpoint on the constraint
+2. Start the Server (F5)
+3. Start the App in the Browser
+4. Verify the logic by navigating to a Customer with an unshipped order, and altering one of the items to have a very large quantity
+  * Observe the log, showing each rule firing with the row data
+
+&nbsp;
+
+### Explore Rule Concepts
 ApiLogicServer provides a rule engine (LogicBank) to allow the developer to add derivations, constraints and events to any API endpoint.  These rules can be created by WebGenAI natural language or using the VSCode IDE manually entered.
 
 1. [Rule Type Patterns](Logic.md){:target="_blank" rel="noopener"} 
 
 &nbsp;
 
-#### Iterations
+### WebGenAI Iterations
+
+Through experience, you will discover that the IDE maintains full logic automation, albeit using IDE completion instead of Natural Language.  
+
+You will find WebGenAI remains useful, particularly for updating the data model (e.g., as required for logic).  The system provides [Import/Merge](IDE-Import-WebGenAI/) services to sync WebGenAI changes with IDE changes (not covered in initial training).
+
+Explore WebGenAI iteration services:
 
 2. Use the 'Iterate' button to modify the created project
 3. Use the ['Logic'](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"} 
@@ -283,4 +273,49 @@ ApiLogicServer has a suite of tools for [devops](DevOps-Docker.md){:target="_bla
 
 1. [Behave Testing](Behave.md){:target="_blank" rel="noopener"} (optional)
 2. [Alembic](Database-Changes.md/#use-alembic-to-update-database-schema-from-model){:target="_blank" rel="noopener"} Schema Migration
+
+&nbsp;
+
+## Appendices
+
+
+### Start the Manager
+
+The Manager is a pre-configured VSCode with samples used to help new developers learn about ApiLogicServer.  See the [Manager](Manager.md){:target="_blank" rel="noopener"} documentation.
+
+Recall you installed the manager when you installed API Logic Server.
+In a terminal window or powershell:
+
+```
+mkdir ApiLogicServer
+cd ApiLogicServer
+python -m venv venv
+source venv/bin/activate      # windows: venv\Scripts\activate
+pip install ApiLogicServer
+ApiLogicServer start
+```
+> Explore the NorthWind (nw) example to learn about ApiLogicServer.  Each folder represents a key concepts (e.g. config, api, database, logic, security, devops, test, ui)
+
+Later, when you exit VSCode, you can restart the Manager:
+
+```bash
+cd ApiLogicServer
+code .
+```
+
+&nbsp;
+
+
+&nbsp;
+
+#### Explore the folders
+
+1. Config/config.py - runtime settings
+2. [Database/models.py](Data-Model-Customization.md){:target="_blank" rel="noopener"} - SQLAlchemy ORM 
+3. [Api/custom_api.py](API.md){:target="_blank" rel="noopener"} - Custom API endpoints
+4. logic/declare_logic.py
+5. [security](Security-Overview.md){:target="_blank" rel="noopener"} declare_security.py and security/system/authentication.py 
+6. [devops containers](DevOps-Containers.md){:target="_blank" rel="noopener"} - various docker scripts 
+7. [ui/admin admin.yaml](Admin-Tour.md){:target="_blank" rel="noopener"} - React back office
+8. [test - behave testing](Behave.md){:target="_blank" rel="noopener"}
 
