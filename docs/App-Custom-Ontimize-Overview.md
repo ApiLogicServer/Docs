@@ -102,7 +102,7 @@ One way is to `create` an ApiLogicServer project, specifying `--auth-provider-ty
 ```bash
 als create --project_name=ApiLogicProject --db-url= --auth-provider-type=sql
 ```
-Note: Security must be enabled for Ontimize client (see: als add-auth)
+Note: Security must be enabled for Ontimize client (see: als add-auth --provider-type=sql)
 
 This creates a project from your database (here, the [default sample](Sample-Database.md){:target="_blank" rel="noopener"}), which you can open and execute in your IDE.  It includes an API, the Admin App, and the default custom app.
 
@@ -297,7 +297,6 @@ Use the Ontimize editor to exclude a selected entity or change the titles.
 |Primary Key|array of primary keys {{ primaryKeys }}|
 |Favorite|used for list-picker display|
 |Mode|tab or dialog style {{ editMode }}|
-|Menu Group|used to organize entity into menu groups|
 |Exclude|if true - skip this API endpoint in the first page generation|
 
 ## Attributes
@@ -367,3 +366,22 @@ These values are injected into the various entity and attribute to provide and s
 ```
 ## Custom Templates
 Ontimize templates can be modified in the local /templates directory.  There are a few examples of using advanced template customizations.  Once the local template is changed use the 'als app-build --app={myApp}' to rebuild your entire app.  If you wish to preserve your prior customizations, we suggest building a new application and merge changes back into your customized Ontimize app.
+
+## Yaml Overview
+The Application is a hierarchy of the each Ontimize definition which is used by the command line (app-build) to create a set of pages (new, home, detail) for each API endpoint (menu-item is a module linked to the API).  Menu Group is a category grouping for the sidebar navigation.
+
+application
+  app:
+   menu-group
+    data:
+     title: Customer Info
+     menu-item
+       Customer:
+         page
+            new
+            home
+            detail
+entities:
+  Customer:
+    columns:
+    tab-groups:
