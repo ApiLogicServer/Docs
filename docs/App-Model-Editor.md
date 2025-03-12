@@ -165,11 +165,11 @@ settings:
 |Primary Key|array of primary keys {{ primaryKeys }}|
 |Favorite|used for list-picker display|
 |Mode|tab or dialog style {{ editMode }}|
-|Menu Group|used to organize entity into side bar menu groups|
+|Menu Group|used to organize entity into side bar menu groups(moved to menu_group)|
 |Exclude|if true - skip this API endpoint in the first page generation|
-|home_template|This is the grid or home template used for the Entity|
-|detail_template|This is the drill down page from home for each row - it can include relationships (tabgroup)|
-|new_template|This template is used to insert new rows into the selected Entity|
+|home_template|This is the grid or home template used for the Entity (moved to pages)|
+|detail_template|This is the drill down page from home for each row - it can include relationships (tabgroup) (moved to pages)|
+|new_template|This template is used to insert new rows into the selected Entity (moved to pages)|
 
 ## Attribute Fields
 Use the Ontimize editor to change the label, tooltip, exclude selected attributes, include attribute in the search or sort, enable or mark fields as required, and include visible in the home table display.
@@ -233,3 +233,37 @@ These templates can be found in the directory ui/app/templates and can be modifi
     ("timestamp", "timestamp_template.html"),
     ("toggle", "o_slide_toggle.html")
 ```
+## Application
+|field|Description|
+:------|:---------------|
+|name|app name|
+|short_name|abbreviation|
+|description|notes|
+
+## Menu Group
+|field|Description|
+:------|:---------------|
+|menu_name|name of group|
+|menu_title|Title for group|
+|icon|material icon|
+|opened|is the group open (default:True)|
+
+## Menu Item
+|field|Description|
+:------|:---------------|
+|entity_name|API Entity for module|
+|menu_name|name on menu|
+|template_name|default: module.jinja|
+|icon|material icon to display|
+
+
+## Page (new, home, detail)
+|field|Description|
+:------|:---------------|
+|page_name| new, home, detail|
+|title|used on page|
+|template_name|new, home, detail html template|
+|typescript_name|new, home, detail jinja|
+|columns|list of columns|
+|visible_columns|used on home page grid|
+|include_children|boolean - detail page only|
