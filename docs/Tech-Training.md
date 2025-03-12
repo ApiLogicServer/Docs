@@ -5,15 +5,15 @@
       * WebGenAI-focused
       * Java background - new to Python
 
-## Initial Background
+### Initial Background
 Review the [GenAI Architecture](Architecture-What-Is-GenAI.md){:target="_blank" rel="noopener"}, and take a quick scan of [Python for Java programmers](Tech-Python.md){:target="_blank" rel="noopener"}. 
 
 
-## Installation and Configuration
+### Installation and Configuration
 While WebGenAI is available via your browser - you will want to have a local version of Python, ApiLogicServer, VSCode (and optionally Docker Desktop) running.  This has been documented here:
 
 1. [Python 3.12 Installation](Tech-Install-Python.md){:target="_blank" rel="noopener"}
-2. [Understand Virtual Environments](https://docs.python.org/3/library/venv.html){:target="_blank" rel="noopener"}
+2. [Understand Virtual Environments](https://docs.python.org/3/library/venv.html){:target="_blank" rel="noopener"}, and [als notes](Project-env.md){:target="_blank" rel="noopener"}
 3. [ApiLogicServer Installation](Install-Express.md){:target="_blank" rel="noopener"}
 4. [VSCode for Python](https://code.visualstudio.com/docs/python/python-tutorial){:target="_blank" rel="noopener"}
 5. [Docker Desktop Install](https://docs.docker.com/desktop/){:target="_blank" rel="noopener"}
@@ -21,30 +21,39 @@ While WebGenAI is available via your browser - you will want to have a local ver
 
 &nbsp;
 
-## WebGenAI Core Lab
-You can run WebGenAI locally on your desktop or your company may have a cloud version running. WebGenAI uses OpenI ChatGPT and requires the configuration of both a license and an OpenAI API Key.  Watch the video [here](https://www.youtube.com/watch?v=7I33Fa9Ulos){:target="_blank" rel="noopener"}
+## Core WebGenAI
+
+tbd
+
+### The Basics: Create, Run, Debug
+You can run WebGenAI locally on your desktop or your company may have a cloud version running. WebGenAI uses OpenAI ChatGPT and requires the configuration of both a license and an OpenAI API Key.  Watch the video [here](https://www.youtube.com/watch?v=7I33Fa9Ulos){:target="_blank" rel="noopener"}
 
 In this lab, we will learn the following:
 
-1. Create a project from a prompt [Prompt Engineering Basics](WebGenAI.md){:target="_blank" rel="noopener"}
-2. Use the 'Iterate' button to modify the created project
-3. Use the ['Logic'](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"} 
-   button and the 'Suggestion' to create natural language rules
-4. Use the 'Update Model' button if the rules fail to activate
-5. Review the Rules and Log
-6. Setup [CodeSpaces](Sample-Genai.md){:target="_blank" rel="noopener"} to run the project in GitHub
+1. Create the demo project from a prompt [Prompt Engineering Basics](https://apifabric.ai/admin-app/index.html#/Home?demo=genai_demo){:target="_blank" rel="noopener"}
+2. Verify the logic by navigating to a Customer with an unshipped order, and altering one of the items to have a very large quantity
+3. Explore [debugging logic](WebGenAI.md#debugging-logic){:target="_blank" rel="noopener"}
+
 
 &nbsp;
 
-## Download & Customizing
+### IDE Basics
+
+#### Download (aka Export)
+
+The web-based interface is great for rapid creation, but you will enjoy much better debugging using your IDE.  We'll explore that in this lab.
+
+Please see [Export](WebGenAI-CLI.md#export){:target="_blank" rel="noopener"}.
+
 Use the 'Project Download' link from the '2> develop' page or the project page (as a tar file). Unzip or un-tar the file and copy to the manager or developer workspace.
 
 &nbsp;
 
-## Start the Manager
-The Manager is a pre-configured VSCode with samples used to help new developers learn about ApiLogicServer.
+#### Start the Manager
 
-See the [Manager](Manager.md){:target="_blank" rel="noopener"} documentation.
+The Manager is a pre-configured VSCode with samples used to help new developers learn about ApiLogicServer.  See the [Manager](Manager.md){:target="_blank" rel="noopener"} documentation.
+
+Recall you installed the manager when you installed API Logic Server.
 In a terminal window or powershell:
 ```
 mkdir ApiLogicServer
@@ -54,9 +63,18 @@ source venv/bin/activate      # windows: venv\Scripts\activate
 pip install ApiLogicServer
 ApiLogicServer start
 ```
-Explore the NorthWind (nw) example to learn about ApiLogicServer.  Each folder represents a key concepts (e.g. config, api, database, logic, security, devops, test, ui)
+> Explore the NorthWind (nw) example to learn about ApiLogicServer.  Each folder represents a key concepts (e.g. config, api, database, logic, security, devops, test, ui)
 
-### Explore the folders
+Later, when you exit VSCode, you can restart the Manager:
+
+```bash
+cd ApiLogicServer
+code .
+```
+
+&nbsp;
+
+##### Explore the folders
 
 1. Config/config.py - runtime settings
 2. [Database/models.py](Data-Model-Customization.md){:target="_blank" rel="noopener"} - SQLAlchemy ORM 
@@ -73,14 +91,43 @@ Manager - Explore examples
 
 &nbsp;
 
-## Explore Rule Concepts
+#### Copy your Project to the Manager Directory
+
+As explained in [Export](WebGenAI-CLI.md#export){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+#### Start your project
+
+The Manager has a readme which explains how to run projects from inside the manager.  When you are getting started, it's easiest just to launch another instance of VSCode.  In the termimal window of VSCode:
+
+```bash
+cd <your project>
+code .
+```
+
+&nbsp;
+
+#### Explore Rule Concepts
 ApiLogicServer provides a rule engine (LogicBank) to allow the developer to add derivations, constraints and events to any API endpoint.  These rules can be created by WebGenAI natural language or using the VSCode IDE manually entered.
 
 1. [Rule Type Patterns](Logic.md){:target="_blank" rel="noopener"} 
 
 &nbsp;
 
-## Command Line Basics
+#### Iterations
+
+2. Use the 'Iterate' button to modify the created project
+3. Use the ['Logic'](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"} 
+   button and the 'Suggestion' to create natural language rules
+4. Use the 'Update Model' button if the rules fail to activate
+
+&nbsp;
+
+## Concepts and Facilities
+
+
+### Command Line Basics
 The command line (cli) is the key to use all of the features of ApiLogicServer.  Note that each command may have a set of additional arguments: use --help to see the additional features (e.g. als genai --help).
 
 ```
@@ -137,7 +184,7 @@ Commands:
 
 &nbsp;
 
-## Connect to SQL
+### Connect to SQL
 If the project has an existing SQL DBMS (MySQL, PostgreSQL, SQL Server, Oracle) - ApiLogicServer can connect to SQL and build a detailed API. Review the documentation of Data-Model design, examples, keys, quoted identifiers, etc.
 In this lab - we will connect to the northwind database.
 ```
@@ -158,7 +205,7 @@ Open database/models.py
 
 &nbsp;
 
-## Integration 
+### Integration 
 Some applications may require integration with other services (e.g. email, payment, workflow, etc) 
 In this lab - explore how to use the existing services to integration with Kafka or Workflow.
 
@@ -168,7 +215,7 @@ In this lab - explore how to use the existing services to integration with Kafka
 4. Integration with Workflow (n8n) - Using WebHooks
 5. Configuration of Kafka or n8n (config.py)
 
-## Ontimize Angular Application
+### Ontimize Angular Application
 OntimizeWeb from Imatia is an Angular application that is automatically created from the command line.
 In this lab - review the Ontimize process [here](App-Custom-Ontimize-Overview.md){:target="_blank" rel="noopener"}
 
@@ -207,7 +254,7 @@ Note: This version uses the Ontimize API Bridge - work is being done to use JSON
 
 &nbsp;
 
-## Configure Security
+### Configure Security
 The ability to secure your application is an important part of the creation of any API Microservice application.  In this lab - review and try:
 
 1. Who Can Access - [Authentication](Security-Authentication.md){:target="_blank" rel="noopener"}
@@ -217,14 +264,14 @@ The ability to secure your application is an important part of the creation of a
 
 
 
-## Deployment (devops)
+### Deployment (devops)
 ApiLogicServer has a suite of tools for [devops](DevOps-Docker.md){:target="_blank" rel="noopener"} to build and deploy Docker containers. 
 
 1. [Build a Docker Image](DevOps-Build.md){:target="_blank" rel="noopener"}
 
 &nbsp;
 
-## Adv Project
+### Adv Project
 
 1. Adding attributes if they are not added automatically
 2. SQLIte to PostgreSQL migration (sqlite3 db.sqlite .dump > postgres.sql)
@@ -232,7 +279,7 @@ ApiLogicServer has a suite of tools for [devops](DevOps-Docker.md){:target="_bla
 
 &nbsp;
 
-## Be Aware Of
+### Be Aware Of
 
 1. [Behave Testing](Behave.md){:target="_blank" rel="noopener"} (optional)
 2. [Alembic](Database-Changes.md/#use-alembic-to-update-database-schema-from-model){:target="_blank" rel="noopener"} Schema Migration
