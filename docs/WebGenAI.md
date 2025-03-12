@@ -202,8 +202,12 @@ Logic can fail to load at runtime.  The system will
 
 * report the errors back to the Logic Editor, where you can correct them.
 
-Logic can also fail when you make an update.  Review the log to see the state of the row(s) as each rule fires.
+Logic can also fail when you make an update.  You can:
 
+1. Review the log to see the state of the row(s) as each rule fires (see below)
+2. Download the project and use [standard logic debugging](Logic-Debug.md){:target="_blank" rel="noopener"}.
+
+![genai-debug](images/web_genai/logic/genai-log.png)
 
 &nbsp;
 

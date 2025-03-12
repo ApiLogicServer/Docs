@@ -260,6 +260,8 @@ Once have exported and expanded the tar file:
 
 ![exported](images/web_genai/export/downloaded.png)
 
+1. Optionally, copy the project folder to your manager folder (where you installed API Logic Server).
+    * This is not required, but it keeps your projects organized, and provide quick access to the Samples that illustrate typical customizations.
 1. Setup your virtual environment - see [Virual Environment](Project-Env.md){:target="_blank" rel="noopener"}.  
 
     * You can create a new venv, but it's simplest just to use the one used by the Manager.

@@ -13,7 +13,7 @@ Review the [GenAI Architecture](Architecture-What-Is-GenAI.md){:target="_blank" 
 While WebGenAI is available via your browser - you will want to have a local version of Python, ApiLogicServer, VSCode (and optionally Docker Desktop) running.  This has been documented here:
 
 1. [Python 3.12 Installation](Tech-Install-Python.md){:target="_blank" rel="noopener"}
-2. [Understand Virtual Environments](https://docs.python.org/3/library/venv.html){:target="_blank" rel="noopener"}
+2. [Understand Virtual Environments](Project-Env.md){:target="_blank" rel="noopener"}; for general background, [see python docs)(https://docs.python.org/3/library/venv.html){:target="_blank" rel="noopener"}
 3. [ApiLogicServer Installation](Install-Express.md){:target="_blank" rel="noopener"}
 4. [VSCode for Python](https://code.visualstudio.com/docs/python/python-tutorial){:target="_blank" rel="noopener"}
 5. [Docker Desktop Install](https://docs.docker.com/desktop/){:target="_blank" rel="noopener"}
@@ -22,13 +22,13 @@ While WebGenAI is available via your browser - you will want to have a local ver
 &nbsp;
 
 ## WebGenAI Core Lab
-You can run WebGenAI locally on your desktop or your company may have a cloud version running. WebGenAI uses OpenI ChatGPT and requires the configuration of both a license and an OpenAI API Key.  Watch the video [here](https://www.youtube.com/watch?v=7I33Fa9Ulos){:target="_blank" rel="noopener"}
+You can run WebGenAI locally on your desktop or your company may have a cloud version running. WebGenAI uses OpenAI ChatGPT and requires the configuration of both a license and an OpenAI API Key.  Watch the video [here](https://www.youtube.com/watch?v=7I33Fa9Ulos){:target="_blank" rel="noopener"}
 
 In this lab, we will learn the following:
 
 1. Create a project from a prompt [Prompt Engineering Basics](WebGenAI.md){:target="_blank" rel="noopener"}
 2. Use the 'Iterate' button to modify the created project
-3. Use the ['Logic'](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"} 
+3. Use the ['Logic'](WebGenAI.md#using-the-logic-editor){:target="_blank" rel="noopener"} 
    button and the 'Suggestion' to create natural language rules
 4. Use the 'Update Model' button if the rules fail to activate
 5. Review the Rules and Log
