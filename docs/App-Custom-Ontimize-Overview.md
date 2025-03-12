@@ -370,18 +370,24 @@ Ontimize templates can be modified in the local /templates directory.  There are
 ## Yaml Overview
 The Application is a hierarchy of the each Ontimize definition which is used by the command line (app-build) to create a set of pages (new, home, detail) for each API endpoint (menu-item is a module linked to the API).  Menu Group is a category grouping for the sidebar navigation.
 
+```
 application
   app:
    menu-group
     data:
-     title: Customer Info
-     menu-item
+     menu_title: Customer Info
+     menu-item:
        Customer:
-         page
-            new
-            home
-            detail
+         page:
+            new:
+            home:
+            detail:
 entities:
   Customer:
     columns:
+      -- name: CustomerName
+         label: Name
     tab-groups:
+settings:
+  style_guide:    
+```
