@@ -1,14 +1,14 @@
 !!! pied-piper ":bulb: TL;DR - Create Microservice from Natural Language Prompt using CLI"
 
-    API Logic Server / GenAI provides CLI commands that accepts a Natural Language prompt (e.g, CRM system), and produces:
+    API Logic Server / GenAI provides CLI commands that accept a Natural Language prompt (e.g, CRM system), and produces:
 
-    * a Microservice, an Admin App and a JSON API
-    * a project that you can download and customize in your IDE using rules and Python
+    * an executable database system: an Admin App, a JSON API and logic
+    * the underlying project that you can download and customize in your IDE using rules and Python
     * which can be deployed as a container using automatically generated scripts.
 
     API Logic Server / GenAI uses: 
     
-    * GenAI services for data model creation, and 
+    * GenAI services (ChatGPT) for data model creation, and 
     * API Logic Server for project creation.
 
     You can also use GenAI services via the [GenAI WebSite](WebGenAI.md){:target="_blank" rel="noopener"}.  For Web/GenAI architecture, [click here](Architecture-What-Is-GenAI.md){:target="_blank" rel="noopener"}.
