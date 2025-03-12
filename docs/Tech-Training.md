@@ -6,7 +6,7 @@
       * Java background - new to Python
 
 ## Initial Background
-Review the [GenAI Architecture](Architecture-What-Is-GenAI.md){:target="_blank" rel="noopener"}, and take a quick scan of [Python for Java programmers](Tech-Python.md){:target="_blank" rel="noopener"}.
+Review the [GenAI Architecture](Architecture-What-Is-GenAI.md){:target="_blank" rel="noopener"}, and take a quick scan of [Python for Java programmers](Tech-Python.md){:target="_blank" rel="noopener"}. 
 
 
 ## Installation and Configuration
@@ -18,7 +18,6 @@ While WebGenAI is available via your browser - you will want to have a local ver
 4. [VSCode for Python](https://code.visualstudio.com/docs/python/python-tutorial){:target="_blank" rel="noopener"}
 5. [Docker Desktop Install](https://docs.docker.com/desktop/){:target="_blank" rel="noopener"}
 6. [Sample Docker Databases](Database-Docker.md){:target="_blank" rel="noopener"} are available for learning.
-7. Explore the documentation 
 
 &nbsp;
 
@@ -33,14 +32,7 @@ In this lab, we will learn the following:
    button and the 'Suggestion' to create natural language rules
 4. Use the 'Update Model' button if the rules fail to activate
 5. Review the Rules and Log
-6. Setup [CodeSpaces](Sample-Genai.md){:target="_blank" rel="noopener"} to see the project in GitHub
-
-&nbsp;
-
-## Explore Rule Concepts
-ApiLogicServer provides a rule engine (LogicBank) to allow the developer to add derivations, constraints and events to any API endpoint.  These rules can be created by WebGenAI natural language or using the VSCode IDE manually entered.
-
-1.  [Rule Type Patterns](Logic.md){:target="_blank" rel="noopener"} 
+6. Setup [CodeSpaces](Sample-Genai.md){:target="_blank" rel="noopener"} to run the project in GitHub
 
 &nbsp;
 
@@ -81,8 +73,15 @@ Manager - Explore examples
 
 &nbsp;
 
+## Explore Rule Concepts
+ApiLogicServer provides a rule engine (LogicBank) to allow the developer to add derivations, constraints and events to any API endpoint.  These rules can be created by WebGenAI natural language or using the VSCode IDE manually entered.
+
+1. [Rule Type Patterns](Logic.md){:target="_blank" rel="noopener"} 
+
+&nbsp;
+
 ## Command Line Basics
-The command line (cli) is the most key to use the features of ApiLogicServer.  Note that each command may have a set of additional arguments: use --help to see the additional features (e.g. als genai --help).
+The command line (cli) is the key to use all of the features of ApiLogicServer.  Note that each command may have a set of additional arguments: use --help to see the additional features (e.g. als genai --help).
 
 ```
 als --help
@@ -140,13 +139,22 @@ Commands:
 
 ## Connect to SQL
 If the project has an existing SQL DBMS (MySQL, PostgreSQL, SQL Server, Oracle) - ApiLogicServer can connect to SQL and build a detailed API. Review the documentation of Data-Model design, examples, keys, quoted identifiers, etc.
+In this lab - we will connect to the northwind database.
+```
+als create --project-name=myproject --db-url=nw+
+cd myproject
+code .
+```
+Open database/models.py
 
-1. [Data-Model-Design](Data-Model-Design.md)){:target="_blank" rel="noopener"} 
-2. Primary Keys
-3. Relationships (foreign keys)
-4. Accented characters (--quote) quoted identifiers
-5. SQLAlchemy ORM model.py
-
+1. [Data-Model-Design](Data-Model-Design.md){:target="_blank" rel="noopener"} 
+2. Primary Keys on each table
+3. Relationships (foreign keys) many-to-one (parent), one-to-many (children) (or many-to-many)
+4. Accented characters (als create --db-url=... --quote) quoted identifiers
+5. SQLAlchemy ORM model.py 
+6. Run Server (F5) with or without security
+7. Start React Application (http://localhost:5656)
+8. Review OpenAI (Swagger) (http://localhost:5656/api) JSON API
 
 &nbsp;
 
@@ -155,7 +163,10 @@ Some applications may require integration with other services (e.g. email, payme
 In this lab - explore how to use the existing services to integration with Kafka or Workflow.
 
 1. Integration and Configuration [Kafka](Integration-Kafka.md){:target="_blank" rel="noopener"}
-2. Integration with Workflow (n8n)
+2. Send a message to Kafka (event driven) by topic 
+3. Listen for incoming Kafka message by topic
+4. Integration with Workflow (n8n) - Using WebHooks
+5. Configuration of Kafka or n8n (config.py)
 
 ## Ontimize Angular Application
 OntimizeWeb from Imatia is an Angular application that is automatically created from the command line.
@@ -191,6 +202,8 @@ npm install && npm start  # http://localhost:4299
 4. Working with Templates 
 5. Application Model Editor
 6. Advanced Filters (enable)
+
+Note: This version uses the Ontimize API Bridge - work is being done to use JSON API
 
 &nbsp;
 
