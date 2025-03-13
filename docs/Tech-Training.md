@@ -101,16 +101,20 @@ ApiLogicServer provides a rule engine (LogicBank) to allow the developer to add 
 
 ### WebGenAI Iterations
 
-Through experience, you will discover that the IDE maintains full logic automation, albeit using IDE completion instead of Natural Language.  
-
-You will find WebGenAI remains useful, particularly for updating the data model (e.g., as required for logic).  The system provides [Import/Merge](IDE-Import-WebGenAI.md) services to sync WebGenAI changes with IDE changes (not covered in initial training).
-
 Explore WebGenAI iteration services:
 
 2. Use the 'Iterate' button to modify the created project
-3. Use the ['Logic']WebGenAI.md#using-the-logic-editor){:target="_blank" rel="noopener"} 
+3. Use the ['Logic'](WebGenAI.md#using-the-logic-editor){:target="_blank" rel="noopener"} 
    button and the 'Suggestion' to create natural language rules
 4. Use the 'Update Model' button if the rules fail to activate
+
+&nbsp;
+
+### Dev Strategy: WebGenAI, IDE, or Both?
+
+You will find WebGenAI remains useful, particularly for updating the data model (e.g., as required for logic).  The system provides [Import/Merge](IDE-Import-WebGenAI.md){:target="_blank" rel="noopener"} services to sync WebGenAI changes with IDE changes.
+
+If you elect to focus on IDE development, analogous services are provided with [Rebuild from Model / Database, and Alembic support](Database-Changes.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

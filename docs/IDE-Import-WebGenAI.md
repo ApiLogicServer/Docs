@@ -3,12 +3,18 @@
     You can import WebGenAI projects, merging their data models and rules into a dev project.
 
     `als genai-utils --import-genai --using=<WebGenAI-Project>`
-    
+
+    Through experience, you will discover that the IDE maintains full logic automation, albeit using IDE completion instead of Natural Language.  That raises the question: how do I balance work in WebGenAI and the IDE?
+
+    You will find WebGenAI remains useful, particularly for updating the data model (e.g., as required for logic).  The system provides services described here to sync WebGenAI changes with IDE changes.
+
+    If you elect to focus on IDE development, analogous services are provided with [Rebuild from Model / Database, and Alembic support](Database-Changes.md){:target="_blank" rel="noopener"}.
+
 &nbsp;
 
 # Coordinating Parallel Dev Streams (Multi-Team Development)
 
-This is the Diego Lo Giudice challenge: enable ongoing parallel development with both the LOB and Dev *teams.*  It's enabled by declarative technology, where the integration is done with software, not manual effort.
+A classic challenge: enable ongoing parallel development with both the LOB and Dev *teams.*  It's enabled by declarative technology, where the integration is done with software, not manual effort.
 
 It works like this:
 
