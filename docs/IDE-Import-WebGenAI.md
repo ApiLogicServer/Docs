@@ -73,7 +73,7 @@ cd system/genai/examples/genai_demo/wg_dev_merge/dev_demo_no_logic_fixed
 als genai-utils --import-genai --using=../wg_demo_no_logic_fixed
 ```
 Observe:
-1. The [data model](system/genai/examples/genai_demo/wg_dev_merge/dev_demo_no_logic_fixed/database) contains `Customer.balance` and `Product.carbon_neutral`
+1. The data model (`system/genai/examples/genai_demo/wg_dev_merge/dev_demo_no_logic_fixed/database`) contains `Customer.balance` and `Product.carbon_neutral`
 2. The test data has been updated to include these attributes, with proper values
 
 In this example, `als genai-utils --import-genai ...` will leave things in this state:

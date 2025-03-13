@@ -13,7 +13,7 @@ Review the [GenAI Architecture](Architecture-What-Is-GenAI.md){:target="_blank" 
 While WebGenAI is available via your browser - you will want to have a local version of Python, ApiLogicServer, VSCode (and optionally Docker Desktop) running.  This has been documented here:
 
 1. [Python 3.12 Installation](Tech-Install-Python.md){:target="_blank" rel="noopener"}
-2. [Understand Virtual Environments](https://docs.python.org/3/library/venv.html){:target="_blank" rel="noopener"}, and [als notes](Project-env.md){:target="_blank" rel="noopener"}
+2. [Understand Virtual Environments](https://docs.python.org/3/library/venv.html){:target="_blank" rel="noopener"}, and [als notes](Project-Env.md){:target="_blank" rel="noopener"}
 3. [ApiLogicServer Installation](Install-Express.md){:target="_blank" rel="noopener"}
 4. [VSCode for Python](https://code.visualstudio.com/docs/python/python-tutorial){:target="_blank" rel="noopener"}
 5. [Docker Desktop Install](https://docs.docker.com/desktop/){:target="_blank" rel="noopener"}
@@ -82,7 +82,7 @@ code .
 
 #### Explore Logic Debugging
 
-Refer to the [docs on logic debugging](ogic-Debug.md){:target="_blank" rel="noopener"}.
+Refer to the [docs on logic debugging](Logic-Debug.md){:target="_blank" rel="noopener"}.
 
 1. Put a breakpoint on the constraint
 2. Start the Server (F5)
@@ -103,12 +103,12 @@ ApiLogicServer provides a rule engine (LogicBank) to allow the developer to add 
 
 Through experience, you will discover that the IDE maintains full logic automation, albeit using IDE completion instead of Natural Language.  
 
-You will find WebGenAI remains useful, particularly for updating the data model (e.g., as required for logic).  The system provides [Import/Merge](IDE-Import-WebGenAI/) services to sync WebGenAI changes with IDE changes (not covered in initial training).
+You will find WebGenAI remains useful, particularly for updating the data model (e.g., as required for logic).  The system provides [Import/Merge](IDE-Import-WebGenAI.md) services to sync WebGenAI changes with IDE changes (not covered in initial training).
 
 Explore WebGenAI iteration services:
 
 2. Use the 'Iterate' button to modify the created project
-3. Use the ['Logic'](WebGenAI-logic-editor.md){:target="_blank" rel="noopener"} 
+3. Use the ['Logic']WebGenAI.md#using-the-logic-editor){:target="_blank" rel="noopener"} 
    button and the 'Suggestion' to create natural language rules
 4. Use the 'Update Model' button if the rules fail to activate
 
@@ -257,7 +257,7 @@ The ability to secure your application is an important part of the creation of a
 ### Deployment (devops)
 ApiLogicServer has a suite of tools for [devops](DevOps-Docker.md){:target="_blank" rel="noopener"} to build and deploy Docker containers. 
 
-1. [Build a Docker Image](DevOps-Build.md){:target="_blank" rel="noopener"}
+1. [Build a Docker Image](DevOps-Containers-Build.md){:target="_blank" rel="noopener"}
 
 &nbsp;
 

@@ -121,7 +121,7 @@ It's AI, so or course you will want to review the suggestions carefully.
 
 ![logic Editor](images/web_genai/logic/logic-editor.png)
 
-Explore suggestions using the [Manager](Manger.md){:target="_blank" rel="noopener"}:
+Explore suggestions using the [Manager](Manager.md){:target="_blank" rel="noopener"}:
 
 
 ```bash title='1. Create Project, without Rules'
@@ -158,7 +158,7 @@ Also...
     * The suggested logic may result in new data model attributes
     * These are created automatically by running `als genai` (next step)
 
-The [logic suggestions directory](genai_demo_no_logic/docs/logic_suggestions) now contains the prompts to create a new project with the suggested logic.  
+The logic suggestions directory (`genai_demo_no_logic/docs/logic_suggestions`) now contains the prompts to create a new project with the suggested logic.  
 When you are ready to proceed:
 1. Execute the following to create a *new project* (iteration), with suggested logic:
 
@@ -213,7 +213,7 @@ cd genai_demo_fixup_required
 als genai-utils --fixup
 ```
 
-Finally, use the created [fixup files](genai_demo_fixup_required/docs/fixup/) to rebuild the project:
+Finally, use the created fixup files (`genai_demo_fixup_required/docs/fixup`) to rebuild the project:
 ```bash title="2. Rebuild the project from the fixup response data model"
 # 2. Rebuild the project from the fixup response data model
 cd ../
