@@ -5,16 +5,23 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 !!! pied-piper ":bulb: WebGenAI - Web Interface for GenAI-Logic"
 
-      GenAI is a web app that creates database systems from a Natural Language prompt.  The site includes the code, and storage for the created projects and their SQLite datbases.
+      GenAI is a web app that creates database systems from a Natural Language prompt.  For background, [see Why WebGenAI](https://www.genai-logic.com/publications/webgenie){:target="_blank" rel="noopener"}.
       
-      ***[Access the site here](https://apifabric.ai/admin-app/){:target="_blank" rel="noopener"}*** to use GenAI:
+      You can access WebGenAI either at 
+      
+      * the [public trial site](https://apifabric.ai/admin-app/){:target="_blank" rel="noopener"}, or 
+      * as a [docker container](https://hub.docker.com/repository/docker/apilogicserver/web_genai/general){:target="_blank" rel="noopener"}.
+      
+      The site includes the code, and storage for the created projects and their SQLite datbases.
+      
+      To use GenAI:
 
-      1. **Create** systems from a Natural Language prompt: databases, APIs, an Admin Web App
+      1. **Create** systems from a Natural Language prompt: database, API, an Admin Web App
         * Prompts describe the database structure and business logic, including application integration
       2. **Iterate** them (add new tables, columns, rules etc) to *get the requirements right*
       3. **Export** the project to your local desktop to customize (add endpoints, complex logic, etc)
 
-      Web/GenAI is based on API Logic Server.  API Logic Server provides the CLI functions used by WebGenAI
+      Web/GenAI is based on API Logic Server.  API Logic Server provides the CLI functions used by WebGenAI.
       
       * For more on the GenAI CLI, [click here](WebGenAI-CLI.md){:target="_blank" rel="noopener"}
 
@@ -165,6 +172,12 @@ For more on logic, including patterns and examples, see [Logic](Logic-Why.md){:t
 #### Using Iterations
 
 You can iterate your project, and include logic.  This is a good approach when you are familiar with logic, and reasonably clear on what you want to do.
+
+!!! pied-piper ":bulb: Important - test data recreated"
+
+      The system rebuilds a new project and database with new test data on each iteration.  If you have entered important data, it is still available in the previous iteration.
+
+
 
 &nbsp;
 
