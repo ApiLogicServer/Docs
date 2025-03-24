@@ -7,12 +7,12 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
       GenAI is a web app that creates database systems from a Natural Language prompt.  For background, [see Why WebGenAI](https://www.genai-logic.com/publications/webgenie){:target="_blank" rel="noopener"}.
       
-      You can access WebGenAI either at 
+      You can access WebGenAI either at:
       
       * the [public trial site](https://apifabric.ai/admin-app/){:target="_blank" rel="noopener"}, or 
-      * as a [docker container](https://hub.docker.com/repository/docker/apilogicserver/web_genai/general){:target="_blank" rel="noopener"}.
+      * as a [docker container](WebGenAI-install.md){:target="_blank" rel="noopener"}.
       
-      The site includes the code, and storage for the created projects and their SQLite datbases.
+      The site includes the code, and storage for the created projects and their SQLite databases.
       
       To use GenAI:
 
@@ -251,6 +251,7 @@ You can explore the created microservice on your own computer.
     * Observe the project is a set of [models]() - not a huge pile of difficult-to-understand code
 
 2. Use Python and your IDE services.  For more information, see [Customize in Your IDE](IDE-Customize.md){:target="_blank" rel="noopener"}.
+
 
 &nbsp;
 

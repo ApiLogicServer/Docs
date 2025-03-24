@@ -38,6 +38,8 @@ nav:
     - "Sample Systems": Data-Model-Examples.md
   - GenAI:
     - "WebGenAI Website": WebGenAI.md
+    - "WebGenAI Installation": WebGenAI-install.md      
+    - "WebGenAI Verification": WebGenAI-verify.md      
     - "GenAI CLI": WebGenAI-CLI.md      
     - "Sample": Sample-Genai.md
   - 0. ApiLogicServer create:
