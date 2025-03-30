@@ -224,6 +224,13 @@ Logic can also fail when you make an update.  You can:
 
 &nbsp;
 
+### Using Existing Databases
+
+You can create projects from existing databases, for example, using the [Docker Test Databases](http://127.0.0.1:8000/Database-Docker/){:target="_blank" rel="noopener"}:
+
+![wg-postgres](images/web_genai/existing-db/webgenai-postgres.png)
+&nbsp;
+
 ## Iterate
 
 You can *iterate* your prompt to include more tables etc, while preserving the design you have already created.
