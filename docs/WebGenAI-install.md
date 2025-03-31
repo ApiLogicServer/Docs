@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: WebGenAI - Installing the Docker Container"
 
-      GenAI is a web app that creates database systems from a Natural Language prompt.  For background, [see Why WebGenAI](https://www.genai-logic.com/publications/webgenie){:target="_blank" rel="noopener"}.
+      WebGenAI is a web app that creates database systems from a Natural Language prompt.  For background, [see Why WebGenAI](https://www.genai-logic.com/publications/webgenie){:target="_blank" rel="noopener"}.
       
       You can access WebGenAI either at:
       
