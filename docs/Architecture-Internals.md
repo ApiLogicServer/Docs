@@ -2,12 +2,12 @@ This page does _not_ address created projects, rather, it is about the API Logic
 
 # How to Install it
 
-Follow these steps to:
+The subsections below described the steps to:
 
 1. Obtain the software from GitHub
 2. Open the dev workspace in your IDE
 3. Create the "initial 'venv'"
-4. Perform critical "Smoke Test" to ensure system operation
+4. Perform the critical "Smoke Test" to ensure system operation
 
 
 ## Obtain the projects from GitHub
