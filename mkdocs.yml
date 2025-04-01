@@ -119,6 +119,7 @@ nav:
     - "About Containers": DevOps-Containers.md
     - "DevOps Automation": DevOps-Automation.md
     - Create and Run Containers:
+      - "Use Standard Image": DevOps-Containers-Use-Standard.md
       - "Build Project Image": DevOps-Containers-Build.md
       - "Run Container": DevOps-Containers-Run.md
     - Cloud Deployment (Azure):

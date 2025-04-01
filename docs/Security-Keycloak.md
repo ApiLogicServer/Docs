@@ -77,6 +77,12 @@ You should now be able to run the admin app:
 
 &nbsp;
 
+## Connecting your project to Keycloak
+
+If you run your project under docker, you must configure the Keycloak IP address.  For more information, see [Use Standard Container](DevOps-Containers-Use-Standard.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
 ## Keycloak Admin
 
 You can use the [Keycloak admin console](http://localhost:8080/){:target="_blank" rel="noopener"} to define Users and their Roles / Attributes.
