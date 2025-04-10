@@ -83,7 +83,7 @@ For more, see
 
 <details markdown>
 
-<summary> Detailed Database and Logic </summary>
+<summary> Detailed Database and Logic - A Time Tracking System </summary>
 
 This example illustates:
 
@@ -153,6 +153,8 @@ Task is_completed is sum of InvoiceItem is_completed
 
 Create at least 8 tables (models).
 ```
+
+For more information, see [this article](https://dzone.com/articles/genai-prompt-to-production){:target="_blank" rel="noopener"}.
 </details>
 
 &nbsp;
