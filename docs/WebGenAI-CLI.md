@@ -82,6 +82,20 @@ The `--using` argument can be a file, or a directory.  That means you can iterat
 
 &nbsp;
 
+### Add Prompt to docs directory
+
+The approach for an iteration is to create a new project from an existing one:
+
+1. add another prompt to an existing projects' `docs` directory, specifying your changes
+2. use `als genai`, specifying 
+    * `--using` existing projects `docs` directory, and 
+    * `--project-name` as the output project
+ 
+See the readme of the Manager for examples.
+
+&nbsp;
+
+
 ### IDE Nat Language: `docs/logic`
 
 As shown below, you can add Natural Language logic to existing projects.  Using an existing project located under the Manager:
