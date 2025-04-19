@@ -305,6 +305,8 @@ To simplify the file mechanics during merge, WebGenAI rules are stored separatel
 | WebGenAI Rules | `logic/wg_rules` | The **WebGenAI system.**  Import / merge projects into local dev environment using [Import / Merge WebGenAI](IDE-Import-WebGenAI.md){:target="_blank" rel="noopener"} |
 | IDE Rules | `logic/declare_logic.py`, and (optionally) as files in `logic/logic_discovery` | **IDE** / Source control |
 
+> Note: when using the project in the IDE, you can force wg_rules mode by setting environment variable `WG_PROJECT`.  This can be useful in problem diagnosis
+
 ![wg-rules](images/web_genai/logic/wg_rules.png)
 
 &nbsp;
