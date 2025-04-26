@@ -1,6 +1,19 @@
-Modern IDEs are remarkably powerful and user-friendly.  Many developers use them as an alternative the their OS finder/explorer.
+!!! pied-piper ":bulb: TL;DR - Manager: genai system files, samples, project organization"
 
-As of release 10.03.66, you can use your IDE to create and customize API Logic Projects:
+    While the API Logic Server Manager is optional, we strongly recommend it:
+
+    1. **GenAI System Files** the `system` folder contains learning files required for GenAI commands 
+    2. **Samples** to illustrate typical customizations and concepts
+    3. **Project Organization** - provides a list of projects (not required, but can be useful)
+
+    After 'pip install ApiLogicServer', just `als start`.
+
+
+## Overview
+
+Modern IDEs are remarkably powerful and user-friendly.  Many developers use them as a complement the their OS finder/explorer.
+
+As of release 10.03.66, you can use your IDE to create, customize and manage API Logic Projects:
 
 ```bash title="Install API Logic Server, Start the API Logic Project Manager"
 mkdir ApiLogicServer
