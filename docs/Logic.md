@@ -10,7 +10,7 @@
     For more on WebGenAI, [click here](WebGenAI.md){:target="_blank" rel="noopener"}.
 
 
-# Rule Types
+## Rule Types
 The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample for full syntax.
 
 | Rule | Summary   | Example | Notes |
@@ -27,23 +27,25 @@ The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample 
 
 &nbsp;
 
-# Declaring Rules
+## Declaring Rules
 
 The table below illustrates that:
 
-* You can declare rules in Natural Language using [WebGenAI](WebGenAI.md){:target="_blank" rel="noopener"} and/or Python.  
+* You can declare rules in Natural Language (Nat Lang) using your Browser and [WebGenAI](WebGenAI.md){:target="_blank" rel="noopener"} and/or your IDE.  
 * Rules are stored in your project depending on how they were defined
 
 <br>
 
-| Rules Declared In | Rules are stored in |
-| :------------- | :------------- |
-| [WebGenAI, using Natural Language](WebGenAI-CLI.md#natural-language-logic){:target="_blank" rel="noopener"} | * `logic/wg_rules` - [see WebGenAI Rules and IDE Rules](WebGenAI-CLI.md#wg_rules-and-ide-rules){:target="_blank" rel="noopener"} |
-| Your IDE, using Python (as a [DSL](Tech-DSL.md/#python-as-a-dsl){:target="_blank" rel="noopener"})  | * `logic/declare_logic.py` <br> * `logic/logic_discovery` - [see here](IDE-Customize.md/#discoverability-logic-services){:target="_blank" rel="noopener"}|
+| Using    | Lang     | Access Using                                                                                                 | Usage                                                                                                                                                                                                                              |
+| :------- | :------- | :----------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Browser  | Nat Lang | [WebGenAI](WebGenAI-CLI.md#natural-language-logic){:target="_blank" rel="noopener"}                          | On export, Python rules are stored in `logic/wg_rules` - [details here](WebGenAI-CLI.md#wg_rules-and-ide-rules){:target="_blank" rel="noopener"}                                                                                   |
+| Your IDE | Nat Lang | [`als genai-logic`](WebGenAI-CLI.md#ide-nat-language-docslogic){:target="_blank" rel="noopener"} CLI Command | Translates Nat Lang `docs/logic` to `logic/logic_discovery` - [details here](IDE-Customize.md/#discoverability-logic-services){:target="_blank" rel="noopener"}                                                                    |
+| Your IDE | Nat Lang | IDE AI Chat                                                                                                  | Request Nat Lang logic in AI Chat; paste translated Python result into `logic/declare_logic.py` <br>or `logic/logic_discovery` - [details here](IDE-Customize.md/#discoverability-logic-services){:target="_blank" rel="noopener"} |
+| Your IDE | Python   | IDE code completion                                                                                          | Rules expressed in Python as a [DSL](Tech-DSL.md/#python-as-a-dsl){:target="_blank" rel="noopener"}<br><br>Nat Lang rules translated to these                                                                                      |
 
 &nbsp;
 
-## GenAI: Natural Language Logic
+### GenAI: Natural Language Logic
 
 You can use Natural Language to create logic during project creation, or for existing projects.  For example: `The Customer's balance is the sum of the Order amount_total where date_shipped is null`.
 
@@ -56,17 +58,32 @@ Think of Natural Language Logic as a translation process down onto underlying ru
 
 &nbsp;
 
-## IDE: With Code Completion
+### IDE: GenAI-Logic CLI
+
+You can use Natural Language in your IDE.  See [IDE: Natural Language](WebGenAI-CLI.md#ide-nat-language-docslogic){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+### IDE: AI Chat
+
+The options above use ChatGPT, which requires a paid API key.  You may already have a AI chat enabled in your IDE.  As of release 14.04, projects contain `docs/training`, which enable some products to translate Natural Language logic into Python rules.
+
+For example, the diagram below illustrates the use of VSCode/CoPilot:
+
+1. Declare your Natural Language in a prompt, and press Enter
+2. CoPilot translated Natural Language Logic to Python rules
+3. Paste them into your code, in either `logic/declare_logic.py` or (preferred) a Use-Case specific file such as `logic/logic_discovery/check_credit.py`:
+
+![copilot](images/sample-ai/copilot/copilot-logic-chat.png)
+
+&nbsp;
+
+### IDE: With Code Completion
 
 You can also use your IDE with Code Completion to add rules, and their arguments.
 
 ![Add Rules Code Completion](images/vscode/code-completion.png)
 
-&nbsp;
-
-### IDE: Natural Language
-
-You can use Natural Language in your IDE.  See [IDE: Natural Language](WebGenAI-CLI.md#ide-nat-language-docslogic){:target="_blank" rel="noopener"}.
 &nbsp;
 
 ## Iterative Rules
@@ -79,7 +96,7 @@ Similarly, you can change rules without worrying about the order of execution.
 
 &nbsp;
 
-# Learning Rules
+## Learning Rules
 
 Inside the larger process above, here is the best way to learn how to use rules:
 
@@ -97,7 +114,7 @@ Inside the larger process above, here is the best way to learn how to use rules:
 
 &nbsp;&nbsp;
 
-## Rule Patterns
+### Rule Patterns
 
 Rules support *chaining:* a rule may change a value that triggers other rules, including across tables.  Mastering such ***multi-table logic*** is the key to using rules effectively.  The most typical examples are described below.
 
@@ -114,7 +131,7 @@ Rules support *chaining:* a rule may change a value that triggers other rules, i
 
 &nbsp;
 
-## Rules Case Study
+### Rules Case Study
 
 The best way to learn the rules is by a Case Study approach:
 
@@ -143,7 +160,7 @@ The best way to learn the rules is by a Case Study approach:
 
 &nbsp;
 
-# Learning Natural Language
+## Learning Natural Language
 
 As noted above, it is important to be clear on the rules generated for logic.  Use the examples below to test your understanding.
 
@@ -151,7 +168,7 @@ WebGenAI provides the [Logic Editor](WebGenAI.md#using-the-logic-editor){:target
 
 ![logic Editor](images/web_genai/logic/logic-editor.png)
 
-## Natural Language Patterns
+### Natural Language Patterns
 | Pattern | Notes | Example
 | :------------- | :-----| :---- |
 | Formal vs Informal | You can: *Customer.balance = Sum(Order.amount_total where date_shipped is null)* | Or, more simply: *The Customer's balance is the sum of the Order amount_total where date_shipped is null* 
@@ -165,12 +182,12 @@ WebGenAI provides the [Logic Editor](WebGenAI.md#using-the-logic-editor){:target
 
 <summary> Multi-rule Logic - Generated Rules </summary>
 ```python title='Logic Recognizes "conditional derivations"'
-# Aggregate the total salaries of employees for each department.
+## Aggregate the total salaries of employees for each department.
 Rule.sum(derive=Department.total_salaries, as_sum_of=Employee.salary)
 
-# Ensure the sum of employee salaries does not exceed the department budget
+## Ensure the sum of employee salaries does not exceed the department budget
 Rule.constraint(validate=Department, as_condition=lambda row: row.total_salaries <= row.budget, error_msg="xxx")
-# End Logic from GenAI
+## End Logic from GenAI
 ```
 </details>
 
@@ -180,12 +197,12 @@ Rule.constraint(validate=Department, as_condition=lambda row: row.total_salaries
 
 <summary> Conditional Derivation - Generated Rules </summary>
 ```python title='Logic Recognizes "conditional derivations"'
-# Provide a 10% discount when buying more than 10 carbon neutral products.
+## Provide a 10% discount when buying more than 10 carbon neutral products.
 Rule.formula(derive=Item.amount,
              as_expression=lambda row: 0.9 * row.unit_price * row.quantity \
                 if row.Product.is_carbon_neutral and row.quantity > 10
                 else row.unit_price * row.quantity)
-# End Logic from GenAI
+## End Logic from GenAI
 ```
 </details>
 
@@ -194,26 +211,26 @@ Rule.formula(derive=Item.amount,
 
 <summary> Cardinality Patterns - Generated Rules </summary>
 ```python title='Logic Recognizes "qualified any"'
-    # Logic from GenAI: (or, use your IDE w/ code completion)
+    ## Logic from GenAI: (or, use your IDE w/ code completion)
 
-    # Derive product notice count from related notices.
+    ## Derive product notice count from related notices.
     Rule.count(derive=Product.notice_count, as_count_of=Notice)
 
-    # Derive count of severity 5 notices for products.
+    ## Derive count of severity 5 notices for products.
     Rule.count(derive=Product.class_5_notice_count, as_count_of=Notice, where=lambda row: row.severity == 5)
 
-    # Ensure product is not orderable if conditions on notices are met.
+    ## Ensure product is not orderable if conditions on notices are met.
     Rule.constraint(validate=Product,
     as_condition=lambda row: not (row.orderable and (row.class_5_notice_count > 0 or row.notice_count > 3)),
     error_msg="Orderable product contains severity 5 or excessive notices.")
 
-    # End Logic from GenAI
+    ## End Logic from GenAI
 ```
 </details>
 
 &nbsp;
 
-## Natural Language Examples
+### Natural Language Examples
 
 WebGenAI was trained to understand the Natural Language Logic problems shown below.  These automate many of the rule patters described above.
 
