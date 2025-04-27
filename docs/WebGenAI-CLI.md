@@ -340,6 +340,31 @@ Since the logic is in separate directories, the system is able to support ongoin
 
 <br>
 
+## Dashboard Graphics
+
+Release 14.04 provides a technology preview of Dashboard Graphics:
+
+![dashboard](images/sample-ai/genai/dashboard-graphics.png)
+
+You can create this after installing the [Manager](Manager.md):
+
+1. Open project: `samples/nw_sample`
+2. Observe `docs/graphics/count_orders_by_category.prompt` (contains `Graph number of sales per category, for dashboard`)
+3. In a terminal window: `als genai-graphics`; observe this creates:
+4. 
+		* `database/database_discovery/graphics_services.py` - methods in data model classes to return group by results
+		* `api/api_discovery/dashboard_services.py` to return dashboard information
+5. Update `ui/admin/home.js` to include the following (e.g., before the line containing *Welcome to GenAI-Logic/API Logic Server*): 
+
+```html
+'<div class="dashboard-iframe">' +
+
+'<iframe id="iframeTargetDashboard" src="http://localhost:5656/dashboard" style="flex: 1; border: none; width: 100%; height: 200px;"></iframe>' +
+
+'</div>' +
+```
+
+
 ----
 
 
