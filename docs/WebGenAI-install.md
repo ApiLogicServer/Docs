@@ -13,7 +13,7 @@
 
 If you have installed API Logic Server (recommended, but not required), the [Manager Readme](Manager.md){:target="_blank" rel="noopener"} includes install instructions.
 
-Otherwise, you can run it locally as follows:
+Otherwise, you can run it locally as shown below:
 
 ```bash title="Run the WebGenAI Docker Container"
 mkdir ApiLogicServer
@@ -24,6 +24,8 @@ docker run -it --rm --name webgenai apilogicserver/web_genai
 ```
 
 This will guide you through the registration process.  
+
+> This is particularly good way to jump-start vibe-coding: use WebGenAI to create a database and API - *with logic* - and then your IDE AI Coding Tools for custom UIs.
 
 After installing, [verify WebGenAI operation](WebGenAI-verify.md){:target="_blank" rel="noopener"}.
   
@@ -39,6 +41,6 @@ If you want to customize further with Python, then install API Logic Server.  Us
 
 &nbsp;
 
-### Concurrent WebGen AI and API Logic Server
+### Concurrent WebGenAI and API Logic Server
 
 You can continue using both WebGenAI and API Logic Server on the same project - see [IDE-Import-WebGenAI](IDE-Import-WebGenAI.md){:target="_blank" rel="noopener"}.
