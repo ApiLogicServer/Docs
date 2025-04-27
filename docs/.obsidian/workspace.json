@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "WebGenAI-CLI.md",
+                "file": "Architecture-Internals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WebGenAI-CLI"
+              "title": "Architecture-Internals"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WebGenAI-CLI.md",
+                "file": "Architecture-Internals.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of WebGenAI-CLI"
+              "title": "Outline of Architecture-Internals"
             }
           }
         ],
@@ -170,8 +170,10 @@
   },
   "active": "24d4f480f55b8f1b",
   "lastOpenFiles": [
-    "images/sample-ai/genai/dashboard-graphics.png",
     "WebGenAI-CLI.md",
+    "images/internals/install-ApiLogicServer-dev.png",
+    "images/internals/sh system:install-ApiLogicServer-dev:install-ApiLogicServer-dev.png",
+    "images/sample-ai/genai/dashboard-graphics.png",
     "docs/images/sample-ai/genai/dashboard.md",
     "docs/images/sample-ai/genai",
     "docs/images/sample-ai",

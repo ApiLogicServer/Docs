@@ -10,25 +10,23 @@ The subsections below described the steps to:
 4. Perform the critical "Smoke Test" to ensure system operation
 
 
-## Obtain the projects from GitHub
+## Manager `install-ApiLogicServer-dev`
 
-To create the projects:
+To create the projects: 
 
-1. Create an empty folder (e.g., `~/dev/ApiLogicServer`)
-2. Optionally, install the product there (creating a venv)
-    * You can use this venv as a shared venv for testing
-3. Download and run [the install-ApiLogicServer-dev procedure](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/install-ApiLogicServer-dev.sh)
+1. Install the user version of the API Logic Server
+2. Be sure to start the Manager: `als start`
+3. Run [the install-ApiLogicServer-dev procedure](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/install-ApiLogicServer-dev.sh)
     * Note: Windows users use `install-ApiLogicServer-dev.ps1`) 
-4. Run the installer,, e.g.:
 
 ```bash title="Install API Logic Server Development environment"
 cd ~/dev/ApiLogicServer/                     # project directories created here
-sh install-ApiLogicServer-dev.sh vscode
+sh system/install-ApiLogicServer-dev/install-ApiLogicServer-dev.sh
 ```
 
 This will use `git clone` to create folders in `~/dev/ApiLogicServer/ApiLogicServer-dev/org/:`
 
-![dev structure](images/internals/dev-structure.png)
+![dev structure](images/internals/install-ApiLogicServer-dev.png)
 
 &nbsp;
 

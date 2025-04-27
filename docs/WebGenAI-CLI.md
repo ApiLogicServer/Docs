@@ -364,6 +364,8 @@ You can create this after installing the [Manager](Manager.md):
 '</div>' +
 ```
 
+As always, generative AI can make mistakes.  You may need to issue the `als genai-graphics` command more than once.
+
 
 ----
 
