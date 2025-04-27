@@ -92,6 +92,7 @@ nav:
     - "Sample Integration": Sample-Integration.md
     - "Integration Mapping": Integration-Map.md
     - "Kafka Messaging": Integration-Kafka.md
+    - "MCP Integration": Integration-MCP.md
   - IDE - Customize, Manage:
     - "Customize Using Your IDE": IDE-Customize.md
     - "Fixup - missing attributes": IDE-Fixup-Attrs.md
