@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Integration-MCP.md",
+                "file": "WebGenAI-install.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Integration-MCP"
+              "title": "WebGenAI-install"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Integration-MCP.md",
+                "file": "WebGenAI-install.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Integration-MCP"
+              "title": "Outline of WebGenAI-install"
             }
           }
         ],
@@ -170,8 +170,12 @@
   },
   "active": "24d4f480f55b8f1b",
   "lastOpenFiles": [
-    "Architecture-Internals.md",
+    "IDE-Import-WebGenAI.md",
+    "WebGenAI-install.md",
+    "IDE-Import-WebGenAI 1.md",
+    "Install-Express.md",
     "Integration-MCP.md",
+    "Architecture-Internals.md",
     "Integration-Map copy.md",
     "WebGenAI-CLI.md",
     "images/internals/install-ApiLogicServer-dev.png",
