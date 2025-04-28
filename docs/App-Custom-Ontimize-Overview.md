@@ -61,6 +61,8 @@ This will show the normal Home page grid but it will select the first tabgroup (
 ```
  home_template: home_template_expand.html
 ```
+4. A Customer Tree:
+![Ontimize Customer List](images/ontimize/Customers.png)
 
 &nbsp;
 
