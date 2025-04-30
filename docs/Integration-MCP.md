@@ -69,7 +69,7 @@ ngrok http 5656
 
 You should see:
 
-![ngrok](images/integration/mcp/ngrok.png)
+![ngrok](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/ngrok.png?raw=true)
 
 and note the url like: `https://mcp_url_eg_bca3_2601.ngrok-free.app -> http://localhost:5656`
 
@@ -173,7 +173,7 @@ LangChain can:
 
 ### MCP
 
-![Intro diagram](images/integration/mcp/MCP_Arch.png)
+![Intro diagram](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/MCP_Arch.png?raw=true)
 
 
 For more information:
