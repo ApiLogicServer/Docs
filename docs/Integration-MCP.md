@@ -67,6 +67,10 @@ then
 ngrok http 5656
 ```
 
+You should see:
+
+![ngrok](images/integration/mcp/ngrok.png)
+
 and note the url like: `https://mcp_url_eg_bca3_2601.ngrok-free.app -> http://localhost:5656`
 
 We'll call it `mcp_url`.
