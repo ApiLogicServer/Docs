@@ -90,4 +90,4 @@ fix openai version, url
 
 retrieval worked.
 
-![openai-plugin](images/integration/openai-plugin/Nat%20Lang%20Query.png)
+![openai-plugin](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/openai-plugin/Nat%20Lang%20Query.png?raw=true)
