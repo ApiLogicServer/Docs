@@ -1,4 +1,4 @@
-**OpenAI plugins** are tools that extend the capabilities of ChatGPT by allowing it to access real-time data, perform actions, or connect with external services via APIs. 
+**OpenAI plugins** are tools that extend the capabilities of ChatGPT by allowing it to access real-time data, perform actions, or connect with external services via APIs. .
 
 Instead of being limited to its pre-trained knowledge, ChatGPT can use plugins to retrieve up-to-date information (like live weather, stock prices, or databases) or perform tasks (like booking a flight or running a query). 
 
@@ -16,8 +16,7 @@ This is to explore:
 
 A value prop might be summarized: *instantly expose legacy DBs to Natural Language, including critical business logic and security, to simplify user discovery and operation.*
 
-&nbsp;
-
+<br>
 
 ## Status: Technology Exploration
 
@@ -27,11 +26,10 @@ We welcome participation in this exploration.  Please contact us via [discord](h
 
 This exploration is changing rapidly.  For updates, replace `integration/mcp` from [integration/msp](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/nw_no_cust/integration/openai_plugin)
 
-&nbsp;
+<br>
 
 ## Nat Lang ALS Access using OpenAI Plugin
 
-Tunnel to local host with ngrok
 
 Requires tunnel to local host such as [ngrok](https://ngrok.com/downloads/mac-os?tab=download), then
 
@@ -39,7 +37,7 @@ Requires tunnel to local host such as [ngrok](https://ngrok.com/downloads/mac-os
 ngrok config add-authtoken <obtain from https://dashboard.ngrok.com/get-started/setup/macos>
 ```
 
-then
+then start the tunnel
 ```
 ngrok http 5656
 ```
@@ -48,46 +46,96 @@ You should see:
 
 ![ngrok](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/ngrok.png?raw=true)
 
-and note the url like: `https://mcp_url_eg_bca3_2601.ngrok-free.app -> http://localhost:5656`
+and note the url like: `https://42da-2601-644-4900-etc.ngrok-free.app -> http://localhost:5656`
 
 We'll call it `tunnel_url`
+
+Enter this into `config/default.env`
+
+<br>
+
+### Obtain swagger_3
+
+Obtain swagger 2 from API Logic Server, eg, http://localhost:5656/api/swagger.json) 
+
+Convert to 3: https://converter.swagger.io or other.
+
+<br>
+
+#### Reduce Operations
+
+Reduce down to 30 operations (genai_demo has 69).
+
+For testing, you can copy `integration/openai_plugin/swagger_3_genai_demo.json` or `integration/openai_plugin/nw-swagger_3.json` over `integration/openai_plugin/swagger_3.json`.
+
+This was obtained using ChatGPT with prompts like:
+
+1. Optionally collapse GET by ID and GET collection into a single endpoint using query params
+2. remove POST from relationship endpoints
+3. remove delete
+4. collapse relationship endpoints further
+
+then fix the result:
+
+1. ensure servers and paths is retained (got deleted for me), and includes https:
+2. version 3.1.0
+
+Still seeing (fix with Chat):
+
+```
+In path /Customer, method get is missing operationId; skipping
+In path /Customer, method post is missing operationId; skipping
+In path /Order, method get is missing operationId; skipping
+In path /Order, method post is missing operationId; skipping
+In path /Item, method get is missing operationId; skipping
+In path /Item, method post is missing operationId; skipping
+In path /Product, method get is missing operationId; skipping
+In path /Product, method post is missing operationId; skipping
+```
+
+<br>
+### Custom endpoint for openapi
+
+OpenAI requires a openai document, so observe the custom endpoint - `api/api_discovery/openapi` - eg, to test locally: `http://localhost:5656/api/openai`
+
+Note: the url for use in ChatGPT is the tunnelled version, from the env variable.
+
+<br>
+### Configure in ChatGPT
+
+Then, upload it to the Web version of ChatGPT: 
+
+1. Explore GPTs
+2. Create
+3. Configure
+4. Create New Action
+
+Provide the url of the openai endpoint:
+
+https://tunnel_url.ngrok-free.app/api/openapi
+
+
+Retrieval worked:
+
+* list customers
+
+* list the items of order 1 with their product names
+
+<br>
+
+## Appendices
 
 <br>
 
 ### Create ai_plug_in.json
 
-Prepare `ai_plug_in.json` as shown in this directory.  It identifies the url for finding the openapi through the tunnel.
+Prepare `ai_plug_in.json` as shown in this directory.  Observe that it It identifies the url for finding the openapi through the tunnel.
 
 Note: both ALS and and `ai_plug_in.json` presume the swagger and api are consistent:
 
 * swagger is at `http://localhost:5656/api/swagger.json`, 
 * typical API at `http://localhost:5656/api/Category`
 
-<br>
+Not required for function - **Settings / Beta / Plugins > Plugin install → expects the ai-plugin.json manifest URL**
 
-### Add APIs for openapi and openai_plugin
-
-OpenAI requires a openai document, so create a custom endpoint - `api/api_discovery/openapi.py` - for swagger 3:
-* swagger is at `http://localhost:5656/api/openai.json`
-
-Note: the url needs to be the tunnelled version.
-
-Fix servers in the `openai.json`
-
-<br>
-
-### Configure in ChatGPT
-
-ChatGPT -> Create > Configure > Add Action > url
-
-Provide the url of the openai endpoint:
-
-https://tunnel_url.ngrok-free.app/api/openapi
-
-which worked, but: **OpenAPI spec can have a maximum of 30 operations**, so, created a "pruned" version with just Customer: `integration/openai_plugin/nw-swagger_3.json`
-
-fix openai version, url
-
-retrieval worked:
-
-![openai-plugin](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/openai-plugin/Nat%20Lang%20Query.png?raw=true)
+This appears to be unavailable for ChatGPT 4o
