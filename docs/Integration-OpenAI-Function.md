@@ -138,7 +138,7 @@ In path /Customer/{CustomerId}/, method patch, operationId UpdateCustomer_0, ski
 
 We requested a revised jasonapi from CHatGPT, which loaded.  However, updates are still failing with Invalid Data Object.  ChatGPT reports it was sending:
 
-![updt error](images/integration/openai-plugin/upd invalid obj.png)&nbsp;
+![updt error](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/openai-plugin/upd%20invalid%20obj.png?raw=true)&nbsp;
 
 ## Appendices
 
