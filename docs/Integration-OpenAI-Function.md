@@ -1,4 +1,4 @@
-**OpenAI plugins** are tools that extend the capabilities of ChatGPT by allowing it to access real-time data, perform actions, or connect with external services via APIs. .
+**OpenAI functions** are tools that extend the capabilities of ChatGPT by allowing it to access real-time data, perform actions, or connect with external services via APIs. .
 
 Instead of being limited to its pre-trained knowledge, ChatGPT can use plugins to retrieve up-to-date information (like live weather, stock prices, or databases) or perform tasks (like booking a flight or running a query). 
 
@@ -8,10 +8,10 @@ The goal is to turn ChatGPT into a more useful, interactive assistant that can b
 
 This is to explore:
 
-| Explore                                 | Status               |
-| --------------------------------------- | -------------------- |
-| Nat Lang ALS Access using OpenAI Plugin | Initial Test Running |
-|                                         |                      |
+| Explore                                    | Status               |
+| ------------------------------------------ | -------------------- |
+| Nat Lang ALS Access using OpenAI Functions | Initial Test Running |
+|                                            |                      |
 
 A value prop might be summarized: *instantly expose legacy DBs to Natural Language, including critical business logic and security, to simplify user discovery and operation.*
 
@@ -122,8 +122,6 @@ Retrieval worked:
 
 <br>
 
-
-
 ### Update: failed to load
 
 We also experimented with update, using `integration/openai_plugin/swagger_3_genai_demo_with_update.json`.
@@ -138,13 +136,17 @@ In path /Customer/{CustomerId}/, method patch, operationId UpdateCustomer_0, req
 In path /Customer/{CustomerId}/, method patch, operationId UpdateCustomer_0, skipping function due to errors
 ```
 
+We requested a revised jasonapi from CHatGPT, which loaded.  However, updates are still failing with Invalid Data Object.  ChatGPT reports it was sending:
 
+![updt error](images/integration/openai-plugin/upd invalid obj.png)&nbsp;
 
 ## Appendices
 
 <br>
 
 ### Create ai_plug_in.json
+
+We also looked at openai plugins.  These appear to be discontinued.
 
 Prepare `ai_plug_in.json` as shown in this directory.  Observe that it It identifies the url for finding the openapi through the tunnel.
 
