@@ -24,7 +24,8 @@ The **Northwind API Logic Server** provides APIs *and logic* for both transactio
 
 The **Shipping API Logic Server** listens on kafka, and processes the message.<br><br>
 
-![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/overview.jpg?raw=true)
+![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/integration.png?raw=true)
+
 &nbsp;
 
 **Self-serve APIs, Shared Logic**

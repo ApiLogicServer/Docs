@@ -8,8 +8,8 @@
 
 `OrderB2B` is an `RowDictMapper` subclass that defines a `dict` structure, with the 2 conversion methods shown.
 
-![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/integration-service.jpg?raw=true)
 
+![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/integration-service.jpg?raw=true)
 
 &nbsp;
 
