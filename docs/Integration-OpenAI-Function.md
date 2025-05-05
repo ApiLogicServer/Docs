@@ -53,6 +53,16 @@ Enter this into `config/default.env`
 
 <br>
 
+### Use GenAI_Demo
+
+Create it, and from dev-source, copy:
+
+- `api_logic_server_cli/prototypes/nw_no_cust/integration/openai_function`
+- `api_logic_server_cli/prototypes/nw_no_cust/api/api_discovery`
+- `api_logic_server_cli/prototypes/nw_no_cust/config/default.env`
+
+<br>
+
 ### Obtain swagger_3
 
 Obtain swagger 2 from API Logic Server, eg, http://localhost:5656/api/swagger.json) 
@@ -61,7 +71,7 @@ Convert to 3: https://converter.swagger.io or other.
 
 <br>
 
-#### Reduce Operations
+#### Reduce to 30 Operations
 
 Reduce down to 30 operations (genai_demo has 69).
 
@@ -92,6 +102,8 @@ In path /Product, method get is missing operationId; skipping
 In path /Product, method post is missing operationId; skipping
 ```
 
+
+
 <br>
 
 ### Custom endpoint for openapi
@@ -104,7 +116,7 @@ Note: the url for use in ChatGPT is the tunnelled version, from the env variable
 
 ### Configure in ChatGPT
 
-Then, upload it to the Web version of ChatGPT: 
+Then, upload it to the **Web** version of ChatGPT: 
 
 1. Explore GPTs
 2. Create
@@ -122,21 +134,13 @@ Retrieval worked:
 
 <br>
 
-### Update: failed to load
+### Update: Invalid Data Object
 
-We also experimented with update, using `integration/openai_plugin/swagger_3_genai_demo_with_update.json`.
+We also experimented with update, using `integration/openai_plugin/swagger_3.json`.
 
-It failed to load with
+> It initially failed to load, which we repaired as noted in Appendix 2.
 
-```
-In context=('paths', '/Customer/{CustomerId}/', 'patch', 'requestBody', 'content', 'application/json', 'schema'), reference to unknown component Customer_inst; using empty schema
-
-In path /Customer/{CustomerId}/, method patch, operationId UpdateCustomer_0, request body schema is not an object schema; skipping
-
-In path /Customer/{CustomerId}/, method patch, operationId UpdateCustomer_0, skipping function due to errors
-```
-
-We requested a revised jasonapi from CHatGPT, which loaded.  However, updates are still failing with Invalid Data Object.  ChatGPT reports it was sending:
+However, updates are still failing with Invalid Data Object.  ChatGPT reports it was sending:
 
 ![updt error](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/openai-plugin/upd%20invalid%20obj.png?raw=true)&nbsp;
 
@@ -144,7 +148,7 @@ We requested a revised jasonapi from CHatGPT, which loaded.  However, updates ar
 
 <br>
 
-### Create ai_plug_in.json
+### Appendix 1: Create ai_plug_in.json
 
 We also looked at openai plugins.  These appear to be discontinued.
 
@@ -158,3 +162,20 @@ Note: both ALS and and `ai_plug_in.json` presume the swagger and api are consist
 Not required for function - **Settings / Beta / Plugins > Plugin install → expects the ai-plugin.json manifest URL**
 
 This appears to be unavailable for ChatGPT 4o
+
+<br>
+
+### Appendix 2: Updateable openapi
+
+It initially failed to load with
+
+```
+In context=('paths', '/Customer/{CustomerId}/', 'patch', 'requestBody', 'content', 'application/json', 'schema'), reference to unknown component Customer_inst; using empty schema
+
+In path /Customer/{CustomerId}/, method patch, operationId UpdateCustomer_0, request body schema is not an object schema; skipping
+
+In path /Customer/{CustomerId}/, method patch, operationId UpdateCustomer_0, skipping function due to errors
+```
+
+We requested a revised jasonapi from ChatGPT to clear these errors, which loaded.  
+
