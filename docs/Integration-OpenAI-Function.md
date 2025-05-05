@@ -127,7 +127,9 @@ Provide the url of the openai endpoint:
 
 https://tunnel_url.ngrok-free.app/api/openapi
 
-Retrieval worked:
+<br>
+
+### Retrieval worked:
 
 - list customers
 - list the items of order 1 with their product names
@@ -142,7 +144,9 @@ We also experimented with update, using `integration/openai_plugin/swagger_3.jso
 
 However, updates are still failing with Invalid Data Object.  ChatGPT reports it was sending:
 
-![updt error](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/openai-plugin/upd%20invalid%20obj.png?raw=true)&nbsp;
+![updt error](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/openai-plugin/upd%20invalid%20obj.png?raw=true)
+
+<br>
 
 ## Appendices
 
