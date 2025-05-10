@@ -79,8 +79,6 @@ The system creates a JSON:API with end points for each table, providing filterin
 
 The API is [**self-serve**](https://apilogicserver.github.io/Docs/API-Self-Serve/): consumers can select their own attributes and related data, eliminating reliance on custom API development.  Our self-serve API meets requirements for Ad Hoc Application Integration, and Custom UI Dev.
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/api-swagger.jpeg?raw=true">
-
 ![api-swagger](images/integration/api-swagger.png)
 
 ### 2.b Admin App: Multi-Page, Multi-Table, Automatic Joins
@@ -182,7 +180,7 @@ To see customized Admin app in action, with the restarted server:
 
 One customization has been to hide several Order fields (search `ui/admin/admin.yml` for `show_when: isInserting == false`).  This makes it convenient to use the Admin App to enter an Order and OrderDetails:
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-entry-ui.jpg?raw=true">
+![order-entry-ui](images/integration/order-entry-ui.png)
 
 &nbsp;
 
@@ -205,7 +203,7 @@ Rules are declared in Python, simplified with IDE code completion.  The `add-cus
 
 Observe rules can be debugged using standard logging and the debugger:
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
+![logic-chaining](images/integration/logic-chaining.png)
 
 &nbsp;
 
@@ -257,7 +255,7 @@ To see security in action:
 
 Declarative row-level security ensures that users see only the rows authorized for their roles.  Observe you now see only customer ALFKI, per the security declared below.  Note the console log at the bottom shows how the filter worked.
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpg?raw=true">
+![security-filter](images/integration/security-filters.png)
 
 &nbsp;
 
@@ -292,7 +290,7 @@ The main task here is to ***map*** a B2B payload onto our logic-enabled SQLAlche
     * Use the `OrderB2B` class to transform a api request data to SQLAlchemy rows (`dict_to_row`)
     * The automatic commit initiates the same shared logic described above to check credit and reorder products
 
-![dict to row](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/dict-to-row.jpg?raw=true)
+![dict-to-row](images/integration/dict-to-row.png)
 
 
 &nbsp;
@@ -319,8 +317,7 @@ Just as you can customize apis, you can complement rule-based logic using Python
 
 3. `send_order_to_shipping` uses the `OrderShipping` class, which maps our SQLAlchemy order row to a dict (`row_to_dict`).
 
-![send order to shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-to-shipping.jpg?raw=true)
-
+![order-to-shipping](images/integration/order-to-shipping.png)
 
 &nbsp;
 > **Key Takeway -  Extensible Rules, Kafka Message Produced**<br>Rule-based logic is extensible with Python, here producing a Kafka message with 20 lines of code.
