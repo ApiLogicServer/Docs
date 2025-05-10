@@ -1,7 +1,7 @@
 ---
 title: Sample Application Tutorial
 Description: Create, Run and Customize the pre-installed sqlite Northwind database
-Version: 1.01
+Version: 1.02
 ---
 # API Logic Server Sample Tutorial
 
