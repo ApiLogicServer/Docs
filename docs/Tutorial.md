@@ -81,6 +81,8 @@ The API is [**self-serve**](https://apilogicserver.github.io/Docs/API-Self-Serve
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/api-swagger.jpeg?raw=true">
 
+![api-swagger](images/integration/api-swagger.png)
+
 ### 2.b Admin App: Multi-Page, Multi-Table, Automatic Joins
 
 The `create` command also creates an Admin App: multi-page, multi-table with automatic joins -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs you can create with the API.
