@@ -8,6 +8,8 @@ Model Context Protocol is a way for:
 
 4. Chat agents to invoke ***NLM Natural Language services*** to corporate databases for improved user interfaces
 
+5. Bus Users can create their own flows using existing published mcp services (vs. hard-coding in IT as an endpoint; flows can be cached for repeated use)
+
 For tech background, see Appendix 2.
 
 &nbsp;
@@ -86,15 +88,13 @@ You will need a ChatGPT APIKey.
 
 6. JSON:API queries the Corp DB and returns the results.
 
-  
+%nbsp;
 
-  
+## Exposing Corp DB to public MCP
+
+TBD - investigate exposing a corp db to MCP so it can be discovered and used in a choroegraphy.
 
 &nbsp;
-
-  
-
-
 
 ## Appendix 1: OpenAI Feedback
 
