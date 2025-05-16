@@ -130,7 +130,7 @@ Respond with a JSON array of tool context blocks using:
 
 ![2-tool-context-from-LLM](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/2-tool-context-from-LLM.png?raw=true) 
 
-![3-MCP-server response](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/3-MCP-server-response?raw=true) 
+![3-MCP-server response](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/3-MCP-server-response.png?raw=true) 
 
 ## Exposing Corp DB to public MCP
 
