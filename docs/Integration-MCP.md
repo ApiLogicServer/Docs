@@ -85,7 +85,7 @@ You will need a ChatGPT APIKey.
 	* This schema is derived from `docs/db.dbml` (already created by als)
  
 
-4. MCP Client Executor iterates through the Tool Context, calling the JSON:API Endpoint that enforces business logic.
+3. MCP Client Executor iterates through the Tool Context, calling the JSON:API Endpoint that enforces business logic.
 
 Here is a typical `https://localhost:5656/.well-known/mcp.json` response (not yet implemented):
 
@@ -121,6 +121,16 @@ Respond with a JSON array of tool context blocks using:
 ```
 
 %nbsp;
+
+### Screenshots
+
+![0-MCP-client-executor](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/0-MCP-client-executor.png?raw=true) 
+
+![1-discovery-from-als](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/1-discovery-from-als.png?raw=true) 
+
+![2-tool-context-from-LLM](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/2-tool-context-from-LLM.png?raw=true) 
+
+![3-MCP-server response](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/3-MCP-server response?raw=true) 
 
 ## Exposing Corp DB to public MCP
 
