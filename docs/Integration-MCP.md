@@ -91,7 +91,7 @@ Here is the basic driver of the test program (see the Architecture diagram above
 
 #### 1 - Discovery
 
-Discovery uses a config file `integration/mcp/mcp_server_discovery.json` to discover 1 or more servers, and invoke their `.well-known` endpoint to obtain the schema.
+Discovery uses a config file `integration/mcp/mcp_server_discovery.json` to discover 1 or more servers, and invoke their `.well-known` endpoint (see `api/api_discovery/mcp_discovery.py`) to obtain the schema.
 ![1-discovery-from-als](images/integration/mcp/1-discovery-from-als.png) 
 
 #### 2 - Tool Context from LLM
