@@ -16,12 +16,12 @@
 
 ## Architecture:
 
-![Intro diagram](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/MCP_Arch.png?raw=true)  
+![Intro diagram](images/integration/mcp/MCP_Arch.png)  
 
 1. MCP Client Executor Startup
 
-	* Calls *wellknown* endpoint to load schema
-	* This schema is similar to `docs/db.dbml` (already created by als)
+	* Calls `.well-known` endpoint to load schema
+	* This is created by API Logic Server, and stored in `docs/mcp_schema.json`.  You can edit this as required to control what is discovered, and to minimize the information sent to the LLM.
 
 2. MCP Client Executor sends Bus User ***NL query + schema*** (as prompt or tool definition) to the external LLM, here, ChatGPT (requires API Key).  LLM returns an ***MCP Tool Context*** JSON block.
 
@@ -30,31 +30,10 @@
 		* We are using a test version: `integration/mcp/mcp_client_executor.py`
 	* Tool definitions are OpenAI specific, so we are sending the schema (in each prompt)
 
-		* Note this strongly suggests this is a **subset** of your database.  
-	* This schema is derived from `docs/db.dbml` (already created by als)
+		* Note this strongly suggests this is a **subset** of your database - edit `docs/mcp_schema.json` as required. 
  
 
 3. MCP Client Executor iterates through the Tool Context, calling the JSON:API Endpoint that enforces business logic.
-
-Here is a typical `https://localhost:5656/.well-known/mcp.json` response (not yet implemented):
-
-```json
-{
-  "tool_type": "json-api",
-  "base_url": "https://crm.company.com",
-  "resources": [
-    {
-      "name": "Customer",
-      "path": "/Customer",
-      "methods": ["GET", "PATCH"],
-      "fields": ["id", "name", "balance", "credit_limit"],
-      "filterable": ["name", "credit_limit"],
-      "example": "List customers with credit over 5000"
-    }
-  ]
-}
-```
-
 
 &nbsp;
 
@@ -68,31 +47,26 @@ In this example, we want a new service to:
 1. Find Orders placed over 30 days ago that are not shipped
 2. Send an Email encouraging prompt payment
 
-We want to do this without troubling IT by enabling business users, while maintaining integrity.  MCP meets this need.
+We want to do this without troubling IT.  MCP enables business users, while maintaining integrity through the existing logic-enabled JSON:APIs.
 
 &nbsp;
 
 ### Setup
 
-There are 2 projects we have used for testing:  
+Create the **basic_demo** under the [Manager](Manager.md) as described in the Manager readme:  
 
-1. **basic_demo:** preferred, since has update - from Dev Source, run run config: `Create blt/genai_demo_ as IS_GENAI_DEMO`
-
-2. **NW:** In the Manager, open `samples/nw_sample_nocust`, and explore `integration/mcp`. This has been successfully used to invoke the server, including with authorization.
-
-3. Create in manager
-
-4. Run `als add-cust` to load mcp tests
-
-5. Run `python integration/mcp/mcp_client_executor.py`
+1. In your IDE: `als create --project-name=basic_demo --db-url=basic_demo`
+2. Run `als add-cust` to load mcp (and logic)
+3. Start the Server (f5)
+4. Run `python integration/mcp/mcp_client_executor.py`
 
 
-You will need a ChatGPT APIKey.
+You will need an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT APIKey.
 
 &nbsp;
 ### Prompt
 
-Here is a NL prompt using *basic_demo:*
+Here is a NL prompt using *basic_demo* coded into `mcp_client_executor`
 
 ```
 List the orders created more than 30 days ago, and send a discount offer email to the customer for each one.
@@ -108,22 +82,38 @@ Respond with a JSON array of tool context blocks using:
 
 ### Sample Flow
 
-#### MCP Client Executor
+You can run `mcp_client_executor` under the debugger, and stop at each of the breakpoints noted in the screenshot below. 
 
-![0-MCP-client-executor](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/0-MCP-client-executor.png?raw=true) 
+#### 0 - MCP Client Executor
+
+Here is the basic driver of the test program (see the Architecture diagram above):
+![0-MCP-client-executor](images/integration/mcp/0-MCP-client-executor.png) 
 
 #### 1 - Discovery
 
-![1-discovery-from-als](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/1-discovery-from-als.png?raw=true) 
+Discovery uses a config file `integration/mcp/mcp_server_discovery.json` to discover 1 or more servers, and invoke their `.well-known` endpoint to obtain the schema.
+![1-discovery-from-als](images/integration/mcp/1-discovery-from-als.png) 
 
 #### 2 - Tool Context from LLM
 
-![2-tool-context-from-LLM](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/2-tool-context-from-LLM.png?raw=true) 
+We call the LLM, providing the NL Query and the schema returned above.  It returns a Tool Context completion (response), with the steps to call in the MCP Server Executor, which here is the logic-enabled API Logic Server JSON:API.
+
+![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM.png) 
 
 #### 3 - Invoke MCP Server
 
-![3-MCP-server response](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/3-MCP-server-response.png?raw=true) 
+The calls include GET, and a POST for each returned row.  
 
+![3-MCP-server response](images/integration/mcp/3-MCP-server-response.png) 
+&nbsp;
+
+##### 3a - Logic (Request Pattern)
+
+MCP is capable of executing email directly, but we have business policies providing for email opt-outs.  We must respect this logic.
+
+As shown below, a common logic pattern is a `Request Object`: you insert it, it's business logic runs.  Here, the logic checks the opt-out, and sends the mail:
+
+![3a-email-logic](images/integration/mcp/3a-email-logic.png)
 
 &nbsp;
 
@@ -136,18 +126,12 @@ We welcome participation in this exploration. Please contact us via [discord](ht
 This exploration is changing rapidly. For updates, replace `integration/mcp` from [integration/msp](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/nw_no_cust/integration/mcp){:target="_blank" rel="noopener"}.
 
 &nbsp;
-## Appendix 1: Exposing Corp DB to public MCP
 
-TBD - investigate exposing a corp db to MCP so it can be discovered and used in a choreography.
-
-&nbsp;
-## Appendix 2: MCP Background
+## Appendix: MCP Background
 
   
 
 For more information:
-
-  
 
 - [see MCP Introduction](https://modelcontextprotocol.io/introduction)
 
