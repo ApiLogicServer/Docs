@@ -2,7 +2,7 @@
 
 	MCP enables Business Users to use Natural Language to create declarative execution flows across multiple business-rule-enforced API services.  MCP is an open protocol than enables:
 	
-	1. **MCP Client Executors** to leverage LLMs to tranlate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
+	1. **MCP Client Executors** to leverage LLMs to translate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
 	2. The MCP Client Executor executes the Tool Context block steps, making calls on the  **MCP Server Executors.**
 	
 		* MCP Server Executors are commonly provided via **logic-enabled JSON:APIs.**  (Note the logic is critical in maintaining integrity and security.)

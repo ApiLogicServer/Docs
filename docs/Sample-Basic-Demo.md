@@ -428,3 +428,32 @@ $ sqlite3 database/db.sqlite
 ```
 
 The SQLite DBMS is installed with API Logic Server, but the **CLI** is not provided on all systems.  If it's not installed, [you can install it like this](https://apilogicserver.github.io/Docs/Database-Connectivity/#sqlite).
+
+## Appendix: Setup Codespaces
+
+Codespaces enables you to run in the cloud: VSCode via your Browser, courtesy GitHub.  You can use codespaces on your GenAI project:
+
+__1. Open your project on GitHub__
+
+![API Logic Server Intro](images/sample-ai/genai/open-github.png)
+
+__2. Open it in Codespaces (takes a minute or 2):__
+
+![API Logic Server Intro](images/sample-ai/genai/start-codespaces.png)
+
+> You will now see your project - running in VSCode, _in the Browser._  But that's just what you _see..._
+
+> Behind the scenes, Codespaces has requisitioned a cloud machine, and loaded your project - with a _complete development environment_ - Python, your dependencies, git, etc.  
+
+> You are attached to this machine in your Browser, running VSCode.
+
+> :trophy: Pretty remarkable.
+
+__3. Start the Server and open the App in the Browser__
+
+* Use the pre-defined Launch Configuration
+
+![API Logic Server Intro](images/git-codespaces/start-codespaces.png)
+
+
+We think you'll find Codespaces pretty amazing - check it out!

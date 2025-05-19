@@ -17,11 +17,11 @@
 
 Codespaces enables you to run in the cloud: VSCode via your Browser, courtesy GitHub.  You can use codespaces on your GenAI project:
 
-1. Open your project on GitHub
+__1. Open your project on GitHub__
 
 ![API Logic Server Intro](images/sample-ai/genai/open-github.png)
 
-2. Open it in Codespaces (takes a minute or 2):
+__2. Open it in Codespaces (takes a minute or 2):__
 
 ![API Logic Server Intro](images/sample-ai/genai/start-codespaces.png)
 
@@ -44,7 +44,7 @@ We think you'll find Codespaces pretty amazing - check it out!
 
 &nbsp;
 
-## How was the project created?
+### How was the project created?
 
 Your prompt (whether provided in a file to the CLI, or the WebGenAI website) 
 is sent to ChatGPT to create a schema.  This schema is then processed by als to create 
@@ -170,7 +170,7 @@ The system saves files used for creation:
 
 ![Customize](images/sample-ai/copilot/diagnostic_info.png)
 
-Note there are multiple diagostic directories.  recall GenAI results are not always predictable, so we make 3 attempts to get a successful result.  This is often enough, but examining the failures can be useful.
+Note there are multiple diagnostic directories.  recall GenAI results are not always predictable, so we make 3 attempts to get a successful result.  This is often enough, but examining the failures can be useful.
 
 A good technique is to:
 
