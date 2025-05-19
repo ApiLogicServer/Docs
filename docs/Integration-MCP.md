@@ -61,7 +61,7 @@ Create the **basic_demo** under the [Manager](Manager.md) as described in the Ma
 4. Run `python integration/mcp/mcp_client_executor.py`
 
 
-You will need an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT APIKey.
+You will need an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT APIKey (obtain one [like this](WebGenAI-CLI.md/#configuration)).
 
 &nbsp;
 ### Prompt
