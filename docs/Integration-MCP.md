@@ -9,8 +9,8 @@
 	
 	In some cases, you may have a database, but neither the APIs nor the logic.  GenAI-Logic API Logic Server can **mcp-ify existing databases** by:
 	
-	3. Creating JSON:APIs for existing databases with a single CLI command
-	4. Enabling you to [declare business logic](Logic.md), which can be used via the APIs in MCP executipn flows.
+	1. Creating JSON:APIs for existing databases with a single CLI command
+	2. Enabling you to [declare business logic](Logic.md), which can be used via the APIs in MCP executipn flows.
 
  
 
@@ -96,10 +96,15 @@ Discovery uses a config file `integration/mcp/mcp_server_discovery.json` to disc
 
 #### 2 - Tool Context from LLM
 
-We call the LLM, providing the NL Query and the schema returned above.  It returns a Tool Context completion (response), with the steps to call in the MCP Server Executor, which here is the logic-enabled API Logic Server JSON:API.
+We call the LLM, providing the NL Query and the discovered schema returned above.   Note the schema includes:
 
-![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM.png) 
+1. resources: the schema itself 
+	* You would typically edit this file to expose only desired data, and reduce the size of the prompt
+2. instructions on how to format `expected_response` (e.g., `query_params`)
+3. how to use the **Request Pattern** to send email, subject to logic (see Logic, below):
 
+![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM.png) The LLM returns a Tool Context completion (response), with the steps to call the MCP Server Executor, which here is the logic-enabled API Logic Server JSON:API.
+![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM-d.png) 
 #### 3 - Invoke MCP Server
 
 The calls include GET, and a POST for each returned row.  
@@ -111,36 +116,64 @@ The calls include GET, and a POST for each returned row.
 
 MCP is capable of executing email directly, but we have business policies providing for email opt-outs.  We must respect this logic.
 
-As shown below, a common logic pattern is a `Request Object`: you insert it, it's business logic runs.  Here, the logic checks the opt-out, and sends the mail:
+As shown below, a common logic pattern is a `Request Object`: you insert a row, triggering its business logic.  Here, the logic (an *after_flush* event) checks the opt-out, and sends the mail (stubbed):
 
 ![3a-email-logic](images/integration/mcp/3a-email-logic.png)
 
 &nbsp;
 
-### Status: Work In Progress
+## Appendix: Status - Work In Progress
 
-This is an initial experiment, with a number of ToDo's: real filtering, update, etc.  That said, it might be an excellent way to explore MCP.
+This is an initial experiment, with significant ToDo's (security, etc).  That said, it might be an excellent way to explore MCP.
 
 We welcome participation in this exploration. Please contact us via [discord](https://discord.gg/HcGxbBsgRF).
-
-This exploration is changing rapidly. For updates, replace `integration/mcp` from [integration/msp](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/nw_no_cust/integration/mcp){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
 ## Appendix: MCP Background
 
-  
-
 For more information:
 
-- [see MCP Introduction](https://modelcontextprotocol.io/introduction)
+1. [see MCP Introduction](https://modelcontextprotocol.io/introduction)
 
-- [and here](https://apilogicserver.github.io/Docs/Integration-MCP/)
+2. [and here](https://apilogicserver.github.io/Docs/Integration-MCP/)
 
-- [and here](https://www.youtube.com/watch?v=1bUy-1hGZpI&t=72s)
+3. [and here](https://www.youtube.com/watch?v=1bUy-1hGZpI&t=72s)
 
-- and this [N8N link](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.mcptrigger/?utm_source=n8n_app&utm_medium=node_settings_modal-credential_link&utm_campaign=%40n8n%2Fn8n-nodes-langchain.mcpTriggerlangchain.mcpTriggerlangchain.mcpTrigger)
+4. and this [N8N link](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.mcptrigger/?utm_source=n8n_app&utm_medium=node_settings_modal-credential_link&utm_campaign=%40n8n%2Fn8n-nodes-langchain.mcpTriggerlangchain.mcpTriggerlangchain.mcpTrigger)
 
-- and this [python sdk](https://github.com/modelcontextprotocol/python-sdk)
+5. and this [python sdk](https://github.com/modelcontextprotocol/python-sdk)
 
-- and [this video](https://www.youtube.com/shorts/xdMVgZfZ1yg)
+6. and [this video](https://www.youtube.com/shorts/xdMVgZfZ1yg)
+
+&nbsp;
+
+## Appendix: Key Clarifications
+
+MCP is a new technology.  In my learning curve, I found much of the information a little bit vague and in some cases, misleading.  The sections below identify key clarifications to incorrect assumptions I had made, so I have listed them below in hopes they can help you.
+
+&nbsp;
+
+### App-Specific Client Executor
+
+Several articles described the Client Executor as a "host such as Claude".  That lead me to believe that common chat apps could call MCPs.
+
+Later, I discovered that most chat apps cannot call http, and so cannot directly call MCPs.  The Client Executor is analogous to a chat, but is written specifically  for MCP use.
+
+&nbsp;
+
+### Client Executor (not LLM) calls the MCP
+
+I saw several diagrams with arrows from the LLM to the MCP.  That lead me to believe that the LLM *calls* the MCP. 
+
+Later, I realized that the LLM is just preparing the Tool Context.  The Client Executor uses this to invoke the MCP.  I now think of the arrow as "knows how to include it in the Tool Context".
+
+&nbsp;
+
+### Server Executor == *logic-enabled* APIs
+
+Finally, I presumed that the Client Executor would pass the Tool Context to the LLM.  This was simply a bad guess.  
+
+The key idea is that one specific Server Executor would not be aware it is part of an orchestration.  In the case of database APIs, the Server Executor is the set of logic-enabled endpoints identified in the discovery schema.
+
+Note the logic here is critical.  The Client Executor can not / should not "reach in" and be aware of logic specific to each involved database.
