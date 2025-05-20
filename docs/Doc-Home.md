@@ -221,7 +221,14 @@ We'd love to hear from you:
 
 1. Email: apilogicserver@gmail.com
 2. Issues: [github](https://github.com/ApiLogicServer/ApiLogicServer-src/issues){:target="_blank" rel="noopener"}
-3. Slack: contact us on apilogicserver.slack.com
+3. Discord: we use Discord for support - join [here](https://discord.gg/HcGxbBsgRF){:target="_blank" rel="noopener"}.  You should install the Discord app.
+
+It can be tricky to use Discord for screen sharing - here is the procedure for a mac:
+
+1. Start a call with a contact
+2. Share your screen:
+
+![discord-1](images/support/discord/discord-1.png)
 
 ---
 

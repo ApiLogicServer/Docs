@@ -1,15 +1,18 @@
 Please report bugs as [GitHub Issues](https://github.com/valhuber/ApiLogicServer/issues).
 
-# Project Failed to Start (March, 2022)
+# Using Discord
 
-Recent updates to included libs have broken previous versions of API Logic Server.  This is fixed in a new version (5.00.06) is now available, and recommended.
+We use Discord for support - join [here](https://discord.gg/HcGxbBsgRF){:target="_blank" rel="noopener"}.  You should install the Discord app.
 
-If you are unable to upgrade to the new version, you can repair your existing install like this (your venv should be active):
+It can be tricky to use Discord for screen sharing - here is the procedure for a mac:
 
-```
-pip install MarkupSafe==1.1.1
-pip install Jinja2==2.11.2
-```
+
+1. Start a call with a contact
+2. Share your screen:
+
+![discord-1](images/support/discord/discord-1.png)
+
+
 
 &nbsp;&nbsp;
 
