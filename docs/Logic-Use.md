@@ -230,7 +230,7 @@ These require you first obtain the row, either through a model class accessor (e
 
 &nbsp;
 
-## Managing Logic: Your IDE, SCCS
+## Managing Logic
 
 [Declare Rules in your IDE](Logic-Why.md##rules-declare-extend-debug){:target="_blank" rel="noopener"} (e.g., VSCode, PyCharm) to declare logic using Python, with all the familiar features of code completion and syntax high-lighting.  You can also use the debugger, and familiar Source Code Control tools such as `git`.
 
