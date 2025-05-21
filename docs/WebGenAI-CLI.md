@@ -113,7 +113,7 @@ cd <project root>
 als genai-logic
 ```
 
-3. Your logic is created in `logic/logic_discovery`
+3. Your logic is created in `logic/logic_discovery`.  For more information, see [Managing Logic](Logic-Use.md#managing-logic){:target="_blank" rel="noopener"}.
 
 Notes:
 

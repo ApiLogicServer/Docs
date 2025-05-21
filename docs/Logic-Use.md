@@ -9,7 +9,7 @@
 
 ## Declaration and Activation
 
-Declared rules are automatically activated by `api_logic_server_run..py` when it starts the server.  For more information, please see [Project Operation](Architecture-Project-Operation.md){:target="_blank" rel="noopener"}.
+Declared rules are automatically activated by `api_logic_server_run.py` when it starts the server.  For more information, please see [Project Operation](Architecture-Project-Operation.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -266,4 +266,22 @@ In VSCode, set `"redirectOutput": true` in your **Launch Configuration.**  This 
 
 ### Managing Logic
 
+&nbsp;
+
+#### Standard Source Control
+
 Logic is Python code, so is managed using your existing SCSS approach (e.g., `git`), with related services for diff, merge, history, versioning, etc.
+
+&nbsp;
+
+#### Organize using `logic_discovery`
+
+You can create logic in `logic/declare_logic.py`, but in most cases it's better to use `logic/logic_discovery`.  See the Northwind sample (`samples/nw_sample` in the manager.)
+
+> Best Practice: organize logic discovery files by Use Case (eg, *check_credit.py*)
+
+&nbsp;
+
+#### Logic Test Suites
+
+It's a best practice to set up identify Use Cases, and create test suites that verify proper logic operation.  You can use the Behave framework; for more information, [click here](Logic-Tutorial.md){:target="_blank" rel="noopener"}.
