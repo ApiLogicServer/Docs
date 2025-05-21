@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Why MCP – Smarter Execution, Not Harder Integration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      line-height: 1.6;
+      padding: 1rem;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    .highlight {
+      background: #e0f7fa;
+      padding: 0.5rem;
+      border-left: 4px solid #00acc1;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 0.5rem;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Why MCP – Smarter Execution, Not Harder Integration</h1>
+
+  <h2>Plan in Natural Language. Execute in Structured Logic.</h2>
+  <p class="highlight">
+    MCP lets LLMs create safe, rule-enforced multi-step API calls — without rewriting your backend.
+  </p>
+
+  <h2>The Problem</h2>
+  <p>
+    Traditional integration requires hard-coded endpoints, hand-authored logic, and brittle glue code between systems.
+  </p>
+  <ul>
+    <li>❌ Dev time wasted</li>
+    <li>❌ Hard to extend</li>
+    <li>❌ No AI-readability</li>
+  </ul>
+
+  <h2>The MCP Difference</h2>
+  <p>
+    MCP introduces a simple pattern: <strong>LLMs plan. APIs execute. Business logic is enforced.</strong>
+  </p>
+  <ul>
+    <li>🔹 Natural language in → structured API plan out</li>
+    <li>🔹 Tool context drives calls across services</li>
+    <li>🔹 JSON:API enforces business rules — not just CRUD</li>
+  </ul>
+
+  <h2>How It Works</h2>
+  <p>
+    MCP is not a new API. It’s a convention — lightweight, flexible, and LLM-native.
+  </p>
+  <ul>
+    <li><strong>MCP Client</strong>: Accepts user goals, sends schema + goal to an LLM, executes returned tool contexts</li>
+    <li><strong>MCP Server</strong>: Just your existing JSON:API server, enforces business rules declaratively, returns real results</li>
+  </ul>
+  <p>✅ You already have the server.<br>
+     ✅ Just add a client and a schema.</p>
+
+  <h2>Why It’s Better</h2>
+  <table>
+    <thead>
+      <tr><th>Feature</th><th>Without MCP</th><th>With MCP</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Add logic</td><td>Hand-code endpoints</td><td>Describe with rules</td></tr>
+      <tr><td>Use with AI</td><td>Ad-hoc calls</td><td>LLM-native orchestration</td></tr>
+      <tr><td>Scaling</td><td>Spaghetti glue code</td><td>Composable tool contexts</td></tr>
+      <tr><td>Explainability</td><td>Opaque logic</td><td>Declarative, traceable</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Get Started</h2>
+  <p><strong>Start fast. Stay clean. Think in terms of tools, not tunnels.</strong><br>
+     Use MCP to turn your services into orchestration-ready systems, today.</p>
+</body>
+</html>
