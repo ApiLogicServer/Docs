@@ -24,7 +24,7 @@ The table shows excerpts only; see the ```ApiLogicProject``` (Northwind) sample 
 | Parent Check    | Ensure Parent row exists                                                                   | Orders must have a Customer                                                                                    | See [Referential Integrity](https://github.com/valhuber/LogicBank/wiki/Referential-Integrity)                                             |
 | Allocation      | Allocate a provider amount to recipients                                                   | allocate a payment to outstanding orders                                                                       | See [Allocation](https://github.com/valhuber/LogicBank/wiki/Sample-Project---Allocation) for an example                                   |
 | Copy Row        | Create child row by copying parent                                                         | audit Employee Salary changes to EmployeeAudit                                                                 | See [Rule Extensibility](https://github.com/valhuber/LogicBank/wiki/Rule-Extensibility)                                                   |
-| Request Pattern | Create Row to run service, per logic                                                       | MCP request: _"find the overdue orders, and send an email offering a discount"_                                | See [MCP Send Mail](Integration-MCP.md#3a-logic-request-pattern)                                                                          |
+
 
 &nbsp;
 
@@ -129,6 +129,7 @@ Rules support *chaining:* a rule may change a value that triggers other rules, i
 | **Auditing** | Note the Copy Row rule (and alternatives) | [Salary Audit](Behave-Logic-Report.md#scenario-audit-salary-change){:target="_blank" rel="noopener"} |
 | **Ready Flag** | Multi-session editing, then , when ready...<br>adjust related data / enforce constraints | [Make Order Ready](Behave-Logic-Report.md/#scenario-order-made-ready){:target="_blank" rel="noopener"} |
 | **Events for Lib Access** | Events enable Python, use of standard libs (e.g., Kafka) | [Ship Order](Behave-Logic-Report.md#scenario-good-order-custom-service){:target="_blank" rel="noopener"} |
+| **Request Pattern** | Create Row to run service, per logic, e.g. MCP request:<br> _"find overdue orders, and send an email offering a discount"_    | See [MCP Send Mail](Integration-MCP.md#3a-logic-request-pattern)     |
 
 &nbsp;
 
