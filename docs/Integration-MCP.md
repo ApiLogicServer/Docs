@@ -118,7 +118,7 @@ The calls include GET, and a POST for each returned row.
 
 MCP is capable of executing email directly, but we have business policies providing for email opt-outs.  We must respect this logic.
 
-As shown below, a common logic pattern is a `Request Object`: you insert a row, triggering its business logic.  Here, the logic (an *after_flush* event) checks the opt-out, and sends the mail (stubbed):
+As shown below, a common [logic pattern](Logic.md#rule-patterns){:target="_blank" rel="noopener"} is a `Request Object`: you insert a row, triggering its business logic.  Here, the logic (an *after_flush* event) checks the opt-out, and sends the mail (stubbed):
 
 ![3a-email-logic](images/integration/mcp/3a-email-logic.png)
 
