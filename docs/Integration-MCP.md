@@ -1,6 +1,8 @@
-!!! pied-piper ":bulb: TL;DR - MCP: Enable Bus Users to use NL to create multi-service execution flows"
+!!! pied-piper ":bulb: TL;DR - MCP: Enable Bus Users to use NL to create multi-step execution flows"
 
-	MCP enables Business Users to use Natural Language to create declarative execution flows across multiple business-rule-enforced API services.  MCP is an open protocol than enables:
+	MCP enables Business Users to use Natural Language to create declarative execution flows across multiple business-rule-enforced API services.  For example: *find the overdue orders, and send an email offering a discount*.
+	
+	MCP is an open protocol than enables:
 	
 	1. **MCP Client Executors** to leverage LLMs to translate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
 	2. The MCP Client Executor executes the Tool Context block steps, making calls on the  **MCP Server Executors.**
