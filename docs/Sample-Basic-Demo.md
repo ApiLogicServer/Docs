@@ -13,7 +13,7 @@ See how to build a complete database system -- in minutes instead of weeks or mo
 
 &nbsp;
 
-We'll use API Logic Server (open source), providing [these key features](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"}.
+We'll illustrate [API Logic Server](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
 
 The entire process takes 20 minutes, instead of several weeks using traditional development.
 
