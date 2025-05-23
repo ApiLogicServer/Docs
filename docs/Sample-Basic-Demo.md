@@ -8,17 +8,12 @@ See how to build a complete database system -- in minutes instead of weeks or mo
 
 1. **An API**, and, we'll add ui and logic to make it a microservice...
 2. **Logic and Security:** multi-table constraints and derivations, role-based security, and application integration
-3. **An Admin App:** and finally, a multi-page, multi-table web app
+3. **An Admin App:** a multi-page, multi-table web app 
+4. **Customizable:** use your IDE to customize with declarative rules and standard Python
 
 &nbsp;
 
-We'll use API Logic Server (open source), providing:
-
-| Key Feature | What It Means | Why It Matters|
-| :--- |:---|:---|
-| **Automation** | Instant Project Creation:<br>An API and an Admin web app  | Unblock UI App Dev<br>Instant Agile Collaboration |
-| **Customization** | Declarative logic and security <br> 5 rules vs. 200 lines of Python | 40X less backend code |
-| **Iteration** | Revise the data model, and <br>Add rules, plus Python | Iterative development <br> Extensiblity with Python |
+We'll use API Logic Server (open source), providing [these key features](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"}.
 
 The entire process takes 20 minutes, instead of several weeks using traditional development.
 
@@ -32,7 +27,12 @@ You can use this article in several ways:
 
 &nbsp;
 
-## 1. Automation: Instant Project
+## 1. Automation: Project Creation
+
+API Logic Server can create projects from existing databases, or use GenAI to create projects with new databases.  See the sub-sections below.
+
+&nbsp;
+### Create From Existing Database
 
 This project was created with a command like:
 
@@ -40,9 +40,36 @@ This project was created with a command like:
 $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
 ```
 
-> Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/).  You would normally supply a SQLAlchemy URI.
+> Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/){:target="_blank" rel="noopener"} for a test database provided as part of the installation.  You would normally supply a SQLAlchemy URI to your existing database.
 
-This creates a project by reading your schema.  The database is Customer, Orders, Items and Product, as shown in the Appendix.  
+This creates a project by reading your schema.  The database is Customer, Orders, Items and Product, as shown in the Appendix.
+
+&nbsp;
+
+### Create With New Database
+
+You can create a project from a prompt using GenAI, either by [WebGenAI](WebGenAI.md), or the the [GenAI CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"} as shown here.
+
+Use the GenAI CLI with or without signup:
+
+1. If you have signed up (see *Obtain a OpenAI API Key*, below), this will create and open a project called `genai_demo` from `genai_demo.prompt` (available in left Explorer pane):
+
+```bash
+als genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
+```
+
+  
+
+2. ***Or,*** you can simulate the process (no signup) using:
+
+```bash
+
+als genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
+
+```
+
+&nbsp;
+### Open in your IDE and Run
 
 You can open with VSCode, and run it as follows:
 
@@ -73,9 +100,9 @@ The sections below explore the system that has been created (which would be simi
 
 &nbsp;
 
-## 2. Customize in your IDE
+## 2. Declare Logic And Security
 
-While API/UI automation is a great start, it's critical to enforce logic and security.  Here's how.
+While API/UI automation is a great start, it's critical to enforce logic and security.  You do this in your IDE.  Here's how.
 
 The following `add_customizations` process simulates:
 
@@ -332,7 +359,7 @@ This is a "cheat sheet" for experienced ALS users, e.g., to show your colleagues
 # Admin App, API, Project
 als create --project-name=basic_demo --db-url=basic_demo
 
-# Logic and Security
+# Logic, Security and MCP example
 # see logic (logic/declare_logic.py, logic/cocktail-napkin.jpg);  add an Order and Item
 # see security (security/declare_security.py); compare customers, s1 vs. admin
 als add-cust
@@ -457,3 +484,14 @@ __3. Start the Server and open the App in the Browser__
 
 
 We think you'll find Codespaces pretty amazing - check it out!
+
+&nbsp;
+
+## Appendix: Obtain an OpenAI ApiKey
+
+To obtain a ChatGPT API Key
+<br>GenAI-Logic uses OpenAI, which requires an Open API Key:
+
+1. Obtain one from [here](https://platform.openai.com/account/api-keys) or [here](https://platform.openai.com/api-keys)
+
+2. Authorize payments [here](https://platform.openai.com/settings/organization/billing/overview)

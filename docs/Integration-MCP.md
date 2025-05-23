@@ -1,11 +1,11 @@
 !!! pied-piper ":bulb: TL;DR - MCP: Enable Bus Users to use NL to create multi-step execution flows"
 
-	MCP enables Business Users to use Natural Language to create declarative execution flows across multiple business-rule-enforced API services.  For example: *find the overdue orders, and send an email offering a discount*.
+	MCP enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.  For example: *find the overdue orders, and send an email offering a discount*.  This is a new request, composed from existing steps (find orders, send email).
 	
 	MCP is an open protocol than enables:
 	
 	1. **MCP Client Executors** to leverage LLMs to translate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
-	2. The MCP Client Executor executes the Tool Context block steps, making calls on the  **MCP Server Executors.**
+	2. The MCP Client Executor executes the Tool Context Block steps, making calls on the  **MCP Server Executors.**
 	
 		* MCP Server Executors are commonly provided via **logic-enabled JSON:APIs.**  (Note the logic is critical in maintaining integrity and security.)
 	
@@ -62,6 +62,8 @@ Create the **basic_demo** under the [Manager](Manager.md) as described in the Ma
 3. Start the Server (f5)
 4. Run `python integration/mcp/mcp_client_executor.py`
 
+
+The [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} project illustrates basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
 
 You will need an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT APIKey (obtain one [like this](WebGenAI-CLI.md/#configuration)).
 
