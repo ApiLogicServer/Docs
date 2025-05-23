@@ -1,22 +1,27 @@
 !!! pied-piper ":bulb: TL;DR - MCP: Enable Bus Users to use NL to create multi-step execution flows"
 
-	MCP enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.  For example: *find the overdue orders, and send an email offering a discount*.  This is a new request, composed from existing steps (find orders, send email).
+	MCP enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.  For example: 
+	
+	*find the overdue orders, and send an email offering a discount*.  
+	
+	This is a new request, composed from existing steps (find orders, send email).
 	
 	MCP is an open protocol than enables:
 	
-	1. **MCP Client Executors** to leverage LLMs to translate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
-	2. The MCP Client Executor executes the Tool Context Block steps, making calls on the  **MCP Server Executors.**
+	1. **MCP Client Executors** to discover servers (tools) - their schema, etc.
+	2. MCP Client Executors to call LLMs to translate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
+	3. The MCP Client Executors to execute the Tool Context Block steps, making calls on the  **MCP Server Executors.**
 	
 		* MCP Server Executors are commonly provided via **logic-enabled JSON:APIs.**  (Note the logic is critical in maintaining integrity and security.)
 	
 	In some cases, you may have a database, but neither the APIs nor the logic.  GenAI-Logic API Logic Server can **mcp-ify existing databases** by:
 	
-	1. Creating JSON:APIs for existing databases with a single CLI command
-	2. Enabling you to [declare business logic](Logic.md), which can be used via the APIs in MCP executipn flows.
+	4. Creating JSON:APIs for existing databases with a single CLI command
+	5. Enabling you to [declare business logic](Logic.md), which can be used via the APIs in MCP executipn flows.
 
- 
+ &nbsp;
 
-## Architecture:
+## Architecture
 
 ![Intro diagram](images/integration/mcp/MCP_Arch.png)  
 
