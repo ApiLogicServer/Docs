@@ -1,23 +1,23 @@
 !!! pied-piper ":bulb: TL;DR - MCP: Enable Bus Users to use NL to create multi-step execution flows"
 
-	MCP enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.  For example: 
+	MCP enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.  For example, a Business User might request: 
 	
-	*find the overdue orders, and send an email offering a discount*.  
+	*Find the overdue orders, and send an email offering a discount*.  
 	
-	This is a new request, composed from existing steps (find orders, send email).
+	This is a new request, composed from existing services (find orders, send email).
 	
 	MCP is an open protocol than enables:
 	
-	1. **MCP Client Executors** to discover servers (tools) - their schema, etc.
+	1. **MCP Client Executors** to discover servers (tools) - their schema, instructions, etc.
 	2. MCP Client Executors to call LLMs to translate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
-	3. The MCP Client Executors to execute the Tool Context Block steps, making calls on the  **MCP Server Executors.**
+	3. The MCP Client Executors to process the Tool Context Block steps, making calls on the  **MCP Server Executors.**
 	
 		* MCP Server Executors are commonly provided via **logic-enabled JSON:APIs.**  (Note the logic is critical in maintaining integrity and security.)
 	
 	In some cases, you may have a database, but neither the APIs nor the logic.  GenAI-Logic API Logic Server can **mcp-ify existing databases** by:
 	
-	4. Creating JSON:APIs for existing databases with a single CLI command
-	5. Enabling you to [declare business logic](Logic.md), which can be used via the APIs in MCP executipn flows.
+	1. Creating JSON:APIs for *existing databases* with a single CLI command
+	2. Enabling you to [declare business logic](Logic.md), which can be used via the APIs in MCP execution flows.
 
  &nbsp;
 
@@ -66,6 +66,7 @@ Create the **basic_demo** under the [Manager](Manager.md) as described in the Ma
 2. Run `als add-cust` to load mcp (and logic)
 3. Start the Server (f5)
 4. Run `python integration/mcp/mcp_client_executor.py`
+	* You can use Run Config: **Run designated Python file**
 
 
 The [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} project illustrates basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
@@ -78,16 +79,10 @@ You will need an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT A
 Here is a NL prompt using *basic_demo* coded into `mcp_client_executor`
 
 ```
-List the orders created more than 30 days ago, and send a discount offer email to the customer for each one.
-
-Respond with a JSON array of tool context blocks using:
-- tool: 'json-api'
-- JSON:API-compliant filtering (e.g., filter[CreatedOn][lt])
-- Use {{ order.customer_id }} as a placeholder in the second step.
-- Include method, url, query_params or body, headers, expected_output.
+List the unshipped orders created before 2023-07-14, and send a discount email (subject: 'Discount Offer') to the customer for each one.
 ```
 
-%nbsp;
+&nbsp;
 
 ### Sample Flow
 
@@ -103,6 +98,7 @@ Here is the basic driver of the test program (see the Architecture diagram above
 Discovery uses a config file `integration/mcp/mcp_server_discovery.json` to discover 1 or more servers, and invoke their `.well-known` endpoint (see `api/api_discovery/mcp_discovery.py`) to obtain the schema.
 ![1-discovery-from-als](images/integration/mcp/1-discovery-from-als.png) 
 
+&nbsp;
 #### 2 - Tool Context from LLM
 
 We call the LLM, providing the NL Query and the discovered schema returned above.   Note the schema includes:
@@ -110,9 +106,9 @@ We call the LLM, providing the NL Query and the discovered schema returned above
 1. resources: the schema itself 
 	* You would typically edit this file to expose only desired data, and reduce the size of the prompt
 2. instructions on how to format `expected_response` (e.g., `query_params`)
-3. how to use the **Request Pattern** to send email, subject to logic (see Logic, below):
+3. and how to use the **Request Pattern** to send email, subject to logic (see Logic, below):
 
-![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM.png) The LLM returns a Tool Context completion (response), with the steps to call the MCP Server Executor, which here is the logic-enabled API Logic Server JSON:API.
+![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM.png) The LLM returns a Tool Context completion (response), with the steps to call the MCP Server Executor, which here is the logic-enabled API Logic Server JSON:API:
 ![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM-d.png) 
 #### 3 - Invoke MCP Server
 
@@ -131,9 +127,9 @@ As shown below, a common [logic pattern](Logic.md#rule-patterns){:target="_blank
 
 &nbsp;
 
-## Appendix: Status - Work In Progress
+## Appendix: Status - End-to-End Illustration
 
-This is an initial experiment, with significant ToDo's (security, etc).  That said, it might be an excellent way to explore MCP.
+This is intended to be a vehicle for exploring MCP.  It is not productized - we need to explore security, and perhaps integrating this into the Admin App.
 
 We welcome participation in this exploration. Please contact us via [discord](https://discord.gg/HcGxbBsgRF).
 
