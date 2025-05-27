@@ -15,13 +15,12 @@ The subsections below described the steps to:
 To create the projects: 
 
 1. Install the user version of the API Logic Server
-2. Be sure to start the Manager: `als start`
+2. Start the Manager: `als start`
 3. Be sure you have installed the VSCode CLI - see [the VSCode CLI procedure](IDE-Customize.md/#vscode-cli){:target="_blank" rel="noopener"}
-4. Run [the install-ApiLogicServer-dev procedure](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/install-ApiLogicServer-dev.sh)
+4. In your CLI terminal window:
     * Note: Windows users use `install-ApiLogicServer-dev.ps1`) 
 
 ```bash title="Install API Logic Server Development environment"
-cd ~/dev/ApiLogicServer/                     # project directories created here
 sh system/install-ApiLogicServer-dev/install-ApiLogicServer-dev.sh
 ```
 

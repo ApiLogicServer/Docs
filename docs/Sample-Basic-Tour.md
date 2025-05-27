@@ -3,7 +3,7 @@ version info: 2.0 (05/24/2025)
 ---
 ## Welcome to GenAI-Logic
 
-1. ***Instant microservices*** (APIs and Admin Apps) from a database or **GenAI prompt** -- 1 command and you are ready for MCP, Vibe and Business User Collaboration.
+1. ***Instant mcp-enabled microservices*** (APIs and Admin Apps) from a database or **GenAI prompt** -- one command and you are ready for MCP, Vibe and Business User Collaboration.
 
 2. ***Customize*** with **Rules** and Python in your IDE: created projects use standard Python libraries (Flask, SQLAlchemy)
 
@@ -18,17 +18,9 @@ You are in the [API Logic Server Manager](https://apilogicserver.github.io/Docs/
 
 <details markdown>
 
-<summary> 1. Product Tour - start here</summary>
+<summary> 1. Product Tour - Start here</summary>
 
-<br>For a self-demo, use the CLI (**Terminal > New Terminal**), and try the pre-installed [**Basic Demo**](https://apilogicserver.github.io/Docs/Sample-Basic-Demo/):
-
----
-title: Instant Microservices - with Logic and Security
-notes: gold is proto (-- doc); alert for apostrophe; links must be absolute (images relative)
-version: 0.22 from docsite 5/24/2025
----
-
-See how to build a complete database system -- in minutes instead of weeks or months:
+<br>Use the CLI (**Terminal > New Terminal**), and:
 
 1. **An API**, and, we'll add ui and logic to make it a microservice...
 2. **Logic and Security:** multi-table constraints and derivations, role-based security, and application integration
@@ -58,7 +50,7 @@ API Logic Server can create projects from existing databases, or use GenAI to cr
 &nbsp;
 ### From Existing Database
 
-This project was created with a command like:
+Create the project - use the CLI (**Terminal > New Terminal**), :
 
 ```bash
 $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
@@ -72,7 +64,11 @@ This creates a project by reading your schema.  The database is Customer, Orders
 
 ### GenAI: New Database
 
-You can create a project from a prompt using GenAI, either by [WebGenAI](WebGenAI.md), or the the [GenAI CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"} as shown here.
+You can create a project from a prompt using GenAI, either by 
+
+* [WebGenAI - in the Browser](WebGenAI.md){:target="_blank" rel="noopener"}, or
+* [GenAI - docker](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
+* [GenAI CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"} as shown here.
 
 Use the GenAI CLI with or without signup:
 
@@ -81,8 +77,6 @@ Use the GenAI CLI with or without signup:
 ```bash
 als genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
 ```
-
-  
 
 2. ***Or,*** you can simulate the process (no signup) using:
 
@@ -93,6 +87,7 @@ als genai --repaired-response=system/genai/examples/genai_demo/genai_demo.respon
 ```
 
 &nbsp;
+
 ## 2. Working Software Now
 
 ### Open in your IDE and Run
@@ -137,18 +132,19 @@ You can click Customer 2, and see their Orders, and Items.
 
 In little more than a minute, you've used either
 
-* GenAI to create a database and project using Natural Language, or 
+* **GenAI** to create a database and project using Natural Language, or 
 * 1 CLI command to create a project from an existing database
 
 The project is standard Python, which you can customize in a standard IDE.
 
 This means you are ready for:
 
-* **Vibe:** instead of creating data mockups, use GenAI to create real data.  
-And, you'll have projects that are architecurally correct, with shared logic enforced in the server,
-available for both User Interfaces and services.
+* **Vibe:** 
 
+    * Instead of creating data mockups, use GenAI to create real data.
     * Use you favorite Vibe tools with your running API
+    * And, you'll have projects that are architecurally correct: shared logic enforced in the server,
+available for both User Interfaces and services.
 
 * **MCP:** your project is MCP-ready: `python integration/mcp/mcp_client_executor.py`.
 We'll explore more interesting examples below.
@@ -1034,21 +1030,6 @@ ApiLogicServer create --project-name=samples/nw_sample_nocust --db-url=nw
 
 
 </details>
-
-&nbsp;
-
-## Explore WebGenAI
-
-In addition to the CLI examples above, you can use [WebGenAI](https://apilogicserver.github.io/Docs/WebGenAI/) - a web interface for creating projects from prompts.  You can install WebGenAI on a server, so that created projects are easy to review with colleagues.
-
-To try WebGenAI:
-
-```bash
-cd webgenai
-docker compose up
-```
-
-You will be directed to the registration process.  You will also require a ChatGPT API Key as described above.
 
 &nbsp;
 
