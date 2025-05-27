@@ -100,3 +100,48 @@ If you want to customize/run the project, do so in *another instance* of VSCode.
 ## Manager Using Docker
 
 Please see [this page](DevOps-Docker.md#2a-using-the-manager){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+## How to run projects from the Manager
+
+You typically run projects by opening an IDE on the project folder, using provided Run Configurations.
+
+For a quick preview, you can also run from the Manager; there are 2 ways:
+
+1. Use ***another instance of VSCode.***  You can *examine* them in this current instance, but *run* them in their own instance.
+
+    * To do so, you probably want to acquire this extension: `Open Folder Context Menus for VS Code`. It will enable you to open the sample, tutorial or your own projects in another instance of VSCode.
+
+    * This option provides more Run/Debug options (e.g., run without security, etc),
+
+2. Or, use the Run/Debug Entry: `API Logic Server Run (run project from manager)`
+
+
+&nbsp;
+
+## Using GenAI Microservice Automation
+
+Use the CLI (Command Language Interface, in your IDE) to create projects from either existing databases, or GenAI prompts.  This creates a project you can open, run and customize in your IDE.
+
+[![GenAI Automation](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/sample-ai/copilot/genai-automation-video.png?raw=true)](https://www.youtube.com/watch?v=LSh7mqGiT0k&t=5s "Microservice Automation")
+
+&nbsp;
+
+### What Is API Logic Server
+
+It's an open source Python project consisting of a CLI to create projects, and runtime libraries to execute them.
+
+[![Architecture](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/Architecture-What-Is.png?raw=true)](https://apilogicserver.github.io/Docs/Architecture-What-Is/#runtimes-and-cli)
+
+&nbsp;
+
+### Modern Scalable Runtime Architecture
+
+Created projects use standard Flask and SQLAlchemy; automation is provided by Logic Bank (the rule engine) and SAFRS (JSON:APIs).  Scripts are provided to containerize projects, and deploy to Azure.
+
+[![Architecture - Runtime](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/Architecture-Runtime-Stack.png?raw=true)](https://apilogicserver.github.io/Docs/Architecture-What-Is/#key-runtime-components)
+
+&nbsp;
+
+
