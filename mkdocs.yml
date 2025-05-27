@@ -188,6 +188,7 @@ nav:
     - "Product Detail": Product-Detail.md
     - "Product Overview": Product-Overview.md
     - Personal:
+      - "Tour": Sample-Basic-Tour.md
       - "Home": Home.md
       - "INFO": ApiLogicServer-create.md
       - "Recompute": Logic-Recompute.md

@@ -1,7 +1,7 @@
 ---
 title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
-version: 0.21 from docsite
+version: 0.22 from docsite 5/24/2025
 ---
 
 See how to build a complete database system -- in minutes instead of weeks or months:
@@ -88,7 +88,7 @@ The sections below explore the system that has been created (which would be simi
 
     The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- **[self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for custom app dev.**
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/api-swagger.jpeg?raw=true">
+    ![swagger](images/basic_demo/api-swagger.jpeg)
 
     ### b. Admin App
 
@@ -96,7 +96,7 @@ The sections below explore the system that has been created (which would be simi
 
     You can click Customer 2, and see their Orders, and Items.
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/admin-app-initial.jpeg?raw=true">
+    ![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
 
 &nbsp;
 
@@ -148,13 +148,13 @@ To see security in action:
 
     #### 3. Transparent Logging
 
-    The screenhot below illustrates security declaration and operation:
+    The screenshot below illustrates security declaration and operation:
 
     * The declarative Grants in the upper code panel, and
 
     *  The logging in the lower panel, to assist in debugging by showing which Grants (`+ Grant:`) are applied:
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true">
+    ![security-filters](images/basic_demo/security-filters.jpeg)
 
 &nbsp;
 
@@ -186,7 +186,7 @@ Logic provides significant improvements over procedural logic, as described belo
 
     Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
 
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-chaining.jpeg?raw=true">
+    ![logic-chaining](images/basic_demo/logic-chaining.jpeg)
 
     #### b. 40X More Concise
 
@@ -260,7 +260,7 @@ als add-cust
 
 At the breakpoint, observe you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-debugging.jpeg?raw=true">
+![logic-debugging](images/basic_demo/logic-debugging.jpeg)
 
 &nbsp;
 
@@ -307,10 +307,9 @@ Of course, we all know that all businesses the world over depend on the `hello w
 
 ### Messaging With Kafka
 
-Along with APIs, messaging is another technology commonly employed for application integration.  See the screenshot below; for more information, see [Sample Integration](Sample-Integration.md##produce-ordershipping-message){:target="_blank" rel="noopener"}.
+Along with APIs, messaging is another technology commonly employed for application integration.  See the screenshot below; for more information, see [Sample Integration](Sample-Integration.md#produce-ordershipping-message){:target="_blank" rel="noopener"}.
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-to-shipping.jpg?raw=true">
-
+![order-to-shipping](images/integration/order-to-shipping.jpg)
 &nbsp;
 
 ## 5. Deploy Containers: Collaborate
@@ -325,7 +324,7 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 
 ## Summary
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/summary.jpeg?raw=true">
+![summary](images/basic_demo/summary.jpeg)
 
 !!! pied-piper ":bulb: Instant Creation, Rules, Open Standards"
     
@@ -341,11 +340,11 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 
 Initial version:
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true" width="500">
+![basic_demo_data_model](images/basic_demo/basic_demo_data_model.jpeg)
 
 End version:
 
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model_end.png?raw=true" width="500">
+![basic_demo_data_model_end](images/basic_demo/basic_demo_data_model_end.png)
 
 &nbsp;
 
