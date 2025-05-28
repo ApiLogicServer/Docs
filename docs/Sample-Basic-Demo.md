@@ -180,6 +180,10 @@ Logic provides significant improvements over procedural logic, as described belo
 
 !!! pied-piper ":bulb: Logic: Multi-table Derivations and Constraint Rules, 40X More Concise"
 
+    Declare logic with WebGenAI, or in your IDE using code completion or Natural Langugage:
+
+    ![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-chat.png)
+
     #### a. Chaining
 
     The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.

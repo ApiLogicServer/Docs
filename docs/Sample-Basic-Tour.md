@@ -250,7 +250,9 @@ Observe the rules firing in the console log - see Logic In Action, below.
 
 <summary>See Logic In Action </summary>
 
-<br>
+<br>[Declare logic](Logic.md#declaring-rules){:target="_blank" rel="noopener"} with WebGenAI, or in your IDE using code completion or Natural Language:
+
+![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-chat.png)
 
 **a. Chaining**
 
@@ -282,6 +284,29 @@ Rules are an executable design.  Note they map exactly to our natural language d
 Optionally, you can use the Behave TDD approach to define tests, and the Rules Report will show the rules that execute for each test.  For more information, [click here](https://apilogicserver.github.io/Docs/Behave-Logic-Report/).
 
 </details>
+
+&nbsp;
+
+### Logic-Enabled MCP
+
+Logic is automatically executed in your MCP-enabled API.  For example, consider the following MCP orchestration:
+
+```
+List the orders date_shipped is null and CreatedOn before 2023-07-14,
+and send a discount email (subject: 'Discount Offer') to the customer for each one.
+```
+
+When sending email, we require a business rules to ensure it respects the opt-out policy:
+
+![email request](images/integration/mcp/3a-email-logic.png)
+
+With the server running, test it by posting to `SysMCP` like this:
+
+```bash
+curl -X 'POST' 'http://localhost:5656/api/SysMcp/' -H 'accept: application/vnd.api+json' -H 'Content-Type: application/json' -d '{ "data": { "attributes": {"request": "List the orders date_shipped is null and CreatedOn before 2023-07-14, and send a discount email (subject: '\''Discount Offer'\'') to the customer for each one."}, "type": "SysMcp"}}'
+```
+
+For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

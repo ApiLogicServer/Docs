@@ -232,7 +232,9 @@ These require you first obtain the row, either through a model class accessor (e
 
 ## Managing Logic
 
-[Declare Rules in your IDE](Logic-Why.md##rules-declare-extend-debug){:target="_blank" rel="noopener"} (e.g., VSCode, PyCharm) to declare logic using Python, with all the familiar features of code completion and syntax high-lighting.  You can also use the debugger, and familiar Source Code Control tools such as `git`.
+[Declare Rules in your IDE](Logic-Why.md#rules-declare-extend-debug){:target="_blank" rel="noopener"} (e.g., VSCode, PyCharm).  Logic is expressed in Python.
+
+Use [WebGenAI or your IDE](Logic.md#declaring-rules) with Natural Language, or all the familiar IDE features of code completion and syntax high-lighting.  You have full use of the debugger, and familiar Source Code Control tools such as `git`.
 
 &nbsp;
 
@@ -264,7 +266,7 @@ In VSCode, set `"redirectOutput": true` in your **Launch Configuration.**  This 
 
 &nbsp;
 
-### Managing Logic
+### Logic Management
 
 &nbsp;
 
