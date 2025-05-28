@@ -320,3 +320,9 @@ Some ORMs (Object Relational Managers), such as Hibernate, allow similar verbs. 
 
 1. They are too coarse: a `select sum` is issued when *any* order change is made (no pruning)
 2. Cost: as above, it's expensive if there are many orders
+
+&nbsp;
+
+### GenAI: Frankencode
+
+You might imagine LLM translating requirements to code.  This approach fails, and even it worked, it would be undesirable to manage a large explosion of [frankencode](https://www.genai-logic.com/faqs#h.3fe4qv21qtbs){:target="_blank" rel="noopener"}.

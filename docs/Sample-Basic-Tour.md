@@ -1,7 +1,7 @@
 ---
 title: Welcome
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
-version info: 2.0 (05/24/2025)
+version info: 2.0 (05/24/2025) from docs
 ---
 <style>
   .md-typeset h1,
@@ -265,6 +265,9 @@ Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  Th
 **b. 40X More Concise**
 
 The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code).  That's a remarkable 40X decrease in the backend half of the system.
+
+> 💡 No FrankenCode<br>Note the rules look like syntactically correct requirements.  They are not turned into piles of unmanageable "frankencode" - see [models not frankencode](https://www.genai-logic.com/faqs#h.3fe4qv21qtbs){:target="_blank" rel="noopener"}.
+
 <br><br>
 
 **c. Automatic Re-use**
