@@ -14,7 +14,7 @@ version info: 2.0 (05/24/2025)
 
 1. ***Instant mcp-enabled microservices*** (APIs and Admin Apps), from a database or **GenAI prompt** -- one command and you are ready for MCP, Vibe and Business User Collaboration.
 
-2. ***Customize*** with **Rules** and Python in your IDE, standard container deployment
+2. ***Customize*** with **Declarative Rules** and Python in your IDE, standard container deployment
 
 You are in the [API Logic Server Manager](Manager.md).  This is a good place to manage projects, create notes and resources, etc.
 
@@ -22,43 +22,25 @@ You are in the [API Logic Server Manager](Manager.md).  This is a good place to 
 
 ##  Explore Creating Projects
 
-**Evaluation Guide:** click on the disclosure buttons, below.**  
-
-* Important: look for **readme files.**
-* You may find it more convenient to view this [in your Browser](Sample-Basic-Tour.md).
-
+**Evaluation Guide:** click on the disclosure buttons, below.
 </br>
 
 <details markdown>
 
 <summary> 1. Product Tour - Start here</summary>
 
-<br>Use the CLI (**Terminal > New Terminal**), and:
+<br>We'll illustrate [API Logic Server](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
 
-1. **An API**, and, we'll add ui and logic to make it a microservice...
-2. **Logic and Security:** multi-table constraints and derivations, role-based security, and application integration
-3. **An Admin App:** a multi-page, multi-table web app 
-4. **Customizable:** use your IDE to customize with declarative rules and standard Python
+The entire process takes 20 minutes; usage notes:
 
-&nbsp;
-
-We'll illustrate [API Logic Server](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
-
-The entire process takes 20 minutes, instead of several weeks using traditional development.
-
-You can use this article in several ways:
-
-* Conceptual Overview - the main article focuses on the concepts and basic process.  Operational details are moved to the Appendix to retain focus.
-
-* Self-demo - [install](Install-Express.md){:target="_blank" rel="noopener"} and create this system yourself.
-
-* Self-demo with video - you can also use [this video](https://www.youtube.com/watch?v=sD6RFp8S6Fg) (it's the same system, but the database is created with ChatGPT).
+* Important: look for **readme files** in created projects.
+* You may find it more convenient to view this [in your Browser](Sample-Basic-Tour.md).
 
 &nbsp;
 
 ## 1. Automation: Project Creation
 
-API Logic Server can create projects from existing databases, or use GenAI to create projects with new databases.  See the sub-sections below.
+API Logic Server can create projects from existing databases, or use GenAI to create projects with new databases.  Let's see how.
 
 &nbsp;
 ### From Existing Database
@@ -84,13 +66,13 @@ $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
 
 ### GenAI: New Database
 
-You can create a project from a prompt using GenAI, either by 
+You can create a project *and a new database* from a prompt using GenAI, either by:
 
 * [WebGenAI - in the Browser](WebGenAI.md){:target="_blank" rel="noopener"}, or
 * [GenAI - docker](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
-* [GenAI CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"} as shown here.
+* [GenAI CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"} 
 
-Use the GenAI CLI with or without signup:
+Here we use the GenAI CLI:
 
 1. If you have signed up (see *Get an OpenAI Key*, below), this will create and open a project called `genai_demo` from `genai_demo.prompt` (available in left Explorer pane):
 
@@ -116,7 +98,7 @@ For background on how it works, [click here](Sample-Genai.md#how-does-it-work){:
 
 You can open with VSCode, and run it as follows:
 
-1. **Create Virtual Environment:** as shown in the Appendix.
+1. **Create Virtual Environment:** automated in most cases; see the Appendix (Procedures / Detail Procedures) for details.
 
 2. **Start the Server:** F5 (also described in the Appendix).
 
@@ -135,12 +117,13 @@ The system creates an API with end points for each table, with filtering, sortin
 
 ![swagger](images/basic_demo/api-swagger.jpeg)
 </details>
+<br>
 
 ### Admin App
 
 It also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
 
-You can click Customer 2, and see their Orders, and Items.
+You can click Customer Alice, and see their Orders, and Items.
 
 <details markdown>
 
@@ -197,12 +180,13 @@ To add customizations, in a terminal window for your project:
 
 ```bash
 als add-cust
+als add-auth --db_url=auth
 ```
 &nbsp;
 
 ### Security: Role Based Access
 
-The `add_customizations` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_logic.sh`.
+The `add_customizations` process above has simulated using your IDE to declare security in `logic/declare_logic.sh`.
 
 To see security in action:
 
@@ -255,13 +239,12 @@ To see logic in action:
 
 **2. Use the Admin App to add an Order and Item for `Customer Alice`** (see Appendix)
 
-Observe the rules firing in the console log, as shown in the next screenshot.
+Observe the rules firing in the console log - see Logic In Action, below.
 
-Logic provides significant improvements over procedural logic, as described below.
+<br>
+> 💡 Logic: Multi-table Derivations and Constraint Declarative Rules.<br>&emsp;&emsp;Declarative Rules are 40X More Concise than procedural code.<br>&emsp;&emsp;For more information, [click here](Logic-Why.md){:target="_blank" rel="noopener"}.
 
-&nbsp;
-
-!!! pied-piper ":bulb: Logic: Multi-table Derivations and Constraint Rules, 40X More Concise"
+<br>
 
 <details markdown>
 
@@ -307,10 +290,9 @@ Optionally, you can use the Behave TDD approach to define tests, and the Rules R
 Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let's take an example:
 
 >> Give a 10% discount for carbon-neutral products for 10 items or more.
+<br>
 
-&nbsp;
-
-The following `add_iteration` process simulates an iteration:
+The following `add-cust` process simulates an iteration:
 
 * acquires a new database with `Product.CarbonNeutral`
 
@@ -340,8 +322,8 @@ To add this iteration, repeat the process above - in a terminal window for your 
 
 ```bash
 als add-cust
+als rebuild-from-database --db_url=sqlite:///database/db.sqlite
 ```
-&nbsp;
 
 **3. Set the breakpoint as shown in the screenshot below**
 
@@ -358,7 +340,8 @@ At the breakpoint, observe you can use standard debugger services to debug your 
 This simple example illustrates some significant aspects of iteration, described in the sub-sections below.
 
 <br>
-!!! pied-piper ":bulb: Iteration: Automatic Invocation/Ordering, Extensible, Rebuild Preserves Customizations"
+> 💡 Iteration: Automatic Invocation/Ordering, Extensible, Rebuild Preserves Customizations
+<br>
 
 **a. Dependency Automation**
 
