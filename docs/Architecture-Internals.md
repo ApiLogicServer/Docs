@@ -15,6 +15,8 @@ The subsections below described the steps to:
 To create the projects: 
 
 1. Install the user version of the API Logic Server
+
+    * let's assume it's `~/dev/ApiLogicServer`
 2. Start the Manager: `als start`
 3. Be sure you have installed the VSCode CLI - see [the VSCode CLI procedure](IDE-Customize.md/#vscode-cli){:target="_blank" rel="noopener"}
 4. In your CLI terminal window:
@@ -23,8 +25,14 @@ To create the projects:
 ```bash title="Install API Logic Server Development environment"
 sh system/install-ApiLogicServer-dev/install-ApiLogicServer-dev.sh
 ```
+5. In your newly created dev source, create `ApiLogicServer/ApiLogicServer-dev/org_git/ApiLogicServer-src/api_logic_server_cli/api_logic_server_info.yaml`, with:
+```
+last_created_date: May 28, 2025 12:08:45
+last_created_project_name: /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/basic_demo
+last_created_version: 14.05.16
+```
 
-This will use `git clone` to create folders in `~/dev/ApiLogicServer/ApiLogicServer-dev/org/:`
+The install procedure will use `git clone` to create folders in `~/dev/ApiLogicServer/ApiLogicServer-dev/org/:`
 
 ![dev structure](images/internals/install-ApiLogicServer-dev.png)
 
