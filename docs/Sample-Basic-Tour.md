@@ -144,11 +144,11 @@ The project is standard Python, which you can customize in a standard IDE.
 
 This means you are ready for:
 
-* **Vibe:** 
+* **Vibe:**  unblock UI dev
 
-    * Instead of creating data mockups, use GenAI to create real data.
+    * Instead of creating data mockups, use GenAI to create real data
     * Use you favorite Vibe tools with your running API
-    * And, you'll have projects that are architecurally correct: shared logic enforced in the server,
+    * And, you'll have projects that are architecurally correct: shared logic, enforced in the server,
 available for both User Interfaces and services.
 
 * **MCP:** your project is MCP-ready: `python integration/mcp/mcp_client_executor.py`.
@@ -156,7 +156,7 @@ We'll explore more interesting examples below.
 
 * **Collaboration to Get Requirements Right:** Business Users can use GenAI to create systems, and the Admin app to verify their business idea.  And iterate.
 
-> But automated direct access to the database is a terrible architecture.  A key feature of GenAI-Logic is logic automation using declarative, spreadsheet-like business rules.  Let's now explore those.
+> But automated direct access to the database is a terrible architecture.  A key feature of GenAI-Logic is logic automation, using declarative, spreadsheet-like **business rules.**  Let's now explore those.
 
 
 &nbsp;
