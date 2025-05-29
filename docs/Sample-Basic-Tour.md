@@ -72,7 +72,10 @@ You can create a project *and a new database* from a prompt using GenAI, either 
 * [GenAI - docker](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
 * [GenAI CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"} 
 
-Here we use the GenAI CLI:
+<details markdown>
+
+<summary> See GenAI Project Creation</summary>
+<br>>Here we use the GenAI CLI:
 
 1. If you have signed up (see *Get an OpenAI Key*, below), this will create and open a project called `genai_demo` from `genai_demo.prompt` (available in left Explorer pane):
 
@@ -90,7 +93,13 @@ als genai --repaired-response=system/genai/examples/genai_demo/genai_demo.respon
 
 For background on how it works, [click here](Sample-Genai.md#how-does-it-work){:target="_blank" rel="noopener"}.
 
-&nbsp;
+Or, use WebGenAI:
+
+![WebGenAI](images/web_genai/genai-prompt-5.png)
+
+</details>
+<br>
+
 
 ## 2. Working Software Now
 
