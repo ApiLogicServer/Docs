@@ -135,6 +135,12 @@ As described in [this recommended video](https://www.youtube.com/watch?v=FLpS7Of
 
 &nbsp;
 
+### Patch and Delete
+
+The MCP Client Executor does not currently implement Patch or Delete.  These are expected to be straight-forward.
+
+&nbsp;
+
 ## Admin App: MCP Client Executor
 
 The screen shot below illustrates using the Admin App to create and execute MCP requests.  The actual MCP processing is in the Api Logic Server, so you can build your own custom app to provide MCP execution, using the Api Logic Server business logic.  
