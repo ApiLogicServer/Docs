@@ -156,6 +156,10 @@ The screen shot below shows logic you must create for the `SysMcp` table.
 
 ![mcp-client](images/integration/mcp/mcp_client_executor_request.png)
 
+### Admin App Customization
+
+You might want to customize the `SysMcp` settings in `ui/admin/admin.yaml`.  For more information, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/customizations/ui/admin/admin.yaml){:target="_blank" rel="noopener"}.
+
 &nbsp;
 
 ## Appendix: Partners Encouraged
