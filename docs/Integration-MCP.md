@@ -129,6 +129,12 @@ As shown below, a common [logic pattern](Logic.md#rule-patterns){:target="_blank
 
 &nbsp;
 
+### Multi-Server Orchestrations
+
+As described in [this recommended video](https://www.youtube.com/watch?v=FLpS7OfD5-s){:target="_blank" rel="noopener"}, the MCP Client Executor can call the LLM *between* each MCP Server Executor call.  This enables the LLM to detect intermediate results, and call subsequent tools accordingly.
+
+&nbsp;
+
 ## Admin App: MCP Client Executor
 
 The screen shot below illustrates using the Admin App to create and execute MCP requests.  The actual MCP processing is in the Api Logic Server, so you can build your own custom app to provide MCP execution, using the Api Logic Server business logic.  
@@ -170,7 +176,9 @@ We welcome participation in this project. Please contact us via [discord](https:
 
 ## Appendix: MCP Background
 
-For more information:
+The best video we have found was [noted above](https://www.youtube.com/watch?v=FLpS7OfD5-s){:target="_blank" rel="noopener"}.
+
+Other resources:
 
 1. [see MCP Introduction](https://modelcontextprotocol.io/introduction)
 
