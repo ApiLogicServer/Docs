@@ -32,7 +32,7 @@
 
 2. MCP Client Executor sends Bus User ***NL query + schema*** (as prompt or tool definition) to the external LLM, here, ChatGPT (requires API Key).  LLM returns an ***MCP Tool Context*** JSON block.
 
-	* An MCP Client Executor might be similar in concept to installed/Web ChatGPT (etc), but those *cannot* be used to access MCPs since they cannot issue http calls.  This is an internally developed app (or, perhaps an IDE tool)
+	* An MCP Client Executor might be similar in concept to installed/Web ChatGPT (etc), but those *cannot* be used to access MCPs since they cannot issue http calls.  This is a custom client app (or, perhaps an IDE tool)
 
 		* We are using a test version: `integration/mcp/mcp_client_executor.py`
 	* Tool definitions are OpenAI specific, so we are sending the schema (in each prompt)
@@ -63,17 +63,19 @@ We want to do this without troubling IT.  MCP enables business users, while main
 Create the **basic_demo** under the [Manager](Manager.md) as described in the Manager readme:  
 
 1. In your IDE: `als create --project-name=basic_demo --db-url=basic_demo`
+
+![create-server](images/integration/mcp/overview/1-create-server.png)
+
 2. Run `als add-cust` to load mcp (and logic)
-3. Start the Server (f5)
-4. Run `python integration/mcp/mcp_client_executor.py`
+3. You will need an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT APIKey (obtain one [like this](WebGenAI-CLI.md/#configuration)).
+4. Start the Server (F5)
+5. Run `python integration/mcp/mcp_client_executor.py`
 	* You can use Run Config: **Run designated Python file**
 
-
-The [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} project illustrates basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
-
-You will need an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT APIKey (obtain one [like this](WebGenAI-CLI.md/#configuration)).
+> 💡 The [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} project illustrates basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
 
 &nbsp;
+
 ### Prompt
 
 Here is a NL prompt using *basic_demo* coded into `mcp_client_executor`
@@ -127,11 +129,38 @@ As shown below, a common [logic pattern](Logic.md#rule-patterns){:target="_blank
 
 &nbsp;
 
-## Appendix: Status - End-to-End Illustration
+## Admin App: MCP Client Executor
 
-This is intended to be a vehicle for exploring MCP.  It is not productized - we need to explore security, and perhaps integrating this into the Admin App.
+The screen shot below illustrates using the Admin App to create and execute MCP requests.  The actual MCP processing is in the Api Logic Server, so you can build your own custom app to provide MCP execution, using the Api Logic Server business logic.  
 
-We welcome participation in this exploration. Please contact us via [discord](https://discord.gg/HcGxbBsgRF).
+See the sub-sections below to see how to provide this on your own projects.
+
+![mcp-client](images/integration/mcp/mcp-client.png)
+
+&nbsp;
+
+### Create table: `SysMCP`
+
+This can be a table in your database, or you can create it in a separate database.  
+
+It requires a column called `prompt`.
+
+&nbsp;
+
+### `SysMcp` Logic: Request Pattern
+
+The screen shot below shows logic you must create for the `SysMcp` table.
+
+1. This is the same *request* pattern used for SysEmail.
+2. The code is virtually identical to the stand-alone MCP Client Executor described above.
+
+![mcp-client](images/integration/mcp/mcp_client_executor_request.png)
+
+&nbsp;
+
+## Appendix: Partners Encouraged
+
+We welcome participation in this project. Please contact us via [discord](https://discord.gg/HcGxbBsgRF).
 
 &nbsp;
 
