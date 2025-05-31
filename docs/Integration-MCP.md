@@ -174,7 +174,9 @@ You might want to customize the `SysMcp` settings in `ui/admin/admin.yaml`.  For
 
 &nbsp;
 
-## Appendix: Partners Encouraged
+## Appendix: Status
+
+MCP support is GA for the MCP Server Executor.  The MCP Client Executor is in Tech Preview.  It is a great way to explore key MCP architecture, with additional planned features for Patch, Chaining, Fanout, Security, etc.
 
 We welcome participation in this project. Please contact us via [discord](https://discord.gg/HcGxbBsgRF).
 
