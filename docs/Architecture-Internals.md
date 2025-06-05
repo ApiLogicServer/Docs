@@ -12,11 +12,14 @@ The subsections below described the steps to:
 
 ## Manager `install-ApiLogicServer-dev`
 
-To create the projects: 
+![dev env](images/architecture/internals/dev-dirs.png)
+
+To create the dev enviroment (result shown above): 
 
 1. Install the user version of the API Logic Server
 
-    * let's assume it's `~/dev/ApiLogicServer`
+    * let's assume it's `~/dev/ApiLogicServer-dev`
+
 2. Start the Manager: `als start`
 3. Be sure you have installed the VSCode CLI - see [the VSCode CLI procedure](IDE-Customize.md/#vscode-cli){:target="_blank" rel="noopener"}
 4. In your CLI terminal window:
@@ -88,7 +91,7 @@ It should look something like this:
 
 &nbsp;
 
-## Create the BLT `venv`
+## Run the BLT
 
 It is tiresome to create a `venv` for each project.  So, the system creates projects with a VSCode property identifying the `venv`.
 

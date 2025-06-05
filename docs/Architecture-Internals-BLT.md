@@ -25,7 +25,7 @@ The bulk of the tests are in the Sample Projects's Behave tests. These reveal mo
 
 We therefore recommend that, before you run the full regression, first:
 
-1. Create the BLT `venv` (useful for running the smoke test app - [see here](Architecture-Internals.md#create-the-BLT-venv))
+1. Create the BLT `venv` (useful for running the smoke test app - [see here](Architecture-Internals.md#run-the-BLT))
 
 ![BLT Hold Tomato](images/architecture/blt-no-tomato.png)
 
