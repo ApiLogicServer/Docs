@@ -1,23 +1,25 @@
 !!! pied-piper ":bulb: TL;DR - MCP: Enable Bus Users to use NL to create multi-step execution flows"
 
-	MCP enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.  For example, a Business User might request: 
+	Developers can use MCP to build **MCP Client Executors**.  These enable Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.  For example, a Business User might request: 
 	
 	*Find the overdue orders, and send an email offering a discount*.  
 	
 	This is a new request, composed from existing services (find orders, send email).
 	
-	MCP is an open protocol than enables:
+	MCP Client Executors use LLMs for Natural Language translation over a wide set of underlying **MCP Server Executors** (aka *tools*). MCP enables LLMs to understand these underlying tools - their schema (e.g., *Customer*, *Product*), and how they are called (e.g, JSON:API).  
 	
-	1. **MCP Client Executors** to discover servers (tools) - their schema, instructions, etc.
-	2. MCP Client Executors to call LLMs to translate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
-	3. The MCP Client Executors to process the Tool Context Block steps, making calls on the  **MCP Server Executors.**
+	MCP Client Executors operate as shown below:
 	
-		* MCP Server Executors are commonly provided via **logic-enabled JSON:APIs.**  (Note the logic is critical in maintaining integrity and security.)
+	1. MCP Client Executors first **discover** servers (tools) - their schema, instructions, etc.
+	2. MCP Client Executors then **call LLMs** to translate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
+	3. The MCP Client Executors then **process the Tool Context Block** steps, making calls on the  **MCP Server Executors** (tools).
+	
+		* MCP Server Executors are commonly provided via ***logic-enabled* APIs.**  (Note the logic is critical in maintaining integrity and security.)
 	
 	In some cases, you may have a database, but neither the APIs nor the logic.  GenAI-Logic API Logic Server can **mcp-ify existing databases** by:
 	
 	1. Creating JSON:APIs for *existing databases* with a single CLI command
-	2. Enabling you to [declare business logic](Logic.md), which can be used via the APIs in MCP execution flows.
+	2. Enabling you to [declare business logic](Logic.md), enforced by the APIs during MCP execution flows.
 
  &nbsp;
 
@@ -68,9 +70,12 @@ Create the **basic_demo** under the [Manager](Manager.md) as described in the Ma
 
 2. Run `als add-cust` to load mcp (and logic)
 3. You will need an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT APIKey (obtain one [like this](WebGenAI-CLI.md/#configuration)).
+
+	* To make the demo less fiddly, `integration/mcp/examples/mcp_tool_context.json` is provided.  You can engage the LLM by setting `create_tool_context_from_llm`.
+
 4. Start the Server (F5)
 5. Run `python integration/mcp/mcp_client_executor.py`
-	* You can use Run Config: **Run designated Python file**
+	* You can use Run Config: **MCP - Model Context Protocol - Client Executor**
 
 > 💡 The [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} project illustrates basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
 
@@ -81,7 +86,7 @@ Create the **basic_demo** under the [Manager](Manager.md) as described in the Ma
 Here is a NL prompt using *basic_demo* coded into `mcp_client_executor`
 
 ```
-List the unshipped orders created before 2023-07-14, and send a discount email (subject: 'Discount Offer') to the customer for each one.
+List the orders date_shipped is null and CreatedOn before 2023-07-14, and send a discount email (subject: 'Discount Offer') to the customer for each one.
 ```
 
 &nbsp;
@@ -110,8 +115,11 @@ We call the LLM, providing the NL Query and the discovered schema returned above
 2. instructions on how to format `expected_response` (e.g., `query_params`)
 3. and how to use the **Request Pattern** to send email, subject to logic (see Logic, below):
 
-![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM.png) The LLM returns a Tool Context completion (response), with the steps to call the MCP Server Executor, which here is the logic-enabled API Logic Server JSON:API:
-![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM-d.png) 
+![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM.png) 
+
+The LLM returns a Tool Context completion (response), with the steps to call the MCP Server Executor, which here is the logic-enabled API Logic Server JSON:API:
+![2-tool-context-from-LLM](images/integration/mcp/2b-tool-context-from-LLM.png) 
+
 #### 3 - Invoke MCP Server
 
 The calls include GET, and a POST for each returned row.  
@@ -119,7 +127,15 @@ The calls include GET, and a POST for each returned row.
 ![3-MCP-server response](images/integration/mcp/3-MCP-server-response.png) 
 &nbsp;
 
-##### 3a - Logic (Request Pattern)
+##### 3a - Fan-out
+
+Fan-out means that we need to create email for each returned Order.  So, in processing step 2, we must iterate over the orders in step 1, and use the `customer_id` from the Order for the email:
+
+![fan-out](images/integration/mcp/3a-fan-out.png)
+
+&nbsp;
+
+##### 3b - Logic (Request Pattern)
 
 MCP is capable of executing email directly, but we have business policies providing for email opt-outs.  We must respect this logic.
 
@@ -129,15 +145,65 @@ As shown below, a common [logic pattern](Logic.md#rule-patterns){:target="_blank
 
 &nbsp;
 
-### Multi-Server Orchestrations
+### Advanced LLM Concepts
 
-As described in [this recommended video](https://www.youtube.com/watch?v=FLpS7OfD5-s){:target="_blank" rel="noopener"}, the MCP Client Executor can call the LLM *between* each MCP Server Executor call.  This enables the LLM to detect intermediate results, and call subsequent tools accordingly.
+The following are implemented but not used in this example or tested.  We encourage participation in designing examples, and testing the implementation.
 
 &nbsp;
 
-### Patch and Delete
+#### Agentic Execution (`llm-call`)
 
-The MCP Client Executor does not currently implement Patch or Delete.  These are expected to be straight-forward.
+As described in [this recommended video](https://www.youtube.com/watch?v=FLpS7OfD5-s){:target="_blank" rel="noopener"}, the MCP Client Executor can call the LLM *between* each MCP Server Executor call.  This enables the LLM to detect intermediate results, and call subsequent tools accordingly.
+
+For example, consider this scenario:
+
+> “Get all orders for Alice. If any are over $500, alert the sales manager.”
+
+Here is a sample tool context - note the `llm-call/llm-goal`:
+
+```json
+[
+  {
+    "tool_type": "json-api",
+    "base_url": "https://server-a.com/api",
+    "path": "Order",
+    "method": "GET",
+    "query_params": [
+      { "name": "customer", "op": "eq", "val": "Alice" }
+    ],
+    "body": [],
+    "llm_call": true,  // <-- Indicates to pause and invoke LLM after this step
+    "llm_goal": "Check which orders for Alice are over $500 and generate alert POSTs as needed"
+  }
+]
+```
+
+&nbsp;
+
+#### Branching
+
+An alternative approach would be for the LLM plan to include `llm-call` and branching.  Consider this scenario:
+
+> “Check Alice’s orders. If any are overdue (i.e. date_due < today and not shipped), send a warning email. Otherwise, do nothing.”
+
+The LLM might create a tool context like:
+
+```json
+[
+  {
+    "tool_type": "json-api",
+    "base_url": "https://server-a.com/api",
+    "path": "Order",
+    "method": "GET",
+    "query_params": [
+      { "name": "customer_id", "op": "eq", "val": "Alice" }
+    ],
+    "body": [],
+    "llm_call": true,
+    "llm_goal": "If any orders are overdue (date_due < today and date_shipped is null), generate an email alert step. Otherwise, no further action."
+  }
+]
+```
 
 &nbsp;
 
@@ -164,7 +230,7 @@ It requires a column called `prompt`.
 The screen shot below shows logic you must create for the `SysMcp` table.
 
 1. This is the same *request* pattern used for SysEmail.
-2. The code is virtually identical to the stand-alone MCP Client Executor described above.
+2. The code invokes the same `integration/mcp/mcp_client_executor.py` described above.
 
 ![mcp-client](images/integration/mcp/mcp_client_executor_request.png)
 
@@ -176,7 +242,7 @@ You might want to customize the `SysMcp` settings in `ui/admin/admin.yaml`.  For
 
 ## Appendix: Status
 
-MCP support is GA for the MCP Server Executor.  The MCP Client Executor is in Tech Preview.  It is a great way to explore key MCP architecture, with additional planned features for Patch, Chaining, Fanout, Security, etc.
+MCP support is GA for the MCP Server Executor.  The MCP Client Executor is in Tech Preview.  It is a great way to explore key MCP architecture, with additional planned features for Security.
 
 We welcome participation in this project. Please contact us via [discord](https://discord.gg/HcGxbBsgRF).
 
@@ -184,7 +250,9 @@ We welcome participation in this project. Please contact us via [discord](https:
 
 ## Appendix: MCP Background
 
-The best video we have found was [noted above](https://www.youtube.com/watch?v=FLpS7OfD5-s){:target="_blank" rel="noopener"}.
+Descriptions of MCP often describe them as *USB for servers*.  That meant little to use, and probably to you.  We hope the more concrete description here might be more useful.
+
+Along the same lines, the best video we have found was [noted above](https://www.youtube.com/watch?v=FLpS7OfD5-s){:target="_blank" rel="noopener"}.
 
 Other resources:
 

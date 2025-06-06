@@ -26,4 +26,11 @@ In addition, the system logs all rules that fire, to aid in debugging.  Referrin
 *   Log indention shows multi-table chaining
 
 
+## Custom Stacktrace
 
+VSCode stacktraces require several lines, so `config/setup_server.py` implements a custom stacktrace as shown below.
+
+1. You can easily disable this if you prefer the standard
+2. This applies to all stacktraces, not just for logic
+
+![custom-stacktrace](images/vscode/custom_stktrace.png)
