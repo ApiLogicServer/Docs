@@ -27,16 +27,13 @@
 
 ![Intro diagram](images/integration/mcp/MCP_Arch.png)  
 
-1. MCP Client Executor Startup
+1. MCP Client Executor Startup calls `.well-known` endpoint to load training and schema meta data
 
-	* Calls `.well-known` endpoint to load schema
-	* This is created by API Logic Server, and stored in `docs/mcp_schema.json`.  You can edit this as required to control what is discovered, and to minimize the information sent to the LLM.
-
-2. MCP Client Executor sends Bus User ***NL query + schema*** (as prompt or tool definition) to the external LLM, here, ChatGPT (requires API Key).  LLM returns an ***MCP Tool Context*** JSON block.
+2. MCP Client Executor sends Bus User ***NL query + training + schema*** to the external LLM (here we are using ChatGPT - requires API Key).  LLM returns an ***MCP Tool Context*** JSON block.
 
 	* An MCP Client Executor might be similar in concept to installed/Web ChatGPT (etc), but those *cannot* be used to access MCPs since they cannot issue http calls.  This is a custom client app (or, perhaps an IDE tool)
 
-		* We are using a test version: `integration/mcp/mcp_client_executor.py`
+	* To explore `integration/mcp/mcp_client_executor.py`, [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/integration/mcp/mcp_client_executor.py){:target="_blank" rel="noopener"}
 	* Tool definitions are OpenAI specific, so we are sending the schema (in each prompt)
 
 		* Note this strongly suggests this is a **subset** of your database - edit `docs/mcp_schema.json` as required. 
@@ -49,14 +46,16 @@
 ## Example: send emails for pending orders
 
 
-The **basic_demo** sample enables you to create orders with business logic to check credit by using rules to roll-up item amount to orders / customers.  Setting the `date_shipped` indicates payment is received, and the customer balance is reduced.
+The **basic_demo** sample enables you to create orders with business logic: check credit by using rules to roll-up item amount to orders / customers.  Setting the `date_shipped` indicates payment is received, and the customer balance is reduced.  
+
+💡 The basic_demo project ([tutorial here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}) illustrates basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
 
 In this example, we want a new service to:
 
 1. Find Orders placed over 30 days ago that are not shipped
 2. Send an Email encouraging prompt payment
 
-We want to do this without troubling IT.  MCP enables business users, while maintaining integrity through the existing logic-enabled JSON:APIs.
+We want to do this without troubling IT.  MCP enables business users to self-server, while maintaining integrity through the existing logic-enabled JSON:APIs.
 
 &nbsp;
 
@@ -69,15 +68,12 @@ Create the **basic_demo** under the [Manager](Manager.md) as described in the Ma
 ![create-server](images/integration/mcp/overview/1-create-server.png)
 
 2. Run `als add-cust` to load mcp (and logic)
-3. You will need an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT APIKey (obtain one [like this](WebGenAI-CLI.md/#configuration)).
+3. Optionally, define an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT API Key (obtain one [like this](WebGenAI-CLI.md/#configuration)).
 
-	* To make the demo less fiddly, `integration/mcp/examples/mcp_tool_context.json` is provided.  You can engage the LLM by setting `create_tool_context_from_llm`.
+	* To make the demo less fiddly, the system loads the tool context from `integration/mcp/examples/mcp_tool_context.json`.  You can engage the LLM by setting `create_tool_context_from_llm` to `True`, which requires an API Key.
 
 4. Start the Server (F5)
-5. Run `python integration/mcp/mcp_client_executor.py`
-	* You can use Run Config: **MCP - Model Context Protocol - Client Executor**
-
-> 💡 The [basic_demo](Sample-Basic-Demo.md){:target="_blank" rel="noopener"} project illustrates basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
+5. Use Run Config: **MCP - Model Context Protocol - Client Executor**
 
 &nbsp;
 
@@ -97,28 +93,42 @@ You can run `mcp_client_executor` under the debugger, and stop at each of the br
 
 #### 0 - MCP Client Executor
 
-Here is the basic driver of the test program (see the Architecture diagram above):
+Here is the basic driver of the `mcp_client_executor` (see the Architecture diagram above):
 ![0-MCP-client-executor](images/integration/mcp/0-MCP-client-executor.png) 
 
-#### 1 - Discovery
+#### 1 - Discover Servers
 
-Discovery uses a config file `integration/mcp/mcp_server_discovery.json` to discover 1 or more servers, and invoke their `.well-known` endpoint (see `api/api_discovery/mcp_discovery.py`) to obtain the schema.
+Discovery uses a config file `integration/mcp/mcp_server_discovery.json` to discover 1 or more servers, and invoke their `.well-known` endpoint (see `api/api_discovery/mcp_discovery.py`):
 ![1-discovery-from-als](images/integration/mcp/1-discovery-from-als.png) 
+Observe response shown above (for actual content, [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/integration/mcp/examples/mcp_discovery_response.json){:target="_blank" rel="noopener"}):
+
+1. The config file is used to discover the servers. 
+
+	* It identifies the `.well-known` endpoint used to discover server information
+	
+1. The server information (see above) includes:
+
+	1. `base_url`
+	2. `learning`: how to call the server
+	3. `resources`: the exposed endpoints, their attributes and methods
+
+The resource and learning meta data is created by API Logic Server, but you can control it:
+
+  * The **learning** is at  [docs/mcp_learning/mcp.prompt](https://github.com/ApiLogicServer/basic_demo/blob/main/docs/mcp_learning/mcp.prompt){:target="_blank" rel="noopener"}.  This is also created by API Logic Server; edit as required to tune / expand training.
+
+	  * For example, the learning describes how to use the request pattern to send email (further described below)
+
+  * The **resources** (aka schema) is at at [docs/mcp_learning/mcp_schema.json](https://github.com/ApiLogicServer/basic_demo/blob/main/docs/mcp_learning/mcp_schema.json){:target="_blank" rel="noopener"}.  
+  
+	  * You can edit this as required to control what is discovered, and to minimize the information sent to the LLM.
 
 &nbsp;
 #### 2 - Tool Context from LLM
 
-We call the LLM, providing the NL Query and the discovered schema returned above.   Note the schema includes:
-
-1. resources: the schema itself 
-	* You would typically edit this file to expose only desired data, and reduce the size of the prompt
-2. instructions on how to format `expected_response` (e.g., `query_params`)
-3. and how to use the **Request Pattern** to send email, subject to logic (see Logic, below):
+We call the LLM, providing the NL Query and the discovery returned above.  The LLM returns the `tool context` (to see it, [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/integration/mcp/examples/mcp_tool_context_response.json){:target="_blank" rel="noopener"}) - the set of APIs the MCP Client Executor is to call:
 
 ![2-tool-context-from-LLM](images/integration/mcp/2-tool-context-from-LLM.png) 
 
-The LLM returns a Tool Context completion (response), with the steps to call the MCP Server Executor, which here is the logic-enabled API Logic Server JSON:API:
-![2-tool-context-from-LLM](images/integration/mcp/2b-tool-context-from-LLM.png) 
 
 #### 3 - Invoke MCP Server
 
@@ -139,7 +149,11 @@ Fan-out means that we need to create email for each returned Order.  So, in proc
 
 MCP is capable of executing email directly, but we have business policies providing for email opt-outs.  We must respect this logic.
 
-As shown below, a common [logic pattern](Logic.md#rule-patterns){:target="_blank" rel="noopener"} is a `Request Object`: you insert a row, triggering its business logic.  Here, the logic (an *after_flush* event) checks the opt-out, and sends the mail (stubbed):
+As shown below, a common [logic pattern](Logic.md#rule-patterns){:target="_blank" rel="noopener"} is a `Request Object`, which implements the request pattern:
+
+> Request PatternL you insert a row, triggering its business logic (a Python event handler)
+
+Here, the logic (an *after_flush* event) checks the opt-out, and sends the mail (stubbed):
 
 ![3a-email-logic](images/integration/mcp/3a-email-logic.png)
 
@@ -232,7 +246,7 @@ The screen shot below shows logic you must create for the `SysMcp` table.
 1. This is the same *request* pattern used for SysEmail.
 2. The code invokes the same `integration/mcp/mcp_client_executor.py` described above.
 
-![mcp-client](images/integration/mcp/mcp_client_executor_request.png)
+![mcp-client](images/integration/mcp/mcp-client-request.png)
 
 ### Admin App Customization
 
