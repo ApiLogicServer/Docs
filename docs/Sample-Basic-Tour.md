@@ -1,7 +1,10 @@
 ---
 title: Welcome
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
-version info: 2.0 (05/24/2025) from docs
+Source: docs//Sample-Basic-Tour.md
+version info: 15.01.00 (06/08/2025)
+Used: Manager Readme
+Instructions: Copy in Sample-Basic-Demo (Replace "We'll illustrate" up to "Explore GenAI CLI")
 ---
 <style>
   .md-typeset h1,
@@ -10,7 +13,7 @@ version info: 2.0 (05/24/2025) from docs
   }
 </style>
 
-## Welcome to GenAI-Logic
+# Welcome to GenAI-Logic
 
 1. ***Instant mcp-enabled microservices*** (APIs and Admin Apps), from a database or **GenAI prompt** -- one command and you are ready for MCP, Vibe and Business User Collaboration.
 
@@ -20,16 +23,16 @@ You are in the [API Logic Server Manager](Manager.md).  This is a good place to 
 
 &nbsp;
 
-##  Explore Creating Projects
+# Product Tour (Start Here)
 
-**Evaluation Guide:** click on the disclosure buttons, below.
-</br>
+**Evaluation Guide:** click on the disclosure buttons, below.   
 
-<details markdown>
+This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} operation: 
 
-<summary> 1. Product Tour - Start here</summary>
+1. creating projects from new or existing databases
+2. adding logic and security, and 
+3. customizing your project using your IDE and Python
 
-<br>We'll illustrate [API Logic Server](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
 
 The entire process takes 20 minutes; usage notes:
 
@@ -68,14 +71,11 @@ $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
 
 You can create a project *and a new database* from a prompt using GenAI, either by:
 
-* [WebGenAI - in the Browser](WebGenAI.md){:target="_blank" rel="noopener"}, or
-* [GenAI - docker](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
+* [WebGenAI - in the Browser, via pubic website](WebGenAI.md){:target="_blank" rel="noopener"}, or
+* [GenAI -         in the Browser, via docker](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
 * [GenAI CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"} 
 
-<details markdown>
-
-<summary> See GenAI Project Creation</summary>
-<br>>Here we use the GenAI CLI:
+Here we use the GenAI CLI:
 
 1. If you have signed up (see *Get an OpenAI Key*, below), this will create and open a project called `genai_demo` from `genai_demo.prompt` (available in left Explorer pane):
 
@@ -93,13 +93,7 @@ als genai --repaired-response=system/genai/examples/genai_demo/genai_demo.respon
 
 For background on how it works, [click here](Sample-Genai.md#how-does-it-work){:target="_blank" rel="noopener"}.
 
-Or, use WebGenAI:
-
-![WebGenAI](images/web_genai/genai-prompt-5.png)
-
-</details>
-<br>
-
+&nbsp;
 
 ## 2. Working Software Now
 
@@ -107,11 +101,11 @@ Or, use WebGenAI:
 
 You can open with VSCode, and run it as follows:
 
-1. **Create Virtual Environment:** automated in most cases; see the Appendix (Procedures / Detail Procedures) for details.
+1. **Create Virtual Environment:** automated in most cases; see the Appendix (Procedures / Detail Procedures) if that's not working.
 
 2. **Start the Server:** F5 (also described in the Appendix).
 
-3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The screen shown below should appear in your Browser.
+3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The Admin App screen shown below should appear in your Browser.
 
 The sections below explore the system that has been created (which would be similar for your own database).
 <br><br>
@@ -157,8 +151,7 @@ This means you are ready for:
 
     * Instead of creating data mockups, use GenAI to create real data
     * Use you favorite Vibe tools with your running API
-    * And, you'll have projects that are architecurally correct: shared logic, enforced in the server,
-available for both User Interfaces and services.
+    * And, you'll have projects that are architecturally correct: shared logic, enforced in the server, available for both User Interfaces and services.
 
 * **MCP:** your project is MCP-ready: `python integration/mcp/mcp_client_executor.py`.
 We'll explore more interesting examples below.
@@ -312,11 +305,13 @@ When sending email, we require a business rules to ensure it respects the opt-ou
 
 ![email request](images/integration/mcp/3a-email-logic.png)
 
-With the server running, test it by posting to `SysMCP` like this:
+With the server running, test it like this:
 
 ```bash
-curl -X 'POST' 'http://localhost:5656/api/SysMcp/' -H 'accept: application/vnd.api+json' -H 'Content-Type: application/json' -d '{ "data": { "attributes": {"request": "List the orders date_shipped is null and CreatedOn before 2023-07-14, and send a discount email (subject: '\''Discount Offer'\'') to the customer for each one."}, "type": "SysMcp"}}'
+python integration/mcp/mcp_client_executor.py mcp
 ```
+
+You can also run the Admin App - follow step 4 on the Home page.
 
 For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
@@ -434,12 +429,13 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 
 &nbsp;
 
-</details>
+#  Explore GenAI CLI
+
 <br>
 
 <details markdown>
 
-<summary> 2. New Database - using GenAI Microservice Automation (Experiment with AI - Signup optional)</summary>
+<summary>1. New Database - using GenAI Microservice Automation (Experiment with AI - Signup optional)</summary>
 
 <br>You can do this with or without signup:
 
@@ -798,7 +794,7 @@ Provisos:
 
 <details markdown>
 
-<summary> 3. New Database - using Copilot (Signup optional) </summary>
+<summary> 2. New Database - using Copilot (Signup optional) </summary>
 
 <br>You can use Copilot chat (if extension installed; if not, skip to step 3):
 
@@ -860,7 +856,7 @@ als create --project-name=sample_ai --from-model=sample_ai.py --db-url=sqlite
 
 <details markdown>
 
-<summary> 4. New Database - using ChatGPT in the Browser (Signup not required)</summary>
+<summary> 3. New Database - using ChatGPT in the Browser (Signup not required)</summary>
 
 <br>A final option for GenAI is to use your Browser with ChatGPT.
 
@@ -872,7 +868,7 @@ Please see [this doc](https://apilogicserver.github.io/Docs/Sample-AI-ChatGPT/)
 
 <br>
 
-## Appendices
+# Appendices
 
 ### Procedures
 

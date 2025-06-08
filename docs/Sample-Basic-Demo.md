@@ -3,7 +3,12 @@ title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
 version: 0.22 from docsite 5/24/2025
 ---
-We'll illustrate [API Logic Server](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
+This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} operation: 
+
+1. creating projects from new or existing databases
+2. adding logic and security, and 
+3. customizing your project using your IDE and Python
+
 
 The entire process takes 20 minutes; usage notes:
 
