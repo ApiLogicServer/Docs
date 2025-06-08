@@ -276,11 +276,13 @@ When sending email, we require a business rules to ensure it respects the opt-ou
 
 ![email request](images/integration/mcp/3a-email-logic.png)
 
-With the server running, test it by posting to `SysMCP` like this:
+With the server running, test it like this:
 
 ```bash
-curl -X 'POST' 'http://localhost:5656/api/SysMcp/' -H 'accept: application/vnd.api+json' -H 'Content-Type: application/json' -d '{ "data": { "attributes": {"request": "List the orders date_shipped is null and CreatedOn before 2023-07-14, and send a discount email (subject: '\''Discount Offer'\'') to the customer for each one."}, "type": "SysMcp"}}'
+python integration/mcp/mcp_client_executor.py mcp
 ```
+
+You can also run the Admin App - follow step 4 on the Home page.
 
 For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
