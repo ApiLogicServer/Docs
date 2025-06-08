@@ -42,8 +42,8 @@ $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
 
 You can create a project *and a new database* from a prompt using GenAI, either by:
 
-* [WebGenAI - in the Browser](WebGenAI.md){:target="_blank" rel="noopener"}, or
-* [GenAI - docker](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
+* [WebGenAI - in the Browser, via pubic website](WebGenAI.md){:target="_blank" rel="noopener"}, or
+* [GenAI -         in the Browser, via docker](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
 * [GenAI CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"} 
 
 Here we use the GenAI CLI:
@@ -72,11 +72,11 @@ For background on how it works, [click here](Sample-Genai.md#how-does-it-work){:
 
 You can open with VSCode, and run it as follows:
 
-1. **Create Virtual Environment:** automated in most cases; see the Appendix (Procedures / Detail Procedures) for details.
+1. **Create Virtual Environment:** automated in most cases; see the Appendix (Procedures / Detail Procedures) if that's not working.
 
 2. **Start the Server:** F5 (also described in the Appendix).
 
-3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The screen shown below should appear in your Browser.
+3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The Admin App screen shown below should appear in your Browser.
 
 The sections below explore the system that has been created (which would be similar for your own database).
 <br><br>
@@ -122,8 +122,7 @@ This means you are ready for:
 
     * Instead of creating data mockups, use GenAI to create real data
     * Use you favorite Vibe tools with your running API
-    * And, you'll have projects that are architecurally correct: shared logic, enforced in the server,
-available for both User Interfaces and services.
+    * And, you'll have projects that are architecturally correct: shared logic, enforced in the server, available for both User Interfaces and services.
 
 * **MCP:** your project is MCP-ready: `python integration/mcp/mcp_client_executor.py`.
 We'll explore more interesting examples below.
