@@ -162,6 +162,7 @@ python integration/mcp/mcp_client_executor.py
 * **Collaboration to Get Requirements Right:** Business Users can use GenAI to create systems, and the Admin app to verify their business idea, in minutes.  And iterate.
 
 <br>
+
 ## 3. Declare Logic And Security
 
 While API/MCP/UI automation is a great start, it's **critical to enforce logic and security.**  You do this in your IDE.  Here's how.
