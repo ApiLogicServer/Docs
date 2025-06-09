@@ -29,6 +29,8 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 &nbsp;
 
+![webGenAI](images/web_genai/genai-prompt-5.png)
+
 ## Create
 
 *Click* the image below to watch a 2 minute video:
