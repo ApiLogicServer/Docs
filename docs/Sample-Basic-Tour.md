@@ -29,9 +29,9 @@ You are in the [API Logic Server Manager](Manager.md).  This is a good place to 
 
 This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} operation: 
 
-1. creating projects from new or existing databases
-2. adding logic and security, and 
-3. customizing your project using your IDE and Python
+1. Creating projects from new or existing databases, providing a MCP-enabled API and an Admin App
+2. Adding declarative logic and security, and 
+3. Customizing your project using your IDE and Python
 
 
 The entire process takes 20 minutes; usage notes:
@@ -134,7 +134,7 @@ You can click Customer Alice, and see their Orders, and Items.
 ![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
 </details>
 
-&nbsp;
+<br>
 
 ### MCP, Vibe, Collaboration
 
@@ -147,25 +147,24 @@ The project is standard Python, which you can customize in a standard IDE.
 
 This means you are ready for:
 
+* **MCP:** your project is MCP-ready - this will run a simple query *List customers with credit_limit > 1000* (we'll explore more interesting examples below):
+
+```bash
+python integration/mcp/mcp_client_executor.py
+```
+
 * **Vibe:**  unblock UI dev
 
     * Instead of creating data mockups, use GenAI to create real data
     * Use you favorite Vibe tools with your running API
     * And, you'll have projects that are architecturally correct: shared logic, enforced in the server, available for both User Interfaces and services.
 
-* **MCP:** your project is MCP-ready: `python integration/mcp/mcp_client_executor.py`.
-We'll explore more interesting examples below.
+* **Collaboration to Get Requirements Right:** Business Users can use GenAI to create systems, and the Admin app to verify their business idea, in minutes.  And iterate.
 
-* **Collaboration to Get Requirements Right:** Business Users can use GenAI to create systems, and the Admin app to verify their business idea.  And iterate.
-
-> But automated direct access to the database is a terrible architecture.  A key feature of GenAI-Logic is logic automation, using declarative, spreadsheet-like **business rules.**  Let's now explore those.
-
-
-&nbsp;
-
+<br>
 ## 3. Declare Logic And Security
 
-While API/UI automation is a great start, it's critical to enforce logic and security.  You do this in your IDE.  Here's how.
+While API/MCP/UI automation is a great start, it's **critical to enforce logic and security.**  You do this in your IDE.  Here's how.
 
 The following `add_customizations` process simulates:
 
@@ -229,7 +228,7 @@ Observe you now see fewer customers, since user `s1` has role `sales`.  This rol
 
 ### Logic: Derivations, Constraints
 
-Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
+Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic Server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
 Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
 
@@ -301,17 +300,19 @@ List the orders date_shipped is null and CreatedOn before 2023-07-14,
 and send a discount email (subject: 'Discount Offer') to the customer for each one.
 ```
 
-When sending email, we require a business rules to ensure it respects the opt-out policy:
+When sending email, we require business rules to ensure it respects the opt-out policy:
 
 ![email request](images/integration/mcp/3a-email-logic.png)
 
 With the server running, test it like this:
 
+1. **Command Line**
+
 ```bash
 python integration/mcp/mcp_client_executor.py mcp
 ```
 
-You can also run the Admin App - follow step 4 on the Home page.
+2. **Admin App** - follow step 4 on the Home page to see a Business-User-friendly example.
 
 For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
@@ -373,6 +374,7 @@ This simple example illustrates some significant aspects of iteration, described
 
 <br>
 > 💡 Iteration: Automatic Invocation/Ordering, Extensible, Rebuild Preserves Customizations
+
 <br>
 
 **a. Dependency Automation**
@@ -427,7 +429,9 @@ API Logic Server also creates scripts for deployment.  While these are ***not re
 2. Upload to Docker Hub, and
 3. Deploy for agile collaboration.
 
-&nbsp;
+<br>
+
+<br>
 
 #  Explore GenAI CLI
 
