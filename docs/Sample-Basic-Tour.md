@@ -307,17 +307,39 @@ When sending email, we require business rules to ensure it respects the opt-out 
 
 With the server running, test it like this:
 
-1. **Command Line**
+1. **Stop** the Server
+
+2. **Disable Security**
+
+The MCP client executor does not currently support security (planned enhancement), so we must first disable it:
+
+```bash
+als add-auth --provider-type=none 
+```
+
+3. **Test MCP**
+
+You can do this in the command line, or via the admin app.
 
 ```bash
 python integration/mcp/mcp_client_executor.py mcp
 ```
 
-2. **Admin App** - follow step 4 on the Home page to see a Business-User-friendly example.
+Or, use the **Admin App:** follow step 4 on the Home page to see a Business-User-friendly example.
+
+4. **Re-enable Security**
+
+Reactivate security:
+
+```bash
+als add-auth --provider-type=sql
+```
+
+<br>
 
 For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
-&nbsp;
+<br>
 
 ## 4. Iterate with Rules and Python
 
