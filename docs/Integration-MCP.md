@@ -157,6 +157,12 @@ Here, the logic (an *after_flush* event) checks the opt-out, and sends the mail 
 
 ![3a-email-logic](images/integration/mcp/3a-email-logic.png)
 
+#### 4 - Context Results
+
+The MCP Client Executor returns and prints the `context_results`.  These are accrued for each execution step, above.  In this example, it shows the GET, and 4 POST commands (last shown below).  This context would also be passed *back* to the LLM for Agentic Execution, as shown in the next section.
+
+![context_results](images/integration/mcp/4-context-results.png)
+
 &nbsp;
 
 ### Advanced LLM Concepts
