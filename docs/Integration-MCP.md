@@ -225,7 +225,21 @@ The LLM might create a tool context like:
 ]
 ```
 
-&nbsp;
+<br>
+
+## MCP Security
+
+For MCP calls made via SysMcp (see next section), API calls are made with the current request header.  In particular, role-based access operates with your auth-token, enforcing grants per your login.
+
+For example, you could use the SysMcp in the Admin app (see next section), and enter this request:
+
+```txt
+List customers with credit_limit > 1000.
+```
+
+Inspect the console log, and observe that 2 rows are returned.
+
+<br>
 
 ## Admin App: MCP Client Executor
 
@@ -235,7 +249,7 @@ See the sub-sections below to see how to provide this on your own projects.
 
 ![mcp-client](images/integration/mcp/mcp-client.png)
 
-&nbsp;
+<br>
 
 ### Create table: `SysMCP`
 
@@ -258,15 +272,15 @@ The screen shot below shows logic you must create for the `SysMcp` table.
 
 You might want to customize the `SysMcp` settings in `ui/admin/admin.yaml`.  For more information, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/customizations/ui/admin/admin.yaml){:target="_blank" rel="noopener"}.
 
-&nbsp;
+<br>
 
 ## Appendix: Status
 
-MCP support is GA for the MCP Server Executor.  The MCP Client Executor is in Tech Preview.  It is a great way to explore key MCP architecture, with additional planned features for Security.
+MCP support is GA for the MCP Server Executor.  The MCP Client Executor is in Tech Preview.  It is a great way to explore key MCP architecture.
 
-We welcome participation in this project. Please contact us via [discord](https://discord.gg/HcGxbBsgRF).
+We welcome participation in this project. Please contact us via [discord](https://discord.gg/HcGxbBsgRF).  For example, explore Agentic Execution.
 
-&nbsp;
+<br>
 
 ## Appendix: MCP Background
 
