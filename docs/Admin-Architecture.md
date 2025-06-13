@@ -164,7 +164,7 @@ curl -X GET "http://localhost:5656/.well-known/mcp.json"
 
 <details markdown>
 
-<summary>Here is an example of MCP Discovery: </summary>
+<summary>Here is an example of the schema: </summary>
 ```
 // Copy this text, paste to https://dbdiagram.io/d
 // Or, https://databasediagram.com/app
