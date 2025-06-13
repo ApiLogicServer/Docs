@@ -28,7 +28,7 @@ This contains the SRA code and the many react libraries it uses.
 
 ## Customized Apps
 
-The objective of the Admon App is to create an highly functional app instantly, easily customized via the yaml (instead of more complex HTML, JS, CSS, etc).
+The objective of the Admin App is to create an highly functional app instantly, easily customized via the yaml (instead of more complex HTML, JS, CSS, etc).
 
 To create a more customized app, you can:
 
@@ -157,5 +157,57 @@ curl -X GET "http://localhost:5656/.well-known/mcp.json"
   "schema_version": "1.0",
   "tool_type": "json-api"
 }
+```
+</details>
+
+* In addition, provide the schema (`docs/db.dbml`)
+
+<details markdown>
+
+<summary>Here is an example of MCP Discovery: </summary>
+```
+// Copy this text, paste to https://dbdiagram.io/d
+// Or, https://databasediagram.com/app
+// Or, view in VSCode with extension: "DBML Live Preview"
+
+Table Customer {
+    id INTEGER [primary key]
+    name VARCHAR 
+    balance DECIMAL 
+    credit_limit DECIMAL 
+    email VARCHAR 
+    email_opt_out BOOLEAN 
+    }
+
+Table Item {
+    id INTEGER [primary key]
+    order_id INTEGER 
+    product_id INTEGER 
+    quantity INTEGER 
+    amount DECIMAL 
+    unit_price DECIMAL 
+    }
+
+Table Order {
+    id INTEGER [primary key]
+    notes VARCHAR 
+    customer_id INTEGER 
+    CreatedOn DATE 
+    date_shipped DATE 
+    amount_total DECIMAL 
+    }
+
+Table Product {
+    id INTEGER [primary key]
+    name VARCHAR 
+    unit_price DECIMAL 
+    }
+
+
+
+// Relationships
+    Ref: Item.(order_id) < Order.(id)
+    Ref: Item.(product_id) < Product.(id)
+    Ref: Order.(customer_id) < Customer.(id)
 ```
 </details>
