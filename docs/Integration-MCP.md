@@ -104,7 +104,7 @@ Observe response shown above (for actual content, [click here](https://github.co
 
 1. The config file is used to discover the servers. 
 
-	* It identifies the `.well-known` endpoint used to discover server information
+	* It identifies the `.well-known` endpoint used to discover server information.   For GenAI-Logic, it is `curl -X GET "http://localhost:5656/.well-known/mcp.json"`.
 	
 1. The server information (see above) includes:
 
@@ -122,7 +122,8 @@ The resource and learning meta data is created by API Logic Server, but you can 
   
 	  * You can edit this as required to control what is discovered, and to minimize the information sent to the LLM.
 
-&nbsp;
+<br>
+
 #### 2 - Tool Context from LLM
 
 We call the LLM, providing the NL Query and the discovery returned above.  The LLM returns the `tool context` (to see it, [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/integration/mcp/examples/mcp_tool_context_response.json){:target="_blank" rel="noopener"}) - the set of APIs the MCP Client Executor is to call:
