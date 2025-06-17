@@ -58,6 +58,8 @@ The running app looks like this:
 
 As of June 17 2025, this is **under construction**.  Please contact us at `support@genai-logic.com` for more information and early access.  We are actively seeking collaboration.
 
+We have tested this on the basic_demo project.  It creates runnable apps, but *"ai can make errors"* - these often require minor corrections to imports, etc.  We are tuning the learning to reduce these.
+
 ToDo:
 
 * Grid for multi-field rows on `show` page
