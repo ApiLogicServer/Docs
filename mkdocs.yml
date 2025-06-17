@@ -51,9 +51,13 @@ nav:
     - "Virtual Environment": Project-Env.md
     - "Builders": Project-Builders.md
   - 1. Apps:
-    - "Automatic Admin App": Admin-Tour.md
-    - Admin-Customization.md
-    - "Admin Architecture": Admin-Architecture.md
+    - Automatic Admin App:
+      - "Automatic Admin App": Admin-Tour.md
+      - Admin-Customization.md
+      - "Admin Architecture": Admin-Architecture.md
+    - Vibe Kickstart:
+      - "Admin Vibe": Admin-Vibe.md
+      - "App Learning": Admin-App-Learning.md
     - "Automatic Custom Apps":
       - "Custom Web Apps": App-Custom.md
       - "Ontimize Overview": App-Custom-Ontimize-Overview.md

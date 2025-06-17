@@ -37,312 +37,190 @@ To create a more customized app, you can:
 
 <br>
 
-## Generative AI App Learning
+## Appendix: Sample admin.yml
 
-A close approximation of the *automatic* Admin App can be *generated* with GenAI, using this prompt:
+The `admin.yaml` is located in your project here:
 
-### Context
+![automatic-admin-app](images/ui-vibe/admin-yaml.png)
 
-Generate a full React Admin application using the following instructions.  
-The result must be a runnable React app (`npm start`) that connects to the supplied JSON:API, with fully implemented components (no placeholders or empty files).
+<details markdown>
 
-### App Features
-
-Here is a sample App Page:
-
-![sample-learning](images/ui-admin/Order-Page-Learning.png)
-
-#### Multi-Page
-
-For each resource:
-- Create a **List page** showing 7 user-friendly columns
-- Add **pagination**, **sorting**, and **filtering**
-- Link each row to a **Display (Show) page**
-
-#### Multi-Resource
-
-Each **Display Page** should:
-- Show all fields in a **multi-column layout**
-- Include a **tab sheet** (`<TabbedShowLayout>`) for each related resource using `<ReferenceManyField>`
-- Link child rows to their own display page
-
-Example:  
-- Customer Display has tab for OrderList  
-- Each Order in the tab links to Order Display
-
-#### Automatic Joins
-
-For foreign keys:
-- Display joined value (e.g., `product.name` instead of `product_id`)
-- Use first string field from parent table containing `name`, `title`, or `description`
-
-Numeric Primary key fields:
-- Display at the end of forms/lists
-
-#### Lookups (Foreign Keys)
-
-For foreign key fields:
-- Provide auto-complete dropdown (`<ReferenceInput>`)
-- For numeric foreign keys, use the joined string field as lookup text
-
-
-### Implementation
-
-
-#### Architecture
-
-- **Framework**: React 18 + react-admin 4.x
-- **Data Provider**: Custom `dataProvider.js` using `fetchUtils` (no external `ra-jsonapi-client`)
-  - Must support: `getList`, `getOne`, `getMany`, `getManyReference`, `create`, `update`, `delete`
-  - Must support: filters, joins, sorting, pagination
-- **Backend**: JSON:API per `mcp_discovery.json`
-- **CORS**: Ensure API allows `http://localhost:3000`
-  ```py
-  from flask_cors import CORS  
-  CORS(app, origins='*')  # or restrict to localhost:3000
-  ```
-- **Project Setup**:
-  - Use `create-react-app`
-  - Include: `react-admin`, `@mui/material`, `@emotion/react`, `@emotion/styled`, `react-router-dom`
-  - Do not use any deprecated or unmaintained libraries
-  - Include complete and correct `App.js`, `index.js`, `dataProvider.js`, and `index.html`
-
----
-
-#### Per-Resource Files (Required)
-
-For each resource (`Customer`, `Order` etc):
-- Create a source file under `src/`, e.g., `Customer.js`
-- **Each file must fully implement**:
-  - `CustomerList`
-  - `CustomerShow`
-  - `CustomerCreate`
-  - `CustomerEdit`
-
-Use:
-- `<ReferenceField>` for foreign key displays
-- `<ReferenceInput>` for foreign key input
-- `<ReferenceManyField>` for tabbed child lists
-- `<TabbedShowLayout>` for display pages
-
-
-Do **not leave any file empty**.
-
----
-
-#### App Wiring
-
-In `App.js`:
-- Import each resource file using:
-
-```jsx
-import { CustomerList, CustomerShow, CustomerCreate, CustomerEdit } from './Customer';
-```
-
-- Register them in `<Admin>` using:
-
-```jsx
-<Resource name="Customer" list={CustomerList} show={CustomerShow} edit={CustomerEdit} create={CustomerCreate} />
-```
-
-- import data provider (pre-supplied in src):
-
-```jsx
-import { dataProvider } from './dataProvider';
-```
-
-Do Not generate either:
-```jsx
-import jsonServerProvider from 'ra-data-json-server'
-const dataProvider = jsonServerProvider('http://api.example.com');
-```
-
----
-
-### Response Format
-
-Format the response as a JSResponseFormat:
-
-class JSResponseFormat(BaseModel):  # must match system/genai/prompt_inserts/response_format.prompt
-    code : str # generated javascript code (only)
+<summary>Click here to see sample admin.yaml </summary>
 
 <br>
 
-## GenAI Resources
-
-If you are using Generative AI:
-
-* Create `docs/mcp_learning/mcp_discovery.json` as the output of [mcp_discovery](Integration-MCP.md#1-discover-servers){:target="_blank" rel="noopener"}, and provide that to your Generative AI tool.  To obtain your discovery:
-
-```bash
-curl -X GET "http://localhost:5656/.well-known/mcp.json"
+```yaml
+about:
+  date: May 26, 2025 06:57:17
+  recent_changes: works with modified safrs-react-admin
+  version: 0.0.0
+api_root: '{http_type}://{swagger_host}:{port}/{api}'
+authentication: '{system-default}'
+info:
+  number_relationships: 4
+  number_tables: 6
+info_toggle_checked: true
+resources:
+  Customer:
+    attributes:
+    - label: ' name*'
+      name: name
+      search: true
+      sort: true
+    - name: balance
+      type: DECIMAL
+    - name: credit_limit
+      type: DECIMAL
+    - name: email
+    - name: email_opt_out
+      type: Boolean
+    - name: id
+    tab_groups:
+    - direction: tomany
+      fks:
+      - customer_id
+      name: OrderList
+      resource: Order
+    - direction: tomany
+      fks:
+      - customer_id
+      name: SysEmailList
+      resource: SysEmail
+    type: Customer
+    user_key: name
+  Item:
+    attributes:
+    - label: ' id*'
+      name: id
+      search: true
+      sort: true
+    - name: order_id
+    - name: product_id
+      required: true
+    - name: quantity
+      required: true
+    - name: amount
+      type: DECIMAL
+    - name: unit_price
+      type: DECIMAL
+    tab_groups:
+    - direction: toone
+      fks:
+      - order_id
+      name: order
+      resource: Order
+    - direction: toone
+      fks:
+      - product_id
+      name: product
+      resource: Product
+    type: Item
+    user_key: id
+  Order:
+    attributes:
+    - label: ' id*'
+      name: id
+      search: true
+      sort: true
+    - name: customer_id
+      required: true
+    - name: notes
+    - name: CreatedOn
+      type: DATE
+    - name: amount_total
+      type: DECIMAL
+    - name: date_shipped
+      type: DATE
+    tab_groups:
+    - direction: tomany
+      fks:
+      - order_id
+      name: ItemList
+      resource: Item
+    - direction: toone
+      fks:
+      - customer_id
+      name: customer
+      resource: Customer
+    type: Order
+    user_key: id
+  Product:
+    attributes:
+    - label: ' name*'
+      name: name
+      search: true
+      sort: true
+    - name: unit_price
+      type: DECIMAL
+    - name: id
+    tab_groups:
+    - direction: tomany
+      fks:
+      - product_id
+      name: ItemList
+      resource: Item
+    type: Product
+    user_key: name
+  SysEmail:
+    attributes:
+    - label: ' id*'
+      name: id
+      search: true
+      sort: true
+    - name: customer_id
+      required: true
+    - name: message
+    - name: subject
+    - name: CreatedOn
+      type: DATE
+    tab_groups:
+    - direction: toone
+      fks:
+      - customer_id
+      name: customer
+      resource: Customer
+    type: SysEmail
+    user_key: id
+  SysMcp:
+    attributes:
+    - name: request
+      type: textarea
+    - label: ' id*'
+      name: id
+      search: true
+      sort: true
+      show_when: isInserting == false
+    type: SysMcp
+    user_key: id
+settings:
+  HomeJS: /admin-app/home.js
+  max_list_columns: 8
+  style_guide:
+    applicationLocales:
+    - en
+    - es
+    currency_symbol: $
+    currency_symbol_position: left
+    date_format: LL
+    decimal_max: '1000000000'
+    decimal_min: '2'
+    decimal_separator: .
+    detail_mode: tab
+    edit_on_mode: dblclick
+    exclude_listpicker: false
+    include_translation: 'false'
+    keycloak_client_id: alsclient
+    keycloak_realm: kcals
+    keycloak_url: http://localhost:8080
+    locale: en
+    max_decimal_digits: '4'
+    min_decimal_digits: '2'
+    new_mode: dialog
+    pick_style: list
+    row_height: small,
+    serviceType: JSONAPI
+    startSessionPath: /auth/login
+    style: light
+    thousand_separator: ','
+    use_keycloak: 'false'
 ```
-
-<details markdown>
-
-<summary>Here is an example of MCP Discovery: </summary>
-
-
-```json
-{
-  "base_url": "http://localhost:5656/api",
-  "authorization_url": "http://localhost:5656/api/auth/login",
-  "description": "API Logic Project: basic_demo",
-  "learning": "To issue one request per row from a prior step (fan-out), use the syntax:\n\n\"$<stepIndex>[*].<fieldName>\"\n\nFor example, if step 0 returns orders, and you want to send a POST per customer:\n\nBefore (incorrect):\n    \"customer_id\": \"{customer_id}\"\n\nAfter (correct):\n    \"customer_id\": \"$0[*].customer_id\"\n    \nOnly if 'email' is in the Natural language query, send email by issing a POST request to the SysEmail endpoint, setting the subject, message and customer_id in the body.   DO NOT include a POST unless the word \u2018email\u2019 appears in the user query.\n\nFormat response as mcp_responseFormat.\n\n<mcp_responseFormat>\nclass QueryParam(BaseModel):\n    name: str  # attribute name\n    op: str  # eq, lt, gt\n    val: str\n\nclass JsonValues(BaseMopdel):\n    name: str  # name of attribute\n    value: str # value of attribute\n\nclass Resource(BaseModel):\n    tool_type: str\n    base_url: str\n    path: str # specified use case or requirement name (use 'General' if missing)\n    method: str # GET, PATCH, POST or DELETE\n    body: json # data for PATCH or POST\n    query_params: List(QueryParam) # filter for GET\n\nclass MCPResult(BaseModel):  # must match system/genai/prompt_inserts/response_format.prompt\n    schema_version: str\n    resources : List[Resource] # list resources\n\n<mcp_responseFormat/>\n",
-  "resources": [
-    {
-      "fields": [
-        "id",
-        "name",
-        "balance",
-        "credit_limit",
-        "email",
-        "email_opt_out"
-      ],
-      "filterable": [
-        "id",
-        "name",
-        "balance",
-        "credit_limit",
-        "email",
-        "email_opt_out"
-      ],
-      "methods": [
-        "GET",
-        "PATCH",
-        "POST",
-        "DELETE"
-      ],
-      "name": "Customer",
-      "path": "/Customer"
-    },
-    {
-      "fields": [
-        "id",
-        "order_id",
-        "product_id",
-        "quantity",
-        "amount",
-        "unit_price"
-      ],
-      "filterable": [
-        "id",
-        "order_id",
-        "product_id",
-        "quantity",
-        "amount",
-        "unit_price"
-      ],
-      "methods": [
-        "GET",
-        "PATCH",
-        "POST",
-        "DELETE"
-      ],
-      "name": "Item",
-      "path": "/Item"
-    },
-    {
-      "fields": [
-        "id",
-        "notes",
-        "customer_id",
-        "CreatedOn",
-        "date_shipped",
-        "amount_total"
-      ],
-      "filterable": [
-        "id",
-        "notes",
-        "customer_id",
-        "CreatedOn",
-        "date_shipped",
-        "amount_total"
-      ],
-      "methods": [
-        "GET",
-        "PATCH",
-        "POST",
-        "DELETE"
-      ],
-      "name": "Order",
-      "path": "/Order"
-    },
-    {
-      "fields": [
-        "id",
-        "name",
-        "unit_price"
-      ],
-      "filterable": [
-        "id",
-        "name",
-        "unit_price"
-      ],
-      "methods": [
-        "GET",
-        "PATCH",
-        "POST",
-        "DELETE"
-      ],
-      "name": "Product",
-      "path": "/Product"
-    }
-  ],
-  "schema_version": "1.0",
-  "tool_type": "json-api"
-}
-```
-</details>
-
-* In addition, provide the schema (`docs/db.dbml`)
-
-<details markdown>
-
-<summary>Here is an example of the schema: </summary>
-```
-// Copy this text, paste to https://dbdiagram.io/d
-// Or, https://databasediagram.com/app
-// Or, view in VSCode with extension: "DBML Live Preview"
-
-Table Customer {
-    id INTEGER [primary key]
-    name VARCHAR 
-    balance DECIMAL 
-    credit_limit DECIMAL 
-    email VARCHAR 
-    email_opt_out BOOLEAN 
-    }
-
-Table Item {
-    id INTEGER [primary key]
-    order_id INTEGER 
-    product_id INTEGER 
-    quantity INTEGER 
-    amount DECIMAL 
-    unit_price DECIMAL 
-    }
-
-Table Order {
-    id INTEGER [primary key]
-    notes VARCHAR 
-    customer_id INTEGER 
-    CreatedOn DATE 
-    date_shipped DATE 
-    amount_total DECIMAL 
-    }
-
-Table Product {
-    id INTEGER [primary key]
-    name VARCHAR 
-    unit_price DECIMAL 
-    }
-
-
-
-// Relationships
-    Ref: Item.(order_id) < Order.(id)
-    Ref: Item.(product_id) < Product.(id)
-    Ref: Order.(customer_id) < Customer.(id)
-```
-</details>
