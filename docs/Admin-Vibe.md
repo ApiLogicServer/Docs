@@ -17,7 +17,7 @@
       |             | **Lookups** for foreign keys    | Find Product for OrderDetail | 
       | Customize | Use GenAI Vibe tools and/or your IDE   | Add new pages, controls, etc | 
 
-      > As of June 17 2025, this is **under construction**.  Please contact us at `support@genai-logic.com` for more information and early access.  We are actively seeking collaboration.
+      > See status, at end.
 
 
 <br>
@@ -51,4 +51,17 @@ It creates applications like this:
 The running app looks like this:
 
 ![genai-app-run](images/ui-vibe/genai-app-run.png)
+
+<br>
+
+## Appendix: Status
+
+As of June 17 2025, this is **under construction**.  Please contact us at `support@genai-logic.com` for more information and early access.  We are actively seeking collaboration.
+
+ToDo:
+
+* Grid for multi-field rows on `show` page
+* Validation errors
+* Security
+* Use standard dataProvider
 
