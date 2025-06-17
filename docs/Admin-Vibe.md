@@ -1,7 +1,9 @@
 !!! pied-piper ":bulb: TL;DR - instant multi-page, multi-table apps"
 
       The *generated* Admin App is a standard react app,
-      ***fully customizable*** use GenAI Vibe tools and/or your IDE.  
+      ***fully customizable*** use GenAI Vibe tools and/or your IDE.
+
+      * With minimal background on html, javascript etc, you can begin using Vibe/Natural Language tools to create custom User Interfaces 
       
       Contrast this to the [*automated* Admin App](Admin-Tour.md){:target="_blank" rel="noopener"}, which focuses on speeed and simplicity.
       
