@@ -23,6 +23,9 @@ als add-auth --provider-type=sql --db_url=postgresql://postgres:p@localhost/auth
 
 als add-auth --provider-type=keycloak --db-url=localhost
 als add-auth --provider-type=keycloak --db-url=hardened
+
+als add-auth --provider-type=None # to disable
+
 ```
 
 &nbsp;

@@ -33,6 +33,10 @@ npm install
 npm start
 ```
 
+This can take a while (e.g., 6 min for northwind sample).  Enjoy your favorite warm beverage.
+
+<br>
+
 ## Generated App
 
 The GenAI process uses these to drive creation:
@@ -64,6 +68,6 @@ ToDo:
 
 * Grid for multi-field rows on `show` page
 * Validation errors
-* Security
+* Security (disable with `als add-auth --provider-type=None`)
 * Use standard dataProvider
 
