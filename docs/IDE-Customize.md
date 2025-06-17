@@ -59,4 +59,7 @@ Be sure you are clear on how to setup your [project venv](Project-Env.md){:targe
 
 ### VSCode CLI
 
-You can launch VSCode from the command line.  It's often pre-installed on Windows; for Mac, you must activate VSCode `code` CLI (to get it: Open the Command Palette (Cmd+Shift+P) and type 'shell command').
+You can launch VSCode from the command line.  It's often pre-installed on Windows; for Mac, you must activate VSCode `code` CLI:
+
+1. Open the Command Palette (Cmd+Shift+P) and 
+2. type `shell command`

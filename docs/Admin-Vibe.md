@@ -71,3 +71,23 @@ ToDo:
 * Security (disable with `als add-auth --provider-type=None`)
 * Use standard dataProvider
 
+<br>
+
+<br>
+
+## Appendix: Explore 
+
+The quickest way to get going...
+
+1. Install GenAI-Logic and the Manager ([click here](Install-Express.md){:target="_blank" rel="noopener"}), and
+2. In the Manager, open a terminal window and create Basic Demo ([Info here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}) as described in the **Readme**:
+
+```bash
+ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
+```
+
+3. Open the created app, and run it (F5) to explore the Automatic Admin App and the API
+4. Execute the Generation procedure as described above
+5. Proceed with the readme to explore business logic, MCP, customization, and integration
+
+

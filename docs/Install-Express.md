@@ -62,46 +62,26 @@ Open the appropriate section below.
     ApiLogicServer start
     ```
 
-    This will open your IDE and install the samples and Tutorial; open the readme and follow the directions to create projects.
+    This will install the samples and open in your IDE; open the readme and follow the directions to create projects.
 
 
     &nbsp;
     
-    __Create the Sample Project__
+    __Create the Basic Demo Project__
 
-    ```bash title="Create Tutorial"
-    ApiLogicServer create --project_name=  --db_url=
+    This project provides a **`Readme`** to walk you through key aspects of API Logic Server.  For more information, [click here](Sample-Basic-Tour.md){:target="_blank" rel="noopener"}.
+
+    The **`Readme`** recommends that you start by creating the *basic demo* app:
+
+    ```bash title="Create Basic Demo"
+    ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
     ```
-
-    This project provides a Tutorial to walk you through key aspects of API Logic Server.  For more information, [click here](Tutorial.md){:target="_blank" rel="noopener"}.
 
     &nbsp;
 
     __Open the Project in VSCode__
 
-    You have 2 choices:
-
-    * Accept the default shared `venv` (recommended); follow [this procedure](Project-Env.md#shared-venv), _or_
-    * Create a `venv` local to the project
-        1. Open Folder `ApiLogicServer/ApiLogicProject` in VSCode
-            * Decline options for Containers
-        2. Establish your Virtual Environment - open __Terminal > New Terminal__, and
-
-    ```bash title="Install API Logic Server in a Virtual Environment"
-    python -m venv venv                  # may require python3 -m venv venv
-    venv\Scripts\activate                # mac/linux: source venv/bin/activate
-    python -m pip install -r requirements.txt  # accept "new Virtual environment"
-    ```
-
-    &nbsp;
-
-    __Or, run the project directly__
-
-    ```bash title="Run the Project from the Command Line"
-    cd ApiLogicProject
-    python ApiLogicProject/api_logic_server_run.py                  # run the server
-    ```
-
+    The project should open automatically in your IDE with a pre-installed virtual environment (for more information, [click here](/Project-Env.md){:target="_blank" rel="noopener"})
 
 === "Docker"
 
