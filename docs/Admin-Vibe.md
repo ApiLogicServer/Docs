@@ -42,7 +42,7 @@ This can take a while (e.g., 6 min for northwind sample).  Enjoy your favorite w
 The GenAI process uses these to drive creation:
 
 1. You projects' `ui/admin/admin.yaml` [(click here)](Admin-Architecture.md#appendix-sample-adminyml){:target="_blank" rel="noopener"}, which provides information about the schema and basic layout
-2. [Admin-App-Learning](Admin-App-Learning.md){:target="_blank" rel="noopener"} 
+2. [Admin-App-Learning](Admin-App-Learning.md){:target="_blank" rel="noopener"} - this page describes the functionality and architecture of the generated app
 
 It creates applications like this:
 
@@ -73,6 +73,14 @@ I wanted a gui control so the user could see list or cards (but not both).
 And we get:
 
 ![get-card](images/ui-vibe/customer-cards.png)
+
+<br>
+
+### Or, Update the training
+
+This customization example was a one-off.
+
+Since the *app learning* is a part of your project, you can alter it to create apps with lists / cards, automatically.
 
 <br>
 
