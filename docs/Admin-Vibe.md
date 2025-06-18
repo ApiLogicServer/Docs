@@ -79,6 +79,13 @@ ToDo:
 
 The quickest way to get going...
 
+Pre-reqs:
+
+1. An OpenAI API Key ([click here](WebGenAI-CLI.md#configuration){:target="_blank" rel="noopener"})
+2. Node
+
+Then:
+
 1. Install GenAI-Logic and the Manager ([click here](Install-Express.md){:target="_blank" rel="noopener"}), and
 2. In the Manager, open a terminal window and create Basic Demo ([Info here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}) as described in the **Readme**:
 
