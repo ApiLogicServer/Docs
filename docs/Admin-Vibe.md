@@ -70,7 +70,8 @@ Not a bad app, but the objective here is that we can customize - simply, with Na
 Here, we are using the Claude preview of VsCode, and make the request:
 
 ```txt
-I wanted a gui control so the user could see list or cards (but not both).
+On the customer page,
+I want a gui control so the user could see list or cards (but not both).
 ```
 
 ![ask-for-card](images/ui-vibe/customer-cards-vibe.png)
