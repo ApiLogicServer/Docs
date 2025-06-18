@@ -3,7 +3,7 @@
       The *generated* Admin App is a standard react app,
       ***fully customizable*** using GenAI Vibe tools and/or your IDE.
 
-      * With minimal background on html, javascript etc, you can begin using Vibe/Natural Language tools to create custom User Interfaces 
+      > With minimal background on html, javascript etc, <br>you can begin using Vibe/Natural Language tools to create custom User Interfaces 
       
       Contrast this to the [*automated* Admin App](Admin-Tour.md){:target="_blank" rel="noopener"}, which focuses on speed and simplicity.
       
@@ -24,11 +24,16 @@
 
 ## Generation
 
+Pre-reqs:
+
+1. An OpenAI API Key ([click here](WebGenAI-CLI.md#configuration){:target="_blank" rel="noopener"})
+2. Node
+
 Once your project is created, you can create a UI Application like this (e.g., use the Terminal Window of your project):
 
 ```bash
 als genai-app
-cd react-admin
+cd ui/react_admin
 npm install
 npm start
 ```
@@ -42,7 +47,7 @@ This can take a while (e.g., 6 min for northwind sample).  Enjoy your favorite w
 The GenAI process uses these to drive creation:
 
 1. You projects' `ui/admin/admin.yaml` [(click here)](Admin-Architecture.md#appendix-sample-adminyml){:target="_blank" rel="noopener"}, which provides information about the schema and basic layout
-2. [Admin-App-Learning](Admin-App-Learning.md){:target="_blank" rel="noopener"} - this page describes the functionality and architecture of the generated app
+2. The Managers' `Admin-App-Learning` [(click here)](Admin-App-Learning.md){:target="_blank" rel="noopener"} - describes the functionality and architecture of the generated app
 
 It creates applications like this:
 
@@ -104,13 +109,6 @@ ToDo:
 ## Appendix: Explore 
 
 The quickest way to get going...
-
-Pre-reqs:
-
-1. An OpenAI API Key ([click here](WebGenAI-CLI.md#configuration){:target="_blank" rel="noopener"})
-2. Node
-
-Then:
 
 1. Install GenAI-Logic and the Manager ([click here](Install-Express.md){:target="_blank" rel="noopener"}), and
 2. In the Manager, open a terminal window and create Basic Demo ([Info here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}) as described in the **Readme**:
