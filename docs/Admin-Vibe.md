@@ -58,6 +58,24 @@ The running app looks like this:
 
 <br>
 
+## Vibe Customization
+
+Not a bad app, but the objective here is that we can customize - simply, with Natural Language.  Let's try it.
+
+Here, we are using the Claude preview of VsCode, and make the request:
+
+```txt
+I wanted a gui control so the user could see list or cards (but not both).
+```
+
+![ask-for-card](images/ui-vibe/customer-cards-vibe.png)
+
+And we get:
+
+![get-card](images/ui-vibe/customer-cards.png)
+
+<br>
+
 ## Appendix: Status
 
 As of June 17 2025, this is **under construction**.  Please contact us at `support@genai-logic.com` for more information and early access.  We are actively seeking collaboration.
