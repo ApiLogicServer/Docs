@@ -240,7 +240,7 @@ Use [WebGenAI or your IDE](Logic.md#declaring-rules) with Natural Language, or a
 
 ### Logic Debugging
 
-If we use Swagger and run `ServicesEndPoint - Post/add_order`, we get the following :
+If we use Swagger and run `ServicesEndPoint - Post/add_order`, we get the following:
 
 ![Logic Debug](images/logic/logic-debug.png)
 
