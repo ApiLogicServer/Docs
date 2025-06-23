@@ -92,16 +92,17 @@ Since the *app learning* is a part of your project, you can alter it to create a
 
 ## Appendix: Status
 
-As of June 17 2025, this is **under construction**.  Please contact us at `support@genai-logic.com` for more information and early access.  We are actively seeking collaboration.
+As of June 23 2025, this is **under construction**.  Please contact us at `support@genai-logic.com` for more information and early access.  We are actively seeking collaboration.
 
-We have tested this on the basic_demo project.  It creates runnable apps, but *"ai can make errors"* - these often require minor corrections to imports, etc.  We are tuning the learning to reduce these.
+We have tested this on the basic_demo project.  It creates runnable apps, using a dataProvider for safrs json:api.
+
+> Note: "ai can make errors"* - these often require minor corrections to imports, etc.  We are tuning the learning to reduce these.
 
 ToDo:
 
-* Grid for multi-field rows on `show` page
-* Validation errors
+* Validation errors are handled, but there are timing issues
 * Security (disable with `als add-auth --provider-type=None`)
-* Use standard dataProvider
+* Grid for multi-field rows on `show` page
 
 <br>
 
