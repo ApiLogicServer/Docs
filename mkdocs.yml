@@ -149,6 +149,7 @@ nav:
   - Internals:
     - "Internal Dev Procedures": Architecture-Internals.md
     - "Admin App Architecture": Architecture-admin-app-reuse.md
+    - "App Gen: genai-app": Architecture-genai-app.md
     - "Build, Load and Test": Architecture-Internals-BLT.md
     - "VENV (internals)": Architecture-venv.md
     - "Python (internals)": Architecture-python.md
