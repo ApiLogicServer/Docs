@@ -32,9 +32,11 @@ Open the appropriate section below.
     python --version  # on macs, you may need to use Python3
     ```
 
-    > Note: Python 3.12 is supported as of release 10.3.45.
+    > Note: Python 3.12 is supported as of release 10.3.45 (not yet 3.13).
 
     If you need to install Python (it can be tricky), see [these notes](Tech-Install-Python.md).
+
+    > MacOS users will require Command Line Tools: `> xcode-select --install`
 
     &nbsp;
 
