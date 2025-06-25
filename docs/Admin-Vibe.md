@@ -100,7 +100,7 @@ We have tested this on the basic_demo project.  It creates runnable apps, using 
 
 Working:
 
-* Master / Detail Tab Sheets, Grid (multi-column) Show pages, Automatic Joins, Filter, Transitions, Update, Validation, Lookups
+* Master / Detail Tab Sheets, Grid (multi-column) Show pages, Automatic Joins, Filter, Transitions, Update with Validation, Lookups, Cascade Add
 
 ToDo:
 
