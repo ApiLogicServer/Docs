@@ -98,11 +98,15 @@ We have tested this on the basic_demo project.  It creates runnable apps, using 
 
 > Note: "ai can make errors"* - these often require minor corrections to imports, etc.  We are tuning the learning to reduce these.
 
+Working:
+
+* Master / Detail Tab Sheets, Grid (multi-column) Show pages, Automatic Joins, Filter, Transitions, Update, Validation, Lookups
+
 ToDo:
 
-* Validation errors are handled, but there are timing issues
 * Security (disable with `als add-auth --provider-type=None`)
-* Grid for multi-field rows on `show` page
+
+![genned-vibe](images/ui-vibe/genned-vibe.png)
 
 <br>
 
