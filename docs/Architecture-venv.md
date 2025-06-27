@@ -55,8 +55,16 @@ If the dev inst fails to include this (e.g., improper dev-install, or dev-instal
 
 ## Dev `venv`
 
-The [dev `dev venv`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/requirements.txt){:target="_blank" rel="noopener"} includes all the key libs, ***plus** the CLI.  
+The [dev `dev venv`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/requirements.txt){:target="_blank" rel="noopener"} includes all the key libs, ***but not** the CLI.  
 
 Note it's also defined in the `setup.py`.
 
 Note this **does *not*** include the CLI.  That is because the dev environment is focused on *changing* the CLI, so it's important not to confuse you/Python about whether you are running code from the `venv`, or from the source tree.  We want the latter, so we omit this from the `venv`.
+
+There are 2 reasonable strategies for testing CLI changes:
+
+1. Use the Manager: use a launch-config to run the cli, and alter the api_logic_server code in the `vwnv`
+2. Use the dev env, and
+
+    * create `.vscpde/launch.json` entries that set `cwd` to the target project (see: *Basic Demo - add-app*), and
+    * ensure that manager files can be found (openAI learning) with `"env": {"APILOGICSERVER_DEBUG": "True", "APILOGICSERVER_HOME": "${workspaceFolder}"}`
