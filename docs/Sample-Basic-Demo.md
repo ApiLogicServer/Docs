@@ -56,14 +56,14 @@ Here we use the GenAI CLI:
 1. If you have signed up (see *Get an OpenAI Key*, below), this will create and open a project called `genai_demo` from `genai_demo.prompt` (available in left Explorer pane):
 
 ```bash
-als genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
+genai-logic genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
 ```
 
 2. ***Or,*** you can simulate the process (no signup) using:
 
 ```bash
 
-als genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
+genai-logic genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
 
 ```
 
@@ -77,11 +77,11 @@ For background on how it works, [click here](Sample-Genai.md#how-does-it-work){:
 
 You can open with VSCode, and run it as follows:
 
-1. **Create Virtual Environment:** automated in most cases; see the Appendix (Procedures / Detail Procedures) if that's not working.
+1. **Start the Server:** F5 (also described in the Appendix).
 
-2. **Start the Server:** F5 (also described in the Appendix).
+    * Your virtual environment is automatically configured in most cases; see the Appendix (Procedures / Detail Procedures) if that's not working.
 
-3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The Admin App screen shown below should appear in your Browser.
+2. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The Admin App screen shown below should appear in your Browser.
 
 The sections below explore the system that has been created (which would be similar for your own database).
 <br><br>
@@ -157,8 +157,8 @@ To add customizations, in a terminal window for your project:
 **2. Add Customizations**
 
 ```bash
-als add-cust
-als add-auth --db_url=auth
+genai-logic add-cust
+genai-logic add-auth --db_url=auth
 ```
 &nbsp;
 
@@ -283,17 +283,7 @@ When sending email, we require business rules to ensure it respects the opt-out 
 
 With the server running, test it like this:
 
-1. **Stop** the Server
-
-2. **Disable Security**
-
-The MCP client executor does not currently support security (planned enhancement), so we must first disable it:
-
-```bash
-als add-auth --provider-type=none 
-```
-
-3. **Test MCP**
+1. **Test MCP**
 
 You can do this in the command line, or via the admin app.
 
@@ -302,14 +292,6 @@ python integration/mcp/mcp_client_executor.py mcp
 ```
 
 Or, use the **Admin App:** follow step 4 on the Home page to see a Business-User-friendly example.
-
-4. **Re-enable Security**
-
-Reactivate security:
-
-```bash
-als add-auth --provider-type=sql
-```
 
 <br>
 
@@ -328,7 +310,7 @@ The following `add-cust` process simulates an iteration:
 
 * acquires a new database with `Product.CarbonNeutral`
 
-* issues the `ApiLogicServer rebuild-from-database` command that rebuilds your project (the database models, the api), while preserving the customizations we made above.
+* issues the `genai-logic rebuild-from-database` command that rebuilds your project (the database models, the api), while preserving the customizations we made above.
 
 * acquires a revised `ui/admin/admin.yaml` that shows this new column in the admin app
 
@@ -353,9 +335,11 @@ To add this iteration, repeat the process above - in a terminal window for your 
 **2. Add Iteration**
 
 ```bash
-als add-cust
-als rebuild-from-database --db_url=sqlite:///database/db.sqlite
+genai-logic add-cust
+genai-logic rebuild-from-database --db_url=sqlite:///database/db.sqlite
 ```
+
+* You can ignore the warning regarding *'mcp-SysMcp' - not present*
 
 **3. Set the breakpoint as shown in the screenshot below**
 
@@ -410,6 +394,10 @@ Of course, we all know that all businesses the world over depend on the `hello w
 * using Flask
 
 * and, for database access, SQLAlchemy.  Note all updates from custom APIs also enforce your logic.
+
+Explore the custom API in `api/api_discovery/order_b2b.py`, and test it using swagger:
+
+![b2b_swagger](images/integration/b2b_swagger.png)
 
 &nbsp;
 
