@@ -305,6 +305,20 @@ When sending email, we require business rules to ensure it respects the opt-out 
 
 ![email request](images/integration/mcp/3a-email-logic.png)
 
+The server is automatically mcp-enabled, but we might also want an mcp client.  
+
+**1. Stop the Server**
+
+**2. Create an MCP Client Executor like this:**
+
+```
+gl genai-add-mcp-client
+```
+
+**3. Restart the Server**
+
+<br>
+
 With the server running, test it like this:
 
 1. **Test MCP**
