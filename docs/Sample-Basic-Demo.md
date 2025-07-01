@@ -66,9 +66,7 @@ genai-logic genai --using=system/genai/examples/genai_demo/genai_demo.prompt --p
 2. ***Or,*** you can simulate the process (no signup) using:
 
 ```bash
-
 genai-logic genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
-
 ```
 
 For background on how it works, [click here](Sample-Genai.md#how-does-it-work){:target="_blank" rel="noopener"}.
@@ -130,10 +128,16 @@ npm start
 
 And you are ready to Vibe:
 
-* Instead of creating data mockups, you have a running API server with real data
-* Use you favorite Vibe tools with your running API
-* And, you'll have projects that are architecturally correct: shared logic, enforced in the server, available for both User Interfaces and services.
-* Customize using Natural Language:
+* Instead of creating data mockups, you have a **running API server with real data**
+* Instead of starting from scratch, you have a **running multi-page app** 
+* And, you'll have projects that are **architecturally correct:** shared logic, enforced in the server, available for both User Interfaces and services.
+* Then, use you favorite Vibe tools with your running API
+
+<br>
+
+```txt title='Customize using Natural Language'
+Update the Customer list to provide users an option to see results in a list, or in cards
+```
 
 ![vibe-cards](images/basic_demo/vibe-cards.png)
 
@@ -284,10 +288,8 @@ Optionally, you can use the Behave TDD approach to define tests, and the Rules R
 
 Logic is automatically executed in your MCP-enabled API.  For example, consider the following MCP orchestration:
 
-```
-List the orders date_shipped is null and CreatedOn before 2023-07-14,
-and send a discount email (subject: 'Discount Offer') to the customer for each one.
-```
+![mcp-ui](images/basic_demo/mcp-ui.png)
+
 
 When sending email, we require ***business rules*** to ensure it respects the opt-out policy:
 
@@ -313,11 +315,11 @@ With the server running, test it like this:
 
 You can do this in the command line, or via the admin app.
 
-```bash
+```bash title='MCP from the command line'
 python integration/mcp/mcp_client_executor.py mcp
 ```
 
-Or, use the **Admin App:** follow step 4 on the Home page to see a Business-User-friendly example.
+Or, use the **Admin App:** (shown above), and follow step 4 on the Home page to see a Business-User-friendly example.
 
 <br>
 
