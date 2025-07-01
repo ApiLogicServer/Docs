@@ -280,7 +280,7 @@ Optionally, you can use the Behave TDD approach to define tests, and the Rules R
 
 &nbsp;
 
-### Logic-Enabled MCP
+### MCP: Logic, User Interface
 
 Logic is automatically executed in your MCP-enabled API.  For example, consider the following MCP orchestration:
 
@@ -289,11 +289,11 @@ List the orders date_shipped is null and CreatedOn before 2023-07-14,
 and send a discount email (subject: 'Discount Offer') to the customer for each one.
 ```
 
-When sending email, we require business rules to ensure it respects the opt-out policy:
+When sending email, we require ***business rules*** to ensure it respects the opt-out policy:
 
 ![email request](images/integration/mcp/3a-email-logic.png)
 
-The server is automatically mcp-enabled, but we might also want an mcp client.  
+The server is automatically mcp-enabled, but we might also want an mcp user-interface client:
 
 **1. Stop the Server**
 
