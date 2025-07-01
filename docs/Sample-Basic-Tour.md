@@ -135,6 +135,7 @@ You can click Customer Alice, and see their Orders, and Items.
 ![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
 </details>
 
+<br>
 
 ## 2. Custom UI: GenAI, Vibe
 
