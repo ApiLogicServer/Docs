@@ -434,7 +434,7 @@ Along with APIs, messaging is another technology commonly employed for applicati
 ![order-to-shipping](images/integration/order-to-shipping.jpg)
 &nbsp;
 
-## 5. Deploy Containers: No Fees
+## 6. Deploy Containers: No Fees
 
 API Logic Server also creates scripts for deployment.  While these are ***not required at this demo,*** this means you can enable collaboration with Business Users:
 
