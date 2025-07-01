@@ -12,12 +12,16 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 
 The entire process takes 20 minutes; usage notes:
 
-* Important: look for **readme files** in created projects.
-* You may find it more convenient to view this [in your Browser](Sample-Basic-Tour.md).
+* Important: look for **readme files** in created projects
+* You may find it more convenient to view this [in your Browser](Sample-Basic-Tour.md)
+* A slide show summary is available [on our Web Site](https://www.genai-logic.com/product/tour){:target="_blank" rel="noopener"}
+
+![product-tour](images/basic_demo/product-tour.png)
+
 
 &nbsp;
 
-## 1. Automation: Project Creation
+## 1. Create and Run
 
 API Logic Server can create projects from existing databases, or use GenAI to create projects with new databases.  Let's see how.
 
@@ -30,7 +34,7 @@ Create the project - use the CLI (**Terminal > New Terminal**), :
 $ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
 ```
 
-> Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/){:target="_blank" rel="noopener"} for a test database provided as part of the installation.  You would normally supply a SQLAlchemy URI to your existing database.
+> Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/){:target="_blank" rel="noopener"} for a test database provided as part of the installation.  You would normally supply a SQLAlchemy URI to your existing database, e.g. <br>`genai-logic create  --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite`.
 
 
 <details markdown>
@@ -71,7 +75,6 @@ For background on how it works, [click here](Sample-Genai.md#how-does-it-work){:
 
 &nbsp;
 
-## 2. Working Software Now
 
 ### Open in your IDE and Run
 
@@ -110,36 +113,45 @@ You can click Customer Alice, and see their Orders, and Items.
 ![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
 </details>
 
+
+## 2. Custom UI: GenAI, Vibe
+
+The app above is suitable for collaborative iteration to nail down the requirements, and back office data maintenance.  It's also easy to make simple customizations, using the yaml file.
+
+For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language:
+
+```bash
+# create react source (requires OpenAI key)
+genai-logic genai-add-app --vibe
+cd react-app
+npm install
+npm start
+```
+
+And you are ready to Vibe:
+
+* Instead of creating data mockups, you have a running API server with real data
+* Use you favorite Vibe tools with your running API
+* And, you'll have projects that are architecturally correct: shared logic, enforced in the server, available for both User Interfaces and services.
+* Customize using Natural Language:
+
+![vibe-cards](images/basic_demo/vibe-cards.png)
+
 <br>
 
-### MCP, Vibe, Collaboration
+## 3. MCP-Ready APIs
 
-In little more than a minute, you've used either
-
-* **GenAI** to create a database and project using Natural Language, or 
-* 1 CLI command to create a project from an existing database
-
-The project is standard Python, which you can customize in a standard IDE.
-
-This means you are ready for:
-
-* **MCP:** your project is MCP-ready - this will run a simple query *List customers with credit_limit > 1000* (we'll explore more interesting examples below):
+Your project is MCP-ready - this will run a simple query *List customers with credit_limit > 1000* (we'll explore more interesting examples below, including provisions for user input):
 
 ```bash
 python integration/mcp/mcp_client_executor.py
 ```
 
-* **Vibe:**  unblock UI dev
-
-    * Instead of creating data mockups, use GenAI to create real data
-    * Use you favorite Vibe tools with your running API
-    * And, you'll have projects that are architecturally correct: shared logic, enforced in the server, available for both User Interfaces and services.
-
-* **Collaboration to Get Requirements Right:** Business Users can use GenAI to create systems, and the Admin app to verify their business idea, in minutes.  And iterate.
+![mcp-retrieval](images/basic_demo/mcp-retrieval.png)
 
 <br>
 
-## 3. Declare Logic And Security
+## 4. Declare Logic And Security
 
 While API/MCP/UI automation is a great start, it's **critical to enforce logic and security.**  You do this in your IDE.  Here's how.
 
@@ -288,7 +300,7 @@ The server is automatically mcp-enabled, but we might also want an mcp client.
 **2. Create an MCP Client Executor like this:**
 
 ```
-gl genai-add-mcp-client
+genai-logic genai-add-mcp-client
 ```
 
 **3. Restart the Server**
@@ -313,7 +325,7 @@ For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener
 
 <br>
 
-## 4. Iterate with Rules and Python
+## 5. Iterate with Rules and Python
 
 Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let's take an example:
 
