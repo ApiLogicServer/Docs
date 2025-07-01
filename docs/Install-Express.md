@@ -53,6 +53,7 @@ Open the appropriate section below.
     Notes:
     
     1. Windows users will need to run the terminal in Admin mode, with scripts enabled
+    2. For `genai` functions, you will need an [OpenAI Key](Sample-Basic-Tour.md#get-an-openai-apikey){:target="_blank" rel="noopener"}
     2. If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md)
     3. If you are using VSCode, we ***strongly recommend*** you create the [VSCode CLI](IDE-Customize.md#vscode-cli){:target="_blank" rel="noopener"}.
 
