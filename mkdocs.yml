@@ -44,6 +44,7 @@ nav:
   - 0. ApiLogicServer create:
     - "Create with CLI": Project-Structure.md
     - "Manager": Manager.md
+    - "Manager ReadMe": Sample-Basic-Tour.md
     - "Create with Gen/AI on Web": WebGenAI-create.md
     - "Model Driven": Tech-DSL.md
     - "Create With Copilot": Project-Create-Copilot.md
@@ -195,7 +196,6 @@ nav:
     - "Product Detail": Product-Detail.md
     - "Product Overview": Product-Overview.md
     - Personal:
-      - "Tour": Sample-Basic-Tour.md
       - "Home": Home.md
       - "INFO": ApiLogicServer-create.md
       - "Recompute": Logic-Recompute.md

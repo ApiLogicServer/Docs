@@ -31,7 +31,7 @@ API Logic Server can create projects from existing databases, or use GenAI to cr
 Create the project - use the CLI (**Terminal > New Terminal**), :
 
 ```bash
-$ ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
+$ genai-logic create --project_name=basic_demo --db_url=basic_demo
 ```
 
 > Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/){:target="_blank" rel="noopener"} for a test database provided as part of the installation.  You would normally supply a SQLAlchemy URI to your existing database, e.g. <br>`genai-logic create  --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite`.
