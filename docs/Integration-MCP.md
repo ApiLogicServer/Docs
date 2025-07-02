@@ -244,36 +244,42 @@ Inspect the console log, and observe that 2 rows are returned.
 
 ## MCP Client Executor UI
 
-Invoking the MCP Client Executor via CLI is useful for development, but business users will want a User Interface.  We show here how to use the Automatic Admin App to invoke the same MCP Client Executor code described above.  You can of course use any technology you sish.
+Invoking the MCP Client Executor via CLI is useful for development, but business users will want a User Interface.  We show here how to use the Automatic Admin App to invoke the same MCP Client Executor code described above.  You can of course use any technology you wish.
 
-The screen shot below illustrates using the Admin App to create and execute MCP requests.  The actual MCP processing is in the Api Logic Server, so you can build your own custom app to provide MCP execution, using the Api Logic Server business logic.  
-
-See the sub-sections below to see how to provide this on your own projects.
+The screen shot below illustrates using the Admin App to create and execute MCP requests: 
 
 ![mcp-client](images/integration/mcp/mcp-client.png)
 
+To install the MCP Client Executor User Interface:
+
+1. Execute the following command.  
+```bash title="Intall the MCP Client Executor User Interface"
+genai-logic genai-add-mcp-client
+```
+2. It performs the steps in the subsections below.
+
 <br>
 
-### Create table: `SysMCP`
+### Creates sqlite table: `SysMCP`
 
-This can be a table in your database, or you can create it in a separate database.  
+We create a separate table because you may wish to use MCP on an existing database that is not alterable.  
 
-It requires a column called `prompt`.
+You can change the definition of this table to fit your needs.  It requires a column called `prompt`.
 
 &nbsp;
 
-### `SysMcp` Logic: Request Pattern
+### Adds `SysMcp` Logic
 
-The screen shot below shows logic you must create for the `SysMcp` table.
+The screen shot below shows logic created for the `SysMcp` table.
 
 1. This is the same *request* pattern used for SysEmail.
 2. The code invokes the same `integration/mcp/mcp_client_executor.py` described above.
 
 ![mcp-client](images/integration/mcp/mcp-client-request.png)
 
-### Admin App Customization
+### Customizes the Admin App
 
-You might want to customize the `SysMcp` settings in `ui/admin/admin.yaml`.  For more information, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/customizations/ui/admin/admin.yaml){:target="_blank" rel="noopener"}.
+The system adds the UI in `ui/admin/admin.yaml`.  For more information, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/customizations/ui/admin/admin.yaml){:target="_blank" rel="noopener"}.
 
 <br>
 
