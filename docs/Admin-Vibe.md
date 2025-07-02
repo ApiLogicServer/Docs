@@ -1,11 +1,13 @@
 !!! pied-piper ":bulb: TL;DR - instant multi-page, multi-table apps"
 
-      The *generated* Admin App is a standard react app,
-      ***fully customizable*** using GenAI Vibe tools and/or your IDE.
+      Use `genai-logic genai-add-app --vibe` to *generate* a standard react app,
+      ***fully customizable*** using GenAI Vibe tools and/or your IDE.  You get a headstart:
 
-      > With minimal background on html, javascript etc, <br>you can begin using Vibe/Natural Language tools to create custom User Interfaces 
+      * No data mockups - use the created server
+      * No starting from scratch - customize a running multi-page app
+      * Minimal background on html, javascript etc, <br>you can begin using Vibe/Natural Language tools to create custom User Interfaces 
       
-      Contrast this to the [*automated* Admin App](Admin-Tour.md){:target="_blank" rel="noopener"}, which focuses on speed and simplicity.
+      This complements the [*automated* Admin App](Admin-Tour.md){:target="_blank" rel="noopener"}, which focuses on speed and simplicity.
       
       It provides:
       
@@ -15,6 +17,7 @@
       | Multi-Table | **Tab Sheet** for related child data <br>**Page Transitions** for related data | Customer page has OrderList<br>Click --> Order/OrderDetails | 
       |             | **Automatic Joins** for Parent Data    | Product _Name_ - not just the Id | 
       |             | **Lookups** for foreign keys    | Find Product for OrderDetail | 
+      |             | **Cascade Add** to default foreign keys    | Add Line Items for *this* order | 
       | Customize | Use GenAI Vibe tools and/or your IDE   | Add new pages, controls, etc | 
 
       > See status, at end.
@@ -31,8 +34,8 @@ Pre-reqs:
 
 Once your project is created, you can create a UI Application like this (e.g., use the Terminal Window of your project):
 
-```bash
-als genai-app
+```bash title="Create and Run React app"
+genai-logic genai-add-app --vibe
 cd ui/react_admin
 npm install
 npm start
@@ -69,16 +72,23 @@ Not a bad app, but the objective here is that we can customize - simply, with Na
 
 Here, we are using the Claude preview of VsCode, and make the request:
 
-```txt
-On the customer page,
-I want a gui control so the user could see list or cards (but not both).
+```txt title="Vibe: Customize with Natural Language"
+Update the Customer list to provide users an option to see results in a list, or in cards
 ```
 
-![ask-for-card](images/ui-vibe/customer-cards-vibe.png)
+![vibe-cards](images/basic_demo/vibe-cards.png)
 
 And we get:
 
 ![get-card](images/ui-vibe/customer-cards.png)
+
+
+
+### Northwind Reference Example
+
+The Northwind app (`samples/nw_sample/ui/reference_react_app` in the manager) has been customized with cards:
+
+![nw-cards](images/ui-vibe/nw-cards.png)
 
 <br>
 
@@ -92,7 +102,7 @@ Since the *app learning* is a part of your project, you can alter it to create a
 
 ## Appendix: Status
 
-As of June 23 2025, this is **under construction**.  Please contact us at `support@genai-logic.com` for more information and early access.  We are actively seeking collaboration.
+As of July 1, 2025, this is **under construction**.  Please contact us at `support@genai-logic.com` for more information and early access.  We are actively seeking collaboration.
 
 We have tested this on the basic_demo project.  It creates runnable apps, using a dataProvider for safrs json:api.
 
@@ -105,10 +115,6 @@ Working:
 ToDo:
 
 * Security (disable with `als add-auth --provider-type=None`)
-
-![genned-vibe](images/ui-vibe/genned-vibe.png)
-
-<br>
 
 <br>
 

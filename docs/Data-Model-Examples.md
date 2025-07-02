@@ -32,18 +32,9 @@ In addition to the pre-installed sqlite samples, there are also abbreviations fo
 
 &nbsp;
 
-## Creating databases with ChatGPT
+## Creating databases
 
-If you don't have a database, but have an *idea*, you can 
-
-* create databases with ChatGPT, and then 
-* turn these into projects with ApiLogicServer
-
-You can [see an example here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/tests/test_databases/ai-created){:target="_blank" rel="noopener"}.
-
-![chatgpt](images/model/employees%20and%20skills.png)
-
-> Note: such databases require *adult supervision*, for example, they often fail to include primary keys on junction tables.
+If you don't have a database, but have an *idea*, you can use AI tools to create them, or use WebGenAI to create databases *- and logic -* from Natural Language.  To explore WebGenAI, [click here](WebGenAI.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
