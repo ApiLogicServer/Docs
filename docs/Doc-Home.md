@@ -1,4 +1,4 @@
-Welcome to API Logic Server documentation.  In sufficently large browsers, the pages are shown at left, and the page contents are at right.
+Welcome to GenAI-Logic (aka ApiLogicServer) documentation.  In sufficently large browsers, the pages are shown at left, and the page contents are at right.
 
 
 # Start: Install, Samples, Training
@@ -13,10 +13,13 @@ python3 -m venv venv                 # windows: python -m venv venv
 source venv/bin/activate             # windows: venv\Scripts\activate
 python -m pip install ApiLogicServer
 
-ApiLogicServer start                 # optionally, start the project manager
+genai-logic start.                   # optionally, start the project manager
 ```
 
-> Note: this requires you've activated VSCode `code` CLI (to get it: Open the Command Palette (Cmd+Shift+P) and type 'shell command')
+Notes:
+
+1. This requires you've activated **VSCode `code` CLI** (to get it: Open the Command Palette (Cmd+Shift+P) and type `shell command`).
+2. The `genai-logic` CLI command is the rebranding of `ApiLogicServer`.  They are synonomous, including aliases such as gail, als.  Use `genai-logic --help` to discover remaining commands.
 
 <details markdown>
 

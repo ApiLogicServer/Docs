@@ -43,7 +43,7 @@
 
 &nbsp;
 
-## Example: send emails for pending orders
+## Example: pending order emails
 
 
 The **basic_demo** sample enables you to create orders with business logic: check credit by using rules to roll-up item amount to orders / customers.  Setting the `date_shipped` indicates payment is received, and the customer balance is reduced.  
@@ -55,7 +55,7 @@ In this example, we want a new service to:
 1. Find Orders placed over 30 days ago that are not shipped
 2. Send an Email encouraging prompt payment
 
-We want to do this without troubling IT.  MCP enables business users to self-server, while maintaining integrity through the existing logic-enabled JSON:APIs.
+We want to do this without troubling IT.  ***MCP enables business users to implement new composite services, while maintaining integrity through the existing logic-enabled JSON:APIs.***
 
 &nbsp;
 
@@ -152,7 +152,7 @@ MCP is capable of executing email directly, but we have business policies provid
 
 As shown below, a common [logic pattern](Logic.md#rule-patterns){:target="_blank" rel="noopener"} is a `Request Object`, which implements the request pattern:
 
-> Request PatternL you insert a row, triggering its business logic (a Python event handler)
+> Request Pattern: you insert a row, triggering its business logic (a Python event handler)
 
 Here, the logic (an *after_flush* event) checks the opt-out, and sends the mail (stubbed):
 
@@ -242,7 +242,9 @@ Inspect the console log, and observe that 2 rows are returned.
 
 <br>
 
-## Admin App: MCP Client Executor
+## MCP Client Executor UI
+
+Invoking the MCP Client Executor via CLI is useful for development, but business users will want a User Interface.  We show here how to use the Automatic Admin App to invoke the same MCP Client Executor code described above.  You can of course use any technology you sish.
 
 The screen shot below illustrates using the Admin App to create and execute MCP requests.  The actual MCP processing is in the Api Logic Server, so you can build your own custom app to provide MCP execution, using the Api Logic Server business logic.  
 
