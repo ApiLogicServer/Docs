@@ -19,7 +19,7 @@ Instructions: Copy in Sample-Basic-Demo (Replace "This illustrates" up to "Explo
 
 2. ***Customize*** with **Declarative Rules** and Python in your IDE, standard container deployment
 
-You are in the [API Logic Server Manager](Manager.md).  This is a good place to manage projects, create notes and resources, etc.  
+This is the start page for the [GenAI-Logic Manager](Manager.md).  The Manager is a good place to manage projects, create notes and resources, etc.  
 
 > 💡 **Tip:** Need to install? See the [installation guide](Install-Express.md){:target="_blank" rel="noopener"}.
 
