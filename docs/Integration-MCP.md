@@ -11,23 +11,24 @@
 	MCP Client Executors operate as shown below:
 	
 	1. MCP Client Executors first **discover** servers (tools) - their schema, instructions, etc.
-	2. MCP Client Executors then **call LLMs** to translate NL queries into multi-step execution flows called **Tool Context Blocks.**. 
+	2. MCP Client Executors then **call LLMs** to translate NL queries into multi-step execution flows called **Tool Context Blocks** (basically a list of api calls expressed in json). 
 	3. The MCP Client Executors then **process the Tool Context Block** steps, making calls on the  **MCP Server Executors** (tools).
 	
 		* MCP Server Executors are commonly provided via ***logic-enabled* APIs.**  (Note the logic is critical in maintaining integrity and security.)
 	
-	In some cases, you may have a database, but neither the APIs nor the logic.  GenAI-Logic API Logic Server can **mcp-ify existing databases** by:
-	
-	1. Creating JSON:APIs for *existing databases* with a single CLI command
-	2. Enabling you to [declare business logic](Logic.md), enforced by the APIs during MCP execution flows.
+	In some cases, you may have a database, but neither the APIs nor the logic.  GenAI-Logic can **mcp-ify existing databases** by:
 
+    * Creating JSON:APIs for *existing databases* with a single CLI command.
+    * Creating a MCP Client Executor User Interface, for Business Users to make MCP requests.
+    * Enabling you to [declare business logic](Logic.md), enforced by the APIs during MCP execution flows.
+  
  &nbsp;
 
 ## Architecture
 
 ![Intro diagram](images/integration/mcp/MCP_Arch.png)  
 
-1. MCP Client Executor Startup calls `.well-known` endpoint to load training and schema meta data
+1. MCP Client Executor Startup calls `.well-known` endpoint to load training and schema meta data for each configured server
 
 2. MCP Client Executor sends Bus User ***NL query + training + schema*** to the external LLM (here we are using ChatGPT - requires API Key).  LLM returns an ***MCP Tool Context*** JSON block.
 
@@ -228,9 +229,17 @@ The LLM might create a tool context like:
 
 <br>
 
-## MCP Security
+## MCP Logic and Security
 
-For MCP calls made via SysMcp (see next section), API calls are made with the current request header.  In particular, role-based access operates with your auth-token, enforcing grants per your login.
+Business logic is always critical, particularly when Business Users can make update calls.  A key design goal of the MCP architecture is that updates be made via APIs that enforce logic and security.
+
+GenAI-Logic address this as follows:
+
+1. All domain object updates **automatically invoke your declarative business logic.**
+
+2. The discussion above noted the use of the **request pattern to add business logic to a *service***, such as email.  
+
+3. MCP also respects your security settings.  For MCP calls made via SysMcp (see next section), API calls are made with the current request header from your login.  In particular, **role-based row-access grants are enforced** using this auth-token.
 
 For example, you could use the SysMcp in the Admin app (see next section), and enter this request:
 
