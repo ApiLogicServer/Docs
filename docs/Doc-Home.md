@@ -9,11 +9,13 @@ Welcome to GenAI-Logic (aka ApiLogicServer) documentation.  In sufficently large
 If you have the correct Python (version 3.10-3.12), install is standard ([more detailed instructions here](Install-Express.md){:target="_blank" rel="noopener"}):
 
 ```bash title="Install API Logic Server in a Virtual Environment"
+mkdir genai-logic                    # aka ApiLogicServer
+cd genai-logic
 python3 -m venv venv                 # windows: python -m venv venv
 source venv/bin/activate             # windows: venv\Scripts\activate
 python -m pip install ApiLogicServer
 
-genai-logic start.                   # optionally, start the project manager
+genai-logic start                    # optionally, start the project manager
 ```
 
 Notes:
@@ -35,7 +37,7 @@ ApiLogicServer start --open-with=pycharm  # For Mac, you may need use charm, not
 <br>Verification test - create and run the demo (from the IDE in your Manager CLI, or terminal):
 
 ```bash title="Verify - Create and Run Demo"
-als create --project-name=basic_demo --db-url=sqlite:///sample_ai.sqlite
+genai-logic create --project-name=basic_demo --db-url=sqlite:///sample_ai.sqlite
 code basic_demo  # not required when running from Manager (IDE starts automatically)
 ```
 
