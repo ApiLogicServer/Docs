@@ -84,6 +84,8 @@ Then, proceed with `npm install` and `npm start`.
 
 The Landing Page Graphics requires you `genai-logic genai-graphics`.  For more information, [click here](WebGenAI-CLI.md#dashboard-graphics){:target="_blank" rel="noopener"}.
 
+> Generated Apps do not yet support security; you must disable security: `als add-auth --provider-type=None`
+
 <br>
 
 ## Landing Page with Graphs
