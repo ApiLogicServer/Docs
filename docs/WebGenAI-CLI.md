@@ -346,15 +346,15 @@ Release 14.04 provides a technology preview of Dashboard Graphics:
 
 ![dashboard](images/sample-ai/genai/dashboard-graphics.png)
 
-You can create this after installing the [Manager](Manager.md):
+Dashboard Graphics have already been installed in `samples/nw_sample`, using the following creation process after installing the [Manager](Manager.md){:target="_blank" rel="noopener"}:
 
 1. Open project: `samples/nw_sample`
 2. Observe `docs/graphics/count_orders_by_category.prompt` (contains `Graph number of sales per category, for dashboard`)
-3. In a terminal window: `als genai-graphics`; observe this creates:
-4. 
+3. In a terminal window: `genai-logic genai-graphics`; observe this creates:
+
 		* `database/database_discovery/graphics_services.py` - methods in data model classes to return group by results
 		* `api/api_discovery/dashboard_services.py` to return dashboard information
-5. Update `ui/admin/home.js` to include the following (e.g., before the line containing *Welcome to GenAI-Logic/API Logic Server*): 
+4. Update `ui/admin/home.js` to include the following (e.g., before the line containing *Welcome to GenAI-Logic/API Logic Server*): 
 
 ```html
 '<div class="dashboard-iframe">' +

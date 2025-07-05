@@ -67,7 +67,22 @@ This implementation provides a truly professional and intuitive user experience 
 
 ## Setup
 
-explain
+Node is required.
+
+In the Manager, `samples/nw_sample` has already been created.  You will need to `npm install` and `npm start`.
+
+If you want to start from scratch (e.g. to mimic the process with your own database):
+
+```bash title="Vibe Kickstart"
+genai-logic create --project-name=nw, --db-url=nw
+
+# Open the project in your IDE, and issue Termimal commands:
+genai-logic genai-add-app
+```
+
+Then, proceed with `npm install` and `npm start`.
+
+The Landing Page Graphics requires you `genai-logic genai-graphics`.  For more information, [click here](WebGenAI-CLI.md#dashboard-graphics){:target="_blank" rel="noopener"}.
 
 <br>
 
@@ -144,9 +159,10 @@ The screenshot below shows how this worked in VSCode:
 
 ### Learnings Creation
 
-It took many hours (not days) to build the learnings shown above.  The process is roughly:
+It took many hours (not days) to build the learnings shown above.
+If you wish to build similar learnings for other UI paradidigms, the process is roughly:
 
 1. Make a request
 2. Iterate the request as required (this is the part that took hours)
-3. When the result is good, ask the GenAI tool to provide a prompt that is simple, and would have achieved the result without hours of iteration
-4. Place this file in the directory shown above
+3. When the result is good, **ask the GenAI tool to provide a prompt that is simple, and would have achieved the result without hours of iteration**
+4. Create a file with the suggested prompt in the directory shown above
