@@ -86,9 +86,11 @@ And we get:
 
 ### Northwind Reference Example
 
-The Northwind app (`samples/nw_sample/ui/reference_react_app` in the manager) has been customized with cards:
+The Northwind app (`samples/nw_sample/ui/reference_react_app` in the manager) has been customized to illustrate what you can do with vibe, including graphs and charts, maps, trees, cards, etc.
 
-![nw-cards](images/ui-vibe/nw-cards.png)
+To review, [click here](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}.
+
+![nw-cards](images/ui-vibe/nw/genai-landing.png)
 
 <br>
 
