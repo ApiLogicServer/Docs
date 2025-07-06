@@ -134,13 +134,16 @@ And you are ready to Vibe:
 * And, you'll have projects that are **architecturally correct:** shared logic, enforced in the server, available for both User Interfaces and services.
 * Then, use you favorite Vibe tools with your running API
 
-<br>
+    * Below is an example from Northwind: [click here](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}
+
 
 ```txt title='Customize using Natural Language'
-Update the Customer list to provide users an option to see results in a list, or in cards
+Update the Employee list to provide users an option to see results in a list, or in cards.
+Include the image in the card.
 ```
+<br>
 
-![vibe-cards](images/basic_demo/vibe-cards.png)
+![vibe-cards](images/ui-vibe/nw/vibe-gallery.png)
 
 <br>
 
