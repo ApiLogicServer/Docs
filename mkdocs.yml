@@ -175,6 +175,7 @@ nav:
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
     - "Training": Tech-Training.md
+    - "Enterprise Vibe": Tech-Enterprise-Vibe.md
     - "Keycloak DevNotes": Keycloak-devnotes.md
     - "API Appliance": Tech-Toaster.md
     - "Nat Lang Logic": Tech-Logic-Transcript.md

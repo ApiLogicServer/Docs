@@ -92,7 +92,7 @@ The Landing Page Graphics requires you `genai-logic genai-graphics`.  For more i
 
 ![nw-landing](images/ui-vibe/nw/genai-landing.png)
 
-We first created the graphics, as [described here](Docs/WebGenAI-CLI.md#dashboard-graphics){:target="_blank" rel="noopener"}.
+We first created the graphics, as [described here](WebGenAI-CLI.md#dashboard-graphics){:target="_blank" rel="noopener"}.
 
 We then requested a landing page (no hints on product architecture, by the way... we did not ask where it acquired this information).
 

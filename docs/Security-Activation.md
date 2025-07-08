@@ -15,17 +15,16 @@ Use the `add-auth` command to activate security.  Specify:
 
 ## Examples
 
-Use your IDE's terminal window positioned at your project root:
+Use your IDE's terminal window positioned at your project root [^1]:
 
 ```bash title='Configure Security - Examples'
-als add-auth --provider-type=sql --db-url=
-als add-auth --provider-type=sql --db_url=postgresql://postgres:p@localhost/authdb
+gail add-auth --provider-type=sql --db-url=
+gail add-auth --provider-type=sql --db_url=postgresql://postgres:p@localhost/authdb
 
-als add-auth --provider-type=keycloak --db-url=localhost
-als add-auth --provider-type=keycloak --db-url=hardened
+gail add-auth --provider-type=keycloak --db-url=localhost
+gail add-auth --provider-type=keycloak --db-url=hardened
 
-als add-auth --provider-type=None # to disable
-
+gail add-auth --provider-type=None # to disable
 ```
 
 &nbsp;
@@ -50,3 +49,6 @@ See [this information for sql authentication](Security-sql.md#accessed-via-sqlal
 
 The Security Manager and sqlite Authentication-Provider are built into created projects from the [system's prototype project](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/nw){:target="_blank" rel="noopener"}.
 
+[^1]:
+    `gail` (or `genai-logic`) is the rebranded name for `als` (or `apilogicserver`).
+    Older installations may require these latter CLI names.

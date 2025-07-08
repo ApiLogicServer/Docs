@@ -5,8 +5,8 @@
 		}
 	],
 	"settings": {
-		"workbench.colorTheme": "Arduino Dark",
-		"workbench.preferredLightColorTheme": "Office Theme (Publisher)",
-		"workbench.preferredDarkColorTheme": "Arduino Dark"
+		"workbench.colorTheme": "Office Theme (OneNote)",
+		"workbench.preferredLightColorTheme": "Office Theme (OneNote)",
+		"workbench.preferredDarkColorTheme": "Office Theme (OneNote)"
 	}
 }

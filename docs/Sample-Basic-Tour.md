@@ -15,6 +15,8 @@ Instructions: Copy in Sample-Basic-Demo (Replace "This illustrates" up to "Explo
 
 # Welcome to GenAI-Logic
 
+> 🤖 **For GitHub Copilot Users:** See `.vscode/.copilot-instructions.md` for AI assistant guidance on getting started with this project.
+
 1. ***Instant mcp-enabled microservices*** (APIs and Admin Apps), from a database or **GenAI prompt** -- one command and you are ready for MCP, Vibe and Business User Collaboration.
 
 2. ***Customize*** with **Declarative Rules** and Python in your IDE, standard container deployment

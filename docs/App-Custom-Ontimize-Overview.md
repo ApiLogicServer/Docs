@@ -289,7 +289,7 @@ The app_model.yaml file is created during the "app-create" or "create" phase and
 
 ## Entity
 Use the Ontimize editor to exclude a selected entity or change the titles.
-![](ui/templates/Entity.png)
+![](images/ui/templates/Entity.png)
 
 ### Edit Entity
 |field|Description|
