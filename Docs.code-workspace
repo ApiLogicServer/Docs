@@ -5,8 +5,8 @@
 		}
 	],
 	"settings": {
-		"workbench.colorTheme": "Office Theme (OneNote)",
-		"workbench.preferredLightColorTheme": "Office Theme (OneNote)",
-		"workbench.preferredDarkColorTheme": "Office Theme (OneNote)"
+		"workbench.colorTheme": "Default Light Modern",
+		"workbench.preferredLightColorTheme": "Default Light Modern",
+		"workbench.preferredDarkColorTheme": "Default Light Modern"
 	}
 }

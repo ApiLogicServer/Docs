@@ -37,6 +37,7 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 2. Adding declarative logic and security, and 
 3. Customizing your project using your IDE and Python
 
+> Bootstrap Copilot: paste this into chat: `open/read readme.md`
 
 The entire process takes 20 minutes; usage notes:
 
@@ -164,12 +165,12 @@ And you are ready to Vibe:
 
     * Below is an example from Northwind: [click here](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}
 
-<br>
 
 ```txt title='Customize using Natural Language'
 Update the Employee list to provide users an option to see results in a list, or in cards.
 Include the image in the card.
 ```
+<br>
 
 ![vibe-cards](images/ui-vibe/nw/vibe-gallery.png)
 
