@@ -9,8 +9,6 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 2. Adding declarative logic and security, and 
 3. Customizing your project using your IDE and Python
 
-> Bootstrap Copilot: paste this into chat: `open/read readme.md`
-
 The entire process takes 20 minutes; usage notes:
 
 * Important: look for **readme files** in created projects

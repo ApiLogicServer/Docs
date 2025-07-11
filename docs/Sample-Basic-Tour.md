@@ -22,6 +22,8 @@ Instructions: Copy in Sample-Basic-Demo (Replace "This illustrates" up to "Explo
 Please find and read `.github/.copilot-instructions.md`.
 ```
 
+What is GenAI-Logic:
+
 1. ***Instant mcp-enabled microservices*** (APIs and Admin Apps), from a database or **GenAI prompt** -- one command and you are ready for MCP, Vibe and Business User Collaboration.
 
 2. ***Customize*** with **Declarative Rules** and Python in your IDE, standard container deployment
@@ -41,8 +43,6 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 1. Creating projects from new or existing databases, providing a MCP-enabled API and an Admin App
 2. Adding declarative logic and security, and 
 3. Customizing your project using your IDE and Python
-
-> Bootstrap Copilot: paste this into chat: `open/read readme.md`
 
 The entire process takes 20 minutes; usage notes:
 
