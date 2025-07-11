@@ -44,7 +44,7 @@ And you're right.  It's because backend logic follows patterns of "what" is supp
 And your code is the "how". 
 
 !!! note "So, API Logic Server provides Declarative Business Rules for multi-table derivations and constraints"
-    Rules typically automate over **95% of such logic,** and are **40X more concise**.  You can think of rules as conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet){:target="_blank" rel="noopener"}, applied to your database.  
+    Rules typically automate over **95% of such logic,** and are **40X more concise**.  You can think of rules as conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet){:target="_blank" rel="noopener"}, applied to your database.  For a procedural / declarative analysis by CoPilot, [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -56,7 +56,7 @@ Use your IDE to declare rules, extend them with Python, and debug them as descri
 
 ### Declare: Python
 
-For this typical check credit design (in blue), the __5 rules shown below (lines 90-105) represent the same logic as [200 lines of code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}__:
+For this typical check credit design (in blue), the __5 rules shown below (lines 90-105) represent the same logic as [200 lines of code](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}__:
 
 ![5 rules not 200 lines](images/logic/5-rules-cocktail.png)
 
