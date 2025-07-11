@@ -18,7 +18,7 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 2. Adding declarative logic and security, and 
 3. Customizing your project using your IDE and Python<br><br>
 
-> 🤖 **For GitHub Copilot Users:** See `.github/.copilot-instructions.md` for AI assistant guidance on getting started with this project.  **Bootstrap Copilot by pasting the following into the chat:**
+> 🤖 **Bootstrap Copilot by pasting the following into the chat:**
 ```
 Please find and read `.github/.copilot-instructions.md`.
 ```
