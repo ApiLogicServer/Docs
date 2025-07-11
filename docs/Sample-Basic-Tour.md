@@ -29,20 +29,18 @@ This is the start page for the [GenAI-Logic Manager](Manager.md).  The Manager i
 
 # Product Tour (Start Here)
 
-**Evaluation Guide:** click on the disclosure buttons, below.   
-
 This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} operation: 
 
 1. Creating projects from new or existing databases, providing a MCP-enabled API and an Admin App
 2. Adding declarative logic and security, and 
-3. Customizing your project using your IDE and Python
+3. Customizing your project using your IDE and Python<br><br>
 
-> 🤖 **For GitHub Copilot Users:** See `.github/.copilot-instructions.md` for AI assistant guidance on getting started with this project.
-
-**Bootstrap Copilot by pasting the following into the chat:**
+> 🤖 **For GitHub Copilot Users:** See `.github/.copilot-instructions.md` for AI assistant guidance on getting started with this project.  **Bootstrap Copilot by pasting the following into the chat:**
 ```
 Please find and read `.github/.copilot-instructions.md`.
 ```
+
+<br>
 
 The entire process takes 20 minutes; usage notes:
 

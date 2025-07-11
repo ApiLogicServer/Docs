@@ -3,18 +3,27 @@ title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
 version: 0.23 from docsite 7/11/2025
 ---
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
+# Product Tour (Start Here)
+
 This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} operation: 
 
 1. Creating projects from new or existing databases, providing a MCP-enabled API and an Admin App
 2. Adding declarative logic and security, and 
-3. Customizing your project using your IDE and Python
+3. Customizing your project using your IDE and Python<br><br>
 
-> 🤖 **For GitHub Copilot Users:** See `.github/.copilot-instructions.md` for AI assistant guidance on getting started with this project.
-
-**Bootstrap Copilot by pasting the following into the chat:**
+> 🤖 **For GitHub Copilot Users:** See `.github/.copilot-instructions.md` for AI assistant guidance on getting started with this project.  **Bootstrap Copilot by pasting the following into the chat:**
 ```
 Please find and read `.github/.copilot-instructions.md`.
 ```
+
+<br>
 
 The entire process takes 20 minutes; usage notes:
 
