@@ -1,3 +1,13 @@
+## Vibe
+
+You can use your IDE as shown below - not only for code, but for Vibe.  With recent IDE updates, the coding assistants look for hints, now available in GenAI-Logic 15.00.41.  You can ask it what to do, create logic, create UIs, etc.  For more information, see this slide show: [click here](https://www.genai-logic.com/why-genai-logic/vibe-faster){:target="_blank" rel="noopener"}.
+
+You will find coding assistants can be helpful, playful, and even empathetic:
+
+![empthy](images/vscode/vibe/empathy.png)
+
+<br>
+
 ## Customize: Rules, Python
 
 [Customize API Logic Projects](Tutorial.md#3-customize-and-debug-in-your-ide){:target="_blank" rel="noopener"} using:
