@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"workbench.colorTheme": "Office Theme (Excel)",
-		"workbench.preferredLightColorTheme": "Office Theme (Excel)"
+		"workbench.colorTheme": "Office Theme (Word)",
+		"workbench.preferredLightColorTheme": "Office Theme (Word)"
 	}
 }

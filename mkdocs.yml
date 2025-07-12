@@ -59,7 +59,7 @@ nav:
       - Admin-Customization.md
       - "Admin Architecture": Admin-Architecture.md
     - Vibe Kickstart:
-      - "Generated Admin App": Admin-Vibe.md
+      - "Generated React App": Admin-Vibe.md
       - "Vibe Example": Admin-Vibe-Sample.md
       - "App Learning": Admin-App-Learning.md
     - "Automatic Custom Apps":
