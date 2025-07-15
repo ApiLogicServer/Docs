@@ -156,6 +156,7 @@ nav:
     - "App Gen: genai-app": Architecture-genai-app.md
     - "Build, Load and Test": Architecture-Internals-BLT.md
     - "VENV (internals)": Architecture-venv.md
+    - "VENV (defaulting)": Architecture-venv-defaulting.md
     - "Python (internals)": Architecture-python.md
     - "Internals - CLI": Architecture-Internals-CLI.md
     - "Internals - LLM": WebGenAI-llm-usage.md

@@ -53,6 +53,12 @@ If the dev inst fails to include this (e.g., improper dev-install, or dev-instal
 
 &nbsp;
 
+### Changes July 2025
+
+
+
+&nbsp;
+
 ## Dev `venv`
 
 The [dev `dev venv`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/requirements.txt){:target="_blank" rel="noopener"} includes all the key libs, ***but not** the CLI.  
