@@ -6,6 +6,8 @@
       
       These customizations were performed in VSCode using CoPilot, with the Claude Sonnet 4 Agent.
       
+![gallery](images/ui-vibe/nw/vibe-gallery.png)
+
 
 ## Copilot Summary
 
