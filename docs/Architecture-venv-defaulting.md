@@ -14,6 +14,25 @@
 
 The VS Code Python extension has a regression where standard settings like `python.defaultInterpreterPath` and `python.terminal.activateEnvironment` are not reliably working. This is documented in GitHub issue [#22879](https://github.com/microsoft/vscode-python/issues/22879).
 
+## VS Code Background
+
+### How VS Code Handles Virtual Environments
+
+**Project Opening**:
+- VS Code reads `.vscode/settings.json` and applies workspace settings
+- Python extension detects interpreter path and configures IntelliSense
+- `.env` file is loaded for environment variables
+- Terminal profiles are configured but not executed
+- **No scripts run automatically** - the project is ready but no terminal activation occurs
+
+**Terminal Creation**:
+- When you open a new terminal (Terminal → New Terminal), VS Code uses the default terminal profile
+- Our custom "venv" profile executes: `source .vscode/venv_init.sh && exec zsh --no-rcs`
+- The `venv_init.sh` script runs, activates the virtual environment, and sets the prompt
+- A new shell starts with the virtual environment already activated
+
+**Key Point**: Virtual environment activation is "lazy loaded" - it only happens when you actually create a terminal, not when the project opens.
+
 ## Comprehensive Solution
 
 ### 1. Enhanced VS Code Settings Template
@@ -34,13 +53,13 @@ The VS Code Python extension has a regression where standard settings like `pyth
     "terminal.integrated.profiles.osx": {
         "venv": {
             "path": "/bin/zsh",
-            "args": ["-c", "source ${workspaceFolder}/.vscode/venv_init.sh && exec zsh"]
+            "args": ["-c", "source ${workspaceFolder}/.vscode/venv_init.sh && exec zsh --no-rcs"]
         }
     },
     "terminal.integrated.profiles.linux": {
         "venv": {
             "path": "/bin/bash",
-            "args": ["-c", "source ${workspaceFolder}/.vscode/venv_init.sh && exec bash"]
+            "args": ["-c", "source ${workspaceFolder}/.vscode/venv_init.sh && exec bash --noprofile --norc"]
         }
     },
     "terminal.integrated.defaultProfile.osx": "venv",
@@ -60,19 +79,72 @@ PYTHONPATH=<computed_python_path>
 ```
 
 #### `.vscode/venv_init.sh` Script
-**Purpose**: Reliable terminal virtual environment activation
+**Purpose**: Reliable terminal virtual environment activation with optional debugging
 **Content**:
 ```bash
 #!/bin/bash
-# Virtual environment initialization script
-# This ensures the venv is activated in all terminal sessions
+# Virtual Environment Initialization Script
+# This script activates the virtual environment for terminal use
 
+# Set DEBUG_VENV_INIT=1 to enable debug output
+DEBUG_VENV_INIT=0
+
+if [ "$DEBUG_VENV_INIT" = "1" ]; then
+    echo "=== VENV INIT DEBUG ==="
+    echo "Shell: $0"
+    echo "ZSH_VERSION: $ZSH_VERSION"
+    echo "BASH_VERSION: $BASH_VERSION"
+    echo "Current PS1: $PS1"
+    echo "VIRTUAL_ENV before: $VIRTUAL_ENV"
+fi
+
+# Source the virtual environment activation script
 if [ -f "<venv_path>/bin/activate" ]; then
+    if [ "$DEBUG_VENV_INIT" = "1" ]; then
+        echo "Found activation script: <venv_path>/bin/activate"
+    fi
     source <venv_path>/bin/activate
-    export PYTHONPATH="<computed_python_path>"
     echo "Virtual environment activated: <venv_name>"
+    
+    if [ "$DEBUG_VENV_INIT" = "1" ]; then
+        echo "VIRTUAL_ENV after activation: $VIRTUAL_ENV"
+    fi
+    
+    # Don't let virtualenv override the prompt
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    if [ "$DEBUG_VENV_INIT" = "1" ]; then
+        echo "Set VIRTUAL_ENV_DISABLE_PROMPT=1"
+    fi
+    
+    # Override the prompt to ensure (venv) shows
+    if [ -n "${ZSH_VERSION}" ]; then
+        if [ "$DEBUG_VENV_INIT" = "1" ]; then
+            echo "Setting zsh prompt"
+        fi
+        export PS1="(venv) %n@%m %1~ %# "
+    elif [ -n "${BASH_VERSION}" ]; then
+        if [ "$DEBUG_VENV_INIT" = "1" ]; then
+            echo "Setting bash prompt"
+        fi
+        export PS1="(venv) \\u@\\h \\W \\$ "
+    else
+        if [ "$DEBUG_VENV_INIT" = "1" ]; then
+            echo "Unknown shell - trying generic prompt"
+        fi
+        export PS1="(venv) $ "
+    fi
+    
+    if [ "$DEBUG_VENV_INIT" = "1" ]; then
+        echo "Final PS1: $PS1"
+        echo "Final VIRTUAL_ENV: $VIRTUAL_ENV"
+    fi
+    
 else
-    echo "Warning: Virtual environment not found at <venv_path>"
+    echo "Warning: Virtual environment activation script not found at <venv_path>/bin/activate"
+fi
+
+if [ "$DEBUG_VENV_INIT" = "1" ]; then
+    echo "=== END DEBUG ==="
 fi
 ```
 
@@ -131,6 +203,23 @@ with open(os.path.join(project_directory, '.vscode', 'venv_init.sh'), 'w') as f:
 - Requires VS Code restart after project generation for full effect
 - Custom terminal profiles may need user acknowledgment on first use
 - Some VS Code Python extension features may still be unreliable
+- Terminal starts without loading user's shell configuration files (zsh/bash rc files)
+
+### Troubleshooting
+If virtual environment activation is not working:
+
+1. **Enable Debug Mode**: Edit `.vscode/venv_init.sh` and change `DEBUG_VENV_INIT=0` to `DEBUG_VENV_INIT=1`
+2. **Open New Terminal**: The debug output will show exactly what's happening
+3. **Check Debug Output**: Look for:
+   - Whether the activation script is found
+   - Which shell is being detected
+   - Whether the virtual environment variables are set correctly
+   - Whether the prompt is being set properly
+
+Common issues and solutions:
+- **Script not found**: Check that the virtual environment path is correct
+- **Wrong shell detected**: The script should detect zsh on macOS
+- **Prompt not showing**: Ensure `--no-rcs` is working and not loading conflicting configurations
 
 ## Future Considerations
 
