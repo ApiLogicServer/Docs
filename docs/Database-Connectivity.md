@@ -21,20 +21,35 @@ ApiLogicServer examples
 This produces a console log like:
 
 ```bash
-  ApiLogicServer create
-  ApiLogicServer create-and-run
-  ApiLogicServer create --db_url=sqlite:////Users/val/dev/todo_example/todos.db --project_name=todo
-  ApiLogicServer create --db_url=sqlite:///c:\ApiLogicServer\nw.sqlite --project_name=nw
-  ApiLogicServer create --db_url=sqlite:///ai.sqlite --project_name=ai --open_with=code
-  ApiLogicServer create --db_url=mysql+pymysql://root:p@mysql-container:3306/classicmodels --project_name=/localhost/docker_db_project
-  ApiLogicServer create --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no'
-  ApiLogicServer create --project_name=oracle_hr --db_url='oracle+oracledb://hr:tiger@localhost:1521/?service_name=ORCL'
-  ApiLogicServer create --db_url=postgresql://postgres:p@10.0.0.234/postgres
-  ApiLogicServer create --project_name=my_schema --db_url=postgresql://postgres:p@localhost/my_schema
-  ApiLogicServer create --db_url=postgresql+psycopg2://postgres:password@localhost:5432/postgres?options=-csearch_path%3Dmy_db_schema
-  ApiLogicServer create --project_name=Chinook \
-    --host=ApiLogicServer.pythonanywhere.com --port= \
-    --db_url=mysql+pymysql://ApiLogicServer:@ApiLogicServer.mysql.pythonanywhere-services.com/ApiLogicServer\$Chinook
+# local sqlite
+genai-logic create --db_url=sqlite:///c:\genai-logic\nw.sqlite --project_name=nw
+genai-logic create --db_url=sqlite:///samples/dbs/todos.sqlite --project_name=todo
+genai-logic create --db_url=sqlite:////Users/val/dev/ApiLogicServer/ApiLogicServer-dev/clean/ApiLogicServer/samples/dbs/todos.sqlite --project_name=todo
+
+# from localhost to mysql container
+genai-logic create --db_url=mysql+pymysql://root:p@localhost:3306/classicmodels --project_name=docker_classicmodels
+genai-logic create --db_url=mysql+pymysql://root:p@localhost:3306/Chinook --project_name=docker_chinook
+
+# from container to mysql container  replace localhost with....
+genai-logic create --db_url=mysql+pymysql://root:p@mysql-container:3306/Chinook --project_name=/localhost/docker_chinook
+
+# microsoft sql server (setup: https://apilogicserver.github.io/Docs/Install-pyodbc/)
+genai-logic create --db_url='mssql+pyodbc://sa:Posey3861@localhost:1433/NORTHWND?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=no&Encrypt=no' --project-name=NORTHWND
+
+# oracle
+genai-logic create --project_name=oracle_hr --db_url='oracle+oracledb://hr:tiger@localhost:1521/?service_name=ORCL'
+
+# postgres
+genai-logic create --db_url=postgresql://postgres:p@localhost/northwind --project-name=nw-postgres
+genai-logic create --db_url=postgresql://postgres:p@10.0.0.234/postgres
+genai-logic create --project_name=my_schema --db_url=postgresql://postgres:p@localhost/my_schema
+genai-logic create --db_url=postgresql://postgres:password@localhost:5432/postgres?options=-csearch_path%3Dmy_db_schema
+
+# pythonanywhere
+genai-logic create --project_name=Chinook \
+  --host=ApiLogicServer.pythonanywhere.com --port= \
+  --db_url=mysql+pymysql://ApiLogicServer:@ApiLogicServer.mysql.pythonanywhere-services.com/ApiLogicServer\$Chinook
+
 
 Where --db_url is one of...
    <default>                     Sample DB                    - https://apilogicserver.github.io/Docs/Sample-Database/
@@ -42,7 +57,7 @@ Where --db_url is one of...
    <SQLAlchemy Database URI>     Your own database            - https://docs.sqlalchemy.org/en/14/core/engines.html
                                  Other URI examples:          - https://apilogicserver.github.io/Docs/Database-Connectivity//
  
-Docs: https://apilogicserver.github.io/Docs/
+Docs: https://apilogicserver.github.io/Docs/Database-Connectivity/
 
 ```
 
