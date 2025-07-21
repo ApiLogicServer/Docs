@@ -361,11 +361,16 @@ With the server running, test it like this:
 
 You can do this in the command line, or via the admin app.
 
+Use the **Admin App:** (shown above), and follow step 4 on the Home page to see a Business-User-friendly example.
+
+Or, use the command line.  
+
+> Since the CLI does not pass an auth token, 
+you must first stop the server and disable security.
+
 ```bash title='MCP from the command line'
 python integration/mcp/mcp_client_executor.py mcp
 ```
-
-Or, use the **Admin App:** (shown above), and follow step 4 on the Home page to see a Business-User-friendly example.
 
 <br>
 
@@ -470,6 +475,10 @@ Of course, we all know that all businesses the world over depend on the `hello w
 * and, for database access, SQLAlchemy.  Note all updates from custom APIs also enforce your logic.
 
 Explore the custom API in `api/api_discovery/order_b2b.py`, and test it using swagger:
+
+1. **Access the Home page of the Admin App**
+2. **Access the swagger**
+3. **Test the b2b API / Logic, as shown below:**
 
 ![b2b_swagger](images/integration/b2b_swagger.png)
 
