@@ -43,10 +43,12 @@ API Logic Server can create projects from existing databases, or use GenAI to cr
 &nbsp;
 ### From Existing Database
 
-Create the project - use the CLI (**Terminal > New Terminal**), :
+This is the best way to start:
 
+1. Open a terminal window: **Terminal > New Terminal**
+2. **Create Project from Existing Database:**
 ```bash
-$ genai-logic create --project_name=basic_demo --db_url=basic_demo
+genai-logic create --project_name=basic_demo --db_url=basic_demo
 ```
 
 > Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/){:target="_blank" rel="noopener"} for a test database provided as part of the installation.  You would normally supply a SQLAlchemy URI to your existing database, e.g. <br>`genai-logic create  --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite`.
@@ -64,13 +66,16 @@ $ genai-logic create --project_name=basic_demo --db_url=basic_demo
 
 ### GenAI: New Database
 
-You can create a project *and a new database* from a prompt using GenAI, either by:
+Alternatively, you can create a project *and a new database* from a prompt, using GenAI.
+> ***Don't*** do this if you are executing the basic Product Tour.
 
-* [WebGenAI - in the Browser, via pubic website](WebGenAI.md){:target="_blank" rel="noopener"}, or
-* [GenAI -         in the Browser, via docker](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
-* [GenAI CLI](WebGenAI-CLI.md){:target="_blank" rel="noopener"} 
+There are 3 ways to use GenAI:
 
-Here we use the GenAI CLI:
+* WebGenAI - in the Browser, via pubic website - [click here](WebGenAI.md){:target="_blank" rel="noopener"}, or
+* GenAI -         in the Browser, via docker - [click here](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
+* GenAI CLI - [click here](WebGenAI-CLI.md){:target="_blank" rel="noopener"} 
+
+To use the GenAI CLI:
 
 1. If you have signed up (see *Get an OpenAI Key*, below), this will create and open a project called `genai_demo` from `genai_demo.prompt` (available in left Explorer pane):
 
@@ -137,7 +142,7 @@ For more custom apps, you get complete control by generating app source code, wh
 ```bash
 # create react source (requires OpenAI key)
 genai-logic genai-add-app --vibe
-cd react-app
+cd ui/react-app
 npm install
 npm start
 ```
@@ -149,14 +154,13 @@ And you are ready to Vibe:
 * And, you'll have projects that are **architecturally correct:** shared logic, enforced in the server, available for both User Interfaces and services.
 * Then, use you favorite Vibe tools with your running API
 
-    * Below is an example from Northwind: [click here](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}
-
 
 ```txt title='Customize using Natural Language'
-Update the Employee list to provide users an option to see results in a list, or in cards.
-Include the image in the card.
+In the ui/react-admin app, Update the Product list to provide users an option to see results in a list, or in cards.
 ```
 <br>
+
+> Below is an example from Northwind: [click here](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}
 
 ![vibe-cards](images/ui-vibe/nw/vibe-gallery.png)
 
@@ -167,6 +171,7 @@ Include the image in the card.
 Your project is MCP-ready - this will run a simple query *List customers with credit_limit > 1000* (we'll explore more interesting examples below, including provisions for user input):
 
 ```bash
+cd basic_demo
 python integration/mcp/mcp_client_executor.py
 ```
 
@@ -250,9 +255,11 @@ To see logic in action:
 
 **1. In the admin app, Logout (upper right), and login as admin, p**
 
-**2. Use the Admin App to add an Order and Item for `Customer Alice`** (see Appendix)
+**2. Use the Admin App to access the first order for `Customer Alice`**
 
-Observe the rules firing in the console log - see Logic In Action, below.
+**3. Edit its first item to a very high quantity**
+
+The update is properly rejected because it exceeds the credit limit.  Observe the rules firing in the console log - see Logic In Action, below.
 
 <br>
 > 💡 Logic: Multi-table Derivations and Constraint Declarative Rules.<br>&emsp;&emsp;Declarative Rules are 40X More Concise than procedural code.<br>&emsp;&emsp;For more information, [click here](Logic-Why.md){:target="_blank" rel="noopener"}.
