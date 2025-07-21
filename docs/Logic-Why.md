@@ -44,7 +44,9 @@ And you're right.  It's because backend logic follows patterns of "what" is supp
 And your code is the "how". 
 
 !!! note "So, API Logic Server provides Declarative Business Rules for multi-table derivations and constraints"
-    Rules typically automate over **95% of such logic,** and are **40X more concise**.  You can think of rules as conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet){:target="_blank" rel="noopener"}, applied to your database.  For a procedural / declarative analysis by CoPilot, [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
+    Rules typically automate over **95% of such logic,** and are **40X more concise**.  You can think of rules as conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet){:target="_blank" rel="noopener"}, applied to your database.  
+    
+    **For a procedural / declarative analysis by CoPilot,** [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

@@ -6,7 +6,7 @@ Welcome to GenAI-Logic (aka ApiLogicServer) documentation.  In sufficently large
 
 ## Install and Verify
 
-If you have the correct Python (version 3.10-3.12), install is standard ([more detailed instructions here](Install-Express.md){:target="_blank" rel="noopener"}):
+If you have the correct Python (version 3.10-3.13), install is standard ([more detailed instructions here](Install-Express.md){:target="_blank" rel="noopener"}):
 
 ```bash title="Install API Logic Server in a Virtual Environment"
 mkdir genai-logic                    # aka ApiLogicServer
