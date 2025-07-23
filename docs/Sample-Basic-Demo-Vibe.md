@@ -13,17 +13,9 @@ version: 0.23 from docsite 7/11/2025
 
 # Vibe an MCP Microservice
 
-This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features) operation using Vibe:
+This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features) operation using **Vibe: 1) Natural Language**, **2) Declarative** (*what not now*), **3) Trusted error correction** with the coding assistant
 
-* Using Natural Language
-* Declaratively (*what, not how*)
-* Trusted error correction with the coding assistant
-
-Here, we will
-
-1. Creating projects from new or existing databases, providing a MCP-enabled API and an Admin App
-2. Adding declarative logic and security, and 
-3. Customizing your project using your IDE and Python<br><br>
+<br>
 
 > 🤖 **Bootstrap Copilot by pasting the following into the chat:**
 ```
@@ -31,6 +23,18 @@ Please find and read `.github/.copilot-instructions.md`.
 ```
 
 <br>
+
+<details markdown>
+
+<summary>Demo Overview: Vibe an MCP API, Custom Client and Business Logic </summary>
+
+<br>Here we will use Vibe to:
+
+1. Create a project an existing databases, providing a MCP-enabled API and an Admin App
+2. Create a custom (React) client
+3. Create an MCP Client
+2. Add declarative logic and security, and 
+3. Customizing your project using your IDE and Python<br><br>
 
 The entire process takes 20 minutes; usage notes:
 
@@ -40,19 +44,17 @@ The entire process takes 20 minutes; usage notes:
 
 ![product-tour](images/basic_demo/product-tour.png)
 
+</details>
+
 <br>
 
-## 1. Create and Run
+## 1. Create From Existing DB
 
-API Logic Server can create projects from existing databases, or use GenAI to create projects with new databases.  Let's see how.
-
-&nbsp;
-### From Existing Database
-
-This is the best way to start:
+Begin by creating your project (open the disclure box for details):
 
 1. Title Bar: **CoPilot Chat icon**
-```bash
+2. Prompt:
+```bash title="Create a project from an existing database"
 Create a database project from samples/dbs/basic_demo.sqlite
 ```
 
@@ -92,7 +94,8 @@ In either case, the database model is customer, orders and items:
 ### Project Opens: Run
 
 The project should automatically open a new window in VSCode.  Again, open CoPilot and bootstrap it with: <br>
-&emsp;&emsp;*Please find and read `.github/.copilot-instructions.md`*.
+
+1. **Please find and read `.github/.copilot-instructions.md`**.
 
 Run it as follows:
 
@@ -104,11 +107,11 @@ The sections below explore the system that has been created (which would be simi
 
 #### JSON:API with Swagger
 
-The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- **[self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for custom app dev.**
-
 <details markdown>
 
-<summary>See the Swagger </summary>
+<summary>API with filtering, sorting, pagination, optimistic locking and related data access - see the Swagger </summary>
+
+Your API is MCP enabled, and ready for custom app dev.  For more information, [click here](https://apilogicserver.github.io/Docs/API-Self-Serve/){:target="_blank" rel="noopener"}.
 
 ![swagger](images/basic_demo/api-swagger.jpeg)
 </details>
@@ -116,13 +119,16 @@ The system creates an API with end points for each table, with filtering, sortin
 
 #### Multi-Page Admin App
 
-It also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
-
-You can click Customer Alice, and see their Orders, and Items.
-
 <details markdown>
 
-<summary>See the Admin App </summary>
+<summary>Admin App: multi-page, multi-table, automatic joins, lookups, cascade add - collaboration-ready</summary>
+
+For more information, [click here](Admin-Tour.md){:target="_blank" rel="noopener"}.
+
+The Admin App is ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
+
+Explore the app - click Customer Alice, and see their Orders, and Items.  
+
 ![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
 </details>
 
@@ -134,7 +140,7 @@ The app above is suitable for collaborative iteration to nail down the requireme
 
 For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language:
 
-```bash
+```bash title="Create a custom react app"
 Create a react app.
 ```
 
@@ -149,7 +155,7 @@ And you are ready to Vibe:
 
 
 ```txt title='Customize using Natural Language'
-In the ui/react app, Update the Product list to provide users an option to see results in a list, or in cards.
+In the ui/react app, ppdate the Product list to provide users an option to see results in a list, or in cards.
 ```
 <br>
 
@@ -168,94 +174,124 @@ cd basic_demo
 python integration/mcp/mcp_client_executor.py
 ```
 
-![mcp-retrieval](images/basic_demo/mcp-retrieval.png)
+### MCP: Logic, User Interface
 
-<br>
+Logic is automatically executed in your MCP-enabled API.  For example, consider the following MCP orchestration:
 
-## 4. Declare Logic And Security
+![mcp-ui](images/basic_demo/mcp-ui.png)
 
-While API/MCP/UI automation is a great start, it's **critical to enforce logic and security.**  You do this in your IDE.  Here's how.
+The server is automatically mcp-enabled, but we might also want an mcp user-interface client:
 
-The following `add_customizations` process simulates:
+**1. Stop the Server**
 
-* Adding security to your project, and
-* Using your IDE to declare logic and security in `logic/declare_logic.sh` and `security/declare_security.py`.
+**2. Create an MCP Client Executor to process MCP Requests:**
 
-> Declared security and logic are shown in the screenshots below.<br>It's quite short - 5 rules, 7 security settings.
-
-To add customizations, in a terminal window for your project:
-
-**1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
-
-**2. Add Customizations**
-
-```bash
-genai-logic add-cust
-genai-logic add-auth --db_url=auth
+``` bash title="Create an MCP Client Executor"
+Create the mcp client executor
 ```
-&nbsp;
 
-### Security: Role Based Access
-
-The `add_customizations` process above has simulated using your IDE to declare security in `logic/declare_logic.sh`.
-
-To see security in action:
-
-**1. Start the Server**  F5
-
-**2. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
-
-**3. Login** as `s1`, password `p`
-
-**4. Click Customers**
+MCP Clients accept MCP Requests, invoke the LLM to obtain a series of API calls to run, and runs them.  For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
 <br>
-Observe:
 
-**1. Login now required**
+**3. Create the SysEmail Table to Track Sent Emails**
 
-**2. Role-Based Filtering**
+``` bash title="Add a Table to Track Sent Emails"
+Create a table SysEmail in `database/db.sqlite` as a child of customer, 
+with columns id, message, subject, customer_id and CreatedOn.
+```
+Follow the suggestions to update the admin app.
 
-Observe you now see fewer customers, since user `s1` has role `sales`.  This role has a declared filter, as shown in the screenshot below.
+<br>
 
-**3. Transparent Logging**
+**4. Create the email service using a Request Table**
+
+``` bash title="Create the email service using SysEmail as a Request Table"
+Add an after_flush event on SysEmail to produce a log message "email sent",
+unless the customer has opted out.
+```
+
+Inserts into SysEmail will now send mails (stubbed here with a log message).  Request objects are a common rule pattern - for more information, [click here](Integration-MCP.md#3b-logic-request-pattern){:target="_blank" rel="noopener"}.
+
+<br>
+
+**5. Add Business Logic to Honor Email Opt-out**
+
+```bash title="Business Logic to Honor Email Opt-out"
+Add an after_flush event on SysEmail to produce a log message "email sent",
+unless the customer has opted out.
+```
 
 <details markdown>
 
-<summary>See Security Declarations </summary>
+<summary>Creates logic like this </summary>
 
-<br>The screenshot below illustrates security declaration and operation:
+<br>When sending email, we require ***business rules*** to ensure it respects the opt-out policy:
 
-* The declarative Grants in the upper code panel, and
-
-*  The logging in the lower panel, to assist in debugging by showing which Grants (`+ Grant:`) are applied:
-
-![security-filters](images/basic_demo/security-filters.jpeg)
+![email request](images/integration/mcp/3a-email-logic.png)
 
 </details>
 
-&nbsp;
+<br>
 
-### Logic: Derivations, Constraints
+**6. Restart the Server** - F5
 
-Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic Server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
+<br>
+
+**7. Start the Admin App**
+
+<br>
+
+**8. Click SysMCP >> Create New, and enter:**
+
+```text title="Test the MCP using the Admin App"
+List the orders date_shipped is null and CreatedOn before 2023-07-14, 
+and send a discount email (subject: 'Discount Offer') to the customer for each one.
+```
+
+<details markdown>
+
+<summary>Observe the log </summary>
+
+![mcp-retrieval](images/basic_demo/mcp-retrieval.png)
+
+</details>
+
+<br>
+
+For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
+
+<br>
+
+## 4. Declare Business Logic
+
+Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  GenAI-Logic provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
 Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
 
-The `add_customizations` process above has simulated the process of using your IDE to declare logic in `logic/declare_logic.sh`.
+**1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
 
-To see logic in action:
+**2. Add Business Logic**
 
-**1. In the admin app, Logout (upper right), and login as admin, p**
+```bash title="Check Credit Logic (instead of 220 lines of code)"
+Use case: Check Credit    
+    1. The Customer's balance is less than the credit limit
+    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+    3. The Order's amount_total is the sum of the Item amount
+    4. The Item amount is the quantity * unit_price
+    5. The Item unit_price is copied from the Product unit_price
 
-**2. Use the Admin App to access the first order for `Customer Alice`**
+Use case: App Integration
+    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+```
 
-**3. Edit its first item to a very high quantity**
+To test the logic:
+
+**1. Use the Admin App to access the first order for `Customer Alice`**
+
+**2. Edit its first item to a very high quantity**
 
 The update is properly rejected because it exceeds the credit limit.  Observe the rules firing in the console log - see Logic In Action, below.
-
-<br>
-> 💡 Logic: Multi-table Derivations and Constraint Declarative Rules.<br>&emsp;&emsp;Declarative Rules are 40X More Concise than procedural code.<br>&emsp;&emsp;For more information, [click here](Logic-Why.md){:target="_blank" rel="noopener"}.
 
 <br>
 
@@ -299,177 +335,12 @@ Rules are an executable design.  Note they map exactly to our natural language d
 
 Optionally, you can use the Behave TDD approach to define tests, and the Rules Report will show the rules that execute for each test.  For more information, [click here](https://apilogicserver.github.io/Docs/Behave-Logic-Report/).
 
+> 💡 Logic: Multi-table Derivations and Constraint Declarative Rules.<br>&emsp;&emsp;Declarative Rules are 40X More Concise than procedural code.<br>&emsp;&emsp;For more information, [click here](Logic-Why.md){:target="_blank" rel="noopener"}.
+
 </details>
-
-&nbsp;
-
-### MCP: Logic, User Interface
-
-Logic is automatically executed in your MCP-enabled API.  For example, consider the following MCP orchestration:
-
-![mcp-ui](images/basic_demo/mcp-ui.png)
-
-
-When sending email, we require ***business rules*** to ensure it respects the opt-out policy:
-
-![email request](images/integration/mcp/3a-email-logic.png)
-
-The server is automatically mcp-enabled, but we might also want an mcp user-interface client:
-
-**1. Stop the Server**
-
-**2. Create an MCP Client Executor like this:**
-
-```
-genai-logic genai-add-mcp-client
-```
-
-**3. Restart the Server**
-
-<br>
-
-With the server running, test it like this:
-
-1. **Test MCP**
-
-You can do this in the command line, or via the admin app.
-
-Use the **Admin App:** (shown above), and follow step 4 on the Home page to see a Business-User-friendly example.
-
-Or, use the command line.  
-
-> Since the CLI does not pass an auth token, 
-you must first stop the server and disable security.
-
-```bash title='MCP from the command line'
-python integration/mcp/mcp_client_executor.py mcp
-```
-
-<br>
-
-For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
 <br>
 
 ## 5. Iterate with Rules and Python
 
-Not only are spreadsheet-like rules 40X more concise, they meaningfully simplify maintenance.  Let's take an example:
-
->> Give a 10% discount for carbon-neutral products for 10 items or more.
-<br>
-
-The following `add-cust` process simulates an iteration:
-
-* acquires a new database with `Product.CarbonNeutral`
-
-* issues the `genai-logic rebuild-from-database` command that rebuilds your project (the database models, the api), while preserving the customizations we made above.
-
-* acquires a revised `ui/admin/admin.yaml` that shows this new column in the admin app
-
-* acquires this revised logic - in `logic/declare_logic.py`, we replaced the 2 lines for the `models.Item.Amount` formula with this (next screenshot shows revised logic executing with breakpoint):
-
-```python
-    def derive_amount(row: models.Item, old_row: models.Item, logic_row: LogicRow):
-        amount = row.Quantity * row.UnitPrice
-        if row.Product.CarbonNeutral and row.Quantity >= 10:
-           amount = amount * Decimal(0.9)  # breakpoint here
-        return amount
-
-    Rule.formula(derive=models.Item.Amount, calling=derive_amount)
-```
-
-&nbsp;
-
-To add this iteration, repeat the process above - in a terminal window for your project:
-
-**1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
-
-**2. Add Iteration**
-
-```bash
-genai-logic add-cust
-genai-logic rebuild-from-database --db_url=sqlite:///database/db.sqlite
-```
-
-* You can ignore the warning regarding *'mcp-SysMcp' - not present*
-
-**3. Set the breakpoint as shown in the screenshot below**
-
-**4. Test: Start the Server, login as Admin**
-
-**5. Use the Admin App to update your Order by adding 12 `Green` Items**
-
-At the breakpoint, observe you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
-
-![logic-debugging](images/basic_demo/logic-debugging.jpeg)
-
-&nbsp;
-
-This simple example illustrates some significant aspects of iteration, described in the sub-sections below.
-
-<br>
-> 💡 Iteration: Automatic Invocation/Ordering, Extensible, Rebuild Preserves Customizations
-
-<br>
-
-**a. Dependency Automation**
-
-Along with perhaps documentation, one of the tasks programmers most loathe is maintenance.  That's because it's not about writing code, but it's mainly archaeology - deciphering code someone else wrote, just so you can add 4 or 5 lines that will hopefully be called and function correctly.
-
-Rules change that, since they **self-order their execution** (and pruning) based on system-discovered dependencies.  So, to alter logic, you just "drop a new rule in the bucket", and the system will ensure it's called in the proper order, and re-used over all the Use Cases to which it applies.  Maintenance is **faster, and higher quality.**
-<br><br>
-
-**b. Extensibile with Python**
-
-In this case, we needed to do some if/else testing, and it was convenient to add a pinch of Python. Using "Python as a 4GL" is remarkably simple, even if you are new to Python.
-
-Of course, you have the full object-oriented power of Python and its many libraries, so there are *no automation penalty* restrictions.  
-<br>
-
-**c. Debugging: IDE, Logging**
-
-The screenshot above illustrates that debugging logic is what you'd expect: use your IDE's debugger.  This "standard-based" approach applies to other development activities, such as source code management, and container-based deployment.
-<br><br>
-
-**d. Customizations Retained**
-
-Note we rebuilt the project from our altered database, illustrating we can **iterate, while *preserving customizations.***
-
-&nbsp;
-
-### API Customization: Standard
-
-Of course, we all know that all businesses the world over depend on the `hello world` app.  This is provided in `api/customize_api`.  Observe that it's:
-
-* standard Python
-
-* using Flask
-
-* and, for database access, SQLAlchemy.  Note all updates from custom APIs also enforce your logic.
-
-Explore the custom API in `api/api_discovery/order_b2b.py`, and test it using swagger:
-
-1. **Access the Home page of the Admin App**
-2. **Access the swagger**
-3. **Test the b2b API / Logic, as shown below:**
-
-![b2b_swagger](images/integration/b2b_swagger.png)
-
-&nbsp;
-
-### Messaging With Kafka
-
-Along with APIs, messaging is another technology commonly employed for application integration.  See the screenshot below; for more information, see [Sample Integration](Sample-Integration.md#produce-ordershipping-message){:target="_blank" rel="noopener"}.
-
-![order-to-shipping](images/integration/order-to-shipping.jpg)
-&nbsp;
-
-## 6. Deploy Containers: No Fees
-
-API Logic Server also creates scripts for deployment.  While these are ***not required at this demo,*** this means you can enable collaboration with Business Users:
-
-1. Create a container from your project -- see `devops/docker-image/build_image.sh`
-2. Upload to Docker Hub, and
-3. Deploy for agile collaboration.
-
-&nbsp;
+This is addressed in the related CLI-based demo - to continue, [click here](Sample-Basic-Demo.md#5-iterate-with-rules-and-python){:target="_blank" rel="noopener"}.
