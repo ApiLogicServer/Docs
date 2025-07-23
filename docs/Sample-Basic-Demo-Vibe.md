@@ -34,17 +34,16 @@ Please find and read `.github/.copilot-instructions.md`.
 
 <br>Here we will use Vibe to:
 
-1. Create a project an existing databases, providing a MCP-enabled API and an Admin App
+1. Create a project from an existing database, providing a MCP-enabled API and an Admin App
 2. Create a custom (React) client
-3. Create an MCP Client
-2. Add declarative logic and security, and 
-3. Customizing your project using your IDE and Python<br><br>
+3. Create an MCP Client, and
+4. Add declarative logic and security<br><br>
 
 The entire process takes 20 minutes; usage notes:
 
-* Important: look for **readme files** in created projects
-* You may find it more convenient to view this [in your Browser](Sample-Basic-Tour.md)
+* You may find it **more convenient** to view this [in your Browser](Sample-Basic-Tour.md)
 * A slide show summary is available [on our Web Site](https://www.genai-logic.com/product/tour){:target="_blank" rel="noopener"}
+* Important: look for **readme files** in created projects
 
 ![product-tour](images/basic_demo/product-tour.png)
 
@@ -133,23 +132,24 @@ Explore the app - click Customer Alice, and see their Orders, and Items.
 
 ## 2. Custom UI: GenAI, Vibe
 
-The app above is suitable for collaborative iteration to nail down the requirements, and back office data maintenance.  It's also easy to make simple customizations, using the yaml file.
+The app above is suitable for collaborative iteration to nail down the requirements, and back office data maintenance.  It's also easy to make simple customizations, using the yaml file.  For more custom apps, use Vibe:
 
-For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language:
-
-```bash title="Create a custom react app"
+```bash title="Create a custom react app - customize in your IDE directly or with Vibe"
 Create a react app.
 ```
 
-> Note: AI makes errors.  Part of Vibe is to accept that, and insist that AI find and fix them.  CoPilot is generally exceptionally good at this.
+<details markdown>
 
-And you are ready to Vibe:
+<summary>Vibe Automation provides a running start (and can make errors)</summary>
 
 * Instead of creating data mockups, you have a **running API server with real data**
 * Instead of starting from scratch, you have a **running multi-page app** 
 * And, you'll have projects that are **architecturally correct:** shared logic, enforced in the server, available for both User Interfaces and services.
 * Then, use you favorite Vibe tools with your running API:
 
+> Note: AI makes errors.  Part of Vibe is to accept that, and insist that AI find and fix them.  CoPilot is generally exceptionally good at this.
+
+</details>
 
 ```txt title='Customize using Natural Language'
 In the ui/react app, update the Product list to provide users an option to see results in a list,
@@ -165,15 +165,12 @@ or in cards.
 
 ## 3. MCP: Logic, User Interface
 
-The server is automatically mcp-enabled, but we also require an mcp user-interface client to send email, including business logic to respect customer opt-outs:
+The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer opt-outs:
 
 ![mcp-ui](images/basic_demo/mcp-ui.png)
 
 
-**1. Stop the Server**  
-Click the red stop icon 🟥 or press <kbd>Shift</kbd>+<kbd>F5</kbd>.
-
-<br>
+**1. Stop the Server:**  click the red stop icon 🟥 or press <kbd>Shift</kbd>+<kbd>F5</kbd>.
 
 **2. Create an MCP Client Executor to process MCP Requests:**
 
