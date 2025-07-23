@@ -13,12 +13,16 @@ version: 0.23 from docsite 7/11/2025
 
 # Vibe an MCP Microservice
 
-This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features) operation using **Vibe: 1) Natural Language**, **2) Declarative** (*what not now*), **3) Trusted error correction** with the coding assistant
+This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features) operation using **Vibe:** 
+> **1) Natural Language**, **2) Declarative** (*what not now*), **3) Trusted error correction** with the coding assistant
+
+**1. Natural Language**
+**2) Declarative** (*what not now*)
+**3) Trusted error correction** with the coding assistant
 
 <br>
 
-> 🤖 **Bootstrap Copilot by pasting the following into the chat:**
-```
+``` bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
 Please find and read `.github/.copilot-instructions.md`.
 ```
 
@@ -50,11 +54,7 @@ The entire process takes 20 minutes; usage notes:
 
 ## 1. Create From Existing DB
 
-Begin by creating your project (open the disclure box for details):
-
-1. Title Bar: **CoPilot Chat icon**
-2. Prompt:
-```bash title="Create a project from an existing database"
+```bash title="Create a project from an existing database (open the disclure box for details)"
 Create a database project from samples/dbs/basic_demo.sqlite
 ```
 
@@ -91,33 +91,30 @@ In either case, the database model is customer, orders and items:
 
 &nbsp;
 
-### Project Opens: Run
+### 1a. Project Opens: Run
 
-The project should automatically open a new window in VSCode.  Again, open CoPilot and bootstrap it with: <br>
+The project should automatically open a new window in VSCode. <br>
 
-1. **Please find and read `.github/.copilot-instructions.md`**.
+``` bash title='🤖 Again, bootstrap Copilot by pasting the following into the chat'
+Please find and read `.github/.copilot-instructions.md`.
+```
 
 Run it as follows:
 
 1. **Start the Server:** F5 
 2. **Start the Admin App:** browse to [http://localhost:5656/](http://localhost:5656/).  The Admin App screen shown below should appear in your Browser.
-
-The sections below explore the system that has been created (which would be similar for your own database).
-<br><br>
-
-#### JSON:API with Swagger
+3. **Verify as shown below**
 
 <details markdown>
 
-<summary>API with filtering, sorting, pagination, optimistic locking and related data access - see the Swagger </summary>
+<summary>API: filtering, sorting, pagination, optimistic locking and related data access - see the Swagger </summary>
 
 Your API is MCP enabled, and ready for custom app dev.  For more information, [click here](https://apilogicserver.github.io/Docs/API-Self-Serve/){:target="_blank" rel="noopener"}.
 
 ![swagger](images/basic_demo/api-swagger.jpeg)
 </details>
-<br>
 
-#### Multi-Page Admin App
+<br>
 
 <details markdown>
 
@@ -155,7 +152,7 @@ And you are ready to Vibe:
 
 
 ```txt title='Customize using Natural Language'
-In the ui/react app, ppdate the Product list to provide users an option to see results in a list,
+In the ui/react app, update the Product list to provide users an option to see results in a list,
 or in cards.
 ```
 <br>
@@ -173,7 +170,8 @@ The server is automatically mcp-enabled, but we also require an mcp user-interfa
 ![mcp-ui](images/basic_demo/mcp-ui.png)
 
 
-**1. Stop the Server**
+**1. Stop the Server**  
+Click the red stop icon 🟥 or press <kbd>Shift</kbd>+<kbd>F5</kbd>.
 
 <br>
 
