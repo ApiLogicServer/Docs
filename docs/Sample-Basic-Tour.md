@@ -65,7 +65,7 @@ This is the best way to start:
 1. Open a terminal window: **Terminal > New Terminal**
 2. **Create Project from Existing Database:**
 ```bash
-genai-logic create --project_name=basic_demo --db_url=basic_demo
+genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
 > Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/){:target="_blank" rel="noopener"} for a test database provided as part of the installation.  You would normally supply a SQLAlchemy URI to your existing database, e.g. <br>`genai-logic create  --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite`.
@@ -176,7 +176,7 @@ And you are ready to Vibe:
 
 
 ```txt title='Customize using Natural Language'
-In the ui/react-admin app, Update the Product list to provide users an option to see results in a list, or in cards.
+In the ui/react app, Update the Product list to provide users an option to see results in a list, or in cards.
 ```
 <br>
 

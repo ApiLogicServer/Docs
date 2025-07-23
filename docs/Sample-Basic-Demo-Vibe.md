@@ -1,6 +1,5 @@
 ---
-title: Instant Microservices - with Logic and Security
-notes: gold is proto (-- doc); alert for apostrophe
+title: Vibe MCP / Microservice
 version: 0.23 from docsite 7/11/2025
 ---
 <style>
@@ -10,9 +9,17 @@ version: 0.23 from docsite 7/11/2025
   }
 </style>
 
-# Product Tour (Start Here)
+<< Under Construction >>
 
-This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} operation: 
+# Vibe an MCP Microservice
+
+This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features) operation using Vibe:
+
+* Using Natural Language
+* Declaratively (*what, not how*)
+* Trusted error correction with the coding assistant
+
+Here, we will
 
 1. Creating projects from new or existing databases, providing a MCP-enabled API and an Admin App
 2. Adding declarative logic and security, and 
@@ -33,8 +40,7 @@ The entire process takes 20 minutes; usage notes:
 
 ![product-tour](images/basic_demo/product-tour.png)
 
-
-&nbsp;
+<br>
 
 ## 1. Create and Run
 
@@ -45,69 +51,58 @@ API Logic Server can create projects from existing databases, or use GenAI to cr
 
 This is the best way to start:
 
-1. Open a terminal window: **Terminal > New Terminal**
-2. **Create Project from Existing Database:**
+1. Title Bar: **CoPilot Chat icon**
 ```bash
-genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite
+Create a database project from samples/dbs/basic_demo.sqlite
 ```
-
-> Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/){:target="_blank" rel="noopener"} for a test database provided as part of the installation.  You would normally supply a SQLAlchemy URI to your existing database, e.g. <br>`genai-logic create  --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite`.
-
 
 <details markdown>
 
-<summary> The database is Customer, Orders, Items and Product</summary>
+<summary> The database is Customer, Orders, Items and Product; you can also create the dataase</summary>
+
+![existing datbase](images/vscode/vibe/create-project.png)
+
+**Or, create a *new* database** with this prompt:
+```bash
+Create a system with customers, orders, items and products.
+
+Include a notes field for orders.
+
+Use case: Check Credit    
+    1. The Customer's balance is less than the credit limit
+    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+    3. The Order's amount_total is the sum of the Item amount
+    4. The Item amount is the quantity * unit_price
+    5. The Item unit_price is copied from the Product unit_price
+
+Use case: App Integration
+    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+```
+
+<br>
+
+In either case, the database model is customer, orders and items:
 
 ![basic_demo_data_model](images/basic_demo/basic_demo_data_model.jpeg)
 
 </details>
-<br>
-&nbsp;
-
-### GenAI: New Database
-
-Alternatively, you can create a project *and a new database* from a prompt, using GenAI.
-> ***Don't*** do this if you are executing the basic Product Tour.
-
-There are 3 ways to use GenAI:
-
-* WebGenAI - in the Browser, via pubic website - [click here](WebGenAI.md){:target="_blank" rel="noopener"}, or
-* GenAI -         in the Browser, via docker - [click here](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
-* GenAI CLI - [click here](WebGenAI-CLI.md){:target="_blank" rel="noopener"} 
-
-To use the GenAI CLI:
-
-1. If you have signed up (see *Get an OpenAI Key*, below), this will create and open a project called `genai_demo` from `genai_demo.prompt` (available in left Explorer pane):
-
-```bash
-genai-logic genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
-```
-
-2. ***Or,*** you can simulate the process (no signup) using:
-
-```bash
-genai-logic genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
-```
-
-For background on how it works, [click here](Sample-Genai.md#how-does-it-work){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
+### Project Opens: Run
 
-### Open in your IDE and Run
+The project should automatically open a new window in VSCode.  Again, open CoPilot and bootstrap it with: <br>
+&emsp;&emsp;*Please find and read `.github/.copilot-instructions.md`*.
 
-You can open with VSCode, and run it as follows:
+Run it as follows:
 
-1. **Start the Server:** F5 (also described in the Appendix).
-
-    * Your virtual environment is automatically configured in most cases; see the Appendix (Procedures / Detail Procedures) if that's not working.
-
-2. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The Admin App screen shown below should appear in your Browser.
+1. **Start the Server:** F5 
+2. **Start the Admin App:** browse to [http://localhost:5656/](http://localhost:5656/).  The Admin App screen shown below should appear in your Browser.
 
 The sections below explore the system that has been created (which would be similar for your own database).
 <br><br>
 
-### API with Swagger
+#### JSON:API with Swagger
 
 The system creates an API with end points for each table, with filtering, sorting, pagination, optimistic locking and related data access -- **[self-serve](https://apilogicserver.github.io/Docs/API-Self-Serve/), ready for custom app dev.**
 
@@ -119,7 +114,7 @@ The system creates an API with end points for each table, with filtering, sortin
 </details>
 <br>
 
-### Admin App
+#### Multi-Page Admin App
 
 It also creates an Admin App: multi-page, multi-table -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
 
@@ -140,19 +135,17 @@ The app above is suitable for collaborative iteration to nail down the requireme
 For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language:
 
 ```bash
-# create react source (requires OpenAI key)
-genai-logic genai-add-app --vibe
-cd ui/react-app
-npm install
-npm start
+Create a react app.
 ```
+
+> Note: AI makes errors.  Part of Vibe is to accept that, and insist that AI find and fix them.  CoPilot is generally exceptionally good at this.
 
 And you are ready to Vibe:
 
 * Instead of creating data mockups, you have a **running API server with real data**
 * Instead of starting from scratch, you have a **running multi-page app** 
 * And, you'll have projects that are **architecturally correct:** shared logic, enforced in the server, available for both User Interfaces and services.
-* Then, use you favorite Vibe tools with your running API
+* Then, use you favorite Vibe tools with your running API:
 
 
 ```txt title='Customize using Natural Language'
@@ -171,18 +164,8 @@ In the ui/react app, Update the Product list to provide users an option to see r
 Your project is MCP-ready - this will run a simple query *List customers with credit_limit > 1000* (we'll explore more interesting examples below, including provisions for user input):
 
 ```bash
-Create a table SysEmail in `database/db.sqlite` as a child of customer, 
-with columns id, message, subject, customer_id and CreatedOn.
-```
-
-Follow the suggestions to update the admin app.
-
-TODO: add mcp client  here, and test
-
-TODO: test the service
-
-```bash
-List the orders date_shipped is null and CreatedOn before 2023-07-14, and send a discount email (subject: 'Discount Offer') to the customer for each one.
+cd basic_demo
+python integration/mcp/mcp_client_executor.py
 ```
 
 ![mcp-retrieval](images/basic_demo/mcp-retrieval.png)
