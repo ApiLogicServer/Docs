@@ -155,7 +155,8 @@ And you are ready to Vibe:
 
 
 ```txt title='Customize using Natural Language'
-In the ui/react app, ppdate the Product list to provide users an option to see results in a list, or in cards.
+In the ui/react app, ppdate the Product list to provide users an option to see results in a list,
+or in cards.
 ```
 <br>
 
@@ -165,24 +166,16 @@ In the ui/react app, ppdate the Product list to provide users an option to see r
 
 <br>
 
-## 3. MCP-Ready APIs
+## 3. MCP: Logic, User Interface
 
-Your project is MCP-ready - this will run a simple query *List customers with credit_limit > 1000* (we'll explore more interesting examples below, including provisions for user input):
-
-```bash
-cd basic_demo
-python integration/mcp/mcp_client_executor.py
-```
-
-### MCP: Logic, User Interface
-
-Logic is automatically executed in your MCP-enabled API.  For example, consider the following MCP orchestration:
+The server is automatically mcp-enabled, but we also require an mcp user-interface client to send email, including business logic to respect customer opt-outs:
 
 ![mcp-ui](images/basic_demo/mcp-ui.png)
 
-The server is automatically mcp-enabled, but we might also want an mcp user-interface client:
 
 **1. Stop the Server**
+
+<br>
 
 **2. Create an MCP Client Executor to process MCP Requests:**
 
