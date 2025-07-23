@@ -13,12 +13,8 @@ version: 0.23 from docsite 7/11/2025
 
 # Vibe an MCP Microservice
 
-This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features) operation using **Vibe:** 
+This illustrates [GenAI-Logic](https://www.genai-logic.com/product/key-features) automation to create an MCP system using **Vibe:** 
 > **1) Natural Language**, **2) Declarative** (*what not now*), **3) Trusted error correction** with the coding assistant
-
-**1. Natural Language**
-**2) Declarative** (*what not now*)
-**3) Trusted error correction** with the coding assistant
 
 <br>
 
