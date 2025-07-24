@@ -202,13 +202,6 @@ Inserts into SysEmail will now send mails (stubbed here with a log message).  Re
 
 <br>
 
-**5. Add Business Logic to Honor Email Opt-out**
-
-```bash title="Business Logic to Honor Email Opt-out"
-Add an after_flush event on SysEmail to produce a log message "email sent",
-unless the customer has opted out.
-```
-
 <details markdown>
 
 <summary>Creates logic like this </summary>
@@ -221,15 +214,15 @@ unless the customer has opted out.
 
 <br>
 
-**6. Restart the Server** - F5
+**5. Restart the Server** - F5
 
 <br>
 
-**7. Start the Admin App**
+**6. Start the Admin App**
 
 <br>
 
-**8. Click SysMCP >> Create New, and enter:**
+**7. Click SysMCP >> Create New, and enter:**
 
 ```text title="Test the MCP using the Admin App"
 List the orders date_shipped is null and CreatedOn before 2023-07-14, 
