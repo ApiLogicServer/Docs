@@ -10,7 +10,7 @@ version: 0.23 from docsite 7/11/2025
   }
 </style>
 
-<< Under Construction >>
+<< Running - testing phase >>
 
 # Vibe an MCP Microservice
 
@@ -27,7 +27,7 @@ Please find and read `.github/.copilot-instructions.md`.
 
 <details markdown>
 
-<summary>Demo Overview: Vibe an MCP API, Custom Client and Business Logic </summary>
+<summary>Demo Overview: Vibe an MCP API, Custom Client and Business Logic; pre-reqs </summary>
 
 <br>Here we will use Vibe to:
 
@@ -36,9 +36,17 @@ Please find and read `.github/.copilot-instructions.md`.
 3. Create an MCP Client, and
 4. Add declarative logic and security<br><br>
 
+Pre-reqs:
+
+1. Install
+2. OpenAI API Key is useful but not required; [click here](WebGenAI-CLI.md#configuration){:target="_blank" rel="noopener"}.
+
+  * The React App has pre-built apps (`ui/my-react-app`) you can use; they require `npm install; npm start`
+  * The `integration/mcp/mcp_client_executor.py` has `create_tool_context_from_llm` set to bypass LLM calls and use saved context; alter as required.
+
 The entire process takes 20 minutes; usage notes:
 
-* You may find it **more convenient** to view this [in your Browser](Sample-Basic-Tour.md)
+* Most find it **more convenient** to view this in your Browser; [click here](Sample-Basic-Tour.md)
 * A slide show summary is available [on our Web Site](https://www.genai-logic.com/product/tour){:target="_blank" rel="noopener"}
 * Important: look for **readme files** in created projects
 
@@ -164,9 +172,7 @@ or in cards.
 
 ## 3. MCP: Logic, User Interface
 
-The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs:
-
-![mcp-ui](images/basic_demo/mcp-ui.png)
+The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs.  Build it as follows:<br><br>
 
 
 **1. Stop the Server:**  click the red stop icon 🟥 or press <kbd>Shift</kbd>+<kbd>F5</kbd>.
@@ -226,20 +232,23 @@ Inserts into SysEmail will now send mails (stubbed here with a log message).  Re
 
 ```text title="Test the MCP using the Admin App"
 List the orders date_shipped is null and CreatedOn before 2023-07-14, 
-and send a discount email (subject: 'Discount Offer') to the customer for each one.
+and send a discount email (subject: 'Discount Offer') 
+to the customer for each one.
 ```
+
+<br>
+![mcp-ui](images/basic_demo/mcp-ui.png)
+
 
 <details markdown>
 
-<summary>Observe the log </summary>
+<summary>More on MCP; Observe the log </summary>
+
+<br>For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
 ![mcp-retrieval](images/basic_demo/mcp-retrieval.png)
 
 </details>
-
-<br>
-
-For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
 <br>
 
