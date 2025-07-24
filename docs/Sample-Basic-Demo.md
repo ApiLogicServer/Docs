@@ -1,6 +1,7 @@
 ---
 title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
+do_process_code_block_titles: True
 version: 0.23 from docsite 7/11/2025
 ---
 <style>
@@ -18,8 +19,7 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 2. Adding declarative logic and security, and 
 3. Customizing your project using your IDE and Python<br><br>
 
-> 🤖 **Bootstrap Copilot by pasting the following into the chat:**
-```
+```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
 Please find and read `.github/.copilot-instructions.md`.
 ```
 
@@ -152,7 +152,7 @@ And you are ready to Vibe:
 * Instead of creating data mockups, you have a **running API server with real data**
 * Instead of starting from scratch, you have a **running multi-page app** 
 * And, you'll have projects that are **architecturally correct:** shared logic, enforced in the server, available for both User Interfaces and services.
-* Then, use you favorite Vibe tools with your running API
+* Then, use you favorite Vibe tools with your running API:
 
 
 ```txt title='Customize using Natural Language'

@@ -3,6 +3,7 @@ title: Welcome
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs//Sample-Basic-Tour.md
 version info: 15.00.41 (07/11/2025)
+do_process_code_block_titles: True
 Used: Manager Readme
 Instructions: Copy in Sample-Basic-Demo (Replace "This illustrates" up to "Explore GenAI CLI"), and remove meta
 ---
@@ -35,8 +36,7 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 2. Adding declarative logic and security, and 
 3. Customizing your project using your IDE and Python<br><br>
 
-> 🤖 **Bootstrap Copilot by pasting the following into the chat:**
-```
+```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
 Please find and read `.github/.copilot-instructions.md`.
 ```
 

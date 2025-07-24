@@ -1,5 +1,6 @@
 ---
 title: Vibe MCP / Microservice
+do_process_code_block_titles: True
 version: 0.23 from docsite 7/11/2025
 ---
 <style>
@@ -147,6 +148,8 @@ Create a react app.
 
 </details>
 
+<br>
+
 ```txt title='Customize using Natural Language'
 In the ui/react app, update the Product list to provide users an option to see results in a list,
 or in cards.
@@ -161,30 +164,30 @@ or in cards.
 
 ## 3. MCP: Logic, User Interface
 
-The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer opt-outs:
+The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs:
 
 ![mcp-ui](images/basic_demo/mcp-ui.png)
 
 
 **1. Stop the Server:**  click the red stop icon 🟥 or press <kbd>Shift</kbd>+<kbd>F5</kbd>.
 
-**2. Create an MCP Client Executor to process MCP Requests:**
-
-``` bash title="Create an MCP Client Executor"
-Create the mcp client executor
-```
-
-MCP Clients accept MCP Requests, invoke the LLM to obtain a series of API calls to run, and runs them.  For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
-
-<br>
-
-**3. Create the SysEmail Table to Track Sent Emails**
+**2. Create the SysEmail Table to Track Sent Emails**
 
 ``` bash title="Add a Table to Track Sent Emails"
 Create a table SysEmail in `database/db.sqlite` as a child of customer, 
 with columns id, message, subject, customer_id and CreatedOn.
 ```
 Follow the suggestions to update the admin app.
+
+<br>
+
+**3. Create an MCP Client Executor to process MCP Requests:**
+
+``` bash title="Create an MCP Client Executor (don't run yet)"
+Create the mcp client executor
+```
+
+MCP Clients accept MCP Requests, invoke the LLM to obtain a series of API calls to run, and runs them.  For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
 <br>
 
