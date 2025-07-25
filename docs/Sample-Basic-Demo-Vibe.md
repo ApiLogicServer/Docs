@@ -295,7 +295,7 @@ The update is properly rejected because it exceeds the credit limit.  Observe th
 <br>Logic is critical to your system - it represents nearly *half the effort.*  Instead of procedural code, [***declare logic***](Logic.md#declaring-rules){:target="_blank" rel="noopener"} with WebGenAI, or in your IDE using code completion or Natural Language as shown above.
 
 
-**z. 40X More Concise**
+**a. 40X More Concise**
 
 The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](Logic-Why.md){:target="_blank" rel="noopener"}.  That's a remarkable 40X decrease in the backend half of the system.
 
