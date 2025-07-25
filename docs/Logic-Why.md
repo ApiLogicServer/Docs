@@ -26,7 +26,7 @@ This page describes:
 
 ## Problem: Code Explosion
 
-In conventional approaches, such logic is **nearly half the system,** due to code explosion.  A typical design specification of 5 lines explodes into [200 lines of legacy code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}.
+In conventional approaches, such logic is **nearly half the system,** due to code explosion.  A typical design specification of 5 lines explodes into [200 lines of legacy code](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
 Let's imagine we have a "cocktail napkin spec" for checking credit, shown (in blue) in the diagram below.  How might we enforce such logic?
 
@@ -34,7 +34,7 @@ Let's imagine we have a "cocktail napkin spec" for checking credit, shown (in bl
 
 * Centralized in the server - in the past, we might have written triggers, but a modern software architecture centralizes such logic in an App Server tier.  If you are using an ORM such as SQLAlchemy, you can _ensure sharing_ with `before_flush` events as shown below.
 
-After we've determined _where_ to put the code, we then have to _write_ it.  Our simple 5 line cocktail napkin specification explodes into [200 lines of legacy code](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}):
+After we've determined _where_ to put the code, we then have to _write_ it.  Our simple 5 line cocktail napkin specification explodes into [200 lines of legacy code](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}):
 
 <figure><img src="https://github.com/valhuber/LogicBank/raw/main/images/overview/rules-vs-code.png"></figure>
 
@@ -46,7 +46,7 @@ And your code is the "how".
 !!! note "So, API Logic Server provides Declarative Business Rules for multi-table derivations and constraints"
     Rules typically automate over **95% of such logic,** and are **40X more concise**.  You can think of rules as conceptually similar to [spreadsheet cell formulas](Logic-Operation.md#basic-idea-like-a-spreadsheet){:target="_blank" rel="noopener"}, applied to your database.  
     
-    **For a procedural / declarative analysis by CoPilot,** [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
+    **For a procedural / declarative analysis by CoPilot,** [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -58,7 +58,7 @@ Use your IDE to declare rules, extend them with Python, and debug them as descri
 
 ### Declare: Python
 
-For this typical check credit design (in blue), the __5 rules shown below (lines 90-105) represent the same logic as [200 lines of code](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}__:
+For this typical check credit design (in blue), the __5 rules shown below (lines 90-105) represent the same logic as [200 lines of code](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}__:
 
 ![5 rules not 200 lines](images/logic/5-rules-cocktail.png)
 

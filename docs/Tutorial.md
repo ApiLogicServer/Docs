@@ -197,7 +197,7 @@ Such logic (multi-table derivations and constraints) is a significant portion of
 
 The 5 check credit rules are shown below in `logic/declare_logic.py`.  
 
-> Rules are 40X more concise than legacy code, as [shown here](https://github.com/valhuber/LogicBank/wiki/by-code).
+> Rules are 40X more concise than legacy code, as [shown here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md).
 
 Rules are declared in Python, simplified with IDE code completion.  The `add-cust` process above has simulated the process of using your IDE to declare logic.
 

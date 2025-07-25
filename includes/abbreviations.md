@@ -64,3 +64,5 @@
 *[Automatic Dependency Management]: declarative logic is 1) Automatically Executed when referenced data is changed, 2) in the proper order.  This reduces code by 40X, promotes quality, and automates maintenance.
 *[dependency management]: declarative logic is 1) Automatically Executed when referenced data is changed, 2) in the proper order.  This reduces code by 40X, promotes quality, and automates maintenance.
 *[MCP]: Model Context Protocol enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.
+*[Archaeology]: Maintenance of Procedural code requires extensive "archaeology" to understand dependencies to make changes; in Declarative code, dependency, ordering and chaining are automatic.
+*[archaeology]: Maintenance of Procedural code requires extensive "archaeology" to understand dependencies to make changes; in Declarative code, dependency, ordering and chaining are automatic.

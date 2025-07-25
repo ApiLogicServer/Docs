@@ -14,7 +14,7 @@ version: 0.23 from docsite 7/11/2025
 
 # Vibe an MCP Microservice
 
-This illustrates [GenAI-Logic](https://www.genai-logic.com/product/key-features) automation to create an MCP system using **Vibe:** 
+This illustrates [GenAI-Logic](Sample-Basic-Demo-Vibe.md) automation to create an MCP system using **Vibe:** 
 > **1) Natural Language**, **2) Declarative** (*what not now*), **3) Trusted error correction** with the coding assistant
 
 <br>
@@ -43,6 +43,7 @@ Pre-reqs:
 
   * The React App has pre-built apps (`ui/my-react-app`) you can use; they require `npm install; npm start`
   * The `integration/mcp/mcp_client_executor.py` has `create_tool_context_from_llm` set to bypass LLM calls and use saved context; alter as required.
+3. NodeJS to run the react app
 
 The entire process takes 20 minutes; usage notes:
 
@@ -275,6 +276,8 @@ Use case: App Integration
     1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 
+![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-vibe.png)
+
 To test the logic:
 
 **1. Use the Admin App to access the first order for `Customer Alice`**
@@ -287,45 +290,25 @@ The update is properly rejected because it exceeds the credit limit.  Observe th
 
 <details markdown>
 
-<summary>See Logic In Action </summary>
+<summary>Logic is critical - half the effort; Declarative is 40X More Concise, Maintainable </summary>
 
-<br>[Declare logic](Logic.md#declaring-rules){:target="_blank" rel="noopener"} with WebGenAI, or in your IDE using code completion or Natural Language:
+<br>Logic is critical to your system - it represents nearly *half the effort.*  Instead of procedural code, [***declare logic***](Logic.md#declaring-rules){:target="_blank" rel="noopener"} with WebGenAI, or in your IDE using code completion or Natural Language as shown above.
 
-![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-chat.png)
 
-**a. Chaining**
+**z. 40X More Concise**
+
+The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](Logic-Why.md){:target="_blank" rel="noopener"}.  That's a remarkable 40X decrease in the backend half of the system.
+
+> 💡 No FrankenCode<br>Note the rules look like syntactically correct requirements.  They are not turned into piles of unmanageable "frankencode" - see [models not frankencode](https://www.genai-logic.com/faqs#h.3fe4qv21qtbs){:target="_blank" rel="noopener"}.
+
+**b. Maintainable: Debugging, Logging**
 
 The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
 
 Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
 
-![logic-chaining](images/basic_demo/logic-chaining.jpeg)
+![logic-chaining](images/basic_demo/logic-debugging.jpeg)
 
-**b. 40X More Concise**
-
-The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code).  That's a remarkable 40X decrease in the backend half of the system.
-
-> 💡 No FrankenCode<br>Note the rules look like syntactically correct requirements.  They are not turned into piles of unmanageable "frankencode" - see [models not frankencode](https://www.genai-logic.com/faqs#h.3fe4qv21qtbs){:target="_blank" rel="noopener"}.
-
-<br><br>
-
-**c. Automatic Re-use**
-
-The logic above, perhaps conceived for Place order, applies automatically to all transactions: deleting an order, changing items, moving an order to a new customer, etc.  This reduces code, and promotes quality (no missed corner cases).
-<br><br>
-
-**d. Automatic Optimizations**
-
-SQL overhead is minimized by pruning, and by elimination of expensive aggregate queries.  These can result in orders of magnitude impact.
-<br><br>
-
-**e. Transparent**
-
-Rules are an executable design.  Note they map exactly to our natural language design (shown in comments) - readable by business users.  
-
-Optionally, you can use the Behave TDD approach to define tests, and the Rules Report will show the rules that execute for each test.  For more information, [click here](https://apilogicserver.github.io/Docs/Behave-Logic-Report/).
-
-> 💡 Logic: Multi-table Derivations and Constraint Declarative Rules.<br>&emsp;&emsp;Declarative Rules are 40X More Concise than procedural code.<br>&emsp;&emsp;For more information, [click here](Logic-Why.md){:target="_blank" rel="noopener"}.
 
 </details>
 

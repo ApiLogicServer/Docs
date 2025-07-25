@@ -180,7 +180,7 @@ So, API Logic Server provides Logic Automation, where logic is implemented as:
 
 * Python, to implement logic not addressed in rules such as sending email or messages
 
-So, [instead of several hundred lines of code](https://github.com/valhuber/LogicBank/wiki/by-code), we declare 5 rules [(more details here)](https://github.com/valhuber/ApiLogicServer/blob/main/README.md#logic).  
+So, [instead of several hundred lines of code](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md), we declare 5 rules [(more details here)](https://github.com/valhuber/ApiLogicServer/blob/main/README.md#logic).  
 
 Rules are entered in Python, with code completion, as shown below.  Observe how they exactly correspond to our design, and are executable by the API Logic Server rules engine:
 

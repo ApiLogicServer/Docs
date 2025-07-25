@@ -249,7 +249,7 @@ Such logic (multi-table derivations and constraints) is a significant portion of
 
     !!! pied-piper ":bulb: Rules are 40X More Concise Than Code"
     
-        Rules are 40X more concise than legacy code, as [shown here](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}.
+        Rules are 40X more concise than legacy code, as [shown here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
     
     Rules are declared in Python, simplified with IDE code completion.  The `add-cust` process above has simulated the process of using your IDE to declare logic.
     

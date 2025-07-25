@@ -211,7 +211,7 @@ Note that it's a `Multi-Table Transaction`, as indicated by the log indentation.
 
 **3. 40X More Concise**
 
-The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/valhuber/LogicBank/wiki/by-code){:target="_blank" rel="noopener"}.  That's a remarkable 40X decrease in the backend *half* of the system.
+The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.  That's a remarkable 40X decrease in the backend *half* of the system.
 <br><br>
 
 **4. Automatic Re-use**
