@@ -237,6 +237,7 @@ to the customer for each one.
 ```
 
 <br>
+
 ![mcp-ui](images/basic_demo/mcp-ui.png)
 
 
