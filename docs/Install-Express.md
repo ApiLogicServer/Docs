@@ -36,7 +36,9 @@ Open the appropriate section below.
 
     If you need to install Python (it can be tricky), see [these notes](Tech-Install-Python.md).
 
-    > MacOS users will require Command Line Tools: `> xcode-select --install`
+    > Install requires a c compiler.  E.g., MacOS users will require Command Line Tools: `> xcode-select --install`
+
+    > Macs may require: `brew install librdkafka`
 
     &nbsp;
 
