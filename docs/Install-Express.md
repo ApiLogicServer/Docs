@@ -32,13 +32,15 @@ Open the appropriate section below.
     python --version  # on macs, you may need to use Python3
     ```
 
-    > Note: Python 3.13 is supported as of release 15.0.52 (***not yet 3.13 on Windows***).
+    > Note: Python 3.13 is supported as of release 15.0.52.
 
     If you need to install Python (it can be tricky), see [these notes](Tech-Install-Python.md).
 
-    > Install requires a c compiler.  E.g., MacOS users will require Command Line Tools: `> xcode-select --install`
+    > Install requires a c compiler.  E.g., MacOS users will require Command Line Tools: <br>`> xcode-select --install`
 
-    > Macs may require: `brew install librdkafka`
+    > Releases before 15.0.60 may require: `brew install librdkafka`.
+
+    > Windows VSCode users may require admin privileges for PowerShell: <br>`Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`
 
     &nbsp;
 
