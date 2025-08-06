@@ -139,7 +139,8 @@ Explore the app - click Customer Alice, and see their Orders, and Items.
 The app above is suitable for collaborative iteration to nail down the requirements, and back office data maintenance.  It's also easy to make simple customizations, using the yaml file.  For more custom apps, use Vibe:
 
 ```bash title="Create a custom react app - customize in your IDE directly or with Vibe"
-Create a react app.
+Create a react app, and then
+update the Product list to provide users an option to see results in a list, or in cards.
 ```
 
 <details markdown>
@@ -155,12 +156,6 @@ Create a react app.
 
 </details>
 
-<br>
-
-```txt title='Customize using Natural Language'
-In the ui/react app, update the Product list to provide users an option to see results in a list,
-or in cards.
-```
 <br>
 
 > Below is an example from Northwind: [click here](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}
