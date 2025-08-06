@@ -380,7 +380,7 @@ For users requiring pyodbc (SqlServer), there are 2 installs:
 
 * ODBC Driver: [using `brew` as described here](Install-pyodbc.md){:target="_blank" rel="noopener"}
 
-* `pip install pyodbc==4.0.34`
+* `pip install pyodbc==5.2.00`
 
 &nbsp;
 

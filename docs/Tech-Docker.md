@@ -44,7 +44,7 @@ In addition to the ApiLogicServer image, I wanted folks to be able to access a d
 
 I therefore needed to:
 
-1. acquire a self-contained MySQL image (again, that's not the default - the default is data persisted to a volume), and
+1. acquire a self-contained MsSQL image (again, that's not the default - the default is data persisted to a volume), and
 2. update this database with test data
 3. save this altered container as an image (`docker commit...`)
 
