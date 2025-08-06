@@ -10,8 +10,6 @@ version: 0.23 from docsite 7/11/2025
   }
 </style>
 
-<< Running - testing phase >>
-
 # Vibe an MCP Microservice
 
 This illustrates [GenAI-Logic](Sample-Basic-Demo-Vibe.md) automation to create an MCP system using **Vibe:** 
