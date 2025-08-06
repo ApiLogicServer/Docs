@@ -169,9 +169,98 @@ or in cards.
 
 ![vibe-cards](images/ui-vibe/nw/vibe-gallery.png)
 
+
 <br>
 
-## 3. MCP: Logic, User Interface
+## 3. Declare Business Logic
+
+Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  GenAI-Logic provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
+
+Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
+
+**1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
+
+**2. Add Business Logic**
+
+```bash title="Check Credit Logic (instead of 220 lines of code)"
+Use case: Check Credit    
+    1. The Customer's balance is less than the credit limit
+    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+    3. The Order's amount_total is the sum of the Item amount
+    4. The Item amount is the quantity * unit_price
+    5. The Item unit_price is copied from the Product unit_price
+
+Use case: App Integration
+    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+```
+
+![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-vibe.png)
+
+To test the logic:
+
+**1. Use the Admin App to access the first order for `Customer Alice`**
+
+**2. Edit its first item to a very high quantity**
+
+The update is properly rejected because it exceeds the credit limit.  Observe the rules firing in the console log - see Logic In Action, below.
+
+<br>
+
+<details markdown>
+
+<summary>Logic is critical - half the effort; Declarative is 40X More Concise, Maintainable </summary>
+
+<br>Logic is critical to your system - it represents nearly *half the effort.*  Instead of procedural code, [***declare logic***](Logic.md#declaring-rules){:target="_blank" rel="noopener"} with WebGenAI, or in your IDE using code completion or Natural Language as shown above.
+
+
+**a. 40X More Concise**
+
+The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](Logic-Why.md){:target="_blank" rel="noopener"}.  That's a remarkable 40X decrease in the backend half of the system.
+
+> 💡 No FrankenCode<br>Note the rules look like syntactically correct requirements.  They are not turned into piles of unmanageable "frankencode" - see [models not frankencode](https://www.genai-logic.com/faqs#h.3fe4qv21qtbs){:target="_blank" rel="noopener"}.
+
+**b. Maintainable: Debugging, Logging**
+
+The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
+
+Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
+
+![logic-chaining](images/basic_demo/logic-debugging.jpeg)
+
+
+</details>
+
+<br>
+
+## 4. Enterprise Connectivity - B2B
+
+To fit our system into the Value Chain,
+we need a custom API to accept orders from B2B partners, and forward paid orders to shipping via Kafka.
+
+``` bash title="Create the Custom B2B API Endpoint"
+Create a B2B order API called 'OrderB2B' that accepts orders from external partners. 
+
+The external format should map:
+- 'Account' field to find customers by name
+- 'Notes' field to order notes
+- 'Items' array where each item maps 'Name' to find products and 'QuantityOrdered' to item quantity
+
+The API should create complete orders with automatic lookups and inherit all business logic rules.
+```
+
+The Kafka logic was created earlier, so we are ready to test.
+
+You can use Swagger (note the test data is provided), or use CLI:
+
+``` bash title="Test the B2B Endpoint"
+curl -X POST http://localhost:5656/api/OrderB2BEndPoint/OrderB2B -H "Content-Type: application/json" -d '{"meta":{"args":{"data":{"Account":"Alice","Notes":"RUSH order for Q4 promotion","date_shipped":"2025-08-04","Items":[{"Name":"Widget","QuantityOrdered":5},{"Name":"Gadget","QuantityOrdered":3}]}}}}'
+```
+
+Observe the logic execution in the VSCode debug window.
+
+<br>
+
+## 5. MCP: Logic, User Interface
 
 The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs.  Build it as follows:<br><br>
 
@@ -254,66 +343,6 @@ to the customer for each one.
 
 <br>
 
-## 4. Declare Business Logic
-
-Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  GenAI-Logic provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
-
-Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
-
-**1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
-
-**2. Add Business Logic**
-
-```bash title="Check Credit Logic (instead of 220 lines of code)"
-Use case: Check Credit    
-    1. The Customer's balance is less than the credit limit
-    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
-    3. The Order's amount_total is the sum of the Item amount
-    4. The Item amount is the quantity * unit_price
-    5. The Item unit_price is copied from the Product unit_price
-
-Use case: App Integration
-    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
-```
-
-![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-vibe.png)
-
-To test the logic:
-
-**1. Use the Admin App to access the first order for `Customer Alice`**
-
-**2. Edit its first item to a very high quantity**
-
-The update is properly rejected because it exceeds the credit limit.  Observe the rules firing in the console log - see Logic In Action, below.
-
-<br>
-
-<details markdown>
-
-<summary>Logic is critical - half the effort; Declarative is 40X More Concise, Maintainable </summary>
-
-<br>Logic is critical to your system - it represents nearly *half the effort.*  Instead of procedural code, [***declare logic***](Logic.md#declaring-rules){:target="_blank" rel="noopener"} with WebGenAI, or in your IDE using code completion or Natural Language as shown above.
-
-
-**a. 40X More Concise**
-
-The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](Logic-Why.md){:target="_blank" rel="noopener"}.  That's a remarkable 40X decrease in the backend half of the system.
-
-> 💡 No FrankenCode<br>Note the rules look like syntactically correct requirements.  They are not turned into piles of unmanageable "frankencode" - see [models not frankencode](https://www.genai-logic.com/faqs#h.3fe4qv21qtbs){:target="_blank" rel="noopener"}.
-
-**b. Maintainable: Debugging, Logging**
-
-The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
-
-Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
-
-![logic-chaining](images/basic_demo/logic-debugging.jpeg)
-
-
-</details>
-
-<br>
-
-## 5. Iterate with Rules and Python
+## 6. Iterate with Rules and Python
 
 This is addressed in the related CLI-based demo - to continue, [click here](Sample-Basic-Demo.md#5-iterate-with-rules-and-python){:target="_blank" rel="noopener"}.
