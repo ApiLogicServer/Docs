@@ -21,6 +21,8 @@ This illustrates [GenAI-Logic](Sample-Basic-Demo-Vibe.md) automation to create a
 Please find and read `.github/.copilot-instructions.md`.
 ```
 
+> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.
+
 <br>
 
 <details markdown>
@@ -110,9 +112,9 @@ Run it as follows:
 
 <details markdown>
 
-<summary>API: filtering, sorting, pagination, optimistic locking and related data access - see the Swagger </summary>
+<summary>API: filtering, sorting, pagination, optimistic locking,related data access... see Swagger </summary>
 
-Your API is MCP enabled, and ready for custom app dev.  For more information, [click here](https://apilogicserver.github.io/Docs/API-Self-Serve/){:target="_blank" rel="noopener"}.
+Your API is MCP enabled, and ready for custom app dev.  For more information, [click here](API-Self-Serve.md){:target="_blank" rel="noopener"}.
 
 ![swagger](images/basic_demo/api-swagger.jpeg)
 </details>
@@ -227,7 +229,7 @@ Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  Th
 
 <br>
 
-## 4. Enterprise Connectivity - B2B
+## 4. Enterprise Connectivity: B2B
 
 To fit our system into the Value Chain,
 we need a custom API to accept orders from B2B partners, and forward paid orders to shipping via Kafka.
@@ -338,6 +340,6 @@ to the customer for each one.
 
 <br>
 
-## 6. Iterate with Rules and Python
+## 6. Iterate: Rules and Python
 
 This is addressed in the related CLI-based demo - to continue, [click here](Sample-Basic-Demo.md#5-iterate-with-rules-and-python){:target="_blank" rel="noopener"}.

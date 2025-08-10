@@ -40,6 +40,8 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 Please find and read `.github/.copilot-instructions.md`.
 ```
 
+> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.
+
 <br>
 
 The entire process takes 20 minutes; usage notes:
