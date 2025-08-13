@@ -91,7 +91,7 @@ In the [sample database](Sample-Database.md){:target="_blank" rel="noopener"}, t
 
 * basic: the first relationship is named as above; subsequent accessor names are appended with a number (1, 2)
 
-* advanced: if the foreign key is single-field, and ends with `id` or `_id`, the foreign key names is used:
+* advanced: if the foreign key is single-field, and ends with `id` or `_id` (also spellings such as `Id` and `ID`), the foreign key names is used:
 
 ```python title="advanced relationship names"
 
