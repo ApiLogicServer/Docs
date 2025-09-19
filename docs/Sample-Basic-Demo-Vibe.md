@@ -21,7 +21,7 @@ This illustrates [GenAI-Logic](Sample-Basic-Demo-Vibe.md) automation to create a
 Please find and read `.github/.copilot-instructions.md`.
 ```
 
-> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.
+> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.  Also, we get consistently good results with `Claude Sonnet 4`.
 
 <br>
 
