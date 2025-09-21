@@ -25,6 +25,31 @@ Please find and read `.github/.copilot-instructions.md`.
 
 <br>
 
+---
+
+## 📋 Table of Contents
+
+**Quick Navigation:**
+
+1. **[Create From Existing DB](#1-create-from-existing-db)** - Set up your project from a database
+   - [Project Opens: Run](#1a-project-opens-run) - Launch and verify your system
+
+2. **[Custom UI: GenAI, Vibe](#2-custom-ui-genai-vibe)** - Build responsive React applications
+
+3. **[Declare Business Logic](#3-declare-business-logic)** - Add rules with natural language
+
+4. **[Enterprise Connectivity: B2B](#4-enterprise-connectivity-b2b)** - Create integration endpoints
+
+5. **[MCP: Logic, User Interface](#5-mcp-logic-user-interface)** - Implement Model Context Protocol
+
+6. **[Iterate: Rules and Python](#6-iterate-rules-and-python)** - Advanced customization patterns
+
+> 💡 **Pro Tip:** Each section builds upon the previous one. Complete them in order for the best experience.
+
+---
+
+<br>
+
 <details markdown>
 
 <summary>Demo Overview: Vibe an MCP API, Custom Client and Business Logic; pre-reqs </summary>
