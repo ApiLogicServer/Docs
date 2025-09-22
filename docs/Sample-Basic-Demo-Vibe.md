@@ -68,13 +68,13 @@ The entire process takes 20 minutes; usage notes:
 
 ## 1. Create From Existing DB
 
-```bash title="Create a project from an existing database (open the disclure box for details)"
+```bash title="Create a project from an existing database (open the disclosure box for details)"
 Create a database project from samples/dbs/basic_demo.sqlite
 ```
 
 <details markdown>
 
-<summary> The database is Customer, Orders, Items and Product; you can also create the dataase</summary>
+<summary> The database is Customer, Orders, Items and Product; you can also create the database</summary>
 
 ![existing datbase](images/vscode/vibe/create-project.png)
 
