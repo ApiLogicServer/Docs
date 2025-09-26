@@ -76,7 +76,7 @@ Create a database project from samples/dbs/basic_demo.sqlite
 
 <summary> The database is Customer, Orders, Items and Product; you can also create the database</summary>
 
-![existing datbase](images/vscode/vibe/create-project.png)
+![existing database](images/vscode/vibe/create-project.png)
 
 **Or, create a *new* database** with this prompt:
 ```bash

@@ -24,5 +24,5 @@ To review the implementation, and how to use the debugger for your custom endpoi
    1. You can examine the variables, step, etc.
 6. Click **Continue** on the floating debug menu (upper right in screen shot below)
 
-<figure><img src="https://github.com/valhuber/ApiLogicServer/raw/main/images/docker/VSCode/nw-readme/customize-api.png"></figure>
 
+![customize api](images/integration/OrderB2B.jpg)
