@@ -107,6 +107,33 @@ The retry logic in `genai_cli_with_retry()` keeps project creation resilient:
 
 This approach mirrors real-world LLM behaviour: one response might be malformed, but a clean run usually appears within three tries, and each failure leaves a breadcrumb trail for debugging.
 
+Note the same `pr` instance variable is used for all 3 tries, so initialization that would normally occur in `init()` is in `GenAI.create_db_models()`.
+
+## Pseudo-code
+
+Note the *Key Module Map* at the end of genai.py:
+
+```
+def key_module_map():
+    """ does not execute - strictly fo find key modules """
+    import api_logic_server_cli.api_logic_server as als
+    import api_logic_server_cli.create_from_model.create_db_from_model as create_db_from_model
+
+    genai_cli_with_retry()                          # called from cli.genai for retries
+                                                    # try/catch/retry loop!
+    als.ProjectRun()                                # calls api_logic_server.ProjectRun
+
+    genai = GenAI(Project())                        # called from api_logic_server.ProjectRun
+    genai.__init__()                                # main driver, calls...  
+    genai.get_prompt_messages()                     # get self.messages from file/dir/text/arg
+    genai.fix_and_write_model_file('response_data') # write create_db_models.py for db creation
+    genai.save_files_to_system_genai_temp_project() # save prompt, response and create_db_models.py
+                                                    # returns to api_logic_server, which...
+    create_db_from_model.create_db()                #   creates create_db_models.sqlite from create_db_models.py
+                                                    #   creates project from that db; and calls...
+    genai.insert_logic_into_created_project()       #   merge logic (comments) into declare_logic.py
+```
+
 ## Manual Recovery Hooks
 
 - **Repaired responses** – run `ApiLogicServer genai --using prompt_dir --repaired-response system/genai/temp/chatgpt_retry.response` after editing the JSON.  The retry loop treats this as the last attempt (no additional retries needed).
