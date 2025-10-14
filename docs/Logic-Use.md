@@ -187,7 +187,7 @@ In logic development, before you save a new row, you will first need to instanti
                     copy_to_logic_row = logic_row.new_logic_row(models.EmployeeAudit)
                     copy_to_logic_row.link(to_parent=logic_row)
                     copy_to_logic_row.set_same_named_attributes(logic_row)
-                    copy_to_logic_row.insert(reason="Manual Copy " + copy_to_logic_row.name)  # triggers rules...
+                    copy_to_logic_row.insert(reason="Manual Copy " + copy_to_logic_row.name, row=copy_to_logic_row.row)  # triggers rules...
 
         Rule.commit_row_event(on_class=models.Employee, calling=audit_by_event)
 ```
