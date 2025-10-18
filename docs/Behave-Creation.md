@@ -34,6 +34,7 @@ Use basic_demo to explore:
 
   * Open the project, and establish your virtual environment
   * Add rules: `gail add-cust`
+  
 4. Use your AI Assistant: `Create Logic`
 
 
