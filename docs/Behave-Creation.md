@@ -1,6 +1,12 @@
 !!! pied-piper ":bulb: TL;DR - Executable Test Suite, Documentation"
 
-      As of 15.01.18, you can create Behave tests from declarative rules, execute test suites, and generate automated documentation with complete logic traceability.  The tests focus on dependencies discovered from logic, and use the API to run run transactions and test for expected results.  
+      As of 15.01.18, you can use your AI Assistant to automatically 
+      
+      * Create Behave tests from declarative rules
+      * Execute test suites, and 
+      * Generate automated documentation with complete logic traceability
+      
+      The tests focus on dependencies discovered from logic, and use the API to run transactions and test for expected results.  
       
       **Important:** 
       
@@ -9,7 +15,6 @@
 
 &nbsp;&nbsp;
 
-This guide explains how to create Behave tests from declarative rules, execute test suites, and generate automated documentation with complete logic traceability.
 
 ## Overview: Behave BDD Testing Framework
 
@@ -34,9 +39,11 @@ Use basic_demo to explore:
 
   * Open the project, and establish your virtual environment
   * Add rules: `gail add-cust`
-  
+
 4. Use your AI Assistant: `Create Logic`
 
+
+See the [example here](Behave-Logic-Report-Basic-Demo.md).
 
 ## Prerequisites and Configuration
 
