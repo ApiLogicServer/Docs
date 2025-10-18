@@ -147,7 +147,7 @@ nav:
     - "Agility With Behave": Behave.md
     - "Behave Logic Report": Behave-Logic-Report.md
     - Creating Tests:
-      - "Create Tessts From Logic": Behave-Creation.md
+      - "Create Tests From Logic": Behave-Creation.md
       - "Sample: basic_demo": Behave-Logic-Report-Basic-Demo.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md
