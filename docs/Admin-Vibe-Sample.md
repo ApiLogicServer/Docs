@@ -4,7 +4,7 @@
 
       This page illustrates a number of customizations to the northwind sample (`samples/nw_sample` in the Manager).  These are shown below.
       
-      These customizations were performed in VSCode using CoPilot, with the Claude Sonnet 4 Agent.
+      These customizations were performed in VSCode using CoPilot, with the Claude Sonnet 4.5 Agent.
       
 ![gallery](images/ui-vibe/nw/vibe-gallery.png)
 

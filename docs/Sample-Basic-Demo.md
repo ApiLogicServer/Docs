@@ -23,7 +23,7 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 Please find and read `.github/.copilot-instructions.md`.
 ```
 
-> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.    Also, we get consistently good results with `Claude Sonnet 4`.
+> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.    Also, we get consistently good results with `Claude Sonnet 4.5`.
 
 <br>
 
