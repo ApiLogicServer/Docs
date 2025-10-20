@@ -39,6 +39,8 @@ Use basic_demo to explore:
 
   * Open the project, and establish your virtual environment
   * Add rules: `gail add-cust`
+  * Add APIs:  `gail add-cust`
+  * Update the data model: <as recommended from prior command>
 
 4. Use your AI Assistant: `Create Logic`
 
