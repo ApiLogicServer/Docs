@@ -40,7 +40,7 @@ Use basic_demo to explore:
   * Open the project, and establish your virtual environment
   * Add rules: `gail add-cust`
   * Add APIs:  `gail add-cust`
-  * Update the data model: <as recommended from prior command>
+  * Update the data model (as recommended from prior command): `genai-logic rebuild-from-database --db_url=sqlite:///database/db.sqlite`
 
 4. Use your AI Assistant: `Create Logic`
 

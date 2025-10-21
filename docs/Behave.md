@@ -1,53 +1,335 @@
 !!! pied-piper ":bulb: TL;DR - Executable Test Suite, Documentation"
 
-      You can optionally use the Behave test framework to (here is an [Agile Approach for using Behave](Logic-Tutorial.md)):
+      You can optionally use the Behave test framework to:
 
-      1. **Capture Requirements, as Tests:** use the Behave in your IDE to capture requirements.  Behave is based on Behavior Driven Design, so your requirements are phrased as tests.
+      1. **Capture Requirements as Tests:** Use Behave in your IDE to capture requirements as executable tests. Behave is based on Behavior Driven Design, so your requirements are phrased as tests that can be understood by both technical and business users.
       
-      2. **Run Automated Test Suite:** create Python code to execute tests.  You can then execute your test suite with 1 command.
+      2. **Run Automated Test Suite:** Create Python code to execute tests. You can then execute your entire test suite with a single command.
 
-      3. **Requirements and Test Documentation:** as shown below, you can then create a wiki report that documents your requirements, and the tests (**Scenarios**) that confirm their proper operation.
+      3. **Generate Requirements and Test Documentation:** Create wiki reports that document your requirements and the tests (**Scenarios**) that confirm their proper operation.
 
-         * **Integrated Logic Documentation:** the report integrates your logic, including a logic report showing your logic (rules and Python), and a Logic Log that shows exactly how the rules executed.  Logic Doc is transparent to business users, so can further contribute to Agile Collaboration.
+         * **Integrated Logic Documentation:** Reports integrate your declarative logic, showing rules and their execution traces. This makes logic transparent to business users and supports Agile Collaboration.
+
+      For an Agile approach to using Behave, see [Logic Tutorial](Logic-Tutorial.md).
 
 &nbsp;&nbsp;
 
-# Testing
+# Why Testing Matters
 
-Experienced professionals advocate test suites, for answering key questions like:
+Experienced professionals advocate comprehensive test suites for answering critical questions:
 
 |   Key Question    | Best Practice   |
 :-------|:-----------------|
-| What is the formal definition of the systems' functionality? | The test suite defines the functionality |
-| Is the system ready to go-live | The test suite passes |
+| What is the formal definition of the system's functionality? | The test suite defines the functionality |
+| Is the system ready to go-live? | The test suite passes |
 | Did my maintenance change break something? | Run the test suite |
+| How do the declarative rules actually execute? | Logic logs show execution traces |
 
-## Popular Frameworks
+## Testing Frameworks
 
-API Logic does not dictate any particular framework.  You can use (and we do internally) popular frameworks such as `PyUnit` (bundled with Python) and `unitest`.
+API Logic Server does not dictate any particular framework. You can use popular frameworks such as:
+
+- **`pytest`** - Modern, feature-rich testing framework (recommended)
+- **`unittest`** - Python's built-in testing framework
+- **`behave`** - BDD framework with built-in documentation generation (described here)
+
+We use all three internally for different purposes.
 
 &nbsp;
 
 ## The Behave Framework
 
-One such framework is `behave`.  Since it can produce documentation, we have built in support as described here.
+**Behave** is particularly useful because it:
 
-![Behave Summary](images/behave/behave-summary.png)
+1. Uses natural language (Gherkin) for test definitions - readable by business users
+2. Automatically generates documentation from tests
+3. Integrates logic execution traces into reports
+4. Supports Behavior Driven Development (BDD) workflows
 
-[Behave](https://behave.readthedocs.io/en/stable/tutorial.html) is a framework for defining and executing tests.  It is based on [TDD (Test Driven Development)](http://dannorth.net/introducing-bdd/), an Agile approach for defining system requirements as executable tests.
+![behave-summary](images/behave/behave-summary.png)
+
+[Behave](https://behave.readthedocs.io/en/stable/tutorial.html) is a framework for defining and executing tests based on [BDD (Behavior Driven Development)](http://dannorth.net/introducing-bdd/), an Agile approach for defining system requirements as executable tests.
 
 &nbsp;
 
-# Using Behave
+# Using Behave - Quick Start
 
+![tdd-ide](images/behave/TDD-ide.png)
 
-![Using Behave](images/behave/TDD-ide.png)
+Behave is pre-installed with API Logic Server. The typical workflow:
 
-Behave is pre-installed with API Logic Server.  Use it as shown above:
+1. **Create `.feature` files** - Define test ***Scenarios*** (tests) for ***Features*** (stories) in natural language
 
-1. Create `.feature` files to define ***Scenarios*** (aka tests) for ***Features*** (aka Stories)
+2. **Code `.py` files** - Implement the scenario steps in Python
 
-2. Code `.py` files to implement Scenario tests
+3. **Run Test Suite** - Execute all scenarios with Launch Configuration `Behave Run`
+
+4. **Generate Report** - Create documentation with Launch Configuration `Behave Report`
+
+The following sections provide detailed guidance for each step.
+
+&nbsp;&nbsp;
+
+## 1. Create `.feature` Files to Define Scenarios
+
+Feature files use Gherkin syntax - a business-readable, domain-specific language that lets you describe software behavior without detailing implementation.
+
+**Example:**
+```gherkin
+Feature: Order Processing with Business Logic
+
+  Scenario: Good Order Placed
+    Given Customer "Alice" with balance 0 and credit limit 1000
+    When B2B order placed for "Alice" with 5 Widget
+    Then Customer "Alice" balance should be 450
+    And Order amount_total should be 450
+    And Item amount should be 450
+```
+
+**Best Practices:**
+
+- Use **Given** for setup/preconditions
+- Use **When** for the action being tested  
+- Use **Then/And** for assertions
+- Write scenarios that business users can understand
+- Keep scenarios focused on one behavior
+
+Feature files are stored in `features/` directory with `.feature` extension.
+
+&nbsp;&nbsp;
+
+## 2. Implement Test Steps in Python
+
+Each scenario step maps to a Python function using decorators like `@given`, `@when`, `@then`.
+
+**Example Implementation:**
+```python
+from behave import given, when, then
+import requests
+
+@given('Customer "{name}" with balance {balance:d} and credit limit {limit:d}')
+def step_impl(context, name, balance, limit):
+    # Create test customer via API
+    unique_name = f"{name} {int(time.time() * 1000)}"  # Unique for repeatability
+    response = requests.post(
+        f'{BASE_URL}/api/Customer/',
+        json={"data": {"attributes": {
+            "name": unique_name,
+            "balance": balance,
+            "credit_limit": limit
+        }}}
+    )
+    context.customer_id = int(response.json()['data']['id'])
+    context.customer_map = {name: {'id': context.customer_id, 'unique_name': unique_name}}
+```
+
+**Key Implementation Points:**
+
+1. **Link scenarios with `@when/@given/@then` decorators** - Behave matches scenario text to these patterns
+
+2. **Use `test_utils.prt()` for logic logging:**
+   ```python
+   scenario_name = context.scenario.name
+   test_utils.prt(f'\n{scenario_name}\n', scenario_name)  # 2nd arg drives log filename
+   ```
+
+3. **Add docstrings for documentation** (optional but recommended):
+   ```python
+   @when('B2B order placed for "{customer}" with {qty:d} {product}')
+   def step_impl(context, customer, qty, product):
+       """
+       Phase 2 test: Uses OrderB2B custom API.
+       Creates complete order with items in single transaction.
+       """
+       scenario_name = context.scenario.name
+       test_utils.prt(f'\n{scenario_name}\n', scenario_name)
+       # ... implementation
+   ```
+
+4. **Store context for later steps:**
+   ```python
+   context.order_id = order_id
+   context.customer_map[customer_name] = {'id': customer_id}
+   ```
+
+5. **Use unique test data** (see Rule #0 in `docs/training/testing.md`):
+   ```python
+   unique_name = f"TestCustomer {int(time.time() * 1000)}"
+   ```
+
+Step implementations are stored in `features/steps/` directory with `*_steps.py` naming pattern.
+
+&nbsp;&nbsp;
+
+## 3. Run Test Suite
+
+### Prerequisites
+
+**The server must be running!** Start it first:
+
+```bash
+# Option 1: Run with debugger
+# Use Launch Configuration "ApiLogicServer"
+
+# Option 2: Run without debugger (faster, doesn't restart on code changes)
+python api_logic_server_run.py
+```
+
+### Running Tests
+
+```bash
+# Run all scenarios
+python test/api_logic_server_behave/behave_run.py --outfile=logs/behave.log
+
+# Or use Launch Configuration: "Behave Run"
+```
+
+**Test Execution Options:**
+
+- **Run all tests:** `Behave Run` Launch Configuration
+- **Run single scenario:** `Behave Scenario` Launch Configuration  
+- **Windows users:** Use `Windows Behave Run` if needed
+- **Debugging:** Set breakpoints in your step implementations
+
+**Output Files:**
+
+- `logs/behave.log` - Test results summary
+- `logs/scenario_logic_logs/*.log` - Logic execution traces per scenario
+
+&nbsp;&nbsp;
+
+## 4. Generate Documentation Report
+
+After running tests, generate the wiki-style report:
+
+```bash
+cd test/api_logic_server_behave
+python behave_logic_report.py run
+
+# Or use Launch Configuration: "Behave Report"
+```
+
+**Generated Report Includes:**
+
+- ✅ All features and scenarios  
+- ✅ Test results (pass/fail)
+- ✅ **Logic execution traces** - Shows exactly which rules fired
+- ✅ **Rules used** - Summary of rules involved
+- ✅ Expandable logic detail sections
+- ✅ Docstring documentation (if provided in steps)
+
+The report is generated at: `reports/Behave Logic Report.md`
+
+&nbsp;&nbsp;
+
+## 5. Testing Best Practices
+
+### Test Repeatability (Rule #0)
+
+**CRITICAL:** Tests modify the database. Always create fresh test data with timestamps:
+
+```python
+# ❌ WRONG - Reuses contaminated data
+customer = requests.get(f'/api/Customer/?filter[name]=Bob').json()['data'][0]
+
+# ✅ CORRECT - Always creates fresh data
+unique_name = f"Bob {int(time.time() * 1000)}"
+response = requests.post(f'/api/Customer/', json={...})
+```
+
+See `docs/training/testing.md` for comprehensive testing patterns and common pitfalls.
+
+### Optimistic Locking Considerations
+
+When testing with optimistic locking enabled, set `PYTHONHASHSEED=0` for repeatable test execution.
+
+See [API Optimistic Locking Testing](API-Opt-Lock.md#testing-and-pythonhashseed){:target="_blank" rel="noopener"} for details.
+
+### Step Ordering (Rule #0.5)
+
+Behave matches steps by FIRST pattern that fits. Always order from **most specific → most general**:
+
+```python
+# ✅ CORRECT ORDER
+@when('Order for "{customer}" with {qty:d} carbon neutral {product}')  # Most specific
+@when('Order for "{customer}" with {q1:d} {p1} and {q2:d} {p2}')     # More specific
+@when('Order for "{customer}" with {qty:d} {product}')                # General
+
+# ❌ WRONG - General pattern matches everything first!
+```
+
+Use `python check_step_order.py` to verify correct ordering.
+
+&nbsp;&nbsp;
+
+## Troubleshooting
+
+### Tests Not Showing in Report
+
+**Problem:** Scenarios appear in report but without logic traces.
+
+**Solution:** Ensure `test_utils.prt(scenario_name, scenario_name)` is called in your `@when` step implementation.
+
+### Logic Logs Empty
+
+**Problem:** `logs/scenario_logic_logs/` files are empty or missing.
+
+**Solution:** 
+1. Verify server is running before tests
+2. Check that `test_utils.prt()` second argument matches scenario name exactly
+3. Ensure scenario names don't exceed 26 characters (gets truncated)
+
+### Test Repeatability Issues
+
+**Problem:** Tests pass first run, fail on second run.
+
+**Solution:** Use timestamps in test data names: `f"Customer {int(time.time() * 1000)}"`
+
+See Rule #0 in `docs/training/testing.md` for comprehensive guidance.
+
+&nbsp;&nbsp;
+
+## Advanced Topics
+
+### Phase 1 vs Phase 2 Testing
+
+- **Phase 1 (CRUD):** Test individual operations (POST, PATCH, DELETE) for granular rule testing
+- **Phase 2 (Custom APIs):** Test complete business transactions using custom API endpoints
+
+See `docs/training/testing.md` for the complete decision tree.
+
+### Custom API Testing
+
+When testing custom business APIs (e.g., OrderB2B), remember to include both `"method"` and `"args"` in the meta object:
+
+```python
+{
+    "meta": {
+        "method": "OrderB2B",  # ← REQUIRED!
+        "args": {
+            "data": { ... }
+        }
+    }
+}
+```
+
+### Debugging Tests
+
+1. Set breakpoints in step implementations
+2. Use `Behave Scenario` to run single test
+3. Check `logs/behave.log` for test execution details
+4. Review `logs/scenario_logic_logs/*.log` for logic traces
+
+&nbsp;&nbsp;
+
+## Additional Resources
+
+- **Complete Testing Guide:** `docs/training/testing.md` (1755 lines of AI training material)
+- **Behave Official Docs:** [behave.readthedocs.io](https://behave.readthedocs.io/en/stable/tutorial.html)
+- **BDD Introduction:** [Introducing BDD](http://dannorth.net/introducing-bdd/)
+- **API Logic Server Docs:** [apilogicserver.github.io/Docs](https://apilogicserver.github.io/Docs/)
+
+&nbsp;&nbsp;
 
 3. Run Test Suite: Launch Configuration `Behave Run`.  This runs all your Scenarios, and produces a summary report of your Features and the test results.
 
