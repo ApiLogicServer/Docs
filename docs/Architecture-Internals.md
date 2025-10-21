@@ -90,7 +90,7 @@ The development environment has **two distinct Manager workspaces**:
 - Contains sample projects (`basic_demo`, `nw_sample`, etc.) for testing
 - Has its own venv shared by test projects
 - Gets regenerated with each BLT run
-- Contains `.github/.copilot-profile.md` to re-establish context after rebuild
+- Contains `system/copilot-dev-context.md` to re-establish context after rebuild
 
 **Complete Directory Structure:**
 ```
@@ -102,7 +102,8 @@ The development environment has **two distinct Manager workspaces**:
 │       │   ├── nw_sample/
 │       │   └── ...
 │       ├── venv/                                 # Shared venv for test projects
-│       ├── .github/.copilot-profile.md           # Context restoration file
+│       ├── system/
+│       │   └── copilot-dev-context.md            # Context restoration for AI assistants
 │       └── docs/                                 # Training materials
 └── org_git/
     ├── ApiLogicServer-src/                       # Framework source (edit here)
@@ -119,20 +120,20 @@ The development environment has **two distinct Manager workspaces**:
 1. Edit framework code in `org_git/ApiLogicServer-src/`
 2. Run BLT from Seminal Manager (rebuilds, tests, regenerates BLT Manager)
 3. Test with sample projects in BLT Manager workspace
-4. BLT Manager gets fresh context from `.copilot-profile.md` after each rebuild
+4. BLT Manager gets fresh context from `system/copilot-dev-context.md` after each rebuild
 
 **Why This Architecture:**
 - **Isolation:** Changes being tested don't affect stable Seminal Manager
 - **Clean slate:** Each BLT run creates fresh testing environment
 - **Shared venv:** Test projects reuse BLT Manager's venv (speeds testing)
-- **Context preservation:** `.copilot-profile.md` re-establishes understanding after rebuild
+- **Context preservation:** `system/copilot-dev-context.md` re-establishes understanding after rebuild
 
 &nbsp;
 
 ## Cross-References for Full Context
 
 **For Strategic Architecture Understanding:**
-- `.github/.copilot-profile.md` - Technology lineage, declarative architecture, NL→DSL→Engines pattern
+- `system/copilot-dev-context.md` - Technology lineage, declarative architecture, NL→DSL→Engines pattern
 - [Medium Article](https://medium.com/@valjhuber/declarative-genai-the-architecture-behind-enterprise-vibe-automation-1b8a4fe4fbd7) - Complete architectural rationale
 
 **For Created Project Development:**
