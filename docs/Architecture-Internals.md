@@ -90,7 +90,7 @@ The development environment has **two distinct Manager workspaces**:
 - Contains sample projects (`basic_demo`, `nw_sample`, etc.) for testing
 - Has its own venv shared by test projects
 - Gets regenerated with each BLT run
-- Contains `system/copilot-dev-context.md` to re-establish context after rebuild
+- Contains `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` for AI context restoration
 
 **Complete Directory Structure:**
 ```
@@ -103,7 +103,9 @@ The development environment has **two distinct Manager workspaces**:
 │       │   └── ...
 │       ├── venv/                                 # Shared venv for test projects
 │       ├── system/
-│       │   └── copilot-dev-context.md            # Context restoration for AI assistants
+│       │   └── ApiLogicServer-Internal-Dev/      # Internal dev tooling
+│       │       ├── copilot-dev-context.md        # AI context restoration
+│       │       └── install-ApiLogicServer-dev.sh # Dev environment setup
 │       └── docs/                                 # Training materials
 └── org_git/
     ├── ApiLogicServer-src/                       # Framework source (edit here)
@@ -120,20 +122,20 @@ The development environment has **two distinct Manager workspaces**:
 1. Edit framework code in `org_git/ApiLogicServer-src/`
 2. Run BLT from Seminal Manager (rebuilds, tests, regenerates BLT Manager)
 3. Test with sample projects in BLT Manager workspace
-4. BLT Manager gets fresh context from `system/copilot-dev-context.md` after each rebuild
+4. BLT Manager gets fresh context from `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` after each rebuild
 
 **Why This Architecture:**
 - **Isolation:** Changes being tested don't affect stable Seminal Manager
 - **Clean slate:** Each BLT run creates fresh testing environment
 - **Shared venv:** Test projects reuse BLT Manager's venv (speeds testing)
-- **Context preservation:** `system/copilot-dev-context.md` re-establishes understanding after rebuild
+- **Context preservation:** `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` re-establishes understanding after rebuild
 
 &nbsp;
 
 ## Cross-References for Full Context
 
 **For Strategic Architecture Understanding:**
-- `system/copilot-dev-context.md` - Technology lineage, declarative architecture, NL→DSL→Engines pattern
+- `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` - Technology lineage, declarative architecture, NL→DSL→Engines pattern
 - [Medium Article](https://medium.com/@valjhuber/declarative-genai-the-architecture-behind-enterprise-vibe-automation-1b8a4fe4fbd7) - Complete architectural rationale
 
 **For Created Project Development:**
@@ -165,7 +167,7 @@ The subsections below described the steps to:
 4. Perform the critical "Smoke Test" to ensure system operation
 
 
-## Manager `install-ApiLogicServer-dev`
+## Manager Internal Development Setup
 
 ![dev env](images/architecture/internals/dev-dirs.png)
 
@@ -178,10 +180,10 @@ To create the dev enviroment (result shown above):
 2. Start the Manager: `als start`
 3. Be sure you have installed the VSCode CLI - see [the VSCode CLI procedure](IDE-Customize.md/#vscode-cli){:target="_blank" rel="noopener"}
 4. In your CLI terminal window:
-    * Note: Windows users use `install-ApiLogicServer-dev.ps1`) 
+    * Note: Windows users use `install-ApiLogicServer-dev.ps1`)
 
 ```bash title="Install API Logic Server Development environment"
-sh system/install-ApiLogicServer-dev/install-ApiLogicServer-dev.sh
+sh system/ApiLogicServer-Internal-Dev/install-ApiLogicServer-dev.sh
 ```
 5. In your newly created dev source, create `ApiLogicServer/ApiLogicServer-dev/org_git/ApiLogicServer-src/api_logic_server_cli/api_logic_server_info.yaml`, with:
 ```
