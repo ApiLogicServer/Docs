@@ -1,12 +1,21 @@
 !!! pied-piper ":robot: Every Project Comes Pre-Configured for AI Assistance"
 
-    Every project created by API Logic Server includes comprehensive training materials, code examples, and integration points that work seamlessly with GitHub Copilot, Claude, ChatGPT, and other AI assistants.
+    Every project created by GenAI-Logic includes comprehensive training materials, readme's with code examples, and integration points that work seamlessly with GitHub Copilot, Claude, ChatGPT, and other AI assistants.
 
     Your project includes `.github/.copilot-instructions.md`, AI training documents (`docs/training`), and working code examples that serve as a ***"message in a bottle"*** for AI assistants.
 
     No more explaining your project structure from scratch - AI assistants can immediately understand your codebase and underlying software to help you build features.
 
     AI assistants can help you add business logic rules, customize APIs, create test scenarios, and integrate with external services.
+
+&nbsp;
+
+This page describes:
+
+• what makes your project AI-enabled out of the box  
+• the training materials included as your "message in a bottle"  
+• how to get started with AI assistance  
+• the AI-friendly workflows built into every project  
 
 &nbsp;
 
@@ -31,12 +40,6 @@ Your AI-enabled project includes these key capabilities:
 ✅ **Admin UI Customization** - YAML-driven configuration  
 ✅ **Events & Triggers** - Advanced business logic scenarios  
 
-This page describes:
-
-• what makes your project AI-enabled out of the box  
-• the training materials included as your "message in a bottle"  
-• how to get started with AI assistance  
-• the AI-friendly workflows built into every project  
 
 &nbsp;
 
