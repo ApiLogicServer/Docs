@@ -98,7 +98,7 @@ The development environment has **two distinct Manager workspaces**:
 ├── build_and_test/
 │   └── ApiLogicServer/                           # BLT Manager (nested workspace)
 │       ├── samples/                              # Sample/test projects
-│       │   ├── basic_demo/
+│       │   ├── basic_demo_sample/
 │       │   ├── nw_sample/
 │       │   └── ...
 │       ├── venv/                                 # Shared venv for test projects
@@ -113,6 +113,8 @@ The development environment has **two distinct Manager workspaces**:
     │       └── prototypes/
     │           ├── base/                         # Templates for created projects
     │           └── manager/                      # Manager workspace templates
+    |       └── tests/
+    |           └── build_and_test/               # system rebuild and test -> build_and_test 
     └── Docs/                                     # Documentation project
         └── docs/
             └── Architecture-Internals.md         # This page
