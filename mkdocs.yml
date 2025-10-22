@@ -49,6 +49,7 @@ nav:
     - "Manager": Manager.md
     - "Manager ReadMe": Sample-Basic-Tour.md
     - "Create with Gen/AI on Web": WebGenAI-create.md
+    - "AI Enabled Projeccts": Project-AI-Enabled.md
     - "Model Driven": Tech-DSL.md
     - "Create With Copilot": Project-Create-Copilot.md
     - "Rebuild": Project-Rebuild.md
