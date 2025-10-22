@@ -1,17 +1,17 @@
 !!! pied-piper ":bulb: TL;DR - Executable Test Suite, Documentation"
-
-      As of 15.01.18, you can use your AI Assistant to automatically 
+      **New in 15.01.18** - Transform 30-40 years of testing requests into 3-4 days of automated test generation!
       
+      You can use your AI Assistant to automatically:
       * Create Behave tests from declarative rules
       * Execute test suites, and 
       * Generate automated documentation with complete logic traceability
       
-      The tests focus on dependencies discovered from logic, and use the API to run transactions and test for expected results.  
+      The tests focus on dependencies discovered from logic, and use the API to run transactions and test for expected results.
       
       **Important:** 
       
       1. tests update your database
-      2. tests can be re-sun
+      2. tests can be re-run
 
 &nbsp;&nbsp;
 
@@ -30,6 +30,8 @@
 
 
 ## Explore with basic_demo
+
+**⏱️ Estimated time:** 15-20 minutes to complete walkthrough
 
 Use basic_demo to explore:
 
