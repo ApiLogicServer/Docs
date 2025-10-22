@@ -12,6 +12,7 @@
       
       1. tests update your database
       2. tests can be re-run
+      3. current status: technology preview
 
 &nbsp;&nbsp;
 
