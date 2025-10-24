@@ -1,7 +1,7 @@
 # Teaching AI to Program Itself: How We Solved a 30-Year Testing Problem in One Week
 
 Nearly half of any enterprise system isn't screens or APIs — it's business logic.  
-That was the first *Aha moment*: realizing that domain-specific logic doesn't need domain-specific code.
+That was the first *Aha moment* — 30 years ago — realizing that domain-specific logic doesn't need domain-specific code.
 
 So we invented **rules**. Declarative logic replaced hundreds of lines of procedural code — five rules instead of two hundred.  
 Your code went down **40×**, systems became transparent, maintainable, and correct.  
@@ -302,16 +302,6 @@ Industry estimates put productive code generation at roughly 50 lines per develo
 
 **The math:** 789 lines ÷ 50 lines/day = **16 developer days of work**.
 
-**But here's the real story:**
-
-This feature had been on the backlog for years. I had ideas about the approach, but the implementation would have required a team working for several weeks. With that much investment at risk, I wasn't confident enough in the approach to commit.
-
-**With AI, everything changed:**
-- **Days 1-3:** Rapid prototyping to verify the approach actually worked
-- **Days 4-7:** Polish and refinement to production quality
-
-**One week instead of several team-weeks** — because AI eliminated the implementation risk. I could validate the concept before committing to the full build.  And I could do it alone, without team coordination overhead.
-
 **And now, the multiplier:**  
 Any developer using GenAI-Logic types **"create tests"** → 10 seconds → **789 lines of working test code**.
 
@@ -320,6 +310,16 @@ Any developer using GenAI-Logic types **"create tests"** → 10 seconds → **78
 The tests typically pass at 100%. Occasionally there's an error, but AI can fix it — **without the user having to wade into the code.**
 
 That's the power of Message in a Bottle + Time Machine: AI learns from previous fixes and applies them automatically.
+
+**But here's the real story:**
+
+This feature had been on the backlog for years. I had ideas about the approach, but the implementation would have required a team working for several weeks. With that much investment at risk, I wasn't confident enough in the approach to commit.
+
+**With AI, everything changed:**
+- **Days 1-3:** Rapid prototyping to verify the approach actually worked
+- **Days 4-7:** Polish and refinement to production quality
+
+**One week instead of several team-weeks** — because AI eliminated the implementation risk. I could validate the concept before committing to the full build. And I could do it alone, without team coordination overhead.
 
 **The tangible outputs:**
 
@@ -428,3 +428,8 @@ The testing system described was built in approximately one week of pair program
 *"The best collaboration is where humans provide strategic breakthroughs and AI handles exhaustive propagation — each amplifying the other's strengths. The best architecture is one where AI learns to program itself, guided by human insight. The best investment is knowledge that multiplies: one week of work teaching every future project."*
 
 — Val Huber & AI (GitHub Copilot with Claude Sonnet 4.5)
+
+---
+
+**What could you teach AI to teach itself in your domain?**  
+**What message will you put in the bottle?**
