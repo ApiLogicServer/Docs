@@ -32,6 +32,7 @@ With the arrival of GenAI, we finally had a way to express rules in natural lang
 Now anyone could describe business logic like this:
 
 **Use case: Check Credit**
+
 1. The Customer's balance is less than the credit limit
 2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
 3. The Order's amount_total is the sum of the Item amount
@@ -39,6 +40,7 @@ Now anyone could describe business logic like this:
 5. The Item unit_price is copied from the Product unit_price
 
 **Use case: App Integration**
+
 1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None
 
 But there was a trap.
