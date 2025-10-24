@@ -1,13 +1,11 @@
-site_name: GenAI-Logic
-site_description: Vibe Database Projects - Flask, MCP APIs, SQLAlchemy, React Apps, Rules, Low-Code
+site_name: API Logic Server
+site_description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 repo_url: https://github.com/ApiLogicServer/ApiLogicServer-src
 docs_dir: docs
 strict: false
 theme:
   name: material
   custom_dir: docs/.overrides
-  logo: assets/logo.png
-  favicon: assets/images/favicon.png
   features:
     - navigation.instant
 #    - navigation.tabs
@@ -17,7 +15,7 @@ theme:
 nav:
   - " ": index.md
   - Quick Start:
-    - "GenAI-Logic Documentation": Doc-Home.md
+    - Doc-Home.md
     - Express Install: Install-Express.md
     - Detailed Install:
       - "Install API Logic Server": Install.md
@@ -28,7 +26,6 @@ nav:
     - Express Eval: Install-Eval.md
   - Demos, Tutorial, Samples:
     - "Basic Self-Demo": Sample-Basic-Demo.md
-    - "Basic Demo - Vibe": Sample-Basic-Demo-Vibe.md
     - "GenAI Microservice Automation": Sample-Genai.md
     - "Tutorial": Tutorial.md
     - "AI - Copilot": Sample-AI.md
@@ -47,23 +44,15 @@ nav:
   - 0. ApiLogicServer create:
     - "Create with CLI": Project-Structure.md
     - "Manager": Manager.md
-    - "Manager ReadMe": Sample-Basic-Tour.md
     - "Create with Gen/AI on Web": WebGenAI-create.md
-    - "AI Enabled Projeccts": Project-AI-Enabled.md
     - "Model Driven": Tech-DSL.md
     - "Create With Copilot": Project-Create-Copilot.md
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
     - "Builders": Project-Builders.md
   - 1. Apps:
-    - Automatic Admin App:
-      - "Automatic Admin App": Admin-Tour.md
-      - Admin-Customization.md
-      - "Admin Architecture": Admin-Architecture.md
-    - Vibe Kickstart:
-      - "Generated React App": Admin-Vibe.md
-      - "Vibe Example": Admin-Vibe-Sample.md
-      - "App Learning": Admin-App-Learning.md
+    - "Automatic Admin App": Admin-Tour.md
+    - Admin-Customization.md
     - "Automatic Custom Apps":
       - "Custom Web Apps": App-Custom.md
       - "Ontimize Overview": App-Custom-Ontimize-Overview.md
@@ -147,9 +136,6 @@ nav:
   - Agile / Testing:
     - "Agility With Behave": Behave.md
     - "Behave Logic Report": Behave-Logic-Report.md
-    - Creating Tests:
-      - "Create Tests From Logic": Behave-Creation.md
-      - "Sample: basic_demo": Behave-Logic-Report-Basic-Demo.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md
     - "What is GenAI-Logic": Architecture-What-Is-GenAI.md
@@ -158,10 +144,8 @@ nav:
   - Internals:
     - "Internal Dev Procedures": Architecture-Internals.md
     - "Admin App Architecture": Architecture-admin-app-reuse.md
-    - "App Gen: genai-app": Architecture-genai-app.md
     - "Build, Load and Test": Architecture-Internals-BLT.md
     - "VENV (internals)": Architecture-venv.md
-    - "VENV (defaulting)": Architecture-venv-defaulting.md
     - "Python (internals)": Architecture-python.md
     - "Internals - CLI": Architecture-Internals-CLI.md
     - "Internals - LLM": WebGenAI-llm-usage.md
@@ -177,16 +161,15 @@ nav:
     - "Is this a strategic investment?": FAQ-Strategic.md
     - "Is this a Proven Technology?": Tech-Proven.md
     - "Is this like Live API Creator?": "FAQ-Live-API-Creator.md"
-    - "Is this like Versata?": "FAQ-Versata.md"
     - "What about Maintenance?": FAQ-Maintenance.md
     - "Adoption Considerations?": Tech-Adoption.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
     - "Training": Tech-Training.md
-    - "Enterprise Vibe": Tech-Enterprise-Vibe.md
     - "Keycloak DevNotes": Keycloak-devnotes.md
     - "API Appliance": Tech-Toaster.md
     - "Nat Lang Logic": Tech-Logic-Transcript.md
+    - "AI Human Collaboration": Tech-AI-Collaboration.md
     - "AI Delivers Agile": Tech-AI.md
     - "Sample AI Demo ChatGPT": Sample-AI-ChatGPT.md
     - "AI-driven Auto mysql": Tech-AI-mysql.md
@@ -206,6 +189,7 @@ nav:
     - "Product Detail": Product-Detail.md
     - "Product Overview": Product-Overview.md
     - Personal:
+      - "Tour": Sample-Basic-Tour.md
       - "Home": Home.md
       - "INFO": ApiLogicServer-create.md
       - "Recompute": Logic-Recompute.md
