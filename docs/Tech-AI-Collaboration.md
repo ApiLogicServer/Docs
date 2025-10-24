@@ -146,7 +146,7 @@ AI read the rules directly and generated tests from them.  In Behave, test defin
 ```
   Scenario: Ship Order Excludes from Balance
     Given Customer "Charlie" with balance 0 and credit limit 2000
-    And Order exists for "Charlie" with 2 Widget
+    And Order is created for "Charlie" with 2 Widget
     When Order is shipped
     Then Customer balance should be 0
     And Order amount_total should be 180
