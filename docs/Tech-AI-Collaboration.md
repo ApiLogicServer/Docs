@@ -18,8 +18,9 @@ Rules made logic clear, but test automation remained a 30-year wish list.
 
 ## Step 0: Rules as the Foundation
 
-Rules were revolutionary — a huge advance in expressing business intent.  
-But users wanted the **complete solution**: logic, API, UI, and testing.
+Rules were revolutionary — a huge advance in expressing business intent.  For example, a 100 table system might have 1,000 rules, which would otherwise be 40,000 lines of code.
+
+But users wanted the **complete solution**: logic, API, UI... and *testing.*
 
 The abstraction that made rules powerful — clear, declarative *intent* — also made them *testable.*  
 That would turn out to be critical when AI entered the picture.
@@ -140,7 +141,25 @@ AI can read `Rule.sum(derive=Customer.balance, where=date_shipped is None)` and 
 
 So we applied the **Message in a Bottle** pattern again: created `docs/training/testing.md` with the instruction "Generate tests by reading the declarative rules."
 
-AI read the rules directly and generated tests from them.
+AI read the rules directly and generated tests from them.  In Behave, test definitions look like this:
+
+```
+  Scenario: Ship Order Excludes from Balance
+    Given Customer "Charlie" with balance 0 and credit limit 2000
+    And Order exists for "Charlie" with 2 Widget
+    When Order is shipped
+    Then Customer balance should be 0
+    And Order amount_total should be 180
+```
+
+and this corresponds to a (large amount of) Python code that uses the API to:
+
+* Create an order with 2 Widgets (2 × 90 = 180)
+* Initially, customer balance = 180 (unshipped orders count)
+* Ship the order by setting date_shipped
+* Read the after-transaction data and verify it...
+* Balance should drop to 0 because the rule has a WHERE clause: where=lambda row: row.date_shipped is None
+* Verify the ORDER clause exclusion in the sum rule
 
 #### Why Preserving Abstraction Matters
 
