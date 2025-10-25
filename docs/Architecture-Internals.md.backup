@@ -1,3 +1,162 @@
+## Technology Lineage: 40+ Years of Production Success
+
+**TL;DR:** API Logic Server represents the modern evolution of business rules technology proven across **6,000+ enterprise deployments** spanning four decades, from Wang Labs PACE through Versata to today's cloud-native architecture.
+
+### Historical Evolution
+
+**1. Wang Labs PACE (1980s-1990s)**
+- Original commercial business rules platform
+- **6,000+ corporate customers** running mission-critical systems
+- Pioneered declarative multi-table derivations and constraints
+- Proved "5 rules replace 200 lines of code" at enterprise scale
+- Established automatic dependency ordering and chaining
+
+**2. Versata (1990s-2010s)**
+- $3.4 billion startup backed by founders of Microsoft, Sybase, Ingres, Informix
+- Fortune 500 enterprise deployments
+- Advanced the rules engine with optimization (pruning, delta-based adjustments)
+- Demonstrated correctness and performance at massive scale
+- Validated the declarative paradigm across thousands of production systems
+
+**3. API Logic Server / GenAI-Logic (2020s-present)**
+- Modern evolution: same proven patterns, contemporary stack
+- Python/SQLAlchemy (vs. Java/JDBC)
+- Cloud-native (Docker/Kubernetes)
+- Open source and extensible
+- GenAI integration (natural language → declarative rules)
+- Modern integration patterns (REST/JSON:API, Kafka, webhooks)
+
+**Key Insight:** This technology is **not experimental**. The core architectural patterns (declarative rules, automatic dependency discovery, multi-table chaining, foreign key change handling) have been validated across 40+ years and thousands of production deployments.
+
+&nbsp;
+
+## Why Declarative Architecture Matters: The NL → DSL → Engines Pattern
+
+**Read:** [Declarative GenAI: The Architecture Behind Enterprise Vibe Automation](https://medium.com/@valjhuber/declarative-genai-the-architecture-behind-enterprise-vibe-automation-1b8a4fe4fbd7)
+
+This Medium article explains the fundamental architectural distinction that makes GenAI-Logic different:
+
+**The Problem: "FrankenCode"**
+
+Traditional GenAI vibe tools generate 200+ lines of buggy procedural code that:
+- Misses corner cases (e.g., changing customer on order, changing product on item)
+- Violates SOA principles (logic dumped on client)
+- Creates instant technical debt (unmaintainable, opaque)
+- Requires explicit handlers for every possible change path
+
+**The Solution: Declarative GenAI**
+
+Natural Language → Domain-Specific Language → Runtime Engines
+
+Instead of generating procedural code, GenAI generates **declarative specifications** executed by proven runtime engines:
+
+1. **Database Layer:** SQLAlchemy ORM with intelligent defaulting
+2. **API Layer:** JSON:API engine with full rule enforcement, Swagger docs, MCP support
+3. **UI Layer:** YAML-driven React Admin (working app, not scaffolding)
+4. **Logic Layer:** Rules engine providing:
+   - Automatic pruned invocation (attribute-level granularity)
+   - Dependency ordering (auto-discovered from rule definitions)
+   - Optimized chaining (delta-based, avoids expensive SQL aggregates)
+   - Automatic completeness (handles ALL change paths, not just obvious ones)
+
+**Critical: Rules as Correctness Guarantee**
+
+Declarative rules aren't optional or a "coding style" - they're a **fundamental architectural requirement** for correctness in multi-table logic:
+
+- **Dependency chains:** `Product.unit_price` change transitively affects `Item.unit_price` → `Item.amount` → `Order.amount_total` → `Customer.balance`
+- **Foreign key changes:** When `Order.customer_id` changes, engine automatically adjusts **both** old and new customer balances
+- **Automatic completeness:** Engine handles ALL possible change paths; procedural code inherently misses corner cases
+
+**Why procedural fails:** Even AI-generated code misses critical cases because it requires explicit handlers for every change path. The rules engine eliminates this entire class of bugs through automatic dependency analysis and chaining.
+
+**The Paradox Resolution:** Declarative DSL in Python, executed by runtime engine handling 95% of typical business logic (remaining 5% uses standard Python event handlers).
+
+&nbsp;
+
+## CRITICAL: Understanding the Nested Manager Architecture
+
+The development environment has **two distinct Manager workspaces**:
+
+**1. Seminal Manager** - `~/dev/ApiLogicServer/ApiLogicServer-dev/`
+- Original Manager installation from `als start`
+- Stable, persistent workspace
+- Contains `build_and_test/` directory
+- Used to run the BLT process
+- Houses `org_git/` with source repositories
+
+**2. BLT Manager (Nested)** - `~/dev/ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer/`
+- Created and refreshed by the BLT (Build, Load and Test) process
+- Contains rebuilt/tested version of API Logic Server
+- Contains sample projects (`basic_demo`, `nw_sample`, etc.) for testing
+- Has its own venv shared by test projects
+- Gets regenerated with each BLT run
+- Contains `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` for AI context restoration
+
+**Complete Directory Structure:**
+```
+~/dev/ApiLogicServer/ApiLogicServer-dev/          # Seminal Manager
+├── build_and_test/
+│   └── ApiLogicServer/                           # BLT Manager (nested workspace)
+│       ├── samples/                              # Sample/test projects
+│       │   ├── basic_demo_sample/
+│       │   ├── nw_sample/
+│       │   └── ...
+│       ├── venv/                                 # Shared venv for test projects
+│       ├── system/
+│       │   └── ApiLogicServer-Internal-Dev/      # Internal dev tooling
+│       │       ├── copilot-dev-context.md        # AI context restoration
+│       │       └── install-ApiLogicServer-dev.sh # Dev environment setup
+│       └── docs/                                 # Training materials
+└── org_git/
+    ├── ApiLogicServer-src/                       # Framework source (edit here)
+    │   └── api_logic_server_cli/
+    │       └── prototypes/
+    │           ├── base/                         # Templates for created projects
+    │           └── manager/                      # Manager workspace templates
+    |       └── tests/
+    |           └── build_and_test/               # system rebuild and test -> build_and_test 
+    └── Docs/                                     # Documentation project
+        └── docs/
+            └── Architecture-Internals.md         # This page
+```
+
+**Development Workflow:**
+1. Edit framework code in `org_git/ApiLogicServer-src/`
+2. Run BLT from Seminal Manager (rebuilds, tests, regenerates BLT Manager)
+3. Test with sample projects in BLT Manager workspace
+4. BLT Manager gets fresh context from `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` after each rebuild
+
+**Why This Architecture:**
+- **Isolation:** Changes being tested don't affect stable Seminal Manager
+- **Clean slate:** Each BLT run creates fresh testing environment
+- **Shared venv:** Test projects reuse BLT Manager's venv (speeds testing)
+- **Context preservation:** `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` re-establishes understanding after rebuild
+
+&nbsp;
+
+## Cross-References for Full Context
+
+**For Strategic Architecture Understanding:**
+- `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` - Technology lineage, declarative architecture, NL→DSL→Engines pattern
+- [Medium Article](https://medium.com/@valjhuber/declarative-genai-the-architecture-behind-enterprise-vibe-automation-1b8a4fe4fbd7) - Complete architectural rationale
+
+**For Created Project Development:**
+- Manager-level `.copilot-instructions.md` - How to CREATE projects
+- Project-level `.copilot-instructions.md` - How to EXTEND/CUSTOMIZE projects
+- `docs/training/logic_bank_api.prompt` - LogicBank API reference (in each project)
+- `docs/training/testing.md` - Behave testing guide (1755 lines, in each project)
+
+**For End Users:**
+- [API Logic Server Documentation](https://apilogicserver.github.io/Docs/Doc-Home/) - Complete user guide
+- [Installation](https://apilogicserver.github.io/Docs/Install/) - Setup procedures
+- [Tutorial](https://apilogicserver.github.io/Docs/Tutorial/) - Step-by-step learning
+
+&nbsp;
+
+---
+
+&nbsp;
+
 This page does _not_ address created projects, rather, it is about the API Logic Server system used to create projects.  It is for those who want to extend the product or understand how it works, not for those simply using the product.
 
 # How to Install it
@@ -10,7 +169,7 @@ The subsections below described the steps to:
 4. Perform the critical "Smoke Test" to ensure system operation
 
 
-## Manager `install-ApiLogicServer-dev`
+## Manager Internal Development Setup
 
 ![dev env](images/architecture/internals/dev-dirs.png)
 
@@ -23,10 +182,10 @@ To create the dev enviroment (result shown above):
 2. Start the Manager: `als start`
 3. Be sure you have installed the VSCode CLI - see [the VSCode CLI procedure](IDE-Customize.md/#vscode-cli){:target="_blank" rel="noopener"}
 4. In your CLI terminal window:
-    * Note: Windows users use `install-ApiLogicServer-dev.ps1`) 
+    * Note: Windows users use `install-ApiLogicServer-dev.ps1`)
 
 ```bash title="Install API Logic Server Development environment"
-sh system/install-ApiLogicServer-dev/install-ApiLogicServer-dev.sh
+sh system/ApiLogicServer-Internal-Dev/install-ApiLogicServer-dev.sh
 ```
 5. In your newly created dev source, create `ApiLogicServer/ApiLogicServer-dev/org_git/ApiLogicServer-src/api_logic_server_cli/api_logic_server_info.yaml`, with:
 ```

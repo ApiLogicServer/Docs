@@ -3,8 +3,6 @@ title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
 do_process_code_block_titles: True
 version: 0.23 from docsite 7/11/2025
-Propagation: Build copies to api_logic_server_cli/prototypes/basic_demo/readme.md → BLT copies to Manager samples/basic_demo_sample/readme.md
-Guided_Tour: See tutor.md for AI guided tour instructions (user says "Guide me through basic_demo")
 ---
 <style>
   .md-typeset h1,
