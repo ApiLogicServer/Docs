@@ -112,7 +112,9 @@ When a new AI assistant opens the repo, it learns how the system works before wr
 
 That's how we taught GenAI the right architecture — once — and made that teaching permanent.
 
-*(See the diagram: [Project AI-Enabled](https://apilogicserver.github.io/Docs/Project-AI-Enabled/)).*
+![AI-Enabled Projects](images/ui-vibe/ai-enabled-projects.png)
+
+
 
 **Using-AI Aha #1: The Message in a Bottle Pattern**
 
