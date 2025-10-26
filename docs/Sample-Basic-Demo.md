@@ -2,40 +2,45 @@
 title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
 do_process_code_block_titles: True
-version: 0.23 from docsite 7/11/2025
-Propagation: Build copies to api_logic_server_cli/prototypes/basic_demo/readme.md → BLT copies to Manager samples/basic_demo_sample/readme.md
-Guided_Tour: See tutor.md for AI guided tour instructions (user says "Guide me through basic_demo")
+version: 0.23 from docsite, for readme 7/11/2025
 ---
 <style>
-  .md-typeset h1,
-  .md-content__button {
+  -typeset h1,
+  -content__button {
     display: none;
   }
 </style>
 
 # Product Tour (Start Here)
 
-This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features){:target="_blank" rel="noopener"} operation: 
+This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features) operation: 
 
 1. Creating projects from new or existing databases, providing a MCP-enabled API and an Admin App
 2. Adding declarative logic and security, and 
 3. Customizing your project using your IDE and Python<br><br>
 
+**🤖 Bootstrap Copilot by pasting the following into the chat:**
 ```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
 Please find and read `.github/.copilot-instructions.md`.
 ```
 
-> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.    Also, we get consistently good results with `Claude Sonnet 4.5`.
+<br>
+
+**🤖 Ready to Explore?**
+
+**Recommended:** Say to Copilot: *"Guide me through basic_demo"* (30-45 min hands-on tour)
+
+**Alternative:** Follow the sections below at your own pace
 
 <br>
 
 The entire process takes 20 minutes; usage notes:
 
 * Important: look for **readme files** in created projects
-* You may find it more convenient to view this [in your Browser](Sample-Basic-Tour.md)
-* A slide show summary is available [on our Web Site](https://www.genai-logic.com/product/tour){:target="_blank" rel="noopener"}
+* You may find it more convenient to view this [in your Browser](https://apilogicserver.github.io/Docs/Sample-Basic-Tour)
+* A slide show summary is available [on our Web Site](https://www.genai-logic.com/product/tour)
 
-![product-tour](images/basic_demo/product-tour.png)
+![product-tour](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/product-tour.png?raw=true)
 
 
 &nbsp;
@@ -55,11 +60,14 @@ This is the best way to start:
 genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
+> Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/) for a test database provided as part of the installation.  You would normally supply a SQLAlchemy URI to your existing database, e.g. <br>`genai-logic create  --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite`.
+
+
 <details markdown>
 
 <summary> The database is Customer, Orders, Items and Product</summary>
 
-![basic_demo_data_model](images/basic_demo/basic_demo_data_model.jpeg)
+![basic_demo_data_model](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true)
 
 </details>
 <br>
@@ -72,9 +80,9 @@ Alternatively, you can create a project *and a new database* from a prompt, usin
 
 There are 3 ways to use GenAI:
 
-* WebGenAI - in the Browser, via pubic website - [click here](WebGenAI.md){:target="_blank" rel="noopener"}, or
-* GenAI -         in the Browser, via docker - [click here](WebGenAI-install.md){:target="_blank" rel="noopener"}, or 
-* GenAI CLI - [click here](WebGenAI-CLI.md){:target="_blank" rel="noopener"} 
+* WebGenAI - in the Browser, via pubic website - [click here](https://apilogicserver.github.io/Docs/WebGenAI), or
+* GenAI -         in the Browser, via docker - [click here](https://apilogicserver.github.io/Docs/WebGenAI-install), or 
+* GenAI CLI - [click here](https://apilogicserver.github.io/Docs/WebGenAI-CLI) 
 
 To use the GenAI CLI:
 
@@ -90,7 +98,7 @@ genai-logic genai --using=system/genai/examples/genai_demo/genai_demo.prompt --p
 genai-logic genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
 ```
 
-For background on how it works, [click here](Sample-Genai.md#how-does-it-work){:target="_blank" rel="noopener"}.
+For background on how it works, [click here](Sample-Genai#how-does-it-work).
 
 &nbsp;
 
@@ -116,7 +124,7 @@ The system creates an API with end points for each table, with filtering, sortin
 
 <summary>See the Swagger </summary>
 
-![swagger](images/basic_demo/api-swagger.jpeg)
+![swagger](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/api-swagger.jpeg?raw=true)
 </details>
 <br>
 
@@ -129,7 +137,7 @@ You can click Customer Alice, and see their Orders, and Items.
 <details markdown>
 
 <summary>See the Admin App </summary>
-![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
+![admin-app-initial](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/admin-app-initial.jpeg?raw=true)
 </details>
 
 <br>
@@ -156,14 +164,15 @@ And you are ready to Vibe:
 * Then, use you favorite Vibe tools with your running API:
 
 
+**Customize using Natural Language:**
 ```txt title='Customize using Natural Language'
 In the ui/react app, Update the Product list to provide users an option to see results in a list, or in cards.
 ```
 <br>
 
-> Below is an example from Northwind: [click here](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}
+> Below is an example from Northwind: [click here](https://apilogicserver.github.io/Docs/Admin-Vibe-Sample)
 
-![vibe-cards](images/ui-vibe/nw/vibe-gallery.png)
+![vibe-cards](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/ui-vibe/nw/vibe-gallery.png?raw=true)
 
 <br>
 
@@ -186,7 +195,7 @@ TODO: test the service
 List the orders date_shipped is null and CreatedOn before 2023-07-14, and send a discount email (subject: 'Discount Offer') to the customer for each one.
 ```
 
-![mcp-retrieval](images/basic_demo/mcp-retrieval.png)
+![mcp-retrieval](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-retrieval.png?raw=true)
 
 <br>
 
@@ -248,7 +257,7 @@ Observe you now see fewer customers, since user `s1` has role `sales`.  This rol
 
 *  The logging in the lower panel, to assist in debugging by showing which Grants (`+ Grant:`) are applied:
 
-![security-filters](images/basic_demo/security-filters.jpeg)
+![security-filters](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/security-filters.jpeg?raw=true)
 
 </details>
 
@@ -273,7 +282,7 @@ To see logic in action:
 The update is properly rejected because it exceeds the credit limit.  Observe the rules firing in the console log - see Logic In Action, below.
 
 <br>
-> 💡 Logic: Multi-table Derivations and Constraint Declarative Rules.<br>&emsp;&emsp;Declarative Rules are 40X More Concise than procedural code.<br>&emsp;&emsp;For more information, [click here](Logic-Why.md){:target="_blank" rel="noopener"}.
+> 💡 Logic: Multi-table Derivations and Constraint Declarative Rules.<br>&emsp;&emsp;Declarative Rules are 40X More Concise than procedural code.<br>&emsp;&emsp;For more information, [click here](https://apilogicserver.github.io/Docs/Logic-Why).
 
 <br>
 
@@ -281,9 +290,9 @@ The update is properly rejected because it exceeds the credit limit.  Observe th
 
 <summary>See Logic In Action </summary>
 
-<br>[Declare logic](Logic.md#declaring-rules){:target="_blank" rel="noopener"} with WebGenAI, or in your IDE using code completion or Natural Language:
+<br>[Declare logic](Logic#declaring-rules) with WebGenAI, or in your IDE using code completion or Natural Language:
 
-![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-chat.png)
+![Nat Lang Logic](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/sample-ai/copilot/copilot-logic-chat.png?raw=true)
 
 **a. Chaining**
 
@@ -291,13 +300,13 @@ The screenshot below shows our logic declarations, and the logging for inserting
 
 Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
 
-![logic-chaining](images/basic_demo/logic-chaining.jpeg)
+![logic-chaining](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-chaining.jpeg?raw=true)
 
 **b. 40X More Concise**
 
-The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md).  That's a remarkable 40X decrease in the backend half of the system.
+The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](https://apilogicserver.github.io/Docs/https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison).  That's a remarkable 40X decrease in the backend half of the system.
 
-> 💡 No FrankenCode<br>Note the rules look like syntactically correct requirements.  They are not turned into piles of unmanageable "frankencode" - see [models not frankencode](https://www.genai-logic.com/faqs#h.3fe4qv21qtbs){:target="_blank" rel="noopener"}.
+> 💡 No FrankenCode<br>Note the rules look like syntactically correct requirements.  They are not turned into piles of unmanageable "frankencode" - see [models not frankencode](https://www.genai-logic.com/faqs#h.3fe4qv21qtbs).
 
 <br><br>
 
@@ -325,12 +334,12 @@ Optionally, you can use the Behave TDD approach to define tests, and the Rules R
 
 Logic is automatically executed in your MCP-enabled API.  For example, consider the following MCP orchestration:
 
-![mcp-ui](images/basic_demo/mcp-ui.png)
+![mcp-ui](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-ui.png?raw=true)
 
 
 When sending email, we require ***business rules*** to ensure it respects the opt-out policy:
 
-![email request](images/integration/mcp/3a-email-logic.png)
+![email request](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/mcp/3a-email-logic.png?raw=true)
 
 The server is automatically mcp-enabled, but we might also want an mcp user-interface client:
 
@@ -359,13 +368,14 @@ Or, use the command line.
 > Since the CLI does not pass an auth token, 
 you must first stop the server and disable security.
 
+**MCP from the command line:**
 ```bash title='MCP from the command line'
 python integration/mcp/mcp_client_executor.py mcp
 ```
 
 <br>
 
-For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
+For more on MCP, [click here](https://apilogicserver.github.io/Docs/Integration-MCP).
 
 <br>
 
@@ -419,7 +429,7 @@ genai-logic rebuild-from-database --db_url=sqlite:///database/db.sqlite
 
 At the breakpoint, observe you can use standard debugger services to debug your logic (examine `Item` attributes, step, etc).
 
-![logic-debugging](images/basic_demo/logic-debugging.jpeg)
+![logic-debugging](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/logic-debugging.jpeg?raw=true)
 
 &nbsp;
 
@@ -471,15 +481,15 @@ Explore the custom API in `api/api_discovery/order_b2b.py`, and test it using sw
 2. **Access the swagger**
 3. **Test the b2b API / Logic, as shown below:**
 
-![b2b_swagger](images/integration/b2b_swagger.png)
+![b2b_swagger](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/b2b_swagger.png?raw=true)
 
 &nbsp;
 
 ### Messaging With Kafka
 
-Along with APIs, messaging is another technology commonly employed for application integration.  See the screenshot below; for more information, see [Sample Integration](Sample-Integration.md#produce-ordershipping-message){:target="_blank" rel="noopener"}.
+Along with APIs, messaging is another technology commonly employed for application integration.  See the screenshot below; for more information, see [Sample Integration](Sample-Integration#produce-ordershipping-message).
 
-![order-to-shipping](images/integration/order-to-shipping.jpg)
+![order-to-shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-to-shipping.jpg?raw=true)
 &nbsp;
 
 ## 6. Deploy Containers: No Fees
