@@ -498,41 +498,6 @@ This experience suggests a new paradigm for technical education:
 3. **Context-Aware Help** — AI sees the live system state when answering questions
 4. **Scalable Expertise** — One expert writes the tutor; infinite AI instances deliver it
 5. **Living Documentation** — Update `tutor.md` and all future tours improve
-6. **Resilience to Reality** — The biggest practical win: AI troubleshoots when things go wrong
-
-### **Why Resilience Matters Most**
-
-Traditional documentation has a fatal flaw: **one thing breaks, user abandons.**
-
-**README failure modes:**
-- Step 4 fails → user stuck, no diagnosis
-- "Command not found" → venv wasn'''t activated, README can'''t detect this
-- "Address already in use" → server still running from earlier, cryptic error
-- Wrong directory, port conflicts, permission issues → **user gives up in frustration**
-
-Result: 10% completion rate. The other 90% hit one obstacle and leave.
-
-**AI Tutor resilience:**
-- **"I got an error"** → AI diagnoses: *"Server already running - stop it with Shift-F5"*
-- **"Command not found"** → AI checks: *"Your venv isn'''t activated. Let me help you find it..."*
-- **"This isn'''t working"** → AI investigates: *"You'''re in the wrong directory. Use `cd basic_demo`"*
-- **Port conflict?** AI recognizes the error and suggests port change or process kill
-- **Browser showing stale data?** AI suggests hard refresh or clearing cache
-- **Breakpoint not hitting?** AI verifies file saved, server restarted, correct line
-
-**The little stuff that kills demos:**
-- Wrong terminal window (common in split-pane setups)
-- Forgot to save file before F5 (IDE doesn'''t auto-save)
-- Typo in command (AI catches and corrects)
-- Python version mismatch (AI checks environment)
-- Database locked from previous run (AI suggests solutions)
-
-**README assumes perfect execution. Tutor handles messy reality.**
-
-This transforms a fragile demo that only works if everything'''s perfect into a **resilient learning experience that recovers from inevitable mistakes.**
-
-That'''s the difference between 10% completion rate and 90%.
-
 
 **Key challenges:**
 
