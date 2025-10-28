@@ -125,3 +125,8 @@ Then, to run the script
 ```
 alembic upgrade head
 ```
+
+<br>
+### Use AI Assistant
+
+You can also use your AI assistant to add columns, tables, and relationships.  It will choreograph changes to database models, and use alembic to for the database.
