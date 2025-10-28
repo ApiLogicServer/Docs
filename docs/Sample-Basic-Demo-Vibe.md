@@ -1,7 +1,7 @@
 ---
 title: Vibe MCP / Microservice
 do_process_code_block_titles: True
-version: 0.23 from docsite 7/11/2025
+version: 1.0 from docsite 10/28/2025
 Propagation: Build copies to api_logic_server_cli/prototypes/basic_demo/readme_vibe.md → BLT copies to Manager samples/basic_demo_sample/readme_vibe.md
 Guided_Tour: See tutor.md for AI guided tour instructions (user says "Guide me through basic_demo")
 ---
@@ -25,6 +25,15 @@ Please find and read `.github/.copilot-instructions.md`.
 
 > **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.  Also, we get consistently good results with `Claude Sonnet 4.5`.
 
+<br>
+
+**How to Use This Demo:**
+
+This demo teaches AI-assisted development patterns. Each step is a **natural language prompt** you copy/paste into Copilot chat. The prompts are self-documenting - they explain what they do.
+
+**Vibe Philosophy:** AI makes errors. That's expected. When something fails, tell Copilot: *"Error X occurred, fix it"*. Copilot is exceptionally good at finding and correcting its own mistakes.
+
+**Recommended Path:** If you're new to GenAI-Logic, start with the [Standard Demo](Sample-Basic-Demo.md) (creates `basic_demo` with guided tutor) to learn platform fundamentals. Then return here to explore AI-assisted development with `basic_demo_vibe`.
 
 <br>
 
@@ -71,7 +80,7 @@ The entire process takes 20 minutes; usage notes:
 ## 1. Create From Existing DB
 
 ```bash title="Create a project from an existing database (open the disclosure box for details)"
-Create a database project from samples/dbs/basic_demo.sqlite
+Create a database project named basic_demo_vibe from samples/dbs/basic_demo.sqlite
 ```
 
 <details markdown>
