@@ -15,7 +15,7 @@ python3 -m venv venv                 # windows: python -m venv venv
 source venv/bin/activate             # windows: venv\Scripts\activate
 python -m pip install ApiLogicServer
 
-genai-logic start                    # optionally, start the project manager
+genai-logic start                    # start manager, tutorial
 ```
 
 Notes:

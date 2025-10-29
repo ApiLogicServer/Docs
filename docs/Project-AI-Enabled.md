@@ -8,6 +8,8 @@
 
     AI assistants can help you add business logic rules, customize APIs, create test scenarios, and integrate with external services.
 
+    They also provide an AI Guided Tour, where an intelligent AI Assistant introduces you to the key concepts of GenAI-Logic.
+
 &nbsp;
 
 This page describes:
@@ -21,7 +23,7 @@ This page describes:
 
 # AI-Enabled Projects
 
-![AI-Enabled Projects](images/ui-vibe/ai-enabled-projects.png)
+![AI-Enabled Projects](images/ui-vibe/assistant/ai-enabled-projects.png)
 
 When you create a new project with `genai-logic create`, you're not just getting a basic API and admin interface. Each project is thoughtfully designed to be **AI-friendly** from day one.
 
@@ -57,6 +59,33 @@ Your project includes comprehensive training materials that serve as a "message 
 2. **`docs/training/`** - AI training documents with examples and patterns
 3. **`readme.md`** - Project overview with quick start instructions
 4. **Code examples** - Real working samples in `logic/declare_logic.py` and throughout the codebase
+
+&nbsp;
+
+### 🎓 AI Guided Tour
+
+It's been clear for quite some time that lab-based training was far superior to *death by powerpoint*.  But running labs is not simple - it usually requires in-person expertise to deal with inevitable problems.
+
+AI enables us to put a "message in a bottle" - an AI tutor that can walk you through the tutorial, and, unlike a readme, support you:
+
+* answer questions ("*how do I customize this*")
+* get you unstuck (*"ah, you forgot to start the server"*)
+
+Key aspects of the tour:
+
+* *Provocation-based* learning (not instruction)
+* *Hands-on* discovery (doing, not reading)
+* AI as companion *during* the lab (not before/after)
+
+
+
+![tour](images/ui-vibe/assistant/sample-basic-tour.png)
+
+&nbsp;
+
+#### 🔔 Proactive AI Assistants
+
+Ed: this was an interesting technical problem - AI prefers to be passive (not driving a tutorial), and make decisions about 'that seems to be working'.  We had to convince AI to act outside its comfort zone.  To read more, [click here](Tech-AI-Tutor.md).
 
 &nbsp;
 
