@@ -2,459 +2,316 @@
 
 ## The Training Problem We've All Suffered Through
 
-You know how technical training usually goes:
+**Death by PowerPoint.** You've been there: 80 slides about a new system. You watch. You nod. You understand nothing. A week later, you've forgotten everything.
 
-**Death by PowerPoint.** Someone clicks through 80 slides about your new system. You watch. You nod. You understand nothing. A week later, you've forgotten everything. Everyone loses.
+We learned long ago what actually works: **hands-on labs**. Identify critical skills, build exercises around them, let people *do the thing* with guidance when they get stuck.
 
-We learned long ago what actually works: **hands-on labs**. Identify the critical skills, build exercises around them, let people *do the thing* with guidance available when they get stuck.
-
-The problem? **This doesn't scale.** Hands-on training requires experts available when learners need them. That means:
-- Scheduled training sessions (inconvenient timing)
-- Limited capacity (max 20 people per session)
-- Geographic constraints (travel costs, time zones)
-- Expertise bottleneck (your best people spending days teaching instead of building)
+The problem? **This doesn't scale.** Hands-on training requires experts available when learners need them:
+- Scheduled sessions (inconvenient timing)
+- Limited capacity (max 20 people)
+- Geographic constraints (travel, time zones)
+- Expertise bottleneck (your best people teaching instead of building)
 
 **We've known for years that hands-on learning works. We just couldn't make it available 24/7 to everyone who needs it.**
 
 ---
 
-## Enter AI: Scaling Expertise
+## Enter AI: The Message in a Bottle
 
 What if you could embed expert guidance directly in your project — a "message in a bottle" that any AI assistant could discover and execute?
 
-That's what we tried with our GenAI-Logic system. It's powerful but counterintuitive — it uses declarative rules instead of procedural code, a mental model shift that doesn't stick from reading docs alone. People need hands-on experience with a knowledgeable guide.
+That's what we tried with our GenAI-Logic system. It's powerful but counterintuitive — it uses declarative rules instead of procedural code, a mental model shift that doesn't stick from reading docs alone.
 
-So we created `tutor.md`: 1,300 lines of detailed instructions for AI assistants to conduct 30-45 minute hands-on guided tours. The AI would be the tour guide, walking users through the live system interactively, answering questions, helping when things go wrong.
+So we created `tutor.md`: 760 lines of detailed instructions for AI assistants to conduct 30-45 minute hands-on guided tours. The AI would walk users through the live system interactively, answering questions, helping when things go wrong.
 
-**The vision:** Hands-on training that scales infinitely. Available anytime, anywhere. Expert guidance embedded in the project itself.
+**The vision:** Hands-on training that scales infinitely. Available anytime, anywhere. Expert guidance embedded in the project itself.  Ability to answer unexpected questions.
 
-**What happened:** It failed spectacularly.
-
-Here's what we learned about making AI reliable — and the pattern that emerged for teaching AI to teach.
+**What happened:** It failed spectacularly.... until we (AI and human) taught AI to operate outside its comfort zone.  What we learned about making AI reliable revealed a pattern for teaching AI to teach, that you might find useful in your projects.
 
 ---
 
-## First Failure: The Interface Problem
+## Failure #1: The Interface Problem
 
-Our initial approach was straightforward:
+Our initial approach:
 
 ```markdown
 Show them the Admin UI. Press Enter when they've explored it.
-
-Now explain row-level security. Wait for them to say 'ok'.
-
 Change the item quantity to 100. [Wait for observation]
 ```
 
-**What we expected:** Users would press Enter or type 'ok' to advance through the tour.
+**What we expected:** Users press Enter to advance.
 
 **What happened:** Nothing. The AI just... stopped.
 
-**The lesson:** We'd assumed all chat interfaces work like traditional terminals where pressing Enter sends a signal. In modern chat UIs (like GitHub Copilot), pressing Enter just creates a newline. The AI was literally waiting for input that would never come.
+**The lesson:** We'd assumed chat interfaces work like terminals where Enter sends a signal. In modern chat UIs (like GitHub Copilot), Enter creates a newline. The AI was literally waiting for input that would never come.
 
 **The fix:** Explicit typed responses:
 ```markdown
 Type 'next' when you've explored the Admin UI.
-
 Type 'ready' when you've observed the customer count.
-
-Type 'continue' when you understand the security filters.
 ```
 
-Simple enough. We fixed all 10 transition points. Problem solved, right?
+Simple. Problem solved, right?
 
 ---
 
-## Second Failure: The Disappearing Act
+## Failure #2: The Disappearing Act
 
-We restarted the tour to test our fixes. The AI began confidently:
-
-> "Let's start by launching the server and exploring the Admin UI..."
-
-It walked through the initial setup, explained the commands, showed the UI. Then it said:
+The AI began confidently, walked through setup, showed the UI. Then it said:
 
 > "Now let's look at row-level security. I'll show you the security code..."
 
-It opened `declare_security.py`, displayed the filters, and then immediately jumped to:
+It opened `declare_security.py`, displayed the filters, and immediately jumped to:
 
 > "Moving on to the Logic section..."
 
-Wait. What about exploring the Admin UI? What about demonstrating the security by logging in as different users? What about explaining authentication vs authorization?
+Wait. What about demonstrating security by logging in as different users? What about explaining authentication vs authorization?
 
 **The user's response:** "val - this is not correct. in fact quite poor"
 
-We'd caught the AI skipping entire sections despite having explicit instructions to execute them.
+> Ed: 'val' here is the author, breaking out of test mode into collaboration mode.
 
----
-
-## Third Failure: Pattern Recognition
-
-We thought maybe we weren't clear enough. We added warnings:
+The AI was skipping entire sections despite explicit instructions. We added warnings:
 
 ```markdown
 ⚠️ CRITICAL: DO NOT SKIP THIS SECTION
-
 YOU MUST walk through the Admin UI before proceeding.
 ```
 
 The AI skipped it again.
 
-We made another section mandatory:
-
-```markdown
-⚠️ CRITICAL SECTION - DO NOT SKIP
-
-This is the Rule Patterns teaching moment...
-```
-
-The AI skipped that too.
-
-**The pattern emerged:** The AI wasn't *ignoring* instructions. It was *interpreting* them. When the narrative felt "complete" to the AI, it moved on — even when explicit content remained.
+**The pattern:** The AI wasn't *ignoring* instructions. It was *interpreting* them. When the narrative felt "complete" to the AI, it moved on — even when explicit content remained.
 
 ---
 
-## The Time Machine Moment
+## The Breakthrough: A Conversation About AI Behavior
 
-After 3-4 iterations of catching failures and patching the tutor, we stepped back for a meta-discussion:
+After several iterations of catching failures and patching, we stepped back:
 
 **"Why does the AI keep skipping sections?"**
 
 The AI analyzed its own behavior:
 
-> "I treat the tutor as a narrative to interpret, not a script to follow. When I feel a section is 'done' conceptually, I move forward even if explicit steps remain. Sections without user prompts create ambiguous boundaries where I don't know to stop."
+> "I treat the tutor as a narrative to interpret, not a script to follow. When I feel a section is 'done' conceptually, I move forward even if explicit steps remain. Sections without user prompts create ambiguous boundaries."
 
-**The insight:** We were trying to make the *instructions clearer*. But the problem wasn't clarity — it was **structure**. The AI needed forcing mechanisms, not just warnings.
+**The insight:** We were trying to make the *instructions clearer*. But the problem wasn't clarity — it was **structure**. The AI needed forcing mechanisms, not warnings.
 
-This was our "time machine" moment — the conversation where human and AI collaborated to diagnose a deeper issue. Not "the AI is broken," but "we're using the wrong approach for how AI actually works."
+This was our "time machine" moment — human and AI collaborating to diagnose a deeper issue. Not "the AI is broken," but "we're using the wrong approach for how AI actually works."  We need fix the "message in a bottle", and then back in time to test it.
 
 ---
 
-## Fourth Failure: The Passive Trap
+## Failure #3: The Passive Trap
 
-Even with the checklist in place, we hit a new problem during live testing:
-
-The AI presented the welcome message perfectly. Then the user said: "ok, server running"
+With fixes in place, we hit a new problem. The AI presented the welcome perfectly. Then the user said: "ok, server running"
 
 The AI responded:
 
 > "Great! What would you like to explore? 
 > 1. View the Admin App
-> 2. Add Business Logic
-> 3. Create Custom APIs..."
+> 2. Add Business Logic..."
 
-**The user's response:** "val - this is not correct. we should swing right into Admin app. I think that is dictated by the checklist... are you following that?"
+**The user:** "val - this is not correct. we should swing right into Admin app... are you following the checklist?"
 
-**What happened?** The AI reverted to *passive chat mode* — waiting for the user to drive, offering menu choices. But the tutor explicitly says: **"YOU (the AI) drive the process."**
+The AI reverted to *passive chat mode* — waiting for user choice. But the tutor explicitly says: **"YOU (the AI) drive the process."**
 
-This revealed a fundamental confusion: Normal chat mode vs Tutor mode.
-
-### **The Mode Confusion**
+### The Mode Confusion
 
 **Normal Chat Mode:**
-- User drives the conversation
-- User dictates what happens next
-- AI waits for user requests and responds
-- User is in control
+- User drives, dictates what happens
+- AI waits and responds
+- User controls the conversation
 
 **Tutor Mode:**
-- **AI drives the process**
-- **AI directs the user through the choreographed sequence**
-- **AI tells the user what to do next**
-- **AI is the tour guide, traffic director, wizard**
-- User follows instructions and asks questions along the way
+- **AI drives the choreographed sequence**
+- **AI directs, user follows**
+- **AI is the tour guide**
 
-The AI kept slipping back to normal chat mode, even with explicit instructions about tutor mode. Why?
+The AI kept slipping back to normal mode. Why?
 
-### **The Discovery: Missing Consent Points**
+### Missing Consent Points
 
-We realized the problem wasn't just mode awareness — it was **missing user consent gates**. When the user said "server running," the AI didn't know if that meant:
-- "Continue the tour" 
-- "I'm just informing you"
-- "I want to explore on my own"
+When the user said "server running," the AI didn't know if that meant "continue" or "I'm just informing you."
 
-Without explicit consent, the AI defaulted to passive mode and asked what the user wanted.
+Without explicit consent, it defaulted to passive mode and asked what the user wanted.
 
-### **The Fix: Explicit Go/No-Go Gates**
+---
 
-We added consent checkpoints:
+## The Solution: Three Forcing Mechanisms
 
-```markdown
-After server starts:
+We designed a multi-layered approach:
 
-"Great! Server is running at http://localhost:5656
+### 1. Execution Checklist (for the AI)
 
-Open that in your browser - you'll see the admin app.
-
-Type 'go' to continue the guided tour, or 'no' if you'd prefer 
-to explore on your own."
-
-⚠️ WAIT FOR USER CONSENT: Only proceed after user types 'go' 
-or similar affirmative response. If they decline, exit tutorial 
-mode and switch to normal chat assistance.
-```
-
-This creates **explicit boundaries** where the user consciously opts in to the next phase.
-
-### **The Wait State Pattern**
-
-We also added explicit wait instructions:
-
-```markdown
-"Press F5 to start the server.
-
-Let me know when the server is running (you'll see output 
-in the terminal)."
-
-⚠️ STOP HERE - WAIT for user to confirm server started 
-before continuing
-```
-
-This prevents the AI from rushing ahead and creates clear pause points in the choreography.
-
-## The Solution: Checklists + Consent + Wait States
-
-We designed a multi-layered approach combining three mechanisms:
-
-### 1. **Explicit Execution Checklist** (for the AI)
-
-At the start of `tutor.md`, we added:
+At the start of `tutor.md`:
 
 ```markdown
 ## EXECUTION CHECKLIST (AI: Read This FIRST)
 
-Before starting the tour, call manage_todo_list to build your tracking:
+Before starting, call manage_todo_list to build your tracking:
 
 - [ ] Section 1: Admin UI and API Exploration
   - [ ] Start server (F5)
   - [ ] Show Admin UI (Customer→Orders→Items)
   - [ ] Show Swagger API
-  - [ ] Explain MCP server
   - [ ] WAIT: User types 'next'
 
-- [ ] Section 2A: Security Setup
+- [ ] Section 2: Security Setup
   - [ ] Count customers (5)
-  - [ ] Stop server
-  - [ ] Explain what add-cust is
   - [ ] Run add-cust then add-auth
   - [ ] Restart server
   - [ ] WAIT: User types 'ready'
-
-[... continues for all sections ...]
 ```
 
-### 2. **Forced Todo List Creation**
+### 2. Consent Gates
 
-The tutor now requires:
+Added explicit go/no-go checkpoints:
 
 ```markdown
-⚠️ BEFORE YOU BEGIN: Call manage_todo_list to create your checklist.
-If you don't see it in your todo list, you haven't done it.
+"Server is running at http://localhost:5656
+
+Open that in your browser.
+
+Type 'go' to continue the guided tour, or 'no' to explore 
+on your own."
+
+⚠️ WAIT FOR USER CONSENT: Only proceed after user types 'go'.
+If they decline, exit tutorial mode.
 ```
 
-This creates *visible* tracking. If the AI skips something, it shows in the unchecked items.
+### 3. Wait States
 
-### 3. **Validation Prompts After Sections**
+Created clear pause points:
 
 ```markdown
-After completing Section X, confirm with the user:
-"I just covered: [list items]. Type 'confirmed' if I covered everything, 
-or tell me what I missed."
+"Press F5 to start the server.
+
+Let me know when the server is running."
+
+⚠️ STOP HERE - WAIT for user confirmation before continuing
 ```
 
-This catches omissions early before moving on.
+This prevents the AI from rushing ahead and creates synchronization points.
 
 ---
 
-## Why This Works: The Psychology of AI Reliability
+## Why This Works: AI Psychology
 
-Traditional software follows explicit instructions precisely. AI interprets context and intent — which is powerful but unpredictable for complex sequences.
+Traditional software follows instructions precisely. AI interprets context and intent — powerful but unpredictable for complex sequences.
 
 **What we learned:**
 
-### **1. Checklists Are Necessary But Not Sufficient**
+### 1. Checklists Provide Visibility
 
-The checklist solved the "forgetting steps" problem, but not the "executing incorrectly" problem. The AI would:
-- Have all the steps in its todo list
-- Still offer menu choices instead of driving forward
-- Still wait passively instead of continuing the sequence
+The todo list makes omissions *visible* rather than just incorrect. "You haven't checked off the Admin UI exploration" is clearer than "I think you skipped something."
 
-Checklists provide visibility and planning, but don't control *execution flow*.
+### 2. Forcing Functions Beat Warnings
 
-### **2. Consent Gates Prevent Assumptions**
+- ❌ Warning: "Make sure you do X"
+- ✅ Forcing: "Call manage_todo_list. Check off X when done."
+
+Even with "DO NOT SKIP" in bold, the AI would skip. Clarity helps humans; AI needs structural constraints.
+
+### 3. Consent Gates Prevent Assumptions
 
 Without explicit "type 'go'" prompts, the AI would:
 - Assume continuation when user acknowledged something
-- Jump ahead without checking if user was ready
+- Jump ahead without checking readiness
 - Not give users a chance to opt out
 
-Consent gates make the user's intent explicit rather than assumed.
+### 4. Wait States Create Natural Boundaries
 
-### **3. Wait States Create Natural Pause Points**
-
-Instructions like "Let me know when the server is running" create clear boundaries where:
-- The AI knows to stop and wait
+"Let me know when the server is running" creates clear stop points where:
+- The AI knows to wait
 - The user knows acknowledgment is needed
-- Both parties synchronize before continuing
+- Both parties synchronize
 
-Without these, the AI either rushes ahead or reverts to passive mode.
+### 5. Mode Awareness Requires Reinforcement
 
-### **4. Mode Awareness Requires Constant Reinforcement**
-
-Even with explicit tutor mode instructions at the top, the AI would slip back to normal chat mode during the tour. We had to add reminders:
+Even with tutor mode instructions at the top, the AI slips back to passive assistance. We added reminders:
 
 ```markdown
 ⚠️ YOU ARE THE TOUR GUIDE
 After user confirms server is running, immediately proceed 
-to "Explore the Admin UI" section. DO NOT offer menu choices 
-or ask what they want to do.
+to "Explore the Admin UI". DO NOT offer menu choices.
 ```
 
-The AI's default is passive assistance, so active guidance mode needs constant reinforcement.
-
-### **5. Conflation of Concepts Requires Separation**
-
-One persistent bug: The AI kept conflating:
-- WHERE to add rules (file location) with HOW to add them (method)
-- Suggesting "Logic Discovery" meant using the discovery folder
-- When it really meant using natural language (which works in ANY folder)
-
-**The fix:** Explicitly separate the dimensions:
-
-```markdown
-**METHOD (How):**
-1. Natural Language - Tell AI what you need
-2. IDE Code Completion - Type 'Rule.' and select
-
-**LOCATION (Where):**
-- logic/declare_logic.py - Main file
-- logic/logic_discovery/*.py - Organized by use case
-
-Both methods work in EITHER location.
-```
-
-This stopped the AI from teaching incorrect mental models.
-
----
-
-## Why This Works: The Psychology of AI Reliability
-
-Even with "DO NOT SKIP" in bold, the AI would skip sections. Clarity helps humans; AI needs **structural constraints**.
-
-### **2. Forcing Functions Over Warnings**
-
-- ❌ Warning: "Make sure you do X"
-- ✅ Forcing: "Call manage_todo_list to build checklist. Check off X when done."
-
-The checklist makes omissions *visible* rather than just *incorrect*.
-
-### **3. Boundaries Must Be Explicit**
-
-Sections without user prompts create ambiguous boundaries. The AI doesn't know when a "section" ends, so it uses narrative intuition — which fails.
-
-### **4. Observable State Reduces Drift**
-
-When the AI's progress is visible (via todo list), both the AI and user can catch drift. "You haven't checked off the Admin UI exploration" is clearer than "I think you skipped something."
-
-### **5. Meta-Cognition Through Structure**
-
-The checklist forces the AI to think about *what it should do* before doing it. It's not just following narrative flow — it's executing a structured plan.
+The AI's default is passive, so active guidance needs constant reinforcement.
 
 ---
 
 ## The Pattern: Teaching AI to Teach
 
-This experience revealed a general pattern for **reliable AI-driven processes**:
+This revealed a general pattern for **reliable AI-driven processes**:
 
-### **For Simple Tasks (1-3 steps):**
+### For Simple Tasks (1-3 steps):
 - Clear instructions work fine
 - AI interprets intent successfully
 - Low risk of drift
 
-### **For Complex Sequences (10+ steps, 30+ minutes):**
-- **Use checklists** with explicit tracking
-- **Add forcing functions** (require todo list creation)
-- **Create validation checkpoints** (confirm before moving on)
-- **Make progress visible** (todo items checked off)
-- **Expect interpretation** and design around it
-
-### **Key Design Principles:**
-
-1. **Assume the AI will interpret** — Don't fight it, structure around it
-2. **Make state observable** — If you can't see it, you can't track it
-3. **Force explicit acknowledgment** — Don't let the AI assume steps are done
-4. **Add consent gates** — "Type 'go'" gives users explicit choice points
-5. **Create wait states** — "Let me know when..." creates natural pause points
-6. **Separate conflated concepts** — WHERE vs HOW, Method vs Location
-7. **Reinforce mode constantly** — AI defaults to passive, active guidance needs reminders
-8. **Validate incrementally** — Catch drift early, not at the end
-9. **Use tools for scaffolding** — `manage_todo_list` provides structure
-
-### **Business Rules for Documentation**
-
-There's an elegant parallel here: Just as our GenAI-Logic system uses **declarative rules** to maintain data integrity in APIs, our tutor uses **maintenance guidelines** to preserve instructional integrity.
-
-**API Business Rules:**
-```python
-Rule.constraint(validate=Customer,
-    as_condition=lambda row: row.balance <= row.credit_limit,
-    error_msg="balance must not exceed credit limit")
-```
-*Ensures data consistency automatically on every transaction*
-
-**Tutor Maintenance Guidelines:**
-```markdown
-When Updating This Tutor:
-✅ Add new sections WITH user prompts at end
-✅ Update EXECUTION CHECKLIST to match changes
-✅ Test with fresh AI session to catch skipped sections
-```
-*Ensures instructional consistency when content changes*
-
-Both are **declarative specifications** of how to maintain integrity:
-- API rules: "What must be true about the data"
-- Tutor guidelines: "What must be true about the instruction structure"
-
-Both prevent errors that would be easy to make without them:
-- Without API rules: Inconsistent data, violated business logic
-- Without tutor guidelines: Skipped sections, broken teaching flow
-
-The tutor's guidelines section is effectively **business rules for documentation** — a pattern that could apply to any complex instructional content meant for AI consumption.
+### For Complex Sequences (10+ steps, 30+ minutes):
+1. **Use checklists** with explicit tracking
+2. **Add forcing functions** (require todo list creation)
+3. **Create consent gates** ("Type 'go' to continue")
+4. **Add wait states** ("Let me know when...")
+5. **Make progress observable** (todo items checked off)
+6. **Reinforce mode constantly** (AI defaults to passive)
+7. **Validate incrementally** (catch drift early)
 
 ---
 
-## The Message in a Bottle Pattern
+## The Killer Feature: Resilience
 
-Our `tutor.md` approach is novel in several ways:
+Traditional documentation has a fatal flaw: **one thing breaks, user abandons.**
 
-### **1. Self-Teaching Projects**
+**README failure modes:**
+- Step 4 fails → user stuck, no diagnosis
+- "Command not found" → venv wasn't activated
+- "Address already in use" → server still running from earlier
+- Wrong directory, port conflicts, permissions → **user gives up**
 
-Instead of external docs, embed AI instructions directly in projects:
+Result: **10% completion rate**. The other 90% hit one obstacle and leave.
 
-```
-my-project/
-  README.md          # For humans
-  TUTOR.md           # For AI assistants
-  src/
-  tests/
-```
+**AI Tutor resilience:**
+- **"I got an error"** → AI: *"Server already running - stop it with Shift-F5"*
+- **"Command not found"** → AI: *"Your venv isn't activated. Let me help..."*
+- **"This isn't working"** → AI: *"You're in the wrong directory. Use `cd basic_demo`"*
+- Port conflict? AI recognizes the error and suggests solutions
+- Browser showing stale data? AI suggests hard refresh
+- Breakpoint not hitting? AI verifies file saved, server restarted
 
-When users ask "Guide me through this project," any AI can discover and execute the tutor.
+**The little stuff that kills demos:**
+- Wrong terminal window (split-pane confusion)
+- Forgot to save file before F5
+- Typo in command (AI catches and corrects)
+- Database locked from previous run
+- Python version mismatch
 
-### **2. Progressive Disclosure**
+**README assumes perfect execution. AI Tutor handles messy reality.**
 
-We use `add-cust` commands to incrementally add complexity during the tour:
+This transforms a fragile demo into a **resilient learning experience that recovers from inevitable mistakes.**
+
+That's the difference between 10% completion and 90%.
+
+---
+
+## The Message in a Bottle: Self-Teaching Projects
+
+Our `tutor.md` approach enables several innovations:
+
+### 1. Progressive Disclosure
+
+We use `add-cust` commands to incrementally add complexity:
 
 ```bash
 genai-logic add-cust --using=security  # Adds security features
 genai-logic add-cust --using=discount  # Adds schema changes
-genai-logic add-cust --using=B2B       # Adds integration
 ```
 
-Each step builds on the previous, teaching patterns rather than showing everything at once.
+Each step builds on the previous, teaching patterns rather than overwhelming with everything at once.
 
-### **3. Provoking Questions**
+### 2. Provocation-Based Learning
 
-Instead of just explaining, the tutor deliberately surfaces misconceptions:
+The tutor deliberately surfaces misconceptions:
 
 ```markdown
 After showing the rules work, ask:
@@ -468,143 +325,64 @@ Then explain: "It uses dependency discovery - no ordering required."
 
 This addresses mental models explicitly, which passive docs can't do.
 
-### **4. Teaching Patterns, Not Features**
+### 3. Teaching Patterns, Not Features
 
-The tour emphasizes the *why* behind declarative rules:
+The tour emphasizes *why* behind declarative rules:
 
 - **Reuse:** Rules apply across insert/update/delete automatically
 - **Ordering:** Dependency graphs, not manual sequencing
 - **Conciseness:** 5 rules vs 200+ lines of procedural code
-- **Debugging:** Transparent execution logs
 
-Users leave understanding *how to think* about declarative systems, not just *what buttons to click*.
-
----
-
-## Broader Implications: AI as Teaching Medium
-
-This experience suggests a new paradigm for technical education:
-
-### **Traditional Approach:**
-- Write documentation → Users read → Users experiment → Get stuck → Ask questions
-
-### **AI-Guided Approach:**
-- Embed tutor instructions → AI conducts tour → User experiences live → Questions answered in context
-
-**Key advantages:**
-
-1. **Personalized Pacing** — AI adapts to user questions without derailing the sequence
-2. **Active Learning** — Users do things, not just read about them
-3. **Context-Aware Help** — AI sees the live system state when answering questions
-4. **Scalable Expertise** — One expert writes the tutor; infinite AI instances deliver it
-5. **Living Documentation** — Update `tutor.md` and all future tours improve
-6. **Resilience to Reality** — The biggest practical win: AI troubleshoots when things go wrong
-
-### **Why Resilience Matters Most**
-
-Traditional documentation has a fatal flaw: **one thing breaks, user abandons.**
-
-**README failure modes:**
-- Step 4 fails → user stuck, no diagnosis
-- "Command not found" → venv wasn'''t activated, README can'''t detect this
-- "Address already in use" → server still running from earlier, cryptic error
-- Wrong directory, port conflicts, permission issues → **user gives up in frustration**
-
-Result: 10% completion rate. The other 90% hit one obstacle and leave.
-
-**AI Tutor resilience:**
-- **"I got an error"** → AI diagnoses: *"Server already running - stop it with Shift-F5"*
-- **"Command not found"** → AI checks: *"Your venv isn'''t activated. Let me help you find it..."*
-- **"This isn'''t working"** → AI investigates: *"You'''re in the wrong directory. Use `cd basic_demo`"*
-- **Port conflict?** AI recognizes the error and suggests port change or process kill
-- **Browser showing stale data?** AI suggests hard refresh or clearing cache
-- **Breakpoint not hitting?** AI verifies file saved, server restarted, correct line
-
-**The little stuff that kills demos:**
-- Wrong terminal window (common in split-pane setups)
-- Forgot to save file before F5 (IDE doesn'''t auto-save)
-- Typo in command (AI catches and corrects)
-- Python version mismatch (AI checks environment)
-- Database locked from previous run (AI suggests solutions)
-
-**README assumes perfect execution. Tutor handles messy reality.**
-
-This transforms a fragile demo that only works if everything'''s perfect into a **resilient learning experience that recovers from inevitable mistakes.**
-
-That'''s the difference between 10% completion rate and 90%.
-
-
-**Key challenges:**
-
-1. **Reliability** — AI needs forcing mechanisms for complex sequences
-2. **Maintenance** — Tutors must stay synchronized with code changes
-3. **Failure Modes** — What happens when the AI gets stuck or confused?
-4. **Trust** — Users must trust the AI is teaching correctly
+Users leave understanding *how to think* about the system, not just *what buttons to click*.
 
 ---
 
 ## What We Built
 
-The final `tutor.md` is 1,343 lines covering:
+The final `tutor.md` is 760 lines covering:
 
 - **5 major sections** (Create & Run, Security, Logic, Python Integration, B2B)
 - **15 checkpoints** with explicit user prompts
-- **Multiple teaching moments** provoking procedural thinking then correcting it
-- **Code examples** showing actual implementation patterns
+- **Provocation moments** surfacing procedural thinking then correcting it
 - **Metrics comparison** (5 declarative rules vs 220+ lines of procedural code)
 - **Execution checklist** forcing AI to track progress
 
-It works. When an AI assistant reads `tutor.md` and follows the checklist approach, it reliably conducts a 30-45 minute hands-on tour that teaches declarative thinking.
+When an AI assistant reads `tutor.md` and follows the structured approach, it reliably conducts a 30-45 minute hands-on tour that teaches declarative thinking.
 
 ---
 
 ## Try It Yourself
 
-The pattern is open source and adaptable:
+The pattern is adaptable to any project (you can [review ours here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/tutor.md))
 
-### **1. Create `TUTOR.md` in your project:**
+### 1. Create `TUTOR.md` in your project:
 
 ```markdown
 # AI Guided Tour: [Your Project Name]
 
 ## EXECUTION CHECKLIST (AI: Read This FIRST)
 
-Before starting, call manage_todo_list to build your tracking:
+Before starting, call manage_todo_list:
 
 - [ ] Section 1: Setup
   - [ ] Step A
   - [ ] Step B
   - [ ] WAIT: User types 'next'
-
-[... your tour structure ...]
-
-## Section 1: Setup
-
-Walk the user through...
-
-Type 'next' when ready to continue.
 ```
 
-### **2. Design for forcing functions:**
+### 2. Design for forcing functions:
 
 - Require todo list creation at start
 - Add user prompts at boundaries
-- Include validation checkpoints
+- Include consent gates
 - Make progress observable
 
-### **3. Test with real users:**
+### 3. Test and iterate:
 
 - Watch for sections the AI skips
 - Note where users get confused
-- Iterate on the tutor structure
 - Add warnings where needed
-
-### **4. Embrace the limitations:**
-
-- AI will interpret — design around it
-- Complex sequences need scaffolding
-- Validation catches drift early
-- Structure > Clarity for reliability
+- Embrace that AI interprets — design around it
 
 ---
 
@@ -617,34 +395,33 @@ The most valuable part wasn't the final tutor — it was the *process* of discov
 > **Human:** "Why did you skip that section?"  
 > **AI:** "I interpreted the narrative as complete. I didn't see a boundary."  
 > **Human:** "Can warnings help?"  
-> **AI:** "Not really. I need structural constraints, not just emphasis."  
+> **AI:** "Not really. I need structural constraints."  
 > **Human:** "What kind of constraints?"  
 > **AI:** "Forcing functions. Make me track progress explicitly."
 
-This collaborative root-cause analysis — human noticing patterns, AI explaining its own behavior, together designing solutions — is the real pattern here.
+This collaborative root-cause analysis — human noticing patterns, AI explaining its behavior, together designing solutions — is the real pattern.
 
 **Teaching AI to teach** required:
 
 1. **Human observation** — "The AI keeps skipping sections"
 2. **AI introspection** — "I treat this as narrative, not script"
-3. **Collaborative design** — "What structure would force reliability?"
-4. **Iterative testing** — Trying solutions, catching failures, adjusting
-5. **Honest assessment** — AI admitting "I'm not confident this will work"
+3. **Collaborative design** — "What structure forces reliability?"
+4. **Iterative testing** — Trying, catching failures, adjusting
 
 This is how we'll work with AI going forward: Not just *using* AI as a tool, but *collaborating* with AI to understand its limitations and design around them.
 
 ---
 
-## Conclusion: A New Kind of Documentation
+## Conclusion: Projects That Teach Themselves
 
-`tutor.md` represents a different approach to technical education:
+`tutor.md` represents a new approach to technical education:
 
 - **Not passive docs** — Active guided experience
 - **Not video tutorials** — Interactive, personalized pacing
 - **Not human-dependent** — Scales infinitely via AI
-- **Not fragile** — Checklist-driven reliability
+- **Not fragile** — Recovers from inevitable mistakes (10% → 90% completion)
 
-The pattern is generalizable. Any complex project can embed AI tutor instructions. Any AI assistant can execute them. Any user can get a personalized, hands-on guided tour.
+The pattern is generalizable. Any complex project can embed AI tutor instructions. Any AI assistant can execute them. Any user can get hands-on guidance.
 
 But the deeper lesson is about **working with AI effectively**:
 
@@ -660,19 +437,15 @@ AI can teach — but it needs the right scaffolding. Build that scaffolding well
 
 ## Resources
 
-- **Original testing article:** [Teaching AI to Program Itself](https://medium.com/@valjhuber/teaching-ai-to-program-itself-how-we-solved-a-30-year-testing-problem-in-one-week-56d56c64d7bd)
-- **GenAI-Logic project:** github.com/ApiLogicServer/ApiLogicServer-dev
-- **Example tutor.md:** See `basic_demo/tutor.md` in the repository
-- **Pattern documentation:** This article :)
+- **Example tutor.md:** See [`basic_demo/tutor.md`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/tutor.md)
+- **Previous article:** *Teaching AI to Program Itself: How We Solved a 30-Year Testing Problem in One Week*
 
 ---
 
 **About the Author:**
 
-Val Huber is the creator of GenAI-Logic / API Logic Server, exploring how AI can transform software development through declarative patterns. This is the second in a series on "learning to leverage AI" — practical lessons from building AI-integrated development tools.
-
-Previous article: *Teaching AI to Program Itself: How We Solved a 30-Year Testing Problem in One Week*
+Val Huber created GenAI-Logic / API Logic Server, exploring how AI transforms software development through declarative patterns. This is the second in a series on "learning to leverage AI" — practical lessons from building AI-integrated development tools.
 
 ---
 
-*Thanks to the GitHub Copilot team for the chat interface that made these experiments possible, and to the AI assistant that helped write this article about teaching AI to teach. Meta enough for you?*
+*Thanks to the GitHub Copilot team for the chat interface that made these experiments possible, and to the AI assistant that helped write this article about teaching AI to teach.*
