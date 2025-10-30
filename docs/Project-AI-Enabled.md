@@ -21,15 +21,20 @@ This page describes:
 
 &nbsp;
 
-# AI-Enabled Projects
+## AI-Enabled Projects
 
-![AI-Enabled Projects](images/ui-vibe/assistant/ai-enabled-projects.png)
+When you open a project, activate the AI Assitant:
+
+![AI-Enabled Projects](images/ui-vibe/assistant/copilot-hello.png)
+
 
 When you create a new project with `genai-logic create`, you're not just getting a basic API and admin interface. Each project is thoughtfully designed to be **AI-friendly** from day one.
 
-## Main Capabilities
+&nbsp;
 
-Your AI-enabled project includes these key capabilities:
+### 🛠️ Main Capabilities
+
+As shown above, your AI-enabled project includes these key capabilities:
 
 ✅ **Run the Project** - F5 or `python api_logic_server_run.py`  
 ✅ **Add Business Logic** - Declarative rules with 44x code reduction  
@@ -42,50 +47,16 @@ Your AI-enabled project includes these key capabilities:
 ✅ **Admin UI Customization** - YAML-driven configuration  
 ✅ **Events & Triggers** - Advanced business logic scenarios  
 
-
-&nbsp;
-
-## Your Project is Ready for AI
-
-Here's what makes your project AI-enabled:
-
 &nbsp;
 
 ### 🤖 Built-in AI Guidance
 
 Your project includes comprehensive training materials that serve as a "message in a bottle" for AI assistants:
 
-1. **`.github/.copilot-instructions.md`** - Detailed instructions that guide AI assistants on how to work with your specific project
-2. **`docs/training/`** - AI training documents with examples and patterns
+1. **`.github/.copilot-instructions.md`** - this is the "message in a bottle" that enabled your AI Assitant to understand GenAI-Logic projects, and deliver the services above
+2. **`docs/training/`** - AI training documents with detail examples and patterns
 3. **`readme.md`** - Project overview with quick start instructions
-4. **Code examples** - Real working samples in `logic/declare_logic.py` and throughout the codebase
-
-&nbsp;
-
-### 🎓 AI Guided Tour
-
-It's been clear for quite some time that lab-based training was far superior to *death by powerpoint*.  But running labs is not simple - it usually requires in-person expertise to deal with inevitable problems.
-
-AI enables us to put a "message in a bottle" - an AI tutor that can walk you through the tutorial, and, unlike a readme, support you:
-
-* answer questions ("*how do I customize this*")
-* get you unstuck (*"ah, you forgot to start the server"*)
-
-Key aspects of the tour:
-
-* *Provocation-based* learning (not instruction)
-* *Hands-on* discovery (doing, not reading)
-* AI as companion *during* the lab (not before/after)
-
-
-
-![tour](images/ui-vibe/assistant/sample-basic-tour.png)
-
-&nbsp;
-
-#### 🔔 Proactive AI Assistants
-
-Ed: this was an interesting technical problem - AI prefers to be passive (not driving a tutorial), and make decisions about 'that seems to be working'.  We had to convince AI to act outside its comfort zone.  To read more, [click here](Tech-AI-Tutor.md).
+4. **Code examples** - real working examples in the `readme's` throughout the project
 
 &nbsp;
 
@@ -111,9 +82,42 @@ Your project supports natural AI-assisted development:
 
 &nbsp;
 
-### 🚀 Ready-to-Go Examples
+## Training
 
-Each project includes working examples you can build upon:
+There are important resources to help you get started.
+
+
+&nbsp;
+
+### 🎓 AI Guided Tour
+
+It's been clear for quite some time that lab-based training was far superior to *death by powerpoint*.  But running labs is not simple - it usually requires in-person expertise to deal with inevitable problems.
+
+AI enables us to put a "message in a bottle" - an AI tutor that can walk you through the tutorial, and, unlike a readme, support you:
+
+* answer questions ("*how do I customize this*")
+* get you unstuck (*"ah, you forgot to start the server"*)
+
+Key aspects of the tour:
+
+* *Provocation-based* learning (not instruction)
+* *Hands-on* discovery (doing, not reading)
+* AI as companion *during* the lab (not before/after)
+
+The tour begins in the [manager](Manager.md), which encourages you to create the basic demo.  That creates the `basic_demo` project, which provides a special readme to start the tour:
+
+![tour](images/ui-vibe/assistant/sample-basic-tour.png)
+
+&nbsp;
+
+
+> Ed: this was an interesting technical problem - AI prefers to be reactive (not driving a tutorial), and make decisions about 'that seems to be working'.  We needed it to be proactive and not skip steps - to act outside its comfort zone.  To read more, [click here](Tech-AI-Tutor.md).
+
+&nbsp;
+
+### 🚀 Quick Reference `readmes`
+
+Each project includes working examples (see various `readme` files within the project) you can build upon:
 
 • Pre-configured rules demonstrating common business patterns  
 • Sample API calls with proper request/response formats  
@@ -122,23 +126,14 @@ Each project includes working examples you can build upon:
 
 &nbsp;
 
-## Getting Started with AI Assistance
+### 🎯 Next Steps
 
-1. **Open your project** in VS Code or your preferred IDE
-2. **Check `.github/.copilot-instructions.md`** - this trains AI assistants about your project
-3. **Explore `logic/declare_logic.py`** - see how business rules work
-4. **Review `docs/training/`** - understand the AI training materials included
-5. **Ask your AI assistant** to help you add new features or modify existing ones
-
-The training materials act like a "message in a bottle" - they contain all the context and examples an AI assistant needs to help you effectively. No more explaining your project structure from scratch!
-
-&nbsp;
-
-## Next Steps
+To find more:
 
 • [Logic Guide](Logic/) - Learn about declarative business rules  
 • [API Documentation](API/) - Understand your auto-generated API  
 • [Testing Guide](Behave/) - Write and run business scenarios  
 • [Sample Projects](Sample-Database/) - Explore working examples  
 
-Your AI-enabled project is ready to evolve with your needs. Just describe what you want, and let AI help you build it! 🎯
+Your AI-enabled project is ready to evolve with your needs. Just describe what you want, and let AI help you build it! 
+
