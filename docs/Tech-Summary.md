@@ -1,4 +1,4 @@
-_Updated Nov 2025 — Expanded with enterprise-scale proof, DSL+engine architecture, “best backend for any vibe,” proprietary vs standard-enterprise positioning, Business+IT collaboration (WebGenAI), and two new capabilities: automatic test creation and an AI‑driven tutorial builder._
+_Updated Nov 2025 — Expanded with enterprise-scale proof, DSL+engine architecture, “best backend for any vibe,” proprietary vs standard-enterprise positioning, Business+IT collaboration (WebGenAI), new capabilities (automatic test creation + AI‑driven tutorial), and clarified metaphors + AI-as-DSL translation to address hallucination risk._
 
 # Welcome to GenAI‑Logic
 ### The Declarative Foundation Behind Enterprise Vibe Automation
@@ -15,6 +15,8 @@ _Updated Nov 2025 — Expanded with enterprise-scale proof, DSL+engine architect
 ## Why Code Generation Isn’t Enough
 Codegen emits controllers, handlers, and validators that look fine until schemas evolve. Then teams chase side‑effects: update ordering, dependency cascades, old/new value deltas, and test explosion. The result is **Franken‑code** — verbose, fragile, hard to audit. AI that only emits more code accelerates the mess.
 
+**Spreadsheet metaphor:** Declarative logic behaves like a **spreadsheet for enterprise apps** — change one value and dependent totals, constraints, and validations cascade automatically. No event code to chase, no hidden side‑effects.
+
 ---
 
 ## The Core Architecture: **DSL + Runtime Engine**
@@ -24,6 +26,8 @@ GenAI‑Logic stores intent as **declarative DSLs** interpreted by **runtime eng
 - **API DSL + Engine (JSON:API/SAFRS):** entities are **registered**, not hard‑coded. The runtime dynamically exposes REST endpoints; no per‑table controllers or serializers to regenerate.
 
 **Result:** behavior is **interpreted**, not re‑emitted. Systems stay compact, auditable, and safe to evolve.
+
+**SQL/DBMS analogy:** We don’t ask GenAI to *build a database engine*; we ask it to **write SQL**. Likewise, we don’t ask it to hand‑code logic; we ask it to **express logic as declarative DSL**, leaving correctness and performance to the runtime.
 
 ---
 
@@ -101,7 +105,7 @@ In a published study, **5 declarative rules** reproduced the behavior of **200+ 
 
 *Reference:* [Declarative vs Procedural Comparison (study)](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md)
 
-*In that same study, GitHub Copilot’s procedural output contained logic errors that it later corrected — proving the point: you get full code, complete with bugs. Declarative rules avoid that explosion entirely.*
+**Assembler/F‑Code metaphor:** Maintaining procedural F/Code is like maintaining **assembler output** instead of source. It’s technically complete — and practically unmaintainable. Declarative rules keep you at the right abstraction level.
 
 *[Diagram 4 – Rule Flow & Delta Recompute]*  
 *Caption: Engine prunes work via dependency graphs — updating only affected paths (e.g., Item → Order → Customer).*
@@ -114,6 +118,8 @@ In a published study, **5 declarative rules** reproduced the behavior of **200+ 
 - **Observability:** rule traces and audit logs explain *why* values changed — crucial for governance.  
 - **Standard debugging:** works with IDEs and log frameworks developers already use — step through rules, set breakpoints, or watch variable deltas in real time.  
 - **Single source of truth:** UI, API, and DB derive from the same model; no drift.
+
+*In that same study, GitHub Copilot’s procedural output contained logic errors that it later corrected — proving the point: you get full code, **complete with bugs**. Declarative rules avoid that explosion entirely.*
 
 ---
 
@@ -128,6 +134,8 @@ In a published study, **5 declarative rules** reproduced the behavior of **200+ 
 
 ## The Next Phase: **Probabilistic + Deterministic**
 As AI shifts from prompts to **agentic systems**, enterprises need deterministic rails for reliability. **GenAI‑Logic** already provides them: declarative rules that validate, constrain, and orchestrate outcomes from probabilistic reasoning — explainably and at scale.
+
+**AI as DSL translator (calming hallucination risk):** The right way to use AI isn’t to let it improvise systems; it’s to let it **express intent safely**. GenAI‑Logic treats AI as a **translator into declarative DSL**, not as a code generator. The runtime engine then enforces correctness, ordering, and integrity. This clear division — **probabilistic AI for expression, deterministic runtime for execution** — removes the root cause of hallucinations: asking AI to do too much.
 
 > Probabilistic tools explore. The declarative engine **ensures**.
 
