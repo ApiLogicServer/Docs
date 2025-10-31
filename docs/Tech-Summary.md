@@ -1,4 +1,4 @@
-_Updated Nov 2025 — Expanded with enterprise-scale proof, DSL+engine architecture, “best backend for any vibe,” proprietary vs standard-enterprise positioning, Business+IT collaboration (WebGenAI), new capabilities (automatic test creation + AI‑driven tutorial), and clarified metaphors + AI-as-DSL translation to address hallucination risk._
+_Updated Nov 2025 — Expanded with enterprise-scale proof, DSL+engine architecture, “best backend for any vibe,” proprietary vs standard-enterprise positioning, Business+IT collaboration (WebGenAI), new capabilities (automatic test creation + AI‑driven tutorial), clarified metaphors, AI-as-DSL translation for hallucination safety, and explicit enterprise governance model._
 
 # Welcome to GenAI‑Logic
 ### The Declarative Foundation Behind Enterprise Vibe Automation
@@ -8,7 +8,7 @@ _Updated Nov 2025 — Expanded with enterprise-scale proof, DSL+engine architect
 ---
 
 *[Diagram 1 – Declarative vs Procedural Logic]*  
-*Caption: Five compact rules (copy, formula, two sums, constraint) replace hundreds of lines of event code — illustrating why a rules engine matters. Use your original figure here.*
+*Caption: Five compact rules (copy, formula, two sums, constraint) replace hundreds of lines of event code — illustrating why a rules engine matters.*
 
 ---
 
@@ -32,7 +32,7 @@ GenAI‑Logic stores intent as **declarative DSLs** interpreted by **runtime eng
 ---
 
 *[Diagram 2 – Vibe the Full Stack]*  
-*Caption: One “vibe” prompt updates the model, logic, API, UI, and integrations together. Use your full‑stack diagram here.*
+*Caption: One “vibe” prompt updates the model, logic, API, UI, and integrations together.*
 
 ---
 
@@ -112,23 +112,29 @@ In a published study, **5 declarative rules** reproduced the behavior of **200+ 
 
 ---
 
-## Why It’s Safer and Faster
-- **Deterministic execution:** rules run **inside the API transaction**; no after‑the‑fact scripts.  
-- **Incremental performance:** only affected paths re‑compute; no full re‑aggregation.  
-- **Observability:** rule traces and audit logs explain *why* values changed — crucial for governance.  
-- **Standard debugging:** works with IDEs and log frameworks developers already use — step through rules, set breakpoints, or watch variable deltas in real time.  
-- **Single source of truth:** UI, API, and DB derive from the same model; no drift.
+## Enterprise‑Ready by Design — Confidence, Control, and Governance
 
-*In that same study, GitHub Copilot’s procedural output contained logic errors that it later corrected — proving the point: you get full code, **complete with bugs**. Declarative rules avoid that explosion entirely.*
+**Open-source safety and transparency**  
+GenAI‑Logic and the LogicBank runtime are **fully open source**, built on standard Python, Flask, and SQLAlchemy. Enterprises can inspect, fork, or extend the runtime directly — ensuring no lock-in, no opaque dependencies, and long-term operational independence.
+
+**Escape hatches when DSLs aren’t enough**  
+Declarative automation doesn’t mean loss of control. GenAI‑Logic provides **standard Python event hooks** — you can intercept or extend any transaction, using your IDE and libraries of choice. If a rule is too complex for the DSL, handle it in Python — *full freedom, full control.*
+
+**Rule persistence and recoverability**  
+Rules are ordinary Python modules — no black box or hidden metadata. They live in your source tree and version naturally in **Git**, alongside your API and schema definitions. Backup, restore, and promotion are identical to any other enterprise codebase.
+
+**Developer trust and transparency**  
+The LogicBank runtime offers **full logging and step‑through debugging**. You can inspect *every* rule that fires, see the affected state, and stop directly in a rule within your debugger. This combination of traceability and control turns “magic” into something auditable and safe.
 
 ---
 
-## Enterprise‑Ready by Design
-- **Open source, standard stack:** Python (Flask/SQLAlchemy), React, JSON:API.  
-- **Security & policy:** OAuth/JWT, RBAC, field‑level controls; rule traces aid audit/compliance.  
-- **Deployment:** Standard container images (Docker/OCI), ready for Azure, AWS, or on‑prem CI/CD pipelines.  
-- **Modernization:** import an existing database; “MCP‑ify” it with APIs, UI, and rules in minutes.  
-- **Integration:** event rules (Kafka/webhooks) and service connectors without boilerplate.
+## Quick FAQ
+
+**Q: Isn’t GenAI unreliable and prone to hallucinations?**  
+**A:** No. GenAI‑Logic uses AI only as a **translator** from natural language into **declarative DSLs**. The deterministic runtime then guarantees correctness, order, and safety. You get AI creativity without the chaos.
+
+**Q: What if my business logic is too complex for a DSL?**  
+**A:** GenAI‑Logic supports full **Python event hooks**, so developers can extend or override any rule procedurally when needed. You get automation for 90% of cases, and total control for the rest.
 
 ---
 
