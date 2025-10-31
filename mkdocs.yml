@@ -208,6 +208,8 @@ nav:
       - "Tour": Sample-Basic-Tour.md
       - "Home": Home.md
       - "INFO": ApiLogicServer-create.md
+      - "Summary": Tech-Summary.md
+      - "Welcome": Tech-Welcome.md
       - "Recompute": Logic-Recompute.md
       - "PyCon23 Talk": Tech-Conference-PyCon23-Talk.md
       - "PyCon23 Tutorial": Tech-Conference-PyCon23-Tutorial.md
