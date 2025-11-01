@@ -186,12 +186,12 @@ At Versata, we measured this empirically using an Automation Analyzer across sev
 
 This wasn't a theoretical limit—developers had full freedom to write custom code anywhere, but chose declarative rules for 97% of functionality.
 
-The 3-6% custom code typically handled: UI customizations, integration adapters, complex multi-step workflows, custom reporting, and business-specific algorithms. Exactly where custom code belongs.
+The 3-6% custom code typically handled: integration adapters, complex multi-step workflows, custom reporting, and business-specific algorithms. Exactly where custom code belongs.
 
 GenAI-Logic follows the same architectural approach, proven at enterprise scale across insurance, banking, manufacturing, and healthcare.
 
 **Rule persistence and recoverability**  
-Rules are ordinary Python modules — no hidden metadata. They live in source control and version naturally in Git. Backup, restore, and promotion work exactly like any other enterprise codebase.
+Rules are ordinary Python DSL code — no hidden metadata. They live in source control and version naturally in Git. Backup, restore, and promotion work exactly like any other enterprise codebase.
 
 **Developer trust and transparency**  
 The LogicBank runtime provides full logging and step-through debugging. Developers can see every rule that fires, inspect the affected state, and debug inside a rule. Transparency replaces "magic" with confidence.
@@ -218,7 +218,7 @@ GenAI-Logic complements, rather than replaces, suite-based builders. Use both: o
 ## Frequently Asked Questions
 
 **Q: Isn't GenAI unreliable and prone to hallucinations?**  
-**A:** No. GenAI-Logic uses AI only as a **translator** from natural language into **declarative DSLs**. The deterministic runtime guarantees correctness, order, and safety — AI creativity with engineering discipline.
+**A:** No. GenAI-Logic uses AI only as a **translator** from natural language into **declarative DSLs**. The deterministic runtime guarantees correctness, order, and safety — AI speed and simplicity, with engineering discipline.
 
 **Q: What if my business logic is too complex for a DSL?**  
 **A:** GenAI-Logic supports full **Python event hooks**, allowing procedural extensions for any edge case.
