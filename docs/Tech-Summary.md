@@ -155,6 +155,15 @@ GenAI-Logic and the LogicBank runtime are fully open source, built on standard P
 **Escape hatches when DSLs aren't enough**  
 Declarative automation doesn't mean loss of control. GenAI-Logic provides standard Python event hooks — intercept or extend any transaction with your IDE and libraries. If a rule is too complex for the DSL, handle it in Python — full freedom, full control.
 
+**In practice: 97% declarative coverage**  
+At Versata, we measured this empirically using an Automation Analyzer across several dozen production enterprise systems. Result: **94-97% of deployed systems were declarative rules, only 3-6% custom code.**
+
+This wasn't a theoretical limit—developers had full freedom to write custom code anywhere, but chose declarative rules for 97% of functionality.
+
+The 3-6% custom code typically handled: UI customizations, integration adapters, complex multi-step workflows, custom reporting, and business-specific algorithms. Exactly where custom code belongs.
+
+GenAI-Logic follows the same architectural approach, proven at enterprise scale across insurance, banking, manufacturing, and healthcare.
+
 **Rule persistence and recoverability**  
 Rules are ordinary Python modules — no hidden metadata. They live in source control and version naturally in Git. Backup, restore, and promotion work exactly like any other enterprise codebase.
 
@@ -234,6 +243,30 @@ AI acts as a **DSL translator**, not a code generator. The runtime enforces corr
 **AI-Driven Tutorial Builder:** builds guided tutorials directly from your models and data, shortening onboarding from days to hours.
 
 Together, these move GenAI-Logic from "system generation" to **full SDLC assistance** — model → logic → API → UI → tests → learning.
+
+---
+
+## Making Declarative Logic Learnable
+
+One advantage of the declarative approach: business logic distills into **5 core learnable patterns** that appear across all industries:
+
+1. **Chain Up** — Parent aggregates from children (order totals, department budgets)
+2. **Constrain a Derived Result** — Validate aggregated values (credit limits, stock levels)
+3. **Chain Down** — Parent changes cascade to children (price changes, status updates)
+4. **State Transition Logic** — Handle before/after comparisons (shipping, approvals)
+5. **Counts as Existence Checks** — Business rules based on presence (can't ship empty orders)
+
+**Think spreadsheet for multi-table databases:**
+- In Excel: cell C1 = A1 + B1, cell D1 = C1 × 2
+- Change A1 → C1 recalcs → D1 recalcs automatically
+
+Same here:
+- Item.amount = quantity × price  
+- Order.total = sum(Item.amount)
+- Customer.balance = sum(Order.total)
+- Change quantity → cascading recalculation in correct order
+
+Combined with AI-driven tutorials that generate from your specific data model, new developers master the patterns in hours, not weeks. This addresses the learning curve concern: it's not learning arbitrary syntax, it's learning 5 patterns that map to how business users already think.
 
 ---
 
