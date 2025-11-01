@@ -1,15 +1,7 @@
----
-title: "Welcome to GenAI-Logic"
-canonical_url: "https://www.genai-logic.com"
-description: "GenAI-Logic unites AI-generated app creation with deterministic declarative logic, reducing backend code by up to 40× and bringing governance and maintainability to enterprise AI systems."
-date: 2025-11-01
----
-
 # Welcome to GenAI‑Logic
-
 ### The AI‑Reviewed, Enterprise‑Validated Edition
 
-_This edition integrates architectural feedback from **Claude 4.5**, **GPT‑5**, and **Perplexity** — independent AI reviewers that converged on the same conclusion: GenAI‑Logic represents a unique and mature declarative architecture for enterprise automation. Their feedback helped refine clarity, scope, and evidence, transforming initial curiosity into consensus on the product’s technical depth and enterprise readiness._
+_This edition integrates architectural feedback from **Claude 4.5**, **GPT‑5**, and **Perplexity** — independent AI reviewers that converged on the same conclusion: GenAI‑Logic represents a unique and mature declarative architecture for enterprise automation. Their feedback helped refine clarity, scope, and evidence, transforming initial curiosity into consensus on the product’s technical depth and acquisition readiness._
 
 ---
 
@@ -26,18 +18,7 @@ _This edition integrates architectural feedback from **Claude 4.5**, **GPT‑5*
 
 ## Why Code Generation Isn't Enough
 
-Codegen emits controllers, handlers, and validators that appear functional on first inspection. But testing reveals the true cost: **critical correctness bugs** [as documented here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md). The generated code fails to handle:
-- Foreign key changes (updating both old and new parent records)
-- Dependency ordering (which calculations must execute first)
-- Cascading updates (changes that ripple through related data)
-- Before/after value comparisons (detecting what actually changed)
-
-This isn't a "good start that needs refinement"—it's **Franken-code** that represents instant tech-debt:
-- Generated code you don't understand
-- Implementation details that obscure business intent
-- Bugs that require deep analysis to diagnose
-- Maintenance burden that grows with each change
-
+Codegen emits controllers, handlers, and validators that look fine until schemas evolve. Then teams chase side-effects: update ordering, dependency cascades, old/new value deltas, and test explosion. The result is **Franken-code** — verbose, fragile, hard to audit. AI that only emits more code accelerates the mess.
 
 ### The Real Problem: No One Solved Reactive Dependency Propagation for Backend Logic
 
@@ -125,9 +106,6 @@ GenAI-Logic doesn't compete with front-end Vibe tools like Copilot or Claude —
 
 > *Vibe the front-end with Copilot; vibe the backend with GenAI-Logic.*
 
-**Or use our trained Copilot for sophisticated UIs:** We've also trained Copilot to generate production-grade React front-ends directly from your models — with trees, cards, maps, and custom layouts. This provides an end-to-end option when you want both backend and frontend from a single source. But the backend remains open and composable — use any front-end tool you prefer.
-
-<< diagram here >>
 ---
 
 ## From Low-Code to **Vibe-Driven Automation**
@@ -148,19 +126,21 @@ Platform tools create apps inside their walls. GenAI-Logic builds systems that c
 
 ## A Place for Both — Shared Platform for Business + IT
 
-Large enterprises need both:
+Large enterprises run on two planes of automation:
 
 **Productivity layer:** fast departmental apps within suites.  
 **Enterprise backbone:** durable, governed logic spanning data, APIs, and integrations.
 
-Suite builders deliver agility; **GenAI-Logic** ensures consistency, reuse, and governance — business users create via **WebGenAI** (conversational interface for tables, rules, screens), developers extend by downloading the standard project into their IDE. Behind the scenes, conversations become models, APIs, and declarative rules — avoiding shadow IT while keeping speed.
+Surface builders deliver agility; **GenAI-Logic** ensures consistency, reuse, and governance — a single backbone business users can safely extend.
+
+**WebGenAI** lets non-technical users describe tables, rules, or screens conversationally. Behind the scenes, these become models, APIs, and declarative rules — avoiding shadow IT while keeping speed.
 
 *[Diagram 3 – WebGenAI on Declarative Foundations]*  
 *Business user speaks "vibes" in WebGenAI; engine generates DB + Logic + API; IT retains governance.*
 
 ---
 
-## Impact at Enterprise Scale
+## Evidence at Enterprise Scale
 
 An enterprise with ~100 tables and 2,000 rules typically requires tens of thousands of lines of procedural glue. Declarative logic collapses that to a few thousand declarative lines — a 40× reduction, verified in a Copilot comparison study.
 
@@ -330,11 +310,3 @@ When you hear "spreadsheet engine for your database," that's the essence: bring 
   https://medium.com/@valjhuber/vibe-with-copilot-and-genai-logic-925894574125  
 - *Declarative vs Procedural Comparison*  
   https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md
-
----
-
-Learn more or access the open-source project at [genai-logic.com](https://www.genai-logic.com).
-
-*Written by Val Huber — Founder & Chief Architect, GenAI‑Logic*
-
-© 2025 GenAI‑Logic. All rights reserved.
