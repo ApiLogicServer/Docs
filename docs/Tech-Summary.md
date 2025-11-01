@@ -127,7 +127,7 @@ GenAI-Logic doesn't compete with front-end Vibe tools like Copilot or Claude —
 
 **Or use our trained Copilot for sophisticated UIs:** We've also trained Copilot to generate production-grade React front-ends directly from your models — with trees, cards, maps, and custom layouts. This provides an end-to-end option when you want both backend and frontend from a single source. But the backend remains open and composable — use any front-end tool you prefer.
 
-<< diagram here >>
+<< diagram 3 ui vibe >>
 ---
 
 ## From Low-Code to **Vibe-Driven Automation**
@@ -155,7 +155,7 @@ Large enterprises need both:
 
 Suite builders deliver agility; **GenAI-Logic** ensures consistency, reuse, and governance — business users create via **WebGenAI** (conversational interface for tables, rules, screens), developers extend by downloading the standard project into their IDE. Behind the scenes, conversations become models, APIs, and declarative rules — avoiding shadow IT while keeping speed.
 
-*[Diagram 3 – WebGenAI on Declarative Foundations]*  
+*[Diagram 4 – WebGenAI on Declarative Foundations]* ?? 
 *Business user speaks "vibes" in WebGenAI; engine generates DB + Logic + API; IT retains governance.*
 
 ---
@@ -296,7 +296,7 @@ Combined with AI-driven tutorials that generate from your specific data model, n
 
 ---
 
-*[Diagram 5 – Best Backend for Any Vibe]*  
+*[Diagram 5 – Best Backend for Any Vibe]*  ??
 *Front-end vibes (Copilot/GPT/Claude) connect to GenAI-Logic's declarative backend (DB + Logic + API + Integration).*
 
 ---
