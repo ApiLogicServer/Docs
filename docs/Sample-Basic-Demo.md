@@ -2,7 +2,7 @@
 title: Instant Microservices - with Logic and Security
 notes: gold is proto (-- doc); alert for apostrophe
 do_process_code_block_titles: True
-version: 0.23 from docsite, for readme 7/11/2025
+version: 0.24 from docsite, for readme 7/11/2025
 ---
 <style>
   -typeset h1,
@@ -21,7 +21,7 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 
 **🤖 Bootstrap Copilot by pasting the following into the chat:**
 ```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
-Please find and read `.github/.copilot-instructions.md`.
+Please load `.github/.copilot-instructions.md`
 ```
 
 <br>

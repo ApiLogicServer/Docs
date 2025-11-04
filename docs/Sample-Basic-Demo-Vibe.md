@@ -1,7 +1,7 @@
 ---
 title: Vibe MCP / Microservice
 do_process_code_block_titles: True
-version: 1.0 from docsite 10/28/2025
+version: 1.1 from docsite 10/28/2025
 Propagation: Build copies to api_logic_server_cli/prototypes/basic_demo/readme_vibe.md → BLT copies to Manager samples/basic_demo_sample/readme_vibe.md
 Guided_Tour: See tutor.md for AI guided tour instructions (user says "Guide me through basic_demo")
 ---
@@ -20,7 +20,7 @@ This illustrates [GenAI-Logic](Sample-Basic-Demo-Vibe.md) automation to create a
 <br>
 
 ``` bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
-Please find and read `.github/.copilot-instructions.md`.
+Please load `.github/.copilot-instructions.md`
 ```
 
 > **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.  Also, we get consistently good results with `Claude Sonnet 4.5`.
