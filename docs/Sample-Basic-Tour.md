@@ -40,7 +40,7 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 
 1. **Bootstrap Copilot:**
 ```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
-Please find and read `.github/.copilot-instructions.md`.
+Please load `.github/.copilot-instructions.md`.
 ```
 
 > **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.    Also, we get consistently good results with `Claude Sonnet 4.5`.

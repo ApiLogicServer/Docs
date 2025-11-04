@@ -121,7 +121,7 @@ In either case, the database model is customer, orders and items:
 The project should automatically open a new window in VSCode. <br>
 
 ``` bash title='🤖 Again, bootstrap Copilot by pasting the following into the chat'
-Please find and read `.github/.copilot-instructions.md`.
+Please load `.github/.copilot-instructions.md`.
 ```
 
 Run it as follows:
