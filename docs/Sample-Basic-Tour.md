@@ -2,7 +2,7 @@
 title: Welcome
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs//Sample-Basic-Tour
-version info: 15.00.41 (07/11/2025)
+version info: 15.00.42 (11/05/2025)
 do_process_code_block_titles: True
 Used: Manager Readme
 Instructions: Copy in Sample-Basic-Demo (Replace "This illustrates" up to "Explore GenAI CLI"), and remove meta
@@ -94,11 +94,13 @@ genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basi
 Alternatively, you can create a project *and a new database* from a prompt, using GenAI.
 > ***Don't*** do this if you are executing the basic Product Tour.
 
-There are 3 ways to use GenAI:
+There are several ways to use GenAI:
 
 * WebGenAI - in the Browser, via pubic website - [click here](https://apilogicserver.github.io/Docs/WebGenAI), or
-* GenAI -         in the Browser, via docker - [click here](https://apilogicserver.github.io/Docs/WebGenAI-install), or 
+* WebGenAI - in the Browser, via docker - [click here](https://apilogicserver.github.io/Docs/WebGenAI-install), or 
 * GenAI CLI - [click here](https://apilogicserver.github.io/Docs/WebGenAI-CLI) 
+
+* Copilot - `Create a system called basic_demo_copilot from the prompt: samples/prompts/genai_demo.prompt`
 
 To use the GenAI CLI:
 

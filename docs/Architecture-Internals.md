@@ -582,7 +582,32 @@ This will upload to Pypi.  You of course need credentials.
 
 ## Get Docs working
 
-The install procedure also installs `Org-ApiLogicServer/Docs`.  Follow it's readme.
+The install procedure also installs `Org-ApiLogicServer/Docs`.  Follow it's readme.  It's built on mkdocs.
+
+&nbsp;
+
+### Docs used in Project Creation
+
+Copy readme files (and remove !!!) from:
+
+* github (to acquire more recent version since release)
+
+* dev docs, iff exists (gold version in docs, not prototypes).
+
+Used by Sample-AI; Sample-Integration (nw-), Tutorial, Tutorial-3 (3 projects), Sample-Basic-Demo; Manager
+
+`api_logic_server_cli/create_from_model/api_logic_server_utils.py#copy_md()` provides:
+
+* Removing !!! -- special handling:
+
+    * Text remains indented (becomes block quote - renders like code)
+    * Except if 1st line has ## - then remove indents to retain sections
+
+
+* Image references are made absolute (to github).
+* Doc Links are made absolute.
+
+
 
 &nbsp;
 
