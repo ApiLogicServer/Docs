@@ -81,6 +81,8 @@ Copilot uses MCP discovery (`.well-known`) to construct and issue this JSON:API 
 curl -X PATCH http://localhost:5656/api/Item/2   -H "Content-Type: application/vnd.api+json"   -d '{"data": {"type": "Item", "id": "2", "attributes": {"quantity": 100}}}'
 ```
 
+> Tech Note: this is an *MCP-discovered API* — not yet a registered VS Code MCP tool; discovery alone enables this interaction.
+
 ### ⚡ Automatic Cascade of Logic
 | Trigger | Effect |
 |----------|---------|
