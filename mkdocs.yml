@@ -100,6 +100,7 @@ nav:
     - "Integration Mapping": Integration-Map.md
     - "Kafka Messaging": Integration-Kafka.md
     - "MCP Integration": Integration-MCP.md
+    - "MCP AI Example": Integration-MCP-AI-Example.md
     - "OpenAI Function Integration": Integration-OpenAI-Function.md
     - "ChatBot Integration": Integration-chatbot.md
   - IDE - Customize, Manage:
