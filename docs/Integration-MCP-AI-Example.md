@@ -4,29 +4,54 @@
     
     To create this system:
 
-    1. Create a Project from an existing database
-    2. Use Copliot to add Natural Language Logic
+    1. Use Copilot to create a system from an existing database
+    2. Use Copilot to add Natural Language Logic
     3. Use Copilot to test the MCP/API-enabled logic
 
 
 ![Declarative logic in action](images/integration/mcp/Integration-MCP-AI-Example.png)
 
-## 🥇 Step 1 – Create a Project from an Existing Database
-Use the **GenAI-Logic CLI** to instantly create an application — complete with Admin App, API, and MCP discovery.
+## 🥇 Step 1 – Use Copilot to Create a Project from an Existing Database
+In the GenAI-Logic [Manager](Manager.md), use Copilot to create an application — complete with Admin App, API, and MCP discovery.
 ```bash
-genai-logic create --project_name=basic_demo --db_url=sqlite:///sample_ai.sqlite
+create a system named basic_demo from samples/dbs/basic_demo.sqlite
 ```
 This command:
 
 * Creates a new project folder (`basic_demo`)
 * Generates a full **JSON:API** with auto-discovered tables (Customer, Order, Item, Product)
+
+    * This sqlite sample database (Customers, Orders, Items and Products) is provided when you install GenAI-Logic
+
 * Builds a **React Admin App** for instant data access
 * Exposes **MCP metadata** at `/.well-known/mcp.json`, enabling Copilot or ChatGPT to automatically discover the schema and usage patterns  
+* Opens a new instance of VSCode on the project
+* In the new project, use Copilot:
+
+```
+start the server
+```
+
+You can explore the admin app and the API.
+
+> Before proceeding, stop the server
+
 ✅ **Result:** a working three-tier system in under a minute — *database → API → web app → MCP discovery*.
 
 ## 🧠 Step 2 – Use Copilot to Add Business Logic
 Copilot reads the MCP schema and responds to a natural-language instruction such as:
-> “Add a credit-limit rule: a customer’s balance must not exceed their credit limit.”
+
+```
+Use case: Check Credit    
+    1. The Customer's balance is less than the credit limit
+    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+    3. The Order's amount_total is the sum of the Item amount
+    4. The Item amount is the quantity * unit_price
+    5. The Item unit_price is copied from the Product unit_price
+
+Use case: App Integration
+    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+```
 
 It then inserts the following rules into `logic/declare_logic.py`:
 ```python
@@ -45,11 +70,13 @@ These **five declarative lines** replace hundreds of lines of procedural code, a
 
 All enforced by the **LogicBank** engine during each API transaction.
 
+> AI can get a bit frisky - e.g., it might import objects not used.  Don't take any guff - make it fix any errors - it's quite good at that.
+
 ## 🧪 Step 3 – Use Copilot to Test the API and Logic
 Copilot can now test the new rule using the MCP-discovered API — no manual coding required.
-> “Update Alice’s order so that the quantity of item 2 is 100.”
+> “Update Alice’s first order so that the quantity for the Widget is 100.”
 
-Copilot constructs and issues this JSON:API request:
+Copilot uses MCP discovery (`.well-known`) to construct and issue this JSON:API request:
 ```bash
 curl -X PATCH http://localhost:5656/api/Item/2   -H "Content-Type: application/vnd.api+json"   -d '{"data": {"type": "Item", "id": "2", "attributes": {"quantity": 100}}}'
 ```
