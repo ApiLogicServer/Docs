@@ -8,8 +8,29 @@
     2. Use Copilot to add Natural Language Logic
     3. Use Copilot to test the MCP/API-enabled logic
 
+&nbsp;
+
+## ⚡ Copilot + Logic in Action
+
+💡 **What you’re about to see**
+
+Copilot just acted like a real developer:
+> “Set ALFKI’s credit limit to 10.”
+
+Our logic engine caught it instantly —
+> 🛡️ *Business Logic Constraint Triggered — balance exceeds credit limit.*
+
+No scripts, no procedural code — just declarative rules protecting the data.
+
 
 ![Declarative logic in action](images/integration/mcp/Integration-MCP-AI-Example.png)
+
+
+Now, here’s how that happens in three short steps.  Total time under 5 minutes.
+
+---
+
+&nbsp;
 
 ## 🥇 Step 1 – Use Copilot to Create a Project from an Existing Database
 In the GenAI-Logic [Manager](Manager.md), use Copilot to create an application — complete with Admin App, API, and MCP discovery.
