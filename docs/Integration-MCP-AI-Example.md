@@ -1,34 +1,23 @@
-!!! pied-piper ":bulb: TL;DR - MCP via AI"
-
-    This tutorial shows how **Copilot**, using the **Model Context Protocol (MCP)**, can discover and interact with your **GenAI-Logic (aka API Logic Server)** projects.
+!!! pied-piper ":bulb: **Copilot** + **MCP** creates, discovers and interacts with **GenAI-Logic** projects."
     
-    To create this system:
+    **Prompt 1 (Create System):**
 
-    1. Use Copilot to create a system from an existing database
-    2. Use Copilot to add Natural Language Logic
-    3. Use Copilot to test the MCP/API-enabled logic
+    *Create a system named basic_demo from samples/dbs/basic_demo.sqlite*
 
-&nbsp;
+    **Prompt 2 (Add Logic):**
 
-## ⚡ Copilot + Logic in Action
+    *Use case: Check Credit:*<br>
+    *1. Customer's balance is less than credit limit*<br>
+    *2. Customer's balance is sum of Order amount_total where date_shipped is null*<br>
+    *3. Order's amount_total is sum of Item amount*<br>
+    *4. Item amount is quantity * unit_price*<br>
+    *5. Item unit_price is copied from Product unit_price*<br>
 
-💡 **What you’re about to see**
+    **Prompt 3 (Test):**. 🛡️ *Constraint blocks bad data*
 
-Copilot just acted like a real developer:
-> “Set ALFKI’s credit limit to 10.”
-
-Our logic engine caught it instantly —
-> 🛡️ *Business Logic Constraint Triggered — balance exceeds credit limit.*
-
-No scripts, no procedural code — just declarative rules protecting the data.
-
+    *Update Alice's first order so that the quantity for the Widget is 100.*
 
 ![Declarative logic in action](images/integration/mcp/Integration-MCP-AI-Example.png)
-
-
-Now, here’s how that happens in three short steps.  Total time under 5 minutes.
-
----
 
 &nbsp;
 
