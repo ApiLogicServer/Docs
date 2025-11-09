@@ -1,3 +1,16 @@
+---
+title: MCP AI Example
+notes: gold dource is docs
+do_process_code_block_titles: True
+version: 0.1, for readme 11.09/25
+---
+<style>
+  -typeset h1,
+  -content__button {
+    display: none;
+  }
+</style>
+
 !!! pied-piper ":bulb: **Copilot** uses **MCP discovery** to create, interact with, and enforce logic in **GenAI-Logic projects**"
     ## 
     **Prompt 1 (Create System):**
@@ -19,6 +32,8 @@
 &nbsp;
 
 ![Declarative logic in action](images/integration/mcp/Integration-MCP-AI-Example.png)
+
+The diagram above shows the final step of a complete system, built and tested by Copilot with no manual code edits.
 
 &nbsp;
 
