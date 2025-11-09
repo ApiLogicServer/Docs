@@ -1,148 +1,232 @@
+---
 title: Logic: Alternative GenAI Approaches
 narrative: NL fork -> (Procedural vs Declarative+Engine); run A/B experiment; analyze long-term sustainability (correctness, maintenance, auditability)
-version: 0.3 11/9/25
+version: 0.7 11/9/25
+tone: professional, analytical (light on iconography)
 tags: [genai, declarative, business-logic, architecture, experiment]
 status: draft
+---
 
-# Declarative GenAI for Business Logic: Architecture & Experiment
+# Logic: GenAI Approaches
 
-Natural language (NL) is now a credible, fast way to express intent. That creates an immediate architectural fork: after NL, do we (a) generate procedural code directly, trusting rapid GenAI improvement, or (b) generate a compact, declarative DSL that a runtime engine executes with formal dependency management? 
+This page compares two architectural approaches for implementing business logic from natural-language (NL) requirements. The focus is analytical: how each approach handles dependency paths, change propagation, maintenance, and correctness.  
+A detailed procedural–vs–declarative narrative is also available here:
 
-Direct code generation is a reasonable choice—models are improving quickly. But the choice materially affects correctness (missing dependency paths), maintainability (where to safely insert change), auditability, and resilience to continuing model evolution. So we tested both approaches on a realistic credit / pricing scenario, then evaluated the results in the light of current literature.
-
-This page explains why—using a real experiment, a visual comparison, and the long‑term architectural implications.
-
-## ⚡ TL;DR (Architecture First)
-Natural language is the new starting point, and the architectural choice matters: **NL → procedural code** or **NL → DSL rules → engine**. We tested both: **5 rules (0 defects)** vs **≈220 procedural lines (2 dependency‑path defects)**. The rules engine derives and enforces the complete dependency graph inside each transaction; procedural generation lacks a formal mechanism to prove path completeness, even as models improve. Result: deterministic, auditable logic that survives maintenance cycles, with bespoke code confined to controlled extension points.
-
-## 1. Alternatives (Architecture Setup Only)
-
-### Procedural GenAI (Direct Code Path)
-```
-NL Prompt --> LLM Code Generation --> Handlers & Recalcs --> Enumerate Change Paths --> Variable Correctness
-```
-
-### Declarative GenAI (Rules + Engine Path)
-```
-NL Prompt --> LLM Rule Generation --> Rules Engine (derive graph, order, deltas, old/new parents) --> Deterministic Enforcement
-```
-
-_Evaluation and metrics follow only after the experiment below._
-
-## 2. A/B Experiment (Human + AI Narrative + Evaluation)
-External comparison: <https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md>
-
-### What Happened Here {#ai-narrative}
-
-!!! quote "AI Narrative – What Happened Here"
-	We asked **GitHub Copilot** to generate business logic code from natural language requirements.
-
-	It generated **220 lines of procedural code**.
-
-	We asked: **"What if the order's customer_id changes?"**
-	Copilot found a critical bug and fixed it.
-
-	We asked: **"What if the item's product_id changes?"**
-	Copilot found another critical bug.
-
-	Then, **unprompted**, Copilot wrote a comprehensive analysis explaining why procedural code—even AI-generated—cannot be correct for business logic.
-
-	**What follows is that analysis, enhanced by Claude Sonnet 4.5 to make the structural impossibility explicit.**
-
-| Approach | Lines | Defects | Defect Types |
-|----------|-------|---------|--------------|
-| Procedural (Copilot) | ≈220 | 2 | Missing old-parent decrement; missing unit_price re-copy on product change |
-| Declarative (Rules) | 5 | 0 | — |
-
-**Observed procedural omissions:**
-1. `Order.customer_id` reassignment failed to decrement the old customer balance.
-2. `Item.product_id` change failed to re-copy `unit_price` from the new Product.
-
-**Why they occur:** Enumerating change paths (both directions of FK moves + transitive recalcs) is combinatorial; local code generation offers no completeness proof.
-
-### Visual Comparison (Post-Experiment)
-
-![Figure 3 – Declarative vs Procedural Logic Comparison](images/logic/declarative-vs-procedural-comparison.png)
-
-#### Qualitative Comparison
-
-| Aspect | NL→Code (Procedural) | NL→DSL→Engine (Declarative) |
-|--------|----------------------|-----------------------------|
-| Artifact Size | ≈220 lines | 5 rules |
-| Defects Observed | 2 dependency-path omissions | 0 |
-| Path Completeness | Unverifiable (enumerative) | Guaranteed for declared rules |
-| Maintenance Focus | Trace handlers & side-effects | Adjust/add rule intent |
-| Hallucination Surface | Large (many branches) | Minimal (fixed rule API) |
-| Parent Reassignment | Manual dual adjustments | Automatic old/new balance updates |
-| Product Substitution | Manual re-copy logic | Automatic via copy rule cascade |
-| Performance | Often full recompute | Delta (incremental) updates |
-| Auditability | Code review diff | Rule list + execution trace |
+**Full procedural/declarative comparison:**  
+https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md#what-happened-here
 
 ---
 
-## 3. Long-Term Analysis
+## Sample NL Logic
 
-### 3.1 Why Model Improvement Alone Is Insufficient
-Progress in models enhances *local* pattern generation; it does **not** supply a formal dependency execution framework. The distinction is architectural:
-- Procedural: correctness depends on enumerating every change path explicitly (and keeping them all aligned during maintenance).
-- Declarative: correctness is enforced because the engine derives and executes the dependency graph for all declared rule dependencies each transaction.
+Business Rules:
 
-Supporting indicators:
-- Multi-step reasoning challenges (see arXiv citation in the comparison doc) highlight state tracking fragility.
-- Industry adoption of stronger typing (e.g., Octoverse’s TypeScript growth) signals a trend toward structural correctness aids as AI-generated code volume increases.
+1. Customer's balance is less than credit limit  
+2. Customer's balance is sum of Order amount_total where date_shipped is null  
+3. Order's amount_total is sum of Item amount  
+4. Item amount is quantity × unit_price  
+5. Item unit_price is copied from Product unit_price  
 
-### 3.2 Enduring Architecture vs. Short-Term Fix
+---
 
-- Architecture vs. capability: Better models reduce local errors, but don’t turn enumerative code into a dependency execution framework. Engines provide the missing structure (graph derivation, ordering, old/new parent handling, constraints).
-- Division of labor (future‑proof): Let AI translate NL → rules; let the engine execute semantics deterministically. As models improve, they write better rules—not replace the need for enforcement.
-- Proven pattern, evolving engine: The DSL + engine approach has worked for decades at scale. Engines can keep advancing (pruning, deltas, batching) without changing rules you wrote today.
-- Governance and audit: Enterprises need explainable artifacts and guarantees. Centralized rules + traceable execution satisfy compliance in ways scattered procedural handlers cannot.
-- Always some bespoke code: Residual events/integration stay small and testable. The critical correctness surface lives in rules where the engine guarantees coverage.
+# 1. Alternatives
 
-Mini‑map (now → later):
+## Procedural GenAI
+
+```mermaid
+flowchart LR
+    A[NL Prompt] --> B[Executable Code]
 ```
-Today:   NL  -->  Declarative Rules  -->  Engine (guarantees)
-Future:  Better NL → Better Rules    -->  Same Guarantees (engine)
+
+In this approach, the model emits procedural logic (see example: `credit_service.py`). The generated code must:
+
+- Implement handlers  
+- Manage dependency paths  
+- Handle old/new parent adjustments  
+- Recompute related values  
+- Maintain correctness across maintenance cycles  
+
+Because the dependency structure is implicit in code, completeness depends on enumerating every change scenario. There is no mechanism to verify that all relevant parent–child combinations have been anticipated.
+
+---
+
+## Declarative GenAI
+
+```mermaid
+flowchart LR
+    A[NL Prompt] --> B[Declarative Rules] --> C[Rules Engine Execution]
 ```
-Implication: DSL + engine is not a stopgap—it’s the durable abstraction boundary that benefits more as GenAI improves.
 
-### 3.3 Maintenance & Hallucination Mitigation
-Two universal maintenance questions:
+In this approach, the model generates a compact declarative ruleset.  
+Execution correctness follows from declared dependencies, not enumerated branches.
 
-1. *What does this do now?* → Read 5 rules vs trace 220 lines.
-2. *Where do I add/change logic safely?* → Add/modify a rule; engine re-derives order & affected parents.
+The engine:
 
-Hallucinations shrink with intent-level artifacts: the model emits only rule statements; the engine provides execution semantics. Generated procedural code creates a broad surface for invented branches and edge-case gaps.
+- Derives the dependency graph  
+- Computes ordering  
+- Applies deltas  
+- Manages old/new parent updates  
+- Enforces constraints  
 
-### 3.4 Pragmatic Boundary: NL Handles Most, There’s Always “Something”
-Natural language + rules cover the correctness core (dependency graph, constraints). There is always residual bespoke logic (events, integration APIs, messaging). Keep it contained:
+The declarative ruleset provides a clear and centralized description of the intended behavior, improving transparency for both developers and business stakeholders.
 
-| Layer | Role | Determinism Impact |
-|-------|------|--------------------|
-| Declarative Rules | Sums, formulas, copies, constraints | Engine guarantees ordering & old/new parent adjustments inside the transaction |
-| Events / Custom APIs | Integration & side-effects | Localized; cannot bypass rule enforcement (constraints still fire) |
-| Regeneration | Re-run prompts to refine rule set | Discovery preserves extensions; no overwrite of bespoke code |
+---
 
-Implications:
+# 2. Experiment
 
-- Correctness lives in rules, not prompts alone.
-- Small code surface minimizes hallucination / drift.
-- Maintenance cycle: change requirement → adjust a rule → engine re-derives graph.
+We asked GitHub Copilot to generate logic for a multi‑table credit/pricing requirement. It produced ~220 lines of code. When questioned about specific change scenarios, it found two defects and generated fixes.
 
-## Appendix: References & Artifacts
-| Artifact | Purpose | Location |
-|---------|---------|----------|
-| Declarative Rules (5) | Intent specification | `basic_demo/logic/logic_discovery/check_credit.py` |
-| Procedural Sample | Service-style AI code | `basic_demo/logic/procedural/credit_service.py` |
-| Full Comparison | Detailed experiment write-up | GitHub external link above |
-| MCP Demo | Repro (Copilot → rules → constraint) | `Integration-MCP-AI-Example.md` |
-| Deterministic Logic Rationale | Probabilistic vs deterministic | `Tech-Prob-Deterministic/` doc |
+### Declarative Implementation (5 Rules)
 
-## Bottom Line
-AI alone generates probabilistic procedural code with unverifiable path coverage. AI + Declarative Rules + Engine generates deterministic, auditable logic with guaranteed enforcement of declared business rules—and confines bespoke code to safe extension points.
+```python
+Rule.constraint(
+    validate=models.Customer,
+    as_condition=lambda row:
+        row.balance is None or
+        row.credit_limit is None or
+        row.balance <= row.credit_limit,
+    error_msg="Customer balance ({row.balance}) exceeds credit limit ({row.credit_limit})"
+)
 
-This is the architectural foundation behind enterprise‑grade Vibe automation:
+Rule.sum(
+    derive=models.Customer.balance,
+    as_sum_of=models.Order.amount_total,
+    where=lambda row: row.date_shipped is None
+)
 
-- Natural language for intent
-- Declarative rules for correctness
-- Engine for determinism
+Rule.sum(
+    derive=models.Order.amount_total,
+    as_sum_of=models.Item.amount
+)
+
+Rule.formula(
+    derive=models.Item.amount,
+    as_expression=lambda row: row.quantity * row.unit_price
+)
+
+Rule.copy(
+    derive=models.Item.unit_price,
+    from_parent=models.Product.unit_price
+)
+```
+
+---
+
+### What happened in the procedural run (Balanced Version)
+
+When Copilot generated ~220 lines of procedural logic for the five NL rules, the code appeared reasonable at first glance. To evaluate correctness, we asked about routine change scenarios.
+
+- **Reassigning an Order to a different Customer**  
+  Copilot reviewed its own output and found a defect: it had not decremented the balance of the *old* Customer. It produced a corrective patch.
+
+- **Reassigning an Item to a different Product**  
+  A second defect surfaced: the code did not re-copy the Product’s unit_price into the Item after reassignment. Copilot produced another fix.
+
+After generating both patches, Copilot added an unsolicited explanation:
+
+> Determining all the dependency paths—especially old/new parent combinations—is difficult.  
+> A declarative rules engine handles these dependencies more reliably.
+
+These issues appeared immediately when we asked about ordinary update scenarios. The defects were not edge‑case failures; they illustrate the difficulty of anticipating and enumerating all dependency paths in a procedural implementation.
+
+A detailed, step‑by‑step version of this comparison is available here:  
+https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md#what-happened-here
+
+---
+
+### Summary
+
+| Approach | Lines | Defects | Notes |
+|---------|-------|---------|-------|
+| Procedural (Copilot) | ≈220 | 2 | Missed old‑parent adjustment; missed price re‑copy |
+| Declarative (Rules) | 5 | 0 | Engine derives all paths |
+
+Procedural defects arose because enumerating dependency paths (including both directions of FK changes and cascading recalculations) is combinatorial. A declarative engine handles these paths automatically.
+
+---
+
+# 3. Comparison
+
+## Qualitative
+
+| Aspect | Procedural | Declarative |
+|--------|------------|-------------|
+| Artifact size | Large (hundreds of lines) | Small (few rules) |
+| Path completeness | Unverifiable | Derived from declared dependencies |
+| Maintenance | Trace handlers across code | Modify centralized rules |
+| Old/new parent handling | Manual | Automatic |
+| Cascading recalcs | Manual | Engine‑managed |
+| Business transparency | Logic spread across functions | Rules readable by business users |
+| Hallucination exposure | High: behavior follows generated code | Lower: model generates rules; engine governs semantics |
+| Incremental updates | Often recomputes full aggregates | Uses deltas based on dependency changes |
+
+### Figure 3 – Declarative vs Procedural Logic Comparison
+
+![Figure 3 – Declarative vs Procedural Logic Comparison](images/logic/declarative-vs-procedural-comparison.png)
+
+---
+
+# 4. Analysis
+
+## Model Improvement
+
+Larger or better models improve pattern generation but do not provide dependency execution semantics. Procedural correctness still depends on anticipating and enumerating all relevant update paths.  
+Improving prompts does not change this structural limitation.
+
+Declarative logic reduces hallucination exposure by narrowing the model’s role to generating rule intent; execution semantics remain deterministic within the engine.
+
+---
+
+## Architectural Boundary
+
+Declarative logic separates intent (rules) from execution (engine). Rules remain stable; engine improvements accumulate without requiring rule changes.
+
+In prior enterprise systems (e.g., Versata deployments), replacing procedural aggregate maintenance with declarative, delta‑based logic produced substantial real‑world performance improvements. One system reduced transaction time from roughly three minutes to a few seconds because only affected values were recalculated.  
+Performance varies by workload, but incremental evaluation can materially reduce processing time.
+
+Declarative rules also make application logic more transparent: the logic can be reviewed directly by developers and business users, supporting validation and auditability.
+
+While no approach guarantees correctness in every possible scenario, declarative rules provide a clearer basis for reasoning about update propagation than procedural code generated by a model.
+
+---
+
+## Maintenance
+
+Two critical questions become easier to answer:
+
+- *What does this do now?*  
+  – Declarative rules provide a single, centralized description of behavior.
+
+- *Where do I make a change safely?*  
+  – Updating or adding rules avoids tracing procedural side effects.
+
+---
+
+## Residual Code
+
+Custom logic (events, integrations) will always exist. Declarative rules ensure the correctness‑critical core remains centralized and deterministic.
+
+---
+
+# 5. Artifacts
+
+| Item | Purpose | Location |
+|------|----------|----------|
+| Declarative rules | Intent specification | `basic_demo/logic/logic_discovery/check_credit.py` |
+| Procedural sample | Generated code | `basic_demo/logic/procedural/credit_service.py` |
+| Full comparison | Experiment notes | GitHub (link above) |
+| MCP demo | Copilot → rules → constraint | `Integration-MCP-AI-Example.md` |
+| Deterministic logic rationale | Background | `Tech-Prob-Deterministic/` |
+
+---
+
+# Summary
+
+Procedural GenAI requires explicit enumeration of dependency paths. This enumeration is error‑prone, difficult to verify, and sensitive to omissions.
+
+Declarative GenAI expresses logic concisely as rules; the engine derives and enforces required paths deterministically.  
+This reduces hallucination impact, improves maintainability and transparency, and can improve performance by applying incremental updates rather than full recomputes.
+
+Natural language provides intent.  
+Declarative rules capture logic.  
+The engine ensures consistent execution.
