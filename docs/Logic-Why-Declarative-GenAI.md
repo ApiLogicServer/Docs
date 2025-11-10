@@ -9,11 +9,40 @@ status: draft
 
 # Logic: GenAI Approaches
 
-This page compares two architectural approaches for implementing business logic from natural-language (NL) requirements. The focus is analytical: how each approach handles dependency paths, change propagation, maintenance, and correctness.  
-A detailed procedural–vs–declarative narrative is also available here:
+This page compares two architectural approaches for implementing business logic from natural-language (NL) requirements. The focus is analytical: how each approach handles dependency paths, change propagation, maintenance, and correctness.
 
-**Full procedural/declarative comparison:**  
-https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md#what-happened-here
+
+!!! abstract "30 second summary"
+
+    GenAI models can generate procedural code, but maintaining correct multi-table business logic as systems evolve requires anticipating all dependency paths.
+
+    The architectural fork is straightforward:
+
+    1. Procedural GenAI: generate procedural code that must enumerate these paths, or
+
+    2. Declarative GenAI: generate declarative rules that a deterministic engine evaluates using an explicit dependency graph.
+
+    *In practice, anticipating all paths is difficult to do reliably in procedural form.*
+
+## Why This Matters (for enterprises)
+
+- Incorrect invoices and pricing when rollups are missed
+- Wrong credit approvals when balances don’t fully recompute
+- Silent gaps when foreign keys change (old/new parent updates)
+- Local patches multiply; drift and regressions increase
+- Compliance/auditability degrade; maintenance costs rise
+
+### Experiment at a Glance
+
+| | Declarative (Rules) | Procedural (Generated Code) |
+|---|---:|---:|
+| Size | 5 rules | ~220 lines |
+| Defects found | 0 | 2 |
+| Dependency coverage | Derived from declared dependencies | Missed old‑parent, missed price re‑copy |
+
+### How this powers the platform
+
+This architectural choice underpins Enterprise Vibe Automation: generating complete business systems (Database + API + Admin UI + Logic) in minutes, with logic that remains correct as the system evolves. See the tour: [Product Tour](Sample-Basic-Tour.md), and the [Admin App](Admin-Tour.md) and [API](API.md) details.
 
 ---
 
@@ -26,6 +55,21 @@ Business Rules:
 3. Order's amount_total is sum of Item amount  
 4. Item amount is quantity × unit_price  
 5. Item unit_price is copied from Product unit_price  
+
+---
+
+## Methodology
+
+1. Provide NL requirements (5 rules) to Copilot.
+2. Capture initial output (procedural code vs. declarative rules).
+3. Ask targeted questions about routine updates:
+  - Reassign Order to different Customer.
+  - Reassign Item to different Product.
+4. Observe defects reported by Copilot itself.
+5. Record fixes and categorize defect types (missed old‑parent decrement, missed attribute re‑copy).
+6. Compare size, defect count, and dependency coverage semantics.
+
+Rationale: Routine FK change scenarios expose whether dependency paths (old/new parent recalcs, child attribute propagation) were fully anticipated. They are not edge cases.
 
 ---
 
@@ -46,7 +90,7 @@ In this approach, the model emits procedural logic (see example: `credit_service
 - Recompute related values  
 - Maintain correctness across maintenance cycles  
 
-Because the dependency structure is implicit in code, completeness depends on enumerating every change scenario. There is no mechanism to verify that all relevant parent–child combinations have been anticipated.
+Because the dependency structure is implicit in code, completeness depends on enumerating every change scenario. Because the dependency structure is implicit in the code, it is difficult to verify that all relevant parent–child combinations have been anticipated.
 
 ---
 
@@ -74,9 +118,13 @@ The declarative ruleset provides a clear and centralized description of the inte
 
 # 2. Experiment
 
+We ran an A/B experiment: ask Copilot for logic from a natural‑language description, twice—once targeting procedural code and once targeting declarative rules. We then interrogated the generated procedural code for ordinary change scenarios (FK reassignments) to surface correctness gaps.
+
+## Results
+
 We asked GitHub Copilot to generate logic for a multi‑table credit/pricing requirement. It produced ~220 lines of code. When questioned about specific change scenarios, it found two defects and generated fixes.
 
-### Declarative Implementation (5 Rules)
+### Declarative GenAI (5 Rules)
 
 ```python
 Rule.constraint(
@@ -112,7 +160,7 @@ Rule.copy(
 
 ---
 
-### What happened in the procedural run (Balanced Version)
+### Procedural GenAI (220 lines)
 
 When Copilot generated ~220 lines of procedural logic for the five NL rules, the code appeared reasonable at first glance. To evaluate correctness, we asked about routine change scenarios.
 
@@ -127,10 +175,9 @@ After generating both patches, Copilot added an unsolicited explanation:
 > Determining all the dependency paths—especially old/new parent combinations—is difficult.  
 > A declarative rules engine handles these dependencies more reliably.
 
-These issues appeared immediately when we asked about ordinary update scenarios. The defects were not edge‑case failures; they illustrate the difficulty of anticipating and enumerating all dependency paths in a procedural implementation.
+These issues appeared immediately when we asked about ordinary update scenarios. These issues surfaced in routine scenarios, suggesting the difficulty of anticipating and enumerating all dependency paths in procedural implementations.
 
-A detailed, step‑by‑step version of this comparison is available here:  
-https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md#what-happened-here
+A detailed, step‑by‑step version of this comparison is available here: [What Happened Here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md#what-happened-here)
 
 ---
 
@@ -143,11 +190,9 @@ https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_
 
 Procedural defects arose because enumerating dependency paths (including both directions of FK changes and cascading recalculations) is combinatorial. A declarative engine handles these paths automatically.
 
----
+### Comparison
 
-# 3. Comparison
-
-## Qualitative
+#### Qualitative
 
 | Aspect | Procedural | Declarative |
 |--------|------------|-------------|
@@ -160,13 +205,21 @@ Procedural defects arose because enumerating dependency paths (including both di
 | Hallucination exposure | High: behavior follows generated code | Lower: model generates rules; engine governs semantics |
 | Incremental updates | Often recomputes full aggregates | Uses deltas based on dependency changes |
 
-### Figure 3 – Declarative vs Procedural Logic Comparison
+#### Visual Summary
 
 ![Figure 3 – Declarative vs Procedural Logic Comparison](images/logic/declarative-vs-procedural-comparison.png)
 
 ---
 
-# 4. Analysis
+## Business Logic Agent (foundation)
+
+This page explains the foundation for a Business Logic Agent: GenAI expresses intent as rules; the deterministic engine enforces dependencies, order, and constraints for every transaction. The agent orchestrates NL → rules, while the engine enforces dependency ordering, deltas, and constraints. For how this works with MCP, see [MCP Integration](Integration-MCP.md).
+
+---
+
+# 3. Analysis
+
+At this point the experiment suggests a clear advantage for Declarative GenAI. Given rapid AI evolution, we asked: is this advantage temporary (to be erased by larger models or better prompts), or is it inherent? Based on the experiment and prior deployments, this appears to be an architectural limitation rather than a temporary one. Model scale improves pattern generation but does not supply deterministic dependency execution. Enumerating all update paths in procedural code remains combinatorial; declarative rules paired with an engine externalize dependency semantics in a way that continues to hold as models advance.
 
 ## Model Improvement
 
@@ -208,7 +261,7 @@ Custom logic (events, integrations) will always exist. Declarative rules ensure 
 
 ---
 
-# 5. Artifacts
+# 4. Artifacts
 
 | Item | Purpose | Location |
 |------|----------|----------|
@@ -230,3 +283,12 @@ This reduces hallucination impact, improves maintainability and transparency, an
 Natural language provides intent.  
 Declarative rules capture logic.  
 The engine ensures consistent execution.
+
+---
+
+## See it live (next steps)
+
+- Walk through the end‑to‑end flow: [Product Tour](Sample-Basic-Tour.md)
+- Explore MCP automation: [MCP Integration](Integration-MCP.md)
+- Review the Admin App: [Admin App Tour](Admin-Tour.md)
+- Review the API: [Automatic Multi‑Table API](API.md)
