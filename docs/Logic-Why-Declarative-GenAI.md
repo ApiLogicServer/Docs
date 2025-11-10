@@ -71,7 +71,7 @@ Then we reviewed the generated code.
 
 ## Declarative GenAI: 5 rules
 
-```python title='Declarative DSL Code created from requirements'
+```python title='Declarative Rules DSL Code created from requirements'
 Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance <= row.credit_limit or row.balance is None or row.credit_limit is None ,
     error_msg="Customer balance ({row.balance}) exceeds credit limit ({row.credit_limit})")
 
@@ -252,16 +252,25 @@ Declarative rules ensure the correctness-critical core remains deterministic.
 
 # The Business Logic Agent
 
-This experiment highlights a fundamental point: natural-language generation alone is not enough for enterprise-grade logic. Procedural code produced by an LLM cannot guarantee complete dependency coverage, especially across old/new parent paths and multi-table propagation. Declarative rules, backed by a deterministic engine, avoid these omissions by deriving all affected paths every transaction.
+Declarative GenAI becomes practical when we separate what AI is good at from what engines are designed for.
 
-A **Business Logic Agent** provides this separation of responsibilities:
+1. **AI excels at NL → structured meaning.**  
+   Models are outstanding at translating natural-language requirements into concise declarative rules. This is a pattern-recognition task, well within current model strengths.
 
-- **AI extracts intent** — converting NL requirements into concise declarative rules.
-- **The engine provides semantics** — enforcing ordering, dependency propagation, delta updates, and constraints with deterministic correctness.
-- **Developers maintain clarity** — adjusting rules without tracing scattered procedural branches.
+2. **Dependency analysis lies outside model comfort zones — so engines must handle it.**  
+   Multi-table propagation, old/new parent adjustments, ordered constraint checking, and delta-based recomputation require deterministic execution semantics.  
+   This is not a limitation of AI so much as an architectural boundary: these responsibilities have always belonged to engines (DBMSes, workflow engines, rules engines), not generators.<br>
+   - For example, you expect an NL query to execute by *calling* a DBMS, not *creating* a DBMS.
 
-This NL → Rules → Engine pipeline is the architectural boundary that makes NL-driven automation reliable.  
-Declarative logic does not replace AI; it completes it — transforming probabilistic generation into deterministic, auditable execution.
+3. **Declarative rules sit exactly at this boundary.**  
+   AI generates the intent (the rules).  
+   The engine guarantees correctness (ordering, propagation, constraints, deltas).  
+   Developers adjust only the small portion that truly requires procedural code.
+
+This **NL → Rules DSL → Engine** pipeline is the Business Logic Agent:  
+> AI expresses meaning; the engine executes it with deterministic correctness.  
+> Declarative logic does not replace AI — it completes it.
+
 
 ---
 
