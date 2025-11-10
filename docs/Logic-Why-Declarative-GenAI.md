@@ -52,8 +52,7 @@ Execution correctness follows from implicit dependencies in declared logic, not 
 # 2. Experiment
 
 We ran an A/B experiment using Copilot to generate:
-
-- **Procedural code** (~220 lines)  
+Procedural code must attempt to enumerate the relevant change paths. Missing any path can create silent logic gaps (e.g., balance not updated).
 - **Declarative rules** (5 rules)  
 
 With the following sample:
@@ -68,30 +67,25 @@ With the following sample:
 
 Then we reviewed the generated code.
 
-
 ## Declarative GenAI: 5 rules
 
 ```python title='Declarative Rules DSL Code created from requirements'
-Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance <= row.credit_limit or row.balance is None or row.credit_limit is None ,
-    error_msg="Customer balance ({row.balance}) exceeds credit limit ({row.credit_limit})")
+In this experiment, the declarative version — just 5 rules — showed no omissions; the engine derived all required propagation paths automatically.
 
 Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total, where=lambda row: row.date_shipped is None)
 
-Rule.sum(derive=models.Order.amount_total, as_sum_of=models.Item.amount)
-
+The experiment highlights a significant architectural advantage for Declarative GenAI in this type of dependency management.
 Rule.formula(derive=models.Item.amount, as_expression=lambda row: row.quantity * row.unit_price)
 
 Rule.copy(derive=models.Item.unit_price, from_parent=models.Product.unit_price)
-```
-
+Even advanced LLMs cannot guarantee completeness of enumerated procedural paths — coverage can be tested but not proven. The difference is architectural:
 ---
 
-## Procedural GenAI (~220 lines, 2 bugs)
-
+ AI reduces typing cost, but it does not eliminate the engineering need to ensure multi‑table dependency coverage.
 We asked Copilot to implement the same NL logic procedurally.  
 The procedural version arrived confidently: about 220 lines that looked reasonable on first inspection.
 
-Then we tried two ordinary operations:
+Rules tend to remain stable, while engine improvements accumulate automatically.
 
 1. **Reassign Order → different Customer**  
    The new Customer’s balance increased, but the old Customer’s balance never decreased.
@@ -137,10 +131,8 @@ _Coverage_: path completeness cannot be proven; omissions surface only when exer
 
 ---
 
- 
 
 ![Figure 3 – Declarative vs Procedural Logic Comparison](images/logic/declarative-vs-procedural-comparison.png)
-
 
 ---
 
@@ -204,17 +196,28 @@ Declarative logic separates:
 
 Rules remain stable; engine improvements accumulate automatically.
 
-Real-world note: Versata deployments replacing procedural recalc logic with declarative delta-based logic reduced transaction time **from ~3 minutes to a few seconds**.
+> Real-world observation: In Versata deployments, switching from procedural recalculation to declarative delta-based rules produced significant performance improvements, including cases where multi-minute recalcs fell to seconds
 
-Declarative rules also provide transparent behavior for validation and audit.
+Rules express intent and remain stable; the deterministic engine executes them consistently and can improve performance without regenerating logic.
 
-### Common Questions (condensed)
+### Common Questions
 
-- **“AI can just regenerate the code.”** Regeneration does not validate coverage; missing dependency paths fail silently until a transaction exposes them.
-- **“We’ll add tests.”** Tests detect omissions; a rules engine prevents them by automatically deriving affected paths (no enumeration required).
-- **“Bigger models will learn this.”** Model scale improves pattern reproduction, not runtime old/new parent propagation semantics.
-- **“Our domain is small.”** Growth compounds relationships; refactors reopen latent gaps without a semantic engine.
-- **“We use hooks/ORM events already.”** Hooks still rely on manual enumeration of old/new parent adjustments — same failure mode.
+- **Why isn’t regeneration enough?**  
+  Regenerating procedural code doesn’t ensure all dependency paths are covered.  
+  Declarative rules avoid this by letting the engine derive paths automatically.
+
+- **Will larger models eventually fix this?**  
+  Bigger models improve intent interpretation, not deterministic propagation.  
+  Old/new parent handling is an execution concern, not a model capability.
+
+- **Can’t we just rely on tests?**  
+  Tests find gaps but cannot prove coverage across all relationship variants.  
+  A rules engine guarantees ordering, propagation, and constraint checks.
+
+- **Does this help real maintenance?**  
+  Yes. Rules capture intent in one place; the engine ensures correct execution.  
+  This keeps the change surface small even as domains evolve.
+
 
 ---
 
@@ -237,39 +240,101 @@ Declarative rules ensure the correctness-critical core remains deterministic.
 
 ---
 
-# Artifacts
+# The Business Logic Agent I
 
-| Item                         | Purpose                  | Location |
-|------------------------------|--------------------------|---------|
-| Declarative rules            | Intent specification     | `basic_demo/logic/logic_discovery/check_credit.py` |
-| Procedural sample            | Generated code           | `basic_demo/logic/procedural/credit_service.py` |
-| Full comparison              | Experiment notes         | GitHub link above |
-| MCP demo                     | Copilot → rules → constraint | `Integration-MCP-AI-Example.md` |
-| Deterministic logic rationale | Background               | `Tech-Prob-Deterministic/` |
+Enterprise systems require *both* probabilistic reasoning (AI) and deterministic execution (engines).  
+AI is outstanding at interpreting intent; engines guarantee correctness.
+
+Microsoft expresses this directly.  
+As **Charles Lamanna** (CVP, Business & Industry Copilot) put it:
+
+> “Sometimes customers don’t want the model to freestyle.  
+> They want hard-coded business rules.”  
+> — VentureBeat, March 26, 2025
+
+That is the hybrid every enterprise asks for:
+
+- **Probabilistic** → understand meaning  
+- **Deterministic** → enforce behavior  
+
+This is not a model-quality issue.  
+It’s an **architectural boundary**:
+
+- Models generate *rules* (intent)  
+- Engines execute *logic* (correctness)
+
+Just as an NL request should *call* a DBMS — not *build* one —  
+NL business logic should call a rules engine, not emit procedural dependency code.
+
+The NL → Rules → Engine pipeline is the **Business Logic Agent**:
+
+> **AI expresses meaning; the engine guarantees correctness.**  
+>  
+> Declarative logic doesn’t replace AI — it completes it.
+
+
+# The Business Logic Agent II
+
+Declarative GenAI becomes practical when we separate **what AI is good at** from **what engines are designed for**.
+
+**1. AI is probabilistic — excellent at NL → structured meaning**
+
+Large language models excel at interpreting requirements and expressing them as **concise declarative rules**.  
+This is a pattern-recognition task — exactly where probabilistic systems shine.
+
+This aligns with Microsoft’s current agent strategy.  
+As **Charles Lamanna** (Microsoft CVP, Business & Industry Copilot) explained:
+
+> “Sometimes customers don’t want the model to freestyle.  
+> They don’t want the AI to make its own decisions.  
+> **They want to have hard-coded business rules.**”  
+> — VentureBeat interview, March 26, 2025
+
+Lamanna describes the enterprise need for **deterministic business logic** alongside flexible AI reasoning — the exact hybrid architecture implemented here.
 
 ---
 
+**2. Deterministic logic lies outside model comfort zones — so engines must handle it**
 
-# The Business Logic Agent
+Multi-table propagation, old/new parent adjustments, ordered constraint checking, and delta-based recomputation require **deterministic execution semantics**, not probabilistic generation.
 
-Declarative GenAI becomes practical when we separate what AI is good at from what engines are designed for.
+This is not a limitation of current AI.  
+It is an **architectural boundary**:
 
-1. **AI excels at NL → structured meaning.**  
-   Models are outstanding at translating natural-language requirements into concise declarative rules. This is a pattern-recognition task, well within current model strengths.
+- **Models generate intent**  
+- **Engines guarantee correctness**
 
-2. **Dependency analysis lies outside model comfort zones — so engines must handle it.**  
-   Multi-table propagation, old/new parent adjustments, ordered constraint checking, and delta-based recomputation require deterministic execution semantics.  
-   This is not a limitation of AI so much as an architectural boundary: these responsibilities have always belonged to engines (DBMSes, workflow engines, rules engines), not generators.<br>
-   - For example, you expect an NL query to execute by *calling* a DBMS, not *creating* a DBMS.
+Just as you expect a natural-language query to **call a DBMS**, not **create a DBMS**,  
+you expect NL business logic to **call a rules engine**, not emit procedural dependency code.
 
-3. **Declarative rules sit exactly at this boundary.**  
-   AI generates the intent (the rules).  
-   The engine guarantees correctness (ordering, propagation, constraints, deltas).  
-   Developers adjust only the small portion that truly requires procedural code.
+Even advanced models cannot “get better” at enumerating all dependency paths — procedural coverage cannot be proven, only tested.  
+Engines, by contrast, derive and enforce full propagation paths automatically.
 
-This **NL → Rules DSL → Engine** pipeline is the Business Logic Agent:  
-> AI expresses meaning; the engine executes it with deterministic correctness.  
-> Declarative logic does not replace AI — it completes it.
+---
+
+**3. Declarative rules sit exactly at this boundary**
+
+- AI generates the rules (probabilistic → intent)  
+- The engine evaluates and enforces them (deterministic → correctness)
+
+This forms the hybrid execution model enterprises now require:
+
+- **Probabilistic** → interpret meaning  
+- **Deterministic** → enforce behavior  
+
+This is also the model Microsoft now advocates with its agent flows:  
+**deterministic business rules + flexible AI capabilities** (Lamanna, Microsoft CVP).
+
+---
+
+**4. The NL → Rules → Engine pipeline *is* the Business Logic Agent**
+
+**AI expresses meaning; the engine executes it with guaranteed correctness.**
+
+Declarative logic does not replace AI — it completes it.  
+It converts probabilistic generation into deterministic, auditable, multi-table system behavior.
+
+
 
 
 ---
@@ -296,7 +361,19 @@ Declarative logic doesn’t compete with AI — it completes it. It converts pro
 
 ---
 
-# See it live (next steps)
+# Appendix 1: Artifacts
+
+| Item                         | Purpose                  | Location |
+|------------------------------|--------------------------|---------|
+| Declarative rules            | Intent specification     | `basic_demo/logic/logic_discovery/check_credit.py` |
+| Procedural sample            | Generated code           | `basic_demo/logic/procedural/credit_service.py` |
+| Full comparison              | Experiment notes         | GitHub link above |
+| MCP demo                     | Copilot → rules → constraint | `Integration-MCP-AI-Example.md` |
+| Deterministic logic rationale | Background               | `Tech-Prob-Deterministic/` |
+
+---
+
+# Appendix 2: See it live (next steps)
 
 - **[Product Tour](Sample-Basic-Tour.md)**  
 - **[MCP Integration](Integration-MCP.md)**  
