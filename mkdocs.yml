@@ -233,6 +233,7 @@ markdown_extensions:
   - footnotes
   - md_in_html
   - sane_lists
+#  - mermaid2
   - admonition
   - pymdownx.emoji:
       title: "long"
@@ -253,3 +254,8 @@ markdown_extensions:
  
 extra_css:
   - stylesheets/extra.css
+  
+extra_javascript:
+  - https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js
+  - assets/javascripts/mermaid-init.js
+  - https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js
