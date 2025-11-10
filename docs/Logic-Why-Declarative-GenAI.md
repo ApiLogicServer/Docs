@@ -173,7 +173,13 @@ Even a perfect LLM cannot prove completeness of enumerated procedural paths. The
 ---
 ## Maintenance Reality
 
-Even with AI generation, systems accumulate changes: new attributes, integration hooks, compliance checks, and performance tweaks. Because something always changes, developers must safely understand and extend existing logic.
+A common misconception is that future maintenance simply means updating the NL description and regenerating everything. That assumes all system behavior can be expressed declaratively. In practice, **there is always some portion of application behavior that requires hand-coded logic** — integrations, compliance checks, side effects, performance tuning, and domain-specific edge cases.
+
+These behaviors cannot be safely regenerated from NL because they depend on operational context (APIs, security, timing, retries, idempotency, compensation, external state). Regeneration risks overwriting patches and breaking local adaptations.
+
+Because some behavior must always live in code, developers must understand and safely extend the existing system. Large procedural artifacts increase the reasoning surface and create drift risk; declarative rules externalize business intent and confine complexity to a small, stable surface. The engine guarantees dependency propagation, while code handles the unavoidable parts that NL cannot describe.
+
+Even with AI generation, systems accumulate changes: new attributes, integration hooks, compliance checks, and performance tweaks. Because something always changes, *developers must safely understand and extend existing logic.*
 
 Observed in this experiment:
 
@@ -212,15 +218,15 @@ Declarative rules also provide transparent behavior for validation and audit.
 
 ---
 
-## Maintenance
+## Making Changes
 
 Key questions become easier:
 
 - **What does this do now?**  
-  Rules provide a single, centralized description.
+  Rules provide a single, centralized description.  Procedural code is more like an archeaological expedition.
 
 - **Where do I make a change?**  
-  Update or add rules without tracing scattered procedural effects.
+  Update or add rules without tracing scattered procedural effects.  Be confident it will be called, and in the proper order.
 
 ---
 
