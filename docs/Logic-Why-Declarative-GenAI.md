@@ -31,7 +31,7 @@ In both cases, the implementations must analyze the transaction (what actually c
 +----------------+          +------------------+
 ```
 
-Procedural code must enumerate *all* change paths. Missing any path causes silent logic gaps that destroy databse integrity (e.g., balance not updated).
+Procedural code tries to enumerate change paths; missing one silently breaks logic (e.g., balance not updated).
 
 ---
 
@@ -69,42 +69,25 @@ Then we reviewed the generated code.
 
 ## Declarative GenAI: 5 rules
 
-```python title='Declarative Rules DSL Code created from requirements'
-In this experiment, the declarative version — just 5 rules — showed no omissions; the engine derived all required propagation paths automatically.
+```python title='Declarative Rules (experiment)'
+Rule.constraint(validate=models.Customer,
+   as_condition=lambda row: row.balance is None or row.credit_limit is None or row.balance <= row.credit_limit,
+   error_msg="Customer balance ({row.balance}) exceeds credit limit ({row.credit_limit})")
 
-Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total, where=lambda row: row.date_shipped is None)
-
-The experiment highlights a significant architectural advantage for Declarative GenAI in this type of dependency management.
+Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total,
+      where=lambda row: row.date_shipped is None)
+Rule.sum(derive=models.Order.amount_total, as_sum_of=models.Item.amount)
 Rule.formula(derive=models.Item.amount, as_expression=lambda row: row.quantity * row.unit_price)
-
 Rule.copy(derive=models.Item.unit_price, from_parent=models.Product.unit_price)
-Even advanced LLMs cannot guarantee completeness of enumerated procedural paths — coverage can be tested but not proven. The difference is architectural:
----
+```
 
- AI reduces typing cost, but it does not eliminate the engineering need to ensure multi‑table dependency coverage.
-We asked Copilot to implement the same NL logic procedurally.  
-The procedural version arrived confidently: about 220 lines that looked reasonable on first inspection.
+In this experiment the 5 rules yielded complete propagation (no missed paths); the engine derived ordering and old/new parent updates automatically.
 
-Rules tend to remain stable, while engine improvements accumulate automatically.
+Procedural version: ≈220 lines. Two missed paths:
+1. Reassign Order → different Customer (old Customer balance not decremented)
+2. Reassign Item → different Product (`unit_price` not re-copied)
 
-1. **Reassign Order → different Customer**  
-   The new Customer’s balance increased, but the old Customer’s balance never decreased.
-
-2. **Reassign Item → different Product**  
-   The `unit_price` updated on the new Product, but was never re-copied after reassignment.
-
-Both were routine dependency paths — and both were quietly missed.
-
-When asked why, Copilot offered an unexpectedly candid analysis: 
-
-> Determining all dependency paths—especially old/new parent combinations—is difficult.  
-> A declarative rules engine handles these dependencies more reliably. 
-
-It even produced a small comparative write-up of its own, seemingly a bit alarmed at the result:
-
-> [Copilot’s story: What Happened Here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md#what-happened-here)
-
-The declarative version — just 5 rules — had no omissions; the engine derived all required propagation paths automatically.
+Copilot’s own summary: determining all dependency paths—especially old/new parent combinations—is difficult; a rules engine handles them more reliably. Full notes: [What Happened Here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md#what-happened-here)
 
 
 ---
@@ -142,50 +125,33 @@ At this point the experiment suggests a clear architectural advantage for Declar
 
 Given rapid AI evolution, we asked: *is this advantage temporary, or inherent?*
 
-Model scale improves pattern generation but **does not** provide deterministic dependency execution.  
-Enumerating all update paths in procedural code remains combinatorial; declarative rules paired with an engine externalize dependency semantics in a way that continues to hold as models advance.
 
-## Model Improvement
+## Improved Models Are Unlikely to Address Quality Issues
 
-Better models improve pattern generation, not dependency execution.
+The bugs we observed were serious, and difficult to find in a large code base.  But, will this continue to be the case as models rapidly improve?
 
-Declarative logic reduces hallucination exposure by narrowing the model’s role to generating rule intent while execution semantics remain deterministic in the engine.
+Better models definitely improve pattern generation, but the quality issue is about deterministic dependency execution.
+Old/new parent handling, ordered constraint checks, and multi-table propagation are execution semantics, not language-model capabilities.
 
-### Why model improvement alone is not sufficient
+Even a perfect LLM cannot guarantee completeness of enumerated procedural paths.
+Procedural logic can be tested but not certified as complete; a rules engine
+derives the full dependency graph and enforces declared rules within each
+transaction.
 
-Even a perfect LLM cannot prove completeness of enumerated procedural paths. The difference is architectural:
+> **Research note:** LLMs show consistent weaknesses in multi-step reasoning and state tracking—the same failure mode seen in dependency propagation. See: “Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State-Of-the-Art Large Language Models” (arXiv:2406.02061).
 
-| Approach | Guarantee Scope |
-|---------|------------------|
-| Procedural (AI‑generated) | Enumerates some dependency paths; cannot prove completeness over all FK and transitive change variants |
-| Declarative + Engine | Engine derives full dependency graph and enforces all declared rules within each transaction (ordered and atomic) |
-
-> Research note: LLMs show consistent weaknesses in multi‑step reasoning and state tracking, the same failure mode seen in dependency propagation. See “Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State‑Of‑the‑Art Large Language Models” (arXiv:2406.02061).
 
 ---
-## Maintenance Reality
 
-A common misconception is that future maintenance simply means updating the NL description and regenerating everything. That assumes all system behavior can be expressed declaratively. In practice, **there is always some portion of application behavior that requires hand-coded logic** — integrations, compliance checks, side effects, performance tuning, and domain-specific edge cases.
+## Maintenance Remains a Challenge in a Large Code Base
 
-These behaviors cannot be safely regenerated from NL because they depend on operational context (APIs, security, timing, retries, idempotency, compensation, external state). Regeneration risks overwriting patches and breaking local adaptations.
+Some logic will always be code (integrations, side effects, compliance hooks).
 
-Because some behavior must always live in code, developers must understand and safely extend the existing system. Large procedural artifacts increase the reasoning surface and create drift risk; declarative rules externalize business intent and confine complexity to a small, stable surface. The engine guarantees dependency propagation, while code handles the unavoidable parts that NL cannot describe.
+* Procedural GenAI: creates ~40× more generated code (≈220 vs 5). It becomes an archaeological expedition to understand the code, and determine where to insert changes
 
-Even with AI generation, systems accumulate changes: new attributes, integration hooks, compliance checks, and performance tweaks. Because something always changes, *developers must safely understand and extend existing logic.*
+* Declarative GenAI: add / change a rule - anywhere - and be confident the rule is always invoked, and in the right order
 
-Observed in this experiment:
 
-- Procedural surface ≈220 lines (5 rules of intent expanded into handlers).
-- Two routine FK path defects (old‑parent decrement; `unit_price` re‑copy).
-- Path completeness is not mechanically provable; omissions surface at runtime.
-
-Therefore:
-
-- AI reduces typing cost; it does not remove the need to prove multi‑table dependency coverage.
-- Larger generated artifacts increase cognitive load and drift risk (regeneration may obscure patches).
-- Declarative rules externalize intent; the engine guarantees ordering, propagation, and delta updates, reducing the reasoning surface for safe change.
-
----
 
 ## Architectural Boundary
 
@@ -194,7 +160,7 @@ Declarative logic separates:
 - **Intent** (rules)  
 - **Execution** (engine)  
 
-Rules remain stable; engine improvements accumulate automatically.
+
 
 > Real-world observation: In Versata deployments, switching from procedural recalculation to declarative delta-based rules produced significant performance improvements, including cases where multi-minute recalcs fell to seconds
 
@@ -218,25 +184,6 @@ Rules express intent and remain stable; the deterministic engine executes them c
   Yes. Rules capture intent in one place; the engine ensures correct execution.  
   This keeps the change surface small even as domains evolve.
 
-
----
-
-## Making Changes
-
-Key questions become easier:
-
-- **What does this do now?**  
-  Rules provide a single, centralized description.  Procedural code is more like an archeaological expedition.
-
-- **Where do I make a change?**  
-  Update or add rules without tracing scattered procedural effects.  Be confident it will be called, and in the proper order.
-
----
-
-## Residual Code
-
-Custom logic (events, integrations) always exists.  
-Declarative rules ensure the correctness-critical core remains deterministic.
 
 ---
 
