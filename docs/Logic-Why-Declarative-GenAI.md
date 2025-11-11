@@ -163,11 +163,18 @@ Models generate intent; engines ensure deterministic execution.
 - **Intent** (rules)  
 - **Execution** (engine)  
 
-
-
 > Real-world observation: In Versata deployments, switching from procedural recalculation to declarative delta-based rules produced significant performance improvements, including cases where multi-minute recalcs fell to seconds
 
 Rules express intent and remain stable; the deterministic engine executes them consistently and can improve performance without regenerating logic.
+
+### Rules as Probabilistic Guardrails
+
+This boundary does not exclude AI from logic.  
+It clarifies its role: AI handles probabilistic interpretation, while the engine performs deterministic execution.  
+Deterministic rules act as guardrails that define when AI should run and how its outputs are governed (see [this article](https://medium.com/@valjhuber/probabilistic-and-deterministic-logic-9a38f98d24a8)).
+
+This creates the balanced architecture enterprises require: AI for interpretation, engines for correctness.
+
 
 ### Common Questions
 

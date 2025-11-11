@@ -4,18 +4,57 @@
     Declarative rules are the formulas; AI is excellent at writing them. The engine ensures they behave correctly every time, and procedural code remains available for the exceptions.
 
 
-## Talking Points
+## Business Logic Agent – Executive Summary
+
+**Experiment:**  
+Procedural GenAI produced ~200 lines of code with 2 correctness bugs and performance issues.  
+Declarative GenAI used 5 rules; the engine derived all dependencies and old/new parent updates automatically.
+
+**Analysis:**  
+Larger models improve pattern generation, but not deterministic dependency execution.  
+Enumerated paths can be tested but never proven complete; engines derive full paths every transaction.
+
+**Maintenance:**  
+Procedural GenAI expands code and complexity; developers inherit logic they didn’t write.  
+Declarative rules keep intent small and centralized; the engine ensures ordering and propagation.
+
+**Balance of Probabilistic + Deterministic Logic:**  
+AI does have a place in business logic — exactly where probabilistic judgment is required.  
+Deterministic rules define *when* AI should run and enforce behavior around it.  
+This aligns with the hybrid architecture enterprises now need: AI for interpretation, engines for execution.
+
+**Architecture:**  
+Natural language → Declarative rules → Deterministic engine execution.  
+AI interprets meaning; the engine enforces correctness.
+
+**Microsoft Fit:**  
+Lamanna: “Sometimes customers don’t want the model to freestyle…  
+They want hard-coded business rules.”  
+This is the required hybrid: probabilistic intent + deterministic enforcement.
+
+**Core Point:**  
+AI expresses intent.  
+Engines provide correctness.
+
+
+
+## Talking Points - Val
 
 Ran A/B Experiment
 * 200 lines of code: finding:
     ** 2 key bugs (leading to self-analysis)
     ** Performance Issues
 * Lead to self-analysis
-    ** Bugs <= transitive dependencies
+    ** Bugs <= Alice Issue
 
-Long Term
+Long Term Analysis
 * Bugs likely to endure: larger models don't address transitive dependencies 
 * Maintenance: devs will have to contend with f/code
+
+Intuition:
+* Just as you expect a natural-language query to call a DBMS, not create a DBMS,
+you expect NL business logic to call a rules engine, not emit procedural dependency code.
+* Orgs looking for a balanced mix of probabalistic & deterministic... our view is that det is the prob guardrail
 
 ## Spreadsheets
 
