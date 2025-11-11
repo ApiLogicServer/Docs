@@ -1,7 +1,7 @@
 ---
 title: Logic: Alternative GenAI Approaches
 narrative: NL fork -> (Procedural vs Declarative+Engine); run A/B experiment; analyze long-term sustainability (correctness, maintenance, auditability)
-version: 0.6 11/9/25
+version: 0.7 11/10/25
 tone: professional, analytical (light on iconography).
 tags: [genai, declarative, business-logic, architecture, experiment not a pitch]
 status: draft
@@ -121,7 +121,7 @@ _Coverage_: path completeness cannot be proven; omissions surface only when exer
 
 # 3. Analysis
 
-At this point the experiment suggests a clear architectural advantage for Declarative GenAI.
+At this point the experiment suggests a significant architectural advantage in this context for Declarative GenAI.
 
 Given rapid AI evolution, we asked: *is this advantage temporary, or inherent?*
 
@@ -157,6 +157,8 @@ Some logic will always be code (integrations, side effects, compliance hooks).
 
 Declarative logic separates:
 
+Models generate intent; engines ensure deterministic execution.
+
 - **Intent** (rules)  
 - **Execution** (engine)  
 
@@ -178,7 +180,7 @@ Rules express intent and remain stable; the deterministic engine executes them c
 
 - **Can’t we just rely on tests?**  
   Tests find gaps but cannot prove coverage across all relationship variants.  
-  A rules engine guarantees ordering, propagation, and constraint checks.
+  A rules engine enforces ordering, propagation, and constraint checks on every transaction.
 
 - **Does this help real maintenance?**  
   Yes. Rules capture intent in one place; the engine ensures correct execution.  
@@ -217,7 +219,7 @@ The NL → Rules → Engine pipeline is the **Business Logic Agent**:
 
 > **AI expresses meaning; the engine guarantees correctness.**  
 >  
-> Declarative logic doesn’t replace AI — it completes it.
+> Declarative logic complements AI by providing deterministic execution.
 
 
 # The Business Logic Agent: Architecture
@@ -230,7 +232,6 @@ Large language models excel at interpreting requirements and expressing them as 
 This is a pattern-recognition task — exactly where probabilistic systems shine.
 
 This aligns with Microsoft’s current agent strategy.  
-As **Charles Lamanna** (Microsoft CVP, Business & Industry Copilot) explained:
 
 > “Sometimes customers don’t want the model to freestyle.  
 > They don’t want the AI to make its own decisions.  
@@ -276,7 +277,6 @@ This is also the model Microsoft now advocates with its agent flows:
 
 **4. The NL → Rules → Engine pipeline *is* the Business Logic Agent**
 
-**AI expresses meaning; the engine executes it with guaranteed correctness.**
 
 Declarative logic complements AI by providing deterministic, governable execution.  
 
