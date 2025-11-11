@@ -147,9 +147,9 @@ transaction.
 
 Some logic will always be code (integrations, side effects, compliance hooks).
 
-* Procedural GenAI: creates ~40× more generated code (≈220 vs 5). It becomes an archaeological expedition to understand the code, and determine where to insert changes
+* Procedural GenAI: creates ~40× more generated code (≈220 vs 5). It becomes an archaeological expedition to understand the code, and determine where to insert changes.
 
-* Declarative GenAI: add / change a rule - anywhere - and be confident the rule is always invoked, and in the right order
+* Declarative GenAI: add / change a rule - anywhere - and be confident the rule is always invoked, and in the right order.  This makes maintenance easier, faster, and more reliable.
 
 
 
@@ -187,7 +187,7 @@ Rules express intent and remain stable; the deterministic engine executes them c
 
 ---
 
-# The Business Logic Agent I
+# The Business Logic Agent: Concept
 
 Enterprise systems require *both* probabilistic reasoning (AI) and deterministic execution (engines).  
 AI is outstanding at interpreting intent; engines guarantee correctness.
@@ -220,7 +220,7 @@ The NL → Rules → Engine pipeline is the **Business Logic Agent**:
 > Declarative logic doesn’t replace AI — it completes it.
 
 
-# The Business Logic Agent II
+# The Business Logic Agent: Architecture
 
 Declarative GenAI becomes practical when we separate **what AI is good at** from **what engines are designed for**.
 
@@ -278,10 +278,7 @@ This is also the model Microsoft now advocates with its agent flows:
 
 **AI expresses meaning; the engine executes it with guaranteed correctness.**
 
-Declarative logic does not replace AI — it completes it.  
-It converts probabilistic generation into deterministic, auditable, multi-table system behavior.
-
-
+Declarative logic complements AI by providing deterministic, governable execution.  
 
 
 ---
@@ -303,8 +300,7 @@ Natural language provides intent.
 Declarative rules capture logic.  
 The engine ensures execution.
 
-Declarative logic doesn’t compete with AI — it completes it. It converts probabilistic generation into deterministic, auditable execution by shifting from path enumeration to rule enforcement.
-
+> Declarative GenAI complements AI by providing deterministic execution.
 
 ---
 
