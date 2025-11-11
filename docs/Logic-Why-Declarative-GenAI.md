@@ -84,6 +84,7 @@ Rule.copy(derive=models.Item.unit_price, from_parent=models.Product.unit_price)
 In this experiment the 5 rules yielded complete propagation (no missed paths); the engine derived ordering and old/new parent updates automatically.
 
 Procedural version: ≈220 lines. Two missed paths:
+
 1. Reassign Order → different Customer (old Customer balance not decremented)
 2. Reassign Item → different Product (`unit_price` not re-copied)
 
