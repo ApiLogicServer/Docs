@@ -207,7 +207,7 @@ As **Charles Lamanna** (CVP, Business & Industry Copilot) put it:
 
 > “Sometimes customers don’t want the model to freestyle.  
 > They want hard-coded business rules.”  
-> — VentureBeat, March 26, 2025
+> — VentureBeat, August 26, 2025
 
 That is the hybrid every enterprise asks for:
 
