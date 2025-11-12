@@ -177,12 +177,16 @@ _This example illustrates the **Business Logic Agent** pattern — Copilot suppl
 ## Study: Why Not Just CodeGen?
 
 Some months back, we asked a question you might have wondered about... 
-> instead of NL → DSL → Engine, why not just have GenAI code it all?
+> Instead of **NL → DSL → Engine**, why not just have GenAI code it all?
 
 <details markdown>
 
 <summary>We ran an A/B Test, Did Some Reseach... What We Found</summary>
 
+
+Our [complete study is here](Logic-Why-Declarative-GenAI.md){:target="_blank" rel="noopener"}, summarized below.
+
+---
 
 **1. We ran an A/B Test**
 
@@ -277,3 +281,20 @@ They want hard-coded business rules."*
 
 ````
 </details>
+
+## Appendix: Heads-Up — Explore More with AI
+
+GenAI-Logic projects are already **AI-enabled**, meaning they come with built-in training materials that help assistants like **GitHub Copilot**, **Claude**, or **ChatGPT** understand your project context.  For more information, see [AI-Enabled Projects Overview](Project-AI-Enabled.md){:target="_blank" rel="noopener"}.
+
+Once you’ve completed this demo, try engaging your AI assistant directly — it already knows about your project’s structure, rules, and examples.
+
+You can ask questions such as:
+
+- “Where are the declarative business rules defined?”
+- “Explain how credit-limit validation works in this project.”
+- “Show me how to add a new rule for discount calculation.”
+- “Walk me through the AI Guided Tour.”
+
+We also recommend the AI-Guided Tour.  Just ask Copilot: **guide me through**.
+
+- note: you should first delete `logic/logic_discovery/check_credit.py`)
