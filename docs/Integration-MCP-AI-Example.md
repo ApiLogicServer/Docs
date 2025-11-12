@@ -281,6 +281,7 @@ They want hard-coded business rules."*
 
 </details>
 
+---
 
 ## Heads-Up: AI-Enabled Projects
 
