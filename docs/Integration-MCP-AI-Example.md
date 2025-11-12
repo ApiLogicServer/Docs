@@ -171,3 +171,86 @@ This example continues the flow described in [**MCP Integration**](../Integratio
 * [Study: Declarative vs. Procedural GenAI - A/B Comparison](Logic-Why-Declarative-GenAI.md)  
 
 _This example illustrates the **Business Logic Agent** pattern — Copilot supplies intent, GenAI-Logic guarantees deterministic execution._
+
+---
+
+## Appendix: Why Declarative Rules Instead of Generated Code?
+
+### 1️⃣ We Wondered: Why Not Just CodeGen it All?
+
+Some months back, we asked a question you might have wondered about? Instead of NL → DSL → Engine, why not just have GenAI code it all?
+
+We tried: we asked Claude Sonnet 4-5 to translate **five rules** into code
+
+* ~200 lines → 2 correctness bugs + performance hit
+
+Then something remarkable happened:
+
+* After finding the second bug, **AI itself wrote a review** explaining why procedural logic *cannot* be correct for dependency graphs.
+  **→ Bugs came from transitive dependencies, not weak prompts.**
+  It recognized the problem was structural — not model quality.
+
+---
+
+### 2️⃣ We Researched
+
+- Complex dependencies are a *well-known boundary* for code generation.
+  Paths can be tested, never proven complete.
+
+---
+
+### 3️⃣ We Reflected
+
+- Maintenance is still the same **archaeological expedition** — just in *foreign code.*
+- The real opportunity is to **end the expedition** and deliver **business agility** — fast change that stays correct.
+
+---
+
+### 4️⃣ Intuitively...
+
+You expect a natural-language **query to call a DBMS**, not **create one.**
+Likewise, NL business logic should **call a rules engine**, not emit procedural code.
+
+---
+
+### 5️⃣ The Business Logic Agent
+
+- **AI (probabilistic):** NL → intent → rules / DSL
+- **Engine (deterministic):** rules → ordering, propagation, constraints
+- **Guardrails:** deterministic rules define *when* AI runs and how outputs are governed
+
+---
+
+### 6️⃣ Resolution
+
+Not AI vs Rules — **AI + Rules.** Different logic needs different tools:
+
+- Some logic is **inherently deterministic** — "Customer balance must not exceed credit limit."
+- Some logic **welcomes creativity** — "Which supplier can still deliver if the strait is blocked?"
+  — but even creative logic needs **guardrails for the result.**
+  Rules provide those guardrails — ensuring the output is correct, consistent, and governed.
+
+Deterministic logic **enables trust:**
+AI stays adaptive where judgment's needed; rules keep it auditable.
+Agents become **adaptive and reliable** — the balance enterprises want.
+
+---
+
+### 7️⃣ Echoes Modern Thinking
+
+Lamanna: *"Sometimes customers don't want the model to freestyle…
+They want hard-coded business rules."*
+→ Exactly this hybrid: **probabilistic intent + deterministic enforcement**
+
+---
+
+### 8️⃣ Finally
+
+**AI expresses intent; the engine enforces correctness.**
+
+---
+
+**For the complete analysis:** See [Logic: GenAI Approaches](https://apilogicserver.github.io/Docs/Logic-Why-Declarative-GenAI/) 
+— full experiment with A/B comparison, artifacts, and architectural reasoning.
+
+````
