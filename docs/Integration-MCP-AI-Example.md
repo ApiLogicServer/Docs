@@ -282,19 +282,28 @@ They want hard-coded business rules."*
 ````
 </details>
 
+
 ## Appendix: Heads-Up — Explore More with AI
+
+<details markdown>
+
+<summary>Copilot can help you understand, learn, and do... here's how</summary>
 
 GenAI-Logic projects are already **AI-enabled**, meaning they come with built-in training materials that help assistants like **GitHub Copilot**, **Claude**, or **ChatGPT** understand your project context.  For more information, see [AI-Enabled Projects Overview](Project-AI-Enabled.md){:target="_blank" rel="noopener"}.
 
 Once you’ve completed this demo, try engaging your AI assistant directly — it already knows about your project’s structure, rules, and examples.
 
-You can ask questions such as:
+*Understand* GenAI-Logic by **asking Copilot questions** such as:
 
 - “Where are the declarative business rules defined?”
 - “Explain how credit-limit validation works in this project.”
 - “Show me how to add a new rule for discount calculation.”
 - “Walk me through the AI Guided Tour.”
 
-We also recommend the AI-Guided Tour.  Just ask Copilot: **guide me through**.
+*Learn* about GenAI-Logic with the *AI-Guided Tour*.  **Just ask Copilot: *guide me through***.
 
 - note: you should first delete `logic/logic_discovery/check_credit.py`)
+
+In addition to all the things CoPilot can do natively, we've taught it about GenAI-Logic.  **Just ask Copilot: *what can you help me with?***
+
+</details>
