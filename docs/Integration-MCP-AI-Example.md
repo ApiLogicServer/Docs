@@ -283,7 +283,7 @@ They want hard-coded business rules."*
 </details>
 
 
-## Appendix: Heads-Up — Explore More with AI
+## Heads-Up: AI-Enabled Projects
 
 <details markdown>
 
