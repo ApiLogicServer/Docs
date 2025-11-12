@@ -279,7 +279,6 @@ They want hard-coded business rules."*
 **For the complete analysis:** See [Logic: GenAI Approaches](https://apilogicserver.github.io/Docs/Logic-Why-Declarative-GenAI/) 
 — full experiment with A/B comparison, artifacts, and architectural reasoning.
 
-````
 </details>
 
 
@@ -288,6 +287,8 @@ They want hard-coded business rules."*
 <details markdown>
 
 <summary>Copilot can help you understand, learn, and do... here's how</summary>
+
+<br>
 
 GenAI-Logic projects are already **AI-enabled**, meaning they come with built-in training materials that help assistants like **GitHub Copilot**, **Claude**, or **ChatGPT** understand your project context.  For more information, see [AI-Enabled Projects Overview](Project-AI-Enabled.md){:target="_blank" rel="noopener"}.
 
