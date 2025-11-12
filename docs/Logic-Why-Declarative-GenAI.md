@@ -141,7 +141,23 @@ transaction.
 
 > **Research note:** LLMs show consistent weaknesses in multi-step reasoning and state tracking—the same failure mode seen in dependency propagation. See: “Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State-Of-the-Art Large Language Models” (arXiv:2406.02061).
 
+<details markdown>
 
+<summary>More research on AI and Complex Transitive Dependencies</summary>
+
+<br>
+
+A study titled “LMs: Understanding Code Syntax and Semantics for Code Analysis” found that while large language models (LLMs) excel at syntax, they struggle with semantics — especially dynamic semantics, which includes behavior over time, dependencies and state changes. 
+[Click here](https://arxiv.org/abs/2305.12138?utm_source=chatgpt.com){:target="_blank" rel="noopener"}.
+
+
+A survey of AI usage in business found that AI still has limits in understanding domain-specific business rules, complex dependencies, verifying all cases, etc. 
+[Click here](https://www.sciencedirect.com/science/article/pii/S219985312400132X?utm_source=chatgpt.com){:target="_blank" rel="noopener"}.
+
+Industry commentary (e.g., from SonarSource) states explicitly: “AI models have limitations in understanding complex business logic or domain-specific requirements.” 
+[Click here](https://www.sonarsource.com/resources/library/ai-code-generation-benefits-risks/?utm_source=chatgpt.com){:target="_blank" rel="noopener"}.
+
+</details>
 ---
 
 ## Maintenance Remains a Challenge in a Large Code Base

@@ -168,6 +168,6 @@ This example continues the flow described in [**MCP Integration**](../Integratio
 * [Integration: MCP](../Integration-MCP/)  
 * [Logic: Rule Types](../Logic/)  
 * [Sample: Basic Demo](../Sample-Basic-Demo/)  
-* [Probabilistic and Deterministic Logic](../Tech-Prob-Deterministic/)  
+* [Study: Declarative vs. Procedural GenAI - A/B Comparison](Logic-Why-Declarative-GenAI.md)  
 
 _This example illustrates the **Business Logic Agent** pattern — Copilot supplies intent, GenAI-Logic guarantees deterministic execution._
