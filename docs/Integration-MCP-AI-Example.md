@@ -174,12 +174,17 @@ _This example illustrates the **Business Logic Agent** pattern — Copilot suppl
 
 ---
 
-## Appendix: Why Declarative Rules Instead of Generated Code?
-
-### 1. We Wondered: Just CodeGen?
+## Study: Why Not Just CodeGen?
 
 Some months back, we asked a question you might have wondered about... 
 > instead of NL → DSL → Engine, why not just have GenAI code it all?
+
+<details markdown>
+
+<summary>We ran an A/B Test, Did Some Reseach... What We Found</summary>
+
+
+**1. We ran an A/B Test**
 
 We tried: we asked Claude Sonnet 4-5 to translate **five rules** into code
 
@@ -193,7 +198,7 @@ Then something remarkable happened:
 
 ---
 
-### 2. We Researched: Alice et al
+**2. We Researched It: Alice et al**
 
 - Complex dependencies are a *well-known boundary* for code generation.
   Paths can be tested, never proven complete.
@@ -216,21 +221,21 @@ Then something remarkable happened:
 </details>
 
 
-### 3. We Reflected: Maintanance
+**3. We Reflected: Maintanance Remains a Challenge**
 
 - Maintenance is still the same **archaeological expedition** — just in *foreign code.*
 - The real opportunity is to **end the expedition** and deliver **business agility** — fast change that stays correct.
 
 ---
 
-### 4. Intuitively... sql vs dbms
+**4. Intuitively... sql vs dbms**
 
 You expect a natural-language **query to call a DBMS**, not **create one.**
 Likewise, NL business logic should **call a rules engine**, not emit procedural code.
 
 ---
 
-### 5. The Business Logic Agent
+**5. The Business Logic Agent**
 
 - **AI (probabilistic):** NL → intent → rules / DSL
 - **Engine (deterministic):** rules → ordering, propagation, constraints
@@ -238,7 +243,7 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 
 ---
 
-### 6. Resolution
+**6. Resolution**
 
 Not AI vs Rules — **AI + Rules.** Different logic needs different tools:
 
@@ -253,7 +258,7 @@ Agents become **adaptive and reliable** — the balance enterprises want.
 
 ---
 
-### 7. Echoes Modern Thinking
+**7. Echoes Modern Thinking**
 
 Lamanna: *"Sometimes customers don't want the model to freestyle…
 They want hard-coded business rules."*
@@ -261,7 +266,7 @@ They want hard-coded business rules."*
 
 ---
 
-### 8. Finally
+**8. Finally**
 
 **AI expresses intent; the engine enforces correctness.**
 
@@ -271,3 +276,4 @@ They want hard-coded business rules."*
 — full experiment with A/B comparison, artifacts, and architectural reasoning.
 
 ````
+</details>
