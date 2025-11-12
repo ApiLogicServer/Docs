@@ -11,7 +11,7 @@ version: 0.1, for readme 11.09/25
   }
 </style>
 
-!!! pied-piper ":bulb: **Copilot** uses **MCP discovery** to create, interact with, and enforce logic in **GenAI-Logic projects**"
+!!! pied-piper " **Copilot** uses **MCP discovery** to create, interact with, and enforce logic in **GenAI-Logic projects**"
     ## 
     **Prompt 1 (Create System):**
 
@@ -26,7 +26,7 @@ version: 0.1, for readme 11.09/25
     *4. Item amount is quantity * unit_price*<br>
     *5. Item unit_price is copied from Product unit_price*<br>
 
-    **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: 🛡️
+    **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
 
     *On Alice's first order, update the widget quantity to 100*
 &nbsp;
@@ -37,7 +37,7 @@ The diagram above shows the final step of a complete system, built and tested by
 
 &nbsp;
 
-## 🥇 Step 1 – Create System
+##  Step 1 – Create System
 In the GenAI-Logic [Manager](Manager.md), use Copilot to create an application from an existing database — complete with Admin App, API, and MCP discovery.
 ```bash title='Step 1: Create Project'
 create a system named basic_demo from samples/dbs/basic_demo.sqlite
@@ -58,11 +58,11 @@ The project is ready to run:
 * In the new project, use Copilot: `start the server` (or click F5)
 * You can explore the admin app and the API, then `stop the server` (or Shift/F5)
 
-✅ **Result:** a working three-tier system in under a minute — *database → API → web app → MCP discovery*.
+ **Result:** a working three-tier system in under a minute — *database → API → web app → MCP discovery*.
 
 &nbsp;
 
-## 🧠 Step 2 – NL Logic
+##  Step 2 – NL Logic
 Copilot reads the MCP schema and responds to a natural-language instruction such as:
 
 ```bash title='Step 2: Declare Logic'
@@ -98,7 +98,7 @@ All enforced by the **LogicBank** engine during each API transaction.
 
 &nbsp;
 
-## 🧪 Step 3 – Test with MCP
+##  Step 3 – Test with MCP
 Copilot can now test the new rule using the MCP-discovered API — no manual coding required.
 ```bash title='Test with CoPilot and MCP Discovery'
 Update Alice’s first order so that the quantity for the Widget is 100
@@ -113,7 +113,7 @@ curl -X PATCH http://localhost:5656/api/Item/2   -H "Content-Type: application/v
 
 &nbsp;
 
-### ⚡ Multi-Table Logic Chaining
+###  Multi-Table Logic Chaining
 | Trigger | Effect |
 |----------|---------|
 | `Item.quantity` | Recalculates `Item.amount` |
@@ -125,7 +125,7 @@ curl -X PATCH http://localhost:5656/api/Item/2   -H "Content-Type: application/v
 
 &nbsp;
 
-### 🧩 Runtime Trace
+###  Runtime Trace
 ```
 .Item[2] {update}
 .Order[2] {update – Adjusting order.amount_total}
@@ -136,15 +136,15 @@ See the screen shot at the top of this page.
 
 &nbsp;
 
-### 💬 Copilot’s Response
-> ✅ *Business logic working correctly!*  
-> 🚫 *Update prevented automatically to enforce credit limit.*
+###  Copilot’s Response
+>  *Business logic working correctly!*  
+>  *Update prevented automatically to enforce credit limit.*
 
 Copilot used MCP to discover the schema, executed the update, and interpreted the deterministic response — proof that **AI + Logic collaboration** can be both natural and reliable.
 
 &nbsp;
 
-## 🧱 Architecture Summary
+##  Architecture Summary
 | Layer | Role | Description |
 |-------|------|-------------|
 | **Database** | Existing model | e.g. `sample_ai.sqlite` |
@@ -154,7 +154,7 @@ Copilot used MCP to discover the schema, executed the update, and interpreted th
 
 &nbsp;
 
-## 🔁 Connecting to MCP Integration
+##  Connecting to MCP Integration
 This example continues the flow described in [**MCP Integration**](../Integration-MCP/): 
 
 * **MCP Server Executors** = your logic-enabled APIs  
@@ -163,7 +163,7 @@ This example continues the flow described in [**MCP Integration**](../Integratio
 
 &nbsp;
 
-## 📚 Related Docs
+##  Related Docs
 
 * [Integration: MCP](../Integration-MCP/)  
 * [Logic: Rule Types](../Logic/)  
@@ -176,9 +176,10 @@ _This example illustrates the **Business Logic Agent** pattern — Copilot suppl
 
 ## Appendix: Why Declarative Rules Instead of Generated Code?
 
-### 1️⃣ We Wondered: Why Not Just CodeGen it All?
+### 1. We Wondered: Just CodeGen?
 
-Some months back, we asked a question you might have wondered about? Instead of NL → DSL → Engine, why not just have GenAI code it all?
+Some months back, we asked a question you might have wondered about... 
+> instead of NL → DSL → Engine, why not just have GenAI code it all?
 
 We tried: we asked Claude Sonnet 4-5 to translate **five rules** into code
 
@@ -186,34 +187,50 @@ We tried: we asked Claude Sonnet 4-5 to translate **five rules** into code
 
 Then something remarkable happened:
 
-* After finding the second bug, **AI itself wrote a review** explaining why procedural logic *cannot* be correct for dependency graphs.
+* After finding the second bug, [**AI itself wrote a review**](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md#what-happened-here) explaining why procedural logic *cannot* be correct for dependency graphs.
   **→ Bugs came from transitive dependencies, not weak prompts.**
   It recognized the problem was structural — not model quality.
 
 ---
 
-### 2️⃣ We Researched
+### 2. We Researched: Alice et al
 
 - Complex dependencies are a *well-known boundary* for code generation.
   Paths can be tested, never proven complete.
 
----
+<details markdown>
 
-### 3️⃣ We Reflected
+<summary>More research on AI and Complex Transitive Dependencies</summary>
+
+<br>
+
+1. LLMs show consistent weaknesses in multi-step reasoning and state tracking—the same failure mode seen in dependency propagation. See: **“Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State-Of-the-Art Large Language Models”** (arXiv:2406.02061).
+
+2. A study titled “LMs: Understanding Code Syntax and Semantics for Code Analysis” found that while large language models (LLMs) excel at syntax, they struggle with semantics — especially dynamic semantics, which includes behavior over time, dependencies and state changes.  [Click here](https://arxiv.org/abs/2305.12138?utm_source=chatgpt.com){:target="_blank" rel="noopener"}.
+
+
+3. A survey of AI usage in business found that AI still has limits in understanding domain-specific business rules, complex dependencies, verifying all cases, etc. [Click here](https://www.sciencedirect.com/science/article/pii/S219985312400132X?utm_source=chatgpt.com){:target="_blank" rel="noopener"}.
+
+4. Industry commentary (e.g., from SonarSource) states explicitly: “AI models have limitations in understanding complex business logic or domain-specific requirements.” [Click here](https://www.sonarsource.com/resources/library/ai-code-generation-benefits-risks/?utm_source=chatgpt.com){:target="_blank" rel="noopener"}.
+
+</details>
+
+
+### 3. We Reflected: Maintanance
 
 - Maintenance is still the same **archaeological expedition** — just in *foreign code.*
 - The real opportunity is to **end the expedition** and deliver **business agility** — fast change that stays correct.
 
 ---
 
-### 4️⃣ Intuitively...
+### 4. Intuitively... sql vs dbms
 
 You expect a natural-language **query to call a DBMS**, not **create one.**
 Likewise, NL business logic should **call a rules engine**, not emit procedural code.
 
 ---
 
-### 5️⃣ The Business Logic Agent
+### 5. The Business Logic Agent
 
 - **AI (probabilistic):** NL → intent → rules / DSL
 - **Engine (deterministic):** rules → ordering, propagation, constraints
@@ -221,7 +238,7 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 
 ---
 
-### 6️⃣ Resolution
+### 6. Resolution
 
 Not AI vs Rules — **AI + Rules.** Different logic needs different tools:
 
@@ -236,7 +253,7 @@ Agents become **adaptive and reliable** — the balance enterprises want.
 
 ---
 
-### 7️⃣ Echoes Modern Thinking
+### 7. Echoes Modern Thinking
 
 Lamanna: *"Sometimes customers don't want the model to freestyle…
 They want hard-coded business rules."*
@@ -244,7 +261,7 @@ They want hard-coded business rules."*
 
 ---
 
-### 8️⃣ Finally
+### 8. Finally
 
 **AI expresses intent; the engine enforces correctness.**
 
