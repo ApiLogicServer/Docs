@@ -265,26 +265,44 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 
 <details markdown>
 
-<summary>6. Business Logic Agent: Unified Probabilistic / Deterministic Model</summary>
+<summary>6. Governable Intent: The Emerging Model</summary>
 
-<br>Not AI vs Rules — AI and Rules. Different kinds of logic need different tools:
+<br>Agentic systems are evolving quickly, and a clearer architectural picture is forming.  
+It’s not about replacing one approach with another — it’s about **combining strengths**.
 
-**Some logic is inherently deterministic:**
+**Not AI *vs* Rules — AI *and* Rules.**  
+Different kinds of logic naturally call for different tools.
 
-- *“Customer balance must not exceed credit limit.”*
+**Deterministic Logic** -- *"Customer balance must not exceed credit limit."*
 
-**Some logic welcomes creativity:**
+> Some logic is inherently deterministic — correctness and consistency are required (still expressed in NL).
 
-* *“Which supplier can still deliver if the strait is blocked?”* For full example, [click here](https://medium.com/@valjhuber/probabilistic-and-deterministic-logic-9a38f98d24a8){:target="_blank" rel="noopener"}
+**Creative Logic** -- *"Which supplier can still deliver if the strait is blocked?"* 
 
-But even creative reasoning needs guardrails.
+> Other logic benefits from exploration and probabilistic reasoning.  [Example here](https://medium.com/@valjhuber/probabilistic-and-deterministic-logic-9a38f98d24a8){:target="_blank" rel="noopener"}.
 
-**Rules provide those guardrails** — ensuring outputs are correct, consistent, and governable.
+Both have their place — and both work better together.
 
-**Deterministic logic enables trust:**
-AI stays adaptive where judgment is needed; rules keep outcomes auditable.
+<br>
 
-**The result:** agents that are both adaptive and reliable — exactly the balance enterprises want.
+**Rules Provide Governability**
+
+Even creative reasoning needs boundaries (the credit limit still applies).  
+**Rules supply these guardrails**, ensuring outcomes remain correct, consistent, and governed.
+
+**Determinism Enables Trust**
+
+AI stays adaptive where judgment is needed;  
+rules keep results auditable and dependable.
+
+<br>
+
+**The Emerging Vision**
+
+**Agentic systems become far more compelling when probabilistic intent is paired with deterministic enforcement.**
+
+This "governable intent" model aligns with enterprise expectations —  
+adaptive where helpful, reliable where essential.
 
 </details>
 
