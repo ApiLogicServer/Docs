@@ -224,6 +224,7 @@ Then something remarkable happened:
 
 </details>
 
+---
 
 **3. We Reflected: Maintanance Remains a Challenge**
 
@@ -247,7 +248,7 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 
 ---
 
-**6. Resolution**
+**6. Probabalistic *and* Deterministic -- both are required**
 
 Not AI vs Rules — **AI + Rules.** Different logic needs different tools:
 
