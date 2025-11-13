@@ -265,7 +265,7 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 
 <details markdown>
 
-<summary>6. Governable Intent: The Emerging Model</summary>
+<summary>6. Business Logic Agent: Unified Probabilistic / Deterministic Model</summary>
 
 <br>Not AI vs Rules — AI and Rules. Different kinds of logic need different tools:
 
