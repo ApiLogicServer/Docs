@@ -265,9 +265,9 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 
 <details markdown>
 
-<summary>6. Probabalistic *and* Deterministic -- both are required</summary>
+<summary>6. Governable Intent: The Emerging Model</summary>
 
-<br>Not AI vs Rules — **AI + Rules.** Different logic needs different tools:
+<br>Not AI **vs** Rules — **AI *and* Rules.** Different logic needs different tools:
 
 * Some logic is **inherently deterministic**
 
@@ -275,10 +275,10 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 
 * Some logic **welcomes creativity**
 
-    * *"Which supplier can still deliver if the strait is blocked?"*  For the full study, [click here](https://medium.com/@valjhuber/probabilistic-and-deterministic-logic-9a38f98d24a8){:target="_blank" rel="noopener"}
+    * *"Which supplier can still deliver if the strait is blocked?"*  For the full example, [click here](https://medium.com/@valjhuber/probabilistic-and-deterministic-logic-9a38f98d24a8){:target="_blank" rel="noopener"}
     * But even creative logic needs **guardrails for the result.**  
 
-        * ***Rules provide those guardrails*** — ensuring the output is correct, consistent, and governed.
+        * ***Rules provide those guardrails for governability*** — ensuring the output is correct, consistent, and governed.
 
 Deterministic logic **enables trust:**
 
