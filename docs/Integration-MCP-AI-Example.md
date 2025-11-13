@@ -183,14 +183,15 @@ Some months back, we asked a question you might have wondered about...
 
 <summary>We ran an A/B Test, Did Some Reseach... What We Found</summary>
 
+Our [**complete study is here**](Logic-Why-Declarative-GenAI.md){:target="_blank" rel="noopener"}, summarized below.
 
-Our [complete study is here](Logic-Why-Declarative-GenAI.md){:target="_blank" rel="noopener"}, summarized below.
+<br>
 
----
+<details markdown>
 
-**1. We ran an A/B Test**
+<summary>1. We ran an A/B Test</summary>
 
-We tried: we asked Claude Sonnet 4-5 to translate **five rules** into code
+<br>We tried: we asked Claude Sonnet 4-5 to translate **five rules** into code
 
 * ~200 lines → 2 correctness bugs + performance hit
 
@@ -200,23 +201,21 @@ Then something remarkable happened:
   **→ Bugs came from transitive dependencies, not weak prompts.**
   It recognized the problem was structural — not model quality.
 
----
+</details>
 
-**2. We Researched It: Alice et al**
-
-- Complex dependencies are a *well-known boundary* for code generation.
-  Paths can be tested, never proven complete.
+<br>
 
 <details markdown>
 
-<summary>More research on AI and Complex Transitive Dependencies</summary>
+<summary>2. We Researched It: Alice et al</summary>
 
-<br>
+<br>Complex dependencies are a *well-known boundary* for code generation.
+
+Paths can be tested, never proven complete.
 
 1. LLMs show consistent weaknesses in multi-step reasoning and state tracking—the same failure mode seen in dependency propagation. See: **“Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State-Of-the-Art Large Language Models”** (arXiv:2406.02061).
 
 2. A study titled “LMs: Understanding Code Syntax and Semantics for Code Analysis” found that while large language models (LLMs) excel at syntax, they struggle with semantics — especially dynamic semantics, which includes behavior over time, dependencies and state changes.  [Click here](https://arxiv.org/abs/2305.12138?utm_source=chatgpt.com){:target="_blank" rel="noopener"}.
-
 
 3. A survey of AI usage in business found that AI still has limits in understanding domain-specific business rules, complex dependencies, verifying all cases, etc. [Click here](https://www.sciencedirect.com/science/article/pii/S219985312400132X?utm_source=chatgpt.com){:target="_blank" rel="noopener"}.
 
@@ -224,61 +223,91 @@ Then something remarkable happened:
 
 </details>
 
----
+<br>
 
-**3. We Reflected: Maintanance Remains a Challenge**
+<details markdown>
 
-- Maintenance is still the same **archaeological expedition** — just in *foreign code.*
-- The real opportunity is to **end the expedition** and deliver **business agility** — fast change that stays correct.
+<summary>3. We Reflected: Maintanance Remains a Challenge</summary>
 
----
+<br>Maintenance is still the same **archaeological expedition** — just in ***foreign code.***
 
-**4. Intuitively... sql vs dbms**
+The real opportunity is to **end the expedition** and deliver **business agility** — fast change that stays correct.
 
-You expect a natural-language **query to call a DBMS**, not **create one.**
+</details>
+
+<br>
+
+<details markdown>
+
+<summary>4. Intuitively... sql vs dbms</summary>
+
+<br>You expect a natural-language **query to call a DBMS**, not **create one.**
+
 Likewise, NL business logic should **call a rules engine**, not emit procedural code.
 
----
+</details>
 
-**5. The Business Logic Agent**
+<br>
+
+<details markdown>
+
+<summary>5. The Business Logic Agent</summary>
+
+<br> AI → DSL → Engine
 
 - **AI (probabilistic):** NL → intent → rules / DSL
 - **Engine (deterministic):** rules → ordering, propagation, constraints
 - **Guardrails:** deterministic rules define *when* AI runs and how outputs are governed
 
----
+</details>
 
-**6. Probabalistic *and* Deterministic -- both are required**
+<br>
 
-Not AI vs Rules — **AI + Rules.** Different logic needs different tools:
+<details markdown>
 
-- Some logic is **inherently deterministic** — "Customer balance must not exceed credit limit."
-- Some logic **welcomes creativity** — "Which supplier can still deliver if the strait is blocked?"
-  — but even creative logic needs **guardrails for the result.**
-  Rules provide those guardrails — ensuring the output is correct, consistent, and governed.
+<summary>6. Probabalistic *and* Deterministic -- both are required</summary>
+
+<br>Not AI vs Rules — **AI + Rules.** Different logic needs different tools:
+
+* Some logic is **inherently deterministic**
+
+    * *"Customer balance must not exceed credit limit."*
+
+* Some logic **welcomes creativity**
+
+    * *"Which supplier can still deliver if the strait is blocked?"*  For the full study, [click here](https://medium.com/@valjhuber/probabilistic-and-deterministic-logic-9a38f98d24a8){:target="_blank" rel="noopener"}
+    * But even creative logic needs **guardrails for the result.**  
+
+        * ***Rules provide those guardrails*** — ensuring the output is correct, consistent, and governed.
 
 Deterministic logic **enables trust:**
-AI stays adaptive where judgment's needed; rules keep it auditable.
-Agents become **adaptive and reliable** — the balance enterprises want.
 
----
+* AI stays adaptive where judgment's needed; rules keep it auditable.
+* Agents become **adaptive and reliable** — the balance enterprises want.
 
-**7. Echoes Modern Thinking**
+</details>
 
-Lamanna: *"Sometimes customers don't want the model to freestyle…
+<br>
+
+<details markdown>
+
+<summary>7. Echoes Modern Thinking</summary>
+
+<br>Lamanna: *"Sometimes customers don't want the model to freestyle…
 They want hard-coded business rules."*
 → Exactly this hybrid: **probabilistic intent + deterministic enforcement**
 
----
+</details>
 
-**8. Finally**
+<br>
 
-**AI expresses intent; the engine enforces correctness.**
+<details markdown>
 
----
+<summary>8. Finally</summary>
 
-**For the complete analysis:** See [Logic: GenAI Approaches](https://apilogicserver.github.io/Docs/Logic-Why-Declarative-GenAI/){:target="_blank" rel="noopener"} 
-— full experiment with A/B comparison, artifacts, and architectural reasoning.
+<br>**AI expresses intent; the engine enforces correctness.**
+
+</details>
 
 </details>
 
