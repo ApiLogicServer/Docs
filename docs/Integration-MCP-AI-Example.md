@@ -277,7 +277,7 @@ They want hard-coded business rules."*
 
 ---
 
-**For the complete analysis:** See [Logic: GenAI Approaches](https://apilogicserver.github.io/Docs/Logic-Why-Declarative-GenAI/) 
+**For the complete analysis:** See [Logic: GenAI Approaches](https://apilogicserver.github.io/Docs/Logic-Why-Declarative-GenAI/){:target="_blank" rel="noopener"} 
 — full experiment with A/B comparison, artifacts, and architectural reasoning.
 
 </details>
