@@ -259,6 +259,8 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 - **Engine (deterministic):** rules → ordering, propagation, constraints
 - **Guardrails:** deterministic rules define *when* AI runs and how outputs are governed
 
+![Bus-Logic-Engine](images/integration/mcp/Bus-Logic-Agent.png)
+
 </details>
 
 <br>
