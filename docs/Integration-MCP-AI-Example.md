@@ -20,6 +20,7 @@ version: 0.1, for readme 11.09/25
     **Prompt 2 (Add NL Logic):**
 
     *Use case: Check Credit:*<br>
+    * 
     *1. The Customer's balance is less than the credit limit
     *2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
     *3. The Order's amount_total is the sum of the Item amount
@@ -31,6 +32,7 @@ version: 0.1, for readme 11.09/25
     *  - ELSE copy from Product.unit_price
     *
     *Use case: App Integration
+    *
     *    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 
     **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
