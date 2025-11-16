@@ -20,20 +20,20 @@ version: 0.1, for readme 11.09/25
     **Prompt 2 (Add NL Logic):**
 
     *Use case: Check Credit:*<br>
-    * 
-    *1. The Customer's balance is less than the credit limit
-    *2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
-    *3. The Order's amount_total is the sum of the Item amount
-    *4. The Item amount is the quantity * unit_price
-    *5. Item unit_price is derived as follows:
-    *  - IF Product has suppliers (Product.count_suppliers > 0), 
-    *    use AI to select optimal supplier based on cost, lead time, and world conditions
-    *    [store in SysSupplierReq]
-    *  - ELSE copy from Product.unit_price
-    *
-    *Use case: App Integration
-    *
-    *    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+
+    *1. The Customer's balance is less than the credit limit*<br>
+    *2. The Customer's balance is the sum of the Order amount_total where date_shipped is null*<br>
+    *3. The Order's amount_total is the sum of the Item amount*<br>
+    *4. The Item amount is the quantity * unit_price*<br>
+    *5. The Product count suppliers is the sum of the Product Suppliers*<br>
+    *6. Item unit_price is derived as follows:*<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;*- IF Product has suppliers,*<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*use AI to select optimal supplier based on cost, lead time, and world conditions*<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;*- ELSE copy from Product.unit_price<br>*
+
+    *Use case: App Integration*
+
+    *1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.*
 
     **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
 
