@@ -181,6 +181,8 @@ This example continues the flow described in [**MCP Integration**](../Integratio
 
 _This example illustrates the **Business Logic Agent** pattern — Copilot supplies intent, GenAI-Logic guarantees deterministic execution._
 
+<br>
+
 ---
 
 ## Study: Why Not Just CodeGen?
@@ -255,28 +257,43 @@ The real opportunity is to **end the expedition** and deliver **business agility
 Likewise, NL business logic should **call a rules engine**, not emit procedural code.
 
 </details>
-
 <br>
 
 <details markdown>
 
-<summary>5. The Business Logic Agent</summary>
+<summary>5. Finally</summary>
 
-<br> AI → DSL → Engine
+<br> **AI → DSL → Engine**
 
 - **AI (probabilistic):** NL → intent → rules / DSL
 - **Engine (deterministic):** rules → ordering, propagation, constraints
 - **Guardrails:** deterministic rules define *when* AI runs and how outputs are governed
 
-![Bus-Logic-Engine](images/integration/mcp/Bus-Logic-Agent.png)
+> AI expresses intent; the engine enforces correctness.
+
+</details>
 
 </details>
 
 <br>
 
+---
+
+## Business Logic Agent: A Unified Model of Governable Creativity
+
+But AI provides creativity that businesses want?  How do we provide that, with goverance?
+
 <details markdown>
 
-<summary>6. Governable Intent: The Emerging Model</summary>
+<summary>Unified Deterministic and Probablistic Logic</summary>
+
+<br>Enterprises want the best of both: the creativity of probabalistic logic, *with* the governability of deterministic logic -- all in one unified Business Logic Agent.  Here's an example.
+
+<br>
+
+<details markdown>
+
+<summary>A. Example: Choose Supplier, based on current world conditions</summary>
 
 <br>Agentic systems are evolving quickly, and a clearer architectural picture is forming.  
 It’s not about replacing one approach with another — it’s about **combining strengths**.
@@ -349,11 +366,11 @@ adaptive where helpful, reliable where essential.
 
 <details markdown>
 
-<summary>7. Echoes Modern Thinking</summary>
+<summary>B. The Business Logic Agent</summary>
 
-<br>Lamanna: *"Sometimes customers don't want the model to freestyle…
-They want hard-coded business rules."*
-→ Exactly this hybrid: **probabilistic intent + deterministic enforcement**
+<br> The Business Logic Agent unifies probabilistic intent with deterministic enforcement in a single model.
+
+![Bus-Logic-Engine](images/integration/mcp/Bus-Logic-Agent.png)
 
 </details>
 
@@ -361,13 +378,17 @@ They want hard-coded business rules."*
 
 <details markdown>
 
-<summary>8. Finally</summary>
+<summary>C. Echoes Modern Thinking</summary>
 
-<br>**AI expresses intent; the engine enforces correctness.**
+<br>Lamanna: *"Sometimes customers don't want the model to freestyle…
+They want hard-coded business rules."*
+→ Exactly this hybrid: **probabilistic intent + deterministic enforcement**
 
 </details>
 
 </details>
+
+<br>
 
 ---
 
