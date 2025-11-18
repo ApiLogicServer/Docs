@@ -286,7 +286,7 @@ But AI provides creativity that businesses want... how do we provide that, with 
 
 <details markdown>
 
-<summary>Unified Deterministic and Probablistic Logic</summary>
+<summary>Unified Deterministic and Probabilistic Logic</summary>
 
 <br>Enterprises want the best of both: the creativity of probabalistic logic, *with* the governability of deterministic logic -- all in one unified Business Logic Agent.  Here's an example.
 
