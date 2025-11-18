@@ -200,7 +200,7 @@ Our [**complete study is here**](Logic-Why-Declarative-GenAI.md){:target="_blank
 
 <details markdown>
 
-<summary>1. We ran an A/B Test</summary>
+<summary>1. We Tried It: an A/B Test</summary>
 
 <br>We tried: we asked Claude Sonnet 4-5 to translate **five rules** into code
 
@@ -261,13 +261,14 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 
 <details markdown>
 
-<summary>5. Finally</summary>
+<summary>5. Finally - Governable Intent</summary>
 
 <br> **AI → DSL → Engine**
 
-- **AI (probabilistic):** NL → intent → rules / DSL
-- **Engine (deterministic):** rules → ordering, propagation, constraints
-- **Guardrails:** deterministic rules define *when* AI runs and how outputs are governed
+- **AI (probabilistic):** NL intent → rules / DSL
+- **DSL (deterministic):** human in the loop
+- **Engine (runtime execution):** rules → ordering, propagation, constraints, debug, logging
+    - **Guardrails:** deterministic rules define *when* AI runs and how outputs are governed
 
 > AI expresses intent; the engine enforces correctness.
 
@@ -281,7 +282,7 @@ Likewise, NL business logic should **call a rules engine**, not emit procedural 
 
 ## Business Logic Agent: A Unified Model of Governable Creativity
 
-But AI provides creativity that businesses want?  How do we provide that, with goverance?
+But AI provides creativity that businesses want... how do we provide that, with goverance?
 
 <details markdown>
 
@@ -309,7 +310,7 @@ Different kinds of logic naturally call for different tools.
 
 > Other logic benefits from exploration and probabilistic reasoning.  [Example here](https://medium.com/@valjhuber/probabilistic-and-deterministic-logic-9a38f98d24a8){:target="_blank" rel="noopener"}.
 
-Both have their place — and both work better together.  For example, we could have created the logic like this:
+Both have their place — and both work better together.  For example:
 
 ```bash title='Declare Logic: Deterministic and Probabilistic'
 Use case: Check Credit:
@@ -329,9 +330,9 @@ Use case: App Integration
 1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 
-And then, prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
-```bash title='Declare Logic: Deterministic and Probabilistic'
-On Alice's first order, include Egyptian Cotton Sheets
+And then, test via MCP-discovered API):**  *Constraint blocks bad data*: ️
+```bash title='Test Logic with MCP Discovery'
+On Alice's first order, include 100 Egyptian Cotton Sheets
 ```
 
 This illustrates both: 
@@ -353,13 +354,6 @@ rules keep results auditable and dependable.
 
 <br>
 
-**The Emerging Vision**
-
-**Agentic systems become far more compelling when probabilistic intent is paired with deterministic enforcement.**
-
-This "governable intent" model aligns with enterprise expectations —  
-adaptive where helpful, reliable where essential.
-
 </details>
 
 <br>
@@ -368,7 +362,14 @@ adaptive where helpful, reliable where essential.
 
 <summary>B. The Business Logic Agent</summary>
 
-<br> The Business Logic Agent unifies probabilistic intent with deterministic enforcement in a single model.
+<br> **The Emerging Vision**
+
+**Agentic systems become far more compelling when probabilistic intent is paired with deterministic enforcement.**
+
+This "governable intent" model aligns with enterprise expectations —  
+adaptive where helpful, reliable where essential.
+
+**The Business Logic Agent unifies probabilistic intent with deterministic enforcement in a single model**
 
 ![Bus-Logic-Engine](images/integration/mcp/Bus-Logic-Agent.png)
 
