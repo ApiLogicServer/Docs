@@ -32,6 +32,9 @@ version: 0.1, for readme 11.09/25
 
     *1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.*
 
+    (Developers review this DSL before execution, providing a natural human-in-the-loop checkpoint.)
+
+
     **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
 
     *On Alice's first order, update the widget quantity to 100*
