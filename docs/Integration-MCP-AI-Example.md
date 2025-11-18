@@ -204,7 +204,7 @@ Our [**complete study is here**](Logic-Why-Declarative-GenAI.md){:target="_blank
 
 <br>We tried: we asked Claude Sonnet 4-5 to translate **five rules** into code
 
-* ~200 lines → 2 correctness bugs + performance hit
+* ~200 lines → **2 correctness bugs** + performance hit
 
 Then something remarkable happened:
 
@@ -224,7 +224,7 @@ Then something remarkable happened:
 
 Paths can be tested, never proven complete.
 
-1. LLMs show consistent weaknesses in multi-step reasoning and state tracking—the same failure mode seen in dependency propagation. See: **“Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State-Of-the-Art Large Language Models”** (arXiv:2406.02061).
+1. LLMs show consistent weaknesses in multi-step reasoning and state tracking—the same failure mode seen in dependency propagation. See: **“Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State-Of-the-Art Large Language Models”** ([arXiv:2406.02061](https://arxiv.org/abs/2406.02061){:target="_blank" rel="noopener"}).
 
 2. A study titled “LMs: Understanding Code Syntax and Semantics for Code Analysis” found that while large language models (LLMs) excel at syntax, they struggle with semantics — especially dynamic semantics, which includes behavior over time, dependencies and state changes.  [Click here](https://arxiv.org/abs/2305.12138?utm_source=chatgpt.com){:target="_blank" rel="noopener"}.
 
