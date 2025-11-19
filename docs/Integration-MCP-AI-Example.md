@@ -256,6 +256,10 @@ The real opportunity is to **end the expedition** and deliver **business agility
 
 Likewise, NL business logic should **call a rules engine**, not emit procedural code.
 
+You want AI to *help* you with your spreadsheet, not *be excel*.
+
+> AI can *help* with most anything, but it doesn't need to *be* everything.
+
 </details>
 <br>
 
