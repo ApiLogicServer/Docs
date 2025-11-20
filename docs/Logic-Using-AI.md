@@ -601,3 +601,241 @@ The **"Get Values from Best Candidate"** pattern provides:
 ✅ Seamless rule integration  
 
 **Not replacing one with the other — combining the strengths of both.**
+
+&nbsp;
+
+---
+
+# Appendix: Pattern Internals
+
+This section provides deeper architectural insights into how the pattern works and why it's designed this way.
+
+&nbsp;
+
+## A. Category Discovery Process
+
+The request table's three categories (A/B/C) aren't arbitrary — they can be **automatically derived**:
+
+**Category A: Constants (Generic Audit Fields)**
+- Always the same for ANY AI request
+- Provides complete audit trail
+- Fields: `id`, `request`, `reason`, `created_on`, `fallback_used`
+
+**Category B: Context Foreign Keys**
+- Derived from **prompt analysis**
+- Identifies which objects are involved
+- Example: "Item unit_price" → needs `item_id`, `product_id`
+
+**Category C: Result Columns**
+- Inferred from **provider table introspection**
+- Uses like-named mapping convention
+- Example: Provider has `supplier_id`, `unit_cost` → Request gets `chosen_supplier_id`, `chosen_unit_price`
+
+**Key Insight:** Future implementations could **auto-generate the entire request table** from:
+1. Prompt text (identifies context entities)
+2. Provider table schema (identifies available values)
+3. Standard constants (always included)
+
+&nbsp;
+
+## B. Pattern Name Rationale
+
+**"Get Values from Best Candidate"** was chosen to precisely capture what the pattern does:
+
+**"Get Values"**
+- Extracting **existing data** from candidates
+- NOT computing new values or forecasting
+- Emphasizes data retrieval over calculation
+
+**"Best Candidate"**
+- Selection/optimization decision by AI
+- Implies judgment and criteria evaluation
+- Distinguishes from random or sequential selection
+
+**"(from Candidate List)"**
+- Multiple options to choose from
+- Not applicable to single-value computations
+- Emphasizes the selection aspect
+
+**What This Pattern Is NOT:**
+- ❌ "Compute a value" — No candidates involved, pure calculation
+- ❌ "Transform data" — No selection decision
+- ❌ "Aggregate results" — No single best choice
+
+&nbsp;
+
+## C. AI as Function Call
+
+The wrapper function's key innovation is making AI behave **functionally**:
+
+```python
+# Looks like a regular function call
+price = get_supplier_price_from_ai(item, logic_row)
+```
+
+**What happens under the hood:**
+1. Creates request record (audit trail)
+2. Triggers AI handler via insert event
+3. AI evaluates candidates and selects best
+4. Returns computed value immediately
+
+**From the formula's perspective:**
+- It's just a function that returns a price
+- AI complexity is completely encapsulated
+- Audit trails happen automatically
+- Fallback strategies are invisible
+
+**This enables:**
+- Seamless integration with declarative rules
+- No special "AI" handling in business logic
+- Clean separation of concerns
+- Testability through simple mocking
+
+&nbsp;
+
+## D. Result Values vs. Audit Trail
+
+An important architectural distinction in the supplier selection example:
+
+**Used in Business Logic:**
+- `chosen_unit_price` → Sets `Item.unit_price` (formula)
+- Participates in rule chaining (Item.amount → Order.amount_total → Customer.balance)
+
+**Audit Trail Only:**
+- `chosen_supplier_id` → NOT used in downstream logic
+- Provides visibility: "Which supplier did AI pick?"
+- Enables analysis and debugging
+- Supports regulatory compliance
+
+**Why This Matters:**
+
+This distinction kept the pattern as a **scalar function** (formula-compatible) rather than requiring an event handler. If business logic needed BOTH supplier_id AND unit_price, we'd use the multi-value pattern (event + tuple destructuring).
+
+**Design Principle:** Capture everything AI decides, but only return what business logic needs.
+
+&nbsp;
+
+## E. Implementation: Generic vs. Hardwired
+
+Current `compute_ai_value()` implementation status:
+
+**✅ Already Generic (Introspection-Based):**
+- Candidate discovery via relationship navigation
+- Field introspection via SQLAlchemy
+- Relationship traversal (e.g., `supplier.name`, `supplier.region`)
+- Graceful fallback strategies
+
+**❌ Still Hardwired (Needs Generalization):**
+- Result column mapping in `_map_ai_response()`:
+  ```python
+  row.chosen_supplier_id = int(chosen_id)      # Hardcoded field names
+  row.chosen_unit_price = Decimal(chosen_price)
+  ```
+- Fallback mapping in `_apply_fallback()`:
+  ```python
+  if hasattr(chosen, 'supplier_id'):     # Supplier-specific
+      row.chosen_supplier_id = ...
+  ```
+- Prompt building in `_build_prompt()`:
+  ```python
+  "You are optimizing supplier selection."  # Domain-specific text
+  ```
+
+**Future Enhancement:**
+
+Full introspection of `chosen_*` columns on request table would make the pattern completely generic:
+
+```python
+# Discover result columns dynamically
+for column in inspect(row.__class__).columns:
+    if column.key.startswith('chosen_'):
+        # Map from AI response automatically
+        source_field = column.key.replace('chosen_', '')
+        row[column.key] = ai_response[source_field]
+```
+
+&nbsp;
+
+## F. Test Context Priority
+
+`compute_ai_value()` checks `config/ai_test_context.yaml` **before** checking for OpenAI API key. This design choice enables:
+
+**Priority Order:**
+1. **Test context** (if exists) → Use predetermined values
+2. **OpenAI API** (if key available) → Real AI decision
+3. **Fallback strategy** → Deterministic selection
+
+**Benefits:**
+
+**Deterministic Testing**
+- Same input → Same output (reproducible)
+- No variance from AI responses
+- Predictable test outcomes
+
+**CI/CD Integration**
+- Run tests without OpenAI API key
+- No network dependencies
+- Fast execution (no API latency)
+
+**Offline Development**
+- Work without internet connection
+- No API costs during development
+- Faster iteration cycles
+
+**Example Test Context:**
+```yaml
+# config/ai_test_context.yaml
+selected_supplier_id: 2
+selected_unit_price: 105.0
+reasoning: "Test context: predetermined supplier selection"
+world_conditions: "Test scenario: normal operations"
+```
+
+**Result:** Full test coverage of AI-driven logic without actual AI calls.
+
+&nbsp;
+
+## G. Why Tuple Return Pattern?
+
+The `(primary_value, request_row)` tuple elegantly solves the single/multi-value dilemma:
+
+**Design Problem:**
+- Some use cases need ONE value (formula)
+- Other use cases need MULTIPLE values (event)
+- Don't want separate implementations
+
+**Solution: Return Both**
+```python
+return (supplier_req.chosen_unit_price, supplier_req)
+```
+
+**Single-Value Consumption (Formula):**
+```python
+Rule.formula(
+    derive=Item.unit_price,
+    calling=lambda row, lr: get_supplier_price_from_ai(row, lr)[0]
+)
+```
+
+**Multi-Value Consumption (Event):**
+```python
+def assign_supplier(row, old_row, logic_row):
+    price, req = get_supplier_price_from_ai(row, logic_row)
+    row.supplier_id = req.chosen_supplier_id
+    row.unit_price = price
+    row.lead_time = req.chosen_lead_time
+```
+
+**Key Benefits:**
+- ✅ One implementation serves both patterns
+- ✅ Caller decides what to use
+- ✅ Request row always available for audit
+- ✅ Backward compatible (formulas just extract `[0]`)
+
+**Alternative Rejected:** Returning just the scalar value would require separate implementations for single/multi-value cases, violating DRY principle.
+
+&nbsp;
+
+---
+
+**End of Appendix**
