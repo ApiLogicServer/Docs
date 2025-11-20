@@ -148,9 +148,9 @@ This pattern handles scenarios where AI selects an optimal choice from a list of
 
 ### Request Pattern: Complete Audit Trail
 
-Every AI decision is recorded in a **request table** with three categories of fields:
+Every AI decision is recorded in a **request table** with three types of fields:
 
-**Category A: Constants (same for all AI requests)**
+**Standard AI Audit (same for all AI requests)**
 ```python
 id = Column(Integer, primary_key=True)
 request = Column(String(2000))        # AI prompt sent
@@ -159,13 +159,13 @@ created_on = Column(DateTime)         # When decision was made
 fallback_used = Column(Boolean)       # Did AI fail and use fallback?
 ```
 
-**Category B: Context (from the prompt)**
+**Parent Context Links (FKs to triggering entities)**
 ```python
 item_id = Column(ForeignKey('item.id'))      # Which Item?
 product_id = Column(ForeignKey('product.id')) # Which Product?
 ```
 
-**Category C: Results (from AI selection)**
+**AI Results (values selected by AI)**
 ```python
 chosen_supplier_id = Column(ForeignKey('supplier.id'))  # Selected supplier
 chosen_unit_price = Column(DECIMAL)                     # Their price
@@ -183,10 +183,9 @@ chosen_lead_time = Column(Integer)                      # Their lead time
 ### Natural Language Prompt
 
 ```
-Item unit_price is derived as follows:
-  - IF Product has suppliers,
-        use AI to select optimal supplier based on cost, lead time, and world conditions
-  - ELSE copy from Product.unit_price
+Use AI to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions
+
+IF Product has no suppliers, THEN copy from Product.unit_price
 ```
 
 ### Implementation
@@ -196,23 +195,23 @@ Item unit_price is derived as follows:
 class SysSupplierReq(Base):
     __tablename__ = 'sys_supplier_req'
     
-    # Category A: Audit fields
+    # Standard AI Audit
     id = Column(Integer, primary_key=True)
     request = Column(String(2000))
     reason = Column(String(500))
     created_on = Column(DateTime, default=datetime.datetime.utcnow)
     fallback_used = Column(Boolean, default=False)
     
-    # Category B: Context
+    # Parent Context Links
     item_id = Column(Integer, ForeignKey("item.id"))
     product_id = Column(Integer, ForeignKey("product.id"))
     
-    # Category C: Result
+    # AI Results
     chosen_supplier_id = Column(Integer, ForeignKey("supplier.id"))
     chosen_unit_price = Column(DECIMAL)
 ```
 
-**AI Handler:**
+**AI Handler (in ai_requests/supplier_selection.py):**
 ```python
 def declare_logic():
     """Register AI supplier selection handler."""
@@ -234,6 +233,18 @@ def supplier_id_from_ai(row: models.SysSupplierReq, old_row, logic_row: LogicRow
         optimize_for='fastest reliable delivery while keeping costs reasonable, considering world conditions',
         fallback='min:unit_cost'
     )
+
+def get_supplier_selection_from_ai(product_id: int, item_id: int, logic_row: LogicRow):
+    """Wrapper that hides Request Pattern. Returns populated SysSupplierReq object."""
+    supplier_req_logic_row = logic_row.new_logic_row(models.SysSupplierReq)
+    supplier_req = supplier_req_logic_row.row
+    
+    supplier_req.product_id = product_id
+    supplier_req.item_id = item_id
+    
+    supplier_req_logic_row.insert(reason="AI supplier selection request")
+    
+    return supplier_req
 
 #### compute_ai_value() API Reference
 
@@ -280,45 +291,48 @@ When AI call fails (no API key, network error, etc.):
 - Transaction continues normally (no exception)
 ```
 
-**Wrapper Function (Returns Scalar):**
+**Item Event Handler (in check_credit.py):**
 ```python
-def get_supplier_price_from_ai(row, logic_row: LogicRow):
-    """
-    Returns optimal supplier price using AI.
-    Creates a SysSupplierReq which triggers the AI handler.
-    """
-    # Create request
-    supplier_req_logic_row = logic_row.new_logic_row(models.SysSupplierReq)
-    supplier_req = supplier_req_logic_row.row
-    
-    # Set context
-    supplier_req.product_id = row.product_id
-    supplier_req.item_id = row.id
-    
-    # Insert triggers AI
-    supplier_req_logic_row.insert(reason="AI supplier selection request")
-    
-    # Return computed value
-    return supplier_req.chosen_unit_price
-```
+def declare_logic():
+    # Other rules...
+    Rule.early_row_event(on_class=models.Item, calling=set_item_unit_price_from_supplier)
 
-**Formula Integration:**
-```python
-Rule.formula(
-    derive=Item.unit_price, 
-    calling=get_supplier_price_from_ai
-)
+def set_item_unit_price_from_supplier(row: models.Item, old_row: models.Item, logic_row):
+    """Early event: Sets unit_price using AI if suppliers exist, else copy from product."""
+    from logic.logic_discovery.ai_requests.supplier_selection import get_supplier_selection_from_ai
+    
+    if not logic_row.is_inserted():
+        return
+    
+    product = row.product
+    
+    # No suppliers - use product's default price
+    if product.count_suppliers == 0:
+        row.unit_price = product.unit_price
+        return
+    
+    # Product has suppliers - call wrapper (hides Request Pattern)
+    supplier_req = get_supplier_selection_from_ai(
+        product_id=row.product_id,
+        item_id=row.id,
+        logic_row=logic_row
+    )
+    
+    # Extract needed values from request
+    row.unit_price = supplier_req.chosen_unit_price
 ```
 
 ### What Happens at Runtime
 
-1. **Item is created** — Formula needs unit_price
-2. **Wrapper creates request** — Inserts `SysSupplierReq` row
-3. **AI handler fires** — Evaluates suppliers, selects best one
-4. **Request populated** — `chosen_supplier_id`, `chosen_unit_price`, and `reason` stored
-5. **Value returned** — Formula receives price, sets `Item.unit_price`
-6. **Rules cascade** — Item amount → Order total → Customer balance
-7. **Constraint checks** — Credit limit enforced
+1. **Item is inserted** — Early event fires on Item
+2. **Event checks suppliers** — If none, copy from product; if yes, call wrapper
+3. **Wrapper creates request** — Inserts `SysSupplierReq` row (hides Request Pattern)
+4. **AI handler fires** — Evaluates suppliers, selects best one
+5. **Request populated** — `chosen_supplier_id`, `chosen_unit_price`, and `reason` stored
+6. **Wrapper returns object** — Event receives populated SysSupplierReq
+7. **Event extracts value** — Sets `row.unit_price = supplier_req.chosen_unit_price`
+8. **Rules cascade** — Item amount → Order total → Customer balance
+9. **Constraint checks** — Credit limit enforced
 
 **Complete audit trail:** Every AI decision is logged with full context and reasoning.
 
@@ -403,23 +417,19 @@ class SysSupplierReq(Base):
     chosen_lead_time = Column(Integer)  # NEW: Additional value
 ```
 
-**Enhanced Wrapper (Returns Tuple):**
+**Wrapper Function (Same as Case 1):**
 ```python
-def get_supplier_assignment_from_ai(row, logic_row: LogicRow):
-    """
-    Returns (primary_value, request_row) tuple.
-    Enables access to all chosen values.
-    """
+def get_supplier_selection_from_ai(product_id: int, item_id: int, logic_row: LogicRow):
+    """Returns populated SysSupplierReq object."""
     supplier_req_logic_row = logic_row.new_logic_row(models.SysSupplierReq)
     supplier_req = supplier_req_logic_row.row
     
-    supplier_req.order_id = row.id
-    supplier_req.product_id = row.items[0].product_id
+    supplier_req.product_id = product_id
+    supplier_req.item_id = item_id
     
-    supplier_req_logic_row.insert(reason="AI supplier assignment for drop-ship")
+    supplier_req_logic_row.insert(reason="AI supplier selection request")
     
-    # Return tuple: (primary_value, full_request_row)
-    return (supplier_req.chosen_unit_price, supplier_req)
+    return supplier_req
 ```
 
 **Event Integration (Multiple Values):**
@@ -428,44 +438,41 @@ def assign_dropship_supplier(row: models.Order, old_row, logic_row: LogicRow):
     """
     Early event: AI selects supplier and populates multiple Order fields.
     """
-    if not row.is_dropship:
+    from logic.logic_discovery.ai_requests.supplier_selection import get_supplier_selection_from_ai
+    
+    if not logic_row.is_inserted() or not row.is_dropship:
         return
     
-    # Destructure tuple to get all values
-    cost, req = get_supplier_assignment_from_ai(row, logic_row)
+    # Call wrapper - returns populated request object
+    req = get_supplier_selection_from_ai(
+        product_id=row.items[0].product_id,
+        item_id=row.items[0].id,
+        logic_row=logic_row
+    )
     
-    # Set multiple fields from AI decision
+    # Extract multiple values from request object
     row.fulfillment_supplier_id = req.chosen_supplier_id  # Value 1
-    row.estimated_cost = cost                              # Value 2
-    row.promised_delivery_days = req.chosen_lead_time      # Value 3
+    row.estimated_cost = req.chosen_unit_price            # Value 2
+    row.promised_delivery_days = req.chosen_lead_time     # Value 3
     
     logic_row.log(f"Drop-ship assigned to supplier {req.chosen_supplier_id}, "
-                  f"cost=${cost}, delivery={req.chosen_lead_time} days")
+                  f"cost=${req.chosen_unit_price}, delivery={req.chosen_lead_time} days")
 
 Rule.early_row_event(on_class=Order, calling=assign_dropship_supplier)
 ```
 
-**Formula Integration Still Works:**
-```python
-# Extract just the primary value (index [0] of tuple)
-Rule.formula(
-    derive=Item.unit_price, 
-    calling=lambda row, logic_row: get_supplier_assignment_from_ai(row, logic_row)[0]
-)
-```
-
 &nbsp;
 
-## Pattern Flexibility: One Implementation, Two Use Cases
+## Pattern Flexibility: One Implementation, Multiple Use Cases
 
-The tuple return pattern `(primary_value, request_row)` elegantly supports both scenarios:
+The wrapper returns a populated request object, enabling flexible value extraction:
 
 | Integration Type | How Used | Values Accessed | Example |
-|------------------|----------|-----------------|---------|
-| **Formula** | Extract `[0]` | Single scalar | `Item.unit_price` |
-| **Event** | Destructure tuple | Multiple fields | `Order.supplier_id`, `cost`, `lead_time` |
+|------------------|----------|-----------------|---------|------|
+| **Single Value** | Extract one field | `req.chosen_unit_price` | `Item.unit_price` |
+| **Multiple Values** | Extract multiple fields | `req.chosen_supplier_id`, `req.chosen_unit_price`, `req.chosen_lead_time` | `Order.supplier_id`, `cost`, `lead_time` |
 
-**Key Benefit:** One AI request serves both single-value and multi-value needs.
+**Key Benefit:** Wrapper returns full object; caller decides what to extract.
 
 &nbsp;
 
@@ -552,9 +559,9 @@ When implementing this pattern:
 - [ ] Values needed (single or multiple?)
 
 ### 2. Design Request Table
-- [ ] Category A: Standard audit fields (id, request, reason, created_on, fallback_used)
-- [ ] Category B: Context FKs from prompt (item_id, product_id, etc.)
-- [ ] Category C: Result columns via like-named mapping (chosen_*)
+- [ ] Standard AI Audit: (id, request, reason, created_on, fallback_used)
+- [ ] Parent Context Links: FKs from prompt (item_id, product_id, etc.)
+- [ ] AI Results: Result columns via like-named mapping (chosen_*)
 
 ### 3. Create AI Handler
 - [ ] Early row event on request table
@@ -612,21 +619,21 @@ This section provides deeper architectural insights into how the pattern works a
 
 &nbsp;
 
-## A. Category Discovery Process
+## A. Request Table Field Discovery
 
-The request table's three categories (A/B/C) aren't arbitrary — they can be **automatically derived**:
+The request table's three field types aren't arbitrary — they can be **automatically derived**:
 
-**Category A: Constants (Generic Audit Fields)**
+**Standard AI Audit (Generic Fields)**
 - Always the same for ANY AI request
 - Provides complete audit trail
 - Fields: `id`, `request`, `reason`, `created_on`, `fallback_used`
 
-**Category B: Context Foreign Keys**
+**Parent Context Links (Foreign Keys)**
 - Derived from **prompt analysis**
 - Identifies which objects are involved
 - Example: "Item unit_price" → needs `item_id`, `product_id`
 
-**Category C: Result Columns**
+**AI Results (Selected Values)**
 - Inferred from **provider table introspection**
 - Uses like-named mapping convention
 - Example: Provider has `supplier_id`, `unit_cost` → Request gets `chosen_supplier_id`, `chosen_unit_price`
@@ -795,44 +802,46 @@ world_conditions: "Test scenario: normal operations"
 
 &nbsp;
 
-## G. Why Tuple Return Pattern?
+## G. Why Object Return Pattern?
 
-The `(primary_value, request_row)` tuple elegantly solves the single/multi-value dilemma:
+The wrapper returns the full request object, elegantly solving the single/multi-value dilemma:
 
 **Design Problem:**
-- Some use cases need ONE value (formula)
-- Other use cases need MULTIPLE values (event)
+- Some use cases need ONE value (unit_price)
+- Other use cases need MULTIPLE values (supplier_id, unit_price, lead_time)
 - Don't want separate implementations
 
-**Solution: Return Both**
+**Solution: Return Full Object**
 ```python
-return (supplier_req.chosen_unit_price, supplier_req)
+def get_supplier_selection_from_ai(product_id, item_id, logic_row):
+    # ... create and populate request ...
+    return supplier_req  # Returns full SysSupplierReq object
 ```
 
-**Single-Value Consumption (Formula):**
+**Single-Value Consumption (Early Event):**
 ```python
-Rule.formula(
-    derive=Item.unit_price,
-    calling=lambda row, lr: get_supplier_price_from_ai(row, lr)[0]
-)
+def set_item_unit_price_from_supplier(row, old_row, logic_row):
+    req = get_supplier_selection_from_ai(row.product_id, row.id, logic_row)
+    row.unit_price = req.chosen_unit_price  # Extract one field
 ```
 
-**Multi-Value Consumption (Event):**
+**Multi-Value Consumption (Early Event):**
 ```python
 def assign_supplier(row, old_row, logic_row):
-    price, req = get_supplier_price_from_ai(row, logic_row)
-    row.supplier_id = req.chosen_supplier_id
-    row.unit_price = price
+    req = get_supplier_selection_from_ai(row.product_id, row.id, logic_row)
+    row.supplier_id = req.chosen_supplier_id      # Extract multiple fields
+    row.unit_price = req.chosen_unit_price
     row.lead_time = req.chosen_lead_time
 ```
 
 **Key Benefits:**
-- ✅ One implementation serves both patterns
-- ✅ Caller decides what to use
-- ✅ Request row always available for audit
-- ✅ Backward compatible (formulas just extract `[0]`)
+- ✅ One implementation serves all use cases
+- ✅ Caller extracts what it needs
+- ✅ Request object always available for audit
+- ✅ Natural object-oriented pattern
+- ✅ Easy to add new fields without changing wrapper
 
-**Alternative Rejected:** Returning just the scalar value would require separate implementations for single/multi-value cases, violating DRY principle.
+**Alternative Rejected:** Returning just a scalar value would require separate implementations for single/multi-value cases, violating DRY principle.
 
 &nbsp;
 
