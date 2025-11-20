@@ -65,16 +65,21 @@ Other logic benefits from **judgment, context awareness, and adaptive reasoning*
 
 **The Underlying Pattern:**
 
-> AI selects a "Provider Row" from a Provider Candidate List, setting 1 or more values into a "Requester Row"
+> AI selects a "Provider Row" from a Provider Candidate List, setting 1 or more values into a "Receiver Row"
 
 **Examples:**
 
-| Use Case: AI selects from Provider Candidate List | Requester Row | Provider Row | Values Transferred |
+| Use Case: AI selects from Provider Candidate List | Receiver Row | Provider Row | Values Transferred |
 |----------|---------------|--------------|-------------------|
-| **Optimal supplier selection** based on cost, lead time, and world conditions | `Item` | `Supplier` (via `ProductSupplierList`) | `unit_price`, `lead_time`, `supplier_id` |
-| **Best warehouse for fulfillment** considering inventory and shipping costs | `Order` | `Warehouse` (via inventory) | `warehouse_id`, `shipping_cost`, `distance` |
-| **Preferred payment processor** based on transaction patterns and fees | `Transaction` | `PaymentProcessor` | `processor_id`, `fee_rate`, `processing_time` |
-| **Resource allocation** (assign support ticket to best-qualified agent) | `Ticket` | `Agent` (via skill match) | `agent_id`, `estimated_resolution_time`, `expertise_level` |
+| **Optimal supplier selection** based on cost, lead time, and world conditions | `Item` | `Supplier` (via `ProductSupplierList`) | `unit_price`, `lead_time_days`, `supplier_id` |
+
+**Additional Examples (hypothetical domains):**
+
+| Use Case | Receiver Row | Provider Row | Values Transferred |
+|----------|---------------|--------------|-------------------|
+| Best warehouse for fulfillment | `Order` | `Warehouse` | `warehouse_id`, `shipping_cost`, `distance` |
+| Preferred payment processor | `Transaction` | `PaymentProcessor` | `processor_id`, `fee_rate`, `processing_time` |
+| Resource allocation (support tickets) | `Ticket` | `Agent` | `agent_id`, `estimated_resolution_time`, `expertise_level` |
 
 **Characteristics:**
 
@@ -229,6 +234,50 @@ def supplier_id_from_ai(row: models.SysSupplierReq, old_row, logic_row: LogicRow
         optimize_for='fastest reliable delivery while keeping costs reasonable, considering world conditions',
         fallback='min:unit_cost'
     )
+
+#### compute_ai_value() API Reference
+
+```python
+compute_ai_value(
+    row,              # Request table row to populate with results
+    logic_row,        # LogicBank LogicRow for logging and DB operations
+    candidates,       # Relationship path to candidate objects (e.g., 'product.ProductSupplierList')
+    optimize_for,     # Natural language optimization goal
+    fallback          # Strategy when AI unavailable or fails
+)
+```
+
+**Parameters:**
+
+- **`row`** — The request table instance (e.g., `SysSupplierReq`) where results will be stored
+- **`logic_row`** — LogicBank's LogicRow for logging and transaction management
+- **`candidates`** — Dot-notation path to navigate SQLAlchemy relationship (e.g., `'order.customer.PreferredSupplierList'`)
+- **`optimize_for`** — Natural language describing business objective (sent to AI)
+- **`fallback`** — Strategy when OpenAI API unavailable:
+  - `'min:field_name'` — Select candidate with minimum value for field
+  - `'max:field_name'` — Select candidate with maximum value for field
+  - `'first'` — Use first candidate in list
+
+**What it does automatically:**
+
+1. Checks test context first (for reproducible testing)
+2. Navigates relationship path to get candidate objects
+3. Introspects all candidate fields via SQLAlchemy
+4. Introspects request table `chosen_*` result columns
+5. Maps AI response to result columns (e.g., `chosen_supplier_id` ← `supplier_id`)
+6. Loads world conditions from `config/ai_test_context.yaml`
+7. Calls OpenAI API with structured prompt
+8. Handles graceful fallback when no API key
+9. Converts types (Decimal for money, int for IDs)
+10. Stores complete audit trail in request row
+
+**Error Handling:**
+
+When AI call fails (no API key, network error, etc.):
+- Uses fallback strategy to select candidate
+- Sets `fallback_used = True` in request row
+- Logs reason for fallback in `reason` field
+- Transaction continues normally (no exception)
 ```
 
 **Wrapper Function (Returns Scalar):**
@@ -275,7 +324,55 @@ Rule.formula(
 
 &nbsp;
 
-## Case 2: Multi-Value Pattern (Proposed)
+## Prompt Format Specification
+
+### Writing Prompts for Multi-Value Selection
+
+When AI needs to set multiple receiver fields, the prompt must explicitly list them:
+
+**Format:**
+```
+Use AI to select optimal <Provider>.
+Set <Receiver> fields:
+  - field1                    # Like-named (auto-inferred from provider)
+  - field2 = provider_field2  # Explicit mapping (names differ)
+  - field3                    # Like-named
+```
+
+**Rules:**
+
+1. **Always list receiver fields** — Makes intent clear, no ambiguity
+2. **Like-named inference** — If receiver and provider field names match, just list the name
+3. **Explicit mapping** — Use `=` only when names differ between receiver and provider
+4. **Mixed approach** — Combine both styles in same prompt
+
+**Examples:**
+
+```
+# All like-named (provider has matching field names)
+Set Order fields: supplier_id, unit_cost, lead_time_days
+
+# All explicit (names differ)
+Set Order fields:
+  - fulfillment_supplier_id = supplier_id
+  - estimated_cost = unit_cost
+  - promised_delivery_days = lead_time_days
+
+# Mixed (some match, some don't)
+Set Order fields:
+  - supplier_id
+  - estimated_cost = unit_cost
+  - lead_time_days
+```
+
+**Why this matters:** AI introspects the provider table to find matching fields. Like-named inference keeps prompts concise while explicit mapping handles mismatched names.
+
+&nbsp;
+
+## Case 2: Multi-Value Pattern
+
+!!! note "Implementation Status"
+    The multi-value pattern uses the same infrastructure as Case 1 (implemented and tested). The enhanced wrapper function returning a tuple enables both single-value (formula) and multi-value (event) consumption. The example below shows how to extend the pattern for multiple values.
 
 **Use Case:** Order needs multiple values (supplier_id, cost, lead_time) from AI selection.
 
