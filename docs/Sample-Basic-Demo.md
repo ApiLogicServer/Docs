@@ -68,7 +68,7 @@ genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basi
 
 <summary> The database is Customer, Orders, Items and Product</summary>
 
-![basic_demo_data_model](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/basic_demo_data_model.jpeg?raw=true)
+![basic_demo_data_model](images/basic_demo/basic_demo_data_model.png)
 
 </details>
 <br>

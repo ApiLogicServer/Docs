@@ -74,6 +74,7 @@ nav:
   - 3. Logic:
     - "Logic: Why": Logic-Why.md
     - "Logic: Rule Types, Patterns": Logic.md
+    - "Logic: Using AI": Logic-Using-AI.md
     - "Using Logic": "Logic-Use.md"
     - "Debugging Logic": "Logic-Debug.md"
     - "How: Logic and Agile": "Logic-Tutorial.md"
