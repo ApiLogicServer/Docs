@@ -31,8 +31,6 @@ Please load `.github/.copilot-instructions.md`.
 
 > **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.    Also, we get consistently good results with `Claude Sonnet 4.5`.
 
-> 💡 **Tip:** Need to install? See the [installation guide](https://apilogicserver.github.io/Docs/Install-Express).
-
 &nbsp;
 
 # Product Tour (Start Here)
