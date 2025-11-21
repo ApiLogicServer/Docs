@@ -24,6 +24,13 @@ What is GenAI-Logic:
 
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager).  The Manager is a good place to manage projects, create notes and resources, etc.  
 
+**Bootstrap Copilot:**
+```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
+Please load `.github/.copilot-instructions.md`.
+```
+
+> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.    Also, we get consistently good results with `Claude Sonnet 4.5`.
+
 > 💡 **Tip:** Need to install? See the [installation guide](https://apilogicserver.github.io/Docs/Install-Express).
 
 &nbsp;
@@ -36,16 +43,8 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 2. Adding declarative logic and security, and 
 3. Customizing your project using your IDE and Python<br><br>
 
-**🚀 First Time Here? Start with the 20-minute basic_demo tutorial:**
 
-1. **Bootstrap Copilot:**
-```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
-Please load `.github/.copilot-instructions.md`.
-```
-
-> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.    Also, we get consistently good results with `Claude Sonnet 4.5`.
-
-2. **Create basic_demo project** (auto-opens with guided tour option):
+**🚀 Create basic_demo project** (auto-opens with guided tour option):
 ```bash
 genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```

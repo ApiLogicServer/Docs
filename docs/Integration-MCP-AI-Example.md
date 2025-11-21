@@ -331,7 +331,7 @@ Use case: App Integration
 1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 
-And then, test via MCP-discovered API):**  *Constraint blocks bad data*: ️
+And then, test via MCP-discovered API:**  *Constraint blocks bad data*: ️
 ```bash title='Test Logic with MCP Discovery'
 On Alice's first order, include 100 Egyptian Cotton Sheets
 ```
