@@ -24,7 +24,6 @@ What is GenAI-Logic:
 
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager).  The Manager is a good place to manage projects, create notes and resources, etc.  
 
-**Bootstrap Copilot:**
 ```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
 Please load `.github/.copilot-instructions.md`.
 ```
