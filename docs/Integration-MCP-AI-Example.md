@@ -324,13 +324,10 @@ Use case: Check Credit:
 3. The Order's amount_total is the sum of the Item amount
 4. The Item amount is the quantity * unit_price
 5. The Product count suppliers is the sum of the Product Suppliers
-6. Item unit_price is derived as follows:
-       - IF Product has suppliers,
-             use AI to select optimal supplier based on cost, lead time, and world conditions
-       - ELSE copy from Product.unit_price
+6. Use AI to Set Item field unit_price by finding the optimal Product Supplier 
+                                          based on cost, lead time, and world conditions
 
 Use case: App Integration
-
 1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 

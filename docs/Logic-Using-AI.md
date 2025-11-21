@@ -298,34 +298,72 @@ def declare_logic():
     Rule.early_row_event(on_class=models.Item, calling=set_item_unit_price_from_supplier)
 
 def set_item_unit_price_from_supplier(row: models.Item, old_row: models.Item, logic_row):
-    """Early event: Sets unit_price using AI if suppliers exist, else copy from product."""
+    """
+    Early event: Sets unit_price using AI if suppliers exist, else uses fallback.
+    
+    Fires on insert AND when product_id changes (copy rule semantics).
+    """
     from logic.logic_discovery.ai_requests.supplier_selection import get_supplier_selection_from_ai
     
-    if not logic_row.is_inserted():
+    # Process on insert OR when product_id changes
+    if not (logic_row.is_inserted() or row.product_id != old_row.product_id):
         return
     
     product = row.product
     
-    # No suppliers - use product's default price
+    # FALLBACK LOGIC when AI shouldn't/can't run:
+    # Try reasonable default (copy from parent matching field), else fail-fast
     if product.count_suppliers == 0:
-        row.unit_price = product.unit_price
-        return
+        # Reasonable default: copy from parent.unit_price (matching field name)
+        if hasattr(product, 'unit_price') and product.unit_price is not None:
+            logic_row.log(f"No suppliers for {product.name}, using product default price")
+            row.unit_price = product.unit_price
+            return
+        else:
+            # No obvious fallback - fail-fast with explicit TODO
+            raise NotImplementedError(
+                "TODO_AI_FALLBACK: Define fallback for Item.unit_price when no suppliers exist. "
+                "Options: (1) Use a default constant, (2) Leave NULL if optional, "
+                "(3) Raise error if required field, (4) Copy from another source"
+            )
     
-    # Product has suppliers - call wrapper (hides Request Pattern)
+    # Product has suppliers - call AI wrapper (hides Request Pattern)
+    logic_row.log(f"Product {product.name} has {product.count_suppliers} suppliers, requesting AI selection")
     supplier_req = get_supplier_selection_from_ai(
         product_id=row.product_id,
         item_id=row.id,
         logic_row=logic_row
     )
     
-    # Extract needed values from request
+    # Extract AI-selected value(s)
     row.unit_price = supplier_req.chosen_unit_price
 ```
+
+### Fallback Strategy: Reasonable Default → Fail-Fast
+
+**CRITICAL:** AI rules need fallback logic for cases when AI shouldn't/can't run.
+
+**Strategy:**
+1. **Try reasonable default**: Copy from parent field with matching name
+2. **If no obvious default**: Raise `NotImplementedError` with `TODO_AI_FALLBACK` marker
+3. **Never silently fail**: Force developer decision at generation time, not runtime
+
+**Benefits:**
+- ✅ Prevents silent production failures
+- ✅ Code won't run until developer addresses edge cases
+- ✅ Clear markers for what needs attention
+- ✅ Works in dev/test, fails explicitly before production
+
+**For multi-value AI results**: Apply per-field fallback strategy. Common: copy from parent matching field names. For fields with no obvious fallback, use `TODO_AI_FALLBACK`.
+
+**Example:** In the code above, when `product.count_suppliers == 0`:
+- First tries: `product.unit_price` (matching field name)
+- If not available: Raises `NotImplementedError` with clear options
 
 ### What Happens at Runtime
 
 1. **Item is inserted** — Early event fires on Item
-2. **Event checks suppliers** — If none, copy from product; if yes, call wrapper
+2. **Event checks suppliers** — If none, apply fallback; if yes, call wrapper
 3. **Wrapper creates request** — Inserts `SysSupplierReq` row (hides Request Pattern)
 4. **AI handler fires** — Evaluates suppliers, selects best one
 5. **Request populated** — `chosen_supplier_id`, `chosen_unit_price`, and `reason` stored
