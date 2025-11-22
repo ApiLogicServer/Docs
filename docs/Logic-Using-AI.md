@@ -1,7 +1,7 @@
 ---
 title: Logic Using AI
 notes: Combining deterministic and probabilistic logic
-version: 1.0, Nov 2025
+version: 1.1, 22 Nov 2025
 ---
 
 <style>
@@ -16,7 +16,7 @@ version: 1.0, Nov 2025
     Business logic often requires **both** kinds of reasoning:
     
     - **Deterministic Logic** — "Customer balance must not exceed credit limit".  Such "classic" logic does not invoke AI at runtime.
-    - **Creative Logic** — "Which supplier can still deliver if the strait is blocked?".  Such logic invokes AI at runtime to compute values.  Since AI is probabalistic, you  typically constrain the computed values with deterministic logic.
+    - **Creative Logic** — "Which supplier can still deliver if the strait is blocked?".  Such logic invokes AI at runtime to compute values.  Since AI is probabalistic, you  typically constrain the computed values with deterministic logic, and provide for audit trails to verify proper operation.
     
     GenAI-Logic enables you to **express both in the same natural language prompt**, and **execute them together** with proper governance.
 
@@ -130,7 +130,7 @@ This pattern handles scenarios where AI selects an optimal choice from a list of
 ### Pattern Components
 
 | Component | Description | Example |
-|-----------|-------------|---------|------|
+|-----------|-------------|---------|
 | **Receiver** | Object that needs value(s) | `Item`, `Order` |
 | **Provider** | Candidate objects with source values | `Supplier` (via `ProductSupplierList`) |
 | **Request Table** | Stores context, results, and audit trail | `SysSupplierReq` |
@@ -179,10 +179,11 @@ chosen_lead_time = Column(Integer)                      # Their lead time
 
 ### Natural Language Prompt
 
-```
-Use AI to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions
-
-IF Product has no suppliers, THEN copy from Product.unit_price
+```text title='Use AI to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions'
+6. Item unit_price is derived as follows:
+       - IF Product has suppliers,
+             use AI to select optimal supplier based on cost, lead time, and world conditions
+       - ELSE copy from Product.unit_price
 ```
 
 ### Implementation
@@ -766,6 +767,7 @@ def set_item_unit_price_from_supplier(row, old_row, logic_row):
 ```
 
 **Key Benefits:**
+
 - ✅ One implementation serves all use cases
 - ✅ Caller extracts what it needs (one or many fields)
 - ✅ Request object always available for audit
