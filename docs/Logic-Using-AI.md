@@ -20,88 +20,25 @@ version: 1.1, 22 Nov 2025
     
     GenAI-Logic enables you to **express both in the same natural language prompt**, and **execute them together** with proper governance.
 
+    Modern business systems require **both deterministic rules** (repeatable, governed, auditable) and **probabilistic AI decisions** (adaptive, context‑aware).  
+    GenAI‑Logic unifies these into a single natural‑language model where:
+
+    - **AI chooses** the best candidate (probabilistic reasoning)  
+    - **Rules enforce** constraints (deterministic governance)  
+    - **Request tables record** every AI decision (full audit trail)  
+    - **Events integrate** AI results into rule chaining  
+    - **The DSL expresses** all logic in one declarative layer
+
 **Under Construction**
 
-&nbsp;
+---
 
-## Two Kinds of Logic
-
-Not all business logic is the same. Understanding the distinction helps you choose the right tool for each situation.
-
-### Deterministic (Classic) Logic
-
-Some logic must be **consistent, verifiable, and repeatable** — the same inputs always produce the same outputs.  This is the *classic* logic we used to code by hand, now declared with rules in GenAI-Logic.
-
-**Examples:**
-
-- Credit limit validation
-- Order total calculation (sum of line items)
-- Customer balance updates (aggregate unpaid orders)
-- Tax calculations based on fixed rules
-
-**Characteristics:**
-
-- ✅ Always produces the same result
-- ✅ Can be tested exhaustively
-- ✅ Full audit trail of calculations
-- ✅ Multi-table chaining handled automatically
-
-**Natural Language Expression:**
-
-```
-The Customer's balance is the sum of Order amount_total where date_shipped is null
-The Order's amount_total is the sum of Item amount
-The Item amount is quantity * unit_price
-The Customer's balance must not exceed credit_limit
-```
-
-These translate directly into **declarative rules** that the LogicBank engine enforces automatically.
-
-&nbsp;
-
-### Creative (Probabilistic) Logic
-
-Other logic benefits from **judgment, context awareness, and adaptive reasoning** — where optimization or external factors influence the decision.
-
-**The Underlying Pattern:**
-
-> AI selects a "Provider Row" from a Provider Candidate List, setting 1 or more values into a "Receiver Row"
-
-**Examples:**
-
-| Use Case: AI selects from Provider Candidate List | Receiver Row | Provider Row | Values Transferred | Sample |
-|----------|---------------|--------------|-------------------|--------|
-| **Optimal supplier selection** based on cost, lead time, and world conditions | `Item` | `Supplier` (via `ProductSupplierList`) | `unit_price`, `lead_time_days`, `supplier_id` | `basic_demo` |
-| Best warehouse for fulfillment | `Order` | `Warehouse` | `warehouse_id`, `shipping_cost`, `distance` | |
-| Preferred payment processor | `Transaction` | `PaymentProcessor` | `processor_id`, `fee_rate`, `processing_time` | |
-| Resource allocation (support tickets) | `Ticket` | `Agent` | `agent_id`, `estimated_resolution_time`, `expertise_level` | |
-
-**Characteristics:**
-
-- 🎯 Leverages AI's ability to weigh multiple factors
-- 🎯 Adapts to changing external conditions
-- 🎯 Selects from candidates rather than computing values
-- 🎯 Still requires governance (guardrails)
-
-**Natural Language Expression:**
-
-```
-Use AI to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions
-```
-
-This delegates the **selection decision** to AI while keeping the result **auditable and governed** by deterministic rules.
-
-&nbsp;
-
-## Why Both Matter: Governable Creativity
-
-**The Real Power:** Combining both approaches in a single unified model.
-
-### Example: Order Processing with AI-Selected Supplier
-
-Given this database:
+## Early Example (New)
+For example, consider the following database:
 
 ![basic_demo_data_model](images/basic_demo/basic_demo_data_model.png)
+
+We wish to check credit (deterministic rules), but also choose the 'best' supplier based on external factors expressed in natural language.  We can't reasonably program that, but it's a *perfect* situation for creative / probabalistic 
 
 ```python title="Unified Deterministic and Probabilistic Logic"
 Use case: Check Credit
@@ -117,137 +54,220 @@ Use case: Check Credit
        - ELSE copy from Product.unit_price
 ```
 
-**What happens:**
+### Logic Operation
 
-1. **AI makes creative decision** — Selects supplier considering multiple factors including real-time conditions
-2. **Deterministic rules cascade** — Updates Item amount → Order total → Customer balance
-3. **Guardrail enforces constraint** — Credit limit validation prevents bad transactions
+1. AI selects best supplier  
+2. Item.unit_price updated  
+3. Item.amount recalculated  
+4. Order.amount_total updated  
+5. Customer.balance updated  
+6. Credit limit checked  
 
-**Result:** You get the **adaptability of AI** with the **reliability of rules**.
+Outcome: **governed creativity** — AI adapts, rules enforce correctness.
+---
 
-&nbsp;
-
-## The "Get Values from Best Candidate" Pattern
-
-This pattern handles scenarios where AI selects an optimal choice from a list of candidates and returns value(s) for use in business logic.
-
-### Pattern Components
-
-| Component | Description | Example |
-|-----------|-------------|---------|
-| **Receiver** | Object that needs value(s) | `Item`, `Order` |
-| **Provider** | Candidate objects with source values | `Supplier` (via `ProductSupplierList`) |
-| **Request Table** | Stores context, results, and audit trail | `SysSupplierReq` |
-| **AI Handler** | Makes selection and populates request | `supplier_id_from_ai()` |
-| **Wrapper Function** | Encapsulates pattern, returns request object | `get_supplier_selection_from_ai()` |
-| **Integration** | How values reach receiver | Early Event (extracts fields from request object) |
-
-### Request Pattern: Complete Audit Trail
-
-Observe the request object:
-
-![basic_demo_data_model](images/basic_demo/basic_demo_data_model.png)
-
-Every AI decision is recorded in a **request table** with three types of fields:
-
-**Standard AI Audit (same for all AI requests)**
-```python
-id = Column(Integer, primary_key=True)
-request = Column(String(2000))        # Context: "Egyptian Cotton Sheets from Acme ($105) or Global ($110)"
-reason = Column(String(500))          # Decision: "Selected Acme - lower cost, reliable delivery"
-created_on = Column(DateTime)         # When decision was made
-fallback_used = Column(Boolean)       # Did AI fail and use fallback?
+## 10‑Second Mental Model
+```
+Receiver (needs value)
+    ↓ asks AI
+Provider Candidates
+    ↓ evaluated by AI
+AI Handler
+    ↓ fills
+Request Row (audit)
+    ↓ extracted by rule/event
+Receiver updated
 ```
 
-**IMPORTANT:** `request` and `reason` must contain business-meaningful data:
-- Use names, not IDs ("Acme" not "2")
-- Include context values ("$105" not just supplier name)
-- Populate in AI handler where data exists, not wrapper
+AI decides; rules ensure correctness.
 
-**Parent Context Links (FKs to triggering entities)**
-```python
-item_id = Column(ForeignKey('item.id'))      # Which Item?
-product_id = Column(ForeignKey('product.id')) # Which Product?
+---
+
+## Two Kinds of Logic
+
+### Deterministic Logic
+Used when outcomes must be **repeatable and verifiable**.
+
+Examples:
+- Credit limit validation  
+- Summed totals (Item → Order → Customer)  
+- Tax rules  
+- Inventory adjustments  
+
+Characteristics:
+- Always same output  
+- Fully testable  
+- Automatic chaining  
+- Auditability built‑in  
+
+Example DSL:
+```
+Customer.balance = sum(Order.amount_total where date_shipped is null)
+Order.amount_total = sum(Item.amount)
+Item.amount = quantity * unit_price
+Customer.balance must not exceed credit_limit
 ```
 
-**AI Results (values selected by AI)**
-```python
-chosen_supplier_id = Column(ForeignKey('supplier.id'))  # Selected supplier
-chosen_unit_price = Column(DECIMAL)                     # Their price
-chosen_lead_time = Column(Integer)                      # Their lead time
+### Probabilistic (Creative) Logic
+Used when judgment or optimization is required.
+
+Examples:
+- Selecting best supplier  
+- Selecting warehouse  
+- Picking payment processor  
+- Assigning support agent  
+
+Pattern:
+> AI selects the best Provider row from a list of candidates and returns 1+ fields to the Receiver.
+
+Example DSL:
+```
+Use AI to set Item.unit_price by finding the optimal ProductSupplier
+based on cost, lead time, and world conditions.
 ```
 
-&nbsp;
+---
 
-## When to Use This Pattern
+## The “Get Values from Best Candidate” Pattern
 
-### ✅ Good Fit
+### Why It Exists
+Some attributes cannot be computed — they must be **chosen** from candidates (supplier, warehouse, agent…).
 
-- **Selection from candidates** — Multiple options to choose from
-- **AI-driven optimization** — Decision based on multiple weighted criteria
-- **Value extraction** — Getting attribute(s) from chosen candidate
-- **Audit requirement** — Need to track what AI decided and why
+This pattern provides:
+- AI‑powered selection  
+- Deterministic guardrails  
+- Complete audit trail  
+- Clean rule/event integration  
+- Works for single or multiple fields  
 
-**Examples:**
+---
 
-- ✅ Optimal supplier selection
-- ✅ Best warehouse for fulfillment
-- ✅ Preferred payment processor
-- ✅ Routing assignment (driver, route, carrier)
-- ✅ Resource allocation (assign ticket to agent)
+## Pattern Components
 
-### ❌ Not Applicable
+| Component | Role | Example |
+|----------|------|---------|
+| **Receiver** | Needs values | Item |
+| **Provider List** | Candidates | ProductSupplierList |
+| **Request Table** | Context + audit + results | SysSupplierReq |
+| **AI Handler** | Makes selection | supplier_id_from_ai() |
+| **Wrapper** | Encapsulates pattern | get_supplier_selection_from_ai() |
+| **Integration** | Event/formula populates fields | Early event on Item |
 
-- ❌ Pure computation without candidates (dynamic pricing, risk scoring)
-- ❌ Forecasting/prediction (no candidate selection)
-- ❌ Classification without candidate list
-- ❌ Simple deterministic calculations (use regular rules)
+---
 
-&nbsp;
-
-## Benefits of the Unified Approach
-
-### 1. Natural Language for Both
-
-Express **deterministic** and **creative** logic the same way:
-
+## Diagram: Request Pattern Lifecycle
 ```
-Customer balance is the sum of Order amount_total     ← Deterministic
-Item unit_price uses AI to select optimal supplier    ← Creative
-Customer balance must not exceed credit_limit         ← Guardrail
+Item insert/update
+       ↓
+Wrapper creates SysSupplierReq
+       ↓
+Insert triggers AI Handler
+       ↓
+AI evaluates ProductSupplierList
+       ↓
+AI populates chosen_* fields + reason text
+       ↓
+Event extracts chosen_unit_price → Item.unit_price
+       ↓
+Rules recompute amounts, totals, balances
 ```
 
-### 2. Complete Governance
+---
 
-- **Audit trail** — Every AI decision logged with reasoning
-- **Fallback strategies** — Graceful degradation if AI unavailable
-- **Deterministic guardrails** — Rules enforce boundaries on AI outputs
-- **Human in the loop** — Review DSL before execution
+## Request Object – Complete Audit Trail
+
+Each AI decision records:
+
+**Standard Audit Fields**
+- request (prompt context)
+- reason (AI justification)
+- created_on  
+- fallback_used  
+
+**Parent Context**
+- item_id  
+- product_id  
+
+**AI Results**
+- chosen_supplier_id  
+- chosen_unit_price  
+- chosen_lead_time  
+
+These fields tell **exactly** what AI saw, why it chose, and what it returned.
+
+---
+
+## When to Use the Pattern
+
+### Good Fit (✓)
+- Selecting from multiple candidates  
+- Multi‑criteria optimization  
+- Decisions influenced by external factors  
+- Need for audit trail  
+- Need for fallback safety  
+
+### Not a Fit (✗)
+- Pure calculations  
+- Predictions with no candidates  
+- Classification problems  
+- Deterministic rules  
+
+
+---
+
+## Configuration
+
+Note:
+
+* this creates a table in your database
+* you will need to configure an environment variable `APILOGICSERVER_CHATGPT_APIKEY`.  If this is omitted, the system falls back to selecting the first candidate.
+
+---
+
+## Benefits of the Unified Model
+
+### 1. Natural Language for All Logic
+One DSL expresses:
+- deterministic rules  
+- creative AI decisions  
+- guardrails  
+
+### 2. Governance
+- audit trail per decision  
+- fallback strategies  
+- deterministic constraints  
+- human review of DSL  
 
 ### 3. Seamless Integration
-
-- AI decisions **participate in rule chaining** like any other logic
-- **No special handling** — Same transaction, same rollback, same logging
-- **Testable** — Use mock responses for deterministic testing
+AI results behave like any other logic:
+- rule chaining  
+- rollback  
+- testability with mocks  
 
 ### 4. Business Agility
+- prompts updated instantly  
+- no code‑level changes  
+- world‑condition aware  
+- enterprise‑grade safety  
 
-- **Fast changes** — Modify prompt or criteria without code changes
-- **Adaptive** — AI responds to real-world conditions
-- **Reliable** — Deterministic rules prevent bad outcomes
 
-&nbsp;
+---
 
-## The Business Logic Agent
+## Business Logic Agent
 
-This unified model forms the foundation of the **Business Logic Agent** — an architectural pattern that combines:
+The Business Logic Agent unifies the major elements of GenAI-Logic:
 
-- **Probabilistic Intent** — AI interprets natural language and makes creative decisions
-- **Deterministic Enforcement** — Rules engine guarantees correctness and governance
-- **MCP Discovery** — AI assistants can understand and interact with the system
+- **Natural-language intent**  
+  Developers describe both deterministic and creative logic in plain language.
 
-![Business Logic Agent Architecture](images/integration/mcp/Bus-Logic-Agent.png)
+- **Deterministic logic generation**  
+  Natural-language intent is translated into DSL rules that are maintainable, debuggable, and governed.
 
-**Not AI vs. Rules — AI and Rules working together.**
+- **Probabilistic (AI) logic generation**  
+  The same intent can also configure AI calls for tasks that require selecting a best candidate.
 
-&nbsp;
+- **Governed execution**  
+  AI outputs participate in normal rule chaining, are subject to deterministic guardrails, and are fully audited through request tables.
+
+The result is a coordinated system where **AI and rules operate together**:  
+creative decisions from AI, enforced and audited by deterministic logic.
