@@ -33,7 +33,7 @@ version: 1.1, 22 Nov 2025
 
 ---
 
-## Early Example (New)
+## Example: Best Supplier
 For example, consider the following database:
 
 ![basic_demo_data_model](images/basic_demo/basic_demo_data_model.png)
