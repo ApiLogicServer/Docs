@@ -341,6 +341,17 @@ This illustrates both:
 * **Probabilistic Logic:** the supplier choice might usually depend on price, but sometimes on world conditions such as a tanker blocking the Suez canal 
 * **Deterministic Logic Guardrail:** but is always subject to the credit limit check
 
+For more on AI Logic, [click here](Logic-Using-AI.md){:target="_blank" rel="noopener"}.
+
+<details markdown>
+
+<summary>Data Model, including AI Audit Trail</summary>
+
+<br> 
+
+![basic_demo_data_model](images/basic_demo/basic_demo_data_model.png)
+
+</details>
 <br>
 
 **Rules Provide Governability**

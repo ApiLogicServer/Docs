@@ -63,7 +63,9 @@ Use case: Check Credit
 5. Customer.balance updated  
 6. Credit limit checked  
 
-Outcome: **governed creativity** — AI adapts, rules enforce correctness.
+Outcome: **governed creativity** — AI adapts, rules enforce correctness.  To see how to run this sample, [click here](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
+
+![logic log](images/integration/mcp/logic-log.png)
 ---
 
 ## 10‑Second Mental Model
