@@ -286,13 +286,13 @@ You want AI to *help* you with your spreadsheet, not *be excel*.
 
 ## Business Logic Agent: A Unified Model of Governable Creativity
 
-But AI provides creativity that businesses want... how do we provide that, with goverance?
+But AI provides creativity that businesses want... how do we provide that, *with goverance?*
 
 <details markdown>
 
 <summary>Unified Deterministic and Probabilistic Logic</summary>
 
-<br>Enterprises want the best of both: the creativity of probabalistic logic, *with* the governability of deterministic logic -- all in one unified Business Logic Agent.  Here's an example.
+<br>Enterprises want the best of both: the creativity of probabalistic logic, *with* the governability of deterministic logic -- all in one unified Business Logic Agent.  Here's an example, and we then generalize.
 
 <br>
 
@@ -306,15 +306,16 @@ It’s not about replacing one approach with another — it’s about **combinin
 **Not AI *vs* Rules — AI *and* Rules.**  
 Different kinds of logic naturally call for different tools.
 
-**Deterministic Logic** -- *"Customer balance must not exceed credit limit."*
+* **Deterministic Logic** -- Some logic is inherently deterministic, requiring correctness and consistency, e.g.: <br>*"Customer balance must not exceed credit limit."*
 
-> Some logic is inherently deterministic — correctness and consistency are required (still expressed in NL).
+* **Creative Logic** -- Other logic benefits from exploration and probabilistic reasoning, e.g.:<br>*"Which supplier can still deliver if the strait is blocked?"* 
 
-**Creative Logic** -- *"Which supplier can still deliver if the strait is blocked?"* 
+Here's an example in a unified NL that illustrates ***both operating together*** (for more on AI Logic, [click here](Logic-Using-AI.md){:target="_blank" rel="noopener"}): 
 
-> Other logic benefits from exploration and probabilistic reasoning.  [Example here](https://medium.com/@valjhuber/probabilistic-and-deterministic-logic-9a38f98d24a8){:target="_blank" rel="noopener"}.
+* **Probabilistic Logic:** the supplier choice might usually depend on price, but sometimes on world conditions such as a tanker blocking the Suez canal 
+* **Deterministic Logic Guardrail:** but is always subject to the credit limit check
 
-Both have their place — and both work better together.  For example:
+    * Creative reasoning needs boundaries.  Deterministic rules supply the guardrails that keep outcomes correct, consistent, and governed.
 
 ```bash title='Declare Logic: Deterministic and Probabilistic'
 Use case: Check Credit:
@@ -336,13 +337,6 @@ And then, test via MCP-discovered API:**  *Constraint blocks bad data*: ️
 On Alice's first order, include 100 Egyptian Cotton Sheets
 ```
 
-This illustrates both: 
-
-* **Probabilistic Logic:** the supplier choice might usually depend on price, but sometimes on world conditions such as a tanker blocking the Suez canal 
-* **Deterministic Logic Guardrail:** but is always subject to the credit limit check
-
-For more on AI Logic, [click here](Logic-Using-AI.md){:target="_blank" rel="noopener"}.
-
 <details markdown>
 
 <summary>Data Model, including AI Audit Trail</summary>
@@ -352,19 +346,6 @@ For more on AI Logic, [click here](Logic-Using-AI.md){:target="_blank" rel="noop
 ![basic_demo_data_model](images/basic_demo/basic_demo_data_model.png)
 
 </details>
-<br>
-
-**Rules Provide Governability**
-
-Even creative reasoning needs boundaries (the credit limit still applies).  
-**Rules supply these guardrails**, ensuring outcomes remain correct, consistent, and governed.
-
-**Determinism Enables Trust**
-
-AI stays adaptive where judgment is needed;  
-rules keep results auditable and dependable.
-
-<br>
 
 </details>
 
