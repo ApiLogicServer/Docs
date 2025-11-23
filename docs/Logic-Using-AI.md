@@ -48,10 +48,8 @@ Use case: Check Credit
 3. The Order's amount_total is the sum of the Item amount
 4. The Item amount is the quantity * unit_price
 5. The Product count suppliers is the sum of the Product Suppliers
-6. Item unit_price is derived as follows:
-       - IF Product has suppliers,
-             use AI to select optimal supplier based on cost, lead time, and world conditions
-       - ELSE copy from Product.unit_price
+6. Use AI to Set Item field unit_price by finding the optimal Product Supplier
+   based on cost, lead time, and world conditions
 ```
 
 ### Logic Operation
@@ -151,7 +149,7 @@ This pattern provides:
 | **Receiver** | Needs values | Item |
 | **Provider List** | Candidates | ProductSupplierList |
 | **Request Table** | Context + audit + results | SysSupplierReq |
-| **AI Handler** | Makes selection | supplier_id_from_ai() |
+| **AI Handler** | Makes selection | select_supplier_via_ai() |
 | **Wrapper** | Encapsulates pattern | get_supplier_selection_from_ai() |
 | **Integration** | Event/formula populates fields | Early event on Item |
 
@@ -193,7 +191,6 @@ Each AI decision records:
 **AI Results**
 - chosen_supplier_id  
 - chosen_unit_price  
-- chosen_lead_time  
 
 These fields tell **exactly** what AI saw, why it chose, and what it returned.
 
@@ -222,7 +219,7 @@ These fields tell **exactly** what AI saw, why it chose, and what it returned.
 Note:
 
 * this creates a table in your database
-* you will need to configure an environment variable `APILOGICSERVER_CHATGPT_APIKEY`.  If this is omitted, the system falls back to selecting the first candidate.
+* you will need to configure an environment variable `APILOGICSERVER_CHATGPT_APIKEY`.  If this is omitted, the system falls back to selecting the minimum cost supplier.
 
 ---
 
