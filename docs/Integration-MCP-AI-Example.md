@@ -300,22 +300,20 @@ But AI provides creativity that businesses want... how do we provide that, *with
 
 <summary>A. Example: Choose Supplier, based on current world conditions</summary>
 
-<br>Agentic systems are evolving quickly, and a clearer architectural picture is forming.  
-It’s not about replacing one approach with another — it’s about **combining strengths**.
+Agentic systems are evolving quickly, and a clearer architectural picture is forming:
 
-**Not AI *vs* Rules — AI *and* Rules.**  
-Different kinds of logic naturally call for different tools.
+> Not AI *vs* Rules — **AI and Rules together.**
 
-* **Deterministic Logic** -- Some logic is inherently deterministic, requiring correctness and consistency, e.g.: <br>*"Customer balance must not exceed credit limit."*
+Different kinds of logic naturally call for different tools, as in this unified example:
 
-* **Creative Logic** -- Other logic benefits from exploration and probabilistic reasoning, e.g.:<br>*"Which supplier can still deliver if the strait is blocked?"* 
+* **Deterministic Logic** — logic that must always be correct, consistent, and governed.  
+*Example:* “Customer balance must not exceed credit limit.”
 
-Here's an example in a unified NL that illustrates ***both operating together*** (for more on AI Logic, [click here](Logic-Using-AI.md){:target="_blank" rel="noopener"}): 
+* **Creative Logic** — logic that benefits from exploration, adaptation, and probabilistic reasoning.  
+*Example:* “Which supplier can still deliver if shipping lanes are disrupted?”
 
-* **Probabilistic Logic:** the supplier choice might usually depend on price, but sometimes on world conditions such as a tanker blocking the Suez canal 
-* **Deterministic Logic Guardrail:** but is always subject to the credit limit check
 
-    * Creative reasoning needs boundaries.  Deterministic rules supply the guardrails that keep outcomes correct, consistent, and governed.
+    * **Creative reasoning needs boundaries.<br>Deterministic rules supply the guardrails that keep outcomes correct, consistent, and governed.**
 
 ```bash title='Declare Logic: Deterministic and Probabilistic'
 Use case: Check Credit:
