@@ -150,6 +150,40 @@ All runtime interactions occur through the project’s API (including MCP), so e
 
 ---
 
+## Why This Architecture Matters for Enterprise AI
+
+Enterprise AI faces a core challenge: **governance**.  
+AI can propose behavior, but enterprise systems must ensure that behavior is:
+
+- correct  
+- safe  
+- auditable  
+- explainable  
+- compliant  
+
+The Business Logic Agent solves this by unifying **NL → DL/PL generation** with **deterministic rule enforcement**.
+
+### Copilot alone  
+Produces procedural code that developers must review, test, and maintain — hundreds of lines scattered across controllers and handlers. This creates risk, complexity, and long-term maintenance cost.
+
+### Business Logic Agent  
+Produces a small number of **declarative rules** and **structured PL event handlers** that the deterministic engine can execute and validate automatically.
+
+The difference is dramatic:
+
+- **Copilot output:**  
+  ~200+ lines of procedural code that evolve unpredictably.
+
+- **BLA output:**  
+  ~5 declarative rules + optional PL handlers, which the rules engine executes with guaranteed correctness.
+
+### Why this matters  
+The BLA architecture provides:
+
+- **governed AI**
+
+---
+
 ## 6. Example — How the Model Works
 
 Here’s a simplified pattern drawn from actual AI+MCP interaction:
@@ -161,7 +195,7 @@ Use case: Check Credit:
 2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
 3. The Order's amount_total is the sum of the Item amount
 4. The Item amount is the quantity * unit_price
-5. The Product count suppliers is the sum of the Product Suppliers
+5. The Product count suppliers is the count of the Product Suppliers
 6. Use AI to Set Item field unit_price by finding the optimal Product Supplier 
                                           based on cost, lead time, and world conditions
 
@@ -169,13 +203,13 @@ Use case: App Integration
 1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 
-1. **AI interprets a request**  
+1. **AI interprets the user request and issues an API call via MCP.**  
    “Update Alice’s order to 100 units.”
 
 2. **AI issues an API call** via the MCP-discovered schema.  
    The assistant knows the entity, fields, and relationships.
 
-3. **Deterministic engine processes the update**  
+3. **Deterministic engine processes the update**
    - Recalculates Item.amount  
    - Updates Order.amount_total  
    - Updates Customer.balance  
@@ -192,6 +226,31 @@ Another case:
 - The final transaction is correct and governed
 
 This is **probabilistic intent inside deterministic guardrails**.
+
+### MCP: Making Business Logic AI-Discoverable
+
+The Business Logic Agent exposes its API via Model Context Protocol (MCP), 
+enabling AI assistants to:
+
+1. **Discover** schema (entities, fields, relationships)
+2. **Propose** changes via natural language
+3. **Execute** changes through validated API calls
+4. **Interpret** results (success or business logic violations)
+
+This creates a **governed conversation** between AI and enterprise systems:
+- AI provides intent and reasoning
+- Deterministic logic ensures correctness
+- Every transaction is auditable
+
+Example conversation:
+```
+AI: "I'll update Alice's order to 100 units."
+[API call via MCP]
+Engine: "Constraint violated: Customer balance 1500 exceeds credit limit 1000"
+AI: "The update was blocked by business logic - Alice's credit limit would be exceeded."
+```
+
+This is enterprise AI that business leaders can trust.
 
 ---
 
