@@ -110,7 +110,7 @@ The user describes deterministic and probabilistic behavior in one place.  Logic
 GenAI uses the LLM to generate:
 
 - **Deterministic Logic (DL):**  
-  Python-based DSL rules (derivations, sums, constraints, events).
+  Python-based DSL rules (sums, counts, formulas, constraints, events).
 
 - **Probabilistic Logic (PL):**  
   Python event handlers containing structured LLM calls  
@@ -127,14 +127,14 @@ Execution always begins deterministically:
 **R1 — Deterministic Rules Execute**  
 The rules engine runs all Python DSL logic:  
 - multi-table propagation  
-- derivations & sums  
-- constraint enforcement  
-- before/after checks  
+- derivations: sums, counts, formulas  
+- constraints
+- before/after events  
 (No LLM is used here.)
 
 **R2 — Probabilistic Calls Occur Only When Declared**  
-If the DSL declares a probabilistic step, the rules engine invokes the generated PL handler.  
-That handler calls the LLM to compute a value, which the deterministic engine then validates and applies.
+If the DSL declares probabilistic steps, the rules engine invokes the generated PL handler.  
+That handler calls the LLM to compute values, which the deterministic engine then validates and applies.
 
 ---
 
