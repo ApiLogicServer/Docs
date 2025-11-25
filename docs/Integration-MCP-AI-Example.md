@@ -250,7 +250,32 @@ The real opportunity is to **end the expedition** and deliver **business agility
 
 <details markdown>
 
-<summary>4. Intuitively... sql vs dbms</summary>
+<summary>4. We reflected: Iterative Development Becomes a Challenge</summary>
+
+Real systems evolve through **hundreds of iterations**, often one rule or use case at a time.
+
+Procedural GenAI must re-emit **all logic every iteration**, because correctness requires *all* dependency paths to be enumerated together.  
+This significantly increases the chances of errors and regressions. 
+
+Declarative rules avoid this.
+
+Rules are **self-organizing**: on startup, the engine discovers dependencies and guarantees ordering, propagation, and constraints. This allows:
+
+* Add or change **one rule at a time**  
+* The engine recomputes the dependency graph automatically  
+* Existing logic remains correct without regeneration  
+
+This mirrors SQL:  you don’t re-emit the entire schema to add one new query.
+
+Declarative logic turns iterative change from a **rewrite problem** into an **append problem** — exactly what long-lived systems require.
+
+</details>
+
+<br>
+
+<details markdown>
+
+<summary>5. Intuitively... sql vs dbms</summary>
 
 <br>You expect a natural-language **query to call a DBMS**, not **create one.**
 
@@ -265,7 +290,7 @@ You want AI to *help* you with your spreadsheet, not *be excel*.
 
 <details markdown>
 
-<summary>5. Finally - Governable Intent</summary>
+<summary>6. Finally - Governable Intent</summary>
 
 <br> **AI → DSL → Engine**
 
@@ -353,7 +378,21 @@ On Alice's first order, include 100 Egyptian Cotton Sheets
 
 <summary>B. The Business Logic Agent</summary>
 
-<br> **The Emerging Vision**
+<br> **The Business Logic Agent** processes a *declarative NL requests:*
+
+- At declaration time (e.g., in Copilot):
+
+    * **D1:** Accepts a unified declarative NL request
+    * **D2.** Uses GenAI to create
+        * Rules (in Python DSL: Domain Specific Logic) for deterministic Logic
+        * LLM calls for Probablistic
+
+- At runtime
+
+    * **R1:** DSL is executed by the Rules Engine (deterministic - no NL pocessing occurs)
+    * **R2:** LLM calls
+
+![Bus-Logic-Engine](images/integration/mcp/Bus-Logic-Agent.png)
 
 **Agentic systems become far more compelling when probabilistic intent is paired with deterministic enforcement.**
 
@@ -361,8 +400,6 @@ This "governable intent" model aligns with enterprise expectations —
 adaptive where helpful, reliable where essential.
 
 **The Business Logic Agent unifies probabilistic intent with deterministic enforcement in a single model**
-
-![Bus-Logic-Engine](images/integration/mcp/Bus-Logic-Agent.png)
 
 </details>
 
