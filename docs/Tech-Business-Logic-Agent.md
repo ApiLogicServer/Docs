@@ -104,7 +104,7 @@ A Business Logic Agent accepts a *unified* natural-language description of the s
 Copilot sends the NL declaration to **GenAI**, which calls the **LLM** to generate both kinds of logic:
 
 **D1 — One unified NL description**  
-The user describes deterministic and probabilistic behavior in one place.
+The user describes deterministic and probabilistic behavior in one place.  Logic is declared *incrementally* — one use case or rule set at a time. GenAI adds each new NL declaration to the existing DSL and PL logic, and the deterministic engine integrates them into a coherent rule set.
 
 **D2 — GenAI creates the logic via the LLM**  
 GenAI uses the LLM to generate:
