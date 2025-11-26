@@ -1,4 +1,36 @@
-# The Business Logic Agent: Unifying Probabilistic and Deterministic Logic
+## Introduction
+
+For decades, enterprise systems have depended on deterministic business logic — the rules that enforce policy such as credit limits, multi-table derivations, and data consistency.  
+These rules were traditionally **hand-coded**, buried in controllers and methods, and expensive to build, test, and maintain. In most systems, deterministic logic consumed nearly half the total development cost.
+
+AI now changes both the cost model *and* the possibility space.
+
+Natural language finally makes it practical to express deterministic rules directly, without the manual glue code that once dominated enterprise projects.  
+
+And beyond cost and time reduction, AI introduces something entirely new:  
+**probabilistic logic** — reasoning, ranking, optimizing, and choosing the “best” option under uncertainty.
+
+Both kinds of logic matter.  
+Both are needed in modern systems.  
+But they behave very differently.
+
+This paper describes an architecture that unifies them.
+
+It shows how a *single natural-language description* can produce:
+
+- **Deterministic Logic (DL):** Python-based DSL rules for correctness and governance 
+- **Probabilistic Logic (PL):** generated Python event handlers that call the LLM only where creative NL logic is required 
+
+all governed by a deterministic rules engine that ensures safety, explainability, and compliance.
+
+The result is a **unified NL-based approach** that:
+
+- reduces development and maintenance cost  
+- accommodates new, intelligence-driven behaviors  
+- and provides the governance enterprises require  
+
+This is the **Business Logic Agent** — a simple architectural pattern for combining deterministic and probabilistic reasoning in real enterprise systems.
+
 
 ## 1. Deterministic Logic — The Foundation of Enterprise Systems
 
