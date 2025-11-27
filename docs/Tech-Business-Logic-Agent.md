@@ -145,7 +145,7 @@ The BLA provides a single, governed place for business logic — created from NL
 A Business Logic Agent consists of:
 
 - **Unified NL declarations** describing business rules and reasoning  
-- **Generated logic (DL + PL)** created by GenAI from those declarations  
+- **Generated logic — deterministic logic expressed as DSL (DL), and probabilistic handlers (PL)** 
 - **Deterministic execution** that ensures correctness and safety  
 - **MCP exposure** so AI assistants can discover and act on system capabilities  
 
@@ -159,14 +159,16 @@ The creation process begins with natural language.
 
 ### **D1 — Unified Natural-Language Input**  
 Developers describe business policies — deterministic rules, probabilistic decisions, and integration triggers — in one incremental NL description.  
-Each new declaration extends the existing logic model.
+
+It adheres to iterative development: each new declaration extends the existing logic model (e.g., a Use Case at a time).
 
 ### **D2 — GenAI Generates Deterministic and Probabilistic Logic**  
 GenAI calls the LLM to create:
 
 - **Deterministic Logic (DL):** Python DSL rules  
   (formulas, sums, counts, constraints, events)  
-- **Probabilistic Logic (PL):** Python event handlers containing structured LLM calls  
+- **Probabilistic Logic (PL):** Python event handlers containing structured LLM calls 
+- **Integration Events:** Python calls to Kafka etc. 
 
 These generated artifacts form the BLA’s internal logic.
 
@@ -196,7 +198,7 @@ This hybrid model gives AI the ability to reason — **within deterministic guar
 
 ## 5.4 MCP Packaging — How a BLA Is Exposed
 
-The BLA is exposed through the **Model Context Protocol (MCP)**.  
+The BLA creates a JSON:API, exposed as `/.well-known/mcp.json` according to the **Model Context Protocol (MCP)**.  
 AI assistants acting as MCP clients can:
 
 - discover schema and relationships  
@@ -205,7 +207,7 @@ AI assistants acting as MCP clients can:
 - receive constraint violations and deterministic messages  
 - take safe action within governed rules  
 
-All operations invoked by AI must pass through the deterministic engine.
+All operations invoked by AI pass through the deterministic engine.
 
 ---
 
@@ -214,7 +216,7 @@ All operations invoked by AI must pass through the deterministic engine.
 This diagram summarizes how a Business Logic Agent is created and executed:
 
 - **D1:** Unified NL declaration  
-- **D2:** GenAI generates DL + PL  
+- **D2:** GenAI generates DSL + PL  
 - **R1:** Deterministic rules execute  
 - **R2:** Probabilistic calls occur only where declared  
 
@@ -273,85 +275,22 @@ The created DSL code is as short and clear as the NL:
    The assistant knows the entity, fields, and relationships.
 
 3. **Deterministic engine processes the update**
-   - Recalculates Item.amount  
-   - Updates Order.amount_total  
-   - Updates Customer.balance  
-   - Applies the credit-limit constraint
+
+      - Invokes the LLM for PL to determine the supplier / price, e.g., avoiding usage of a blocked stait
+      - Recalculates Item.amount  
+      - Updates Order.amount_total  
+      - Updates Customer.balance  
+      - Applies the credit-limit constraint
 
 4. **If the policy is violated**, the engine blocks the update.  
    AI interprets the response:  
    > “Business logic working correctly — update prevented.”
 
-Another case:
-
-- The generated PL handler calls the LLM to select a supplier.  
-- Deterministic logic validates totals, derivations, and constraints  
-- The final transaction is correct and governed
-
 This is **probabilistic intent inside deterministic guardrails**.
 
-## 7. MCP: Making Business Logic AI-Discoverable
-
-Because the Business Logic Agent runs as an MCP server, its entire schema and capability surface are discoverable by AI.
-
-Assistants can explore entities, propose changes, and issue API calls — all governed by deterministic logic and validated at the boundary.
-
-This packaging enables safe, scalable AI-driven automation across real enterprise workloads.
-
-The Business Logic Agent exposes its API via Model Context Protocol (MCP), enabling AI assistants to:
-
-1. **Discover** schema (entities, fields, relationships)
-2. **Propose** changes via natural language
-3. **Execute** changes through validated API calls
-4. **Interpret** results (success or business logic violations)
-
-This creates a **governed conversation** between AI and enterprise systems:
-- AI provides intent and reasoning
-- Deterministic logic ensures correctness
-- Every transaction is auditable
-
-Example conversation:
-```
-AI: "I'll update Alice's order to 100 units."
-[API call via MCP]
-Engine: "Constraint violated: Customer balance 1500 exceeds credit limit 1000"
-AI: "The update was blocked by business logic - Alice's credit limit would be exceeded."
-```
-
-This is enterprise AI that business leaders can trust.
-
 ---
 
-## 8. The Synergy — Each Does What the Other Cannot
-
-Once you see the example, the synergy becomes obvious:
-
-### Probabilistic Logic (AI)
-- Proposes, recommends, explores  
-- Interprets natural language  
-- Makes context-based decisions  
-
-### Deterministic Logic (Engine)
-- Guarantees correctness  
-- Enforces constraints  
-- Handles multi-table propagation  
-- Provides reproducible behavior  
-
-Together, they form a coherent system:
-
-- **AI provides creativity**  
-- **Deterministic logic provides safety**  
-- **DSL provides clarity**  
-- **The runtime provides guarantees**  
-
-That unified behavior is the essence of the Business Logic Agent.
-
-In practice, this forms a natural-language–driven **Business Logic Appliance** — a packaged, scalable MCP server that exposes enterprise logic as a safe, discoverable, governable capability. AI provides intent and reasoning; deterministic rules ensure correctness and compliance. Together, they deliver governed automation in a form enterprises can trust.
-
-
----
-
-## 9. Closing — A Modern, Unified Approach
+## 7. Closing — A Modern, Unified Approach
 
 Enterprise systems now operate with **two modes of reasoning**:
 
@@ -367,6 +306,6 @@ By combining:
 
 we get something new: a governable, extensible hybrid model.
 
- Think of it as a ***logic appliance*** — a packaged, governed MCP server that delivers business behavior safely to AI.
+Think of it as a ***logic appliance*** — a packaged, governed MCP server that delivers business behavior safely to AI.
 
 The Business Logic Agent is simply the architectural pattern that emerges when these elements are combined — a unified approach where AI provides intent and exploration, and deterministic logic ensures that everything remains correct, explainable, and safe.
