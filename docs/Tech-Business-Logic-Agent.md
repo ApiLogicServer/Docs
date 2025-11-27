@@ -6,10 +6,9 @@ These rules were traditionally **hand-coded**, buried in controllers and methods
 
 AI now changes both the cost model *and* the possibility space.
 
-Natural language finally makes it practical to express deterministic rules directly — in a form that is already **declarative**, stating *what must be true* rather than *how to compute it*. This avoids procedural glue code, preserves business intent, and is **40× more concise** than the equivalent procedural implementation.
+Natural language finally makes it practical to express deterministic rules directly — in a form that is already **declarative**, stating *what must be true* rather than *how to compute it*. This avoids procedural glue code, preserves business intent, and is **40× more concise** than the equivalent procedural implementation (for an AI-generated study, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}; the procedural code is [here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}).
 
-And beyond cost and time reduction, AI introduces something entirely new:  
-**probabilistic logic** — reasoning, ranking, optimizing, and choosing the “best” option under uncertain conditions. This was never feasible to hand-code because it depends on context, world knowledge, and intelligent choice.
+And beyond cost and time reduction, AI introduces something entirely new: **probabilistic logic** — reasoning, ranking, optimizing, and choosing the “best” option under uncertain conditions. This was never feasible to hand-code because it depends on natural language, context, world knowledge, and intelligent choice.
 
 Both kinds of logic matter.  
 Both are needed in modern systems.  
@@ -68,16 +67,9 @@ Here is a concrete example of such a unified, declarative NL description:
 1. Send the Order to Kafka topic `order_shipping` if the `date_shipped` is not None.
 ```
 
-These two use cases are expressed entirely in declarative natural language — including both deterministic rules (1–5, and the App Integration rule) and probabilistic intent (6). 
+These two use cases are expressed entirely in declarative natural language — including both deterministic rules (1–5), and the App Integration rule. 
 
 > It's more like a spreadsheet than traditional procedural business logic.
-
-But declarative deterministic rules are **only half the story**.
-
-Modern systems also require logic we never attempted to hand-code — logic that depends on reasoning, exploration, and world context.
-
-This brings us to the second mode of logic AI enables: **probabilistic logic**.
-
 
 ---
 
@@ -96,16 +88,23 @@ Very briefly:
 - AI struggles with ordering, before/after comparisons, and transitive dependencies.
 
 A DSL keeps the *intent* clean and centralized.  
-A deterministic runtime enforces:
+A deterministic runtime logic engine enforces:
 
+- dependency managtement
 - ordering  
-- propagation  
+- propagation (chaining) 
 - constraint checking  
 - pruning  
 - debugging and traceability  
 
 This is the **NL → DSL → Engine** model:  
-AI captures policy, the DSL expresses it, the engine executes it *correctly*.
+AI captures policy, the DSL expresses it, the engine executes it *correctly*.  We'll illustrate an example below.
+
+But declarative deterministic rules are **only half the story**.
+
+Modern systems also require logic we never attempted to hand-code — logic that depends on reasoning, exploration, and world context.
+
+This brings us to the second mode of logic AI enables: **probabilistic logic**.
 
 ---
 
@@ -130,101 +129,110 @@ This is fundamentally different from deterministic rules.
 
 ## 5. The Business Logic Agent (BLA)
 
-The Business Logic Agent is the architectural pattern that unifies deterministic rules, probabilistic reasoning, and integration behavior behind a safe, discoverable, deterministic boundary.  
-It is built from three core elements:
+A **Business Logic Agent** is a packaged, MCP-discoverable server created from natural-language declarations.  
+It unifies:
 
-1. **Unified Natural Language (NL)**  
-   Incremental, declarative descriptions of business policy, probabilistic intent, and integration behavior — with optional procedural logic where needed.
+1. **Natural-language business policy** (deterministic, probabilistic, and integration logic)  
+2. **Generated logic** — deterministic rules (DL) and probabilistic handlers (PL)  
+3. **A deterministic execution engine** that governs every operation and calls the LLM only where PL is declared  
 
-2. **Generated Logic: DL, PL, and Integration**  
-   From the NL, GenAI produces:  
-   - **Deterministic Logic (DL):** sums, counts, formulas, constraints, events  
-   - **Probabilistic Logic (PL):** generated Python handlers that call the LLM only where uncertainty exists  
-   - **Integration Logic:** messaging, external events, side-effects
-
-3. **Packaged MCP Server**  
-   The resulting system runs as a discoverable MCP server.  
-   AI assistants can explore schema, propose changes, and issue validated operations — all governed by deterministic rules.
-
-
-### 5.1 Declaration Time (D1–D2)
-
-**D1 — Unified Natural Language**
-
-The user describes deterministic, probabilistic, and integration behavior in one place.  
-NL is declarative — it states *what must be true*, not *how to compute it*.  
-Logic is added incrementally: one use case or rule set at a time.
-
-**D2 — GenAI Generates the Logic**
-
-GenAI calls the LLM to generate:
-
-- **DL:** Python DSL rules for sums, counts, formulas, constraints, and events  
-- **PL:** Python event handlers containing structured LLM calls  
-- **Integration logic:** event-driven behavior and messaging
-
-All generated logic is stored in the project; no interpretation of NL occurs at runtime.
-
-
-### 5.2 Runtime (R1–R2)
-
-Execution always begins with deterministic logic:
-
-**R1 — Deterministic Logic Executes First**
-
-The rules engine evaluates:
-
-- multi-table propagation  
-- derivations (sums, counts, formulas)  
-- constraints  
-- before/after events  
-
-No LLM calls occur here.
-
-**R2 — Probabilistic Logic Runs Only When Declared**
-
-If the DSL declares a probabilistic step, the engine invokes the generated PL handler.  
-That handler calls the LLM to compute a value, and the deterministic engine validates and applies it.
-
-**The LLM never bypasses the rules engine.**  
-All outcomes are governed, validated, and explainable.
-
-
-### 5.3 MCP Packaging — Discoverable, Safe, AI-Ready
-
-Because the Business Logic Agent runs as a packaged MCP server:
-
-- its entire capability surface is discoverable  
-- assistants can inspect schema  
-- propose changes  
-- issue validated API operations  
-- interpret governed outcomes  
-- and never bypass deterministic policy
-
-This creates a safe interaction boundary for enterprise AI.
+The BLA provides a single, governed place for business logic — created from NL, executed deterministically, and exposed to AI assistants through MCP.
 
 ---
 
-### 5.5 Architecture - Creating a Business Logic Agent
+## 5.1 Definition — What a BLA Is
 
-One unified NL request →  
-Generated DL + PL + integration logic →  
-Deterministic engine execution →  
-Probabilistic reasoning only where declared →  
-Discoverable MCP capability surface →  
-Governed AI behavior.
+A Business Logic Agent consists of:
+
+- **Unified NL declarations** describing business rules and reasoning  
+- **Generated logic (DL + PL)** created by GenAI from those declarations  
+- **Deterministic execution** that ensures correctness and safety  
+- **MCP exposure** so AI assistants can discover and act on system capabilities  
+
+The BLA is not a framework; it is a **generated, governed logic component**.
+
+---
+
+## 5.2 Declaration & Generation (D1–D2) — How a BLA Is Created
+
+The creation process begins with natural language.
+
+### **D1 — Unified Natural-Language Input**  
+Developers describe business policies — deterministic rules, probabilistic decisions, and integration triggers — in one incremental NL description.  
+Each new declaration extends the existing logic model.
+
+### **D2 — GenAI Generates Deterministic and Probabilistic Logic**  
+GenAI calls the LLM to create:
+
+- **Deterministic Logic (DL):** Python DSL rules  
+  (formulas, sums, counts, constraints, events)  
+- **Probabilistic Logic (PL):** Python event handlers containing structured LLM calls  
+
+These generated artifacts form the BLA’s internal logic.
+
+---
+
+## 5.3 Runtime Behavior (R1–R2) — How a BLA Executes
+
+At runtime, the BLA provides governed, predictable execution.
+
+### **R1 — Deterministic Execution**  
+The rules engine evaluates all DL:
+
+- multi-table propagation  
+- derivations  
+- constraints  
+- before/after events  
+
+No LLM is invoked during deterministic execution.
+
+### **R2 — Probabilistic Execution (Only Where Declared)**  
+If a rule requires reasoning or optimization, the generated PL handler fires.  
+It calls the LLM, returns a value, and the deterministic engine **validates** the result before applying it.
+
+This hybrid model gives AI the ability to reason — **within deterministic guardrails**.
+
+---
+
+## 5.4 MCP Packaging — How a BLA Is Exposed
+
+The BLA is exposed through the **Model Context Protocol (MCP)**.  
+AI assistants acting as MCP clients can:
+
+- discover schema and relationships  
+- ask questions  
+- issue validated API calls  
+- receive constraint violations and deterministic messages  
+- take safe action within governed rules  
+
+All operations invoked by AI must pass through the deterministic engine.
+
+---
+
+## 5.5 Creation Flow — Summary Diagram (D1 → D2 → R1 → R2)
+
+This diagram summarizes how a Business Logic Agent is created and executed:
+
+- **D1:** Unified NL declaration  
+- **D2:** GenAI generates DL + PL  
+- **R1:** Deterministic rules execute  
+- **R2:** Probabilistic calls occur only where declared  
 
 ![Bus Log Agent](images/integration/mcp/Bus-Logic-Agent.png)
 
 ---
 
-### 5.6 Architecture - Using a Business Logic Agent
+## 5.6 Using the BLA in the Enterprise — Architecture Diagram
 
-Like an appliance that plugs into a wall socket, Business Logic Agents are exposed via discoverable APIs, so they plug into your B2B and MCP Backplanes.
+Once packaged via MCP, the BLA behaves like a **governed logic component** in the enterprise:
 
-They also send and receive messages (e.g., Kafka), so they also fit well into your application integration backplane.
+- AI assistants interact through MCP  
+- Applications call its APIs  
+- Downstream systems receive integration events  
+- All actions remain fully validated and auditable  
 
 ![Bus Log Agent](images/integration/mcp/Bus-Logic-Agent-Arch.png)
+
 
 ---
 
@@ -232,7 +240,7 @@ They also send and receive messages (e.g., Kafka), so they also fit well into yo
 
 Here’s a simplified pattern drawn from actual AI+MCP interaction:
 
-```bash title='Declare Logic: Deterministic and Probabilistic'
+```bash title='Declare Logic: Deterministic and Probabilistic NL (Natural Language)'
 Use case: Check Credit:
 
 1. The Customer's balance is less than the credit limit
@@ -245,6 +253,17 @@ Use case: Check Credit:
 
 Use case: App Integration
 1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+```
+
+The created DSL code is as short and clear as the NL:
+
+```python title='Generated DSL Code'
+    Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance <= row.credit_limit, error_msg="balance ({row.balance}) exceeds credit ({row.credit_limit})")
+    Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total, where=lambda row: row.date_shipped is None)
+    Rule.sum(derive=models.Order.amount_total, as_sum_of=models.Item.amount)  
+    Rule.formula(derive=models.Item.amount, as_expression=lambda row: row.quantity * row.unit_price)
+    Rule.count(derive=models.Product.count_suppliers, as_count_of=models.ProductSupplier)
+    Rule.early_row_event(on_class=models.Item, calling=set_item_unit_price_from_supplier)
 ```
 
 1. **AI interprets the user request and issues an API call via MCP.**  
