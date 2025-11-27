@@ -203,17 +203,9 @@ Because the Business Logic Agent runs as a packaged MCP server:
 
 This creates a safe interaction boundary for enterprise AI.
 
+---
 
-### 5.4 Logic Appliance (Consequences)
-
-When these elements come together, the system behaves like a **Logic Appliance** —  
-a packaged, scalable MCP server that plugs into your enterprise environment and exposes governed business behavior to AI assistants.
-
-It is not a script, a framework, or a code generator —  
-it is a **running appliance** providing AI-discoverable business logic with deterministic guarantees.
-
-
-### 5.5 Architecture Summary
+### 5.5 Architecture - Creating a Business Logic Agent
 
 One unified NL request →  
 Generated DL + PL + integration logic →  
@@ -223,6 +215,16 @@ Discoverable MCP capability surface →
 Governed AI behavior.
 
 ![Bus Log Agent](images/integration/mcp/Bus-Logic-Agent.png)
+
+---
+
+### 5.6 Architecture - Using a Business Logic Agent
+
+Like an appliance that plugs into a wall socket, Business Logic Agents are exposed via discoverable APIs, so they plug into your B2B and MCP Backplanes.
+
+They also send and receive messages (e.g., Kafka), so they also fit well into your application integration backplane.
+
+![Bus Log Agent](images/integration/mcp/Bus-Logic-Agent-Arch.png)
 
 ---
 
