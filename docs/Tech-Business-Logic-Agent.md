@@ -145,7 +145,7 @@ The BLA provides a single, governed place for business logic — created from NL
 A Business Logic Agent consists of:
 
 - **Unified NL declarations** describing business rules and reasoning  
-- **Generated logic — deterministic logic expressed as DSL (DL), and probabilistic handlers (PL)** 
+- **Generated logic** — deterministic rules (DSL) and probabilistic handlers (PL) 
 - **Deterministic execution** that ensures correctness and safety  
 - **MCP exposure** so AI assistants can discover and act on system capabilities  
 
@@ -234,7 +234,6 @@ Once packaged via MCP, the BLA behaves like a **governed logic component** in th
 - All actions remain fully validated and auditable  
 
 ![Bus Log Agent](images/integration/mcp/Bus-Logic-Agent-Arch.png)
-
 
 ---
 
