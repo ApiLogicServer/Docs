@@ -19,7 +19,7 @@ version: 0.1, for readme 11.09/25
     *Create a system named basic_demo from samples/dbs/basic_demo.sqlite*
 
     **Prompt 2 (Add NL Logic):**
-
+    ![Declarative logic in action](images/sample-ai/copilot/MCP-DB.png){ align=right width=300 }
     *Use case: Check Credit:*<br>
 
     *1. The Customer's balance is less than the credit limit*<br>
