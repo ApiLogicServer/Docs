@@ -19,7 +19,7 @@ version: 0.1, for readme 11.09/25
     *Create a system named basic_demo from samples/dbs/basic_demo.sqlite*
 
     **Prompt 2 (Add NL Logic):**
-    ![Declarative logic in action](images/sample-ai/copilot/MCP-DB.png){ align=right width=300 }
+
     *Use case: Check Credit:*<br>
 
     *1. The Customer's balance is less than the credit limit*<br>
@@ -239,11 +239,13 @@ Paths can be tested, never proven complete.
 
 <details markdown>
 
-<summary>3. We Reflected: Maintanance Remains a Challenge</summary>
+<summary>3. We Reflected: Evlolution Remains a Challenge</summary>
 
 <br>Maintenance is still the same **archaeological expedition** — just in ***foreign code.***
 
-The real opportunity is to **end the expedition** and deliver **business agility** — fast change that stays correct.
+And each change requires complete regeneration to address dependencies, risking bugs.
+
+The real opportunity is to **end the expedition** and deliver **business agility** — fast, incremental change that stays correct.
 
 </details>
 
