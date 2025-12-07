@@ -193,7 +193,7 @@ Some months back, we asked a question you might have wondered about...
 
 <details markdown>
 
-<summary>We ran an A/B Test, Did Some Reseach... What We Found</summary>
+<summary>We ran an A/B Test, Did Some Reseach... Here's What We Found</summary>
 
 Our [**complete study is here**](Logic-Why-Declarative-GenAI.md){:target="_blank" rel="noopener"}, summarized below.
 
