@@ -239,38 +239,21 @@ Paths can be tested, never proven complete.
 
 <details markdown>
 
-<summary>3. We Reflected: Evlolution Remains a Challenge</summary>
+<summary>3. We Reflected: Evolution Remains a Challenge</summary>
 
-<br>Maintenance is still the same **archaeological expedition** — just in ***foreign code.***
-
-And each change requires complete regeneration to address dependencies, risking bugs.
-
-The real opportunity is to **end the expedition** and deliver **business agility** — fast, incremental change that stays correct.
-
-</details>
-
-<br>
-
-<details markdown>
-
-<summary>4. We Reflected: Iterative Development Becomes a Challenge</summary>
-
-Real systems evolve through **hundreds of iterations**, often one rule or use case at a time.
-
-Procedural GenAI must re-emit **all logic every iteration**, because correctness requires *all* dependency paths to be enumerated together.  
-This significantly increases the chances of errors and regressions. 
+<br>Procedural glue is opaque, and every change forces full regeneration for dependency management — risking new bugs each time.
 
 Declarative rules avoid this.
 
 Rules are **self-organizing**: on startup, the engine discovers dependencies and guarantees ordering, propagation, and constraints. This allows:
 
 * Add or change **one rule at a time**  
-* The engine recomputes the dependency graph automatically  
+* Place new rules anywhere that makes sense - the engine recomputes the dependency graph automatically
 * Existing logic remains correct without regeneration  
 
 This mirrors SQL:  you don’t re-emit the entire schema to add one new query.
 
-Declarative logic turns iterative change from a **rewrite problem** into an **append problem** — exactly what long-lived systems require.
+Declarative logic turns iterative change from a **rewrite problem** into an **append problem** — exactly what long-lived systems require for business agility.
 
 </details>
 
@@ -278,7 +261,7 @@ Declarative logic turns iterative change from a **rewrite problem** into an **ap
 
 <details markdown>
 
-<summary>5. Intuitively... sql vs dbms</summary>
+<summary>4. Intuitively... sql vs dbms</summary>
 
 <br>You expect a natural-language **query to call a DBMS**, not **create one.**
 
@@ -293,7 +276,7 @@ You want AI to *help* you with your spreadsheet, not *be excel*.
 
 <details markdown>
 
-<summary>6. Finally - Governable Intent</summary>
+<summary>5. Finally - Governable Intent</summary>
 
 <br> **AI → DSL → Engine**
 
