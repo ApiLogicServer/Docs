@@ -1,3 +1,21 @@
+---
+title: GABL
+source: docs/Tech-Business-Logic-Agent.md
+do_process_code_block_titles: True
+version: 0.1
+---
+
+!!! pied-piper ":bulb: **Governed Agentic Business Logic** — Unified deterministic and probabilistic logic in a single natural-language model"
+
+    The **Business Logic Agent** integrates:
+    
+    - **Deterministic Logic** — Declarative rules that must always be correct
+    - **Probabilistic Logic** — AI-driven reasoning under uncertainty
+    - **Deterministic Execution** — Rules engine ensures correctness and governance
+    - **MCP Discovery** — AI assistants can safely discover and interact with the system
+
+&nbsp;
+
 ## Introduction
 
 For decades, enterprise systems have depended on deterministic business logic — the rules that enforce policy such as credit limits, multi-table derivations, and data consistency.
