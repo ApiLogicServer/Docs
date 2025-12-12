@@ -39,7 +39,7 @@ This paper describes an architecture that unifies them — allowing a *single na
 
 all governed by a deterministic rules engine that ensures correctness, safety, and explainability.
 
-This is the **Business Logic Agent** — a unified NL-based approach that improves business agility, accommodates new kinds of intelligence, and provides the governance enterprises require.
+This is **Governed Agentic Business Logic (GABL)** — a governed agent runtime that allows AI to take real actions over enterprise data, enforced by deterministic business logic and bounded probabilistic reasoning.
 
 
 ## 2. How Does AI Fit In?
