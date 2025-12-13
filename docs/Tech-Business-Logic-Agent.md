@@ -4,10 +4,20 @@
 
 A GABL / Business Logic Agent integrates:
 
-- **Deterministic Logic** — declarative rules that must always be correct  
-- **Probabilistic Logic** — AI-driven reasoning under uncertainty  
-- **Deterministic Execution** — a rules engine that ensures correctness and governance  
-- **MCP Discovery** — AI assistants can safely discover and interact with system capabilities
+* **Deterministic Logic:** declarative rules that must always be correct<br>
+e.g., “Customer balance is the sum of unpaid Orders and must not exceed the credit limit.”
+
+* **Probabilistic Logic:** AI-driven reasoning under uncertainty<br>
+e.g., “Select the optimal supplier based on cost, lead time, and world conditions.”
+
+* **Integration Logic:** declarative, event-driven actions<br>
+e.g., “Publish Order to Kafka topic order_shipping when date_shipped is set.”
+
+* **Deterministic Execution:** a deterministic execution engine that enforces correctness and governance<br>
+e.g., dependency-ordered recomputation and constraint enforcement on every update.
+
+* **MCP Discovery:** safe AI interaction with system capabilities<br>
+e.g., an assistant discovers entities, rules, and actions via MCP and issues a validated update.
 
 ---
 
@@ -19,7 +29,9 @@ These rules were traditionally hand-coded, buried in controllers and methods, an
 
 AI changes both the cost model and the possibility space.
 
-Natural language makes it practical to express deterministic rules directly — in a form that is already declarative, stating **what must be true** rather than **how to compute it**. This avoids procedural glue code, preserves business intent, and can be far more concise than the equivalent procedural implementation (for an AI-generated study, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}; the procedural code is [here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"})..
+Natural language makes it practical to express deterministic rules directly — in a form that is already declarative, stating **what must be true** rather than **how to compute it**. This avoids procedural glue code, preserves business intent, and can be far more concise than the equivalent procedural implementation.  
+
+For an AI-generated comparison of declarative vs. procedural implementations — including AI-acknowledged errors in the procedural version and their correction, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}; the procedural code is [here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.  This mirrors a well-known boundary: code generation can produce plausible paths, but completeness across dependencies must be enforced deterministically.
 
 Beyond cost and time reduction, AI introduces something entirely new: **probabilistic logic** — reasoning, ranking, optimizing, and choosing the “best” option under uncertain conditions. This was never feasible to hand-code because it depends on natural language, context, world knowledge, and intelligent choice.
 
@@ -64,7 +76,8 @@ Here is a concrete example of a unified, declarative natural-language descriptio
 
 ### Declarative NL Logic
 
-**Use case: Check Credit**
+```bash title='declarative NL Logic'
+Use case: Check Credit
 
 1. The Customer's balance is less than the credit limit  
 2. The Customer's balance is the sum of the Order amount_total where date_shipped is null  
@@ -72,26 +85,29 @@ Here is a concrete example of a unified, declarative natural-language descriptio
 4. The Item amount is the quantity * unit_price  
 5. The Price is copied from the Product  
 
-**Use case: App Integration**
+Use case: App Integration
 
 1. Send the Order to Kafka topic `order_shipping` if `date_shipped` is not None.
+```
 
 These two use cases are expressed entirely in declarative natural language — including deterministic rules (1–5) and an integration rule.
+
+In particular, we don’t use AI to execute deterministic logic — only to propose values where uncertainty is declared (probabilistic logic, discussed below).
 
 ---
 
 ## 3. Declarative Logic & DSL — NL → DSL → Engine
 
-Natural language must ultimately produce something **unambiguous and enforceable**.
+For deterministic logic, natural language must ultimately produce something **unambiguous and enforceable**.
 
 That is why deterministic logic is expressed as a **declarative DSL**, not procedural code.
 
 ### Why DSL instead of codegen?
 
-- Procedural code scatters logic across handlers and methods.  
-- Regeneration overwrites fixes and disrupts iterative development.  
+- Even when AI generates correct code, dependency ordering and state consistency require deterministic execution to verify completeness across all state transitions.  
+- Procedural code scatters logic across handlers and methods.  That makes it hard to read the code and understand what it is doing.
+- Regeneration overwrites fixes and disrupts iterative development with dependency management risks. 
 - Dependency bugs hide in glue code — often invisible until runtime.  
-- AI struggles with ordering, before/after comparisons, and transitive dependencies.  
 - A DSL keeps intent clean, centralized, and auditable.
 
 A deterministic runtime logic engine enforces:
@@ -105,7 +121,9 @@ A deterministic runtime logic engine enforces:
 
 This is the **NL → DSL → Engine** model:
 
-> AI captures policy, the DSL expresses it, and the engine executes it correctly.
+> AI translates natural-language intent into deterministic DSL; governed execution enforces dependencies, constraints, and correctness when real state changes.
+
+Because logic is explicit and deterministic, you can breakpoint rules, trace multi-table execution step by step, and even ask Copilot to generate tests directly from the rules.
 
 But deterministic rules are only half the story. Modern systems also require logic we rarely attempted to hand-code — logic that depends on reasoning, exploration, and world context.
 
