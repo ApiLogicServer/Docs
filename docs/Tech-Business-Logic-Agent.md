@@ -1,6 +1,6 @@
 # Governed Agentic Business Logic (GABL)
 
-💡 **Governed Agentic Business Logic** unifies deterministic and probabilistic logic in a single natural-language model, executed under deterministic governance and exposed as an MCP-discoverable server.
+💡 **Governed Agentic Business Logic** unifies deterministic and probabilistic logic in a single natural-language model, executed under deterministic governance and exposed as a containerized MCP-discoverable server.
 
 A GABL / Business Logic Agent integrates:
 
@@ -29,7 +29,7 @@ These rules were traditionally hand-coded, buried in controllers and methods, an
 
 AI changes both the cost model and the possibility space.
 
-Natural language makes it practical to express deterministic rules directly — in a form that is already declarative, stating **what must be true** rather than **how to compute it**. This avoids procedural glue code, preserves business intent, and can be far more concise than the equivalent procedural implementation.  
+Natural language makes it practical to express deterministic rules directly — in a naturally declarative, order-independent form, stating ***what* must be true** rather than ***how* to compute it**. This avoids procedural glue code, preserves business intent, enables automatic dependency management, and is *far* more concise than the equivalent procedural implementation.  
 
 For an AI-generated comparison of declarative vs. procedural implementations — including AI-acknowledged errors in the procedural version and their correction, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}; the procedural code is [here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.  This mirrors a well-known boundary: code generation can produce plausible paths, but completeness across dependencies must be enforced deterministically.
 
@@ -54,13 +54,13 @@ This is **Governed Agentic Business Logic (GABL)** — a governed agent runtime 
 
 AI does not replace deterministic logic — it **amplifies** it.
 
-Traditionally, business logic was hand-coded in procedural form. Even simple policies expanded into long sequences of steps: retrieve this, loop over that, compute values, manage dependencies, enforce constraints, call downstream services. A single business requirement often ballooned into hundreds of lines of procedural code.
+Traditionally, business logic was hand-coded in procedural form. Even simple policies expanded into long sequences of steps: retrieve this, loop over that, compute values, manage dependencies, enforce constraints, call downstream services. A single business requirement typically ballooned into hundreds of lines of procedural code.
 
 Natural language changes this model completely.
 
 The natural-language descriptions used here are **declarative**, not procedural:
 
-- They state **what must be true**, not how to compute it.  
+- They state ***what* must be true**, not *how* to compute it.  
 - They capture policy in a form business users can read.  
 - They avoid procedural glue code.  
 - They are dramatically more concise than procedural equivalents.  
@@ -76,7 +76,7 @@ Here is a concrete example of a unified, declarative natural-language descriptio
 
 ### Declarative NL Logic
 
-```bash title='declarative NL Logic'
+```bash title='Declarative NL Logic'
 Use case: Check Credit
 
 1. The Customer's balance is less than the credit limit  
@@ -92,19 +92,35 @@ Use case: App Integration
 
 These two use cases are expressed entirely in declarative natural language — including deterministic rules (1–5) and an integration rule.
 
-In particular, we don’t use AI to execute deterministic logic — only to propose values where uncertainty is declared (probabilistic logic, discussed below).
-
 ---
 
 ## 3. Declarative Logic & DSL — NL → DSL → Engine
 
+### DSL Example
+
+```python title='Generated DSL Code from Declarative NL Logic (above)'
+    # Check Credit
+    Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance <= row.credit_limit, error_msg="Customer balance exceeds credit limit")                    
+    Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total, where=lambda row: row.date_shipped is None)    
+    Rule.sum(derive=models.Order.amount_total, as_sum_of=models.Item.amount)
+    Rule.formula(derive=models.Item.amount, as_expression=lambda row: row.quantity * row.unit_price)
+    Rule.copy(derive=models.Item.unit_price, from_parent=models.Product.unit_price)
+
+    # App Integration
+    Rule.after_flush_row_event(on_class=models.Order, calling=kafka_producer.send_row_to_kafka, 
+                               if_condition=lambda row: row.date_shipped is not None, with_args={'topic': 'order_shipping'})
+```
+
+
+### Why DSL instead of codegen?
 For deterministic logic, natural language must ultimately produce something **unambiguous and enforceable**.
 
 That is why deterministic logic is expressed as a **declarative DSL**, not procedural code.
 
-### Why DSL instead of codegen?
-
 - Even when AI generates correct code, dependency ordering and state consistency require deterministic execution to verify completeness across all state transitions.  
+
+      - This reflects a well-known boundary: code generation can produce plausible paths, but completeness across dependencies must be enforced deterministically at execution time.
+
 - Procedural code scatters logic across handlers and methods.  That makes it hard to read the code and understand what it is doing.
 - Regeneration overwrites fixes and disrupts iterative development with dependency management risks. 
 - Dependency bugs hide in glue code — often invisible until runtime.  
@@ -149,7 +165,7 @@ This is fundamentally different from deterministic rules.
 
 ---
 
-## 5. The Business Logic Agent (BLA)
+## 5. The Agentic Business Logic Agent (BLA)
 
 A **Business Logic Agent** is a packaged, MCP-discoverable server created from natural-language declarations.
 
@@ -260,8 +276,8 @@ Here’s a simplified pattern drawn from actual AI + MCP interaction.
 
 ### Declare logic (deterministic and probabilistic NL)
 
-**Use case: Check Credit**
-
+```python title='Declare Natural Language Logic'
+Use case: Check Credit
 1. The Customer's balance is less than the credit limit  
 2. The Customer's balance is the sum of the Order amount_total where date_shipped is null  
 3. The Order's amount_total is the sum of the Item amount  
@@ -269,32 +285,18 @@ Here’s a simplified pattern drawn from actual AI + MCP interaction.
 5. The Product count suppliers is the count of the Product Suppliers  
 6. Use AI to set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions  
 
-**Use case: App Integration**
-
+Use case: App Integration
 1. Send the Order to Kafka topic `order_shipping` if `date_shipped` is not None.
+```
 
 ### Generated DSL code
 
-```python
-Rule.constraint(validate=models.Customer,
-    as_condition=lambda row: row.balance <= row.credit_limit,
-    error_msg="balance ({row.balance}) exceeds credit ({row.credit_limit})")
-
-Rule.sum(derive=models.Customer.balance,
-    as_sum_of=models.Order.amount_total,
-    where=lambda row: row.date_shipped is None)
-
-Rule.sum(derive=models.Order.amount_total,
-    as_sum_of=models.Item.amount)
-
-Rule.formula(derive=models.Item.amount,
-    as_expression=lambda row: row.quantity * row.unit_price)
-
-Rule.count(derive=models.Product.count_suppliers,
-    as_count_of=models.ProductSupplier)
-
-Rule.early_row_event(on_class=models.Item,
-    calling=set_item_unit_price_from_supplier)
+```python title='generated DSL Code'
+    Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance <= row.credit_limit, error_msg="Customer balance exceeds credit limit")                    
+    Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total, where=lambda row: row.date_shipped is None)    
+    Rule.sum(derive=models.Order.amount_total, as_sum_of=models.Item.amount)
+    Rule.formula(derive=models.Item.amount, as_expression=lambda row: row.quantity * row.unit_price)
+    Rule.copy(derive=models.Item.unit_price, from_parent=models.Product.unit_price)
 ```
 
 ### Runtime behavior
@@ -332,3 +334,111 @@ By combining:
 Think of it as a **logic appliance** — a packaged, governed MCP server that delivers business behavior safely to AI.
 
 The Business Logic Agent is the architectural pattern that emerges when these elements are combined: AI provides intent and exploration, and deterministic logic ensures everything remains correct, explainable, and safe.
+
+---
+
+## Appendix — How GABL Meets Agentic System Criteria
+
+This appendix maps **Governed Agentic Business Logic (GABL)** to commonly accepted characteristics of agentic systems, while highlighting how governance and determinism are preserved.
+
+### 1. Goal-directed behavior
+Agentic systems pursue objectives rather than executing fixed scripts.
+
+**GABL support**
+- Goals and policies are expressed declaratively in natural language.
+- Deterministic rules define *what must be true*.
+- Probabilistic logic enables optimization and choice under uncertainty.
+
+The agent acts to satisfy goals while remaining within enforced constraints.
+
+---
+
+### 2. Autonomous decision-making
+Agents make decisions without step-by-step procedural control.
+
+**GABL support**
+- Probabilistic Logic (PL) handlers invoke LLMs to reason, rank, or select outcomes.
+- Decisions occur at runtime, not pre-scripted code paths.
+- Deterministic execution validates decisions before committing state.
+
+Autonomy exists, but is bounded by governance.
+
+---
+
+### 3. Environmental interaction
+Agents perceive and act on external systems.
+
+**GABL support**
+- MCP exposure allows AI assistants to discover schema, actions, and constraints.
+- Integration logic (e.g., Kafka events) enables side effects beyond the database.
+- All interactions are mediated through validated APIs.
+
+The agent is externally interactive, not isolated.
+
+---
+
+### 4. State awareness and continuity
+Agentic systems reason over evolving state, not single prompts.
+
+**GABL support**
+- Deterministic logic maintains derived state across entities and transactions.
+- Dependency-ordered recomputation ensures consistent state evolution.
+- Constraints enforce invariants over time.
+
+State is first-class, not implicit.
+
+---
+
+### 5. Planning and multi-step reasoning
+Agents perform reasoning across multiple steps and conditions.
+
+**GABL support**
+- Probabilistic logic performs reasoning where uncertainty is declared.
+- Deterministic execution propagates effects across dependent entities.
+- Multi-step behavior emerges from rule chaining plus PL invocation.
+
+Reasoning is hybrid: probabilistic exploration + deterministic execution.
+
+---
+
+### 6. Explainability and observability
+Agentic systems must explain *why* actions occurred.
+
+**GABL support**
+- Deterministic rules are explicit and auditable.
+- Rule execution is traceable across tables and state changes.
+- Constraint violations return precise explanations.
+- Developers can step through rule execution and generate tests from logic.
+
+The system is inspectable, not a black box.
+
+---
+
+### 7. Safety and governance
+Enterprise-grade agents must prevent unsafe actions.
+
+**GABL support**
+- All state changes pass through deterministic execution.
+- Probabilistic outputs are validated before application.
+- Constraints, ordering, and dependency checks are enforced on every update.
+- AI cannot bypass governance through prompts or autonomy.
+
+This provides a hard execution boundary.
+
+---
+
+### Summary
+
+GABL satisfies the core criteria of agentic systems:
+
+- goal-directed  
+- autonomous  
+- stateful  
+- interactive  
+- capable of reasoning and planning  
+
+While adding something most agent architectures lack:
+
+**deterministic governance at the point where AI touches real state.**
+
+This enables agentic behavior that is deployable, explainable, and safe in enterprise systems.
