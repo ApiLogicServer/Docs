@@ -155,6 +155,8 @@ Finally, a DSL makes the system **governable**.
 
 ![Logic Debugger](images/basic_demo/logic-chaining.jpeg) 
 
+> *(Insert diagram: `Arch Options.png`)*
+
 Generated procedural code may be correct.  
 But only a declarative DSL makes correctness **visible and provable**.
 
@@ -180,128 +182,11 @@ There is no single “correct” answer. AI explores possibilities and proposes 
 
 This is fundamentally different from deterministic rules.
 
-**Automatic audit trail for governance**
+### Example: PL to Choose Supplier
 
-Because probabilistic logic introduces non-deterministic decision-making, the system automatically records a complete audit trail for every deterministic rule execution during transaction processing.
+Here is prior example extended with probabilistic logic for choosing the best supplier
 
-This audit trail captures which rules fired (and in what dependency order), what values changed at each step, which constraints were evaluated, and whether the transaction committed or rolled back — and why.
-
-As a result, every AI-assisted operation is not only governed and validated, but fully explainable and forensically inspectable — a critical requirement for enterprise accountability and regulated environments.
-
----
-
-## 5. The Agentic Business Logic Agent (BLA)
-
-A **Business Logic Agent** is a packaged, MCP-discoverable server created from natural-language declarations.
-
-It unifies:
-
-- natural-language business policy (deterministic, probabilistic, and integration logic)  
-- generated logic — deterministic rules (DL) and probabilistic handlers (PL)  
-- deterministic execution that governs every operation and calls the LLM only where PL is declared  
-- MCP exposure so AI assistants can safely discover and act on system capabilities  
-
-The BLA provides a single governed place for business logic — created from NL, executed deterministically, and exposed to AI assistants through MCP.
-
-### 5.1 Definition — what a BLA is
-
-A Business Logic Agent consists of:
-
-- unified NL declarations describing business rules and reasoning  
-- generated logic — deterministic rules (DSL) and probabilistic handlers (PL)  
-- deterministic execution that ensures correctness and safety  
-- MCP exposure so AI assistants can discover and act on system capabilities  
-
-The BLA is not a framework; it is a generated, governed logic component.
-
-### 5.2 Declaration & generation (D1–D2) — how a BLA is created
-
-The creation process begins with natural language.
-
-**D1 — Unified Natural-Language Input**
-
-Developers describe business policies — deterministic rules, probabilistic decisions, and integration triggers — in one incremental NL description. It supports iterative development: each new declaration extends the existing logic model (e.g., one use case at a time).
-
-**D2 — GenAI generates deterministic and probabilistic logic**
-
-GenAI calls the LLM to create:
-
-- **Deterministic Logic (DL):** Python DSL rules (formulas, sums, counts, constraints, events)  
-- **Probabilistic Logic (PL):** Python event handlers containing structured LLM calls  
-- **Integration events:** Python calls to Kafka, etc.
-
-These generated artifacts form the BLA’s internal logic.
-
-### 5.3 Runtime behavior (R1–R2) — how a BLA executes
-
-At runtime, the BLA provides governed, predictable execution.
-
-**R1 — Deterministic execution**
-
-The rules engine evaluates all DL:
-
-- multi-table propagation  
-- derivations  
-- constraints  
-- before/after events  
-
-No LLM is invoked during deterministic execution.
-
-**R2 — Probabilistic execution (only where declared)**
-
-If a rule requires reasoning or optimization, the generated PL handler fires:
-
-- it calls the LLM  
-- returns a value  
-- the deterministic engine validates the result before applying it  
-
-This hybrid model lets AI reason **inside deterministic guardrails**.
-
-### 5.4 MCP packaging — how a BLA is exposed
-
-The BLA creates a JSON:API and is exposed as `/.well-known/mcp.json` according to the Model Context Protocol (MCP).
-
-AI assistants acting as MCP clients can:
-
-- discover schema and relationships  
-- ask questions  
-- issue validated API calls  
-- receive constraint violations and deterministic messages  
-- take safe action within governed rules  
-
-All operations invoked by AI pass through the deterministic engine.
-
-### 5.5 Creation flow — summary (D1 → D2 → R1 → R2)
-
-This summarizes how a Business Logic Agent is created and executed:
-
-- **D1:** Unified NL declaration  
-- **D2:** GenAI generates DSL + PL  
-- **R1:** Deterministic rules execute  
-- **R2:** Probabilistic calls occur only where declared  
-
-> *(Insert diagram: `Bus-Logic-Agent.png`)*
-
-### 5.6 Using the BLA in the enterprise — architecture
-
-Once packaged via MCP, the BLA behaves like a governed logic component in the enterprise:
-
-- AI assistants interact through MCP  
-- applications call its APIs  
-- downstream systems receive integration events  
-- all actions remain fully validated and auditable  
-
-> *(Insert diagram: `Bus-Logic-Agent-Arch.png`)*
-
----
-
-## 6. Example — how the model works
-
-Here’s a simplified pattern drawn from actual AI + MCP interaction.
-
-### Declare logic (deterministic and probabilistic NL)
-
-```python title='Declare Natural Language Logic'
+```python title='Declare Natural Language Logic with PL to Choose Supplier'
 Use case: Check Credit
 1. The Customer's balance is less than the credit limit  
 2. The Customer's balance is the sum of the Order amount_total where date_shipped is null  
@@ -314,15 +199,157 @@ Use case: App Integration
 1. Send the Order to Kafka topic `order_shipping` if `date_shipped` is not None.
 ```
 
-### Generated DSL code
-
-```python title='generated DSL Code'
-    Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance <= row.credit_limit, error_msg="Customer balance exceeds credit limit")                    
+```python title='Generated DSL Code, including PL'
+def declare_logic():
+    """
+    Declarative business rules for Check Credit use case.
+    
+    Combines deterministic rules (calculations, validations) with
+    probabilistic logic (AI-driven supplier selection).
+    """
+    
+    Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance is None or row.credit_limit is None or row.balance <= row.credit_limit, error_msg="Customer balance ({row.balance}) exceeds credit limit ({row.credit_limit})")
     Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total, where=lambda row: row.date_shipped is None)    
     Rule.sum(derive=models.Order.amount_total, as_sum_of=models.Item.amount)
-    Rule.formula(derive=models.Item.amount, as_expression=lambda row: row.quantity * row.unit_price)
-    Rule.copy(derive=models.Item.unit_price, from_parent=models.Product.unit_price)
+    Rule.formula(derive=models.Item.amount, as_expression=lambda row: row.quantity * row.unit_price if row.quantity and row.unit_price else 0)
+    Rule.count(derive=models.Product.count_suppliers, as_count_of=models.ProductSupplier)
+    Rule.early_row_event(on_class=models.Item, calling=set_item_unit_price_from_supplier)
+
+
+def set_item_unit_price_from_supplier(row: models.Item, old_row: models.Item, logic_row: LogicRow):
+    """
+    Early event: Sets unit_price using AI if suppliers exist, else uses fallback.
+    
+    Fires on insert AND when product_id changes (same semantics as copy rule).
+    Implements probabilistic logic with graceful fallback.
+    """
+    from logic.logic_discovery.ai_requests.supplier_selection import get_supplier_selection_from_ai
+    
+    if logic_row.is_deleted():  # Skip on delete (old_row is None) - CRITICAL: Check this FIRST
+        return
+    
+    if not (logic_row.is_inserted() or row.product_id != old_row.product_id):  # Process on insert OR when product_id changes
+        return
+    
+    product = row.product
+    
+    if product.count_suppliers == 0:  # no supplied - use product price
+        return row.unit_price = product.unit_price
+    
+    # Product has suppliers - call AI wrapper
+    logic_row.log(f"Product {product.name} has {product.count_suppliers} suppliers, requesting AI selection")
+    supplier_req = get_supplier_selection_from_ai(
+        product_id=row.product_id,
+        item_id=row.id,
+        logic_row=logic_row
+    )
+    row.unit_price = supplier_req.chosen_unit_price # Extract AI-selected value(s)
 ```
+
+
+### Automatic audit trail for governance
+
+Because probabilistic logic introduces non-deterministic decision-making, the system automatically records a complete audit trail for every deterministic rule execution during transaction processing.
+
+This audit trail captures which rules fired (and in what dependency order), what values changed at each step, which constraints were evaluated, and whether the transaction committed or rolled back — and why.
+
+As a result, every AI-assisted operation is not only governed and validated, but fully explainable and forensically inspectable — a critical requirement for enterprise accountability and regulated environments.
+
+---
+
+## 5. The Business Logic Agent (BLA)
+
+A **Business Logic Agent (BLA)** is the **deployable unit** produced by Governed Agentic Business Logic.
+
+By this point, we have already introduced:
+
+* declarative deterministic rules expressed in a DSL,
+* probabilistic logic invoked only where explicitly declared,
+* deterministic execution enforcing correctness, auditability, and transactional commit boundaries.
+
+A BLA packages these elements into a single, governed runtime component.
+
+A Business Logic Agent:
+
+* contains the generated deterministic rules (DSL) and probabilistic handlers (PL),
+* executes all updates through the deterministic engine, validating any AI-assisted decisions before commit,
+* records a complete audit trail for every transaction,
+* exposes its capabilities through MCP for safe interaction with AI assistants.
+
+The BLA is **not a framework** and **not a long-running autonomous agent**.
+It is a generated, transactional logic component that can be invoked by applications or AI assistants while remaining fully governed, explainable, and safe.
+
+---
+
+### 5.1 MCP packaging — how a BLA is exposed
+
+Once generated, a BLA is packaged as a containerized service and exposed via the Model Context Protocol (MCP).
+
+Through MCP, AI assistants can:
+
+* discover available entities, relationships, and rules,
+* ask questions about system state and constraints,
+* issue validated API calls,
+* receive deterministic constraint violations and explanations.
+
+All actions — whether initiated by applications or AI assistants — pass through the deterministic execution engine.
+
+---
+
+### 5.2 Creation flow — summary (D1 → D2 → R1 → R2)
+
+The lifecycle of a Business Logic Agent follows a clear, governed flow:
+
+**D1 — Unified natural-language declaration**
+Business policies are described incrementally in natural language, including deterministic rules, probabilistic decisions, and integration triggers.
+
+**D2 — GenAI generation**
+GenAI produces:
+
+* deterministic DSL rules (formulas, sums, constraints, events),
+* probabilistic handlers (PL) that invoke LLMs only where declared,
+* integration logic (e.g., Kafka publishing).
+
+**R1 — Deterministic execution**
+All deterministic rules execute:
+
+* dependency-ordered recomputation,
+* constraint enforcement,
+* audit logging.
+
+No LLM is invoked during this phase.
+
+**R2 — Probabilistic execution (only where declared)**
+If probabilistic logic is required:
+
+* the PL handler invokes the LLM,
+* returns proposed values,
+* the deterministic engine validates the result before commit.
+
+This ensures probabilistic reasoning operates strictly inside deterministic guardrails.
+
+---
+
+### 5.3 Using the BLA in the enterprise — architecture
+
+Once deployed, a Business Logic Agent behaves like a governed logic component in the enterprise:
+
+* applications call its APIs,
+* AI assistants interact through MCP,
+* integration events publish to downstream systems,
+* all state changes remain fully validated, auditable, and explainable.
+
+The BLA provides a single, authoritative place for business logic — created from natural language, executed deterministically, and safely accessible to AI.
+
+
+> *(Insert diagram: `Bus-Logic-Agent-Arch.png`)*
+
+---
+
+## 6. Example — how the model works
+
+Here’s a simplified pattern drawn from actual AI + MCP interaction.
+
 
 ### Runtime behavior
 
