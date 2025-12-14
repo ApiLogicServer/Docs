@@ -111,35 +111,33 @@ These two use cases are expressed entirely in declarative natural language — i
                                if_condition=lambda row: row.date_shipped is not None, with_args={'topic': 'order_shipping'})
 ```
 
+### Why a Declarative DSL for Governable Logic
 
-### Why DSL instead of codegen?
-For deterministic logic, natural language must ultimately produce something **unambiguous and enforceable**.
+Natural language is ideal for expressing business **intent** — the human-readable statement of **policy**.  
+But natural language alone is not precise enough to be the system’s source of truth.
 
-That is why deterministic logic is expressed as a **declarative DSL**, not procedural code.
+A declarative DSL preserves policy in a form that is **correct, readable, and explainable**.
 
-- Even when AI generates correct code, dependency ordering and state consistency require deterministic execution to verify completeness across all state transitions.  
+When you look at a DSL rule, you can immediately see **what policy is enforced** and **what data it depends on** — without reading procedural code or simulating execution.
 
-      - This reflects a well-known boundary: code generation can produce plausible paths, but completeness across dependencies must be enforced deterministically at execution time.
+This matters because **dependencies must not be guessed**.  
+When logic is generated directly as procedural code, dependencies are inferred from patterns and context. These guesses are usually right — but when they are wrong, the result is a **real business logic bug**. Because the original policy is buried in control flow, such bugs are **extremely difficult to detect and explain**.
 
-- Procedural code scatters logic across handlers and methods.  That makes it hard to read the code and understand what it is doing.
-- Regeneration overwrites fixes and disrupts iterative development with dependency management risks. 
-- Dependency bugs hide in glue code — often invisible until runtime.  
-- A DSL keeps intent clean, centralized, and auditable.
+A DSL avoids this by making dependencies **explicit**. The system can determine what depends on what in a fixed, deterministic way — either by **generating code** from the DSL or by **interpreting the DSL at runtime**. Both work because the meaning of the logic is defined once, in the DSL, and never rediscovered later.
 
-A deterministic runtime logic engine enforces:
+This also makes **change safe**. When policy changes, the system does not re-guess dependencies or regenerate everything blindly with risk of error. It knows exactly what must be recomputed.
 
-- dependency management  
-- ordering  
-- propagation (chaining)  
-- constraint checking  
-- pruning  
-- debugging and traceability  
+During deterministic execution, the runtime scans the DSL to derive all direct and transitive dependencies, orders rule execution accordingly, and recomputes affected values until a stable state is reached.
 
-This is the **NL → DSL → Engine** model:
+This guarantees that long dependency chains are handled completely and consistently — without relying on guessed control flow or regenerated procedural paths.
 
-> AI translates natural-language intent into deterministic DSL; governed execution enforces dependencies, constraints, and correctness when real state changes.
+Finally, a DSL makes the system **governable**.  
+**Governable means correct, readable, and explainable**: you can read the rules to understand the policy, and you can see — in the logic log — exactly how each rule was applied and how state changed as a result.
 
-Because logic is explicit and deterministic, you can breakpoint rules, trace multi-table execution step by step, and even ask Copilot to generate tests directly from the rules.
+![Logic Debugger](images/basic_demo/logic-chaining.jpeg) 
+
+Generated procedural code may be correct.  
+But only a declarative DSL makes correctness **visible and provable**.
 
 But deterministic rules are only half the story. Modern systems also require logic we rarely attempted to hand-code — logic that depends on reasoning, exploration, and world context.
 
