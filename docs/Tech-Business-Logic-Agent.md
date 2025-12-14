@@ -33,6 +33,8 @@ Natural language makes it practical to express deterministic rules directly — 
 
 For an AI-generated comparison of declarative vs. procedural implementations — including AI-acknowledged errors in the procedural version and their correction, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}; the procedural code is [here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.  This mirrors a well-known boundary: code generation can produce plausible paths, but completeness across dependencies must be enforced deterministically.
 
+Note: in that same comparison, five declarative rules replaced more than 200 lines of procedural code for the same business logic — a ~40× reduction. This reflects the collapse of procedural glue code once dependencies are made explicit, not an assumption about AI capability or project size.
+
 Beyond cost and time reduction, AI introduces something entirely new: **probabilistic logic** — reasoning, ranking, optimizing, and choosing the “best” option under uncertain conditions. This was never feasible to hand-code because it depends on natural language, context, world knowledge, and intelligent choice.
 
 Both kinds of logic matter.  
@@ -128,6 +130,23 @@ A DSL avoids this by making dependencies **explicit**. The system can determine 
 This also makes **change safe**. When policy changes, the system does not re-guess dependencies or regenerate everything blindly with risk of error. It knows exactly what must be recomputed.
 
 During deterministic execution, the runtime scans the DSL to derive all direct and transitive dependencies, orders rule execution accordingly, and recomputes affected values until a stable state is reached.
+
+> *Implementation note:* At runtime, the rules engine hooks into the ORM transaction lifecycle (e.g., SQLAlchemy unit-of-work/commit events) to trigger dependency-ordered recomputation and constraint enforcement before the update is committed.
+
+
+**Important architectural distinction**
+
+Although this system uses declarative rules, it is not a RETE-style inference engine.
+
+Traditional RETE engines optimize pattern matching for expert systems, but perform poorly for transactional business logic due to state retention, non-deterministic propagation, and inefficient handling of multi-table updates.
+
+The GABL rules engine is designed explicitly for **transactional correctness**. It performs dependency-ordered recomputation over relational data, uses SQL-backed aggregation, enforces constraints deterministically on every update, and converges to a stable state before committing changes.
+
+This defines a clear **transactional commit boundary**: all derived values, constraints, and any AI-assisted decisions are fully validated before the system atomically commits state or rejects the update.
+
+This execution model is optimized for enterprise transactions — not forward-chaining inference — and is what allows declarative logic to be both safe and performant in real systems.
+
+The engine further improves scalability through pruning, dependency scoping, and SQL-level optimization; see [*Scalability, Prune, and Optimize*](http://127.0.0.1:8000/Tech-Business-Logic-Agent/#why-a-declarative-dsl-for-governable-logic){:target="_blank" rel="noopener"} for details.
 
 This guarantees that long dependency chains are handled completely and consistently — without relying on guessed control flow or regenerated procedural paths.
 
