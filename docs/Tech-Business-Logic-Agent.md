@@ -129,7 +129,7 @@ A DSL avoids this by making dependencies **explicit**. The system can determine 
 
 This also makes **change safe**. When policy changes, the system does not re-guess dependencies or regenerate everything blindly with risk of error. It knows exactly what must be recomputed.
 
-![Logic Architecture](images/logic/logic-archiecture.png)
+![Logic Architecture](images/logic/logic-architecture.png)
 
 During deterministic execution, the runtime scans the DSL to derive all direct and transitive dependencies, orders rule execution accordingly, and recomputes affected values until a stable state is reached.
 
