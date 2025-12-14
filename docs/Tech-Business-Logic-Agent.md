@@ -180,6 +180,14 @@ There is no single “correct” answer. AI explores possibilities and proposes 
 
 This is fundamentally different from deterministic rules.
 
+**Automatic audit trail for governance**
+
+Because probabilistic logic introduces non-deterministic decision-making, the system automatically records a complete audit trail for every deterministic rule execution during transaction processing.
+
+This audit trail captures which rules fired (and in what dependency order), what values changed at each step, which constraints were evaluated, and whether the transaction committed or rolled back — and why.
+
+As a result, every AI-assisted operation is not only governed and validated, but fully explainable and forensically inspectable — a critical requirement for enterprise accountability and regulated environments.
+
 ---
 
 ## 5. The Agentic Business Logic Agent (BLA)
