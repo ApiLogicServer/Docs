@@ -106,9 +106,11 @@ The declarative natural-language logic above is a good formulation — but it mu
 
 ### Introducing the Rules DSL (Domain Specific Language)
 
-Our natural-language logic is concise and high-level, but it is not fully **rigorous**. For example: is `price` *copied* from the Product once, or *referenced* (so later Product price changes update Order totals)? That ambiguity makes **Alt-1** a poor choice.
+Our natural-language logic is concise and high-level, but it is not fully **rigorous.** For example: does “price is from Product” mean we **copy** the price once, or **reference** it so later Product price changes update Order totals? 
 
-So we translate the natural-language logic into a **Rules DSL** that preserves the high level of abstraction while making intent **unambiguous**. We teach this DSL to the LLM by defining a small set of **rule types** (sum, formula, constraint, copy, event, etc.), enabling the LLM to convert the logic above into:
+That ambiguity makes natural language an unsuitable execution model. As shown in **1. NL → CodeGen** in the diagram above, executing directly from ambiguous intent forces the system to guess semantics and dependencies.
+
+So we translate the natural-language logic into a **2. Rules DSL** that preserves the high level of abstraction while making intent **unambiguous.** We teach this DSL to the LLM by defining a small set of **rule types** (sum, formula, constraint, copy, event, etc.), enabling the LLM to convert the logic above into:
 
 ```python title="Generated DSL Code from Declarative NL Logic (above)"
     # Check Credit
@@ -133,7 +135,7 @@ This DSL becomes the **system of record**: it is readable, reviewable, and can b
 
 Next, how do we make the DSL executable? The decision tree outlines these alternatives:
 
-- **2. LLM → code.** Use an LLM to translate DSL rules into procedural code. This is attractive, but it reintroduces the core risk: LLMs tend to manage dependencies by **heuristic pattern inference**, which can miss subtle (but real) dependencies and produce business logic bugs. We eliminated this option.
+- **3. LLM → code.** Use an LLM to translate DSL rules into procedural code. This is attractive, but it reintroduces the core risk: LLMs tend to manage dependencies by **heuristic pattern inference**, which can miss subtle (but real) dependencies and produce business logic bugs. We eliminated this option.
 
     - We tried this. We asked an LLM to translate rules into code; we found two serious dependency bugs; and the LLM itself summarized dependency management as pattern-based reasoning. To see the study, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
