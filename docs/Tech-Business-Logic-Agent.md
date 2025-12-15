@@ -154,7 +154,7 @@ We chose **direct execution** because it preserves the highest level of abstract
 The LogicBank rules engine fulfills this role. It is designed explicitly for **transactional correctness and performance**:
 
 - dependency-ordered recomputation,
-- SQL-backed aggregation,
+- incremental aggregate maintenance using dependency-aware deltas (avoids full SQL re-aggregation),
 - constraint enforcement *before commit*,
 - audit logging,
 - and transactional commit boundaries.
