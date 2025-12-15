@@ -62,11 +62,11 @@ Natural language changes this model completely.
 
 The natural-language descriptions used here are **declarative**, not procedural:
 
-- They state ***what* must be true**, not *how* to compute it.  
-- They capture policy in a form business users can read.  
-- They avoid procedural glue code.  
+- They capture policy in a form business users can read: how our data is validated, computed, and integrated. 
+- They are assertions ***what* must be true after commit**, not *how* to enforce it.  
 - They are dramatically more concise than procedural equivalents.  
 - They provide a clean foundation for generation and governance.
+- They avoid procedural glue code.  
 
 For example:
 
@@ -79,28 +79,38 @@ Here is a concrete example of a unified, declarative natural-language descriptio
 ### Declarative NL Logic
 
 ```bash title='Declarative NL Logic'
-Use case: Check Credit
+Use case: Check Credit Logic
 
 1. The Customer's balance is less than the credit limit  
 2. The Customer's balance is the sum of the Order amount_total where date_shipped is null  
 3. The Order's amount_total is the sum of the Item amount  
 4. The Item amount is the quantity * unit_price  
-5. The Price is copied from the Product  
+5. The Price is from the Product  
 
 Use case: App Integration
 
 1. Send the Order to Kafka topic `order_shipping` if `date_shipped` is not None.
 ```
 
-These two use cases are expressed entirely in declarative natural language — including deterministic rules (1–5) and an integration rule.
+The logic for our two use cases are expressed entirely in declarative natural language — including deterministic logic (1–5) and integration logic.  Importantly, note that the logic has a **dependencies.**  Correct results require **dependency management:** dependencies must be recognized, and executed in a proper order.
 
 ---
 
-## 3. Declarative Logic & DSL — NL → DSL → Engine
+<br>
 
-### DSL Example
+## 3. Make Logic Executable: Rules
 
-```python title='Generated DSL Code from Declarative NL Logic (above)'
+The declarative natural-language logic above is a good formulation — but it must become **executable**, without collapsing back into procedural glue code or *guessing* at dependencies. The decision tree below summarizes the key alternatives:
+
+![Logic Architecture](images/logic/logic-architecture.png)
+
+### Introducing the Rules DSL (Domain Specific Language)
+
+Our natural-language logic is concise and high-level, but it is not fully **rigorous**. For example: is `price` *copied* from the Product once, or *referenced* (so later Product price changes update Order totals)? That ambiguity makes **Alt-1** a poor choice.
+
+So we translate the natural-language logic into a **Rules DSL** that preserves the high level of abstraction while making intent **unambiguous**. We teach this DSL to the LLM by defining a small set of **rule types** (sum, formula, constraint, copy, event, etc.), enabling the LLM to convert the logic above into:
+
+```python title="Generated DSL Code from Declarative NL Logic (above)"
     # Check Credit
     Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance <= row.credit_limit, error_msg="Customer balance exceeds credit limit")                    
     Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total, where=lambda row: row.date_shipped is None)    
@@ -113,56 +123,51 @@ These two use cases are expressed entirely in declarative natural language — i
                                if_condition=lambda row: row.date_shipped is not None, with_args={'topic': 'order_shipping'})
 ```
 
-### Why a Declarative DSL for Governable Logic
+This avoids the issues around **(1)** in the diagram above: the logic must be disambiguated.
 
-Natural language is ideal for expressing business **intent** — the human-readable statement of **policy**.  
-But natural language alone is not precise enough to be the system’s source of truth.
+This DSL becomes the **system of record**: it is readable, reviewable, and can be checked into git.  
 
-A declarative DSL preserves policy in a form that is **correct, readable, and explainable**.
+<br>
 
-When you look at a DSL rule, you can immediately see **what policy is enforced** and **what data it depends on** — without reading procedural code or simulating execution.
+### CodeGen vs Runtime Engine
 
-This matters because **dependencies must not be guessed**.  
-When logic is generated directly as procedural code, dependencies are inferred from patterns and context. These guesses are usually right — but when they are wrong, the result is a **real business logic bug**. Because the original policy is buried in control flow, such bugs are **extremely difficult to detect and explain**.
+Next, how do we make the DSL executable? The decision tree outlines these alternatives:
 
-A DSL avoids this by making dependencies **explicit**. The system can determine what depends on what in a fixed, deterministic way — either by **generating code** from the DSL or by **interpreting the DSL at runtime**. Both work because the meaning of the logic is defined once, in the DSL, and never rediscovered later.
+- **2. LLM → code.** Use an LLM to translate DSL rules into procedural code. This is attractive, but it reintroduces the core risk: LLMs tend to manage dependencies by **heuristic pattern inference**, which can miss subtle (but real) dependencies and produce business logic bugs. We eliminated this option.
 
-This also makes **change safe**. When policy changes, the system does not re-guess dependencies or regenerate everything blindly with risk of error. It knows exactly what must be recomputed.
+    - We tried this. We asked an LLM to translate rules into code; we found two serious dependency bugs; and the LLM itself summarized dependency management as pattern-based reasoning. To see the study, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
-![Logic Architecture](images/logic/logic-architecture.png)
+- **4. purpose-built code generator.** Write a code generator that **knows each rule type** and can compute dependencies correctly from rule semantics. This is a viable approach.
 
-During deterministic execution, the runtime scans the DSL to derive all direct and transitive dependencies, orders rule execution accordingly, and recomputes affected values until a stable state is reached.
+- **5. direct execution.** Execute the DSL directly in a rules engine.
 
-> *Implementation note:* At runtime, the rules engine hooks into the ORM transaction lifecycle (e.g., SQLAlchemy unit-of-work/commit events) to trigger dependency-ordered recomputation and constraint enforcement before the update is committed.
+Both code generation and direct execution can be correct **provided dependencies are derived from rule semantics, not inferred heuristically**.
 
+We chose **direct execution** because it preserves the highest level of abstraction — declarative rules — from definition through runtime. This avoids introducing a secondary procedural layer that obscures intent, complicates debugging, and fractures governance. The rules themselves remain the executable system of record, not an artifact derived from them.
 
-**Important architectural distinction**
+<br>
 
-Although this system uses declarative rules, it is not a RETE-style inference engine.
+### The Rules Engine
 
-Traditional RETE engines optimize pattern matching for expert systems, but perform poorly for transactional business logic due to state retention, non-deterministic propagation, and inefficient handling of multi-table updates.
+The LogicBank rules engine fulfills this role. It is designed explicitly for **transactional correctness and performance**:
 
-The GABL rules engine is designed explicitly for **transactional correctness**. It performs dependency-ordered recomputation over relational data, uses SQL-backed aggregation, enforces constraints deterministically on every update, and converges to a stable state before committing changes.
+- dependency-ordered recomputation,
+- SQL-backed aggregation,
+- constraint enforcement *before commit*,
+- audit logging,
+- and transactional commit boundaries.
 
-This defines a clear **transactional commit boundary**: all derived values, constraints, and any AI-assisted decisions are fully validated before the system atomically commits state or rejects the update.
+It is **not** a RETE-style inference engine. Traditional RETE engines optimize forward-chaining inference but perform poorly for transactional business logic due to:
 
-This execution model is optimized for enterprise transactions — not forward-chaining inference — and is what allows declarative logic to be both safe and performant in real systems.
+- state retention,
+- non-deterministic propagation,
+- control-flow assumptions,
+- and difficulty with multi-table transactional updates.
 
-The engine further improves scalability through pruning, dependency scoping, and SQL-level optimization; see [*Scalability, Prune, and Optimize*](http://127.0.0.1:8000/Tech-Business-Logic-Agent/#why-a-declarative-dsl-for-governable-logic){:target="_blank" rel="noopener"} for details.
+This approach preserves not only readability, but **debuggability**, since we can log and debug at the **rule level** rather than the code level:
 
-This guarantees that long dependency chains are handled completely and consistently — without relying on guessed control flow or regenerated procedural paths.
+![Logic Debugger](images/basic_demo/logic-chaining.jpeg)
 
-Finally, a DSL makes the system **governable**.  
-**Governable means correct, readable, and explainable**: you can read the rules to understand the policy, and you can see — in the logic log — exactly how each rule was applied and how state changed as a result.
-
-![Logic Debugger](images/basic_demo/logic-chaining.jpeg) 
-
-Generated procedural code may be correct.  
-But only a declarative DSL makes correctness **visible and provable**.
-
-But deterministic rules are only half the story. Modern systems also require logic we rarely attempted to hand-code — logic that depends on reasoning, exploration, and world context.
-
-That brings us to the second mode of logic AI enables: **probabilistic logic**.
 
 ---
 
@@ -494,3 +499,145 @@ While adding something most agent architectures lack:
 **deterministic governance at the point where AI touches real state.**
 
 This enables agentic behavior that is deployable, explainable, and safe in enterprise systems.
+
+<br>
+
+---
+
+## Appendix — What “Governable” Means
+
+In Governed Agentic Business Logic (GABL), *governable* does not mean restrictive or static.
+It means that AI-assisted behavior operates within a system whose correctness, dependencies, and outcomes are
+**defined, enforced, and explainable by the runtime itself**.
+
+This appendix clarifies what governable means in concrete architectural terms.
+
+---
+
+### 1. Authoritative Source of Truth
+
+A governable system has a single, authoritative definition of behavior.
+
+In GABL, that authority is the **declarative DSL** — not natural language and not generated procedural code.
+
+- Natural language expresses intent.
+- AI may propose logic or values.
+- The DSL defines what the system actually enforces.
+
+If behavior is not represented in the DSL, it is not authoritative and cannot affect system state.
+
+---
+
+### 2. Explicit Dependencies — Derived by Rule Semantics (Not Inferred)
+
+Governable systems must compute dependencies **completely and correctly**.
+
+In GABL, dependencies are *not* discovered by scanning text, control flow, or generated code.
+Instead, dependencies are derived **semantically**, based on the **rule type** being declared.
+
+Each DSL rule type (e.g., `sum`, `formula`, `constraint`, `copy`, `event`) has well-defined semantics.
+The runtime knows, for each rule type:
+
+- which attributes are read,
+- which attributes are written,
+- how foreign-key relationships participate,
+- how changes propagate transitively across entities.
+
+For example:
+- A `sum` rule explicitly depends on the target attribute, the source attribute, and the foreign-key path connecting them.
+- A `copy` rule depends on the parent relationship and the copied attribute.
+- A `constraint` depends on all attributes referenced by its condition.
+
+Because dependencies are computed from rule semantics — not guessed from code structure —
+the system accounts for **all relevant dependencies**, including those implied by foreign keys.
+
+This is exactly where procedural generation fails:
+foreign-key dependencies are often implicit in control flow and are easy to miss,
+leading to incorrect recomputation and subtle logic bugs.
+
+---
+
+### 3. Deterministic Execution
+
+Governance requires deterministic execution.
+
+In GABL:
+- all state changes pass through a deterministic execution engine,
+- derived values are recomputed in dependency order,
+- constraint checks are enforced on every update.
+
+Given the same inputs, the system produces the same outcomes —
+independent of execution order, regeneration, or AI involvement.
+
+---
+
+### 4. Transactional Commit Boundary
+
+Governable behavior requires a clear transactional boundary.
+
+All deterministic rules, dependency propagation, and validations complete **before** any state is committed.
+If validation fails, the transaction is rejected and no partial state is written.
+
+This ensures:
+- atomic updates,
+- no inconsistent intermediate states,
+- predictable and explainable behavior.
+
+AI-assisted decisions never bypass this boundary.
+
+---
+
+### 5. Bounded Use of AI
+
+AI is powerful, but non-deterministic.
+
+In GABL:
+- AI is used only where explicitly declared (probabilistic logic),
+- AI proposes values or decisions,
+- deterministic logic validates results before commit.
+
+AI assists reasoning and selection,
+but **never defines correctness or dependencies**.
+
+---
+
+### 6. Explainability and Auditability
+
+A governable system must be explainable after the fact.
+
+For every transaction, GABL records:
+- which deterministic rules executed,
+- the dependency order in which they executed,
+- what values changed,
+- which constraints were evaluated,
+- whether the transaction committed or rolled back, and why.
+
+This provides a complete audit trail for AI-assisted behavior —
+critical for debugging, accountability, and regulated environments.
+
+---
+
+### 7. Resistance to Prompt or Agent Drift
+
+Governable systems do not rely on prompt discipline or regeneration correctness.
+
+Because dependencies, execution, and validation are enforced at runtime:
+- prompts cannot bypass rules,
+- regenerated code cannot silently alter behavior,
+- agent autonomy cannot escape constraints.
+
+Governance is enforced by the execution model itself, not by convention.
+
+---
+
+### Summary
+
+In GABL, *governable* means:
+
+- behavior is defined in one authoritative DSL,
+- dependencies are derived from rule semantics, not inferred,
+- execution is deterministic and transactional,
+- AI operates within enforced boundaries,
+- outcomes are explainable and auditable.
+
+This is what makes agentic behavior safe, evolvable, and deployable in real enterprise systems.
