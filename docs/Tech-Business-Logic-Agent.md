@@ -29,7 +29,7 @@ These rules were traditionally hand-coded, buried in controllers and methods, an
 
 AI changes both the cost model and the possibility space.
 
-Natural language makes it practical to express deterministic rules directly — in a naturally declarative, order-independent form, stating ***what* must be true** rather than ***how* to compute it**. This avoids procedural glue code, preserves business intent, enables automatic dependency management, and is *far* more concise than the equivalent procedural implementation.  
+Natural language makes it practical to express deterministic rules directly — in a naturally declarative, order-independent form, stating ***what* must be true** rather than ***how* to compute it**. This avoids procedural glue code, preserves business intent, enables automatic dependency management, and is *far* more transparent / concise than the equivalent procedural implementation.  
 
 For an AI-generated comparison of declarative vs. procedural implementations — including AI-acknowledged errors in the procedural version and their correction, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}; the procedural code is [here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.  This mirrors a well-known boundary: code generation can produce plausible paths, but completeness across dependencies must be enforced deterministically.
 
@@ -264,92 +264,76 @@ As a result, every AI-assisted operation is not only governed and validated, but
 
 ---
 
+<br>
+
 ## 5. The Business Logic Agent (BLA)
 
-A **Business Logic Agent (BLA)** is the **deployable unit** produced by Governed Agentic Business Logic.
+A **Business Logic Agent (BLA)** is the deployable unit produced by Governed Agentic Business Logic (GABL).
 
 By this point, we have already introduced:
 
-* declarative deterministic rules expressed in a DSL,
-* probabilistic logic invoked only where explicitly declared,
-* deterministic execution enforcing correctness, auditability, and transactional commit boundaries.
+- **Deterministic Logic (DL):** declarative rules expressed in a DSL (sums, formulas, constraints, events)
+- **Probabilistic Logic (PL):** optional AI handlers invoked only where explicitly declared
+- **Deterministic Execution:** dependency-ordered recomputation and constraint enforcement within a transaction
+- **Observability:** rule-level audit trails and debugging output produced by the engine at runtime
 
-A BLA packages these elements into a single, governed runtime component.
+A BLA packages these into a single runtime component that can be safely invoked by applications *or* AI assistants.
 
-A Business Logic Agent:
+### 5.1 What a BLA contains
 
-* contains the generated deterministic rules (DSL) and probabilistic handlers (PL),
-* executes all updates through the deterministic engine, validating any AI-assisted decisions before commit,
-* records a complete audit trail for every transaction,
-* exposes its capabilities through MCP for safe interaction with AI assistants.
+A BLA is typically deployed as a **containerized service** that includes:
 
-The BLA is **not a framework** and **not a long-running autonomous agent**.
-It is a generated, transactional logic component that can be invoked by applications or AI assistants while remaining fully governed, explainable, and safe.
+- **Rules DSL (system of record):** the generated and human-reviewable DSL files checked into git  
+- **Rules engine:** executes DSL directly (transactional recompute + constraints + audit)
+- **ORM / transaction boundary:** SQLAlchemy session lifecycle integration (rules run in commit phases)
+- **API engine:** CRUD + multi-table APIs over the model, with rule enforcement on every update
+- **MCP surface:** discoverable capabilities and operations (including `.well-known` exposure)
+- **Security:** authentication and authorization (e.g., Keycloak + RBAC), applied to APIs and MCP-accessed actions
+- **Optional integration adapters:** e.g., Kafka publishing via declared events
 
----
+This makes the BLA an operational component you can deploy, scale, secure, and observe like any other service.
 
-### 5.1 MCP packaging — how a BLA is exposed
+### How the BLA actually runs (runtime lifecycle)
 
-Once generated, a BLA is packaged as a containerized service and exposed via the Model Context Protocol (MCP).
+When a BLA starts, the rules engine loads the DSL, derives dependency graphs from rule semantics, and validates consistency. During runtime, updates flow through the API and ORM as usual; the rules engine listens to transaction events and executes only the rules affected by actual data changes, chaining updates incrementally until all invariants are satisfied or the transaction is rejected.
 
-Through MCP, AI assistants can:
+A key point is that the **rules (DSL files)** are not “documentation” and not regenerated on every request.
 
-* discover available entities, relationships, and rules,
-* ask questions about system state and constraints,
-* issue validated API calls,
-* receive deterministic constraint violations and explanations.
+- **Startup:** when the service starts, the Rules DSL is loaded and validated. This is where rule metadata is assembled (what each rule reads/writes, dependency links, rule ordering), and obvious conflicts/misconfigurations can be detected early.
 
-All actions — whether initiated by applications or AI assistants — pass through the deterministic execution engine.
+- **Request / Update:** applications call the API (SQLAlchemy) to perform normal CRUD updates.
 
----
+- **Commit-time governance:** LogicBank hooks the SQLAlchemy unit-of-work / commit lifecycle. It inspects the **actual fine-grained changes** (which rows changed, which attributes changed, and whether key relationships/FKs changed).
 
-### 5.2 Creation flow — summary (D1 → D2 → R1 → R2)
+- **Selective rule execution:** only the rules relevant to those concrete changes are executed. Rule chaining then propagates effects deterministically across dependencies (e.g., Item → Order → Customer), enforcing constraints before commit and producing the audit trail.
 
-The lifecycle of a Business Logic Agent follows a clear, governed flow:
+Net: the DSL remains the **authoritative system of record**, and the runtime enforces correctness based on **real changes**, not on “re-run everything” or heuristic inference.
 
-**D1 — Unified natural-language declaration**
-Business policies are described incrementally in natural language, including deterministic rules, probabilistic decisions, and integration triggers.
+### 5.2 How a BLA is created (development flow)
 
-**D2 — GenAI generation**
-GenAI produces:
+There is no separate “build-time compiler” phase required.
 
-* deterministic DSL rules (formulas, sums, constraints, events),
-* probabilistic handlers (PL) that invoke LLMs only where declared,
-* integration logic (e.g., Kafka publishing).
+Developers provide the **natural-language declarations** (DL + optional PL + integration intent), and an LLM assistant generates the **DSL rule files** in the project (in the IDE). Those DSL files are:
 
-**R1 — Deterministic execution**
-All deterministic rules execute:
+- readable and reviewable by developers and architects,
+- versioned in git,
+- executed deterministically at runtime.
 
-* dependency-ordered recomputation,
-* constraint enforcement,
-* audit logging.
+The result is a deployable container that exposes governed behavior through APIs and MCP.
 
-No LLM is invoked during this phase.
+### 5.3 What makes it “agentic” but governed
 
-**R2 — Probabilistic execution (only where declared)**
-If probabilistic logic is required:
+The BLA is **not** a long-running autonomous agent.
 
-* the PL handler invokes the LLM,
-* returns proposed values,
-* the deterministic engine validates the result before commit.
+It is a governed runtime that enables agent-like behavior *when invoked*:
 
-This ensures probabilistic reasoning operates strictly inside deterministic guardrails.
+- **Applications** call APIs to read/update state.
+- **AI assistants** discover safe operations via MCP, propose actions, and invoke validated updates.
+- **PL handlers** may call an LLM (only where declared) to select/rank/optimize under uncertainty.
+- **DL enforcement** deterministically recomputes and validates before commit.
+- **Audit trails** make every transaction explainable at the rule level.
 
----
-
-### 5.3 Using the BLA in the enterprise — architecture
-
-Once deployed, a Business Logic Agent behaves like a governed logic component in the enterprise:
-
-* applications call its APIs,
-* AI assistants interact through MCP,
-* integration events publish to downstream systems,
-* all state changes remain fully validated, auditable, and explainable.
-
-The BLA provides a single, authoritative place for business logic — created from natural language, executed deterministically, and safely accessible to AI.
-
-
-> *(Insert diagram: `Bus-Logic-Agent-Arch.png`)*
+In short: the BLA allows AI to take *real actions* over enterprise data — but only through deterministic guardrails and transactional commit boundaries.
 
 ---
 
