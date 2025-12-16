@@ -680,3 +680,18 @@ In GABL, *governable* means:
 - outcomes are explainable and auditable.
 
 This is what makes agentic behavior safe, evolvable, and deployable in real enterprise systems.
+
+<br>
+
+## Appendix: When GABL is not the right technology
+
+This appendix clarifies the architectural boundaries of Governed Agentic Business Logic — where it excels, and where simpler approaches are more appropriate.
+
+GenAI-Logic is optimized for data-centric business applications — systems where the hard/costly problems are multi-table calculations, constraints, and derivations. It’s less suited for:
+
+* Real-time streaming systems
+* Complex UI/UX interactions (but works great as the backend)
+* Machine learning pipelines
+* Low-level system programming
+
+For these, traditional approaches may be more appropriate.
