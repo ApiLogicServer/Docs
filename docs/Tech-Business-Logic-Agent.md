@@ -1,10 +1,10 @@
-!!! pied-piper "Create and test a **Governed Business Logic Agent** using **Copilot** with **MCP discovery**"
+!!! pied-piper "3 Prompts to Create and Test a **Governed Business Logic Agent** using **Copilot** with **MCP discovery**"
     ## 
-    **Prompt 1 (Create System):**
+    **Prompt 1 (Create MCP Server from existing database):**
 
     *Create a system named basic_demo from samples/dbs/basic_demo.sqlite*
 
-    **Prompt 2 (Add NL Logic):**
+    **Prompt 2 (Add Natural Language Logic):**
 
     *Use case: Check Credit:*<br>
 
@@ -19,7 +19,7 @@
 
     *1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.*
 
-    (Developers review this DSL before execution, providing a natural human-in-the-loop checkpoint.)
+    (Developers review the DSL before execution, providing a natural human-in-the-loop checkpoint.)
 
 
     **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
@@ -323,7 +323,13 @@ Because probabilistic logic introduces non-deterministic decision-making, the sy
 
 This audit trail captures which rules fired (and in what dependency order), what values changed at each step, which constraints were evaluated, and whether the transaction committed or rolled back — and why.
 
+This screenshot highlights the AI (PL) decision; deterministic rule execution and dependency chaining occur before and after this step and are fully logged by the engine in the console log (see screenshot at top of this document):
+
+![PL-audit](images/integration/mcp/PL-audit.png)
+
 As a result, every AI-assisted operation is not only governed and validated, but fully explainable and forensically inspectable — a critical requirement for enterprise accountability and regulated environments.
+
+> The Admin app above is created automatically on server creation.  You can of course "vibe" custom apps using the logic-enabled API.
 
 ---
 
