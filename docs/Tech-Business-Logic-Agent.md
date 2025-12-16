@@ -1,3 +1,39 @@
+!!! pied-piper "Create and test a **Governed Business Logic Agent** using **Copilot** with **MCP discovery**"
+    ## 
+    **Prompt 1 (Create System):**
+
+    *Create a system named basic_demo from samples/dbs/basic_demo.sqlite*
+
+    **Prompt 2 (Add NL Logic):**
+
+    *Use case: Check Credit:*<br>
+
+    *1. The Customer's balance is less than the credit limit*<br>
+    *2. The Customer's balance is the sum of the Order amount_total where date_shipped is null*<br>
+    *3. The Order's amount_total is the sum of the Item amount*<br>
+    *4. The Item amount is the quantity * unit_price*<br>
+    *5. The Product count suppliers is the sum of the Product Suppliers*<br>
+    *6. Use AI to set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions*<br>
+
+    *Use case: App Integration*
+
+    *1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.*
+
+    (Developers review this DSL before execution, providing a natural human-in-the-loop checkpoint.)
+
+
+    **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
+
+    *On Alice's first order, update the widget quantity to 100*
+
+&nbsp;
+
+![Declarative logic in action](images/integration/mcp/Integration-MCP-AI-Example.png)
+
+The diagram above shows the final step of a complete system, built and tested by Copilot with no manual code edits.
+
+<br>
+
 # Governed Agentic Business Logic (GABL)
 
 💡 **Governed Agentic Business Logic** unifies deterministic and probabilistic logic in a single natural-language model, executed under deterministic governance and exposed as a containerized MCP-discoverable server.
@@ -171,6 +207,33 @@ This approach preserves not only readability, but **debuggability**, since we ca
 ![Logic Debugger](images/basic_demo/logic-chaining.jpeg)
 
 
+<br>
+
+#### Events for Extensibility
+
+In the DSL, notice the code `Rule.after_flush_row_event`.  This is one of many *events* the engine provides to enable procedural Python code to provide logic not automated with rules.  Rule events are the only mechanism for executing procedural logic, including probabilistic logic.
+
+These events interoperate with rules since they operate on the same underlying state objects (SQLAlchemy row objects).  Various events are provided - as a row is processed, you can handle events before rules fire, after rules fire, or after all the rules have fired for all the rows.
+
+<br>
+
+#### Runtime lifecycle
+
+When a BLA starts, the rules engine loads the DSL, derives dependency graphs from rule semantics, and validates consistency. During runtime, updates flow through the API and ORM as usual; the rules engine listens to transaction events and executes only the rules affected by actual data changes, chaining updates incrementally until all invariants are satisfied or the transaction is rejected.
+
+A key point is that the **rules (DSL files)** are not “documentation” and not regenerated on every request.
+
+- **Startup:** when the service starts, the Rules DSL is loaded and validated. This is where rule metadata is assembled (what each rule reads/writes, dependency links, rule ordering), and obvious conflicts/misconfigurations can be detected early.
+
+- **Request / Update:** applications call the API (SQLAlchemy) to perform normal CRUD updates.
+
+- **Commit-time governance:** LogicBank hooks the SQLAlchemy unit-of-work / commit lifecycle. It inspects the **actual fine-grained changes** (which rows changed, which attributes changed, and whether key relationships/FKs changed).
+
+- **Selective rule execution:** only the rules relevant to those concrete changes are executed. Rule chaining then propagates effects deterministically across dependencies (e.g., Item → Order → Customer), enforcing constraints before commit and producing the audit trail.
+
+Net: the DSL remains the **authoritative system of record**, and the runtime enforces correctness based on **real changes**, not on “re-run everything” or heuristic inference.
+
+
 ---
 
 ## 4. AI introduces a second mode of logic: Probabilistic Logic
@@ -292,22 +355,6 @@ A BLA is typically deployed as a **containerized service** that includes:
 - **Optional integration adapters:** e.g., Kafka publishing via declared events
 
 This makes the BLA an operational component you can deploy, scale, secure, and observe like any other service.
-
-### How the BLA actually runs (runtime lifecycle)
-
-When a BLA starts, the rules engine loads the DSL, derives dependency graphs from rule semantics, and validates consistency. During runtime, updates flow through the API and ORM as usual; the rules engine listens to transaction events and executes only the rules affected by actual data changes, chaining updates incrementally until all invariants are satisfied or the transaction is rejected.
-
-A key point is that the **rules (DSL files)** are not “documentation” and not regenerated on every request.
-
-- **Startup:** when the service starts, the Rules DSL is loaded and validated. This is where rule metadata is assembled (what each rule reads/writes, dependency links, rule ordering), and obvious conflicts/misconfigurations can be detected early.
-
-- **Request / Update:** applications call the API (SQLAlchemy) to perform normal CRUD updates.
-
-- **Commit-time governance:** LogicBank hooks the SQLAlchemy unit-of-work / commit lifecycle. It inspects the **actual fine-grained changes** (which rows changed, which attributes changed, and whether key relationships/FKs changed).
-
-- **Selective rule execution:** only the rules relevant to those concrete changes are executed. Rule chaining then propagates effects deterministically across dependencies (e.g., Item → Order → Customer), enforcing constraints before commit and producing the audit trail.
-
-Net: the DSL remains the **authoritative system of record**, and the runtime enforces correctness based on **real changes**, not on “re-run everything” or heuristic inference.
 
 ### 5.2 How a BLA is created (development flow)
 
