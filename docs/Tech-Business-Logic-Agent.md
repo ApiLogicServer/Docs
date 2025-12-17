@@ -778,3 +778,16 @@ In practice, they can be synergistic.
 For example, probabilistic or decision logic may be invoked from transactional events, allowing business users to change rule set definitions without redeploying core systems — while transactional logic remains responsible for correctness, dependencies, and commit-time enforcement.
 
 Understanding this distinction explains why traditional inference engines are unsuitable for transactional business logic — and why transactional logic engines must be built around change awareness, not inference.
+
+<br>
+
+---
+
+## Appendix: Further Resources
+
+GenAI-Logic is free and open source at:
+
+* Website: [https://www.genai-logic.com](https://www.genai-logic.com){:target="_blank" rel="noopener"}
+* Videos: click [here](https://www.youtube.com/watch?v=8cfOLwiDbxc&t=37s){:target="_blank" rel="noopener"} or [here](https://www.youtube.com/watch?v=Z4_NJIm5rFs){:target="_blank" rel="noopener"}
+* Documentation: [https://apilogicserver.github.io/Docs/Doc-Home/](https://apilogicserver.github.io/Docs/Doc-Home/){:target="_blank" rel="noopener"}
+* Source: [https://github.com/ApiLogicServer/ApiLogicServer-src](https://github.com/ApiLogicServer/ApiLogicServer-src){:target="_blank" rel="noopener"}
