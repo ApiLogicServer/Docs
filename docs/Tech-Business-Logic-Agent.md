@@ -1,10 +1,39 @@
 ## Purpose
 
-This article is intended for senior architects, with an interest in agentic transaction processing addressing both classic deterministic logic and probabalistic logic, provided as a MCP-discoverable containerized API.
+This article is intended for senior architects, <br>with an interest in **agentic transaction processing**, <br>addressing both classic **deterministic and probabilistic logic**, <br>provided as a **MCP-discoverable containerized API**.
 
-Here's a very quick summary:
+<br>
 
-!!! pied-piper "3 Prompts to Create and Test a **Governed Business Logic Agent** using **Copilot** with **MCP discovery**"
+## Overview
+
+💡 **Governed Agentic Business Logic** unifies deterministic and probabilistic logic in a single natural-language model, executed under deterministic governance and exposed as a containerized MCP-discoverable server.
+
+A GABL / Business Logic Agent integrates three kinds of logic:
+
+* **Deterministic Logic:** declarative rules (multi-table derivations and constraints) that must always be correct on commit<br>
+e.g., “Customer balance is the sum of unpaid Orders and must not exceed the credit limit.”
+
+* **Probabilistic Logic:** AI-driven reasoning under uncertainty<br>
+e.g., “Select the optimal supplier based on cost, lead time, and world conditions.”
+
+* **Integration Logic:** declarative, event-driven actions<br>
+e.g., “Publish Order to Kafka topic order_shipping when date_shipped is set.”
+
+and provides:
+
+* **Enterprise Class API:** including filtering, CRUD, pagination, optimistic locking, security, and governed business logic — ready for custom app dev (e.g., vibe), app integration, and B2B.
+
+* **Deterministic Execution:** a deterministic execution engine that enforces correctness and governance<br>
+e.g., dependency-ordered recomputation and constraint enforcement on every update.
+
+* **MCP Discovery:** safe AI interaction with system capabilities<br>
+e.g., an assistant discovers entities, rules, and actions via MCP and issues a validated update.
+
+<br>
+
+## Brief Example
+
+!!! pied-piper "3 Copilot Prompts to Create and Test a **Governed Business Logic Agent**"
     ## 
     **Prompt 1 (Create MCP Server from existing database):**
 
@@ -20,17 +49,16 @@ Here's a very quick summary:
     *2. The Customer's balance is the sum of the Order amount_total where date_shipped is null*<br>
     *3. The Order's amount_total is the sum of the Item amount*<br>
     *4. The Item amount is the quantity * unit_price*<br>
-    *5. The Product count suppliers is the sum of the Product Suppliers*<br>
+    *5. The Product count suppliers is the count of the Product Suppliers*<br>
     *6. Use AI to set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions*<br>
 
     *Use case: App Integration*
 
     *1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.*
 
-    > This creates the governable transaction logic enforced on commit, active for all APIs.  Developers can review the DSL before execution, providing a natural human-in-the-loop checkpoint.<br><br>Note that rule 6 in example of *probabilistic logic* — a bounded AI decision invoked by deterministic rules 1-5, whose result is validated and committed under transactional governance.
+    > This creates the governable transaction logic enforced on commit, active for all APIs.  Developers can review the DSL before execution, providing a natural human-in-the-loop checkpoint.<br><br>Note that rule 6 is an example of *probabilistic logic* — bounded by deterministic rules 1-5 under transactional governance.
 
-
-    **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
+    **Prompt 3 (Test via MCP-discovered API):** ️
 
     *On Alice's first order, update the widget quantity to 100*
 
@@ -42,30 +70,9 @@ Here's a very quick summary:
 
 ![Declarative logic in action](images/integration/mcp/Integration-MCP-AI-Example.png)
 
-The diagram above shows the final step of a complete system, built and tested by Copilot with no manual code edits.
+The diagram above shows the final testing step for the completed system, built and tested by Copilot with no manual code edits.
 
 <br>
-
-# Governed Agentic Business Logic (GABL)
-
-💡 **Governed Agentic Business Logic** unifies deterministic and probabilistic logic in a single natural-language model, executed under deterministic governance and exposed as a containerized MCP-discoverable server.
-
-A GABL / Business Logic Agent integrates:
-
-* **Deterministic Logic:** declarative rules that must always be correct<br>
-e.g., “Customer balance is the sum of unpaid Orders and must not exceed the credit limit.”
-
-* **Probabilistic Logic:** AI-driven reasoning under uncertainty<br>
-e.g., “Select the optimal supplier based on cost, lead time, and world conditions.”
-
-* **Integration Logic:** declarative, event-driven actions<br>
-e.g., “Publish Order to Kafka topic order_shipping when date_shipped is set.”
-
-* **Deterministic Execution:** a deterministic execution engine that enforces correctness and governance<br>
-e.g., dependency-ordered recomputation and constraint enforcement on every update.
-
-* **MCP Discovery:** safe AI interaction with system capabilities<br>
-e.g., an assistant discovers entities, rules, and actions via MCP and issues a validated update.
 
 ---
 
@@ -75,13 +82,9 @@ For decades, enterprise systems have depended on deterministic business logic �
 
 These rules were traditionally hand-coded, buried in controllers and methods, and expensive to build, test, and maintain. In most systems, deterministic logic consumes nearly half the total development cost.
 
-AI changes both the cost model and the possibility space.
+AI dramatically reduces the time and cost of implementing classic business logic, while enabling new classes of logic that were previously impractical to hand-code.
 
 Natural language makes it practical to express deterministic rules directly — in a naturally declarative, order-independent form, stating ***what* must be true** rather than ***how* to compute it**. This avoids procedural glue code, preserves business intent, enables automatic dependency management, and is *far* more transparent / concise than the equivalent procedural implementation.  
-
-For an AI-generated comparison of declarative vs. procedural implementations — including AI-acknowledged errors in the procedural version and their correction, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}; the procedural code is [here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.  This mirrors a well-known boundary: code generation can produce plausible paths, but completeness across dependencies must be enforced deterministically.
-
-Note: in that same comparison, five declarative rules replaced more than 200 lines of procedural code for the same business logic — a ~40× reduction. This reflects the collapse of procedural glue code once dependencies are made explicit, not an assumption about AI capability or project size.
 
 Beyond cost and time reduction, AI introduces something entirely new: **probabilistic logic** — reasoning, ranking, optimizing, and choosing the “best” option under uncertain conditions. This was never feasible to hand-code because it depends on natural language, context, world knowledge, and intelligent choice.
 
@@ -189,7 +192,7 @@ Next, how do we make the DSL executable? The decision tree outlines these altern
 
 - **3. LLM → code.** Use an LLM to translate DSL rules into procedural code. This is attractive, but it reintroduces the core risk: LLMs tend to manage dependencies by **heuristic pattern inference**, which can miss subtle (but real) dependencies and produce business logic bugs. We eliminated this option.
 
-    - We tried this. We asked an LLM to translate rules into code; we found two serious dependency bugs; and the LLM itself summarized dependency management as pattern-based reasoning. To see the study, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
+    - We tried this. We asked an LLM to translate rules into code; we found two serious dependency bugs; and the LLM itself identified the root case as *dependency management via pattern-based reasoning.* To see the study, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
 - **4. purpose-built code generator.** Write a code generator that **knows each rule type** and can compute dependencies correctly from rule semantics. This is a viable approach.
 
@@ -198,6 +201,8 @@ Next, how do we make the DSL executable? The decision tree outlines these altern
 Both code generation and direct execution can be correct **provided dependencies are derived from rule semantics, not inferred heuristically**.
 
 We chose **direct execution** because it preserves the highest level of abstraction — declarative rules — from definition through runtime. This avoids introducing a secondary procedural layer that obscures intent, complicates debugging, and fractures governance. The rules themselves remain the executable system of record, not an artifact derived from them.
+
+> Note: in that same comparison, five declarative rules replaced more than 200 lines of procedural code for the same business logic — a ~40× reduction. To see the procedural code, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.
 
 <br>
 
