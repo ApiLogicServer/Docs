@@ -102,7 +102,10 @@ This is **Governed Agentic Business Logic (GABL)** — a governed agent runtime 
 
 ## 2. How does AI fit in?
 
-AI does not replace deterministic logic — it **amplifies** it.
+AI does not replace deterministic logic — it **amplifies** it.  AI plays two distinct roles in GABL:
+
+* At development time, AI assists by translating natural-language logic into a deterministic rules DSL.
+* At runtime, AI may be invoked only where explicitly declared (see `use AI` in the introductory example), to perform bounded probabilistic decisions whose results are validated and committed under transactional governance.
 
 Traditionally, business logic was hand-coded in procedural form. Even simple policies expanded into long sequences of steps: retrieve this, loop over that, compute values, manage dependencies, enforce constraints, call downstream services. A single business requirement typically ballooned into hundreds of lines of procedural code.
 
@@ -352,7 +355,7 @@ As a result, every AI-assisted operation is not only governed and validated, but
 
 ## 5. The Business Logic Agent (BLA)
 
-A **Business Logic Agent (BLA)** is the deployable unit produced by Governed Agentic Business Logic (GABL).
+A Business Logic Agent (BLA) is a containerized, MCP-discoverable server that enforces deterministic business logic, executes bounded probabilistic logic where declared, and governs all state changes within transactional commit boundaries.
 
 By this point, we have already introduced:
 
@@ -362,6 +365,8 @@ By this point, we have already introduced:
 - **Observability:** rule-level audit trails and debugging output produced by the engine at runtime
 
 A BLA packages these into a single runtime component that can be safely invoked by applications *or* AI assistants.
+
+<br>
 
 ### 5.1 What a BLA contains
 
@@ -377,6 +382,8 @@ A BLA is typically deployed as a **containerized service** that includes:
 
 This makes the BLA an operational component you can deploy, scale, secure, and observe like any other service.
 
+<br>
+
 ### 5.2 How a BLA is created (development flow)
 
 There is no separate “build-time compiler” phase required.
@@ -388,6 +395,8 @@ Developers provide the **natural-language declarations** (DL + optional PL + int
 - executed deterministically at runtime.
 
 The result is a deployable container that exposes governed behavior through APIs and MCP.
+
+<br>
 
 ### 5.3 What makes it “agentic” but governed
 
@@ -404,6 +413,8 @@ It is a governed runtime that enables agent-like behavior *when invoked*:
 In short: the BLA allows AI to take *real actions* over enterprise data — but only through deterministic guardrails and transactional commit boundaries.
 
 ---
+
+<br>
 
 ## 6. Closing — a unified approach
 
@@ -426,6 +437,8 @@ Think of it as a **logic appliance** — a packaged, governed MCP server that de
 The Business Logic Agent is the architectural pattern that emerges when these elements are combined: AI provides intent and exploration, and deterministic logic ensures everything remains correct, explainable, and safe.
 
 ---
+
+<br>
 
 ## Appendix — How GABL Meets Agentic System Criteria
 
@@ -706,7 +719,7 @@ Inference engines (including RETE-based systems) are passed:
 - a set of rules, and  
 - a collection of rows or facts
 
-They are *not* given information about what changed.
+They are *not* given information about what changed (old rows).
 
 Because of this, inference engines have no choice but to:
 
@@ -731,7 +744,7 @@ It hooks into the database or ORM commit lifecycle and is given:
 
 - the old version of each modified row  
 - the new version of each modified row  
-- visibility into which attributes and relationships actually changed  
+- so, *comparing* these indicates which attributes and relationships actually changed  
 
 This difference is fundamental.
 
@@ -762,6 +775,6 @@ They are purpose-built for different problems:
 
 In practice, they can be synergistic.
 
-For example, probabilistic or decision logic may be invoked from transactional events, allowing business users to change decision criteria without redeploying core systems — while transactional logic remains responsible for correctness, dependencies, and commit-time enforcement.
+For example, probabilistic or decision logic may be invoked from transactional events, allowing business users to change rule set definitions without redeploying core systems — while transactional logic remains responsible for correctness, dependencies, and commit-time enforcement.
 
 Understanding this distinction explains why traditional inference engines are unsuitable for transactional business logic — and why transactional logic engines must be built around change awareness, not inference.
