@@ -4,6 +4,8 @@
 
     *Create a system named basic_demo from samples/dbs/basic_demo.sqlite*
 
+    > This single command produces a complete, enterprise-class API — including filtering, CRUD, pagination, optimistic locking, security, and governed business logic — exposed as an MCP-discoverable service.
+
     **Prompt 2 (Add Natural Language Logic):**
 
     *Use case: Check Credit:*<br>
@@ -19,12 +21,14 @@
 
     *1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.*
 
-    (Developers review the DSL before execution, providing a natural human-in-the-loop checkpoint.)
+    > This creates the governable transaction logic enforced on commit, active for all APIs.  Developers can review the DSL before execution, providing a natural human-in-the-loop checkpoint.
 
 
     **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
 
     *On Alice's first order, update the widget quantity to 100*
+
+    > This will run the transaction, with transparent logging showing how the rules fire.
 
 &nbsp;
 
@@ -390,28 +394,7 @@ In short: the BLA allows AI to take *real actions* over enterprise data — but 
 
 ---
 
-## 6. Example — how the model works
-
-Here’s a simplified pattern drawn from actual AI + MCP interaction.
-
-
-### Runtime behavior
-
-1. AI interprets the user request and issues an API call via MCP (e.g., “Update Alice’s order to 100 units.”).  
-2. The deterministic engine processes the update.  
-3. If declared, the PL handler invokes the LLM to determine supplier/price (e.g., avoiding a blocked state).  
-4. The engine recomputes dependent values deterministically:
-   - recalculates `Item.amount`  
-   - updates `Order.amount_total`  
-   - updates `Customer.balance`  
-5. The engine applies constraints (e.g., credit limit).  
-6. If policy is violated, the engine blocks the update and returns an explanation.
-
-This is probabilistic intent inside deterministic guardrails.
-
----
-
-## 7. Closing — a unified approach
+## 6. Closing — a unified approach
 
 Enterprise systems now operate with two modes of reasoning:
 
