@@ -1,3 +1,9 @@
+## Purpose
+
+This article is intended for senior architects, with an interest in agentic transaction processing addressing both classic deterministic logic and probabalistic logic, provided as a MCP-discoverable containerized API.
+
+Here's a very quick summary:
+
 !!! pied-piper "3 Prompts to Create and Test a **Governed Business Logic Agent** using **Copilot** with **MCP discovery**"
     ## 
     **Prompt 1 (Create MCP Server from existing database):**
@@ -21,7 +27,7 @@
 
     *1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.*
 
-    > This creates the governable transaction logic enforced on commit, active for all APIs.  Developers can review the DSL before execution, providing a natural human-in-the-loop checkpoint.
+    > This creates the governable transaction logic enforced on commit, active for all APIs.  Developers can review the DSL before execution, providing a natural human-in-the-loop checkpoint.<br><br>Note that rule 6 in example of *probabilistic logic* — a bounded AI decision invoked by deterministic rules 1-5, whose result is validated and committed under transactional governance.
 
 
     **Prompt 3 (Test via MCP-discovered API):**  *Constraint blocks bad data* -- as shown below: ️
@@ -29,6 +35,8 @@
     *On Alice's first order, update the widget quantity to 100*
 
     > This will run the transaction, with transparent logging showing how the rules fire.
+
+    This is not an autonomous planning agent. It is a governed logic execution agent with bounded AI participation.
 
 &nbsp;
 
@@ -140,7 +148,8 @@ The logic for our two use cases are expressed entirely in declarative natural la
 
 ## 3. Make Logic Executable: Rules
 
-The declarative natural-language logic above is a good formulation — but it must become **executable**, without collapsing back into procedural glue code or *guessing* at dependencies. The decision tree below summarizes the key alternatives:
+A natural question is: why not simply generate procedural code from the logic?
+The declarative natural-language logic above is a good formulation — but it must become executable. The decision tree below summarizes the alternatives we considered:
 
 ![Logic Architecture](images/logic/logic-architecture.png)
 
@@ -205,6 +214,8 @@ It is **not** a RETE-style inference engine. Traditional RETE engines optimize f
 - non-deterministic propagation,
 - control-flow assumptions,
 - and difficulty with multi-table transactional updates.
+
+> For more information on rete vs. transaction logic, see the Appendix — Inference Engines vs. Transactional Logic
 
 This approach preserves not only readability, but **debuggability**, since we can log and debug at the **rule level** rather than the code level:
 
@@ -678,3 +689,79 @@ GenAI-Logic is optimized for data-centric business applications — systems wher
 * Low-level system programming
 
 For these, traditional approaches may be more appropriate.
+
+<br>
+
+## Appendix — Inference Engines vs. Transactional Logic
+
+Inference engines and transactional business logic engines are often discussed as alternatives.  
+They are not.
+
+They are built for **different inputs**, and therefore solve **different problems**.
+
+### What Inference Engines Are Given
+
+Inference engines (including RETE-based systems) are passed:
+
+- a set of rules, and  
+- a collection of rows or facts
+
+They are *not* given information about what changed.
+
+Because of this, inference engines have no choice but to:
+
+- evaluate all rules  
+- against all relevant rows  
+- in order to determine which derived values may change
+
+This execution model is appropriate for:
+
+- decision logic  
+- classification  
+- policy inference  
+- expert systems  
+
+It is not designed for enforcing transactional invariants on frequently changing data.
+
+### What Transactional Logic Engines Are Given
+
+A transactional logic engine operates very differently.
+
+It hooks into the database or ORM commit lifecycle and is given:
+
+- the old version of each modified row  
+- the new version of each modified row  
+- visibility into which attributes and relationships actually changed  
+
+This difference is fundamental.
+
+Because the engine knows *exactly what changed*, it can:
+
+1. Immediately eliminate all rules whose inputs were not affected  
+2. Execute only the rules that are relevant to the change  
+3. Maintain aggregates incrementally, adjusting values instead of recomputing them  
+
+Incremental adjustment is not a micro-optimization.  
+For multi-table aggregates, it can reduce response time from minutes to seconds.
+
+This execution model is required for:
+
+- transactional performance  
+- deterministic behavior  
+- invariant enforcement before commit  
+- explainable and auditable outcomes  
+
+### Different Purposes, Not Competing Technologies
+
+Inference engines and transactional logic engines are not competing approaches.
+
+They are purpose-built for different problems:
+
+- Inference engines reason over a set of facts  
+- Transactional logic engines govern state change  
+
+In practice, they can be synergistic.
+
+For example, probabilistic or decision logic may be invoked from transactional events, allowing business users to change decision criteria without redeploying core systems — while transactional logic remains responsible for correctness, dependencies, and commit-time enforcement.
+
+Understanding this distinction explains why traditional inference engines are unsuitable for transactional business logic — and why transactional logic engines must be built around change awareness, not inference.
