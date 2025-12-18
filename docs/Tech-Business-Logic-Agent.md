@@ -82,7 +82,7 @@ For decades, enterprise systems have depended on deterministic business logic �
 
 These rules were traditionally hand-coded, buried in controllers and methods, and expensive to build, test, and maintain. In most systems, deterministic logic consumes nearly half the total development cost.
 
-AI dramatically reduces the time and cost of implementing classic business logic, while enabling new classes of logic that were previously impractical to hand-code.
+AI dramatically reduces the time and cost of implementing classic business logic, while enabling new classes of logic that were previously impractical to hand-code.  
 
 Natural language makes it practical to express deterministic rules directly — in a naturally declarative, order-independent form, stating ***what* must be true** rather than ***how* to compute it**. This avoids procedural glue code, preserves business intent, enables automatic dependency management, and is *far* more transparent / concise than the equivalent procedural implementation.  
 
@@ -100,6 +100,9 @@ This paper describes an architecture that unifies them — allowing a **single n
 …all governed by a deterministic rules engine that ensures correctness, safety, and explainability.
 
 This is **Governed Agentic Business Logic (GABL)** — a governed agent runtime that allows AI to take real actions over enterprise data, enforced by deterministic business logic and bounded probabilistic reasoning.
+
+
+<br>
 
 ---
 
@@ -161,11 +164,11 @@ The declarative natural-language logic above is a good formulation — but it mu
 
 ### Introducing the Rules DSL (Domain Specific Language)
 
-Our natural-language logic is concise and high-level, but it is not fully **rigorous.** For example: does “price is from Product” mean we **copy** the price once, or **reference** it so later Product price changes update Order totals? 
+Our natural-language logic is concise and high-level, but it is not fully **rigorous.** For example: does “price is from the Product” mean we **copy** the price once, or **reference** it so later Product price changes update Order totals? 
 
 That ambiguity makes natural language an unsuitable execution model. As shown in **1. NL → CodeGen** in the diagram above, executing directly from ambiguous intent is inherently unreliable.
 
-So we translate the natural-language logic into a **2. Rules DSL** that preserves the high level of abstraction while making intent **unambiguous.** We teach this DSL to the LLM by defining a small set of **rule types** (sum, formula, constraint, copy, event, etc.).  That enables Copilot chat to call the LLM and convert the logic above into:
+So we translate the natural-language logic into a **2. Rules DSL** that preserves the high level of abstraction while making intent **unambiguous.** We teach this DSL to the LLM by defining a small set of **rule types** (sum, formula, constraint, copy, event, etc. - for the full list, [click here](https://apilogicserver.github.io/Docs/Logic/){:target="_blank" rel="noopener"}).  That enables Copilot chat to call the LLM and convert the logic above into:
 
 ```python title="Generated DSL Code from Declarative NL Logic (above)"
     # Check Credit
@@ -182,7 +185,7 @@ So we translate the natural-language logic into a **2. Rules DSL** that preserve
 
 This avoids the issues around **(1)** in the diagram above: the logic must be disambiguated.
 
-This DSL becomes the **system of record**: it is readable, reviewable, and can be checked into git.  
+This DSL becomes the **system of record**: it is readable, reviewable, and can be checked into git. For example, observe the disambiguation of the item price logic. 
 
 <br>
 
@@ -198,11 +201,22 @@ Next, how do we make the DSL executable? The decision tree outlines these altern
 
 - **5. direct execution.** Execute the DSL directly in a rules engine.
 
-Both 4 (code generation) and 5 (direct execution) can be correct - **provided dependencies are derived from rule semantics, not inferred heuristically**.
+Both 4 (code generation) and 5 (direct execution) can be correct - **provided 
+dependencies are derived from rule semantics, not inferred heuristically.**
 
-We chose **direct execution** because it **preserves the highest level of abstraction** — declarative rules — from definition through runtime. This avoids introducing a secondary procedural layer that obscures intent, complicates debugging, and fractures governance. The rules themselves remain the executable system of record, not an artifact derived from them.
+We chose **direct execution** because it **keeps the rules as the executable code.**
+Code generation would introduce a second executable representation — 200 lines of procedural code derived from 5 rules (and, a real 100 table system would be 1000 rules).  This creates three problems:
 
-> Note: in that same study, five declarative rules replaced more than 200 lines of procedural code for the same business logic — a ~40× reduction. To see the procedural code, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.
+- Understanding requires reading the generated code, not the rules
+
+    * Note: in that same study, five declarative rules replaced more than 200 lines of procedural code for the same business logic — a ~40× reduction. To see the procedural code, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.
+
+- Debugging requires tracing through generated logic, not inspecting rules
+- The generated code becomes the system of record, not the business rules
+
+With direct execution, the **5 rules remain what runs, what you debug, and what 
+auditors review.** There's no translation layer to understand or maintain.
+
 
 <br>
 
@@ -720,10 +734,7 @@ For these, traditional approaches may be more appropriate.
 
 ## Appendix — Inference Engines vs. Transactional Logic
 
-Inference engines and transactional business logic engines are often discussed as alternatives.  
-They are not.
-
-They are built for **different inputs**, and therefore solve **different problems**.
+Inference engines (RETE) and transactional logic engines serve different purposes and are not directly comparable.  They are built for **different inputs**, and therefore solve **different problems**.
 
 ### What Inference Engines Are Given
 
