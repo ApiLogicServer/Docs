@@ -190,7 +190,7 @@ This DSL becomes the **system of record**: it is readable, reviewable, and can b
 
 Next, how do we make the DSL executable? The decision tree outlines these alternatives:
 
-- **3. LLM → code.** Use an LLM to translate DSL rules into procedural code. This is attractive, but it reintroduces the core risk: LLMs tend to manage dependencies by **heuristic pattern inference**, which can miss subtle (but real) dependencies and produce business logic bugs. We eliminated this option.
+- **3. LLM → code.** Use an LLM to translate DSL rules into procedural code. This is attractive, but it exposes a core risk: LLMs tend to manage dependencies by **heuristic pattern inference**, which can miss subtle (but real) dependencies and produce business logic bugs. That makes this approach unsuitable.
 
     - We tried this. We asked an LLM to translate rules into code; we found two serious dependency bugs; and the LLM itself identified the root case as *dependency management via pattern-based reasoning.* To see the study, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
@@ -198,37 +198,43 @@ Next, how do we make the DSL executable? The decision tree outlines these altern
 
 - **5. direct execution.** Execute the DSL directly in a rules engine.
 
-Both code generation and direct execution can be correct **provided dependencies are derived from rule semantics, not inferred heuristically**.
+Both 4 (code generation) and 5 (direct execution) can be correct - **provided dependencies are derived from rule semantics, not inferred heuristically**.
 
-We chose **direct execution** because it preserves the highest level of abstraction — declarative rules — from definition through runtime. This avoids introducing a secondary procedural layer that obscures intent, complicates debugging, and fractures governance. The rules themselves remain the executable system of record, not an artifact derived from them.
+We chose **direct execution** because it **preserves the highest level of abstraction** — declarative rules — from definition through runtime. This avoids introducing a secondary procedural layer that obscures intent, complicates debugging, and fractures governance. The rules themselves remain the executable system of record, not an artifact derived from them.
 
-> Note: in that same comparison, five declarative rules replaced more than 200 lines of procedural code for the same business logic — a ~40× reduction. To see the procedural code, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.
+> Note: in that same study, five declarative rules replaced more than 200 lines of procedural code for the same business logic — a ~40× reduction. To see the procedural code, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.
 
 <br>
 
 ### The Rules Engine
 
-The LogicBank rules engine fulfills this role. It is designed explicitly for **transactional correctness and performance**:
+The LogicBank rules engine executes the DSL directly, enforcing transactional correctness and performance. It derives dependencies from rule semantics, executes only affected rules on change, enforces constraints before commit, and provides a complete audit trail.
 
-- dependency-ordered recomputation,
-- incremental aggregate maintenance using dependency-aware deltas (avoids full SQL re-aggregation),
-- constraint enforcement *before commit*,
-- audit logging,
-- and transactional commit boundaries.
+The runtime lifecycle is described in the next section.
 
-It is **not** a RETE-style inference engine. Traditional RETE engines optimize forward-chaining inference but perform poorly for transactional business logic due to:
+<br>
 
-- state retention,
-- non-deterministic propagation,
-- control-flow assumptions,
-- and difficulty with multi-table transactional updates.
+#### Runtime lifecycle
 
-> For more information on rete vs. transaction logic, see the Appendix — Inference Engines vs. Transactional Logic
+At runtime, the rules engine enforces correctness by executing only the rules affected by concrete data changes, within the database transaction lifecycle.
+
+- **Startup:** when the service starts, the Rules DSL is loaded and validated. This is where rule metadata is assembled (what each rule reads/writes, dependency links, rule ordering), and obvious conflicts/misconfigurations can be detected early.
+
+    * Observe that the muliple **rules (DSL files)** are not “documentation” and not regenerated on every request.
+
+- **Request / Update:** applications call the API to perform normal CRUD updates, using SQLAlchemy ORM.
+
+- **Commit-time governance:** LogicBank hooks into the SQLAlchemy commit events, which provides access to all the rows altered in the transaction, *and the old rows*. It computes the **actual fine-grained changes** (which rows changed, which *attributes* changed, and whether key relationships/FKs changed).
+
+- **Selective rule execution:** only the rules relevant to those fine-grained changes are executed. Rule chaining then propagates effects deterministically across dependencies (e.g., Item → Order → Customer), enforcing constraints before commit and producing the audit trail.  To see an example, [click here](https://apilogicserver.github.io/Docs/Logic-Operation/#watch-react-chain){:target="_blank" rel="noopener"}.
+
+Net: the DSL remains the **authoritative system of record**, and the runtime enforces correctness based on **real changes**, not on “re-run everything” or heuristic inference.
+
+> This is not a RETE-style inference engine.  RETE engines are optimized for forward-chaining inference, not transactional dependency management, and perform poorly for multi-table business logic enforced at commit time (see Appendix — Inference Engines vs. Transactional Logic).
 
 This approach preserves not only readability, but **debuggability**, since we can log and debug at the **rule level** rather than the code level:
 
 ![Logic Debugger](images/basic_demo/logic-chaining.jpeg)
-
 
 <br>
 
@@ -239,23 +245,6 @@ In the DSL, notice the code `Rule.after_flush_row_event`.  This is one of many *
 These events interoperate with rules since they operate on the same underlying state objects (SQLAlchemy row objects).  Various events are provided - as a row is processed, you can handle events before rules fire, after rules fire, or after all the rules have fired for all the rows.
 
 <br>
-
-#### Runtime lifecycle
-
-When a BLA starts, the rules engine loads the DSL, derives dependency graphs from rule semantics, and validates consistency. During runtime, updates flow through the API and ORM as usual; the rules engine listens to transaction events and executes only the rules affected by actual data changes, chaining updates incrementally until all invariants are satisfied or the transaction is rejected.
-
-A key point is that the **rules (DSL files)** are not “documentation” and not regenerated on every request.
-
-- **Startup:** when the service starts, the Rules DSL is loaded and validated. This is where rule metadata is assembled (what each rule reads/writes, dependency links, rule ordering), and obvious conflicts/misconfigurations can be detected early.
-
-- **Request / Update:** applications call the API (SQLAlchemy) to perform normal CRUD updates.
-
-- **Commit-time governance:** LogicBank hooks the SQLAlchemy unit-of-work / commit lifecycle. It inspects the **actual fine-grained changes** (which rows changed, which attributes changed, and whether key relationships/FKs changed).
-
-- **Selective rule execution:** only the rules relevant to those concrete changes are executed. Rule chaining then propagates effects deterministically across dependencies (e.g., Item → Order → Customer), enforcing constraints before commit and producing the audit trail.
-
-Net: the DSL remains the **authoritative system of record**, and the runtime enforces correctness based on **real changes**, not on “re-run everything” or heuristic inference.
-
 
 ---
 
@@ -339,6 +328,13 @@ def set_item_unit_price_from_supplier(row: models.Item, old_row: models.Item, lo
     row.unit_price = supplier_req.chosen_unit_price # Extract AI-selected value(s)
 ```
 
+<br>
+
+### Integrated Logic Execution Cycle
+
+The execution cycle was already described above.  As shown by the DSL code, probabilistic is implemented as a `before event` to obtain one or more values.  These are stored into the row, which is then submitted to derivation / constraints rules described above.  This is how deterministic logic naturally governs proposed probabilistic values.
+
+<br>
 
 ### Automatic audit trail for governance
 
