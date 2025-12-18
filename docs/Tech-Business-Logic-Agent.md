@@ -204,19 +204,16 @@ Next, how do we make the DSL executable? The decision tree outlines these altern
 Both 4 (code generation) and 5 (direct execution) can be correct - **provided 
 dependencies are derived from rule semantics, not inferred heuristically.**
 
-We chose **direct execution** because it **keeps the rules as the executable code.**
-Code generation would introduce a second executable representation — 200 lines of procedural code derived from 5 rules (and, a real 100 table system would be 1000 rules).  This creates three problems:
+Code generation (option 4) would introduce a second executable representation — 200 lines of procedural code derived from 5 rules (and, a real 100 table system would be 1000 rules). That was borne out in that same study - to see the procedural code, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}. 
+
+Code generation creates three problems:
 
 - Understanding requires reading the generated code, not the rules
-
-    * Note: in that same study, five declarative rules replaced more than 200 lines of procedural code for the same business logic — a ~40× reduction. To see the procedural code, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/credit_service.py){:target="_blank" rel="noopener"}.
-
-- Debugging requires tracing through generated logic, not inspecting rules
+- Debugging requires tracing through generated logic, not inspecting rules (we've all learned that debugging assembler output of a compiler is painful)
 - The generated code becomes the system of record, not the business rules
 
-With direct execution, the **5 rules remain what runs, what you debug, and what 
+We therefore chose **5. direct execution** because it **keeps the rules as the executable code.**. With direct execution, the **5 rules remain what runs, what you debug, and what 
 auditors review.** There's no translation layer to understand or maintain.
-
 
 <br>
 
