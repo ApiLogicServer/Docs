@@ -163,9 +163,9 @@ The declarative natural-language logic above is a good formulation — but it mu
 
 Our natural-language logic is concise and high-level, but it is not fully **rigorous.** For example: does “price is from Product” mean we **copy** the price once, or **reference** it so later Product price changes update Order totals? 
 
-That ambiguity makes natural language an unsuitable execution model. As shown in **1. NL → CodeGen** in the diagram above, executing directly from ambiguous intent forces the system to guess semantics and dependencies.
+That ambiguity makes natural language an unsuitable execution model. As shown in **1. NL → CodeGen** in the diagram above, executing directly from ambiguous intent is inherently unreliable.
 
-So we translate the natural-language logic into a **2. Rules DSL** that preserves the high level of abstraction while making intent **unambiguous.** We teach this DSL to the LLM by defining a small set of **rule types** (sum, formula, constraint, copy, event, etc.), enabling the LLM to convert the logic above into:
+So we translate the natural-language logic into a **2. Rules DSL** that preserves the high level of abstraction while making intent **unambiguous.** We teach this DSL to the LLM by defining a small set of **rule types** (sum, formula, constraint, copy, event, etc.).  That enables Copilot chat to call the LLM and convert the logic above into:
 
 ```python title="Generated DSL Code from Declarative NL Logic (above)"
     # Check Credit
@@ -266,7 +266,7 @@ This is fundamentally different from deterministic rules.
 
 ### Example: PL to Choose Supplier
 
-Here is prior example extended with probabilistic logic for choosing the best supplier
+Here is prior example extended with probabilistic logic for choosing the best supplier.  We provide the following to Copilot Chat:
 
 ```python title='Declare Natural Language Logic with PL to Choose Supplier'
 Use case: Check Credit
@@ -280,6 +280,8 @@ Use case: Check Credit
 Use case: App Integration
 1. Send the Order to Kafka topic `order_shipping` if `date_shipped` is not None.
 ```
+
+Copilot chat calls the LLM to create this DSL:
 
 ```python title='Generated DSL Code, including PL'
 def declare_logic():
@@ -330,12 +332,6 @@ def set_item_unit_price_from_supplier(row: models.Item, old_row: models.Item, lo
 
 <br>
 
-### Integrated Logic Execution Cycle
-
-The execution cycle was already described above.  As shown by the DSL code, probabilistic is implemented as a `before event` to obtain one or more values.  These are stored into the row, which is then submitted to derivation / constraints rules described above.  This is how deterministic logic naturally governs proposed probabilistic values.
-
-<br>
-
 ### Automatic audit trail for governance
 
 Because probabilistic logic introduces non-deterministic decision-making, the system automatically records a complete audit trail for every deterministic rule execution during transaction processing.
@@ -349,6 +345,22 @@ This screenshot highlights the AI (PL) decision; deterministic rule execution an
 As a result, every AI-assisted operation is not only governed and validated, but fully explainable and forensically inspectable — a critical requirement for enterprise accountability and regulated environments.
 
 > The Admin app above is created automatically on server creation.  You can of course "vibe" custom apps using the logic-enabled API.
+
+<br>
+
+### LLM Design Time
+
+LLMs are also used at design time to generate the scaffolding required for probabilistic logic handlers, including context engineering and audit integration.
+
+In addition to the DSL created above, context engineering is provided to create `get_supplier_selection_from_ai()`.  This invokes the LLM to obtain the values, and audits the LLM call as described above. While straightforward, it is not small: over 200 lines of code.
+
+To make this work, the Copilot context engineering ([to see it, click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/base/docs/training/probabilistic_logic.prompt){:target="_blank" rel="noopener"}) also creates the audit table, including the relationships to other domain objects (e,g, `Product`).  This is a formidable task, requiring over 1,000 lines of context engineering.  This has proved to be reliable, since (per the discussion above) it is mainly a text generation exercise *without complex dependency chains*.
+
+<br>
+
+### Integrated Logic Execution Cycle
+
+The execution cycle was already described above.  As shown by the DSL code, probabilistic is implemented as a `before event` to obtain one or more values.  These are stored into the row, which is then submitted to derivation / constraints rules described above.  This is how deterministic logic naturally governs proposed probabilistic values.
 
 ---
 
