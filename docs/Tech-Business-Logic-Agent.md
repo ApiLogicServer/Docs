@@ -802,6 +802,33 @@ Understanding this distinction explains why traditional inference engines are un
 
 <br>
 
+### Transactional Logic vs. Workflow and Orchestration Engines
+
+Enterprise platforms often include workflow or orchestration engines
+(e.g., long-running processes, retries, compensations, and human-in-the-loop steps).
+These systems address control flow and process coordination.
+
+Transactional business logic serves a different role.
+
+Workflow engines determine *when* and *in what order* actions occur.
+Transactional logic determines *what must be true* when persistent state changes.
+
+In practice, transactional rules are evaluated **inside** workflow steps,
+governing database updates before commit.
+They enforce invariants such as balances, limits, constraints, and derived values.
+
+Because of this distinction:
+
+- Workflow engines and transactional logic engines are complementary
+- Workflow nodes often invoke transactional logic
+- Transactional logic must execute deterministically within the database commit boundary
+
+This separation explains why workflow and orchestration systems
+do not replace transactional business logic engines,
+and why governed transactional logic remains necessary even in workflow-centric architectures.
+
+<br>
+
 ---
 
 ## Appendix: Further Resources
