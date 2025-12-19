@@ -6,9 +6,20 @@ This article is intended for senior architects, <br>with an interest in **agenti
 
 ## Overview
 
-💡 **Governed Agentic Business Logic** unifies deterministic and probabilistic logic in a single natural-language model, executed under deterministic governance and exposed as a containerized MCP-discoverable server.
+## Overview
 
-A GABL / Business Logic Agent integrates three kinds of logic:
+Backend systems have long represented nearly half the time and cost of building database systems. The advent of AI brings rising expectations:
+
+- reduced time and cost, and
+- increased functionality through MCP-based natural-language orchestration and logic that is not practical to hard-code (example below)
+
+These expectations can be met — but only with architectures designed to accommodate inherent AI uncertainty. In particular, systems need **governance** to ensure that AI-driven changes still enforce business policy. In this article, we provide working examples of modern backends and explore the key architectural decisions required to provide that governance.
+
+In large transactional systems, the most critical business logic is transaction logic: rules enforced automatically at commit time to keep persistent data correct. This includes derived values, invariants, and constraints that must hold no matter how a change is initiated — via an API, a workflow, a batch process, or an AI agent.
+
+As AI agents are increasingly allowed to propose changes to real business data, commit-time logic becomes the natural place to ensure that AI-generated values adhere to business policy.
+
+A Governed Business Logic Agent (GABL) addresses this by integrating three kinds of logic:
 
 * **Deterministic Logic:** declarative rules (multi-table derivations and constraints) that must always be correct on commit<br>
 e.g., “Customer balance is the sum of unpaid Orders and must not exceed the credit limit.”
@@ -23,8 +34,7 @@ and provides:
 
 * **Enterprise Class API:** including filtering, CRUD, pagination, optimistic locking, security, and governed business logic — ready for custom app dev (e.g., vibe), app integration, and B2B.
 
-* **Deterministic Execution:** a deterministic execution engine that enforces correctness and governance<br>
-e.g., dependency-ordered recomputation and constraint enforcement on every update.
+* **Commit-Time Enforcement:** logic is enforced automatically on every update, including dependency-ordered computation and constraint checks before the transaction commits.
 
 * **MCP Discovery:** safe AI interaction with system capabilities<br>
 e.g., an assistant discovers entities, rules, and actions via MCP and issues a validated update.
