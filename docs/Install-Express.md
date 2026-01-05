@@ -32,7 +32,7 @@ Open the appropriate section below.
     python --version  # on macs, you may need to use Python3
     ```
 
-    > Note: Python 3.13 is supported as of release 15.0.52.
+    > Note: Python 3.13 is supported as of release 15.0.52.  <br>On Windows, 3.13 appears to cause install failures due to Pandas - this is under investigation, please use 3.11.
 
     If you need to install Python (it can be tricky), see [these notes](Tech-Install-Python.md).
 
