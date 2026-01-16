@@ -2,16 +2,23 @@
 
       WebGenAI is a web app that creates database systems from a Natural Language prompt.  For background, [see Why WebGenAI](https://www.genai-logic.com/publications/webgenie){:target="_blank" rel="noopener"}.
       
-      You can access WebGenAI either at:
+      You can access WebGenAI as a docker container, as described here.
+
+      This is particularly good way to jump-start vibe-coding:
       
-      * the [public trial site](https://apifabric.ai/admin-app/){:target="_blank" rel="noopener"}, or 
-      * as a docker container - described here
+      1. Use WebGenAI to create a database and API - *with logic*
+      2. Extend with your IDE
+      
+          * Download the project to extend logic and APIs, and 
+          * Use your IDE AI Coding Tools for custom UIs
       
 &nbsp;
 
 ## WebGenAI Docker Installation
 
 If you have installed API Logic Server (recommended, but not required), the [Manager Readme](Manager.md){:target="_blank" rel="noopener"} includes install instructions.
+
+![webg-install](images/manager/mgr-webgenai.png)
 
 Otherwise, you can run it locally as shown below:
 
@@ -23,9 +30,7 @@ cd webgenai
 docker run -it --rm --name webgenai apilogicserver/web_genai
 ```
 
-This will guide you through the registration process.  
-
-> This is particularly good way to jump-start vibe-coding: use WebGenAI to create a database and API - *with logic* - and then your IDE AI Coding Tools for custom UIs.
+This will guide you through the registration process.  You will need to update the docker-compose file with keys for GenAI-Logic and ChatGPT.
 
 After installing, [verify WebGenAI operation](WebGenAI-verify.md){:target="_blank" rel="noopener"}.
   
