@@ -261,6 +261,10 @@ You can explore the created microservice on your own computer.
 
     * Observe the project is a set of [models]() - not a huge pile of difficult-to-understand code
 
+    * In most cases, you will need to fixup your `venv` location.  For example, you can import the created project into the manager, and then:
+
+![wg-postgres](images/web_genai/export/mgr-webg-fix-path.png)
+
 2. Use Python and your IDE services.  For more information, see [Customize in Your IDE](IDE-Customize.md){:target="_blank" rel="noopener"}.
 
 

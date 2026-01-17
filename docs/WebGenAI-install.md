@@ -46,6 +46,12 @@ If you want to customize further with Python, then install API Logic Server.  Us
 
 &nbsp;
 
+### Import WebGenAI Project
+
+The projects you create in WebGenAI can be customized in your IDE.  For more information, see [Export / Customize](WebGenAI.md#export-customize).
+
+&nbsp;
+
 ### Concurrent WebGenAI and API Logic Server
 
 You can continue using both WebGenAI and API Logic Server on the same project - see [IDE-Import-WebGenAI](IDE-Import-WebGenAI.md){:target="_blank" rel="noopener"}.
