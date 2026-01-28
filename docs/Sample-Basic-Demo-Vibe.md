@@ -95,7 +95,7 @@ Create a system with customers, orders, items and products.
 
 Include a notes field for orders.
 
-Use case: Check Credit    
+on Placing Orders, Check Credit    
     1. The Customer's balance is less than the credit limit
     2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
     3. The Order's amount_total is the sum of the Item amount
@@ -200,7 +200,7 @@ Rules are declared in Python, simplified with IDE code completion.  The screen b
 **2. Add Business Logic**
 
 ```bash title="Check Credit Logic (instead of 220 lines of code)"
-Use case: Check Credit    
+on Placing Orders, Check Credit    
     1. The Customer's balance is less than the credit limit
     2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
     3. The Order's amount_total is the sum of the Item amount

@@ -327,7 +327,7 @@ Different kinds of logic naturally call for different tools, as in this unified 
     * **Creative reasoning needs boundaries.<br>Deterministic rules supply the guardrails that keep outcomes correct, consistent, and governed.**
 
 ```bash title='Declare Logic: Deterministic and Probabilistic'
-Use case: Check Credit:
+on Placing Orders, Check Credit:
 
 1. The Customer's balance is less than the credit limit
 2. The Customer's balance is the sum of the Order amount_total where date_shipped is null

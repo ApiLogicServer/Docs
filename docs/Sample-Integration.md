@@ -237,7 +237,7 @@ Note the automation for **automatic joins** (Product Name, not ProductId) and **
 
 &nbsp;
 
-### Declare Check Credit Logic
+### on Placing Orders, Check Credit Logic
 
 Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
