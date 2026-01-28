@@ -20,7 +20,7 @@ version: 0.1, for readme 11.09/25
 
     **Prompt 2 (Add NL Logic):**
 
-    *Use case: Check Credit:*<br>
+    *On Placing Orders, Check Credit:*<br>
 
     *1. The Customer's balance is less than the credit limit*<br>
     *2. The Customer's balance is the sum of the Order amount_total where date_shipped is null*<br>
@@ -75,8 +75,8 @@ The project is ready to run:
 ##  Step 2 – NL Logic
 Copilot reads the MCP schema and responds to a natural-language instruction such as:
 
-```bash title='Step 2: Declare Logic'
-Use case: Check Credit    
+```bash title='Step 2: Declare Place Order Logic'
+On Placing Orders, Check Credit    
     1. The Customer's balance is less than the credit limit
     2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
     3. The Order's amount_total is the sum of the Item amount
