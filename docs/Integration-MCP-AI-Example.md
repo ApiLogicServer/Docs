@@ -87,7 +87,7 @@ Use case: App Integration
     1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 
-It then inserts the following rules into `logic/declare_logic.py`:
+It then inserts the following rules into `logic/logic_discovery/place_order/check_credit.py`:
 ```python
 Rule.constraint(validate=Customer, as_condition=lambda row: row.balance <= row.credit_limit)
 Rule.sum(derive=Customer.balance, as_sum_of=Order.amount_total)
@@ -417,7 +417,7 @@ They want hard-coded business rules."*
 
 <br>
 
-GenAI-Logic projects are already **AI-enabled**, meaning they come with built-in training materials that help assistants like **GitHub Copilot**, **Claude**, or **ChatGPT** understand your project context.  For more information, see [AI-Enabled Projects Overview](Project-AI-Enabled.md){:target="_blank" rel="noopener"}.
+GenAI-Logic projects are already **AI-enabled**, meaning they come with built-in training materials (`context engineering`) that help assistants like **GitHub Copilot**, **Claude**, or **ChatGPT** understand your project context.  For more information, see [AI-Enabled Projects Overview](Project-AI-Enabled.md){:target="_blank" rel="noopener"}.
 
 Once you’ve completed this demo, try engaging your AI assistant directly — it already knows about your project’s structure, rules, and examples.
 
@@ -430,7 +430,7 @@ Once you’ve completed this demo, try engaging your AI assistant directly — i
 
 *Learn* about GenAI-Logic with the *AI-Guided Tour*.  **Just ask Copilot: *guide me through***.
 
-- note: you should first delete `logic/logic_discovery/check_credit.py`)
+- note: you should first delete `logic/logic_discovery/place_order/check_credit.py`)
 
 In addition to all the things CoPilot can do natively, we've taught it about GenAI-Logic.  **Just ask Copilot: *what can you help me with?***
 
