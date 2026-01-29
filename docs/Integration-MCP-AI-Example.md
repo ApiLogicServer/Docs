@@ -1,9 +1,9 @@
 ---
 title: MCP AI Example
-notes: gold dource is docs
+notes: gold source is docs
 source: docs/Integration-MCP-AI-Example.md
 do_process_code_block_titles: True
-version: 0.1, for readme 11.09/25
+version: 0.2, for readme 11.09/25
 ---
 <style>
   -typeset h1,
