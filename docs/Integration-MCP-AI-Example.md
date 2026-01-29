@@ -81,7 +81,8 @@ On Placing Orders, Check Credit:
     2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
     3. The Order's amount_total is the sum of the Item amount
     4. The Item amount is the quantity * unit_price
-    5. The Item unit_price is copied from the Product unit_price
+    5. The Product count suppliers is the sum of the Product Supplier
+    6. The Item unit_price is copied from the Product unit_price
 
 Use case: App Integration
     1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
