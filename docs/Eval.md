@@ -1,5 +1,6 @@
 !!! pied-piper "Evaluate - Install, AI Agent"
-    You can evaluate GenAI-Logic both by install (requires Python), and by using your AI Assistant.
+    You can evaluate GenAI-Logic both by install (requires Python), and by using your AI Assistant
+    for a self-guided evaluation.
 
 <br>
 
@@ -18,8 +19,8 @@ To see the Express Install, [click here](Install-Express.md){:target="_blank" re
 ```text title='Bootstrap your AI Assistant with this prompt'
 Here are two resources about GenAI-Logic: 
 
-1. __https://www.genai-logic.com__ 
-2. __https://apilogicserver.github.io/Docs/Eval-copilot-instructions/__  
+1. https://www.genai-logic.com
+2. https://apilogicserver.github.io/Docs/Eval-copilot-instructions/ 
 ```
 
 > Note: this `context engineering` material is included in each project for use by AI Coding tools, and is also provided in these docs for evaluation.  For more on AI-Enabled projects, [click here](Project-AI-Enabled.md){:target="_blank" rel="noopener"}
