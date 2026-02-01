@@ -169,6 +169,11 @@ nav:
     - "Internals - LLM": WebGenAI-llm-usage.md
     - Security:
       - "Authentication": Architecture-Security-Auth.md
+  - Eval Guide:
+    - "Eval Overview": Eval.md
+    - "AI Training":
+      - "Rosetta Stone": Eval-copilot-instructions.md
+      - "Logic Patterns": Eval-logic_bank_patterns.prompt.md
   - Troubleshooting.md
   - FAQs:
     - "Is this a Low Code approach?": FAQ-Low-Code.md
