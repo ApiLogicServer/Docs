@@ -1,20 +1,13 @@
-!!! pied-piper "Evaluate - Install, AI Agent"
-    You can evaluate GenAI-Logic both by install (requires Python), and by using your AI Assistant
-    for a self-guided evaluation.
+!!! pied-piper "Evaluate - Use Your AI Assistant"
+    You can evaluate GenAI-Logic in the classic way, by installing (requires Python).  To see the Express Install, [click here](Install-Express.md){:target="_blank" rel="noopener"}.  The installer includes several pre-configured sqlite databases and tutorials - [see the basic demo here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}.
+    
+    You can also use your **AI Assistant** for a *self-guided evaluation.*  Instead of *drinking from the fire-hose* of a website or documentation, you can explore at your own pace what *you* care about.  
+    
+      * This is enabled by the `context engineering` material included in each project for use by AI Coding tools ([click here to find out more about AI-Enabled Projects](Project-AI-Enabled.md){:target="_blank" rel="noopener"}).  We've made it available on line to support your evaluation.
 
 <br>
 
-## By Install
-
-To see the Express Install, [click here](Install-Express.md){:target="_blank" rel="noopener"}.
-
-<br>
-
-## By AI Assistant - The 5-Minute Evaluation
-
-<br>
-
-### 1. Bootstrap Your AI
+## 1. Bootstrap Your AI
 
 ```text title='Bootstrap your AI Assistant with this prompt'
 Here are two resources about GenAI-Logic: 
@@ -23,26 +16,21 @@ Here are two resources about GenAI-Logic:
 2. https://apilogicserver.github.io/Docs/Eval-copilot-instructions/ 
 ```
 
-> Note: this `context engineering` material is included in each project for use by AI Coding tools, and is also provided in these docs for evaluation.  For more on AI-Enabled projects, [click here](Project-AI-Enabled.md){:target="_blank" rel="noopener"}
-
 Your AI will automatically discover and explore the referenced learning materials.
 
 
 <br>
 
-### 2. Take the InfoQ Challenge
+## 2. The InfoQ Challenge
 
-InfoQ identified the #1 enterprise AI challenge. When we tested with Claude 4.5, ChatGPT, and Gemini, all three scored us 4.8-5.0 on solving it.
+InfoQ identified the #1 enterprise AI challenges - moving beyond demos, with support for humans and agents.  
 
-**Verify this yourself in 5 minutes:**
+<br>
 
-Give your AI Assistant (Claude, ChatGPT, Copilot) our website: [https://www.genai-logic.com](https://www.genai-logic.com){:target="_blank" rel="noopener"}.
-
-
-Then paste this challenge:
+### a. Challenge GenAI-Logic
 
 ```text title='Paste this InfoQ Challenge into your AI'
-Please evaluate this page - does it meet the challenge?
+Please evaluate this page: https://www.genai-logic.com - does it meet the challenge?
 
 Your response should be yes/no, and 3-4 simple sentences.
 
@@ -54,9 +42,9 @@ Two things are currently dominating engineering roadmaps:
 2. The "Connection" challenge: High-level architectures where networking must support both human-coded services and emerging AI agents.
 ```
 
-**Expected Result:** Your AI should score 4.8-5.0 stars when evaluating against the 5 criteria below.
+<br>
 
-Ask AI to score the response with this prompt:
+### b. Score the Response
 
 ```text title='Score the Response'
 Score whether the response clearly conveys these ideas (using any equivalent wording) - 1-5 stars:
@@ -77,9 +65,11 @@ Score whether the response clearly conveys these ideas (using any equivalent wor
    All current and future paths—apps, services, and agents—inherit the same rules by construction.
 ```
 
+When we tested with Claude 4.5, ChatGPT, and Gemini, all three scored us 4.8-5.0.
+
 <br>
 
-### 3. Explore What YOU Care About
+## 3. Explore What YOU Care About
 
 Traditional pitches force you through a predetermined flow. With AI evaluation, ask what matters to YOU:
 
@@ -98,5 +88,7 @@ Traditional pitches force you through a predetermined flow. With AI evaluation, 
 * "Is this a black box?"
 * "What about performance/scalability?  eg, is this a RETE engine??"
 * "What's the lock-in risk?"
+
+<br>
 
 **Make it fun** - challenge the technology, ask hard questions, test edge cases.
