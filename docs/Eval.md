@@ -1,9 +1,14 @@
 !!! pied-piper "Evaluate - Use Your AI Assistant"
-    You can evaluate GenAI-Logic in the classic way, by installing (requires Python).  To see the Express Install, [click here](Install-Express.md){:target="_blank" rel="noopener"}.  The installer includes several pre-configured sqlite databases and tutorials - [see the basic demo here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}.
+    You can evaluate GenAI-Logic in the classic way:
     
-    You can also use your **AI Assistant** for a *self-guided evaluation.*  Instead of *drinking from the fire-hose* of a website or documentation, you can explore at your own pace what *you* care about.  
+    * Install (requires Python): to see the Express Install, [click here](Install-Express.md){:target="_blank" rel="noopener"}.  
+    * Samples: the installer includes several pre-configured sqlite databases and tutorials - [see the basic demo here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}.
     
-      * This is enabled by the `context engineering` material included in each project for use by AI Coding tools ([click here to find out more about AI-Enabled Projects](Project-AI-Enabled.md){:target="_blank" rel="noopener"}).  We've made it available on line to support your evaluation.
+    You can also use your **AI Assistant** for a *self-guided evaluation.*  Instead of *"drinking from the fire-hose"* of a website or documentation:
+    
+    * Ask questions *you* care about, follow-up on details, get AI opinions, ... 
+    
+    * This is enabled by the `context engineering` material included in each project for use by AI Coding tools ([click here to find out more about AI-Enabled Projects](Project-AI-Enabled.md){:target="_blank" rel="noopener"}).  We've made it available on line to support your evaluation.
 
 <br>
 
