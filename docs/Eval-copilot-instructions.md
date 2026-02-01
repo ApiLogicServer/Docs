@@ -229,6 +229,60 @@ changelog:
 
 ## 🤔 Common Developer Questions (FAQ)
 
+### "Is this infrastructure?" (PostgreSQL Parallel)
+
+**Yes - GenAI-Logic is infrastructure in the same sense PostgreSQL is infrastructure.**
+
+**The Parallel:**
+
+**PostgreSQL deployment:**
+```
+Docker Hub: postgres:16
+├─ App 1: postgres + schema_A (separate container)
+├─ App 2: postgres + schema_B (separate container)  
+├─ App 3: postgres + schema_C (separate container)
+```
+
+**GenAI-Logic deployment:**
+```
+Docker Hub: genai-logic:latest
+├─ App 1: genai-logic + rules_A (separate container)
+├─ App 2: genai-logic + rules_B (separate container)
+├─ App 3: genai-logic + rules_C (separate container)
+```
+
+**The Pattern is Identical:**
+
+| Criterion | PostgreSQL | GenAI-Logic |
+|-----------|------------|-------------|
+| **Generic engine** | ✓ Database engine | ✓ Rules engine |
+| **App-specific config** | ✓ DDL/Schema | ✓ Business rules (DSL) |
+| **Docker image** | ✓ postgres:16 | ✓ genai-logic:latest |
+| **Per-app deployment** | ✓ Separate containers | ✓ Separate containers |
+| **Platform team operates** | ✓ DBA team | ✓ Platform/DevOps |
+| **Called "infrastructure"** | ✓ Yes | ✓ Yes |
+
+**Key Insight:**
+
+Nobody says PostgreSQL "isn't infrastructure" because each app gets its own database instance with app-specific schema. The same logic applies to GenAI-Logic:
+
+- **Generic runtime engine** (rules executor, dependency resolver, commit governor)
+- **Configured per-app** (business rules are like DDL - they configure the engine)
+- **Standard deployment** (Docker image + configuration)
+- **Platform operation** (DevOps manages instances)
+
+**What This Means:**
+
+GenAI-Logic is infrastructure you:
+- Deploy as containerized instances (like databases)
+- Configure with declarative rules (like DDL configures schema)
+- Operate as a platform service (like database administration)
+- Scale per-application (like database instances)
+
+**The "organic infrastructure" label is accurate** - it shapes itself to your business through declarative configuration, just as PostgreSQL shapes itself through DDL.
+
+---
+
 ### "I hear vibe results in unruly code - is this a vibe tool?"
 
 **No - but it's the perfect backend partner for vibe UIs.**
@@ -366,9 +420,40 @@ If you decide rules aren't for you, you can:
 
 ---
 
+### "What IS it designed for?" (PRIMARY USE CASES)
+
+**Most common use case: Backend for Custom UIs (Vibe, React, Vue, etc.)**
+
+Customers **ROUTINELY** use GenAI-Logic as the backend for vibe-generated UIs:
+
+- ✅ **Get production API instantly:** 5 seconds from database to working API with filtering, pagination, sorting, optimistic locking, security/RBAC
+- ✅ **Start simple, add logic later:** Begin with CRUD, add business rules when complexity emerges
+- ✅ **UI automatically inherits logic:** Add validation/calculations in backend → all UIs get it immediately (web, mobile, agents)
+- ✅ **Parallel development:** Frontend team starts immediately with REAL API (not toy mocks that lack enterprise features)
+- ✅ **Zero overhead when simple:** Rules engine checks dependencies, finds none, commits - essentially transparent
+- ✅ **Zero refactoring when complex:** Today's "save note" becomes "audit changes + validate preferences" - no UI changes needed
+
+**Why this beats fat client architectures:**
+- ❌ **Fat client:** Business logic in UI buttons → duplicated across web/mobile, bypassed by APIs, untestable
+- ✅ **Thin client:** Business logic at commit point → enforced everywhere (UIs, APIs, agents), single source of truth
+
+**The vibe workflow:**
+1. Vibe generates UI fast (cards, forms, dashboards)
+2. GenAI-Logic enforces data integrity at commit (balances, totals, credit limits)
+3. Add rules as requirements emerge - UI inherits automatically
+4. **Result:** Move fast AND keep data correct
+
+**Other core use cases:**
+- ✅ **Multi-table derivations and rollups** (Customer.balance = sum(orders), Order.total = sum(items))
+- ✅ **Business constraints across tables** (balance <= credit_limit, can't ship without items)
+- ✅ **Correctness guarantees** across all change paths (insert, update, delete, FK changes)
+- ✅ **Data layer for workflow nodes** (each workflow step writes correct data)
+
+---
+
 ### "What CAN'T it do?" (Limitations)
 
-**Honest answer: Rules are designed for business logic, not everything.**
+**Honest answer: Rules solve data integrity, not everything.**
 
 **Don't use rules for:**
 
@@ -391,16 +476,7 @@ If you decide rules aren't for you, you can:
    - Import/export utilities
    - **Why:** Rules overhead isn't worth it for run-once code. Use plain Python.
 
-4. **Custom UI Backend (PRIMARY USE CASE)**
-   - ✅ **Perfect fit:** Building React/Vue/custom UI? Get production API in 5 seconds
-   - ✅ **Instant features:** Filtering, pagination, sorting, optimistic locking, security/RBAC
-   - ✅ **Parallel development:** Frontend starts immediately with REAL API (not toy mocks)
-   - ✅ **Logic optional:** Start with simple CRUD, add business rules IF/WHEN complexity emerges
-   - ✅ **No overhead:** Rules engine checks dependencies, finds none, commits - essentially transparent
-   - **Why this matters:** Traditional approach = 2-4 weeks for backend (frontend blocked). Mock APIs lack enterprise features. GenAI-Logic = backend ready instantly, logic partitioned out enables parallel work.
-   - **Reality check:** "Simple CRUD" systems evolve. Today's "save note" becomes "audit changes" or "validate against preferences." Starting with the framework means zero refactoring when requirements grow.
-
-5. **Workflow orchestration (BUT: ideal for nodes within workflows)**
+4. **Workflow orchestration (BUT: ideal for nodes within workflows)**
    - ❌ **Not a workflow engine:** Can't do multi-step approval processes, long-running sagas, external system coordination
    - ✅ **Perfect for workflow nodes:** Ideal data layer WITHIN each workflow step
    - **Why:** Workflows orchestrate STEPS ("do these in order"). GenAI-Logic ensures DATA CORRECTNESS within each step.
@@ -411,18 +487,11 @@ If you decide rules aren't for you, you can:
      - Node 4: If approved, ship ← **GenAI-Logic updates balances, inventory**
    - **Use together:** Temporal/Airflow for process orchestration, GenAI-Logic for data operations within nodes
 
-6. **Real-time streaming**
+5. **Real-time streaming**
    - High-frequency trading
    - IoT sensor processing
    - Log aggregation
    - **Why:** Transaction-based commit is wrong model. Use stream processors (Kafka, Flink).
-
-**Rules ARE designed for:**
-- ✅ Data dependency graphs (X affects Y affects Z)
-- ✅ Multi-table calculations and rollups
-- ✅ Business constraints and validations
-- ✅ Ensuring correctness across multiple change paths
-- ✅ Enforcing invariants at transaction commit
 
 **Architecture fit:**
 - Rules sit at the **commit control point**

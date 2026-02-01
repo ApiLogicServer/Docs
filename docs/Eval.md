@@ -76,7 +76,7 @@ Your AI will automatically discover and explore the referenced learning material
 
 Traditional pitches force you through a predetermined flow. With AI evaluation, ask what matters to YOU:
 
-* "Is this really infrastructure, like PostgreSQL?"
+* "Is this really infrastructure, like a database?"
 * "What's the actual code reduction? Show me proof."
 * "Why can't Cursor/Copilot do this?"
 * "How does this fit with our existing tools?"
@@ -84,5 +84,12 @@ Traditional pitches force you through a predetermined flow. With AI evaluation, 
 * "How does the 'distill and funnel' architecture work?"
 * "Why can't procedural GenAI handle transitive dependencies?"
 * "What's the Business Logic Appliance concept?"
+* "How is this different from AI codegen?"
+* "How is this different from vibe tools?"
+* "How is this different from low-code platforms?"
+* "What does it overlap with? (workflow, database, API gateway)"
+* "Is this a black box?"
+* "What about performance/scalability?"
+* "What's the lock-in risk?"
 
 **Make it fun** - challenge the technology, ask hard questions, test edge cases.
