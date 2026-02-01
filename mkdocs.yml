@@ -173,7 +173,18 @@ nav:
     - "Eval Overview": Eval.md
     - "AI Training":
       - "Rosetta Stone": Eval-copilot-instructions.md
-      - "Logic Patterns": Eval-logic_bank_patterns.prompt.md
+      - "Logic Patterns": Eval-logic_bank_patterns.md
+      - "Logic Bank API": Eval-logic_bank_api.md
+      - "Probabilistic Logic": Eval-probabilistic_logic.md
+      - "Probabilistic Guide": Eval-probabilistic_logic_guide.md
+      - "GenAI Logic Patterns": Eval-genai_logic_patterns.md
+      - "Testing": Eval-testing.md
+      - "MCP Integration": Eval-MCP_Copilot_Integration.md
+      - "Admin App Context": Eval-admin_app_1_context.prompt.md
+      - "Admin App Functionality": Eval-admin_app_2_functionality.prompt.md
+      - "Admin App Architecture": Eval-admin_app_3_architecture.prompt.md
+      - "React Map": Eval-react_map.prompt.md
+      - "React Tree": Eval-react_tree.prompt.md
   - Troubleshooting.md
   - FAQs:
     - "Is this a Low Code approach?": FAQ-Low-Code.md
