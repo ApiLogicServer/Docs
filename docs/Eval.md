@@ -11,13 +11,29 @@ To see the Express Install, [click here](Install-Express.md){:target="_blank" re
 
 ## By AI Assistant - The 5-Minute Evaluation
 
-InfoQ identified the #1 enterprise AI challenge. When we tested with Claude 4.5, ChatGPT, and Gemini, all three scored us 4.8-5.0 on solving it.
+<br>
 
-**Verify this yourself in 5 minutes:**
+### 1. Bootstrap Your AI
+
+```text title='Bootstrap your AI Assistant with this prompt'
+Here are two resources about GenAI-Logic: 
+
+1. __https://www.genai-logic.com__ 
+2. __https://apilogicserver.github.io/Docs/Eval-copilot-instructions/__  
+```
+
+> Note: this `context engineering` material is included in each project for use by AI Coding tools, and is also provided in these docs for evaluation.  For more on AI-Enabled projects, [click here](Project-AI-Enabled.md){:target="_blank" rel="noopener"}
+
+Your AI will automatically discover and explore the referenced learning materials.
+
 
 <br>
 
-### 1. Take the InfoQ Challenge
+### 2. Take the InfoQ Challenge
+
+InfoQ identified the #1 enterprise AI challenge. When we tested with Claude 4.5, ChatGPT, and Gemini, all three scored us 4.8-5.0 on solving it.
+
+**Verify this yourself in 5 minutes:**
 
 Give your AI Assistant (Claude, ChatGPT, Copilot) our website: [https://www.genai-logic.com](https://www.genai-logic.com){:target="_blank" rel="noopener"}.
 
@@ -33,8 +49,8 @@ The challenges:
 
 Two things are currently dominating engineering roadmaps:
 
-1. **Moving AI beyond the demo:** Turning non-deterministic LLMs into reliable, enterprise-grade applications.
-2. **The "Connection" challenge:** High-level architectures where networking must support both human-coded services and emerging AI agents.
+1. Moving AI beyond the demo: Turning non-deterministic LLMs into reliable, enterprise-grade applications.
+2. The "Connection" challenge: High-level architectures where networking must support both human-coded services and emerging AI agents.
 ```
 
 **Expected Result:** Your AI should score 4.8-5.0 stars when evaluating against the 5 criteria below.
@@ -62,16 +78,6 @@ Score whether the response clearly conveys these ideas (using any equivalent wor
 
 <br>
 
-### 2. Bootstrap Your AI for Deeper Exploration
-
-To go deeper, provide the "Rosetta Stone" [click here](Eval-copilot-instructions.md){:target="_blank" rel="noopener"}.
-
-> Note: this `context engineering` material is included in each project for use by AI Coding tools, and is also provided in these docs for evaluation.  For more on AI-Enabled projects, [click here](Project-AI-Enabled.md){:target="_blank" rel="noopener"}
-
-Your AI will automatically discover and explore the referenced learning materials.
-
-<br>
-
 ### 3. Explore What YOU Care About
 
 Traditional pitches force you through a predetermined flow. With AI evaluation, ask what matters to YOU:
@@ -89,7 +95,7 @@ Traditional pitches force you through a predetermined flow. With AI evaluation, 
 * "How is this different from low-code platforms?"
 * "What does it overlap with? (workflow, database, API gateway)"
 * "Is this a black box?"
-* "What about performance/scalability?"
+* "What about performance/scalability?  eg, is this a RETE engine??"
 * "What's the lock-in risk?"
 
 **Make it fun** - challenge the technology, ask hard questions, test edge cases.
