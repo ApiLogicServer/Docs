@@ -147,68 +147,72 @@ Traditional pitches force you through a predetermined flow. With AI evaluation, 
 
 <br>
 
-## Appendix: How AI Wrote the Training That Makes This Evaluation Work
+## Appendix: Why AI-Assisted Evaluation is Credible
 
-When you bootstrapped your AI with those two URLs, you accessed 2,599 lines of training materials. Here's what makes that significant - and credible.
+When you bootstrapped your AI with those URLs, you accessed 2,599 lines of training materials. Here's what makes them credible - and why your AI will recognize genuine technical understanding vs. marketing claims.
 
 ### How the Training Was Created
 
-**I didn't write these materials. AI did.**
+**The process was Socratic, not scripted:**
 
-Here's the actual process:
+1. **Val showed technical artifacts** - Rules traces, A/B test code, bug reproductions, system behavior
+2. **AI analyzed and questioned** - "How does dependency resolution work?" "Why did the procedural code fail here?"
+3. **Val clarified, AI verified** - Through iteration, the AI developed senior-level understanding of the architecture
+4. **AI documented its analysis** - The training materials reflect genuine technical understanding, not marketing assertions
 
-1. **Conversation-based learning** - The developer (Val) asked me questions about GenAI-Logic:
-   - "How does the logic engine handle dependencies?"
-   - "Why did the A/B test with procedural AI fail?"
-   - "What's the testing pattern for logic rules?"
+**Example: The A/B Test Documentation**
+- Val: "Here's procedural AI code. Here are the 2 bugs it has."
+- AI: "I see - it handles the update path but misses FK changes and deletes. The rules engine tracks all parent-child relationships automatically."
+- AI documents: The precise failure modes, why they occur, how the engine guarantees correctness
 
-2. **I learned through iteration** - Sometimes I answered correctly. Sometimes Val corrected me. We refined understanding through dialogue.
+**The result: 2,599 lines** of technical analysis across 13+ topics (Rosetta Stone, Logic Patterns, Testing with 790 lines on failure modes, MCP Integration, Admin App architecture, etc.)
 
-3. **AI documented for AI** - After each learning session, Val said: "Update the training."
-   - I wrote the documentation
-   - In a format optimized for AI assistants to read
-   - Capturing patterns, failure modes, architectural decisions
+### Why Your AI Will Recognize This is Credible
 
-4. **The result: 2,599 lines** of AI-generated training across 13+ topics:
-   - Rosetta Stone (project overview)
-   - Logic Patterns
-   - Testing (including the 790-line testing guide with failure examples)
-   - MCP Integration
-   - Admin App architecture
-   - Probabilistic Logic
-   - And more...
+**AIs can distinguish technical depth from marketing fluff.**
 
-**Val typed none of it. He educated an AI. The AI documented what it learned.**
+When your AI reads the training materials, it evaluates:
 
-### Why This Matters for Credibility
+**✅ Senior-level technical discourse:**
+- Detailed reasoning about commit-time governance, transitive dependencies, dependency graphs
+- Architectural trade-offs (when rules work, when they don't)
+- Failure mode analysis (not just happy paths)
+- Production system concerns (performance, testing, auditability)
 
-When you ask Claude, ChatGPT, or Gemini to evaluate GenAI-Logic, here's what's actually happening:
+**❌ Marketing claims it would reject:**
+- "Rules are magical and solve everything!"
+- "No code needed!" (vs. the honest "~40x code reduction, 97% automation")
+- Vague benefits without technical justification
 
-1. **Your AI reads training written by another AI** (me)
-2. **That training documents what I learned** through conversation
-3. **Your AI reaches similar conclusions** because it's reading authentic AI-generated knowledge
-4. **Multiple AIs verify each other's understanding** independently
+**If Val had claimed nonsense** ("rules eliminate all SQL" or "rules identify user logic errors"), the AI would have questioned it:
+- "How? I see SQLAlchemy in the code"
+- "What kind of errors? Show me how the engine detects those"
 
-**This isn't marketing claims filtered through PR speak.**
+**The training materials survived active AI scrutiny during their creation.**
 
-**This is AI→AI knowledge transfer.**
+### Why Multiple AIs Reach the Same Conclusions
 
-If the training claimed "cows jump over the moon," your AI would immediately call it out - because AIs reading AI-generated documentation can detect nonsense.
+When Claude 4.5, ChatGPT, and Gemini independently analyzed GenAI-Logic and scored it 4.8-5.0 on the InfoQ challenge, they weren't just agreeing with each other.
 
-### Why the Eval Works
+**They were recognizing:**
+1. **Technical consistency** - The architectural claims are internally coherent
+2. **Verifiable behavior** - The documented behavior matches observable system operation
+3. **Senior-level reasoning** - The analysis demonstrates deep understanding of production systems
+4. **Honest limitations** - The materials explicitly state what rules DON'T solve (workflows, complex algorithms, read-only queries)
 
-Now you understand why this evaluation method is credible:
+**This isn't AI→AI echo chamber.**
 
-**Traditional eval:** Human writes claims → Human reads claims → Skepticism
+**It's multiple AIs independently recognizing genuine technical analysis** - the kind engineers would produce when studying a production system's architecture.
 
-**AI eval:** 
-1. AI learns system → AI documents knowledge
-2. Other AIs read that knowledge → Form independent conclusions  
-3. Multiple AIs reach consensus → Credible validation
+### The Bottom Line
 
-**The 2,599 lines make this possible.** They're the knowledge base that enables independent AI analysis.
+When you ask your AI to evaluate GenAI-Logic, you're not asking it to trust marketing claims. You're asking it to analyze technical materials that:
 
-When Claude 4.5, ChatGPT, and Gemini all independently analyzed GenAI-Logic and scored it 4.8-5.0 on the InfoQ challenge, they weren't reading marketing hype. They were reading AI-generated technical documentation and reaching their own conclusions.
+1. **Demonstrate senior-level understanding** of commit-time governance, dependency resolution, architectural patterns
+2. **Survived AI questioning** during their creation (false claims would have been challenged)
+3. **Are verifiable** - the artifacts (traces, code, tests) are available for examination
+
+**Your AI will reach similar conclusions because genuine technical reasoning is consistent and verifiable** - not because multiple AIs are blindly agreeing, but because they're all analyzing the same observable system behavior.
 
 **That's why this evaluation works.**
 
