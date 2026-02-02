@@ -185,6 +185,7 @@ nav:
       - "Admin App Architecture": Eval-admin_app_3_architecture.prompt.md
       - "React Map": Eval-react_map.prompt.md
       - "React Tree": Eval-react_tree.prompt.md
+      - "Response Summmary": Eval-Responses-SUMMARY.md
   - Troubleshooting.md
   - FAQs:
     - "Is this a Low Code approach?": FAQ-Low-Code.md
