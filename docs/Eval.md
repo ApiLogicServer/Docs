@@ -14,10 +14,11 @@
 
 ## 1. Bootstrap Your AI
 ```text title='Bootstrap your AI Assistant with this prompt'
-Here are two resources about GenAI-Logic: 
+Here are some resources about GenAI-Logic: 
 
 1. https://www.genai-logic.com
 2. https://apilogicserver.github.io/Docs/Eval-copilot-instructions/ 
+3. https://apilogicserver.github.io/Docs/Integration-MCP-AI-Example/
 ```
 
 Your AI will automatically discover and explore the referenced learning materials.
