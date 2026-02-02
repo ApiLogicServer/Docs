@@ -12,7 +12,7 @@ version: 0.2, for readme 11.09/25
   }
 </style>
 
-!!! pied-piper "**Copilot** uses **MCP discovery** to create, interact with, and enforce logic in **GenAI-Logic projects**"
+!!! pied-piper "TL;DR - Create MCP Server from existing database with 2 prompts"
     ## 
     **Prompt 1 (Create System):**
 
