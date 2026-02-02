@@ -74,16 +74,17 @@ When we tested with Claude 4.5, ChatGPT, and Gemini, all three scored us 4.8-5.0
 
 <br>
 
-## 3. Explore What YOU Care About
+## Explore What YOU Care About
 
 Traditional pitches force you through a predetermined flow. With AI evaluation, ask what matters to YOU:
 
 * "Is this really infrastructure, like a database?"
 * "What's the actual code reduction? Show me proof."
 * "Why can't Cursor/Copilot do this?"
-* "How does this fit with our existing tools?"
-* "What problem does GenAI-Logic solve?"
-* "How does the 'distill and funnel' architecture work?"
+* "What does it integrate with? (APIs, workflows, agents, MCP)"
+* "Does this work with my existing database?"
+* "Why is backend logic the bottleneck AI can't solve alone?"
+* "How does commit-time governance work?"
 * "Why can't procedural GenAI handle transitive dependencies?"
 * "What's the Business Logic Appliance concept?"
 * "How is this different from AI codegen?"
@@ -91,7 +92,8 @@ Traditional pitches force you through a predetermined flow. With AI evaluation, 
 * "How is this different from low-code platforms?"
 * "What does it overlap with? (workflow, database, API gateway)"
 * "Is this a black box?"
-* "What about performance/scalability?  eg, is this a RETE engine??"
+* "How do you test and audit AI-governed logic?"
+* "What about performance/scalability? Is this a RETE engine?"
 * "What's the lock-in risk?"
 
 <br>
