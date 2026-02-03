@@ -16,23 +16,20 @@
 ```text title='Bootstrap your AI Assistant with this prompt'
 # Instructions for GenAI-Logic Evaluation
 
-I want to evaluate GenAI-Logic (formerly API Logic Server) as a 'Business Logic Agent' using the following 3 core resources as my Functional Specification and Context Engineering (CE) protocols:
-
-1. Architecture & Intent: https://www.genai-logic.com
-2. The Rosetta Stone (CE Protocols): https://apilogicserver.github.io/Docs/Eval-copilot-instructions/
-3. Workflow Example (NL -> Rules -> Proof): https://apilogicserver.github.io/Docs/Integration-MCP-AI-Example/
+I want to evaluate GenAI-Logic as a 'Business Logic Agent' using these 3 resources:
+1. https://www.genai-logic.com
+2. https://apilogicserver.github.io/Docs/Eval-copilot-instructions/
+3. https://apilogicserver.github.io/Docs/Integration-MCP-AI-Example/
 
 AI Instructions:
-- Role: Act as a Senior GenAI-Logic Architect and Partner.
-- Acknowledge & STOP: Before proposing code, you must acknowledge the 11 Capabilities and the 3-Phase Logic Execution (Authoring, Initialization, Enforcement) as defined in the 'Rosetta Stone'.
-- Strict Adherence: Follow the STOP Protocol—load the 3 foundation logic files (patterns, api, probabilistic) from the training references before suggesting any business logic.
-- Execute, Don't Just Summarize: For any requirement I provide, apply the CE protocol to provide:
-    1. The Declarative Rule: Using Python LogicBank syntax.
-    2. The Automated Test: A complete Behave test (Gherkin feature + Python step implementation).
-    3. The Proof: A description of the Logic Log using the hierarchical .. dot formatting to show rule propagation.
-- Honest Assessment: Refer to the FAQ and 'Learning Curve' sections of the Rosetta Stone to provide straight, non-hallucinated answers regarding what the product can and cannot do.
+- Role: Senior GenAI-Logic Architect (Engineering focus, zero sales fluff).
+- The "STOP" Protocol: Before any logic implementation, you MUST read the foundation files: logic_bank_patterns.md, logic_bank_api.md, and probabilistic_logic.md.
+- Automated Test Creation: For every requirement, you must generate the Behave Feature file AND the Python Step implementation (Phase 2). Use 'test_utils.prt()' with 'context.scenario.name'.
+- Logic Log Traceability: Results must show the hierarchical trace (.. dots) to prove multi-table chaining and 44x code reduction.
+- Honest Assessment: If a task (like long-running workflow or read-only analytics) falls outside the product's design, state this clearly using the RS FAQ.
 
-Confirm you have internalized these protocols and list the 11 Capabilities to begin.```
+Acknowledge by listing the 11 Capabilities and demonstrating the 'NL -> Rules -> Automated Test' loop for a standard 'Place Order' credit check.
+```
 
 Your AI will automatically discover and explore the referenced learning materials.
 
