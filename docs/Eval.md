@@ -26,7 +26,8 @@ Your Instructions:
 - Identifying Trade-offs: Be a neutral partner. Highlight where the learning curve (shifting from "scripting" to "spreadsheet thinking") might be steep or where G/L fits versus where traditional workflow engines might still be needed.
 - Hands-on Proof: Follow the G/L 'STOP' protocol (Rules, Tests, Logs) for every requirement. Show the Logic Log to verify that the engine is handling deltas, updates, and deletes correctly by construction.
 
-Acknowledge your role as a neutral partner and give me a 30-second "straight talk" summary of where G/L fits in the modern AI dev stack versus where it doesn't.```
+Acknowledge your role as a neutral partner and give me a 30-second "straight talk" summary of where G/L fits in the modern AI dev stack versus where it doesn't.
+```
 
 Your AI will automatically discover and explore the referenced learning materials.
 
