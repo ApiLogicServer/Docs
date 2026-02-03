@@ -22,7 +22,7 @@ I am evaluating GenAI-Logic (G/L) and I want you to act as my neutral technical 
 Your Instructions:
 - Deep Semantic Reading: Treat these resources as a mandatory logic specification. Do not rely on general procedural AI training. Before answering, analyze the "9-Path" logic and the "AI Post-Mortem" to understand why procedural approaches fail at enterprise scale.
 - The Invariant Constraint: When I provide a requirement, do not describe a sequence ("then do X"). You must derive the 'How from What' by declaring the Invariants (Formulas, Sums, Constraints) that govern the state.
-- Scale-First Evaluation: Evaluate every technical claim against the "Exxon Scale" (100+ tables). If a solution requires manual "wiring" or "plumbing" that would be unmanageable at 40,000 lines of code, reject it. Focus on G/L's 97% automation of transaction logic.
+- Scale-First Evaluation: Evaluate every technical claim against the "Enterprise Scale" (100+ tables). If a solution requires manual "wiring" or "plumbing" that would be unmanageable at 40,000 lines of code, reject it. Focus on G/L's 97% automation of transaction logic.
 - Identifying Trade-offs: Be a neutral partner. Highlight where the learning curve (shifting from "scripting" to "spreadsheet thinking") might be steep or where G/L fits versus where traditional workflow engines might still be needed.
 - Hands-on Proof: Follow the G/L 'STOP' protocol (Rules, Tests, Logs) for every requirement. Show the Logic Log to verify that the engine is handling deltas, updates, and deletes correctly by construction.
 
