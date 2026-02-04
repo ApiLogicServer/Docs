@@ -1,4 +1,4 @@
-!!! pied-piper "Evaluate - Use Your AI Assistant"
+!!! note "Evaluate GenAI-Logic - Use Your AI Assistant"
     You can evaluate GenAI-Logic in the classic way:
     
     * Install (requires Python): to see the Express Install, [click here](Install-Express.md){:target="_blank" rel="noopener"}.  
@@ -13,14 +13,14 @@
 <br>
 
 ## 1. Bootstrap Your AI
-!!! pied-piper "Bootstrap your AI Assistant by pasting this prompt"
+!!! question "Bootstrap your AI Assistant by pasting this prompt"
     I'm evaluating GenAI-Logic. Here are the resources:
 
     1. https://www.genai-logic.com
     2. https://apilogicserver.github.io/Docs/Eval-copilot-instructions/
     3. https://apilogicserver.github.io/Docs/Integration-MCP-AI-Example/
 
-    Help me understand what this actually does - I want facts, not sales pitch. Show me how it works and whether it fits my needs.
+    Help me understand what this actually does - I want facts, not sales pitch. Start with the Quick Start - show me how it works and whether it fits my needs.
 
 
 Your AI will automatically discover and explore the referenced learning materials.
@@ -29,10 +29,9 @@ Your AI will automatically discover and explore the referenced learning material
 
 ## 2. Cut to the Chase: Is This Just Another AI Tool?
 
-GenAI tools are now a dime a dozen. Ask your AI the strategic question:
-```text title='Ask your AI this question'
-We already have AI coding assistants that generate code. What strategic problem does this solve that our existing tools don't address?
-```
+!!! question "GenAI tools are now a dime a dozen. Cut to the Chase with this prompt"
+    We already have AI coding assistants that generate code. What strategic problem does this solve that our existing tools don't address?
+
 
 <br>
 
@@ -40,7 +39,7 @@ We already have AI coding assistants that generate code. What strategic problem 
 
 When we tested this question with Claude 4.5, here's what it concluded after analyzing the materials:
 
-!!! quote "Claude's Response"
+??? example "Claude's Response"
     AI coding assistants (including Copilot) generate procedural code that looks reasonable but has a structural flaw: they can't guarantee correctness across all change paths in multi-table business logic. The comparison study shows even sophisticated AI missed critical bugs (FK changes affecting multiple parents, transitive dependencies) because pattern-matching can't reliably trace dependency chains.
 
     **GenAI-Logic solves three strategic gaps:**
@@ -82,40 +81,42 @@ InfoQ identified the #1 enterprise AI challenges - moving beyond demos, with sup
 <br>
 
 ### a. Challenge GenAI-Logic
-```text title='Paste this InfoQ Challenge into your AI'
-Please evaluate this page: https://www.genai-logic.com - does it meet the challenge?
 
-Your response should be yes/no, and 3-4 simple sentences.
+!!! question "Paste this InfoQ Challenge into your AI"
+    Please evaluate this page: https://www.genai-logic.com - does it meet the challenge?
 
-The challenges:
+    Your response should be yes/no, and 3-4 simple sentences.
 
-Two things are currently dominating engineering roadmaps:
+    The challenges:
 
-1. Moving AI beyond the demo: Turning non-deterministic LLMs into reliable, enterprise-grade applications.
-2. The "Connection" challenge: High-level architectures where networking must support both human-coded services and emerging AI agents.
-```
+    Two things are currently dominating engineering roadmaps:
+
+    1. Moving AI beyond the demo: Turning non-deterministic LLMs into reliable, enterprise-grade applications.
+    2. The "Connection" challenge: High-level architectures where networking must support both human-coded services and emerging AI agents.
+
 
 <br>
 
 ### b. Score the Response
-```text title='Score the Response'
-Score whether the response clearly conveys these ideas (using any equivalent wording) - 1-5 stars:
 
-1. Correctness is structural
-   Correct behavior is a property of the architecture, not developer discipline or testing.
+!!! question "Enter this prompt to Score the Response"
+    Score whether the response clearly conveys these ideas (using any equivalent wording) - 1-5 stars:
 
-2. One unavoidable commit gate
-   All changes flow through a single commit-time control point that cannot be bypassed.
+    1. Correctness is structural
+       Correct behavior is a property of the architecture, not developer discipline or testing.
 
-3. Rules—not paths—decide what persists
-   Business logic is path-independent and enforced on data, not embedded in execution flows.
+    2. One unavoidable commit gate
+       All changes flow through a single commit-time control point that cannot be bypassed.
 
-4. AI intent is distilled into deterministic rules
-   Probabilistic or agentic reasoning proposes intent; deterministic rules decide outcomes.
+    3. Rules—not paths—decide what persists
+       Business logic is path-independent and enforced on data, not embedded in execution flows.
 
-5. Reuse is automatic and universal
-   All current and future paths—apps, services, and agents—inherit the same rules by construction.
-```
+    4. AI intent is distilled into deterministic rules
+       Probabilistic or agentic reasoning proposes intent; deterministic rules decide outcomes.
+
+    5. Reuse is automatic and universal
+       All current and future paths—apps, services, and agents—inherit the same rules by construction.
+
 
 When we tested with Claude 4.5, ChatGPT, and Gemini, all three scored us 4.8-5.0.
 
@@ -151,7 +152,9 @@ Traditional pitches force you through a predetermined flow. With AI evaluation, 
 
 ## Appendix: Why AI-Assisted Evaluation is Credible
 
-When you bootstrapped your AI with those URLs, you accessed 2,599 lines of training materials:
+<details markdown>
+
+<summary>When you bootstrapped your AI with those URLs, you accessed 2,599 lines of training materials</summary>
 
 - **`.copilot-instructions.md`** (1,587 lines) - The bootstrap/entry point for architecture understanding
 - **`docs/training/` folder** - Additional materials (LogicBank API reference, testing guide with 555 lines, architecture deep-dives)
@@ -224,3 +227,4 @@ When you ask your AI to evaluate GenAI-Logic, you're not asking it to trust mark
 **That's why this evaluation works.**
 
 **That's why it's credible.**
+</details markdown>
