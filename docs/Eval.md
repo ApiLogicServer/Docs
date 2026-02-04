@@ -17,7 +17,7 @@
     I'm evaluating GenAI-Logic. Here are the resources:
 
     1. https://www.genai-logic.com
-    2. https://apilogicserver.github.io/Docs/Eval-copilot-instructions/
+    2. https://apilogicserver.github.io/Docs/welcome-eval/
     3. https://apilogicserver.github.io/Docs/Integration-MCP-AI-Example/
 
     Help me understand what this actually does - I want facts, not sales pitch. Start with the Quick Start - show me how it works and whether it fits my needs.
