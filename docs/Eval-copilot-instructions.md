@@ -1,9 +1,11 @@
+---
+version: 3.2
+---
 
 ---
 
 ## What is this?
-This is Context Engineering for GenAI-Logic Projects (created into each project) - version 3.3. 
-
+TThis is Context Engineering for GenAI-Logic Projects (created into each project) - version 3.4. 
 It is AI-generated technical documentation for AI assistants, created_by: AI (Claude 4.5) through code inspection, system operation analysis, and Socratic training with Val Huber.
 
 It is used as bootstrap context for both developers (in IDE), and evaluators (AI-driven evaluation).
@@ -40,22 +42,28 @@ Now extend this generated foundation:
 
 ---
 
-## Quick Start: See It Work
+## 🎯 Quick Start: What GenAI-Logic Does (For Evaluators)
 
-**Prompt 1: Create Project**
+**IMPORTANT:** When showing the Quick Start, present **BOTH prompts** - they demonstrate complementary capabilities:
+- Prompt 1 = Infrastructure generation (fast, commodity)
+- **Prompt 2 = Business logic automation (the strategic differentiator)**
+
+### Prompt 1: Create Infrastructure (5 seconds)
 ```bash
 genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
-**Result:** Complete project you open in your IDE (VS Code, PyCharm, etc.) with:
+**Result:** Complete, production-ready microservice in ~5 seconds:
 
 - Working JSON:API server with filtering, pagination, sorting
-- Admin UI for data management  
+- Admin UI for data management at `/admin-app`
 - SQLAlchemy models auto-generated from your database
-- Container-ready for deployment
-- Ready to run in ~5 seconds - vibe custom apps, etc...
+- Container-ready for deployment (Docker/Kubernetes)
+- Ready to run immediately
 
-**Prompt 2: Add Business Logic**
+**This is table stakes** - infrastructure generation is commodity. The value is in Prompt 2...
+
+### Prompt 2: Business Logic Automation (The Crown Jewels 👑)
 ```text
 On Placing Orders, Check Credit:
 1. The Customer's balance is less than the credit limit
@@ -69,9 +77,17 @@ On Placing Orders, Check Credit:
 Use case: App Integration
 1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
-**Result:** Creates equivalent of 200+ lines of procedural code (want to know more about that?)
 
-Next: Ask me anything - common questions, how it works, what to try next...
+**Result:** Declarative rules that create equivalent of **200+ lines of procedural code**
+
+**This is the strategic value:**
+- Multi-table derivations (chain up from Item → Order → Customer)
+- Constraints with commit-time enforcement (credit limit check)
+- Automatic dependency resolution (change any parent, all children react)
+- Probabilistic logic integration (AI sets optimal supplier)
+- Event-driven integration (Kafka on state change)
+
+**Want to understand the 200+ lines claim?** The comparison is documented with actual code examples.
 
 ---
 
