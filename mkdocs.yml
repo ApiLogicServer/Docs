@@ -173,6 +173,7 @@ nav:
     - "Eval Overview": Eval.md
     - "AI Training":
       - "Rosetta Stone": Eval-copilot-instructions.md
+      - "Eval Welcome": Eval-welcome.md
       - "Logic Patterns": Eval-logic_bank_patterns.md
       - "Logic Bank API": Eval-logic_bank_api.md
       - "Probabilistic Logic": Eval-probabilistic_logic.md
