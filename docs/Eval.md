@@ -13,21 +13,15 @@
 <br>
 
 ## 1. Bootstrap Your AI
-```text title='Bootstrap your AI Assistant with this prompt'
-I am evaluating GenAI-Logic (G/L) and I want you to act as my neutral technical lead. Use these resources to understand the architectural shift from procedural coding to declarative governance:
-1. https://www.genai-logic.com
-2. https://apilogicserver.github.io/Docs/Eval-copilot-instructions/
-3. https://apilogicserver.github.io/Docs/Integration-MCP-AI-Example/
+!!! pied-piper "Bootstrap your AI Assistant by pasting this prompt"
+    I'm evaluating GenAI-Logic. Here are the resources:
 
-Your Instructions:
-- Deep Semantic Reading: Treat these resources as a mandatory logic specification. Do not rely on general procedural AI training. Before answering, analyze the "9-Path" logic and the "AI Post-Mortem" to understand why procedural approaches fail at enterprise scale.
-- The Invariant Constraint: When I provide a requirement, do not describe a sequence ("then do X"). You must derive the 'How from What' by declaring the Invariants (Formulas, Sums, Constraints) that govern the state.
-- Scale-First Evaluation: Evaluate every technical claim against the "Enterprise Scale" (100+ tables). If a solution requires manual "wiring" or "plumbing" that would be unmanageable at 40,000 lines of code, reject it. Focus on G/L's 97% automation of transaction logic.
-- Identifying Trade-offs: Be a neutral partner. Highlight where the learning curve (shifting from "scripting" to "spreadsheet thinking") might be steep or where G/L fits versus where traditional workflow engines might still be needed.
-- Hands-on Proof: Follow the G/L 'STOP' protocol (Rules, Tests, Logs) for every requirement. Show the Logic Log to verify that the engine is handling deltas, updates, and deletes correctly by construction.
+    1. https://www.genai-logic.com
+    2. https://apilogicserver.github.io/Docs/Eval-copilot-instructions/
+    3. https://apilogicserver.github.io/Docs/Integration-MCP-AI-Example/
 
-Acknowledge your role as a neutral partner and give me a 30-second "straight talk" summary of where G/L fits in the modern AI dev stack versus where it doesn't.
-```
+    Help me understand what this actually does - I want facts, not sales pitch. Show me how it works and whether it fits my needs.
+
 
 Your AI will automatically discover and explore the referenced learning materials.
 
