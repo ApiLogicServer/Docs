@@ -411,6 +411,8 @@ changelog:
 
 **Yes - GenAI-Logic is infrastructure in the same sense PostgreSQL is infrastructure.**
 
+GenAI-Logic operates as runtime logic infrastructure: it deterministically enforces business invariants at transaction commit, independent of API, UI, batch job, or AI agent.
+
 **The Parallel:**
 
 **PostgreSQL deployment:**
