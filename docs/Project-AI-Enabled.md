@@ -21,15 +21,24 @@ This page describes:
 
 &nbsp;
 
-## AI-Enabled Projects
 
-When you open a project, activate the AI Assitant:
+## AI Usage
 
-![AI-Enabled Projects](images/ui-vibe/assistant/copilot-hello.png)
+GenAI-Logic provides functionality by a combination of core services (project creation, api execution, rules engine), and by leveraging/extending AI Assistants in your IDE.
 
+&nbsp;
+
+### Authoring
 
 When you create a new project with `genai-logic create`, you're not just getting a basic API and admin interface. Each project is thoughtfully designed to be **AI-friendly** from day one.
 
+Bootstrap this by telling your AI Assistant to bootstrap itself:
+
+```bash
+Please load `.github/.copilot-instructions.md`
+```
+
+![AI-Enabled Projects](images/ui-vibe/assistant/copilot-hello.png)
 &nbsp;
 
 ### 🛠️ Main Capabilities
@@ -49,7 +58,23 @@ As shown above, your AI-enabled project includes these key capabilities:
 
 &nbsp;
 
-### 🤖 Built-in AI Guidance
+### AI Logic
+
+All of the services above occur in your IDE.  You can see what is generated and fix / remove it (human in the loop).
+
+In addition, you can use ***AI at runtime** to execute logic.  For example, this demo illustrates using AI to choose an optimal supplier - for more information, see [MCP AI Example](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
+
+> AI can be used to compute values, and we we know AI can make mistakes.<br>Govern such AI Logic using business rules -- AI can propose, rules decide what commits.
+
+&nbsp;
+
+## AI-Enabled Projects
+
+AI is enabled as described below.
+
+&nbsp;
+
+### 🤖 Context Engineering
 
 Your project includes comprehensive training materials that serve as a "message in a bottle" for AI assistants:
 
@@ -85,7 +110,6 @@ Your project supports natural AI-assisted development:
 ## Training
 
 There are important resources to help you get started.
-
 
 &nbsp;
 
