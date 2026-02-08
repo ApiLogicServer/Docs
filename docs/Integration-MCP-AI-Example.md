@@ -3,7 +3,7 @@ title: MCP AI Example
 notes: gold source is docs
 source: docs/Integration-MCP-AI-Example.md
 do_process_code_block_titles: True
-version: 0.2, for readme 11.09/25
+version: 0.3, for readme 2/8/2026
 ---
 <style>
   -typeset h1,
@@ -40,6 +40,8 @@ version: 0.2, for readme 11.09/25
 
     *On Alice's first order, update the widget quantity to 100*
 &nbsp;
+
+# MCP Example
 
 ![Declarative logic in action](images/integration/mcp/Integration-MCP-AI-Example.png)
 
@@ -296,9 +298,30 @@ You want AI to *help* you with your spreadsheet, not *be excel*.
 
 ---
 
+# AI Logic Example
+
 ## Business Logic Agent: A Unified Model of Governable Creativity
 
-But AI provides creativity that businesses want... how do we provide that, *with goverance?*
+But AI also provides creativity and reasoning that businesses want... how do we provide that, *with goverance?*. 
+
+For example - a business can continue to operate even if a tanker has blocked the Suez canal by choosing a supplier:
+
+!!! question "Copilot prompt for deterministic and probabilistic logic (rule 6)"
+     on Placing Orders, Check Credit:
+
+     1. The Customer's balance is less than the credit limit
+     2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+     3. The Order's amount_total is the sum of the Item amount
+     4. The Item amount is the quantity * unit_price
+     5. The Product count suppliers is the sum of the Product Suppliers
+     6. Use AI to Set Item field unit_price by finding the optimal Product Supplier 
+                                            based on cost, lead time, and world conditions
+
+     Use case: App Integration
+
+     1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+
+<br>
 
 <details markdown>
 
@@ -321,26 +344,12 @@ Different kinds of logic naturally call for different tools, as in this unified 
 * **Deterministic Logic** — logic that must always be correct, consistent, and governed.  
 *Example:* “Customer balance must not exceed credit limit.”
 
-* **Creative Logic** — logic that benefits from exploration, adaptation, and probabilistic reasoning.  
+* **AI Logic** — logic that benefits from exploration, adaptation, and probabilistic reasoning.  
 *Example:* “Which supplier can still deliver if shipping lanes are disrupted?”
 
 
     * **Creative reasoning needs boundaries.<br>Deterministic rules supply the guardrails that keep outcomes correct, consistent, and governed.**
 
-```bash title='Declare Logic: Deterministic and Probabilistic'
-on Placing Orders, Check Credit:
-
-1. The Customer's balance is less than the credit limit
-2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
-3. The Order's amount_total is the sum of the Item amount
-4. The Item amount is the quantity * unit_price
-5. The Product count suppliers is the sum of the Product Suppliers
-6. Use AI to Set Item field unit_price by finding the optimal Product Supplier 
-                                          based on cost, lead time, and world conditions
-
-Use case: App Integration
-1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
-```
 
 And then, test via MCP-discovered API:**  *Constraint blocks bad data*: ️
 ```bash title='Test Logic with MCP Discovery'
