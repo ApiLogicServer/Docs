@@ -39,22 +39,6 @@ Please load `.github/.copilot-instructions.md`
 ```
 
 ![AI-Enabled Projects](images/ui-vibe/assistant/copilot-hello.png)
-&nbsp;
-
-### 🛠️ Main Capabilities
-
-As shown above, your AI-enabled project includes these key capabilities:
-
-✅ **Run the Project** - F5 or `python api_logic_server_run.py`  
-✅ **Add Business Logic** - Declarative rules with 44x code reduction  
-✅ **Create Custom APIs** - B2B integration with natural language  
-✅ **Customize Data Models** - Schema modifications, derived attributes  
-✅ **Automated Testing** - Behave framework with logic traceability  
-✅ **Security & Authentication** - Multiple providers, role-based access  
-✅ **React App Generation** - Complete frontend creation  
-✅ **MCP Client Integration** - Model Context Protocol support  
-✅ **Admin UI Customization** - YAML-driven configuration  
-✅ **Events & Triggers** - Advanced business logic scenarios  
 
 &nbsp;
 
@@ -65,6 +49,14 @@ All of the services above occur in your IDE.  You can see what is generated and 
 In addition, you can use ***AI at runtime** to execute logic.  For example, this demo illustrates using AI to choose an optimal supplier - for more information, see [MCP AI Example](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
 
 > AI can be used to compute values, and we we know AI can make mistakes.<br>Govern such AI Logic using business rules -- AI can propose, rules decide what commits.
+
+&nbsp;
+
+### Models Used
+
+Runtime access and genai-* CLI services use ChatGPT.  You will need to configure your key, typically as an environment variable.
+
+Copilot access is your choice.  We get good results and typically use Claude Sonnet 4.5.
 
 &nbsp;
 
