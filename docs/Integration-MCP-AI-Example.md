@@ -310,7 +310,7 @@ For example - a business can continue to operate even if a tanker has blocked th
 genai-logic create --project_name=basic_demo_ai_rules --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
-!!! question "2. Open the project; provide Copilot prompt for deterministic and probabilistic logic (rule 6)"
+!!! pied-piper "2. Open the project; provide Copilot prompt for deterministic and probabilistic logic (rule 6)"
      on Placing Orders, Check Credit:
 
      1. The Customer's balance is less than the credit limit
