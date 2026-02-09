@@ -300,13 +300,17 @@ You want AI to *help* you with your spreadsheet, not *be excel*.
 
 # AI Logic Example
 
-## Business Logic Agent: A Unified Model of Governable Creativity
+## Business Logic Agent: A Unified Model for Governable Creativity
 
 But AI also provides creativity and reasoning that businesses want... how do we provide that, *with goverance?*. 
 
 For example - a business can continue to operate even if a tanker has blocked the Suez canal by choosing a supplier:
 
-!!! question "Copilot prompt for deterministic and probabilistic logic (rule 6)"
+```bash title="1. Create a new project (e.g., from the Manager)"
+genai-logic create --project_name=basic_demo_ai_rules --db_url=sqlite:///samples/dbs/basic_demo.sqlite
+```
+
+!!! question "2. Open the project; provide Copilot prompt for deterministic and probabilistic logic (rule 6)"
      on Placing Orders, Check Credit:
 
      1. The Customer's balance is less than the credit limit
