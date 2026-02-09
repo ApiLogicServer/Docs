@@ -306,24 +306,25 @@ But AI also provides creativity and reasoning that businesses want... how do we 
 
 For example - a business can continue to operate even if a tanker has blocked the Suez canal by choosing a supplier:
 
-```bash title="1. Create a new project (e.g., from the Manager)"
+```bash title="Step 1. Create a new project (e.g., from the Manager)"
 genai-logic create --project_name=basic_demo_ai_rules --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
-!!! pied-piper "2. Open the project; provide Copilot prompt for deterministic and probabilistic logic (rule 6)"
-     on Placing Orders, Check Credit:
+```bash title="Step 2. Open the project; provide Copilot prompt for deterministic and probabilistic logic (rule 6)"
+on Placing Orders, Check Credit:
 
-     1. The Customer's balance is less than the credit limit
-     2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
-     3. The Order's amount_total is the sum of the Item amount
-     4. The Item amount is the quantity * unit_price
-     5. The Product count suppliers is the sum of the Product Suppliers
-     6. Use AI to Set Item field unit_price by finding the optimal Product Supplier 
-                                            based on cost, lead time, and world conditions
+1. The Customer's balance is less than the credit limit
+2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+3. The Order's amount_total is the sum of the Item amount
+4. The Item amount is the quantity * unit_price
+5. The Product count suppliers is the sum of the Product Suppliers
+6. Use AI to Set Item field unit_price by finding the optimal Product Supplier 
+                                       based on cost, lead time, and world conditions
 
-     Use case: App Integration
+Use case: App Integration
 
-     1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+```
 
 <br>
 
