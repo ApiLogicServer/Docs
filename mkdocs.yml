@@ -228,6 +228,9 @@ nav:
     - "Product Detail": Product-Detail.md
     - "Product Overview": Product-Overview.md
     - Personal:
+      - "Manager": Manager-readme.md
+      - "Sample_ai_mcp": Sample-ai-mcp.md
+      - "Sample_ai_rules": Sample-ai-rules.md
       - "Tour": Sample-Basic-Tour.md
       - "Home": Home.md
       - "Governed Agentic Business Logic": Tech-Business-Logic-Agent.md
