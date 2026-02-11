@@ -26,7 +26,7 @@ nav:
     - Express Eval: Install-Eval.md
   - Demos, Tutorial, Samples:
     - "Basic Self-Demo": Sample-Basic-Demo.md
-    - "Basic Demo - Vibe": Sample-Basic-Demo-Vibe.md
+    - "Basic Demo - MCP": Sample-Basic-Demo-MCP-Send-Email.md
     - "GenAI Microservice Automation": Sample-Genai.md
     - "Tutorial": Tutorial.md
     - "AI - Copilot": Sample-AI.md

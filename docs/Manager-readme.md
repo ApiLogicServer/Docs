@@ -1,7 +1,7 @@
 ---
 title: Welcome
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
-Source: docs//Manager-readme
+Source: docs/Manager-readme
 version info: 16.00.00 (02/09/2026)
 do_process_code_block_titles: True
 Used: Manager Readme
@@ -71,11 +71,11 @@ Explore the three key use cases from our home page:
 
 | Use Case | Demo | Command | What You'll Learn |
 |----------|------|---------|-------------------|
-| **[Use Case 1: Governed MCP Server](https://www.genai-logic.com#use-case-1-governed-mcp-server)** | basic_demo_mcp_sendmail | *TBD* | • MCP server with logic governance<br>• Email service respecting opt-out rules<br>• Business users creating NL orchestrations<br>• Logic inherited by all MCP calls |
-| **[Use Case 1: Governed MCP Server](https://www.genai-logic.com#use-case-1-governed-mcp-server)** (Advanced) | basic_demo_ai_mcp_copilot | *TBD* | • AI-assisted MCP with Copilot integration<br>• Complex governed orchestrations<br>• Advanced MCP patterns |
-| **[Use Case 2: Vibe Development Backend](https://www.genai-logic.com#use-case-2-vibe-development-backend)** | basic_demo_vibe | *TBD* | • Vibe tools with GenAI-Logic backend<br>• Logic inheritance in custom UIs<br>• Parallel UI/logic development<br>• React app customization |
-| **[Use Case 3: Business Users](https://www.genai-logic.com#use-case-3-business-users)** | webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/WebGenAI/) | • Complete system from browser prompt<br>• UI, API, data, logic from NL<br>• No database design or screen painting<br>• Business/IT harmony |
-| **[Use Case 3: Business Users](https://www.genai-logic.com#use-case-3-business-users)** | genai_demo | See [Explore GenAI CLI](#explore-genai-cli) below | • GenAI CLI project creation<br>• Database + logic from prompt<br>• Iteration examples<br>• IDE integration |
+| **[AI Rules](https://www.genai-logic.com#use-case-2-vibe-development-backend)** | basic_demo_ai_rules_supplier | Sample-ai-rules_supplier | Optimal Supplier |
+| **[Use Case 1: Governed MCP Server](https://www.genai-logic.com#use-case-1-governed-mcp-server)** | basic_demo_mcp_sendmail | *Sample-Basic-Demo-Vibe.md* | Bus Users compose new service to send email to overdue customers, subject to email opt-out |
+| **[Use Case 2: Vibe Development Backend](https://www.genai-logic.com#use-case-2-vibe-development-backend)** | basic_demo_vibe | Admin-Vibe-Sample | Cars and Maps |
+| **[Use Case 3: Business Users](https://www.genai-logic.com#use-case-3-business-users)** | webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/WebGenAI/) | WebG + download |
+| **[Use Case 1.X: Governed MCP Server](https://www.genai-logic.com#use-case-1-governed-mcp-server)** (basic) | basic_demo_ai_mcp_copilot | *TBD* | test rules via Copilot access to MCP Server |
 
 &nbsp;
 
@@ -85,10 +85,8 @@ Advanced examples and specialized patterns:
 
 | Demo | Command | What You'll Learn |
 |------|---------|-------------------|
-| **basic_demo_ai_rules_suppliers** | *TBD* | • Probabilistic AI rules with governance<br>• LLM reasoning for supplier selection<br>• Deterministic rule enforcement on AI output<br>• Audit trails for AI decisions |
 | **mcp_ai** | *TBD* | • Advanced MCP patterns<br>• Complex AI integrations<br>• Production MCP deployment |
-| **HR** | *TBD* | • Complex domain example (HR)<br>• Multi-table logic patterns<br>• Real-world schema complexity |
-| **DinoPlayGroup** | *TBD* | • Complex domain example (playgroup management)<br>• Advanced security scenarios<br>• Multi-tenant patterns |
+
 
 &nbsp;
 

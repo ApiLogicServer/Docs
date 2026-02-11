@@ -12,7 +12,7 @@ version: 0.3, for readme 2/8/2026
   }
 </style>
 
-!!! pied-piper "TL;DR - Create MCP Server from existing database with 2 prompts"
+!!! pied-piper "TL;DR - Integrated Deterministic and AI Rules"
     ## 
     **Prompt 1 (Create System):**
 
