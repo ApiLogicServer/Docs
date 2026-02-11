@@ -148,28 +148,13 @@ You can click Customer Alice, and see their Orders, and Items.
 
 The app above is suitable for collaborative iteration to nail down the requirements, and back office data maintenance.  It's also easy to make simple customizations, using the yaml file.
 
-For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language:
-
-```bash
-# create react source (requires OpenAI key)
-genai-logic genai-add-app --vibe
-cd ui/react-app
-npm install
-npm start
-```
-
-And you are ready to Vibe:
+For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language.  See the Sample: Vibe Development Backend.
 
 * Instead of creating data mockups, you have a **running API server with real data**
 * Instead of starting from scratch, you have a **running multi-page app** 
 * And, you'll have projects that are **architecturally correct:** shared logic, enforced in the server, available for both User Interfaces and services.
 * Then, use you favorite Vibe tools with your running API:
 
-
-**Customize using Natural Language:**
-```txt title='Customize using Natural Language'
-In the ui/react app, Update the Product list to provide users an option to see results in a list, or in cards.
-```
 <br>
 
 > Below is an example from Northwind: [click here](https://apilogicserver.github.io/Docs/Admin-Vibe-Sample)
@@ -180,22 +165,7 @@ In the ui/react app, Update the Product list to provide users an option to see r
 
 ## 3. MCP-Ready APIs
 
-Your project is MCP-ready - this will run a simple query *List customers with credit_limit > 1000* (we'll explore more interesting examples below, including provisions for user input):
-
-```bash
-Create a table SysEmail in `database/db.sqlite` as a child of customer, 
-with columns id, message, subject, customer_id and CreatedOn.
-```
-
-Follow the suggestions to update the admin app.
-
-TODO: add mcp client  here, and test
-
-TODO: test the service
-
-```bash
-List the orders date_shipped is null and CreatedOn before 2023-07-14, and send a discount email (subject: 'Discount Offer') to the customer for each one.
-```
+Your project is MCP-ready - this will run a simple query *List customers with credit_limit > 1000*.  For more on MCP, try the sample Govererned MCP Server.
 
 ![mcp-retrieval](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-retrieval.png?raw=true)
 

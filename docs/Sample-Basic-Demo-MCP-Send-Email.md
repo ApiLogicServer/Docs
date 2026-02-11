@@ -2,6 +2,7 @@
 title: Vibe MCP / Microservice
 do_process_code_block_titles: True
 version: 1.1 from docsite 10/28/2025
+source: docs/Sample-Basic-Demo-MCP-Send-Email.md
 Propagation: Build copies to api_logic_server_cli/prototypes/basic_demo/readme_vibe.md → BLT copies to Manager samples/basic_demo_sample/readme_vibe.md
 Guided_Tour: See tutor.md for AI guided tour instructions (user says "Guide me through basic_demo")
 ---

@@ -72,7 +72,7 @@ Explore the three key use cases from our home page:
 | Use Case | Demo | Command | What You'll Learn |
 |----------|------|---------|-------------------|
 | **[AI Rules](https://www.genai-logic.com#use-case-2-vibe-development-backend)** | basic_demo_ai_rules_supplier | Sample-ai-rules_supplier | Optimal Supplier |
-| **[Use Case 1: Governed MCP Server](https://www.genai-logic.com#use-case-1-governed-mcp-server)** | basic_demo_mcp_sendmail | *Sample-Basic-Demo-Vibe.md* | Bus Users compose new service to send email to overdue customers, subject to email opt-out |
+| **[Use Case 1: Governed MCP Server](https://www.genai-logic.com#use-case-1-governed-mcp-server)** | basic_demo_mcp_send_email | *Sample-Basic-Demo-Vibe.md* | Bus Users compose new service to send email to overdue customers, subject to email opt-out |
 | **[Use Case 2: Vibe Development Backend](https://www.genai-logic.com#use-case-2-vibe-development-backend)** | basic_demo_vibe | Admin-Vibe-Sample | Cars and Maps |
 | **[Use Case 3: Business Users](https://www.genai-logic.com#use-case-3-business-users)** | webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/WebGenAI/) | WebG + download |
 | **[Use Case 1.X: Governed MCP Server](https://www.genai-logic.com#use-case-1-governed-mcp-server)** (basic) | basic_demo_ai_mcp_copilot | *TBD* | test rules via Copilot access to MCP Server |
