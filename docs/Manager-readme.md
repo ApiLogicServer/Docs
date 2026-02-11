@@ -24,6 +24,7 @@ What is GenAI-Logic:
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager).  The Manager is a good place to manage projects, create notes and resources, etc.  
 
 **🤖 Bootstrap Copilot by pasting the following into the chat:**
+**🤖 Bootstrap Copilot by pasting the following into the chat:**
 ```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
 Please load `.github/.copilot-instructions.md`.
 ```
@@ -60,6 +61,7 @@ Learn core concepts with the guided tour:
 | Demo | Command | What You'll Learn | Duration |
 |------|---------|-------------------|----------|
 | **basic_demo** | genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite | • Instant API + Admin App from database<br>• Declarative business logic (40X more concise)<br>• Role-based security<br>• Python extensibility<br>• Iteration with add-cust | 30-45 min<br>(guided tour) |
+ **Basic Governed MCP Server** <br> basic_demo_ai_mcp_copilot | genai-logic create --project_name=basic_demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | |
 
 **After creation:** Say *"Guide me through basic_demo"* to your AI assistant
 
@@ -69,13 +71,14 @@ Learn core concepts with the guided tour:
 
 Explore the three key use cases from our home page:
 
-| Use Case | Demo | Command | What You'll Learn |
-|----------|------|---------|-------------------|
-| **[AI Rules](https://www.genai-logic.com#use-case-2-vibe-development-backend)** | basic_demo_ai_rules_supplier | Sample-ai-rules_supplier | Optimal Supplier |
-| **[Use Case 1: Governed MCP Server](https://www.genai-logic.com#use-case-1-governed-mcp-server)** | basic_demo_mcp_send_email | *Sample-Basic-Demo-Vibe.md* | Bus Users compose new service to send email to overdue customers, subject to email opt-out |
-| **[Use Case 2: Vibe Development Backend](https://www.genai-logic.com#use-case-2-vibe-development-backend)** | basic_demo_vibe | Admin-Vibe-Sample | Cars and Maps |
-| **[Use Case 3: Business Users](https://www.genai-logic.com#use-case-3-business-users)** | webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/WebGenAI/) | WebG + download |
-| **[Use Case 1.X: Governed MCP Server](https://www.genai-logic.com#use-case-1-governed-mcp-server)** (basic) | basic_demo_ai_mcp_copilot | *TBD* | test rules via Copilot access to MCP Server |
+
+| Use Case | Command | What You'll Learn |
+|----------|---------|-------------------|
+| **[AI Rules](https://www.genai-logic.com/#h.no4671ezsiit)**<br> `basic_demo_ai_rules_supplier` | genai-logic create --project_name=basic_demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Optimal Supplier |
+| **[Use Case 1: Governed MCP Server](https://www.genai-logic.com/#h.n2vpyctb5xv)** <br>basic_demo_mcp_send_email | *Sample-Basic-Demo-Vibe* | Bus Users compose new service to send email to overdue customers, <br>subject to email opt-out |
+| **[Use Case 2: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> basic_demo_vibe | Admin-Vibe-Sample | Cars and Maps |
+| **[Use Case 3: Business Users](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/WebGenAI/) | WebG + download |
+
 
 &nbsp;
 
@@ -169,6 +172,7 @@ Verify it's operating properly:
 Explore [genai_demo_iteration_discount](system/genai/examples/genai_demo/genai_demo_iteration_discount).  It's an iteration of basic_demo (see system/genai/examples/genai_demo/genai_demo_iteration_discount/002_create_db_models.prompt).  This will add carbon_neutral to the data model, and update the logic to provide the discount:
 
 **Iterate Business Logic:**
+**Iterate Business Logic:**
 ```bash title='Iterate Business Logic'
 # Iterate with data model and logic
 als genai --project-name='genai_demo_with_discount' --using=system/genai/examples/genai_demo/genai_demo_iteration_discount
@@ -180,6 +184,7 @@ als genai --project-name='genai_demo_with_discount' --using=system/genai/example
 You can perform **model iterations:** add new columns/tables, while keeping the prior model intact.  First, we create a project with no logic, perhaps just to see the screens (this step is optional, provided just to illustrate that iterations create new projects from existing ones):
 
 **Iterate Without Logic:**
+**Iterate Without Logic:**
 ```bash title='Iterate Without Logic'
 # Step 1 - create without logic
 als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
@@ -188,6 +193,7 @@ als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/gen
 
 Then, we would create another prompt in the docs directory with our model changes. We've already created these for you in `system/genai/examples/genai_demo/genai_demo_iteration` - we use that to alter the data model (see `system/genai/examples/genai_demo/genai_demo_iteration/004_iteration_renames_logic.prompt`):
 
+**Iterate With Logic:**
 **Iterate With Logic:**
 ```bash title='Iterate With Logic'
 # Iterate with data model and logic
@@ -208,6 +214,7 @@ Explore [genai_demo_iteration](system/genai/examples/genai_demo/genai_demo_itera
 <br>You can declare rules using dot notation, or more informally:
 
 **Informal Logic (no dot notation):**
+**Informal Logic (no dot notation):**
 ```bash title="Informal Logic (no dot notation)"
 als genai --using=system/genai/examples/genai_demo/genai_demo_informal.prompt --project-name=genai_demo_informal
 ```
@@ -222,6 +229,7 @@ als genai --using=system/genai/examples/genai_demo/genai_demo_informal.prompt --
 <br>You can add new columns/tables, while keeping the prior model intact:
 
 **Multi-Rule Logic:**
+**Multi-Rule Logic:**
 ```bash title="Multi-Rule Logic"
 als genai --using=system/genai/examples/emp_depts/emp_dept.prompt
 ```
@@ -235,11 +243,13 @@ als genai --using=system/genai/examples/emp_depts/emp_dept.prompt
 <br>You can create a project, and ask GenAI for logic suggestions:
 
 **1. Create Project, without Rules:**
+**1. Create Project, without Rules:**
 ```bash title='1. Create Project, without Rules'
 # 1. Create Project, without Rules
 als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
 ```
 
+**2. Request Rule Suggestions:**
 **2. Request Rule Suggestions:**
 ```bash title="2. Request Rule Suggestions"
 # 2. Request Rule Suggestions
@@ -252,6 +262,7 @@ You can review the [resultant logic suggestions](genai_demo_no_logic/docs/logic_
  * See and edit: `docs/logic_suggestions/002_logic_suggestions.prompt` (used in step 3, below)
     * This corresponds to the Logic Editor - Logic View in the WebGenAI web app
 
+**3. See the rules for the logic:**
 **3. See the rules for the logic:**
 ```bash title="3. See the rules for the logic"
 # 3. See the rule code for the logic
@@ -273,6 +284,7 @@ The [logic suggestions directory](genai_demo_no_logic/docs/logic_suggestions) no
 When you are ready to proceed:
 1. Execute the following to create a *new project* (iteration), with suggested logic:
 
+**4. Create a new project with the Rule Suggestions:**
 **4. Create a new project with the Rule Suggestions:**
 ```bash title="4. Create a new project with the Rule Suggestions"
 # 4. Create a new project with the Rule Suggestions
@@ -311,6 +323,7 @@ The `genai-utils --fixup` fixes such project issues by updating the Data Model a
 After starting the [Manager](https://apilogicserver.github.io/Docs/Manager): 
 
 **0. Create Project Requiring Fixup:**
+**0. Create Project Requiring Fixup:**
 ```bash title="0. Create Project Requiring Fixup"
 # 0. Create a project requiring fixup
 als genai --repaired-response=system/genai/examples/genai_demo/genai_demo_fixup_required.json --project-name=genai_demo_fixup_required
@@ -328,6 +341,7 @@ Missing Attrs (try als genai-utils --fixup): ['Customer.balance: constraint']
 
 To Fix it:
 **1. Run FixUp to add missing attributes to the fixup response data model:**
+**1. Run FixUp to add missing attributes to the fixup response data model:**
 ```bash title="1. Run FixUp to add missing attributes to the fixup response data model"
 # 1. Run FixUp to add missing attributes to the data model
 cd genai_demo_fixup_required
@@ -335,6 +349,7 @@ als genai-utils --fixup
 ```
 
 Finally, use the created [fixup files](genai_demo_fixup_required/docs/fixup/) to rebuild the project:
+**2. Rebuild the project from the fixup response data model:**
 **2. Rebuild the project from the fixup response data model:**
 ```bash title="2. Rebuild the project from the fixup response data model"
 # 2. Rebuild the project from the fixup response data model
@@ -407,6 +422,7 @@ als genai-utils --rebuild-test-data
 
 <br>You can add new columns/tables, while keeping the prior model intact:
 
+**Iterate:**
 **Iterate:**
 ```bash title="Iterate"
 # create project without creating a file...
@@ -555,6 +571,7 @@ Please see [this doc](https://apilogicserver.github.io/Docs/Sample-AI-ChatGPT/)
 <br>This demo creates and customizes a project, starting from a database:
 
 **Quick Basic Demo:**
+**Quick Basic Demo:**
 ```bash title="Quick Basic Demo"
 
 # Microservice Automation
@@ -583,6 +600,7 @@ als rebuild-from-database --db_url=sqlite:///database/db.sqlite
 
 <br>This demo creates and customizes a project, starting from a prompt:
 
+**Quick GenAI Demo:**
 **Quick GenAI Demo:**
 ```bash title="Quick GenAI Demo"
 
