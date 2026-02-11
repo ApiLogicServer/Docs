@@ -23,8 +23,6 @@ What is GenAI-Logic:
 
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager).  The Manager is a good place to manage projects, create notes and resources, etc.  
 
-**🤖 Bootstrap Copilot by pasting the following into the chat:**
-**🤖 Bootstrap Copilot by pasting the following into the chat:**
 ```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
 Please load `.github/.copilot-instructions.md`.
 ```
@@ -75,10 +73,9 @@ Explore the three key use cases from our home page:
 | Use Case | Command | What You'll Learn |
 |----------|---------|-------------------|
 | **[AI Rules](https://www.genai-logic.com/#h.no4671ezsiit)**<br> `basic_demo_ai_rules_supplier` | genai-logic create --project_name=basic_demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Optimal Supplier |
-| **[Use Case 1: Governed MCP Server](https://www.genai-logic.com/#h.n2vpyctb5xv)** <br>basic_demo_mcp_send_email | *Sample-Basic-Demo-Vibe* | Bus Users compose new service to send email to overdue customers, <br>subject to email opt-out |
-| **[Use Case 2: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> basic_demo_vibe | Admin-Vibe-Sample | Cars and Maps |
+| **[Use Case 1: Governed MCP Server](https://www.genai-logic.com/#h.n2vpyctb5xv)** <br>basic_demo_mcp_send_email | genai-logic create --project_name=basic_demo_mcp_send_email --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Bus Users compose new service to send email to overdue customers, <br>subject to email opt-out |
+| **[Use Case 2: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> basic_demo_vibe | genai-logic create --project_name=basic_demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Cars and Maps |
 | **[Use Case 3: Business Users](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/WebGenAI/) | WebG + download |
-
 
 &nbsp;
 
@@ -88,6 +85,7 @@ Advanced examples and specialized patterns:
 
 | Demo | Command | What You'll Learn |
 |------|---------|-------------------|
+| **nw_integration** | genai-logic create --project_name=nw_integration --db_url=nw- | Kafka messaging (with docker setup) |
 | **mcp_ai** | *TBD* | • Advanced MCP patterns<br>• Complex AI integrations<br>• Production MCP deployment |
 
 
