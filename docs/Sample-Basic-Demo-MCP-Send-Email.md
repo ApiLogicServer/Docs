@@ -15,10 +15,12 @@ Guided_Tour: See tutor.md for AI guided tour instructions (user says "Guide me t
 
 # Vibe an MCP Microservice
 
-This illustrates [GenAI-Logic](Sample-Basic-Demo-Vibe.md) automation to create an MCP system using **Vibe:** 
-> **1) Natural Language**, **2) Declarative** (*what not now*), **3) Trusted error correction** with the coding assistant
+![mcp-ui](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-ui.png?raw=true)
 
-<br>
+This illustrates [GenAI-Logic](https://apilogicserver.github.io/Docs/Sample-Basic-Demo-Vibe) automation to create an MCP system using **Vibe:** 
+> **1) Natural Language**, **2) Declarative** (*what not now*), **3) Trusted error correction** with the coding assistant.
+
+This enables Business Uses to choreograph new functionality composed of existing services.  In the example above, a user has used NL to send email, leveraging the underlying services to query and send email.
 
 ``` bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
 Please load `.github/.copilot-instructions.md`

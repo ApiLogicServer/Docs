@@ -12,6 +12,8 @@ version: 0.24 from docsite, for readme 7/11/2025
   }
 </style>
 
+![vibe-cards](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/ui-vibe/nw/vibe-gallery.png?raw=true)
+
 # Product Tour (Start Here)
 
 This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features) operation: 

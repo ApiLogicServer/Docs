@@ -12,6 +12,8 @@ version: 0.3, for readme 2/8/2026
   }
 </style>
 
+![example](images/sample-ai/copilot/AI-Rules-Audit.png)
+
 !!! pied-piper "TL;DR - Integrated Deterministic and AI Rules"
     ## 
     **Prompt 1 (Create System):**
