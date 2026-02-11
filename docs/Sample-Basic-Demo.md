@@ -148,7 +148,7 @@ You can click Customer Alice, and see their Orders, and Items.
 
 The app above is suitable for collaborative iteration to nail down the requirements, and back office data maintenance.  It's also easy to make simple customizations, using the yaml file.
 
-For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language.  See the Sample: Vibe Development Backend.
+For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language.  In the Manager, see the Sample: **Vibe Development Backend**.
 
 * Instead of creating data mockups, you have a **running API server with real data**
 * Instead of starting from scratch, you have a **running multi-page app** 
@@ -165,9 +165,7 @@ For more custom apps, you get complete control by generating app source code, wh
 
 ## 3. MCP-Ready APIs
 
-Your project is MCP-ready - this will run a simple query *List customers with credit_limit > 1000*.  For more on MCP, try the sample Govererned MCP Server.
-
-![mcp-retrieval](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-retrieval.png?raw=true)
+Your project is MCP-ready - enter this in your AI Assistant to run a simple query: *List customers with credit_limit > 1000*.  For more on MCP, in the Manager, try the sample: **Govererned MCP Server**.
 
 <br>
 
