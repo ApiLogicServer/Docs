@@ -60,8 +60,6 @@ Learn core concepts with the guided tour:
 |------|---------|-------------------|----------|
 | **Basic Governed MCP Server** <br> basic_demo_ai_mcp_copilot | genai-logic create --project_name=basic_demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | |
 
-**After creation:** Say *"Guide me through basic_demo"* to your AI assistant
-
 &nbsp;
 
 ## 1. Strategic Use Cases (From [genai-logic.com](https://www.genai-logic.com))
