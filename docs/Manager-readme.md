@@ -58,8 +58,7 @@ Learn core concepts with the guided tour:
 
 | Demo | Command | What You'll Learn | Duration |
 |------|---------|-------------------|----------|
-| **basic_demo** | genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite | • Instant API + Admin App from database<br>• Declarative business logic (40X more concise)<br>• Role-based security<br>• Python extensibility<br>• Iteration with add-cust | 30-45 min<br>(guided tour) |
- **Basic Governed MCP Server** <br> basic_demo_ai_mcp_copilot | genai-logic create --project_name=basic_demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | |
+| **Basic Governed MCP Server** <br> basic_demo_ai_mcp_copilot | genai-logic create --project_name=basic_demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | |
 
 **After creation:** Say *"Guide me through basic_demo"* to your AI assistant
 
