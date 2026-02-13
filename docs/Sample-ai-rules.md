@@ -108,7 +108,7 @@ adaptive where helpful, reliable where essential.
 
 In this example, we leverage AI by providing a list of suppliers and the selection criteria (*"finding the optimal Product Supplier based on cost, lead time, and world conditions"*).  
 
-!!! abstract "AI Intelligent Selection From Options"
+!!! pied-piper "AI Intelligent Selection From Options"
 
      Invoke AI providing a prompt (*find optimal <criteria>*) and a *list of candidates*.
      
