@@ -146,20 +146,22 @@ AI can not only create the implementation, it can explain it:
 
 **Flow** (see files under `logic/logic_discovery/place_order`):
 
-1. **Early Event on OrderItem Fires** - see `./check_credit.py`
+1. **Early Row Event on OrderItem Fires** - see `./check_credit.py`
 
-    - Early event: `set_item_unit_price_from_supplier()`
+    - Early row event: `set_item_unit_price_from_supplier()`
     - Checks if suppliers exist for the product (fallback to Product.unit_price if no suppliers)
+    - Invokes wrapper
 
 2. **Wrapper Function** see `./ai_requests/supplier_selection.py`
 
-    - `get_supplier_selection_from_ai()`
-    - Creates new `SysSupplierReq` row (the *Request Pattern*)
+    - `get_supplier_selection_from_ai()` (hides complexity from rule, above)
+    - Creates new `SysSupplierReq` row (uses the *Request Pattern*)
     - Sets parent context links (`product_id`, `item_id`)
     - Inserts the request row
    
 3. **AI Event Triggers** → Insert fires ***early_row_event:*** `select_supplier_via_ai()`
 
+    - *Request Pattern* implementation
     - Get world conditions from `config/ai_test_context.yaml` (e.g., "Suez Canal blocked")
     - Sends supplier data (cost, lead time, region) + world conditions to OpenAI
     - AI analyzes and selects optimal supplier
@@ -170,7 +172,7 @@ AI can not only create the implementation, it can explain it:
     - Caller extracts: `supplier_req.chosen_unit_price`
     - Item's `unit_price` is set from this AI-chosen value
 
-5. **Standard Rule Chaining**: Formula rules automatically recalculate `Item.amount` → `Order.amount_total` → `Customer.balance`, triggering credit limit constraint check
+5. **Standard Rule Chaining provides Governance**: Formula rules automatically recalculate `Item.amount` → `Order.amount_total` → `Customer.balance`, triggering credit limit constraint check
 
 **Key Pattern**: 
 
