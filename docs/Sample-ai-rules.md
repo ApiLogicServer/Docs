@@ -16,7 +16,7 @@ version: 0.3, for readme 2/8/2026
 
 !!! pied-piper "TL;DR - Integrated Deterministic and AI Rules"
     ##
-    AI provides creativity and reasoning that businesses want... how do we provide that, *with determistic goverance?*.  
+    AI provides creativity and reasoning that businesses want... how do we provide that, *with deterministic goverance?*.  
     
     For example - a business can continue to operate even if a tanker has blocked the Suez canal by choosing an alternate supplier, as declared in the prompt shown below.
 &nbsp;
@@ -31,18 +31,18 @@ If you have not already created the project, you can create it in Manager using 
 Then:
 
 !!! pied-piper "Paste this logic into Copilot (note: takes several minutes)"
-    *On Placing Orders, Check Credit:*<br>
+    On Placing Orders, Check Credit:
 
-    *1. The Customer's balance is less than the credit limit*<br>
-    *2. The Customer's balance is the sum of the Order amount_total where date_shipped is null*<br>
-    *3. The Order's amount_total is the sum of the Item amount*<br>
-    *4. The Item amount is the quantity * unit_price*<br>
-    *5. The Product count suppliers is the sum of the Product Suppliers*<br>
-    *6. __Use AI__ to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions*
+    1. The Customer's balance is less than the credit limit
+    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+    3. The Order's amount_total is the sum of the Item amount
+    4. The Item amount is the quantity * unit_price
+    5. The Product count suppliers is the sum of the Product Suppliers
+    6. __Use AI__ to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions*
 
-    *Use case: App Integration*
+    Use case: App Integration
 
-    *1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.*
+    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 
 Developers review this DSL before execution, providing a natural human-in-the-loop checkpoint.
 
