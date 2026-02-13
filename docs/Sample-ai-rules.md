@@ -149,28 +149,28 @@ AI can not only create the implementation, it can explain it:
 
 2. **Wrapper Function** → Calls `get_supplier_selection_from_ai(product_id, item_id, logic_row)`
 
-   - Creates new `SysSupplierReq` row via Request Pattern
-   - Sets parent context links (`product_id`, `item_id`)
-   - Inserts the request row
-   - See `logic/logic_discovery/place_order/ai_requests/supplier_selection.py`
+    - Creates new `SysSupplierReq` row via Request Pattern
+    - Sets parent context links (`product_id`, `item_id`)
+    - Inserts the request row
+    - See `logic/logic_discovery/place_order/ai_requests/supplier_selection.py`
    
-3. **AI Event Triggers** → Insert automatically fires `select_supplier_via_ai()`
+4. **AI Event Triggers** → Insert fires ***early_row_event:*** `select_supplier_via_ai()`
 
-   - Loads world conditions from `config/ai_test_context.yaml` (e.g., "Suez Canal blocked")
-   - Sends supplier data (cost, lead time, region) + world conditions to OpenAI
-   - AI analyzes and selects optimal supplier
-   - Populates result fields: `chosen_supplier_id`, `chosen_unit_price`, `reason`, `request`
+    - Loads world conditions from `config/ai_test_context.yaml` (e.g., "Suez Canal blocked")
+    - Sends supplier data (cost, lead time, region) + world conditions to OpenAI
+    - AI analyzes and selects optimal supplier
+    - Populates result fields: `chosen_supplier_id`, `chosen_unit_price`, `reason`, `request`
 
-4. **Wrapper Returns** → Returns populated `SysSupplierReq` row with AI results
+5. **Wrapper Returns** → Returns populated `SysSupplierReq` row with AI results
 
-   - Caller extracts: `supplier_req.chosen_unit_price`
-   - Item's `unit_price` is set from this AI-chosen value
+    - Caller extracts: `supplier_req.chosen_unit_price`
+    - Item's `unit_price` is set from this AI-chosen value
 
-5. **Cascading**: Formula rules automatically recalculate `Item.amount` → `Order.amount_total` → `Customer.balance`, triggering credit limit constraint check
+6. **Cascading**: Formula rules automatically recalculate `Item.amount` → `Order.amount_total` → `Customer.balance`, triggering credit limit constraint check
 
 **Key Pattern**: 
 
-1. The ***request pattern*** is commonly used to insert a row, where logic (such as `before_insert`) provides integration services (e.g, invoke AI, messaging, email, etc), with automatic request auditing 
+1. The ***request pattern*** is commonly used to insert a row, where logic (such as `early_row_event`) provides integration services (e.g, invoke AI, messaging, email, etc), with automatic request auditing 
 2. The wrapper hides Request Pattern complexity - caller just gets back a populated row object with AI results (`chosen_supplier_id`, `chosen_unit_price`, `reason`) plus full audit trail.
 
 <br>
