@@ -30,7 +30,8 @@ If you have not already created the project, you can create it in Manager using 
 
 Then:
 
-!!! pied-piper "Paste this logic into Copilot (note: takes several minutes)"
+!!! pied-piper "Paste this logic into Copilot chat (note: takes several minutes)"
+
     On Placing Orders, Check Credit:
 
     1. The Customer's balance is less than the credit limit
