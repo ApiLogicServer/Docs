@@ -152,12 +152,14 @@ AI can not only create the implementation, it can explain it:
     - Checks if suppliers exist for the product (fallback to Product.unit_price if no suppliers)
     - Invokes wrapper
 
-2. **Wrapper Function** see `./ai_requests/supplier_selection.py`
+2. **Wrapper Function** invokes request pattern on `SysSupplierReq`
 
-    - `get_supplier_selection_from_ai()` (hides complexity from rule, above)
-    - Creates new `SysSupplierReq` row (uses the *Request Pattern*)
-    - Sets parent context links (`product_id`, `item_id`)
-    - Inserts the request row
+    - See `./ai_requests/supplier_selection.py` -- `get_supplier_selection_from_ai()` 
+    - Hides complexity from rule, above, by using the *Request Pattern*:
+
+        - Creates new `SysSupplierReq` row instance
+        - Sets parent context links (`product_id`, `item_id`)
+        - Inserts the request row: `SysSupplierReq` - runs its logic...
    
 3. **AI Event Triggers** → Insert fires ***early_row_event:*** `select_supplier_via_ai()`
 
