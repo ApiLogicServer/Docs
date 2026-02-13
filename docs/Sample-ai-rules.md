@@ -15,7 +15,7 @@ version: 0.3, for readme 2/8/2026
 ![example](images/sample-ai/copilot/AI-Rules-Audit.png)
 
 !!! pied-piper "TL;DR - Integrated Deterministic and AI Rules"
-
+    ##
     AI provides creativity and reasoning that businesses want... how do we provide that, *with determistic goverance?*.  
     
     For example - a business can continue to operate even if a tanker has blocked the Suez canal by choosing an alternate supplier, as declared in the prompt shown below.
