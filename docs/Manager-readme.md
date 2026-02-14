@@ -72,7 +72,7 @@ Explore the three key use cases from our home page:
 | **[Use Case 1: AI Rules](https://www.genai-logic.com/#h.no4671ezsiit)**<br> `basic_demo_ai_rules_supplier` | genai-logic create --project_name=basic_demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Optimal Supplier |
 | **[Use Case 2: Governed MCP Server](https://www.genai-logic.com/#h.n2vpyctb5xv)** <br>basic_demo_mcp_send_email | genai-logic create --project_name=basic_demo_mcp_send_email --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Bus Users compose new service to send email to overdue customers, <br>subject to email opt-out |
 | **[Use Case 3: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> basic_demo_vibe | genai-logic create --project_name=basic_demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Cars and Maps |
-| **[Use Case 4: Business Users](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | See [WebGenAI](webgenai/README.md) | Create systems from browser |
+| **[Use Case 4: Business Users](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | See [WebGenAI](webgenai/README.md) | Create systems from browser, with logic, sample data and derived attributes |
 
 &nbsp;
 
@@ -82,7 +82,7 @@ Advanced examples and specialized patterns:
 
 | Demo | Command | What You'll Learn |
 |------|---------|-------------------|
-| **New system from prompt** | genai-logic genai --using=samples/prompts/genai_demo.prompt | Create project and logic from prompt<br>Like WebGenAI, but from IDE |
+| **New system from prompt** | genai-logic genai --using=samples/prompts/genai_demo.prompt | Create systems from prompt<br>Like WebGenAI, but from IDE |
 | **nw_integration** | genai-logic create --project_name=nw_integration --db_url=nw- | Kafka messaging (with docker setup) |
 | **mcp_ai** | *TBD* | • Advanced MCP patterns<br>• Complex AI integrations<br>• Production MCP deployment |
 
