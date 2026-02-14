@@ -40,27 +40,16 @@ Please load `.github/.copilot-instructions.md`.
 genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
-**Inside the project:** Say to your AI assistant: *"Guide me through basic_demo"* (30-45 min hands-on tour)
+**Inside the project:** Say to your AI assistant: *"Guide me through basic_demo"* (30-45 min hands-on tour).  (For detailed *self-paced exploration,* see [Sample-Basic-Demo](https://apilogicserver.github.io/Docs/Sample-Basic-Demo/)).
 
-This tour teaches you the product basics: API creation, declarative rules, security, and Python customization. It's fail-safe (uses add-cust to restore if you make mistakes) and is the recommended starting point.
+> This tour teaches you the product basics: API creation, declarative rules, security, and Python customization. It's "fail-safe" (use `add-cust` to restore if you make mistakes), and is the recommended starting point.
 
-**For detailed self-paced exploration:** See [Sample-Basic-Demo](https://apilogicserver.github.io/Docs/Sample-Basic-Demo/)
 
 &nbsp;
 
 ---
 
-# 📚 Demo Catalog
-
-## 0. Product Basics (Start Here)
-
-Learn core concepts with the guided tour:
-
-| Demo | Command | What You'll Learn | Duration |
-|------|---------|-------------------|----------|
-| **Basic Governed MCP Server** <br> basic_demo_ai_mcp_copilot | genai-logic create --project_name=basic_demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | |
-
-&nbsp;
+# 📚 Demo Catalog (Next Steps)
 
 ## 1. Strategic Use Cases (From [genai-logic.com](https://www.genai-logic.com))
 
@@ -84,6 +73,7 @@ Advanced examples and specialized patterns:
 |------|---------|-------------------|
 | **New system from prompt** | genai-logic genai --using=samples/prompts/genai_demo.prompt | Create systems from prompt<br>Like WebGenAI, but from IDE |
 | **nw_integration** | genai-logic create --project_name=nw_integration --db_url=nw- | Kafka messaging (with docker setup) |
+| **Basic Governed MCP Server** <br> basic_demo_ai_mcp_copilot | genai-logic create --project_name=basic_demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
 | **mcp_ai** | *TBD* | • Advanced MCP patterns<br>• Complex AI integrations<br>• Production MCP deployment |
 
 
