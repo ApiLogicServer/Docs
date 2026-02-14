@@ -58,9 +58,9 @@ Explore the three key use cases from our home page:
 
 | Use Case | Command | What You'll Learn |
 |----------|---------|-------------------|
-| **[Use Case 1: AI Rules](https://www.genai-logic.com/#h.no4671ezsiit)**<br> `basic_demo_ai_rules_supplier` | genai-logic create --project_name=basic_demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Optimal Supplier |
-| **[Use Case 2: Governed MCP Server](https://www.genai-logic.com/#h.n2vpyctb5xv)** <br>basic_demo_mcp_send_email | genai-logic create --project_name=basic_demo_mcp_send_email --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Bus Users compose new service to send email to overdue customers, <br>subject to email opt-out |
-| **[Use Case 3: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> basic_demo_vibe | genai-logic create --project_name=basic_demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Cars and Maps |
+| **[Use Case 1: AI Rules](https://www.genai-logic.com/#h.no4671ezsiit)**<br> basic_demo_ai_rules_supplier | genai-logic create --project_name=basic_demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Use AI Rules to choose Optimal Supplier per world conditions |
+| **[Use Case 2: Governed MCP Server](https://www.genai-logic.com/#h.n2vpyctb5xv)** <br>basic_demo_mcp_send_email | genai-logic create --project_name=basic_demo_mcp_send_email --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Bus Users compose new service to send email to overdue customers, subject to email opt-out rules |
+| **[Use Case 3: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> basic_demo_vibe | genai-logic create --project_name=basic_demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | Cars, Maps, Trees... |
 | **[Use Case 4: Business Users](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | See [WebGenAI](webgenai/README.md) | Create systems from browser, with logic, sample data and derived attributes |
 
 &nbsp;
