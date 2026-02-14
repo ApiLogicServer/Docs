@@ -1,7 +1,7 @@
 ---
 title: basic_demo_mcp_send_email
 do_process_code_block_titles: True
-version: 1.2 from docsite 02/14/2026
+version: 1.3 from docsite 02/14/2026
 source: docs/Sample-Basic-Demo-MCP-Send-Email.md
 Propagation: see api_logic_server_cli/sample_mgr/basic_demo_setup.py
 ---
@@ -29,13 +29,16 @@ Please load `.github/.copilot-instructions.md`
 
 <br>
 
-**How to Use This Demo:**
+<details markdown>
 
-This demo teaches AI-assisted development patterns. Each step is a **natural language prompt** you copy/paste into Copilot chat. The prompts are self-documenting - they explain what they do.
+<summary>How to Use This Demo </summary>
+
+<br>This demo teaches AI-assisted development patterns. Each step is a **natural language prompt** you copy/paste into Copilot chat. The prompts are self-documenting - they explain what they do.
 
 **Vibe Philosophy:** AI makes errors. That's expected. When something fails, tell Copilot: *"Error X occurred, fix it"*. Copilot is exceptionally good at finding and correcting its own mistakes.
 
 **Recommended Path:** If you're new to GenAI-Logic, start with the [Standard Demo](Sample-Basic-Demo.md) (creates `basic_demo` with guided tutor) to learn platform fundamentals. Then return here to explore AI-assisted development with `basic_demo_vibe`.
+</details markdown>
 
 <br>
 
@@ -82,7 +85,7 @@ The entire process takes 20 minutes; usage notes:
 
 <details markdown>
 
-<summary> Create the Customer, Orders, Items and Product Project</summary>
+<summary> Create the Customer, Orders, Items and Product Project [typically already done using Manager]</summary>
 
 <br>
 
@@ -207,7 +210,7 @@ Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  Th
 
 <br>
 
-## 3. Enterprise Connectivity: B2B
+## 3. B2B Enterprise Integration
 
 To fit our system into the Value Chain,
 we need a custom API to accept orders from B2B partners, and forward paid orders to shipping via Kafka.
@@ -239,39 +242,55 @@ Observe the logic execution in the VSCode debug window.
 
 The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs.  Build it as follows:<br><br>
 
-
 **1. Stop the Server:**  click the red stop icon 🟥 or press <kbd>Shift</kbd>+<kbd>F5</kbd>.
 
-**2. Create the SysEmail Table to Track Sent Emails**
+&nbsp;
 
-``` bash title="Add a Table to Track Sent Emails"
-Create a table SysEmail in `database/db.sqlite` as a child of customer, 
-with columns id, message, subject, customer_id and CreatedOn.
-```
-Follow the suggestions to update the admin app.
+### 4a. Create the email service
+
+We use the **Request Pattern** to send emails, via Copilot (in conjunction with substantial Context Engineering in your project at `.github/.copilot-instructions.md` and `docs/training`):
 
 <br>
 
-**3. Create an MCP Client Executor to process MCP Requests:**
+``` bash title="1. Add a Table to Track Sent Emails"
+Create a table SysEmail in `database/db.sqlite` as a child of customer, 
+with columns id, message, subject, customer_id and CreatedOn.
+```
+
+Follow the suggestions to update the admin app.  
+
+> Ask it to do so if it fails to offer the suggestion.
+
+> Request objects are a common rule pattern - for more information, [click here](Integration-MCP.md#3b-logic-request-pattern){:target="_blank" rel="noopener"}.
+
+<br>
+
+``` bash title="2. Create the email service using SysEmail as a Request Table"
+Add an after_flush event on SysEmail to produce a log message "email sent",
+unless the customer has opted out.
+```
+
+Inserts into SysEmail will now send mails (stubbed here with a log message).
+
+<br>
+
+### 4b. Activate MCP
+
+Your project already has `integration/mcp/mcp_client_executor.py`, which processes MCP requests.  MCP Clients accept MCP Requests, invoke the LLM to obtain a series of API calls to run, and runs them.  For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
+
+To activate it:
 
 ``` bash title="Create an MCP Client Executor (don't run yet)"
 Create the mcp client executor
 ```
 
-MCP Clients accept MCP Requests, invoke the LLM to obtain a series of API calls to run, and runs them.  For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
+Context Engineering has trained Copilot to use (again) the **Request Pattern:**
+
+1. Create the `SysMcp` request object
+2. Create `logic/logic_discovery/send_email.py`, which provides an `after_flush_row_event` on `SysMcp` to invoke `integration/mcp/mcp_client_executor.py`.
 
 <br>
 
-**4. Create the email service using a Request Table**
-
-``` bash title="Create the email service using SysEmail as a Request Table"
-Add an after_flush event on SysEmail to produce a log message "email sent",
-unless the customer has opted out.
-```
-
-Inserts into SysEmail will now send mails (stubbed here with a log message).  Request objects are a common rule pattern - for more information, [click here](Integration-MCP.md#3b-logic-request-pattern){:target="_blank" rel="noopener"}.
-
-<br>
 
 <details markdown>
 
@@ -285,17 +304,15 @@ Inserts into SysEmail will now send mails (stubbed here with a log message).  Re
 
 <br>
 
-**5. Restart the Server** - F5
+## 5. Test in the Admin App
 
 <br>
 
-**6. Start the Admin App**
+**1. Restart the Server and Start the Admin App**
 
 <br>
 
-**7. Click SysMCP >> Create New, and enter:**
-
-```text title="Test the MCP using the Admin App"
+```text title="2. Click SysMCP >> Create New, and enter:"
 List the orders date_shipped is null and CreatedOn before 2023-07-14, 
 and send a discount email (subject: 'Discount Offer') 
 to the customer for each one.
@@ -318,6 +335,6 @@ to the customer for each one.
 
 <br>
 
-## 5. Iterate: Rules and Python
+## 6. Iterate: Rules and Python
 
 This is addressed in the related CLI-based demo - to continue, [click here](Sample-Basic-Demo.md#5-iterate-with-rules-and-python){:target="_blank" rel="noopener"}.
