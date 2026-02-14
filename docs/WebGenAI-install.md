@@ -1,3 +1,11 @@
+---
+title: webgenai
+source: docs/WebGenAI-Install.md
+notes: gold is proto (-- doc); alert for apostrophe
+do_process_code_block_titles: True
+version: 0.24 from docsite, for readme 7/11/2025
+---
+
 !!! pied-piper ":bulb: WebGenAI - Installing the Docker Container"
 
       WebGenAI is a web app that creates database systems from a Natural Language prompt.  For background, [see Why WebGenAI](https://www.genai-logic.com/publications/webgenie){:target="_blank" rel="noopener"}.
