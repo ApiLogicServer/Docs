@@ -1,10 +1,9 @@
 ---
 title: basic_demo_mcp_send_email
 do_process_code_block_titles: True
-version: 1.1 from docsite 10/28/2025
+version: 1.2 from docsite 02/14/2026
 source: docs/Sample-Basic-Demo-MCP-Send-Email.md
-Propagation: Build copies to api_logic_server_cli/prototypes/basic_demo/readme_vibe.md → BLT copies to Manager samples/basic_demo_sample/readme_vibe.md
-Guided_Tour: See tutor.md for AI guided tour instructions (user says "Guide me through basic_demo")
+Propagation: see api_logic_server_cli/sample_mgr/basic_demo_setup.py
 ---
 <style>
   .md-typeset h1,
@@ -67,7 +66,7 @@ Pre-reqs:
 
 The entire process takes 20 minutes; usage notes:
 
-* Most find it **more convenient** to view this in your Browser; [click here](Sample-Basic-Tour.md)
+* You may find it **more convenient** to view this in your Browser; [click here](Sample-Basic-Demo-MCP-Send-Email.md)
 * A slide show summary is available [on our Web Site](https://www.genai-logic.com/product/tour){:target="_blank" rel="noopener"}
 * Tip: look for **readme files** in created projects
 
@@ -79,19 +78,30 @@ The entire process takes 20 minutes; usage notes:
 
 ## 1. Create From Existing DB
 
-```bash title="Create a project from an existing database (open the disclosure box for details)"
-Create a database project named basic_demo_vibe from samples/dbs/basic_demo.sqlite
-```
+<br>
 
 <details markdown>
 
-<summary> The database is Customer, Orders, Items and Product</summary>
+<summary> Create the Customer, Orders, Items and Product Project</summary>
+
+<br>
+
+
+```bash title="In the Manager: Create a project from an existing database (probably already done)"
+Create a database project named basic_demo_vibe from samples/dbs/basic_demo.sqlite
+```
+
+<br>
+
+<details markdown>
+
+<summary> Your project includes a data model diagram</summary>
 
 <br>
 
 ![basic_demo_data_model](images/basic_demo/basic_demo_data_model.jpeg)
 
-</details>
+</details markdown>
 
 &nbsp;
 
@@ -133,8 +143,9 @@ Explore the app - click Customer Alice, and see their Orders, and Items.
 ![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
 </details>
 
+</details>
 
-<br>
+<br><br>
 
 ## 2. Declare Business Logic
 

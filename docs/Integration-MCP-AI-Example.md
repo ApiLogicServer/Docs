@@ -2,6 +2,7 @@
 title: basic_demo_ai_mcp_copilot
 notes: gold source is docs
 source: docs/Integration-MCP-AI-Example.md
+propagation: api_logic_server_cli/sample_mgr/basic_demo_setup.py
 do_process_code_block_titles: True
 version: 0.4, for readme 2/14/2026
 ---
