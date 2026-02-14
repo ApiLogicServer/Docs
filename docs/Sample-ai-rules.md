@@ -1,5 +1,5 @@
 ---
-title: MCP AI Example
+title: basic_demo_ai_rules_supplier
 notes: gold source is docs
 source: docs/Sample_ai-rules.md
 do_process_code_block_titles: True
@@ -21,6 +21,13 @@ version: 0.4, for readme 2/12/2026
     For example - a business can continue to operate even if a tanker has blocked the Suez canal by choosing an alternate supplier, as declared in the prompt shown below.
 &nbsp;
 
+<br>
+
+```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
+Please load `.github/.copilot-instructions.md`
+```
+
+<br>
 
 ## Declare and Test
 

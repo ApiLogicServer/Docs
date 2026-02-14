@@ -1,5 +1,5 @@
 ---
-title: Instant Microservices - with Logic and Security
+title: basic_demo_vibe
 source: docs/Sample-Basic-Demo-Vibe.md
 notes: gold is proto (-- doc); alert for apostrophe
 do_process_code_block_titles: True

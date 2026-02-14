@@ -1,5 +1,5 @@
 ---
-title: Vibe MCP / Microservice
+title: basic_demo_mcp_send_email
 do_process_code_block_titles: True
 version: 1.1 from docsite 10/28/2025
 source: docs/Sample-Basic-Demo-MCP-Send-Email.md

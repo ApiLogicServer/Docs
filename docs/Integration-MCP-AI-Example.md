@@ -1,5 +1,5 @@
 ---
-title: MCP AI Example
+title: basic_demo_ai_mcp_copilot
 notes: gold source is docs
 source: docs/Integration-MCP-AI-Example.md
 do_process_code_block_titles: True
@@ -40,6 +40,14 @@ version: 0.3, for readme 2/8/2026
 
     *On Alice's first order, update the widget quantity to 100*
 &nbsp;
+
+<br>
+
+```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
+Please load `.github/.copilot-instructions.md`
+```
+
+<br>
 
 # MCP Example
 
