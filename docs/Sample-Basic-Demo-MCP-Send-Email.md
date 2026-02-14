@@ -42,31 +42,28 @@ This demo teaches AI-assisted development patterns. Each step is a **natural lan
 
 <details markdown>
 
-<summary>Demo Overview: Vibe an MCP API, Custom Client and Business Logic; pre-reqs </summary>
+<summary>Demo Overview: Vibe an MCP API and Business Logic; pre-reqs </summary>
 
 <br>Here we will use Vibe to:
 
 1. **[Create From Existing DB](#1-create-from-existing-db)** - Provides a MCP-enabled API and an Admin App
    - [Project Opens: Run](#1a-project-opens-run) - Launch and verify your system
 
-2. **[Custom UI: GenAI, Vibe](#2-custom-ui-genai-vibe)** - Create a custom (React) client
+2. **[Declare Business Logic](#3-declare-business-logic)** - Add rules with natural language
 
-3. **[Declare Business Logic](#3-declare-business-logic)** - Add rules with natural language
+3. **[Enterprise Connectivity: B2B](#4-enterprise-connectivity-b2b)** - Create integration endpoints
 
-4. **[Enterprise Connectivity: B2B](#4-enterprise-connectivity-b2b)** - Create integration endpoints
+4. **[MCP: Logic, User Interface](#5-mcp-logic-user-interface)** - Implement Model Context Protocol
 
-5. **[MCP: Logic, User Interface](#5-mcp-logic-user-interface)** - Implement Model Context Protocol
-
-6. **[Iterate: Rules and Python](#6-iterate-rules-and-python)** - Advanced customization patterns<br><br>
+5. **[Iterate: Rules and Python](#6-iterate-rules-and-python)** - Advanced customization patterns<br><br>
 
 Pre-reqs:
 
 1. Install
 2. OpenAI API Key is useful but not required; [click here](WebGenAI-CLI.md#configuration){:target="_blank" rel="noopener"}.
 
-  * The React App has pre-built apps (`ui/my-react-app`) you can use; they require `npm install; npm start`
   * The `integration/mcp/mcp_client_executor.py` has `create_tool_context_from_llm` set to bypass LLM calls and use saved context; alter as required.
-3. NodeJS to run the react app
+
 
 The entire process takes 20 minutes; usage notes:
 
@@ -88,30 +85,9 @@ Create a database project named basic_demo_vibe from samples/dbs/basic_demo.sqli
 
 <details markdown>
 
-<summary> The database is Customer, Orders, Items and Product; you can also create the database</summary>
-
-![existing database](images/vscode/vibe/create-project.png)
-
-**Or, create a *new* database** with this prompt:
-```bash
-Create a system with customers, orders, items and products.
-
-Include a notes field for orders.
-
-on Placing Orders, Check Credit    
-    1. The Customer's balance is less than the credit limit
-    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
-    3. The Order's amount_total is the sum of the Item amount
-    4. The Item amount is the quantity * unit_price
-    5. The Item unit_price is copied from the Product unit_price
-
-Use case: App Integration
-    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
-```
+<summary> The database is Customer, Orders, Items and Product</summary>
 
 <br>
-
-In either case, the database model is customer, orders and items:
 
 ![basic_demo_data_model](images/basic_demo/basic_demo_data_model.jpeg)
 
@@ -157,42 +133,10 @@ Explore the app - click Customer Alice, and see their Orders, and Items.
 ![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
 </details>
 
-<br>
-
-## 2. Custom UI: GenAI, Vibe
-
-The app above is suitable for collaborative iteration to nail down the requirements, and back office data maintenance.  It's also easy to make simple customizations, using the yaml file.  For more custom apps, use Vibe:
-
-```bash title="Create a custom react app - customize in your IDE directly or with Vibe"
-Create a new react app using genai-add-app, 
-wait for it to complete, 
-then update the Product list to provide users an option to see results in a list or in cards.
-
-```
-
-<details markdown>
-
-<summary>Vibe Automation provides a running start (and can make errors)</summary>
-
-* Instead of creating data mockups, you have a **running API server with real data**
-* Instead of starting from scratch, you have a **running multi-page app** 
-* And, you'll have projects that are **architecturally correct:** shared logic, enforced in the server, available for both User Interfaces and services.
-* Then, use you favorite Vibe tools with your running API:
-
-> Note: AI makes errors.  Part of Vibe is to accept that, and insist that AI find and fix them.  CoPilot is generally exceptionally good at this.
-
-</details>
 
 <br>
 
-> Below is an example from Northwind: [click here](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}
-
-![vibe-cards](images/ui-vibe/nw/vibe-gallery.png)
-
-
-<br>
-
-## 3. Declare Business Logic
+## 2. Declare Business Logic
 
 Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  GenAI-Logic provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
@@ -252,7 +196,7 @@ Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  Th
 
 <br>
 
-## 4. Enterprise Connectivity: B2B
+## 3. Enterprise Connectivity: B2B
 
 To fit our system into the Value Chain,
 we need a custom API to accept orders from B2B partners, and forward paid orders to shipping via Kafka.
@@ -280,7 +224,7 @@ Observe the logic execution in the VSCode debug window.
 
 <br>
 
-## 5. MCP: Logic, User Interface
+## 4. MCP: Logic, User Interface
 
 The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs.  Build it as follows:<br><br>
 
@@ -363,6 +307,6 @@ to the customer for each one.
 
 <br>
 
-## 6. Iterate: Rules and Python
+## 5. Iterate: Rules and Python
 
 This is addressed in the related CLI-based demo - to continue, [click here](Sample-Basic-Demo.md#5-iterate-with-rules-and-python){:target="_blank" rel="noopener"}.
