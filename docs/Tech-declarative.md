@@ -6,7 +6,7 @@
 
 ## The Versata Challenge
 
-When I was CTO at Versata, we had a product built on declarative rules. The technology was powerful — rules attached to data, automatically enforced at commit, reused across every path without any additional work. Once developers got it, they loved it.
+When I was CTO at Versata, we built a product providing declarative rules. The technology was powerful — rules attached to data, automatically enforced at commit, reused across every path without any additional work. Once developers got it, they loved it.
 
 But getting them there? That was the hard part.
 
@@ -18,7 +18,7 @@ That's path-dependent logic. It solves one use case — placing an order. Ship a
 
 The declarative way is different. Instead of *"when placing an order, check credit,"* you declare: *"Customer balance is always the sum of unpaid orders and must never exceed the credit limit."*
 
-That's it. One rule. It doesn't know about placing orders, or shipping orders, or agents, or Vibe apps. It knows about data. And because it knows about data, it applies automatically to every path that touches that data — including paths that don't exist yet.
+That's it. One rule. It doesn't know about placing orders, or shipping orders, or agents, or Vibe apps. It knows about data. And because it knows about data, it applies automatically to every path that touches that data — including paths that don't exist yet.  40x reduction in business logic code, routinely.
 
 That mental shift — from *"when this happens, do that"* to *"this is always true about the data"* — was the single hardest thing we taught. Some developers got it in a day. Some took weeks. A few never fully made it.
 
@@ -36,9 +36,9 @@ The AI responded with something like: *"On placing an order, multiply price × q
 
 Procedural. Path-dependent. Exactly like every developer we ever trained at Versata.
 
-Faceplant.
+Faceplant.  **Not** what we wanted AI to be teaching!
 
-But then — the AI caught itself. Without prompting, it transformed the response. It recognized that the DSL expected declarative, data-bound invariants, not procedural execution paths. And it produced:
+But then — the AI redeemed itself, and then some. It distilled path-dependent procedural logic into proper DSL (Domain Specific Language) Python code: declarative, data-bound invariants, not procedural execution paths. And it produced:
 
 ```python
 Rule.sum(models.Customer.balance, 
@@ -99,4 +99,4 @@ The hardest thing we ever taught developers, AI just does automatically.
 
 ---
 
-*Val Huber is co-founder of GenAI-Logic and former CTO of Versata, where he led engineering for a $3B IPO. GenAI-Logic provides governed agentic business logic infrastructure for enterprise AI systems.*
+*Val Huber is the founder of GenAI-Logic and former CTO of Versata, where he led engineering for a $3B IPO. GenAI-Logic provides governed agentic business logic infrastructure for enterprise AI systems.*
