@@ -234,6 +234,7 @@ nav:
       - "Sample Demo Vibe": Sample-Basic-Demo-Vibe.md
       - "Basic Demo (unused)": Sample-Basic-Demo-Full-Unused.md
       - "Tour": Sample-Basic-Tour.md
+      - "Think Declarative": Tech-declarative.md
       - "Home": Home.md
       - "Governed Agentic Business Logic": Tech-Business-Logic-Agent.md
       - "INFO": ApiLogicServer-create.md
