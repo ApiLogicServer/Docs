@@ -95,6 +95,8 @@ The hardest thing we ever taught developers, AI just does automatically.
 
 *Design Once. Govern All Paths. Correct By Construction.*
 
+**Think SpreadSheet.  Or not.**
+
 ---
 
 *Val Huber is co-founder of GenAI-Logic and former CTO of Versata, where he led engineering for a $3B IPO. GenAI-Logic provides governed agentic business logic infrastructure for enterprise AI systems.*
