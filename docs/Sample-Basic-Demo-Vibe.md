@@ -23,7 +23,12 @@ Please load `.github/.copilot-instructions.md`
 
 <br>
 
-GenAI-Logic works works quite well with *"vibe"* tools: use GenAI-Logic to create your server and logic, and vibe to create custom apps.  You can mix and match 2 alternatives for Vibe:
+GenAI-Logic works works quite well with *"vibe"* tools: 
+
+* Use GenAI-Logic to create your server and logic, and 
+* Use vibe to create custom apps.  
+
+You can mix and match 2 alternatives for Vibe:
 
 1. Use popular vibe tools, such as Cursor.ai.  For more information, [click here](https://www.genai-logic.com/#h.75s0zu9xo7sa)
 2. GenAI-Logic provides Context Engineering you can use in IDEs such as VSCode - these include support for basic vibe creation.  This page described those services. 
