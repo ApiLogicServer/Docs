@@ -127,7 +127,7 @@ In this example, we leverage AI by providing a list of suppliers and the selecti
      2. Dynamic Pricing/Discount Strategy
      3. Task/Resource Assignment
      4. Inventory Sourcing/Replenishment
-
+&nbsp;
 <br>
 
 ## Design
