@@ -53,7 +53,7 @@ genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basi
 
 ## 1. Strategic Use Cases (From [genai-logic.com](https://www.genai-logic.com))
 
-Explore the three key use cases from our home page:
+Explore the key use cases from our home page:
 
 
 | Use Case | Command | What You'll Learn |

@@ -6,7 +6,7 @@
     2. **Samples** to illustrate typical customizations and concepts
     3. **Project Organization** - provides a list of projects (not required, but can be useful)
 
-    After 'pip install ApiLogicServer', just `als start`.
+    After 'pip install ApiLogicServer', just `genai-logic start`.
 
 
 ## Overview
