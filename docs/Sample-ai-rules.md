@@ -139,7 +139,7 @@ Observe:
 1. Products can have multiple suppliers (selection candidates)
 2. The Audit table `SysSupplierReq` - rows are created for each AI request
 
-![basic_demo_data_model](images/basic_demo/basic_demo_data_model.png)
+![basic_demo_data_model](images/basic_demo/basic_demo_data_model_ai.png)
 
 ### AI Code Generation via Context Engineering
 
