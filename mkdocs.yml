@@ -25,17 +25,21 @@ nav:
         - Execute From Terminal: Execute.md
     - Express Eval: Install-Eval.md
   - Demos, Tutorial, Samples:
-    - "Basic Self-Demo": Sample-Basic-Demo.md
-    - "Basic Demo - MCP": Sample-Basic-Demo-MCP-Send-Email.md
-    - "GenAI Microservice Automation": Sample-Genai.md
-    - "Tutorial": Tutorial.md
-    - "AI - Copilot": Sample-AI.md
-    - "Sample DB, Project": Sample-Database.md
-    - "Sample Integration": Sample-Integration.md
-    - "Deployment Tutorial": Tutorial-Deployment.md
-    - "Agile Tutorial": Tutorial-Agile.md
-    - "AI - ChatGPT, Agile": Tutorial-AI.md
-    - "Sample Systems": Data-Model-Examples.md
+    - "Basic Demo": Sample-Basic-Demo.md
+    - " - AI Rules Supplier": Sample-ai-rules.md
+    - " - MCP Send Mail": Sample-Basic-Demo-MCP-Send-Email.md
+    - " - Vibe": Sample-Basic-Demo-Vibe.md
+    - Older:
+      - "Sample_ai_mcp": Sample-ai-mcp.md
+      - "GenAI Microservice Automation": Sample-Genai.md
+      - "Tutorial": Tutorial.md
+      - "AI - Copilot": Sample-AI.md
+      - "Sample DB, Project": Sample-Database.md
+      - "Sample Integration": Sample-Integration.md
+      - "Deployment Tutorial": Tutorial-Deployment.md
+      - "Agile Tutorial": Tutorial-Agile.md
+      - "AI - ChatGPT, Agile": Tutorial-AI.md
+      - "Sample Systems": Data-Model-Examples.md
   - GenAI:
     - "WebGenAI Website": WebGenAI.md
     - "WebGenAI Installation": WebGenAI-install.md      
@@ -229,9 +233,6 @@ nav:
     - "Product Overview": Product-Overview.md
     - Personal:
       - "Manager": Manager-readme.md
-      - "Sample_ai_mcp": Sample-ai-mcp.md
-      - "Sample_ai_rules": Sample-ai-rules.md
-      - "Sample Demo Vibe": Sample-Basic-Demo-Vibe.md
       - "Basic Demo (unused)": Sample-Basic-Demo-Full-Unused.md
       - "Tour": Sample-Basic-Tour.md
       - "Think Declarative": Tech-declarative.md

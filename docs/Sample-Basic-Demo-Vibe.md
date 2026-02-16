@@ -4,7 +4,7 @@ source: docs/Sample-Basic-Demo-Vibe.md
 notes: gold is proto (-- doc); alert for apostrophe
 propagation: api_logic_server_cli/sample_mgr/basic_demo_setup.py
 do_process_code_block_titles: True
-version: 0.24 from docsite, for readme 7/11/2025
+version: 1.0 from docsite, for readme 2/16/2026
 ---
 <style>
   -typeset h1,

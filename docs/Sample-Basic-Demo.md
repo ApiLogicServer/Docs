@@ -3,7 +3,7 @@ title: Instant Microservices - with Logic and Security
 source: docs/Sample-Basic-Demo.md
 notes: gold is proto (-- doc); alert for apostrophe
 do_process_code_block_titles: True
-version: 0.24 from docsite, for readme 7/11/2025
+version: 1.0 from docsite, for readme 2/16/2026
 ---
 <style>
   -typeset h1,

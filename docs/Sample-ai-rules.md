@@ -3,7 +3,7 @@ title: basic_demo_ai_rules_supplier
 notes: gold source is docs
 source: docs/Sample_ai-rules.md
 do_process_code_block_titles: True
-version: 0.4, for readme 2/12/2026
+version: 1.0 from docsite, for readme 2/16/2026
 ---
 <style>
   -typeset h1,
@@ -18,7 +18,12 @@ version: 0.4, for readme 2/12/2026
     ##
     AI provides creativity and reasoning that businesses want... how do we provide that, *with deterministic goverance?*.  
     
-    For example - a business can continue to operate even if a tanker has blocked the Suez canal by choosing an alternate supplier, as declared in the prompt shown below.
+    For example - a business can continue to operate even if a tanker has blocked the Suez canal by choosing an alternate supplier, as declared in the prompt shown below (rule 6).
+
+    This sample illustrates:
+
+    1. Using **AI Rules** to pick the optimal supplier (calls AI at runtime, with auditing shown above)
+    2. Other rules provide Governance - whether AI rules, or calling client (e.g., check credit)
 &nbsp;
 
 <br>
