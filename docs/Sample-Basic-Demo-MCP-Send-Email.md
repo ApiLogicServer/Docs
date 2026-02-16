@@ -12,7 +12,7 @@ Propagation: see api_logic_server_cli/sample_mgr/basic_demo_setup.py
   }
 </style>
 
-# Vibe an MCP Microservice
+# Create an MCP Microservice using Copilot Vibe
 
 ![mcp-ui](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-ui.png?raw=true)
 
