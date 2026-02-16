@@ -84,7 +84,9 @@ This recreates the basic demo.  We recommend this as your first project.  For mo
 
 The app above is suitable for collaborative iteration to nail down the requirements, and back office data maintenance.  It's also easy to make simple customizations, using the yaml file.
 
-For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language:
+For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language.
+
+This will create a customized react-admin app, very much *like* the Admin App, but will full customizable source:
 
 ```bash
 # create react source (requires OpenAI key)
