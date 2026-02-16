@@ -210,10 +210,10 @@ Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  Th
 
 <br>
 
-## 3. B2B Enterprise Integration
+## 3. Custom API - B2B Orders
 
 To fit our system into the Value Chain,
-we need a custom API to accept orders from B2B partners, and forward paid orders to shipping via Kafka.
+we need a **Custom API** to accept orders from B2B partners, and forward paid orders to shipping via Kafka.
 
 ``` bash title="Create the Custom B2B API Endpoint"
 Create a B2B order API called 'OrderB2B' that accepts orders from external partners. 
@@ -274,20 +274,24 @@ Inserts into SysEmail will now send mails (stubbed here with a log message).
 
 <br>
 
-### 4b. Activate MCP
+### 4b. Activate MCP Client Executor
 
-Your project already has `integration/mcp/mcp_client_executor.py`, which processes MCP requests.  MCP Clients accept MCP Requests, invoke the LLM to obtain a series of API calls to run, and runs them.  For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
+Your project already has `integration/mcp/mcp_client_executor.py`, which processes MCP requests.  
 
-To activate it:
+> MCP Clients accept MCP Requests, invoke the LLM to obtain a series of API calls to run, and runs them.  For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
-``` bash title="Create an MCP Client Executor (don't run yet)"
+To activate the MCP Client Executor:
+
+``` bash title="Activate MCP Client Executor"
 Create the mcp client executor
 ```
 
 Context Engineering has trained Copilot to use (again) the **Request Pattern:**
 
-1. Create the `SysMcp` request object
-2. Create `logic/logic_discovery/send_email.py`, which provides an `after_flush_row_event` on `SysMcp` to invoke `integration/mcp/mcp_client_executor.py`.
+1. Creates the `SysMcp` request object (new table, also added to Admin App)
+2. Creates **Request Implementation:**
+
+    * `logic/logic_discovery/send_email.py`, which provides an `after_flush_row_event` on `SysMcp` to invoke `integration/mcp/mcp_client_executor.py`.
 
 <br>
 

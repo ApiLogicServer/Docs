@@ -36,7 +36,7 @@ Please load `.github/.copilot-instructions.md`
 
 ## Declare and Test
 
-If you have not already created the project, you can create it in Manager using Copilot:
+If you have not already created the project, you can create it in the Manager using Copilot:
 
 &emsp;*Create a system named basic_demo from samples/dbs/basic_demo.sqlite*.  
 
@@ -51,11 +51,11 @@ Then:
     3. The Order's amount_total is the sum of the Item amount
     4. The Item amount is the quantity * unit_price
     5. The Product count suppliers is the sum of the Product Suppliers
-    6. __Use AI__ to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions*
+    6. Use AI to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions
 
     Use case: App Integration
 
-    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None
 
 Developers review this DSL before execution, providing a natural human-in-the-loop checkpoint.
 
@@ -90,9 +90,9 @@ Different kinds of logic naturally call for different tools, as in this unified 
 
 ### Logic Architecture
 
-**The Business Logic Agent** processes a *declarative NL requests:*
+GenAI-Logic provides support for *AI Rules:*
 
-- At declaration time (e.g., in Copilot):
+- At declaration time (e.g., in VSCode/Copilot):
 
     * **D1:** Accepts a unified declarative NL request
     * **D2.** Uses GenAI to create
@@ -120,18 +120,19 @@ adaptive where helpful, reliable where essential.
 
 In this example, we leverage AI by providing a list of suppliers and the selection criteria (*"finding the optimal Product Supplier based on cost, lead time, and world conditions"*).  
 
-!!! pied-piper "AI Intelligent Selection From Options"
+!!! pied-piper "Pattern: AI Intelligent Selection From Options"
 
      Invoke AI providing a prompt (*find optimal <criteria>*) and a *list of candidates*.
      
      AI computes the selected object.
 
-     Here we select an optimal supplier from a list of suppliers.  Other examples:
+     Examples:
 
-     1. Shipping Carrier/Route Selection
-     2. Dynamic Pricing/Discount Strategy
-     3. Task/Resource Assignment
-     4. Inventory Sourcing/Replenishment
+     1. Choose Optimal Supplier (this example)
+     2. Shipping Carrier/Route Selection
+     3. Dynamic Pricing/Discount Strategy
+     4. Task/Resource Assignment
+     5. Inventory Sourcing/Replenishment
 &nbsp;
 <br>
 
@@ -173,9 +174,9 @@ AI can not only create the implementation, it can explain it:
         - Sets parent context links (`product_id`, `item_id`)
         - Inserts the request row: `SysSupplierReq` - runs its logic...
    
-3. **AI Event Triggers** → Insert fires ***early_row_event:*** `select_supplier_via_ai()`
+3. Insert →  ***early_row_event:*** `select_supplier_via_ai()` - *Request Pattern* implementation
 
-    - *Request Pattern* implementation
+    - See same file: `./ai_requests/supplier_selection.py`
     - Get world conditions from `config/ai_test_context.yaml` (e.g., "Suez Canal blocked")
     - Sends supplier data (cost, lead time, region) + world conditions to OpenAI
     - AI analyzes and selects optimal supplier
