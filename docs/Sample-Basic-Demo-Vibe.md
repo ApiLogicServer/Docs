@@ -50,16 +50,6 @@ Pre-reqs:
 1. Install
 2. OpenAI API Key is useful but not required; [click here](WebGenAI-CLI.md#configuration){:target="_blank" rel="noopener"}.
 
-  * The `integration/mcp/mcp_client_executor.py` has `create_tool_context_from_llm` set to bypass LLM calls and use saved context; alter as required.
-
-
-The entire process takes 20 minutes; usage notes:
-
-* You may find it **more convenient** to view this in your Browser; [click here](Sample-Basic-Demo-MCP-Send-Email.md)
-* A slide show summary is available [on our Web Site](https://www.genai-logic.com/product/tour){:target="_blank" rel="noopener"}
-* Tip: look for **readme files** in created projects
-
-![product-tour](images/basic_demo/product-tour.png)
 
 </details>
 
@@ -110,9 +100,7 @@ In the ui/react app, Update the Product list to provide users an option to see r
 ```
 <br>
 
-> Below is an example from Northwind: for more information on vibe, [click here](https://apilogicserver.github.io/Docs/Admin-Vibe-Sample)
-
-![vibe-cards](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/ui-vibe/nw/vibe-gallery.png?raw=true)
+> The screen shot above is an example from Northwind: for more information on vibe, [click here](https://apilogicserver.github.io/Docs/Admin-Vibe-Sample)
 
 <br>
 
