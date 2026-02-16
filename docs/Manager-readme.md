@@ -2,7 +2,7 @@
 title: Welcome
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs/Manager-readme
-version info: 16.00.00 (02/09/2026)
+version info: 16.00.01 (02/16/2026)
 do_process_code_block_titles: True
 Used: Manager Readme
 ---
@@ -72,6 +72,7 @@ Advanced examples and specialized patterns:
 | Demo | Command | What You'll Learn |
 |------|---------|-------------------|
 | **New system from prompt** | genai-logic genai --using=samples/prompts/genai_demo.prompt | Create systems from prompt<br>Like WebGenAI, but from IDE |
+| **Coding Samples** | code samples/nw_sample | Useful code examples<br>Search: `#als` |
 | **nw_integration** | genai-logic create --project_name=nw_integration --db_url=nw- | Kafka messaging (with docker setup) |
 | **Basic Governed MCP Server** <br> basic_demo_ai_mcp_copilot | genai-logic create --project_name=basic_demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
 | **mcp_ai** | *TBD* | • Advanced MCP patterns<br>• Complex AI integrations<br>• Production MCP deployment |
