@@ -75,6 +75,8 @@ Your project includes comprehensive training materials that serve as a "message 
 3. **`readme.md`** - Project overview with quick start instructions
 4. **Code examples** - real working examples in the `readme's` throughout the project
 
+![context-engineering](images/ui-vibe/assistant/Context-Engineering.png)
+
 &nbsp;
 
 ### 🧠 Context-Aware Architecture
