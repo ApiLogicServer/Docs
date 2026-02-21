@@ -67,9 +67,45 @@ If you change your database / data model, you can rebuild the project, preservin
 
 Be sure you are clear on how to setup your [project venv](Project-Env.md){:target="_blank" rel="noopener"}.
 
+### Recommended Extensions
+
+The extensions below are worth considering for API Logic Project development.
+
+&nbsp;
+
+#### GitHub Copilot / Claude / ChatGPT
+
+AI Coding Assistants are essential for Vibe Coding - creating logic, APIs, and UIs using natural language.  Install one (or more) from the VSCode Marketplace:
+
+* **GitHub Copilot** (`github.copilot-chat`) — tightly integrated into VSCode; used for all Vibe examples in this documentation
+* **Claude** (`anthropic.claude-code`) — strong at multi-file reasoning and explanation
+* **ChatGPT** (`openai.chatgpt`) — broadly capable assistant
+
+&nbsp;
+
+#### DBML ERD Visualizer
+
+[`bocovo.dbml-erd-visualizer`](https://marketplace.visualstudio.com/items?itemName=bocovo.dbml-erd-visualizer){:target="_blank" rel="noopener"} renders Entity-Relationship diagrams from `.dbml` files directly in VSCode.  API Logic Server can export your data model as DBML, making this a quick way to visualize your schema without leaving the IDE.
+
+&nbsp;
+
+#### Git Graph
+
+[`mhutchie.git-graph`](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph){:target="_blank" rel="noopener"} adds a graphical git history view.  A significant improvement over the built-in source-control panel for understanding branch history and diffs.
+
+&nbsp;
+
+#### Database Client
+
+[`cweijan.vscode-mysql-client2`](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2){:target="_blank" rel="noopener"} (Database Client) supports MySQL, PostgreSQL, SQLite, and more.  Useful for inspecting your database data directly alongside your project code.
+
+&nbsp;
+
 ### VSCode CLI
 
 You can launch VSCode from the command line.  It's often pre-installed on Windows; for Mac, you must activate VSCode `code` CLI:
 
 1. Open the Command Palette (Cmd+Shift+P) and 
 2. type `shell command`
+
+> **Mac users:** this step is easy to overlook and will prevent `code .` from working in the terminal.  Do it once after installing VSCode.
