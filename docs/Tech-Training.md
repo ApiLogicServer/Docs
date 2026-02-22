@@ -5,6 +5,29 @@
       * WebGenAI-focused
       * Java background - new to Python
 
+
+### Orientation Checklist
+
+Before running the key samples, make sure you understand:
+
+#### Python
+- [ ] **Virtual environment (venv)** — know how to create and activate it; required for running the server and CLI commands.  Optionally shared from Manager
+- [ ] **Python path** — libs not in the venv
+- [ ] **App Settings** — see the app `config` directory
+- [ ] **VS Code** — see `.vscode` -- `.settings`, `.launch'
+
+#### Architecture - [click What Is ApiLogicServer](Architecture-What-Is.md){:target="_blank" rel="noopener"}
+
+#### IDE Instances - Manager vs Project
+- [ ] **Manager** Context/Prompt Engineering for creating projects, organizes projects
+
+#### AI Assistant
+- [ ] **Prompt Engineering (pe)** — how to write effective prompts for GenAI-Logic tasks
+- [ ] **Context Engineering (ce)** — how to load and manage context, both in the Manager and in a project
+- [ ] **App** — Determinstic, *unless* you use `AI Rules` (govern these with other rules)
+
+<br>
+
 ### Initial Background
 Review the [GenAI Architecture](Architecture-What-Is-GenAI.md){:target="_blank" rel="noopener"}, and take a quick scan of [Python for Java programmers](Tech-Python.md){:target="_blank" rel="noopener"}. 
 
