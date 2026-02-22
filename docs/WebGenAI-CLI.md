@@ -266,6 +266,8 @@ You can export your project from WebGenAI, either from the Browser or from GitHu
 
 This enables you to verify all aspects of project operation, and extend GenAI functionality in your local IDE.
 
+The exported project is a standard API Logic Server project — no proprietary tools required.  Developers can extend it using Python, standard IDEs, and open-source libraries, with no additional licensing or deployment fees.
+
 &nbsp;
 
 ### Open in your IDE
