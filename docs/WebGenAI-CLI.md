@@ -275,20 +275,36 @@ Once have exported and expanded the tar file:
 ![exported](images/web_genai/export/downloaded.png)
 
 1. Optionally, copy the project folder to your manager folder (where you installed API Logic Server).
-    * This is not required, but it keeps your projects organized, and provide quick access to the Samples that illustrate typical customizations.
-2. Setup your virtual environment - see [Virtual Environment](Project-Env.md){:target="_blank" rel="noopener"}.  
+    * This keeps your projects organized and gives quick access to the Samples that illustrate typical customizations.
+    * If you copy it into the manager folder, the project will share the manager's `venv` — the simplest setup.
 
-    * You can create a new venv, but it's simplest just to use the one used by the Manager.
+2. **Fix the VS Code settings** — the exported project contains Docker-specific paths that must be corrected for local use.  Make the following changes to `.vscode/settings.json`:
 
-    * Note: in some configurations of VSCode (e.g., mac multiple projects in the same window), it may not allow you to specify your virtual environment.  You can fix this:
+    a. Set the interpreter path to the manager's shared venv:
+    ```json
+    "python.defaultInterpreterPath": "${workspaceFolder}/../venv/bin/python"
+    ```
+    b. Remove these lines (they reference Docker-internal paths that do not exist locally):
+    ```
+    "python.envFile": ...
+    "terminal.integrated.profiles.osx": ...
+    "terminal.integrated.profiles.linux": ...
+    "terminal.integrated.defaultProfile.osx": ...
+    "terminal.integrated.defaultProfile.linux": ...
+    "python-envs.defaultEnvManager": ...
+    "python-envs.pythonProjects": ...
+    ```
 
-        * Set the proper virtual environment in `.vscode/settings.json`: `    "python.defaultInterpreterPath": "~/dev/ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer/venv/bin/python"`
-        * Rename the project
+3. **Fix `.vscode/launch.json`** — add the `"python"` key to each server launch configuration (e.g. `ApiLogicServer`, `ApiLogicServer DEBUG`).  This is required for F5 to use the correct interpreter; `defaultInterpreterPath` alone is not sufficient:
+    ```json
+    "python": "${workspaceFolder}/../venv/bin/python"
+    ```
 
-3. Verify your default value settings, as shown below (typically True)
-4. You should then be able to open and run the exported project in your IDE.  In the terminal window of your IDE:
-    * `cd <your project>
-    * `code .`
+4. If a root `.env` file is present, delete it.  (It contains only commented-out Docker paths and causes a VS Code warning.)
+
+5. **Rename the project folder** before opening in VS Code for the first time — e.g. `AcademicManagementSystem` → `AcademicMyProject`.  VS Code caches the interpreter selection keyed to the folder path; starting with a fresh name avoids picking up a stale cached selection.
+
+6. Open the renamed folder in VS Code (`code .` from the terminal, or **File > Open Folder**) and press **F5**.
 
 ![defaulting](images/web_genai/export/defaulting.png)
 
