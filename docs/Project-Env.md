@@ -110,3 +110,14 @@ For more information, see [Work with Environments](https://code.visualstudio.com
 ### Copy Not Recommended
 
 Recommend re-creating a venv rather than moving/copying; for more information, [see here](https://stackoverflow.com/questions/7438681/how-to-duplicate-virtualenv){:target="_blank" rel="noopener"}.
+
+### F5 / Debugger uses `launch.json` `"python"` key, not `settings.json`
+
+> **Alert:** `python.defaultInterpreterPath` in `settings.json` controls the Pylance/status-bar picker, but **not the F5 debugger**.  F5 (debugpy) uses the `"python"` key inside each configuration in `.vscode/launch.json`.
+
+Starting with release 15.x, created projects include `"python": "${workspaceFolder}/../venv/bin/python"` in each server launch configuration.  This portable relative path works correctly on any machine without modification — no absolute path is baked in at creation time.
+
+> **Subfolder Caveat:** This path assumes your project lives **one level below** the Manager directory (e.g., `ApiLogicServer/my_project/`).  If your project is nested deeper (e.g., `ApiLogicServer/custom_apps/my_project/`), the `../venv` reference will resolve incorrectly.  In that case, adjust the `"python"` value in `.vscode/launch.json` manually, e.g.:
+> ```json
+> "python": "${workspaceFolder}/../../venv/bin/python"
+> ```
