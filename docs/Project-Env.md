@@ -111,13 +111,13 @@ For more information, see [Work with Environments](https://code.visualstudio.com
 
 Recommend re-creating a venv rather than moving/copying; for more information, [see here](https://stackoverflow.com/questions/7438681/how-to-duplicate-virtualenv){:target="_blank" rel="noopener"}.
 
-### F5 / Debugger uses `launch.json` `"python"` key, not `settings.json`
+### F5 / Debugger: use the Python Picker
 
-> **Alert:** `python.defaultInterpreterPath` in `settings.json` controls the Pylance/status-bar picker, but **not the F5 debugger**.  F5 (debugpy) uses the `"python"` key inside each configuration in `.vscode/launch.json`.
+**If F5 fails**, click the Python version in the VS Code status bar and select the correct venv.  That's it — everything follows automatically.
 
-Starting with release 15.x, created projects include `"python": "${workspaceFolder}/../venv/bin/python"` in each server launch configuration.  This portable relative path works correctly on any machine without modification — no absolute path is baked in at creation time.
+**How it works:** Starting with release 16.x, created projects include `"python": "${command:python.interpreterPath}"` in each server launch configuration.  VS Code resolves this at runtime from whatever interpreter the status-bar picker has selected (stored in `python.defaultInterpreterPath` in `.vscode/settings.json`).  The picker is the single control — no manual file editing required.
 
-> **Subfolder Caveat:** This path assumes your project lives **one level below** the Manager directory (e.g., `ApiLogicServer/my_project/`).  If your project is nested deeper (e.g., `ApiLogicServer/custom_apps/my_project/`), the `../venv` reference will resolve incorrectly.  In that case, adjust the `"python"` value in `.vscode/launch.json` manually, e.g.:
-> ```json
-> "python": "${workspaceFolder}/../../venv/bin/python"
-> ```
+> **Note for cloned/moved projects:** `settings.json` contains the original machine's path.  Just use the picker to select the correct interpreter on your machine — `launch.json` picks it up automatically.
+
+??? note "Technical detail"
+    `launch.json` uses the VS Code variable `${command:python.interpreterPath}`, which resolves at runtime to the value of `python.defaultInterpreterPath` in `.vscode/settings.json`.  That value is written by the picker when you select an interpreter — so the picker is the single source of truth for both Pylance and F5.
