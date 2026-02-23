@@ -1,10 +1,9 @@
 !!! pied-piper ":bulb: Lab-Focused Training"
 
-      A recommended approach for learning GenAI-Logic is:
+      Instead of hours of concepts, many propose that training be organzied around a series of Labs.  This page outlines such a course, presuming:
 
-      * Basic Orientation - use the list below, in conjunction with your AI Assistant
-      * Key Samples - list provided on the Manager Readme, and docs
-      * Logic - drill down on learning logic - [click here](Logic.md){:target="_blank" rel="noopener"}
+      * WebGenAI-focused
+      * Java background - new to Python
 
 
 ### Orientation Checklist
@@ -12,30 +11,133 @@
 Before running the key samples, make sure you understand:
 
 #### Python
-- [ ] **Virtual environment (venv)** — required for running the server and CLI commands.  Default shared from Manager; see also [venv docs](Project-Env.md){:target="_blank" rel="noopener"}.
+- [ ] **Virtual environment (venv)** — know how to create and activate it; required for running the server and CLI commands.  Optionally shared from Manager
 - [ ] **Python path** — libs not in the venv
-- [ ] **App Settings** — see the app `config` directory (security, db location etc)
+- [ ] **App Settings** — see the app `config` directory
 - [ ] **VS Code** — see `.vscode` -- `.settings`, `.launch'
 
 #### Architecture - [click What Is ApiLogicServer](Architecture-What-Is.md){:target="_blank" rel="noopener"}
 
 #### IDE Instances - Manager vs Project
 - [ ] **Manager** Context/Prompt Engineering for creating projects, organizes projects
-- [ ] **Project** Standard project (folder of your code and rules), and PE for AI Assistant
 
 #### AI Assistant
-- [ ] **The 3-Legged Stool** — ask your assistant 
-- [ ] **Prompt Engineering (pe)** — used by `genai-logic genai*` CLI commands, and WebGenAI
-- [ ] **Context Engineering (ce)** — ask CoPilot: *how can you help me?*
-- [ ] **App** — Behavior is determinstic, *unless* you use `AI Rules`
-
-    - so, govern these with other rules
+- [ ] **Prompt Engineering (pe)** — how to write effective prompts for GenAI-Logic tasks
+- [ ] **Context Engineering (ce)** — how to load and manage context, both in the Manager and in a project
+- [ ] **App** — Determinstic, *unless* you use `AI Rules` (govern these with other rules)
 
 <br>
 
 ### Initial Background
 Review the [GenAI Architecture](Architecture-What-Is-GenAI.md){:target="_blank" rel="noopener"}, and take a quick scan of [Python for Java programmers](Tech-Python.md){:target="_blank" rel="noopener"}. 
 
+
+### Installation and Configuration
+While WebGenAI is available via your browser - you will want to have a local version of Python, ApiLogicServer, VSCode (and optionally Docker Desktop) running.  This has been documented here:
+
+1. [Python 3.12 Installation](Tech-Install-Python.md){:target="_blank" rel="noopener"}
+2. [Understand Virtual Environments](https://docs.python.org/3/library/venv.html){:target="_blank" rel="noopener"}, and [als notes](Project-Env.md){:target="_blank" rel="noopener"}
+3. [ApiLogicServer Installation](Install-Express.md){:target="_blank" rel="noopener"}
+4. [VSCode for Python](https://code.visualstudio.com/docs/python/python-tutorial){:target="_blank" rel="noopener"}
+5. [Docker Desktop Install](https://docs.docker.com/desktop/){:target="_blank" rel="noopener"}
+6. [Sample Docker Databases](Database-Docker.md){:target="_blank" rel="noopener"} are available for learning.
+
+&nbsp;
+
+## Core WebGenAI
+
+In this series of labs, you will 
+
+1. create and run projects
+2. debug them, both in WebGanAI and the IDE
+3. explore iterations
+
+&nbsp;
+
+### Using WebGenAI in the Browser
+
+You can run WebGenAI locally on your desktop or your company may have a cloud version running. WebGenAI uses OpenAI ChatGPT and requires the configuration of both a license and an OpenAI API Key.  Watch the video [here](https://www.youtube.com/watch?v=7I33Fa9Ulos){:target="_blank" rel="noopener"}
+
+In this lab:
+
+1. Create the demo project from a prompt [Prompt Engineering Basics](https://apifabric.ai/admin-app/index.html#/Home?demo=genai_demo){:target="_blank" rel="noopener"}
+2. Verify the logic by navigating to a Customer with an unshipped order, and altering one of the items to have a very large quantity
+3. Explore [debugging logic](WebGenAI.md#debugging-logic){:target="_blank" rel="noopener"} using your Browser
+
+&nbsp;
+
+### Using your IDE
+
+#### Download (aka Export)
+
+The web-based interface is great for rapid creation, but you will enjoy much better debugging using your IDE.  We'll explore that in these next labs.
+
+Please see [Export](WebGenAI-CLI.md#export){:target="_blank" rel="noopener"}.
+
+Use the 'Project Download' link from the '2> develop' page or the project page (as a tar file). Unzip or un-tar the file and copy to the manager or developer workspace.
+
+&nbsp;
+
+#### Start the Manager
+
+The Manager is a pre-configured VSCode with samples used to help new developers learn about ApiLogicServer.  See the [Manager](Manager.md){:target="_blank" rel="noopener"} documentation.
+
+See the procedure below (`cd ApiLogicServer; code .`)
+
+&nbsp;
+
+#### Copy your Project to the Manager Directory
+
+As explained in [Export](WebGenAI-CLI.md#export){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+#### Start your project
+
+The Manager has a readme which explains how to run projects from inside the manager.  When you are getting started, it's easiest just to launch another instance of VSCode.  In the termimal window of VSCode:
+
+```bash
+cd <your project>
+code .
+```
+
+&nbsp;
+
+#### Explore Logic Debugging
+
+Refer to the [docs on logic debugging](Logic-Debug.md){:target="_blank" rel="noopener"}.
+
+1. Put a breakpoint on the constraint
+2. Start the Server (F5)
+3. Start the App in the Browser
+4. Verify the logic by navigating to a Customer with an unshipped order, and altering one of the items to have a very large quantity
+  * Observe the log, showing each rule firing with the row data
+
+&nbsp;
+
+### Explore Rule Concepts
+ApiLogicServer provides a rule engine (LogicBank) to allow the developer to add derivations, constraints and events to any API endpoint.  These rules can be created by WebGenAI natural language or using the VSCode IDE manually entered.
+
+1. [Rule Type Patterns](Logic.md){:target="_blank" rel="noopener"} 
+
+&nbsp;
+
+### WebGenAI Iterations
+
+Explore WebGenAI iteration services:
+
+2. Use the 'Iterate' button to modify the created project
+3. Use the ['Logic'](WebGenAI.md#using-the-logic-editor){:target="_blank" rel="noopener"} 
+   button and the 'Suggestion' to create natural language rules
+4. Use the 'Update Model' button if the rules fail to activate
+
+&nbsp;
+
+### Dev Strategy: WebGenAI, IDE, or Both?
+
+You will find WebGenAI remains useful, particularly for updating the data model (e.g., as required for logic).  The system provides [Import/Merge](IDE-Import-WebGenAI.md){:target="_blank" rel="noopener"} services to sync WebGenAI changes with IDE changes.
+
+If you elect to focus on IDE development, analogous services are provided with [Rebuild from Model / Database, and Alembic support](Database-Changes.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

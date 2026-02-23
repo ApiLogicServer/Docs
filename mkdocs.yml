@@ -27,9 +27,10 @@ nav:
   - Demos, Tutorial, Samples:
     - "Creating Demos": Manager-Demos.md
     - "Basic Demo": Sample-Basic-Demo.md
-    - " - AI Rules Supplier": Sample-ai-rules.md
-    - " - MCP Send Mail": Sample-Basic-Demo-MCP-Send-Email.md
-    - " - Vibe": Sample-Basic-Demo-Vibe.md
+    - ".. AI Rules Supplier": Sample-ai-rules.md
+    - ".. MCP Send Mail": Sample-Basic-Demo-MCP-Send-Email.md
+    - ".. Vibe": Sample-Basic-Demo-Vibe.md
+    - "Orientation": Tech-Training.md
     - Older:
       - "Sample_ai_mcp": Sample-ai-mcp.md
       - "GenAI Microservice Automation": Sample-Genai.md
@@ -207,7 +208,7 @@ nav:
     - "Adoption Considerations?": Tech-Adoption.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
-    - "Training": Tech-Training.md
+    - "Training WG Devs": Tech-Training-WG-Dev.md
     - "Enterprise Vibe": Tech-Enterprise-Vibe.md
     - "Keycloak DevNotes": Keycloak-devnotes.md
     - "API Appliance": Tech-Toaster.md
