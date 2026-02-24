@@ -13,7 +13,7 @@ Follow these instructions to:
 You can create this anywhere, such as your home folder or Desktop.
 
 ```bash title="Create an install directory"
-mkdir ApiLogicServer      # a directory of projects on your local machine
+mkdir genai-logic      # a directory of projects on your local machine
 ```
 
 ## Use Local Install, or Docker
@@ -46,7 +46,7 @@ Open the appropriate section below.
 
     __Install API Logic Server in a Virtual Environment__
 
-    Then, install API Logic Server in the usual manner (typically you create/cd to a new directory, e.g., `ApiLogicServer`):
+    Then, install API Logic Server in the usual manner (typically you create/cd to a new directory, e.g., `genai-logic`):
 
     ```bash title="Install API Logic Server in a Virtual Environment"
     python -m venv venv                  # may require python3 -m venv venv
@@ -63,10 +63,10 @@ Open the appropriate section below.
 
     &nbsp;
 
-    __Start the ApiLogicServer manager__
+    __Start the genai-logic manager__
 
     ```bash title="Start Manager"
-    ApiLogicServer start
+    genai-logic start
     ```
 
     This will install the samples and open in your IDE; open the readme and follow the directions to create projects.
@@ -81,7 +81,7 @@ Open the appropriate section below.
     The **`Readme`** recommends that you start by creating the *basic demo* app:
 
     ```bash title="Create Basic Demo"
-    ApiLogicServer create --project_name=basic_demo --db_url=basic_demo
+    genai-logic create --project_name=basic_demo --db_url=basic_demo
     ```
 
     &nbsp;
@@ -94,7 +94,7 @@ Open the appropriate section below.
 
     __Start Docker__
     ```bash title="Start (might install) API Logic Server Docker"
-      > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server
+      > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost genai-logic/api_logic_server
       $ # you are now active in the API Logic Server docker container to create projects
     ```
 
@@ -109,7 +109,7 @@ Open the appropriate section below.
     You are now running a terminal window in the Docker machine.  Create the Tutorial project:
       ```bash title="Create Tutorial"
       $ cd /localhost/             # a directory on your local file system in which...
-      $ ApiLogicServer tutorial    # tutorial directory will be created
+      $ genai-logic tutorial    # tutorial directory will be created
       $ exit                       # return to local host 
       ```
 
@@ -120,7 +120,7 @@ Open the appropriate section below.
     Typical project creation identifies the database and target project name:
       ```bash title="Create Typical project"
       $ cd /localhost/             # a directory on your local file system for project creation
-      $ ApiLogicServer create-and-run --project_name=ApiLogicProject --db_url=
+      $ genai-logic create-and-run --project_name=ApiLogicProject --db_url=
       $ exit                       # return to local host 
       ```
 
@@ -130,7 +130,7 @@ Open the appropriate section below.
     
     Once the project is created, open it in VSCode on your local host:
 
-    1. Open Folder `ApiLogicServer/tutorial` in VSCode
+    1. Open Folder `genai-logic/tutorial` in VSCode
         * Accept option to "Reopen in Container"
 
             > If you already skipped this option, no worries.  Use __View > Command Palette > Remote-Containers: Reopen in Container__
