@@ -49,6 +49,7 @@ Open the appropriate section below.
     Then, install API Logic Server in the usual manner (typically you create/cd to a new directory, e.g., `genai-logic`):
 
     ```bash title="Install API Logic Server in a Virtual Environment"
+    cd genai-logic
     python -m venv venv                  # may require python3 -m venv venv
     source venv/bin/activate             # windows: venv\Scripts\activate
     python -m pip install ApiLogicServer
