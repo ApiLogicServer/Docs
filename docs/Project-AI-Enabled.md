@@ -56,7 +56,7 @@ In addition, you can use ***AI at runtime** to execute logic.  For example, this
 
 Runtime access and genai-* CLI services use ChatGPT.  You will need to configure your key, typically as an environment variable.
 
-Copilot access is your choice.  We get good results and typically use Claude Sonnet 4.5.
+Copilot access is your choice.  We get good results and typically use Claude Sonnet 4.6.
 
 &nbsp;
 

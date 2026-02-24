@@ -133,7 +133,7 @@ Not just endpoint checks — tests that prove the rules work correctly when data
 
 ### Phase 1: Test Creation Aha #1 — Use the Rules
 
-I asked AI (GitHub Copilot with Claude Sonnet 4.5 in VS Code) to read the declarative rules and generate Behave test scenarios.
+I asked AI (GitHub Copilot with Claude Sonnet 4.6 in VS Code) to read the declarative rules and generate Behave test scenarios.
 
 **Test Creation Aha #1:** The rules themselves are the specification.  
 AI can read `Rule.sum(derive=Customer.balance, where=date_shipped is None)` and understand it needs to test:
@@ -433,7 +433,7 @@ That's collaboration.
 
 ## About This Article
 
-This article was written collaboratively by Val Huber (human, 40+ years enterprise development) and AI (GitHub Copilot with Claude Sonnet 4.5) working together in VS Code.  
+This article was written collaboratively by Val Huber (human, 40+ years enterprise development) and AI (GitHub Copilot with Claude Sonnet 4.6) working together in VS Code.  
 The testing system described was built in approximately one week of pair programming, demonstrating the same human-AI collaboration pattern it enables.
 
 **Want to try it yourself?**  
@@ -450,7 +450,7 @@ The testing system described was built in approximately one week of pair program
 
 *"The best collaboration is where humans provide strategic breakthroughs and AI handles exhaustive propagation — each amplifying the other's strengths. The best architecture is one where AI learns to program itself, guided by human insight. The best investment is knowledge that multiplies: one week of work teaching every future project."*
 
-— Val Huber & AI (GitHub Copilot with Claude Sonnet 4.5)
+— Val Huber & AI (GitHub Copilot with Claude )
 
 ---
 

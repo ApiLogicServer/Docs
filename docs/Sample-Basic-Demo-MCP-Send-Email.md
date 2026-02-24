@@ -25,7 +25,7 @@ This enables Business Uses to choreograph new functionality composed of existing
 Please load `.github/.copilot-instructions.md`
 ```
 
-> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.  Also, we get consistently good results with `Claude Sonnet 4.5`.
+> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.  Also, we get consistently good results with `Claude Sonnet 4.6`.
 
 <br>
 
