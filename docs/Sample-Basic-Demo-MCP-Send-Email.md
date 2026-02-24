@@ -257,7 +257,7 @@ Create a table SysEmail in `database/db.sqlite` as a child of customer,
 with columns id, message, subject, customer_id and CreatedOn.
 ```
 
-Follow the suggestions to update the admin app.  
+Follow the suggestions to update the admin app. 
 
 > Ask it to do so if it fails to offer the suggestion.
 

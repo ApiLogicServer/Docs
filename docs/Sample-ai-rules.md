@@ -61,9 +61,10 @@ Developers review this DSL before execution, providing a natural human-in-the-lo
 
 To test:
 
-1. Start the Server
-2. Order some Egyptian Cotton Sheets (use in the Admin App, or test MCP using Copilot - paste:<br> &emsp;*On Alice's first order, include 100 Egyptian Cotton Sheets*
-3. Verify the AI call - use the Admin App to view the audit trail (top of this page)
+1. Update config/ai_test_context.yaml to signify Suez Canal blocked
+2. Start the Server
+3. Order some Egyptian Cotton Sheets (use in the Admin App, or test MCP using Copilot - paste:<br> &emsp;*On Alice's first order, include 100 Egyptian Cotton Sheets*
+4. Verify the AI call - use the Admin App to view the audit trail (top of this page)
 
 &nbsp;
 
@@ -159,7 +160,7 @@ AI can not only create the implementation, it can explain it:
 
 **Flow** (see files under `logic/logic_discovery/place_order`):
 
-1. **Early Row Event on OrderItem Fires** - see `./check_credit.py`
+1. **Early Row Event on Item Fires** - see `./check_credit.py`
 
     - Early row event: `set_item_unit_price_from_supplier()`
     - Checks if suppliers exist for the product (fallback to Product.unit_price if no suppliers)
