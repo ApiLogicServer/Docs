@@ -25,7 +25,9 @@ VSCode users may wish to share a `venv` over multiple projects.  Two altermnativ
 
 ### From Create (default)
 
-Projects created starting with version 10.0.8 (see preview) have a preset `python.defaultInterpreterPath` in `.vscode/settings.json`.  The Python interpreter used to create the project (i.e, your ApiLogicServer install location) will be the default interpreter / venv.  Note this only takes effect when you start VSCode; you can override it manually.
+Created projects have a preset `python.defaultInterpreterPath` in `.vscode/settings.json` pointing to the absolute path of the Python used during creation (i.e., your ApiLogicServer venv).  This takes effect when you open the project in VSCode — F5 works immediately with no manual configuration.
+
+**Team / cloned projects:** `.vscode/settings.json` is gitignored in created projects, because it contains a machine-specific absolute path.  After cloning, VSCode will prompt you to `Select Interpreter` once — point it to your `venv/bin/python`.  VSCode caches this per-machine; `launch.json` picks it up automatically from that point on.
 
 <details markdown>
 
@@ -72,12 +74,7 @@ Then, choose this `venv` with `select interpreter` (you sometimes have to open a
 
 ### From Environmental Variable
 
-You can also set up the default `venv` for VSCode.  For example, if you installed ApiLogicServer in `/dev/ApiLogicServer`:
-
-```bash
-export VIRTUAL_ENV=~/dev/ApiLogicServer/venv
-```
-Exercise caution - this might affect other projects.
+> **Not recommended.** Setting `VIRTUAL_ENV` (or `PYTHONPATH` / `PATH`) in environment variables has no effect on VS Code's interpreter selection and can break terminal `PATH` on some platforms.  Use the status-bar picker (`Python: Select Interpreter`) instead — it is the single source of truth for both Pylance and F5.
 
 &nbsp;
 
@@ -117,7 +114,7 @@ Recommend re-creating a venv rather than moving/copying; for more information, [
 
 **How it works:** Starting with release 16.x, created projects include `"python": "${command:python.interpreterPath}"` in each server launch configuration.  VS Code resolves this at runtime from whatever interpreter the status-bar picker has selected (stored in `python.defaultInterpreterPath` in `.vscode/settings.json`).  The picker is the single control — no manual file editing required.
 
-> **Note for cloned/moved projects:** `settings.json` contains the original machine's path.  Just use the picker to select the correct interpreter on your machine — `launch.json` picks it up automatically.
+> **Note for cloned/moved projects:** `.vscode/settings.json` is gitignored in created projects, so clones will not contain a stale machine-specific path.  VSCode will prompt `Select Interpreter` once — choose your `venv/bin/python`.  `launch.json` picks it up automatically from that point on.
 
 ??? note "Technical detail"
     `launch.json` uses the VS Code variable `${command:python.interpreterPath}`, which resolves at runtime to the value of `python.defaultInterpreterPath` in `.vscode/settings.json`.  That value is written by the picker when you select an interpreter — so the picker is the single source of truth for both Pylance and F5.
