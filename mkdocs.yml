@@ -24,6 +24,7 @@ nav:
         - Execute in your IDE: IDE-Execute.md
         - Execute From Terminal: Execute.md
     - Express Eval: Install-Eval.md
+    - Upgrade Version: Install-Upgrade.md
   - Demos, Tutorial, Samples:
     - "Creating Demos": Manager-Demos.md
     - "Basic Demo": Sample-Basic-Demo.md
