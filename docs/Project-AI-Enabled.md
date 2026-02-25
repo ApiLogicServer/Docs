@@ -99,6 +99,14 @@ Your project supports natural AI-assisted development:
 • **Code completion** - Rich type hints and patterns for IDE assistance  
 • **Documentation generation** - Self-documenting APIs and logic  
 
+<br>
+
+### Extend Context Engineering
+
+You can cause VSCode Copilot to pre-load your own instructions by placing `*.instructions.md` files in `.github`.  See the example in the Manager: `samples/readme_samples.md`:
+
+![tour](images/ui-vibe/assistant/extend-ce.png)
+
 &nbsp;
 
 ## Training
