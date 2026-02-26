@@ -84,7 +84,15 @@ create a project from basic_demo in samoles.dbs
 
 ### Subsystem Creation (in Proj)
 
-Beyond creating databases and logic, we have seen AI create entire systems.  For example, this prompt creates an entire subsystem:
+Beyond creating databases and logic, we have seen AI create entire systems.  For example, this remarkable command:
+
+* Finds, reads and understands the reference statutes from web-based documents
+* Builds an executable GenAI-Logic project, including:
+
+    * A database (including sample data), Admin App and API
+    * Business logic, expressed as rules
+    * Business documentation
+
 
 ```text title="Create Customs Surtax System"
 Create a fully functional application and database
@@ -99,12 +107,6 @@ Create a fully functional application and database
 ```
 
 &nbsp;
-
-This remarkable command:
-
-* Reads and understands the reference statutes
-* Creates a database (including sample data), Admin App and API
-* Builds business logic, expressed as rules
 
 To use subsystem creation:
 
