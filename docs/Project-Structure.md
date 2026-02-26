@@ -11,7 +11,7 @@ hide:
 
 !!! pied-piper ":bulb: TL;DR - ApiLogicServer create"
 
-    The `ApiLogicServer create` CLI command creates a customizable / executable API Logic Project providing:
+    The `ApiLogicServer create` CLI command creates a customizable / executable API Logic Project **from an existing database,** providing:
 
     * **A [JSON:API](API.md){:target="_blank" rel="noopener"} -** Endpoint for each table, with filtering, sorting, pagination, optimistic locking, including __related data access__, based on relationships in the models file (typically derived from foreign keys)
 

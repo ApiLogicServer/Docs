@@ -50,12 +50,12 @@ nav:
     - "GenAI CLI": WebGenAI-CLI.md      
     - "Sample": Sample-Genai.md
   - 0. ApiLogicServer create:
-    - "Create with CLI": Project-Structure.md
     - "Manager": Manager.md
+    - "Create with CLI": Project-Structure.md
+    - "Create With Copilot": Project-Create-Copilot.md
     - "Create with Gen/AI on Web": WebGenAI-create.md
     - "Model Driven": Tech-DSL.md
     - "AI-Enabled Projects": Project-AI-Enabled.md
-    - "Create With Copilot": Project-Create-Copilot.md
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
     - "Builders": Project-Builders.md
