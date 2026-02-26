@@ -36,7 +36,7 @@ Please load `.github/.copilot-instructions.md`
 
 ## Declare and Test
 
-If you have not already created the project, you can create it in the Manager using Copilot:
+If you have not already created the sample project, you can create it in the Manager using Copilot:
 
 &emsp;*Create a system named basic_demo from samples/dbs/basic_demo.sqlite*.  
 
