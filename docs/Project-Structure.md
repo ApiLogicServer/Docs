@@ -110,7 +110,7 @@ Create a fully functional application and database
 
 To use subsystem creation:
 
-1. Create a project from the pre-supplied small starter database
+1. Create a project from the pre-supplied small starter database provided in the Manager:
 
 ```bash title="Create the starter database project"
 genai-logic create  --project_name=customs_app --db_url=sqlite:///samples/dbs/starter.sqlite

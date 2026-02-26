@@ -114,7 +114,7 @@ The following artifacts were generated and are present in this repository.
 
 **Test suite** — `test/api_logic_server_behave/features/cbsa_surtax.feature` defines 7 Behave scenarios covering: surtax-applicable orders, pre-cutoff (no surtax) orders, non-surtax countries, multi-line rollups, and three constraint violations. Step implementations live in `test/api_logic_server_behave/features/steps/`.  
 
-**Test Report** - the test suite creates logs we use to create a report.  To see the **report**, [click here](test/api_logic_server_behave/reports/Behave%20Logic%20Report.md).
+**Test Report** - the test suite creates logs we use to create a report.  To see the **report**, [click here](https://github.com/KatrinaHuberJuma/customs_app/blob/main/test/api_logic_server_behave/reports/Behave%20Logic%20Report.md){:target="_blank" rel="noopener"}.
 
 **Reference data loader** — `load_cbsa_data.py` populates HS codes, countries, and provincial tax rates from CBSA PC 2025-0917.
 
@@ -152,7 +152,7 @@ Logic embedded in a single path - not automatically shared
 
 #### Procedural - Manual Ordering (with bugs)
 
-Logic is *procedural* with explicit ordering.  **AI uses pattern matching to order execution, which can fail for business logic** - to see the A/B study, [**click here**](logic/procedural/declarative-vs-procedural-comparison.md).
+Logic is *procedural* with explicit ordering.  **AI uses pattern matching to order execution, which can fail for business logic** - to see the A/B study, [**click here**](https://github.com/KatrinaHuberJuma/customs_app/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
 > This in fact did occur in our example
 
