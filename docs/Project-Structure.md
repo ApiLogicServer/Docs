@@ -118,7 +118,7 @@ genai-logic create  --project_name=customs_app --db_url=sqlite:///samples/dbs/st
 
 2. In the created project, enter the prompt above.
 
-For more information, [click here](Customs-readme.md){:target="_blank" rel="noopener"}.
+For more information, [click here](https://apilogicserver.github.io/Docs/Customs-readme/){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
