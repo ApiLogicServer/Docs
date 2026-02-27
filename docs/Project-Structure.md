@@ -72,9 +72,9 @@ The key files that drive execution are described below.  Note they are models - 
 
 In addition to CLI commands, you might it simpler to use your AI Assistant (e.g., Copilot).
 
-### CLI Shortcut (in Manager)
+### CLI Shortcut (Manager)
 
-Copilot will create run the CLI for you with commands such as:
+Copilot in the Manager will create run the CLI for you with commands such as:
 
 ```bash title="Create from Copilot"
 create a project from basic_demo in samoles.dbs
@@ -82,7 +82,7 @@ create a project from basic_demo in samoles.dbs
 
 &nbsp;
 
-### Subsystem Creation (in Proj)
+### NL Subsystem Creation (Proj)
 
 Beyond creating databases and logic, we have seen AI create entire systems.  For example, this remarkable command:
 
@@ -116,7 +116,7 @@ To use subsystem creation:
 genai-logic create  --project_name=customs_app --db_url=sqlite:///samples/dbs/starter.sqlite
 ```
 
-2. In the created project, enter the prompt above.
+2. In the created project, enter the prompt above into Copilot
 
 For more information, [click here](https://apilogicserver.github.io/Docs/Customs-readme/){:target="_blank" rel="noopener"}.
 
