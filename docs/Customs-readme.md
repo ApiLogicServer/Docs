@@ -4,8 +4,6 @@
 
 **Project:** CBSA Steel Derivative Goods Surtax calculator, built as a proof-of-concept.
 
-Source: [`https://github.com/KatrinaHuberJuma/customs_app`](https://github.com/KatrinaHuberJuma/customs_app)
-
 **Run Instructions:** at end
 
 ## Overview
@@ -28,7 +26,15 @@ The goal of this POC was to explore whether GenAI-Logic added significant value.
 The subsystem was created by providing the following prompt to Copilot:
 
 ```text
-Create a fully functional application and database for CBSA Steel Derivative Goods Surtax Order PC Number: 2025-0917 on 2025-12-11 and annexed Steel Derivative Goods Surtax Order under subsection 53(2) and paragraph 79(a) of the Customs Tariff program code 25267A to calculate duties and taxes including provincial sales tax or HST where applicable when hs codes, country of origin, customs value, and province code and ship date >= '2025-12-26' and create runnable ui with examples from Germany, US, Japan and China" this prompt created the tables in db.sqlite.
+Create a fully functional application and database
+ for CBSA Steel Derivative Goods Surtax Order PC Number: 2025-0917 
+ on 2025-12-11 and annexed Steel Derivative Goods Surtax Order 
+ under subsection 53(2) and paragraph 79(a) of the 
+ Customs Tariff program code 25267A to calculate duties and taxes 
+ including provincial sales tax or HST where applicable when 
+ hs codes, country of origin, customs value, and province code and ship date >= '2025-12-26' 
+ and create runnable ui with examples from Germany, US, Japan and China" 
+ this prompt created the tables in db.sqlite.
 ```
 
 #### Tests Prompt
@@ -42,7 +48,7 @@ create behave tests from CBSA_SURTAX_GUIDE.md
 
 #### System: API, Database, Logic, Admin App
 
-![app](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/ui-vibe/customs/app_screenshot.png?raw=true)
+![app](images/ui-vibe/customs/app_screenshot.png)
 
 
 #### Test Suite and Report
@@ -50,7 +56,7 @@ create behave tests from CBSA_SURTAX_GUIDE.md
 The GenAI-Logic `create` command builds test services and Context Engineering. These enable the LLM to generate tests that proved the code worked, as well as elucidate the logic through readable test reports.
 
 
-![behave rpt](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/ui-vibe/customs/behave_report_git.png?raw=true)
+![behave rpt](images/ui-vibe/customs/behave_report_git.png)
 
 ### GenAI-Logic Architecture: Logic Automation + AI
 
@@ -66,19 +72,19 @@ But GenAI alone is not enough.  AI pattern matching struggles with dependencies,
 
 #### Logic Automation (engines for rules, api...)
 
-The core GenAI-Logic [software architecture](https://www.genai-logic.com/product/architecture) consists of:
+The core GenAI-Logic [software architecture](architecture.md) consists of:
 
 * Runtime Engines for logic, api, admin app and data access
 * CLI Services to create projects, rules, etc
 
 
-![arch](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/ui-vibe/customs/Core-Architecture.png?raw=true)
+![arch](images/ui-vibe/customs/Core-Architecture.png)
 
 <br>
 
 #### Context Engineering: Automation Aware AI
 
-GenAI-Logic projects are [AI-Enabled](https://apilogicserver.github.io/Docs/Project-AI-Enabled/): each project contains extensive Context Engineering (markdown files) that enable AI to understand and create Logic Automation components.  
+GenAI-Logic projects are [AI-Enabled](Project-AI-Enabled.md): each project contains extensive Context Engineering (markdown files) that enable AI to understand and createLogic Automation components.  
 
 For example, markdown files explain rule syntax, so AI can translate NL Logic into declarative rules.
 
@@ -114,7 +120,7 @@ The following artifacts were generated and are present in this repository.
 
 **Test suite** — `test/api_logic_server_behave/features/cbsa_surtax.feature` defines 7 Behave scenarios covering: surtax-applicable orders, pre-cutoff (no surtax) orders, non-surtax countries, multi-line rollups, and three constraint violations. Step implementations live in `test/api_logic_server_behave/features/steps/`.  
 
-**Test Report** - the test suite creates logs we use to create a report.  To see the **report**, [click here](https://github.com/KatrinaHuberJuma/customs_app/blob/main/test/api_logic_server_behave/reports/Behave%20Logic%20Report.md){:target="_blank" rel="noopener"}.
+**Test Report** - the test suite creates logs we use to create a report.  To see the **report**, [click here](Customs-Logic-Report.md){:target="_blank" rel="noopener"}.
 
 **Reference data loader** — `load_cbsa_data.py` populates HS codes, countries, and provincial tax rates from CBSA PC 2025-0917.
 
