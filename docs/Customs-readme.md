@@ -35,6 +35,8 @@ Create a fully functional application and database
  hs codes, country of origin, customs value, and province code and ship date >= '2025-12-26' 
  and create runnable ui with examples from Germany, US, Japan and China" 
  this prompt created the tables in db.sqlite.
+ Transactions are received as a CustomsEntry with multiple 
+SurtaxLineItems, one per imported product HS code.
 ```
 
 #### Tests Prompt
