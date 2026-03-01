@@ -1,3 +1,12 @@
+---
+title: Customs Surtax Calculator
+notes: gold source is docs
+source: docs/Customs-readme.md
+AI-Assistants: Do NOT use this file for generation - use your Context Engineering, Prompt etc.
+version: 1.0 from docsite, for readme 2/16/2026
+---
+
+
 # Customs Surtax POC — Engineering README
 
 **Audience:** Technical GenAI-Logic evaluators
@@ -35,13 +44,13 @@ Create a fully functional application and database
  hs codes, country of origin, customs value, and province code and ship date >= '2025-12-26' 
  and create runnable ui with examples from Germany, US, Japan and China" 
  this prompt created the tables in db.sqlite.
- Transactions are received as a CustomsEntry with multiple 
+  Transactions are received as a CustomsEntry with multiple 
 SurtaxLineItems, one per imported product HS code.
 ```
 
 #### Tests Prompt
 ```text
-create behave tests from CBSA_SURTAX_GUIDE.md
+create behave tests from CBSA_SURTAX_GUIDE
 ```
 
 <br>
@@ -86,7 +95,7 @@ The core GenAI-Logic [software architecture](architecture.md) consists of:
 
 #### Context Engineering: Automation Aware AI
 
-GenAI-Logic projects are [AI-Enabled](Project-AI-Enabled.md): each project contains extensive Context Engineering (markdown files) that enable AI to understand and createLogic Automation components.  
+GenAI-Logic projects are [AI-Enabled](Project-AI-Enabled.md): each project contains extensive Context Engineering (markdown files) that enable AI to understand and create Logic Automation components.  
 
 For example, markdown files explain rule syntax, so AI can translate NL Logic into declarative rules.
 
@@ -114,7 +123,7 @@ The following artifacts were generated and are present in this repository.
 
 **Data layer** — `database/models.py` contains auto-generated SQLAlchemy models for `SurtaxOrder`, `SurtaxLineItem`, `HSCodeRate`, `CountryOrigin`, and `ProvinceTaxRate`. The schema follows standard autonumber primary key conventions.
 
-**Business logic** — `logic/logic_discovery/cbsa_steel_surtax.py` contains 16 declarative rules: 8 formula rules for line-item calculations (customs value, duty, surtax, PST/HST, total), 5 sum rules rolling up line totals to order-level fields, 1 formula rule for surtax applicability (date and country checks), and 3 constraints (ship date validation, positive quantity, positive unit price). The file is auto-loaded at startup by `logic/logic_discovery/auto_discovery.py`.
+**Business logic** — `logic/logic_discovery/cbsa_steel_surtax.py` contains 16 declarative rules covering line-item calculations (customs value, duty, surtax, PST/HST, total), sum rollups to order-level totals, surtax applicability (date and country checks), and data validation constraints. The file is auto-loaded at startup by `logic/logic_discovery/auto_discovery.py`.
 
 **REST API** — The JSON:API server runs at `http://localhost:5656/api/`. Custom API endpoints are co-located in `api/api_discovery/` and auto-loaded by `api/api_discovery/auto_discovery.py`. No manual registration is required.
 
@@ -134,69 +143,144 @@ The following artifacts were generated and are present in this repository.
 
 This app was built across several iterations. Each iteration revealed a specific gap in Context Engineering (CE) — the curated knowledge given to the AI before generation. The gaps and their fixes are documented below.
 
+This was a very interesting joint AI/human design; the approach:
 
-### No GenAI-Logic CE → poor "Fat API" architecture
+1. Gen customs_app
+2. Ask genned app to compare itself to the reference implementation
+3. Analyze the comparison in a long-running manager session in mgr Copilot with full CE (mgr, project, internals)
+4. Ask Copilot to Revise CE (in src and venv), and update this document
+5. Repeat
+
+<br>
+
+<details>
+<summary><strong>1. No GenAI-Logic CE → poor "Fat API" demo architecture ❌</strong></summary>
+
+<br>
 
 **What happened:** 
-Claude built a working customs application using standard Python code generation. 
 
-**Why:** The GenAI-Logic Context Engineering materials were not loaded. Claude had no knowledge of the platform and defaulted to standard, familiar patterns.
+The GenAI-Logic Context Engineering materials were not loaded, so Claude built a working customs application using standard Python code generation.  The starting case was the `basic_demo` application, which introduced tables we did not need, but did not (we thought) interfere.
 
-**Insight:** Without Context Engineering, an AI cannot apply a framework it doesn't know exists. The result is a good demo: compiles and runs.  ***It does not deliver an Enterprise-class architecture***, as described below.
+The result is a good demo: compiles and runs. 
 
-<br>
-
-#### Demo API (no filtering, pagination, etc)
-
-No Enterprise-class API with filtering, sorting, pagination, optimistic locking, etc.
+This was, however, a "happy accident", illustrating that ***AI alone does not deliver an Enterprise-class architecture***, as described below.
 
 <br>
 
-#### Unshared, Path-specific logic (Quality Issues)
+* **Demo API (no filtering, pagination, etc)** — No Enterprise-class API with filtering, sorting, pagination, optimistic locking, etc.
 
-Logic embedded in a single path - not automatically shared
+* **Unshared, Path-specific logic (Quality Issues)** — Logic embedded in a single path — not automatically shared across insert/update/delete/FK-change paths.
 
-<br>
-
-#### Procedural - Manual Ordering (with bugs)
-
-Logic is *procedural* with explicit ordering.  **AI uses pattern matching to order execution, which can fail for business logic** - to see the A/B study, [**click here**](https://github.com/KatrinaHuberJuma/customs_app/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
-
-> This in fact did occur in our example
+* **Procedural — Manual Ordering (with bugs)** — Logic is *procedural* with explicit ordering. **AI uses pattern matching to order execution, which can fail for business logic** — to see the A/B study, [**click here**](https://github.com/KatrinaHuberJuma/customs_app/blob/main/logic/procedural/declarative-vs-procedural-comparison). This in fact did occur in our example.
 
 <br>
 
-### No Rules, Poor Data Model ( → CE fixes)
-So, we loaded the Context Engineering, and re-built.
-
-**What happened:** 
-Claude attempted a full rebuild and produced poor results on two dimensions: 
-1. data model errors (non-autonumber primary keys for `SurtaxOrder` and `SurtaxLineItem`) and 
-2. business logic still written as procedural code rather than declarative rules.
-
-**Why:** The Context Engineering had been written to guide iterative micro-edits to an existing project — small additions and corrections one at a time. Generating a complete subsystem from scratch is a different task that exposed two separate gaps. First, CE contained no explicit data model conventions, so Claude improvised primary key patterns. Second, CE described rules but did not provide an unambiguous preference signal: when both procedural code and declarative rules are valid Python, Claude will default to procedural without a clear directive.
-
-**Insight:** Context Engineering must match the scale of the generation task. Guidance written for incremental editing does not transfer automatically to greenfield subsystem generation. Subsystem generation requires: (1) explicit data model conventions (e.g., autonumber integer PKs), and (2) an unambiguous preference directive — not just "rules are available" but "use a rule whenever a calculation or constraint is involved."
-
-**Action:** Updated Context Engineering to 
-1. add a data model advisory (integer autonumber primary keys required) and 
-2. an explicit preference rule: use `Rule.*` declarations over endpoint code for any calculation, derivation, copy, or constraint.
-
+</details>
 
 <br>
 
-### Proper app generated correctly on first attempt
+<details>
+<summary><strong>2. Missing SubSystem CE → No Rules, Poor Data Model ❌</strong></summary>
 
+<br>
 
-**What happened:** 
-With the revised CE in place, Claude generated a complete, correct customs application in a single pass: proper autonumber data model, 16 declarative LogicBank rules enforcing all calculations, clean separation between API routing and rule enforcement, and a Behave test suite with requirement-to-rule traceability.
+So, we loaded the Context Engineering, and re-built.  Claude produced poor results on two dimensions:
 
-**Why it worked:** Every previous failure mode had been addressed: platform awareness (Step 0), data model conventions and rule preference signal (Step 1).
+* data model errors (non-autonumber primary keys for `SurtaxOrder` and `SurtaxLineItem`)
+* business logic still written as procedural code rather than declarative rules
 
-**Insight:** Context Engineering learning compounds. Each prior failure encoded a reusable correction. Any future project that loads this CE material starts at Step 2 — the failures were compressed into training assets, not wasted effort.
+This was because the CE (Context Engineering) was provided for WebGenAI, but not Copilot.  So we created `docs/training/subsystem_creation.md` with data model and rules training.
+
+<br>
+
+</details>
+
+<br>
+
+<details>
+<summary><strong>3. Proper app generated correctly from prompt ✅</strong></summary>
+
+<br>
+
+With the revised CE in place, Claude generated a complete, correct customs application in a single pass: proper autonumber data model, 16 declarative LogicBank rules enforcing all calculations, clean separation between API routing and rule enforcement, and a Behave test suite with requirement-to-rule traceability.  This became our **reference implementation.**
+
+> Context Engineering learning compounds. Each prior failure encoded a reusable correction. Any future project that loads this CE material starts at Step 2 — the failures were compressed into training assets, not wasted effort.
 
 **What this means for evaluation:** The product (GenAI-Logic) provides the architectural value. The process (Context Engineering iteration) determines whether the AI can reach that architecture reliably. Both matter.
 
+<br>
+
+</details>
+
+<br>
+
+
+<details>
+<summary><strong>4. Productization revealed `basic_demo` dependence and master/detail prompt omission ❌</strong></summary>
+
+<br>
+
+The 'basic_demo` tables were an accidental artifact - we thought.  But when we re-genned using just the clean `starter.sqlite`, we got a poor result:
+
+* we lost the master/detail structure that had been inferred from `basic_demo` - this needed to be added to the prompt
+* `basic_demo` also showed several basic logic patterns that we needed to add to the CE, shown below
+
+The study produced several durable CE principles now encoded in Context Engineering ()`subsystem_creation.md`, `logic_bank_api.md`, and `.copilot-instructions.md`):
+
+* **Reference table default** — flat column + `Rule.copy`. Versioned child table only when the prompt explicitly mentions `effective_date`, rate history, or versioning.
+
+* **`Rule.copy` is the default** for parent-value access (snapshot, safe). `Rule.formula` is the escalation (live propagation, needed less often).
+
+* **Request Pattern scope** — integration side-effects only (email, Kafka, AI calls). Not for domain data entry where LogicBank rules derive computed columns automatically.
+
+* **Domain insert is the pattern** — direct insert fires all LogicBank rules. No `Sys*` wrapper needed.
+
+* **"Create runnable UI"** = seed example data + Admin App at `http://localhost:5656`. Never a custom HTML page or calculator endpoint.
+
+* **Lookup references use FK integers** — transactional tables store `country_origin_id FK → CountryOrigin.id`, not `country_of_origin = "DE"`. FK is what makes `Rule.copy` traversable; a text code has no relationship.
+
+* **Seed data canonical pattern** — use `alp_init.py` with Flask context active so LogicBank fires and all computed fields are correct on first load. Never shell heredocs (terminal tool garbles them).
+
+* **Spec = floor, not ceiling** — a column list in a prompt is the minimum anchor the author needed to specify, not a complete design. Apply domain knowledge to flesh out standard fields, constraints, and sums. Prompt author omissions mean "obvious to them" — not "not required."
+
+> Just as `basic_demo` "polluted" a clean generation, so did this readme!  The learning: AI is crafty - it will use whatever it can find, so be careful what you leave lying around.  See the front-matter, above.
+
+</details>
+
+<br>
+
+<details>
+<summary><strong>5. Prompt is a floor, not a ceiling ❌</strong></summary>
+
+<br>
+
+As we added promot engineering for the schema, this changed the AI pattern to blind obedience.  For example, roll-up rules and constraints were not added.
+
+So, we changed the CE to stipulate that the prompt is a floor, not a ceiling.
+
+</details>
+
+<br>
+
+<details><summary>6. Validation: Iterations Lead to Production-Quality Results ✅</summary>
+
+Each iteration tested against the hand-crafted `customs_app` (16 rules) as the fixed ground-truth reference.
+
+| Iteration | Key change | Rules | `Rule.copy` | `Rule.constraint` | Outcome |
+|---|---|---|---|---|---|
+| `customs_demo_ce_fix` | Applied Root Cause fixes to CE | 10 | 0 | 0 | Catastrophic failures gone; FK text-code problem remains |
+| `customs_demo_v2` | Fixed prompt: FK integers + single `province.tax_rate` | 13 | 3 ✅ | 1 | `Rule.copy` validated; `base_duty_rate` and constraints still missing |
+| `customs_demo_v3` | Added spec=floor principle to CE | 11 | 3 ✅ | 1 | Generic domain fields restored; domain-specific `base_duty_rate` cannot be recovered by CE alone |
+| New release (`customs_demo`) | Added `base_duty_rate` and `quantity × unit_price` to prompt explicitly | **16 ✅** | 1 | 3 ✅ | Functionally at par with reference — all constraints, sums, and rates correct |
+
+**The `v1a` clean-room finding.** A final test (`customs_demo_v1a`) ran the prompt with no `customs_demo` readme in context. Without the readme acting as a ghost, the result regressed to near-v3 quality — confirming that the "new release" 16-rule win was partially readme-assisted. What the CE alone **does** reliably produce: header/detail structure, flat reference table design, `Rule.copy` for duty rate, and `alp_init.py` Flask-context seed data. Constraints, single-column province, and `CountryOrigin` FK table require the prompt spec.
+
+> **CE reliability boundary:** CE is reliable for what it explicitly encodes. If a structural outcome depends on inference — from ghost context, readme text, or ambient schema artifacts — it is non-deterministic and will not reproduce on a clean project. The practical test: can you point to the CE sentence that requires this outcome? If not, the result is fragile.
+
+**Domain accuracy finding:** The clean-room test also caught a factual error in the hand-crafted reference — `customs_app` marks Germany, Japan, and China as surtax-applicable. PC 2025-0917 is a targeted US retaliatory levy; only US-origin goods attract the 25% surcharge. The AI, without the reference in context, modeled this correctly. Domain experts reviewing this system should verify country-of-origin applicability against the current PC annex.
+
+</details>
 
 <br>
 
@@ -242,7 +326,7 @@ PST/HST Rate: 0.1625
 Surtax Applicable: True (Ship Date: 2026-01-15, Date Check: True, Country Check: True, Cutoff: 2025-12-26)
 ```
 
-To extract a clean logic trace for a specific transaction, set the log level to `DEBUG` in `config/logging.yml` and filter on the `logic_logger` name. The debug documentation for logic traces is in `docs/logic/readme.md`. The `test_date_fix.sh` script at the project root demonstrates extracting and validating specific logic log output.
+To extract a clean logic trace for a specific transaction, set the log level to `DEBUG` in `config/logging.yml` and filter on the `logic_logger` name. The debug documentation for logic traces is in `docs/logic/readme`. The `test_date_fix.sh` script at the project root demonstrates extracting and validating specific logic log output.
 
 <br>
 
@@ -252,7 +336,7 @@ To extract a clean logic trace for a specific transaction, set the log level to 
 
 Changing a rule requires editing one declaration in `logic/logic_discovery/cbsa_steel_surtax.py`. The engine recomputes the dependency graph at startup and applies the change to every write path automatically — insert, update, delete, and foreign key reassignment. There is no need to find insertion points, trace execution paths, or audit every API endpoint.
 
-The contrast with procedural code is quantified in `logic/procedural/declarative-vs-procedural-comparison.md`. For an equivalent order management system, the procedural approach produced 220+ lines of code with 2 critical bugs (missed cases for FK reassignment). The declarative approach produced 5 rules with 0 bugs. The customs system in this POC has 16 rules. An equivalent procedural implementation would require explicit handling of every combination of line-item insert, quantity update, price update, HS code change, country change, and ship date update — each requiring code changes in multiple functions.
+The contrast with procedural code is quantified in `logic/procedural/declarative-vs-procedural-comparison`. For an equivalent order management system, the procedural approach produced 220+ lines of code with 2 critical bugs (missed cases for FK reassignment). The declarative approach produced 5 rules with 0 bugs. The customs system in this POC has 16 rules. An equivalent procedural implementation would require explicit handling of every combination of line-item insert, quantity update, price update, HS code change, country change, and ship date update — each requiring code changes in multiple functions.
 
 <br>
 
@@ -267,9 +351,21 @@ The created Rules in `logic/logic_discovery/cbsa_steel_surtax.py` execute **dete
 All writes to the database — through the REST API, through the Behave test suite, through the Admin UI at `/admin-app`, or through any agent or script — pass through the identical rule set. The execution order is computed once at startup from the declared dependency graph, not from code paths at runtime.
 
 ### AI Rules Also Supported - With Governance
-The system does support AI rules - rules that call AI at runtime (though not used here).  Importantly, these are subjected to this same governance:
+The system does support AI rules — rules that call AI at runtime (though not used here). Importantly, these are subjected to this same governance:
 
 > AI may propose values, but rules determine what commits.
+
+### Next Exploration: AI-Determined HS Codes
+
+HS code classification is a well-known compliance pain point — importers frequently mis-classify goods, triggering audits and penalties. A natural next step is to add an AI Rule that determines the correct HS code from a product description, analogous to our `find-supplier` example where AI selects the best supplier from a product spec.
+
+This raises two engineering questions worth exploring:
+
+1. **AI Rules in a transactional workflow** — the AI inference runs at transaction time, not at authoring time. The downstream duty, surtax, and PST/HST calculations fire automatically from whatever HS code the AI resolves. The audit log captures both the inference result and the full rule chain that followed from it.
+
+2. **Human-in-the-loop at authoring time, not inspection time** — AI distills natural-language intent into declarative rules. A compliance engineer reviews the DSL output, not the implementation it replaced. The review artifact is at the same abstraction level as the business requirement — 1 rule per derivation, not 200 lines of service code tracing execution paths — which is what makes the review tractable. Once approved, the rules execute deterministically: same input state, same output, every time, across every write path. Governance is structural, not procedural.
+
+These two points converge: the deterministic DSL rules that govern every ordinary transaction are the *same* rules that govern AI Rules. There is no separate governance layer to design or enforce. An AI-proposed HS code enters the same commit pipeline as a human-entered one — duty, surtax, and provincial tax fire identically, with no exceptions and no bypass paths. The AI inference is bounded; the consequences are not probabilistic.
 
 <br>
 
@@ -303,11 +399,11 @@ For the foundational order management case, 5 declarative rules replaced 220+ li
 * one for `Order.customer_id` reassignment (old customer balance not decremented) and 
 * one for `Item.product_id` reassignment (unit price not re-copied from new product)
 
-The full experiment, including the original procedural code and the AI's own analysis of why it failed, is documented in `logic/procedural/declarative-vs-procedural-comparison.md`.  (tL;DR: pattern-matching AI deals poorly with complex dependencies common to business logic).
+The full experiment, including the original procedural code and the AI's own analysis of why it failed, is documented in `logic/procedural/declarative-vs-procedural-comparison`.  (tL;DR: pattern-matching AI deals poorly with complex dependencies common to business logic).
 
 ---
 
-**Bottom line:** The customs POC demonstrates that GenAI-Logic delivers correct, maintainable business logic — and that getting an AI to generate it correctly requires Context Engineering to be as precise about architecture as it is about syntax.
+**Bottom line:** The customs POC demonstrates that GenAI-Logic delivers correct, maintainable business logic — and that getting an AI to generate it correctly requires Context Engineering to be as precise about architecture as it is about syntax. A production CBSA implementation would start from the CE and prompt patterns documented in section 2, not from a blank slate; the iteration study exists so that starting point is already validated.
 
 <br>
 
@@ -377,7 +473,7 @@ The result is a working application: the endpoint returns correct answers for it
 
 2. **~150 lines of business logic in the wrong layer** — `duty_calculator_service.py` performs tariff lookups, rate selection, and calculations. The `early_row_event` in `duty_calculations.py` then recalculates the same amounts from already-set fields — logic runs twice, in two places, neither governing the other.
 
-3. **Missing requirements from the original prompt** — Provincial tax (HST/PST), surtax applicability by ship date (`>= 2025-12-26`), and multi-line order structure are all explicit in the prompt used for both projects; all are absent from this implementation. (Note: this comparison is only valid if both projects were built from the same prompt. The session transcript in `session_transcript.md` confirms this.)
+3. **Missing requirements from the original prompt** — Provincial tax (HST/PST), surtax applicability by ship date (`>= 2025-12-26`), and multi-line order structure are all explicit in the prompt used for both projects; all are absent from this implementation. (Note: this comparison is only valid if both projects were built from the same prompt. The session transcript in `session_transcript` confirms this.)
 
 4. **Enforcement gap** — Logic only fires via the one custom endpoint. Any insert via standard JSON:API, the Admin UI, test scripts, or future integrations bypasses tariff lookup entirely and stores whatever rates the caller provides.
 
@@ -588,7 +684,7 @@ The correct architecture:
 
 Instead, the API **is** the business logic, and the table is just a persistence afterthought.
 
-The session transcript (`session_transcript.md`) documents that this was recognized retrospectively during the same session that created the project, and the pattern was used correctly in `customs_app`.
+The session transcript (`session_transcript`) documents that this was recognized retrospectively during the same session that created the project, and the pattern was used correctly in `customs_app`.
 
 ---
 
