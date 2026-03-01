@@ -48,6 +48,8 @@ Create a fully functional application and database
 SurtaxLineItems, one per imported product HS code.
 ```
 
+> See also the proposed prompt
+
 #### Tests Prompt
 ```text
 create behave tests from CBSA_SURTAX_GUIDE
@@ -153,12 +155,12 @@ This was a very interesting joint AI/human design; the approach:
 
 <br>
 
-<details>
+<details markdown>
 <summary>1. No GenAI-Logic CE → poor "Fat API" demo architecture ❌</summary>
 
 <br>
 
-The GenAI-Logic Context Engineering materials were not loaded, so Claude built a working customs application using standard Python code generation.  The starting case was the `basic_demo` application, which introduced tables we did not need, but did not (we thought) interfere.
+The GenAI-Logic Context Engineering (CE) materials were not loaded, so Claude built a working customs application using standard Python code generation.  The starting case was the `basic_demo` application, which introduced tables we did not need, but did not (we thought) interfere.
 
 The result is a good demo: compiles and runs. 
 
@@ -176,7 +178,7 @@ This was, however, a "happy accident", illustrating that ***AI alone does not de
 
 <br>
 
-<details>
+<details markdown>
 <summary><strong>2. Missing SubSystem CE → No Rules, Poor Data Model ❌</strong></summary>
 
 <br>
@@ -194,7 +196,7 @@ This was because the CE (Context Engineering) was provided for WebGenAI, but not
 
 <br>
 
-<details>
+<details markdown>
 <summary><strong>3. Proper app generated correctly from prompt ✅</strong></summary>
 
 <br>
@@ -212,7 +214,7 @@ With the revised CE in place, Claude generated a complete, correct customs appli
 <br>
 
 
-<details>
+<details markdown>
 <summary><strong>4. Productization revealed `basic_demo` dependence and master/detail prompt omission ❌</strong></summary>
 
 <br>
@@ -246,7 +248,7 @@ The study produced several durable CE principles now encoded in Context Engineer
 
 <br>
 
-<details>
+<details markdown>
 <summary><strong>5. Prompt is a floor, not a ceiling ❌</strong></summary>
 
 <br>
@@ -259,7 +261,7 @@ So, we changed the CE to stipulate that the prompt is a floor, not a ceiling.
 
 <br>
 
-<details><summary>6. Validation: Iterations Lead to Production-Quality Results ✅</summary>
+<details markdown><summary>6. Validation: Iterations Lead to Production-Quality Results ✅</summary>
 
 Each iteration tested against the hand-crafted `customs_app` (16 rules) as the fixed ground-truth reference.
 
@@ -699,3 +701,30 @@ The session transcript (`session_transcript`) documents that this was recognized
 | Missing requirements | 3 of 4 core | 0 |
 
 This is what the platform produces when the AI does not know what platform it is working with. The application runs, the endpoint returns answers, and the Admin UI works — but the architectural contract of GenAI-Logic (logic in rules, enforced everywhere) is entirely absent.
+
+
+# Proposed Fixed Prompt
+
+Two targeted changes: (1) province → single flat rate, (2) country/province/hs_code → FK references.
+
+```
+Create a fully functional application and database
+ for CBSA Steel Derivative Goods Surtax Order PC Number: 2025-0917 
+ on 2025-12-11 and annexed Steel Derivative Goods Surtax Order 
+ under subsection 53(2) and paragraph 79(a) of the 
+ Customs Tariff program code 25267A to calculate duties and taxes.
+ Lookup tables: HSCodeRate (hs_code PK, surtax_rate), 
+ CountryRate (country_code PK, surtax_rate), 
+ Province (province_code PK, tax_rate — a single pre-combined rate whether HST or GST+PST).
+ SurtaxLineItem references these by FK: hs_code_id, country_id, province_id.
+ ship date >= '2025-12-26'.
+ Create runnable ui with examples from Germany, US, Japan and China.
+ Transactions are received as a CustomsEntry with multiple 
+ SurtaxLineItems, one per imported product HS code.
+```
+
+**Key changes:**
+
+- `"provincial sales tax or HST where applicable"` → `"Province (province_code PK, tax_rate — a single pre-combined rate whether HST or GST+PST)"`  eliminates the conditional/multi-column trigger
+- `"country of origin"` + `"province code"` + `"hs codes"` → explicit `Lookup tables: ... SurtaxLineItem references these by FK` — forces FK relationships, enables `Rule.copy`
+- Constraints (`ship_date >= entry_date`, `quantity > 0`, `unit_price > 0`) still need to be added explicitly or via CE
