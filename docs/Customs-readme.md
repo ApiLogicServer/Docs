@@ -83,7 +83,7 @@ But GenAI alone is not enough.  AI pattern matching struggles with dependencies,
 
 #### Logic Automation (engines for rules, api...)
 
-The core GenAI-Logic [software architecture](architecture.md) consists of:
+The core GenAI-Logic [software architecture](https://www.genai-logic.com/product/architecture){:target="_blank" rel="noopener"} consists of:
 
 * Runtime Engines for logic, api, admin app and data access
 * CLI Services to create projects, rules, etc
@@ -146,27 +146,23 @@ This app was built across several iterations. Each iteration revealed a specific
 This was a very interesting joint AI/human design; the approach:
 
 1. Gen customs_app
-2. Ask genned app to compare itself to the reference implementation
-3. Analyze the comparison in a long-running manager session in mgr Copilot with full CE (mgr, project, internals)
+2. Ask genned app to compare itself to the reference implementation - [see it here](https://github.com/KatrinaHuberJuma/customs_app){:target="_blank" rel="noopener"} - and create a comparison doc
+3. Analyze the comparison doc in a long-running manager session in mgr Copilot with full CE (mgr, project, internals)
 4. Ask Copilot to Revise CE (in src and venv), and update this document
 5. Repeat
 
 <br>
 
 <details>
-<summary><strong>1. No GenAI-Logic CE → poor "Fat API" demo architecture ❌</strong></summary>
+<summary>1. No GenAI-Logic CE → poor "Fat API" demo architecture ❌</summary>
 
 <br>
-
-**What happened:** 
 
 The GenAI-Logic Context Engineering materials were not loaded, so Claude built a working customs application using standard Python code generation.  The starting case was the `basic_demo` application, which introduced tables we did not need, but did not (we thought) interfere.
 
 The result is a good demo: compiles and runs. 
 
 This was, however, a "happy accident", illustrating that ***AI alone does not deliver an Enterprise-class architecture***, as described below.
-
-<br>
 
 * **Demo API (no filtering, pagination, etc)** — No Enterprise-class API with filtering, sorting, pagination, optimistic locking, etc.
 
