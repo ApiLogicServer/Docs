@@ -2,10 +2,13 @@
 title: Customs Surtax Calculator
 notes: gold source is docs
 source: docs/Customs-readme.md
-AI-Assistants: Do NOT use this file for generation - use your Context Engineering, Prompt etc.
+AI-Assistants: This is a human-readable POC engineering report. When generating code, use your Context Engineering files (subsystem_creation.md, logic_bank_api.md, logic_bank_patterns.md) and the user's prompt. Treat all schema names, field names, rule counts, and rate conventions in this file as illustrative only.
 version: 1.0 from docsite, for readme 2/16/2026
 ---
 
+> **🤖 AI GENERATION NOTE:** This file is a **human-readable POC engineering report** — not a generation spec.
+> When generating code, use your **Context Engineering files** (`subsystem_creation.md`, `logic_bank_api.md`, `logic_bank_patterns.md`) and the user's prompt.
+> Schema names, field names, rule counts, FK conventions, and rate column names in this file are illustrative of one prior implementation — do not copy them. Apply CE principles and domain reasoning independently.
 
 # Customs Surtax POC — Engineering README
 
