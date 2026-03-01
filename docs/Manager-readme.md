@@ -4,7 +4,7 @@ Description: Instant mcp-enabled microservices, standard projects, declarative b
 Source: docs/Manager-readme
 version info: 16.00.01 (02/16/2026)
 do_process_code_block_titles: True
-Used: Manager Readme
+Used: Manager Readme (via copy_md())
 ---
 <style>
   -typeset h1,
@@ -61,7 +61,7 @@ Explore the key use cases from our home page:
 | **[Use Case 1: AI Rules](https://www.genai-logic.com/#h.no4671ezsiit)**<br> basic_demo_ai_rules_supplier | genai-logic create --project_name=basic_demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Use AI Rules to choose Optimal Supplier, per world conditions |
 | **[Use Case 2: Governed MCP Server](https://www.genai-logic.com/#h.n2vpyctb5xv)** <br>basic_demo_mcp_send_email | genai-logic create --project_name=basic_demo_mcp_send_email --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Bus Users compose new service to send email to overdue customers, subject to email opt-out rules<br>- Create custom API with NL<br>- Create an email service |
 | **[Use Case 3: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> basic_demo_vibe | genai-logic create --project_name=basic_demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - UI elements such as Cards, Maps, Trees... |
-| **[Use Case 4: NL SubSytems](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | genai-logic create --project_name=customs_demo --db_url=sqlite:///samples/dbs/starter.sqlite | - Create complete SubSystems<br> - e.g., Customs Surtax - tables, api, logic |
+| **[Use Case 4: NL SubSytems](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | genai-logic create --project_name=customs_demo --db_url=sqlite:///samples/dbs/starter.sqlite | - Create complete SubSystems<br> - e.g., [Customs Surtax - tables, api, logic](Customs-readme.md){:target="_blank" rel="noopener"} |
 | **[Use Case 5: Business Users](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/webgenai/README) | - Create systems from browser, with logic, sample data and derived attributes |
 
 &nbsp;
