@@ -1,0 +1,7221 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code">
+      
+      
+      
+      
+        <link rel="prev" href="../Tech-Toaster/">
+      
+      
+        <link rel="next" href="../Tech-AI-Collaboration/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Nat Lang Logic - API Logic Server</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.35e1ed30.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#about-this-page" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="API Logic Server" class="md-header__button md-logo" aria-label="API Logic Server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            API Logic Server
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Nat Lang Logic
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ApiLogicServer/ApiLogicServer-src" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="API Logic Server" class="md-nav__button md-logo" aria-label="API Logic Server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    API Logic Server
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ApiLogicServer/ApiLogicServer-src" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+     
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quick Start
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quick Start
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Doc-Home/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Doc Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-Express/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Express Install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Detailed Install
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Detailed Install
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install API Logic Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Create-ApiLogicProject/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create an API Logic Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Execute an API Logic Project
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Execute an API Logic Project
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Execute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Execute in your IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Execute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Execute From Terminal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-Eval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Express Eval
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-Upgrade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upgrade Version
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Demos, Tutorial, Samples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Demos, Tutorial, Samples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Manager-Demos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Demos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-ai-rules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. AI Rules Supplier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Demo-MCP-Send-Email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. MCP Send Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Demo-Vibe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. Vibe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Customs-readme-full/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. NL SubSystem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orientation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Older
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-ai-mcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample_ai_mcp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Genai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI Microservice Automation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI - Copilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample DB, Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial-Deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial-Agile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agile Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI - ChatGPT, Agile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GenAI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            GenAI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebGenAI Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebGenAI Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-verify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebGenAI Verification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-CLI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Genai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    0. ApiLogicServer create
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            0. ApiLogicServer create
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create with CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Create-Copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create With Copilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-create/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create with Gen/AI on Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-DSL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Driven
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-AI-Enabled/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI-Enabled Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Rebuild/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rebuild
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Virtual Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Builders/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Builders
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Apps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            1. Apps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Automatic Admin App
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Automatic Admin App
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatic Admin App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Customization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin Customization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vibe Kickstart
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Vibe Kickstart
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Vibe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generated React App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Vibe-Sample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vibe Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-App-Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    App Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Automatic Custom Apps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Automatic Custom Apps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App-Custom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Web Apps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App-Custom-Ontimize-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ontimize Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App-Model-Editor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    App Model Editor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            2. API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatic Multi-Table API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API-Multi-Table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-Table APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API-Self-Serve/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Self-Serve APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API-Customize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API-Opt-Lock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimistic Locking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. Logic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            3. Logic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Why/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic: Why
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic: Rule Types, Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logic: Using  AI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Logic: Using  AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Using-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic: Using AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Using-AI-Impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Logic Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Debug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How: Logic and Agile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Operation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic Operation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Why-Declarative-GenAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic: GenAI Approaches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_9" id="__nav_8_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rule Types
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_9">
+            <span class="md-nav__icon md-icon"></span>
+            Rule Types
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Constraint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Sum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sum
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Formula/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Formula
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Copy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Allocation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allocation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Allocation-Time-Date/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time/Date Stamping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Security
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            4. Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Getting-Started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started with Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Authorization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Role-based Authorization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Login Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Activation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Activation: add-auth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-sql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure sql auth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Keycloak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure Keycloak auth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Swagger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Swagger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Application Integration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            5. Application Integration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-Map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-Kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Messaging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-MCP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MCP Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-MCP-AI-Example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MCP AI Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-OpenAI-Function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenAI Function Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChatBot Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IDE - Customize, Manage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            IDE - Customize, Manage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Customize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Customize Using Your IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Fixup-Attrs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fixup - missing attributes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Import-WebGenAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Import / Merge WebGenai
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Rebuild-Test-Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rebuild Test Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database-Connectivity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connection Examples, Debug
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database-Diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database-Docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker Test Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Model Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Keys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Model Keys
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Customization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Model Customization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database-Changes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Design Changes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Quotes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Model Quoted Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Multi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiple Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Filters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Table Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-pyodbc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install pyodbc: SqlServer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-psycopg2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install psycopg2: Postgres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Postgresql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Postgresql
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-oracle-thick/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Oracle Thick
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Sqlite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sqlite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DevOps - Containers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps - Containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Automation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps Automation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Create and Run Containers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            Create and Run Containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Use-Standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use Standard Image
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build Project Image
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Run/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Run Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_13_4" id="__nav_13_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cloud Deployment (Azure)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cloud Deployment (Azure)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Azure-Setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Preview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dev Preview in Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managed Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Deploy-Multi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Container-Configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_13_6" id="__nav_13_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev Containers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_6">
+            <span class="md-nav__icon md-icon"></span>
+            Dev Containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dev Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-GitHub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub and Codespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Agile / Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Agile / Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agility With Behave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behave-Logic-Report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Behave Logic Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_14_3" id="__nav_14_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Creating Tests
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14_3">
+            <span class="md-nav__icon md-icon"></span>
+            Creating Tests
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behave-Creation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Tests From Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behave-Logic-Report-Basic-Demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample: basic_demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-What-Is/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is API Logic Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-What-Is-GenAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is GenAI-Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Project-Operation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Operation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Declarative-Automation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Declarative Automation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Internals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            Internals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internal Dev Procedures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-admin-app-reuse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin App Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-genai-app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    App Gen: genai-app
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Internals-BLT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build, Load and Test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-venv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VENV (internals)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-venv-defaulting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VENV (defaulting)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python (internals)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Internals-CLI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internals - CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-llm-usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internals - LLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_16_10" id="__nav_16_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_10">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Security-Auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eval Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            Eval Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eval Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_17_2" id="__nav_17_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AI Training
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            AI Training
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-copilot-instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rosetta Stone
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eval Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-logic_bank_patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-logic_bank_api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic Bank API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-probabilistic_logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probabilistic Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-probabilistic_logic_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probabilistic Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-genai_logic_patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI Logic Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-MCP_Copilot_Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MCP Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-admin_app_1_context.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin App Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-admin_app_2_functionality.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin App Functionality
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-admin_app_3_architecture.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin App Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-react_map.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-react_tree.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-response-short/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response Short
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FAQs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            FAQs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Low-Code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a Low Code approach?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Frameworks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a Framework?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this an AI Approach?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-RETE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a RETE Engine?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-4GL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a 4GL?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Strategic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a strategic investment?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Proven/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a Proven Technology?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Live-API-Creator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this like Live API Creator?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Versata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this like Versata?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What about Maintenance?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Adoption/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adoption Considerations?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tech Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            Tech Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech--Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Tech Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Training-WG-Dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training WG Devs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Enterprise-Vibe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enterprise Vibe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Keycloak-devnotes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keycloak DevNotes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Customs-readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Customs App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Toaster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Appliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Nat Lang Logic
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Nat Lang Logic
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this Page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-page" class="md-nav__link">
+    About This Page
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-what-is-logic-bank" class="md-nav__link">
+    Request - What is Logic Bank
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-chatgpt-knows-this" class="md-nav__link">
+    Response - ChatGPT knows this...
+  </a>
+  
+    <nav class="md-nav" aria-label="Response - ChatGPT knows this...">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features-of-logicbank" class="md-nav__link">
+    Key Features of LogicBank:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-use-case" class="md-nav__link">
+    Example Use Case:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-logicbank-differs-from-standard-sqlalchemy" class="md-nav__link">
+    How LogicBank Differs from Standard SQLAlchemy:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-use-cases-for-logicbank" class="md-nav__link">
+    Common Use Cases for LogicBank:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-logic-bank-api-def" class="md-nav__link">
+    Request - Logic Bank API Def
+  </a>
+  
+    <nav class="md-nav" aria-label="Request - Logic Bank API Def">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-components-and-usage" class="md-nav__link">
+    Key Components and Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Components and Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-logicbank-class" class="md-nav__link">
+    1. LogicBank Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rule-class" class="md-nav__link">
+    2. Rule Class
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Rule Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sum-rule" class="md-nav__link">
+    Sum Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-rule" class="md-nav__link">
+    Count Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraint-rule" class="md-nav__link">
+    Constraint Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formula-rule" class="md-nav__link">
+    Formula Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-rule" class="md-nav__link">
+    Copy Rule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-row-events" class="md-nav__link">
+    3. Row Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-declarative-activation" class="md-nav__link">
+    4. Declarative Activation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-workflow" class="md-nav__link">
+    Example Workflow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefits-of-logicbank" class="md-nav__link">
+    Benefits of LogicBank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-solve-this" class="md-nav__link">
+    Request - solve this
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-solution" class="md-nav__link">
+    Response - Solution
+  </a>
+  
+    <nav class="md-nav" aria-label="Response - Solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-customerbalance-credit_limit" class="md-nav__link">
+    1. Customer.balance &lt;= credit_limit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-customerbalance-sumorderamount_total-where-date_shipped-is-null" class="md-nav__link">
+    2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-orderamount_total-sumitemamount" class="md-nav__link">
+    3. Order.amount_total = Sum(Item.amount)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-itemamount-quantity-unit_price" class="md-nav__link">
+    4. Item.amount = quantity * unit_price
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-store-the-itemunit_price-as-a-copy-from-productunit_price" class="md-nav__link">
+    5. Store the Item.unit_price as a copy from Product.unit_price
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-declare_logic-function" class="md-nav__link">
+    Complete declare_logic Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activating-logicbank" class="md-nav__link">
+    Activating LogicBank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-workflow_1" class="md-nav__link">
+    Example Workflow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-data" class="md-nav__link">
+    Example Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI-Collaboration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Human Collaboration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI-Tutor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI-Driven Teaching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Delivers Agile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-AI-ChatGPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample AI Demo ChatGPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI-mysql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI-driven Auto mysql
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI-sqlite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI-driven Auto sqlite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Budget-App/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Budget App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-CodeSpaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CodeSpaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Agile-Integrations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agile Integrations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Learning-Flask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Flask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Slack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Slack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Install-Python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Python-311/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python 3.11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-mkdocs-material/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mkdocs Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-CodeSpaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CodeSpaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-m1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    M1 Mac
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Product-Detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Product Detail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Product-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Product Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20_28" >
+        
+          
+          <label class="md-nav__link" for="__nav_20_28" id="__nav_20_28_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Personal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_20_28_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20_28">
+            <span class="md-nav__icon md-icon"></span>
+            Personal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Manager-readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Demo-Full-Unused/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Demo (unused)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tour
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-declarative/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Think Declarative
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Home/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Business-Logic-Agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governed Agentic Business Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ApiLogicServer-create/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INFO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Recompute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recompute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Conference-PyCon23-Talk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyCon23 Talk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Conference-PyCon23-Tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyCon23 Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Conference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Optimistic-Locking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimistic Locking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Product-Detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Old Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20_28_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_20_28_16" id="__nav_20_28_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Page Links
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_20_28_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20_28_16">
+            <span class="md-nav__icon md-icon"></span>
+            Page Links
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Agile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Agile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Detailed Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this Page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-page" class="md-nav__link">
+    About This Page
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-what-is-logic-bank" class="md-nav__link">
+    Request - What is Logic Bank
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-chatgpt-knows-this" class="md-nav__link">
+    Response - ChatGPT knows this...
+  </a>
+  
+    <nav class="md-nav" aria-label="Response - ChatGPT knows this...">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features-of-logicbank" class="md-nav__link">
+    Key Features of LogicBank:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-use-case" class="md-nav__link">
+    Example Use Case:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-logicbank-differs-from-standard-sqlalchemy" class="md-nav__link">
+    How LogicBank Differs from Standard SQLAlchemy:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-use-cases-for-logicbank" class="md-nav__link">
+    Common Use Cases for LogicBank:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-logic-bank-api-def" class="md-nav__link">
+    Request - Logic Bank API Def
+  </a>
+  
+    <nav class="md-nav" aria-label="Request - Logic Bank API Def">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-components-and-usage" class="md-nav__link">
+    Key Components and Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Components and Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-logicbank-class" class="md-nav__link">
+    1. LogicBank Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rule-class" class="md-nav__link">
+    2. Rule Class
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Rule Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sum-rule" class="md-nav__link">
+    Sum Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-rule" class="md-nav__link">
+    Count Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraint-rule" class="md-nav__link">
+    Constraint Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formula-rule" class="md-nav__link">
+    Formula Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-rule" class="md-nav__link">
+    Copy Rule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-row-events" class="md-nav__link">
+    3. Row Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-declarative-activation" class="md-nav__link">
+    4. Declarative Activation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-workflow" class="md-nav__link">
+    Example Workflow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefits-of-logicbank" class="md-nav__link">
+    Benefits of LogicBank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-solve-this" class="md-nav__link">
+    Request - solve this
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-solution" class="md-nav__link">
+    Response - Solution
+  </a>
+  
+    <nav class="md-nav" aria-label="Response - Solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-customerbalance-credit_limit" class="md-nav__link">
+    1. Customer.balance &lt;= credit_limit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-customerbalance-sumorderamount_total-where-date_shipped-is-null" class="md-nav__link">
+    2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-orderamount_total-sumitemamount" class="md-nav__link">
+    3. Order.amount_total = Sum(Item.amount)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-itemamount-quantity-unit_price" class="md-nav__link">
+    4. Item.amount = quantity * unit_price
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-store-the-itemunit_price-as-a-copy-from-productunit_price" class="md-nav__link">
+    5. Store the Item.unit_price as a copy from Product.unit_price
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-declare_logic-function" class="md-nav__link">
+    Complete declare_logic Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activating-logicbank" class="md-nav__link">
+    Activating LogicBank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-workflow_1" class="md-nav__link">
+    Example Workflow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-data" class="md-nav__link">
+    Example Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Nat Lang Logic</h1>
+
+<h2 id="about-this-page">About This Page</h2>
+<p>Our next target for GenAI is to build on <abbr title="self-contained, independently deployable, and scalable services that can be combined to create a larger application, with each service running in its own process and communicating with lightweight mechanisms, often an HTTP resource API.  Often provide an API, Logic, Data and UI.">microservice</abbr> automation to include <strong><em>logic</em></strong>.</p>
+<p>This is a transcript of a ChatGPT session to <a href="#request-logic-bank-api-def">"teach" ChatGPT about Logic</a>, and to then see if it turn Natural Language text into rules.  It did pretty well: <a href="#request-solve-this">see here</a>.</p>
+<p>We'll be looking to fold these concepts into API Logic Server GenAI.</p>
+<h2 id="request-what-is-logic-bank">Request - What is Logic Bank</h2>
+<p>What do you know about LogicBank</p>
+<h2 id="response-chatgpt-knows-this">Response - ChatGPT knows this...</h2>
+<p>LogicBank is a Python framework that provides <strong><abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr>, rule-based logic for SQLAlchemy</strong> applications. It simplifies the process of enforcing business rules and constraints in Python applications, especially when working with databases. It is designed to be integrated with ORMs like SQLAlchemy and is primarily used for handling logic related to:</p>
+<ul>
+<li><strong>Derivations</strong>: Automatically computing values from other values (e.g., calculating totals, taxes, or balances).</li>
+<li><strong>Constraints</strong>: Enforcing business rules (e.g., ensuring a customer’s balance doesn’t exceed their credit limit).</li>
+<li><strong>Actions</strong>: Triggering events or operations when certain conditions are met (e.g., sending notifications, auditing).</li>
+</ul>
+<h4 id="key-features-of-logicbank">Key Features of LogicBank:</h4>
+<ol>
+<li>
+<p><strong><abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">Declarative</abbr> Rules</strong>: LogicBank allows you to define business rules in a <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> style. These rules are automatically triggered during database operations (insert, update, delete).
+   - <strong>Derivation Rules</strong>: For example, an <code>Order.amount_total</code> can be derived by summing up the total amounts of all associated items.
+   - <strong>Constraint Rules</strong>: For example, ensuring <code>Customer.balance</code> does not exceed the <code>credit_limit</code>.
+   - <strong>Formula-based Rules</strong>: Compute values dynamically based on other fields.</p>
+</li>
+<li>
+<p><strong>Event-Driven</strong>: The framework allows rules to react automatically to changes in database values. When a field is updated, LogicBank can enforce rules, check constraints, or trigger actions without needing to write boilerplate code.</p>
+</li>
+<li>
+<p><strong>Transaction Management</strong>: It ensures that rules are applied in the context of database transactions, so if a rule fails (like violating a constraint), the transaction is rolled back.</p>
+</li>
+<li>
+<p><strong>Easy Integration with SQLAlchemy</strong>: LogicBank works seamlessly with SQLAlchemy, which is one of the most popular <abbr title="Object Relational Manager - dev-friendly sql access, such as row objects (e.g., SQLAlchemy)">ORM</abbr> (Object Relational Mapping) libraries in Python. This integration allows the framework to automatically listen to database events triggered by SQLAlchemy operations.</p>
+</li>
+<li>
+<p><strong>Automatic Propagation of Changes</strong>: When you update a record, any related records or fields that depend on that record are automatically updated. This eliminates the need for manual propagation of changes.</p>
+</li>
+</ol>
+<h4 id="example-use-case">Example Use Case:</h4>
+<p>Imagine a scenario where you need to ensure that when an order is placed, the customer’s balance is updated and cannot exceed their credit limit. With LogicBank, you can simply define rules that handle these calculations and constraints, and they will be automatically applied when data is inserted or updated in the database.</p>
+<p>Here’s a conceptual view of how it works:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">logic_bank</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogicBank</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">logic_bank.rule_bank</span><span class="w"> </span><span class="kn">import</span> <span class="n">rule_bank_withdrawal</span><span class="p">,</span> <span class="n">rule_bank_insert</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Define a rule to sum order totals to update customer balance</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">rule_bank_insert</span><span class="p">(</span><span class="n">CustomerAccount</span><span class="o">.</span><span class="n">balance</span><span class="p">,</span> <span class="n">derive</span><span class="o">=</span><span class="s2">&quot;Order.amount_total&quot;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s2">&quot;Order.customer_id == CustomerAccount.id&quot;</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Define a constraint to ensure customer&#39;s balance does not exceed the credit limit</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">rule_bank_withdrawal</span><span class="p">(</span><span class="n">CustomerAccount</span><span class="o">.</span><span class="n">balance</span><span class="p">,</span> <span class="n">constraint</span><span class="o">=</span><span class="s2">&quot;CustomerAccount.balance &lt;= CustomerAccount.credit_limit&quot;</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Insert/update an order, and these rules will automatically enforce business logic.</span>
+</span></code></pre></div>
+<h4 id="how-logicbank-differs-from-standard-sqlalchemy">How LogicBank Differs from Standard SQLAlchemy:</h4>
+<ul>
+<li>In SQLAlchemy, you typically write custom event listeners (like <code>before_insert</code>, <code>before_update</code>) and manually manage <abbr title="multi-table constraints and derivations, e.g., the Customer Balance may not exceed the CreditLimit, and is derived as the sum of unshipped Order AmountTotals.">business logic</abbr> inside these event handlers.</li>
+<li>With LogicBank, much of this can be declaratively defined as rules, reducing the amount of boilerplate code and making it easier to reason about complex <abbr title="multi-table constraints and derivations, e.g., the Customer Balance may not exceed the CreditLimit, and is derived as the sum of unshipped Order AmountTotals.">business logic</abbr>.</li>
+</ul>
+<h4 id="common-use-cases-for-logicbank">Common Use Cases for LogicBank:</h4>
+<ul>
+<li><strong>Business Process Automation</strong>: Automating calculations like totals, balances, or other computed fields.</li>
+<li><strong>Enforcing Business Constraints</strong>: Ensuring that certain conditions are met when data is modified (e.g., enforcing credit limits, ensuring dates are in a valid range).</li>
+<li><strong>Audit Trails</strong>: Triggering events when certain actions occur in the database, such as logging or sending notifications.</li>
+<li><strong>Data Validation</strong>: Automatically ensuring that inserted or updated data conforms to predefined rules.</li>
+</ul>
+<h4 id="summary">Summary:</h4>
+<p>LogicBank is an excellent tool for building business applications that need complex data management logic, particularly in scenarios where the logic can be described using rules. By automating this logic within the database layer, it helps reduce complexity in the application code and ensures that rules are consistently enforced across all operations.</p>
+<h2 id="request-logic-bank-api-def">Request - Logic Bank API Def</h2>
+<p>Good... Here is the API for LogicBank:from typing import Callable, Sequence
+from sqlalchemy import Column
+from sqlalchemy.<abbr title="Object Relational Manager - dev-friendly sql access, such as row objects (e.g., SQLAlchemy)">orm</abbr>.attributes import InstrumentedAttribute
+from sqlalchemy.<abbr title="Object Relational Manager - dev-friendly sql access, such as row objects (e.g., SQLAlchemy)">orm</abbr> import session
+from logic_bank.rule_bank import rule_bank_withdraw  # reduce circular imports
+import logic_bank.rule_bank.rule_bank_setup as rule_bank_setup
+from logic_bank.rule_type.constraint import Constraint
+from logic_bank.rule_type.copy import Copy
+from logic_bank.rule_type.count import Count
+from logic_bank.rule_type.formula import Formula
+from logic_bank.rule_type.parent_cascade import ParentCascade, ParentCascadeAction
+from logic_bank.rule_type.parent_check import ParentCheck
+from logic_bank.rule_type.row_event import EarlyRowEvent, RowEvent, CommitRowEvent, AfterFlushRowEvent
+from logic_bank.rule_type.sum import Sum</p>
+<p>class LogicBank:
+    """
+    1. Declare rules, e.g.</p>
+<div class="language-text highlight"><pre><span></span><code>    declare_logic():
+        Rule.sum(derive=Order.AmountTotal, as_sum_of=OrderDetail.Amount)  # discover with code completion
+
+2. Activate them:
+
+    LogicBank.activate(session=session, activator=declare_logic)  # register LogicBank listeners to SQLAlchemy
+
+3. Execute them:
+
+    session.commit()  # LogicBank listeners execute rules relevant for submitted changes
+
+.. _Rule Summary:
+</code></pre></div>
+<p>https://apilogicserver.github.io/Docs/Logic/</p>
+<p>https://github.com/valhuber/LogicBank/wiki/Rule-Summary</p>
+<div class="language-text highlight"><pre><span></span><code>&quot;&quot;&quot;
+
+@staticmethod
+def activate(session: session, activator: callable, constraint_event: callable = None):
+    &quot;&quot;&quot;
+    Call after opening database to activate logic:
+
+        - register SQLAlchemy listeners
+
+        - create RuleBank, load rules - later executed on commit
+
+        - raises exception if cycles detected
+
+    Use constraint_event to log / change class of constraints, for example
+
+        def constraint_handler(message: str, constraint: Constraint, logic_row: LogicRow):
+            error_attrs = &quot;&quot;
+            if constraint:
+                if constraint.error_attributes:
+                    for each_error_attribute in constraint.error_attributes:
+                        error_attrs = error_attrs + each_error_attribute.name + &quot; &quot;
+            exception_message = &quot;Custom constraint_handler for: &quot; + message +\
+                                &quot;, error_attributes: &quot; + error_attrs
+            logic_row.log(exception_message)
+            raise MyConstraintException(exception_message)
+
+    activate is automatic for API Logic Server applications.
+
+    Arguments:
+        session: SQLAlchemy session
+        activator: user function that declares rules (e.g., Rule.sum...)
+        constraint_event: optional user function called on constraint exceptions
+    &quot;&quot;&quot;
+    rule_bank = rule_bank_setup.setup(session)
+    if constraint_event is not None:
+        rule_bank.constraint_event = constraint_event
+    activator()
+    rule_bank_setup.compute_formula_execution_order()
+</code></pre></div>
+<p>class Rule:
+    """Invoke these functions to declare rules.</p>
+<div class="language-text highlight"><pre><span></span><code>Rules are *not* run as they are defined,
+they are run when you issue `session.commit()&#39;.
+
+.. _Rule Summary:
+    https://github.com/valhuber/LogicBank/wiki/Rule-Summary
+
+Use code completion to discover rules and their parameters.
+&quot;&quot;&quot;
+
+@staticmethod
+def sum(derive: Column, as_sum_of: any, where: any = None, child_role_name: str = &quot;&quot;, insert_parent: bool=False):
+    &quot;&quot;&quot;
+    Derive parent column as sum of designated child column, optional where
+
+    Example
+        Rule.sum(derive=models.Customer.Balance, as_sum_of=models.Order.AmountTotal,
+            where=lambda row: row.ShippedDate is None)
+
+    Optimized to eliminate / minimize SQLs: Pruning, Adjustment Logic
+
+    Automated dependency management: fires iff changes to pk, summed field, where
+
+    Args:
+        derive: name of parent &lt;class.attribute&gt; being derived
+        as_sum_of: name of child &lt;class.attribute&gt; being summed
+        child_role_name: parent&#39;s child accessor attribute (required only for disambiguation)
+        where: optional where clause, designates which child rows are summed
+
+
+    &quot;&quot;&quot;
+    return Sum(derive, as_sum_of, where, child_role_name, insert_parent)
+
+@staticmethod
+def count(derive: Column, as_count_of: object, where: any = None, child_role_name: str = &quot;&quot;, insert_parent: bool=False):
+    &quot;&quot;&quot;
+    Derive parent column as count of designated child rows
+
+    Example
+      Rule.count(derive=models.Customer.UnPaidOrders, as_count_of=models.Order,
+               where=Lambda row: row.ShippedDate is None)
+
+    Optimized to eliminate / minimize SQLs: Pruning, Adjustment Logic
+
+    Args:
+        derive: name of parent &lt;class.attribute&gt; being derived
+        as_count_of: name of child &lt;class&gt; being counted
+        child_role_name: parent&#39;s child accessor attribute (required only for disambiguation)
+        where: optional where clause, designates which child rows are counted
+    &quot;&quot;&quot;
+    return Count(derive, as_count_of, where, child_role_name, insert_parent)
+
+@staticmethod
+def constraint(validate: object,
+               calling: Callable = None,
+               as_condition: any = None,
+               error_msg: str = &quot;(error_msg not provided)&quot;,
+               error_attributes=None):
+    &quot;&quot;&quot;
+    Constraints declare condition that must be true for all commits
+
+    Example
+      Rule.constraint(validate=models.Customer,
+                      as_condition=lambda row: row.Balance &lt;= row.CreditLimit,
+                      error_msg=&quot;balance ({row.Balance}) exceeds credit ({row.CreditLimit})&quot;)
+
+
+    Constraint failures raise ConstraintException, e.g.:
+        try:
+            session.commit()
+        except ConstraintException as ce:
+            print(&quot;Constraint raised: &quot; + str(ce))
+
+    @see https://apilogicserver.github.io/Docs/Logic-Type-Constraint/
+
+    Args:
+        validate: name of mapped &lt;class&gt;
+        calling: function, passed row, old_row, logic_row (complex constraints)
+        as_condition: lambda, passed row (simple constraints)
+        error_msg: string, with {row.attribute} replacements
+        error_attributes: list of attributes
+
+    &quot;&quot;&quot;
+    if error_attributes is None:
+        error_attributes = []
+    return Constraint(validate=validate, calling=calling, as_condition=as_condition,
+                      error_attributes=error_attributes, error_msg=error_msg)
+
+@staticmethod
+def parent_check(validate: object,
+                 error_msg: str = &quot;(error_msg not provided)&quot;,
+                 enable: bool = True):
+    &quot;&quot;&quot;
+    Parent Checks ensure that non-null foreign keys are present in parent class
+
+    Example
+       Rule.parent_check(validate=models.Customer, enable=True, error_msg=&quot;Missing Parent&quot;)
+
+    Parent_check failures raise ConstraintException, e.g.:
+        try:
+            session.commit()
+        except ConstraintException as ce:
+            print(&quot;Constraint raised: &quot; + str(ce))
+
+    Args:
+        validate: name of mapped class
+        error_msg: message included in exception (can have {} syntax)
+        enable: True (default) = enable, False means disable (tolerate orphans)
+
+    Note: False not recommended - for existing databases with bad data
+        Behavior is undefined for other rules (sum, count, parent references, etc)
+
+    &quot;&quot;&quot;
+    return ParentCheck(validate=validate, error_msg=error_msg, enable=enable)
+
+@staticmethod
+def formula(derive: Column,
+            as_exp: str = None,  # string (for very short expression)
+            as_expression: Callable = None,
+            calling: Callable = None,
+            no_prune: bool = False):
+    &quot;&quot;&quot;
+    Formulas declare column value, based on current and parent rows
+
+    Example
+      Rule.formula(derive=models.OrderDetail.Amount,
+                   as_expression=lambda row: row.UnitPrice * row.Quantity)
+
+    Unlike Copy rules, Parent changes are propagated to child row(s)
+
+    The `calling` function must return a value (else column is nullified)
+
+    Args:
+        derive: &lt;class.attribute&gt; being derived
+        as_exp: string (for very short expressions - price * quantity)
+        as_expression: lambda, passed row (for syntax checking)
+        calling: function (for more complex formula, pass row, old_row, logic_row)
+        no_prune: disable pruning (rarely used, default False)
+    &quot;&quot;&quot;
+    return Formula(derive=derive,
+                   calling=calling, as_exp=as_exp, as_expression=as_expression,
+                   no_prune=no_prune)
+
+@staticmethod
+def copy(derive: Column, from_parent: any):
+    &quot;&quot;&quot;
+    Copy declares child column copied from parent column
+
+    Example
+      Rule.copy(derive=models.OrderDetail.UnitPrice, from_parent=models.Product.UnitPrice)
+
+    Unlike formulas references, parent changes are *not* propagated to children
+
+    Args:
+        derive: &lt;class.attribute&gt; being copied into
+        from_parent: &lt;parent-class.attribute&gt; source of copy
+    &quot;&quot;&quot;
+    return Copy(derive=derive, from_parent=from_parent)
+
+@staticmethod
+def early_row_event(on_class: object, calling: Callable = None):
+    &quot;&quot;&quot;
+    Row Events are Python functions called *before* logic
+    Possible multiple calls per transaction
+    Use: computing foreign keys...
+
+    Args:
+        on_class: &lt;class&gt; for event
+        calling: function, passed row, old_row, logic_row
+    &quot;&quot;&quot;
+    return EarlyRowEvent(on_class, calling)  # --&gt; load_logic
+
+@staticmethod
+def early_row_event_all_classes(early_row_event_all_classes: Callable = None):
+    &quot;&quot;&quot;
+    early event for all mapped classes, intended for time/date/user stamping, e.g.
+
+    def handle_all(logic_row: LogicRow):
+        row = logic_row.row
+        if logic_row.ins_upd_dlt == &quot;ins&quot; and hasattr(row, &quot;CreatedOn&quot;):
+            row.CreatedOn = datetime.datetime.now()
+            logic_row.log(&quot;early_row_event_all_classes - handle_all sets &#39;Created_on&quot;&#39;&#39;)
+
+    Rule.early_row_event_all_classes(early_row_event_all_classes=handle_all)
+
+    Args:
+        early_row_event_all_classes: function, passed logic_row
+
+    &quot;&quot;&quot;
+    return rule_bank_setup.setup_early_row_event_all_classes(
+        early_row_event_all_classes=early_row_event_all_classes)
+
+@staticmethod
+def row_event(on_class: object, calling: Callable = None):
+    &quot;&quot;&quot;
+    Row Events are Python functions called *during* logic, after formulas/constraints
+    Possible multiple calls per transaction
+    Use: recursive explosions (e.g, Bill of Materials)
+
+    Args:
+        on_class: &lt;class&gt; for event
+        calling: function, passed row, old_row, logic_row
+    &quot;&quot;&quot;
+    return RowEvent(on_class, calling)  # --&gt; load_logic
+
+@staticmethod
+def commit_row_event(on_class: object, calling: Callable = None):
+    &quot;&quot;&quot;
+    Commit Row Events are Python functions *after* all row logic formulas/constraints
+
+    Example
+        Rule.commit_row_event(on_class=Order, calling=congratulate_sales_rep)
+
+    1 call per row, per transaction
+
+    Example use: send mail/message
+
+    Args:
+        on_class: &lt;class&gt; for event
+        calling: function, passed row, old_row, logic_row
+    &quot;&quot;&quot;
+    return CommitRowEvent(on_class, calling)  # --&gt; load_logic
+
+@staticmethod
+def after_flush_row_event(on_class: object, calling: Callable = None):
+    &quot;&quot;&quot;
+    After Flush Row Events are Python functions *after* all row logic formulas/constraints,
+    and after rows are flushed to disk.
+
+    Unlike commit row events, such rows will reflect DBMS-generated AutoNum values.
+
+    Updates during after_flush are undefined; use Commit Events if updates are required.
+
+    Example
+        Rule.after_flush_row_event(on_class=models.Order, calling=send_order_to_shipping)
+
+    1 call per row, per transaction
+
+    Example use: send mail/message including AutoNum values
+
+    Args:
+        on_class: &lt;class&gt; for event
+        calling: function, passed row, old_row, logic_row
+    &quot;&quot;&quot;
+    return AfterFlushRowEvent(on_class, calling)  # --&gt; load_logic
+
+&#39;&#39;&#39;
+disabled, per ORM support (retained in case of misunderstandings)
+    @staticmethod
+    def parent_cascade(validate: object,
+                       error_msg: str = &quot;(error_msg not provided)&quot;,
+                       relationship: str = &quot;*&quot;,
+                       action: ParentCascadeAction = ParentCascadeAction.NULLIFY):
+        &quot;&quot;&quot;
+        Parent Cascade specifies processing for child rows on parent delete
+
+        Example
+           Rule.parent_cascade(validate=Order, relationship=&quot;OrderDetailList&quot;, action=ParentCascadeAction.DELETE)
+
+        If rule or action not specified, default is ParentCascadeAction.NULLIFY
+
+        Parent_cascade with ParentCascadeAction.NULLIFY can raise ConstraintException, e.g.:
+            try:
+                session.commit()
+            except ConstraintException as ce:
+                print(&quot;Constraint raised: &quot; + str(ce))
+
+        &quot;&quot;&quot;
+        return ParentCascade(validate=validate, error_msg=error_msg, relationship=relationship, action=action)
+&#39;&#39;&#39;
+</code></pre></div>
+<p>class DeclareRule(Rule):
+    """
+    Same as Rule, but makes clear these statements <em>declare</em> rules, e.g.</p>
+<div class="language-text highlight"><pre><span></span><code>    declare_logic():
+
+        DeclareRule.sum(derive=models.Order.AmountTotal, as_sum_of=OrderDetail.Amount)
+
+Activate them:
+
+    LogicBank.activate(session=session, activator=declare_logic)  # registers LogicBank listeners to SQLAlchemy
+
+Execute them:
+
+    session.commit()  # LogicBank listeners execute rules relevant for submitted changes
+
+&quot;&quot;&quot;
+pass
+
+# Response - ChatGPT understanding of Logic Bank
+
+The provided API for **LogicBank** introduces a framework to declaratively define and enforce business rules directly in Python when using **SQLAlchemy**. Below is a breakdown of the key features and usage of the API:
+</code></pre></div>
+<h4 id="key-components-and-usage">Key Components and Usage</h4>
+<h5 id="1-logicbank-class">1. <strong>LogicBank Class</strong></h5>
+<p>The <code>LogicBank</code> class is the primary entry point to activate and enforce rules for SQLAlchemy models. Here's how it's typically used:
+- <strong>Activate Rules</strong>: You call <code>LogicBank.activate</code> to register SQLAlchemy listeners and enforce declared rules during the commit operation.</p>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">LogicBank</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span> <span class="n">activator</span><span class="o">=</span><span class="n">declare_logic</span><span class="p">)</span>
+</span></code></pre></div>
+  - <code>session</code>: The SQLAlchemy session.
+  - <code>activator</code>: A function that declares business rules.
+  - <code>constraint_event</code>: (Optional) A handler to manage constraint violations.</p>
+<h5 id="2-rule-class">2. <strong>Rule Class</strong></h5>
+<p>The <code>Rule</code> class provides a <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> interface to define various types of <abbr title="multi-table constraints and derivations, e.g., the Customer Balance may not exceed the CreditLimit, and is derived as the sum of unshipped Order AmountTotals.">business logic</abbr> rules.</p>
+<h6 id="sum-rule"><strong>Sum Rule</strong></h6>
+<ul>
+<li>Derives a <abbr title="One side of a one-to-many relationship (e.g., Customer for Orders)">parent</abbr> column as the sum of a related <abbr title="Many side of a one-to-many relationship (e.g., Orders for Customer)">child</abbr> column (commonly used in order-line item scenarios).
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">derive</span><span class="o">=</span><span class="n">Order</span><span class="o">.</span><span class="n">amount_total</span><span class="p">,</span> <span class="n">as_sum_of</span><span class="o">=</span><span class="n">OrderDetail</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span>
+</span></code></pre></div></li>
+</ul>
+<h6 id="count-rule"><strong>Count Rule</strong></h6>
+<ul>
+<li>Counts the number of <abbr title="Many side of a one-to-many relationship (e.g., Orders for Customer)">child</abbr> rows and assigns that value to a <abbr title="One side of a one-to-many relationship (e.g., Customer for Orders)">parent</abbr> column.
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">derive</span><span class="o">=</span><span class="n">Customer</span><span class="o">.</span><span class="n">unpaid_orders</span><span class="p">,</span> <span class="n">as_count_of</span><span class="o">=</span><span class="n">Order</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">shipped_date</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div></li>
+</ul>
+<h6 id="constraint-rule"><strong>Constraint Rule</strong></h6>
+<ul>
+<li>Ensures a condition holds for the row being validated. Constraints are typically used to enforce business rules.
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">constraint</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">CustomerAccount</span><span class="p">,</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                <span class="n">as_condition</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">balance</span> <span class="o">&lt;=</span> <span class="n">row</span><span class="o">.</span><span class="n">credit_limit</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>                <span class="n">error_msg</span><span class="o">=</span><span class="s2">&quot;balance exceeds credit limit&quot;</span><span class="p">)</span>
+</span></code></pre></div></li>
+</ul>
+<h6 id="formula-rule"><strong>Formula Rule</strong></h6>
+<ul>
+<li>Derives a column value based on other values, using either a simple expression or a lambda function.
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">formula</span><span class="p">(</span><span class="n">derive</span><span class="o">=</span><span class="n">OrderDetail</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="n">as_expression</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">unit_price</span> <span class="o">*</span> <span class="n">row</span><span class="o">.</span><span class="n">quantity</span><span class="p">)</span>
+</span></code></pre></div></li>
+</ul>
+<h6 id="copy-rule"><strong>Copy Rule</strong></h6>
+<ul>
+<li>Copies a column from a <abbr title="One side of a one-to-many relationship (e.g., Customer for Orders)">parent</abbr> to a <abbr title="Many side of a one-to-many relationship (e.g., Orders for Customer)">child</abbr>. This is useful when a field (like price) should not be dynamically calculated.
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">derive</span><span class="o">=</span><span class="n">OrderDetail</span><span class="o">.</span><span class="n">unit_price</span><span class="p">,</span> <span class="n">from_parent</span><span class="o">=</span><span class="n">Product</span><span class="o">.</span><span class="n">unit_price</span><span class="p">)</span>
+</span></code></pre></div></li>
+</ul>
+<h5 id="3-row-events">3. <strong>Row Events</strong></h5>
+<p>Row events allow you to define custom logic triggered at different points during a transaction. There are several types of row events:
+- <strong>EarlyRowEvent</strong>: Triggered before the logic is applied.
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">early_row_event</span><span class="p">(</span><span class="n">on_class</span><span class="o">=</span><span class="n">Order</span><span class="p">,</span> <span class="n">calling</span><span class="o">=</span><span class="n">my_custom_function</span><span class="p">)</span>
+</span></code></pre></div></p>
+<ul>
+<li><strong>RowEvent</strong>: Triggered during the execution of logic, after constraints and formulas have been applied.</li>
+<li><strong>CommitRowEvent</strong>: Triggered after the logic and database changes have been committed.</li>
+</ul>
+<h5 id="4-declarative-activation">4. <strong><abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">Declarative</abbr> Activation</strong></h5>
+<p>The <code>DeclareRule</code> class is a semantic alias of <code>Rule</code>, helping to clarify that these are <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> statements:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">DeclareRule</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">derive</span><span class="o">=</span><span class="n">Order</span><span class="o">.</span><span class="n">amount_total</span><span class="p">,</span> <span class="n">as_sum_of</span><span class="o">=</span><span class="n">OrderDetail</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span>
+</span></code></pre></div></p>
+<h4 id="example-workflow">Example Workflow</h4>
+<ol>
+<li>
+<p><strong>Define Rules</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">declare_logic</span><span class="p">():</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="c1"># Define business rules</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">Rule</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">derive</span><span class="o">=</span><span class="n">CustomerAccount</span><span class="o">.</span><span class="n">balance</span><span class="p">,</span> <span class="n">as_sum_of</span><span class="o">=</span><span class="n">Order</span><span class="o">.</span><span class="n">amount_total</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>             <span class="n">where</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">date_shipped</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="n">Rule</span><span class="o">.</span><span class="n">constraint</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">CustomerAccount</span><span class="p">,</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>                    <span class="n">as_condition</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">balance</span> <span class="o">&lt;=</span> <span class="n">row</span><span class="o">.</span><span class="n">credit_limit</span><span class="p">,</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>                    <span class="n">error_msg</span><span class="o">=</span><span class="s2">&quot;balance exceeds credit limit&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Activate Rules</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">LogicBank</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span> <span class="n">activator</span><span class="o">=</span><span class="n">declare_logic</span><span class="p">)</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Commit Data</strong>
+   After making changes to the session, you simply call:
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></code></pre></div>
+   At this point, LogicBank will automatically apply the defined rules, derive values, and enforce constraints.</p>
+</li>
+</ol>
+<h4 id="benefits-of-logicbank">Benefits of LogicBank</h4>
+<ul>
+<li><strong><abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">Declarative</abbr> Rule Definition</strong>: Business rules can be declared once and automatically enforced during commit operations.</li>
+<li><strong>Automated Constraint and Formula Management</strong>: Eliminates the need for manual handling of constraint checks or derived fields.</li>
+<li><strong>Optimized Execution</strong>: The API is optimized to minimize SQL queries, especially in cases of complex dependency chains (e.g., pruning and adjustment logic).</li>
+<li><strong>Error Handling</strong>: The framework allows custom constraint handling via the <code>constraint_event</code> argument in <code>LogicBank.activate</code>.</li>
+</ul>
+<h4 id="conclusion">Conclusion</h4>
+<p>LogicBank enables efficient rule-based management for SQLAlchemy applications, handling constraints, derivations, and other <abbr title="multi-table constraints and derivations, e.g., the Customer Balance may not exceed the CreditLimit, and is derived as the sum of unshipped Order AmountTotals.">business logic</abbr> declaratively and automatically. This can simplify applications where rules around things like totals, balances, and credit limits need to be consistently enforced across different transactions.</p>
+<h2 id="request-solve-this">Request - solve this</h2>
+<p>Use LogicBank to enforce the Check Credit requirement (do not generate check constraints):
+1. Customer.balance &lt;= credit_limit
+2. Customer.balance = Sum(Order.amount_total where date_shipped is null)
+3. Order.amount_total = Sum(Item.mount)
+4. Item.amount = quantity * unit_price
+5. Store the Item.unit_price as a copy from Product.unit_price</p>
+<h2 id="response-solution">Response - Solution</h2>
+<p>To enforce the <strong>Check Credit</strong> requirements using <strong>LogicBank</strong>, you can declaratively define the rules for the <code>CustomerAccount</code>, <code>Order</code>, and <code>Item</code> models. Here’s how to set up LogicBank to enforce each of the rules:</p>
+<h4 id="1-customerbalance-credit_limit">1. <strong>Customer.balance &lt;= credit_limit</strong></h4>
+<p>This rule ensures that a customer's balance does not exceed their credit limit. You can enforce this using a <strong>constraint</strong> rule.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">constraint</span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">validate</span><span class="o">=</span><span class="n">CustomerAccount</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">as_condition</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">balance</span> <span class="o">&lt;=</span> <span class="n">row</span><span class="o">.</span><span class="n">credit_limit</span><span class="p">,</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">error_msg</span><span class="o">=</span><span class="s2">&quot;Balance (</span><span class="si">{row.balance}</span><span class="s2">) exceeds credit limit (</span><span class="si">{row.credit_limit}</span><span class="s2">)&quot;</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="2-customerbalance-sumorderamount_total-where-date_shipped-is-null">2. <strong>Customer.balance = Sum(Order.amount_total where date_shipped is null)</strong></h4>
+<p>This rule ensures that a customer's balance is the sum of the total amounts for all their orders where <code>date_shipped</code> is still <code>None</code> (i.e., orders that have not been shipped yet). You can enforce this with a <strong>sum</strong> rule.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">derive</span><span class="o">=</span><span class="n">CustomerAccount</span><span class="o">.</span><span class="n">balance</span><span class="p">,</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">as_sum_of</span><span class="o">=</span><span class="n">Order</span><span class="o">.</span><span class="n">amount_total</span><span class="p">,</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">where</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">date_shipped</span> <span class="ow">is</span> <span class="kc">None</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="3-orderamount_total-sumitemamount">3. <strong>Order.amount_total = Sum(Item.amount)</strong></h4>
+<p>For each order, the <code>amount_total</code> should be the sum of the amounts for each item in the order. You can enforce this with another <strong>sum</strong> rule.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="n">derive</span><span class="o">=</span><span class="n">Order</span><span class="o">.</span><span class="n">amount_total</span><span class="p">,</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="n">as_sum_of</span><span class="o">=</span><span class="n">Item</span><span class="o">.</span><span class="n">amount</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="4-itemamount-quantity-unit_price">4. <strong>Item.amount = quantity * unit_price</strong></h4>
+<p>For each item in an order, the <code>amount</code> should be calculated as the product of <code>quantity</code> and <code>unit_price</code>. This can be enforced with a <strong>formula</strong> rule.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">formula</span><span class="p">(</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="n">derive</span><span class="o">=</span><span class="n">Item</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">as_expression</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">quantity</span> <span class="o">*</span> <span class="n">row</span><span class="o">.</span><span class="n">unit_price</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="5-store-the-itemunit_price-as-a-copy-from-productunit_price">5. <strong>Store the Item.unit_price as a copy from Product.unit_price</strong></h4>
+<p>Whenever a product is added to an item, its <code>unit_price</code> should be copied from the corresponding <code>Product.unit_price</code>. You can enforce this with a <strong>copy</strong> rule.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">Rule</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">derive</span><span class="o">=</span><span class="n">Item</span><span class="o">.</span><span class="n">unit_price</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">from_parent</span><span class="o">=</span><span class="n">Product</span><span class="o">.</span><span class="n">unit_price</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="complete-declare_logic-function">Complete <code>declare_logic</code> Function</h4>
+<p>Here’s how the complete rule setup would look when you declare the business rules:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">declare_logic</span><span class="p">():</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="c1"># Rule 1: Customer.balance &lt;= credit_limit</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">Rule</span><span class="o">.</span><span class="n">constraint</span><span class="p">(</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>        <span class="n">validate</span><span class="o">=</span><span class="n">CustomerAccount</span><span class="p">,</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>        <span class="n">as_condition</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">balance</span> <span class="o">&lt;=</span> <span class="n">row</span><span class="o">.</span><span class="n">credit_limit</span><span class="p">,</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>        <span class="n">error_msg</span><span class="o">=</span><span class="s2">&quot;Balance (</span><span class="si">{row.balance}</span><span class="s2">) exceeds credit limit (</span><span class="si">{row.credit_limit}</span><span class="s2">)&quot;</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="p">)</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="c1"># Rule 2: Customer.balance = Sum(Order.amount_total where date_shipped is null)</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="n">Rule</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="n">derive</span><span class="o">=</span><span class="n">CustomerAccount</span><span class="o">.</span><span class="n">balance</span><span class="p">,</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>        <span class="n">as_sum_of</span><span class="o">=</span><span class="n">Order</span><span class="o">.</span><span class="n">amount_total</span><span class="p">,</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>        <span class="n">where</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">date_shipped</span> <span class="ow">is</span> <span class="kc">None</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="p">)</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    <span class="c1"># Rule 3: Order.amount_total = Sum(Item.amount)</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>    <span class="n">Rule</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>        <span class="n">derive</span><span class="o">=</span><span class="n">Order</span><span class="o">.</span><span class="n">amount_total</span><span class="p">,</span>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>        <span class="n">as_sum_of</span><span class="o">=</span><span class="n">Item</span><span class="o">.</span><span class="n">amount</span>
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>    <span class="p">)</span>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>    <span class="c1"># Rule 4: Item.amount = quantity * unit_price</span>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>    <span class="n">Rule</span><span class="o">.</span><span class="n">formula</span><span class="p">(</span>
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>        <span class="n">derive</span><span class="o">=</span><span class="n">Item</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span>
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a>        <span class="n">as_expression</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">quantity</span> <span class="o">*</span> <span class="n">row</span><span class="o">.</span><span class="n">unit_price</span>
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a>    <span class="p">)</span>
+</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a>
+</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a>    <span class="c1"># Rule 5: Store the Item.unit_price as a copy from Product.unit_price</span>
+</span><span id="__span-17-29"><a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a>    <span class="n">Rule</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+</span><span id="__span-17-30"><a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a>        <span class="n">derive</span><span class="o">=</span><span class="n">Item</span><span class="o">.</span><span class="n">unit_price</span><span class="p">,</span>
+</span><span id="__span-17-31"><a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a>        <span class="n">from_parent</span><span class="o">=</span><span class="n">Product</span><span class="o">.</span><span class="n">unit_price</span>
+</span><span id="__span-17-32"><a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a>    <span class="p">)</span>
+</span></code></pre></div>
+<h4 id="activating-logicbank">Activating LogicBank</h4>
+<p>To activate the rules in your SQLAlchemy session, you call the <code>LogicBank.activate</code> method and pass in the session and the <code>declare_logic</code> function:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">logic_bank</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogicBank</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Activate LogicBank with the session and the rule declarations</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">LogicBank</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span> <span class="n">activator</span><span class="o">=</span><span class="n">declare_logic</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="example-workflow_1">Example Workflow</h4>
+<ol>
+<li>When you insert or update a record in the <code>CustomerAccount</code>, <code>Order</code>, or <code>Item</code> tables and then call <code>session.commit()</code>, LogicBank will automatically:
+   - Enforce the <strong>credit limit</strong> constraint.
+   - Recalculate the <strong>customer balance</strong> based on unshipped orders.
+   - Sum the <strong>order total</strong> from its items.
+   - Calculate the <strong>item amount</strong> from the quantity and unit price.
+   - Copy the <strong>unit price</strong> from the associated product.</li>
+</ol>
+<h4 id="example-data">Example Data</h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Add a product</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">product1</span> <span class="o">=</span> <span class="n">Product</span><span class="p">(</span><span class="n">product_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Widget&quot;</span><span class="p">,</span> <span class="n">unit_price</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Add a customer account</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">customer1</span> <span class="o">=</span> <span class="n">CustomerAccount</span><span class="p">(</span><span class="n">customer_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="n">balance</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">credit_limit</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Add an order for the customer (initially not shipped)</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">order1</span> <span class="o">=</span> <span class="n">Order</span><span class="p">(</span><span class="n">order_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">customer_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">date_shipped</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="c1"># Add items to the order</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="n">item1</span> <span class="o">=</span> <span class="n">Item</span><span class="p">(</span><span class="n">item_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">order_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">product_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">unit_price</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># unit_price will be copied</span>
+</span></code></pre></div>
+<p>On <code>session.commit()</code>, LogicBank will automatically:
+- Ensure the customer's balance does not exceed the credit limit.
+- Update the customer's balance to reflect the total of the unshipped order.
+- Calculate the total amount of the order from its items.
+- Calculate each item's amount from the quantity and unit price.
+- Copy the unit price from the product into the item.</p>
+<h4 id="summary_1">Summary</h4>
+<p>By using LogicBank, all the <strong>Check Credit</strong> requirements are enforced declaratively without needing to write additional logic in your codebase. This allows your business rules to be managed centrally and consistently applied across transactions.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Tech-Toaster/" class="md-footer__link md-footer__link--prev" aria-label="Previous: API Appliance">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                API Appliance
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Tech-AI-Collaboration/" class="md-footer__link md-footer__link--next" aria-label="Next: AI Human Collaboration">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                AI Human Collaboration
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "kramdown", "content.tooltips", "navigation.footer"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script>
+      
+        <script src="../assets/javascripts/mermaid-init.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
