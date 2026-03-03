@@ -71,45 +71,7 @@ create behave tests from CBSA_SURTAX_GUIDE
 
 The GenAI-Logic `create` command builds test services and Context Engineering. These enable the LLM to generate tests that proved the code worked, as well as elucidate the logic through readable test reports.
 
-
 ![behave rpt](images/ui-vibe/customs/behave_report_git.png)
-
-### GenAI-Logic Architecture: Logic Automation + AI
-
-The underlying architecture is a combination of key elements:
-
-#### Generative AI - but that's not enough
-
-Used extensively to create - and iterate - the system.  This occurs in the IDE, not at runtime.  
-
-But GenAI alone is not enough.  AI pattern matching struggles with dependencies, as shown in the A/B Test (see end)
-
-<br>
-
-#### Logic Automation (engines for rules, api...)
-
-The core GenAI-Logic [software architecture](https://www.genai-logic.com/product/architecture){:target="_blank" rel="noopener"} consists of:
-
-* Runtime Engines for logic, api, admin app and data access
-* CLI Services to create projects, rules, etc
-
-
-![arch](images/ui-vibe/customs/Core-Architecture.png)
-
-<br>
-
-#### Context Engineering: Automation Aware AI
-
-GenAI-Logic projects are [AI-Enabled](Project-AI-Enabled.md): each project contains extensive Context Engineering (markdown files) that enable AI to understand and create Logic Automation components.  
-
-For example, markdown files explain rule syntax, so AI can translate NL Logic into declarative rules.
-
-
-##### Highly Leveraged; Support Recommended
-
-As part of your project, you can extend Context Engineering.  We did so in this project (see section 2).
-
-Such extensions require extensive architectural background, so training and support are recommended.
 
 <br>
 
@@ -144,9 +106,11 @@ The following artifacts were generated and are present in this repository.
 
 ---
 
-## 2. Context Engineering Revision: Subsystem Creation
+## 2. Context Engineering Revised
 
-This app was built across several iterations. Each iteration revealed a specific gap in Context Engineering (CE) — the curated knowledge given to the AI before generation. The gaps and their fixes are documented below.
+This POC illustrates the [3-legged stool](#appendix-3-legged-stool), and how Context Engineering leverage underlying automatin to produce a remarkable results. 
+
+It was built across several iterations. Each iteration revealed a specific gap in Context Engineering (CE) — the curated knowledge given to the AI before generation. The gaps and their fixes are documented below.
 
 This was a very interesting joint AI/human design; the approach:
 
@@ -173,7 +137,7 @@ This was, however, a "happy accident", illustrating that ***AI alone does not de
 
 * **Unshared, Path-specific logic (Quality Issues)** — Logic embedded in a single path — not automatically shared across insert/update/delete/FK-change paths.
 
-* **Procedural — Manual Ordering (with bugs)** — Logic is *procedural* with explicit ordering. **AI uses pattern matching to order execution, which can fail for business logic** — to see the A/B study, [**click here**](https://github.com/KatrinaHuberJuma/customs_app/blob/main/logic/procedural/declarative-vs-procedural-comparison). This in fact did occur in our example.
+* **Procedural — Manual Ordering (with bugs)** — Logic is *procedural* with explicit ordering. **AI uses pattern matching to order execution, which can fail for business logic** — to see the A/B study, [**click here**](#appendix-ab-test). This in fact did occur in our example.
 
 <br>
 
@@ -218,7 +182,7 @@ With the revised CE in place, Claude generated a complete, correct customs appli
 
 
 <details markdown>
-<summary><strong>4. Productization revealed `basic_demo` dependence and master/detail prompt omission ❌</strong></summary>
+<summary><strong>4. Productization revealed `basic_demo` dependence & master/detail prompt omission ❌</strong></summary>
 
 <br>
 
@@ -280,6 +244,14 @@ Each iteration tested against the hand-crafted `customs_app` (16 rules) as the f
 > **CE reliability boundary:** CE is reliable for what it explicitly encodes. If a structural outcome depends on inference — from ghost context, readme text, or ambient schema artifacts — it is non-deterministic and will not reproduce on a clean project. The practical test: can you point to the CE sentence that requires this outcome? If not, the result is fragile.
 
 **Domain accuracy finding:** The clean-room test also caught a factual error in the hand-crafted reference — `customs_app` marks Germany, Japan, and China as surtax-applicable. PC 2025-0917 is a targeted US retaliatory levy; only US-origin goods attract the 25% surcharge. The AI, without the reference in context, modeled this correctly. Domain experts reviewing this system should verify country-of-origin applicability against the current PC annex.
+
+</details>
+
+<br>
+
+<details markdown><summary>7. Results Vary - Human in the Loop ⚠️ </summary>
+
+<br>Iterations produce generally good results, but not identical.  The familiar "human in the loop" advice applies - the result of AI is not a project you deploy instantly, but one that is easy to scan, test and verify.
 
 </details>
 
@@ -449,8 +421,87 @@ Then, in the opened project:
 
 &nbsp;
 
+# Appendix: 3-legged Stool
 
-# Appendix: Without GenAI-Logic
+
+GenAI-Logic provides functionality by a combination of core services (project creation, api execution, rules engine), and by leveraging/extending AI Assistants in your IDE.
+
+![3-legged stool](images/ui-vibe/assistant/3-legged-stool.png)
+
+<details markdown>
+
+<summary>Diagram - Tech Details </summary>
+
+<br>
+As shown above, GenAI-Logic functionality is delivered by 3 key elements:
+
+<br>
+
+## 1. Architecture Automation
+
+GenAI-Logic provides automation both at Project Creation, and Runtime:
+
+* Project Creation - schema discovery to create projects, with architecture automation to integrate the components (API, Logic and Security, database access, etc)
+
+* Runtime Engines - engines to execute APIs, Logic, Security, database access, etc
+
+<br>
+
+## 2. AI Usage
+
+The primary use of AI is to use your AI Assistant for:
+
+* Authoring (e.g., create logic, APIs), and
+* Explanations - find how the system works (e.g., how does logic work, what about performance, etc)
+
+Importantly, these authoring services preserve *Human in the Loop:* review what AI creates, accept/alter as required.  The resultant system is deterministic.
+
+You can also elect to use AI at runtime, by specifying rules with `Use AI to...`.  For example, this demo illustrates using AI to choose an optimal supplier - for more information, see [MCP AI Example](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
+
+> AI can be used to compute values, and we we know AI can make mistakes.<br>Govern such AI Logic using business rules -- AI can propose, rules decide what commits.
+
+We use the following models:
+
+* CLI services use ChatGPT.  You will need to configure your key, typically as an environment variable.
+
+* Copilot access is your choice.  We get good results and typically use Claude Sonnet 4.6.
+
+<br>
+
+## 3. Context Engineering
+
+Each project contains thousands of lines of Context Engineering that inform AI Assistant about the CLI and runtime services .
+
+</details>
+
+
+| Leg | What it provides | Without it |
+|-----|-----------------|------------|
+| **Logic Automation** (Rules, API Engines) | Correct, auto-enforced business logic across all write paths; enterprise API | **- Fat API:** Path-dependent procedural logic with missed cases and bugs<br>**- Demo-class APIs** (no optimistic locking, etc) |
+| **Generative AI** | Rapid creation, iteration, test generation from natural language | Weeks of manual development |
+| **Context Engineering** | Guides AI to the right architecture (declarative rules, proper data model) | AI defaults to "Fat API" procedural code — works but ungoverned |
+
+**Key insight:** Without Context Engineering, AI generates working demos that lack enterprise 
+architecture. Without rules automation, AI generates procedural code with correctness bugs. 
+Together: a several-week effort became **30 minutes**, producing a correct, enterprise-class, 
+fully tested system.
+
+> *"A/B result: 16 declarative rules vs. equivalent procedural code with 2 critical bugs."*
+
+&nbsp;
+
+### Highly Leveraged; Support Recommended
+
+As part of your project, you can extend Context Engineering.  We did so in this project (see section 2).  For more information, see [AI-Enabled](Project-AI-Enabled.md).
+
+Such extensions require extensive architectural background, so training and support are recommended.
+
+&nbsp;
+
+
+---
+
+# Appendix: A/B Test
 
 Mistakenly, we submitted the creation prompt without having loaded Context Engineering.  This created a working app, but without rules.
 

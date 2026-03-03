@@ -238,6 +238,7 @@ nav:
     - "Product Overview": Product-Overview.md
     - Personal:
       - "Manager": Manager-readme.md
+      - "Customs Full": Customs-readme-full.md
       - "Basic Demo (unused)": Sample-Basic-Demo-Full-Unused.md
       - "Tour": Sample-Basic-Tour.md
       - "Think Declarative": Tech-declarative.md
