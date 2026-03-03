@@ -21,42 +21,71 @@ This page describes:
 
 &nbsp;
 
-
-## AI Usage
+## AI Role: the 3-Legged Stool
 
 GenAI-Logic provides functionality by a combination of core services (project creation, api execution, rules engine), and by leveraging/extending AI Assistants in your IDE.
 
-&nbsp;
+![3-legged stool](images/ui-vibe/assistant/3-legged-stool.png)
 
-### Authoring
+<details markdown>
 
-When you create a new project with `genai-logic create`, you're not just getting a basic API and admin interface. Each project is thoughtfully designed to be **AI-friendly** from day one.
+<summary>Diagram - Tech Details </summary>
 
-Bootstrap this by telling your AI Assistant to bootstrap itself:
+<br>
+As shown above, GenAI-Logic functionality is delivered by 3 key elements:
 
-```bash
-Please load `.github/.copilot-instructions.md`
-```
+<br>
 
-![AI-Enabled Projects](images/ui-vibe/assistant/copilot-hello.png)
+### 1. Architecture Automation
 
-&nbsp;
+GenAI-Logic provides automation both at Project Creation, and Runtime:
 
-### AI Logic
+* Project Creation - schema discovery to create projects, with architecture automation to integrate the components (API, Logic and Security, database access, etc)
 
-All of the services above occur in your IDE.  You can see what is generated and fix / remove it (human in the loop).
+* Runtime Engines - engines to execute APIs, Logic, Security, database access, etc
 
-In addition, you can use ***AI at runtime** to execute logic.  For example, this demo illustrates using AI to choose an optimal supplier - for more information, see [MCP AI Example](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
+<br>
+
+### 2. AI Usage
+
+The primary use of AI is to use your AI Assistant for:
+
+* Authoring (e.g., create logic, APIs), and
+* Explanations - find how the system works (e.g., how does logic work, what about performance, etc)
+
+Importantly, these authoring services preserve *Human in the Loop:* review what AI creates, accept/alter as required.  The resultant system is deterministic.
+
+You can also elect to use AI at runtime, by specifying rules with `Use AI to...`.  For example, this demo illustrates using AI to choose an optimal supplier - for more information, see [MCP AI Example](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
 
 > AI can be used to compute values, and we we know AI can make mistakes.<br>Govern such AI Logic using business rules -- AI can propose, rules decide what commits.
 
-&nbsp;
+We use the following models:
 
-### Models Used
+* CLI services use ChatGPT.  You will need to configure your key, typically as an environment variable.
 
-Runtime access and genai-* CLI services use ChatGPT.  You will need to configure your key, typically as an environment variable.
+* Copilot access is your choice.  We get good results and typically use Claude Sonnet 4.6.
 
-Copilot access is your choice.  We get good results and typically use Claude Sonnet 4.6.
+<br>
+
+### 3. Context Engineering
+
+Each project contains thousands of lines of Context Engineering that inform AI Assistant about the CLI and runtime services .
+
+</details>
+
+
+| Leg | What it provides | Without it |
+|-----|-----------------|------------|
+| **Logic Automation** (Rules, API Engines) | Correct, auto-enforced business logic across all write paths; enterprise API | **- Fat API:** Path-dependent procedural logic with missed cases and bugs<br>**- Demo-class APIs** (no optimistic locking, etc) |
+| **Generative AI** | Rapid creation, iteration, test generation from natural language | Weeks of manual development |
+| **Context Engineering** | Guides AI to the right architecture (declarative rules, proper data model) | AI defaults to "Fat API" procedural code — works but ungoverned |
+
+**Key insight:** Without Context Engineering, AI generates working demos that lack enterprise 
+architecture. Without rules automation, AI generates procedural code with correctness bugs. 
+Together: a several-week effort became **30 minutes**, producing a correct, enterprise-class, 
+fully tested system.
+
+> *"A/B result: 16 declarative rules vs. equivalent procedural code with 2 critical bugs."*
 
 &nbsp;
 
@@ -68,6 +97,14 @@ AI is enabled as described below.
 
 ### 🤖 Context Engineering
 
+When you create a new project with `genai-logic create`, project contains extensive Context Engineering to guide your AI Assistant to leverage Logic Automation.
+
+```bash title="Bootstrap this by telling your AI Assistant to bootstrap itself"
+Please load `.github/.copilot-instructions.md`
+```
+
+![AI-Enabled Projects](images/ui-vibe/assistant/copilot-hello.png)
+
 Your project includes comprehensive training materials that serve as a "message in a bottle" for AI assistants:
 
 1. **`.github/.copilot-instructions.md`** - this is the "message in a bottle" that enabled your AI Assitant to understand GenAI-Logic projects, and deliver the services above
@@ -76,6 +113,14 @@ Your project includes comprehensive training materials that serve as a "message 
 4. **Code examples** - real working examples in the `readme's` throughout the project
 
 ![context-engineering](images/ui-vibe/assistant/Context-Engineering.png)
+
+<br>
+
+#### Extend Context Engineering
+
+You can cause VSCode Copilot to pre-load your own instructions by placing `*.instructions.md` files in `.github`.  See the example in the Manager: `samples/readme_samples.md`:
+
+![tour](images/ui-vibe/assistant/extend-ce.png)
 
 &nbsp;
 
@@ -98,14 +143,6 @@ Your project supports natural AI-assisted development:
 • **Automated testing** - Behave scenarios that serve as living documentation  
 • **Code completion** - Rich type hints and patterns for IDE assistance  
 • **Documentation generation** - Self-documenting APIs and logic  
-
-<br>
-
-### Extend Context Engineering
-
-You can cause VSCode Copilot to pre-load your own instructions by placing `*.instructions.md` files in `.github`.  See the example in the Manager: `samples/readme_samples.md`:
-
-![tour](images/ui-vibe/assistant/extend-ce.png)
 
 &nbsp;
 
