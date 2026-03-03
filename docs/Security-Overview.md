@@ -1,14 +1,17 @@
 !!! pied-piper ":bulb: TL;DR - Row Level Security with Grant Permissions on User Roles"
 
-    Declarative security enables you to `Grant` row filters to user roles, providing **row level security:** users see only the rows to which they are authorized.  
+    Security provides:
+
+    * **Authentication:** as startup, the system calls an **auth provider** to validate a user id/password, returning failure, or a set of **roles**.
+    * **Authorization:** declarative security enables you to `Grant` row filters to user roles, providing **row level security:** users see only the rows to which they are authorized.  
     
     Grants declarations reference not only roles, but also user properties (e.g., their organization).  A common usage is to enforce **multi-tenant** access.
 
-    Define  authentication data **(auth data)** - users and roles - with:
+    The Auth Provider enables you to define  authentication data **(auth data)** - users and roles.  This a pluggable interface, including:
     
-    * a SQL database using an Admin app,
+    * a SQL database using an Admin app (often used for testing)
     * [Keycloak](https://www.keycloak.org){:target="_blank" rel="noopener"}, or,
-    * supply a **provider** to attach to existing corporate security (AD, LDAP, etc).
+    * supply your own **provider** to attach to existing corporate security (AD, LDAP, etc).
 
 &nbsp;
 
