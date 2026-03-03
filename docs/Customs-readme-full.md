@@ -139,7 +139,92 @@ This was, however, a "happy accident", illustrating that ***AI alone does not de
 
 * **Procedural — Manual Ordering (with bugs)** — Logic is *procedural* with explicit ordering. **AI uses pattern matching to order execution, which can fail for business logic** — to see the A/B study, [**click here**](#appendix-ab-test). This in fact did occur in our example.
 
+This illustrates the value of the ***3 legged stool*** architecture:
+
 <br>
+
+<details markdown>
+<summary>3 legged stool architecture</summary>
+
+<br>GenAI-Logic provides functionality by a combination of core services (project creation, api execution, rules engine), and by leveraging/extending AI Assistants in your IDE.
+
+![3-legged stool](images/ui-vibe/assistant/3-legged-stool.png)
+
+<details markdown>
+
+<summary>Diagram - Tech Details </summary>
+
+<br>
+As shown above, GenAI-Logic functionality is delivered by 3 key elements:
+
+<br>
+
+## 1. Architecture Automation
+
+GenAI-Logic provides automation both at Project Creation, and Runtime:
+
+* Project Creation - schema discovery to create projects, with architecture automation to integrate the components (API, Logic and Security, database access, etc)
+
+* Runtime Engines - engines to execute APIs, Logic, Security, database access, etc
+
+<br>
+
+## 2. AI Usage
+
+The primary use of AI is to use your AI Assistant for:
+
+* Authoring (e.g., create logic, APIs), and
+* Explanations - find how the system works (e.g., how does logic work, what about performance, etc)
+
+Importantly, these authoring services preserve *Human in the Loop:* review what AI creates, accept/alter as required.  The resultant system is deterministic.
+
+You can also elect to use AI at runtime, by specifying rules with `Use AI to...`.  For example, this demo illustrates using AI to choose an optimal supplier - for more information, see [MCP AI Example](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
+
+> AI can be used to compute values, and we we know AI can make mistakes.<br>Govern such AI Logic using business rules -- AI can propose, rules decide what commits.
+
+We use the following models:
+
+* CLI services use ChatGPT.  You will need to configure your key, typically as an environment variable.
+
+* Copilot access is your choice.  We get good results and typically use Claude Sonnet 4.6.
+
+<br>
+
+## 3. Context Engineering
+
+Each project contains thousands of lines of Context Engineering that inform AI Assistant about the CLI and runtime services .
+
+</details>
+
+
+| Leg | What it provides | Without it |
+|-----|-----------------|------------|
+| **Logic Automation** (Rules, API Engines) | Correct, auto-enforced business logic across all write paths; enterprise API | **- Fat API:** Path-dependent procedural logic with missed cases and bugs<br>**- Demo-class APIs** (no optimistic locking, etc) |
+| **Generative AI** | Rapid creation, iteration, test generation from natural language | Weeks of manual development |
+| **Context Engineering** | Guides AI to the right architecture (declarative rules, proper data model) | AI defaults to "Fat API" procedural code — works but ungoverned |
+
+**Key insight:** Without Context Engineering, AI generates working demos that lack enterprise 
+architecture. Without rules automation, AI generates procedural code with correctness bugs. 
+Together: a several-week effort became **30 minutes**, producing a correct, enterprise-class, 
+fully tested system.
+
+> *"A/B result: 16 declarative rules vs. equivalent procedural code with 2 critical bugs."*
+
+&nbsp;
+
+**Highly Leveraged; Support Recommended**
+
+As part of your project, you can extend Context Engineering.  We did so in this project (see section 2).  For more information, see [AI-Enabled](Project-AI-Enabled.md).
+
+Such extensions require extensive architectural background, so training and support are recommended.
+
+&nbsp;
+
+</details>
+
+<br>
+
+</details>
 
 </details>
 
@@ -420,84 +505,6 @@ Then, in the opened project:
 &nbsp;
 
 &nbsp;
-
-# Appendix: 3-legged Stool
-
-
-GenAI-Logic provides functionality by a combination of core services (project creation, api execution, rules engine), and by leveraging/extending AI Assistants in your IDE.
-
-![3-legged stool](images/ui-vibe/assistant/3-legged-stool.png)
-
-<details markdown>
-
-<summary>Diagram - Tech Details </summary>
-
-<br>
-As shown above, GenAI-Logic functionality is delivered by 3 key elements:
-
-<br>
-
-## 1. Architecture Automation
-
-GenAI-Logic provides automation both at Project Creation, and Runtime:
-
-* Project Creation - schema discovery to create projects, with architecture automation to integrate the components (API, Logic and Security, database access, etc)
-
-* Runtime Engines - engines to execute APIs, Logic, Security, database access, etc
-
-<br>
-
-## 2. AI Usage
-
-The primary use of AI is to use your AI Assistant for:
-
-* Authoring (e.g., create logic, APIs), and
-* Explanations - find how the system works (e.g., how does logic work, what about performance, etc)
-
-Importantly, these authoring services preserve *Human in the Loop:* review what AI creates, accept/alter as required.  The resultant system is deterministic.
-
-You can also elect to use AI at runtime, by specifying rules with `Use AI to...`.  For example, this demo illustrates using AI to choose an optimal supplier - for more information, see [MCP AI Example](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
-
-> AI can be used to compute values, and we we know AI can make mistakes.<br>Govern such AI Logic using business rules -- AI can propose, rules decide what commits.
-
-We use the following models:
-
-* CLI services use ChatGPT.  You will need to configure your key, typically as an environment variable.
-
-* Copilot access is your choice.  We get good results and typically use Claude Sonnet 4.6.
-
-<br>
-
-## 3. Context Engineering
-
-Each project contains thousands of lines of Context Engineering that inform AI Assistant about the CLI and runtime services .
-
-</details>
-
-
-| Leg | What it provides | Without it |
-|-----|-----------------|------------|
-| **Logic Automation** (Rules, API Engines) | Correct, auto-enforced business logic across all write paths; enterprise API | **- Fat API:** Path-dependent procedural logic with missed cases and bugs<br>**- Demo-class APIs** (no optimistic locking, etc) |
-| **Generative AI** | Rapid creation, iteration, test generation from natural language | Weeks of manual development |
-| **Context Engineering** | Guides AI to the right architecture (declarative rules, proper data model) | AI defaults to "Fat API" procedural code — works but ungoverned |
-
-**Key insight:** Without Context Engineering, AI generates working demos that lack enterprise 
-architecture. Without rules automation, AI generates procedural code with correctness bugs. 
-Together: a several-week effort became **30 minutes**, producing a correct, enterprise-class, 
-fully tested system.
-
-> *"A/B result: 16 declarative rules vs. equivalent procedural code with 2 critical bugs."*
-
-&nbsp;
-
-### Highly Leveraged; Support Recommended
-
-As part of your project, you can extend Context Engineering.  We did so in this project (see section 2).  For more information, see [AI-Enabled](Project-AI-Enabled.md).
-
-Such extensions require extensive architectural background, so training and support are recommended.
-
-&nbsp;
-
 
 ---
 
