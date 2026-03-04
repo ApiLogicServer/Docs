@@ -39,7 +39,7 @@ So, approach is to use the LLM to prepare - but not issue - the API calls.  This
 
 2. MCP Client Executor sends Bus User ***NL query + training + schema*** to the external LLM (here we are using ChatGPT - requires API Key).  LLM returns an ***MCP Tool Context*** JSON block.
 
-	* An MCP Client Executor might be similar in concept to installed/Web ChatGPT (etc), but those *cannot* be used to access MCPs since they cannot issue http calls.  This is a custom client app (or, perhaps an IDE tool)
+	* An MCP Client Executor might be similar in concept to installed/Web ChatGPT (etc), but those *cannot* be used to access servers since they cannot issue http calls.  This is a custom client app (or, perhaps an IDE tool).
 
 	* To explore `integration/mcp/mcp_client_executor.py`, [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/integration/mcp/mcp_client_executor.py){:target="_blank" rel="noopener"}
 	* Tool definitions are OpenAI specific, so we are sending the schema (in each prompt)
