@@ -144,3 +144,18 @@ This unfortunate scenario is eliminated:
 1. Project creation creates the API, so **App Dev can start immmediately** with a real API and real data
 2. Backend dev (logic, custom APIs etc) can **proceed in parallel**.  New logic will automatically be "inherited" for apps already built.
 
+
+&nbsp;
+
+<br>
+---
+
+## Apendix: Training Process
+
+The Copilot-trained vibe commands typically are more reliable than untrained, since their training explains details of using the API.  You can train Copilot further for your own custom UIs.  Our proess was:
+
+1. Show it an example - code, screen shots, whatever
+2. Ask it to create
+3. Ask it to fix
+4. Ask it to create/fix training
+5. Repeat
