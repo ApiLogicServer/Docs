@@ -26,6 +26,13 @@
 
 ## Architecture
 
+MCP was designed to:
+
+1. Enable NL support for user requests, *and*
+2. Address reality that LLMs cannot/should not access enterprise servers
+
+So, approach is to use the LLM to prepare - but not issue - the API calls.  This is reflected in the **MCP Tool Context**, as shown below.
+
 ![Intro diagram](images/integration/mcp/MCP_Arch.png)  
 
 1. MCP Client Executor Startup calls `.well-known` endpoint to load training and schema meta data for each configured server
