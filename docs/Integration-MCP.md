@@ -54,7 +54,7 @@ So, approach is to use the LLM to prepare - but not issue - the API calls.  This
 ## Example: pending order emails
 
 
-The **basic_demo** sample enables you to create orders with business logic: check credit by using rules to roll-up item amount to orders / customers.  Setting the `date_shipped` indicates payment is received, and the customer balance is reduced.  
+The **basic_demo_mcp_send_email** sample enables you to create orders with business logic: check credit by using rules to roll-up item amount to orders / customers.  Setting the `date_shipped` indicates payment is received, and the customer balance is reduced.  
 
 💡 The basic_demo project ([tutorial here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}) illustrates basic GenAI-Logic operation: creating projects from new or existing databases, adding logic and security, and customizing your project using your IDE and Python.
 
