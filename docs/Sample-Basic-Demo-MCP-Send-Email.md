@@ -48,16 +48,16 @@ Please load `.github/.copilot-instructions.md`
 
 <br>Here we will use Vibe to:
 
-1. **[Create From Existing DB](#1-create-from-existing-db)** - Provides a MCP-enabled API and an Admin App
+1. **[Create From Existing DB](Project-Structure.md){:target="_blank" rel="noopener"}** - Provides a MCP-enabled API and an Admin App
    - [Project Opens: Run](#1a-project-opens-run) - Launch and verify your system
 
-2. **[Declare Business Logic](#3-declare-business-logic)** - Add rules with natural language
+2. **[Declare Business Logic](Logic-Use.md){:target="_blank" rel="noopener"}** - Add rules with natural language
 
-3. **[Enterprise Connectivity: B2B](#4-enterprise-connectivity-b2b)** - Create integration endpoints
+3. **[Enterprise Connectivity: B2B](Integration-Kafka.md){:target="_blank" rel="noopener"}** - Create integration endpoints
 
-4. **[MCP: Logic, User Interface](#5-mcp-logic-user-interface)** - Implement Model Context Protocol
+4. **[MCP: Logic, User Interface](Integration-MCP.md){:target="_blank" rel="noopener"}** - Implement Model Context Protocol
 
-5. **[Iterate: Rules and Python](#6-iterate-rules-and-python)** - Advanced customization patterns<br><br>
+5. **[Iterate: Rules and Python](Logic-Debug.md){:target="_blank" rel="noopener"}** - Advanced customization patterns<br><br>
 
 Pre-reqs:
 
