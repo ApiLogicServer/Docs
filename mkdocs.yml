@@ -31,7 +31,7 @@ nav:
     - ".. AI Rules Supplier": Sample-ai-rules.md
     - ".. MCP Send Mail": Sample-Basic-Demo-MCP-Send-Email.md
     - ".. Vibe": Sample-Basic-Demo-Vibe.md
-    - ".. NL SubSystem": Customs-readme-full.md
+    - ".. NL Bus System": Customs-readme-full.md
     - "Orientation": Tech-Training.md
     - Older:
       - "Sample_ai_mcp": Sample-ai-mcp.md
@@ -238,7 +238,6 @@ nav:
     - "Product Overview": Product-Overview.md
     - Personal:
       - "Manager": Manager-readme.md
-      - "Customs Full": Customs-readme-full.md
       - "Basic Demo (unused)": Sample-Basic-Demo-Full-Unused.md
       - "Tour": Sample-Basic-Tour.md
       - "Think Declarative": Tech-declarative.md
