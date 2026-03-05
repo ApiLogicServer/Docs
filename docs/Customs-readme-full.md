@@ -100,7 +100,7 @@ The following artifacts were generated and are present in this repository.
 
 ---
 
-## 2. Context Engineering Revised
+## 2. Context Engineering
 
 This POC illustrates the [3-legged stool](#appendix-3-legged-stool), and how Context Engineering leverage underlying automatin to produce a remarkable results. 
 
@@ -153,7 +153,7 @@ As shown above, GenAI-Logic functionality is delivered by 3 key elements:
 
 <br>
 
-## 1. Architecture Automation
+**1. Architecture Automation**
 
 GenAI-Logic provides automation both at Project Creation, and Runtime:
 
@@ -163,7 +163,7 @@ GenAI-Logic provides automation both at Project Creation, and Runtime:
 
 <br>
 
-## 2. AI
+**2. AI**
 
 The primary use of AI is to use your AI Assistant for:
 
@@ -184,7 +184,7 @@ We use the following models:
 
 <br>
 
-## 3. Context Engineering
+**Context Engineering**
 
 Each project contains thousands of lines of Context Engineering that inform AI Assistant about the CLI and runtime engines.
 

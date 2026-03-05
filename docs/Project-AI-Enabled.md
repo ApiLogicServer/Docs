@@ -36,7 +36,7 @@ As shown above, GenAI-Logic functionality is delivered by 3 key elements:
 
 <br>
 
-## 1. Architecture Automation
+**1. Architecture Automation**
 
 GenAI-Logic provides automation both at Project Creation, and Runtime:
 
@@ -46,7 +46,7 @@ GenAI-Logic provides automation both at Project Creation, and Runtime:
 
 <br>
 
-## 2. AI
+**2. AI**
 
 The primary use of AI is to use your AI Assistant for:
 
@@ -67,7 +67,7 @@ We use the following models:
 
 <br>
 
-## 3. Context Engineering
+**3. Context Engineering**
 
 Each project contains thousands of lines of Context Engineering that inform AI Assistant about the CLI and runtime engines.
 
