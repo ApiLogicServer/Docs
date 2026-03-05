@@ -127,7 +127,7 @@ The result is a good demo: compiles and runs.
 
 This was, however, a "happy accident", illustrating that ***AI alone does not deliver an Enterprise-class architecture***, as described below.
 
-* **Demo API (no filtering, pagination, etc)** — No Enterprise-class API with filtering, sorting, pagination, optimistic locking, etc.  All endpoints not provided.
+* **Demo API (no filtering, pagination, etc)** — No Enterprise-class API with filtering, sorting, pagination, optimistic locking, etc.  Only required endpoints created.
 
 * **Unshared, Path-specific logic (Quality Issues)** — Logic embedded in a single path — not automatically shared across insert/update/delete/FK-change paths.
 
@@ -157,13 +157,13 @@ As shown above, GenAI-Logic functionality is delivered by 3 key elements:
 
 GenAI-Logic provides automation both at Project Creation, and Runtime:
 
-* Project Creation - schema discovery to create projects, with architecture automation to integrate the components (API, Logic and Security, database access, etc)
+* Project Creation - schema discovery to create projects, with architecture automation to integrate and start the engines
 
 * Runtime Engines - engines to execute APIs, Logic, Security, database access, etc
 
 <br>
 
-## 2. AI Usage
+## 2. AI
 
 The primary use of AI is to use your AI Assistant for:
 
@@ -172,9 +172,9 @@ The primary use of AI is to use your AI Assistant for:
 
 Importantly, these authoring services preserve *Human in the Loop:* review what AI creates, accept/alter as required.  The resultant system is deterministic.
 
-You can also elect to use AI at runtime, by specifying rules with `Use AI to...`.  For example, this demo illustrates using AI to choose an optimal supplier - for more information, see [MCP AI Example](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
+You can also elect to use AI at runtime, by specifying rules with `Use AI to...`.  For example, the *MCP AI Demo* illustrates using AI to choose an optimal supplier - for more information, see [MCP AI Example](Integration-MCP-AI-Example.md){:target="_blank" rel="noopener"}.
 
-> AI can be used to compute values, and we we know AI can make mistakes.<br>Govern such AI Logic using business rules -- AI can propose, rules decide what commits.
+> AI can be used to compute values, and we know AI can make mistakes.<br>Govern such AI Logic using business rules -- AI can propose, deterministic rules decide what commits.
 
 We use the following models:
 
@@ -186,14 +186,14 @@ We use the following models:
 
 ## 3. Context Engineering
 
-Each project contains thousands of lines of Context Engineering that inform AI Assistant about the CLI and runtime services .
+Each project contains thousands of lines of Context Engineering that inform AI Assistant about the CLI and runtime engines.
 
 </details>
 
 
 | Leg | What it provides | Without it |
 |-----|-----------------|------------|
-| **Logic Automation** (Rules, API Engines) | Correct, auto-enforced business logic across all write paths; enterprise API | **- Fat API:** Path-dependent procedural logic with missed cases and bugs<br>**- Demo-class APIs** (no optimistic locking, etc) |
+| **Logic Automation** (Rules, API Engines) | Correct, auto-enforced business logic across all write paths; enterprise API; governed AI execution | **- Procedural Logic:** Dependency bugs, hard to maintain <br> **- Fat API:** Unshared, Path-dependent logic <br>**- Demo-class APIs** (no optimistic locking, etc) |
 | **Generative AI** | Rapid creation, iteration, test generation from natural language | Weeks of manual development |
 | **Context Engineering** | Guides AI to the right architecture (declarative rules, proper data model) | AI defaults to "Fat API" procedural code — works but ungoverned |
 
