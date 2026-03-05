@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"id":"e137ce1cd9b13ea2","type":"text","text":"Bus Obj\nBus Users create new services from existing","x":-420,"y":-80,"width":250,"height":87},
+		{"id":"aa2764705ba43451","type":"text","text":"Tech Obj\nUse AI, No Reachin","x":-210,"y":-220,"width":250,"height":85},
+		{"id":"c1d777b826d86b4f","type":"text","text":"Send Prompt + Schema to LM - returns MCP Context","x":175,"y":-520,"width":250,"height":60},
+		{"id":"9b1c91d99b8a1fea","type":"text","text":"MCP Client Exec","x":-20,"y":-320,"width":250,"height":50},
+		{"id":"c3cb3015209c0f0c","x":126,"y":-600,"width":250,"height":60,"type":"text","text":"Get Schema"},
+		{"id":"2175fd2cfb0c4c76","type":"text","text":"Run MCP Context","x":200,"y":-420,"width":250,"height":60},
+		{"id":"ac2710df33c685d5","x":-370,"y":40,"width":250,"height":60,"type":"text","text":"App Design"},
+		{"id":"3253526b9f563590","type":"text","text":"Design Email Service","x":-50,"y":-18,"width":225,"height":58},
+		{"id":"3def4eaee1d4648d","x":-50,"y":100,"width":250,"height":60,"type":"text","text":"Add MCP Service (Req Pat)"},
+		{"id":"fe669d3ad295a6e5","type":"text","text":"Add Event ","x":363,"y":-55,"width":174,"height":50},
+		{"id":"55b07fbcc63119d0","type":"text","text":"Make Table","x":376,"y":-175,"width":174,"height":60},
+		{"id":"1d7910ee7da0263a","type":"text","text":"Request Pattern","x":120,"y":-115,"width":180,"height":60}
+	],
+	"edges":[
+		{"id":"b9d34315c1eed80b","fromNode":"e137ce1cd9b13ea2","fromSide":"top","toNode":"aa2764705ba43451","toSide":"left"},
+		{"id":"24b38d0819fd4ca6","fromNode":"aa2764705ba43451","fromSide":"top","toNode":"9b1c91d99b8a1fea","toSide":"left"},
+		{"id":"5c8479b471cd16cd","fromNode":"9b1c91d99b8a1fea","fromSide":"top","toNode":"c1d777b826d86b4f","toSide":"left"},
+		{"id":"7f7e1d0e75b6154a","fromNode":"9b1c91d99b8a1fea","fromSide":"top","toNode":"2175fd2cfb0c4c76","toSide":"left"},
+		{"id":"5a44806f3ab5288e","fromNode":"3253526b9f563590","fromSide":"top","toNode":"1d7910ee7da0263a","toSide":"left"},
+		{"id":"16d81df07c6a58e3","fromNode":"1d7910ee7da0263a","fromSide":"right","toNode":"55b07fbcc63119d0","toSide":"left"},
+		{"id":"a22d17862a0a5d45","fromNode":"1d7910ee7da0263a","fromSide":"right","toNode":"fe669d3ad295a6e5","toSide":"left"},
+		{"id":"ec3f77d5b2796bb4","fromNode":"9b1c91d99b8a1fea","fromSide":"top","toNode":"c3cb3015209c0f0c","toSide":"left"},
+		{"id":"fdb7e0a063f42407","fromNode":"ac2710df33c685d5","fromSide":"right","toNode":"3def4eaee1d4648d","toSide":"left"},
+		{"id":"48a6eee3aa603b43","fromNode":"e137ce1cd9b13ea2","fromSide":"bottom","toNode":"ac2710df33c685d5","toSide":"top"},
+		{"id":"d331eb2bc50e1d90","fromNode":"3253526b9f563590","fromSide":"left","toNode":"ac2710df33c685d5","toSide":"right"}
+	]
+}
