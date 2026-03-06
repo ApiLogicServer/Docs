@@ -16,9 +16,9 @@ version: 1.0 from docsite, for readme 2/16/2026
 
 ### TL;DR - Enterprise Governance and Speed
 
-Every enterprise AI initiative faces the same tension: AI moves fast, but enterprise systems
-must be correct, governed, and auditable. Without the right infrastructure, AI-generated
-logic looks right, passes demos — and breaks governance silently in production.
+It organizations are understandably excited about the promise of AI for enterprise systems.  It **promises unprecendented speed and simplicity.  And, it offers new power** - reasoning (e.g, choose the optimal supplier) that was simply not possible with conventional approaches.
+
+But enterprise systems **must also be correct, governed, and auditable.**  Without the right infrastructure, AI-generated logic looks right, passes demos — and breaks governance silently in production.  We have seen repeated examples where AI generaed code is incorrect (see the [A/B study](#9-ab-result)), and difficult to maintain.
 
 GenAI-Logic is designed to resolve this tension. AI builds the system. Deterministic rules govern what
 commits. The result is enterprise-class speed *and* correctness — not a tradeoff between
