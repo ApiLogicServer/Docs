@@ -14,7 +14,7 @@ version: 1.0 from docsite, for readme 2/16/2026
 
 ![app](images/ui-vibe/customs/app_screenshot.png)
 
-### TL;DR - Enterprise Governance and Speed
+### TL;DR - Enterprise Governance, Speed, and AI Reasoning
 
 It organizations are understandably excited about the promise of AI for enterprise systems.  It **promises unprecendented speed and simplicity.  And, it offers new power** - AI Rules for **reasoning** (e.g, choose the optimal supplier) that was simply not possible with conventional approaches.
 
