@@ -16,13 +16,54 @@ version: 1.0 from docsite, for readme 2/16/2026
 
 ### TL;DR - Enterprise Governance and Speed
 
-The goal of this POC was to explore whether GenAI-Logic added significant value in creating business systems.  Our findings:
+The goal of this POC was to explore whether GenAI-Logic added significant value in creating
+business systems. Our findings:
 
-* An Enterprise-class system ensured *by architecture:* Governable Quality, Full-Featured
+- **Confirmation of the speed and power of AI:** a system created from a prompt.
+  A several-week effort became 30 minutes.
 
-  * Logic reuse over all paths, by data-oriented rules enforced on commit
-  * Full-featured Enterprise class (APIs for all objects, with enterprise features such as pagination, filtering, etc), logic enabled
-* A several week effort became 30 minutes
+- **Enterprise-class Governability:**
+
+    - **Commit-Time Enforcement** — All transaction sources converge on a single
+      deterministic commit point. Governance is unavoidable by architecture — not by
+      discipline. You can't govern paths. You can govern the commit.
+
+    - **AI Variance Reduction** — At authoring time, the DSL converts probabilistic AI
+      output into deterministic, human-reviewed declarations before any code runs.
+      At runtime, AI Rules are still governed at commit by deterministic rules. AI is
+      enclosed at both points — authoring and execution.
+
+    - **Correctness** — Multi-table derivations computed automatically and correctly
+      across every change path — not just the ones you thought of. The constraint at
+      the end is only as good as the derivation chain feeding it.
+
+    - **Completeness** — Every write path — API, agent, MCP, Vibe app, workflow,
+      test script, admin UI — passes through the same rule set. No bypass by
+      architecture, not by policy. You can't accidentally miss a path.
+
+    - **Executable, Auditable Requirements** — Rules preserve business intent at the
+      requirements level of abstraction, all the way to execution. The traceability
+      chain is automatic: requirement → rule → execution. Compliance teams can
+      prove governance — not just assert it. With procedural generated code,
+      requirements are buried in implementation. With rules, they remain visible,
+      inspectable, and executable.
+
+    - **Maintainability** — Change one rule, the engine recomputes the dependency
+      graph. No archaeology, no regression hunting across paths. Declarative rules
+      are readable by humans, debuggable in a standard IDE, readable by AI.
+
+    - **AI Safety** — Agentic reasoning enclosed by invariants. AI Rules can propose
+      values at runtime — supplier selection, pricing decisions — but deterministic
+      rules decide what commits. The agent can't accidentally violate a constraint
+      it doesn't know about.
+
+- **Enterprise Architecture**
+
+    - Full-featured: enterprise-class API for all objects — pagination, filtering,
+      optimistic locking, security — logic enabled out of the box.
+
+    - Manageable: 16 declarative rules replace hundreds of lines of procedural code
+      you didn't write, can't audit against requirements, and can't safely change.
 
 <br>
 
@@ -448,10 +489,13 @@ Rules solve one specific problem well: ensuring that defined data relationships 
 ## 9. A/B Result
 
 For the foundational order management case, 5 declarative rules replaced 220+ lines of AI-generated procedural code, and the procedural version contained 2 critical bugs that were only discovered through directed prompting:
+
 * one for `Order.customer_id` reassignment (old customer balance not decremented) and 
 * one for `Item.product_id` reassignment (unit price not re-copied from new product)
 
-The full experiment, including the original procedural code and the AI's own analysis of why it failed, is documented in `logic/procedural/declarative-vs-procedural-comparison`.  (tL;DR: pattern-matching AI deals poorly with complex dependencies common to business logic).
+The full experiment, including the original procedural code and the AI's own analysis of why it failed, is documented in the A/B study, [**click here**](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}. 
+
+> (tL;DR: pattern-matching AI deals poorly with complex dependencies common to business logic).
 
 ---
 
