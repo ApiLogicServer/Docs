@@ -58,8 +58,7 @@ Our detailed findings:
       requirements level of abstraction, all the way to execution. The traceability
       chain is automatic: requirement → rule → execution. Compliance teams can
       prove governance — not just assert it. With procedural generated code,
-      requirements are buried in implementation. With rules, they remain visible,
-      inspectable, and executable.
+      requirements are buried in implementation that explodes into 40X FrankenCode. With rules, they remain visible,minspectable, and executable.
 
     - **Maintainability** — Change one rule, the engine recomputes the dependency
       graph. No archaeology, no regression hunting across paths. Declarative rules
