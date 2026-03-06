@@ -16,11 +16,24 @@ version: 1.0 from docsite, for readme 2/16/2026
 
 ### TL;DR - Enterprise Governance and Speed
 
-The goal of this POC was to explore whether GenAI-Logic added significant value in creating
-business systems. Our findings:
+Every enterprise AI initiative faces the same tension: AI moves fast, but enterprise systems
+must be correct, governed, and auditable. Without the right infrastructure, AI-generated
+logic looks right, passes demos — and breaks governance silently in production.
 
-- **Confirmation of the speed and power of AI:** a system created from a prompt.
-  A several-week effort became 30 minutes.
+GenAI-Logic is designed to resolve this tension. AI builds the system. Deterministic rules govern what
+commits. The result is enterprise-class speed *and* correctness — not a tradeoff between
+them.
+
+**Proof point:** A CBSA Steel Derivative Goods Surtax calculator — a real compliance
+system with multi-table calculations, provincial tax rules, country-level exemptions, and
+regulatory cutoff dates — was created from a natural language prompt in 30 minutes.
+The result: correct by architecture, auditable to regulators, and maintainable by a
+single developer. A several-week effort, by any conventional measure.
+
+Our detailed findings:
+
+- **AI Speed Confirmed:** A complete system — API, database, logic, admin UI, and
+  test suite — created from a prompt. A several-week effort became 30 minutes.
 
 - **Enterprise-class Governability:**
 
@@ -143,11 +156,11 @@ The following artifacts were generated and are present in this repository.
 
 ## 2. Context Engineering
 
-This POC illustrates the [3-legged stool](#appendix-3-legged-stool), and how Context Engineering leverage underlying automatin to produce a remarkable results. 
+The use of AI is strikingly apparent in creating the system, but... it was not AI alone.  In addition to the underlying engines for rules and APIs, extensive Context Engineering (CE) guides the creation of business systems.
 
-It was built across several iterations. Each iteration revealed a specific gap in Context Engineering (CE) — the curated knowledge given to the AI before generation. The gaps and their fixes are documented below.
+It was built across several iterations. Each iteration revealed a specific gap in CE — the curated knowledge given to the AI before generation. The gaps and their fixes are documented below.
 
-This was a very interesting joint AI/human design; the approach:
+This illustrates a very interesting joint AI/human design; the approach:
 
 1. Gen customs_demo
 2. Ask genned demo to compare itself to the reference implementation - [see it here](https://github.com/KatrinaHuberJuma/customs_app){:target="_blank" rel="noopener"} - and create a comparison doc
@@ -162,7 +175,7 @@ This was a very interesting joint AI/human design; the approach:
 
 <br>
 
-The GenAI-Logic Context Engineering (CE) materials were not loaded, so Claude built a working customs application using standard Python code generation.  The starting case was the `basic_demo` application, which introduced tables we did not need, but did not (we thought) interfere.
+The GenAI-Logic Context Engineering (CE) materials were not loaded, so Copilot / Claude built a working customs application using standard Python code generation.  The starting case was the `basic_demo` application, which introduced tables we did not need, but did not (we thought) interfere.
 
 The result is a good demo: compiles and runs. 
 
@@ -363,7 +376,9 @@ Each iteration tested against the hand-crafted `customs_app` (16 rules) as the f
 
 > **CE reliability boundary:** CE is reliable for what it explicitly encodes. If a structural outcome depends on inference — from ghost context, readme text, or ambient schema artifacts — it is non-deterministic and will not reproduce on a clean project. The practical test: can you point to the CE sentence that requires this outcome? If not, the result is fragile.
 
-**Domain accuracy finding:** The clean-room test also caught a factual error in the hand-crafted reference — `customs_app` marks Germany, Japan, and China as surtax-applicable. PC 2025-0917 is a targeted US retaliatory levy; only US-origin goods attract the 25% surcharge. The AI, without the reference in context, modeled this correctly. Domain experts reviewing this system should verify country-of-origin applicability against the current PC annex.
+**Domain accuracy finding:** The clean-room test also caught a factual error in the reference — `customs_app` marks Germany, Japan, and China as surtax-applicable. PC 2025-0917 is a targeted US retaliatory levy; only US-origin goods attract the 25% surcharge. The AI, without the reference in context, modeled this correctly. 
+
+Human in the Loop applies, as always.  Domain experts reviewing this system should verify country-of-origin applicability against the current PC annex.  The DSL generation means the rules are at the same level of abstraction as the inputs - much simpler than reviewing generated procedural code which typically explodes by 40X.
 
 </details>
 
@@ -499,4 +514,4 @@ The full experiment, including the original procedural code and the AI's own ana
 
 ---
 
-**Bottom line:** The customs POC demonstrates that GenAI-Logic delivers correct, maintainable business logic — and that getting an AI to generate it correctly requires Context Engineering to be as precise about architecture as it is about syntax. A production CBSA implementation would start from the CE and prompt patterns documented in section 2, not from a blank slate; the iteration study exists so that starting point is already validated.
+**Bottom line:** The customs POC demonstrates that GenAI-Logic delivers governed business systems: correct, maintainable, and properly architected.  This result depends on the 3-legged stool of Logic Automation, AI and Context Engineering.
