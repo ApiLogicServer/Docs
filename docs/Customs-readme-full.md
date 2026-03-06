@@ -16,7 +16,7 @@ version: 1.0 from docsite, for readme 2/16/2026
 
 ### TL;DR - Enterprise Governance and Speed
 
-It organizations are understandably excited about the promise of AI for enterprise systems.  It **promises unprecendented speed and simplicity.  And, it offers new power** - reasoning (e.g, choose the optimal supplier) that was simply not possible with conventional approaches.
+It organizations are understandably excited about the promise of AI for enterprise systems.  It **promises unprecendented speed and simplicity.  And, it offers new power** - AI Rules for **reasoning** (e.g, choose the optimal supplier) that was simply not possible with conventional approaches.
 
 But enterprise systems **must also be correct, governed, and auditable.**  Without the right infrastructure, AI-generated logic looks right, passes demos — and breaks governance silently in production.  We have seen repeated examples where AI generaed code is incorrect (see the [A/B study](#9-ab-result)), and difficult to maintain.
 
