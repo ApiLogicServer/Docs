@@ -110,7 +110,12 @@ Recommend re-creating a venv rather than moving/copying; for more information, [
 
 ### F5 / Debugger: use the Python Picker
 
-**If F5 fails**, click the Python version in the VS Code status bar and select the correct venv.  That's it — everything follows automatically.
+**If F5 fails**, 
+
+1. ⌘⇧P → "Python: Clear Workspace Interpreter Setting"
+2. ⌘⇧P → "Python: Select Interpreter" → (or click the Python version in the VS Code status bar) then choose the Python Interpreter (e.g., `~/dev/ApiLogicServer/venv/bin/python`) 
+
+That's it — everything follows automatically.
 
 **How it works:** Starting with release 16.x, created projects include `"python": "${command:python.interpreterPath}"` in each server launch configuration.  VS Code resolves this at runtime from whatever interpreter the status-bar picker has selected (stored in `python.defaultInterpreterPath` in `.vscode/settings.json`).  The picker is the single control — no manual file editing required.
 

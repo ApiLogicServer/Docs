@@ -5,6 +5,7 @@
 **Issue**: VS Code Python extension (version 1.102.0) fails to automatically activate virtual environments in both terminal and application execution contexts, despite correct configuration settings.
 
 **Impact**: 
+
 - New users cannot run generated projects without manual venv activation
 - Breaks the "computed default virtual environments" feature that solves the "default venv for new users" problem
 - Affects both terminal activation and Python application execution
@@ -19,6 +20,7 @@ The VS Code Python extension has a regression where standard settings like `pyth
 ### How VS Code Handles Virtual Environments
 
 **Project Opening**:
+
 - VS Code reads `.vscode/settings.json` and applies workspace settings
 - Python extension detects interpreter path and configures IntelliSense
 - `.env` file is loaded for environment variables
@@ -26,6 +28,7 @@ The VS Code Python extension has a regression where standard settings like `pyth
 - **No scripts run automatically** - the project is ready but no terminal activation occurs
 
 **Terminal Creation**:
+
 - When you open a new terminal (Terminal → New Terminal), VS Code uses the default terminal profile
 - Our custom "venv" profile executes: `source .vscode/venv_init.sh && exec zsh --no-rcs`
 - The `venv_init.sh` script runs, activates the virtual environment, and sets the prompt
@@ -155,6 +158,7 @@ fi
 - `ApiLogicServerVenvSitePackages` → Replaced with venv site-packages path
 
 **Generation Code Integration**:
+
 - Enhanced `api_logic_server.py` to create `.env` files
 - Added logic to generate `venv_init.sh` scripts
 - Implemented robust path computation and replacement
@@ -194,12 +198,14 @@ with open(os.path.join(project_directory, '.vscode', 'venv_init.sh'), 'w') as f:
 ## Testing and Validation
 
 ### Validation Steps
+
 1. **Terminal Activation**: Open new terminal → Should show `(venv)` prefix
 2. **Python Execution**: Run Python files → Should use venv interpreter
 3. **Package Access**: Import project packages → Should work without PYTHONPATH issues
 4. **Debug Configuration**: VS Code debugging → Should use correct interpreter
 
 ### Known Limitations
+
 - Requires VS Code restart after project generation for full effect
 - Custom terminal profiles may need user acknowledgment on first use
 - Some VS Code Python extension features may still be unreliable
@@ -217,6 +223,7 @@ If virtual environment activation is not working:
    - Whether the prompt is being set properly
 
 Common issues and solutions:
+
 - **Script not found**: Check that the virtual environment path is correct
 - **Wrong shell detected**: The script should detect zsh on macOS
 - **Prompt not showing**: Ensure `--no-rcs` is working and not loading conflicting configurations
@@ -224,11 +231,13 @@ Common issues and solutions:
 ## Future Considerations
 
 ### Issue Tracking
+
 - Reported to Microsoft: [vscode-python #22879](https://github.com/microsoft/vscode-python/issues/22879)
 - Monitoring for official fix from VS Code Python extension team
 - Workarounds can be removed once regression is resolved
 
 ### Maintenance Strategy
+
 1. **Short-term**: Maintain comprehensive workarounds
 2. **Medium-term**: Monitor VS Code Python extension updates
 3. **Long-term**: Simplify back to standard settings when regression is fixed
@@ -236,12 +245,14 @@ Common issues and solutions:
 ## User Experience Impact
 
 ### Before Workarounds
+
 - Users had to manually activate virtual environments
 - Python execution used system interpreter
 - Import errors and dependency issues
 - Poor new user experience
 
 ### After Workarounds
+
 - Automatic virtual environment activation
 - Correct Python interpreter usage
 - Seamless package imports
@@ -251,11 +262,13 @@ Common issues and solutions:
 
 ### README Updates
 Add section explaining:
+
 - Virtual environment is automatically configured
 - No manual activation required
 - Troubleshooting steps if issues occur
 
 ### Developer Documentation
+
 - Document the template system enhancements
 - Explain placeholder replacement mechanism
 - Provide debugging guide for environment issues
