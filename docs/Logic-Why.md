@@ -216,9 +216,11 @@ Consider the rule `Customer.Balance = Sum(Order.AmountTotal where unshipped)`.  
 
 While the conciseness of rules is probably their most striking aspect, automatic ordering provides significant value in automating maintenance.  In a procedural system, introducing a change requires *archaeology:* read the existing code to determine where to insert the new code.
 
-**In a declarative system, ordering is automated.**  The system parses your _derivation rules_ to determine dependencies, and uses this to order execution.  This occurs once per session on activation, so rule declaration changes automatically determine a new order.  
+**In a declarative system, ordering is automated.**  When the server starts, the system loads and parses your _derivation rules_ to determine dependencies, and uses this to order execution.  Specifically, it scans lambdas and `calling` methods for `row.xxx`.
 
-This is significant for iterative development and maintenance, eliminating the *archaeology time* spent determining _where do I insert this new logic_.
+This means that rule declaration changes automatically determine a new order.  This is significant for iterative development and maintenance, eliminating the *archaeology time* spent determining _where do I insert this new logic_.
+
+> Important: be aware of the scans for `row.`.  For example, using temporary variables or helper functions are not processed.
 
 &nbsp;
 
