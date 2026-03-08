@@ -127,3 +127,8 @@ Note how the created ```PaymentAllocation``` row triggered
 the more standard rules such as sums and formulas.  This
 required no special machinery: rules watch and react to changes in data -
 if you change the data, rules will "notice" that, and fire.  Automatically.
+
+
+## Part of Logic Bank
+
+For further details, [click here to see the LogicBank documenentation](https://github.com/valhuber/LogicBank/wiki/Sample-Project---Allocation){:target="_blank" rel="noopener"}.
