@@ -4,15 +4,15 @@ Though, there were some surprises I wish I'd been told about.  So, here you go.
 
 &nbsp;
 
-## Python and ApiLogicServer
+## Python and GenAI-Logic
 
-Using ApiLogicServer means you'll be looking at **levels of Python use:**
+Using GenAI-Logic means you'll be looking at **levels of Python use:**
 
-1. **Automation:** automated project creation eliminates all the fiddly configuration required to build a web app -- without any Pyton at all
+1. **Automation:** automated project creation eliminates all the fiddly configuration required to build a web app -- without any Python training at all
 
-2. **Python as a DSL:** declarative logic and the admin app require minimal Python - it's really a Domain Specific Language using Python keyword arguments and IDE code complation
+2. **Python as a DSL:** declarative logic, basic APIs and the admin app require minimal Python - it's really a Domain Specific Language using Python keyword arguments and IDE code complation
 
-3. **Python as a 4GL:** creating custom endpoints requires Python at it's simplest level, particuarly when coupled with a moder IDE.
+3. **Python as a 4GL:** creating custom endpoints requires Python at it's simplest level, particuarly when coupled with a modern IDE.
 
 4. **Full Python:** it's important that there are no restrictions on using full power of Python - classes, exceptions, etc.  In normal cases, this is probably less than 5 or 10% of the project.
 

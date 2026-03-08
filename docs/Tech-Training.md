@@ -16,6 +16,7 @@ Before running the key samples, make sure you understand:
 - [ ] **Python path** — libs not in the venv
 - [ ] **App Settings** — see the app `config` directory (security, db location etc)
 - [ ] **VS Code** — see `.vscode` -- `.settings`, `.launch'
+- [ ] **Python for Java Developers** — see [this short guide](Tech-Python.md){:target="_blank" rel="noopener"}.
 
 #### Architecture - [click What Is ApiLogicServer](Architecture-What-Is.md){:target="_blank" rel="noopener"}
 

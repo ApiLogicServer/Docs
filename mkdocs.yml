@@ -24,6 +24,7 @@ nav:
         - Execute in your IDE: IDE-Execute.md
         - Execute From Terminal: Execute.md
     - Express Eval: Install-Eval.md
+    - "Orientation": Tech-Training.md
     - Upgrade Version: Install-Upgrade.md
   - Demos, Tutorial, Samples:
     - "Creating Demos": Manager-Demos.md
@@ -32,7 +33,6 @@ nav:
     - ".. MCP Send Mail": Sample-Basic-Demo-MCP-Send-Email.md
     - ".. Vibe": Sample-Basic-Demo-Vibe.md
     - ".. NL Bus System": Customs-readme-full.md
-    - "Orientation": Tech-Training.md
     - Older:
       - "Sample_ai_mcp": Sample-ai-mcp.md
       - "GenAI Microservice Automation": Sample-Genai.md

@@ -92,23 +92,24 @@ To find more information, please [click here](Troubleshooting.md#verify-your-pyt
 
 &nbsp;
 
-## Notes
+## Important Notes
 
 ### Issues with `pip`
 
 The install sometimes fails due on machines with an older version of `pip`.  If you see a message suggesting you upgrade  `pip` , do so.
 
-### VSCode may fail to find your `venv`
+&nbsp;
+
+### VSCode may fail to find `venv`
 
 If VSCode does not find your `venv`, you can [specify it manually](https://code.visualstudio.com/docs/python/environments#_manually-specify-an-interpreter) using `Python: Select Interpreter`
 
 For more information, see [Work with Environments](https://code.visualstudio.com/docs/python/environments#_work-with-environments).
 
-### Copy Not Recommended
+&nbsp;
 
-Recommend re-creating a venv rather than moving/copying; for more information, [see here](https://stackoverflow.com/questions/7438681/how-to-duplicate-virtualenv){:target="_blank" rel="noopener"}.
 
-### F5 / Debugger: use the Python Picker
+#### Fixing F5: the Python Picker
 
 **If F5 fails**, 
 
@@ -123,3 +124,9 @@ That's it — everything follows automatically.
 
 ??? note "Technical detail"
     `launch.json` uses the VS Code variable `${command:python.interpreterPath}`, which resolves at runtime to the value of `python.defaultInterpreterPath` in `.vscode/settings.json`.  That value is written by the picker when you select an interpreter — so the picker is the single source of truth for both Pylance and F5.
+
+&nbsp;
+
+### Copy `venv` Not Recommended
+
+It's completely your option, but we believe is simpler to re-create a venv rather than moving/copying; for more information, [see here](https://stackoverflow.com/questions/7438681/how-to-duplicate-virtualenv){:target="_blank" rel="noopener"}.
