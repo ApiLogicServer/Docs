@@ -89,6 +89,16 @@ fully tested system.
 
 &nbsp;
 
+## Moving the Starting Line
+
+Traditional projects spend their first sprints on infrastructure — project scaffolding, database connectivity, ORM models, REST API plumbing (pagination, optimistic locking), admin UI, authentication, CI/CD. The actual business problem doesn't appear until the team is already depleted.
+
+`genai-logic create` delivers all of that in seconds: a running multi-table API with pagination and optimistic locking, admin app, logic engine, auth skeleton, and CI/CD templates — committed and functional on day one. **Your first sprint begins at the business problem.**
+
+Combined with Context Engineering, this means the declarative rules that encode your domain logic are the *first* meaningful code written — not the reward for surviving infrastructure month.
+
+&nbsp;
+
 ## AI-Enabled Projects
 
 AI is enabled as described below.
