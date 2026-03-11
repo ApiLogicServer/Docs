@@ -33,6 +33,7 @@ nav:
     - ".. MCP Send Mail": Sample-Basic-Demo-MCP-Send-Email.md
     - ".. Vibe": Sample-Basic-Demo-Vibe.md
     - ".. NL Bus System": Customs-readme-full.md
+    - ".. Allo Dept/GL": Sample_Allo_Dept_GL_full.md
     - Older:
       - "Sample_ai_mcp": Sample-ai-mcp.md
       - "GenAI Microservice Automation": Sample-Genai.md
@@ -214,6 +215,7 @@ nav:
     - "Enterprise Vibe": Tech-Enterprise-Vibe.md
     - "Keycloak DevNotes": Keycloak-devnotes.md
     - "Customs App": Customs-readme.md
+    - "Allo Dept/GL ReadMe": Sample_Allo_Dept_GL_readme.md
     - "API Appliance": Tech-Toaster.md
     - "Nat Lang Logic": Tech-Logic-Transcript.md
     - "AI Human Collaboration": Tech-AI-Collaboration.md
