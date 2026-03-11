@@ -56,3 +56,7 @@ When a Charge is received against a Project, cascade-allocate it in two levels:
 Constraint: a Charge may only be posted if the Project's 
 Project Funding Definition is active.
 ```
+
+## Admin App
+
+You may need to remind Copilot to update the Admin App.  Often, you can rename `admin-merge.yml` to `admin.yml`.
