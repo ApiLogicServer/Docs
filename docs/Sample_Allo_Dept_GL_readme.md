@@ -5,6 +5,9 @@ source: docs/Sample_Allo_Dept_GL_readme.md
 version: 1.0 from docsite, for readme 3/10/26
 ---
 
+
+![summary](images/allocation/allo-dept-gl/allo_dept_gl_screen.png)
+
 # Allocate Project Payments to configured Departments/Accounts
 
 **Audience:** Technical GenAI-Logic evaluators
