@@ -19,6 +19,8 @@ creating ```PaymentAllocation``` *allocation* rows.
 
 ## Data Model
 
+The core of allocation is a many-to-many between Provider and Recipient, with Allocation as the junction row:
+
 ![Background](images/allocation/db.png "Overview")
 
 ## Requirements
