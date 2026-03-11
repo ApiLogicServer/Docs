@@ -51,6 +51,18 @@ Use `sh test/test.sh`
 
 &nbsp;&nbsp;
 
+&nbsp;&nbsp;
+# Using Allocation
+
+As shown below:
+
+1. Code `allocation` rule, specifying `provider`, `recipient` and `creating_allocation`
+2. Provide function to obtain recipients
+3. Declare rule on allocation to determine amount allocated
+
+![Allocation Design](images/allocation/allocation-design.png)
+
+
 # Walkthrough
 
 ![Walkthrough](images/allocation/logic-diagram.png "Overview")
