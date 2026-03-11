@@ -20,9 +20,9 @@ It organizations are understandably excited about the promise of AI for enterpri
 
 But enterprise systems **must also be correct, governed, and auditable.**  Without the right infrastructure, AI-generated logic looks right, passes demos — and breaks governance silently in production.  We have seen repeated examples where AI generaed code is incorrect (see the [A/B study](#9-ab-result)), and difficult to maintain.
 
-GenAI-Logic is designed to resolve this tension. AI builds the system. Deterministic rules govern what
-commits. The result is enterprise-class speed *and* correctness — not a tradeoff between
-them.
+GenAI-Logic is designed to resolve this tension. AI builds the system. Deterministic rules govern what commits.
+
+> The result is enterprise-class speed, reasoning, and correctness — not a tradeoff among them.
 
 **Proof point:** A CBSA Steel Derivative Goods Surtax calculator — a real compliance
 system with multi-table calculations, provincial tax rules, country-level exemptions, and
@@ -35,7 +35,19 @@ Our detailed findings:
 - **AI Speed Confirmed:** A complete system — API, database, logic, admin UI, and
   test suite — created from a prompt. A several-week effort became 30 minutes.
 
-- **Enterprise-class Governability:**
+- **Governable Enterprise-class Architecture**
+
+    - **Full-featured: enterprise-class API for all objects** — **pagination, filtering,
+      optimistic locking, security** — **logic enabled** out of the box.
+
+    - **Manageable:** 16 declarative rules replace hundreds of lines of procedural code
+      you didn't write, can't audit against requirements, and can't safely change.
+
+    - **No Fat Client:** rules factor logic out of the client apps.  This enables sharing between apps, and with services.
+
+    - **No Fat API:** rules factor logic out of API paths by distilling them onto the data, and executing them at commit time.  This ensure reuse - integrity for all paths.
+
+- **Governable Data Integrity:**
 
     - **Commit-Time Enforcement** — All transaction sources converge on a single
       deterministic commit point. Governance is unavoidable by architecture — not by
@@ -68,14 +80,6 @@ Our detailed findings:
       values at runtime — supplier selection, pricing decisions — but deterministic
       rules decide what commits. The agent can't accidentally violate a constraint
       it doesn't know about.
-
-- **Enterprise Architecture**
-
-    - Full-featured: enterprise-class API for all objects — pagination, filtering,
-      optimistic locking, security — logic enabled out of the box.
-
-    - Manageable: 16 declarative rules replace hundreds of lines of procedural code
-      you didn't write, can't audit against requirements, and can't safely change.
 
 <br>
 

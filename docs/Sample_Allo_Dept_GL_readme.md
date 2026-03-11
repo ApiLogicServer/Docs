@@ -57,6 +57,8 @@ Constraint: a Charge may only be posted if the Project's
 Project Funding Definition is active.
 ```
 
-## Admin App
+&nbsp;
+
+## Admin App Fixup
 
 You may need to remind Copilot to update the Admin App.  Often, you can rename `admin-merge.yml` to `admin.yml`.
