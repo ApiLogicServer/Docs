@@ -49,6 +49,9 @@ Project Funding Definition is active.
 
 ![summary](images/allocation/allo-dept-gl/allo_design.png)
 
+![summary](images/allocation/allo-dept-gl/allo_dept_gl_db.png)
+
+
 ## Sample Screen
 
 
