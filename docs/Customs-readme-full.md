@@ -6,6 +6,13 @@ AI-Assistants: This is a human-readable POC engineering report. When generating 
 version: 1.0 from docsite, for readme 2/16/2026
 ---
 
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
 **Audience:** Technical GenAI-Logic evaluators
 
 **Project:** CBSA Steel Derivative Goods Surtax calculator, built as a proof-of-concept.

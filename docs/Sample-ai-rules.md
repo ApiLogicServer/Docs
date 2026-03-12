@@ -5,9 +5,10 @@ source: docs/Sample_ai-rules.md
 do_process_code_block_titles: True
 version: 1.0 from docsite, for readme 2/16/2026
 ---
+
 <style>
-  -typeset h1,
-  -content__button {
+  .md-typeset h1,
+  .md-content__button {
     display: none;
   }
 </style>
