@@ -61,7 +61,9 @@ Charges can be placed by contractors.  They may supply only a minimal project de
 Total the charges into the Project and GL Account.
 ```
 
-<br>
+&nbsp;
+
+## No Fuzzy Logic
 
 ```text title='🤖 Paste this into the copilot chat to create: Allocate Project Payments to configured Departments/Accounts'
 Departments own a series of General Ledger Accounts.
@@ -87,6 +89,8 @@ When a Charge is received against a Project, cascade-allocate it in two levels:
 
 Constraint: a Charge may only be posted if the Project's 
 Project Funding Definition is active.
+
+Total the charges into the Project and GL Account.
 ```
 
 &nbsp;
