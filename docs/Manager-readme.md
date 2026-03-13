@@ -42,7 +42,7 @@ genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basi
 
 **Inside the project:** Say to your AI assistant: *"Guide me through basic_demo"* (30-45 min hands-on tour).  (For detailed *self-paced exploration,* see [Sample-Basic-Demo](https://apilogicserver.github.io/Docs/Sample-Basic-Demo/)).
 
-> This tour teaches you the product basics: API creation, declarative rules, security, and Python customization. It's "fail-safe" (use `add-cust` to restore if you make mistakes), and is the recommended starting point.
+> This tour teaches you the product basics: API creation, declarative rules, security, and Python customization. <br>It's "fail-safe" (no manual coding - uses `add-cust` to add customizations without errors), and is the recommended starting point.
 
 
 &nbsp;
