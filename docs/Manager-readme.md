@@ -47,9 +47,14 @@ genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basi
 
 &nbsp;
 
----
 
 # 📚 Demo Catalog (Next Steps)
+
+These samples are designed to illustrate key patterns for typical requirements.
+
+> Tip: projects are AI-enabled - use your AI assistant to ask how they work
+
+&nbsp;
 
 ## 1. Strategic Use Cases (From [genai-logic.com](https://www.genai-logic.com))
 
@@ -82,7 +87,6 @@ Advanced examples and specialized patterns:
 
 &nbsp;
 
----
 
 #  Explore GenAI CLI
 
