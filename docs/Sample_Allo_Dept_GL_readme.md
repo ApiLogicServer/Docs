@@ -13,13 +13,19 @@ version: 1.0 from docsite, for readme 3/10/26
 
 **Run Instructions:** at end
 
-
+&nbsp;
 
 ## Creation Prompts
 
-Requires 16.02.07, windows or mac.
+Requires 16.03.01, windows or mac.
 
 <br>
+
+```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
+Please load `.github/.copilot-instructions.md`
+```
+
+&nbsp;
 
 ## With Fuzzy Lookup Logic
 
@@ -54,13 +60,6 @@ Charges can be placed by contractors.  They may supply only a minimal project de
 
 Total the charges into the Project and GL Account.
 ```
-
-
-```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
-Please load `.github/.copilot-instructions.md`
-```
-
-&nbsp;
 
 <br>
 
