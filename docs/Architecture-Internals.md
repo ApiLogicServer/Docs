@@ -707,6 +707,17 @@ cp -a /build/. ../ApiLogicServer/api_logic_server_cli/create_from_model/admin/
 
 &nbsp;
 
+## Using AI Assistant
+
+If you install the dev source from the manager, you are set up to use the Manager as a dev companion.  To bootstrap:
+
+1. Please load `.github/.copilot-instructions.md`.
+2. Please load `samples/nw_sample/.github/.copilot-instructions.md`.
+3. Please load `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md`.
+
+
+&nbsp;
+
 # Docker Setup
 
 &nbsp;
