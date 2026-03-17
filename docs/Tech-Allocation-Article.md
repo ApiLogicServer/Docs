@@ -40,7 +40,7 @@ Copilot generated 220 lines of procedural code. When we asked *"what if the orde
 
 Both bugs follow the same pattern: **FK changes require updating both old and new parents**. Procedural code handles one direction and silently misses the other. The system doesn't crash. Tests pass. The numbers are quietly wrong until an audit finds them.
 
-Copilot's own diagnosis: *"Dependency graphs have exponential combinations of change paths. AI generates code sequentially but cannot enumerate all change paths, cannot prove completeness, and cannot handle transitive dependencies reliably. Even asking 'what if X changes?' only finds bugs for that specific X."*
+Copilot's analysis ([documented here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md)) concluded: *"Dependency graphs have exponential combinations of change paths. AI generates code sequentially but cannot enumerate all change paths, cannot prove completeness, and cannot handle transitive dependencies reliably. Even asking 'what if X changes?' only finds bugs for that specific X."*
 
 This isn't a capability gap that better models will close. It's a paradigm mismatch. The skeptics are precisely right — and "be more careful with prompts" doesn't solve it. The architecture is the problem.
 
@@ -114,7 +114,17 @@ Now AI enters. And this is where the believers are completely right.
 
 Here is what it takes to build the same allocation system with GenAI-Logic today:
 
-> *Departments own Department Charge Definitions — each defines what percent of an allocated cost flows to each GL Account. An active Charge Definition must cover exactly 100%. Project Funding Definitions define which Departments fund what percent of a Project's costs. An active Funding Definition must also cover exactly 100%. When a Charge is received, cascade-allocate in two levels: first to Departments by funding percent, then to GL Accounts by charge definition percent. A Charge may only post if the Project's Funding Definition is active. Contractors may supply only a minimal project description — use AI Rules to find the active Project via fuzzy match on name and past charges.*
+> *Departments own a series of General Ledger Accounts. Departments also own Department Charge Definitions — each defines what percent of an allocated cost flows to each of the Department's GL Accounts. An active Department Charge Definition must cover exactly 100% (derived: total_percent = sum of lines; is_active = 1 when total_percent == 100).*
+>
+> *Project Funding Definitions define which Departments fund a designated percent of a Project's costs, and which Department Charge Definition each Department applies. An active Project Funding Definition must cover exactly 100%.*
+>
+> *When a Charge is received against a Project, cascade-allocate it in two levels:*
+> *Level 1 — allocate the Charge amount to each Department per their Project Funding Line percent*
+> *Level 2 — allocate each department amount to that Department's GL Accounts per their Charge Definition line percents*
+>
+> *Constraint: a Charge may only be posted if the Project's Project Funding Definition is active.*
+>
+> *Charges can be placed by contractors who may supply only a minimal project description — use AI Rules to find an Active Project based on a fuzzy match to project name and past charges from the contractor.*
 
 A business prompt. No rules syntax. No declarative training. Written the way a business analyst writes a specification.
 
