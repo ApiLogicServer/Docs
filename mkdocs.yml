@@ -216,6 +216,7 @@ nav:
     - "Keycloak DevNotes": Keycloak-devnotes.md
     - "Customs App": Customs-readme.md
     - "Allocation Case Study": Tech-Allocation-Article.md
+    - "Allocation Case Study Full": Tech-Allocation-Article-Full.md
     - "Allo Dept/GL ReadMe": Sample_Allo_Dept_GL_readme.md
     - "API Appliance": Tech-Toaster.md
     - "Nat Lang Logic": Tech-Logic-Transcript.md
