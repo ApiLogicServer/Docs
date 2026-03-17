@@ -163,7 +163,7 @@ Remove any one: the system degrades. Rules without AI requires deep declarative 
 
 Every enterprise deploying AI at scale is discovering the same gap. Agents that bypass business constraints. Calculations that drift. Audit trails that don't exist. Boards asking questions nobody can answer cleanly.
 
-The infrastructure to solve it exists today — open source, proven on real enterprise systems. The allocation system that two developers spent four years on and never shipped is now a five-minute business prompt. Governed from the first commit. Auditable by design. Correct on every path, including paths that don't exist yet.
+The infrastructure to solve it exists today — open source, and the allocation system ships as the default demo when you install GenAI-Logic. You can run it yourself in minutes. The system that two developers spent four years on and never shipped is now a five-minute business prompt. Governed from the first commit. Auditable by design. Correct on every path, including paths that don't exist yet.
 
 AI alone generates broken code. AI + Declarative Rules generates working systems.
 
@@ -171,4 +171,4 @@ Two AI systems said it. The architecture proves it.
 
 ---
 
-*The reference implementation is open source: [github.com/ApiLogicServer/charge-allocation-reference](https://github.com/ApiLogicServer/charge-allocation-reference). The Copilot/Claude self-diagnosis: [declarative-vs-procedural-comparison.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md). GenAI-Logic combines Logic Automation, Generative AI, and Context Engineering to produce governed enterprise systems from natural language. Learn more at [genai-logic.com](https://genai-logic.com).*
+*Install GenAI-Logic — the allocation system runs as the default demo: [apilogicserver.github.io/Docs/Install-Express](https://apilogicserver.github.io/Docs/Install-Express/). The reference implementation: [github.com/ApiLogicServer/charge-allocation-reference](https://github.com/ApiLogicServer/charge-allocation-reference). The Copilot/Claude self-diagnosis: [declarative-vs-procedural-comparison.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md). Learn more at [genai-logic.com](https://genai-logic.com).*
