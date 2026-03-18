@@ -131,9 +131,10 @@ A business prompt. No rules syntax. No declarative training. Written the way a b
 **Five minutes.** Working system — database, API, admin UI, two-level cascade, 100% validation, automated roll-ups, AI fuzzy project matching, full audit trail — governed from the first commit.
 
 The progression:
+
 - **Procedural code**: four years, two developers, never shipped
 - **Declarative rules**: one weekend, requires deep expertise
-- **AI + Rules + CE**: five minutes, business prompt, no rules training required
+- **AI + Rules + CE**: five minutes, business prompt, no rules training required, Enterprise-class architecture and governance
 
 The same business prompt to a native AI tool produces FrankenCode — procedural code with path-dependent enforcement, implicit dependencies, no audit trail. The demo works. The governance doesn't.
 
