@@ -38,7 +38,7 @@ The Copilot experiment makes this concrete. Five simple business rules:
 
 Copilot generated 220 lines of procedural code. When we asked *"what if the order's customer_id changes?"* — critical bug found. *"What if the item's product_id changes?"* — another critical bug.
 
-Both bugs follow the same pattern: **FK changes require updating both old and new parents**. Procedural code handles one direction and silently misses the other. The system doesn't crash. Tests pass. The numbers are quietly wrong until an audit finds them.
+Both bugs follow the same pattern: **FK changes require updating both old and new parents**. Procedural code misses both cases, entirely. The system doesn't crash. Tests pass. The numbers are quietly wrong until an audit finds them.
 
 Copilot's analysis ([documented here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md)) concluded: *"Dependency graphs have exponential combinations of change paths. AI generates code sequentially but cannot enumerate all change paths, cannot prove completeness, and cannot handle transitive dependencies reliably. Even asking 'what if X changes?' only finds bugs for that specific X."*
 
@@ -50,7 +50,7 @@ This isn't a capability gap that better models will close. It's a paradigm misma
 
 ### Chapter 1: Procedural Code — Four Years, Never Shipped
 
-A US state agency needed to allocate charges across departments and GL accounts.
+A US state needed to allocate charges across departments and their GL accounts.
 
 The logic is straightforward to describe: when a charge arrives against a project, cascade it through two levels — split across departments by funding percentages, then split each department's share across GL accounts by charge definition percentages. Both levels must total exactly 100%. A charge may only post if the project's funding definition is active. All totals must roll up correctly.
 
@@ -104,7 +104,7 @@ Think of a spreadsheet. You don't write code to handle "what if cell B5 changes.
 
 The system that never shipped in four years: done in a weekend.
 
-Rules are the governance infrastructure that enterprise AI is missing. The barrier was always the learning curve — thinking declaratively is a different paradigm, and most teams default to procedural code.
+Rules are the governance infrastructure that enterprise AI is missing. The barrier was always the learning curve — thinking declaratively is a different paradigm, and it's easy to make the jump.
 
 ---
 
@@ -118,12 +118,12 @@ Here is what it takes to build the same allocation system with GenAI-Logic today
 >
 > *Project Funding Definitions define which Departments fund a designated percent of a Project's costs, and which Department Charge Definition each Department applies. An active Project Funding Definition must cover exactly 100%.*
 >
-> *When a Charge is received against a Project, cascade-allocate it in two levels:*
-> *Level 1 — allocate the Charge amount to each Department per their Project Funding Line percent*
+> *When a Charge is received against a Project, cascade-allocate it in two levels:*<br>
+> *Level 1 — allocate the Charge amount to each Department per their Project Funding Line percent*<br>
 > *Level 2 — allocate each department amount to that Department's GL Accounts per their Charge Definition line percents*
->
+><br>
 > *Constraint: a Charge may only be posted if the Project's Project Funding Definition is active.*
->
+><br>
 > *Charges can be placed by contractors who may supply only a minimal project description — use AI Rules to find an Active Project based on a fuzzy match to project name and past charges from the contractor.*
 
 A business prompt. No rules syntax. No declarative training. Written the way a business analyst writes a specification.
@@ -131,6 +131,7 @@ A business prompt. No rules syntax. No declarative training. Written the way a b
 **Five minutes.** Working system — database, API, admin UI, two-level cascade, 100% validation, automated roll-ups, AI fuzzy project matching, full audit trail — governed from the first commit.
 
 The progression:
+
 - **Procedural code**: four years, two developers, never shipped
 - **Declarative rules**: one weekend, requires deep expertise
 - **AI + Rules + CE**: five minutes, business prompt, no rules training required
