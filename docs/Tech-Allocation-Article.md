@@ -137,7 +137,7 @@ The progression:
 
 The same business prompt to a native AI tool produces FrankenCode — procedural code with path-dependent enforcement, implicit dependencies, no audit trail. The demo works. The governance doesn't.
 
-The difference is **Context Engineering**: a 9,000-line architectural knowledge layer in the repository that teaches AI the rules DSL. Without CE, AI pattern-matches to procedural code. With CE, AI translates business intent into declared invariants on data. Procedural intent in. Commit-enforced, path-independent governance out.
+The difference is **Context Engineering**: a 9,000-line architectural knowledge layer in the repository that teaches AI the rules DSL. The DSL is the bridge: a structured, human-readable declaration of business intent — *what must be true*, not *how to enforce it* — that preserves business meaning while remaining directly executable by the Rule Engine. Without CE, AI pattern-matches to procedural code. With CE, AI translates business intent into declared invariants on data. Procedural intent in. Commit-enforced, path-independent governance out.
 
 ---
 
@@ -147,7 +147,7 @@ The governance gap in enterprise AI isn't waiting for better models. Copilot tol
 
 The architecture looks like this:
 
-![GenAI-Logic Architecture: NL Intent flows through CE and AI to the DSL, which feeds the Rule Engine. All sources — APIs, Agents, Workflows — converge on the Rule Engine at commit. No bypass.](images/architecture/loggic-architecture.png)
+![GenAI-Logic Architecture: NL Intent flows through CE and AI to the DSL, which feeds the Rule Engine. All sources — APIs, Agents, Workflows — converge on the Rule Engine at commit. No bypass.](images/architecture/logic-architecture.png)
 
 Three elements, each requiring the others:
 
