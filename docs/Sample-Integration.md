@@ -140,6 +140,9 @@ To apply customizations, in a terminal window for your project:
 **2. Apply Customizations:**
 
 ```bash
+pushd ../
+. venv/bin/activate
+popd
 ApiLogicServer add-cust
 ```
 
@@ -184,7 +187,7 @@ To enable Kafka:
 
 4. Start Kafka: in a terminal window: `docker compose -f integration/kafka/dockercompose_start_kafka.yml up`
 
-5. Create topic: in Docker: `kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3  --topic order_shipping`
+5. Create topic: in Docker: `/opt/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3  --topic order_shipping`
 
 Here some useful Kafka commands:
 
@@ -195,13 +198,13 @@ Here some useful Kafka commands:
 
 PS1="kafka > "  # set prompt
 
-kafka-topics.sh --bootstrap-server localhost:9092 --topic order_shipping --delete
+/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic order_shipping --delete
 
-kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3  --topic order_shipping
+/opt/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3  --topic order_shipping
 
-kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic order_shipping --from-beginning
+/opt/kafka/bin/kafka-topics.sh--bootstrap-server localhost:9092 --topic order_shipping --from-beginning
 
-kafka-topics.sh --bootstrap-server localhost:9092 --list
+/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
 
 </details>
