@@ -72,10 +72,10 @@ This sample was developed with API Logic Server - [open source, available here](
 
 ## 1. Create: Instant Project
 
-The command below creates an `ApiLogicProject` by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix.  Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/); you would normally supply a SQLAlchemy URL.  
+The command below creates an `Kafka_Demo` by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix.  Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/); you would normally supply a SQLAlchemy URL.  
 
 ```bash
-$ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw-    # create ApiLogicProject
+$ genai-logic create --project_name=Kafka_demo --db_url=nw-    # create project from nw (uncustomized)
 ```
 
 You can then open the project in your IDE, and run it.
@@ -115,7 +115,7 @@ To apply customizations, in a terminal window for your project:
 pushd ../
 . venv/bin/activate
 popd
-ApiLogicServer add-cust
+genai-logic add-cust
 ```
 
 **3. Enable and Start Kafka**
@@ -159,7 +159,12 @@ To enable Kafka:
 
 4. Start Kafka: in a terminal window: `docker compose -f integration/kafka/dockercompose_start_kafka.yml up`
 
-5. Create topic: in Docker: `/opt/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3  --topic order_shipping`
+5. Create topic: in Docker: 
+
+```bash
+docker exec -it broker1 bash # then, in the docker shell
+/opt/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3  --topic order_shipping
+```
 
 Here some useful Kafka commands:
 
@@ -176,7 +181,6 @@ PS1="kafka > "  # set prompt
 
 # list the msgs - note: you need to increment the group# at the end each time you issue the command
 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic order_shipping --from-beginning --group fresh-group-1
-
 
 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
@@ -210,11 +214,17 @@ As illustrated in the Basic Demo tutorial, the `add-cust` procedure has added a 
 
 Successful orders need to be sent to Shipping, again in a predesignated format.
 
+To place an order, and send the message:
+
+1. Use the Admin App, ServicesEndPoint / OrderB2B
+2. Click Try It
+3. Click Execute to use the sample data
+
 We could certainly POST an API, but Messaging (here, Kafka) provides significant advantages:
 
 * **Async:** Our system will not be impacted if the Shipping system is down.  Kafka will save the message, and deliver it when Shipping is back up.
 * **Multi-cast:** We can send a message that multiple systems (e.g., Accounting) can consume.
-
+ 
 The content of the message is a JSON string, just like an API.
 
 Just as you can customize apis, you can complement rule-based logic using Python events:
@@ -246,7 +256,7 @@ To explore Shipping:
 **1. Create the Shipping Project:**
 
 ```bash
-ApiLogicServer create --project_name=shipping --db_url=shipping
+genai-logic create --project_name=shipping --db_url=shipping
 ```
 
 **2. Start your IDE (e.g., `code shipping`) and establish your `venv`**
