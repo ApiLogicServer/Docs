@@ -88,10 +88,6 @@ While API/UI automation is a great start, we now require Custom APIs, Logic and 
 
 You normally apply such customizations using your IDE, leveraging code completion, etc.  To accelerate this sample, you can apply the customizations with `ApiLogicServer add-cust`.   We'll review the customizations below.
 
-<details markdown>
-
-<summary> Show me how -- apply customizations, start Kafka </summary>
-
 &nbsp;
 
 The following `add-cust` process simulates:
@@ -119,10 +115,6 @@ genai-logic add-cust
 ```
 
 **3. Enable and Start Kafka**
-
-<details markdown>
-
-<summary>Show me how</summary>
 
 &nbsp;
 
@@ -185,13 +177,16 @@ PS1="kafka > "  # set prompt
 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
 
-</details>
+6. Enable Kafka - update `config/default.env` to include:
+
+```text
+KAFKA_SERVER=localhost:9092
+```
 
 &nbsp;
 
 **4. Restart the server, login as `admin`**
 
-</details>
 
 &nbsp;
 
