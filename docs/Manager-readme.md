@@ -5,6 +5,14 @@ Source: docs/Manager-readme
 version info: 16.00.01 (02/16/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
+demo_customs: customs_readme.md
+demo_kafka: Sample-Integration.md
+demo_allo: Sample_Allo_Dept_GL_readme.md
+basic_demo_ai_rules: Sample-ai-rules.md
+basic_demo_mcp: Sample-Basic-Demo-MCP-Send-Email.md
+basic_demo_vibe: Sample-Basic-Demo-Vibe.md
+basic_demo_ai_mcp: Sample-ai-mcp.md
+basic_demo: Sample-Basic-Demo.md
 ---
 <style>
   -typeset h1,
