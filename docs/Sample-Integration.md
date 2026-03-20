@@ -4,6 +4,20 @@ notes: gold docsite, 2100 words (goal: 1500)
 version: 10.03.01 from docsite
 ---
 
+!!! pied-piper ":bulb: TL;DR - Kafka Integration: Async Messaging"
+
+    APIs are useful to application integration, but do not deal with the reality that the receiving system might be down.
+
+    Message Brokers like Kafka address this with guaranteed ***async delivery*** of messages.  The Broker stores the message, delivering it (possibly later) when the the receiver is up.
+
+    Message Brokers also support multi-cast: you ***publish*** a message to a "topic", and other systems ***subscribe***.  This is often casually described as "pub/sub".
+
+    This sample presumes you are familiar with basic GenAI-Logic services, as illustrated in the Basic Demo tutorial.
+
+    This guide will illustrate how to publish Kafka messages, and subscribe to and process them in another project.  This all runs on your machine, and includes instructions in installing Kafka as a Docker container.
+
+&nbsp;
+
 # Purpose
 
 **System Requirements**
@@ -65,48 +79,6 @@ $ ApiLogicServer create --project_name=ApiLogicProject --db_url=nw-    # create 
 ```
 
 You can then open the project in your IDE, and run it.
-
-
-<details markdown>
-
-<summary> Show me how </summary>
-
-&nbsp;
-
-To run the ApiLogicProject app:
-
-1. **Create Virtual Environment:** as shown in the Appendix.
-
-2. **Start the Server:** F5 (also described in the Appendix).
-
-3. **Start the Admin App:** either use the links provided in the IDE console, or click [http://localhost:5656/](http://localhost:5656/).  The screen shown below should appear in your Browser.
-
-</details>
-
-One command has created meaningful elements of our system:
-<br><br>
-
-!!! pied-piper ":bulb: Instant Self-Serve API - ad hoc integration - and Admin App"
-
-    ### API: Ad hoc Integration
-
-    The system creates an API with end points for each table, providing filtering, sorting, pagination, optimistic locking and related data access.
-    
-    The API is [**self-serve**](https://apilogicserver.github.io/Docs/API-Self-Serve/): consumers can select their own attributes and related data, eliminating reliance on custom API development.  In this sample, our self-serve API meets our needs for Ad Hoc Integration, and Custom UI Dev.
-
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/api-swagger.jpeg?raw=true">
-
-    ### Admin App: Order Entry UI
-
-    The `create` command also creates an Admin App: multi-page, multi-table with automatic joins -- ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs you can create with the API.
-
-    You can click the first Customer, and see their Orders, and Items.
-
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/admin-app-initial.jpeg?raw=true">
-
-    !!! pied-piper ":bulb: 1 Command: Ad Hoc Integration Complete"
-
-        With 1 command, we have created an executable project that completes our ad hoc integration with a self-serve API.  We have also unblocked custom UI development.
 
 &nbsp;
 
@@ -202,7 +174,9 @@ PS1="kafka > "  # set prompt
 
 /opt/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3  --topic order_shipping
 
-/opt/kafka/bin/kafka-topics.sh--bootstrap-server localhost:9092 --topic order_shipping --from-beginning
+# list the msgs - note: you need to increment the group# at the end each time you issue the command
+/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic order_shipping --from-beginning --group fresh-group-1
+
 
 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
@@ -214,93 +188,6 @@ PS1="kafka > "  # set prompt
 **4. Restart the server, login as `admin`**
 
 </details>
-
-### Declare UI Customizations
-
-The admin app is not built with complex html and javascript.  Instead, it is configured with the ui/admin/admin.yml`, automatically created from your data model by `ApiLogicServer create`.
-
-You can customize this file in your IDE to control which fields are shown (including joins), hide/show conditions, help text etc.  The `add-cust` process above has simulated such customizations.
-
-To see customized Admin app in action, with the restarted server:
-
-**1. Start the Admin App:** [http://localhost:5656/](http://localhost:5656/)
-
-**2. Login** as `s1`, password `p`
-
-**3. Click Customers**
-
-&nbsp;
-
-This makes it convenient to use the Admin App to enter an Order and OrderDetails:
-
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-entry-ui.jpg?raw=true">
-
-
-Note the automation for **automatic joins** (Product Name, not ProductId) and **lookups** (select from a list of Products to obtain the foreign key).  If we attempt to order too much Chai, the transaction properly fails due to the Check Credit logic, described below.
-
-&nbsp;
-
-### on Placing Orders, Check Credit Logic
-
-Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  API Logic server provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
-
-!!! pied-piper ":bulb: Logic: Multi-table Derivations and Constraint Rules, 40X More Concise"
-
-    #### IDE: Declare and Debug
-
-    The 5 check credit rules are shown below.  
-
-    !!! pied-piper ":bulb: Rules are 40X More Concise Than Code"
-    
-        Rules are 40X more concise than legacy code, as [shown here](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
-    
-    Rules are declared in Python, simplified with IDE code completion.  The `add-cust` process above has simulated the process of using your IDE to declare logic.
-    
-    Observe rules can be debugged using standard logging and the debugger:
-
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/logic-chaining.jpeg?raw=true">
-
-    Rules operate by handling SQLAlchemy events, so apply to all ORM access, whether by the api engine, or your custom code.  Once declared, you don't need to remember to call them, which promotes quality.
-
-    The rules shown above prevented the too-big order with *multi-table logic* to copy the Product Price, compute the Amount, roll it up to the AmountTotal and Balance, and check the CreditLimit.  
-    
-    These same rules also govern changing orders, deleting them, picking different parts - about 9 transactions, all automated.  Implementing all this by hand would otherwise require about 200 lines of code.<br><br>
-    
-    
-    #### Agility, Quality
-
-    Rules are a unique and significant innovation, providing meaningful improvements over procedural logic:
-
-    | CHARACTERISTIC | PROCEDURAL | DECLARATIVE | WHY IT MATTERS |
-    | :--- |:---|:---|:---|
-    | **Reuse** | Not Automatic | Automatic - all Use Cases | **40X Code Reduction** |
-    | **Invocation** | Passive - only if called  | Active - call not required | Quality |
-    | **Ordering** | Manual | Automatic | Agile Maintenance |
-    | **Optimizations** |Manual | Automatic | Agile Design |
-
-    > For more on rules, [click here](https://apilogicserver.github.io/Docs/Logic-Why/){:target="_blank" rel="noopener"}.
-
-&nbsp;
-
-### Declare Security
-
-The `add-cust` process above has simulated the `ApiLogicServer add-auth` command, and using your IDE to declare security in `logic/declare_security.sh`.
-
-To see security in action:
-
-**1. Logout (upper right), and Login** as `AFLKI`, password `p`
-
-**2. Click Customer**
-
-&nbsp;
-
-!!! pied-piper ":bulb: Row-Level Security: Customers Filtered"
-
-    #### Login, Row Filtering
-
-    Declarative row-level security ensures that users see only the rows authorized for their roles.  Observe you now see only customer ALFKI, per the security declared below.  Note the console log at the bottom shows how the filter worked.
-
-    <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/security-filters.jpg?raw=true">
 
 &nbsp;
 
@@ -315,27 +202,7 @@ We now have a running system - an API, logic, security, and a UI.  Now we must i
 
 ### B2B Custom Resource
 
-The self-serve API does not conform to the format required for a B2B partnership.  We need to create a custom resource.
-
-You can create custom resources by editing `customize_api.py`, using standard Python, Flask and SQLAlchemy.  A custom `OrderB2B` resource is shown below.
-
-The main task here is to ***map*** a B2B payload onto our logic-enabled SQLAlchemy rows.  API Logic Server provides a declarative `ApplicationIntegration` service you can use as follows:
-
-1. Declare the mapping -- see the `OrderB2B` class in the lower pane
-
-    * Note the support for **lookup**, so partners can send ProductNames, not ProductIds
-
-2. Create the custom API endpoint -- see the upper pane:
-
-    * Add `def OrderB2B` to `customize_api/py` to create a new endpoint
-    * Use the `OrderB2B` class to transform a api request data to SQLAlchemy rows (`dict_to_row`)
-    * The automatic commit initiates the same shared logic described above to check credit and reorder products
-
-![dict to row](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/dict-to-row.jpg?raw=true)
-
-!!! pied-piper ":bulb: Custom Endpoint - 7 lines of code"
-
-    So, our custom endpoint required about 7 lines of code, along with the API specification on the right.  Note the logic is automatically factored out, and re-used for all APIs, both custom and self-serve.
+As illustrated in the Basic Demo tutorial, the `add-cust` procedure has added a B2B custom endpoint to add an order and items.
 
 &nbsp;
 
