@@ -5,7 +5,7 @@ Source: docs/Manager-readme
 version info: 16.00.01 (02/16/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
-demo_customs: Customs_readme.md
+demo_customs: Customs-readme.md
 demo_kafka: Sample-Integration.md
 demo_allo: Sample_Allo_Dept_GL_readme.md
 demo_ai_rules: Sample-ai-rules.md
