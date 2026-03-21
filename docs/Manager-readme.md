@@ -8,10 +8,10 @@ Used: Manager Readme (via copy_md())
 demo_customs: customs_readme.md
 demo_kafka: Sample-Integration.md
 demo_allo: Sample_Allo_Dept_GL_readme.md
-basic_demo_ai_rules: Sample-ai-rules.md
-basic_demo_mcp: Sample-Basic-Demo-MCP-Send-Email.md
-basic_demo_vibe: Sample-Basic-Demo-Vibe.md
-basic_demo_ai_mcp: Sample-ai-mcp.md
+demo_ai_rules: Sample-ai-rules.md
+demo_mcp: Sample-Basic-Demo-MCP-Send-Email.md
+demo_vibe: Sample-Basic-Demo-Vibe.md
+demo_ai_mcp: Sample-ai-mcp.md
 basic_demo: Sample-Basic-Demo.md
 ---
 <style>
@@ -71,10 +71,10 @@ Explore the key use cases from our home page:
 
 | Use Case | Command | What You'll Learn |
 |----------|---------|-------------------|
-| **[Allocation with AI Rules](https://www.genai-logic.com/#h.78vfx1jrldj9)** <br> allo_dept_gl | create project allo_dept_gl from samples/prompts/allocation.prompt.md <br> or genai-logic create --project_name=allo_dept_gl --db_url=sqlite:///samples/dbs/starter.sqlite | - [Cascade Allocation (Costs to Depts/GL)](Sample_Allo_Dept_GL_full.md){:target="_blank" rel="noopener"} <br> - AI Rules for fuzzy match to project |
-| **[Use Case 1: AI Rules](https://www.genai-logic.com/#h.no4671ezsiit)**<br> basic_demo_ai_rules_supplier | genai-logic create --project_name=basic_demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Use AI Rules (req pattern) to choose Optimal Supplier, per world conditions |
-| **[Use Case 2: Governed MCP Server](https://www.genai-logic.com/#h.n2vpyctb5xv)** <br>basic_demo_mcp_send_email | genai-logic create --project_name=basic_demo_mcp_send_email --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Bus Users compose new service to send email to overdue customers, subject to email opt-out rules<br>- Create custom API with NL<br>- Create an email service (req pattern) |
-| **[Use Case 3: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> basic_demo_vibe | genai-logic create --project_name=basic_demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - UI elements, eg, Cards, Maps, Trees... |
+| **[Allocation with AI Rules](https://www.genai-logic.com/#h.78vfx1jrldj9)** <br> demo_allo_dept_gl | create project allo_dept_gl from samples/prompts/allocation.prompt.md <br> or genai-logic create --project_name=demo_allo_dept_gl --db_url=sqlite:///samples/dbs/starter.sqlite | - [Cascade Allocation (Costs to Depts/GL)](Sample_Allo_Dept_GL_full.md){:target="_blank" rel="noopener"} <br> - AI Rules for fuzzy match to project |
+| **[Use Case 1: AI Rules](https://www.genai-logic.com/#h.no4671ezsiit)**<br> demo_ai_rules_supplier | genai-logic create --project_name=demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Use AI Rules (req pattern) to choose Optimal Supplier, per world conditions |
+| **[Use Case 2: Governed MCP Server](https://www.genai-logic.com/#h.n2vpyctb5xv)** <br>demo_mcp_send_email | genai-logic create --project_name=demo_mcp_send_email --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Bus Users compose new service to send email to overdue customers, subject to email opt-out rules<br>- Create custom API with NL<br>- Create an email service (req pattern) |
+| **[Use Case 3: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> demo_vibe | genai-logic create --project_name=demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - UI elements, eg, Cards, Maps, Trees... |
 | **[Use Case 5: Business Users](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/webgenai/README) | - Create systems from browser, with logic, sample data and derived attributes |
 | **[NL Business Systems](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> customs_demo | genai-logic create --project_name=customs_demo --db_url=sqlite:///samples/dbs/starter.sqlite | - Complete Business Systems<br> - See [Customs Surtax](Customs-readme-full.md){:target="_blank" rel="noopener"} |
 
@@ -89,7 +89,7 @@ Advanced examples and specialized patterns:
 | **New system from prompt** | genai-logic genai --using=samples/prompts/genai_demo.prompt | Create systems from prompt<br>Like WebGenAI, but from IDE |
 | **Coding Samples** | code samples/nw_sample | Useful code examples<br>Search: `#als` |
 | **nw_integration** | genai-logic create --project_name=nw_integration --db_url=nw- | Kafka messaging (with docker setup) |
-| **Basic Governed MCP Server** <br> basic_demo_ai_mcp_copilot | genai-logic create --project_name=basic_demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
+| **Basic Governed MCP Server** <br> demo_ai_mcp_copilot | genai-logic create --project_name=demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
 | **mcp_ai** | *TBD* | • Advanced MCP patterns<br>• Complex AI integrations<br>• Production MCP deployment |
 
 
