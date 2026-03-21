@@ -1,9 +1,9 @@
 ---
 title: MCP AI Example
-notes: gold source is docs
-source: docs/Integration-MCP-AI-Example.md
+notes: gold source is docs (demo_mcp_discovery)
+source: docs/Sample-ai-mcp.md
 do_process_code_block_titles: True
-version: 0.3, for readme 2/8/2026
+version: 0.4, for readme 3/21/2026
 ---
 <style>
   -typeset h1,

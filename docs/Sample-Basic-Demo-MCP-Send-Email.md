@@ -1,9 +1,9 @@
 ---
-title: basic_demo_mcp_send_email
+title: basic_demo_mcp_send_email (demo_mcp_send_email)
 do_process_code_block_titles: True
-version: 1.0 from docsite, for readme 2/16/2026
+version: 1.1 from docsite, for readme 3/21/2026
 source: docs/Sample-Basic-Demo-MCP-Send-Email.md
-Propagation: see api_logic_server_cli/sample_mgr/basic_demo_setup.py
+Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
 <style>
   .md-typeset h1,

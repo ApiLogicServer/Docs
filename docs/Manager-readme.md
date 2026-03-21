@@ -89,8 +89,7 @@ Advanced examples and specialized patterns:
 | **demo_kafka** | genai-logic create --project_name=demo_kafka --db_url=nw- | Kafka pub/sub messaging <br>With Docker setup |
 | **New system from prompt** | genai-logic genai --using=samples/prompts/genai_demo.prompt | Create systems from prompt<br>Like WebGenAI, but from IDE |
 | **Coding Samples** | code samples/nw_sample | Useful code examples<br>Search: `#als` |
-| **Basic Governed MCP Server** <br> demo_ai_mcp_copilot | genai-logic create --project_name=demo_ai_mcp_copilot --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
-| **mcp_ai** | *TBD* | • Advanced MCP patterns<br>• Complex AI integrations<br>• Production MCP deployment |
+| **MCP Discovery** <br> demo_ai_mcp_copilot | genai-logic create --project_name=demo_mcp_discovery --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
 
 
 &nbsp;
