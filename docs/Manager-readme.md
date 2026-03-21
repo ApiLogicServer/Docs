@@ -5,14 +5,14 @@ Source: docs/Manager-readme
 version info: 16.00.01 (02/16/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
-demo_customs: Customs-readme.md
-demo_kafka: Sample-Integration.md
-demo_allo: Sample_Allo_Dept_GL_readme.md
-demo_ai_rules: Sample-ai-rules.md
-demo_mcp: Sample-Basic-Demo-MCP-Send-Email.md
-demo_vibe: Sample-Basic-Demo-Vibe.md
-demo_ai_mcp: Sample-ai-mcp.md
-basic_demo: Sample-Basic-Demo.md
+demo_customs: Customs-readme
+demo_kafka: Sample-Integration
+demo_allo: Sample_Allo_Dept_GL_readme
+demo_ai_rules: Sample-ai-rules
+demo_mcp_send: Sample-Basic-Demo-MCP-Send-Email
+demo_vibe: Sample-Basic-Demo-Vibe
+demo_copilot_mcp_discovery: Sample-ai-mcp
+basic_demo: Sample-Basic-Demo
 ---
 <style>
   -typeset h1,
@@ -89,7 +89,7 @@ Advanced examples and specialized patterns:
 | **demo_kafka** | genai-logic create --project_name=demo_kafka --db_url=nw- | Kafka pub/sub messaging <br>With Docker setup |
 | **New system from prompt** | genai-logic genai --using=samples/prompts/genai_demo.prompt | Create systems from prompt<br>Like WebGenAI, but from IDE |
 | **Coding Samples** | code samples/nw_sample | Useful code examples<br>Search: `#als` |
-| **MCP Discovery** <br> demo_ai_mcp_copilot | genai-logic create --project_name=demo_mcp_discovery --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
+| **MCP Discovery** <br> demo_copilot_mcp_discovery | genai-logic create --project_name=demo_copilot_mcp_discovery --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
 
 
 &nbsp;
