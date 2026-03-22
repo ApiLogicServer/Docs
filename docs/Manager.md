@@ -65,6 +65,18 @@ ApiLogicServer create --project-name=sample --db-url=nw+
 
 &nbsp;
 
+## Training Samples
+
+The Manager now offers basic training:  
+
+1. Activate your AI Assistant
+2. Take the Tour (link provided in Manager)
+3. Explore the series of exercises shown below, to explore key features
+
+![training](images/manager/Manager-Training.png)
+
+&nbsp;
+
 ## Creating Projects: auto_open
 
 By default, the Manager starts with an environment variable `APILOGICSERVER_AUTO_OPEN`.  It's defaulted to *code*; you can set it:

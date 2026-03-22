@@ -126,6 +126,14 @@ Your project includes comprehensive training materials that serve as a "message 
 
 <br>
 
+#### Log Analysis
+
+Given AI understanding of your project per Context Engineering, it is an excellent way to diagnose issues:
+
+![context-engineering](images/ui-vibe/assistant/log-analysis.png)
+
+<br>
+
 #### Extend Context Engineering
 
 You can cause VSCode Copilot to pre-load your own instructions by placing `*.instructions.md` files in `.github`.  See the example in the Manager: `samples/readme_samples.md`:
