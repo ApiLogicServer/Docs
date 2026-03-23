@@ -128,7 +128,7 @@ Your project includes comprehensive training materials that serve as a "message 
 
 #### Log Analysis
 
-Given AI understanding of your project per Context Engineering, it is an excellent way to diagnose issues:
+Given AI understanding of your project per Context Engineering, it is an excellent way to diagnose issues by reading the `logs` folder:
 
 ![context-engineering](images/ui-vibe/assistant/log-analysis.png)
 

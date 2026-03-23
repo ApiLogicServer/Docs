@@ -61,17 +61,15 @@ AI delivers remarkable agility — creating APIs, logic, and systems from natura
 
 <details markdown>
 
-<summary>How the Rules Engine addresses the three core problems</summary>
+<summary>How the Rules Engine addresses both core problems</summary>
 
-**1. All sources covered — no bypass**
-
-The Rules Engine hooks into the ORM commit.  Every transaction — API call, agent action, workflow, UI update, bulk import — passes through the same commit gate.  There is no path that bypasses governance.  Add a new endpoint or agent tomorrow, and it inherits the rules automatically.
-
-**2. Path-independent rules — automatic reuse**
+**1. Path-independent rules — automatic reuse**
 
 AI generates procedural code that embeds logic in execution paths.  Change a requirement, and you must find and update every path that implements it.  Rules are different: they express *what* must be true on the data, not *how* you got there.  A rule declared once is reused automatically across every source, present and future.
 
-**3. Deterministic ordering — no subtle bugs**
+The Rules Engine hooks into the ORM commit.  Every transaction — API call, agent action, workflow, UI update, bulk import — passes through the same commit gate.  There is no path that bypasses governance.  Add a new endpoint or agent tomorrow, and it inherits the rules automatically.
+
+**2. Deterministic ordering — no subtle bugs**
 
 Multi-table logic has dependencies.  When an Item quantity changes, the Order total must recompute before the Customer balance, which must recompute before the credit check fires.  Get the order wrong and results are silently incorrect.  The Rule Engine determines execution order automatically from the declared dependencies — no hand-coding, no ordering bugs.
 
@@ -82,13 +80,11 @@ Multi-table logic has dependencies.  When an Item quantity changes, the Order to
 **Rules** replace procedural logic with declarations that express intent directly:
 
 ```python
-Rule.sum(derive=Customer.balance, as_sum_of=Order.amount_total,
-         where=lambda row: row.date_shipped is None)
-Rule.constraint(validate=Customer,
-                as_condition=lambda row: row.balance <= row.credit_limit,
-                error_msg="Balance ({row.balance}) exceeds credit limit ({row.credit_limit})")
-Rule.formula(derive=Order.amount_total,
-             as_expression=lambda row: row.quantity * row.unit_price)
+    Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance <= row.credit_limit, error_msg="Customer balance exceeds credit limit")                    
+    Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total, where=lambda row: row.date_shipped is None)    
+    Rule.sum(derive=models.Order.amount_total, as_sum_of=models.Item.amount)
+    Rule.formula(derive=models.Item.amount, as_expression=lambda row: row.quantity * row.unit_price)
+    Rule.copy(derive=models.Item.unit_price, from_parent=models.Product.unit_price)
 ```
 
 These five rules replace over 200 lines of procedural code — a 40X reduction — and they fire automatically, in the right order, from every transaction source.  See [Logic: Why](Logic-Why.md) for a detailed walkthrough.
