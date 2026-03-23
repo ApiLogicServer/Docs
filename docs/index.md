@@ -15,6 +15,8 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 !!! pied-piper ":robot: Welcome to GenAI-Logic"
 
     API Logic Server creates governed microservices — JSON:API, Admin App, and declarative business logic — from an existing database or a natural language prompt, in one command.  It also provides runtime services for data access, api execution, logic enforcement, etc.
+
+    Use your existing tooling: Python, your IDE, container deployment.  IDE use has designed to work well with your AI Assistant, such as Copilot.  It also works well as a backend for vibing custom User Interfaces.
     
     If this is your first API Logic Server project, this page provides some key background — why it's built this way, and how to get productive fast.  For the full picture, see [genai-logic.com](https://www.genai-logic.com){:target="_blank" rel="noopener"}.
 
@@ -22,7 +24,8 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 ## Getting Started
 
-**1. Install**
+
+### 1. Install
 
 ```bash
 mkdir genai-logic && cd genai-logic
@@ -31,15 +34,17 @@ pip install ApiLogicServer
 genai-logic start                                   # opens the Manager
 ```
 
-See [Express Install](Install-Express.md) for details, including Docker and Codespaces options.  The `start` commands loads the Manager:
+See [Express Install](Install-Express.md) for details, including Docker and Codespaces options.  The `start` commands loads the [Manager](Manager.md){:target="_blank" rel="noopener"} (a directory for creating and managing projects):
 
 ![Manager](images/manager/readme.png)
 
 &nbsp;
 
-**2. Tour — AI-Guided, Hands-On (30–45 min)**
+### 2. AI-Guided Tour
 
-The Manager opens automatically and walks you through creating `basic_demo`.  Inside the project, say to your AI assistant:
+The Manager opens automatically and walks you through creating `basic_demo`.  Allow 30-45 minutes.
+
+Inside the created project, say to your AI assistant:
 
 > *"Guide me through basic_demo"*
 
@@ -47,9 +52,11 @@ This is a hands-on tour covering API creation, declarative rules, security, and 
 
 &nbsp;
 
-**3. Samples**
+### 3. Samples
 
-The [Manager](Manager.md) provides a full sample catalog, each illustrating key patterns.  Each project is AI-enabled — ask your AI assistant how it works.
+The [Manager](Manager.md) provides a full sample catalog, each illustrating key patterns.  Each project is AI-enabled — ask your AI assistant how it works.  
+
+Note you can create projects from existing databases, or new database projects from prompts.  In both cases, the presumption is that development continues in a classic iterative manner in the created project.
 
 ![training](images/manager/Manager-Training.png)
 
@@ -57,7 +64,9 @@ The [Manager](Manager.md) provides a full sample catalog, each illustrating key 
 
 ## Why It's Built This Way
 
-AI delivers remarkable agility — creating APIs, logic, and systems from natural language.  The problem is correctness: AI generates logic path by path, and paths get missed.  **Rules** solve this structurally, enforced by a Rules Engine that governs every transaction at commit time.
+AI logic is pattern-driven: it matches what it has seen, not what the dependencies require. This produces two structural failures — dependencies get ordered wrong in complex multi-table logic, and paths get missed as the system grows.
+
+**Rules** solve this structurally, enforced by a Rules Engine that governs every transaction at commit time.
 
 <details markdown>
 
@@ -65,7 +74,9 @@ AI delivers remarkable agility — creating APIs, logic, and systems from natura
 
 **1. Path-independent rules — automatic reuse**
 
-AI generates procedural code that embeds logic in execution paths.  Change a requirement, and you must find and update every path that implements it.  Rules are different: they express *what* must be true on the data, not *how* you got there.  A rule declared once is reused automatically across every source, present and future.
+AI generates procedural code that embeds logic in execution paths.  Change a requirement, and you must find and update every path that implements it.  
+
+Rules are different: they express *what* must be true on the data, not *how* you got there.  A rule declared once is reused automatically across every source, present and future.
 
 The Rules Engine hooks into the ORM commit.  Every transaction — API call, agent action, workflow, UI update, bulk import — passes through the same commit gate.  There is no path that bypasses governance.  Add a new endpoint or agent tomorrow, and it inherits the rules automatically.
 
