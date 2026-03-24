@@ -84,11 +84,22 @@ The Rules Engine hooks into the ORM commit.  Every transaction — API call, age
 
 Multi-table logic has dependencies.  When an Item quantity changes, the Order total must recompute before the Customer balance, which must recompute before the credit check fires.  Get the order wrong and results are silently incorrect.  The Rule Engine determines execution order automatically from the declared dependencies — no hand-coding, no ordering bugs.
 
+The Logic Architecture is shown below:
+
 ![Logic Architecture](images/logic/logic-arch.png)
+
+* You declare logic to your AI Assistant, such as Copilot with Claude Sonnet 4.6
+* AI converts this into the Rules DSL (Domain Specific Language) shown below
+
+    * This is enabled by extensive CE (Context Engineering), built on project creation
+
+* Importantly, the DSL **distills** path-specific logic into path-independent logic that applies to your *tables*, not paths (*on Place Order*).  This resolves the path-specific issue, above.
+* The DSL statements are loaded by the Rules Engine on startup.  The Rules Engine provides deterministic dependency analysis to ensure proper ordering.  This resolves the dependency issue, above
+* Logic execution occurs on ORM commit, using SQLAlchemy `before_flush` events.  This ensures the logic applies to all access paths - no bypass.
 
 </details>
 
-**Rules** replace procedural logic with declarations that express intent directly:
+**Rules** replace procedural logic with declarations that express intent directly using the **Rules DSL**, expressed in Python:
 
 ```python
     Rule.constraint(validate=models.Customer, as_condition=lambda row: row.balance <= row.credit_limit, error_msg="Customer balance exceeds credit limit")                    
