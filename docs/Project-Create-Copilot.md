@@ -25,7 +25,7 @@ The Manager includes several prompts you can use (see `samples/prompts`).  Some 
 
 ### Allocation System
 
-Use the Manager (for more information, see [Allocation](Sample_Allo_Dept_GL_full.md){:target="_blank" rel="noopener"}:
+Use the Manager (for more information, see [Allocation](Sample_Allo_Dept_GL_full.md){:target="_blank" rel="noopener"}):
 
 ![allocation-create](images/allocation/allo-dept-gl/allocation-create.png)
 
@@ -62,6 +62,8 @@ Since this prompt is provided in samples, you can just enter this in Copilot:
 ```text
 create project customs_cbsa from samples/prompts/customs_cbsa.prompt.md
 ```
+
+For more information, [click here](Customs-readme-full.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

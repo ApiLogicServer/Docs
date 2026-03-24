@@ -77,6 +77,5 @@ In addition to CLI commands, you might it simpler to use your AI Assistant (e.g.
 Copilot in the Manager will create run the CLI for you with commands such as:
 
 ```bash title="Create from Copilot"
-create a project from basic_demo in samoles.dbs
+create a project from basic_demo in samples/dbs
 ```
-

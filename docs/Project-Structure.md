@@ -11,21 +11,22 @@ hide:
 
 !!! pied-piper ":bulb: TL;DR - ApiLogicServer create"
 
-    The `genai-logic create` CLI command creates a customizable / executable API Logic Project **from an existing database,** providing:
+    Whether created from a existing database or creating a new database, the creation process creates a customizable / executable API Logic Project, providing:
 
     * **A [JSON:API](API.md){:target="_blank" rel="noopener"} -** Endpoint for each table, with filtering, sorting, pagination, optimistic locking, including __related data access__, based on relationships in the models file (typically derived from foreign keys)
 
     * **[An Admin App](Admin-Tour.md){:target="_blank" rel="noopener"} -** multi-page, multi-table, with automatic joins
 
-    The `genai-logic genai` CLI command creates a customizable / executable API Logic Project **and a new database**, from an NL prompt.  For more information, see [WebGenAI CLI](WebGenAI-CLI){:target="_blank" rel="noopener"}.
-
-    Customize the project in your IDE to add custom endpoints, rules and Python for logic and security.  Projects are fully configured for development (e.g. run configurations) and deployment (e.g., image creation, env variables).
+    The presumption is ***iterative development***: customize the project in your IDE to add custom endpoints, rules and Python for logic and security.  
+    
+    * Projects are fully configured for development (e.g. run configurations) and deployment (e.g., image creation, env variables). 
+    * Projects are all source (no external databases etc), so can be managed using familiar source control such as GitHub. 
 
 &nbsp;
 
 ## What gets created
 
-The key files that drive execution are described below.  Note they are models - instead of lengthy generated code (*what*), they are Python declarations of ***how***.
+The key files that drive execution are described below.  Note they are [models](Tech-DSL.md){:target="_blank" rel="noopener"} - instead of lengthy generated code (*what*), they are Python declarations of ***how***.
 
 &nbsp;
 
@@ -46,6 +47,16 @@ The [JSON:API](API.md){:target="_blank" rel="noopener"} is driven by the model c
 The [Admin App](Admin-Customization.md/#edit-adminyaml) is also a model (not extensive html and javascript), expressed in yaml.
 
 &nbsp;
+
+
+### Discoverability - Logic, Services
+
+In addition to altering the files noted above, you can use discovery.  This enables logic and services to be broken up into multiple files, which are auto-discovered.  
+
+These can help teams integrate their work, with reduced conflict.
+
+![Discovability](images/architecture/discovery.png)
+
 
 ## Project Structure
 
@@ -92,6 +103,8 @@ Note the file that starts the project is `api_logic_server_run.py`, which obtain
 ### 4. Python `venv`
 
 The creation process builds a standard `requirements.txt` file.  You can create your `venv` with this, and (if your IDE does not provide it) the `venv.sh/ps1` files to initialize your `venv`.
+
+For more on the virtual environment, [click here](Project-Env.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
