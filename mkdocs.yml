@@ -53,14 +53,15 @@ nav:
     - "Sample": Sample-Genai.md
   - 0. ApiLogicServer create:
     - "Manager": Manager.md
-    - "Create with CLI": Project-Structure.md
-    - "Create With Copilot": Project-Create-Copilot.md
-    - "Create with Gen/AI on Web": WebGenAI-create.md
-    - "Model Driven": Tech-DSL.md
+    - "Create - Existing DB": Project-Existing-DB.md
+    - "Create - New DB (using AI)": Project-Create-Copilot.md
+    - "Project Structure": Project-Structure.md
     - "AI-Enabled Projects": Project-AI-Enabled.md
+    - "Model Driven": Tech-DSL.md
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
     - "Builders": Project-Builders.md
+    - "Create with Gen/AI on Web": WebGenAI-create.md
   - 1. Apps:
     - Automatic Admin App:
       - "Automatic Admin App": Admin-Tour.md

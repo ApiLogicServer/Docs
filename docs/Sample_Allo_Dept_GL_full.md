@@ -13,14 +13,9 @@ version: 1.0 from docsite, for readme 3/10/26
 
 # Allocate Project Payments to configured Departments/Accounts
 
-**Audience:** Technical GenAI-Logic evaluators
+![allocation-create](images/allocation/allo-dept-gl/allocation-create.png)
 
-**Project:** Allocate Project Payments to configured Departments/Accounts
-
-**Run Instructions:** at end
-
-**Under Construction**
-
+&nbsp;
 
 # Summary
 
