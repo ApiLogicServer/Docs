@@ -70,7 +70,7 @@ AI logic is pattern-driven: it matches what it has seen, not what the dependenci
 
 &nbsp;
 
-### Busines Rules Architecture
+### Business Rules Architecture
 
 The Rules Engine resolves these issues as described below.
 
