@@ -64,7 +64,7 @@ Note you can create projects from existing databases, or new database projects f
 
 ## Why It's Built This Way
 
-AI logic is pattern-driven: it matches what it has seen, not what the dependencies require. This produces two structural failures — dependencies get ordered wrong in complex multi-table logic, and paths get missed as the system grows.
+AI logic is pattern-driven: it matches what it has seen, not what the dependencies require. This produces two structural failures — ***dependencies get ordered incorrectly*** in complex multi-table logic, and ***paths get missed*** as the system grows.
 
 **Rules** solve this structurally, enforced by a Rules Engine that governs every transaction at commit time.
 
