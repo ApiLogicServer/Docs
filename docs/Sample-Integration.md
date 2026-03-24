@@ -16,29 +16,27 @@ version: 10.03.01 from docsite
 
     This guide will illustrate how to publish Kafka messages, and subscribe to and process them in another project.  This all runs on your machine, and includes instructions in installing Kafka as a Docker container.
 
-&nbsp;
+
 
 # Purpose
 
 **System Requirements**
 
-This app illustrates using IntegrationServices for B2B push-style integrations with APIs, and internal integration with messages.  We have the following **Use Cases:**
+This app illustrates using IntegrationServices for B2B push-style integrations with APIs, and internal integration with messages.  
 
-1. **Ad Hoc Requests** for information (Sales, Accounting) that cannot be anticipated in advance.
+&nbsp;
 
-2. **Two Transaction Sources:** A) internal Order Entry UI, and B) B2B partner `OrderB2B` API
+![demp_kafka](images/integration/demo_kafka.png)
 
-The **Northwind API Logic Server** provides APIs *and logic* for both transaction sources:
+The **demo_kafka API Logic Server** provides APIs *and logic*:
 
-1. **Self-Serve APIs**, to support ad hoc integration and UI dev, providing security (e.g, customers see only their account)
+1. **Order Logic:** enforcing database integrity and application Integration (alert shipping)
 
-2. **Order Logic:** enforcing database integrity and application Integration (alert shipping)
+2. A **Custom API**, to match an agreed-upon format for B2B partners
 
-3. A **Custom API**, to match an agreed-upon format for B2B partners
+3. **Standard APIs** for ad-hoc integration, user interfaces, etc
 
 The **Shipping API Logic Server** listens on kafka, and processes the message.<br><br>
-
-![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/integration.png?raw=true)
 
 &nbsp;
 
@@ -64,15 +62,26 @@ We'll further expand of these topics as we build the system, but we note some Be
 
 This sample was developed with API Logic Server - [open source, available here](https://apilogicserver.github.io/Docs/).
 
+<br>
+
+```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
+Please load `.github/.copilot-instructions.md`
+```
+
 &nbsp;
 
 # Development Overview
 
 &nbsp;
 
-## 1. Create: Instant Project
+## 1. Create Project
 
-The command below creates an `Kafka_Demo` by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix.  Note: the `db_url` value is [an abbreviation](https://apilogicserver.github.io/Docs/Data-Model-Examples/); you would normally supply a SQLAlchemy URL.  
+The command below creates an `demo_kafka` by reading your schema.  The database is Northwind (Customer, Orders, Items and Product), as shown in the Appendix.  
+
+Notes: 
+
+1. If you are in the project `demo_kafka`, this is already done -- ignore this step
+2. the `db_url` value is [an abbreviation](Data-Model-Examples.md); you would normally supply a SQLAlchemy URL.  
 
 ```bash
 $ genai-logic create --project_name=Kafka_demo --db_url=nw-    # create project from nw (uncustomized)
@@ -108,15 +117,13 @@ To apply customizations, in a terminal window for your project:
 **2. Apply Customizations:**
 
 ```bash
-pushd ../
-. venv/bin/activate
-popd
-genai-logic add-cust
+genai-logic add-cust # requires correct active (venv)
 ```
-
-**3. Enable and Start Kafka**
+> Do not 'add-auth` - it is not required for this demo
 
 &nbsp;
+
+**3. Enable and Start Kafka**
 
 To enable Kafka:
 
@@ -230,7 +237,7 @@ Just as you can customize apis, you can complement rule-based logic using Python
 
 3. `send_order_to_shipping` uses the `OrderShipping` class, which maps our SQLAlchemy order row to a dict (`row_to_dict`).
 
-![send order to shipping](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/order-to-shipping.jpg?raw=true)
+![overview](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/integration/integration.png?raw=true)
 
 !!! pied-piper ":bulb: Extensible Rules, Kafka Message Produced"
 
