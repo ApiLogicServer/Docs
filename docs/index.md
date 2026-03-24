@@ -68,9 +68,13 @@ AI logic is pattern-driven: it matches what it has seen, not what the dependenci
 
 **Rules** solve this structurally, enforced by a Rules Engine that governs every transaction at commit time.
 
-<details markdown>
+&nbsp;
 
-<summary>How the Rules Engine addresses both core problems</summary>
+### Busines Rules Architecture
+
+The Rules Engine resolves these issues as described below.
+
+&nbsp;
 
 **1. Path-independent rules — automatic reuse**
 
@@ -79,6 +83,8 @@ AI generates procedural code that embeds logic in execution paths.  Change a req
 Rules are different: they express *what* must be true on the data, not *how* you got there.  A rule declared once is reused automatically across every source, present and future.
 
 The Rules Engine hooks into the ORM commit.  Every transaction — API call, agent action, workflow, UI update, bulk import — passes through the same commit gate.  There is no path that bypasses governance.  Add a new endpoint or agent tomorrow, and it inherits the rules automatically.
+
+&nbsp;
 
 **2. Deterministic ordering — no subtle bugs**
 
@@ -97,7 +103,7 @@ The Logic Architecture is shown below:
 * The DSL statements are loaded by the Rules Engine on startup.  The Rules Engine provides deterministic dependency analysis to ensure proper ordering.  This resolves the dependency issue, above
 * Logic execution occurs on ORM commit, using SQLAlchemy `before_flush` events.  This ensures the logic applies to all access paths - no bypass.
 
-</details>
+&nbsp;
 
 **Rules** replace procedural logic with declarations that express intent directly using the **Rules DSL**, expressed in Python:
 
