@@ -50,6 +50,8 @@ Inside the created project, say to your AI assistant:
 
 This is a hands-on tour covering API creation, declarative rules, security, and Python customization.  The AI acts as a knowledgeable colleague — running commands, explaining what happens, answering questions.  Scripts ensure no coding errors.  This is the recommended starting point.
 
+![tutot](images/manager/tutor.png)
+
 &nbsp;
 
 ### 3. Samples
