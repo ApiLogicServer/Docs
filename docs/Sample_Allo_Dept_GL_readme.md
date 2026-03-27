@@ -101,6 +101,37 @@ You may need to remind Copilot to update the Admin App.  Often, you can rename `
 
 &nbsp;
 
+# How it Works
+
+This is a sophisticated system, requiring a multi-year efforts using traditional technology.  With AI and GenAI-Logic, the overall process is described below.
+
+&nbsp;
+
+## Authoring
+
+The project creation process starts with the prompt above; Copilot processes it as follows:
+
+1. Invokes AI, which, under the guidance of Context Engineering (see `docs/training`), computes the data model and builds a sqlite database (see `docs/allo_dept_gl_db.png`)
+
+2. Invokes `genai-logic create --project-name=allo_dept_gl --db-url=<created database>`
+
+    * This creates a scaffold (mainly empty) project, wired up to start the runtime engines
+    * Reads the database schema to create the `database/models.py` (this drives the SQLAlchemy ORM)
+    * At this point, the project is runnable, including the API (with swagger), and the Admin App - but no logic
+
+3. Copilot then, again under the guidance of Context Engineering:
+
+    * Translates NL into Rules DSL (see `logic/logic_discovery', *not FrankenCode*)
+    * test data (with data initialized per rules)
+    * and runs tests
+
+&nbsp;
+
+## Execution
+
+AI is used for the Allocation Plan fuzzy lookup (if requested).  The rest of the execution uses deterministic runtime engines (ORM, API, Logic), installed with GenAI-Logic.
+
+
 # Results
 
 ![summary](images/allocation/allo-dept-gl/allo_dept_gl_screen.png)
