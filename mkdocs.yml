@@ -247,6 +247,7 @@ nav:
       - "Tour": Sample-Basic-Tour.md
       - "Think Declarative": Tech-declarative.md
       - "Home": Home.md
+      - "Top CIO Concerns": Tech-CIO-Concerns.md
       - "Governed Agentic Business Logic": Tech-Business-Logic-Agent.md
       - "INFO": ApiLogicServer-create.md
       - "Summary": Tech-Summary.md

@@ -45,7 +45,7 @@ Then:
 
 !!! pied-piper "Paste this logic into Copilot chat (note: takes several minutes)"
 
-    On Placing Orders, Check Credit:
+    On Placing Orders, Requirement Check Credit:
 
     1. The Customer's balance is less than the credit limit
     2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
@@ -54,9 +54,9 @@ Then:
     5. The Product count suppliers is the sum of the Product Suppliers
     6. Use AI to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions
 
-    Use case: App Integration
+    Requirement: App Integration
 
-    1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None
+    1. Publish the Order to Kafka topic 'order_shipping' if the date_shipped is not None
 
 Developers review this DSL before execution, providing a natural human-in-the-loop checkpoint.
 
