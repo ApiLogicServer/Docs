@@ -37,6 +37,8 @@ Rules live on data — not in execution paths. They fire at the one place every 
 
 ![either-or](https://raw.githubusercontent.com/ApiLogicServer/Docs/main/docs/images/articles/CIO-Concerns/simple-either-or.png)
 
+This was manageable when paths were known and finite. But AI agents create new paths dynamically — paths you cannot enumerate, test, or predict. At that point, path-based governance stops working entirely.
+
 Every source inherits the same governance automatically — APIs, agents, workflows, Vibe-generated apps. You don't govern paths. You govern commits. The rules don't erode as the system grows.
 
 ---
@@ -57,15 +59,17 @@ Rebuilt with declarative rules, it took a weekend.
 
 With GenAI-Logic directing AI to generate rules instead of code, the same system takes five minutes from a business prompt.
 
+Not because the problem changed — but because the representation did.
+
 ---
 
 ## What the Architecture Guarantees
 
 A fundamental claim that procedural code cannot make:
 
-> **All relevant rules run, in the correct order, on every transaction.** 
+> **All relevant rules run, in the correct order, on every transaction.**
 
-The rules engine computes dependency order from the rules themselves at startup — deterministically. The commit listener means there is no path that bypasses them. Not "we tested the paths we thought of." Guaranteed by construction.
+This is the same kind of guarantee a database makes about transactions — applied to business logic. The rules engine computes dependency order from the rules themselves at startup — deterministically. The commit listener means there is no path that bypasses them. Not "we tested the paths we thought of." Guaranteed by construction.
 
 You don't assert compliance. You produce the proof.
 
@@ -77,7 +81,7 @@ Procedural code is a liability. It's opaque to everyone except the developer who
 
 Declarative rules are different in kind. The intent is retained — readable by business users, by developers, by AI. That's what makes the downstream value possible.
 
-**Enforced by construction.** Rules fire at the commit point on every transaction, every path, without exception. Rules *are* the Governance.  Governance isn't a discipline you maintain. It's a property the architecture provides.
+**Enforced by construction.** Rules fire at the commit point on every transaction, every path, without exception. Rules *are* the governance. Governance isn't a discipline you maintain. It's a property the architecture provides.
 
 **Documented by construction.** Because rules *are* the requirements, the system generates its own tests, runs them, and produces a logic report linking scenario → rules used → execution results. Nobody writes the tests. Nobody writes the report. The audit trail is complete — readable by everyone in the organization, provable to anyone outside it.
 
@@ -87,10 +91,9 @@ This is the deeper return on the architectural decision. You don't just govern y
 
 ---
 
-## Eval-Ready
+## Try It
 
-This architecture is eval-ready today — open source, no setup friction.
-We've addressed several of the most topical concerns directly — governed MCP servers, Vibe development backends, AI Rules with deterministic enforcement. Each is a working demo you can explore in a day.
+This isn't a concept. It's open source you can evaluate directly — governed MCP servers, Vibe development backends, AI Rules with deterministic enforcement. Each is a working demo you can explore in a day.
 
 [genai-logic.com]
 
