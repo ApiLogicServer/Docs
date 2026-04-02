@@ -53,7 +53,7 @@ Relieved of procedural code generation, AI does what it's genuinely brilliant at
 
 A charge allocation system — real business logic, multi-table derivations, compliance requirements — previously took four developers two years to build.
 
-Rebuilt with declarative rules, it took a weekend. 
+Rebuilt with declarative rules, it took a weekend.
 
 With GenAI-Logic directing AI to generate rules instead of code, the same system takes five minutes from a business prompt.
 
@@ -61,19 +61,31 @@ With GenAI-Logic directing AI to generate rules instead of code, the same system
 
 ## What the Architecture Guarantees
 
-Two things that procedural code cannot claim:
+A fundamental claim that procedural code cannot make:
 
-**All relevant rules run, in the correct order, on every transaction.** The rules engine computes dependency order from the rules themselves at startup — deterministically. The commit listener means there is no path that bypasses them. Not "we tested the paths we thought of." Guaranteed by construction.
+> **All relevant rules run, in the correct order, on every transaction.** 
 
-**The system proves it.** Because rules are the requirements, the system generates its own tests from the rules, runs them, and produces a logic report linking scenario → rules used → execution results. Nobody writes the tests. Nobody writes the report. They are automatic consequences of having declared the rules.
-
-![logic-report](https://raw.githubusercontent.com/ApiLogicServer/Docs/main/docs/images/articles/CIO-Concerns/logic-report.png)
+The rules engine computes dependency order from the rules themselves at startup — deterministically. The commit listener means there is no path that bypasses them. Not "we tested the paths we thought of." Guaranteed by construction.
 
 You don't assert compliance. You produce the proof.
 
 ---
 
-## Eval-ready
+## Rules as a Strategic Asset
+
+Procedural code is a liability. It's opaque to everyone except the developer who wrote it. When they leave, the intent leaves with them.
+
+Declarative rules are different in kind. The intent is retained — readable by business users, by developers, by AI. That readability is what makes the downstream value possible: AI can generate tests from the rules, produce documentation, and drive further automation. None of that requires additional work. It's a consequence of having kept the intent intact.
+
+Because rules are the requirements, the system generates its own tests from the rules, runs them, and produces a logic report linking scenario → rules used → execution results. Nobody writes the tests. Nobody writes the report. They are automatic consequences of having declared the rules.
+
+![logic-report](https://raw.githubusercontent.com/ApiLogicServer/Docs/main/docs/images/articles/CIO-Concerns/logic-report.png)
+
+This is the deeper return on the architectural decision. You're not just governing your system. You're building something your entire organization can read, reason about, and build on — today and as it grows.
+
+---
+
+## Eval-Ready
 
 This architecture is eval-ready today — open source, no setup friction.
 We've addressed several of the most topical concerns directly — governed MCP servers, Vibe development backends, AI Rules with deterministic enforcement. Each is a working demo you can explore in a day.
