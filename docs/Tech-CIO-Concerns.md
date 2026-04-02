@@ -45,7 +45,7 @@ Every source inherits the same governance automatically — APIs, agents, workfl
 
 AI isn't the problem. We've given it the wrong job.
 
-Relieved of procedural code generation, AI does what it's genuinely brilliant at: understanding intent and expressing it as declarations. Natural language is already declarative in spirit. "When an order is placed, check the credit limit" — that's not a path. That's a rule. AI can express it as one.
+Relieved of procedural code generation, AI does what it's genuinely brilliant at: understanding intent and expressing it as declarations. Natural language is already declarative in spirit. "When an order is placed, check the credit limit" — that's not a path. That's a rule, and should be preserved.
 
 ---
 
