@@ -75,13 +75,15 @@ You don't assert compliance. You produce the proof.
 
 Procedural code is a liability. It's opaque to everyone except the developer who wrote it. When they leave, the intent leaves with them.
 
-Declarative rules are different in kind. The intent is retained — readable by business users, by developers, by AI. That readability is what makes the downstream value possible: AI can generate tests from the rules, produce documentation, and drive further automation. None of that requires additional work. It's a consequence of having kept the intent intact.
+Declarative rules are different in kind. The intent is retained — readable by business users, by developers, by AI. That's what makes the downstream value possible.
 
-Because rules are the requirements, the system generates its own tests from the rules, runs them, and produces a logic report linking scenario → rules used → execution results. Nobody writes the tests. Nobody writes the report. They are automatic consequences of having declared the rules.
+**Enforced by construction.** Rules fire at the commit point on every transaction, every path, without exception. Rules *are* the Governance.  Governance isn't a discipline you maintain. It's a property the architecture provides.
+
+**Documented by construction.** Because rules *are* the requirements, the system generates its own tests, runs them, and produces a logic report linking scenario → rules used → execution results. Nobody writes the tests. Nobody writes the report. The audit trail is complete — readable by everyone in the organization, provable to anyone outside it.
 
 ![logic-report](https://raw.githubusercontent.com/ApiLogicServer/Docs/main/docs/images/articles/CIO-Concerns/logic-report.png)
 
-This is the deeper return on the architectural decision. You're not just governing your system. You're building something your entire organization can read, reason about, and build on — today and as it grows.
+This is the deeper return on the architectural decision. You don't just govern your system. You can prove it.
 
 ---
 
