@@ -7,7 +7,7 @@ future-proofing — are symptoms of one problem:
 > business logic that's scattered, untested, impossible to audit.
 
 The root cause is a wrong turn we keep taking — translating declarative 
-intent into procedural code. And it's one we've seen before.
+intent into procedural code.
 
 ---
 
@@ -51,7 +51,11 @@ Relieved of procedural code generation, AI does what it's genuinely brilliant at
 
 ## The Proof
 
-A charge allocation system — real business logic, multi-table derivations, compliance requirements — previously took four developers two years to build. It never shipped. Rebuilt with declarative rules, it took a weekend. With GenAI-Logic directing AI to generate rules instead of code, the same system takes five minutes from a business prompt.
+A charge allocation system — real business logic, multi-table derivations, compliance requirements — previously took four developers two years to build.
+
+Rebuilt with declarative rules, it took a weekend. 
+
+With GenAI-Logic directing AI to generate rules instead of code, the same system takes five minutes from a business prompt.
 
 ---
 
