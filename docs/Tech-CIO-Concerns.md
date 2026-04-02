@@ -19,7 +19,7 @@ Business users have long wondered why a simple requirement takes so long. CIOs h
 
 > Translating declarative intent into procedural code is a 40X expansion.
 
-The intent — one clear statement — becomes hundreds of lines scattered across endpoints. Ordering dependencies nobody fully understands. Paths nobody can prove are complete. The logic is in there somewhere. But it's no longer the intent. It's an interpretation, fragmented across a codebase.
+The intent — one clear statement — becomes hundreds of lines scattered across endpoints. Ordering dependencies nobody fully understands. Paths nobody can prove are complete. The logic is in there somewhere. But it's no longer the intent. It's obscured, under the weight of a large, fragmented codebase.
 
 That's where governance breaks down. Miss one path and the data is silently wrong. Add a new agent, a new endpoint — neither inherits the rules. There are no rules to inherit. There is only code.
 
