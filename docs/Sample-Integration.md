@@ -1,7 +1,8 @@
 ---
 title: Declarative Application Integration
+file: docs/Sample-integration.md
 notes: gold docsite, 2100 words (goal: 1500)
-version: 10.03.01 from docsite
+version: 10.03.02 from docsite
 ---
 
 !!! pied-piper ":bulb: TL;DR - Kafka Integration: Async Messaging"
@@ -94,6 +95,26 @@ You can then open the project in your IDE, and run it.
 ## 2. Customize: in your IDE
 
 While API/UI automation is a great start, we now require Custom APIs, Logic and Security.
+
+&nbsp;
+
+### a. Using Copilot (experimental)
+
+```text title="Add Logic with Copilot"
+on Placing Orders, Check Credit    
+    1. The Customer's balance is less than the credit limit
+    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+    3. The Order's amount_total is the sum of the Item amount
+    4. The Item amount is the quantity * unit_price
+    5. The Item unit_price is copied from the Product unit_price
+
+Use case: App Integration
+    1. Publish the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+```
+
+&nbsp;
+
+### b. Using `add-cust`
 
 You normally apply such customizations using your IDE, leveraging code completion, etc.  To accelerate this sample, you can apply the customizations with `ApiLogicServer add-cust`.   We'll review the customizations below.
 
