@@ -233,6 +233,34 @@ As illustrated in the Basic Demo tutorial, the `add-cust` procedure has added a 
 
 &nbsp;
 
+### EAI Message
+
+Alternatively, we might receive a message from sales using Kafka.  We can subscribe as follows:
+
+```text title="Subscribe to sales message - Kafka Enterprise Application Integration"
+Subscribe to Kafka topic `order_b2b` (JSON format).
+
+The payload is a single order with items:
+{
+  "AccountId": "ALFKI",
+  "Given": "Steven",
+  "Surname": "Buchanan",
+  "Items": [
+    { "ProductName": "Chai",  "QuantityOrdered": 1 },
+    { "ProductName": "Chang", "QuantityOrdered": 2 }
+  ]
+}
+
+Target tables: Order, OrderDetail (from models.py).
+
+Field mappings:
+- `AccountId` → look up Customer by Customer.Id, set Order.CustomerId
+- `Given` + `Surname` → compound lookup on Employee.FirstName + Employee.LastName, set Order.EmployeeId
+- `Items` array → OrderDetail rows: `ProductName` → look up Product by Product.ProductName, set OrderDetail.ProductId; `QuantityOrdered` → OrderDetail.Quantity
+```
+
+&nbsp;
+
 ### Produce `OrderShipping` Message
 
 Successful orders need to be sent to Shipping, again in a predesignated format.
