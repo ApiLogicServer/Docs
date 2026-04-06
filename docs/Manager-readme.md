@@ -2,7 +2,7 @@
 title: Welcome
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs/Manager-readme
-version info: 16.00.01 (02/16/2026)
+version info: 16.00.02 (04/06/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
 demo_customs: Customs-readme
