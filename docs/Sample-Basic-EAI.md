@@ -232,7 +232,7 @@ The Kafka logic was created earlier, so we are ready to test.
 You can use Swagger (note the test data is provided), or use CLI:
 
 ``` bash title="Test the B2B Endpoint"
-curl -X POST http://localhost:5656/api/OrderB2BEndPoint/OrderB2B -H "Content-Type: application/json" -d '{"meta":{"args":{"data":{"Account":"Alice","Notes":"RUSH order for Q4 promotion","date_shipped":"2025-08-04","Items":[{"Name":"Widget","QuantityOrdered":5},{"Name":"Gadget","QuantityOrdered":3}]}}}}'
+curl -X POST http://localhost:5656/OrderB2B -H "Content-Type: application/json" -d '{"Account":"Alice","Notes":"RUSH order for Q4 promotion","date_shipped":"2025-08-04","Items":[{"Name":"Widget","QuantityOrdered":5},{"Name":"Gadget","QuantityOrdered":3}]}'
 ```
 
 Observe the logic execution in the VSCode debug window.
@@ -248,26 +248,30 @@ Subscribe to Kafka topic `order_b2b` (JSON format).
 
 The payload is a single order with items:
 {
-  "AccountId": "ALFKI",
-  "Given": "Steven",
-  "Surname": "Buchanan",
+  "Account": "Alice",
+  "Notes": "Kafka order from sales",
   "Items": [
-    { "ProductName": "Chai",  "QuantityOrdered": 1 },
-    { "ProductName": "Chang", "QuantityOrdered": 2 }
+    { "Name": "Widget",  "QuantityOrdered": 1 },
+    { "Name": "Gadget", "QuantityOrdered": 2 }
   ]
 }
 
-Target tables: Order, OrderDetail (from models.py).
+Target tables: Order, Item (from models.py).
 
 Field mappings:
-- `AccountId` → look up Customer by Customer.Id, set Order.CustomerId
-- `Given` + `Surname` → compound lookup on Employee.FirstName + Employee.LastName, set Order.EmployeeId
-- `Items` array → OrderDetail rows: `ProductName` → look up Product by Product.ProductName, set OrderDetail.ProductId; `QuantityOrdered` → OrderDetail.Quantity
+- `Account` → look up Customer by Customer.name, set Order.customer_id
+- `Notes` → Order.notes
+- `Items` array → Item rows: `Name` → look up Product by Product.name, set Item.product_id; `QuantityOrdered` → Item.quantity
+
 ```
 
 <br>
 
 ## 5. Test Without Kafka
+
+Observe that the API and message listener use the same underlying logic.
+
+
 
 <br>
 
