@@ -10,6 +10,7 @@ demo_kafka: Sample-Integration
 demo_allo: Sample_Allo_Dept_GL_readme
 demo_ai_rules: Sample-ai-rules
 demo_mcp_send: Sample-Basic-Demo-MCP-Send-Email
+demo_eai: Sample-Basic-EAI
 demo_vibe: Sample-Basic-Demo-Vibe
 demo_copilot_mcp_discovery: Sample-ai-mcp
 basic_demo: Sample-Basic-Demo
@@ -75,6 +76,8 @@ Explore the key use cases from our home page:
 | **[Use Case 3: Vibe Dev Backend](https://www.genai-logic.com/#h.75s0zu9xo7sa)** <br> demo_vibe | genai-logic create --project_name=demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - UI elements, eg, Cards, Maps, Trees... |
 | **[Use Case 5: Business Users](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/webgenai/README) | - Create systems from browser, with logic, sample data and derived attributes |
 | **[NL Business Systems](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> customs_demo | genai-logic create --project_name=customs_demo --db_url=sqlite:///samples/dbs/starter.sqlite | - Complete Business Systems<br> - See [Customs Surtax](Customs-readme-full.md){:target="_blank" rel="noopener"} |
+| **EAI: Enterprise App Integration** <br>demo_eai | genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Illustratess APIs and Messages<br>- Create custom API with NL<br>- Create Kafka Listener with NL |
+
 
 &nbsp;
 
