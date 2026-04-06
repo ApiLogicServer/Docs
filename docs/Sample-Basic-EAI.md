@@ -232,7 +232,7 @@ The Kafka logic was created earlier, so we are ready to test.
 You can use Swagger (note the test data is provided), or use CLI:
 
 ``` bash title="Test the B2B Endpoint"
-curl -X POST http://localhost:5656/OrderB2B -H "Content-Type: application/json" -d '{"Account":"Alice","Notes":"RUSH order for Q4 promotion","date_shipped":"2025-08-04","Items":[{"Name":"Widget","QuantityOrdered":5},{"Name":"Gadget","QuantityOrdered":3}]}'
+curl -X POST http://localhost:5656/OrderB2B -H "Content-Type: application/json" -d '{"Account":"Alice","Notes":"RUSH order for Q4 promotion","Items":[{"Name":"Widget","QuantityOrdered":5},{"Name":"Gadget","QuantityOrdered":3}]}'
 ```
 
 Observe the logic execution in the VSCode debug window.
@@ -262,17 +262,70 @@ Field mappings:
 - `Account` → look up Customer by Customer.name, set Order.customer_id
 - `Notes` → Order.notes
 - `Items` array → Item rows: `Name` → look up Product by Product.name, set Item.product_id; `QuantityOrdered` → Item.quantity
+```
+
+&nbsp;
+
+<details markdown>
+
+<summary>What Got Built?  The 2-Message Pattern</summary>
+
+# EAI Consume: `order_b2b` Kafka Topic
+
+Generated from `docs/training/eai_consume.md`.
+
+**Two-Message Pattern**
+
+A single-transaction consumer loses data if parsing fails mid-flush — the raw payload is gone. Instead:
 
 ```
+topic: order_b2b
+  → Consumer 1:  save raw JSON blob → OrderB2bMessage  (Tx 1 — always commits)
+  → row_event:   blob insert → publish to order_b2b_processed
+  → Consumer 2:  parse → Order + Items, resolve FKs, LogicBank rules  (Tx 2)
+```
+
+Parse failures leave `is_processed = False` on the blob row — queryable and retryable.
+
+**Key Files**
+
+See the module docstring in [integration/kafka/kafka_discovery/order_b2b.py](../integration/kafka/kafka_discovery/order_b2b.py) for design details, field mapping, and test instructions. Supporting files:
+
+| File | Role |
+|------|------|
+| `logic/logic_discovery/place_order/order_b2b_consume.py` | `row_event` bridge — publishes blob to `order_b2b_processed` (no inline parse) |
+| `integration/OrderB2bMapper.py` | JSON → Order + Items (3-tier mapping contract) |
+| `api/api_discovery/order_b2b_kafka_consume_debug.py` | `/consume_debug/order_b2b` — test without Kafka |
+| `docs/sample_data/sample_order_b2b.json` | Sample payload |
+| `test/order_b2b_reset.sh` | Reset Kafka topics + log between runs |
+
+**Quick Test (no Kafka needed)**
+
+```bash
+curl 'http://localhost:5656/consume_debug/order_b2b?file=docs/sample_data/sample_order_b2b.json'
+```
+
+</details>
 
 <br>
 
-## 5. Test Without Kafka
+## 5. Test
 
 Observe that the API and message listener use the same underlying logic.
 
+`integration/kafka/kafka_discovery/order_b2b.py` illustrates unit testing:
 
+```bash title="Test stand-alone, and with Kafka"
+Debug / test (no Kafka required):
+  APILOGICPROJECT_CONSUME_DEBUG=true is set in config/default.env
+  1. Start server: python api_logic_server_run.py
+  2. curl 'http://localhost:5656/consume_debug/order_b2b?file=docs/sample_data/sample_order_b2b.json'
+  3. Verify DB: sqlite3 database/db.sqlite "SELECT * FROM order_b2b_message; SELECT * FROM 'order'; SELECT * FROM item;"
+  Sample data file: docs/sample_data/sample_order_b2b.json
 
-<br>
-
-## 6. Test With Kafka
+Live Kafka:
+  1. docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d
+  2. Enable KAFKA_CONSUMER + KAFKA_PRODUCER in config/default.env
+  3. bash test/order_b2b_reset.sh       # recreates topics + clears log
+  4. Start server; publish sample JSON to order_b2b topic
+```
