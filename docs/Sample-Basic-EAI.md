@@ -144,14 +144,14 @@ Explore the app - click Customer Alice, and see their Orders, and Items.
 
 Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  GenAI-Logic provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
-Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
+Rules are declared in Copilot using Natural Language, or directly in Python with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
 
 **1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
 
 **2. Add Business Logic**
 
 ```bash title="Check Credit Logic (instead of 220 lines of code)"
-on Placing Orders, Check Credit    
+On Placing Orders, Check Credit    
     1. The Customer's balance is less than the credit limit
     2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
     3. The Order's amount_total is the sum of the Item amount
