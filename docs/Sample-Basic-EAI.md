@@ -22,6 +22,8 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 
     This sample presumes you are familiar with basic GenAI-Logic services, as illustrated in the Basic Demo tutorial.
 
+    These prompts are **Executable Requirements** — AI can build a *running system* you can use to confirm the requirements, and kick-start development.
+
 
 
 ## Overview
@@ -37,7 +39,16 @@ Please load `.github/.copilot-instructions.md`
 
 &nbsp;
 
-**System Requirements**
+**Executable Requirements - a new option for your organization**
+
+The prompts on this page are the requirements for this system. Not a description of what got built — the actual requirements, in the form AI can execute directly.
+This is a real project: your IDE, your Python, your source control. The prompts create it instantly — but you own it fully and iterate from there. Change a rule; the engine determines execution order automatically. Add an endpoint; the rules are already there waiting for it.
+
+This suggests a different way to think about requirements gathering. Instead of Word documents that describe a system and then drift from it, requirements can be structured prompts — precise enough for AI to execute, readable enough for business and IT to agree on. The spec and the running system are the same artifact.
+
+&nbsp;
+
+**Enterprise Application Integration - System Requirements**
 
 This app illustrates using IntegrationServices for B2B push-style integrations with APIs, and internal integration with messages.  
 
@@ -67,13 +78,65 @@ The **Shipping API Logic Server** listens on kafka, and processes the message.<b
 
 <br>
 
+
 ```bash title="In the Manager: Create a project from an existing database (probably already done)"
-genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
+Create a database project named basic_demo_vibe from samples/dbs/basic_demo.sqlite
 ```
 
 <br>
 
+<details markdown>
+
+<summary> Your project includes a data model diagram</summary>
+
+<br>
+
+![basic_demo_data_model](images/basic_demo/basic_demo_data_model.jpeg)
+
+</details markdown>
+
+&nbsp;
+
+### 1a. Project Opens: Run
+
+The project should automatically open a new window in VSCode. <br>
+
+``` bash title='🤖 Again, bootstrap Copilot by pasting the following into the chat'
+Please load `.github/.copilot-instructions.md`.
+```
+
+Run it as follows:
+
+1. **Start the Server:** F5 
+2. **Start the Admin App:** browse to [http://localhost:5656/](http://localhost:5656/).  The Admin App screen shown below should appear in your Browser.
+3. **Verify as shown below**
+
+<details markdown>
+
+<summary>API: filtering, sorting, pagination, optimistic locking,related data access... see Swagger </summary>
+
+Your API is MCP enabled, and ready for custom app dev.  For more information, [click here](API-Self-Serve.md){:target="_blank" rel="noopener"}.
+
+![swagger](images/basic_demo/api-swagger.jpeg)
 </details>
+
+<br>
+
+<details markdown>
+
+<summary>Admin App: multi-page, multi-table, automatic joins, lookups, cascade add - collaboration-ready</summary>
+
+For more information, [click here](Admin-Tour.md){:target="_blank" rel="noopener"}.
+
+The Admin App is ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
+
+Explore the app - click Customer Alice, and see their Orders, and Items.  
+
+![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
+</details>
+
+</details>
+
 
 <br><br>
 
