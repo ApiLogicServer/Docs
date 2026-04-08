@@ -1,7 +1,7 @@
 ---
 title: basic_demo_EAI
 do_process_code_block_titles: True
-version: 1.5 from docsite, for readme 4/8/2026 - message_formats auto-included in prototype
+version: 1.6 from docsite, for readme 4/8/2026 - message_formats auto-included in prototype
 source: docs/Sample-Basic-EAI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
