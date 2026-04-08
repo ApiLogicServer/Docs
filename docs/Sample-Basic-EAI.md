@@ -1,7 +1,7 @@
 ---
 title: basic_demo_EAI
 do_process_code_block_titles: True
-version: 1.3 from docsite, for readme 4/7/2026
+version: 1.5 from docsite, for readme 4/8/2026 - message_formats auto-included in prototype
 source: docs/Sample-Basic-EAI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
@@ -29,7 +29,7 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 
 <br>
 
-```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
+```bash title="🤖 Bootstrap Copilot by pasting the following into the chat"
 Please load `.github/.copilot-instructions.md`
 ```
 
@@ -103,34 +103,14 @@ Use case: App Integration
 
 <br>
 
-## 3. Message Formats — Define Before You Prompt
+## 3. Message Formats — Already Included
 
-AI generates integrations **by example** — provide a sample message shape and it auto-maps obvious field names silently, lists exceptions you specify, and blocks server start on anything unresolvable.  Save your formats now; they double as test fixtures.
+AI generates integrations **by example** — provide a sample message shape and it auto-maps obvious field names silently, lists exceptions you specify, and blocks server start on anything unresolvable.  They double as test fixtures.
 
-```bash title="Create message format specs"
-cat > integration/kafka/message_formats/order_b2b.json << 'EOF'
-{
-  "Account": "Alice",
-  "Notes": "Kafka order from sales",
-  "Items": [
-    { "Name": "Widget",  "QuantityOrdered": 1 },
-    { "Name": "Gadget",  "QuantityOrdered": 2 }
-  ]
-}
-EOF
+The project already includes sample message formats in `integration/kafka/message_formats/`:
 
-cat > integration/kafka/message_formats/order_shipping.json << 'EOF'
-{
-  "order_id": 1,
-  "order_date": "2026-04-06",
-  "customer_name": "Alfreds Futterkiste",
-  "total": 100.00,
-  "items": [
-    { "quantity": 2, "product_name": "Chai", "unit_price": 25.00 }
-  ]
-}
-EOF
-```
+- `order_b2b.json` — inbound B2B order format
+- `order_shipping.json` — outbound shipping notification format
 
 > See [Integration EAI](Integration-EAI.md#ai-based-creation){:target="_blank" rel="noopener"} for how AI uses these.
 
