@@ -90,62 +90,11 @@ Please load `.github/.copilot-instructions.md`
 
 <br>
 
-
 ```bash title="In the Manager: Create a project from an existing database (probably already done)"
-Create a database project named basic_demo_vibe from samples/dbs/basic_demo.sqlite
+genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
 <br>
-
-<details markdown>
-
-<summary> Your project includes a data model diagram</summary>
-
-<br>
-
-![basic_demo_data_model](images/basic_demo/basic_demo_data_model.jpeg)
-
-</details markdown>
-
-&nbsp;
-
-### 1a. Project Opens: Run
-
-The project should automatically open a new window in VSCode. <br>
-
-``` bash title='🤖 Again, bootstrap Copilot by pasting the following into the chat'
-Please load `.github/.copilot-instructions.md`.
-```
-
-Run it as follows:
-
-1. **Start the Server:** F5 
-2. **Start the Admin App:** browse to [http://localhost:5656/](http://localhost:5656/).  The Admin App screen shown below should appear in your Browser.
-3. **Verify as shown below**
-
-<details markdown>
-
-<summary>API: filtering, sorting, pagination, optimistic locking,related data access... see Swagger </summary>
-
-Your API is MCP enabled, and ready for custom app dev.  For more information, [click here](API-Self-Serve.md){:target="_blank" rel="noopener"}.
-
-![swagger](images/basic_demo/api-swagger.jpeg)
-</details>
-
-<br>
-
-<details markdown>
-
-<summary>Admin App: multi-page, multi-table, automatic joins, lookups, cascade add - collaboration-ready</summary>
-
-For more information, [click here](Admin-Tour.md){:target="_blank" rel="noopener"}.
-
-The Admin App is ready for **[business user agile collaboration](https://apilogicserver.github.io/Docs/Tech-AI/),** and back office data maintenance.  This complements custom UIs created with the API.
-
-Explore the app - click Customer Alice, and see their Orders, and Items.  
-
-![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
-</details>
 
 </details>
 
@@ -185,32 +134,6 @@ The update is properly rejected because it exceeds the credit limit.  Observe th
 
 <br>
 
-<details markdown>
-
-<summary>Logic is critical - half the effort; Declarative is 40X More Concise, Maintainable </summary>
-
-<br>Logic is critical to your system - it represents nearly *half the effort.*  Instead of procedural code, [***declare logic***](Logic.md#declaring-rules){:target="_blank" rel="noopener"} with WebGenAI, or in your IDE using code completion or Natural Language as shown above.
-
-
-**a. 40X More Concise**
-
-The 5 spreadsheet-like rules represent the same logic as 200 lines of code, [shown here](Logic-Why.md){:target="_blank" rel="noopener"}.  That's a remarkable 40X decrease in the backend half of the system.
-
-> 💡 No FrankenCode<br>Note the rules look like syntactically correct requirements.  They are not turned into piles of unmanageable "frankencode" - see [models not frankencode](https://www.genai-logic.com/faqs#h.3fe4qv21qtbs){:target="_blank" rel="noopener"}.
-
-**b. Maintainable: Debugging, Logging**
-
-The screenshot below shows our logic declarations, and the logging for inserting an `Item`.  Each line represents a rule firing, and shows the complete state of the row.
-
-Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  This is because - like a spreadsheet - **rules automatically chain, *including across tables.***
-
-![logic-chaining](images/basic_demo/logic-debugging.jpeg)
-
-
-</details>
-
-<br>
-
 ## 3. Custom API - B2B Orders
 
 To fit our system into the Value Chain,
@@ -232,7 +155,16 @@ The Kafka logic was created earlier, so we are ready to test.
 You can use Swagger (note the test data is provided), or use CLI:
 
 ``` bash title="Test the B2B Endpoint"
-curl -X POST http://localhost:5656/OrderB2B -H "Content-Type: application/json" -d '{"Account":"Alice","Notes":"RUSH order for Q4 promotion","Items":[{"Name":"Widget","QuantityOrdered":5},{"Name":"Gadget","QuantityOrdered":3}]}'
+curl -X POST http://localhost:5656/api/OrderB2B/OrderB2B/ \
+  -H "Content-Type: application/json" \
+  -d '{"meta": {"args": {"data": {
+    "Account": "Alice",
+    "Notes": "Rush order",
+    "Items": [
+      {"Name": "Widget", "QuantityOrdered": 5},
+      {"Name": "Gadget", "QuantityOrdered": 4}
+    ]
+  }}}}'
 ```
 
 Observe the logic execution in the VSCode debug window.
