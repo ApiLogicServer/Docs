@@ -210,7 +210,8 @@ Use VS Code's **Project Explorer** to see the project structure under *3. ApiLog
 | ```database``` | SQLAlchemy Data Model Classes | ```database/customize_models.py``` | Add derived attributes, and relationships missing in the schema                       |
 | ```logic``` | Transactional Logic           | ```logic/declare_logic.py```       | Declare multi-table derivations, constraints, and events such as send mail / messages |
 | ```security``` | Admin App                     | ```security/declare_security.py```          | Control role-based access to data rows                                                 |
-| ```integration``` | Consume Kafka Messages             | ```integration/kafka/kafka_consumer.py```          |  [Application Integration](https://apilogicserver.github.io/Docs/Sample-Integration/)                                          |
+| ```integration``` | EAI / Kafka Pipelines | ```integration/kafka/kafka_subscribe_discovery/readme.md``` | Start here for existing pipelines; see handler `.py` files for design, debug, and test instructions |
+| ```docs/requirements``` | XRD Specs & Audit Trail | ```docs/requirements/<name>/requirements.md``` + ```ad-libs.md``` | What was spec'd and what AI decided — read before touching integration code |
 | ```ui``` | Admin App                     | ```ui/admin/admin.yaml```          | Control field display, ordering, etc.                                                 |
 
 <figure><img src="https://raw.githubusercontent.com/valhuber/ApiLogicServer/main/images/generated-project.png"></figure>
