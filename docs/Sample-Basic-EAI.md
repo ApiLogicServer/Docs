@@ -282,7 +282,7 @@ Debug / test (no Kafka required):
 Live Kafka:
   1. docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d
   2. Enable KAFKA_CONSUMER + KAFKA_PRODUCER in config/default.env
-  3. bash test/order_b2b_reset.sh       # recreates topics + clears log
+  3. bash integration/kafka/order_b2b_reset.sh       # recreates topics + clears log
   4. Start server; publish sample JSON to order_b2b topic
 ```
 
