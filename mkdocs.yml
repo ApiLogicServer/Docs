@@ -26,6 +26,7 @@ nav:
     - Express Eval: Install-Eval.md
     - "Orientation": Tech-Training.md
     - Upgrade Version: Install-Upgrade.md
+  - "Executable Reqmts": Exec-Reqmts.md
   - Demos, Tutorial, Samples:
     - "Creating Demos": Manager-Demos.md
     - "Basic Demo": Sample-Basic-Demo.md

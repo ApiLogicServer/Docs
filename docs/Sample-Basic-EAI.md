@@ -24,6 +24,8 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 
     These prompts are **Executable Requirements** — AI can build a *running system* you can use to confirm the requirements, and kick-start development.
 
+    > This is the same system used in [Executable Requirements](Exec-Reqmts.md){:target="_blank" rel="noopener"}, which focuses on how these prompts serve as the living spec — readable by business and IT, executable by AI.
+
 &nbsp;
 
 ## Overview

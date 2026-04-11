@@ -1,0 +1,240 @@
+---
+title: Executable Requirements
+source: docs/Exec-Reqmts.md
+version: 1.8, 4/11/2026
+---
+
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
+# Executable Requirements
+
+!!! pied-piper ":bulb: TL;DR - Requirements That Execute"
+
+    **Executable Requirements** means the spec document *is* the build instruction — not a handoff artifact to be interpreted, but a file AI reads and runs directly.
+
+    * **Any format:** structured prose, numbered lists, Gherkin — whatever your team already writes
+    * **PM-driven workflow:** Product Manager prepares a `requirements/` folder (logic, message formats, acceptance tests); Dev drops it in the project and types `implement reqs <name>`
+    * **AI builds the system and writes back an audit trail** (`ad-libs.md`) of every decision it made — red flags for review, green for FYIs
+    * **Governance is architectural:** rules live on the data, not the path — every new API, agent, or integration inherits them automatically, with no extra work
+    * **Iterate:** each rinse-and-repeat cycle tightens the spec and narrows AI's decision space
+
+&nbsp;
+
+## What It Is
+
+The Holy Grail of enterprise software development has always been simple to state: what was specified is what runs — verifiably, always. Every methodology for fifty years has attempted it. Structured analysis. UML. BDD. Agile. All useful. None closed the gap.
+
+The reason is architectural. Requirements are descriptive — they express intent. Code is prescriptive — it executes. The gap between them is where projects fail, audits struggle, and governance erodes.
+
+Executable Requirements closes that gap — not by generating better code from requirements, but by making the requirements themselves the executable artifact.
+
+&nbsp;
+
+## Requirement Format: Whatever You Already Write
+
+There is no required format. The spec is whatever your team already produces — prose, numbered lists, Gherkin. The key is structure: clear sections for logic, integrations, and acceptance criteria.
+
+**Numbered prose** (the simplest form — see `samples/prompts/genai_demo.prompt`):
+
+```
+Create a system with customers, orders, items and products.
+
+On Placing Orders, Check Credit
+    1. The Customer's balance is less than the credit limit
+    2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+    3. The Order's amount_total is the sum of the Item amount
+    4. The Item amount is the quantity * unit_price
+    5. The Item unit_price is copied from the Product unit_price
+
+Use case: App Integration
+    1. Publish the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
+```
+
+**Gherkin** — for teams that already use BDD-style specs (see `samples/requirements/Order-EAI/requirements.md`):
+
+```gherkin
+Feature: Check Credit
+
+  Scenario: Place an order
+    Given a customer with a credit limit
+    When an order is placed
+    Then copy the price from the product
+    And multiply by quantity to get the item amount
+    And sum item amounts to get the order total
+    And sum unpaid order totals to get the customer balance
+    And reject if balance exceeds the credit limit
+```
+
+Both formats produce the same output: declarative rules enforced on every path, a generated test suite, and an Admin app — from a single `implement reqs` prompt.
+
+&nbsp;
+
+## Workflow: PM Prepares, Dev Executes
+
+A natural division of labor emerges from the structure:
+
+| Who | Does what |
+|-----|-----------|
+| **Product Manager** | Gathers artifacts: DDL, sample messages, architecture notes — in cloud storage, SharePoint, wherever they work |
+| **Product Manager** | Writes `requirements.md` — sections for logic, integrations, acceptance; includes `message_formats/` sub-folder |
+| **Developer** | Creates `docs/requirements/<name>/` in the project repo, drops in `requirements.md` and supporting files |
+| **Developer** | Types `implement reqs <name>` in Copilot Agent mode |
+| **AI** | Builds the system, writes `docs/requirements/<name>/ad-libs.md` with decisions made |
+| **PM + Dev** | Reviews `ad-libs.md` — 🔴 items require confirmation, 🟡 are standard patterns; update `requirements.md` and re-run |
+
+This is the starting point for iterative development, not a one-shot deployment. Each cycle tightens the spec, narrows AI's decision space, and produces a working system your team owns. Declarative rules make iteration practical: when logic changes, you update the rule — ordering and reuse are automatic, so there is no cascade of procedural updates to track down.
+
+**What belongs in `requirements.md`:**
+
+- **What to build** — tables, handlers, APIs, logic rules
+- **Message formats** — reference files in `message_formats/`; include field mappings where non-obvious
+- **Phases** — what's in scope now vs. deferred
+- **Acceptance** — how to verify it worked (test commands, expected DB state)
+
+Leave out: implementation details, file names, framework choices — let AI decide those and review the audit trail to see what it chose.
+
+&nbsp;
+
+## EAI: By-Example Integrations
+
+For messaging integrations the requirements spec uses a **by-example** approach: include a sample JSON message alongside the spec, and AI auto-maps obvious fields silently — you only specify exceptions.
+
+For example, `message_formats/order_b2b.json`:
+
+```json
+{
+  "Account": "Alice",
+  "Notes": "Kafka order from sales",
+  "Items": [
+    { "Name": "Widget",  "QuantityOrdered": 1 },
+    { "Name": "Gadget",  "QuantityOrdered": 2 }
+  ]
+}
+```
+
+The corresponding requirements section names the exceptions — fields that rename, join, or map to child collections — and AI infers the rest:
+
+```gherkin
+Feature: B2B Order Integration
+
+  Scenario: Accept order from external partner
+    Given an inbound B2B order in partner format (message_formats/order_b2b.json)
+    When the order is received via a Custom API endpoint named OrderB2B
+    Then map Account to Customer by name
+    And map Items.Name to Product by name
+    And map Items.QuantityOrdered to Item.quantity
+    And create the order with all Check Credit rules enforced
+```
+
+An `_unresolved` guard blocks server start on any field AI can't confidently map — no silent failures.
+
+The same by-example pattern applies to **outbound Kafka publish**: describe the desired JSON shape, AI matches fields from the model, adds `# TODO` on uncertain ones, and generates the publish rule.
+
+> For full details on mapping patterns, the two-message pattern, and `FIELD_EXCEPTIONS`, see [Integration EAI](Integration-EAI.md){:target="_blank" rel="noopener"} and [Integration Kafka](Integration-Kafka.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+## Try It — Order-EAI in Under 10 Minutes
+
+The Manager ships a ready-to-run sample: `samples/requirements/Order-EAI/` — B2B order intake via both a custom REST endpoint and Kafka, with outbound shipping notification and full Check Credit logic.
+
+> This is the same system shown in [Sample Basic EAI](Sample-Basic-EAI.md){:target="_blank" rel="noopener"}, which walks through the same project as a step-by-step tutorial focused on the EAI patterns.
+
+**Step 1 — Create the project** (in the Manager terminal):
+
+```bash
+genai-logic create --project_name=demo_eai_exec_reqmts --db_url=sqlite:///samples/dbs/basic_demo.sqlite
+```
+
+Open the created project in VS Code.
+
+**Step 2 — Copy the requirements set** (from a terminal inside the created project):
+
+```bash
+cp -r ../samples/requirements/Order-EAI  docs/requirements/Order-EAI
+```
+
+> `docs/requirements/` already exists in every created project.
+
+**Step 3 — Load context, then run** in Copilot **Agent** mode (not Ask):
+
+```
+Please load `.github/.copilot-instructions.md`.
+```
+
+Then:
+
+```
+implement reqs Order-EAI
+```
+
+AI reads `docs/requirements/Order-EAI/requirements.md`, builds the system, and writes `docs/requirements/Order-EAI/ad-libs.md`.
+
+**Step 4 — Review the audit trail:**
+
+- **🔴 Review Required** — decisions that need your confirmation
+- **🟡 FYI** — standard patterns applied, no action needed
+
+Update `requirements.md` to clarify anything flagged red, then re-run.
+
+**Step 5 — Verify** (no Kafka required — use the `consume_debug` endpoint):
+
+```bash
+curl 'http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/Order-EAI/message_formats/order_b2b.json'
+
+sqlite3 database/db.sqlite "SELECT * FROM order_b2b_message; SELECT * FROM 'order'; SELECT * FROM item;"
+```
+
+&nbsp;
+
+## Governance Across All Paths
+
+The rules are on the *data*, not the path. Delete an order, ship an order, have an agent update a quantity — none of those scenarios appear in the Order-EAI spec, yet all behave correctly. A new endpoint added next month and an agent connected next year both inherit the same rules automatically.
+
+Every transaction source — API, UI, agent, message broker — converges on the same commit gate. No additional logic is required for each new access path.
+
+&nbsp;
+
+## Deliverables
+
+From one requirements file, AI delivers:
+
+- **Standard JSON:API** — filtering, sorting, pagination, optimistic locking
+- **Admin app** — multi-table, automatic joins, ready on day one
+- **Declarative rules** — enforced on every path, at commit, automatically ordered and reused
+- **B2B API and Kafka integration** — raw message persisted first, parse failures recoverable, nothing lost
+- **Behave test suite** — generated from the rules, not written by hand
+- **Logic Report** — requirement → rule → execution trace, readable by developers, business users, and auditors
+- **`ad-libs.md` audit trail** — AI's decisions, reviewable and iterable
+- **Standard project** — Python, your IDE, your source control, container-ready
+
+![Logic Report](images/ui-vibe/assistant/rules-report.png)
+
+&nbsp;
+
+## How the Rules Engine Works
+
+![Governance Architecture](images/ui-vibe/assistant/$$Gov-Arch.png)
+
+NL intent goes in on the left. Context Engineering directs AI to produce Data Rules — not procedural code. Those rules load into the Rules Engine at startup; dependencies are computed deterministically, not inferred at runtime. The Commit Listener hooks into the ORM. Every transaction — API, agent, workflow, message — passes through one control point.
+
+See [Logic Operation](Logic-Operation.md){:target="_blank" rel="noopener"} for details on rule ordering, chaining, and pruning.
+
+## The Insight
+
+These are not prompts that describe what to build. They are the requirements, in a form precise enough for AI to execute and plain enough for business and IT to agree on.
+
+The rules are readable. The rules are what runs. The rules are what auditors review.
+
+The spec is the system.
+
+**The rules are the spec — and rules can't drift from what they enforce.**
+
+---
+
+*Try it: [Install GenAI-Logic →](https://apilogicserver.github.io/Docs/Install-Express/)*
