@@ -1,7 +1,7 @@
 ---
 title: Executable Requirements
 source: docs/executable-requirements.md
-version: 1.4, 4/10/2026
+version: 1.5, 4/10/2026
 ---
 
 <style>
@@ -38,7 +38,7 @@ Feature: Check Credit
 
 This is standard Gherkin — the format enterprise teams already use for testing and specification. No new methodology. No new tools. Your team writes this today.
 
-AI reads it and produces five declarative rules and a complete test suite. Not generated code paths — declarations on data. That distinction is everything.
+AI reads it and produces five declarative rules and a complete test suite — a governed starting point your team owns and iterates from. Not a one-shot deployment. Not magic. A real project in your IDE, your Python, your source control, where developers refine rules, users validate behavior, and governance holds through every change.
 
 ## Governance That Can't Be Bypassed
 
@@ -82,7 +82,9 @@ Five rules replace over 200 lines of procedural code. From one requirements file
 - **Logic Report** — requirement → rule → execution trace
 - **Standard project** — Python, your IDE, your source control, container-ready
 
-The test suite and Logic Report are not afterthoughts. They solve a problem as old as the drift problem itself: nobody can prove what the system actually does, or trace it back to what was specified. Here, the chain is complete and automatic — requirement → rule → test → execution log. Compliance can prove governance. Not assert it. Prove it.
+![Logic Report](images/ui-vibe/assistant/rules-report.png)
+
+The Logic Report is readable by everyone — developers, business users, auditors. Each scenario shows the Gherkin that specified it, the rules that governed it, and the execution trace that proves it. The chain is complete and automatic — requirement → rule → test → execution log. As rules are refined through iteration, the report reflects exactly what runs. Compliance can prove governance. Not assert it. Prove it.
 
 ## Governed by Architecture, Not AI
 
@@ -98,7 +100,9 @@ This is not a prompt engineering story. It is infrastructure — as structural a
 
 These are not prompts that describe what to build. They are the requirements, in a form precise enough for AI to execute and plain enough for business and IT to agree on.
 
-**The spec is the system. It can't drift.**
+The rules are readable. The rules are what runs. The rules are what auditors review.
+
+**The rules are the spec. And rules can't drift from what they enforce.**
 
 ---
 
