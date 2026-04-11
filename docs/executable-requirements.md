@@ -102,7 +102,9 @@ These are not prompts that describe what to build. They are the requirements, in
 
 The rules are readable. The rules are what runs. The rules are what auditors review.
 
-**The rules are the spec. And rules can't drift from what they enforce.**
+The spec is the system.
+
+**The rules are the spec — and rules can't drift from what they enforce.**
 
 ---
 
