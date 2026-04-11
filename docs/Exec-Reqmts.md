@@ -85,7 +85,7 @@ A natural division of labor emerges from the structure:
 | **AI** | Builds the system, writes `docs/requirements/<name>/ad-libs.md` with decisions made |
 | **PM + Dev** | Reviews `ad-libs.md` — 🔴 items require confirmation, 🟡 are standard patterns; update `requirements.md` and re-run |
 
-This is the starting point for iterative development, not a one-shot deployment. Each cycle tightens the spec, narrows AI's decision space, and produces a working system your team owns. Declarative rules make iteration practical: when logic changes, you update the rule — ordering and reuse are automatic, so there is no cascade of procedural updates to track down.
+This is the starting point for iterative development, not a one-shot deployment. Each cycle produces a working system your team owns and refines.
 
 **What belongs in `requirements.md`:**
 
@@ -95,39 +95,6 @@ This is the starting point for iterative development, not a one-shot deployment.
 - **Acceptance** — how to verify it worked (test commands, expected DB state)
 
 Leave out: implementation details, file names, framework choices — let AI decide those and review the audit trail to see what it chose.
-
-&nbsp;
-
-## Human in the Loop: Dev Stays in Control
-
-AI does the initial build — but the developer reviews, owns, and iterates on everything it produces. There are two review surfaces, one for each kind of output:
-
-**Logic → Declarative Rules.** Business logic in the spec becomes Python rules in `logic/logic_discovery/`. The rules are short, readable, and directly traceable to the spec — the rule *is* the requirement, restated with precision. Dev reviews them in the IDE, adjusts as needed, and re-runs the suite. When requirements change, you update the rule; automatic ordering and reuse handle the rest. No cascade of procedural updates to track down.
-
-**Message and API mappings → `ad-libs.md`.** Field mappings, Kafka patterns, lookup strategies, and other integration decisions AI had to fill in are reported in `docs/requirements/<name>/ad-libs.md`. Zero ad-libs means the spec was complete and unambiguous. The same review-and-refine loop applies: read the report, tighten the spec, re-run.
-
-Two severity tiers:
-
-| Tier | Meaning |
-|------|---------|
-| 🔴 **Review Required** | AI made a decision that could be wrong — specific action called out |
-| 🟡 **FYI** | Standard pattern applied — no action needed, recorded for transparency |
-
-Example from the Order-EAI sample:
-
-```
-🔴  OrderB2BMapper.py — parent_lookups tuple shape may not match what
-    RowDictMapper._parent_lookup_from_child() expects. Test with a POST
-    to /api/OrderB2B. If you get a NOT NULL error, adjust the tuple shape.
-
-🟡  check_credit.py — standard Check-Credit rules (copy, formula, sum,
-    sum-with-where, constraint). Null-safe guard applied to constraint.
-
-🟡  order_b2b.py — 2-message Kafka pattern applied (blob saved in Tx 1,
-    parsed in Tx 2). Required pattern per eai_subscribe.md.
-```
-
-The loop: review `ad-libs.md`, update `requirements.md` to resolve any 🔴 items, re-run. Each cycle reduces the number of ad-libs until the spec and the implementation are in full agreement.
 
 &nbsp;
 
@@ -167,6 +134,39 @@ An `_unresolved` guard blocks server start on any field AI can't confidently map
 The same by-example pattern applies to **outbound Kafka publish**: describe the desired JSON shape, AI matches fields from the model, adds `# TODO` on uncertain ones, and generates the publish rule.
 
 > For full details on mapping patterns, the two-message pattern, and `FIELD_EXCEPTIONS`, see [Integration EAI](Integration-EAI.md){:target="_blank" rel="noopener"} and [Integration Kafka](Integration-Kafka.md){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+## Human in the Loop: Dev Stays in Control
+
+AI does the initial build — but the developer reviews, owns, and iterates on everything it produces. There are two review surfaces, one for each kind of output:
+
+**Logic → Declarative Rules.** Business logic in the spec becomes Python rules in `logic/logic_discovery/`. The rules are short, readable, and directly traceable to the spec — the rule *is* the requirement, restated with precision. Dev reviews them in the IDE, adjusts as needed, and re-runs the suite. When requirements change, you update the rule; automatic ordering and reuse handle the rest. No cascade of procedural updates to track down.
+
+**Message and API mappings → `ad-libs.md`.** Field mappings, Kafka patterns, lookup strategies, and other integration decisions AI had to fill in are reported in `docs/requirements/<name>/ad-libs.md`. Zero ad-libs means the spec was complete and unambiguous. The same review-and-refine loop applies: read the report, tighten the spec, re-run.
+
+Two severity tiers:
+
+| Tier | Meaning |
+|------|---------|
+| 🔴 **Review Required** | AI made a decision that could be wrong — specific action called out |
+| 🟡 **FYI** | Standard pattern applied — no action needed, recorded for transparency |
+
+Example from the Order-EAI sample:
+
+```
+🔴  OrderB2BMapper.py — parent_lookups tuple shape may not match what
+    RowDictMapper._parent_lookup_from_child() expects. Test with a POST
+    to /api/OrderB2B. If you get a NOT NULL error, adjust the tuple shape.
+
+🟡  check_credit.py — standard Check-Credit rules (copy, formula, sum,
+    sum-with-where, constraint). Null-safe guard applied to constraint.
+
+🟡  order_b2b.py — 2-message Kafka pattern applied (blob saved in Tx 1,
+    parsed in Tx 2). Required pattern per eai_subscribe.md.
+```
+
+The loop: review `ad-libs.md`, update `requirements.md` to resolve any 🔴 items, re-run. Each cycle reduces the number of ad-libs until the spec and the implementation are in full agreement.
 
 &nbsp;
 
@@ -223,14 +223,6 @@ sqlite3 database/db.sqlite "SELECT * FROM order_b2b_message; SELECT * FROM 'orde
 
 &nbsp;
 
-## Governance Across All Paths
-
-The rules are on the *data*, not the path. Delete an order, ship an order, have an agent update a quantity — none of those scenarios appear in the Order-EAI spec, yet all behave correctly. A new endpoint added next month and an agent connected next year both inherit the same rules automatically.
-
-Every transaction source — API, UI, agent, message broker — converges on the same commit gate. No additional logic is required for each new access path.
-
-&nbsp;
-
 ## Deliverables
 
 From one requirements file, AI delivers:
@@ -254,18 +246,6 @@ From one requirements file, AI delivers:
 
 NL intent goes in on the left. Context Engineering directs AI to produce Data Rules — not procedural code. Those rules load into the Rules Engine at startup; dependencies are computed deterministically, not inferred at runtime. The Commit Listener hooks into the ORM. Every transaction — API, agent, workflow, message — passes through one control point.
 
+Because the rules are on the *data*, not the path, every access path inherits them automatically. Delete an order, ship an order, have an agent update a quantity — none of those need to be anticipated in the spec. A new endpoint or agent added later requires no additional logic.
+
 See [Logic Operation](Logic-Operation.md){:target="_blank" rel="noopener"} for details on rule ordering, chaining, and pruning.
-
-## The Insight
-
-These are not prompts that describe what to build. They are the requirements, in a form precise enough for AI to execute and plain enough for business and IT to agree on.
-
-The rules are readable. The rules are what runs. The rules are what auditors review.
-
-The spec is the system.
-
-**The rules are the spec — and rules can't drift from what they enforce.**
-
----
-
-*Try it: [Install GenAI-Logic →](https://apilogicserver.github.io/Docs/Install-Express/)*
