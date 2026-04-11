@@ -1,7 +1,7 @@
 ---
 title: Executable Requirements
 source: docs/executable-requirements.md
-version: 1.5, 4/10/2026
+version: 1.7, 4/11/2026
 ---
 
 <style>
@@ -13,9 +13,9 @@ version: 1.5, 4/10/2026
 
 # Executable Requirements
 
-The Holy Grail of enterprise software development has always been simple to state: what was specified is what runs — verifiably, always. Every methodology for fifty years has attempted it. Structured analysis. UML. BDD. Agile. All useful. None delivered.
+The Holy Grail of enterprise software development has always been simple to state: what was specified is what runs — verifiably, always. Every methodology for fifty years has attempted it. Structured analysis. UML. BDD. Agile. All useful. None closed the gap.
 
-The reason is architectural. Requirements are descriptive — they express intent. Code is prescriptive — it executes. The gap between them is where projects fail, audits struggle, and governance erodes. Nobody has closed it.
+The reason is architectural. Requirements are descriptive — they express intent. Code is prescriptive — it executes. The gap between them is where projects fail, audits struggle, and governance erodes.
 
 Until now — not by generating better code from requirements, but by making the requirements themselves the executable artifact.
 
@@ -38,7 +38,9 @@ Feature: Check Credit
 
 This is standard Gherkin — the format enterprise teams already use for testing and specification. No new methodology. No new tools. Your team writes this today.
 
-AI reads it and produces five declarative rules and a complete test suite — a governed starting point your team owns and iterates from. Not a one-shot deployment. Not magic. A real project in your IDE, your Python, your source control, where developers refine rules, users validate behavior, and governance holds through every change.
+Directed by Context Engineering, AI produces five declarative rules — not procedural code. A complete test suite is a single prompt away.
+
+A governed starting point your team owns and iterates from. Not a one-shot deployment. Not magic. A real project in your IDE, your Python, your source control, where developers refine rules, users validate behavior, and governance holds through every change. When requirements change, you change the rule — because the rule is the requirement, restated with precision. No regeneration. No starting over.
 
 ## Governance That Can't Be Bypassed
 
