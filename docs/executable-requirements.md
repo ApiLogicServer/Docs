@@ -1,10 +1,25 @@
+---
+title: Executable Requirements
+source: docs/executable-requirements.md
+version: 1.4, 4/10/2026
+---
+
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
 # Executable Requirements
 
-Most requirements documents describe a system that will be built. Then the system gets built — differently. The document drifts. Nobody updates it.
+The Holy Grail of enterprise software development has always been simple to state: what was specified is what runs — verifiably, always. Every methodology for fifty years has attempted it. Structured analysis. UML. BDD. Agile. All useful. None delivered.
 
-What if the requirements *were* the system?
+The reason is architectural. Requirements are descriptive — they express intent. Code is prescriptive — it executes. The gap between them is where projects fail, audits struggle, and governance erodes. Nobody has closed it.
 
-## The Prompt Is the Spec
+Until now — not by generating better code from requirements, but by making the requirements themselves the executable artifact.
+
+## Requirements are the Code
 
 A business analyst writes this — exactly as they'd describe the logic in a meeting:
 
@@ -17,72 +32,73 @@ Feature: Check Credit
     Then copy the price from the product
     And multiply by quantity to get the item amount
     And sum item amounts to get the order total
-    And sum order totals to get the customer balance
+    And sum unpaid order totals to get the customer balance
     And reject if balance exceeds the credit limit
 ```
 
-AI reads it and produces two things: five declarative rules, and a complete test suite.
+This is standard Gherkin — the format enterprise teams already use for testing and specification. No new methodology. No new tools. Your team writes this today.
 
-```python
-# AI distills path-specific intent into path-independent rules
-Rule.copy(derive=Item.unit_price, from_parent=Product.unit_price)
-Rule.formula(derive=Item.amount,
-             as_expression=lambda row: row.quantity * row.unit_price)
-Rule.sum(derive=Order.amount_total, as_sum_of=Item.amount)
-Rule.sum(derive=Customer.balance, as_sum_of=Order.amount_total,
-         where=lambda row: row.date_shipped is None)
-Rule.constraint(validate=Customer,
-                as_condition=lambda row: row.balance <= row.credit_limit)
-```
+AI reads it and produces five declarative rules and a complete test suite. Not generated code paths — declarations on data. That distinction is everything.
 
-The test suite covers eight scenarios. The Gherkin specified one.
+## Governance That Can't Be Bypassed
 
-Delete an order — nobody mentioned that. Ship an order — nobody mentioned that. An inbound Kafka message, an agent update — not in the spec. All green. Because the rules are on the *data*, not the path. Every transaction source — API, UI, message, agent — passes through the same commit gate and inherits the same rules automatically.
+The generated test suite covers eight scenarios. The Gherkin specified one.
 
-This isn't prompt quality. It's architecture.
+Delete an order — nobody mentioned that. Ship an order — nobody mentioned that. An agent updates a quantity — not in the spec. All green. Because the rules are on the *data*, not the path. They don't know or care which scenario triggered the transaction. A new developer adds an endpoint next month. A new agent connects next year. Both inherit the same rules — automatically, with no additional work.
 
-## Shared Logic Across Integration Styles
+You designed one scenario. The architecture governed all of them.
 
-The same rules govern every path — including external integrations. A second prompt proves it:
+This is the commitment every enterprise needs and almost none have: governance that holds as the system grows, not because developers remember to apply it, but because there is no architectural path that bypasses it.
+
+## Governance Across Every Integration
+
+The rules don't just govern every scenario — they govern every access path. Same rules, whether the transaction arrives via API, UI, agent, or message broker. A second prompt proves it:
 
 ```gherkin
 Feature: B2B Order Integration
 
   Scenario: Accept order from external partner
-    Given an inbound B2B order in partner format
-      | Account        | Alice   |
-      | Notes          | Urgent  |
-      | Items.Name     | Widget  |
-      | Items.Quantity | 3       |
-    When the order is received via the Custom API
+    Given an inbound B2B order in partner format (message_formats/order_b2b.json)
+    When the order is received via a Custom API endpoint named OrderB2B
     Then map Account to Customer by name
     And map Items.Name to Product by name
+    And map Items.QuantityOrdered to Item.quantity
     And create the order with all Check Credit rules enforced
 ```
 
-AI generates the custom endpoint and field mappings. No new logic is written. The B2B API inherits the same five rules as every other path.
+AI generates the custom endpoint and field mappings. No new logic is written. The B2B API inherits the same rules as every other path — as does the Kafka subscriber, the admin UI, and any agent that connects tomorrow.
+
+Every transaction source converges on one commit gate. The rules decide what persists. There is no path that bypasses them.
 
 ## What You Get
 
-One business prompt. AI delivers:
+Five rules replace over 200 lines of procedural code. From one requirements file, AI delivers:
 
 - **Standard JSON:API** — filtering, sorting, pagination, optimistic locking
 - **Admin app** — multi-table, automatic joins, ready on day one
 - **Declarative rules** — enforced on every path, at commit, with no bypass
-- **B2B API and Kafka integration** — same rules, no new logic
+- **B2B API and Kafka integration** — raw message persisted first, parse failures recoverable, nothing lost
 - **Behave test suite** — generated from the rules, not written by hand
 - **Logic Report** — requirement → rule → execution trace
 - **Standard project** — Python, your IDE, your source control, container-ready
 
-The Logic Report closes the loop: every transaction shows which rules fired, in what order, with before and after values. Compliance can prove governance — not just assert it.
+The test suite and Logic Report are not afterthoughts. They solve a problem as old as the drift problem itself: nobody can prove what the system actually does, or trace it back to what was specified. Here, the chain is complete and automatic — requirement → rule → test → execution log. Compliance can prove governance. Not assert it. Prove it.
+
+## Governed by Architecture, Not AI
+
+A reasonable question: if AI is generating all of this, what governs the AI?
+
+![Governance Architecture](images/ui-vibe/assistant/$$Gov-Arch.png)
+
+NL intent goes in on the left. Context Engineering directs AI to produce Data Rules — not procedural code. Those rules load into the Rules Engine at startup; dependencies computed deterministically, not inferred at runtime. The Commit Listener hooks into the ORM. Every transaction — API, agent, workflow, message — passes through one control point. Nothing bypasses it.
+
+This is not a prompt engineering story. It is infrastructure — as structural and as mandatory as the database itself.
 
 ## The Insight
 
-These prompts are not a description of what got built. They are the actual requirements, in a form AI can execute directly. This is a real project: your IDE, your Python, your source control. The prompts create it instantly — but you own it fully and iterate from there.
+These are not prompts that describe what to build. They are the requirements, in a form precise enough for AI to execute and plain enough for business and IT to agree on.
 
-Instead of Word documents that describe a system and then drift from it, requirements can be structured prompts — precise enough for AI to execute, readable enough for business and IT to agree on.
-
-**The spec and the running system are the same artifact. They can't drift.**
+**The spec is the system. It can't drift.**
 
 ---
 
