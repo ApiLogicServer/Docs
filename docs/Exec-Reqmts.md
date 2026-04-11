@@ -13,25 +13,23 @@ version: 1.8, 4/11/2026
 
 # Executable Requirements
 
-!!! pied-piper ":bulb: TL;DR - Requirements That Execute"
+!!! pied-piper ":bulb: TL;DR - Requirements-Driven Iterative Development"
 
-    **Executable Requirements** means the spec document *is* the build instruction — not a handoff artifact to be interpreted, but a file AI reads and runs directly.
+    **Executable Requirements** uses the spec as direct AI input to produce a *runnable project* — not a one-shot artifact, but a governed starting point your team iterates from.
 
     * **Any format:** structured prose, numbered lists, Gherkin — whatever your team already writes
     * **PM-driven workflow:** Product Manager prepares a `requirements/` folder (logic, message formats, acceptance tests); Dev drops it in the project and types `implement reqs <name>`
-    * **AI builds the system and writes back an audit trail** (`ad-libs.md`) of every decision it made — red flags for review, green for FYIs
-    * **Governance is architectural:** rules live on the data, not the path — every new API, agent, or integration inherits them automatically, with no extra work
-    * **Iterate:** each rinse-and-repeat cycle tightens the spec and narrows AI's decision space
+    * **AI produces a runnable project** and writes back an audit trail (`ad-libs.md`) of every decision — red flags for review, FYIs for standard patterns
+    * **Iterative by design:** update `requirements.md`, re-run — each cycle tightens the spec; declarative rules make logic changes safe (automatic ordering and reuse, no cascade of procedural updates)
+    * **Governance is architectural:** rules live on the data, not the path — every new API, agent, or integration inherits them automatically
 
 &nbsp;
 
 ## What It Is
 
-The Holy Grail of enterprise software development has always been simple to state: what was specified is what runs — verifiably, always. Every methodology for fifty years has attempted it. Structured analysis. UML. BDD. Agile. All useful. None closed the gap.
+Traditional requirements are a handoff artifact: a document a developer reads, interprets, and then implements. Interpretation introduces drift — requirements that describe intent, code that approximates it.
 
-The reason is architectural. Requirements are descriptive — they express intent. Code is prescriptive — it executes. The gap between them is where projects fail, audits struggle, and governance erodes.
-
-Executable Requirements closes that gap — not by generating better code from requirements, but by making the requirements themselves the executable artifact.
+Executable Requirements treats the spec as direct AI input. AI reads the requirements file and produces a runnable project — Python, your IDE, your source control. That project is the executable artifact, not the prompt. The spec and the implementation stay coupled through iteration: update the requirements, re-run, review the audit trail, refine. Declarative rules make that loop practical — when logic changes, you update the rule; ordering and reuse are automatic.
 
 &nbsp;
 
@@ -97,6 +95,39 @@ This is the starting point for iterative development, not a one-shot deployment.
 - **Acceptance** — how to verify it worked (test commands, expected DB state)
 
 Leave out: implementation details, file names, framework choices — let AI decide those and review the audit trail to see what it chose.
+
+&nbsp;
+
+## Human in the Loop: Dev Stays in Control
+
+AI does the initial build — but the developer reviews, owns, and iterates on everything it produces. There are two review surfaces, one for each kind of output:
+
+**Logic → Declarative Rules.** Business logic in the spec becomes Python rules in `logic/logic_discovery/`. The rules are short, readable, and directly traceable to the spec — the rule *is* the requirement, restated with precision. Dev reviews them in the IDE, adjusts as needed, and re-runs the suite. When requirements change, you update the rule; automatic ordering and reuse handle the rest. No cascade of procedural updates to track down.
+
+**Message and API mappings → `ad-libs.md`.** Field mappings, Kafka patterns, lookup strategies, and other integration decisions AI had to fill in are reported in `docs/requirements/<name>/ad-libs.md`. Zero ad-libs means the spec was complete and unambiguous. The same review-and-refine loop applies: read the report, tighten the spec, re-run.
+
+Two severity tiers:
+
+| Tier | Meaning |
+|------|---------|
+| 🔴 **Review Required** | AI made a decision that could be wrong — specific action called out |
+| 🟡 **FYI** | Standard pattern applied — no action needed, recorded for transparency |
+
+Example from the Order-EAI sample:
+
+```
+🔴  OrderB2BMapper.py — parent_lookups tuple shape may not match what
+    RowDictMapper._parent_lookup_from_child() expects. Test with a POST
+    to /api/OrderB2B. If you get a NOT NULL error, adjust the tuple shape.
+
+🟡  check_credit.py — standard Check-Credit rules (copy, formula, sum,
+    sum-with-where, constraint). Null-safe guard applied to constraint.
+
+🟡  order_b2b.py — 2-message Kafka pattern applied (blob saved in Tx 1,
+    parsed in Tx 2). Required pattern per eai_subscribe.md.
+```
+
+The loop: review `ad-libs.md`, update `requirements.md` to resolve any 🔴 items, re-run. Each cycle reduces the number of ad-libs until the spec and the implementation are in full agreement.
 
 &nbsp;
 

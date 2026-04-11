@@ -40,7 +40,9 @@ This is standard Gherkin — the format enterprise teams already use for testing
 
 Directed by Context Engineering, AI produces five declarative rules — not procedural code. A complete test suite is a single prompt away.
 
-A governed starting point your team owns and iterates from. Not a one-shot deployment. Not magic. A real project in your IDE, your Python, your source control, where developers refine rules, users validate behavior, and governance holds through every change. When requirements change, you change the rule — because the rule is the requirement, restated with precision. No regeneration. No starting over.
+A governed starting point your team owns and iterates from. Not a one-shot deployment. Not magic. A real project in your IDE, your Python, your source control, where developers refine rules, users validate behavior, and governance holds through every change. 
+
+When requirements change, you change the rule — because the rule is the requirement, restated with precision. No regeneration. No starting over. AI writes back an audit trail of every decision it made — reviewable, iterable, never a black box.
 
 ## Governance That Can't Be Bypassed
 
