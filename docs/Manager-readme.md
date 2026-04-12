@@ -76,7 +76,7 @@ Explore the key use cases from our home page:
 | **[EAI: Enterprise App Integration](https://www.genai-logic.com/#h.wdoo0f18oqd1)** <br>demo_eai | genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Illustratess APIs and Messages<br>- Create custom API with NL<br>- Create Kafka Listener with NL |
 | **[Use Case 4: Vibe Dev Backend](https://www.genai-logic.com/#h.6d0vlkwk86lb)** <br> demo_vibe | genai-logic create --project_name=demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - UI elements, eg, Cards, Maps, Trees... |
 | **[Use Case 5: Business Users](https://www.genai-logic.com/#h.69d2voz8q5r1)** <br> webgenai | See [WebGenAI](webgenai/README.md) | - Create systems from browser, with logic, sample data and derived attributes |
-| **[NL Business Systems](Customs-readme-full.md)** <br> customs_demo | See [WebGenAI](samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md) | - Complete Business Systems<br> - See [Customs Surtax](Customs-readme-full.md){:target="_blank" rel="noopener"} |
+| **[NL Business Systems](Customs-readme-full.md)** <br> customs_demo | See [customs_demo](samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md) | - Complete Business Systems<br> - See [Customs Surtax](Customs-readme-full.md){:target="_blank" rel="noopener"} |
 
 
 
