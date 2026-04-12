@@ -75,7 +75,7 @@ Explore the key use cases from our home page:
 | **[Use Case 2: Governed MCP Server](https://www.genai-logic.com/#h.kjyi4tc52seu)** <br>demo_mcp_send_email | genai-logic create --project_name=demo_mcp_send_email --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Bus Users compose new service to send email to overdue customers, subject to email opt-out rules<br>- Create custom API with NL<br>- Create an email service (req pattern) |
 | **[EAI: Enterprise App Integration](https://www.genai-logic.com/#h.wdoo0f18oqd1)** <br>demo_eai | genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Illustratess APIs and Messages<br>- Create custom API with NL<br>- Create Kafka Listener with NL |
 | **[Use Case 4: Vibe Dev Backend](https://www.genai-logic.com/#h.6d0vlkwk86lb)** <br> demo_vibe | genai-logic create --project_name=demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - UI elements, eg, Cards, Maps, Trees... |
-| **[Use Case 5: Business Users](https://www.genai-logic.com/#h.69d2voz8q5r1)** <br> webgenai | See [WebGenAI](https://apilogicserver.github.io/Docs/webgenai/README) | - Create systems from browser, with logic, sample data and derived attributes |
+| **[Use Case 5: Business Users](https://www.genai-logic.com/#h.69d2voz8q5r1)** <br> webgenai | See [WebGenAI](webgenai/README.md) | - Create systems from browser, with logic, sample data and derived attributes |
 | **[NL Business Systems](https://www.genai-logic.com/#h.68i3e948ivkl)** <br> customs_demo | genai-logic create --project_name=customs_demo --db_url=sqlite:///samples/dbs/starter.sqlite | - Complete Business Systems<br> - See [Customs Surtax](Customs-readme-full.md){:target="_blank" rel="noopener"} |
 
 
@@ -88,7 +88,7 @@ Advanced examples and specialized patterns:
 
 | Demo | Command | What You'll Learn |
 |------|---------|-------------------|
-| **demo_kafka** | genai-logic create --project_name=demo_kafka --db_url=nw- | Kafka pub/sub messaging <br>With Docker setup |
+| **Executable Requirements** | See [Order-EAI](samples/requirements/readme.md) | Create from Gherkin requirements <br>implement reqs <path> |
 | **New system from prompt** | genai-logic genai --using=samples/prompts/genai_demo.prompt | Create systems from prompt<br>Like WebGenAI, but from IDE |
 | **Coding Samples** | code samples/nw_sample | Useful code examples<br>Search: `#als` |
 | **MCP Discovery** <br> demo_copilot_mcp_discovery | genai-logic create --project_name=demo_copilot_mcp_discovery --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
