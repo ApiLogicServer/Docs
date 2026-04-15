@@ -1,8 +1,8 @@
 ---
-title: Customs Surtax Calculator
+title: Customs EAI
 notes: gold source is docs
 source: docs/Customs-readme.md
-version: 1.0 from docsite, for readme 2/16/2026
+version: 1.1 from docsite, for readme 4/15/2026
 ---
 
 # Customs Demo
