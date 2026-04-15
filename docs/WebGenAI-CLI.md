@@ -130,7 +130,7 @@ Notes:
 
 You can ask GenAI to suggest logic for your system.  This can help you learn about rules, and can inspire your own imagination about required logic.
 
-It's AI, so or course you will want to review the suggestions carefully.
+It's AI, so of course you will want to review the suggestions carefully.
 
 
 ![logic Editor](images/web_genai/logic/logic-editor.png)
@@ -174,6 +174,7 @@ Also...
 
 The logic suggestions directory (`genai_demo_no_logic/docs/logic_suggestions`) now contains the prompts to create a new project with the suggested logic.  
 When you are ready to proceed:
+
 1. Execute the following to create a *new project* (iteration), with suggested logic:
 
 ```bash title="4. Create a new project with the Rule Suggestions"

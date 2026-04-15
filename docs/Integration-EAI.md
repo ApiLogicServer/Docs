@@ -64,6 +64,8 @@ Traditional API/Kafka integrations are fiddly — extensive hand-code or complex
 
 > For full working examples, see [Sample-Basic-EAI.md](Sample-Basic-EAI.md){:target="_blank" rel="noopener"}.
 
+![demo_kafka](images/integration/EAI-Project.png)
+
 &nbsp;
 
 # Publish — Outbound Kafka Messages

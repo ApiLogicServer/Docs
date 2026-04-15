@@ -196,11 +196,11 @@ Create a B2B order API called 'OrderB2B' that accepts orders from external partn
 The external message format is in `integration/kafka/message_formats/order_b2b.json`.
 
 Field mappings:
-- 'Account' → find Customer by name, set customer_id
+- 'Account' → lookup Customer by name, set customer_id
 - 'Notes' → order notes
-- 'Items' array → Item rows: 'Name' → find Product, 'QuantityOrdered' → item quantity
+- 'Items' array → Item rows: 'Name' → lookup Product, 'QuantityOrdered' → item quantity
 
-The API should create complete orders with automatic lookups and inherit all business logic rules.
+The API should create complete orders.
 ```
 
 The Kafka logic was created earlier, so we are ready to test — see Section 6.
