@@ -76,8 +76,7 @@ Explore the key use cases from our home page:
 | **[EAI: Enterprise App Integration](https://www.genai-logic.com/#h.wdoo0f18oqd1)** <br>demo_eai | genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Illustratess APIs and Messages<br>- Create custom API with NL<br>- Create Kafka Listener with NL |
 | **[Use Case 4: Vibe Dev Backend](https://www.genai-logic.com/#h.6d0vlkwk86lb)** <br> demo_vibe | genai-logic create --project_name=demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - UI elements, eg, Cards, Maps, Trees... |
 | **[Use Case 5: Business Users](https://www.genai-logic.com/#h.69d2voz8q5r1)** <br> webgenai | See [WebGenAI](webgenai/README.md) | - Create systems from browser, with logic, sample data and derived attributes |
-| **[NL Business Systems](samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md)** <br> customs_demo | See [customs_demo](samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md) | - Executable Requirements (textual)<br> - EAI (using XML) |
-
+| **[Customs EAI](samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md)** <br> demo_customs | genai-logic create  --project_name=demo_customs --db_url=sqlite:///samples/requirements/customs_demo/database/customs.sqlite | - Complete Business Systems<br> - EAI (using XML), textual requirements |
 
 
 &nbsp;
