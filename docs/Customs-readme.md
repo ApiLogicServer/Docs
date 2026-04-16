@@ -4,6 +4,12 @@ notes: gold source is docs
 source: docs/Customs-readme.md
 version: 1.1 from docsite, for readme 4/15/2026
 ---
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
 
 # Customs Demo
 
@@ -11,6 +17,18 @@ version: 1.1 from docsite, for readme 4/15/2026
 ```
 Please load `.github/.copilot-instructions.md`.
 ```
+
+&nbsp;
+
+## Executive Summary
+
+This system ingests customs shipment data from a message broker, applies business matching rules, and persists a complete shipment record — with full API, audit trail, and governance built in.
+
+A traditional Java team would estimate 6–12 months for equivalent functionality. This was built in days — using Executable Requirements, which compiles a plain-English requirements document into a governed, running system.
+
+Speed is the headline. The deeper value is governance: business rules enforced on every path by architecture, not developer discipline. A new endpoint, a new agent, a new developer — all inherit the same rules automatically. By architecture, not discipline.
+
+> For the full story on **Executable Requirements**, [click here](executable-requirements.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -30,41 +48,40 @@ An enterprise integration (EAI) microservice that ingests CIMCorp/ISDC customs s
 - Sample message (`sample_data/MDE-CDV-HVS-WR-Rev260328.xml`)
 
 **Outputs**:
-- Working Kafka consumer pipeline: `isdc` → `ShipmentXml` → `shipment_processed` → DB tables  
-- JSON:API for all tables, Admin UI, declarative logic engine (rules to come in Phase 2)
+- Working Kafka consumer pipeline: `isdc` → `ShipmentXml` → `isdc_processed` → DB tables  
+- JSON:API for all tables, Admin UI, declarative logic engine
 - Matching: look up the matching CcpCustomer
     - found: set `Shipment.trprt_bill_to_acct_nbr == CcpCustomer.duty_bill_to_acct_nbr` and create a `ShipmentParty` row
     - no match: log a warning, do nothing.
 
 &nbsp;
 
-## Basic Design
+## Basic Design - 2 transaction message processing
 
-1. `integration/kafka/kafka_consumer.py` - isdc
-    * reads message, inserts into `ShipmentXml`
-2. `logic/logic_discovery/shipment_xml_ingest.py`
-    * insert → publishes xml to topic: `shipment_processed`
-3. `integration/kafka/kafka_consumer.py` - shipment_processed
-    * parses xml → database tables
-4. Matching: Phase 2, presumably rules/events on Shipment
-
-&nbsp;
-
-> **Design note — why 2 messages?** The original design used 1 message: receive XML, save `ShipmentXml`, parse into DB tables — all in one transaction. The 2-message design now in place was adopted after reviewing production reliability requirements.
->
-> The key advantage is **transaction isolation**. A tempting alternative to 2 messages is a try/catch in the single transaction: always save `ShipmentXml`, best-effort parse the DB tables. This breaks down in SQLAlchemy: a failed flush (e.g. parser error mid-parse) **poisons the session** — you can't commit the blob in the same session after an exception. You'd need two explicit back-to-back transactions, plus a third to write the error back to `ShipmentXml`. That's messy and fragile.
->
-> The 2-message design solves this cleanly: Kafka acts as the durable commit boundary between ingestion and processing. The blob is always saved (transaction 1), and a parse failure only affects transaction 2 — no session gymnastics, and back-pressure decoupling is a free bonus.
+1. `integration/kafka/kafka_subscribe_discovery/isdc.py` - isdc
+    * reads message, inserts into `ShipmentXml` (Tx 1)
+    * this ensures messages are saved, even if the xml contains errors
+2. `logic/logic_discovery/isdc_consume.py`
+    * ShipmentXml insert → publishes raw payload to topic: `isdc_processed`
+3. `integration/kafka/kafka_subscribe_discovery/isdc.py` - isdc_processed
+    * parses xml → database tables (Tx 2)
+4. `api/api_discovery/isdc_kafka_consume_debug.py`
+    * `/consume_debug/isdc` bypasses Kafka — calls the same parser directly (no Kafka required for dev/test)
+5. Matching: `logic/logic_discovery/shipment_matching.py` — `early_row_event` on Shipment insert
+    * Looks up `CcpCustomer` by `duty_bill_to_acct_nbr == trprt_bill_to_acct_nbr`
+    * Match found: creates a `ShipmentParty` importer row; no match: logs a warning
 
 &nbsp;
 
 ## Creation Instructions
 
-```bash
+This context of this project is to add processing for an existing database.  This recreates that state, and then uses **Executable Requirements** (Step E - for more information,  to create the functionality.
+
+```bash title="Establish Initial State, Execute Requirements"
 # A - Create the project (already done)
 genai-logic create  --project_name=demo_customs --db_url=sqlite:///samples/requirements/customs_demo/database/customs.sqlite
 
-# B - in created project, get and implement the requirements
+# B - in created project, get the requirements
 $ cp -r ../samples/requirements/customs_demo/. .
 
 # C - use the shared Manager venv (do not create a local project .venv)
@@ -79,7 +96,28 @@ Apply to:
    Shipment.SpecialHandlingList
    Shipment.ShipmentPartyList
 
-# E - ask Copilot to create the system
+# E - ask Copilot to create the system by implementing the requirements
 implement req docs/requirements/customs_demo
-
 ```
+
+&nbsp;
+
+# Appendices
+
+## 2-message Pattern
+
+**Duplicate policy** — default is `replace`: an existing `Shipment` graph is deleted (ORM cascade) and the new parsed graph inserted. Set env var `ISDC_DUPLICATE_POLICY=fail` to raise an error on duplicate `LOCAL_SHIPMENT_OID_NBR` instead.
+
+**Design note — why 2 messages?** The original design used 1 message: receive XML, save `ShipmentXml`, parse into DB tables — all in one transaction. The 2-message design now in place was adopted after reviewing production reliability requirements.
+
+The key advantage is **transaction isolation**. A tempting alternative to 2 messages is a try/catch in the single transaction: always save `ShipmentXml`, best-effort parse the DB tables. This breaks down in SQLAlchemy: a failed flush (e.g. parser error mid-parse) **poisons the session** — you can't commit the blob in the same session after an exception. You'd need two explicit back-to-back transactions, plus a third to write the error back to `ShipmentXml`. That's messy and fragile.
+
+The 2-message design solves this cleanly: Kafka acts as the durable commit boundary between ingestion and processing. The blob is always saved (transaction 1), and a parse failure only affects transaction 2 — no session gymnastics, and back-pressure decoupling is a free bonus.
+
+&nbsp;
+
+## Effort
+
+This project required about 2 days.
+
+Curious what this would take to build traditionally? Give your AI this requirements doc and ask for an estimate.
