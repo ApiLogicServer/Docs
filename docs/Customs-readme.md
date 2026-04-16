@@ -22,11 +22,25 @@ Please load `.github/.copilot-instructions.md`.
 
 ## Executive Summary
 
-This system ingests customs shipment data from a message broker, applies business matching rules, and persists a complete shipment record — with full API, audit trail, and governance built in.
+This system ingests customs shipment data from a Kafka message broker, matches shipments to known importers, and persists a complete, governed shipment record — with full REST API, audit trail, and Admin UI included. 
 
-A traditional Java team would estimate 6–12 months for equivalent functionality. This was built in days — using Executable Requirements, which compiles a plain-English requirements document into a governed, running system.
+**Delivery Speed**<br>
+It was built in 2 days by one engineer using GenAI-Logic's Executable 
+Requirements workflow: a plain-English requirements document was compiled into a running, 
+governed system. The primary inputs were an existing database schema, an XML field-mapping 
+spreadsheet, and a sample message.
 
-Speed is the headline. The deeper value is governance: business rules enforced on every path by architecture, not developer discipline. A new endpoint, a new agent, a new developer — all inherit the same rules automatically. By architecture, not discipline.
+A comparable conventional project — Kafka pipeline, XML parsing, 7-table persistence, 
+importer matching, REST API, Admin UI, and standard enterprise delivery — would typically 
+require 6–12 months for a Java/Spring Boot team. The framework generates the infrastructure 
+layer automatically; the engineer's time was spent on the domain-specific logic: parsing, 
+matching, and duplicate handling.
+
+**Governance**<br>
+The deeper value is not speed alone. Business rules are enforced by architecture on every 
+path — API, UI, agent, or new endpoint — without developer discipline required. A new 
+developer, a new agent, a new integration: all inherit the same rules automatically. Governed 
+by architecture, not discipline.
 
 > For the full story on **Executable Requirements**, [click here](executable-requirements.md){:target="_blank" rel="noopener"}.
 
