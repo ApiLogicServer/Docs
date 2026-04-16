@@ -30,11 +30,7 @@ Requirements workflow: a plain-English requirements document was compiled into a
 governed system. The primary inputs were an existing database schema, an XML field-mapping 
 spreadsheet, and a sample message.
 
-A comparable conventional project — Kafka pipeline, XML parsing, 7-table persistence, 
-importer matching, REST API, Admin UI, and standard enterprise delivery — would typically 
-require 6–12 months for a Java/Spring Boot team. The framework generates the infrastructure 
-layer automatically; the engineer's time was spent on the domain-specific logic: parsing, 
-matching, and duplicate handling.
+A comparable conventional project covers significant scope: Kafka pipeline, XML parsing, 7-table persistence, importer matching, REST API, Admin UI, and standard enterprise delivery. Curious what that would take to build traditionally? Give your AI this requirements document and ask for an estimate — then compare.
 
 **Governance**<br>
 The deeper value is not speed alone. Business rules are enforced by architecture on every 
