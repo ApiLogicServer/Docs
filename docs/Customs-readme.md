@@ -121,3 +121,17 @@ The 2-message design solves this cleanly: Kafka acts as the durable commit bound
 This project required about 2 days.
 
 Curious what this would take to build traditionally? Give your AI this requirements doc and ask for an estimate.
+
+&nbsp;
+
+## Replace and Match Example
+
+```bash title="Process Shipment - no match"
+curl 'http://localhost:5656/consume_debug/isdc?file=docs/requirements/customs_demo/message_formats/demo-01-no-match.xml'
+```
+
+Verify the Shipment data, then
+
+```bash title="Process Shipment Replacement - match"
+curl 'http://localhost:5656/consume_debug/isdc?file=docs/requirements/customs_demo/message_formats/demo-02-match-replace.xml'
+```
