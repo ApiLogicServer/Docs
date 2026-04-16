@@ -126,14 +126,6 @@ The 2-message design solves this cleanly: Kafka acts as the durable commit bound
 
 &nbsp;
 
-## Effort
-
-This project required about 2 days.
-
-Curious what this would take to build traditionally? Give your AI this requirements doc and ask for an estimate.
-
-&nbsp;
-
 ## Replace and Match Example
 
 ```bash title="Process Shipment - no match"
