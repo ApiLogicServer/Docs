@@ -1,7 +1,7 @@
 ---
 title: Executable Requirements
 source: docs/Exec-Reqmts.md
-version: 1.8, 4/11/2026
+version: 1.9, 4/17/2026
 ---
 
 <style>
@@ -18,9 +18,9 @@ version: 1.8, 4/11/2026
     **Executable Requirements** uses the spec as direct AI input to produce a *runnable project* — not a one-shot artifact, but a governed starting point your team iterates from.
 
     * **Any format:** structured prose, numbered lists, Gherkin — whatever your team already writes
-    * **PM-driven workflow:** Product Manager prepares a `requirements/` folder (logic, message formats, acceptance tests); Dev drops it in the project and types `implement reqs <name>`
+    * **PM-driven workflow:** sample scenario - Product Manager prepares a `requirements/` folder (logic, message formats, acceptance tests); Dev drops it in the project and types `implement reqs <name>`
     * **AI produces a runnable project** and writes back an audit trail (`ad-libs.md`) of every decision — red flags for review, FYIs for standard patterns
-    * **Iterative by design:** update `requirements.md`, re-run — each cycle tightens the spec; declarative rules make logic changes safe (automatic ordering and reuse, no cascade of procedural updates)
+    * **Iterative by design:** add new requirements — each cycle tightens the spec; declarative rules make logic changes safe (automatic ordering and reuse, no cascade of procedural updates)
     * **Governance is architectural:** rules live on the data, not the path — every new API, agent, or integration inherits them automatically
 
 &nbsp;
@@ -30,6 +30,12 @@ version: 1.8, 4/11/2026
 Traditional requirements are a handoff artifact: a document a developer reads, interprets, and then implements. Interpretation introduces drift — requirements that describe intent, code that approximates it.
 
 Executable Requirements treats the spec as direct AI input. AI reads the requirements file and produces a runnable project — Python, your IDE, your source control. That project is the executable artifact, not the prompt. The spec and the implementation stay coupled through iteration: update the requirements, re-run, review the audit trail, refine. Declarative rules make that loop practical — when logic changes, you update the rule; ordering and reuse are automatic.
+
+&nbsp;
+
+## What It Is Not: a Wizard
+
+The resultant project is fully standard, *designed* for iterative development.  Use standard Python and dev tools to customize, test, deploy, etc.
 
 &nbsp;
 
@@ -53,7 +59,7 @@ Use case: App Integration
     1. Publish the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 
-**Gherkin** — for teams that already use BDD-style specs (see `samples/requirements/Order-EAI/requirements.md`):
+**Gherkin** — for teams that already use BDD-style specs (see `samples/requirements/demo-eai/docs/requirements/demo-eai/requirements.md`):
 
 ```gherkin
 Feature: Check Credit
@@ -68,7 +74,7 @@ Feature: Check Credit
     And reject if balance exceeds the credit limit
 ```
 
-Both formats produce the same output: declarative rules enforced on every path, a generated test suite, and an Admin app — from a single `implement reqs` prompt.
+Both formats produce the same output: declarative rules enforced on every path, a standard JSON:API, and an Admin app — from a single `implement reqs` prompt.
 
 &nbsp;
 
@@ -152,7 +158,7 @@ Two severity tiers:
 | 🔴 **Review Required** | AI made a decision that could be wrong — specific action called out |
 | 🟡 **FYI** | Standard pattern applied — no action needed, recorded for transparency |
 
-Example from the Order-EAI sample:
+Example from the `demo_eai` sample:
 
 ```
 🔴  OrderB2BMapper.py — parent_lookups tuple shape may not match what
@@ -170,43 +176,25 @@ The loop: review `ad-libs.md`, update `requirements.md` to resolve any 🔴 item
 
 &nbsp;
 
-## Try It — Order-EAI in Under 10 Minutes
+## Try It — `demo_eai` in Under 10 Minutes
 
-The Manager ships a ready-to-run sample: `samples/requirements/Order-EAI/` — B2B order intake via both a custom REST endpoint and Kafka, with outbound shipping notification and full Check Credit logic.
+The Manager ships a ready-to-run sample: `samples/requirements/demo_eai/` — B2B order intake via both a custom REST endpoint and Kafka, with outbound shipping notification and full Check Credit logic.
 
-> This is the same system shown in [Sample Basic EAI](Sample-Basic-EAI.md){:target="_blank" rel="noopener"}, which walks through the same project as a step-by-step tutorial focused on the EAI patterns.
 
-**Step 1 — Create the project** (in the Manager terminal):
+```bash title="Step 1 - Establish Initial State, Execute Requirements"
+# A - Create project from existing database
+genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 
-```bash
-genai-logic create --project_name=demo_eai_exec_reqmts --db_url=sqlite:///samples/dbs/basic_demo.sqlite
-```
+# B - in created project, get these requirements
+$ cp -r ../samples/requirements/demo-eai/ .
 
-Open the created project in VS Code.
-
-**Step 2 — Copy the requirements set** (from a terminal inside the created project):
-
-```bash
-cp -r ../samples/requirements/Order-EAI  docs/requirements/Order-EAI
-```
-
-> `docs/requirements/` already exists in every created project.
-
-**Step 3 — Load context, then run** in Copilot **Agent** mode (not Ask):
-
-```
-Please load `.github/.copilot-instructions.md`.
-```
-
-Then:
-
-```
-implement reqs Order-EAI
+# C - create system from requirements
+implement requirements docs/requirements/demo_eai
 ```
 
 AI reads `docs/requirements/Order-EAI/requirements.md`, builds the system, and writes `docs/requirements/Order-EAI/ad-libs.md`.
 
-**Step 4 — Review the audit trail:**
+**Step 2 — Review the audit trail:**
 
 - **🔴 Review Required** — decisions that need your confirmation
 - **🟡 FYI** — standard patterns applied, no action needed
