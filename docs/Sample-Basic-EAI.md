@@ -1,7 +1,7 @@
 ---
 title: basic_demo_EAI
 do_process_code_block_titles: True
-version: 1.6 from docsite, for readme 4/8/2026 - message_formats auto-included in prototype
+version: 1.7 from docsite, for readme 4/16/2026 - message_formats auto-included in prototype, xr
 source: docs/Sample-Basic-EAI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
@@ -37,16 +37,31 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 Please load `.github/.copilot-instructions.md`
 ```
 
+
 > **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.  Also, we get consistently good results with `Claude Sonnet 4.6`.
 
 &nbsp;
 
 **Executable Requirements - a new option for your organization**
 
-The prompts on this page are the requirements for this system. Not a description of what got built — the actual requirements, in the form AI can execute directly.
+
+```bash title="Establish Initial State, Execute Requirements"
+# A - Create project from existing database
+genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
+
+# B - in created project, get these requirements
+$ cp -r ../samples/requirements/demo-eai/ .
+
+# C - create system from requirements
+implement requirements docs/requirements/demo_eai
+```
+
+The prompts on this page are the requirements for this system. Execute the steps above to build it.  Thse requirements are not just a description of the system - AI can execute them, directly.
+
 This is a real project: your IDE, your Python, your source control. The prompts create it instantly — but you own it fully and iterate from there. Change a rule; the engine determines execution order automatically. Add an endpoint; the rules are already there waiting for it.
 
 This suggests a different way to think about requirements gathering. Instead of Word documents that describe a system and then drift from it, requirements can be structured prompts — precise enough for AI to execute, readable enough for business and IT to agree on. The spec and the running system are the same artifact.
+
 
 &nbsp;
 
