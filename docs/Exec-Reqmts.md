@@ -22,6 +22,7 @@ version: 1.9, 4/17/2026
     * **AI produces a runnable project** and writes back an audit trail (`ad-libs.md`) of every decision — red flags for review, FYIs for standard patterns
     * **Iterative by design:** add new requirements — each cycle tightens the spec; declarative rules make logic changes safe (automatic ordering and reuse, no cascade of procedural updates)
     * **Governance is architectural:** rules live on the data, not the path — every new API, agent, or integration inherits them automatically
+    * **Learn more:** [genai-logic.com](https://www.genai-logic.com){:target="_blank" rel="noopener"} — see the Architecture Walk-Through for full project overview and interactive architecture diagram
 
 &nbsp;
 
@@ -29,13 +30,36 @@ version: 1.9, 4/17/2026
 
 Traditional requirements are a handoff artifact: a document a developer reads, interprets, and then implements. Interpretation introduces drift — requirements that describe intent, code that approximates it.
 
-Executable Requirements treats the spec as direct AI input. AI reads the requirements file and produces a runnable project — Python, your IDE, your source control. That project is the executable artifact, not the prompt. The spec and the implementation stay coupled through iteration: update the requirements, re-run, review the audit trail, refine. Declarative rules make that loop practical — when logic changes, you update the rule; ordering and reuse are automatic.
+Executable Requirements treats requirements.md as direct AI input. The AI reads the file and produces a running system — Python source, database, REST API, business logic, tests. Not a prototype. Not a scaffold. A running system you own, in your IDE, in your source control.
+
+Behavior is added incrementally: drop a new requirements file into docs/requirements/<name>/, tell the AI to implement it, and it executes that slice on the running system. Each increment builds on the last. The AI reports any decisions it made beyond the spec (the ad-libs report), so you know exactly what was automated and what needs review.
+
+Declarative rules make iteration safe: adding logic for a new use case doesn't disturb existing rules. When a rule changes, you update the declaration; ordering and reuse are automatic.
+
+The `demo_eai` sample illustrates the process:
+
+1. You execute the steps in the upper right (`readme.md`) - note the use of Copilot in lower right
+2. The key file is `requirements.md` - bottom left
+3. This creates the system summarized in the diagram - top left
+
+![demo_eai](images/exec_reqmts/exec-reqmts.png)
+
+&nbsp;
+
+### Logic, APIs and Messages
+
+The typical requirements describe:
+
+* Logic -- multi-table derivations and constraints, in Natural Language.  For more on rules, [click here](Logic-Why.md){:target="_blank" rel="noopener"}.
+* Custom APIs/Messages -- these are typically described using example formats, and exception mappings.  For more on Enterprise Application Integration, [click here](Integration-EAI.md){:target="_blank" rel="noopener"}. 
+
+You can use the Admin app, or more typically, vibe a custom app using the automatic API.
 
 &nbsp;
 
 ## What It Is Not: a Wizard
 
-The resultant project is fully standard, *designed* for iterative development.  Use standard Python and dev tools to customize, test, deploy, etc.
+The resultant project is fully standard Python — your IDE, your source control, your deployment pipeline. Nothing is locked to a generator or a framework layer. You customize, test, and deploy it the same way you would any Python service. The requirements file and the ad-libs report stay alongside the code as living documentation, not as a regeneration mechanism.
 
 &nbsp;
 
@@ -89,7 +113,7 @@ A natural division of labor emerges from the structure:
 | **Developer** | Creates `docs/requirements/<name>/` in the project repo, drops in `requirements.md` and supporting files |
 | **Developer** | Types `implement reqs <name>` in Copilot Agent mode |
 | **AI** | Builds the system, writes `docs/requirements/<name>/ad-libs.md` with decisions made |
-| **PM + Dev** | Reviews `ad-libs.md` — 🔴 items require confirmation, 🟡 are standard patterns; update `requirements.md` and re-run |
+| **PM + Dev** | Reviews `ad-libs.md` — 🔴 items require confirmation, 🟡 are standard patterns; tighten the spec for the next increment |
 
 This is the starting point for iterative development, not a one-shot deployment. Each cycle produces a working system your team owns and refines.
 
@@ -201,7 +225,7 @@ AI reads `docs/requirements/Order-EAI/requirements.md`, builds the system, and w
 
 Update `requirements.md` to clarify anything flagged red, then re-run.
 
-**Step 5 — Verify** (no Kafka required — use the `consume_debug` endpoint):
+**Step 3 — Verify** (no Kafka required — use the `consume_debug` endpoint):
 
 ```bash
 curl 'http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/Order-EAI/message_formats/order_b2b.json'
