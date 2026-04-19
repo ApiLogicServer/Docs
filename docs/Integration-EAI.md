@@ -37,9 +37,18 @@ GenAI-Logic provides multiple approaches for integrations:
 
 &nbsp;
 
-![demo_kafka](images/integration/demo_kafka.png)
+![demo_kafka](images/integration/demo-eai.png)
+
+The Manager helps you build `demo_eai`, which illustrates creating logic, APIs and Messages using AI (e.g. plain text or Gherkin syntax):
+
+![demo_kafka](images/integration/demo-eai-ai.png)
 
 These approaches are typically more efficient than ETL-based integrations:
+
+<details markdown>
+
+<summary>Integration Approaches </summary>
+
 
 | Requirement | Poor Practice | Good Practice | Best Practice | Ideal
 | :--- |:---|:---|:---|:---|
@@ -51,6 +60,8 @@ These approaches are typically more efficient than ETL-based integrations:
 * **APIs should be self-serve:** not requiring continuing server development — they avoid the overhead of nightly Extract, Transfer and Load (ETL)
 
 * **Logic should be re-used** over the UI and API transaction sources — logic embedded in UI controls cannot be shared with APIs and message consumers
+
+</details>
 
 &nbsp;
 
