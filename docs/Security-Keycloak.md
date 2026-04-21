@@ -1,14 +1,12 @@
 !!! pied-piper ":bulb: TL;DR - Authorize using Keycloak"
 
-    You can use Keycloak for authentication.  You can configure your own keycloak, or use the procedure below to **install Keycloak:**
+    You can use Keycloak for authentication.  You can configure your own keycloak, or use the procedure below with `basic_demo` to **install Keycloak:**
     
     1. Install keycloak using a Docker container: `cd devops/keycloak; docker compose up`
-
-    2. Activate: `als add-auth --provider-type=keycloak --db-url=localhost`
+    2. Load Security declarations: `genai-logic add-cust`
+    3. Activate: `genai-logic add-auth --provider-type=keycloak --db-url=localhost`
 
     In addition, this page describes how to **administer User/Roles in your Keycloak**, and export these settings into your project for source control and team development.
-
-    This page is ***under construction***.  
 
 &nbsp;
 
