@@ -58,7 +58,7 @@ implement requirements docs/requirements/demo_eai
 
 The prompts on this page are the requirements for this system. Execute the steps above to build it.  Thse requirements are not just a description of the system - AI can execute them, directly.
 
-This is a real project: your IDE, your Python, your source control. The prompts create it instantly — but you own it fully and iterate from there. Change a rule; the engine determines execution order automatically. Add an endpoint; the rules are already there waiting for it.
+This is a real project: your IDE, your Python, your source control. The prompts create it in minutes — but you own it fully and iterate from there. Change a rule; the engine determines execution order automatically. Add an endpoint; the rules are already there waiting for it.
 
 This suggests a different way to think about requirements gathering. Instead of Word documents that describe a system and then drift from it, requirements can be structured prompts — precise enough for AI to execute, readable enough for business and IT to agree on. The spec and the running system are the same artifact.
 
