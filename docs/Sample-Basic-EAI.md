@@ -1,7 +1,7 @@
 ---
-title: basic_demo_EAI
+title: Sample_Basic_EAI
 do_process_code_block_titles: True
-version: 1.7 from docsite, for readme 4/16/2026 - message_formats auto-included in prototype, xr
+version: 1.8 from docsite, for readme 4/21/2026 - message_formats auto-included in prototype, xr
 source: docs/Sample-Basic-EAI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
@@ -50,7 +50,7 @@ Please load `.github/.copilot-instructions.md`
 genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 
 # B - in created project, get these requirements
-$ cp -r ../samples/requirements/demo-eai/ .
+$ cp -r ../samples/requirements/demo_eai/ .
 
 # C - create system from requirements
 implement requirements docs/requirements/demo_eai
