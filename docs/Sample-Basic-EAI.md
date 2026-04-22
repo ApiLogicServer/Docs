@@ -293,25 +293,18 @@ curl 'http://localhost:5656/consume_debug/order_b2b?file=integration/kafka/messa
 
 <br>
 
-## 6. Test
+## 6. How to Test
 
-Observe that the API and message listener use the same underlying logic.
-
-`integration/kafka/kafka_subscribe_discovery/order_b2b.py` illustrates unit testing:
-
-```bash title="Test stand-alone, and with Kafka"
-Debug / test (no Kafka required):
-  APILOGICPROJECT_CONSUME_DEBUG=true is set in config/default.env
-  1. Start server: python api_logic_server_run.py
-  2. curl 'http://localhost:5656/consume_debug/order_b2b?file=integration/kafka/message_formats/order_b2b.json'
-  3. Verify DB: sqlite3 database/db.sqlite "SELECT * FROM order_b2b_message; SELECT * FROM 'order'; SELECT * FROM item;"
-
-Live Kafka:
-  1. docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d
-  2. Enable KAFKA_CONSUMER + KAFKA_PRODUCER in config/default.env
-  3. bash integration/kafka/order_b2b_reset.sh       # recreates topics + clears log
-  4. Start server; publish sample JSON to order_b2b topic
+- Test without Kafka (debug endpoint bypasses Kafka entirely):
 ```
+curl "http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/demo_eai/message_formats/order_b2b.json"
+```
+
+- Kafka is optional. To test with live Kafka:
+  1. Start Docker: `docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d`
+  2. Reset topics: `bash integration/kafka/order_b2b_reset.sh`
+  3. Restart the server (after Docker is up, so it picks up Kafka env vars and subscribes to topics)
+  4. Send a test message using the curl command above
 
 
 <br>
@@ -328,7 +321,9 @@ Upgrade the order_shipping publish to by-example.
 The desired outbound message format is in `integration/kafka/message_formats/order_shipping.json`.
 ```
 
-!!! note "No mappings needed in the prompt"
-    AI reads the format file and `models.py` and maps by name.  Direct matches are silent; uncertain ones get `# TODO: verify` in `FIELD_EXCEPTIONS`; anything unresolvable is added to `_unresolved` and **blocks server start** — reported to you in chat immediately.  Only add exceptions to the prompt if you want to override AI's inference.
+&nbsp;
+
+### 7a. No mappings needed in the prompt
+AI reads the format file and `models.py` and maps by name.  Direct matches are silent; uncertain ones get `# TODO: verify` in `FIELD_EXCEPTIONS`; anything unresolvable is added to `_unresolved` and **blocks server start** — reported to you in chat immediately.  Only add exceptions to the prompt if you want to override AI's inference.
 
 For full details and generated code examples, see [Integration EAI — Publish](Integration-EAI.md#publish--outbound-kafka-messages){:target="_blank" rel="noopener"}.
