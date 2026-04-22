@@ -52,14 +52,14 @@ Please load `.github/.copilot-instructions.md`
 # A - Create project from existing database
 genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 
-# B - in created project, get these requirements
+# B - In created project, get these requirements
 $ cp -r ../samples/requirements/demo_eai/ .
 
-# C - optionally, configure security
+# C - Optionally, configure security
 $ (cd devops/keycloak; docker compose up -d)
 $ genai-logic add-auth --provider-type=keycloak --db-url=localhost
 
-# D - create system from requirements
+# D - Create system from requirements
 implement requirements docs/requirements/demo_eai
 ```
 
@@ -246,8 +246,11 @@ Field mappings:
 - `Items` array → Item rows: `Name` → look up Product by Product.name, set Item.product_id; `QuantityOrdered` → Item.quantity
 ```
 
-!!! note "Why mappings here but not in Section 7?"
-    These mappings are **FK lookups** — `Account` isn't a column, it's a search key to find the right `Customer` row.  AI can't infer that from field names alone.  For publish (Section 7), the mappings are purely name-matching between the format file and `models.py` — something AI can do itself.
+&nbsp;
+
+## 5a. Lookups
+
+These mappings include **FK lookups** — `Account` isn't a column, it's a search key to find the right `Customer` row.  AI can't infer that from field names alone.  For publish (Section 7), the mappings are purely name-matching between the format file and `models.py` — something AI can do itself.
 
 &nbsp;
 
