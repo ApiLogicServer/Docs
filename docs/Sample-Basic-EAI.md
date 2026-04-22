@@ -22,7 +22,10 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 
     This sample presumes you are familiar with basic GenAI-Logic services, as illustrated in the Basic Demo tutorial.
 
-    These prompts are **Executable Requirements** — AI can build a *running system* you can use to confirm the requirements, and kick-start development.
+    These prompts are **Executable Requirements** — AI can build a *running system* you can use to confirm the requirements, and kick-start development.  As you will observe in the `requirements.md` (loaded later, below), this project includes
+
+    * **Core Creation Services:** JSON:API, Admin App, standard project (customize in your IDE), standard container deployment
+    * **Executable Requirements:** NL creation of multi-table logic, custom APIs, EAI Subscribers and Publishers, and Role Based Access Control
 
     > This is the same system used in [Executable Requirements](Exec-Reqmts.md){:target="_blank" rel="noopener"}, which focuses on how these prompts serve as the living spec — readable by business and IT, executable by AI.
 
@@ -52,7 +55,11 @@ genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_
 # B - in created project, get these requirements
 $ cp -r ../samples/requirements/demo_eai/ .
 
-# C - create system from requirements
+# C - optionally, configure security
+$ (cd devops/keycloak; docker compose up -d)
+$ genai-logic add-auth --provider-type=keycloak --db-url=localhost
+
+# D - create system from requirements
 implement requirements docs/requirements/demo_eai
 ```
 
