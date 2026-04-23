@@ -136,11 +136,14 @@ Test without Kafka (debug endpoint bypasses Kafka entirely):
 
 ## More On Rules
 
-1. Automatic Commit-time Governanc: all sources, paths
+1. Automatic Commit-time Governance: all sources, paths
 2. Gherkin, text etc (show screenshot)
+![distill rules](images/ui-vibe/assistant/$2%20Distill%20Rules.png)
+
 3. CE: Rules (not 40x Code)
 
-    a. Correct: Show the AI Study
+    a. Correct: Show the [AI Study](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}
+
     b. Maintains intent: review, fix, extend
 
 
