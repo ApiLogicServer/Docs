@@ -160,22 +160,23 @@ Kafka is optional. To test with live Kafka:
 
 So how does this really run?
 
+As shown below, AI (directed by context engineering) generates "data rules" in Python.  Ai works with a variety of formats - Gherkin (above), or plain text (below).
+
 ![distill rules](images/ui-vibe/assistant/$2%20Distill%20Rules.png)
 
-1. Automatic Commit-time Governance: all sources, paths
-2. Gherkin, text etc ()
-3. CE: Rules (not 40x Code)
 
-    a. Correct: Show the [AI Study](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}
+Constrast this AI without context engineering - those same 5 rules generate over 200 lnes of code - 40X.  This is not just unwieldy - it introduces significant **correctness issues**.
 
-    b. Maintains intent: review, fix, extend
+AI pattern matching introduces subtle errors.  When we asked AI to create logic without rules, we identified several errors.  This provoked AI - *on its own* - to document this.  To see the study, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}
+
+* The Governance Architecture addresses this by delegating dependency management to the rules engine.  Dependencies are automatically computed on startup, deterministically.  Note how automatic invocation and ordering directly simplify maintenance.
 
 &nbsp;
 
-**5 rules replace 200+ lines of procedural code — 40X more concise:**
+**Beyond correctness, rules confer signficant advantage:**
 
 **Readable**<br>
-The rule is the requirement. Business and IT read the same artifact. No translation layer no gap between specification and implementation.
+The rule is the requirement. Business and IT read the same artifact. No translation layer no gap between specification and implementation.  Your intent is not lost.
 
 **Auditable**<br>
 Every transaction traces to the rule that governed it. Rules fire automatically on every path, without exception — so the audit trail is complete by construction. Requirement → rule → execution log. Compliance can prove governance, not just assert it.
