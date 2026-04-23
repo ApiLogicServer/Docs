@@ -1,38 +1,56 @@
-## Top 5 CIO Concerns
-
-Based on current research, the top 5 CIO concerns in 2026 are:
-
-1. AI Governance & Operationalizing Agentic AI
-AI takes the NASCIO number one spot for the first time, overtaking cybersecurity which held the top position for 12 straight years. The concern isn't adopting AI — it's governing it responsibly at scale.
-2. Cybersecurity & Risk Management
-For the third year running, cybersecurity and risk management stands out as the number one focus area for enterprise CIOs Evanta — now made more complex by AI expanding the attack surface.
-3. Data Quality & Governance
-Foundational to everything else — AI is only as good as the data it runs on. Data sovereignty and compliance are increasingly prominent.
-4. Technical Debt & Modernization
-Legacy ERP platforms, brittle data architectures, and custom applications that cannot scale or integrate with modern tools Itexecutivescouncil are blocking AI readiness.
-5. Workforce Transformation
-Reskilling teams for an AI-augmented environment — redefining roles, not just adding tools.
 
 ## GenAI-Logic Governance architecture
 
-How it address 1, 2, 3, 5
+AI is fast, it's simple, but a little scary - where's the Governance?
+
+We created an architecture for governance:
+
+1. **Context Engineering** directs AI to generate Data Rules — not procedural code.  Intent becomes declarations.
+2. **Data Rules** distill path-dependent logic into path-independent rules on data. See them below— `Rule.constraint, Rule.sum`. No missed paths. Every path inherits them automatically.
+3. The **Commit Listener** hooks into the ORM commit. Every transaction — API, agent, workflow — passes through one control point.  Nothing bypasses it.
+4. The **Rule Engine** computes dependency order from the Data Rules at startup — deterministically. No pattern-matching, no subtle ordering bugs.
 
 ![doc](images/architecture/logic-architecture.png)
 
+&nbsp;
+
+## Why This Matters
+
+Based on current research, the top 5 CIO concerns in 2026 listed below.  This architecture directly addresses the hilit items:
+
+**1. AI Governance & Operationalizing Agentic AI**<br>
+AI takes the NASCIO number one spot for the first time, overtaking cybersecurity which held the top position for 12 straight years. The concern isn't adopting AI — it's governing it responsibly at scale.
+
+2. Cybersecurity & Risk Management<br>
+For the third year running, cybersecurity and risk management stands out as the number one focus area for enterprise CIOs Evanta — now made more complex by AI expanding the attack surface.
+
+**3. Data Quality & Governance**<br>
+Foundational to everything else — AI is only as good as the data it runs on. Data sovereignty and compliance are increasingly prominent.
+
+4. Technical Debt & Modernization<br>
+Legacy ERP platforms, brittle data architectures, and custom applications that cannot scale or integrate with modern tools Itexecutivescouncil are blocking AI readiness.
+
+5. Workforce Transformation<br>
+Reskilling teams for an AI-augmented environment — redefining roles, not just adding tools.
+
+&nbsp;
+
 ## Fallout: Executable Requirements
 
+This enables AI to fully deliver on its promise - executable requirements.  The process below creates a running system - some setup, and then a prompt for logic, custom APIs, Messaging, and Security.
+
+&nbsp;
 
 ### Initial Creation
 
-API, Admin App - MCP Discoverable, Vibe Ready
+The setup below creates a project from an existing database.  It creates a project you can open in your IDE (standard Python) and run, providing:
 
-Standard IDE - Python...
+* **JSON:API:** an endpoint for each table, with pagination, optimistic locking, filtering, sorting, etc.  With Swagger.
 
-And, extensive CE brings Exec Reqmts
+    * In minutes, you have an MCP-discoverable API.  Vibe custom APIs.
 
-### Executable Requirements
+* **Admin App:** a multi-table admin app, providing master detail, lookups, etc.
 
-**Setup**
 
 ```bash title="Establish Initial State, Execute Requirements"
 # A - Create project from existing database
@@ -48,6 +66,10 @@ $ genai-logic add-auth --provider-type=keycloak --db-url=localhost
 # D - Create system from requirements
 implement requirements docs/requirements/demo_eai
 ```
+
+The following is the exact prompt (steps 1-6) you can then submit to create logic, custom APIs, Messaging, and Security.  AI uses the Context Engineering create executable software.
+
+&nbsp;
 
 **1. Business Logic — Check Credit**
 
@@ -122,12 +144,12 @@ Feature: Row-Level Security
 
 **6. How to Test**
 
-Test without Kafka (debug endpoint bypasses Kafka entirely):
+Test without Kafka (automatically created debug endpoint bypasses Kafka entirely):
 
 `curl "http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/demo_eai/message_formats/order_b2b.json"`
 
-- Kafka is optional. To test with live Kafka:
-- 
+Kafka is optional. To test with live Kafka:
+
   1. Start Docker: `docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d`
   2. Reset topics: `bash integration/kafka/order_b2b_reset.sh`
   3. Restart the server (after Docker is up, so it picks up Kafka env vars and subscribes to topics)
@@ -136,15 +158,40 @@ Test without Kafka (debug endpoint bypasses Kafka entirely):
 
 ## More On Rules
 
-1. Automatic Commit-time Governance: all sources, paths
-2. Gherkin, text etc (show screenshot)
+So how does this really run?
+
 ![distill rules](images/ui-vibe/assistant/$2%20Distill%20Rules.png)
 
+1. Automatic Commit-time Governance: all sources, paths
+2. Gherkin, text etc ()
 3. CE: Rules (not 40x Code)
 
     a. Correct: Show the [AI Study](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}
 
     b. Maintains intent: review, fix, extend
+
+&nbsp;
+
+**5 rules replace 200+ lines of procedural code — 40X more concise:**
+
+**Readable**<br>
+The rule is the requirement. Business and IT read the same artifact. No translation layer no gap between specification and implementation.
+
+**Auditable**<br>
+Every transaction traces to the rule that governed it. Rules fire automatically on every path, without exception — so the audit trail is complete by construction. Requirement → rule → execution log. Compliance can prove governance, not just assert it.
+
+**Maintainable**<br>
+Change the business logic, change the rule. Self-ordering - no archaeology, no missed paths, no ripple analysis, no regression surprises.
+
+**Familiar tools**<br>
+Python, your IDE, your debugger, your source control, deploy as container. Rules live in the repo like everything else. No proprietary lock-in, no new stack to learn.
+
+**Enduring**<br>
+New agents, new endpoints, new developers. All inherit the same rules automatically. Governance doesn't erode as the system grows.
+
+**Optimized**<br>
+Non-RETE engine, purpose-built for transactional performance at commit.. When the rule is the requirement, governance becomes a strategic asset — not a discipline you enforce, but an architecture you deploy.
+
 
 
 ## Real World
