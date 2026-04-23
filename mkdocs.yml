@@ -248,6 +248,7 @@ nav:
     - Personal:
       - "Manager": Manager-readme.md
       - "XRD": executable-requirements.md
+      - "XR Medium": Tech-Exec-Auto-Medium.md
       - "XR EAI": Sample-Basic-EAI-Exec-Req.md
       - "Basic Demo (unused)": Sample-Basic-Demo-Full-Unused.md
       - "Tour": Sample-Basic-Tour.md
