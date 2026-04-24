@@ -183,7 +183,7 @@ The formalized rules also enable the system to create and run tests directly fro
 
 The Rules Engine is fundamental to Governance.  It is what executes the distilled rules above.
 
-Purpose-built for transaction processing (non-RETE), it is a sophicated piece of software, similar in complexity to a relational query engine.
+Purpose-built for transaction processing (non-RETE), it is a sophisticated piece of software, similar in complexity to a relational query engine.
 
 It depends on AI generating data rules, not Frankencode.  This is not native to AI.  GenAI-Logic *trains* AI by providing thousands of lines of Context Engineering, shown below.
 
