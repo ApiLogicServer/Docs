@@ -193,6 +193,23 @@ It depends on AI generating data rules, not Frankencode.  This is not native to 
 
 &nbsp;
 
+## Iteration at Scale
+
+A real system isn't five rules. It's hundreds. And iteration isn't optional — it's the entire job.
+
+Most AI storefronts solve iteration by regenerating the system. That works for screens.  For logic, every regeneration is a new probabilistic output — which means new bugs, every time. At five rules you might catch them. At five hundred you won't.
+
+GenAI-Logic iterates differently. New requirements add new rules; the engine recomputes dependencies automatically. Existing logic isn't regenerated, it's preserved. The human stays in the loop on two surfaces:
+
+* The rules themselves — short, readable, traceable to the spec. The rule is the requirement, restated with precision. Review them in the IDE, adjust as needed.
+* The ad-libs report — every decision AI made beyond the spec, flagged for review or recorded as standard pattern. Tighten the spec, re-run; the loop converges.
+
+This is what makes the system maintainable at enterprise scale: rigorous translation of intent into rules, reviewed by humans, executed by the engine. Not regenerated. Not approximated. Enforced.
+
+![ad-libs](images/exec_reqmts/ad-libs-report.png)
+
+&nbsp;
+
 ## Business Impact
 
 ![n-fold](images/ui-vibe/assistant/$n-fold.png)
