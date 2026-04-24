@@ -68,7 +68,7 @@ $ genai-logic add-auth --provider-type=keycloak --db-url=localhost
 implement requirements docs/requirements/demo_eai
 ```
 
-The following is the exact prompt (steps 1-6) you can then submit to create logic, custom APIs, Messaging, and Security.  AI uses the Context Engineering to create executable software from the actual requirements below (step D).
+The following is the exact prompt (steps 1-6) you can then submit to create logic, custom APIs, Messaging, and Security.  AI uses the Context Engineering to create executable software from the actual requirements below (step D).  This is the entire system — not a prototype.
 
 &nbsp;
 
