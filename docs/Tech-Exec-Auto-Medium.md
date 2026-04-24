@@ -36,9 +36,25 @@ The Commit Listener answers this architecturally. Every transaction — whether 
 
 &nbsp;
 
+## The Correctness Problem
+
+Ask AI to implement those same five business rules as procedural code — it generates 220 lines. 44X. That alone should give pause. But the deeper problem is correctness.
+
+When we ran this experiment, Copilot's procedural code had critical bugs — discovered only after prompting. We asked: *"What if the order's customer changes?"* — it found a bug. *"What if the item's product changes?"* — another bug. Both the same failure: a foreign key change that updated the new parent's balance but left the old parent's balance uncorrected. Silent. No exception. Wrong data persisting to the database.
+
+> 5 rules. 0 bugs. 220 lines. 2 bugs — found only when asked. That gap is not a productivity argument. It's a correctness argument.
+
+This is not a criticism of AI capability. It's structural. Procedural code must explicitly handle every change path — quantity changes, product changes, customer reassignment, order deletion, shipment. The dependency graph has exponential combinations. No AI can enumerate them all. [See the study](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
+
+The Governance Architecture addresses this by delegating dependency management to the rules engine. Dependencies are computed at startup, deterministically — automatic invocation, automatic ordering, every path covered. Not because a developer remembered to handle it. Because the architecture cannot miss it.
+
+&nbsp;
+
 ## Consequence: Executable Requirements
 
-When governance is architectural, requirements become executable. Some setup, then a single prompt creates a running system — logic, custom APIs, messaging, and security.  Let's have a look.
+This is what the architecture produces: requirements that are executable. The same Gherkin a business analyst writes becomes what the rule engine enforces — at commit time, on every path, with no bypass.
+
+Some setup, then a single prompt creates a running system — logic, custom APIs, messaging, and security. This is the entire system, not a prototype.
 
 &nbsp;
 
@@ -51,7 +67,6 @@ The setup below creates a project from an existing database — standard Python,
     * In minutes, you have an MCP-discoverable API.  Vibe custom UIs.
 
 * **Admin App:** a multi-table admin app, providing master detail, lookups, etc.
-
 
 ```bash title="Establish Initial State, Execute Requirements"
 # A - Create project from existing database
@@ -68,7 +83,7 @@ $ genai-logic add-auth --provider-type=keycloak --db-url=localhost
 implement requirements docs/requirements/demo_eai
 ```
 
-The following is the exact prompt (steps 1-6) you can then submit to create logic, custom APIs, Messaging, and Security.  AI uses the Context Engineering to create executable software from the actual requirements below (step D).  This is the entire system — not a prototype.
+The following is the exact prompt (steps 1-6) you can then submit to create logic, custom APIs, Messaging, and Security.  AI uses the Context Engineering to create executable software from the actual requirements below (step D).
 
 &nbsp;
 
@@ -118,7 +133,6 @@ Feature: Kafka Subscribe Order Integration
     And create the order with all Check Credit rules enforced
 ```
 
-
 **4. Kafka Publish — Notify shipping on dispatch**
 
 ```gherkin
@@ -132,7 +146,6 @@ Feature: Kafka Publish Shipping Notification
     And use by-example publish rather than key-only publish
 ```
 
-
 **5. Security**
 
 ```gherkin
@@ -145,28 +158,18 @@ Feature: Row-Level Security
 
 &nbsp;
 
-## More On Governance
+## Any Source, Any Path
 
 Directed by Context Engineering, AI generates Data Rules in Python — from Gherkin (above) or plain text (below).
 
 ![distill rules](images/ui-vibe/assistant/$2%20Distill%20Rules.png)
 
-**Any source, any path**<br>
 The rules execute on commit — *any* commit.
 
 * **Any source** - APIs and messages are all *funneled* into the commit gate, automatically.  No bypass.
 * **Any path** - The resultant logic governs eight scenarios... the Gherkin specified one.  Delete an order — nobody mentioned that. Ship an order — nobody mentioned that. An agent updates a quantity — not in the spec. Yet, all enforce the rules, because the rules are on the data, not the path. They don't know or care which scenario triggered the transaction. A new developer adds an endpoint next month. A new agent connects next year. Both inherit the same rules — automatically, with no additional work.
 
-**Correctness**<br>
-Contrast this with AI *without* context engineering — those same 5 rules generate over 200 lines of code. 40X. Not just unwieldy: it introduces significant **correctness issues**.
-
-AI pattern matching introduces subtle errors. When we asked AI to create logic without rules, it produced code with missed dependencies, incorrect ordering, and incomplete path coverage — errors AI itself documented, unprompted, when asked to compare the two approaches. [See the study](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
-
-> When we asked Copilot 'what if the order's customer changes?' — it found a bug. 'What if the item's product changes?' — another bug. Both discovered only after prompting. Both the same failure: a foreign key change leaving the old parent's balance uncorrected.
-
-The Governance Architecture addresses this by delegating dependency management to the rules engine. Dependencies are computed at startup, deterministically — automatic invocation, automatic ordering, simpler maintenance.
-
-&nbsp;
+You designed one scenario. The architecture governed all of them.
 
 The formalized rules also enable the system to create and run tests directly from rules. These don't just demonstrate requirements are fulfilled — they make the **requirement → rules → execution log** visible to the entire organization: developers, business users, auditors.
 
