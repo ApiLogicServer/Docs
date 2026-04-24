@@ -28,9 +28,17 @@ This is not a theoretical concern — AI Governance ranks #1 among CIO prioritie
 
 &nbsp;
 
+## The AI Agent Problem
+
+Every enterprise deploying AI agents faces the same question: what happens when the agent touches production data? Prompts can be crafted carefully. Models can be fine-tuned. But none of that governs what actually persists to the database.
+
+The Commit Listener answers this architecturally. Every transaction — whether from a human API call, a workflow, or an AI agent — passes through one control point. The agent cannot bypass it. Neither can a new developer, a new endpoint, or a carefully crafted prompt. The rules govern the data, not the caller.
+
+&nbsp;
+
 ## Consequence: Executable Requirements
 
-When governance is architectural, requirements become executable. Some setup, then a single prompt creates a running system — logic, custom APIs, messaging, and security.  Let's have look.
+When governance is architectural, requirements become executable. Some setup, then a single prompt creates a running system — logic, custom APIs, messaging, and security.  Let's have a look.
 
 &nbsp;
 
@@ -153,6 +161,8 @@ The rules execute on commit — *any* commit.
 Contrast this with AI *without* context engineering — those same 5 rules generate over 200 lines of code. 40X. Not just unwieldy: it introduces significant **correctness issues**.
 
 AI pattern matching introduces subtle errors. When we asked AI to create logic without rules, it produced code with missed dependencies, incorrect ordering, and incomplete path coverage — errors AI itself documented, unprompted, when asked to compare the two approaches. [See the study](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
+
+> When we asked Copilot 'what if the order's customer changes?' — it found a bug. 'What if the item's product changes?' — another bug. Both discovered only after prompting. Both the same failure: a foreign key change leaving the old parent's balance uncorrected.
 
 The Governance Architecture addresses this by delegating dependency management to the rules engine. Dependencies are computed at startup, deterministically — automatic invocation, automatic ordering, simpler maintenance.
 
