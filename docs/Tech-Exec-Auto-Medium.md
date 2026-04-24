@@ -30,7 +30,7 @@ This is not a theoretical concern — AI Governance ranks #1 among CIO prioritie
 
 ## Consequence: Executable Requirements
 
-When governance is architectural, requirements become executable. Some setup, then a single prompt creates a running system — logic, custom APIs, messaging, and security.
+When governance is architectural, requirements become executable. Some setup, then a single prompt creates a running system — logic, custom APIs, messaging, and security.  Let's have look.
 
 &nbsp;
 
@@ -40,7 +40,7 @@ The setup below creates a project from an existing database — standard Python,
 
 * **JSON:API:** an endpoint for each table, with pagination, optimistic locking, filtering, sorting, etc.  With Swagger.
 
-    * In minutes, you have an MCP-discoverable API.  Vibe custom APIs.
+    * In minutes, you have an MCP-discoverable API.  Vibe custom UIs.
 
 * **Admin App:** a multi-table admin app, providing master detail, lookups, etc.
 
@@ -60,7 +60,7 @@ $ genai-logic add-auth --provider-type=keycloak --db-url=localhost
 implement requirements docs/requirements/demo_eai
 ```
 
-The following is the exact prompt (steps 1-6) you can then submit to create logic, custom APIs, Messaging, and Security.  AI uses the Context Engineering create executable software.
+The following is the exact prompt (steps 1-6) you can then submit to create logic, custom APIs, Messaging, and Security.  AI uses the Context Engineering create executable software from the actual requirements below (step D).
 
 &nbsp;
 
@@ -147,7 +147,7 @@ Directed by Context Engineering, AI generates Data Rules in Python — from Gher
 The rules execute on commit — *any* commit.
 
 * **Any source** - APIs and messages are all *funneled* into the commit gate, automatically.  No bypass.
-* **Any path** - The resultant logic governs eight scenarios... the Gherkin specified one.  Delete an order — nobody mentioned that. Ship an order — nobody mentioned that. An agent updates a quantity — not in the spec. All enforce the rules, because the rules are on the data, not the path. They don't know or care which scenario triggered the transaction. A new developer adds an endpoint next month. A new agent connects next year. Both inherit the same rules — automatically, with no additional work.
+* **Any path** - The resultant logic governs eight scenarios... the Gherkin specified one.  Delete an order — nobody mentioned that. Ship an order — nobody mentioned that. An agent updates a quantity — not in the spec. Yet, all enforce the rules, because the rules are on the data, not the path. They don't know or care which scenario triggered the transaction. A new developer adds an endpoint next month. A new agent connects next year. Both inherit the same rules — automatically, with no additional work.
 
 **Correctness**<br>
 Contrast this with AI *without* context engineering — those same 5 rules generate over 200 lines of code. 40X. Not just unwieldy: it introduces significant **correctness issues**.
