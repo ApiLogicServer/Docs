@@ -170,6 +170,6 @@ The formalized rules also enable the system to create and run tests directly fro
 
 The rules are the requirement — restated with precision. They're what runs, what auditors review, and what every path inherits. They can't drift from what they enforce.
 
-And because governance is architectural — not disciplinary — the agility follows. One prompt replaced 4 developers × 2 years (Allocation). XR replaced months of traditional framework work (Customs).
+And because governance is architectural — not disciplinary — the agility follows. One prompt replaced 4 developers × 2 years ([Allocation](https://apilogicserver.github.io/Docs/Sample_Allo_Dept_GL_full/)). XR replaced months of traditional framework work ([Customs](https://apilogicserver.github.io/Docs/Customs-readme/), and the [requirements](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md)).
 
 Governance and agility are not a tradeoff. They're the same architecture.
