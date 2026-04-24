@@ -177,6 +177,22 @@ The formalized rules also enable the system to create and run tests directly fro
 
 &nbsp;
 
+&nbsp;
+
+## Making AI Wise
+
+The Rules Engine is fundamental to Governance.  It is what executes the distilled rules above.
+
+Purpose-built for transaction processing (non-RETE), it is a sophicated piece of software, similar in complexity to a relational query engine.
+
+It depends on AI generating data rules, not Frankencode.  This is not native to AI.  GenAI-Logic *trains* AI by providing thousands of lines of Context Engineering, shown below.
+
+> Together: AI generates the rules. The engine enforces them. Neither is optional. Neither is a prompt.
+
+![ce](images/exec_reqmts/$3-Context-Eng.png)
+
+&nbsp;
+
 ## Business Impact
 
 ![n-fold](images/ui-vibe/assistant/$n-fold.png)
