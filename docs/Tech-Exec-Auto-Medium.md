@@ -24,7 +24,7 @@ We've created such a governance architecture:
 
 ## Why This Matters
 
-This is not a theoretical concern — AI Governance ranks #1 among CIO priorities in 2026, overtaking cybersecurity for the first time. The concern isn't adoption. It's control at scale.
+This is not a theoretical concern — AI Governance ranks #1 among CIO priorities in 2026, overtaking cybersecurity for the first time (to see the report, [click here](https://www.nascio.org/resource-center/resources/state-cio-top-ten-policy-and-technology-priorities-for-2026/){:target="_blank" rel="noopener"} ). The concern isn't adoption. It's control at scale.
 
 &nbsp;
 
