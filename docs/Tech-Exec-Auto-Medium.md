@@ -32,7 +32,9 @@ This is not a theoretical concern — AI Governance ranks #1 among CIO prioritie
 
 Every enterprise deploying AI agents faces the same question: what happens when the agent touches production data? Prompts can be crafted carefully. Models can be fine-tuned. But none of that governs what actually persists to the database.
 
-The Commit Listener answers this architecturally. Every transaction — whether from a human API call, a workflow, or an AI agent — passes through one control point. The agent cannot bypass it. Neither can a new developer, a new endpoint, or a carefully crafted prompt. The rules govern the data, not the caller.
+The Commit Listener answers this architecturally. Every transaction — whether from a human API call, a workflow, or an AI agent — passes through one control point. The agent cannot bypass it. Neither can a new developer, a new endpoint, or a carefully crafted prompt. 
+
+This governs every transaction through the ORM — the path all well-behaved application code takes. Direct database connections bypass this layer, as they would any application server; those require standard database-level controls.
 
 &nbsp;
 
@@ -185,7 +187,9 @@ The Rules Engine is fundamental to Governance.  It is what executes the distille
 
 Purpose-built for transaction processing (non-RETE), it is a sophisticated piece of software, similar in complexity to a relational query engine.
 
-It depends on AI generating data rules, not Frankencode.  This is not native to AI.  GenAI-Logic *trains* AI by providing thousands of lines of Context Engineering, shown below.
+It depends on AI generating data rules, not Frankencode.  This is not native to AI.  
+
+GenAI-Logic *trains* AI using Context Engineering — 8,000+ lines of curated rules, patterns, and examples that direct AI to produce declarative Data Rules rather than procedural code. This is not a system prompt. It took years to build, and it's what makes the difference between rules the engine can enforce and Frankencode it cannot.
 
 > Together: AI generates the rules. The engine enforces them. Neither is optional. Neither is a prompt.
 
