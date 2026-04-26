@@ -11,7 +11,11 @@
 
 Business logic governance has always been a structural problem. Procedural code — human-written or AI-generated — must explicitly handle every change path. Every team misses *some.* The bugs are silent, the costs are real, and they accumulate quietly across the codebase.
 
-Agentic AI now makes this acute. New agents touch production data, multiply the paths, and turn a chronic problem into a recognized one — AI Governance ranks #1 among CIO priorities in 2026. But the architecture required to govern AI agents is the same architecture that governs traditional logic. As paths multiply — and as the org scales from one project to hundreds — discipline is not enough. An architecture is required.
+> Every generation has tried to solve this with a new path. Fat clients put logic in the UI — bypassed by every other channel. Fat APIs moved it to the service layer — bypassed by direct database access or the next service. Each architecture became the next one's escape route. The problem was never which path held the logic. It was that logic on any path can be bypassed by another path.
+
+Agentic AI is the newest instance. New agents touch production data, multiply the paths, and turn a chronic problem into a recognized one — AI Governance ranks #1 among CIO priorities in 2026, overtaking cybersecurity for the first time (to see the report, [click here](https://www.nascio.org/resource-center/resources/state-cio-top-ten-policy-and-technology-priorities-for-2026/){:target="_blank" rel="noopener"} ).
+
+But the architecture required to govern AI agents is the same architecture that governs traditional logic. As paths multiply — and as the org scales from one project to hundreds — discipline is not enough. An architecture is required.
 
 We've created such a governance architecture:
 
@@ -21,12 +25,6 @@ We've created such a governance architecture:
 4. The **Rule Engine** computes dependency order from the Data Rules at startup — deterministically. No pattern-matching, no subtle ordering bugs.
 
 ![doc](images/architecture/logic-architecture.png)
-
-&nbsp;
-
-## Why This Matters
-
-This is not a theoretical concern — AI Governance ranks #1 among CIO priorities in 2026, overtaking cybersecurity for the first time (to see the report, [click here](https://www.nascio.org/resource-center/resources/state-cio-top-ten-policy-and-technology-priorities-for-2026/){:target="_blank" rel="noopener"} ). The concern isn't adoption. It's control at scale.
 
 &nbsp;
 
