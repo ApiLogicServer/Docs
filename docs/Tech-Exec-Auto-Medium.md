@@ -164,7 +164,7 @@ Feature: Row-Level Security
 
 ## Any Source, Any Path
 
-Directed by Context Engineering, AI generates Data Rules in Python — from Gherkin (above) or plain text (below).
+Directed by Context Engineering, AI generates **Data Rules** in Python — from Gherkin (Step 1,above) or plain text (below).
 
 ![distill rules](images/ui-vibe/assistant/$2%20Distill%20Rules.png)
 
