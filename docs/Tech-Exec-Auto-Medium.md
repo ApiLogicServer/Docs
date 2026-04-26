@@ -9,7 +9,9 @@
 
 ## GenAI-Logic Governance architecture
 
-Agentic AI has enormous potential. It also has a recognized governance problem. Existing / new paths must consistently enforce business policy - credit limits, order rules, data integrity.  As paths multiply with AI Agents — and as the org scales from one project to hundreds — discipline is not enough. An architecture is required.
+Business logic governance has always been a structural problem. Procedural code — human-written or AI-generated — must explicitly handle every change path. Every team misses *some.* The bugs are silent, the costs are real, and they accumulate quietly across the codebase.
+
+Agentic AI now makes this acute. New agents touch production data, multiply the paths, and turn a chronic problem into a recognized one — AI Governance ranks #1 among CIO priorities in 2026. But the architecture required to govern AI agents is the same architecture that governs traditional logic. As paths multiply — and as the org scales from one project to hundreds — discipline is not enough. An architecture is required.
 
 We've created such a governance architecture:
 
@@ -48,7 +50,7 @@ When we ran this experiment, Copilot's procedural code had critical bugs — dis
 
 > 5 rules. 0 bugs. 220 lines. 2 bugs — found only when asked. That gap is not a productivity argument. It's a correctness argument.
 
-This is not a criticism of AI capability. It's structural. Procedural code must explicitly handle every change path — quantity changes, product changes, customer reassignment, order deletion, shipment. The dependency graph has exponential combinations. No AI can enumerate them all. [See the study](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
+This is not a criticism of AI capability. It's structural — the same problem that has plagued procedural business logic for decades. Procedural code must explicitly handle every change path — quantity changes, product changes, customer reassignment, order deletion, shipment. The dependency graph has exponential combinations. No developer enumerates them all. No AI can either. The bugs are silent, and they ship. [See the study](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/basic_demo/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}.
 
 The Governance Architecture addresses this by delegating dependency management to the rules engine. Dependencies are computed at startup, deterministically — automatic invocation, automatic ordering, every path covered. Not because a developer remembered to handle it. Because the architecture cannot miss it.
 
