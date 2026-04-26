@@ -9,7 +9,7 @@
 
 ## GenAI-Logic Governance architecture
 
-Agentic AI has enormous potential. It also has a recognized governance problem. Existing / new paths must consistently enforce business policy - credit limits, order rules, data integrity.  As paths multiply with AI Agents, discipline is not enough — an architecture is required.
+Agentic AI has enormous potential. It also has a recognized governance problem. Existing / new paths must consistently enforce business policy - credit limits, order rules, data integrity.  As paths multiply with AI Agents — and as the org scales from one project to hundreds — discipline is not enough. An architecture is required.
 
 We've created such a governance architecture:
 
@@ -196,6 +196,17 @@ GenAI-Logic *trains* AI using Context Engineering — 8,000+ lines of curated ru
 > Together: AI generates the rules. The engine enforces them. Neither is optional. Neither is a prompt.
 
 ![ce](images/exec_reqmts/$3-Context-Eng.png)
+
+&nbsp;
+
+## Governance at Org Scale
+
+The architecture above governs one project. The harder question is org scale — dozens of teams, hundreds of services, requirements flowing in from every direction.
+Most enterprises already have the front of this pipeline. Gherkin is established practice. Business analysts write scenarios. Product owners review them. They flow into Jira, into specs, into developer tickets. The pipeline exists.
+The question is what comes out the other end.
+Without a rules engine, Gherkin becomes procedural code. Each team interprets the spec, writes the handlers, wires up the paths. The same five-rule scenario produces 220 lines on one team, 340 on another — each with the path-dependency bugs no developer (and no AI) enumerates exhaustively. Multiply by every team, every quarter, every new endpoint, and governance reverts to a discipline problem at scale — which is to say, an unsolved problem.
+With GenAI-Logic, that same Gherkin produces declarative rules — automatically dependency-ordered, automatically enforced at commit, automatically inherited by every new path. The pipeline doesn't change. The output does.
+This is what makes governance an org-level architectural property rather than a per-project review burden. Gherkin is what the business already writes. The rules are the requirement, restated with precision. Governance becomes pipeline-native — not a layer bolted on, but the natural output of the workflow the org already runs.
 
 &nbsp;
 
