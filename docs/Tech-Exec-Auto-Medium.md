@@ -36,6 +36,8 @@ The Commit Listener answers this architecturally. Every transaction — whether 
 
 This governs every transaction through the ORM — the path all well-behaved application code takes. Direct database connections bypass this layer, as they would any application server; those require standard database-level controls.
 
+But a commit listener is only as trustworthy as the logic it enforces. That’s where most governance approaches fail — procedural code has bugs, and a governance layer built on buggy logic is just a faster path to wrong answers.
+
 &nbsp;
 
 ## The Correctness Problem
@@ -223,3 +225,5 @@ The rules are the requirement — restated with precision. They're what runs, wh
 And because governance is architectural — not disciplinary — the agility follows. One prompt replaced 4 developers × 2 years ([Allocation](https://apilogicserver.github.io/Docs/Sample_Allo_Dept_GL_full/)). XR replaced months of traditional framework work ([Customs](https://apilogicserver.github.io/Docs/Customs-readme/), and the [requirements](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md)).
 
 Governance and agility are not a tradeoff. They're the same architecture.
+
+> It's free and open source. Five minutes to install, then say 'guide me' — the automated tutorial walks you through debugging, performance, and the full architecture hands-on.
