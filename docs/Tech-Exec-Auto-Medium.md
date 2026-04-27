@@ -189,6 +189,8 @@ The Rules Engine is fundamental to Governance.  It is what executes the distille
 
 Purpose-built for transaction processing (non-RETE), it is a sophisticated piece of software, similar in complexity to a relational query engine.
 
+![rule-engine](images/exec_reqmts/rule_engine.png)
+
 It depends on AI generating data rules, not Frankencode.  This is not native to AI.  
 
 GenAI-Logic *trains* AI using Context Engineering — 8,000+ lines of curated rules, patterns, and examples that direct AI to produce declarative Data Rules rather than procedural code. This is not a system prompt. It took years to build, and it's what makes the difference between rules the engine can enforce and Frankencode it cannot.
