@@ -2,7 +2,7 @@
 title: Welcome
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs/Manager-readme
-version info: 16.00.04 (04/15/2026)
+version info: 17.00.07 (04/30/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
 demo_customs: Customs-readme
@@ -34,17 +34,23 @@ This is the start page for the [GenAI-Logic Manager](https://apilogicserver.gith
 
 &nbsp;
 
-## Logic Governance Architecture
+<details markdown>
 
-1. **Context Engineering** directs AI to generate Data Rules — not procedural code. Without it, AI pattern-matches to FrankenCode. With it, intent becomes declarations.
+<summary>Logic Governance Architecture</summary>
 
-2. **Data Rules** distill path-dependent logic into *path-independent rules on data*. See them below — `Rule.constraint`, `Rule.sum`. No missed paths. Every path inherits them automatically.
+<br>
+
+1. **Context Engineering** directs AI to generate Data Rules — not procedural code. Without it, AI pattern-matches to FrankenCode. With it, intent becomes declarations.  This is genned into your project at `docs/training`.
+
+2. **Data Rules** distill path-dependent logic into *path-independent rules on data*. They are Python source — `Rule.constraint`, `Rule.sum`. No missed paths. Every path inherits them automatically.
 
 3. The **Commit Listener** hooks into the ORM commit. Every transaction — API, agent, workflow — passes through one control point. Nothing bypasses it.
 
 4. The **Rule Engine** computes dependency order from the Data Rules at startup — deterministically. No pattern-matching, no subtle ordering bugs.
 
-![Logic Governance Architecture](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/logic-architecture.png?raw=true)
+![Logic Governance Architecture](images/architecture/logic-architecture.png)
+
+</details>
 
 &nbsp;
 
