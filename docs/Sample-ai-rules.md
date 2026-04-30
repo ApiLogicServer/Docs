@@ -70,6 +70,20 @@ To test:
 &nbsp;
 
 
+## Logic Governance Architecture
+
+1. **Context Engineering** directs AI to generate Data Rules — not procedural code. Without it, AI pattern-matches to FrankenCode. With it, intent becomes declarations.
+
+2. **Data Rules** distill path-dependent logic into *path-independent rules on data*. See them below — `Rule.constraint`, `Rule.sum`. No missed paths. Every path inherits them automatically.
+
+3. The **Commit Listener** hooks into the ORM commit. Every transaction — API, agent, workflow — passes through one control point. Nothing bypasses it.
+
+4. The **Rule Engine** computes dependency order from the Data Rules at startup — deterministically. No pattern-matching, no subtle ordering bugs.
+
+![Logic Governance Architecture](images/architecture/logic-architecture.png)
+
+&nbsp;
+
 ## Background Concepts
 
 ### Unified Deterministic / Probablilistic Logic

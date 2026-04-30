@@ -32,6 +32,22 @@ What is GenAI-Logic:
 
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager).  The Manager is a good place to manage projects, create notes and resources, etc.  
 
+&nbsp;
+
+## Logic Governance Architecture
+
+1. **Context Engineering** directs AI to generate Data Rules — not procedural code. Without it, AI pattern-matches to FrankenCode. With it, intent becomes declarations.
+
+2. **Data Rules** distill path-dependent logic into *path-independent rules on data*. See them below — `Rule.constraint`, `Rule.sum`. No missed paths. Every path inherits them automatically.
+
+3. The **Commit Listener** hooks into the ORM commit. Every transaction — API, agent, workflow — passes through one control point. Nothing bypasses it.
+
+4. The **Rule Engine** computes dependency order from the Data Rules at startup — deterministically. No pattern-matching, no subtle ordering bugs.
+
+![Logic Governance Architecture](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/logic-architecture.png?raw=true)
+
+&nbsp;
+
 ```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
 Please load `.github/.copilot-instructions.md`.
 ```
