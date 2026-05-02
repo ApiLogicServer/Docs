@@ -668,7 +668,7 @@ Python employs a virtual environment for project-specific dependencies.
 
 **If the project was cloned from git**, choose one of:
 
-* **Quickest (no VS Code setup):** from the Manager terminal:
+* **Quickest (no VS Code setup):** from the Manager terminal (or, use Code Assistant):
     ```bash
     als run --project-name=<project-name>
     ```
