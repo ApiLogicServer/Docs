@@ -119,15 +119,26 @@ Please see [this page](DevOps-Docker.md#2a-using-the-manager){:target="_blank" r
 
 You typically run projects by opening an IDE on the project folder, using provided Run Configurations.
 
-For a quick preview, you can also run from the Manager; there are 2 ways:
+For a quick preview, you can also run from the Manager; there are 3 ways:
 
-1. Use ***another instance of VSCode.***  You can *examine* them in this current instance, but *run* them in their own instance.
+1. **`als run`** — run directly from the Manager terminal (no VS Code setup required):
+
+    ```bash
+    als run --project-name=<project-name>
+    # or from inside the project folder:
+    cd <project> && als run --project-name=.
+    ```
+    Output goes to `logs/als.log` (previous run saved to `logs/als.log.1`).
+
+2. Use ***another instance of VSCode.***  You can *examine* them in this current instance, but *run* them in their own instance.
 
     * To do so, you probably want to acquire this extension: `Open Folder Context Menus for VS Code`. It will enable you to open the sample, tutorial or your own projects in another instance of VSCode.
 
     * This option provides more Run/Debug options (e.g., run without security, etc),
 
-2. Or, use the Run/Debug Entry: `API Logic Server Run (run project from manager)`
+3. Or, use the Run/Debug Entry: `API Logic Server Run (run project from manager)`
+
+> **Cloned/imported projects:** `.vscode/settings.json` is gitignored, so the VS Code interpreter may not be set after cloning.  See [Running Imported / Cloned Projects](Project-Env.md#running-imported--cloned-projects){:target="_blank" rel="noopener"} for options.
 
 
 &nbsp;

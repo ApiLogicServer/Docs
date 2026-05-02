@@ -103,6 +103,10 @@ Explore the key use cases from our home page:
 
 &nbsp;
 
+> **Running a cloned project?** F5 won't work until the venv is set up — see [Project-Env](https://apilogicserver.github.io/Docs/Project-Env/) for options (`als run`, symlink, or local venv).
+
+&nbsp;
+
 ## 2. Additional Demos
 
 Advanced examples and specialized patterns:
@@ -658,22 +662,33 @@ You can use either VSCode or Pycharm.
 
 **1. Establish your Virtual Environment**
 
-Python employs a virtual environment for project-specific dependencies.  Create one as shown below, depending on your IDE.
+Python employs a virtual environment for project-specific dependencies.
 
-For VSCode:
+**If the project was created in this Manager** (or opened from it), the venv is already configured — just press F5.
 
-Establish your `venv`, and run it via the first pre-built Run Configuration.  To establish your venv:
+**If the project was cloned from git**, choose one of:
 
-```bash
-python -m venv venv; venv\Scripts\activate     # win
-python3 -m venv venv; . venv/bin/activate      # mac/linux
+* **Quickest (no VS Code setup):** from the Manager terminal:
+    ```bash
+    als run --project-name=<project-name>
+    ```
 
-pip install -r requirements.txt
-```
+* **Mac/Linux with F5:** create a symlink to the Manager venv:
+    ```bash
+    cd <project>
+    sh venv_setup/venv.sh symlink
+    # reload VS Code window, then F5
+    ```
+
+* **Any platform:** create a local venv:
+    ```bash
+    sh venv_setup/venv.sh go        # mac/linux
+    .\venv_setup\venv.ps1 go        # windows
+    ```
 
 For PyCharm, you will get a dialog requesting to create the `venv`; say yes.
 
-See [here](https://apilogicserver.github.io/Docs/Install-Express/) for more information.
+See [Project-Env](https://apilogicserver.github.io/Docs/Project-Env/) for more information.
 
 &nbsp;
 

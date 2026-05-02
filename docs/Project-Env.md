@@ -1,36 +1,22 @@
-This section applies only to `pip` installs.  Docker based installs eliminate such environment issues, and are therefore worth a look.
+This section applies only to `pip` installs.  Docker-based installs eliminate environment issues and are worth a look.
 
 Important: in addition to Python environment, there are other configuration settings to consider as described in the [Quick Start](IDE-Execute.md).
 
-## Per-project `venv`
-
-You created a virtual environment when you installed ApiLogicServer.  This ```venv``` will work for all of your created ApiLogicServer projects, or you can use a per-project ```venv```, as follows.
-
-The created project contains a ```requirements.txt``` used to create a [virtual environment](https://docs.python.org/3/library/venv.html).
-You can create it in the usual manner:
-
-```sh
-cd ApiLogicProject
-python3 -m venv venv       # may require python -m venv venv
-source venv/bin/activate   # windows venv\Scripts\activate
-python3 -m pip install -r requirements.txt
-```
 &nbsp;
 
-## Shared `venv`
+## How Projects Find Their `venv`
 
-VSCode users may wish to share a `venv` over multiple projects.  Two altermnatives are described below.
+All created projects use `"python": "${command:python.interpreterPath}"` in `launch.json`.  VS Code resolves this at runtime from the interpreter selected in the status bar — stored in `.vscode/settings.json` as `python.defaultInterpreterPath`.
+
+**The picker is the single source of truth** — no manual file editing required.
 
 &nbsp;
 
-### From Create (default)
+## Scenario 1 — Projects Created in the Manager (default)
 
-Created projects have a preset `python.defaultInterpreterPath` in `.vscode/settings.json` pointing to the absolute path of the Python used during creation (i.e., your ApiLogicServer venv).  This takes effect when you open the project in VSCode — F5 works immediately with no manual configuration.
-
-**Team / cloned projects:** `.vscode/settings.json` is gitignored in created projects, because it contains a machine-specific absolute path.  After cloning, VSCode will prompt you to `Select Interpreter` once — point it to your `venv/bin/python`.  VSCode caches this per-machine; `launch.json` picks it up automatically from that point on.
+`als create` writes an absolute `python.defaultInterpreterPath` into `.vscode/settings.json` pointing to the Manager venv Python.  When VS Code opens the project, F5 works immediately — no setup needed.
 
 <details markdown>
-
 <summary> Show me how </summary>
 
 ![Installed venv](images/tutorial/setup/default-interpreter.png)
@@ -39,56 +25,77 @@ Created projects have a preset `python.defaultInterpreterPath` in `.vscode/setti
 
 &nbsp;
 
-### From Settings
+## Scenario 2 — Existing Projects (already in Manager)
 
-Use __Settings > Python: Venv Path__, and specify a directory containing `venv` directories (e.g, where you installed API Logic Server).  This is a convenient way to get started.
+If a project was created in this Manager and you re-open it, the interpreter is already cached by VS Code — F5 works.
 
-Recall this does _not_ apply to docker or Codespace environments.  
+If the interpreter ever gets lost (e.g. after a VS Code update), fix it with:
+
+1. ⌘⇧P → `Python: Clear Workspace Interpreter Setting`
+2. ⌘⇧P → `Python: Select Interpreter` → choose `venv/bin/python` in the Manager folder
 
 &nbsp;
 
-A typical way to install API Logic Server is to create a directory called `ApiLogicServer`, and create a `venv` inside it, like this:
+## Scenario 3 — Imported / Cloned Projects
 
-```bash title="Install API Logic Server in a Virtual Environment"
-python -m venv venv                  # may require python3 -m venv venv
-venv\Scripts\activate                # mac/linux: source venv/bin/activate
-python -m pip install ApiLogicServer
+When a project is cloned from git, `.vscode/settings.json` is absent (gitignored — it contains machine-specific paths).  The VS Code `python-envs` extension then **actively overrides** the interpreter to the system Python, causing F5 to fail.
+
+> **Why `Python: Select Interpreter` may not help here:** The `python-envs` extension scans for a `venv/` folder *inside* the project.  If none is found, it writes `"python-envs.defaultEnvManager": "ms-python.python:system"` into `settings.json`, which takes precedence over `python.defaultInterpreterPath`.  Manually picking an interpreter via the status-bar may appear to work but can be silently overridden on the next VS Code window reload.  The options below avoid this problem entirely.
+
+Two options:
+
+### Option 1 — `als run` (simplest, no VS Code setup)
+
+From the Manager terminal (with venv activated):
+
+```bash
+als run --project-name=<project-name>
+# or from inside the project:
+cd <project> && als run --project-name=.
 ```
 
+Runs the server using the Manager venv directly.  Output goes to `logs/als.log` (previous run auto-saved to `logs/als.log.1`).
+
+### Option 2 — Symlink (Mac/Linux, enables F5)
+
+Creates a `venv` symlink inside the project pointing to `../venv` (the Manager venv).  VS Code detects it as a local venv and selects the correct interpreter automatically.
+
+```bash
+cd <project>
+sh venv_setup/venv.sh symlink
+# reload VS Code window — F5 now works
+```
+
+### Option 3 — Local venv (all platforms)
+
+Creates a real local `venv/` with all dependencies:
+
+```bash
+sh venv_setup/venv.sh go        # Mac/Linux
+.\venv_setup\venv.ps1 go        # Windows
+```
+
+Use this on Windows or when the project is not inside the Manager folder.
+
+> See `venv_setup/readme_venv.md` in any project for full details.
+
 &nbsp;
 
-The resultant directory structure:
+## `venv_setup` Directory
 
-![Installed venv](images/tutorial/setup/install-dirs.png)
+Projects include a `venv_setup` directory with helper scripts and `py.py` to verify your environment:
 
-This `venv` can be re-used by defining a global path in your `Python: venv` setting:
+```bash
+python venv_setup/py.py          # shows interpreter, ALS version, sys.path
+```
 
-![Settings to define global venv](images/tutorial/setup/settings-python-venv.png)
-
-Then, choose this `venv` with `select interpreter` (you sometimes have to open a Python file):
-
-![Select global venv](images/tutorial/setup/select-interpreter.png)
-
-</details>
-
-
-### From Environmental Variable
-
-> **Not recommended.** Setting `VIRTUAL_ENV` (or `PYTHONPATH` / `PATH`) in environment variables has no effect on VS Code's interpreter selection and can break terminal `PATH` on some platforms.  Use the status-bar picker (`Python: Select Interpreter`) instead — it is the single source of truth for both Pylance and F5.
-
-&nbsp;
-
-## `venv_setup` - shortcut setup procedures
-
-Ss of release 5.02.10, projects are created with a `venv_setup` directory which may be helpful in establishing and verifying your Python environment.  For more information, see the [Trouble Shooting Guide](Troubleshooting.md#ide-issues){:target="_blank" rel="noopener"}.
+For more information, see the [Troubleshooting Guide](Troubleshooting.md#ide-issues){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
 ## `venv` Troubleshooting
 
-By far, most of the support calls we get involve `venv` setup.
-
-To find more information, please [click here](Troubleshooting.md#verify-your-python-environment){:target="_blank" rel="noopener"}.
+By far, most support calls involve `venv` setup.  [Click here](Troubleshooting.md#verify-your-python-environment){:target="_blank" rel="noopener"} for more information.
 
 &nbsp;
 
@@ -96,37 +103,20 @@ To find more information, please [click here](Troubleshooting.md#verify-your-pyt
 
 ### Issues with `pip`
 
-The install sometimes fails due on machines with an older version of `pip`.  If you see a message suggesting you upgrade  `pip` , do so.
+If the install fails with a message suggesting you upgrade `pip`, do so:
 
-&nbsp;
-
-### VSCode may fail to find `venv`
-
-If VSCode does not find your `venv`, you can [specify it manually](https://code.visualstudio.com/docs/python/environments#_manually-specify-an-interpreter) using `Python: Select Interpreter`
-
-For more information, see [Work with Environments](https://code.visualstudio.com/docs/python/environments#_work-with-environments).
-
-&nbsp;
-
-
-#### Fixing F5: the Python Picker
-
-**If F5 fails**, 
-
-1. ⌘⇧P → "Python: Clear Workspace Interpreter Setting"
-2. ⌘⇧P → "Python: Select Interpreter" → (or click the Python version in the VS Code status bar) then choose the Python Interpreter (e.g., `~/dev/ApiLogicServer/venv/bin/python`) 
-
-That's it — everything follows automatically.
-
-**How it works:** Starting with release 16.x, created projects include `"python": "${command:python.interpreterPath}"` in each server launch configuration.  VS Code resolves this at runtime from whatever interpreter the status-bar picker has selected (stored in `python.defaultInterpreterPath` in `.vscode/settings.json`).  The picker is the single control — no manual file editing required.
-
-> **Note for cloned/moved projects:** `.vscode/settings.json` is gitignored in created projects, so clones will not contain a stale machine-specific path.  VSCode will prompt `Select Interpreter` once — choose your `venv/bin/python`.  `launch.json` picks it up automatically from that point on.
-
-??? note "Technical detail"
-    `launch.json` uses the VS Code variable `${command:python.interpreterPath}`, which resolves at runtime to the value of `python.defaultInterpreterPath` in `.vscode/settings.json`.  That value is written by the picker when you select an interpreter — so the picker is the single source of truth for both Pylance and F5.
+```bash
+pip install --upgrade pip
+```
 
 &nbsp;
 
 ### Copy `venv` Not Recommended
 
-It's completely your option, but we believe is simpler to re-create a venv rather than moving/copying; for more information, [see here](https://stackoverflow.com/questions/7438681/how-to-duplicate-virtualenv){:target="_blank" rel="noopener"}.
+It is simpler to re-create a venv than to move/copy one; for more information, [see here](https://stackoverflow.com/questions/7438681/how-to-duplicate-virtualenv){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
+### Environmental Variables — Not Recommended
+
+Setting `VIRTUAL_ENV`, `PYTHONPATH`, or `PATH` in environment variables has no effect on VS Code's interpreter selection and can break terminal `PATH` on some platforms.  Use `Python: Select Interpreter` in the status bar instead.
