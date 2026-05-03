@@ -20,6 +20,43 @@ Please load `.github/.copilot-instructions.md`.
 
 &nbsp;
 
+<details markdown>
+
+<summary>Claude Code Instructions</summary>
+
+<br>
+
+```bash title="Establish Initial State, Execute Requirements"
+# A - Create the project (already done)
+genai-logic create  --project_name=demo_customs --db_url=sqlite:///samples/requirements/customs_demo/database/customs.sqlite
+
+# B - use the shared Manager venv (do not create a local project .venv)
+$ source ../venv/bin/activate
+
+# C - activate Claude Code in the VSCode terminal
+$ claude
+
+# D - in created project, get the requirements
+! cp -rv ../samples/requirements/customs_demo/. . | wc -l
+
+# E - required hardening for delete integrity (no orphans after parent delete via API):
+in database/models.py, add ORM relationship cascade on Shipment child lists
+(pattern: relationship(cascade="all, delete", back_populates="...")).
+Apply to:
+   Shipment.PieceList
+   Shipment.ShipmentCommodityList
+   Shipment.SpecialHandlingList
+   Shipment.ShipmentPartyList
+
+# F - ask Coding Agent to create the system by implementing the requirements
+implement requirements docs/requirements/customs_demo
+```
+
+</details>
+
+
+&nbsp;
+
 ## Executive Summary
 
 This system ingests customs shipment data from a Kafka message broker, matches shipments to known importers, and persists a complete, governed shipment record — with full REST API, audit trail, and Admin UI included. 
