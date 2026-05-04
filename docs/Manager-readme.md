@@ -119,6 +119,12 @@ Advanced examples and specialized patterns:
 | **MCP Discovery** <br> demo_copilot_mcp_discovery | genai-logic create --project_name=demo_copilot_mcp_discovery --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
 
 
+```bash title="Copy Snippits for venv"
+source venv/bin/activate       # windows: venv\Scripts\activate
+source ../venv/bin/activate    # windows: ../venv\Scripts\activate
+python -m venv venv            # may require python3 -m venv venv
+```
+
 &nbsp;
 
 
@@ -211,7 +217,6 @@ als genai --project-name='genai_demo_with_discount' --using=system/genai/example
 You can perform **model iterations:** add new columns/tables, while keeping the prior model intact.  First, we create a project with no logic, perhaps just to see the screens (this step is optional, provided just to illustrate that iterations create new projects from existing ones):
 
 **Iterate Without Logic:**
-**Iterate Without Logic:**
 ```bash title='Iterate Without Logic'
 # Step 1 - create without logic
 als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
@@ -220,7 +225,6 @@ als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/gen
 
 Then, we would create another prompt in the docs directory with our model changes. We've already created these for you in `system/genai/examples/genai_demo/genai_demo_iteration` - we use that to alter the data model (see `system/genai/examples/genai_demo/genai_demo_iteration/004_iteration_renames_logic.prompt`):
 
-**Iterate With Logic:**
 **Iterate With Logic:**
 ```bash title='Iterate With Logic'
 # Iterate with data model and logic
@@ -597,7 +601,7 @@ Please see [this doc](https://apilogicserver.github.io/Docs/Sample-AI-ChatGPT/)
 
 <br>This demo creates and customizes a project, starting from a database:
 
-**Quick Basic Demo:**
+
 **Quick Basic Demo:**
 ```bash title="Quick Basic Demo"
 
@@ -627,7 +631,6 @@ als rebuild-from-database --db_url=sqlite:///database/db.sqlite
 
 <br>This demo creates and customizes a project, starting from a prompt:
 
-**Quick GenAI Demo:**
 **Quick GenAI Demo:**
 ```bash title="Quick GenAI Demo"
 
