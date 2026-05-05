@@ -22,7 +22,7 @@ Please load `.github/.copilot-instructions.md`.
 
 <details markdown>
 
-<summary>Claude Code Instructions</summary>
+<summary>Claude Code CLI Instructions - how to build this project</summary>
 
 <br>
 
@@ -63,17 +63,17 @@ This system ingests customs shipment data from a Kafka message broker, matches s
 
 **Delivery Speed**<br>
 It was built in 2 days by one engineer using GenAI-Logic's Executable 
-Requirements workflow: a plain-English requirements document was compiled into a running, 
-governed system. The primary inputs were an existing database schema, an XML field-mapping 
-spreadsheet, and a sample message.
+Requirements workflow: a plain-English requirements document was compiled into a running, governed system. The primary inputs were an existing database schema, an XML field-mapping spreadsheet, and a sample message.
 
-A comparable conventional project covers significant scope: Kafka pipeline, XML parsing, 7-table persistence, importer matching, REST API, Admin UI, and standard enterprise delivery. Curious what that would take to build traditionally? Give your AI this requirements document and ask for an estimate — then compare.
+A comparable conventional project covers significant scope: Kafka pipeline, XML parsing, 7-table persistence, importer matching, CLVS elibility, REST API, Admin UI, and standard enterprise delivery. Curious what that would take to build traditionally? Give your AI this requirements document and ask for an estimate — then compare.
 
 **Governance**<br>
-The deeper value is not speed alone. Business rules are enforced by architecture on every 
-path — API, UI, agent, or new endpoint — without developer discipline required. A new 
-developer, a new agent, a new integration: all inherit the same rules automatically. Governed 
-by architecture, not discipline.
+The deeper value is not speed alone. Business rules are enforced by architecture on every path — API, UI, agent, or new endpoint — without developer discipline required.  No more fat client, fat API, missed paths.
+
+A new developer, a new agent, a new integration: all inherit the same rules automatically. Governed by architecture, not discipline.
+
+**Governance at Scale**<br>
+While ensuring governance for a given project is great, the larger challenge is *governance for **every** project*.  Executable Requirements means that the same requirements you may be gathering now are automatically translated into rules, autmomatically enforced at commit time.  No change to your existing procedures.
 
 > For the full story on **Executable Requirements**, [click here](executable-requirements.md){:target="_blank" rel="noopener"}.
 
