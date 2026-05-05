@@ -62,10 +62,12 @@ implement requirements docs/requirements/customs_demo
 This system ingests customs shipment data from a Kafka message broker, matches shipments to known importers, and persists a complete, governed shipment record — with full REST API, audit trail, and Admin UI included. 
 
 **Delivery Speed**<br>
-It was built in 2 days by one engineer using GenAI-Logic's Executable 
-Requirements workflow: a plain-English requirements document was compiled into a running, governed system. The primary inputs were an existing database schema, an XML field-mapping spreadsheet, and a sample message.
+Built in 2 days by one engineer. The scope — Kafka 2-message pipeline, XML parsing, 7-table persistence, importer matching, CLVS eligibility rules, REST API, Admin UI, and standard enterprise delivery standards — is not a toy project. A traditional team would scope this in weeks and deliver in months.
 
-A comparable conventional project covers significant scope: Kafka pipeline, XML parsing, 7-table persistence, importer matching, CLVS elibility, REST API, Admin UI, and standard enterprise delivery. Curious what that would take to build traditionally? Give your AI this requirements document and ask for an estimate — then compare.
+Curious what your team would estimate? Give your AI this requirements document and ask.
+
+**Business Inputs, Not Technical Specs**<br>
+Traditional delivery starts from technical inputs: schema DDL, API specs, field-mapping logic expressed in developer terms. This started from *business* inputs — a plain-English requirements document, an existing database schema, an XML field-mapping spreadsheet, and a sample message. Artifacts the business team already owned. GenAI-Logic's Executable Requirements workflow compiled these directly into a running, governed system — no translation layer required.
 
 **Governance**<br>
 The deeper value is not speed alone. Business rules are enforced by architecture on every path — API, UI, agent, or new endpoint — without developer discipline required.  No more fat client, fat API, missed paths.
@@ -73,7 +75,7 @@ The deeper value is not speed alone. Business rules are enforced by architecture
 A new developer, a new agent, a new integration: all inherit the same rules automatically. Governed by architecture, not discipline.
 
 **Governance at Scale**<br>
-While ensuring governance for a given project is great, the larger challenge is *governance for **every** project*.  Executable Requirements means that the same requirements you may be gathering now are automatically translated into rules, autmomatically enforced at commit time.  No change to your existing procedures.
+While ensuring governance for a given project is great, the larger challenge is *governance for **every** project*.  Executable Requirements means that the same requirements (e.g., standard Gherkin) you may be gathering now are automatically translated into rules, autmomatically enforced at commit time.  No change to your existing procedures.
 
 > For the full story on **Executable Requirements**, [click here](executable-requirements.md){:target="_blank" rel="noopener"}.
 
