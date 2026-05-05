@@ -13,6 +13,8 @@ version: 1.1 from docsite, for readme 4/15/2026
 
 # Customs Demo
 
+![summary](images/integration/customs_demo/summary.png)
+
 **Bootstrap Copilot by pasting the following into the chat:**
 ```
 Please load `.github/.copilot-instructions.md`.
@@ -54,28 +56,37 @@ implement requirements docs/requirements/customs_demo
 
 </details>
 
-
 &nbsp;
+
+---
 
 ## Executive Summary
 
-This system ingests customs shipment data from a Kafka message broker, matches shipments to known importers, and persists a complete, governed shipment record — with full REST API, audit trail, and Admin UI included. 
+This is a proof of what changes when business logic is governed by architecture, not discipline — built to the scope and standards of a real enterprise integration, in 2 days.
 
-**Delivery Speed**<br>
+**Delivery Speed — 2 Days, Not Months**<br>
 Built in 2 days by one engineer. The scope — Kafka 2-message pipeline, XML parsing, 7-table persistence, importer matching, CLVS eligibility rules, REST API, Admin UI, and standard enterprise delivery standards — is not a toy project. A traditional team would scope this in weeks and deliver in months.
 
 Curious what your team would estimate? Give your AI this requirements document and ask.
 
-**Business Inputs, Not Technical Specs**<br>
-Traditional delivery starts from technical inputs: schema DDL, API specs, field-mapping logic expressed in developer terms. This started from *business* inputs — a plain-English requirements document, an existing database schema, an XML field-mapping spreadsheet, and a sample message. Artifacts the business team already owned. GenAI-Logic's Executable Requirements workflow compiled these directly into a running, governed system — no translation layer required.
+**Business Inputs — Not Technical Specs**<br>
+Traditional delivery starts from *technical* inputs: schema DDL, API specs, field-mapping logic expressed in developer terms. This started from *business* inputs — artifacts the business team already owned.
 
-**Governance**<br>
-The deeper value is not speed alone. Business rules are enforced by architecture on every path — API, UI, agent, or new endpoint — without developer discipline required.  No more fat client, fat API, missed paths.
+A plain-English requirements document. An existing database schema. An XML field-mapping spreadsheet. A sample message. GenAI-Logic's Executable Requirements workflow compiled these directly into a running, governed system — no translation layer required.
+
+Speed is not a tradeoff against governance here. Both are consequences of the same thing: declarative rules replace procedural code, so the system is both faster to build and impossible to bypass.
+
+**Governance — No Bypass**<br>
+Business rules are enforced at the commit point — every transaction, every source, automatically. Not because developers remembered. Because there is no other path.
 
 A new developer, a new agent, a new integration: all inherit the same rules automatically. Governed by architecture, not discipline.
 
-**Governance at Scale**<br>
-While ensuring governance for a given project is great, the larger challenge is *governance for **every** project*.  Executable Requirements means that the same requirements (e.g., standard Gherkin) you may be gathering now are automatically translated into rules, autmomatically enforced at commit time.  No change to your existing procedures.
+**Governance — At Scale**<br>
+Governance by developer discipline fails at scale — routinely, and at significant cost. Rules get missed. New endpoints, new agents, new integrations don't inherit them. The larger the system, the more paths, and the more paths, the more misses.
+
+Governance by architecture doesn't degrade. Rules enforced at the commit point run on every transaction, regardless of source — API, UI, agent, or integration added three years later. That guarantee doesn't erode as the system grows.
+
+AI makes this available at org-wide scale. Requirements your teams already produce — plain English, Gherkin, regulation text — become the input. GenAI-Logic compiles them into enforced rules. The same workflow, every project, every team.
 
 > For the full story on **Executable Requirements**, [click here](executable-requirements.md){:target="_blank" rel="noopener"}.
 
@@ -83,7 +94,7 @@ While ensuring governance for a given project is great, the larger challenge is 
 
 ## Project Overview
 
-This system is a prototype for a rewrite of the following, using Kafka instead of JMS, and sqlite:
+This system is a prototype for a modernization of the following, using Kafka instead of JMS:
 
 ![summary](images/integration/customs_demo/summary_flow.png)
 
@@ -151,9 +162,11 @@ implement req docs/requirements/customs_demo
 
 &nbsp;
 
-# Appendices
+---
 
-## 2-message Pattern
+## Appendices
+
+### 2-message Pattern
 
 **Duplicate policy** — default is `replace`: an existing `Shipment` graph is deleted (ORM cascade) and the new parsed graph inserted. Set env var `ISDC_DUPLICATE_POLICY=fail` to raise an error on duplicate `LOCAL_SHIPMENT_OID_NBR` instead.
 
@@ -165,7 +178,7 @@ The 2-message design solves this cleanly: Kafka acts as the durable commit bound
 
 &nbsp;
 
-## Replace and Match Example
+### Replace and Match Example
 
 ```bash title="Process Shipment - no match"
 curl 'http://localhost:5656/consume_debug/isdc?file=docs/requirements/customs_demo/message_formats/demo-01-no-match.xml'
