@@ -15,11 +15,6 @@ version: 1.1 from docsite, for readme 4/15/2026
 
 ![summary](images/integration/customs_demo/summary.png)
 
-**Bootstrap Copilot by pasting the following into the chat:**
-```
-Please load `.github/.copilot-instructions.md`.
-```
-
 &nbsp;
 
 <details markdown>
@@ -29,7 +24,7 @@ Please load `.github/.copilot-instructions.md`.
 <br>
 
 ```bash title="Establish Initial State, Execute Requirements"
-# A - Create the project (already done)
+# A - Create the project (already done, typically from Manager)
 genai-logic create  --project_name=demo_customs --db_url=sqlite:///samples/requirements/customs_demo/database/customs.sqlite
 
 # B - use the shared Manager venv (do not create a local project .venv)
@@ -38,10 +33,13 @@ $ source ../venv/bin/activate
 # C - activate Claude Code in the VSCode terminal
 $ claude
 
-# D - in created project, get the requirements
+# D - load context engineering to teach claude about rules, GenAI-Logic
+Please load `.github/.copilot-instructions.md`.
+
+# E - in created project, get the requirements
 ! cp -rv ../samples/requirements/customs_demo/. . | wc -l
 
-# E - required hardening for delete integrity (no orphans after parent delete via API):
+# F - required hardening for delete integrity (no orphans after parent delete via API):
 in database/models.py, add ORM relationship cascade on Shipment child lists
 (pattern: relationship(cascade="all, delete", back_populates="...")).
 Apply to:
@@ -50,7 +48,7 @@ Apply to:
    Shipment.SpecialHandlingList
    Shipment.ShipmentPartyList
 
-# F - ask Coding Agent to create the system by implementing the requirements
+# G - ask Coding Agent to create the system by implementing the requirements
 implement requirements docs/requirements/customs_demo
 ```
 
@@ -94,9 +92,7 @@ AI makes this available at org-wide scale. Requirements your teams already produ
 
 ## Project Overview
 
-This system is a prototype for a modernization of the following, using Kafka instead of JMS:
-
-![summary](images/integration/customs_demo/summary_flow.png)
+You can examine the Shipment database to verify parties created by matching:
 
 ![summary](images/integration/customs_demo/shipment.png)
 
@@ -110,7 +106,7 @@ An enterprise integration (EAI) microservice that ingests CIMCorp/ISDC customs s
 **Outputs**:
 - Working Kafka consumer pipeline: `isdc` → `ShipmentXml` → `isdc_processed` → DB tables  
 - JSON:API for all tables, Admin UI, declarative logic engine
-- Matching: look up the matching CcpCustomer
+- Matching: look up the matching Customer
     - found: set `Shipment.trprt_bill_to_acct_nbr == CcpCustomer.duty_bill_to_acct_nbr` and create a `ShipmentParty` row
     - no match: log a warning, do nothing.
 
@@ -131,34 +127,6 @@ An enterprise integration (EAI) microservice that ingests CIMCorp/ISDC customs s
     * Looks up `CcpCustomer` by `duty_bill_to_acct_nbr == trprt_bill_to_acct_nbr`
     * Match found: creates a `ShipmentParty` importer row; no match: logs a warning
 
-&nbsp;
-
-## Creation Instructions
-
-This context of this project is to add processing for an existing database.  This recreates that state, and then uses **Executable Requirements** (Step E - for more information,  to create the functionality.
-
-```bash title="Establish Initial State, Execute Requirements"
-# A - Create the project (already done)
-genai-logic create  --project_name=demo_customs --db_url=sqlite:///samples/requirements/customs_demo/database/customs.sqlite
-
-# B - in created project, get the requirements
-$ cp -rv ../samples/requirements/customs_demo/. . | wc -l
-
-# C - use the shared Manager venv (do not create a local project .venv)
-source ../venv/bin/activate
-
-# D - required hardening for delete integrity (no orphans after parent delete via API):
-in database/models.py, add ORM relationship cascade on Shipment child lists
-(pattern: relationship(cascade="all, delete", back_populates="...")).
-Apply to:
-   Shipment.PieceList
-   Shipment.ShipmentCommodityList
-   Shipment.SpecialHandlingList
-   Shipment.ShipmentPartyList
-
-# E - ask Copilot to create the system by implementing the requirements
-implement req docs/requirements/customs_demo
-```
 
 &nbsp;
 
