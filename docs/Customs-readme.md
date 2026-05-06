@@ -125,7 +125,8 @@ An enterprise integration (EAI) microservice that ingests CIMCorp/ISDC customs s
     * `/consume_debug/isdc` bypasses Kafka — calls the same parser directly (no Kafka required for dev/test)
 5. Matching: `logic/logic_discovery/shipment_matching.py` — `early_row_event` on Shipment insert
     * Looks up `CcpCustomer` by `duty_bill_to_acct_nbr == trprt_bill_to_acct_nbr`
-    * Match found: creates a `ShipmentParty` importer row; no match: logs a warning
+    * Match found: creates a `ShipmentParty` importer row; (if no match, logs a warning)
+5. CLVS: `logic/logic_discovery/clvs_eligibility.py` - computes eligibility
 
 
 &nbsp;
