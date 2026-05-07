@@ -19,6 +19,23 @@ version: 1.2 from docsite, for readme 5/5/2026
 
 <details markdown>
 
+<summary>Executable Requirements - Governance By Architecture, At Scale</summary>
+
+![summary](images/architecture/gov-at-scale.png)
+
+&nbsp;
+
+**The Underlying Logic Architecture**
+
+![summary](images/architecture/logic-architecture-exec.png)
+<br>
+
+</details>
+
+&nbsp;
+
+<details markdown>
+
 <summary>Claude Code CLI Instructions - how to build this project</summary>
 
 <br>
