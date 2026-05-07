@@ -28,15 +28,15 @@ version: 1.2 from docsite, for readme 5/5/2026
 genai-logic create  --project_name=demo_customs --db_url=sqlite:///samples/requirements/customs_demo/database/customs.sqlite
 
 # B - use the shared Manager venv (do not create a local project .venv)
-$ source ../venv/bin/activate
+! source ../venv/bin/activate
 
 # C - activate Claude Code in the VSCode terminal
-$ claude
+! claude
 
 # D - load context engineering to teach claude about rules, GenAI-Logic
 Please load `.github/.copilot-instructions.md`.
 
-# E - in created project, get the requirements
+# E - in created project, get the requirements (win: Copy-Item -Path "..\samples\requirements\customs_demo\*" -Destination "." -Recurse -Force -Verbose 4>&1).Count)
 ! cp -rv ../samples/requirements/customs_demo/. . | wc -l
 
 # F - required hardening for delete integrity (no orphans after parent delete via API):
