@@ -247,6 +247,7 @@ nav:
     - "Product Overview": Product-Overview.md
     - Personal:
       - "Manager readme": Manager-readme.md
+      - "Gov By Arch": Tech-Gov-By-Arch.md
       - "XRD": executable-requirements.md
       - "XR Medium": Tech-Exec-Auto-Medium.md
       - "XR EAI": Sample-Basic-EAI-Exec-Req.md
