@@ -14,9 +14,11 @@ I no longer think this failure mode is necessary. The architectural answer has b
 
 Audit findings on traditional, hand-coded systems routinely reveal rules enforced on some paths but not others. Different teams, different services, different generations of code, all making honest decisions about where the check belonged. Governance not working — at scale, at cost, on systems that were supposed to be the well-understood ones.
 
-The architectural answer has been understood for a long time. Stop scattering enforcement across application paths; put rules at the commit point, where every transaction must pass through. Triggers tried it decades ago and didn't settle the question, for reasons I'll come to. Declarative rules engines tried it more directly, and got the form right, but required analysts to learn to think in invariants — and that learning curve kept enterprise adoption out of reach for thirty years.
+The architectural answer has been understood for a long time. Enforce rules — not procedural code — at the commit point, where every transaction must pass through. Triggers got the location right but kept the procedural form, with all the bugs that come with it. 
 
-What changed recently is that the answer became reachable. AI bridged the gap.
+Rules engines got both right — rules at the commit point — but two things kept them out of reach for enterprise adoption. Most of the available engines weren't built for transaction processing and couldn't perform there. And the ones that could required analysts to learn to think in invariants, and that learning curve kept adoption out of reach for thirty years.
+
+What changed recently is that the answer became reachable. AI bridged the gap — not by generating the commit-point code, which I'll get to, but by translating requirements into the declarative form the engine enforces
 
 ## The Thesis: Governance by Architecture
 
@@ -61,6 +63,8 @@ Agents now generate code, propose transactions, and write to systems of record a
 
 Many enterprise IT leaders are hoping that better prompts, better policy, or tighter agent confinement will hold. They will not. The cost has been visible for years; agents just made it impossible to keep absorbing.
 
+The answer is architectural, not procedural — and the next two sections explain why two earlier attempts at it didn't settle the question, and what changed recently.
+
 ## Why Two Earlier Attempts Didn't Settle This
 
 Two earlier attempts at putting rules at the commit point both kept the procedural form of the rules — and that turned out to matter as much as where the rules were located.
@@ -90,16 +94,17 @@ AI removes the barrier. Analysts continue to write the way they naturally write 
 The analyst writes the requirement the way analysts naturally write requirements:
 
 ```gherkin
-Feature: Check Credit
+Feature: Governance by Architecture
 
-  Scenario: Place an order
-    Given a customer with a credit limit
-    When an order is placed
-    Then copy the price from the product
-    And multiply by quantity to get the item amount
-    And sum item amounts to get the order total
-    And sum unpaid order totals to get the customer balance
-    And reject if balance exceeds the credit limit
+  Scenario: Enforce business rules across every transaction source
+
+    Given GenAI-Logic
+
+    When Context Engineering turns requirements into declarative
+         Data Rules attached to the data model
+
+    Then a Commit Listener and Rule Engine enforce them on every
+         ORM commit — API, agent, or message
 ```
 
 Procedural in form. AI translates it into the declarative rules at ④:
@@ -123,7 +128,7 @@ Rule.constraint(validate=Customer,
                 error_msg="balance {row.balance} exceeds credit {row.credit_limit}")
 ```
 
-Five rules. Standard Python. Open the file in VSCode. Set a breakpoint, step through with the debugger. Check it into git. Deploy in a container. The rules are readable code in a normal Python project, and the engine that executes them is open source — inspectable, forkable, no vendor lock-in for the runtime that does the enforcing.
+Five rules. Standard Python. Open the file in VSCode. Set a breakpoint, step through with the debugger. Check it into git. Deploy in a container. The rules are readable code in a normal Python project, and the engine that executes them is purpose-built for transactions and open source — inspectable, forkable, no vendor lock-in for the runtime that does the enforcing.
 
 This is the part that, more than anything else, reduced my skepticism. The five rules above are a rigorous reformulation of the requirement — each rule maps to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The 220-line procedural version, generated from the same requirement, disperses that intent across handlers, branches, and helper functions. The original requirement is no longer visible in the code; you have to reconstruct it from how the code behaves.
 
