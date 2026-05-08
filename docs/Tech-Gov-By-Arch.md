@@ -2,11 +2,11 @@
 
 ### Why the Right Answer Finally Became Reachable
 
-*By Wynford Reese and Val Huber*
+*By Wynford Rees and Val Huber*
 
 ---
 
-On a single engagement I have personal experience with, governance-by-discipline cost us eight figures in audit exposure. This is not an outlier — I suspect you've seen it too.
+On a single engagement I have personal experience with, eight figures of audit exposure traced back to a single failure mode: business rules enforced on some transaction paths and not others. This is not an outlier — I suspect you've seen it too.
 
 I no longer think this failure mode is necessary. The architectural answer has been understood for a long time, and what changed recently is that it became reachable. I have been using it on real systems, and the rest of this piece is about why it matters now and what it actually produces.
 
@@ -188,4 +188,4 @@ There is only one of those answers that scales.
 
 ---
 
-*Wynford Reese is a senior enterprise IT executive with a long career building and operating large-scale systems. Val Huber is co-founder and architect of GenAI-Logic, and previously CTO at Versata.*
+*Wynford Rees is a senior enterprise IT executive with a long career building and operating large-scale systems. Val Huber is co-founder and architect of GenAI-Logic, and previously CTO at Versata.*
