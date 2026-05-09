@@ -6,9 +6,9 @@
 
 ---
 
-On a single engagement I have personal experience with, eight figures of audit exposure traced back to a single failure mode: business rules enforced on some transaction paths and not others. This is not an outlier — I suspect you've seen it too.
+On a single engagement I have personal experience with, eight figures of audit exposure traced back to a single failure mode: business rules that didn't enforce what the requirements said. This is not an outlier — I suspect you've seen it too.
 
-I no longer think this failure mode is necessary. The architectural answer has been understood for a long time, and what changed recently is that it became available. I have been using it on real systems, and the rest of this piece is about why it matters now and what it actually produces.
+I no longer think this failure mode is necessary. The architectural answer has been understood for a long time, and what changed recently is that it became available. I have been using it firsthand, and the rest of this piece is about why it matters now and what it actually produces.
 
 ## Why Discipline Doesn't Scale
 
@@ -25,18 +25,20 @@ I find that real architectural answers hold up when written as specifications. H
 ```gherkin
 Feature: Governance by Architecture
 
-  Scenario: Enforce business rules across every transaction source
+  Scenario: Enforce business rules across every transaction
 
-    Given GenAI-Logic
+    Given business requirements in any common form
+          (regulations, Gherkin, rules, pseudocode)
 
-    When Context Engineering turns requirements into declarative
-         Data Rules attached to the data model
+    When AI compiles them into readable, manageable
+         declarative Data Rules attached to the data model
 
-    Then a Commit Listener and Rule Engine enforce them on every
-         ORM commit — API, agent, or message
+    Then a Rule Engine enforces them on every ORM commit —
+         regardless of transaction source (API, agent, message,
+         controller, service, script)
 ```
 
-In plain terms: GenAI-Logic is the *Given* and the *Then* — the architecture and the runtime enforcement. The *When* is what we supply: requirements that Context Engineering compiles into Data Rules attached to the data model. The result is an application with governance enforced at every ORM commit.
+In plain terms: you supply requirements in whatever form your business already produces them — regulations, Gherkin, rules, pseudocode. AI compiles them into declarative Data Rules. A Rule Engine enforces those rules at every ORM commit, on every transaction. The result is governance by architecture, not by discipline.
 
 The rest of this piece is the unpacking.
 
