@@ -173,13 +173,39 @@ Both workflows are proven by the `demo_customs_cbsa` (project creation) and `dem
 
 &nbsp;
 
+### Examples
+
+#### 1. Project Creation — Claude Code Terminal (Manager)
+
+One command in the Manager terminal creates a complete system from a domain prompt — schema, seed data, LogicBank rules, ad-libs report:
+
+![Project creation from Manager using Claude Code terminal](images/manager/customs-cbsa-new-system-from-mgr.png)
+
+&nbsp;
+
+#### 2. Project Creation — Copilot Extension (Manager)
+
+Alternatively, use Copilot or Claude Code extension in the Manager — paste the prompt file reference into chat:
+
+![Project creation from Manager using Copilot extension](images/allocation/allo-dept-gl/allocation-create.png)
+
+&nbsp;
+
+#### 3. Adding Logic — Copilot in Project Workspace
+
+Inside any project, describe rules in natural language — Copilot translates them into LogicBank DSL and pastes into `declare_logic.py`:
+
+![Adding logic rules via Copilot in project workspace](images/sample-ai/copilot/copilot-logic-chat.png)
+
+&nbsp;
+
 ## AI-Enabled Projects
 
 AI is enabled as described below.
 
 &nbsp;
 
-### 🤖 Context Engineering
+### Context Engineering
 
 When you create a new project with `genai-logic create`, project contains extensive Context Engineering to guide your AI Assistant to leverage Logic Automation.
 
@@ -216,7 +242,7 @@ You can cause VSCode Copilot to pre-load your own instructions by placing `*.ins
 
 &nbsp;
 
-### 🧠 Context-Aware Architecture
+### Context-Aware Architecture
 
 The project structure itself provides rich context for AI understanding:
 
@@ -227,7 +253,7 @@ The project structure itself provides rich context for AI understanding:
 
 &nbsp;
 
-### 💡 AI-Friendly Workflows
+### AI-Friendly Workflows
 
 Your project supports natural AI-assisted development:
 
@@ -244,7 +270,7 @@ There are important resources to help you get started.
 
 &nbsp;
 
-### 🎓 AI Guided Tour
+### AI Guided Tour
 
 It's been clear for quite some time that lab-based training was far superior to *death by powerpoint*.  But running labs is not simple - it usually requires in-person expertise to deal with inevitable problems.
 
@@ -270,7 +296,7 @@ The tour begins in the [manager](Manager.md), which encourages you to create the
 
 &nbsp;
 
-### 🚀 Quick Reference `readmes`
+### Quick Reference `readmes`
 
 Each project includes working examples (see various `readme` files within the project) you can build upon:
 
@@ -281,7 +307,7 @@ Each project includes working examples (see various `readme` files within the pr
 
 &nbsp;
 
-### 🎯 Next Steps
+### Next Steps
 
 To find more:
 
