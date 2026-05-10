@@ -54,18 +54,12 @@ This is the start page for the [GenAI-Logic Manager](https://apilogicserver.gith
 
 &nbsp;
 
-**🤖 AI Assistance:**
+**🤖 AI Assistance (for more information, [click here](Project-AI-Enabled.md){:target="_blank" rel="noopener"}):**
 
-- **Create a project from a prompt** — Claude Code terminal (one command, runs to completion):
-    ```
-    implement project <name> from samples/prompts/<name>.prompt.md
-    ```
-
-- **Everything else** (logic, debug, learning, ops) — paste into your AI assistant in Agent mode:
-    ```
-    Please load `.github/.copilot-instructions.md`.
-    ```
-    > We get consistently good results with Claude Sonnet 4.6 (GitHub Copilot or Claude Code extension). "Ask" mode will not work — use Agent mode.
+```
+Please load `.github/.copilot-instructions.md`.
+```
+> We get consistently good results with Claude Sonnet 4.6 (GitHub Copilot or Claude Code extension). "Ask" mode will not work — use Agent mode.
 
 &nbsp;
 
