@@ -48,7 +48,7 @@ The rest of this piece is the unpacking.
 
 On the left, **design time**. ① **NL Intent** is whatever form the requirement takes when an analyst, a regulator, or a product owner writes it down — regulations, Gherkin, pseudocode, rules-as-invariants. ③ **AI** translates that intent, directed by ② **Context Engineering**, into ④ **Data Rules**.
 
-Data Rules are declarative statements attached to the data model. The closest analogy is spreadsheet formulas: a cell that says `= SUM(B2:B10)` doesn't need to know who or what changed B5. It recomputes automatically. Data Rules behave the same way — when underlying data changes, the rules that depend on that data recompute, regardless of what triggered the change. They are path-independent.
+Data Rules are declarative statements attached to the data model. The closest analogy is spreadsheet formulas: a cell that says `= SUM(B2:B10)` doesn't need to know who or what changed cell B5. It recomputes automatically. Data Rules behave the same way — when underlying data changes, the rules that depend on that data recompute, regardless of what triggered the change. They are path-independent.
 
 On the right, **runtime**. ⑥ **All Sources** — APIs, agents, workflows, anything that writes to the database — funnel through one point. ⑤ The **Rules Engine** sits at the **Commit** boundary and enforces the Data Rules on every transaction, with no bypass.
 

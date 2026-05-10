@@ -54,11 +54,18 @@ This is the start page for the [GenAI-Logic Manager](https://apilogicserver.gith
 
 &nbsp;
 
-```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
-Please load `.github/.copilot-instructions.md`.
-```
+**🤖 AI Assistance:**
 
-> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.    Also, we get consistently good results with `Claude Sonnet 4.6`.
+- **Create a project from a prompt** — Claude Code terminal (one command, runs to completion):
+    ```
+    implement project <name> from samples/prompts/<name>.prompt.md
+    ```
+
+- **Everything else** (logic, debug, learning, ops) — paste into your AI assistant in Agent mode:
+    ```
+    Please load `.github/.copilot-instructions.md`.
+    ```
+    > We get consistently good results with Claude Sonnet 4.6 (GitHub Copilot or Claude Code extension). "Ask" mode will not work — use Agent mode.
 
 &nbsp;
 

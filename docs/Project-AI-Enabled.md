@@ -2,22 +2,20 @@
 
     Every project created by GenAI-Logic includes comprehensive training materials, readme's with code examples, and integration points that work seamlessly with GitHub Copilot, Claude, ChatGPT, and other AI assistants.
 
-    Your project includes `.github/.copilot-instructions.md`, AI training documents (`docs/training`), and working code examples that serve as a ***"message in a bottle"*** for AI assistants.
+    Projects are pre-created with `.github/.copilot-instructions.md`, AI training documents (`docs/training`), and working code examples that serve as a ***"message in a bottle"*** for AI assistants — no more explaining your project structure from scratch.
 
-    No more explaining your project structure from scratch - AI assistants can immediately understand your codebase and underlying software to help you build features.
+    **Where AI helps most:**
 
-    AI assistants can help you add business logic rules, customize APIs, create test scenarios, and integrate with external services.
+    | Use Case | Recommended |
+    |---|---|
+    | Project creation from a domain prompt | Claude Code terminal |
+    | Add behavior to a running project (Executable Requirements) | Claude Code terminal |
+    | Add logic rules from natural language | Copilot or Claude Code |
+    | Debug — analyze logs, trace rule firing | Claude Code |
+    | Learning — how rules work, performance, patterns | Copilot or Claude Code |
+    | Project ops — libraries, CLI commands, test setup | Copilot or Claude Code |
 
-    They also provide an AI Guided Tour, where an intelligent AI Assistant introduces you to the key concepts of GenAI-Logic.
-
-&nbsp;
-
-This page describes:
-
-• what makes your project AI-enabled out of the box  
-• the training materials included as your "message in a bottle"  
-• how to get started with AI assistance  
-• the AI-friendly workflows built into every project  
+    See [Where AI Helps](#where-ai-helps) for details on each use case and which client to use.
 
 &nbsp;
 
@@ -96,6 +94,82 @@ Traditional projects spend their first sprints on infrastructure — project sca
 `genai-logic create` delivers all of that in seconds: a running multi-table API with pagination and optimistic locking, admin app, logic engine, auth skeleton, and CI/CD templates — committed and functional on day one. **Your first sprint begins at the business problem.**
 
 Combined with Context Engineering, this means the declarative rules that encode your domain logic are the *first* meaningful code written — not the reward for surviving infrastructure month.
+
+&nbsp;
+
+## Where AI Helps
+
+![Logic Architecture](images/architecture/logic-architecture-exec.png)
+
+The diagram shows the key workflow: you express logic as **NL Intent** (in whatever form is natural to you), Context Engineering guides AI to translate it into **Data Rules**, and the Rules Engine enforces those rules at commit — from every source, with no bypass.
+
+**NL Intent can take many forms** — you don't need to think in code:
+
+| Form | Example |
+|---|---|
+| **Regulations** | *"Per PC 2025-0917, surtax applies to shipments with ship date >= 2025-12-26"* |
+| **Gherkin** | *"Given a customer whose balance exceeds their credit limit, Then reject the order"* |
+| **Pseudocode** | *"total = sum of line amounts; if country is exempt, surtax = 0"* |
+| **Rules** | *"Customer.balance is the sum of unpaid Order.amount_total"* |
+
+AI (guided by Context Engineering) translates any of these into executable LogicBank rules. This means domain experts, business analysts, and developers can all contribute logic in the form they find most natural.
+
+&nbsp;
+
+### Two Kinds of Logic
+
+Once expressed, logic falls into two categories:
+
+| Kind | When to use | Example |
+|---|---|---|
+| **Deterministic** | Outcome must be repeatable and verifiable | `Customer.balance must not exceed credit_limit` |
+| **Probabilistic (AI)** | Judgment or optimization required — cannot be computed, must be *chosen* | `Use AI to set unit_price by finding the optimal supplier based on cost, lead time, and world conditions` |
+
+Both are expressed in the same natural language prompt. Deterministic rules enforce correctness; AI handles decisions that depend on external factors or multi-criteria optimization. AI outputs participate in normal rule chaining — governed and audited.
+
+> See [Logic Using AI](Logic-Using-AI.md) for the full treatment, including the Request Pattern, audit trail, and worked example.
+
+&nbsp;
+
+### AI Clients
+
+GenAI-Logic works with any AI assistant, but two are particularly well-suited:
+
+| Client | Best for |
+|---|---|
+| **GitHub Copilot** (in IDE) | Conversational, human-in-the-loop tasks — explaining, learning, one-off logic additions |
+| **Claude Code** (terminal or IDE extension) | Autonomous, multi-step creation workflows — runs to completion without hand-holding |
+
+For **project creation and executable requirements**, Claude Code terminal is recommended: one command runs the full sequence (schema derivation, seed data, LogicBank rules) without pausing for confirmation.
+
+&nbsp;
+
+### Use Cases
+
+| Use Case | Where | Command | Recommended |
+|---|---|---|---|
+| **Project Creation** | Manager workspace | `implement project <name> from <prompt>` | Claude Code terminal |
+| **Executable Requirements** | Project workspace | `implement reqs <name>` | Claude Code terminal |
+| **Logic — add rules** | Project workspace | Natural language in chat | Copilot or Claude Code |
+| **Debug** | Project workspace | Read `logs/als.log` | Claude Code |
+| **Learning** | Either | Natural language in chat | Copilot or Claude Code |
+| **Project Ops** | Either | Natural language in chat | Copilot or Claude Code |
+
+&nbsp;
+
+### Why Claude Code Terminal for Creation
+
+**Project Creation** runs from the **Manager workspace**. The Manager's `.github/.copilot-instructions.md` guides Claude Code through the full sequence in one uninterrupted command:
+
+1. Scaffold project from `starter.sqlite`
+2. Read training docs silently (`subsystem_creation.md`, `logic_bank_api.md`, etc.)
+3. Pre-DDL analysis — extract constants → SysConfig, FK inventory, Request Pattern scan
+4. Write DDL, rebuild models, seed data, implement LogicBank rules
+5. Write provenance (`docs/requirements/readme.md`) and ad-libs report
+
+**Executable Requirements** runs from the **project workspace**, after opening the created project. Place requirement sets in `docs/requirements/<name>/` and say `implement reqs <name>`.
+
+Both workflows are proven by the `demo_customs_cbsa` (project creation) and `demo_customs` (EAI executable requirements) samples.
 
 &nbsp;
 

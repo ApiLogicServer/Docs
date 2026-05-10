@@ -21,7 +21,7 @@ Requires 16.03.01, windows or mac.
 
 <br>
 
-```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
+```bash title='🤖 Bootstrap your AI assistant — paste into chat (Agent mode, Claude Sonnet 4.6 recommended)'
 Please load `.github/.copilot-instructions.md`
 ```
 

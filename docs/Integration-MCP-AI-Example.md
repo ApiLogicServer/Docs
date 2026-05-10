@@ -44,7 +44,7 @@ version: 1.0 from docsite, for readme 2/16/2026
 
 <br>
 
-```bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
+```bash title='🤖 Bootstrap your AI assistant — paste into chat (Agent mode, Claude Sonnet 4.6 recommended)'
 Please load `.github/.copilot-instructions.md`
 ```
 

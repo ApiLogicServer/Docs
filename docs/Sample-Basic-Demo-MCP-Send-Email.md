@@ -21,7 +21,7 @@ This illustrates [GenAI-Logic](https://apilogicserver.github.io/Docs/Sample-Basi
 
 This enables Business Uses to choreograph new functionality composed of existing services.  In the example above, a user has used NL to send email, leveraging the underlying services to query and send email.
 
-``` bash title='🤖 Bootstrap Copilot by pasting the following into the chat'
+``` bash title='🤖 Bootstrap your AI assistant — paste into chat (Agent mode, Claude Sonnet 4.6 recommended)'
 Please load `.github/.copilot-instructions.md`
 ```
 
