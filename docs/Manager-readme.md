@@ -54,12 +54,12 @@ This is the start page for the [GenAI-Logic Manager](https://apilogicserver.gith
 
 &nbsp;
 
-**🤖 AI Assistance (for more information, [click here](Project-AI-Enabled.md){:target="_blank" rel="noopener"}):**
+**🤖 AI Assistance:**
 
 ```
 Please load `.github/.copilot-instructions.md`.
 ```
-> We get consistently good results with Claude Sonnet 4.6 (GitHub Copilot or Claude Code extension). "Ask" mode will not work — use Agent mode.
+> We get consistently good results with Claude Sonnet 4.6 (GitHub Copilot or Claude Code extension). "Ask" mode will not work — use Agent mode.  For more information, [click here](Project-AI-Enabled.md){:target="_blank" rel="noopener"}
 
 &nbsp;
 
