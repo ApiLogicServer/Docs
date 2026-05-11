@@ -126,6 +126,7 @@ nav:
     - "Fixup - missing attributes": IDE-Fixup-Attrs.md
     - "Import / Merge WebGenai": IDE-Import-WebGenAI.md
     - "Rebuild Test Data": IDE-Rebuild-Test-Data.md
+    - "Project Health Check ⚗️": IDE-Health-Check.md
   - Database:
     - "Connection Examples, Debug": Database-Connectivity.md
     - "Database Diagram": Database-Diagram.md
