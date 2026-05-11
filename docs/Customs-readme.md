@@ -107,7 +107,7 @@ AI makes this available at org-wide scale. Requirements your teams already produ
 Governance by architecture only holds if teams are actually using rules. GenAI-Logic includes a built-in health check (`vital signs`) that produces a **Governance Report** scoring each project on two dimensions: *Coverage* (weighted rules per domain table — are the right tables governed?) and *Integrity* (anti-pattern detection — is the rule code correct?). A portfolio leaderboard makes adoption visible across teams without reading a line of code. The same tool that enforces rules also measures whether they're being used.
 
 > For the full story on **Executable Requirements**, [click here](executable-requirements.md){:target="_blank" rel="noopener"}.  
-> For **Project Health Check**, [click here](IDE-Health-Check.md){:target="_blank" rel="noopener"}.
+> For **Project Governance Report**, [click here](IDE-Health-Check.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 

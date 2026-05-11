@@ -1,15 +1,15 @@
 !!! pied-piper "Technology Preview"
-    Project Health Check is a technology preview. The feature works today —
+    Project Governance Report is a technology preview. The feature works today —
     say "vital signs" in any project. Scoring weights and thresholds are still
     being calibrated based on real-world use. Feedback welcome.
 
-# Project Health Check — Vital Signs
+# Project Governance Report
 
 GenAI-Logic projects are governed by declarative rules. But how do you know
 if a project is *well* governed? And how does a manager see rule adoption
 across a portfolio of projects — without reading every line of code?
 
-**Project Health Check** answers both questions. Say `vital signs` in any project
+**Project Governance Report** answers both questions. Say `vital signs` in any project
 and the AI scans your logic files, computes two scores, checks for red flags,
 and offers to fix every finding.
 
@@ -37,7 +37,7 @@ the engine to handle all change paths automatically.
 The analyzer made that resistance visible. Managers could spot a struggling team
 in seconds, without reading code. Training and consulting followed.
 
-GenAI-Logic's Health Check is that analyzer, updated for AI-assisted development.
+GenAI-Logic's Governance Report is that analyzer, updated for AI-assisted development.
 
 &nbsp;
 
@@ -157,7 +157,7 @@ with the reviewer's name and date — a permanent audit trail.
 ## Sample Report
 
 ```
-## 🩺 Project Vital Signs
+## 🩺 Project Governance Report
 
 Coverage Score: 5.8  (29 weighted rules / 5 tables)   ✅ Strong
 Integrity Score: 98  (1 demerit, 0 reviewed)
@@ -185,25 +185,25 @@ The Manager workspace includes two Northwind projects that tell the before/after
 story concretely. **Open these files now** to see what a real health check report
 looks like:
 
-**Before — `samples/nw_sample_nocust/health_check_nw_sample_nocust.md`**  
+**Before — `samples/nw_sample_nocust/nw_sample_nocust_governance_report.md`**  
 Freshly created from the Northwind database. No rules added. This is what every
 project looks like on day one:
 - Coverage: **0.0** — Red Flag: 🚨 raised (16 FK tables, zero aggregations)
 - Integrity: 100 (vacuously — nothing to demerit yet)
 
-**After — `samples/nw_sample/health_check_nw_sample.md`**  
+**After — `samples/nw_sample/nw_sample_governance_report.md`**  
 Same schema, rules added. This is what the project looks like after a developer
 has worked through the logic:
-- Coverage: **2.1** — Red Flag: none
+- Coverage: **3.8** — Red Flag: none
 - Integrity: **96** — 3 minor organizational findings, no bugs
 
-The jump from 0.0 → 2.1 coverage and 🚨 → no flag is the value of rule adoption
+The jump from 0.0 → 3.8 coverage and 🚨 → no flag is the value of rule adoption
 made visible in two numbers. The full reports show exactly which rules were added,
 which tables they govern, and what the remaining findings are.
 
 !!! tip "Try it yourself"
     Open `samples/nw_sample/` as a workspace and say `vital signs`.
-    You will get a live report equivalent to `health_check_nw_sample.md` —
+    You will get a live report equivalent to `nw_sample_governance_report.md` —
     plus the offer to fix each finding in the same session.
 
 &nbsp;
@@ -248,6 +248,6 @@ see `docs/training/governance.md` in any created project.
 |---|---|
 | `docs/training/health_check.md` | AI instructions — scoring algorithm, detection patterns, fix protocol |
 | `docs/training/governance.md` | Human policy — thresholds, red flags, portfolio view, Versata baseline |
-| `samples/health_checks.md` | Cross-project health check for all Manager samples |
-| `samples/nw_sample/health_check_nw_sample.md` | Single-project example (with rules) |
-| `samples/nw_sample_nocust/health_check_nw_sample_nocust.md` | Single-project example (baseline) |
+| `samples/portfolio_governance_report.md` | Cross-project health check for all Manager samples |
+| `samples/nw_sample/nw_sample_governance_report.md` | Single-project example (with rules) |
+| `samples/nw_sample_nocust/nw_sample_nocust_governance_report.md` | Single-project example (baseline) |
