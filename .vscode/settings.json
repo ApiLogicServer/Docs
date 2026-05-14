@@ -1,5 +1,8 @@
 {
     "workbench.colorTheme": "Thakker Light Mist Theme High Contrast",
+    "workbench.diffEditorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+        },
     "cSpell.words": [
         "ontimize"
     ]
