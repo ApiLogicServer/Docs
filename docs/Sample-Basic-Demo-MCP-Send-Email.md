@@ -12,14 +12,17 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
   }
 </style>
 
-# Create an MCP Microservice using Copilot Vibe
+# Create an MCP Microservice using Nat Lang Vibe
+
+This demo illustrates [GenAI-Logic](https://apilogicserver.github.io/Docs/Sample-Basic-Demo-Vibe) automation to create an MCP system using Natural Language:
+
+1. **Create From Existing DB:** creates a MCP-enabled API and an Admin App
+2. **Verify MCP:** operation using your AI Assistant
+3. **Declare Business Logic:** no-bypass governance using natural language logic and rules
+4. **Create an email service:** add logic to create an audited email service
+5. **MCP: Logic, User Interface**: enable business users to invoke services (such as email) with natural language, here via the automatically created Admin App:
 
 ![mcp-ui](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-ui.png?raw=true)
-
-This illustrates [GenAI-Logic](https://apilogicserver.github.io/Docs/Sample-Basic-Demo-Vibe) automation to create an MCP system using **Vibe:** 
-> **1) Natural Language**, **2) Declarative** (*what not now*), **3) Trusted error correction** with the coding assistant.
-
-This enables Business Uses to choreograph new functionality composed of existing services.  In the example above, a user has used NL to send email, leveraging the underlying services to query and send email.
 
 ``` bash title='🤖 Bootstrap your AI assistant — paste into chat (Agent mode, Claude Sonnet 4.6 recommended)'
 Please load `.github/.copilot-instructions.md`
@@ -85,7 +88,7 @@ The entire process takes 20 minutes; usage notes:
 
 <details markdown>
 
-<summary> Create the Customer, Orders, Items and Product Project [typically already done using Manager]</summary>
+<summary> Create the Customer, Orders, and Product Project [typically already done using Manager]</summary>
 
 <br>
 
@@ -108,7 +111,7 @@ Create a database project named basic_demo_vibe from samples/dbs/basic_demo.sqli
 
 &nbsp;
 
-### 1a. Project Opens: Run
+**1a. Project Opens: Run**
 
 The project should automatically open a new window in VSCode. <br>
 
@@ -150,15 +153,38 @@ Explore the app - click Customer Alice, and see their Orders, and Items.
 
 <br><br>
 
-## 2. Declare Business Logic
+## 2. Verify MCP
 
-Logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  GenAI-Logic provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
+Paste into your AI Assistant:
 
-Rules are declared in Python, simplified with IDE code completion.  The screen below shows the 5 rules for **Check Credit Logic.**
+``` bash title="Verify MCP Operation"
+Using mcp discovery, list the customers with a positive balance.
+```
+
+you should see:
+
+| ID | Name    | Balance  | Credit Limit |
+|----|---------|----------|-------------|
+| 3  | Charlie | $220.00  | $2,000.00   |
+| 5  | Silent  | $220.00  | $1,000.00   |
+| 1  | Alice   | $90.00   | $5,000.00   |
+
+&nbsp;
+
+## 3. Declare Business Logic
+
+MCP Access include update operations.  These are not safe without governance: business logic that cannot be by-passed.
+
+Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  GenAI-Logic provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
+
+You can declare such logic in 2 ways:
+
+1. Use Natural Language, as shown in the code sample below.  The screenshot shows the 5 rules for **Check Credit Logic.**
+2. Or, declare rules directly in Python, simplified with IDE code completion.  
 
 **1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
 
-**2. Add Business Logic**
+**2. Add Business Logic:** paste the following into your AI Assistant:
 
 ```bash title="Check Credit Logic (instead of 220 lines of code)"
 on Placing Orders, Check Credit    
@@ -171,6 +197,8 @@ on Placing Orders, Check Credit
 Use case: App Integration
     1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
+
+In either case, the result is the same:
 
 ![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-vibe.png)
 
@@ -210,43 +238,13 @@ Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  Th
 
 <br>
 
-## 3. Custom API - B2B Orders
-
-To fit our system into the Value Chain,
-we need a **Custom API** to accept orders from B2B partners, and forward paid orders to shipping via Kafka.
-
-``` bash title="Create the Custom B2B API Endpoint"
-Create a B2B order API called 'OrderB2B' that accepts orders from external partners. 
-
-The external format should map:
-- 'Account' field to find customers by name
-- 'Notes' field to order notes
-- 'Items' array where each item maps 'Name' to find products and 'QuantityOrdered' to item quantity
-
-The API should create complete orders with automatic lookups and inherit all business logic rules.
-```
-
-The Kafka logic was created earlier, so we are ready to test.
-
-You can use Swagger (note the test data is provided), or use CLI:
-
-``` bash title="Test the B2B Endpoint"
-curl -X POST http://localhost:5656/api/OrderB2BEndPoint/OrderB2B -H "Content-Type: application/json" -d '{"meta":{"args":{"data":{"Account":"Alice","Notes":"RUSH order for Q4 promotion","date_shipped":"2025-08-04","Items":[{"Name":"Widget","QuantityOrdered":5},{"Name":"Gadget","QuantityOrdered":3}]}}}}'
-```
-
-Observe the logic execution in the VSCode debug window.
-
-<br>
-
-## 4. MCP: Logic, User Interface
+## 4. Create the email Service
 
 The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs.  Build it as follows:<br><br>
 
 **1. Stop the Server:**  click the red stop icon 🟥 or press <kbd>Shift</kbd>+<kbd>F5</kbd>.
 
 &nbsp;
-
-### 4a. Create the email service
 
 We use the **Request Pattern** to send emails, via Copilot (in conjunction with substantial Context Engineering in your project at `.github/.copilot-instructions.md` and `docs/training`):
 
@@ -274,7 +272,7 @@ Inserts into SysEmail will now send mails (stubbed here with a log message).
 
 <br>
 
-### 4b. Activate MCP Client Executor
+## 5. Activate MCP Client Executor
 
 Your project already has `integration/mcp/mcp_client_executor.py`, which processes MCP requests.  
 
@@ -308,7 +306,7 @@ Context Engineering has trained Copilot to use (again) the **Request Pattern:**
 
 <br>
 
-## 5. Test in the Admin App
+## 6. Test in the Admin App
 
 <br>
 
@@ -339,6 +337,6 @@ to the customer for each one.
 
 <br>
 
-## 6. Iterate: Rules and Python
+## 7. Iterate: Rules and Python
 
 This is addressed in the related CLI-based demo - to continue, [click here](Sample-Basic-Demo.md#5-iterate-with-rules-and-python){:target="_blank" rel="noopener"}.
