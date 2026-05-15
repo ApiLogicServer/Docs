@@ -3,6 +3,9 @@
     "workbench.diffEditorAssociations": {
         "*.md": "vscode.markdown.preview.editor"
         },
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    },
     "cSpell.words": [
         "ontimize"
     ]

@@ -72,7 +72,7 @@ Open the appropriate section below.
 
     This will install the samples and open in your IDE; open the readme and follow the directions to create projects.
 
-    For GenAI-Logic updates, you can restart the Manager with `--clean`.
+    For GenAI-Logic updates, you can restart the Manager with `--clean`.  This does not affect existing projects.
 
 
     &nbsp;
