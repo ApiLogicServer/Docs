@@ -99,8 +99,8 @@ Explore the key use cases from our home page:
 | **[EAI: Enterprise App Integration](https://www.genai-logic.com/#h.wdoo0f18oqd1)** <br>demo_eai | genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Executable Requirements<br>- Create custom API with NL<br>- Create Kafka Listener with NL |
 | **[Use Case 4: Vibe Dev Backend](https://www.genai-logic.com/#h.6d0vlkwk86lb)** <br> demo_vibe | genai-logic create --project_name=demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - UI elements, eg, Cards, Maps, Trees... |
 | **[Use Case 5: Business Users](https://www.genai-logic.com/#h.69d2voz8q5r1)** <br> webgenai | See [WebGenAI](webgenai/README.md) | - Create systems from browser, with logic, sample data and derived attributes |
-| **[Customs CLVS](samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md)** <br> demo_customs | genai-logic create  --project_name=demo_customs_clvs --db_url=sqlite:///samples/requirements/customs_demo/database/customs.sqlite | - Governed Business Systems<br> - EAI (using XML), textual requirements |
-| **[Customs Surtax](samples/prompts/customs_cbsa.prompt.md)** <br> demo_customs_cbsa | implement project customs_surtax from samples/prompts/customs_cbsa.prompt.md | - New Business System from Regulations |
+| **[Customs CLVS](samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md)** <br> demo_customs_clvs | genai-logic create  --project_name=demo_customs_clvs --db_url=sqlite:///samples/requirements/customs_demo/database/customs.sqlite | - Governed Business Systems<br> - EAI (using XML), textual requirements |
+| **[Customs Surtax](samples/prompts/customs_cbsa.prompt.md)** <br> demo_customs_surtax | implement project customs_surtax from samples/prompts/customs_cbsa.prompt.md | - New Business System from Regulations |
 
 &nbsp;
 
