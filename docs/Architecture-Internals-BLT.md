@@ -30,6 +30,7 @@ We therefore recommend that, before you run the full regression, first:
 ![BLT Hold Tomato](images/architecture/blt-no-tomato.png)
 
 2. [Verify the smoke test with the Sample App](Architecture-Internals.md#critical-smoke-test){:target="_blank" rel="noopener"}
+3. Consider using the BLT/Hold the Tomato (less test)
 
 
 ## Optional Docker Setup
@@ -62,6 +63,8 @@ python -m pip install setuptools
 The automated test (use the launch configuration `Build Load & Test`) performs a number of steps.  You can configure the test to run some or all of these by editing the `env_xxx.py` files shown here:
 
 ![Test env files](images/internals/test-env-files.png)
+
+The system will use `.env.py` if it exists, otherwise the default for your OS.  This file is git-ignored.  A best practice is to copy the OS default, and alter as desired.
 
 Key aspects are described in the sub-sections below.
 

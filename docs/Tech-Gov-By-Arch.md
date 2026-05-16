@@ -6,15 +6,18 @@
 
 ---
 
-On a single engagement I have personal experience with, eight figures of audit exposure traced back to a single failure mode: business rules that didn't enforce what the requirements said. This is not an outlier — I suspect you've seen it too.
+On a single engagement, I have personal experience with eight figures of audit exposure, traced back to a single failure mode: business rules that didn't enforce what the requirements said. This is not an outlier — I suspect you've seen it too.
 
-I no longer think this failure mode is necessary. The architectural answer has been understood for a long time, and what changed recently is that it became available. I have been using it firsthand, and the rest of this piece is about why it matters now and what it actually produces.
+I no longer think this failure mode is necessary. The architectural answer has been understood for a long time; what changed recently is that it has become available. I have been using it firsthand, and the rest of this piece is about why it matters now, and what it actually produces.
 
 ## Why Discipline Doesn't Scale
 
 Audit findings on traditional, hand-coded systems routinely reveal rules enforced on some paths but not others. Different teams, different services, different generations of code, all making honest decisions about where the check belonged. Governance not working — at scale, at cost, on systems that were supposed to be the well-understood ones.
 
-The architectural answer has been understood for a long time. Enforce rules — not procedural code — at the commit point, where every transaction must pass through. Triggers got the location right but kept the procedural form, with all the bugs that come with it. Rules engines got both right — rules at the commit point — but two things kept them out of reach for enterprise adoption. Most of the available engines weren't built for transaction processing and couldn't perform there. And the ones that could required analysts to learn to think in invariants, and that learning curve kept adoption out of reach for thirty years.
+The architectural answer has been understood for a long time. Enforce rules — not procedural code — at the commit point, where every transaction must pass through. 
+
+* **Triggers** got the location right but kept the procedural form, with all the bugs that come with it. 
+* **Rules engines** got both right — rules, at the commit point — but two things kept them out of reach for enterprise adoption. Most of the available engines weren't built for transaction processing and couldn't perform there. And the ones that could required analysts to learn to think in invariants, and that learning curve kept adoption out of reach for thirty years.
 
 What changed recently is that the answer became available. AI bridged the gap — not by generating the commit-point code, which I'll get to, but by translating requirements into the declarative form the engine enforces.
 
@@ -40,7 +43,7 @@ Feature: Governance by Architecture
 
 In plain terms: you supply requirements in whatever form your business already produces them — regulations, Gherkin, rules, pseudocode. AI compiles them into declarative Data Rules. A Rule Engine enforces those rules at every ORM commit, on every transaction. The result is governance by architecture, not by discipline.
 
-The rest of this piece is the unpacking.
+The rest of this piece explores this more deeply.
 
 ## Two Funnels, Meeting at the Rules
 
@@ -48,7 +51,7 @@ The rest of this piece is the unpacking.
 
 On the left, **design time**. ① **NL Intent** is whatever form the requirement takes when an analyst, a regulator, or a product owner writes it down — regulations, Gherkin, pseudocode, rules-as-invariants. ③ **AI** translates that intent, directed by ② **Context Engineering**, into ④ **Data Rules**.
 
-Data Rules are declarative statements attached to the data model. The closest analogy is spreadsheet formulas: a cell that says `= SUM(B2:B10)` doesn't need to know who or what changed cell B5. It recomputes automatically. Data Rules behave the same way — when underlying data changes, the rules that depend on that data recompute, regardless of what triggered the change. They are path-independent.
+Data Rules are declarative statements *attached to the data model*. The closest analogy is spreadsheet formulas: a cell that says `= SUM(B2:B10)` doesn't need to know who or what changed cell `B5`. It recomputes automatically. Data Rules behave the same way — when underlying data changes, the rules that depend on that data recompute, regardless of what triggered the change. They are *path-independent*.
 
 On the right, **runtime**. ⑥ **All Sources** — APIs, agents, workflows, anything that writes to the database — funnel through one point. ⑤ The **Rules Engine** sits at the **Commit** boundary and enforces the Data Rules on every transaction, with no bypass.
 
@@ -56,7 +59,7 @@ The two funnels meet at the rules. Whatever form a requirement starts in, it end
 
 ## Agentic AI Didn't Create the Problem; It Made the Cost Unsustainable
 
-Agents now generate code, propose transactions, and write to systems of record at speeds no review cycle can match. Governance built around developer discipline doesn't fail loudly — it just stops covering most of what flows past. Audit findings that were already routine in traditional systems now have a faster mechanism producing them, and that mechanism is going to get faster.
+Agents now generate code, propose transactions, and write to systems of record at speeds no review cycle can match. Governance built around developer discipline doesn't fail loudly — it just stops covering most of what flows past. Audit findings — already routine in traditional systems — now have a faster mechanism producing them, and that mechanism is going to get faster.
 
 Many enterprise IT leaders are hoping that better prompts, better policy, or tighter agent confinement will hold. They will not. The cost has been visible for years; agents just made it impossible to keep absorbing.
 
@@ -72,7 +75,7 @@ Two earlier attempts at putting rules at the commit point both kept the procedur
 
 This was tried. From a five-rule specification, AI generated 220 lines of procedural code. The code looked reasonable. When asked about edge cases — *what if the customer assignment changes? what if the product changes?* — it found bugs. Each one a foreign-key change that updated the new parent's balance but left the old parent's balance uncorrected. Silent — no exceptions, just wrong data persisting to the database.
 
-When asked to explain its own failure, the AI diagnosed itself. Its summary: *"Business logic is not a coding problem. It's a dependency graph problem."* Dependencies in transactional logic, it concluded, are not reliably inferable from procedural control flow.
+When asked to explain its own failure, the AI diagnosed itself. Its summary: *"Business logic is not a coding problem. It's a dependency graph problem."* Dependencies in transactional logic, it concluded, are not reliably inferable from procedural control flow using pattern matching.
 
 That's not a vendor claim. It's the tool diagnosing its own output.
 
@@ -86,7 +89,7 @@ AI crossed a specific threshold recently. It can translate the way analysts natu
 
 That sounds modest. It isn't. The historical adoption ceiling on declarative systems was that analysts had to learn to phrase requirements as invariants — "balance is the sum of unpaid order totals" rather than "when an order is placed, add the total to the balance." That shift was real, it was difficult, and it kept declarative adoption out of reach inside enterprises for three decades. I saw it slow declarative systems on a major project I built with Versata in that earlier era.
 
-AI removes the barrier. Analysts continue to write the way they naturally write — procedural in form, step by step. AI translates into declarative rules. Here's what that looks like.
+AI removes the barrier. Analysts continue to write the way they naturally write — *procedural* in form, step by step. AI translates into *declarative* rules. Here's what that looks like.
 
 The analyst writes the requirement the way analysts naturally write requirements:
 
@@ -116,8 +119,7 @@ Rule.sum(derive=Order.amount_total,
          as_sum_of=Item.amount)
 
 Rule.sum(derive=Customer.balance,
-         as_sum_of=Order.amount_total,
-         where=lambda row: row.date_shipped is None)
+         as_sum_of=Order.amount_total)
 
 Rule.constraint(validate=Customer,
                 as_condition=lambda row: row.balance <= row.credit_limit,
@@ -134,7 +136,7 @@ Location is one half of the architectural argument. *Reviewability* is the other
 
 ## Standard Components, Not Vendor Variants
 
-The rules are the heart of the architecture, but they aren't the whole delivery. Alongside them, the same compilation pipeline produces a standard JSON:API for every table, Kafka publish and subscribe with standard topics and consumer-group semantics, a multi-table Admin UI, a Behave test suite generated from the rules, a Logic Report mapping each transaction back to the rules that fired and the requirement they came from, and a standard Python project managed in git and deployed as a container.
+The rules are the heart of the architecture, but they aren't the whole delivery. Alongside them, the same pipeline produces a standard JSON:API for every table, Kafka publish and subscribe with standard topics and consumer-group semantics, a multi-table Admin UI, a Behave test suite generated from the rules, a Logic Report mapping each transaction back to the rules that fired and the requirement they came from, and a standard Python project managed in git and deployed as a container.
 
 None of these is a vendor-specific variant. They are the standard components, generated from the requirements rather than written by hand. For an enterprise IT executive, that's the difference between adopting a tool and adopting an exception.
 
@@ -142,7 +144,7 @@ None of these is a vendor-specific variant. They are the standard components, ge
 
 I've seen this work in two domains that come from completely different sides of the requirements pipeline.
 
-**The first** is a customs eligibility system — CLVS rules over a Kafka shipment pipeline with seven tables and 130-plus columns. The inputs were artifacts a business team already owns: a plain-English requirements document, an existing database schema, an XML field-mapping spreadsheet, a sample message. The Executable Requirements workflow compiled those inputs directly into a running, governed system in two days. The estimate for an equivalent build using a traditional Java framework was roughly two engineer-years.
+**The first** is a customs eligibility system — CLVS rules over a Kafka shipment pipeline with seven tables and 130-plus columns. The inputs were artifacts a business team already owns: a plain-English requirements document, an existing database schema, an XML field-mapping spreadsheet, a sample message. It took me 2 days to assemble the requirements.  The estimate for an equivalent build using a traditional Java framework was roughly two engineer-years.  The Executable Requirements workflow compiled those inputs directly into a running, governed system in 10 minutes. 
 
 **The second** is a regulatory implementation. The input was not a requirements document at all. It was a citation of a public Canadian regulation — the CBSA Steel Derivative Goods Surtax Order. Here is the actual prompt, with no editing:
 
@@ -167,7 +169,7 @@ The first proof says the pipeline works on the requirements your teams already p
 
 A single governed system is interesting. An organization that makes governed-by-architecture the *norm* — across hundreds of services, dozens of teams, requirements coming in from every direction — is a different argument. It's the argument that matters at the level enterprise IT actually operates.
 
-What makes it possible is that the business side of the requirements pipeline doesn't change. Analysts continue to produce the artifacts they already produce. Product owners continue to review them. They flow into Jira, into specs, into the same backlogs and the same review cadences. The pipeline already exists in every enterprise. What changes is what comes out the other end.
+What makes it possible is that the business side of the requirements pipeline doesn't change (the left funnel). Analysts continue to produce the artifacts they already produce. Product owners continue to review them. They flow into Jira, into specs, into the same backlogs and the same review cadences. The pipeline already exists in every enterprise. What changes is what comes out the other end.
 
 Without an architecture like this, the same five-rule scenario produces 220 lines of procedural code on one team and 340 on another, each with the path-dependency bugs no developer (and no AI) enumerates exhaustively. Multiply that across every team, every quarter, every new endpoint, and governance reverts to a discipline problem at scale — which is to say, an unsolved problem. The audit findings I described at the top of this piece are exactly this failure mode.
 
