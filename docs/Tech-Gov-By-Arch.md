@@ -2,7 +2,7 @@
 
 ### Why the Right Answer Finally Arrived
 
-*By Wynford Rees and Val Huber*
+*By W. Ries and Val Huber*
 
 ---
 
@@ -189,4 +189,4 @@ There is only one of those answers that scales.
 
 ---
 
-*Wynford Rees is a senior enterprise IT executive with a long career building and operating large-scale systems. Val Huber is co-founder and architect of GenAI-Logic, and previously CTO at Versata.*
+*W. Ries is a senior enterprise IT executive with a long career building and operating large-scale systems. Val Huber is co-founder and architect of GenAI-Logic, and previously CTO at Versata.*
