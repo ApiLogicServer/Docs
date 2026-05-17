@@ -12,19 +12,23 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
   }
 </style>
 
-!!! pied-piper ":bulb: Ireate an MCP Microservice using Nat Lang Vibe"
+!!! pied-piper ":bulb: Create an MCP Microservice using Natural Language (NL)"
 
-    This demo illustrates [GenAI-Logic](https://apilogicserver.github.io/Docs/Sample-Basic-Demo-Vibe) automation to create an MCP system using Natural Language:
+    This demo illustrates [GenAI-Logic](https://apilogicserver.github.io/Docs/Sample-Basic-Demo-MCP-Send-Email) automation to create an *governed* MCP system using Natural Language.
 
-    1. **Create From Existing DB:** creates a MCP-enabled API and an Admin App
-    2. **Verify MCP:** operation using your AI Assistant
-    3. **Declare Business Logic:** no-bypass governance using natural language logic and rules
-    4. **Create an email service:** add logic to create an audited email service
-    5. **MCP: Logic, User Interface**: enable business users to invoke services (such as email) with natural language, here via the automatically created Admin App:
+## Demo Overview
+
+In this demo, we will use Natural Language to:
+
+1. **Create From Existing DB:** creates a MCP-enabled API and an Admin App
+2. **Verify MCP:** use your AI Assistant
+3. **Declare Business Logic:** no-bypass governance using natural language logic and rules
+4. **Create an email service:** add logic to create an audited email service
+5. **MCP: Logic, User Interface**: enable business users to invoke services (such as email) with natural language, here via the automatically created Admin App:
 
 ![mcp-ui](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-ui.png?raw=true)
 
-``` bash title='🤖 Bootstrap your AI assistant — paste into chat (Agent mode, Claude Sonnet 4.6 recommended)'
+``` bash title='🤖 Bootstrap your AI Assistant — paste into chat (Agent mode, e.g. Claude Sonnet 4.6)'
 Please load `.github/.copilot-instructions.md`
 ```
 
@@ -42,32 +46,6 @@ Please load `.github/.copilot-instructions.md`
 
 **Recommended Path:** If you're new to GenAI-Logic, start with the [Standard Demo](Sample-Basic-Demo.md) (creates `basic_demo` with guided tutor) to learn platform fundamentals. Then return here to explore AI-assisted development with `basic_demo_vibe`.
 </details markdown>
-
-<br>
-
-<details markdown>
-
-<summary>Demo Overview: Vibe an MCP API and Business Logic; pre-reqs </summary>
-
-<br>
-
-Pre-reqs:
-
-1. Install
-2. OpenAI API Key is useful but not required; [click here](WebGenAI-CLI.md#configuration){:target="_blank" rel="noopener"}.
-
-  * The `integration/mcp/mcp_client_executor.py` has `create_tool_context_from_llm` set to bypass LLM calls and use saved context; alter as required.
-
-
-The entire process takes 20 minutes; usage notes:
-
-* You may find it **more convenient** to view this in your Browser; [click here](Sample-Basic-Demo-MCP-Send-Email.md)
-* A slide show summary is available [on our Web Site](https://www.genai-logic.com/product/tour){:target="_blank" rel="noopener"}
-* Tip: look for **readme files** in created projects
-
-![product-tour](images/basic_demo/product-tour.png)
-
-</details>
 
 <br>
 
