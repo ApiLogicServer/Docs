@@ -14,7 +14,13 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 
 !!! pied-piper ":bulb: Create an MCP Microservice using Natural Language (NL)"
 
-    This demo illustrates [GenAI-Logic](https://apilogicserver.github.io/Docs/Sample-Basic-Demo-MCP-Send-Email) automation to create an *governed* MCP system using Natural Language.
+    This demo illustrates automation to create an *governed* MCP system using Natural Language.  
+    
+    We'll create the system from an existing database, test the automatic MCP, and add governing logic.
+
+    We'll also illustrate a client interface; you could also use your own.
+
+&nbsp;
 
 ## Demo Overview
 
@@ -41,6 +47,8 @@ Please load `.github/.copilot-instructions.md`
 <summary>How to Use This Demo </summary>
 
 <br>This demo teaches AI-assisted development patterns. Each step is a **natural language prompt** you copy/paste into Copilot chat. The prompts are self-documenting - they explain what they do.
+
+You may prefer to view this guide in the browser; [click here](https://apilogicserver.github.io/Docs/Sample-Basic-Demo-MCP-Send-Email){:target="_blank" rel="noopener"}.
 
 **Vibe Philosophy:** AI makes errors. That's expected. When something fails, tell Copilot: *"Error X occurred, fix it"*. Copilot is exceptionally good at finding and correcting its own mistakes.
 
