@@ -14,11 +14,13 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 
 !!! pied-piper ":bulb: Create an MCP Microservice using Natural Language (NL)"
 
-    This demo illustrates automation to create an *governed* MCP system using Natural Language.  
+    This demo shows how to create an *governed* MCP system using Natural Language.  
     
     We'll create the system from an existing database, test the automatic MCP, and add governing logic.
 
-    We'll also illustrate a client interface; you could also use your own.
+    We'll then add a governed email service to send customer emails.
+
+    Finally, we will illustrate a client interface; you could also use your own.
 
 &nbsp;
 
