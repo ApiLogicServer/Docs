@@ -12,15 +12,15 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
   }
 </style>
 
-# Create an MCP Microservice using Nat Lang Vibe
+!!! pied-piper ":bulb: Ireate an MCP Microservice using Nat Lang Vibe"
 
-This demo illustrates [GenAI-Logic](https://apilogicserver.github.io/Docs/Sample-Basic-Demo-Vibe) automation to create an MCP system using Natural Language:
+    This demo illustrates [GenAI-Logic](https://apilogicserver.github.io/Docs/Sample-Basic-Demo-Vibe) automation to create an MCP system using Natural Language:
 
-1. **Create From Existing DB:** creates a MCP-enabled API and an Admin App
-2. **Verify MCP:** operation using your AI Assistant
-3. **Declare Business Logic:** no-bypass governance using natural language logic and rules
-4. **Create an email service:** add logic to create an audited email service
-5. **MCP: Logic, User Interface**: enable business users to invoke services (such as email) with natural language, here via the automatically created Admin App:
+    1. **Create From Existing DB:** creates a MCP-enabled API and an Admin App
+    2. **Verify MCP:** operation using your AI Assistant
+    3. **Declare Business Logic:** no-bypass governance using natural language logic and rules
+    4. **Create an email service:** add logic to create an audited email service
+    5. **MCP: Logic, User Interface**: enable business users to invoke services (such as email) with natural language, here via the automatically created Admin App:
 
 ![mcp-ui](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-ui.png?raw=true)
 
@@ -49,18 +49,7 @@ Please load `.github/.copilot-instructions.md`
 
 <summary>Demo Overview: Vibe an MCP API and Business Logic; pre-reqs </summary>
 
-<br>Here we will use Vibe to:
-
-1. **[Create From Existing DB](Project-Structure.md){:target="_blank" rel="noopener"}** - Provides a MCP-enabled API and an Admin App
-   - [Project Opens: Run](#1a-project-opens-run) - Launch and verify your system
-
-2. **[Declare Business Logic](Logic-Use.md){:target="_blank" rel="noopener"}** - Add rules with natural language
-
-3. **[Enterprise Connectivity: B2B](Integration-Kafka.md){:target="_blank" rel="noopener"}** - Create integration endpoints
-
-4. **[MCP: Logic, User Interface](Integration-MCP.md){:target="_blank" rel="noopener"}** - Implement Model Context Protocol
-
-5. **[Iterate: Rules and Python](Logic-Debug.md){:target="_blank" rel="noopener"}** - Advanced customization patterns<br><br>
+<br>
 
 Pre-reqs:
 
@@ -155,7 +144,7 @@ Explore the app - click Customer Alice, and see their Orders, and Items.
 
 ## 2. Verify MCP
 
-Paste into your AI Assistant:
+Project creation builds an MDA-enabled API.  To test it, paste into your AI Assistant:
 
 ``` bash title="Verify MCP Operation"
 Using mcp discovery, list the customers with a positive balance.
@@ -173,14 +162,18 @@ you should see:
 
 ## 3. Declare Business Logic
 
-MCP Access include update operations.  These are not safe without governance: business logic that cannot be by-passed.
+Since MCP Access include update operations, is is critical to provide governance: business logic that cannot be by-passed.
 
-Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  GenAI-Logic provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
+> Such logic (multi-table derivations and constraints) is a significant portion of a system, typically nearly half.  GenAI-Logic provides **spreadsheet-like rules** that dramatically simplify and accelerate logic development.
 
 You can declare such logic in 2 ways:
 
 1. Use Natural Language, as shown in the code sample below.  The screenshot shows the 5 rules for **Check Credit Logic.**
 2. Or, declare rules directly in Python, simplified with IDE code completion.  
+
+&nbsp;
+
+**To declare logic:**
 
 **1. Stop the Server** (Red Stop button, or Shift-F5 -- see Appendix)
 
@@ -240,7 +233,7 @@ Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  Th
 
 ## 4. Create the email Service
 
-The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs.  Build it as follows:<br><br>
+The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs.  Build it with Natural Language as follows:<br><br>
 
 **1. Stop the Server:**  click the red stop icon 🟥 or press <kbd>Shift</kbd>+<kbd>F5</kbd>.
 
@@ -274,7 +267,7 @@ Inserts into SysEmail will now send mails (stubbed here with a log message).
 
 ## 5. Activate MCP Client Executor
 
-Your project already has `integration/mcp/mcp_client_executor.py`, which processes MCP requests.  
+Your project is pre-created with `integration/mcp/mcp_client_executor.py`, which processes MCP requests.  
 
 > MCP Clients accept MCP Requests, invoke the LLM to obtain a series of API calls to run, and runs them.  For more on MCP, [click here](Integration-MCP.md){:target="_blank" rel="noopener"}.
 
