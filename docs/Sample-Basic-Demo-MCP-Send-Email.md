@@ -13,9 +13,9 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 </style>
 
 
-## Create an MCP service (send email) using NL
+## Create an MCP service with NL
 
-In this demo, we will use Natural Language (NL) to:
+In this demo, we will **use Natural Language (NL) to create an MCP service (send email)**:
 
 1. **Create From Existing DB:** a CLI command creates an MCP-enabled API and an Admin App
 
@@ -121,9 +121,9 @@ Explore the app - click Customer Alice, and see their Orders, and Items.
 
 <br><br>
 
-### 1a. Verify MCP with AI Assistant
+### 1a. Verify MCP
 
-Project creation builds an MDA-enabled API.  To test it, paste into your AI Assistant:
+Project creation builds an MDA-enabled API.  To verify it, paste into your AI Assistant:
 
 ``` bash title="Verify MCP Operation"
 Using mcp discovery, list the customers with a positive balance.
