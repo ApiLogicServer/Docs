@@ -12,27 +12,18 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
   }
 </style>
 
-!!! pied-piper ":bulb: Create an MCP Microservice using Natural Language (NL)"
 
-    This demo shows how to create an *governed* MCP system using Natural Language.  
-    
-    We'll create the system from an existing database, test the automatic MCP, and add governing logic.
+## Create an MCP service (send email) using NL
 
-    We'll then add a governed email service to send customer emails.
+In this demo, we will use Natural Language (NL) to:
 
-    Finally, we will illustrate a client interface; you could also use your own.
+1. **Create From Existing DB:** a CLI command creates an MCP-enabled API and an Admin App
 
-&nbsp;
+     * **Verify MCP:** using your AI Assistant
 
-## Demo Overview
-
-In this demo, we will use Natural Language to:
-
-1. **Create From Existing DB:** creates a MCP-enabled API and an Admin App
-2. **Verify MCP:** use your AI Assistant
-3. **Declare Business Logic:** no-bypass governance using natural language logic and rules
-4. **Create an email service:** add logic to create an audited email service
-5. **MCP: Logic, User Interface**: enable business users to invoke services (such as email) with natural language, here via the automatically created Admin App:
+2. **Declare Business Logic:** no-bypass governance using natural language logic and rules
+3. **Create an email service:** add logic to create an audited email service
+4. **MCP Client**: enable business users to invoke services with natural language, here via the automatically created Admin App (or, use your own app):
 
 ![mcp-ui](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-ui.png?raw=true)
 
@@ -130,7 +121,7 @@ Explore the app - click Customer Alice, and see their Orders, and Items.
 
 <br><br>
 
-## 2. Verify MCP
+### 1a. Verify MCP with AI Assistant
 
 Project creation builds an MDA-enabled API.  To test it, paste into your AI Assistant:
 
@@ -148,7 +139,7 @@ you should see:
 
 &nbsp;
 
-## 3. Declare Business Logic
+## 2. Declare Business Logic
 
 Since MCP Access include update operations, is is critical to provide governance: business logic that cannot be by-passed.
 
@@ -219,7 +210,7 @@ Note that it's a `Multi-Table Transaction`, as indicated by the indentation.  Th
 
 <br>
 
-## 4. Create the email Service
+## 3. Create the email Service
 
 The server is automatically mcp-enabled, but we also require a user-interface to enable business users to send email, subject to business logic for customer email opt-outs.  Build it with Natural Language as follows:<br><br>
 
@@ -253,7 +244,7 @@ Inserts into SysEmail will now send mails (stubbed here with a log message).
 
 <br>
 
-## 5. Activate MCP Client Executor
+## 4. MCP Client Executor
 
 Your project is pre-created with `integration/mcp/mcp_client_executor.py`, which processes MCP requests.  
 
@@ -287,7 +278,7 @@ Context Engineering has trained Copilot to use (again) the **Request Pattern:**
 
 <br>
 
-## 6. Test in the Admin App
+## 5. Test in the Admin App
 
 <br>
 
@@ -315,9 +306,3 @@ to the customer for each one.
 ![mcp-retrieval](images/basic_demo/mcp-retrieval.png)
 
 </details>
-
-<br>
-
-## 7. Iterate: Rules and Python
-
-This is addressed in the related CLI-based demo - to continue, [click here](Sample-Basic-Demo.md#5-iterate-with-rules-and-python){:target="_blank" rel="noopener"}.
