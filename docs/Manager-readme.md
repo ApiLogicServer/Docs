@@ -1,5 +1,5 @@
 ---
-title: Welcome
+title: Welcome - see end for instructions to hide this
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs/Manager-readme
 version info: 17.00.07 (04/30/2026)
@@ -823,5 +823,25 @@ ApiLogicServer create --project-name=samples/nw_sample_nocust --db-url=nw
 ```
 </details>
 
+
+</details>
+
+&nbsp;
+
+### Hiding Front Matter
+
+<details markdown>
+
+<summary>Hiding Front Matter </summary>
+
+To hide the YAML or JSON front matter (the metadata block at the top of your markdown files) in the built-in VS Code markdown preview, you can adjust your editor settings:
+
+1. Open the Settings panel using Ctrl + , (Windows/Linux) or Cmd + , (macOS).
+2. Search for the following term: `markdown.previewFrontMatter`.
+3. Change the dropdown value from show to `hide`.
+
+The preview will now automatically strip the front matter from the rendered view.
+
+![hide-front-matter](images/manager/hide-front-matter.png)
 
 </details>
