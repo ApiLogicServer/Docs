@@ -34,51 +34,59 @@ This is the start page for the [GenAI-Logic Manager](https://apilogicserver.gith
 
 &nbsp;
 
+## 🤖 AI Assistance
+
+```
+Please load `.github/.copilot-instructions.md`.
+```
+
 <details markdown>
+<summary>Selecting your AI assistant</summary>
 
-<summary>Logic Governance Architecture</summary>
+&nbsp;
 
-<br>
+We get consistently good results with Claude Sonnet 4.6 (GitHub Copilot or Claude Code extension). "Ask" mode will not work — use Agent mode.
 
-1. **Context Engineering** directs AI to generate Data Rules — not procedural code. Without it, AI pattern-matches to FrankenCode. With it, intent becomes declarations.  This is genned into your project at `docs/training`.
-
-2. **Data Rules** distill path-dependent logic into *path-independent rules on data*. They are Python source — `Rule.constraint`, `Rule.sum`. No missed paths. Every path inherits them automatically.
-
-3. The **Commit Listener** hooks into the ORM commit. Every transaction — API, agent, workflow — passes through one control point. Nothing bypasses it.
-
-4. The **Rule Engine** computes dependency order from the Data Rules at startup — deterministically. No pattern-matching, no subtle ordering bugs.
-
-![Logic Governance Architecture](images/architecture/logic-architecture.png)
+For more information, see [AI-Enabled Projects](https://apilogicserver.github.io/Docs/Project-AI-Enabled/){:target="_blank" rel="noopener"} or [click here](https://apilogicserver.github.io/Docs/Manager-readme/){:target="_blank" rel="noopener"}.
 
 </details>
 
 &nbsp;
 
-**🤖 AI Assistance:**
+## 🚀 First Time Here?
 
-```
-Please load `.github/.copilot-instructions.md`.
-```
-> We get consistently good results with Claude Sonnet 4.6 (GitHub Copilot or Claude Code extension). "Ask" mode will not work — use Agent mode.  For more information, [click here](https://apilogicserver.github.io/Docs/Manager-readme/){:target="_blank" rel="noopener"}.
+<details markdown>
+<summary>🔨 Do it — 30 min hands-on tour</summary>
 
 &nbsp;
-
----
-
-# 🚀 First Time Here? Start with basic_demo
 
 **Create basic_demo** (auto-opens with guided tour option):
 ```bash
 genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
-**Inside the project:** Say to your AI assistant: *"Guide me through basic_demo"* (30-45 min hands-on tour).  (For detailed *self-paced exploration,* see [Sample-Basic-Demo](https://apilogicserver.github.io/Docs/Sample-Basic-Demo/)).
+**Inside the project:** Say to your AI assistant: *"Guide me through basic_demo"* (30-45 min hands-on tour).
 
-> This tour teaches you the product basics: API creation, declarative rules, security, and Python customization. <br>It's "fail-safe" - scripts ensure no coding errors.  This is the recommended starting point.
+> Teaches API creation, declarative rules, security, and Python customization. Fail-safe — scripts ensure no coding errors.
+
+</details>
 
 &nbsp;
 
-# 📚 Demo Catalog (Next Steps)
+<details markdown>
+<summary>📖 Understand it — why rules matter</summary>
+
+&nbsp;
+
+Open `samples/basic_demo_logic_gov` and read the `readme.md` — a working system (API, rules, governance reports) with a side-by-side comparison of 5 declarative rules vs. 200 lines of AI-generated procedural code, including the 2 bugs the procedural version missed.
+
+</details>
+
+&nbsp;
+
+&nbsp;
+
+## 📚 Demo Catalog (Next Steps)
 
 These samples are designed to illustrate key patterns for typical requirements.
 
