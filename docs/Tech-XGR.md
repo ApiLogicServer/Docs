@@ -1,18 +1,26 @@
-# AI Made Executable Requirements Real. *Governance* Is What Makes Them Deployable.
+---
+title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
+subtitle: "Why the next enterprise unlock isn't speed."
+author: Val Huber
+date: 2026-05-29
+version: 5
+---
 
-*Why the next enterprise unlock isn't speed. It's what survives contact with production.*
+# AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
+
+*Why the next enterprise unlock isn't speed.*
 
 ---
 
 AI cracked the speed problem.
 
-Watch any vibe-coding demo: a paragraph of English goes in, a working app comes out, minutes not months. The translation from intent to running code — the bottleneck enterprise IT has been negotiating for forty years — really did get faster. That is a genuine accomplishment, and the AI tooling community deserves the credit it's getting for it.
+Watch any vibe-coding demo: a paragraph of English goes in, a working app comes out, minutes not months. The translation from intent to running code — the bottleneck enterprise IT has lived with for forty years — really did get faster. That is a genuine accomplishment, and the AI tooling community deserves the credit it's getting for it.
 
-But there's a quiet question every enterprise reader is asking when the demo ends. Would I put this into production? Where it touches my customers, my regulators, my eight-figure exposure? Where an auditor will eventually ask which rule fired on which transaction, and whether the same rule fires on every path?
+But there's a question every enterprise reader is asking when the demo ends. Would I put this into production? Where it touches my customers, my regulators, my eight-figure exposure? Where an auditor will eventually ask which rule fired on which transaction, and whether the same rule fires on every path?
 
 Today, the honest answer is no. Not because the code doesn't run — it does. Because nothing about it is governed.
 
-This article is about closing that gap. The capability has a name: **Executable Governable Requirements**, or **XGR**. The shorthand version is this: AI does what it's great at (translating intent), and a purpose-built runtime does what AI can't (enforcing that intent deterministically, on every path, with no bypass). The pipeline your team already runs doesn't change. What comes out the other end does.
+This article is about closing that gap. The capability has a name: **Executable Governable Requirements**, or **XGR**. In short: AI does what it's great at (translating intent), and a purpose-built runtime does what AI can't (enforcing that intent deterministically, on every path, with no bypass). The pipeline your team already runs doesn't change. What comes out the other end does.
 
 For business analysts, the payoff is direct: the requirement you wrote becomes the artifact that runs. There is no translation layer between your specification and what production enforces. For management, the payoff is governance that scales — measurable across the portfolio, reviewable by compliance, provable to auditors.
 
@@ -38,7 +46,7 @@ So: prototypes are real. Demos are real. But the two things that have always bro
 
 Governance has emerged as the number-one CIO priority for 2026, overtaking cybersecurity for the first time. That's not a marketing statistic; it's the consequence of a structural shift. AI agents now touch production data. New endpoints get added every quarter. New developers join, new integrations land, new workflows route around old ones. Every path is another way to bypass a rule that lives on some other path.
 
-The cost of getting this wrong is no longer theoretical. Regulatory penalties run into the millions per incident. Compliance staffing has become a major line item. Audit findings that used to be embarrassing are now existential. And the audit problem itself is genuinely intractable under the traditional model: read hundreds of thousands of lines of code, determine whether the relevant rules exist, prove they execute on every path. Auditors sample and hope.
+The cost of getting this wrong is no longer theoretical. Regulatory penalties run into the millions per incident. Compliance staffing has become a major line item. Audit findings that used to be embarrassing now threaten the business. And the audit problem itself is genuinely intractable under the traditional model: read hundreds of thousands of lines of code, determine whether the relevant rules exist, prove they execute on every path. Auditors sample and hope.
 
 This is the actual problem AI was supposed to help with, and the one current AI tooling makes worse — not better — because faster generation of unreviewable code is not progress. It's the same problem at higher velocity.
 
@@ -46,7 +54,7 @@ This is the actual problem AI was supposed to help with, and the one current AI 
 
 ## XGR: what changes
 
-The reframe is small and consequential. Today's AI tooling translates intent into **code**. XGR translates intent into **rules** — declarative statements about data — and a purpose-built runtime enforces them at the database commit point.
+The reframe is simple and consequential. Today's AI tooling translates intent into **code**. XGR translates intent into **rules** — declarative statements about data — and a purpose-built runtime enforces them at the database commit point.
 
 The five-line "check credit" requirement becomes five declarative rules:
 
@@ -69,7 +77,7 @@ The result is what your team already wants: governance that doesn't depend on de
 
 ## A specialized runtime, not a feature
 
-A note on the engine itself, because what it does matters more than the surface architecture suggests.
+A note on the engine itself.
 
 This is not a RETE engine. Classic rules engines are *called* — application code hands them a list of objects, the engine pattern-matches across working memory, fires rules. They have no idea what changed; they see a bag of state and re-derive everything that might depend on it.
 
@@ -79,7 +87,7 @@ The first is the **no-bypass guarantee**. Because the engine sits at the commit 
 
 The second consequence is performance. Because the engine sees what changed, it can prune the rule graph to only the rules whose inputs actually moved, and it can maintain aggregates incrementally instead of recomputing them. A `count of children` rule, when a new child is added, costs one read and one update — not a `SELECT COUNT(*)` across the child table. In production work in an earlier generation of this architecture, this category of optimization turned four-minute transactions into two-second transactions. The analyst wrote `count`. They didn't have to know any of that happened.
 
-These properties — no-bypass enforcement, delta-aware optimization, adjustment semantics per rule type — are not features layered onto a rules engine. They are consequences of where the engine sits and what it sees. The result is a specialized runtime in the lineage of a relational query optimizer: a piece of infrastructure that takes years to mature, lives below the abstraction layer the user works at, and earns its keep by being invisible. The analyst writes `count`. The engine handles incremental maintenance, dependency ordering, and the dozens of edge cases that come with multi-table transactional logic. That is the right division of labor.
+These properties — no-bypass enforcement, delta-aware optimization, adjustment semantics per rule type — are not features layered onto a rules engine. They are consequences of where the engine sits and what it sees. The result is a specialized runtime in the lineage of a relational query optimizer: a piece of infrastructure that takes years to mature and lives below the abstraction layer the user works at. The analyst writes `count`. The engine handles incremental maintenance, dependency ordering, and the dozens of edge cases that come with multi-table transactional logic. That is the right division of labor.
 
 Versata measured this category of system across production deployments before the AI era: declarative rules required writing only about 3% of equivalent procedural code. That reduction wasn't a style preference — it was the visible consequence of removing the procedural enumeration of paths that the engine handles structurally.
 
@@ -106,11 +114,11 @@ The output was a working, tested system — and it's worth being specific about 
 
 All from one prompt. All governed by the same rules engine at the commit point. And the part that matters at portfolio scale: **every component inherits the governance automatically**, including ones added later. A new endpoint inherits the rules. A new Kafka handler ingesting messages goes through the commit listener. An MCP-discovered agent calling the API hits the same gate. A vibed custom UI calling the JSON:API is governed without the developer doing anything. Governance is not applied per-component — it is inherited from sitting above the commit boundary.
 
-This is the answer to the question every CIO is asking about agents: *won't they bypass my controls?* The structural answer is no. The agent's only path to persistence is through the gate.
+This answers the agent question every CIO is asking: *won't they bypass my controls?* The structural answer is no. The agent's only path to persistence is through the gate.
 
 This is a proof-of-concept, not a production deployment — a real, runnable, tested one, with the regulation citation in the prompt traceable through to the rules that enforce it. For a regulated industry, this compression of the regulation-to-enforcement chain is the larger unlock. The most expensive translation chain in compliance is *regulation → requirements → specs → code → enforcement → audit*. Every handoff is a defect generator. The Surtax POC compresses that chain to a single step, with the regulator's text as the source of truth and the running system as the artifact that enforces it.
 
-Both proofs produce the same governed runtime. Same engine, same enforcement guarantees, same auto-generated artifacts. The difference is how far upstream the source of truth lives. What makes this work is the composition: AI as translator, rules as the target, the engine as enforcement, the auto-generated artifacts as audit. Each layer has existed in some form. The combination is what creates a deployable governance posture.
+Both proofs produce the same governed runtime. Same engine, same enforcement guarantees, same auto-generated artifacts. The difference is how far upstream the source of truth lives. What makes this work is the composition: AI as translator, rules as the target, the engine as enforcement, the auto-generated artifacts as audit. Each layer has existed in some form. The combination is what creates deployable governance.
 
 ---
 
@@ -192,7 +200,7 @@ The same architecture that makes governance auditable makes the agile loop fast.
 
 ## Standard tools, standard outputs
 
-One last point that matters more than it should. None of this requires entering a proprietary world.
+One last point. None of this requires entering a proprietary world.
 
 The runtime is built from several engines — ORM integration, API generation, Admin UI, the rules engine — and they are open source. More importantly, what they produce is standard. The rules are Python in a standard project. Open them in your IDE. Set a breakpoint inside a rule, step through with the debugger. Check them into git. The API is JSON:API. The ORM is SQLAlchemy. The Admin UI is a standard pattern. The database is the one you already use — Postgres, MySQL, SQL Server, SQLite. Deploy as a container.
 
@@ -206,7 +214,7 @@ Governance-by-discipline was already failing in traditional systems, at signific
 
 As W. Ries [argued in this publication recently](https://medium.com/), the organizations that solve it will solve it architecturally — rules at the commit point, in declarative form, generated from the requirements the business already writes. The organizations that try to solve it with more process, tighter agent confinement, and better-trained reviewers will spend the next five years discovering, in audit findings, that those approaches scale with the size of the discipline problem rather than against it. That is the dividing line.
 
-Speed alone produces prototypes. What survives contact with production is a complete system — API, UI, integration, security — where every component, including the ones added tomorrow, inherits governance from the commit boundary. The rule is the requirement. The engine enforces it. The artifacts prove it ran. The analyst validated it before development began.
+Speed alone produces prototypes. What you can actually deploy is a complete system — API, UI, integration, security — where every component, including the ones added tomorrow, inherits governance from the commit boundary. The rule is the requirement. The engine enforces it. The artifacts prove it ran. The analyst validated it before development began.
 
 This is not a faster way to write code. It is a different kind of infrastructure — governed transactional logic as a first-class layer of the enterprise stack, alongside the database and the message bus. Once you have seen it, the procedural alternative looks like what it always was: a translation layer the industry could never quite get right, at a cost the next budget cycle is no longer willing to pay.
 
