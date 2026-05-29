@@ -20,15 +20,15 @@ For business analysts, the payoff is direct: the requirement you wrote becomes t
 
 ## Why AI alone is not enough
 
-Both traditional development and AI-assisted development fail in the same two ways. The failures are easier to see side by side.
+Both traditional development and AI-assisted development fail in the same two ways. The failures are easier to see side by side — and they matter because business logic (the multi-table derivations, constraints, and side-effects that make enterprise software *enterprise* software) is typically 40–50% of coding and debugging effort. These failures describe where most of the work happens, and most of the rework.
 
-**Failure one: lost intent.** A business analyst writes a requirement in five lines of English. A developer interprets it as 200 lines of procedural code. Six months later, when compliance asks "show me where the credit limit is enforced," nobody can read the answer. The intent is somewhere in the code, dispersed across handlers, branches, and helper functions — but the original requirement is no longer visible. You reconstruct it from how the code behaves.
+**Failure one: lost intent.** A business analyst writes a requirement in five lines of English. A developer interprets it as 200 lines of procedural code. The intent ends up dispersed across handlers, branches, and helper functions — somewhere in there, but no longer visible. Six months later, compliance can't read it. The next developer who has to maintain it can't read it either. Both have to reconstruct what the system means from how it behaves.
 
-AI doesn't fix this. It accelerates it. A modern coding assistant takes the same five-line requirement and produces the same 200 lines, faster. The intent is still buried. The auditor still can't read it.
+AI doesn't fix this. It accelerates it. A modern coding assistant takes the same five-line requirement and produces the same 200 lines, faster. Developers have a name for it: *FrankenCode* — code you didn't write, don't fully understand, and now have to maintain. Technical debt at generation speed.
 
 **Failure two: dependency bugs.** Enterprise business logic has transitive dependencies — change an item's price, and the order total changes, and the customer balance changes, and the credit check should re-run. A three-table system has nine distinct change paths. Procedural code has to enumerate each one explicitly. Developers miss paths. So does AI, for the same reason: pattern-matching across procedural control flow cannot reliably infer transitive dependencies. Multiple AI systems have admitted this when asked directly. It is a structural limitation, not a capability gap that will be patched in the next model.
 
-In a recent side-by-side test, the same five-rule requirement produced two outputs from the same AI assistant: a declarative version with five rules and zero bugs, and a procedural version with 220 lines and two silent bugs — both involving foreign-key changes that updated the new parent but not the old. No exception was thrown. The data was just wrong. At five rules you might catch them. At five hundred — which is what an enterprise system looks like — you won't.
+In a recent side-by-side test, the same five-rule requirement produced two outputs from the same AI assistant: a declarative version with five rules and zero bugs, and a procedural version with about 200 lines and two silent bugs — both involving foreign-key changes that updated the new parent but not the old. No exception was thrown. The data was just wrong. At five rules you might catch them. At five hundred — which is what an enterprise system looks like — you won't.
 
 So: prototypes are real. Demos are real. But the two things that have always broken enterprise software — intent loss and dependency bugs — are not solved by AI. AI just produces them faster.
 
@@ -50,15 +50,9 @@ The reframe is small and consequential. Today's AI tooling translates intent int
 
 The five-line "check credit" requirement becomes five declarative rules:
 
-```
-1. unit_price  = copy(Product.unit_price)
-2. amount      = quantity * unit_price
-3. amount_total = sum(Item.amount)
-4. balance     = sum(Order.amount_total where date_shipped is null)
-5. Customer balance must not exceed credit limit
-```
+![Declarative rules versus procedural code — same requirement, two outputs. Five rules on the left, ~200 lines on the right. The declarative side is always used, on every path, with no bypass.](why-rules.png)
 
-These are not pseudocode. They are the actual artifact that runs, executed by the rules engine on every transaction. Each rule maps directly to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The 220-line procedural version dispersed that intent across handlers; the rule version restates it with precision.
+These are not code in the procedural sense. They are the requirement itself, written precisely enough to execute. Each rule maps directly to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The next developer to inherit the system can read them. The 200-line procedural version dispersed that intent across handlers; the rule version restates it with precision.
 
 This is the property that makes governance work. **The rule is the requirement.** Business and IT review the same artifact. There is no translation layer where intent can go missing.
 
@@ -87,6 +81,8 @@ The second consequence is performance. Because the engine sees what changed, it 
 
 These properties — no-bypass enforcement, delta-aware optimization, adjustment semantics per rule type — are not features layered onto a rules engine. They are consequences of where the engine sits and what it sees. The result is a specialized runtime in the lineage of a relational query optimizer: a piece of infrastructure that takes years to mature, lives below the abstraction layer the user works at, and earns its keep by being invisible. The analyst writes `count`. The engine handles incremental maintenance, dependency ordering, and the dozens of edge cases that come with multi-table transactional logic. That is the right division of labor.
 
+Versata measured this category of system across production deployments before the AI era: declarative rules required writing only about 3% of equivalent procedural code. That reduction wasn't a style preference — it was the visible consequence of removing the procedural enumeration of paths that the engine handles structurally.
+
 ---
 
 ## Two proofs: requirements in, regulation in
@@ -114,7 +110,7 @@ This is the answer to the question every CIO is asking about agents: *won't they
 
 This is a proof-of-concept, not a production deployment — a real, runnable, tested one, with the regulation citation in the prompt traceable through to the rules that enforce it. For a regulated industry, this compression of the regulation-to-enforcement chain is the larger unlock. The most expensive translation chain in compliance is *regulation → requirements → specs → code → enforcement → audit*. Every handoff is a defect generator. The Surtax POC compresses that chain to a single step, with the regulator's text as the source of truth and the running system as the artifact that enforces it.
 
-Both proofs produce the same governed runtime. Same engine, same enforcement guarantees, same auto-generated artifacts. The difference is how far upstream the source of truth lives.
+Both proofs produce the same governed runtime. Same engine, same enforcement guarantees, same auto-generated artifacts. The difference is how far upstream the source of truth lives. What makes this work is the composition: AI as translator, rules as the target, the engine as enforcement, the auto-generated artifacts as audit. Each layer has existed in some form. The combination is what creates a deployable governance posture.
 
 ---
 
@@ -132,7 +128,7 @@ This is the layer management asks for and rarely gets: *show me where governance
 
 ### 2. The Logic Diagram — per-requirement structure
 
-Just as developers rely on database diagrams to visualize structure, analysts and auditors need a way to visualize logic. The Logic Diagram is that artifact — one per requirement, auto-generated from the rules themselves, so it can never drift from what's enforced.
+Every developer insists on a database diagram. You can't engage with a system you can't visualize. The same is true for logic — and until now, there has been no equivalent artifact for the rules that govern that data.
 
 ![Logic Diagram — auto-generated, one per requirement. Requirement at top, rules at bottom, dependency graph in between.](logic-diagram-screenshot.png)
 
@@ -180,13 +176,13 @@ The same architecture that makes governance auditable makes the agile loop fast.
 
 ---
 
-## Standard everything
+## Standard tools, standard outputs
 
 One last point that matters more than it should. None of this requires entering a proprietary world.
 
-The rules are Python in a standard project. Open them in your IDE. Set a breakpoint inside a rule, step through with the debugger. Check them into git. Deploy as a container. Use the database you already use — Postgres, MySQL, SQL Server, SQLite. The rules engine is the only piece specific to GenAI-Logic, and it's open source.
+The runtime is built from several engines — ORM integration, API generation, Admin UI, the rules engine — and they are open source. More importantly, what they produce is standard. The rules are Python in a standard project. Open them in your IDE. Set a breakpoint inside a rule, step through with the debugger. Check them into git. The API is JSON:API. The ORM is SQLAlchemy. The Admin UI is a standard pattern. The database is the one you already use — Postgres, MySQL, SQL Server, SQLite. Deploy as a container.
 
-This is the difference between adopting infrastructure and adopting an exception. Platforms that require you to enter their world — their IDE, their data model, their runtime, their consultants — succeed in narrow domains and fail at enterprise breadth. Standard tools meet the enterprise where it already lives.
+This is the difference between adopting infrastructure and adopting an exception. Platforms that require you to enter their world — their IDE, their data model, their runtime, their certified consultants — succeed in narrow domains and fail at enterprise breadth. The XGR runtime is a framework, but a framework whose artifacts live in the world the enterprise already runs.
 
 ---
 
@@ -194,11 +190,11 @@ This is the difference between adopting infrastructure and adopting an exception
 
 Governance-by-discipline was already failing in traditional systems, at significant cost, well before AI arrived. AI didn't create the problem. It made it the problem every CIO has to solve in the next budget cycle, not the one after.
 
-As Wynford Rees [argued in this publication recently](https://medium.com/), the organizations that solve it will solve it architecturally — rules at the commit point, in declarative form, generated from the requirements the business already writes. The organizations that try to solve it with more process, tighter agent confinement, and better-trained reviewers will spend the next five years discovering, in audit findings, that those approaches scale with the size of the discipline problem rather than against it. That is the dividing line.
+As W. Ries [argued in this publication recently](https://medium.com/), the organizations that solve it will solve it architecturally — rules at the commit point, in declarative form, generated from the requirements the business already writes. The organizations that try to solve it with more process, tighter agent confinement, and better-trained reviewers will spend the next five years discovering, in audit findings, that those approaches scale with the size of the discipline problem rather than against it. That is the dividing line.
 
 Speed alone produces prototypes. What survives contact with production is a complete system — API, UI, integration, security — where every component, including the ones added tomorrow, inherits governance from the commit boundary. The rule is the requirement. The engine enforces it. The artifacts prove it ran. The analyst validated it before development began.
 
-That is the deployable version of the AI productivity story.
+This is not a faster way to write code. It is a different kind of infrastructure — governed transactional logic as a first-class layer of the enterprise stack, alongside the database and the message bus. Once you have seen it, the procedural alternative looks like what it always was: a translation layer the industry could never quite get right, at a cost the next budget cycle is no longer willing to pay.
 
 ---
 
