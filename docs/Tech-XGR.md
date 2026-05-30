@@ -2,7 +2,7 @@
 title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
 author: Val Huber
 date: 2026-05-29
-version: 7
+version: 8
 ---
 
 # AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
@@ -51,13 +51,13 @@ This is the actual problem AI was supposed to help with, and the one current AI 
 
 ## XGR: what changes
 
-The reframe is simple and consequential. Today's AI tooling translates intent into **code**. XGR translates intent into **rules** — declarative statements about data — and a purpose-built runtime enforces them at the database commit point.
+The fix is simple and consequential. Today's AI tooling translates intent into **code**. XGR translates intent into **rules** — declarative statements about data — and a purpose-built runtime enforces them at the database commit point.
 
 The five-line "check credit" requirement becomes five declarative rules:
 
 ![Declarative rules versus procedural code — same requirement, two outputs. Five rules on the left, ~200 lines on the right. The declarative side is always used, on every path, with no bypass.](images/articles/XGR/why-rules.png)
 
-These are not code in the procedural sense. They are the requirement itself, written precisely enough to execute. Each rule maps directly to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The next developer to inherit the system can read them. The 200-line procedural version dispersed that intent across handlers; the rule version restates it with precision.
+These rules are not code in the procedural sense. They are the requirements themselves, written precisely enough to execute. Each rule maps directly to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The next developer to inherit the system can read them. The 200-line procedural version dispersed that intent across handlers; the rule version restates it with precision.
 
 This is the property that makes governance work. **The rule is the requirement.** Business and IT review the same artifact. There is no translation layer where intent can go missing.
 
@@ -70,7 +70,7 @@ Here's how the Logic Architecture works:
 3. **The Commit Listener** hooks into the ORM. Every transaction — from any API, any agent, any workflow, any future endpoint that hasn't been built yet — passes through one control point. There is no architectural path that routes around it.
 4. **The Rules Engine** computes dependency order from rule semantics at startup, deterministically. No pattern-matching, no subtle ordering bugs.
 
-The result is what your team already wants: governance that doesn't depend on developers remembering, doesn't degrade as the system grows, and produces the same outcomes regardless of which path triggered the transaction.
+The result is what your team already wants: governance that doesn't depend on developers remembering to use rules, doesn't degrade as the system grows, and produces the same outcomes regardless of which path triggered the transaction.
 
 ---
 
@@ -78,7 +78,7 @@ The result is what your team already wants: governance that doesn't depend on de
 
 A note on the engine itself.
 
-This is not a RETE engine. Classic rules engines are *called* — application code hands them a list of objects, the engine pattern-matches across working memory, fires rules. They have no idea what changed; they see a bag of state and re-derive everything that might depend on it.
+This is not a RETE engine. Classic rules engines are *called* — application code hands them a list of objects, the engine pattern-matches across working memory, fires rules. The engine has no idea what changed; it sees a bag of state and re-derives everything that might depend on that state.
 
 The XGR engine hooks the ORM directly. It doesn't get a bag of objects — it gets the actual change event: *Item inserted*, *Order.amount_total moved from X to Y*, *Customer.id changed from A to B*. Two consequences follow.
 
@@ -113,7 +113,7 @@ The output was a working, tested system — and it's worth being specific about 
 
 All from one prompt. All governed by the same rules engine at the commit point. And the part that matters at portfolio scale: **every component inherits the governance automatically**, including ones added later. A new endpoint inherits the rules. A new Kafka handler ingesting messages goes through the commit listener. An MCP-discovered agent calling the API hits the same gate. A vibed custom UI calling the JSON:API is governed without the developer doing anything. Governance is not applied per-component — it is inherited from sitting above the commit boundary.
 
-This answers the agent question every CIO is asking: *won't they bypass my controls?* The structural answer is no. The agent's only path to persistence is through the gate.
+This answers the agent question every CIO is asking: *won't AI agents bypass my controls?* The structural answer is no. The agent's only path to persistence is through the gate.
 
 This is a proof-of-concept, not a production deployment — a real, runnable, tested one, with the regulation citation in the prompt traceable through to the rules that enforce it. For a regulated industry, this is the bigger gain. The regulation-to-enforcement chain compresses to a single step, with the regulator's text as the source of truth and the running system as the artifact that enforces it. The most expensive translation chain in compliance is *regulation → requirements → specs → code → enforcement → audit*. Every handoff is a defect generator.
 
@@ -143,7 +143,7 @@ Three auto-generated artifacts make this work at portfolio scale. Each addresses
 
 ### 1. The Governance Report — portfolio health
 
-Governance by architecture only holds if teams are actually using rules instead of reverting to procedural code. A built-in health check scores each project on two dimensions: **Coverage** (are the right tables governed by rules?) and **Integrity** (do the rules pass anti-pattern checks?). A portfolio leaderboard makes adoption visible across teams without reading a line of code.
+Governance by architecture only holds if teams are actually using rules instead of reverting to procedural code. A built-in health check scores each project on two dimensions: **Coverage** (are the right tables governed by rules?) and **Integrity** (do the rules pass anti-pattern checks?). Run the report across the portfolio and adoption becomes visible across teams, without reading a line of code.
 
 This is the layer management asks for and rarely gets: *show me where governance is strong, show me where it's weak, show me the trend.* The same tool that enforces rules also measures whether teams are using them.
 
@@ -185,7 +185,7 @@ There's a derivative effect to all of this that deserves to be named, because it
 
 The original agile vision was *working software over comprehensive documentation* — short cycles, real feedback from real stakeholders looking at something that actually runs. The methodology spread. The vision mostly didn't. The reason was economic: producing working software to react to cost two weeks of developer time per iteration, so teams had to lock the requirement before development started. Sprint reviews ended up showing wireframes, mockups, or partial implementations. The requirement was frozen before anyone saw it run. That is waterfall on a sprint cadence.
 
-XGR changes the cost curve. An analyst with a requirements document can run the prompt, get a complete governed system in minutes, click through the Admin UI, watch the rules fire, notice that clause three doesn't mean what they thought it meant, edit the requirement, re-run, and demonstrate the result to colleagues on a laptop — all before any developer has been asked to build anything.
+With XGR, iteration takes minutes, not sprints. An analyst with a requirements document can run the prompt, get a complete governed system in minutes, click through the Admin UI, watch the rules fire, notice that clause three doesn't mean what they thought it meant, edit the requirement, re-run, and demonstrate the result to colleagues on a laptop — all before any developer has been asked to build anything.
 
 The iteration is on the requirement itself, not on code generated from a frozen requirement. The analyst's artifact is the deliverable. The running system is how they validate it. The rules are the precise restatement of what they meant. No translation layer means no drift between intent and enforcement.
 
@@ -209,7 +209,7 @@ This is the difference between adopting infrastructure and adopting an exception
 
 ## The dividing line
 
-Governance-by-discipline was already failing in traditional systems, at significant cost, well before AI arrived. AI didn't create the problem. It made it the problem every CIO has to solve in the next budget cycle, not the one after.
+Governance-by-discipline was already failing in traditional systems, at significant cost, well before AI arrived. AI didn't create the problem. It made it the problem every CIO has to solve in the next budget cycle.
 
 As W. Ries [argued in this publication recently](https://medium.com/), the organizations that solve it will solve it architecturally — rules at the commit point, in declarative form, generated from the requirements the business already writes. The organizations that try to solve it with more process, tighter agent confinement, and better-trained reviewers will spend the next five years discovering, in audit findings, that those approaches scale with the size of the discipline problem rather than against it. That is the dividing line.
 
