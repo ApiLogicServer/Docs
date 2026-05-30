@@ -250,7 +250,7 @@ nav:
     - Personal:
       - "Manager readme": Manager-readme.md
       - "Gov By Arch": Tech-Gov-By-Arch.md
-      - "XGR v11": Tech-XGR.md
+      - "XGR v12": Tech-XGR.md
       - "XRD": executable-requirements.md
       - "XR Medium": Tech-Exec-Auto-Medium.md
       - "XR EAI": Sample-Basic-EAI-Exec-Req.md

@@ -2,7 +2,7 @@
 title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
 author: Val Huber
 date: 2026-05-29
-version: 11
+version: 12
 ---
 
 # AI Made Executable Requirements Real. <br>*Governance* Is What Makes Them Deployable.
@@ -17,7 +17,7 @@ But there's a question every enterprise reader is asking when the demo ends. Wou
 
 Today, the honest answer is no. Not because the code doesn't run — it does. Because nothing about it is governed.
 
-This article is about closing that gap. The capability has a name: **Executable Governable Requirements**, or **XGR**. In short: AI does what it's great at (translating intent), and a purpose-built runtime does what AI can't (enforcing that intent deterministically, on every path, with no bypass). The pipeline your team already runs doesn't change. What comes out the other end does.
+This article is about closing that gap. The capability has a name: **Executable Governable Requirements**, or **XGR**. In short: AI does what it's great at (translating intent), and a purpose-built runtime does what AI can't (enforcing that intent deterministically, on every path, with no bypass). The pipeline your team already runs doesn't change. What does change is that the created system provided rule-driven governance.
 
 For business analysts, the payoff is direct: the requirement you wrote becomes the artifact that runs. There is no translation layer between your specification and what production enforces. For management, the payoff is governance that scales — measurable across the portfolio, reviewable by compliance, provable to auditors.
 
@@ -134,7 +134,7 @@ Declarative rules engines are not new. They have been available in mature form f
 
 It still mostly didn't take over. The reason was not technical. W. Ries, who built systems on the Versata engine in that era, puts it this way:
 
-> *"We had the engine. We had the rules. What we didn't have was scale. To keep a team on rules instead of procedural code, you had to bird-dog them — walk the floor, catch the reversions, redirect them back. Take the bird-dog away and the system grew procedural shadows alongside the rules. Governance decayed back into the discipline problem the engine was supposed to solve."*
+> *"We had the engine. We had the rules. What we didn't have was scale. To keep a team on rules instead of procedural code, you had to bird-dog them — walk the floor, catch the reversions, redirect them back. Take the bird-dog away and the procedural code sneaks back in. Governance decayed back into the discipline problem the engine was supposed to solve."*
 
 His term for what XGR changes is **governance at scale.** What is different now is not the engine — it is the funnel that feeds it. When the entry point is a Gherkin scenario or a plain-English requirement, and AI is constrained by context engineering to produce rules rather than code, there is no procedural off-ramp for the developer to revert to. The standard practice — write the requirement, run the prompt — produces rules by default. The funnel is structurally rule-producing.
 
