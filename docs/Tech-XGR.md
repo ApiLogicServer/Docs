@@ -64,7 +64,9 @@ These are not code in the procedural sense. They are the requirement itself, wri
 
 This is the property that makes governance work. **The rule is the requirement.** Business and IT review the same artifact. There is no translation layer where intent can go missing.
 
-Four architectural pieces make this real. The [Logic Governance Architecture diagram on the GenAI-Logic home page](https://www.genai-logic.com) walks through them visually; the short version is:
+![Logic Architecture.](images/architecture/logic-architecture.png))
+
+Here's how the Logic Architecture works:
 
 1. **Context Engineering** directs the AI to produce declarative rules, not procedural code. Without this constraint, AI pattern-matches to what it sees most often — procedural code. With it, intent becomes declarations.
 2. **Data Rules** distill path-dependent intent ("on placing an order, check credit") into path-independent rules on data ("customer balance is the sum of unpaid orders"). The rule no longer cares which path triggered the change.
