@@ -13,7 +13,7 @@ AI cracked the speed problem.
 
 Watch any vibe-coding demo: a paragraph of English goes in, a working app comes out, minutes not months. The translation from intent to running code — the bottleneck enterprise IT has lived with for forty years — really did get faster. That is a genuine accomplishment, and the AI tooling community deserves the credit it's getting for it.
 
-But there's a question every enterprise reader is asking when the demo ends. Would I put this into production? Where it touches my customers, my regulators, my eight-figure exposure? Where an auditor will eventually ask which rule fired on which transaction, and whether the same rule fires on every path?
+But there's a question every enterprise reader is asking when the demo ends. Would I put this into production? Where it touches my customers, my regulators, my eight-figure audit exposure? Where an auditor will eventually ask which rule fired on which transaction, and whether the same rule fires on every path?
 
 Today, the honest answer is no. Not because the code doesn't run — it does. Because nothing about it is governed.
 
