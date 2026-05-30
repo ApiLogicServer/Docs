@@ -2,7 +2,7 @@
 title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
 author: Val Huber
 date: 2026-05-29
-version: 9
+version: 10
 ---
 
 # AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
@@ -55,7 +55,7 @@ This is the actual problem AI was supposed to help with, and the one current AI 
 
 The fix is simple and consequential. Today's AI tooling translates intent into **code**. XGR translates intent into **rules** — declarative statements about data — and a purpose-built runtime enforces them at the database commit point.
 
-The five-line "check credit" requirement becomes five declarative rules:
+The five-line "check credit" requirement becomes five declarative rules. The contrast with what AI produces by default is the article's central claim in one frame:
 
 ![Declarative rules versus procedural code — same requirement, two outputs. Five rules on the left, ~200 lines on the right. The declarative side is always used, on every path, with no bypass.](images/articles/XGR/why-rules.png)
 
@@ -117,13 +117,15 @@ All from one prompt. All governed by the same rules engine at the commit point. 
 
 This answers the agent question every CIO is asking: *won't AI agents bypass my controls?* The structural answer is no. The agent's only path to persistence is through the gate.
 
-This is a proof-of-concept, not a production deployment — a real, runnable, tested one, with the regulation citation in the prompt traceable through to the rules that enforce it. For a regulated industry, this is the bigger gain. The regulation-to-enforcement chain compresses to a single step, with the regulator's text as the source of truth and the running system as the artifact that enforces it. The most expensive translation chain in compliance is *regulation → requirements → specs → code → enforcement → audit*. Every handoff is a defect generator.
+This is a proof-of-concept, not a production deployment — a real, runnable, tested one, with the regulation citation in the prompt traceable through to the rules that enforce it. For a regulated industry, this is the bigger gain. The regulation-to-enforcement chain compresses to a single step, with the regulator's text as the source of truth and the running system as the artifact that enforces it. The most expensive translation chain in compliance is *regulation → requirements → specs → code → enforcement → audit*. Every handoff is a defect generator. The CBSA regulation has a familiar shape — trigger conditions, calculation rules, exemption clauses. Most regulated business runs on regulations of the same shape.
 
 Both proofs produce the same governed runtime. Same engine, same enforcement guarantees, same auto-generated artifacts. The difference is how far upstream the source of truth lives. What makes this work is the composition: AI as translator, rules as the target, the engine as enforcement, the auto-generated artifacts as audit. Each layer has existed in some form. The combination is what creates deployable governance.
 
 ---
 
 ## Why this didn't work before
+
+Executable Requirements is a goal the industry has been chasing for decades. Many brave knights — CASE, 4GLs, MDA... The solution is marrying AI for intent translation with rules for intent execution.
 
 Declarative rules engines are not new. They have been available in mature form for thirty years. The Versata engine of the late 1990s did most of what is described here, minus the AI translation and the auto-generated artifacts. It worked. Teams that adopted it shipped systems faster, with fewer defects, and with audit characteristics the procedural alternative could not match.
 
@@ -217,7 +219,7 @@ As W. Ries [argued in this publication recently](https://medium.com/), the organ
 
 Speed alone produces prototypes. What you can actually deploy is a complete system — API, UI, integration, security — where every component, including the ones added tomorrow, inherits governance from the commit boundary. The rule is the requirement. The engine enforces it. The artifacts prove it ran. The analyst validated it before development began.
 
-This is not a faster way to write code. It is a different kind of infrastructure — governed transactional logic as a first-class layer of the enterprise stack, alongside the database and the message bus. Once you have seen it, the procedural alternative looks like what it always was: a translation layer the industry could never quite get right, at a cost the next budget cycle is no longer willing to pay.
+This is not a faster way to write code. It is a different kind of infrastructure — governed transactional logic as a first-class layer of the enterprise stack, alongside the database and the message bus. The procedural alternative is a translation layer the industry has never made reliable. The next budget cycle is no longer willing to pay for it.
 
 ---
 
