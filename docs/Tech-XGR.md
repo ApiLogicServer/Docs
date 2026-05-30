@@ -2,10 +2,10 @@
 title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
 author: Val Huber
 date: 2026-05-29
-version: 10
+version: 11
 ---
 
-# AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
+# AI Made Executable Requirements Real. <br>*Governance* Is What Makes Them Deployable.
 
 ---
 
@@ -13,7 +13,7 @@ AI cracked the speed problem.
 
 Watch any vibe-coding demo: a paragraph of English goes in, a working app comes out, minutes not months. The translation from intent to running code — the bottleneck enterprise IT has lived with for forty years — really did get faster. That is a genuine accomplishment, and the AI tooling community deserves the credit it's getting for it.
 
-But there's a question every enterprise reader is asking when the demo ends. Would I put this into production? Where it touches my customers, my regulators, my eight-figure audit exposure? Where an auditor will eventually ask which rule fired on which transaction, and whether the same rule fires on every path?
+But there's a question every enterprise reader is asking when the demo ends. Would I put this into production? Where it touches my customers, my regulators, my eight-figure audit exposure? Where an auditor will eventually ask which rule fired on which transaction, and whether *all* required rules fire on *every* path?
 
 Today, the honest answer is no. Not because the code doesn't run — it does. Because nothing about it is governed.
 
@@ -53,11 +53,12 @@ This is the actual problem AI was supposed to help with, and the one current AI 
 
 ## XGR: what changes
 
-The fix is simple and consequential. Today's AI tooling translates intent into **code**. XGR translates intent into **rules** — declarative statements about data — and a purpose-built runtime enforces them at the database commit point.
+The solution follows:
 
-fixme - not simple... 
+> 1. *Use AI* for what it's great at: understanding intent
+> 2. *Augment AI* for what it stuggles with: translate intent to rules (*not* code), executed by a high-performance **rules engine** operating at the database commit point
 
-The five-line "check credit" requirement becomes five declarative rules. The contrast with what AI produces by default is the article's central claim in one frame:
+The five-line "check credit" requirement translates to five declarative rules - not ~200 lines of procedural code. The contrast with what AI produces by default is the article's central claim in one frame:
 
 ![Declarative rules versus procedural code — same requirement, two outputs. Five rules on the left, ~200 lines on the right. The declarative side is always used, on every path, with no bypass.](images/articles/XGR/why-rules.png)
 
@@ -100,9 +101,7 @@ Versata measured this category of system across production deployments before th
 
 The architecture has been demonstrated in two shapes, from two different sides of the requirements pipeline.
 
-**Requirements in: the basic Check Credit example.** A plain-English five-line requirement, written the way analysts naturally write requirements, compiled into five declarative rules, enforced on every commit, governed by architecture. The Logic Diagram you'll see in the next section is generated from this example. The pipeline doesn't change — analysts write what they already write. What changes is what comes out the other end.
-
-fixme - de-poop auditable & bug free
+**Requirements in: the basic Check Credit example.** A plain-English five-line requirement, written the way analysts naturally write requirements, compiled into five declarative rules, enforced on every commit, governed by architecture. The Logic Diagram you'll see in the next section is generated from this example. The pipeline doesn't change — analysts write what they already write. What changes is that the result is governed - all rules automatically invoked, no bypass, no dependency errors, auditable.
 
 **Regulation in: the CBSA Steel Derivative Goods Surtax proof-of-concept.** This is the more interesting case. The input was not a requirements document at all. It was a nine-line prompt citing the Canadian regulation directly — program code, tariff subsection, trigger conditions, four example country scenarios. No schema. No field mapping. No specs.
 
