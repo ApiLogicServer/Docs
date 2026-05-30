@@ -2,7 +2,7 @@
 title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
 author: Val Huber
 date: 2026-05-29
-version: 12
+version: 14
 ---
 
 # AI Made Executable Requirements Real. <br>*Governance* Is What Makes Them Deployable.
@@ -15,7 +15,7 @@ Watch any vibe-coding demo: a paragraph of English goes in, a working app comes 
 
 But there's a question every enterprise reader is asking when the demo ends. Would I put this into production? Where it touches my customers, my regulators, my eight-figure audit exposure? Where an auditor will eventually ask which rule fired on which transaction, and whether *all* required rules fire on *every* path?
 
-Today, the honest answer is no. Not because the code doesn't run — it does. Because nothing about it is governed.
+Today, the honest answer is no. Not because the code doesn't run — it does. It's because it's not governed.
 
 This article is about closing that gap. The capability has a name: **Executable Governable Requirements**, or **XGR**. In short: AI does what it's great at (translating intent), and a purpose-built runtime does what AI can't (enforcing that intent deterministically, on every path, with no bypass). The pipeline your team already runs doesn't change. What does change is that the created system provided rule-driven governance.
 
