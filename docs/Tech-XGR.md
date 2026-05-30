@@ -1,14 +1,11 @@
 ---
 title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
-subtitle: "Why the next enterprise unlock isn't speed."
 author: Val Huber
 date: 2026-05-29
-version: 6
+version: 7
 ---
 
 # AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
-
-*Why the next enterprise unlock isn't speed.*
 
 ---
 
@@ -48,7 +45,7 @@ Governance has emerged as the number-one CIO priority for 2026, overtaking cyber
 
 The cost of getting this wrong is no longer theoretical. Regulatory penalties run into the millions per incident. Compliance staffing has become a major line item. Audit findings that used to be embarrassing now threaten the business. And the audit problem itself is genuinely intractable under the traditional model: read hundreds of thousands of lines of code, determine whether the relevant rules exist, prove they execute on every path. Auditors sample and hope.
 
-This is the actual problem AI was supposed to help with, and the one current AI tooling makes worse — not better — because faster generation of unreviewable code is not progress. It's the same problem at higher velocity.
+This is the actual problem AI was supposed to help with, and the one current AI tooling makes worse — not better — because faster generation of unreviewable code is not progress. It's the same problem, faster.
 
 ---
 
@@ -118,7 +115,7 @@ All from one prompt. All governed by the same rules engine at the commit point. 
 
 This answers the agent question every CIO is asking: *won't they bypass my controls?* The structural answer is no. The agent's only path to persistence is through the gate.
 
-This is a proof-of-concept, not a production deployment — a real, runnable, tested one, with the regulation citation in the prompt traceable through to the rules that enforce it. For a regulated industry, this compression of the regulation-to-enforcement chain is the larger unlock. The most expensive translation chain in compliance is *regulation → requirements → specs → code → enforcement → audit*. Every handoff is a defect generator. The Surtax POC compresses that chain to a single step, with the regulator's text as the source of truth and the running system as the artifact that enforces it.
+This is a proof-of-concept, not a production deployment — a real, runnable, tested one, with the regulation citation in the prompt traceable through to the rules that enforce it. For a regulated industry, this is the bigger gain. The regulation-to-enforcement chain compresses to a single step, with the regulator's text as the source of truth and the running system as the artifact that enforces it. The most expensive translation chain in compliance is *regulation → requirements → specs → code → enforcement → audit*. Every handoff is a defect generator.
 
 Both proofs produce the same governed runtime. Same engine, same enforcement guarantees, same auto-generated artifacts. The difference is how far upstream the source of truth lives. What makes this work is the composition: AI as translator, rules as the target, the engine as enforcement, the auto-generated artifacts as audit. Each layer has existed in some form. The combination is what creates deployable governance.
 
@@ -192,7 +189,7 @@ XGR changes the cost curve. An analyst with a requirements document can run the 
 
 The iteration is on the requirement itself, not on code generated from a frozen requirement. The analyst's artifact is the deliverable. The running system is how they validate it. The rules are the precise restatement of what they meant. No translation layer means no drift between intent and enforcement.
 
-For business analysts, this is a higher-leverage role than the one the job description usually describes. You are no longer writing specs that get interpreted into something else. You are producing the artifact that runs. For product owners and stakeholders, sprint reviews stop being slideware — the conversation is grounded in observable behavior. For development teams, the handoff is different: developers work on extensions, custom UI beyond what's generated, integration work, performance, security policy — not interpreting requirements into procedural code.
+For business analysts, this changes what the job is. You are no longer writing specs that get interpreted into something else. You are producing the artifact that runs. For product owners and stakeholders, sprint reviews stop being slideware — the conversation is grounded in observable behavior. For development teams, the handoff is different: developers work on extensions, custom UI beyond what's generated, integration work, performance, security policy — not interpreting requirements into procedural code.
 
 Most requirements bugs are not bugs of expression. They are bugs of unexamined assumption. A twenty-minute round-trip from prompt to running system surfaces those assumptions immediately. The system finds the bug the analyst didn't know to look for.
 
