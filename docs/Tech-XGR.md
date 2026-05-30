@@ -3,7 +3,7 @@ title: "AI Made Executable Requirements Real. Governance Is What Makes Them Depl
 subtitle: "Why the next enterprise unlock isn't speed."
 author: Val Huber
 date: 2026-05-29
-version: 5
+version: 6
 ---
 
 # AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
@@ -58,7 +58,7 @@ The reframe is simple and consequential. Today's AI tooling translates intent in
 
 The five-line "check credit" requirement becomes five declarative rules:
 
-![Declarative rules versus procedural code — same requirement, two outputs. Five rules on the left, ~200 lines on the right. The declarative side is always used, on every path, with no bypass.](why-rules.png)
+![Declarative rules versus procedural code — same requirement, two outputs. Five rules on the left, ~200 lines on the right. The declarative side is always used, on every path, with no bypass.](images/articles/XGR/why-rules.png)
 
 These are not code in the procedural sense. They are the requirement itself, written precisely enough to execute. Each rule maps directly to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The next developer to inherit the system can read them. The 200-line procedural version dispersed that intent across handlers; the rule version restates it with precision.
 
@@ -152,7 +152,7 @@ This is the layer management asks for and rarely gets: *show me where governance
 
 Every developer insists on a database diagram. You can't engage with a system you can't visualize. The same is true for logic — and until now, there has been no equivalent artifact for the rules that govern that data.
 
-![Logic Diagram — auto-generated, one per requirement. Requirement at top, rules at bottom, dependency graph in between.](logic-diagram-screenshot.png)
+![Logic Diagram — auto-generated, one per requirement. Requirement at top, rules at bottom, dependency graph in between.](images/articles/XGR/logic-diagram.png)
 
 The diagram for the Check Credit requirement shows what governance looks like statically. The requirement appears at the top in plain English, exactly as the analyst wrote it. The rules appear at the bottom in declarative form. Between them, the diagram shows the four-step dependency chain the engine will execute: Product price copies into Item price, formula computes Item amount, sum rolls up to Order total, sum rolls up (conditionally) to Customer balance.
 
@@ -164,7 +164,7 @@ At portfolio scale, this is how review becomes tractable. One diagram per requir
 
 The Logic Diagram shows structure. The Logic Report shows what actually ran.
 
-![Logic Report — auto-generated per scenario. Gherkin at top, rules used, execution log showing the constraint failure that rejected the transaction.](logic-report-screenshot.png)
+![Logic Report — auto-generated per scenario. Gherkin at top, rules used, execution log showing the constraint failure that rejected the transaction.](images/articles/XGR/Test%20Report.png)
 
 For each test scenario, the report shows three things stacked vertically: the Gherkin scenario the analyst wrote ("Given customer with credit limit 20… when order placed with 2 Chai… then order is rejected"), the specific rules that participated in that scenario, and the actual execution trace — including, in this example, the constraint failure that rejected the transaction at the commit boundary.
 
