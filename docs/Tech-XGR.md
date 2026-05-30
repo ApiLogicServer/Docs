@@ -2,7 +2,7 @@
 title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
 author: Val Huber
 date: 2026-05-29
-version: 14
+version: 15
 ---
 
 # AI Made Executable Requirements Real. <br>*Governance* Is What Makes Them Deployable.
@@ -15,9 +15,9 @@ Watch any vibe-coding demo: a paragraph of English goes in, a working app comes 
 
 But there's a question every enterprise reader is asking when the demo ends. Would I put this into production? Where it touches my customers, my regulators, my eight-figure audit exposure? Where an auditor will eventually ask which rule fired on which transaction, and whether *all* required rules fire on *every* path?
 
-Today, the honest answer is no. Not because the code doesn't run — it does. It's because it's not governed.
+Today, the honest answer is no. Not because the code doesn't run — it does. Because nothing about it is governed.
 
-This article is about closing that gap. The capability has a name: **Executable Governable Requirements**, or **XGR**. In short: AI does what it's great at (translating intent), and a purpose-built runtime does what AI can't (enforcing that intent deterministically, on every path, with no bypass). The pipeline your team already runs doesn't change. What does change is that the created system provided rule-driven governance.
+This article is about closing that gap. The capability has a name: **Executable Governable Requirements**, or **XGR**. In short: AI does what it's great at (translating intent), and a purpose-built runtime does what AI can't (enforcing that intent deterministically, on every path, with no bypass). The pipeline your team already runs doesn't change. What changes is the result: a governed system, not just a running one.
 
 For business analysts, the payoff is direct: the requirement you wrote becomes the artifact that runs. There is no translation layer between your specification and what production enforces. For management, the payoff is governance that scales — measurable across the portfolio, reviewable by compliance, provable to auditors.
 
@@ -43,7 +43,7 @@ So: prototypes are real. Demos are real. But the three things that have always b
 
 ## Why this matters now
 
-Governance has emerged as the number-one CIO priority for 2026, overtaking cybersecurity for the first time. That's not a marketing statistic; it's the consequence of a structural shift. AI agents now touch production data. New endpoints get added every quarter. New developers join, new integrations land, new workflows route around old ones. Every path is another way to bypass a rule that lives on some other path.
+Governance has emerged as the number-one CIO priority for 2026, overtaking cybersecurity for the first time. That's not a marketing statistic; it's the consequence of a structural shift. AI agents now touch production data. New endpoints get added every quarter. New developers join, new integrations land, new workflows bypass old ones. Every path is another way to bypass a rule that lives on some other path.
 
 The cost of getting this wrong is no longer theoretical. Regulatory penalties run into the millions per incident. Remediation often costs more than the fine. And the audit problem itself is genuinely intractable under the traditional model: read hundreds of thousands of lines of code, determine whether the relevant rules exist, prove they execute on every path. Auditors sample and hope.
 
@@ -56,7 +56,7 @@ This is the actual problem AI was supposed to help with, and the one current AI 
 The solution follows:
 
 > 1. *Use AI* for what it's great at: understanding intent
-> 2. *Augment AI* for what it stuggles with: translate intent to rules (*not* code), executed by a high-performance **rules engine** operating at the database commit point
+> 2. *Augment AI* for what it struggles with: translate intent to rules (*not* code), executed by a high-performance **rules engine** operating at the database commit point
 
 The five-line "check credit" requirement translates to five declarative rules - not ~200 lines of procedural code. The contrast with what AI produces by default is the article's central claim in one frame:
 
@@ -66,7 +66,7 @@ These rules are not code in the procedural sense. They are the requirements them
 
 This is the property that makes governance work. **The rule is the requirement.** Business and IT review the same artifact. The translation preserves the requirement's level of abstraction. One clause, one rule. No 40x FrankenCode explosion.
 
-![Logic Architecture.](images/architecture/logic-architecture.png))
+![Logic Architecture.](images/architecture/logic-architecture.png)
 
 Here's how the Logic Architecture works:
 
