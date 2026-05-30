@@ -66,3 +66,7 @@
 *[MCP]: Model Context Protocol enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.
 *[Archaeology]: Maintenance of Procedural code requires extensive "archaeology" to understand dependencies to make changes; in Declarative code, dependency, ordering and chaining are automatic.
 *[archaeology]: Maintenance of Procedural code requires extensive "archaeology" to understand dependencies to make changes; in Declarative code, dependency, ordering and chaining are automatic.
+*[IDE]: Integrated Development Environment, e.g., VSCode, Pycharm - code editor, debugger, AI Assistant etc.
+*[Context Engineering]: AI training injected into projects, so that (for example) logic is translated into rules not code, background system operation information, etc.
+*[context engineering]: AI training injected into projects, so that (for example) logic is translated into rules not code, background system operation information, etc.
+*[CE]: AI training injected into projects, so that (for example) logic is translated into rules not code, background system operation information, etc.
