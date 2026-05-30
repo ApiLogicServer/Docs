@@ -2,7 +2,7 @@
 title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
 author: Val Huber
 date: 2026-05-29
-version: 8
+version: 9
 ---
 
 # AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
@@ -35,7 +35,9 @@ AI doesn't fix this. It accelerates it. A modern coding assistant takes the same
 
 In a recent side-by-side test, the same five-rule requirement produced two outputs from the same AI assistant: a declarative version with five rules and zero bugs, and a procedural version with about 200 lines and two silent bugs — both involving foreign-key changes that updated the new parent but not the old. No exception was thrown. The data was just wrong. At five rules you might catch them. At five hundred — which is what an enterprise system looks like — you won't.
 
-So: prototypes are real. Demos are real. But the two things that have always broken enterprise software — intent loss and dependency bugs — are not solved by AI. AI just produces them faster.
+**Failure three: missing paths.** Logic in code runs only on the paths the developer wrote it for. Every new endpoint, every new agent, every workflow added after the credit check was written is another path that has to remember to invoke it. The procedural model can't enforce on paths that don't yet exist. In an era of agentic systems and quarterly new integrations, the paths that don't yet exist are most of them.
+
+So: prototypes are real. Demos are real. But the three things that have always broken enterprise software — intent loss, dependency bugs, and missing paths — are not solved by AI. AI produces the first two faster. The third grows with every new agent.
 
 ---
 
@@ -43,7 +45,7 @@ So: prototypes are real. Demos are real. But the two things that have always bro
 
 Governance has emerged as the number-one CIO priority for 2026, overtaking cybersecurity for the first time. That's not a marketing statistic; it's the consequence of a structural shift. AI agents now touch production data. New endpoints get added every quarter. New developers join, new integrations land, new workflows route around old ones. Every path is another way to bypass a rule that lives on some other path.
 
-The cost of getting this wrong is no longer theoretical. Regulatory penalties run into the millions per incident. Compliance staffing has become a major line item. Audit findings that used to be embarrassing now threaten the business. And the audit problem itself is genuinely intractable under the traditional model: read hundreds of thousands of lines of code, determine whether the relevant rules exist, prove they execute on every path. Auditors sample and hope.
+The cost of getting this wrong is no longer theoretical. Regulatory penalties run into the millions per incident. Remediation often costs more than the fine. And the audit problem itself is genuinely intractable under the traditional model: read hundreds of thousands of lines of code, determine whether the relevant rules exist, prove they execute on every path. Auditors sample and hope.
 
 This is the actual problem AI was supposed to help with, and the one current AI tooling makes worse — not better — because faster generation of unreviewable code is not progress. It's the same problem, faster.
 
@@ -59,7 +61,7 @@ The five-line "check credit" requirement becomes five declarative rules:
 
 These rules are not code in the procedural sense. They are the requirements themselves, written precisely enough to execute. Each rule maps directly to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The next developer to inherit the system can read them. The 200-line procedural version dispersed that intent across handlers; the rule version restates it with precision.
 
-This is the property that makes governance work. **The rule is the requirement.** Business and IT review the same artifact. There is no translation layer where intent can go missing.
+This is the property that makes governance work. **The rule is the requirement.** Business and IT review the same artifact. The translation preserves the requirement's level of abstraction. One clause, one rule. No 40x FrankenCode explosion.
 
 ![Logic Architecture.](images/architecture/logic-architecture.png))
 
@@ -67,7 +69,7 @@ Here's how the Logic Architecture works:
 
 1. **Context Engineering** directs the AI to produce declarative rules, not procedural code. Without this constraint, AI pattern-matches to what it sees most often — procedural code. With it, intent becomes declarations.
 2. **Data Rules** distill path-dependent intent ("on placing an order, check credit") into path-independent rules on data ("customer balance is the sum of unpaid orders"). The rule no longer cares which path triggered the change.
-3. **The Commit Listener** hooks into the ORM. Every transaction — from any API, any agent, any workflow, any future endpoint that hasn't been built yet — passes through one control point. There is no architectural path that routes around it.
+3. **The Commit Listener** hooks into the ORM. Every transaction — from any API, any agent, any workflow, any future endpoint that hasn't been built yet — passes through one control point. There is no architectural path that bypasses it.
 4. **The Rules Engine** computes dependency order from rule semantics at startup, deterministically. No pattern-matching, no subtle ordering bugs.
 
 The result is what your team already wants: governance that doesn't depend on developers remembering to use rules, doesn't degrade as the system grows, and produces the same outcomes regardless of which path triggered the transaction.
@@ -82,11 +84,11 @@ This is not a RETE engine. Classic rules engines are *called* — application co
 
 The XGR engine hooks the ORM directly. It doesn't get a bag of objects — it gets the actual change event: *Item inserted*, *Order.amount_total moved from X to Y*, *Customer.id changed from A to B*. Two consequences follow.
 
-The first is the **no-bypass guarantee**. Because the engine sits at the commit boundary inside the data layer, every persistent change passes through. A new developer can't forget to call it. A new agent can't route around it. A prompt-injected agent can't bypass it. There is no path to persistence that doesn't go through the engine. Governance becomes architectural, not behavioral.
+The first is the **no-bypass guarantee**. Because the engine sits at the commit boundary inside the data layer, every persistent change passes through. A new developer can't forget to call it. A new agent can't bypass it. A prompt-injected agent can't bypass it either. There is no path to persistence that doesn't go through the engine. Governance becomes architectural, not behavioral.
 
 The second consequence is performance. Because the engine sees what changed, it can prune the rule graph to only the rules whose inputs actually moved, and it can maintain aggregates incrementally instead of recomputing them. A `count of children` rule, when a new child is added, costs one read and one update — not a `SELECT COUNT(*)` across the child table. In production work in an earlier generation of this architecture, this category of optimization turned four-minute transactions into two-second transactions. The analyst wrote `count`. They didn't have to know any of that happened.
 
-These properties — no-bypass enforcement, delta-aware optimization, adjustment semantics per rule type — are not features layered onto a rules engine. They are consequences of where the engine sits and what it sees. The result is a specialized runtime in the lineage of a relational query optimizer: a piece of infrastructure that takes years to mature and lives below the abstraction layer the user works at. The analyst writes `count`. The engine handles incremental maintenance, dependency ordering, and the dozens of edge cases that come with multi-table transactional logic. That is the right division of labor.
+These properties — no-bypass enforcement, delta-aware optimization, adjustment semantics per rule type — are not features layered onto a rules engine. They are consequences of where the engine sits and what it sees. The result is a specialized runtime in the lineage of a relational query optimizer: a piece of infrastructure that takes years to mature and lives below the abstraction layer the user works at. The analyst writes `count`. The engine handles incremental maintenance, dependency ordering, and the dozens of edge cases that come with multi-table transactional logic. That is the right division of labor — and the same division that made SQL succeed: the user specifies what, the engine figures out how.
 
 Versata measured this category of system across production deployments before the AI era: declarative rules required writing only about 3% of equivalent procedural code. That reduction wasn't a style preference — it was the visible consequence of removing the procedural enumeration of paths that the engine handles structurally.
 
@@ -187,7 +189,7 @@ The original agile vision was *working software over comprehensive documentation
 
 With XGR, iteration takes minutes, not sprints. An analyst with a requirements document can run the prompt, get a complete governed system in minutes, click through the Admin UI, watch the rules fire, notice that clause three doesn't mean what they thought it meant, edit the requirement, re-run, and demonstrate the result to colleagues on a laptop — all before any developer has been asked to build anything.
 
-The iteration is on the requirement itself, not on code generated from a frozen requirement. The analyst's artifact is the deliverable. The running system is how they validate it. The rules are the precise restatement of what they meant. No translation layer means no drift between intent and enforcement.
+The iteration is on the requirement itself, not on code generated from a frozen requirement. The analyst's artifact is the deliverable. The running system is how they validate it. The rules are the precise restatement of what they meant. Rules sit at the same level of abstraction as the requirement. No drift between intent and enforcement.
 
 For business analysts, this changes what the job is. You are no longer writing specs that get interpreted into something else. You are producing the artifact that runs. For product owners and stakeholders, sprint reviews stop being slideware — the conversation is grounded in observable behavior. For development teams, the handoff is different: developers work on extensions, custom UI beyond what's generated, integration work, performance, security policy — not interpreting requirements into procedural code.
 
