@@ -2,17 +2,16 @@
 title: "Executable Governed Requirements - TLDR"
 author: Val Huber
 date: 2026-05-29
-version: 2
-audience: Managers, Business Analysts, VCs, Acquirers
+version: 3
 ---
 
 # XGR — Executable Governable Requirements
 
 ---
 
-## AI Delivers Running Software. But Is It Deployable?
+## The Governance Gap
 
-AI deserves the credit it is getting for turning prompts into running software. As impressive as it is, Enterprise Architects doubt most AI-generated systems are deployable, for two reasons:
+AI deserves the credit it is getting for turning prompts into running software. As impressive as it is, Enterprise Architects doubt most AI-generated systems are production-ready, for two reasons:
 
 - **Bugs** — dependency issues, missed execution paths
 - **Not auditable** — results are hard to read, hard to maintain, and impossible to audit at scale
@@ -32,9 +31,9 @@ The solution is to use AI for what it is genuinely good at — translating inten
 
 XGR extends AI with two components:
 
-1. **Context Engineering** — directs AI to accept requirements in the forms analysts already use, and produce rules rather than code. This is not a simple prompt; it is 8,000+ lines of curated, tested guidance developed over years. It is the part that cannot be quickly replicated.
+1. **Context Engineering** — directs AI to accept requirements in the forms analysts already use, and produce rules rather than code.
 
-2. **A purpose-built rules engine** — monitors every database commit, ensuring all required rules run on every path, with no bypass and no dependency errors. This engine sits below the application layer, in the same architectural position as a relational query optimizer: infrastructure that every governed system depends on continuously.
+2. **A purpose-built rules engine** — monitors every database commit, ensuring all required rules run on every path, with no bypass and no dependency errors.
 
 ![Governance Architecture — design-time rules funnel into a commit-time enforcement gate.](images/architecture/logic-architecture-exec.png)
 
@@ -44,18 +43,9 @@ The architecture has been demonstrated from two directions.
 
 **From Requirements: the Check Credit example.** A plain-English five-line requirement, compiled into five declarative rules, enforced on every commit. Analysts write what they already write. The pipeline does not change. What changes is that the result is governed — all rules automatically invoked, no bypass, no dependency errors, auditable.
 
-**From Regulations: the CBSA Steel Derivative Goods Surtax.** A nine-line prompt citing a Canadian regulation directly — no schema, no field mapping, no specs. The output was a complete, working, tested system:
+**From Regulations: the CBSA Steel Derivative Goods Surtax.** A nine-line prompt citing a Canadian regulation directly — no schema, no field mapping, no specs. The output was a complete, working, tested system including: MCP-discoverable enterprise API (so AI agents can find and use it natively), Kafka integration, role-based security, auto-generated test suite, and container deployment. All from one prompt.
 
-- A standard Python project — git-managed, IDE-openable, debugger-attachable
-- Data Rules for duty calculation, enforced by the rules engine at commit
-- An enterprise-class API with MCP discoverability, so AI agents can find and use it natively
-- An Admin UI, ready out of the box; custom apps can be built on top of the governed API
-- Kafka integration handlers when messaging is needed
-- Role-based security via Keycloak when specified
-- An auto-generated test suite with full execution trace
-- Container deployment, ready for cloud or on-prem
-
-All from one prompt. And critically: **every component inherits governance automatically**, including components added later. A new endpoint inherits the rules. A new agent hits the same gate. A new developer cannot bypass what is enforced at the commit boundary.
+And critically: **every component inherits governance automatically**, including components added later. A new endpoint inherits the rules. A new agent hits the same gate. A new developer cannot bypass what is enforced at the commit boundary.
 
 This answers the question every CIO is asking: *won't AI agents bypass my controls?* The structural answer is no. The agent's only path to persistence is through the gate.
 
@@ -103,15 +93,13 @@ Compliance proven, not asserted.
 
 ---
 
-## A Note for Investors and Acquirers
+## Technology Notes
 
-The two components described above — Context Engineering and the rules engine — have different competitive profiles, and both matter.
+**The rules engine is open source, proven infrastructure.** The commit-boundary enforcement architecture was first deployed commercially in the Versata engine in the late 1990s, and later in Live API Creator. XGR is that architecture rebuilt for the AI era. Every governed system runs on it continuously — this is infrastructure in the same sense as a database, not a tool you use once.
 
-**The rules engine is infrastructure, not a feature.** It sits at the commit boundary, below the application layer. Every governed system runs on it for as long as it runs. This is the same structural position that made relational databases recurring businesses: you do not buy infrastructure once, you depend on it. The Versata engine of the late 1990s demonstrated exactly this economics at significant scale. XGR is that architecture rebuilt for the AI era, with AI as the entry point and auto-generated artifacts as the audit layer.
+**Context Engineering is the durable differentiator.** Directing AI to produce declarative rules rather than procedural code requires more than a well-crafted prompt. The current implementation is 8,000+ lines of curated, tested guidance, refined over years against real systems. It is why the pipeline produces rules by default — closing the procedural off-ramp that caused every previous generation of declarative tooling to erode. That body of work is not quickly replicated.
 
-**Context Engineering is the durable lead.** Directing AI to produce declarative rules rather than procedural code requires more than a well-crafted prompt. The current implementation is 8,000+ curated lines, refined through years of Socratic development and real-system testing. It is the reason the funnel produces rules by default — closing the procedural off-ramp that has caused every previous generation of declarative tooling to erode back to code over time. That body of work is not quickly replicated.
-
-**The governance problem is the 2026 CIO priority.** AI agents now touch production data. New endpoints, new integrations, and new developers arrive continuously. Every new path is another way to bypass a rule that lives somewhere else. Regulatory exposure is measurable — penalties run into the millions per incident, remediation often costs more than the fine, and audit under the traditional model (read hundreds of thousands of lines of code, determine whether rules exist, prove they execute on every path) is not tractable at scale. XGR makes the audit tractable. That is the business case, independent of the speed story.
+**The governance problem is now the top CIO priority.** AI agents touch production data. New endpoints, integrations, and developers arrive continuously. Every new path is another potential bypass. Regulatory penalties run into the millions per incident, remediation often costs more than the fine, and audit under the traditional model is not tractable at scale. XGR makes the audit tractable. That is the business case, independent of the speed story.
 
 ---
 
