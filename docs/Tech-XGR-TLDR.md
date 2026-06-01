@@ -18,7 +18,7 @@ AI deserves the credit it is getting for turning prompts into running software. 
 
 Governance failures cost enterprises millions in penalties, remediation, and audit — and that was before AI agents began writing directly to production data.
 
-The root problem: translating requirements into *procedural* code produces a 40x explosion in volume. 
+> The root problem: translating requirements into *procedural* code produces a 40x explosion in volume - hard to audit/maintain, lurking bugs that are costly.
 
 ## Requirements to Declarative Rules, Not Procedural Code
 
