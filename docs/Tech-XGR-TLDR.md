@@ -2,7 +2,7 @@
 title: "Executable Governed Requirements - TLDR"
 author: Val Huber
 date: 2026-05-29
-version: 6
+version: 7
 ---
 
 # XGR — Executable Governable Requirements
@@ -45,7 +45,7 @@ The architecture has been demonstrated from two directions.  These are working P
 
 **From Requirements: the Check Credit example.** A plain-English five-line requirement, compiled into five declarative rules, enforced on every commit. Analysts write what they already write. The pipeline does not change. What changes is that the result is governed — all rules automatically invoked, no bypass, no dependency errors, auditable.
 
-**From Regulations: the CBSA Steel Derivative Goods Surtax.** A nine-line prompt citing a Canadian regulation directly — no schema, no field mapping, no specs. The output was a complete, working, tested system including: MCP-discoverable enterprise API (so AI agents can find and use it natively), Kafka integration, role-based security, auto-generated test suite, and container deployment. All from one prompt.
+**From Regulations: the CBSA Steel Derivative Goods Surtax.** A nine-line prompt citing a Canadian regulation directly — no schema, no field mapping, no specs. The output was a complete, working, tested system including: MCP-discoverable enterprise API (so AI agents can find and use it natively), Kafka integration, role-based security, auto-generated test suite, and container deployment. All from one prompt.  To illustrate the scale difference: a comparable system had taken 8 developers 6 months to build.
 
 And critically: **every component inherits governance automatically**, including components added later. A new endpoint inherits the rules. A new agent hits the same gate. A new developer cannot bypass what is enforced at the commit boundary.
 
