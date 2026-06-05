@@ -46,9 +46,19 @@ The `demo_eai` sample illustrates the process:
 
 &nbsp;
 
+### Simple Requests
+
+In its simplest form, you can just provide raw logic.  This may cause the system to create new tables, attributes and rules.  For example:
+
+```
+Customers cannot place new orders if they have unresolved past-due letters.
+```
+
+![past-due](images/exec_reqmts/past-due.png)
+
 ### Logic, APIs and Messages
 
-The typical requirements describe:
+Or, you can provide much larger sets of requirements consisting of multiple files and resources.  The typical requirements describe:
 
 * Logic -- multi-table derivations and constraints, in Natural Language.  For more on rules, [click here](Logic-Why.md){:target="_blank" rel="noopener"}.
 * Custom APIs/Messages -- these are typically described using example formats, and exception mappings.  For more on Enterprise Application Integration, [click here](Integration-EAI.md){:target="_blank" rel="noopener"}. 

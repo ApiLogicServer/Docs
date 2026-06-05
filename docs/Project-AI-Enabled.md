@@ -226,11 +226,33 @@ Your project includes comprehensive training materials that serve as a "message 
 
 <br>
 
-#### Log Analysis
+#### Logic Creation
 
-Given AI understanding of your project per Context Engineering, it is an excellent way to diagnose issues by reading the `logs` folder:
+AI understands your database, your APIs, your existing logic... and how GenAI-Logic works.  It is able to provide remarkable logic creation services.  For example, you might ask:
+
+```
+Customers cannot place new orders if they have unresolved past-due letters.
+```
+
+This is a simple example.  For more, see [Executable Requirements](Exec-Reqmts.md){:target="_blank" rel="noopener"}.
+
+<br>
+
+#### Debugging
+
+Given AI understanding of your project per Context Engineering, it is an excellent way to diagnose issues.  For example, it can read the `logs` folder:
 
 ![context-engineering](images/ui-vibe/assistant/log-analysis.png)
+
+See also: [Logic Debugging](Logic-Debug.md){:target="_blank" rel="noopener"}.
+
+<br>
+
+#### Questions / Concerns
+
+Given AI understanding of your project per Context Engineering, it can also provide information and questions and concerns - just ask:
+
+![context-engineering](images/ui-vibe/assistant/hmm-black-box.png)
 
 <br>
 
@@ -244,7 +266,7 @@ You can cause VSCode Copilot to pre-load your own instructions by placing `*.ins
 
 ### Context-Aware Architecture
 
-The project structure itself provides rich context for AI understanding:
+The project structure itself provides rich context for AI understanding (e.g., see `readme` files):
 
 • **Declarative logic patterns** in `logic/declare_logic.py`  
 • **API endpoint examples** with SQLAlchemy models  
