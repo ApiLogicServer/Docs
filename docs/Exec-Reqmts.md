@@ -15,7 +15,7 @@ version: 1.9, 4/17/2026
 
 !!! pied-piper ":bulb: TL;DR - Requirements-Driven Iterative Development"
 
-    **Executable Requirements** uses the spec as direct AI input to produce a *runnable project* — not a one-shot artifact, but a governed starting point your team iterates from.
+    **Executable Requirements** treats your requirements as the ongoing source of truth for governed logic — not a handoff artifact, but the engine configuration your system **runs from**, and **iterates from.**
 
     * **Any format:** structured prose, numbered lists, Gherkin — whatever your team already writes
     * **PM-driven workflow:** sample scenario - Product Manager prepares a `requirements/` folder (logic, message formats, acceptance tests); Dev drops it in the project and types `implement reqs <name>`
