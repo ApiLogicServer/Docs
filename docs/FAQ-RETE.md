@@ -10,7 +10,9 @@
 
          * It also optimizes performance, often by several orders of magnitude, since it can prune and optimize rule execution based on comparing the proposed / old state of the database,
 
-            * See the case study (and end) for a real-world example where these ootimations reduces a transaction from **several minutes to 2 seconds.**
+            * See the case study (and end) for a real-world example where the optimations described below reduced a transaction from **several minutes to 2 seconds.**
+      
+      > RETE engines are designed to infer patterns from state-less data; GenAI-Logic is designed to maintain data integrity across complex, multi-user transactions.
 
 &nbsp;
 
