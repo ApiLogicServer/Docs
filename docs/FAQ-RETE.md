@@ -1,4 +1,4 @@
-!!! pied-piper ":bulb: TL;DR - Is This Like Versata"
+!!! pied-piper ":bulb: TL;DR - Is This a RETE Engine?  No - optimized for governance and performance"
 
       The API Logic Server engine is not based on the RETE algorithm.  These technolgies are complementary:
 
