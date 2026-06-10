@@ -1,10 +1,16 @@
-## TL;DR: no - optimized for transactions
+!!! pied-piper ":bulb: TL;DR - Is This Like Versata"
 
-The API Logic Server engine is not based on the RETE algorithm.  These technolgies are complemetarty:
+      The API Logic Server engine is not based on the RETE algorithm.  These technolgies are complementary:
 
-* RETE is appropriate for Decision Logic, where there are no presumptions about a database
+      * RETE is appropriate for **Decision Logic,** where there are no presumptions about a database
 
-* API Logic Server optimizes performance, often by several orders of magnitude, since it can prune and optimize rule execution based on comparing the proposed / old state of the database.
+      * GenAI-Logic uses Logic Bank, a purpose-built rules engine for **Transaction Logic.**
+  
+         * Transaction engines optimize on governance.  Unlike RETE engines which must be called explictly, transaction logic engine listen for ORM events so that **logic invocation is automatic.**
+
+         * It also optimizes performance, often by several orders of magnitude, since it can prune and optimize rule execution based on comparing the proposed / old state of the database,
+
+            * See the case study (and end) for a real-world example where these ootimations reduces a transaction from **several minutes to 2 seconds.**
 
 &nbsp;
 
@@ -13,6 +19,7 @@ The API Logic Server engine is not based on the RETE algorithm.  These technolgi
 ## Key Differences in Rules Engines: Process, Decision, Transaction
 Let's consider these rule technologies in the light of the following requirements:
 
+&nbsp;
 
 #### Transaction Logic Requirements
 
@@ -24,6 +31,7 @@ Let's consider these rule technologies in the light of the following requirement
 | **Integrity** | The system should ensure that *all* the rules are consistently enforced, in *all* cases |
 | **Architecture** | Logic should _automatically_ enforced over all apps and APIs |
 
+&nbsp;
 
 #### Process Rules
 
@@ -41,6 +49,8 @@ Transaction and process rules are synergistic:
 * process diagrams may need to update rows, leveraging transaction logic
 * transaction logic may need to start processes ("start order process"),
 or resume them ("order is approved - execute next steps").
+
+&nbsp;
 
 #### Decision Rules
 
@@ -75,6 +85,8 @@ That said, these technologies are also synergistic:
 
 * You can invoke Decision Logic using Python in transaction logic rules
 
+&nbsp;
+
 #### Transaction Rules
 This implementation is a Transaction Rules Engine:
 rule execution is bound into update processing.
@@ -86,6 +98,8 @@ rule execution is bound into update processing.
 | **Manageable** | Developers must be able to use existing developer tools and procedures for code editing, debugging, code management, etc | Rules are Python code - use standard editors (with code completion), debuggers, and source code control systems and procedures |
 | **Integrity** | The system should ensure that *all* the rules are consistently enforced, in *all* cases | All ORM access enforces the rules |
 | **Architecture** | Logic should _automatically_ enforced over all apps and APIs | Logic enforcement is factored out of UI controllers, so shared over all apps and APIs |
+
+&nbsp;
 
 ##### Multi-Table Logic Execution
 Let's look more carefully at how the
@@ -107,7 +121,19 @@ For example, imagine you need to compute the balance for the credit limit check.
 If a customer has thousands of orders, each with thousands of items, this will be painfully slow.
 
 But if the system leverages the old/new to make an adjustment update, an order of $50 simply means _”add 50 to the existing balance”_ - no need to aggregate the totals.
- 
+
+&nbsp;
+
+##### Pruning
+
+Pruning was core to changing Order dates:
+
+* `DueDate` had no dependencies, so all the logic for adjusting Customers and cascading OrderDetails was pruned.
+
+* Contrast this to the multiple rows retrieved / update when `ShippedDate` is changed.
+
+&nbsp;
+
 ##### Adjustments - sum / counts adjusted in 1 row updates, not expensive aggregate SQLs
 Rollups provoke an important design choice: store the aggregate,
 or sum things on the fly.  Here, the stored aggregates are `Customer.Balance`, and `Order.AmountTotal`
@@ -130,11 +156,15 @@ The logic engine uses the **Stored Aggregate** approach.  This optimizes
 multi-table update logic chaining, where updates to 1 row
 trigger updates to other rows, which further chain to still more rows.
 
+&nbsp;
 
-##### Pruning
+###### Case Study
 
-Pruning was core to changing Order dates:
+A large oil refinery business had a system to allocate revenue to consortium members.  Development had proceeded well, with no sign of performance issues.
 
-* `DueDate` had no dependencies, so all the logic for adjusting Customers and cascading OrderDetails was pruned.
+Then, on live data testing with real-world volumes, a key transaction - SLA 3 seconds - suddenly required *minutes*.  The phone call was anxious.
 
-* Contrast this to the multiple rows retrieved / update when `ShippedDate` is changed.
+The resolution was simple.  By storing aggregates, this activate adjustment logic for the transaction logic engine.
+
+1. Response time dropped from minutes to 2 seconds
+2. No coding changes were required.  In this way, storing aggregates is like adding an index to a relational system.
