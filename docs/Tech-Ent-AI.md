@@ -1,9 +1,10 @@
 ---
 title: "Enterprise AI: The Missing Piece"
 author: W. Ries
-version: 3.0
+version: 3.1
 date: 2026-06-12
 changes:
+  - v3.1: "The Missing Piece" restructured — Architecture Automation leads, transition line added ("The starting point is a running system. The only work left is the business."), Logic Automation follows, money sentence closes; auditor line added to close Logic Automation explanation
   - v3.0: Elevated framing — business logic governance gap predates AI; "What Enterprise Actually Requires" restructured to land gap before AI accelerant; money sentence added to open "The Missing Piece"; "tech debt approaches zero" softened to credible claim; front matter updated
   - v2.0: Spreadsheet analogy for Logic Automation; Arch Automation stated separately; plain-language pass throughout; "What Falls Out" restructured — agile folded into plumbing bullet, compliance tightened; graveyard sentence flattened; closing line rewritten in first person; front matter added
   - v1.0: Initial draft
@@ -61,15 +62,19 @@ The lesson is not "AI builds systems fast." The lesson is that the cost of ungov
 
 ## The Missing Piece
 
-The missing piece is a governed transactional logic layer: infrastructure that turns business rules into executable, auditable, universally enforced policy. It sits alongside the database and the message broker — a running service, not a code generator, not a framework. The implementation in this case was GenAI-Logic, an open-source platform built around two ideas.
+What that team used sits alongside the database and the message broker — a running service, not a code generator, not a framework. The implementation in this case was GenAI-Logic, an open-source platform built around two ideas.
+
+**Architecture Automation — no explanation needed, just the list.** A working system arrives on day one: API, admin application, role-based security, messaging integration, test scaffolding. Your teams don't build any of that.
+
+The starting point is a running system. The only work left is the business.
 
 **Logic Automation — the leap worth explaining.** Most people's mental model of AI-generated logic is code: a developer describes the requirement, AI writes the implementation, and the result is hundreds of lines that live somewhere in a service. That's the pattern that creates the three problems above.
 
 Think about a spreadsheet instead. A formula — `Balance = Sum(Orders)` — is not code. It's intent, expressed directly. You don't call a developer to change it. You don't worry that it runs on some rows but not others. It just works, everywhere, always, and anyone can read it.
 
-A rule works the same way. *The customer's balance is the sum of unpaid orders. The balance may not exceed the credit limit.* Expressed directly, executed automatically on every transaction, readable by anyone. Five rules, not two hundred lines. When AI translates requirements into rules rather than code, the result is a system you can actually govern — because you can actually read it.
+A rule works the same way. *The customer's balance is the sum of unpaid orders. The balance may not exceed the credit limit.* Expressed directly, executed automatically on every transaction. Five rules, not two hundred lines. Your developers can read it. And so can your auditors.
 
-**Architecture Automation — no explanation needed, just the list.** Because the infrastructure is pre-solved, a working system arrives on day one: API, admin application, role-based security, messaging integration, test scaffolding. Your teams don't build any of that. They focus on the business logic — which, thanks to Logic Automation, is the only thing left to write.
+The missing piece is a governed transactional logic layer: infrastructure that turns business rules into executable, auditable, universally enforced policy.
 
 ## What Falls Out
 
