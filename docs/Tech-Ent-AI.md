@@ -1,12 +1,14 @@
 ---
 title: "Enterprise AI: The Missing Piece"
 author: W. Ries
-version: 4.0
+version: 5.0
 date: 2026-06-12
 changes_v1.0: Initial draft
 changes_v2.0: Spreadsheet analogy for Logic Automation; Arch Automation stated separately; plain-language pass throughout; What Falls Out restructured; graveyard sentence flattened; closing line rewritten in first person; front matter added
 changes_v3.0: Elevated framing — business logic governance gap predates AI; What Enterprise Actually Requires restructured; money sentence added; tech debt claim softened
 changes_v3.x: Missing Piece restructured AA/LA; demo/system line sharpened; CEO assumption line; board-level business logic description; auditor line; block quote; new infrastructure framing; you would never imagine coding it; closing line fixed; repetition removed
+changes_v4.0: Diagram added; you would never imagine coding it; auditors can only sample; various plain-language fixes
+changes_v5.0: MIT citation fully sourced — The GenAI Divide NANDA 2025; Missing Piece opens with category before product — Business Logic Governance layer; closing paragraph ends on category not product
 ---
 
 # Enterprise AI: The Missing Piece
@@ -21,7 +23,7 @@ Large enterprises are investing heavily in AI. Most of that investment is at the
 
 It is also, in my experience, not landing.
 
-MIT's enterprise research puts the number at 95% — the share of generative AI pilots that never reach production. Everyone I talk to recognizes the pattern, and almost nobody says out loud why it happens. The pilots don't fail because the AI is weak. The AI is remarkable. They fail because a demo is not a system — and nobody budgeted for the distance between the two.
+MIT's NANDA initiative puts the number at 95% — the share of enterprise generative AI pilots delivering no measurable P&L impact, from *The GenAI Divide: State of AI in Business 2025*, based on 300 public deployments and 150 executive interviews. Everyone I talk to recognizes the pattern, and almost nobody says out loud why it happens. The pilots don't fail because the AI is weak. The AI is remarkable. They fail because a demo is not a system — and nobody budgeted for the distance between the two.
 
 A demo illustrates a few key paths. A system enforces what's required on all of them — customs regulations on every shipment, carrier SLAs on every booking, credit limits on every order — including the integration somebody adds three years from now. Provably, in a form an auditor can read, maintained by whoever inherits it.
 
@@ -63,11 +65,15 @@ The lesson is not "AI builds systems fast." The lesson is that the cost of ungov
 
 ## The Missing Piece
 
-What that team introduced was a new element of infrastructure — a governed transactional logic layer that sits alongside the database and the message broker. A running service, not a code generator, not a framework. The implementation in this case was GenAI-Logic, an open-source platform built around two ideas.
+Enterprises already govern data, APIs, security, and infrastructure. The missing piece is governance for business logic itself — the rules that determine whether a transaction is actually correct.
+
+What that team introduced was exactly that: a Business Logic Governance layer that sits alongside the database and the message broker. A running service, not a code generator, not a framework. The implementation in this case was GenAI-Logic, an open-source platform built around two ideas.
 
 **Architecture Automation — automate the routine components.** A working system arrives on day one: API, admin application, role-based security, messaging integration, test scaffolding. Your teams don't build any of that.
 
 The starting point is a running system. The only work left is the business.
+
+![Requirements in, governed system out. One commit point. No bypass.](docs/images/architecture/logic-architecture-exec.png)
 
 **Logic Automation — where the real shift happens.** Most people's mental model of AI-generated logic is code: a developer describes the requirement, AI writes the implementation, and the result is hundreds of lines that live somewhere in a service. That's the pattern that creates the three problems above.
 
@@ -104,6 +110,8 @@ If you're an IT leader, the AI investment on your books is probably sound. The m
 So here is the question I'd put to your own organization: *pick any production system — can your teams show you, on one page, what business rules it actually enforces? And can they prove those rules run on every transaction?*
 
 If the answer is no — and at nearly every enterprise, it is — then that gap is where your next eight-figure exposure is hiding, and no model will find it.
+
+Enterprises have learned to govern data, APIs, security, and infrastructure. Business logic is the last ungoverned layer — and the one that determines whether your AI investment actually delivers what the business requires. The organizations that close that gap first will be the ones whose AI investments actually reach production.
 
 What I'd fund next is the infrastructure that delivers it.
 
