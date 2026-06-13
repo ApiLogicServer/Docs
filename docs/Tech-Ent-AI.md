@@ -1,3 +1,13 @@
+---
+title: "Enterprise AI: The Missing Piece"
+author: W. Ries
+version: 2.0
+date: 2026-06-12
+changes:
+  - v2.0: Spreadsheet analogy for Logic Automation; Arch Automation stated separately; plain-language pass throughout; "What Falls Out" restructured — agile folded into plumbing bullet, compliance tightened; graveyard sentence flattened; closing line rewritten in first person; front matter added
+  - v1.0: Initial draft
+---
+
 # Enterprise AI: The Missing Piece
 
 *By W. Ries*
@@ -28,7 +38,7 @@ The reason that promise is hard to keep has nothing to do with AI. Business logi
 
 **You can't prove anything.** Auditing a system means reading the code and hoping. Auditors sample. Exposure hides in the gaps.
 
-For decades we absorbed this cost as the price of building software. AI changes the equation in one specific way: it multiplies the paths. Every agent, every generated service, every natural-language interface is another route to your data. The governance problem didn't get harder. It got unaffordable.
+AI changes the equation in one specific way: it multiplies the paths. Every agent, every generated service, every natural-language interface is another route to your data. The governance problem didn't get harder. It got unaffordable.
 
 You can't audit what you can't read.
 
@@ -36,7 +46,7 @@ You can't audit what you can't read.
 
 A major logistics company had a team working for months on a customs system — competent people, conventional architecture, business logic written as code, the way nearly every enterprise system is built.
 
-A governed version of the same system — customs eligibility over a live shipment message pipeline, seven tables, 130-plus columns — was built in days, as a proof of concept. Not by better developers — by a different architecture. The requirements went in as plain-English documents the business team already owned. What came out was a running system whose logic took the form of declarative rules: short, readable, attached to the data itself, enforced automatically on every transaction.
+A governed version of the same system — customs eligibility over a live shipment message pipeline, seven tables, 130-plus columns — was built in days, as a proof of concept. Not by better developers — by a different architecture. The requirements went in as plain-English documents the business team already owned. The logic came back as declarative rules: short, readable, attached to the data itself, enforced automatically on every transaction.
 
 Here is the part that matters. The governed version caught an 8-figure compliance exposure that the months-long version had missed.
 
@@ -46,45 +56,45 @@ The lesson is not "AI builds systems fast." The lesson is that the cost of ungov
 
 ## The Missing Piece
 
-What that team used is a category of infrastructure I'd describe as a governed transactional logic layer. It sits alongside the database and the message broker — a running service, not a code generator, not a framework. The implementation in this case was GenAI-Logic, an open-source platform whose architecture rests on two ideas.
+What that team used is a category of infrastructure I'd describe as a governed transactional logic layer — a running service that sits alongside the database and the message broker. Not a code generator. Not a framework. The implementation in this case was GenAI-Logic, an open-source platform built around two ideas.
 
-**Rules live on the data, not the path.** Business logic is expressed as declarative rules — *the customer's balance is the sum of unpaid orders; the balance may not exceed the credit limit* — attached to the data model. Because rules govern the data rather than any particular code path, every path inherits them: APIs, message consumers, agents, applications, and whatever gets added next. They execute at the transaction commit point. There is no route around them. Governance by architecture, not discipline.
+**Logic Automation — the leap worth explaining.** Most people's mental model of AI-generated logic is code: a developer describes the requirement, AI writes the implementation, and the result is hundreds of lines that live somewhere in a service. That's the pattern that creates the three problems above.
 
-**Requirements go in the form your teams already write.** Plain English, Gherkin scenarios, even regulation text cited directly. AI translates them into rules — and this is the right division of labor, because translation is precisely what AI is good at. Your analysts keep writing what they write. Your pipeline doesn't change. What changes is what comes out the other end: a working, governed system — API, admin application, security, integration — on day one.
+Think about a spreadsheet instead. A formula — `Balance = Sum(Orders)` — is not code. It's intent, expressed directly. You don't call a developer to change it. You don't worry that it runs on some rows but not others. It just works, everywhere, always, and anyone can read it.
 
-This is where AI actually belongs in the enterprise picture. Not generating hundreds of thousands of lines of procedural code that nobody can audit — translating business intent into a form an engine can enforce and a human can read.
+A rule works the same way. *The customer's balance is the sum of unpaid orders. The balance may not exceed the credit limit.* Expressed directly, executed automatically on every transaction, readable by anyone. Five rules, not two hundred lines. When AI translates requirements into rules rather than code, the result is a system you can actually govern — because you can actually read it.
+
+**Architecture Automation — no explanation needed, just the list.** Because the infrastructure is pre-solved, a working system arrives on day one: API, admin application, role-based security, messaging integration, test scaffolding. Your teams don't build any of that. They focus on the business logic — which, thanks to Logic Automation, is the only thing left to write.
 
 ## What Falls Out
 
 Once logic is governed by architecture, several expensive problems stop being problems. None of these is a feature. They are consequences.
 
-**Tech debt approaches zero — and you can count it yourself.** A second proof point makes this concrete: a Canadian customs surtax regulation, cited directly as written, compiled into a complete running system — schema, calculation logic, working application. The complete business logic is 93 lines. Not 93 lines plus a framework to maintain: 93 lines, total, beyond the generated foundation. The sample is open source and installable; the rules are there to read. The eligibility system described above: under 500. These are systems a new team member reads in an afternoon. The conventional equivalents run to tens of thousands of lines — and every line is debt the moment it's written. (The platform also scores its own projects on governance coverage and integrity — useful for managing a portfolio, though the simpler proof is just reading the rules.)
+**Tech debt approaches zero — and you can count it yourself.** A Canadian customs surtax regulation, cited directly as written, compiled into a complete running system. The complete business logic: 93 lines. Not 93 lines plus a framework to maintain — 93 lines, total. The eligibility system described above: under 500. Both are open-source and installable; the rules are there to read. Your teams can finally practice real agile — iterating on a working system from day one, not on specs and mockups for six months.
 
-**Your people stop hand-building the same plumbing.** The list of things enterprise teams rebuild on every project — APIs, object-relational mapping, role-based access control, message-broker wiring, transfer objects, admin screens, test scaffolding — arrives pre-solved and uniform. That list is where enormous amounts of skilled staff time currently go. Reclaiming it doesn't just save money; it moves your best people from herding electrons to solving business problems.
+**Your people stop hand-building the same plumbing.** APIs, security, messaging, admin screens, test scaffolding — pre-solved and uniform across every project. That's where enormous amounts of skilled staff time currently go. Getting it back doesn't just save money; it moves your best people from rebuilding infrastructure to solving business problems.
 
 **Every system looks the same underneath.** Same architecture, same patterns, whether it was built by team A this year or team C in three years. Maintenance and onboarding stop depending on archaeology.
 
-**Agile finally means what it was supposed to mean.** Agile promised iteration on working software. Month-long build cycles meant teams iterated on specs and mockups instead. When a working system exists on day one, the business reacts to the real thing — and course-corrects in week one, not month twelve.
-
-**Compliance becomes tractable.** Rules are readable, traceable to the requirement, and provably executed — with generated artifacts: a logic diagram per requirement, a traceability report mapping transaction to rule to requirement, a portfolio health check scoring governance coverage without reading a line of code. The audit collapses from "read everything and hope" to "verify the rules, confirm the architecture, spot-check the log."
+**Compliance becomes tractable.** Rules are readable, traceable to the requirement, and provably executed — with generated artifacts: a logic diagram per requirement, a traceability report mapping transaction to rule to requirement, a health check scoring governance coverage across the portfolio. The audit collapses from "read everything and hope" to "verify the rules, confirm the architecture, spot-check the log."
 
 ## Why This Scales When Pilots Don't
 
-The graveyard of enterprise technology is full of things that worked. The pilot always works. Scale is where it dies — because scale requires hundreds of developers across dozens of teams to adopt a new way of working, and they don't.
+Most enterprise technology that failed worked fine in the pilot. Scale is where it dies — because scale requires hundreds of developers across dozens of teams to adopt a new way of working, and they don't.
 
-This architecture sidesteps the adoption problem rather than fighting it. There is no paradigm for your teams to learn: the input is requirements in the form they already produce, and the output is standard components — Python, a standard API, a stateless container — managed with the tools they already use. Quality and governance come from the factory, not the team roster. The hundredth system is as governed as the first, built by people who never attended a training session.
+This architecture sidesteps that problem rather than fighting it. There is no new paradigm for your teams to learn. Requirements go in the form they already produce. The output is standard components — Python, a standard API, a stateless container — managed with tools they already use. Governance quality comes from the architecture, not the team roster. The hundredth system is as governed as the first, built by people who never attended a training session.
 
-That is the difference between a technology that demos well and one that becomes how the organization builds.
+That's what separates a pilot from a platform.
 
 ## The Question to Ask
 
-If you're an IT leader, the AI investment on your books is probably sound. The model layer matters. But it is the capability layer, not the result layer — and the results are what your business is waiting for.
+If you're an IT leader, the AI investment on your books is probably sound. The model layer matters. But it delivers capability, not results — and the results are what your business is waiting for.
 
 So here is the question I'd put to your own organization: *pick any production system — can your teams show you, on one page, what business rules it actually enforces? And can they prove those rules run on every transaction?*
 
 If the answer is no — and at nearly every enterprise, it is — then that gap is where your next eight-figure exposure is hiding, and no model will find it.
 
-The capability layer is funded. What I'd fund next is the layer that makes it land.
+What I'd fund next is the layer that makes the capability land.
 
 ---
 
