@@ -1,11 +1,10 @@
 ---
 title: "Enterprise AI: The Missing Piece"
 author: W. Ries
-version: 5.5
+version: 5.7
 date: 2026-06-13
-changes_v5.3: full-time developer anecdote; core business policy; Rules are executable maintainable intent
-changes_v5.4: we added replaces ambiguous team reference; declaring the business logic; 93 lines no boilerplate; tech debt bullet cleaned up
-changes_v5.5: 21x Spring Boot comparison added to tech debt bullet with companion doc reference
+changes_v5.6: tech debt bullet rewritten — platform-managed vs you-manage; plain language
+changes_v5.7: Agile section added — manifesto advised working software; real screens day one; iterate twelve times before lunch
 changes_v1.0: Initial draft
 changes_v2.0: Spreadsheet analogy for Logic Automation; Arch Automation stated separately; plain-language pass throughout; What Falls Out restructured; graveyard sentence flattened; closing line rewritten in first person; front matter added
 changes_v3.0: Elevated framing — business logic governance gap predates AI; What Enterprise Actually Requires restructured; money sentence added; tech debt claim softened
@@ -91,7 +90,11 @@ The missing piece is a governed transactional logic layer: infrastructure that t
 
 Once logic is governed by architecture, several expensive problems stop being problems. None of these is a feature. They are consequences.
 
-**Technical debt drops dramatically — and you can measure it.** A Canadian customs surtax regulation, cited directly as written, compiled into a complete running system. 93 lines — the entire non-boilerplate code for a complete, governed customs system. The Spring Boot equivalent of the same system: approximately 2,000 lines, of which 80% is scaffold your team owns and maintains. The comparison is documented and reproducible. The eligibility system described above: under 500. Both are open-source and installable; the rules are there to read. Your teams can finally practice real agile — iterating on a working system from day one, not on specs and mockups for six months.
+**Technical debt drops by an order of magnitude.** Across every project we've built, the entire codebase your team manages runs from under 100 lines for a pure logic system to under 500 for a complex integration with messaging. The rest is platform-managed. What your team owns isn't infrastructure to wade through — it's the business logic itself, standing alone, readable by anyone who needs to understand, change, or audit it.
+
+**You can finally practice real agile.** The manifesto advised iteration on working software. In practice, most teams iterate on specs and mockups for months before anything runs. With GenAI-Logic, working software exists on day one — business users react to real screens, course-correct early, and the project stays aligned with what the business actually needs.
+
+Iterations are fast and safe. Add a rule, change a rule, remove a rule — the engine determines execution order automatically. No impact analysis. No archaeology. No missed dependencies. What should be simple stays simple. Iterate twelve times, before lunch.
 
 **Your team stops hand-building the same plumbing.** APIs, security, messaging, admin screens, test scaffolding — pre-solved and uniform across every project. That's where enormous amounts of skilled staff time currently go. Getting it back doesn't just save money; it moves your best people from rebuilding infrastructure to solving business problems.
 
