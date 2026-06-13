@@ -73,7 +73,7 @@ What that team introduced was exactly that: a Business Logic Governance layer th
 
 The starting point is a running system. The only work left is the business.
 
-![Requirements in, governed system out. One commit point. No bypass.](docs/images/architecture/logic-architecture-exec.png)
+![Requirements in, governed system out. One commit point. No bypass.](images/architecture/logic-architecture-exec.png)
 
 **Logic Automation — where the real shift happens.** Most people's mental model of AI-generated logic is code: a developer describes the requirement, AI writes the implementation, and the result is hundreds of lines that live somewhere in a service. That's the pattern that creates the three problems above.
 
