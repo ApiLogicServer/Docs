@@ -1,14 +1,15 @@
 ---
 title: "Enterprise AI: The Missing Piece"
 author: W. Ries
-version: 5.0
+version: 5.1
 date: 2026-06-12
 changes_v1.0: Initial draft
 changes_v2.0: Spreadsheet analogy for Logic Automation; Arch Automation stated separately; plain-language pass throughout; What Falls Out restructured; graveyard sentence flattened; closing line rewritten in first person; front matter added
 changes_v3.0: Elevated framing — business logic governance gap predates AI; What Enterprise Actually Requires restructured; money sentence added; tech debt claim softened
 changes_v3.x: Missing Piece restructured AA/LA; demo/system line sharpened; CEO assumption line; board-level business logic description; auditor line; block quote; new infrastructure framing; you would never imagine coding it; closing line fixed; repetition removed
-changes_v4.0: Diagram added; you would never imagine coding it; auditors can only sample; various plain-language fixes
-changes_v5.0: MIT citation fully sourced — The GenAI Divide NANDA 2025; Missing Piece opens with category before product — Business Logic Governance layer; closing paragraph ends on category not product
+changes_v4.0: Diagram added; various plain-language fixes
+changes_v5.0: MIT citation fully sourced — The GenAI Divide NANDA 2025; Missing Piece opens with category before product; closing paragraph ends on category not product
+changes_v5.1: Existing infrastructure sentence added — works with your existing database and message infrastructure, no migration required
 ---
 
 # Enterprise AI: The Missing Piece
@@ -69,7 +70,7 @@ Enterprises already govern data, APIs, security, and infrastructure. The missing
 
 What that team introduced was exactly that: a Business Logic Governance layer that sits alongside the database and the message broker. A running service, not a code generator, not a framework. The implementation in this case was GenAI-Logic, an open-source platform built around two ideas.
 
-**Architecture Automation — automate the routine components.** A working system arrives on day one: API, admin application, role-based security, messaging integration, test scaffolding. Your teams don't build any of that.
+**Architecture Automation — automate the routine components.** A working system arrives on day one: API, admin application, role-based security, messaging integration, test scaffolding. Your teams don't build any of that. And it works with your existing database and your existing message infrastructure — it adds the governance layer that was always missing, without replacing anything you've already built.
 
 The starting point is a running system. The only work left is the business.
 
