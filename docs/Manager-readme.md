@@ -6,6 +6,7 @@ version info: 17.00.07 (04/30/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
 demo_customs: Customs-readme
+demo_customs_surtax: Customs-readme-surtax
 demo_kafka: Sample-Integration
 demo_allo: Sample_Allo_Dept_GL_readme
 demo_ai_rules: Sample-ai-rules
