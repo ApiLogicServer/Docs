@@ -607,7 +607,29 @@ Used by Sample-AI; Sample-Integration (nw-), Tutorial, Tutorial-3 (3 projects), 
 * Image references are made absolute (to github).
 * Doc Links are made absolute.
 
+&nbsp;
 
+### Demo readme mapping (`Manager-readme.md` front-matter) — ⚠️ gotcha
+
+Demo projects (e.g. `demo_customs_clvs`, `demo_customs_surtax`, `demo_allo_*`, `basic_demo_*`) get a **project-specific** `readme.md` instead of the generic one. This is driven entirely by data, not code:
+
+* `Docs/docs/Manager-readme.md` front-matter contains `<prefix>: <readme-basename>` lines, e.g.:
+    ```yaml
+    demo_customs: Customs-readme
+    demo_customs_surtax: Customs-readme-surtax
+    demo_allo: Sample_Allo_Dept_GL_readme
+    basic_demo: Sample-Basic-Demo
+    ```
+* `create_readme.py` (`read_mgr_readme()` + `create_readme()`) reads this table, **sorts by prefix length descending**, then takes the **first prefix for which `project_name.startswith(prefix)` is true** — renames the project's `readme.md` to `readme_standard.md`, then `copy_md()`s `<readme-basename>.md` from `Docs/docs/` over it.
+
+**The trap:** `startswith()` matching means a new project whose name is a *superset* of an existing prefix will silently match the existing (wrong) entry unless a more-specific prefix is added. E.g. before `demo_customs_surtax` had its own entry, `"demo_customs_surtax".startswith("demo_customs")` was `True`, so it silently got the **CLVS** readme (`Customs-readme.md`) — wrong content, no error, easy to miss.
+
+**When adding a new demo whose name extends an existing prefix:**
+
+1. Create its specific gold readme in `Docs/docs/<New-Readme>.md`
+2. Add a **new, longer** prefix line to `Manager-readme.md`, e.g. `demo_customs_surtax: Customs-readme-surtax` — do **not** rename/remove the shorter existing entry (other projects may still rely on it as a fallback)
+3. No code change needed in `create_readme.py` — the length-descending sort + first-match-wins already prefers the more specific entry
+4. Regenerate the affected project's `readme.md` (via `copy_md()`, or by hand-applying its mkdocs→markdown transforms — see `copy_md()` above) to verify the new mapping actually resolves
 
 &nbsp;
 
