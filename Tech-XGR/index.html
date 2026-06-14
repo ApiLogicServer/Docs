@@ -1,0 +1,6826 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code">
+      
+      
+        <meta name="author" content="Val Huber">
+      
+      
+      
+        <link rel="prev" href="../Tech-Gov-By-Arch/">
+      
+      
+        <link rel="next" href="../Tech-XGR-TLDR/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>AI Made Executable Requirements Real. Governance Is What Makes Them Deployable. - API Logic Server</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.35e1ed30.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-made-executable-requirements-real-governance-is-what-makes-them-deployable" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="API Logic Server" class="md-header__button md-logo" aria-label="API Logic Server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            API Logic Server
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ApiLogicServer/ApiLogicServer-src" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="API Logic Server" class="md-nav__button md-logo" aria-label="API Logic Server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    API Logic Server
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ApiLogicServer/ApiLogicServer-src" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+     
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quick Start
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quick Start
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Doc-Home/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Doc Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-Express/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Express Install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Detailed Install
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Detailed Install
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install API Logic Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Create-ApiLogicProject/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create an API Logic Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Execute an API Logic Project
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Execute an API Logic Project
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Execute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Execute in your IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Execute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Execute From Terminal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-Eval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Express Eval
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orientation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-Upgrade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upgrade Version
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exec-Reqmts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Executable Reqmts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Demos, Tutorial, Samples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Demos, Tutorial, Samples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Manager-Demos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Demos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-ai-rules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. AI Rules Supplier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Demo-MCP-Send-Email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. MCP Send Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Demo-Vibe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. Vibe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-EAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. EAI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Customs-readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. Customs Demo (EAI)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample_Allo_Dept_GL_full/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .. Allo Dept/GL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Older
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-ai-mcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample_ai_mcp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Genai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI Microservice Automation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI - Copilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample DB, Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial-Deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial-Agile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agile Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI - ChatGPT, Agile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GenAI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            GenAI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebGenAI Website
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebGenAI Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-verify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebGenAI Verification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-CLI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Genai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    0. ApiLogicServer create
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            0. ApiLogicServer create
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Existing-DB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create - Existing DB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Create-Copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create - New DB (using AI)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-AI-Enabled/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI-Enabled Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-DSL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Driven
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Rebuild/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rebuild
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Virtual Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Project-Builders/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Builders
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-create/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create with Gen/AI on Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Apps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            1. Apps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Automatic Admin App
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Automatic Admin App
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatic Admin App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Customization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin Customization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vibe Kickstart
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Vibe Kickstart
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Vibe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generated React App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-Vibe-Sample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vibe Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Admin-App-Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    App Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Automatic Custom Apps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Automatic Custom Apps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App-Custom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Web Apps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App-Custom-Ontimize-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ontimize Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App-Model-Editor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    App Model Editor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            2. API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatic Multi-Table API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API-Multi-Table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-Table APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API-Self-Serve/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Self-Serve APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API-Customize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API-Opt-Lock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimistic Locking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. Logic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            3. Logic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Why/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic: Why
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic: Rule Types, Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logic: Using  AI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            Logic: Using  AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Using-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic: Using AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Using-AI-Impl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Logic Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Debug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How: Logic and Agile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Operation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic Operation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Why-Declarative-GenAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic: GenAI Approaches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_9" id="__nav_9_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rule Types
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_9">
+            <span class="md-nav__icon md-icon"></span>
+            Rule Types
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Constraint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Sum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sum
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Formula/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Formula
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Copy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Copy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Allocation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allocation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Type-Events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Allocation-Time-Date/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time/Date Stamping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Security
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            4. Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Getting-Started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started with Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Authorization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Role-based Authorization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Login Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Activation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Activation: add-auth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-sql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure sql auth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Keycloak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure Keycloak auth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-Swagger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Swagger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Application Integration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            5. Application Integration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-EAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EAI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-MCP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MCP Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-MCP-AI-Example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MCP AI Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-OpenAI-Function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenAI Function Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChatBot Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_6" id="__nav_11_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RowDict Mapper (disparaged)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_6">
+            <span class="md-nav__icon md-icon"></span>
+            RowDict Mapper (disparaged)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-Map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration-Kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Messaging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IDE - Customize, Manage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            IDE - Customize, Manage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Customize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Customize Using Your IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Fixup-Attrs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fixup - missing attributes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Import-WebGenAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Import / Merge WebGenai
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Rebuild-Test-Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rebuild Test Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDE-Health-Check/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Governance Report ⚗️
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database-Connectivity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connection Examples, Debug
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database-Diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database-Docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker Test Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Model Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Keys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Model Keys
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Customization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Model Customization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database-Changes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Design Changes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Quotes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Model Quoted Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Multi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiple Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Filters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Table Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-pyodbc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install pyodbc: SqlServer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-psycopg2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install psycopg2: Postgres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Postgresql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Postgresql
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Install-oracle-thick/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Oracle Thick
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data-Model-Sqlite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sqlite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DevOps - Containers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps - Containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Postman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Automation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps Automation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_14_4" id="__nav_14_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Create and Run Containers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14_4">
+            <span class="md-nav__icon md-icon"></span>
+            Create and Run Containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Use-Standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use Standard Image
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build Project Image
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Run/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Run Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_14_5" id="__nav_14_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cloud Deployment (Azure)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14_5">
+            <span class="md-nav__icon md-icon"></span>
+            Cloud Deployment (Azure)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Azure-Setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Preview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dev Preview in Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managed Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Containers-Deploy-Multi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Container-Configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_14_7" id="__nav_14_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev Containers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14_7">
+            <span class="md-nav__icon md-icon"></span>
+            Dev Containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-Docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dev Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevOps-GitHub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub and Codespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Agile / Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Agile / Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agility With Behave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behave-Logic-Report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Behave Logic Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_15_3" id="__nav_15_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Creating Tests
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15_3">
+            <span class="md-nav__icon md-icon"></span>
+            Creating Tests
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behave-Creation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Tests From Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Behave-Logic-Report-Basic-Demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample: basic_demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-What-Is/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is API Logic Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-What-Is-GenAI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is GenAI-Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Project-Operation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Operation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Declarative-Automation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Declarative Automation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Internals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            Internals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internal Dev Procedures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-admin-app-reuse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin App Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-genai-app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    App Gen: genai-app
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Internals-BLT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build, Load and Test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-venv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VENV (internals)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-venv-defaulting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VENV (defaulting)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python (internals)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Internals-CLI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internals - CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WebGenAI-llm-usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internals - LLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_17_10" id="__nav_17_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_10">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture-Security-Auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eval Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            Eval Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eval Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_18_2" id="__nav_18_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AI Training
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18_2">
+            <span class="md-nav__icon md-icon"></span>
+            AI Training
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-copilot-instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rosetta Stone
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eval Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-logic_bank_patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-logic_bank_api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic Bank API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-probabilistic_logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probabilistic Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-probabilistic_logic_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Probabilistic Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-genai_logic_patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI Logic Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-MCP_Copilot_Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MCP Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-admin_app_1_context.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin App Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-admin_app_2_functionality.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin App Functionality
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-admin_app_3_architecture.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin App Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-react_map.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-react_tree.prompt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    React Tree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Eval-response-short/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response Short
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FAQs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            FAQs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Low-Code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a Low Code approach?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Frameworks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a Framework?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this an AI Approach?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-RETE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a RETE Engine?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-4GL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a 4GL?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Strategic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a strategic investment?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Proven/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this a Proven Technology?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Live-API-Creator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this like Live API Creator?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Versata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Is this like Versata?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ-Maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What about Maintenance?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Adoption/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adoption Considerations?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tech Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_21">
+            <span class="md-nav__icon md-icon"></span>
+            Tech Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech--Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Tech Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Training-WG-Dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training WG Devs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Enterprise-Vibe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enterprise Vibe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Keycloak-devnotes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keycloak DevNotes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Customs-readme-full/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Customs App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Allocation-Article/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allocation Case Study
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Allocation-Article-Full/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allocation Case Study Full
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample_Allo_Dept_GL_readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allo Dept/GL ReadMe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Toaster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Appliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Logic-Transcript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nat Lang Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI-Collaboration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Human Collaboration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI-Tutor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI-Driven Teaching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Delivers Agile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-AI-ChatGPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample AI Demo ChatGPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI-mysql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI-driven Auto mysql
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-AI-sqlite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI-driven Auto sqlite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Budget-App/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Budget App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-CodeSpaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CodeSpaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Agile-Integrations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agile Integrations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Learning-Flask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Flask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Slack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Slack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Install-Python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Python-311/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python 3.11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-mkdocs-material/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mkdocs Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-CodeSpaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CodeSpaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-m1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    M1 Mac
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Product-Detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Product Detail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Product-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Product Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_31" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_21_31" id="__nav_21_31_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Personal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_31_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_21_31">
+            <span class="md-nav__icon md-icon"></span>
+            Personal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Manager-readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manager readme
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Ent-AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ent AI v5.7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Gov-By-Arch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gov By Arch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    XGR v16
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    XGR v16
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this Page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ai-made-executable-requirements-real-governance-is-what-makes-them-deployable" class="md-nav__link">
+    AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-ai-alone-is-not-enough" class="md-nav__link">
+    Why AI alone is not enough
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-matters-now" class="md-nav__link">
+    Why this matters now
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xgr-what-changes" class="md-nav__link">
+    XGR: what changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-specialized-runtime-not-a-feature" class="md-nav__link">
+    A specialized runtime, not a feature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-proofs-from-requirements-from-regulations" class="md-nav__link">
+    Two proofs: from requirements, from regulations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-didnt-work-before" class="md-nav__link">
+    Why this didn't work before
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-enterprise-scale-three-artifacts" class="md-nav__link">
+    At enterprise scale: three artifacts
+  </a>
+  
+    <nav class="md-nav" aria-label="At enterprise scale: three artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-the-governance-report-portfolio-health" class="md-nav__link">
+    1. The Governance Report — portfolio health
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-the-logic-diagram-per-requirement-structure" class="md-nav__link">
+    2. The Logic Diagram — per-requirement structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-logic-report-per-test-execution" class="md-nav__link">
+    3. The Logic Report — per-test execution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agile-at-last" class="md-nav__link">
+    Agile, At Last
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-tools-standard-outputs" class="md-nav__link">
+    Standard tools, standard outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-dividing-line" class="md-nav__link">
+    The dividing line
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-XGR-TLDR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XGR TLDR v7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../executable-requirements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XRD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Exec-Auto-Medium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XR Medium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-EAI-Exec-Req/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XR EAI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Demo-Full-Unused/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Demo (unused)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample-Basic-Tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tour
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-declarative/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Think Declarative
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Home/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-CIO-Concerns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Top CIO Concerns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Business-Logic-Agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governed Agentic Business Logic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ApiLogicServer-create/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INFO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logic-Recompute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recompute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Conference-PyCon23-Talk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyCon23 Talk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Conference-PyCon23-Tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyCon23 Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Conference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Optimistic-Locking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimistic Locking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Product-Detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Old Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_31_24" >
+        
+          
+          <label class="md-nav__link" for="__nav_21_31_24" id="__nav_21_31_24_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Page Links
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_21_31_24_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21_31_24">
+            <span class="md-nav__icon md-icon"></span>
+            Page Links
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Agile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Agile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tech-Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Detailed Tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this Page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ai-made-executable-requirements-real-governance-is-what-makes-them-deployable" class="md-nav__link">
+    AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Made Executable Requirements Real. Governance Is What Makes Them Deployable.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-ai-alone-is-not-enough" class="md-nav__link">
+    Why AI alone is not enough
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-matters-now" class="md-nav__link">
+    Why this matters now
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xgr-what-changes" class="md-nav__link">
+    XGR: what changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-specialized-runtime-not-a-feature" class="md-nav__link">
+    A specialized runtime, not a feature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-proofs-from-requirements-from-regulations" class="md-nav__link">
+    Two proofs: from requirements, from regulations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-didnt-work-before" class="md-nav__link">
+    Why this didn't work before
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-enterprise-scale-three-artifacts" class="md-nav__link">
+    At enterprise scale: three artifacts
+  </a>
+  
+    <nav class="md-nav" aria-label="At enterprise scale: three artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-the-governance-report-portfolio-health" class="md-nav__link">
+    1. The Governance Report — portfolio health
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-the-logic-diagram-per-requirement-structure" class="md-nav__link">
+    2. The Logic Diagram — per-requirement structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-logic-report-per-test-execution" class="md-nav__link">
+    3. The Logic Report — per-test execution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agile-at-last" class="md-nav__link">
+    Agile, At Last
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-tools-standard-outputs" class="md-nav__link">
+    Standard tools, standard outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-dividing-line" class="md-nav__link">
+    The dividing line
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>XGR v16</h1>
+
+<h2 id="ai-made-executable-requirements-real-governance-is-what-makes-them-deployable">AI Made Executable Requirements Real. <br><em>Governance</em> Is What Makes Them Deployable.</h2>
+<hr />
+<p>AI cracked the speed problem.</p>
+<p>Watch any vibe-coding demo: a paragraph of English goes in, a working app comes out, minutes not months. The translation from intent to running code — the bottleneck enterprise IT has lived with for forty years — really did get faster. That is a genuine accomplishment, and the AI tooling community deserves the credit it's getting for it.</p>
+<p>But there's a question every enterprise reader is asking when the demo ends. Would I put this into production? Where it touches my customers, my regulators, my eight-figure audit exposure? Where an auditor will eventually ask which rule fired on which transaction, and whether <em>all</em> required rules fire on <em>every</em> path?</p>
+<p>Today, the honest answer is no. Not because the code doesn't run — it does. It's because it's not governed.</p>
+<p>This article is about closing that gap. The capability has a name: <strong>Executable Governable Requirements</strong>, or <strong>XGR</strong>. In short: </p>
+<blockquote>
+<p>AI does what it's great at (translating intent), and a purpose-built runtime does what AI can't (enforcing that intent deterministically, on every path, with no bypass). The pipeline your team already runs doesn't change. What changes is the result: a governed system, not just a running one.</p>
+</blockquote>
+<p>For business analysts, the payoff is direct: the requirement you wrote becomes the artifact that runs. There is no translation layer between your specification and what production enforces. For management, the payoff is governance that scales — measurable across the portfolio, reviewable by compliance, provable to auditors.</p>
+<hr />
+<h3 id="why-ai-alone-is-not-enough">Why AI alone is not enough</h3>
+<p>Both traditional development and AI-assisted development fail in the same two ways. The failures are easier to see side by side — and they matter because <abbr title="multi-table constraints and derivations, e.g., the Customer Balance may not exceed the CreditLimit, and is derived as the sum of unshipped Order AmountTotals.">business logic</abbr> (the <abbr title="Backend logic covering multiple tables, e.g., adding an Order adjusts the Customers' balance and checks the credit limit.  Also, frontend application forms displaying multiple table, e.g., an Order with a (Parent) Sales Rep, and (children) OrderDetails;  Tab sheets for related data, lookups, automatic joins.">multi-table</abbr> derivations, constraints, and side-effects that express critical business policy) is typically 40–50% of coding and debugging effort. These failures describe where most of the work happens, and most of the rework.</p>
+<p><strong>Failure one: lost intent.</strong> A business analyst writes a requirement in five lines of English. A developer interprets it as 200 lines of procedural code. The intent ends up dispersed across handlers, branches, and helper functions — somewhere in there, but no longer visible. Six months later, compliance can't read it. The next developer who has to maintain it can't read it either. Both have to reconstruct what the system means from how it behaves.</p>
+<p>AI doesn't fix this. It accelerates it. A modern coding assistant takes the same five-line requirement and produces the same 200 lines, faster. Developers have a name for it: <em>FrankenCode</em> — code you didn't write, don't fully understand, and now have to maintain. Technical debt at generation speed.</p>
+<p><strong>Failure two: dependency bugs.</strong> Enterprise <abbr title="multi-table constraints and derivations, e.g., the Customer Balance may not exceed the CreditLimit, and is derived as the sum of unshipped Order AmountTotals.">business logic</abbr> has transitive dependencies — change an item's price, and the order total changes, and the customer balance changes, and the credit check should re-run. A three-table system has nine distinct change paths. Procedural code has to enumerate each one explicitly. Developers miss paths. So does AI, for the same reason: pattern-matching across procedural control flow cannot reliably infer transitive dependencies. Multiple AI systems have admitted this when asked directly. It is a structural limitation, not a capability gap that will be patched in the next model.</p>
+<p>In a recent side-by-side test (see references), the same five-rule requirement produced two outputs from the same AI assistant: a <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> version with five rules and zero bugs, and a procedural version with about 200 lines and two silent bugs — both involving foreign-key changes that updated the new <abbr title="One side of a one-to-many relationship (e.g., Customer for Orders)">parent</abbr> but not the old. No exception was thrown. The data was just wrong. At five rules you might catch them. At five hundred — which is what an enterprise system looks like — you won't.</p>
+<p><strong>Failure three: missing paths.</strong> Logic in code runs only on the paths the developer wrote it for. Every new endpoint, every new agent, every workflow added after the credit check was written is another path that has to remember to invoke it. The procedural model can't enforce on paths that don't yet exist. In an era of agentic systems and quarterly new integrations, the paths that don't yet exist are most of them.</p>
+<p>So: prototypes are real. Demos are real. But the three things that have always broken enterprise software — intent loss, dependency bugs, and missing paths — are not solved by AI. AI produces the first two faster. The third grows with every new agent.</p>
+<hr />
+<h3 id="why-this-matters-now">Why this matters now</h3>
+<p>Governance has emerged as the number-one CIO priority for 2026, overtaking cybersecurity for the first time. That's not a marketing statistic; it's the consequence of a structural shift. AI agents now touch production data. New endpoints get added every quarter. New developers join, new integrations land, new workflows bypass old ones. Every path is another way to bypass a rule that lives on some other path.</p>
+<p>The cost of getting this wrong is no longer theoretical. Regulatory penalties run into the millions per incident. Remediation often costs more than the fine. And the audit problem itself is genuinely intractable under the traditional model: read hundreds of thousands of lines of code, determine whether the relevant rules exist, prove they execute on every path. Auditors sample and hope.</p>
+<p>AI solved the speed problem. It made the governance problem worse — faster generation of unreviewable code is not progress. It's the same problem, faster.</p>
+<hr />
+<h3 id="xgr-what-changes">XGR: what changes</h3>
+<p>The solution follows:</p>
+<blockquote>
+<ol>
+<li><em>Use AI</em> for what it's great at: understanding intent</li>
+<li><em>Augment AI</em> for what it struggles with: translate intent to rules (<em>not</em> code), executed by a high-performance <strong>rules engine</strong> operating at the database commit point</li>
+</ol>
+</blockquote>
+<p>The five-line "check credit" requirement translates to five <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> rules - not ~200 lines of procedural code. The contrast with what AI produces by default is the article's central claim in one frame:</p>
+<p><img alt="Declarative rules versus procedural code — same requirement, two outputs. Five rules on the left, ~200 lines on the right. The declarative side is always used, on every path, with no bypass." src="../images/articles/XGR/why-rules.png" /></p>
+<p>These rules are not code in the procedural sense. They are the requirements themselves, written precisely enough to execute. Each rule maps directly to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The next developer to inherit the system can read them. The 200-line procedural version dispersed that intent across handlers; the rule version restates it with precision.</p>
+<p>This is the property that makes governance work. <strong>The rule is the requirement.</strong> Business and IT review the same artifact. The translation preserves the requirement's level of abstraction. One clause, one rule. No 40x FrankenCode explosion.</p>
+<p><img alt="Logic Architecture." src="../images/architecture/logic-architecture.png" /></p>
+<p>Here's how the Logic Architecture works:</p>
+<ol>
+<li><strong><abbr title="AI training injected into projects, so that (for example) logic is translated into rules not code, background system operation information, etc.">Context Engineering</abbr></strong> directs the AI to produce <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> rules, not procedural code. Without this constraint, AI pattern-matches to what it sees most often — procedural code. With it, intent becomes declarations.</li>
+<li><strong>Data Rules</strong> distill path-dependent intent ("on placing an order, check credit") into path-independent rules on data ("customer balance is the sum of unpaid orders"). The rule no longer cares which path triggered the change.</li>
+<li><strong>The Commit Listener</strong> hooks into the <abbr title="Object Relational Manager - dev-friendly sql access, such as row objects (e.g., SQLAlchemy)">ORM</abbr>. Every transaction — from any API, any agent, any workflow, any future endpoint that hasn't been built yet — passes through one control point. There is no architectural path that bypasses it.</li>
+<li><strong>The Rules Engine</strong> computes dependency order from rule semantics at startup, deterministically. No pattern-matching, no subtle ordering bugs.</li>
+</ol>
+<p>The result is what your team already wants: governance that doesn't depend on developers remembering to use rules, doesn't degrade as the system grows, and produces the same outcomes regardless of which path triggered the transaction.</p>
+<hr />
+<h3 id="a-specialized-runtime-not-a-feature">A specialized runtime, not a feature</h3>
+<p>A note on the engine itself.</p>
+<p>This is not a RETE engine. Classic rules engines are <em>called</em> — application code hands them a list of objects, the engine pattern-matches across working memory, fires rules. The engine has no idea what changed; it sees a bag of state and re-derives everything that might depend on that state.</p>
+<p>The XGR engine hooks the <abbr title="Object Relational Manager - dev-friendly sql access, such as row objects (e.g., SQLAlchemy)">ORM</abbr> directly. It doesn't get a bag of objects — it gets the actual change event: <em>Item inserted</em>, <em>Order.amount_total moved from X to Y</em>, <em>Customer.id changed from A to B</em>. Two consequences follow.</p>
+<p>The first is the <strong>no-bypass guarantee</strong>. Because the engine sits at the commit boundary inside the data layer, every persistent change passes through. A new developer can't forget to call it. A new agent can't bypass it. A prompt-injected agent can't bypass it either. There is no path to persistence that doesn't go through the engine. Governance becomes architectural, not behavioral.</p>
+<p>The second consequence is <strong>performance.</strong> Because the engine sees what changed, it can prune the rule graph to only the rules whose inputs actually moved, and it can maintain aggregates incrementally instead of recomputing them. A <code>count of children</code> rule, when a new <abbr title="Many side of a one-to-many relationship (e.g., Orders for Customer)">child</abbr> is added, costs one read and one update — not a <code>SELECT COUNT(*)</code> across the <abbr title="Many side of a one-to-many relationship (e.g., Orders for Customer)">child</abbr> table. In production work in an earlier generation of this architecture, this category of optimization turned four-minute transactions into two-second transactions. The analyst wrote <code>count</code>. They didn't have to know any of that happened.</p>
+<p>These properties — no-bypass enforcement, delta-aware optimization, adjustment semantics per rule type — are not features layered onto a rules engine. They are consequences of where the engine sits and what it sees. The result is a specialized runtime in the lineage of a relational query optimizer: a piece of infrastructure that takes years to mature and lives below the abstraction layer the user works at. The analyst writes <code>count</code>. The engine handles incremental maintenance, dependency ordering, and the dozens of edge cases that come with <abbr title="Backend logic covering multiple tables, e.g., adding an Order adjusts the Customers' balance and checks the credit limit.  Also, frontend application forms displaying multiple table, e.g., an Order with a (Parent) Sales Rep, and (children) OrderDetails;  Tab sheets for related data, lookups, automatic joins.">multi-table</abbr> transactional logic. That is the right division of labor — and the same division that made SQL and spreadsheets succeed: the user specifies <strong><em>what</em></strong>, the engine figures out <strong><em>how</em></strong>.</p>
+<p>Versata measured this category of system across production deployments before the AI era: <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> rules required writing only about 3% of equivalent procedural code. That reduction wasn't a style preference — it was the visible consequence of removing the procedural enumeration of paths that the engine handles structurally.</p>
+<hr />
+<h3 id="two-proofs-from-requirements-from-regulations">Two proofs: from requirements, from regulations</h3>
+<p>The architecture has been demonstrated in two shapes, from two different sides of the requirements pipeline.</p>
+<p><strong>From Requirements: the basic Check Credit example.</strong> A plain-English five-line requirement, written the way analysts naturally write requirements, compiled into five <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> rules, enforced on every commit, governed by architecture. The Logic Diagram you'll see in the next section is generated from this example. The pipeline doesn't change — analysts write what they already write. What changes is that the result is governed - all rules automatically invoked, no bypass, no dependency errors, auditable.</p>
+<p><strong>From Regulations: the CBSA Steel Derivative Goods Surtax proof-of-concept.</strong> This is the more interesting case. The input was not a requirements document at all. It was a nine-line prompt citing the Canadian regulation directly — program code, tariff subsection, trigger conditions, four example country scenarios. No schema. No field mapping. No specs.</p>
+<p>The output was a working, tested system — and it's worth being specific about what "system" means here, because the inventory is the point:</p>
+<ul>
+<li>A <strong>standard Python project</strong>, git-managed, <abbr title="Integrated Development Environment, e.g., VSCode, Pycharm - code editor, debugger, AI Assistant etc.">IDE</abbr>-openable, debugger-attachable</li>
+<li>The <strong>Data Rules</strong> for duty calculation, enforced by the rules engine at commit</li>
+<li>An <strong><abbr title="Model Context Protocol enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.">MCP</abbr>-enabled enterprise-class API</strong> — JSON:API with filtering, sorting, <abbr title="support to show large lists of rows in page-size sets, to reduce database overhead and unwieldly pages">pagination</abbr>, and <abbr title="ensuring that updates do not overwrite changes made by others, by checking that the data has not changed since the user last read it; ideally done with a checksum so that no schema changes are required.">optimistic locking</abbr>, plus <abbr title="Model Context Protocol enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.">MCP</abbr> discoverability so AI agents can find and use it natively</li>
+<li>An <strong>Admin UI</strong>, <abbr title="Backend logic covering multiple tables, e.g., adding an Order adjusts the Customers' balance and checks the credit limit.  Also, frontend application forms displaying multiple table, e.g., an Order with a (Parent) Sales Rep, and (children) OrderDetails;  Tab sheets for related data, lookups, automatic joins.">multi-table</abbr>, ready to use out of the box; custom apps can be vibed on top of the governed API as needed</li>
+<li><strong>Kafka publish/subscribe handlers</strong> when integration is specified — standard topics, consumer-group semantics, governed capture on the inbound side</li>
+<li><strong>RBAC via Keycloak</strong> (or equivalent) when role-based security is specified</li>
+<li>An <strong>auto-generated test suite</strong>, with the Logic Report artifact we'll discuss shortly</li>
+<li><strong>Container deployment</strong>, standard Python, ready for cloud or on-prem</li>
+</ul>
+<p>All from one prompt. All governed by the same rules engine at the commit point. And the part that matters at portfolio scale: <strong>every component inherits the governance automatically</strong>, including ones added later. A new endpoint inherits the rules. A new Kafka handler ingesting messages goes through the commit listener. An <abbr title="Model Context Protocol enables Business Users to use Natural Language to create multi-step execution flows across existing business-rule-enforced APIs.">MCP</abbr>-discovered agent calling the API hits the same gate. A vibed custom UI calling the JSON:API is governed without the developer doing anything. Governance is not applied per-component — it is inherited from sitting above the commit boundary.</p>
+<p>This answers the agent question every CIO is asking: <em>won't AI agents bypass my controls?</em> The structural answer is no. The agent's only path to persistence is through the gate.</p>
+<p>This is a proof-of-concept — real, runnable, tested — with the regulation citation traceable through to the rules that enforce it. For regulated industries, the gain is larger than the speed story. The most expensive translation chain in compliance is <em>regulation → requirements → specs → code → enforcement → audit.</em> Every handoff is a defect generator.</p>
+<p>XGR compresses that chain to a single step, with the regulator's text as the source of truth. What makes this work is the composition:</p>
+<ul>
+<li><strong>AI</strong> as translator</li>
+<li><strong>Rules</strong> as the target</li>
+<li><strong>The engine</strong> as enforcement</li>
+<li><strong>The auto-generated artifacts</strong> as audit</li>
+</ul>
+<hr />
+<h3 id="why-this-didnt-work-before">Why this didn't work before</h3>
+<p>Executable Requirements is a goal the industry has been chasing for decades. Many brave knights — CASE, 4GLs, MDA... The solution is marrying <em>AI for intent translation</em>, with <em>rules for intent execution.</em></p>
+<p><abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">Declarative</abbr> rules engines are not new. They have been available in mature form for thirty years. The Versata engine of the late 1990s did most of what is described here, minus the AI translation and the auto-generated artifacts. It worked. Teams that adopted it shipped systems faster, with fewer defects, and with audit characteristics the procedural alternative could not match.</p>
+<p>It still mostly didn't take over. The reason was not technical. W. Ries, who built systems on the Versata engine in that era, puts it this way:</p>
+<blockquote>
+<p><em>"We had the engine. We had the rules. What we didn't have was scale. To keep a team on rules instead of procedural code, you had to bird-dog them — walk the floor, catch the reversions, redirect them back. Take the bird-dog away and the procedural code sneaks back in. Governance decayed back into the discipline problem the engine was supposed to solve."</em></p>
+</blockquote>
+<p>His term for what XGR changes is <strong>governance at scale.</strong> What is different now is not the engine — it is the funnel that feeds it. When the entry point is a Gherkin scenario or a plain-English requirement, and AI is constrained by <abbr title="AI training injected into projects, so that (for example) logic is translated into rules not code, background system operation information, etc.">context engineering</abbr> to produce rules rather than code, there is no procedural off-ramp for the developer to revert to. The standard practice — write the requirement, run the prompt — produces rules by default. The funnel is structurally rule-producing.</p>
+<p>The discipline problem the bird-dog was solving is now solved by the architecture above it. No bypass at the entry point. No bypass at the commit point. Governance at scale: rules a practitioner can read and depend on, without having to walk the floor. For those who have lived through the previous attempts, this is the first version that doesn't require them to do the walking.</p>
+<hr />
+<h3 id="at-enterprise-scale-three-artifacts">At enterprise scale: three artifacts</h3>
+<p>A single governed system is interesting. An organization that makes governed-by-architecture the norm — across hundreds of services, dozens of teams, requirements coming in from every direction — is the argument that matters at the level enterprise IT actually operates.</p>
+<p>Three auto-generated artifacts make this work at portfolio scale. Each addresses a different governance question, and each is produced automatically — not by hand, not by discipline.</p>
+<h4 id="1-the-governance-report-portfolio-health">1. The Governance Report — portfolio health</h4>
+<p>Governance by architecture only holds if teams are actually using rules instead of reverting to procedural code. A built-in health check scores each project on two dimensions: <strong>Coverage</strong> (are the right tables governed by rules?) and <strong>Integrity</strong> (do the rules pass anti-pattern checks?). Run the report across the portfolio and adoption becomes visible across teams, without reading a line of code.</p>
+<p>This is the layer management asks for and rarely gets: <em>show me where governance is strong, show me where it's weak, show me the trend.</em> The same tool that enforces rules also measures whether teams are using them.</p>
+<h4 id="2-the-logic-diagram-per-requirement-structure">2. The Logic Diagram — per-requirement structure</h4>
+<p>Every developer insists on a database diagram. You can't engage with a system you can't visualize. The same is true for logic — and until now, there has been no equivalent artifact for the rules that govern that data.</p>
+<p><img alt="Logic Diagram — auto-generated, one per requirement. Requirement at top, rules at bottom, dependency graph in between." src="../images/articles/XGR/logic-diagram.png" /></p>
+<p>The diagram for the Check Credit requirement shows what governance looks like statically:</p>
+<ul>
+<li>The <strong>requirements</strong> appear at the top in plain English, exactly as the analyst wrote it (not shown in this diagram). </li>
+<li>The <strong>rules</strong> appear at the bottom in <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> form. </li>
+<li>Between them, the <strong>diagram</strong> shows the four-step dependency chain the engine will execute: Product price copies into Item price, formula computes Item amount, sum rolls up to Order total, sum rolls up (conditionally) to Customer balance.</li>
+</ul>
+<p>Unlike a database diagram, which shows every column on every table, the Logic Diagram shows only what governance acts on. The signal-to-noise ratio is what makes it reviewable. A compliance officer can look at one of these and verify, in under a minute, that the rules implement the requirement.</p>
+<p>This is how review becomes practical for a large system. One diagram per requirement, generated automatically, readable by the people whose job is to review them.</p>
+<h4 id="3-the-logic-report-per-test-execution">3. The Logic Report — per-test execution</h4>
+<p>The Logic Diagram shows structure. The Logic Report shows what actually ran.</p>
+<p><img alt="Logic Report — auto-generated per scenario. Gherkin at top, rules used, execution log showing the constraint failure that rejected the transaction." src="../images/articles/XGR/Test%20Report.png" /></p>
+<p>For each test scenario, the report shows three things stacked vertically: the Gherkin scenario the analyst wrote ("Given customer with credit limit 20… when order placed with 2 Chai… then order is rejected"), the specific rules that participated in that scenario, and the actual execution trace — including, in this example, the constraint failure that rejected the transaction at the commit boundary.</p>
+<p>This closes a traceability loop the industry has been chasing for decades: <strong>Requirement → Rule → Execution Log</strong>, in one file, generated automatically, with the analyst's own words at the top.</p>
+<p>This is what makes the compliance audit tractable. The auditor no longer reads code. The audit becomes three steps:</p>
+<ol>
+<li>Confirm the rules correctly implement the requirement. (Read the Logic Diagram.)</li>
+<li>Confirm the rules ran on the transactions they should have. (Read the Logic Report.)</li>
+<li>Spot-check a sample. (The execution log is right there.)</li>
+</ol>
+<p>Compliance proven, not asserted.</p>
+<hr />
+<h3 id="agile-at-last">Agile, At Last</h3>
+<p>There's a derivative effect to all of this that deserves to be named, because it has been promised for twenty-five years and never quite delivered.</p>
+<p>The original agile vision was <em>working software over comprehensive documentation</em> — short cycles, real feedback from real stakeholders looking at something that actually runs. The methodology spread. The vision mostly didn't. The reason was economic: producing working software to react to cost two weeks of developer time per iteration, so teams had to lock the requirement before development started. Sprint reviews ended up showing wireframes, mockups, or partial implementations. The requirement was frozen before anyone saw it run. That is waterfall on a sprint cadence.</p>
+<p>With XGR, iteration takes minutes, not sprints. An analyst with a requirements document can run the prompt, get a complete governed system in minutes, click through the Admin UI, watch the rules fire, notice that clause three doesn't mean what they thought it meant, edit the requirement, re-run, and demonstrate the result to colleagues on a laptop — all before any developer has been asked to build anything.</p>
+<p>The iteration is on the requirement itself, not on code generated from a frozen requirement. The analyst's artifact is the deliverable. The running system is how they validate it. The rules are the precise restatement of what they meant. Rules sit at the same level of abstraction as the requirement. No drift between intent and enforcement.</p>
+<p>For business analysts, this changes what the job is. You are no longer writing specs that get interpreted into something else. You are producing the artifact that runs. For product owners and stakeholders, sprint reviews stop being slideware — the conversation is grounded in observable behavior. For development teams, the handoff is different: developers work on extensions, custom UI beyond what's generated, integration work, performance, security policy — not interpreting requirements into procedural code.</p>
+<p>Most requirements bugs are not bugs of expression. They are bugs of unexamined assumption. A twenty-minute round-trip from prompt to running system surfaces those assumptions immediately. The system finds the bug the analyst didn't know to look for.</p>
+<p>The same architecture that makes governance auditable makes the agile loop fast. Speed and governance are not a tradeoff — they are consequences of the same thing.</p>
+<hr />
+<h3 id="standard-tools-standard-outputs">Standard tools, standard outputs</h3>
+<p>One last point. None of this requires entering a proprietary world.</p>
+<p>The runtime is built from several engines — <abbr title="Object Relational Manager - dev-friendly sql access, such as row objects (e.g., SQLAlchemy)">ORM</abbr> integration, API generation, Admin UI, the rules engine — and they are open source. More importantly, what they produce is standard. The rules are Python in a standard project. Open them in your <abbr title="Integrated Development Environment, e.g., VSCode, Pycharm - code editor, debugger, AI Assistant etc.">IDE</abbr>. Set a breakpoint inside a rule, step through with the debugger. Check them into git. The API is JSON:API. The <abbr title="Object Relational Manager - dev-friendly sql access, such as row objects (e.g., SQLAlchemy)">ORM</abbr> is SQLAlchemy. The Admin UI is a standard pattern. The database is the one you already use — Postgres, MySQL, SQL Server, SQLite. Deploy as a container.</p>
+<p>This is the difference between adopting infrastructure and adopting an exception. Platforms that require you to enter their world — their <abbr title="Integrated Development Environment, e.g., VSCode, Pycharm - code editor, debugger, AI Assistant etc.">IDE</abbr>, their data model, their runtime, their certified consultants — succeed in narrow domains and fail at enterprise breadth. The XGR runtime is a framework, but a framework whose artifacts live in the world the enterprise already runs.</p>
+<hr />
+<h3 id="the-dividing-line">The dividing line</h3>
+<p>Governance-by-discipline was already failing in traditional systems, at significant cost, well before AI arrived. AI didn't create the problem. It made it the problem every CIO has to solve, <em>now.</em></p>
+<p>As W. Ries <a href="https://medium.com/">argued in this publication recently</a>, the organizations that solve it will solve it architecturally — rules at the commit point, in <abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">declarative</abbr> form, generated from the requirements the business already writes. The organizations that try to solve it with more process, tighter agent confinement, and better-trained reviewers will find that those approaches get more expensive as the problem grows — not less. That is the dividing line.</p>
+<p>Speed alone produces prototypes. What you can actually deploy is a complete system — API, UI, integration, security — where every component, including the ones added tomorrow, inherits governance from the commit boundary. The rule is the requirement. The engine enforces it. The artifacts prove it ran. The analyst validated it before development began.</p>
+<p>This is not a faster way to write code. It is a new kind of infrastructure — governed transactional logic as a first-class layer of the enterprise stack, alongside the database and the message bus. The procedural alternative is a translation layer the industry has never made reliable. The next budget cycle is no longer willing to pay for it.</p>
+<hr />
+<p><em>Val Huber is co-founder and architect of GenAI-Logic, and previously CTO at Versata.</em></p>
+<hr />
+<p><strong>References</strong></p>
+<ul>
+<li>W. Ries, <em><a href="https://medium.com/">Governance by Architecture, Not Discipline</a></em> — the architectural argument this article builds on</li>
+<li>Val Huber, <em><a href="https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md"><abbr title="specifications that dictate _what_ should be done, instead of detailed that is _how_ the feature is provided.  Declarative specifications are much more concise, automatically ordered, automamatically optimized and automatically invoked (re-used).  Declarative specifications can be used for client, API and logic behavior">Declarative</abbr> Rules vs. Procedural Logic: A Reproducible Comparison</a></em> — the A/B test referenced in Failure two</li>
+</ul>
+<hr />
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Tech-Gov-By-Arch/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Gov By Arch">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Gov By Arch
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Tech-XGR-TLDR/" class="md-footer__link md-footer__link--next" aria-label="Next: XGR TLDR v7">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                XGR TLDR v7
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "kramdown", "content.tooltips", "navigation.footer"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script>
+      
+        <script src="../assets/javascripts/mermaid-init.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
