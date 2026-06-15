@@ -79,6 +79,8 @@ This builds a full system (customers, orders, items, products — API + Admin Ap
 
 > The key beat: you didn't *read about* rules, you *triggered* one, got surprised by an error, and the AI explained *your own system* back to you. That's the GenAI-Logic story in one sitting.
 
+**Going further — Enterprise Integration (EAI):** this demo's `Use case: App Integration` already publishes shipped orders to Kafka (outbound). For the inbound side — accepting B2B orders from partner systems via a Custom API or Kafka subscriber, with field-mapping by example (so partners send `"Account": "Alice"` and `"Items": [{"Name": "Widget", ...}]`, not internal IDs) — see `samples/basic_demo_eai`. It's a fully working, AI-generated example of the same pattern, ready to run.
+
 </details>
 
 &nbsp;
