@@ -105,7 +105,7 @@ Each small, readable, yours. Plain Python — nothing locks you in.
 <details markdown>
 <summary>2. Run it — F5, then open the Admin App</summary>
 
-<br>Press F5 using "API Logic Server Run (run project from manager)", and open the Admin App at `http://localhost:5656`. Explore the API via Swagger, browse the data, and follow the relationships — all auto-generated from the data model.
+<br>Press F5 using "API Logic Server Run (run project from manager)", and open the Admin App. Explore the API via Swagger, browse the data, and follow the relationships — all auto-generated from the data model.
 
 </details>
 
