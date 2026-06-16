@@ -15,6 +15,11 @@ demo_eai: Sample-Basic-EAI
 demo_vibe: Sample-Basic-Demo-Vibe
 demo_copilot_mcp_discovery: Sample-ai-mcp
 basic_demo: Sample-Basic-Demo
+codespaces_patch: |
+  create_codespaces_mgr.sh injects a Codespaces-only browser note immediately after
+  the "## 🚀 First Time Here?" heading (sentinel: do not rename that heading without
+  updating the grep in create_codespaces_mgr.sh). The note warns Safari users to
+  switch to Chrome/Edge. This avoids forking the README for Codespaces.
 ---
 <style>
   -typeset h1,
@@ -55,6 +60,7 @@ For more information, see [AI-Enabled Projects](https://apilogicserver.github.io
 &nbsp;
 
 ## 🚀 First Time Here?
+<!-- CODESPACES-INSERT-POINT: create_codespaces_mgr.sh injects browser note here — do not rename this heading -->
 
 <details markdown open>
 <summary>⚡ See it work — 5 minute first look</summary>
