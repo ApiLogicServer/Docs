@@ -2,7 +2,7 @@
 title: Welcome - see end for instructions to hide this
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs/Manager-readme
-version info: 17.00.10 (06/18/2026)
+version info: 17.00.11 (06/18/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
 demo_customs: Customs-readme
@@ -210,6 +210,9 @@ Once logic stops being something AI has to re-derive by hand for every transacti
 
 - **Gherkin-style scenarios** — [samples/demo_customs_clvs/readme.md](samples/demo_customs_clvs/readme.md)
 - An **actual government tariff regulation** (Canada, CBSA) — [samples/demo_customs_surtax/readme.md](samples/demo_customs_surtax/readme.md)
+
+![Design and Runtime funnels into one governed Rules Engine](images/architecture/logic-architecture-exec.png){: style="height:380px;width:380px"; align=right }
+Two funnels, one engine: however the rules get written — regulation, Gherkin, NL prompt — and however a write arrives at runtime — API, MCP, agent, workflow — everything passes through the same commit point. No bypass.
 
 These are less features than consequences of teaming AI with Logic Automation — integration, AI-governed judgment calls, whole systems built from a regulation document — all falling out of the same one decision: let the engine carry correctness, so AI doesn't have to.
 
