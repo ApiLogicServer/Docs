@@ -24,21 +24,21 @@ changes_v5.1: Existing infrastructure sentence added — works with your existin
 
 Large enterprises are investing heavily in AI. Most of that investment is at the infrastructure and model layer — training, fine-tuning, embeddings, retrieval pipelines. That work is real and necessary.
 
-It is also, in my experience, falling short.
+It is also, in my experience, not landing.
 
-MIT's NANDA initiative puts the number at 95% — the share of enterprise generative AI pilots delivering no measurable P&L impact. The source is *The GenAI Divide: State of AI in Business 2025*, based on 300 public deployments and 150 executive interviews. Everyone I talk to recognizes the pattern, and almost nobody says out loud why it happens. The pilots don't fail because the AI is weak. The AI is remarkable. They fail because a demo is not a system — and nobody budgeted for the gap between the two.
+MIT's NANDA initiative puts the number at 95% — the share of enterprise generative AI pilots delivering no measurable P&L impact, from *The GenAI Divide: State of AI in Business 2025*, based on 300 public deployments and 150 executive interviews. Everyone I talk to recognizes the pattern, and almost nobody says out loud why it happens. The pilots don't fail because the AI is weak. The AI is remarkable. They fail because a demo is not a system — and nobody budgeted for the distance between the two.
 
 A demo illustrates a few key paths. A system enforces what's required on all of them — customs regulations on every shipment, carrier SLAs on every booking, credit limits on every order — including the integration somebody adds three years from now. Provably, in a form an auditor can read, maintained by whoever inherits it.
 
-That demo / system gap is not a model problem. No amount of model investment closes it. It is an infrastructure problem — and the infrastructure in question is one most enterprises don't know is missing, because until recently it didn't exist.
+That distance is not a model problem. No amount of model investment closes it. It is an infrastructure problem — and the infrastructure in question is one most enterprises don't know is missing, because until recently it didn't exist.
 
-## What *Enterprise* Actually Requires
+## What "Enterprise" Actually Requires
 
 Strip away the technology and an enterprise system is a promise: *the core business policy will be enforced, every time, and we can prove it.*
 
 Enterprises have spent decades getting serious about governing everything except business logic. Data governance, API security, access control, infrastructure compliance — all addressable, all invested in. Business logic — the rules that make a transaction correct — has always lived in code, unreadable, unverifiable, and trusted on faith.
 
-That gap has always existed. AI doesn't create it, but it certainly multiplies the number of paths that can fall through it. Remediation costs increase.
+That gap has existed for as long as enterprise software has existed. AI doesn't create it. AI makes it unaffordable.
 
 Every agent, every generated service, every natural-language interface is another route to your data — and another path that won't inherit yesterday's rules unless someone remembers to wire them in. At enterprise scale, someone always forgets.
 
@@ -48,7 +48,7 @@ Business logic — the derivations, validations, and policies that express core 
 
 **You can't read it.** A five-line requirement becomes two hundred lines of code. The intent is in there somewhere, buried. Compliance can't review it. The next developer can't either. At one large organization I'm aware of, the answer to "what is our business policy?" required a full-time developer — whose job was to go read the code and report back.
 
-**You can't guarantee it runs.** Logic in a code path governs that path. The new endpoint, the new agent, the new integration — none of them inherit it unless someone remembers to wire it in. You just can't count on that.
+**You can't guarantee it runs.** Logic in a code path governs that path. The new endpoint, the new agent, the new integration — none of them inherit it unless someone remembers. At enterprise scale, someone always forgets.
 
 **You can't prove anything.** Auditing a system means reading the code and hoping. Auditors can only sample. Exposure hides in the gaps.
 
@@ -58,7 +58,7 @@ You can't audit what you can't read.
 
 A major logistics company had a team working for months on a customs system — competent people, conventional architecture, business logic written as code, the way nearly every enterprise system is built.
 
-A governed version of the same system — customs eligibility over a live shipment message pipeline — was built in days, not months, as a proof of concept. Not by better developers — by a different architecture. The requirements went in as plain-English documents the business team already owned. The logic came back as declarative rules: short, readable, attached to the data itself, enforced automatically on every transaction.
+A governed version of the same system — customs eligibility over a live shipment message pipeline, seven tables, 130-plus columns — was built in days, as a proof of concept. Not by better developers — by a different architecture. The requirements went in as plain-English documents the business team already owned. The logic came back as declarative rules: short, readable, attached to the data itself, enforced automatically on every transaction.
 
 > The governed version caught an 8-figure compliance exposure that the months-long version had missed.
 
@@ -88,9 +88,9 @@ The missing piece is a governed transactional logic layer: infrastructure that t
 
 ## What Falls Out
 
-Once logic is governed by architecture, several expensive problems stop being problems.
+Once logic is governed by architecture, several expensive problems stop being problems. None of these is a feature. They are consequences.
 
-**Technical debt drops by an order of magnitude.** Across every project we've built, the entire codebase your team manages runs from 93 lines for a pure logic system to under 500 for a complex integration with messaging. The rest is platform-managed. What your team owns isn't infrastructure to wade through — it's the business logic itself, standing alone, readable by anyone who needs to understand, change, or audit it.
+**Technical debt drops by an order of magnitude.** Across every project we've built, the entire codebase your team manages runs from under 100 lines for a pure logic system to under 500 for a complex integration with messaging. The rest is platform-managed. What your team owns isn't infrastructure to wade through — it's the business logic itself, standing alone, readable by anyone who needs to understand, change, or audit it.
 
 **You can finally practice real agile.** The manifesto advised iteration on working software. In practice, most teams iterate on specs and mockups for months before anything runs. With GenAI-Logic, working software exists on day one — business users react to real screens, course-correct early, and the project stays aligned with what the business actually needs.
 
@@ -106,7 +106,7 @@ Iterations are fast and safe. Add a rule, change a rule, remove a rule — the e
 
 Most enterprise technology that failed worked fine in the pilot. Scale is where it dies — because scale requires hundreds of developers across dozens of teams to adopt a new way of working, and they don't.
 
-This architecture sidesteps that problem rather than fighting it. There is no new workflow for your teams to learn. Requirements go in the form they already produce. The output is standard components — Python, a standard API, a stateless container.  It's managed with tools they already use — their IDE, git. Governance quality comes from the architecture, not the team roster. The hundredth system is as governed as the first, built by people who never got to go to training.
+This architecture sidesteps that problem rather than fighting it. There is no new paradigm for your teams to learn. Requirements go in the form they already produce. The output is standard components — Python, a standard API, a stateless container — managed with tools they already use. Governance quality comes from the architecture, not the team roster. The hundredth system is as governed as the first, built by people who never attended a training session.
 
 That's what separates a pilot from a platform.
 
@@ -120,8 +120,8 @@ If the answer is no — and at nearly every enterprise, it is — then that gap 
 
 Enterprises have learned to govern data, APIs, security, and infrastructure. Business logic is the last ungoverned layer — and the one that determines whether your AI investment actually delivers what the business requires. The organizations that close that gap first will be the ones whose AI investments actually reach production.
 
-What I'd fund next is the infrastructure that delivers it.
+What I'd fund next is the infrastructure that delivers it...
 
 ---
 
-*W. Ries is a senior enterprise IT executive with a long career building and operating large-scale systems. The examples described are installable open-source samples — the code is there to read.*
+*W. Ries is a senior enterprise IT executive with a long career building and operating large-scale systems. The examples described are installable open-source samples — the 93 lines are there to read.*
