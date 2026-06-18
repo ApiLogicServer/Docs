@@ -2,7 +2,7 @@
 title: Welcome - see end for instructions to hide this
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs/Manager-readme
-version info: 17.00.11 (06/18/2026)
+version info: 17.00.12 (06/18/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
 demo_customs: Customs-readme
@@ -30,13 +30,9 @@ codespaces_patch: |
 
 # Welcome to GenAI-Logic
 
-What is GenAI-Logic:
+One prompt builds a working API, Admin App, and database — then you declare business logic in 5 rules instead of writing 200 lines of code to enforce it. Same engine, same project, no separate tooling.
 
-1. ***Instant mcp-enabled microservices*** (APIs and Admin Apps), from a database or **GenAI prompt** -- one command and you are ready for MCP, Vibe and Business User Collaboration.
-
-2. ***Customize*** with **Declarative Rules** and Python in your IDE, standard container deployment
-
-This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager).  The Manager is a good place to manage projects, create notes and resources, etc.  
+This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager) — where you manage projects, create notes and resources, etc.
 
 &nbsp;
 
@@ -256,11 +252,11 @@ genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basi
 
 &nbsp;
 
-## 📚 Demo Catalog (Next Steps)
+## 📚 Build It Yourself — Demo Catalog
 
-These samples are designed to illustrate key patterns for typical requirements.
+"Where this leads" showed you pre-built samples to browse. These are the same use cases, but as commands you run yourself — paste one into your AI assistant and it builds that project for you, live.
 
-> Tip: projects are AI-enabled - use your AI assistant to ask how they work
+> Tip: every project is AI-enabled — once it's built, ask your AI assistant how it works
 
 &nbsp;
 
@@ -269,20 +265,20 @@ These samples are designed to illustrate key patterns for typical requirements.
 Explore the key use cases from our home page:
 
 
-| Use Case | Command | What You'll Learn |
+| Use Case | Say to your AI / Run | What You'll Learn |
 |----------|---------|-------------------|
 | **[Allocation with AI Rules](https://www.genai-logic.com)** <br> demo_allo_dept_gl | create demo_allo_dept_gl from samples/prompts/allocation.prompt.md <br> or genai-logic create --project_name=demo_allo_dept_gl --db_url=sqlite:///samples/dbs/starter.sqlite | - [Cascade Allocation (Costs to Depts/GL)](Sample_Allo_Dept_GL_full.md){:target="_blank" rel="noopener"} <br> - AI Rules for fuzzy match to project |
 | **[Use Case 1: AI Rules](https://www.genai-logic.com/#h.ussov6phwsja)**<br> demo_ai_rules_supplier | genai-logic create --project_name=demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Use AI Rules (req pattern) to choose Optimal Supplier, per world conditions |
 | **[Use Case 2: Governed MCP Server](https://www.genai-logic.com/#h.kjyi4tc52seu)** <br>demo_mcp_send_email | genai-logic create --project_name=demo_mcp_send_email --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Bus Users compose new service to send email to overdue customers, subject to email opt-out rules<br>- Create custom API with NL<br>- Create an email service (req pattern) |
 | **[EAI: Enterprise App Integration](https://www.genai-logic.com/#h.wdoo0f18oqd1)** <br>demo_eai | genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - Executable Requirements<br>- Create custom API with NL<br>- Create Kafka Listener with NL |
 | **[Use Case 4: Vibe Dev Backend](https://www.genai-logic.com/#h.6d0vlkwk86lb)** <br> demo_vibe | genai-logic create --project_name=demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite | - UI elements, eg, Cards, Maps, Trees... |
-| **[Use Case 5: Business Users](https://www.genai-logic.com/#h.69d2voz8q5r1)** <br> webgenai | See [WebGenAI](webgenai/README.md) | - Create systems from browser, with logic, sample data and derived attributes |
+| **[Use Case 5: Business Users](https://www.genai-logic.com/#h.69d2voz8q5r1)** <br> webgenai | See `webgenai/` in this Manager | - Create systems from browser, with logic, sample data and derived attributes |
 | **[Customs CLVS](samples/requirements/customs_demo/docs/requirements/customs_demo/requirements.md)** <br> demo_customs_clvs | genai-logic create  --project_name=demo_customs_clvs --db_url=sqlite:///samples/requirements/customs_demo_clvs/database/customs.sqlite | - Governed Business Systems<br> - EAI (using XML), textual requirements |
 | **[Customs Surtax](samples/prompts/customs_cbsa.prompt.md)** <br> demo_customs_surtax | implement project demo_customs_surtax from samples/prompts/customs_cbsa.prompt.md | - New Business System from Regulations |
 
 &nbsp;
 
-> **Running a cloned project?** F5 won't work until the venv is set up — see [Project-Env](https://apilogicserver.github.io/Docs/Project-Env/) for options (`als run`, symlink, or local venv).
+> **Running a cloned project?** F5 won't work until the venv is set up — see [Project-Env](https://apilogicserver.github.io/Docs/Project-Env/) for options (`genai-logic run`, symlink, or local venv).
 
 &nbsp;
 
@@ -290,9 +286,9 @@ Explore the key use cases from our home page:
 
 Advanced examples and specialized patterns:
 
-| Demo | Command | What You'll Learn |
+| Demo | Say to your AI / Run | What You'll Learn |
 |------|---------|-------------------|
-| **Executable Requirements** | See [Order-EAI](samples/requirements/readme.md) | Create from Gherkin requirements <br>implement reqs <path> |
+| **Executable Requirements** | See [samples/requirements/readme.md](samples/requirements/readme.md) | Create from Gherkin requirements <br>implement reqs <path> |
 | **New system from prompt** | genai-logic genai --using=samples/prompts/genai_demo.prompt | Create systems from prompt<br>Like WebGenAI, but from IDE |
 | **Coding Samples** | code samples/nw_sample | Useful code examples<br>Search: `#als` |
 | **MCP Discovery** <br> demo_copilot_mcp_discovery | genai-logic create --project_name=demo_copilot_mcp_discovery --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
@@ -307,7 +303,13 @@ python -m venv venv            # may require python3 -m venv venv
 &nbsp;
 
 
-#  Explore GenAI CLI
+# Appendices
+
+## GenAI CLI (requires an OpenAI key)
+
+Everything above — the walkthrough, the samples, Demo Catalog — runs through your AI assistant (Copilot/Claude), no separate signup. The `genai-logic genai` CLI commands below predate that: they call OpenAI's API directly, which means you need your own OpenAI account and key (see *Get an OpenAI Key*, below) and pay for usage.
+
+That's real friction most readers don't need to take on — the AI-assistant path covers the same ground. This section is kept for completeness: scripted/CI use, or specific model-iteration workflows the AI-assistant path doesn't (yet) replicate.
 
 <br>
 
@@ -320,7 +322,7 @@ python -m venv venv            # may require python3 -m venv venv
 1. If you have signed up (see *Get an OpenAI Key*, below), this will create a new database and project called `genai_demo`, and open the project.  It's created using `genai_demo.prompt`, visible in left Explorer pane:
 
 ```bash
-als genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
+genai-logic genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
 ```
 
 
@@ -328,7 +330,7 @@ als genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-n
 
 
 ```bash
-als genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
+genai-logic genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
 ```
 
 Verify it's operating properly:
@@ -347,7 +349,7 @@ Verify it's operating properly:
 
 <br>`genai` processing is shown below (internal steps denoted in grey):
 
-1. You create your.prompt file, and invoke `als genai --using=your.prompt`.  genai then creates your project as follows:
+1. You create your.prompt file, and invoke `genai-logic genai --using=your.prompt`.  genai then creates your project as follows:
 
     a. Submits your prompt to the `ChatGPT API`
 
@@ -355,13 +357,13 @@ Verify it's operating properly:
 
     c. Extracts model.py from the response
 
-    d. Invokes `als create-from-model`, which creates the database and your project
+    d. Invokes `genai-logic create-from-model`, which creates the database and your project
 
 2. Your created project is opened in your IDE, ready to execute and customize.  
 
     a. Review `Tutorial`, Explore Customizations.
 
-![GenAI Automation](system/https://github.com/ApiLogicServer/Docs/blob/main/docs/images/genai.png?raw=true)
+![GenAI Automation](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/genai.png?raw=true)
 
 </details>
 </br>
@@ -373,7 +375,7 @@ Verify it's operating properly:
 <br>The approach for an iteration is to create a new project from an existing one:
 
 1. add another prompt to an existing projects `docs` directory, specifying your changes
-2. use `als genai`, specifying 
+2. use `genai-logic genai`, specifying 
     * `--using` existing projects `docs` directory, and 
     * `--project-name` as the output project
  
@@ -384,10 +386,9 @@ Verify it's operating properly:
 Explore [genai_demo_iteration_discount](system/genai/examples/genai_demo/genai_demo_iteration_discount).  It's an iteration of basic_demo (see system/genai/examples/genai_demo/genai_demo_iteration_discount/002_create_db_models.prompt).  This will add carbon_neutral to the data model, and update the logic to provide the discount:
 
 **Iterate Business Logic:**
-**Iterate Business Logic:**
 ```bash title='Iterate Business Logic'
 # Iterate with data model and logic
-als genai --project-name='genai_demo_with_discount' --using=system/genai/examples/genai_demo/genai_demo_iteration_discount
+genai-logic genai --project-name='genai_demo_with_discount' --using=system/genai/examples/genai_demo/genai_demo_iteration_discount
 # open Docs/db.dbml
 ```
 
@@ -398,7 +399,7 @@ You can perform **model iterations:** add new columns/tables, while keeping the 
 **Iterate Without Logic:**
 ```bash title='Iterate Without Logic'
 # Step 1 - create without logic
-als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
+genai-logic genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
 # open Docs/db.dbml
 ```
 
@@ -407,7 +408,7 @@ Then, we would create another prompt in the docs directory with our model change
 **Iterate With Logic:**
 ```bash title='Iterate With Logic'
 # Iterate with data model and logic
-als genai --project-name='genai_demo_with_logic' --using=system/genai/examples/genai_demo/genai_demo_iteration
+genai-logic genai --project-name='genai_demo_with_logic' --using=system/genai/examples/genai_demo/genai_demo_iteration
 # open Docs/db.dbml
 ```
 
@@ -424,9 +425,8 @@ Explore [genai_demo_iteration](system/genai/examples/genai_demo/genai_demo_itera
 <br>You can declare rules using dot notation, or more informally:
 
 **Informal Logic (no dot notation):**
-**Informal Logic (no dot notation):**
 ```bash title="Informal Logic (no dot notation)"
-als genai --using=system/genai/examples/genai_demo/genai_demo_informal.prompt --project-name=genai_demo_informal
+genai-logic genai --using=system/genai/examples/genai_demo/genai_demo_informal.prompt --project-name=genai_demo_informal
 ```
 </details>
 </br>
@@ -439,9 +439,8 @@ als genai --using=system/genai/examples/genai_demo/genai_demo_informal.prompt --
 <br>You can add new columns/tables, while keeping the prior model intact:
 
 **Multi-Rule Logic:**
-**Multi-Rule Logic:**
 ```bash title="Multi-Rule Logic"
-als genai --using=system/genai/examples/emp_depts/emp_dept.prompt
+genai-logic genai --using=system/genai/examples/emp_depts/emp_dept.prompt
 ```
 </details>
 </br>
@@ -453,18 +452,16 @@ als genai --using=system/genai/examples/emp_depts/emp_dept.prompt
 <br>You can create a project, and ask GenAI for logic suggestions:
 
 **1. Create Project, without Rules:**
-**1. Create Project, without Rules:**
 ```bash title='1. Create Project, without Rules'
 # 1. Create Project, without Rules
-als genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
+genai-logic genai --project-name='genai_demo_no_logic' --using=system/genai/examples/genai_demo/genai_demo_no_logic.prompt
 ```
 
-**2. Request Rule Suggestions:**
 **2. Request Rule Suggestions:**
 ```bash title="2. Request Rule Suggestions"
 # 2. Request Rule Suggestions
 cd genai_demo_no_logic
-als genai-logic --suggest
+genai-logic genai-logic --suggest
 ```
 
 You can review the [resultant logic suggestions](genai_demo_no_logic/docs/logic_suggestions) in the `genai_demo_no_logic` project:
@@ -473,10 +470,9 @@ You can review the [resultant logic suggestions](genai_demo_no_logic/docs/logic_
     * This corresponds to the Logic Editor - Logic View in the WebGenAI web app
 
 **3. See the rules for the logic:**
-**3. See the rules for the logic:**
 ```bash title="3. See the rules for the logic"
 # 3. See the rule code for the logic
-als genai-logic --suggest --logic='*'
+genai-logic genai-logic --suggest --logic='*'
 ```
 
 Important notes about suggestions and generated code:
@@ -488,18 +484,17 @@ Important notes about suggestions and generated code:
 Also...
 * It is not advised to paste the code into `logic/declare_logic.py`
     * The suggested logic may result in new data model attributes
-    * These are created automatically by running `als genai` (next step)
+    * These are created automatically by running `genai-logic genai` (next step)
 
 The [logic suggestions directory](genai_demo_no_logic/docs/logic_suggestions) now contains the prompts to create a new project with the suggested logic.  
 When you are ready to proceed:
 1. Execute the following to create a *new project* (iteration), with suggested logic:
 
 **4. Create a new project with the Rule Suggestions:**
-**4. Create a new project with the Rule Suggestions:**
 ```bash title="4. Create a new project with the Rule Suggestions"
 # 4. Create a new project with the Rule Suggestions
 cd ..  # important - back to manager root dir
-als genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/docs/logic_suggestions
+genai-logic genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/docs/logic_suggestions
 ```
 
 Observe:
@@ -533,17 +528,16 @@ The `genai-utils --fixup` fixes such project issues by updating the Data Model a
 After starting the [Manager](https://apilogicserver.github.io/Docs/Manager): 
 
 **0. Create Project Requiring Fixup:**
-**0. Create Project Requiring Fixup:**
 ```bash title="0. Create Project Requiring Fixup"
 # 0. Create a project requiring fixup
-als genai --repaired-response=system/genai/examples/genai_demo/genai_demo_fixup_required.json --project-name=genai_demo_fixup_required
+genai-logic genai --repaired-response=system/genai/examples/genai_demo/genai_demo_fixup_required.json --project-name=genai_demo_fixup_required
 ```
 
 If you run this project, you will observe that it fails with:
 ```bash
 Logic Bank Activation Error -- see https://apilogicserver.github.io/Docs/WebGenAI-CLI/#recovery-options
 Invalid Rules:  [AttributeError("type object 'Customer' has no attribute 'balance'")]
-Missing Attrs (try als genai-utils --fixup): ['Customer.balance: constraint']
+Missing Attrs (try genai-logic genai-utils --fixup): ['Customer.balance: constraint']
 ```
 &nbsp;
 
@@ -551,20 +545,18 @@ Missing Attrs (try als genai-utils --fixup): ['Customer.balance: constraint']
 
 To Fix it:
 **1. Run FixUp to add missing attributes to the fixup response data model:**
-**1. Run FixUp to add missing attributes to the fixup response data model:**
 ```bash title="1. Run FixUp to add missing attributes to the fixup response data model"
 # 1. Run FixUp to add missing attributes to the data model
 cd genai_demo_fixup_required
-als genai-utils --fixup
+genai-logic genai-utils --fixup
 ```
 
 Finally, use the created [fixup files](genai_demo_fixup_required/docs/fixup/) to rebuild the project:
 **2. Rebuild the project from the fixup response data model:**
-**2. Rebuild the project from the fixup response data model:**
 ```bash title="2. Rebuild the project from the fixup response data model"
 # 2. Rebuild the project from the fixup response data model
 cd ../
-als genai --repaired-response=genai_demo_fixup_required/docs/fixup/response_fixup.json --project-name=fixed_project
+genai-logic genai --repaired-response=genai_demo_fixup_required/docs/fixup/response_fixup.json --project-name=fixed_project
 ```
     
 &nbsp;
@@ -573,7 +565,7 @@ The created project may still report some attributes as missing.
 
 1. Note the missing attributes(s) from the log
 2. Add them to `docs/003_suggest.prompt`
-3. Rebuild the project: `als genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/docs`
+3. Rebuild the project: `genai-logic genai --project-name='genai_demo_with_logic' --using=genai_demo_no_logic/docs`
 
 
 Internal Note: this sequence available in the run configs (f1/f2).
@@ -597,7 +589,7 @@ The Manager pre-installs a sample project you can use to explore import:
 
 ```bash
 cd system/genai/examples/genai_demo/wg_dev_merge/dev_demo_no_logic_fixed
-als genai-utils --import-genai --using=../wg_demo_no_logic_fixed
+genai-logic genai-utils --import-genai --using=../wg_demo_no_logic_fixed
 ```
 Observe:
 1. The [data model](system/genai/examples/genai_demo/wg_dev_merge/dev_demo_no_logic_fixed/database) contains `Customer.balance` and `Product.carbon_neutral`
@@ -615,12 +607,12 @@ Observe:
 
 1. Create genai_demo: 
 ```
-als genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
+genai-logic genai --using=system/genai/examples/genai_demo/genai_demo.prompt --project-name=genai_demo
 ```
 2. Rebuild:
 ```
 cd genai_demo
-als genai-utils --rebuild-test-data
+genai-logic genai-utils --rebuild-test-data
 ```
 
 </details>
@@ -633,12 +625,11 @@ als genai-utils --rebuild-test-data
 <br>You can add new columns/tables, while keeping the prior model intact:
 
 **Iterate:**
-**Iterate:**
 ```bash title="Iterate"
 # create project without creating a file...
-als genai-create --project-name='customer_orders' --using='customer orders'
+genai-logic genai-create --project-name='customer_orders' --using='customer orders'
 
-als genai-iterate --using='add Order Details and Products'
+genai-logic genai-iterate --using='add Order Details and Products'
 # open Docs/db.dbml
 ```
 
@@ -652,13 +643,13 @@ als genai-iterate --using='add Order Details and Products'
 <br>AI results are not consistent, so the model file may need corrections.  You can find it at `system/genai/temp/model.py`.  You can correct the model file, and then run:
 
 ```bash
-als create --project-name=genai_demo --from-model=system/genai/temp/create_db_models.py --db-url=sqlite
+genai-logic create --project-name=genai_demo --from-model=system/genai/temp/create_db_models.py --db-url=sqlite
 ```
 
 Or, correct the chatgpt response, and
 
 ```bash
-als genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
+genai-logic genai --repaired-response=system/genai/examples/genai_demo/genai_demo.response_example --project-name=genai_demo
 ```
 
 We have seen failures such as:
@@ -683,7 +674,7 @@ You can test this as follows:
 2. And try:
 
 ```bash
-als genai --using=system/genai/examples/postgres/genai_demo_pg.prompt --db-url=postgresql://postgres:p@localhost/genai_demo
+genai-logic genai --using=system/genai/examples/postgres/genai_demo_pg.prompt --db-url=postgresql://postgres:p@localhost/genai_demo
 ```
 
 Provisos:
@@ -726,7 +717,7 @@ Enforce the Check Credit requirement (do not generate check constraints):
 5. Store the Items.UnitPrice as a copy from Product.UnitPrice
 ```
 
-![copilot](system/https://github.com/ApiLogicServer/Docs/blob/main/docs/images/copilot.png?raw=true)
+![copilot](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/copilot.png?raw=true)
 </details>
 
 <br>
@@ -736,7 +727,7 @@ Enforce the Check Credit requirement (do not generate check constraints):
 3. Create your project:
 
 ```bash
-als create --project-name=sample_ai --from-model=sample_ai.py --db-url=sqlite
+genai-logic create --project-name=sample_ai --from-model=sample_ai.py --db-url=sqlite
 ```
 
 4. This will create your database, create an API Logic Project from it, and launch your IDE.
@@ -768,11 +759,7 @@ Please see [this doc](https://apilogicserver.github.io/Docs/Sample-AI-ChatGPT/)
 
 <br>
 
-<br>
-
-# Appendices
-
-### Procedures
+## Procedures
 
 <details markdown>
 
@@ -786,19 +773,19 @@ Please see [this doc](https://apilogicserver.github.io/Docs/Sample-AI-ChatGPT/)
 
 # Microservice Automation
 # Admin App, API, Project
-als create --project-name=basic_demo --db-url=basic_demo
+genai-logic create --project-name=basic_demo --db-url=basic_demo
 
 # Logic and Securityf
 # see logic (logic/declare_logic.py, logic/cocktail-napkin.jpg);  add an Order and Item
 # see security (security/declare_security.py); compare customers, s1 vs. admin
-als add-cust
-als add-auth --db_url=auth
+genai-logic add-cust
+genai-logic add-auth --db_url=auth
 
 # Python Extensibility, Kafka Integration, Rebuild Iteration
 # see logic/declare_logic.py (breakpoint for Kafka)
 # Swagger: ServicesEndPoint.OrderB2B
-als add-cust
-als rebuild-from-database --db_url=sqlite:///database/db.sqlite
+genai-logic add-cust
+genai-logic rebuild-from-database --db_url=sqlite:///database/db.sqlite
 ```
 
 </details>
@@ -815,11 +802,11 @@ als rebuild-from-database --db_url=sqlite:///database/db.sqlite
 
 # Microservice Automation from GenAI Prompt
 # Admin App, API, Project
-als genai --using=system/genai/examples/genai_demo/genai_demo.prompt
+genai-logic genai --using=system/genai/examples/genai_demo/genai_demo.prompt
 
 # Or, Microservice Automation from Saved Response
 # Admin App, API, Project
-als genai --repaired-response=system/genai/temp/chatgpt_retry.response
+genai-logic genai --repaired-response=system/genai/temp/chatgpt_retry.response
 
 # Logic and Security
 #   - see logic (logic/declare_logic.py, logic/cocktail-napkin.jpg);  add an Order and Item
@@ -827,7 +814,7 @@ als genai --repaired-response=system/genai/temp/chatgpt_retry.response
 # Python Extensibility, Kafka Integration, Rebuild Iteration
 #   - see logic/declare_logic.py (breakpoint for Kafka)
 #   - Swagger: ServicesEndPoint.OrderB2B
-als add-cust
+genai-logic add-cust
 ```
 
 </details>
@@ -852,7 +839,7 @@ Python employs a virtual environment for project-specific dependencies.
 
 * **Quickest (no VS Code setup):** from the Manager terminal (or, use Code Assistant):
     ```bash
-    als run --project-name=<project-name>
+    genai-logic run --project-name=<project-name>
     ```
 
 * **Mac/Linux with F5:** create a symlink to the Manager venv:
@@ -933,22 +920,13 @@ __2. Open it in Codespaces (takes a minute or 2):__
 
 ![API Logic Server Intro](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/sample-ai/genai/start-codespaces.png?raw=true)
 
-> You will now see your project - running in VSCode, _in the Browser._  But that's just what you _see..._
-
-> Behind the scenes, Codespaces has requisitioned a cloud machine, and loaded your project - with a _complete development environment_ - Python, your dependencies, git, etc.  
-
-> You are attached to this machine in your Browser, running VSCode.
-
-> :trophy: Pretty remarkable.
+> You'll see your project running in VSCode, in the browser. Behind the scenes, Codespaces requisitioned a cloud machine and loaded your project with a complete development environment — Python, dependencies, git — and attached your browser to it.
 
 __3. Start the Server and open the App in the Browser__
 
 * Use the pre-defined Launch Configuration
 
 ![API Logic Server Intro](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/git-codespaces/start-codespaces.png?raw=true)
-
-
-We think you'll find Codespaces pretty amazing - check it out!
 
 </details>
 
