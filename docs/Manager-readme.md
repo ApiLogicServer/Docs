@@ -186,8 +186,6 @@ Full writeup: [samples/basic_demo_logic_gov/logic/readme_logic.md](samples/basic
 
 </details>
 
-> Quick recap: you triggered a rule, watched it chain across three tables, found the fix in 5 lines of code, then asked your AI to add a new one — in plain English.
-
 </details>
 
 &nbsp;
@@ -197,7 +195,7 @@ Full writeup: [samples/basic_demo_logic_gov/logic/readme_logic.md](samples/basic
 
 <br>
 
-Once logic stops being something AI has to re-derive by hand for every transaction path, AI is free to spend its effort one level up — composing that logic into real services instead of policing 9 ways an `Order` can change.
+Quick recap: you triggered a rule, watched it chain across three tables, found the fix in 5 lines of code, then asked your AI to add a new one — in plain English. That's only possible because logic isn't something AI has to re-derive by hand for every transaction path. Once it's off AI's plate, AI is free to spend its effort one level up — composing that logic into real services instead of policing 9 ways an `Order` can change.
 
 **That shows up as two service categories, both built on the same rule engine.** Each is a complete, runnable sample in `samples/`, with its own readme:
 
