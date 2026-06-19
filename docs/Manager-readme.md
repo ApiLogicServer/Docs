@@ -16,9 +16,9 @@ demo_vibe: Sample-Basic-Demo-Vibe
 demo_copilot_mcp_discovery: Sample-ai-mcp
 basic_demo: Sample-Basic-Demo
 codespaces_patch: |
-  create_codespaces_mgr.sh injects a Codespaces-only browser note immediately after
+  create_codespaces_mgr.py injects a Codespaces-only browser note immediately after
   the "## 🚀 First Time Here?" heading (sentinel: do not rename that heading without
-  updating the grep in create_codespaces_mgr.sh). The note warns Safari users to
+  updating the matching logic in create_codespaces_mgr.py). The note warns Safari users to
   switch to Chrome/Edge. This avoids forking the README for Codespaces.
 ---
 <style>
@@ -30,7 +30,11 @@ codespaces_patch: |
 
 # Welcome to GenAI-Logic
 
-One prompt builds a working API, Admin App, and database — then you declare business logic in 5 rules instead of writing 200 lines of code to enforce it. Same engine, same project, no separate tooling.
+One prompt — or your existing database — builds a working API and Admin App, then you declare business logic in **5 readable rules instead of 200 lines of AI-generated code** to enforce it.
+
+You'll see that enforcement yourself in a few minutes: those rules run at **one commit point**, no matter which path the transaction came in on — API, MCP, agent, Kafka. **No bypass.**
+
+And you're not reading alone: your AI assistant is a partner throughout. Ask it anything — architecture, rules, debugging, deployment, or how the system works.
 
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager) — where you manage projects, create notes and resources, etc.
 
@@ -58,7 +62,7 @@ For more information, see [AI-Enabled Projects](https://apilogicserver.github.io
 &nbsp;
 
 ## 🚀 First Time Here?
-<!-- CODESPACES-INSERT-POINT: create_codespaces_mgr.sh injects browser note here — do not rename this heading -->
+<!-- CODESPACES-INSERT-POINT: create_codespaces_mgr.py injects browser note here — do not rename this heading -->
 
 <details>
 <summary>⚡ See it work — 5 minute first look</summary>
@@ -93,6 +97,8 @@ Most code generators produce code you then have to own. This one produces *model
 3. **Admin App** — `ui/admin/admin.yaml`
 
 Each small, readable, yours. Plain Python — nothing locks you in.
+
+Security is opt-in, not default — bootstrap RBAC anytime with `genai-logic add-auth`.
 
 </details>
 
@@ -155,7 +161,7 @@ What are rules?
 <details markdown>
 <summary>&emsp;&emsp;&emsp;&emsp;No AI handy?</summary>
 
-<br>Rules enforce business policy — multi-table derivations, constraints, and actions like messaging. They're Python functions in `logic/logic_discovery/` — readable, version-controlled, owned like any other source file.
+<br>Rules enforce business policy — multi-table derivations, constraints, and actions like messaging. **LogicBank**, the rule engine, hooks SQLAlchemy's commit event to run them on every transaction — authored as plain Python functions in `logic/logic_discovery/`, readable, version-controlled, owned like any other source file.
 
 But unlike procedural code, they're **declarative**:
 
