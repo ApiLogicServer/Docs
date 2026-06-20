@@ -18,7 +18,7 @@ echo "Sync Context Engineering (CE) files to Docs for AI-assisted evaluation"
 echo " "
 echo "This will:"
 echo "  1. Copy bootstrap: .github/.copilot-instructions.md → Eval-copilot-instructions.md"
-echo "  2. Copy 12 training files: docs/training/*.md → Eval-*.md"
+echo "  2. Copy 19 training files: docs/training/*.md → Eval-*.md"
 echo "  3. Transform references: docs/training/*.md → Eval-*.md"
 echo " "
 echo "Source: $SOURCE_BASE"
@@ -45,10 +45,24 @@ cp "$SOURCE_BASE/docs/training/admin_app_2_functionality.prompt.md" "$DOCS_DIR/E
 cp "$SOURCE_BASE/docs/training/admin_app_3_architecture.prompt.md" "$DOCS_DIR/Eval-admin_app_3_architecture.prompt.md"
 cp "$SOURCE_BASE/docs/training/react_map.prompt.md" "$DOCS_DIR/Eval-react_map.prompt.md"
 cp "$SOURCE_BASE/docs/training/react_tree.prompt.md" "$DOCS_DIR/Eval-react_tree.prompt.md"
+cp "$SOURCE_BASE/docs/training/README.md" "$DOCS_DIR/Eval-README.md"
+cp "$SOURCE_BASE/docs/training/RequestObjectPattern.md" "$DOCS_DIR/Eval-RequestObjectPattern.md"
+cp "$SOURCE_BASE/docs/training/allocate.md" "$DOCS_DIR/Eval-allocate.md"
+cp "$SOURCE_BASE/docs/training/eai_subscribe.md" "$DOCS_DIR/Eval-eai_subscribe.md"
+cp "$SOURCE_BASE/docs/training/health_check.md" "$DOCS_DIR/Eval-health_check.md"
+cp "$SOURCE_BASE/docs/training/implement_requirements.md" "$DOCS_DIR/Eval-implement_requirements.md"
+cp "$SOURCE_BASE/docs/training/security.md" "$DOCS_DIR/Eval-security.md"
 
-# 3. Transform references in bootstrap (docs/training/*.md → Eval-*.md)
-echo "Transforming references in bootstrap..."
-sed -i '' 's|docs/training/\([^.]*\)\.md|Eval-\1.md|g' "$DOCS_DIR/Eval-copilot-instructions.md"
+# 3. Transform references (docs/training/*.md → Eval-*.md) in bootstrap AND all training files
+# (training files cross-reference each other, e.g. logic_bank_patterns.md -> logic_bank_api.md)
+echo "Transforming references..."
+for f in "$DOCS_DIR"/Eval-copilot-instructions.md "$DOCS_DIR"/Eval-logic_bank_patterns.md "$DOCS_DIR"/Eval-logic_bank_api.md \
+         "$DOCS_DIR"/Eval-probabilistic_logic.md "$DOCS_DIR"/Eval-testing.md "$DOCS_DIR"/Eval-MCP_Copilot_Integration.md \
+         "$DOCS_DIR"/Eval-genai_logic_patterns.md "$DOCS_DIR"/Eval-probabilistic_logic_guide.md "$DOCS_DIR"/Eval-README.md \
+         "$DOCS_DIR"/Eval-RequestObjectPattern.md "$DOCS_DIR"/Eval-allocate.md "$DOCS_DIR"/Eval-eai_subscribe.md \
+         "$DOCS_DIR"/Eval-health_check.md "$DOCS_DIR"/Eval-implement_requirements.md "$DOCS_DIR"/Eval-security.md; do
+  sed -i '' 's|docs/training/\([^.]*\)\.md|Eval-\1.md|g' "$f"
+done
 
 # 4. Verify
 echo ""
