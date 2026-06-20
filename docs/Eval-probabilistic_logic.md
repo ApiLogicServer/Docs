@@ -6,7 +6,7 @@ usage: AI assistants read this to generate probabilistic + deterministic rules i
 version: 3.1
 date: November 21, 2025
 prerequisites:
-  - docs/training/genai_logic_patterns.md (CRITICAL import patterns, auto-discovery)
+  - Eval-genai_logic_patterns.md (CRITICAL import patterns, auto-discovery)
   - docs/training/logic_bank_patterns.prompt (event signatures, logging, request pattern)
   - docs/training/logic_bank_api.prompt (deterministic rule APIs)
 ---
@@ -19,7 +19,7 @@ This document describes how to implement probabilistic logic (AI-driven value co
 
 Read these foundation documents first:
 
-1. **docs/training/genai_logic_patterns.md** - Import patterns, auto-discovery
+1. **Eval-genai_logic_patterns.md** - Import patterns, auto-discovery
 2. **docs/training/logic_bank_patterns.prompt** - Event signatures, logging, Request Pattern
 3. **docs/training/logic_bank_api.prompt** - Deterministic rule APIs
 
@@ -232,7 +232,7 @@ def get_supplier_selection_from_ai(product_id: int, item_id: int, logic_row: Log
     return supplier_req
 ```
 
-See docs/training/genai_logic_patterns.md for complete patterns.
+See Eval-genai_logic_patterns.md for complete patterns.
 
 =============================================================================
 ⚡ PATTERN: Early Event with Wrapper Function
@@ -246,6 +246,10 @@ When user says "Use AI to Set <Receiver> field by finding optimal <Provider>":
 2. **Event calls wrapper** - Wrapper hides Request Pattern complexity
 3. **Wrapper returns object** - Returns populated request object (not scalar)
 4. **Event extracts values** - `row.unit_price = req.chosen_unit_price`
+
+**⚠️ CRITICAL: use `early_row_event` — `unit_price` is consumed by `Rule.formula(Item.amount)`**
+
+`Rule.formula` runs *after* events. Wrong event type → formula uses old/null price → wrong amounts, wrong balance, wrong credit check — silently. See PATTERN 8 in `Eval-logic_bank_patterns.md`.
 
 ## Fallback Strategy
 
@@ -497,10 +501,13 @@ Respond with ONLY valid JSON in this exact format (no markdown, no code blocks):
                     temperature=0.7
                 )
                 
-                response_text = response.choices[0].message.content.strip()
+                response_text = (response.choices[0].message.content or "").strip()
+                # GPT-4o sometimes wraps JSON in ```json ... ``` despite instructions — strip fences
+                if response_text.startswith('```'):
+                    lines = response_text.split('\n')
+                    response_text = '\n'.join(lines[1:-1]).strip()
                 logic_row.log(f"OpenAI response: {response_text}")
-                
-                # Parse JSON response
+
                 ai_result = json.loads(response_text)
                 
                 # Find the selected supplier

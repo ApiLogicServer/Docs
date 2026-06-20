@@ -10,6 +10,7 @@ related:
   - logic_bank_api_probabilistic.prompt (AI/probabilistic rule API)
 changelog:
   - 1.0 (Nov 14, 2025): Extracted general patterns from probabilistic prompt for reuse
+  - 1.1 (Feb 16, 2026): Request Object Pattern
 ---
 
 # LogicBank Patterns - The Hitchhiker's Guide
@@ -125,10 +126,54 @@ Note the indentation (dots) showing call depth!
 ---
 
 =============================================================================
-PATTERN 3: Request Pattern with new_logic_row()
+PATTERN 3: Request Pattern (ROP) - Integration Services
 =============================================================================
 
-Use the Request Pattern for audit trails, workflows, and AI integration.
+**📚 Full Documentation**: See `Eval-RequestObjectPattern.md` for comprehensive guide
+
+**Quick Definition:**
+The Request Pattern is a table design for integration services with automatic audit:
+- **Request fields** = user input (e.g., product_id, hs_code_id, value_amount)
+- **Response fields** = computed output (e.g., chosen_supplier_id, duty_amount, reason)
+- **early_row_event** = performs integration service (AI, external API, calculations)
+
+**When to Use:**
+✅ AI decisions (supplier selection, pricing, routing)
+✅ External API calls (payment gateways, shipping carriers)
+✅ Messaging/Email services (Kafka, SMTP with templating)
+✅ Complex calculations requiring audit (customs, tax, compliance)
+
+**Recognition Signal in Prompts:**
+- "calculate/determine/select [X] when [Y] is given"
+- Integration service needed
+- Compliance/audit domain
+
+**Architecture:**
+```
+User/API → Insert with request fields only
+         ↓
+   early_row_event fires (integration service logic)
+         ↓
+   Populates response fields
+         ↓
+   Automatic audit trail persisted
+```
+
+**Benefits:**
+- Single source of truth (works from API, Admin UI, batch, tests)
+- Automatic audit trail for compliance
+- Governed by deterministic rules
+- Testable without API/HTTP
+- No duplication
+
+**Anti-Pattern:**
+❌ Fat API services with business logic (bypasses rules engine, no audit, duplication)
+
+---
+
+**Technical Implementation with new_logic_row():**
+
+Use `new_logic_row()` to create Request Pattern instances in event handlers.
 
 ✅ CORRECT: Pass MODEL CLASS to new_logic_row
 ```python
@@ -217,6 +262,26 @@ Rule.constraint() - HAS 'calling' parameter (for functions only)
   ✅ Use 'as_condition' for simple lambda conditions
   ✅ Use 'calling' for complex validation functions
   ❌ Never use calling=False or calling=True
+
+  🚨 PITFALL — LogicBank dependency scanner confusion in `calling=` function bodies:
+  LogicBank tokenizes the function body to discover attribute dependencies. If the function
+  body contains a pattern like `session.query(...).filter(... == row.project_id).first()`,
+  the scanner reads `project_id).first` as the attribute name and raises:
+    LBActivateException: ['Charge.project_id).first: constraint']
+
+  Fix: extract `row.*` reads to local variables BEFORE any method-chained expressions:
+  ```python
+  # ❌ WRONG — scanner sees 'project_id).first' as an attribute name
+  def check_funding(row, old_row, logic_row):
+      project = session.query(models.Project).filter(
+          models.Project.id == row.project_id).first()   # row.project_id inside chained call
+
+  # ✅ CORRECT — extract to local variable first
+  def check_funding(row, old_row, logic_row):
+      project_id = row.project_id                        # scanner sees clean 'project_id'
+      project = session.query(models.Project).filter(
+          models.Project.id == project_id).first()       # local var, not row.attr
+  ```
 
 Rule.copy() - NO 'calling' parameter
   Rule.copy(derive: Column, from_parent: any)
@@ -425,6 +490,91 @@ python api_logic_server_run.py
 ---
 
 =============================================================================
+PATTERN 8: Rules vs Events — Rules Are ALWAYS Preferred
+=============================================================================
+
+**ALWAYS use declarative rules (Rule.formula, Rule.sum, Rule.count, Rule.constraint)
+in preference to events. Events are for side effects only.**
+
+LogicBank formulas order themselves automatically — you do not need an event to
+control ordering. If a value is derived from other attributes or child rows, use a rule.
+
+| Value source | Use |
+|---|---|
+| Derived from row attributes or child rows | `Rule.formula`, `Rule.sum`, `Rule.count` |
+| Looked up from a FK parent (external to this row) | `Rule.early_row_event` — only when no rule can express it |
+| External module returns multiple output fields (AI response, external API, Request Pattern) | `Rule.early_row_event` — handler sets all response fields; downstream `Rule.formula` rules consume them |
+| Pure side effect (Kafka, email, audit, insert child rows) | `Rule.row_event`, `Rule.after_flush_row_event`, `Rule.commit_row_event` |
+
+**External module exception — when `early_row_event` legitimately sets multiple row attributes:**
+When an event calls an opaque external computation (AI model, third-party API, Kafka-reply handler
+via the Request Pattern), the handler writes back several response fields (e.g. `matched_project_id`,
+`confidence`, `reason`, `chosen_unit_price`). This is correct and by design: the external call is a
+single atomic operation whose outputs are all response columns on a `Sys*` request table. Downstream
+`Rule.formula` rules then consume those output columns as inputs. This is NOT the same as a `Rule.formula`
+function setting multiple `row.` attributes as side-effects — that remains wrong (see logic_bank_api.md
+"ONE VALUE PER FORMULA"). The distinction:
+- `early_row_event` handler setting multiple fields = ✅ external module pattern (opaque computation, all fields are outputs)
+- `Rule.formula` calling function setting multiple fields = ❌ side-effect anti-pattern (only the `derive=` column is tracked)
+
+❌ WRONG — using an event to derive a value that Rule.formula/count could express:
+```python
+def _evaluate(row, old_row, logic_row):
+    row.clvs_eligible = 1 if not any(c.is_prohibited for c in row.ShipmentCommodityList) else 0
+Rule.commit_row_event(on_class=models.Shipment, calling=_evaluate)
+```
+This fires once on commit, never re-fires when child rows change, and bypasses all
+LogicBank dependency tracking. It is always wrong for derived attributes.
+
+✅ CORRECT — Rule.count + Rule.formula: reactive, dependency-tracked, re-fires automatically:
+```python
+Rule.count(derive=models.Shipment.prohibited_count, as_count_of=models.ShipmentCommodity,
+           where=lambda row: row.is_prohibited == 1)
+Rule.formula(derive=models.Shipment.clvs_eligible,
+             as_expression=lambda row: 1 if row.prohibited_count == 0 else 0)
+```
+
+**Valid Rule event methods (side effects only):**
+
+| Use case | Method |
+|----------|--------|
+| FK lookup before formulas run (no rule equivalent) | `Rule.early_row_event` |
+| Append child rows during parent insert | `Rule.row_event` |
+| Kafka publish / side-effect after flush | `Rule.after_flush_row_event` |
+| Post-commit finalization | `Rule.commit_row_event` |
+
+**Event firing order — two rules:**
+
+| Scope | Order |
+|-------|-------|
+| Within a single `declare_logic()` | **Declaration order is guaranteed** — LogicBank appends to a plain list |
+| Across files loaded by `auto_discovery` | **Non-deterministic** — `os.walk()` file order is not specified |
+
+Consequence: if two `early_row_event` registrations on the same class live in different files,
+you cannot rely on which fires first. Fix: declare both in the same `declare_logic()`, in the
+required order. See `Eval-allocate.md` Variant C for the concrete Allocate + AI case.
+
+⚠️ Note: `Allocate` is internally a subclass of `EarlyRowEvent` — it competes in the same
+ordering list as regular `early_row_events` on the same provider class.
+
+**Why it matters:** Formulas and sums run *after* events. If your event sets a value that
+a formula consumes, using the wrong event type means the formula runs on the old value —
+silently, no error, wrong results.
+
+```python
+# ✅ Sets unit_price BEFORE Item.amount formula runs
+Rule.early_row_event(on_class=models.Item, calling=set_unit_price)
+
+# ✅ Sends to Kafka AFTER all rules and constraints complete
+Rule.after_flush_row_event(on_class=models.Order, calling=kafka_producer.send_row_to_kafka, ...)
+
+# ❌ Wrong for setting unit_price — formula already ran with old value
+Rule.row_event(on_class=models.Item, calling=set_unit_price)
+```
+
+---
+
+=============================================================================
 SUMMARY: Quick Reference
 =============================================================================
 
@@ -434,7 +584,9 @@ SUMMARY: Quick Reference
 4. **Rule APIs**: Check logic_bank_api.prompt for correct parameters
 5. **Anti-patterns**: No get_logic_row(), no calling=False, no app_logger in rules
 6. **Type handling**: int for FKs, Decimal for money
-7. **Testing**: logic_row.log(), check old_row, use is_inserted/updated/deleted
+7. **Rules over events**: derived values → Rule.formula/sum/count; events → side effects only
+8. **Testing**: logic_row.log(), check old_row, use is_inserted/updated/deleted
+9. **Valid event methods**: early_row_event, row_event, after_flush_row_event, commit_row_event
 
 For rule-specific APIs and examples:
 - Deterministic rules → docs/training/logic_bank_api.prompt
