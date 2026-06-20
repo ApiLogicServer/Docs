@@ -65,7 +65,7 @@ For more information, see [AI-Enabled Projects](https://apilogicserver.github.io
 <!-- CODESPACES-INSERT-POINT: create_codespaces_mgr.py injects browser note here — do not rename this heading -->
 
 <details>
-<summary>⚡ See it work — 5 minute first look</summary>
+<summary>⚡ See it work — build a complete system from a prompt, including logic</summary>
 
 &nbsp;
 
@@ -236,6 +236,18 @@ It didn't figure that out on its own. It was told to, in detail, by **Context En
 **The "can't be bypassed" claim, named:** rules aren't called from your code — they're wired into a single SQLAlchemy `before_flush` listener, installed once at server start. Every write, from any path — API, custom endpoint, Kafka consumer, agent — passes through that one listener before it commits. There's no second door.
 
 This is why the same prompt produces a governed system, not a working-but-ungoverned demo. Details: [3-Legged Stool](https://apilogicserver.github.io/Docs/Customs-readme-full/#3-legged-stool).
+
+**Have some questions before we get started?** Ask your AI assistant directly — it has the same materials we just walked through:
+
+- Ok, why not just let AI write the code?
+- Is this really infrastructure, like a database?
+- Is this a black box? How do I debug a rule chain?
+- What's the lock-in risk if we stop using this?
+- How is this different from Copilot/Cursor generating the same logic as code?
+- What does this integrate with — APIs, workflows, agents, MCP?
+- Does this work with my existing database?
+
+More background: [Eval Guide](https://apilogicserver.github.io/Docs/Eval/).
 
 </details>
 
