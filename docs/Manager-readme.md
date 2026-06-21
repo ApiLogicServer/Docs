@@ -34,7 +34,7 @@ One prompt — or your existing database — builds a working API and Admin App,
 
 You'll see that enforcement yourself in a few minutes: those rules run at **one commit point**, no matter which path the transaction came in on — API, MCP, agent, Kafka. **No bypass.**
 
-And you're not reading alone: your AI assistant is a partner throughout. Ask it anything — architecture, rules, debugging, deployment, or how the system works.
+And you're not alone: your AI assistant is your partner throughout. Ask it anything — architecture, rules, debugging, deployment, or how the system works.
 
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager) — where you manage projects, create notes and resources, etc.
 
@@ -90,13 +90,15 @@ Use case: App Integration
     1. Publish the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 
+> Note: the prompt above creates a new database. You *could* use an existing one instead — `create basic_demo from samples/dbs/basic_demo.sqlite` — replacing the first 2 lines above.
+
 Most code generators produce code you then have to own. This one produces *models* — executable, maintainable:
 
 1. **Data model** — `database/models.py`
 2. **Full JSONAPI** — Swagger, pagination, optimistic locking (`api/expose_api_models.py` — 52 lines, zero per-table code)
 3. **Admin App** — `ui/admin/admin.yaml`
 
-Each small, readable, yours. Plain Python — nothing locks you in.
+Each small, readable, yours. Plain Python — standard tooling applies.
 
 Security is opt-in, not default — bootstrap RBAC anytime with `genai-logic add-auth`.
 
@@ -123,6 +125,8 @@ Change the quantity to a very large number. Save.
 ```
 
 The save fails - note the dialog box.  But, *why...?*
+
+> Auditable, not just shown: [sample trace](samples/basic_demo_logic_gov/logs/als-sample.log) of this rule chain firing.
 
 </details>
 
@@ -239,10 +243,10 @@ This is why the same prompt produces a governed system, not a working-but-ungove
 
 **Have some questions before we get started?** Ask your AI assistant directly — it has the same materials we just walked through:
 
-- Ok, why not just let AI write the code?
 - Is this really infrastructure, like a database?
 - Is this a black box? How do I debug a rule chain?
-- What's the lock-in risk if we stop using this?
+- What does it take to migrate off this if we ever wanted to?
+- How does this perform at scale?
 - How is this different from Copilot/Cursor generating the same logic as code?
 - What does this integrate with — APIs, workflows, agents, MCP?
 - Does this work with my existing database?
