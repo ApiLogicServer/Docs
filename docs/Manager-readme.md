@@ -42,10 +42,6 @@ This is the start page for the [GenAI-Logic Manager](https://apilogicserver.gith
 
 ## 🤖 AI Assistance
 
-```
-Please load `.github/.copilot-instructions.md`.
-```
-
 <details markdown>
 <summary>Selecting your AI assistant</summary>
 
@@ -58,6 +54,12 @@ To select Sonnet 4.6 in the Copilot chat panel: click **Agent** → the **gear i
 For more information, see [AI-Enabled Projects](https://apilogicserver.github.io/Docs/Project-AI-Enabled/){:target="_blank" rel="noopener"} or [click here](https://apilogicserver.github.io/Docs/Manager-readme/){:target="_blank" rel="noopener"}.
 
 </details>
+
+Then paste this to your AI assistant:
+
+```
+Please load `.github/.copilot-instructions.md`.
+```
 
 &nbsp;
 
