@@ -25,3 +25,18 @@ You can achieve this effect with the `insert_parent` parameter:
 ```python
 Rule.sum(derive=models.YrTotal.budget_total, as_sum_of=models.CategoryTotal.budget_total,insert_parent=use_parent_insert)
 ```
+
+## Multiple Relationships to the Same Parent
+
+If the child and parent classes are connected by **more than one relationship** - for example, an `Employee` that can be `works_for` one `Department` and `on_loan` to another - `Rule.sum` cannot infer which relationship to follow, and raises `Ambiguous Relationship`.
+
+Resolve this with `child_role_name`, naming the relationship attribute declared on the **child** class:
+
+```python
+Rule.sum(derive=models.Department.works_for_salary_total, as_sum_of=models.Employee.salary,
+         child_role_name="works_for_dept")
+Rule.sum(derive=models.Department.on_loan_salary_total, as_sum_of=models.Employee.salary,
+         child_role_name="on_loan_dept")
+```
+
+`child_role_name` is only needed when ambiguity exists - the typical single-relationship case omits it entirely. The same parameter is available on `Rule.count` and `Rule.copy` for the same reason.

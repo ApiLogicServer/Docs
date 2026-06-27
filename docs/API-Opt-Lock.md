@@ -202,13 +202,40 @@ curl -X 'PATCH' \
   "data": {
     "attributes": {
       "Description": "x",
-      "S_CheckSum": "83926768455664603"
+      "S_CheckSum": "<paste the S_CheckSum from a prior GET on Category 9>"
     },
     "type": "Category",
     "id": "9"
   }
 }'
 ```
+
+!!! note
+    `S_CheckSum` values are now SHA-256 hex digests (e.g. `a3f1c9...`), not small integers — get a current value from a `GET` first; the example above is illustrative, not a literal value to paste as-is.
+
+&nbsp;
+
+### `Post` (insert) also returns a usable `S_CheckSum`
+
+A `POST` response now includes a populated `S_CheckSum`, so you can `PATCH`/`DELETE` a just-created row immediately — no extra `GET` round-trip required first.
+
+```
+curl -X 'POST' \
+  'http://localhost:5656/api/Category/' \
+  -H 'accept: application/vnd.api+json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "data": {
+    "attributes": {
+      "Description": "New Category"
+    },
+    "type": "Category"
+  }
+}'
+```
+
+Take the `S_CheckSum` from this `POST` response and use it directly on the first `PATCH`/`DELETE` of that row.
+
 &nbsp;
 
 
@@ -242,12 +269,8 @@ curl -X 'GET' \
   -H 'Content-Type: application/vnd.api+json'
 ```
 
-## Testing and `PYTHONHASHSEED`
+## Checksum Stability
 
-You may want to build tests that require you to supply checksums.  Checksum values differ from run to run (as they should), which can interfere with tests.
+`S_CheckSum` is computed with a SHA-256 digest over the row's attribute values. This is deterministic: the same row contents always produce the same checksum, regardless of process, host, Python version, or restart. There is no `PYTHONHASHSEED` dependency to manage, in tests or in production - the checksum a test computes will match across runs and across machines.
 
-For test runs, you can set an environment variable for predictable checksum values:
-
-```bash
-export PYTHONHASHSEED=0
-```
+(Earlier versions used Python's built-in `hash()`, which is seed/platform-dependent and required pinning `PYTHONHASHSEED=0` for repeatable test results. That workaround is no longer needed.)
