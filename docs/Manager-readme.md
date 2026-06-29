@@ -101,6 +101,8 @@ The prompt above starts from an existing database — the common real-world case
 
 </details>
 
+&nbsp;
+
 Most code generators produce code you then have to own. This one produces *models* — executable, maintainable:
 
 1. **Data model** — `database/models.py`
@@ -187,9 +189,15 @@ But unlike procedural code, they're **declarative**:
 
 Think of a spreadsheet: `B10 = SUM(B1:B9)`, and every recalculation just happens. Rules work the same way for database transactions — that's what makes 5 declarative rules replace ~200 lines of procedural code with zero missed paths, as you just saw above.
 
-Full writeup: [samples/basic_demo_logic_gov/logic/readme_logic.md](samples/basic_demo_logic_gov/logic/readme_logic.md).
+Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md).
 
 </details>
+
+<br>
+
+> But here's the part that matters beyond line count: with procedural code, even if you find the right passage — how do you know it's called for every transaction source? API, MCP, agent, Kafka, a future caller you haven't written yet? With thousands of code paths, you can't know. That's not a testing gap; it's a representation problem. <br><br>Rules solve it structurally — declared once, fired at one commit point, from every caller, with no bypass possible. The 40x reduction in code isn't the point. The verifiable coverage is: ***you can read the rules, and trust they are being enforced.  Always.***
+
+<br>
 
 </details>
 
@@ -209,6 +217,7 @@ Notice what just happened — two things, easy to miss:
 **2. The implications:**
 
 - **You didn't do archaeology.** No opening `check_credit.py` to find where this belongs, no tracing the other 5 rules to check for conflicts. Auto-ordering means there's no maintenance hunt — you declare the rule, the engine places it.
+
 - **AI-only would have to rebuild — and that cost scales with rule count.** Without the engine, an AI rewriting procedural code from scratch would have to re-read and re-touch all existing rules to check for dependencies — more surface area for a missed path, more tokens spent doing it. At 5 rules that's a nuisance; **at 500, the re-read is the bottleneck and the missed-path risk compounds.** Here, the engine resolves dependencies at load time, so adding this rule doesn't touch the rest — no regeneration, no regression risk, at any scale.
 
 </details>
@@ -261,6 +270,7 @@ The architecture that makes this work: two funnels, converging on one engine. Al
 It didn't figure that out on its own. It was told to, in detail, by **Context Engineering** — the same files driving this conversation right now:
 
 - **Directs rules, not code.** When you ask for business logic, CE steers the AI toward the *right* rule type (sum vs. count vs. Allocate vs. Request Pattern) for what you actually asked for, instead of letting it default to the procedural code it's seen a million times in training.
+
 - **Trains the AI to automate everything above, and to help you when it breaks.** EAI's 2-message Kafka pattern, the AI/Request Pattern wiring, Executable Requirements' pre-coding schema assessment — all of it is documented training material (`docs/training/*.md`) the AI reads *before* writing your code, not generic knowledge it's guessing from. Ask "what are rules?" or "how do rules work?" — or, without an AI handy, just read [samples/basic_demo_logic_gov/logic/readme_logic.md](samples/basic_demo_logic_gov/logic/readme_logic.md) — same material.
 
   <details markdown>
@@ -372,6 +382,7 @@ Advanced examples and specialized patterns:
 | **MCP Discovery** <br> demo_copilot_mcp_discovery | genai-logic create --project_name=demo_copilot_mcp_discovery --db_url=sqlite:///samples/dbs/basic_demo.sqlite | test rules via Copilot access to MCP Server | 
 
 
+**Copy Snippets for venv:**
 ```bash title="Copy Snippets for venv"
 source venv/bin/activate       # windows: venv\Scripts\activate
 source ../venv/bin/activate    # windows: ../venv\Scripts\activate
