@@ -9,7 +9,7 @@ version: 1.0 (Jul 2026)
 
 **Audience:** Technical GenAI-Logic evaluators and developers
 
-**Sample prompt:** `samples/prompts/entity_subtypes.prompt.md`
+**Sample prompt:** `samples/prompts/emp-types.prompt.md`
 
 &nbsp;
 
