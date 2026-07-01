@@ -1,7 +1,7 @@
 ---
 title: Entity Subtypes — Single Table Inheritance Pattern
 notes: background and design rationale for entity_subtypes sample project
-source: docs/Samples-types.md
+source: docs/Sample-Yypes.md
 version: 1.0 (Jul 2026)
 ---
 
