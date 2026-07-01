@@ -68,6 +68,8 @@ CREATE TABLE employee (
     -- hourly-only (nullable for other types):
     hours_worked    REAL,
     hourly_rate     REAL,
+    union_id        INTEGER REFERENCES union_table(id),  -- nullable: not all hourly are union members
+    union_dues      REAL,
     -- commissioned-only:
     base_salary     REAL,
     commission_total REAL,
