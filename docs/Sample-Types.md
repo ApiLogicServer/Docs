@@ -16,6 +16,8 @@ version: 1.0 (Jul 2026)
 
     Unlike classic OO inheritance, a table can have multiple types (Hourly/Salaries, and Military).
 
+    Status: Technology Preview
+
 
 # Entity Subtypes — Single Table Inheritance Pattern
 
