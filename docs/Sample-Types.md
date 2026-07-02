@@ -21,9 +21,9 @@ version: 1.0 (Jul 2026)
 
 # Entity Subtypes — Single Table Inheritance Pattern
 
-**Audience:** Technical GenAI-Logic evaluators and developers
+This is a delivered sample (`samples/demo_emp_types`), which can also rebuild as follows:
 
-**Sample prompt:** `samples/prompts/emp-types.prompt.md`
+![types](images/database/entity_types.png)
 
 &nbsp;
 
