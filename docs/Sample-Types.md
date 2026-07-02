@@ -5,6 +5,18 @@ source: docs/Sample-Yypes.md
 version: 1.0 (Jul 2026)
 ---
 
+!!! pied-piper ":bulb: TL;DR - Type-specific attributes, relationships, rules, and display"
+
+    The sample below illustrates how your project creation prompts can identify types (eg, Hourly vs Salaried), with
+
+    * Type-specific attributes: only Hourly employees have Dues
+    * Type-specfic relationships: only Hourly employees have Union
+    * Logic: salary is computed *per type*
+    * Display: the Admin App shows only proper attributes, per types
+
+    Unlike classic OO inheritance, a table can have multiple types (Hourly/Salaries, and Military).
+
+
 # Entity Subtypes — Single Table Inheritance Pattern
 
 **Audience:** Technical GenAI-Logic evaluators and developers
