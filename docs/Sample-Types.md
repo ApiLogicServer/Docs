@@ -37,7 +37,7 @@ Two independent classification axes on the same entity — in this case `Employe
 **API:** `GET /api/Employee/` returns all employees in one call — no joins, no custom endpoints.  
 **Insert:** `POST /api/Employee/` with a `type` value inserts any subtype in one call.  
 **Admin UI:** `show_when` in `admin.yaml` hides/shows subtype fields based on the discriminator — no separate UI sections needed.  
-**Rules:** LogicBank rules on the base class fire for all subtypes; rules on a subtype class fire only for that type.  
+**Rules:** All LogicBank rules go on `models.Employee`; subtype branching lives inside `calling=` function bodies (`if row.type == 'hourly': ...`).  
 **Aggregates:** A parent `Department.total_salary` sums `Employee.salary` across all subtypes in one `Rule.sum` — no union required.
 
 Joined CTI requires custom API endpoints for insert and list, and splits the Admin UI — far more effort for no practical gain in this stack.
@@ -87,39 +87,47 @@ Key rule: any column needed for **cross-subtype aggregation** (e.g. `salary`) mu
 
 &nbsp;
 
-## SQLAlchemy Mapper Args
+## SQLAlchemy Models — Data-Level STI Only
+
+`rebuild-from-database` generates a single plain class. **Leave it exactly as generated — do not add `__mapper_args__` or subclass definitions.**
 
 ```python
 class Employee(Base):
     __tablename__ = 'employee'
-    __mapper_args__ = {'polymorphic_on': 'type', 'polymorphic_identity': 'employee'}
-
-class HourlyEmployee(Employee):
-    __mapper_args__ = {'polymorphic_identity': 'hourly'}
-
-class CommissionedEmployee(Employee):
-    __mapper_args__ = {'polymorphic_identity': 'commissioned'}
+    # No __mapper_args__ — plain class, works correctly with SAFRS and LogicBank
+    ...
 ```
+
+Adding ORM polymorphic subclasses (`HourlyEmployee`, `CommissionedEmployee`, etc.) hits two confirmed platform bugs — see [Internals Appendix](#internals-appendix) below.
 
 &nbsp;
 
-## LogicBank Rules — Scoped by Class
+## LogicBank Rules — All on Base Class, Type Guards in Functions
+
+All rules are declared on `models.Employee`. Subtype branching goes inside the `calling=` function body.
 
 ```python
-# Fires for ALL employees (base class):
-Rule.constraint(validate=models.Employee,
-                as_condition=lambda row: row.total_compensation >= 0, ...)
-
-# Fires only for hourly employees:
-Rule.formula(derive=models.HourlyEmployee.salary,
-             as_expression=lambda row: row.hours_worked * row.hourly_rate)
-
-# Fires only for commissioned employees:
-Rule.sum(derive=models.CommissionedEmployee.commission_total,
-         as_sum_of=models.Order.amount)
-
-# Cross-subtype aggregate on parent:
+# Cross-subtype aggregate — one Rule.sum covers all types:
 Rule.sum(derive=models.Department.total_salary, as_sum_of=models.Employee.salary)
+
+# Type-branched salary — one formula, branches on row.type:
+def _employee_salary(row, old_row, logic_row):
+    """Derive salary: hours*rate (hourly), base+commission (commissioned), entered (salaried)."""
+    if row.type == 'hourly':
+        return (row.hours_worked or 0) * (row.hourly_rate or 0)
+    elif row.type == 'commissioned':
+        return (row.base_salary or 0) + (row.commission_total or 0)
+    return row.salary  # salaried: entered directly
+
+Rule.formula(derive=models.Employee.salary, calling=_employee_salary)
+
+# Inferred null-exclusion constraints (see Internals Appendix):
+Rule.constraint(validate=models.Employee,
+                as_condition=lambda row: row.type == 'hourly' or row.union_id is None,
+                error_msg="union_id must be null for non-hourly employees")
+Rule.constraint(validate=models.Employee,
+                as_condition=lambda row: row.type == 'commissioned' or row.commission_total == 0,
+                error_msg="Orders only permitted for commissioned employees")
 ```
 
 &nbsp;
@@ -146,3 +154,79 @@ Rule.sum(derive=models.Department.total_salary, as_sum_of=models.Employee.salary
       - name: military_stipend
         show_when: is_military == 1
 ```
+
+**Generation policy:**
+
+| Context | Policy |
+|---|---|
+| Method 4 (new project) | Auto-generate `show_when` for every subtype-specific column |
+| Existing project | Only on explicit user request (`"in the admin app, show attributes pertinent to type"`) |
+
+For an existing project the CE derives the type→column mapping at generation time by reading `database/models.py` (Enum values on the `type` column) and scanning `logic/logic_discovery/` for `row.type ==` guards. No stored state is needed.
+
+&nbsp;
+
+---
+
+## Internals Appendix
+
+### Platform Constraint — No ORM Subclasses
+
+Two confirmed bugs prevent SQLAlchemy polymorphic subclasses from working correctly in the SAFRS + LogicBank stack:
+
+1. **LogicBank silent miss.** LogicBank dispatches rules by the row's exact mapped class. A `Rule.formula` declared on `models.Employee` never fires for a row inserted as `HourlyEmployee` — no error, wrong result.
+
+2. **SAFRS BuildError.** SAFRS cannot build JSON:API URLs for polymorphic STI instances: `BuildError: Could not build url for endpoint 'HourlyEmployeeId'`. The API returns a 500 on any request that touches a polymorphic subtype row.
+
+**Correct implementation:** Single class `models.Employee`, no `__mapper_args__`, no subclasses. All rules on `models.Employee`. Seed data uses `Employee(type='hourly', ...)` not `HourlyEmployee(...)`.
+
+&nbsp;
+
+### Inferred Null-Exclusion Constraints
+
+When a column is subtype-specific (nullable for all other types), the CE automatically infers a null-exclusion constraint — no prompt wording required:
+
+```python
+# union_id: only hourly employees may have one
+Rule.constraint(validate=models.Employee,
+                as_condition=lambda row: row.type == 'hourly' or row.union_id is None,
+                error_msg="union_id must be null for non-hourly employees")
+
+# order_count / commission_total: only commissioned employees may accumulate orders
+Rule.constraint(validate=models.Employee,
+                as_condition=lambda row: row.type == 'commissioned' or row.commission_total == 0,
+                error_msg="Orders only permitted for commissioned employees")
+```
+
+Trigger: any FK or aggregate column whose prompt description says "only [subtype] employees may have …".
+
+&nbsp;
+
+### Zero-Defaults for Type-Guarded Formulas
+
+A type-guarded formula (one that uses `row.type ==` branching) must return `Decimal(0)` (not `None`) for non-applicable branches. `None` propagates into aggregates and comparisons as `NULL`, producing wrong results downstream.
+
+```python
+def _employee_salary(row, old_row, logic_row):
+    """Derive salary: hours*rate (hourly), base+commission (commissioned), entered (salaried)."""
+    if row.type == 'hourly':
+        return (row.hours_worked or 0) * (row.hourly_rate or 0)
+    elif row.type == 'commissioned':
+        return (row.base_salary or 0) + (row.commission_total or 0)
+    return row.salary  # salaried: entered directly — never return None
+```
+
+The `or 0` guards ensure that `None` nullable columns contribute `0` rather than `None` to the result.
+
+&nbsp;
+
+### show_when Auto-Generation (Method 4)
+
+During Method 4 project creation, after logic files are written, the CE scans:
+
+- `database/models.py` — Enum or CheckConstraint values on the `type` column → discovers subtype names
+- `logic/logic_discovery/` — `row.type == '...'` guards → maps each subtype to its specific columns
+
+It then writes `show_when` entries in `ui/admin/admin.yaml` for every subtype-specific column. Military columns use the `is_military == 1` form (boolean discriminator).
+
+For an existing project this step is skipped unless the user explicitly asks for it, to avoid overwriting manual `admin.yaml` customisations.

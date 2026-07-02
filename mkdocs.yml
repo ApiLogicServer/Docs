@@ -36,6 +36,7 @@ nav:
     - ".. EAI": Sample-Basic-EAI.md
     - ".. Customs Demo (EAI)": Customs-readme.md
     - ".. Allo Dept/GL": Sample_Allo_Dept_GL_full.md
+    - ".. Sub-Types": Sample-Types.md
     - Older:
       - "Sample_ai_mcp": Sample-ai-mcp.md
       - "GenAI Microservice Automation": Sample-Genai.md
