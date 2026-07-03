@@ -27,6 +27,10 @@ This is a delivered sample (`samples/demo_emp_types`), which can also rebuild as
 
 &nbsp;
 
+![types-dgm](images/database/entity_types_dgm.png)
+
+&nbsp;
+
 ## What This Illustrates
 
 Two independent classification axes on the same entity — in this case `Employee`:
