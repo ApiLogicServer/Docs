@@ -138,7 +138,7 @@ Change the quantity to a very large number. Save.
 ```
 
 <details markdown>
-<summary>&emsp;&emsp;&emsp;&emsp;Detail Instructions</summary>
+<summary>&emsp;&emsp;&emsp;&emsp;Detail Instructions -- Screen Shots</summary>
 
 <br>Alter the quantity for an *unshipped* item:
 
@@ -148,13 +148,13 @@ Change the quantity to a very large number. Save.
 4. Edit the Item
 5. Set the quantity
 
-The save fails - note the dialog box. But, *why...?*
-
 ![credit-check](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/credit-check.png?raw=true?raw=true)
 
 </details>
 
 <br>
+
+The save fails - note the dialog box. But, *why...?*
 
 > Auditable, not just shown: [sample trace](samples/basic_demo_logic_gov/logs/als-sample.log) of this rule chain firing.
 
