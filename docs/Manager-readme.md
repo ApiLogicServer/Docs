@@ -2,7 +2,7 @@
 title: Welcome - see end for instructions to hide this
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs/Manager-readme
-version info: 17.00.12 (06/18/2026)
+version info: 17.02.06 (07/09/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
 demo_customs: Customs-readme
@@ -48,9 +48,9 @@ This is the start page for the [GenAI-Logic Manager](https://apilogicserver.gith
 
 &nbsp;
 
-We get consistently good results with **Claude Sonnet 4.6** (GitHub Copilot or Claude Code extension). "Ask" mode will not work — use **Agent mode**.
+We get consistently good results with **Claude Sonnet 5.0/4.6** (GitHub Copilot or Claude Code extension). "Ask" mode will not work — use **Agent mode**.
 
-To select Sonnet 4.6 in the Copilot chat panel: click **Agent** → the **gear icon** → choose **Claude Sonnet 4.6**.
+To select Sonnet 5.0 in the Copilot chat panel: click **Agent** → the **gear icon** → choose **Claude Sonnet 5.0**.
 
 For more information, see [AI-Enabled Projects](https://apilogicserver.github.io/Docs/Project-AI-Enabled/) or [click here](https://apilogicserver.github.io/Docs/Manager-readme/).
 
@@ -99,7 +99,7 @@ The prompt above starts from an existing database — the common real-world case
 
 &nbsp;
 
-> **Running in Codespaces?** Once the project's built, a browser tab auto-opens showing it running — that's not a quirk to dismiss, that's how you get going here.
+> **Running in Codespaces?** During project creation, a browser tab may auto-open showing it running — it's safe to dismiss.
 
 The goal here isn't a demo — it's an **enterprise-class** system you can trust and maintain. That's exactly what gets tested next.
 
@@ -110,7 +110,7 @@ The goal here isn't a demo — it's an **enterprise-class** system you can trust
 <details markdown>
 <summary>AI is great — but logic-as-code is hard to Read, Trust, and Maintain — here's why</summary>
 
-<br>Most agree, even if only informally, that business logic runs about **half the development and debugging effort** on a real system. Not a side concern.
+<br>Most developers estimate business logic requires about **half the development and debugging effort** on a real system. Not a side concern.
 
 AI is genuinely good at UI, data mapping, and boilerplate — no argument there. **Business logic is the exception.** Left unguided, any AI assistant — including the one that just built Step 0 for you — would default to procedural code for logic like this. Ask it directly, and you get three problems:
 
@@ -198,7 +198,7 @@ Every rule is a plain Python function or lambda. Set a breakpoint on any `callin
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;3. Iterate — no calling, no ordering to manage</summary>
+<summary>&emsp;&emsp;3. Iterate — 1 AI prompt adds table, relationship, 2 rules</summary>
 
 <br>Ask your AI assistant for a new rule, in plain English:
 
