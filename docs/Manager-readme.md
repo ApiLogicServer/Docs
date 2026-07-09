@@ -108,7 +108,7 @@ The goal here isn't a demo — it's an **enterprise-class** system you can trust
 &nbsp;
 
 <details markdown>
-<summary>AI great — but logic as code is hard to Read, Trust, and Maintain — here's why</summary>
+<summary>AI is great — but logic-as-code is hard to Read, Trust, and Maintain — here's why</summary>
 
 <br>Most agree, even if only informally, that business logic runs about **half the development and debugging effort** on a real system. Not a side concern.
 
