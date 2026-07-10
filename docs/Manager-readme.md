@@ -99,7 +99,7 @@ The prompt above starts from an existing database — the common real-world case
 
 &nbsp;
 
-> **Running in Codespaces?** During project creation, a browser tab may auto-open showing it running — it's safe to dismiss.
+> **Running in Codespaces?** During project creation, a browser tab may auto-open (or offer to) showing it running — safe to decline or dismiss.
 
 The goal here isn't a demo — it's an **enterprise-class** system you can trust and maintain. That's exactly what gets tested next.
 
