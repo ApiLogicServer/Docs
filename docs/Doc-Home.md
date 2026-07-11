@@ -122,6 +122,8 @@ Then, you might like to try out some of our [dockerized test databases](Database
 
 <summary> Release Notes </summary>
 
+07/11/2026 - 17.02.08: AI-driven Queries and Dashboards (replaces genai-graphics) - ask your AI assistant for a query or a chart embedded in the Admin App, no CLI pipeline required
+
 06/11/2024 - 10.04.61: Ontimize Rich Client Tech Preview
 
 06/04/2024 - 10.04.43: Improved Ontimize support
