@@ -79,7 +79,7 @@ Please load `.github/.copilot-instructions.md`.
 <!-- CODESPACES-INSERT-POINT: create_codespaces_mgr.py injects browser note here — do not rename this heading -->
 
 <details markdown>
-<summary>⚡ The Ideal — executable business prompts, held to an enterprise standard</summary>
+<summary>The Ideal — executable business prompts, held to an enterprise standard</summary>
 
 <br>Say this to your AI assistant (allow several minutes):
 
@@ -362,7 +362,7 @@ The architecture that makes this work: two funnels, converging on one engine. Al
 &nbsp;
 
 <details markdown>
-<summary>🔨 Go deeper — 30-45 min guided tour</summary>
+<summary>Go deeper — 30-45 min guided tour</summary>
 
 &nbsp;
 
