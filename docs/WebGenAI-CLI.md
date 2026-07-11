@@ -361,7 +361,9 @@ Since the logic is in separate directories, the system is able to support ongoin
 
 ## Dashboard Graphics
 
-Release 14.04 provides a technology preview of Dashboard Graphics:
+The simplest way to create Dashboard Graphics is the Admin Assistant.  For more information, [click here](Admin-Customization.md#ai-assistant).
+
+You can also use the CLI to create Dashboard Graphics:
 
 ![dashboard](images/sample-ai/genai/dashboard-graphics.png)
 

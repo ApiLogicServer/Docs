@@ -19,9 +19,25 @@ ApiLogicServer create --project_name=my-project \
 ```
 * non-favorites (such as `id`) can be identified with the `--non_favorites` argument.
 
+<br>
+
+### AI Assistant
+
+While these defaults are useful in creating a recognizable application, you will want to control the display order, override labels and so forth.  The simplest way to configure your Admin App is via your AI Assistant.  It knows the admin layout, and services like hide when / show when.
+
+It can even create dashboards (here shown using the VSCode's Integrated Browser):
+
+```text title="Create Dashboards with your AI Assistant"
+create a dashboard with sales by region, and sales by category
+```
+
+![admin-cust](images/ui-admin/dashboard.png)
+
+<br>
+
 ### Edit `admin.yaml`
 
-While these defaults are useful in creating a recognizable application, you will want to control the display order, override labels and so forth.  You can specify such customizations by editing the `admin.yaml` file below.
+You can also specify such customizations by editing the `admin.yaml` file below.
 
 This file is created initially by the system, so it's not necessary to learn the syntax in detail.  Instead, it's straight-forward to alter the file using your IDE or text editor.
 
