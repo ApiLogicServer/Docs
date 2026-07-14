@@ -1,11 +1,11 @@
 ---
-title: Project Studio
+title: genai-logic-web-studio
 Description: Instantly Create and Run Database Projects with Codepaces - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps, Microservice, Declarative
 ---
 
 !!! pied-piper ":bulb: Project Studio"
 
-      Project Studio enables **Business Analysts and Product Managers** to build **enterprise-class systems** — from one prompt or your existing database, *5 rules instead of ~200 lines of code* — then hand off cleanly to **Dev/DevOps for extension and deployment**.
+      GenAI-Logic-web-studio enables **Business Analysts and Product Managers** to build **enterprise-class systems** — from one prompt or your existing database, *5 rules instead of ~200 lines of code* — then hand off cleanly to **Dev/DevOps for extension and deployment**.
 
       The goal here isn't a demo — it's an **enterprise-class** system you can trust and maintain:
 
@@ -16,5 +16,5 @@ Description: Instantly Create and Run Database Projects with Codepaces - GenAI, 
 
 &nbsp;
 
-![webGenAI](images/project-studio/studio-start.png)
+![genai-logic-web-studio](images/git-codespaces/genai-logic-web-studio.png)
 
