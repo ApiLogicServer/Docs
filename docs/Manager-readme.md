@@ -54,22 +54,31 @@ This is the start page for the [GenAI-Logic Manager](https://apilogicserver.gith
 
 ## 🤖 AI Assistance
 
-Any AI assistant works here — Claude Code, the Claude Code plugin, GitHub Copilot, etc. The steps below are for **GitHub Copilot in VS Code**; if you're using something else, the same idea applies, just paste the command below into whatever chat/agent interface you have open.
-
-In the Copilot Chat panel, click the **Auto** pill at the bottom of the chat box and pick **Claude Sonnet 5** from the list. **Don't see it?** Click **Other Models** near the bottom of that same list to reveal it. Still not there (Free/Student plans), leave it on **Auto**. Then type and Enter:
+<!-- LOCAL-MGR-ONLY-START -->
+We get good results with **Claude Sonnet 5** — any AI assistant works (Claude Code, GitHub Copilot, etc.), but pick Sonnet 5 if you can. Then say:
+<!-- LOCAL-MGR-ONLY-END -->
+<!-- CODESPACES-ONLY-START
+We get good results with **Claude Sonnet 5**. In this environment, GitHub Copilot is what's available — pick Sonnet 5 if you can. Then say:
+CODESPACES-ONLY-END -->
 
 ```
 Please load `.github/.copilot-instructions.md`.
 ```
 
+<details markdown>
+<summary>Detailed steps, what to expect, model/cost info, and why we recommend a frontier model</summary>
+
+&nbsp;
+
 > **See "Quota reached" in the status bar?** Safe to ignore — it doesn't mean anything is broken or unavailable.
 
 > **This takes 20-30 seconds.** You'll see "Working" the whole time with no other feedback — that's normal, not stuck.
 
-<details markdown>
-<summary>Detailed steps, model/cost info, and why we recommend a frontier model</summary>
-
 &nbsp;
+
+<!-- LOCAL-MGR-ONLY-START -->
+Any AI assistant works here — Claude Code, the Claude Code plugin, GitHub Copilot, etc. The steps below are for **GitHub Copilot in VS Code**; if you're using something else, the same idea applies, just paste the command above into whatever chat/agent interface you have open.
+<!-- LOCAL-MGR-ONLY-END -->
 
 **Step by step:**
 1. Open the **Chat** tab in the right-hand panel.
