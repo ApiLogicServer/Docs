@@ -136,9 +136,11 @@ Declaring logic and security was described in the basic demo.  The sections belo
 
 ### Admin App - *with* custom apps
 
-The Admin App is created when you create the project.  It is automatic and simple to customize, but customizations are limited.  You will find it convenient for getting started, prototyping, and data repair.  
-
-The Admin App is ***not instead*** of custom apps -  is a *complement* to custom apps.
+The Admin App is ***not instead*** of custom apps — it's a *complement*: automatic,
+simple to customize, convenient for getting started, prototyping, and data repair,
+but with limited customization. See [Admin-Vibe: Get the Data Model Right Fast, *Then*
+Build the UI](Admin-Vibe.md#generation){:target="_blank" rel="noopener"} for why we
+recommend iterating there first, before generating a custom app.
 
 <br>
 
