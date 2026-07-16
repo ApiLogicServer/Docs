@@ -112,7 +112,7 @@ npm install
 npm start
 ```
 
-See [Admin-Vibe](Admin-Vibe.md){:target="_blank" rel="noopener"} for the full
+See [Admin-Vibe](https://apilogicserver.github.io/Docs/Admin-Vibe/){:target="_blank" rel="noopener"} for the full
 generation guide (the "iterate `admin.yaml` first" workflow, what gets generated,
 and the OpenAI-driven CLI fallback for environments with no AI assistant session).
 
@@ -139,7 +139,7 @@ Declaring logic and security was described in the basic demo.  The sections belo
 The Admin App is ***not instead*** of custom apps — it's a *complement*: automatic,
 simple to customize, convenient for getting started, prototyping, and data repair,
 but with limited customization. See [Admin-Vibe: Get the Data Model Right Fast, *Then*
-Build the UI](Admin-Vibe.md#generation){:target="_blank" rel="noopener"} for why we
+Build the UI](https://apilogicserver.github.io/Docs/Admin-Vibe/#generation){:target="_blank" rel="noopener"} for why we
 recommend iterating there first, before generating a custom app.
 
 <br>
