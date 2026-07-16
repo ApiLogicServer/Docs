@@ -72,19 +72,21 @@ Pre-reqs:
 
 **Vibe Philosophy:** AI makes errors. That's expected. When something fails, tell Copilot: *"Error X occurred, fix it"*. Copilot is exceptionally good at finding and correcting its own mistakes.
 
-**Recommended Path:** If you're new to GenAI-Logic, start with the [Standard Demo](Sample-Basic-Demo.md) (creates `basic_demo` with guided tutor) to learn platform fundamentals. Then return here to explore AI-assisted development with `basic_demo_vibe`.
+**Recommended Path:** If you're new to GenAI-Logic, start with the [Standard Demo](Sample-Basic-Demo.md) (creates `basic_demo` with guided tutor) to learn platform fundamentals. Then return here to explore AI-assisted development with `demo_vibe`.
 </details markdown>
 
 <br>
 
 ## 1. Create From Existing DB
 
+If you arrived here from the Manager README's **Use Case 4: Vibe Dev Backend**, this
+project already exists — created via the CLI (faster than an AI prompt for this step):
 
-```bash title="In the Manager: Create a project from an existing database (probably already done)"
-Create a database project named basic_demo_vibe from samples/dbs/basic_demo.sqlite
+```bash title="In the Manager: Create a project from an existing database (already done, if you followed Use Case 4)"
+genai-logic create --project_name=demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
-This recreates the basic demo.  We recommend this as your first project.  For more information, [click here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}.
+This recreates the basic demo, under the name `demo_vibe`.  For more information, [click here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}.
 
 <br><br>
 
