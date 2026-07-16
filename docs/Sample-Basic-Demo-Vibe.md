@@ -2,9 +2,12 @@
 title: basic_demo_vibe
 source: docs/Sample-Basic-Demo-Vibe.md
 notes: gold is proto (-- doc); alert for apostrophe
-propagation: api_logic_server_cli/sample_mgr/basic_demo_setup.py
+propagation: copy_md() -> readme_vibe.md in every created project (see project_overlay.py)
 do_process_code_block_titles: True
-version: 1.0 from docsite, for readme 2/16/2026
+version: 1.1 (Jul 2026) - Section 2 updated for the Claude/CE React-app generation
+  path (direct AI-assistant generation from admin.yaml, no OpenAI key) as the default,
+  matching Admin-Vibe.md; old genai-add-app --vibe CLI is now the documented fallback.
+  Fixed stale `cd ui/react-app` path and dead propagation front-matter reference.
 ---
 
 <style>
@@ -92,19 +95,28 @@ The app above is suitable for collaborative iteration to nail down the requireme
 
 For more custom apps, you get complete control by generating app source code, which you can then customize in your IDE, e.g. using Vibe Natural Language.
 
-This will create a customized react-admin app, very much *like* the Admin App, but will full customizable source:
+**Default method — ask your AI assistant directly.** No OpenAI key, no separate API
+call — your assistant (already in this session) generates a customized React Admin
+app directly from `ui/admin/admin.yaml`, very much *like* the Admin App, but with
+full customizable source:
 
-```bash
-# create react source (requires OpenAI key)
-genai-logic genai-add-app --vibe
-cd ui/react-app
+```text title="Ask your AI assistant to generate the app"
+Create a new react app named my-app-name from ui/admin/admin.yaml.
+```
+
+```bash title="Run the generated app"
+cd ui/my-app-name
 npm install
 npm start
 ```
 
+See [Admin-Vibe](Admin-Vibe.md){:target="_blank" rel="noopener"} for the full
+generation guide (the "iterate `admin.yaml` first" workflow, what gets generated,
+and the OpenAI-driven CLI fallback for environments with no AI assistant session).
+
 **Customize using Natural Language:**
 ```txt title='Customize using Natural Language'
-In the ui/react app, Update the Product list to provide users an option to see results in a list, or in cards.
+In ui/my-app-name, update the Product list to provide users an option to see results in a list, or in cards.
 ```
 <br>
 
