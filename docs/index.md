@@ -34,6 +34,13 @@ pip install ApiLogicServer
 genai-logic start                                   # opens the Manager
 ```
 
+Notes:
+
+1. Windows users will need to run the terminal in Admin mode, with scripts enabled
+2. For `genai` functions, you will need an [OpenAI Key](Sample-Basic-Tour.md#get-an-openai-apikey){:target="_blank" rel="noopener"}
+3. If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md)
+4. If you are using VSCode, we ***strongly recommend*** you create the VSCode CLI - for more information, [click here](IDE-Customize.md#vscode-cli){:target="_blank" rel="noopener"}.  Do this before the next step
+
 See [Express Install](Install-Express.md) for details, including Docker and Codespaces options.  The `start` commands loads the [Manager](Manager.md){:target="_blank" rel="noopener"} (a directory for creating and managing projects):
 
 ![Manager](images/manager/readme.png)
