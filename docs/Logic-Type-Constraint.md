@@ -21,5 +21,5 @@ For more complex cases, you can provide a function.  Note the arguments include 
 
 ## Commit constraints - aggregate values
 
-If your constraint needs to reference derived sums or counts, note these are not derived when the row is initially processed.  You can address such situations using CommitConstraints.
+If your constraint needs to reference a derived sum or count that isn't final until sibling rows in the *same transaction* have been processed (e.g., a min-cardinality check like "Order must have at least one Item"), note these values are not yet final when the row is initially processed.  Address such situations using [Commit Constraints](Logic-Type-Constraint-Commit.md).
 

@@ -33,3 +33,21 @@ Rule.formula(derive=models.OrderDetail.Amount,  # compute price * qty
 
    Rule.formula(derive=models.Item.Amount, calling=derive_amount)
 ```
+
+&nbsp;
+
+## How parent references are detected
+
+Pruning and parent-change propagation both depend on the system recognizing which parent attributes a formula references - it does this by scanning the rule's own source text for `row.<parent>.<attribute>`, e.g. `row.Product.CarbonNeutral` above.
+
+If a `calling=` function's parent access happens **inside a helper function it calls** (rather than appearing directly in the function you pass to `calling=`), the scan won't see it - the formula will be wrongly pruned on updates, and won't recompute when the parent attribute changes. Fix this by adding a `# deps:` comment naming the references directly in the function body - the scan reads comments too:
+
+```python
+def _quantity(row, old_row, logic_row):
+    # deps: row.OrderLine.Quantity row.OrderLine.DateServed
+    return _derive_quantity(row, logic_row)  # parent access happens inside here
+
+Rule.formula(derive=models.Movement.Quantity, calling=_quantity)
+```
+
+&nbsp;

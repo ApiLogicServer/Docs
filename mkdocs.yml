@@ -98,6 +98,7 @@ nav:
     - "Logic: GenAI Approaches": Logic-Why-Declarative-GenAI.md
     - Rule Types:
       - "Constraints": "Logic-Type-Constraint.md"
+      - "Commit Constraints": "Logic-Type-Constraint-Commit.md"
       - "Sum": "Logic-Type-Sum.md"
       - "Formula": "Logic-Type-Formula.md"
       - "Copy": "Logic-Type-Copy.md"
