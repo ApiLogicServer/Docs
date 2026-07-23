@@ -1,7 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Executable Test Suite, Documentation"
-      **New in 15.01.18** - Transform 30-40 years of testing requests into 3-4 days of automated test generation!
-      
       You can use your AI Assistant to automatically:
+
       * Create Behave tests from declarative rules
       * Execute test suites, and 
       * Generate automated documentation with complete logic traceability
@@ -211,10 +210,10 @@ Execution Trace (Logic Log)
 - **Before:** Requirements → Code (opaque, 200+ lines)
 - **Now:** Requirements → Tests → Rules → Trace (transparent, 5 lines)
 
-The **44X advantage** extends to testing:
+Testing benefits the same way the rules themselves do:
 - Tests are simple API calls
 - Business logic verified by checking which rules fired
-- Complete audit trail from requirement to execution
+- A rule chain visible from requirement to execution
 - Living documentation auto-generated from test runs
 
 
@@ -230,15 +229,16 @@ Training instruction for the AI Assistant (e.g., Copilot) is included in your pr
 
 1. **Correctness verification** - Ensures rules work as intended
 2. **Dependency chain validation** - Tests transitive effects (Product → Item → Order → Customer)
-3. **Foreign key change testing** - Verifies old/new parent adjustments (the "missed bugs")
-4. **Automated documentation** - Living documentation with complete traceability
-5. **Regression prevention** - Executable test suite protects against future breaks
+3. **Automated documentation** - Living documentation with complete traceability
+4. **Regression prevention** - Executable test suite protects against future breaks
 
-**The key insight:** Declarative rules make testing **dramatically simpler** because:
+**Known gap:** AI-generated scenarios reliably cover inserts, updates, deletes, and constraint checks for the rules you declare — but, left unprompted, they don't reliably include foreign-key *reassignment* (e.g., changing an existing order's customer, or an existing item's product). That's the same class of case that's easy to miss in hand-written procedural code, and it can be just as easy to miss when generating tests. If this matters for your logic, ask explicitly for a scenario that reassigns a foreign key and checks both the old and new parent.
+
+**The key insight:** Declarative rules make testing simpler because:
 
 - Tests focus on "what" not "how"
 - Rule execution is logged automatically
 - Dependency chains are traced automatically
-- Complete audit trail from requirement to execution
+- A rule chain is visible from requirement to execution
 
 
