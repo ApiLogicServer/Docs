@@ -234,6 +234,8 @@ Training instruction for the AI Assistant (e.g., Copilot) is included in your pr
 
 **Known gap:** AI-generated scenarios reliably cover inserts, updates, deletes, and constraint checks for the rules you declare — but, left unprompted, they don't reliably include foreign-key *reassignment* (e.g., changing an existing order's customer, or an existing item's product). That's the same class of case that's easy to miss in hand-written procedural code, and it can be just as easy to miss when generating tests. If this matters for your logic, ask explicitly for a scenario that reassigns a foreign key and checks both the old and new parent.
 
+**A general caution, not just about this one gap:** test generation from rules is itself AI output, and AI oversights apply here the same as anywhere else in this workflow — human review of generated scenarios still matters, especially for the change paths a quick read might not think to ask about. That said, in practice this remains a remarkable head start: going from a blank test folder to a working, readable scenario suite and its logic-traced documentation, from nothing but the declared rules, is real leverage — review and extend it, don't discard it for having a gap.
+
 **The key insight:** Declarative rules make testing simpler because:
 
 - Tests focus on "what" not "how"
