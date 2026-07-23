@@ -85,4 +85,21 @@ These operate after logic executes for ***all*** rows.  So, for example, sums an
 
 &nbsp;
 
+## Events Must Not Mutate `row`
+
+Because `row_event` and `commit_row_event` both run **after** derivation/constraint logic has already executed for the row, setting `row.some_attribute = value` inside such a handler is not subject to the rule engine: the value is saved, but it is never re-derived-from, never triggers dependent formulas/sums/counts, and is never checked against a `Constraint`.
+
+To prevent this, activation now **fails** (raises an error) if a `row_event`/`commit_row_event` function's source appears to assign to a `row` attribute (e.g., `row.Status = "Approved"`). Use one of these instead:
+
+* **Insert a new row** - e.g., `logic_row.insert(...)`, or `logic_row.new_logic_row(...)` followed by `.insert(...)`. This *is* subject to full rule processing, so it's safe.
+* **Use `early_row_event` / `early_row_event_all_classes`** instead, if you need to set an attribute on the *current* row - these run *before* derivation/constraint logic, so your change is picked up normally (this is how the time/date stamping example above works).
+* **If you are certain the mutation is safe** (e.g., a plain column nothing else derives from or constrains), pass `allow_row_mutation=True` to bypass the check:
+
+```python
+Rule.commit_row_event(on_class=models.Order, calling=congratulate_sales_rep,
+                      allow_row_mutation=True)
+```
+
+&nbsp;
+
 
