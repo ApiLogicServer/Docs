@@ -446,7 +446,7 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>1. Integrate other enterprise technologies</strong> — EAI, MCP, AI Rules, Custom UIs</summary>
+<summary>&emsp;&emsp;<strong>1. Integrate other enterprise technologies</strong> — EAI, MCP, AI Rules, RBAC, Custom UIs</summary>
 
 <br>We have extended the governed API and rules engine you just saw with the integration points a real enterprise system needs:
 
@@ -463,6 +463,10 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 <br>
 
 - **Custom UIs, safely** — Vibe tools (Cursor, v0, etc.) generate the UI; it's built against the same governed API, so the logic runs the same regardless of what's calling it. Quick-start a React app from your (possibly customized) admin app: `Create a new react app named my-app-name from ui/admin/admin.yaml`.
+
+<br>
+
+- **RBAC** (Role Based Access Control) — declare row level security using technologies like Keycloak.
 
 </details>
 
