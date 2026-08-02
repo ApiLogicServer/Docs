@@ -126,6 +126,18 @@ But if the system leverages the old/new to make an adjustment update, an order o
 
 &nbsp;
 
+##### No Rulesets to Design or Maintain
+
+Traditional rule engines often require developers to partition rules into named **rulesets** or **agendas**, so the engine isn't forced to evaluate the entire rule population on every invocation. That partitioning is itself an ongoing design and maintenance task — and a rule that isn't loaded into the ruleset actually invoked for a given transaction simply doesn't fire, silently.
+
+The transaction rules engine has no such step. Rules are automatically indexed by the table (SQLAlchemy mapped class) they're declared against, at load time — not by convention, but structurally: `RuleBank.orm_objects` is a dictionary keyed by mapped class, and each rule is filed under its table the moment it's declared (`logic_bank/rule_bank/rule_bank.py`, `deposit_rule`).
+
+A transaction touching an `Order` row only ever considers the rules declared on `Order`. There's no ruleset to design, no agenda to load, and no way for a rule to be silently excluded from evaluation because it wasn't wired into the right group — if it's declared on the table, it's in scope automatically.
+
+This is the first of two pruning stages: table indexing narrows *which rules* are even candidates; attribute-level comparison (below) narrows further to *which of those* actually need to run.
+
+&nbsp;
+
 ##### Pruning
 
 Pruning was core to changing Order dates:

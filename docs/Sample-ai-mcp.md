@@ -67,7 +67,7 @@ This command:
 
 The project is ready to run:
 
-* In the new project, use Copilot: `start the server` (or click F5)
+* In the new project, use AI Chat: `start the server` (or click F5)
 * You can explore the admin app and the API, then `stop the server` (or Shift/F5)
 
  **Result:** a working three-tier system in under a minute — *database → API → web app → MCP discovery*.
