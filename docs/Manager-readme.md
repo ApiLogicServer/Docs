@@ -6,6 +6,7 @@ version info: 17.03.08 (07/22/2026)
 do_process_code_block_titles: True
 Used: Manager Readme (via copy_md())
 demo_customs: Customs-readme
+demo_customs_clvs: Customs-clvs-readme
 demo_customs_surtax: Customs-readme-surtax
 demo_kafka: Sample-Integration
 demo_allo: Sample_Allo_Dept_GL_readme
@@ -593,7 +594,7 @@ Each of these builds a complete system from a single prompt or command — 💬 
 | Use Case | 💬 Say to your AI, or › run | What You'll Learn |
 |----------|---------|-------------------|
 | **[Allocation with AI Rules](samples/allocate_dept_account_demo/docs/requirements/logic_flow_allocate_dept_account_demo.md)** <br> demo_allo_dept_gl | 💬 create demo_allo_dept_gl from samples/prompts/allocation.prompt.md <br> *or* <br> › genai-logic create --project_name=demo_allo_dept_gl --db_url=sqlite:///samples/dbs/starter.sqlite | - [Cascade Allocation (Costs to Depts/GL)](https://apilogicserver.github.io/Docs/Sample_Allo_Dept_GL_full) <br> - AI Rules for fuzzy match to project |
-| **[Customs CLVS](samples/requirements/customs_demo_clvs/docs/requirements/customs_demo/requirements.md)** <br> demo_customs_clvs | › genai-logic create  --project_name=demo_customs_clvs --db_url=sqlite:///samples/requirements/customs_demo_clvs/database/customs.sqlite | - Governed Business Systems<br> - EAI (using XML), textual requirements |
+| **[Customs CLVS](samples/requirements/customs_demo_clvs/docs/requirements/customs_demo/requirements.md)** <br> demo_customs_clvs | › genai-logic create  --project_name=demo_customs_clvs --db_url=sqlite:///samples/dbs/customs.sqlite | - Governed Business Systems<br> - EAI (using XML), textual requirements |
 | **[Customs Surtax](samples/prompts/customs_cbsa.prompt.md)** <br> demo_customs_surtax | 💬 create project demo_customs_surtax from samples/prompts/customs_cbsa.prompt.md | - New Business System from Regulations |
 
 &nbsp;
