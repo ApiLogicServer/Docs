@@ -50,7 +50,7 @@ The demo therefore has 3 parts:
 
 ```bash title="Establish Initial State, Execute Requirements"
 # A - Create the project (already done, typically from Manager)
-genai-logic create  --project_name=demo_customs --db_url=sqlite:///samples/dbs/customs.sqlite
+genai-logic create  --project_name=demo_customs_clvs --db_url=sqlite:///samples/dbs/customs.sqlite
 
 # B - activate Claude Code in the VSCode terminal
 claude
