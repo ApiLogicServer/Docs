@@ -11,7 +11,7 @@ Description: Instantly Create and Run Database Projects with Codepaces - GenAI, 
 
       1. **User Friendly** — no database design or screen painting to learn; it's all automated from natural language.
       2. **Dev Friendly** — standard language, standard tooling; devs can extend this project in the IDE they already use.
-      3. **DevOps Friendly** — containers; deploy to cloud or on-prem.
+      3. **DevOps Friendly** — standard containers; deploy to cloud or on-prem.
       4. **Enterprise Friendly** — pluggable security (SQL or Keycloak), full REST API, event/messaging integration (Kafka, webhooks) — built in, not bolted on.
 
 &nbsp;
