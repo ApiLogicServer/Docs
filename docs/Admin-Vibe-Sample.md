@@ -80,8 +80,8 @@ If you want to start from scratch (e.g. to mimic the process with your own datab
 ```bash title="Vibe Kickstart"
 genai-logic create --project-name=nw, --db-url=nw
 
-# Open the project in your IDE, and issue Termimal commands:
-genai-logic genai-add-app
+# Open the project in your IDE, and issue AI commands:
+Create a new react app named my-app-name from ui/admin/admin.yaml.
 ```
 
 Then, proceed with `npm install` and `npm start`.
