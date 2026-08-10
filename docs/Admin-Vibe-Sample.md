@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Vibe for graphs, maps, trees, cards"
 
-      Use `genai-logic genai-add-app --vibe` to *generate* a standard react app.
+      Use `Create a new react app named my-app-name from ui/admin/admin.yaml.` to *generate* a standard react app.
 
       This page illustrates a number of customizations to the northwind sample (`samples/nw_sample` in the Manager).  These are shown below.
       
