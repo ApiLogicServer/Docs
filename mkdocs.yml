@@ -49,7 +49,7 @@ nav:
       - "AI - ChatGPT, Agile": Tutorial-AI.md
       - "Sample Systems": Data-Model-Examples.md
   - GenAI:
-    - "Project Studio": Project-Studio.md
+    - "Project Studio": Genai-logic-web-studio.md
     - "WebGenAI Website": WebGenAI.md
     - "WebGenAI Installation": WebGenAI-install.md      
     - "WebGenAI Verification": WebGenAI-verify.md      

@@ -15,6 +15,20 @@
 
 &nbsp;
 
+## Optional Install: `openai`
+
+To limit vulnerability exposure, `openai` is **not** installed by default — a stock `ApiLogicServer` install has no `openai` package, so dependency/SCA scans of a standard install show no exposure from it.
+
+Everything on this page (`als genai`, `als genai-logic`, `als genai-utils`, `als genai-graphics`, `als genai-add-app`, and WebGenAI itself) calls OpenAI's ChatGPT API and therefore requires `openai`.  To opt in, install the `ai-rules` extra:
+
+```bash title='Opt-in: install openai support'
+pip install apilogicserver[ai-rules]
+```
+
+If you skip this step, the commands on this page will fail with an import error for `openai` — install the extra above, then retry.
+
+&nbsp;
+
 ## Overview
 
 To use GenAI to create projects
