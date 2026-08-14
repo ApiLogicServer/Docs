@@ -66,7 +66,9 @@ You can use the Admin app, or more typically, vibe a custom app using the automa
 
 &nbsp;
 
-## What It Is Not: a Rigid Wizard
+## Requirements from Interview
+
+![RFI](images/exec_reqmts/RFI.png)
 
 Classic wizards walk a fixed sequence of screens — no judgment, no pushback, blind to what you actually meant. RFI (above) is guided, not scripted: the AI asks follow-ups, catches gaps you didn't think to mention (see the transcript — the shipping notification only surfaced because the AI kept the thread open after the "requirements" looked done), and reads its synthesis back for confirmation before anything is built. It's closer to a business-analyst interview than a form.
 
