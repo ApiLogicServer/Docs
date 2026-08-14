@@ -1,7 +1,7 @@
 ---
 title: Executable Requirements
 source: docs/Exec-Reqmts.md
-version: 1.9, 4/17/2026
+version: 2.0, 8/13/2026
 ---
 
 <style>
@@ -18,7 +18,8 @@ version: 1.9, 4/17/2026
     **Executable Requirements** treats your requirements as the ongoing source of truth for governed logic — not a handoff artifact, but the engine configuration your system **runs from**, and **iterates from.**
 
     * **Any format:** structured prose, numbered lists, Gherkin — whatever your team already writes
-    * **PM-driven workflow:** sample scenario - Product Manager prepares a `requirements/` folder (logic, message formats, acceptance tests); Dev drops it in the project and types `implement reqs <name>`
+    * **Any source:** written by hand, an existing prompt file used as-is, or drafted with AI via a conversational **Requirements From Interview** — no document needed to start
+    * **Run from the Manager or the project** — whichever you're already in
     * **AI produces a runnable project** and writes back an audit trail (`ad-libs.md`) of every decision — red flags for review, FYIs for standard patterns
     * **Iterative by design:** add new requirements — each cycle tightens the spec; declarative rules make logic changes safe (automatic ordering and reuse, no cascade of procedural updates)
     * **Governance is architectural:** rules live on the data, not the path — every new API, agent, or integration inherits them automatically
@@ -32,9 +33,7 @@ Traditional requirements are a handoff artifact: a document a developer reads, i
 
 Executable Requirements treats requirements.md as direct AI input. The AI reads the file and produces a running system — Python source, database, REST API, business logic, tests. Not a prototype. Not a scaffold. A running system you own, in your IDE, in your source control.
 
-Behavior is added incrementally: drop a new requirements file into docs/requirements/<name>/, tell the AI to implement it, and it executes that slice on the running system. Each increment builds on the last. The AI reports any decisions it made beyond the spec (the ad-libs report), so you know exactly what was automated and what needs review.
-
-Declarative rules make iteration safe: adding logic for a new use case doesn't disturb existing rules. When a rule changes, you update the declaration; ordering and reuse are automatic.
+Behavior is added incrementally: drop a new requirements file into `docs/requirements/<name>/`, tell the AI to implement it, and it executes that slice on the running system. Each increment builds on the last. Declarative rules make this safe — adding logic for a new use case doesn't disturb existing rules; ordering and reuse are automatic.
 
 The `demo_eai` sample illustrates the process:
 
@@ -67,9 +66,11 @@ You can use the Admin app, or more typically, vibe a custom app using the automa
 
 &nbsp;
 
-## What It Is Not: a Wizard
+## What It Is Not: a Rigid Wizard
 
-The resultant project is fully standard Python — your IDE, your source control, your deployment pipeline. Nothing is locked to a generator or a framework layer. You customize, test, and deploy it the same way you would any Python service. The requirements file and the ad-libs report stay alongside the code as living documentation, not as a regeneration mechanism.
+Classic wizards walk a fixed sequence of screens — no judgment, no pushback, blind to what you actually meant. RFI (above) is guided, not scripted: the AI asks follow-ups, catches gaps you didn't think to mention (see the transcript — the shipping notification only surfaced because the AI kept the thread open after the "requirements" looked done), and reads its synthesis back for confirmation before anything is built. It's closer to a business-analyst interview than a form.
+
+And whichever way you arrive at `requirements.md` — written, prompt file, or RFI — the resultant project is fully standard Python — your IDE, your source control, your deployment pipeline. Nothing is locked to a generator or a framework layer. You customize, test, and deploy it the same way you would any Python service. The requirements file and the ad-libs report stay alongside the code as living documentation, not as a regeneration mechanism.
 
 &nbsp;
 
@@ -112,29 +113,27 @@ Both formats produce the same output: declarative rules enforced on every path, 
 
 &nbsp;
 
-## Workflow: PM Prepares, Dev Executes
+## Workflow: Any Source, Same Loop
 
-A natural division of labor emerges from the structure:
+`requirements.md` just needs to exist before you say `implement reqs <name>`. How it gets written doesn't matter:
 
-| Who | Does what |
-|-----|-----------|
-| **Product Manager** | Gathers artifacts: DDL, sample messages, architecture notes — in cloud storage, SharePoint, wherever they work |
-| **Product Manager** | Writes `requirements.md` — sections for logic, integrations, acceptance; includes `message_formats/` sub-folder |
-| **Developer** | Creates `docs/requirements/<name>/` in the project repo, drops in `requirements.md` and supporting files |
-| **Developer** | Types `implement reqs <name>` in Copilot Agent mode |
-| **AI** | Builds the system, writes `docs/requirements/<name>/ad-libs.md` with decisions made |
-| **PM + Dev** | Reviews `ad-libs.md` — 🔴 items require confirmation, 🟡 are standard patterns; tighten the spec for the next increment |
+- **Written by a person** — PM, analyst, or dev drafts it from DDL, sample messages, architecture notes, whatever's on hand.
+- **A prompt file, as-is** — the same prompt files used to *create* a project are already requirements prose. Drop one in unchanged.
+- **Requirements From Interview (RFI)** — no document at all. Tell the AI you want to discuss the system instead of handing over a spec; it interviews you conversationally (constants, lookups/FKs, integration/judgment calls, type hierarchies), then synthesizes a `requirements.md` and reads it back for confirmation before building anything. See a real transcript at `samples/requirements/RFI/RFI-transcript.md`.
 
-This is the starting point for iterative development, not a one-shot deployment. Each cycle produces a working system your team owns and refines.
+Whichever path you took, the loop is the same:
 
-**What belongs in `requirements.md`:**
+| Step | What happens |
+|------|--------------|
+| Place `requirements.md` (+ `message_formats/` if needed) in `docs/requirements/<name>/` | in the project, or in the Manager prefixed with `<name>/` — either works |
+| Say `implement reqs <name>` | in Copilot Agent mode |
+| AI builds the system | writes `docs/requirements/<name>/ad-libs.md` with decisions made |
+| Review `ad-libs.md` | 🔴 items require confirmation, 🟡 are standard patterns |
+| Update `requirements.md`, re-run | each cycle tightens the spec |
 
-- **What to build** — tables, handlers, APIs, logic rules
-- **Message formats** — reference files in `message_formats/`; include field mappings where non-obvious
-- **Phases** — what's in scope now vs. deferred
-- **Acceptance** — how to verify it worked (test commands, expected DB state)
+Not a one-shot deployment — the starting point for iterative development. Each cycle produces a working system you own and refine.
 
-Leave out: implementation details, file names, framework choices — let AI decide those and review the audit trail to see what it chose.
+**What belongs in `requirements.md`:** what to build (tables, handlers, APIs, logic rules), message formats (reference `message_formats/`, map non-obvious fields), phases (in scope now vs. deferred), acceptance (how to verify it worked). Leave out implementation details, file names, framework choices — let AI decide those; read the ad-libs to see what it chose.
 
 &nbsp;
 
@@ -179,18 +178,11 @@ The same by-example pattern applies to **outbound Kafka publish**: describe the 
 
 ## Human in the Loop: Dev Stays in Control
 
-AI does the initial build — but the developer reviews, owns, and iterates on everything it produces. There are two review surfaces, one for each kind of output:
+AI does the initial build — but the developer reviews, owns, and iterates on everything it produces, across two surfaces:
 
-**Logic → Declarative Rules.** Business logic in the spec becomes Python rules in `logic/logic_discovery/`. The rules are short, readable, and directly traceable to the spec — the rule *is* the requirement, restated with precision. Dev reviews them in the IDE, adjusts as needed, and re-runs the suite. When requirements change, you update the rule; automatic ordering and reuse handle the rest. No cascade of procedural updates to track down.
+**Logic → Declarative Rules.** Business logic in the spec becomes Python rules in `logic/logic_discovery/` — short, readable, directly traceable to the spec. Dev reviews in the IDE, adjusts as needed. When requirements change, update the rule; ordering and reuse are automatic. No cascade of procedural updates to track down.
 
-**Message and API mappings → `ad-libs.md`.** Field mappings, Kafka patterns, lookup strategies, and other integration decisions AI had to fill in are reported in `docs/requirements/<name>/ad-libs.md`. Zero ad-libs means the spec was complete and unambiguous. The same review-and-refine loop applies: read the report, tighten the spec, re-run.
-
-Two severity tiers:
-
-| Tier | Meaning |
-|------|---------|
-| 🔴 **Review Required** | AI made a decision that could be wrong — specific action called out |
-| 🟡 **FYI** | Standard pattern applied — no action needed, recorded for transparency |
+**Message and API mappings → `ad-libs.md`.** Field mappings, Kafka patterns, lookup strategies AI had to fill in. Zero ad-libs means the spec was complete and unambiguous.
 
 Example from the `demo_eai` sample:
 
@@ -205,8 +197,6 @@ Example from the `demo_eai` sample:
 🟡  order_b2b.py — 2-message Kafka pattern applied (blob saved in Tx 1,
     parsed in Tx 2). Required pattern per eai_subscribe.md.
 ```
-
-The loop: review `ad-libs.md`, update `requirements.md` to resolve any 🔴 items, re-run. Each cycle reduces the number of ad-libs until the spec and the implementation are in full agreement.
 
 &nbsp;
 
@@ -242,6 +232,14 @@ curl 'http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/Order
 
 sqlite3 database/db.sqlite "SELECT * FROM order_b2b_message; SELECT * FROM 'order'; SELECT * FROM item;"
 ```
+
+**No requirements file yet?** Say this instead, in the Manager:
+
+```
+💬 create a new project called RFI, and let's discuss the system
+```
+
+The AI interviews you and drafts `requirements.md` itself — see `samples/requirements/RFI/RFI-transcript.md` for a real session (Customer/Order/Item/Product, credit-limit constraint, Kafka shipping notification).
 
 &nbsp;
 
