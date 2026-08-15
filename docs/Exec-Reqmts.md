@@ -15,12 +15,15 @@ version: 2.0, 8/13/2026
 
 !!! pied-piper ":bulb: TL;DR - Requirements-Driven Iterative Development"
 
-    **Executable Requirements** treats your requirements as the ongoing source of truth for governed logic — not a handoff artifact, but the engine configuration your system **runs from**, and **iterates from.**
+    **Executable Requirements** — also called **XGR**, *Governed* Executable Requirements — treats your requirements as the ongoing source of truth for governed logic — not a handoff artifact, but the engine configuration your system **runs from**, and **iterates from.**
 
     * **Any format:** structured prose, numbered lists, Gherkin — whatever your team already writes
-    * **Any source:** written by hand, an existing prompt file used as-is, or drafted with AI via a conversational **Requirements From Interview** — no document needed to start
+    * **Three ways to arrive at `requirements.md`:**
+        - **RFI** — no document at all; AI interviews you conversationally and drafts it for you, then reads it back for confirmation. Real transcript: [samples/requirements/RFI/RFI-transcript.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/RFI/RFI-transcript.md){:target="_blank" rel="noopener"}
+        - **File** — a single existing prompt file, used as-is. Example: [samples/prompts/genai_demo.prompt](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/prompts/genai_demo.prompt){:target="_blank" rel="noopener"}
+        - **Folder** — multiple requirement files plus message formats (JSON, XML, CSV) for richer, multi-increment specs. Simple: [demo_eai](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} · Enterprise-class: [customs_demo_clvs](Customs-clvs-readme.md){:target="_blank" rel="noopener"} (real CBSA customs system, also simulates an existing database)
     * **Run from the Manager or the project** — whichever you're already in
-    * **AI produces a runnable project** and writes back an audit trail (`ad-libs.md`) of every decision — red flags for review, FYIs for standard patterns
+    * **AI produces a runnable project**, and writes back a *proactive* human-in-the-loop audit trail (`ad-libs.md`) — unprompted, itemized: 🔴 for decisions that need your review, 🟡 for standard patterns needing none. You review a short list, not the whole diff. Real example: [customs_demo_clvs ad-libs.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_clvs/docs/requirements/customs_demo/ad-libs.md){:target="_blank" rel="noopener"} — 3 flagged, 6 FYIs, out of 14 rules built
     * **Iterative by design:** add new requirements — each cycle tightens the spec; declarative rules make logic changes safe (automatic ordering and reuse, no cascade of procedural updates)
     * **Governance is architectural:** rules live on the data, not the path — every new API, agent, or integration inherits them automatically
     * **Learn more:** [genai-logic.com](https://www.genai-logic.com){:target="_blank" rel="noopener"} — see the Architecture Walk-Through for full project overview and interactive architecture diagram
@@ -35,7 +38,7 @@ Executable Requirements treats requirements.md as direct AI input. The AI reads 
 
 Behavior is added incrementally: drop a new requirements file into `docs/requirements/<name>/`, tell the AI to implement it, and it executes that slice on the running system. Each increment builds on the last. Declarative rules make this safe — adding logic for a new use case doesn't disturb existing rules; ordering and reuse are automatic.
 
-The `demo_eai` sample illustrates the process:
+The [demo_eai](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} sample illustrates the process:
 
 1. You execute the steps in the upper right (`readme.md`) - note the use of Copilot in lower right
 2. The key file is `requirements.md` - bottom left
@@ -64,6 +67,8 @@ Or, you can provide much larger sets of requirements consisting of multiple file
 
 You can use the Admin app, or more typically, vibe a custom app using the automatic API.
 
+See it in practice: [demo_eai](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} is a clean, minimal folder — one `requirements.md`, two JSON message formats. [customs_demo_clvs](Customs-clvs-readme.md){:target="_blank" rel="noopener"} is the real enterprise-class case — a full CBSA customs declaration system built against seven XML message variants and a CSV mapping table, simulating an existing database rather than starting from a blank one.
+
 &nbsp;
 
 ## Requirements from Interview
@@ -80,7 +85,7 @@ And whichever way you arrive at `requirements.md` — written, prompt file, or R
 
 There is no required format. The spec is whatever your team already produces — prose, numbered lists, Gherkin. The key is structure: clear sections for logic, integrations, and acceptance criteria.
 
-**Numbered prose** (the simplest form — see `samples/prompts/genai_demo.prompt`):
+**Numbered prose** (the simplest form — see [samples/prompts/genai_demo.prompt](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/prompts/genai_demo.prompt){:target="_blank" rel="noopener"}):
 
 ```
 Create a system with customers, orders, items and products.
@@ -119,9 +124,11 @@ Both formats produce the same output: declarative rules enforced on every path, 
 
 `requirements.md` just needs to exist before you say `implement reqs <name>`. How it gets written doesn't matter:
 
-- **Written by a person** — PM, analyst, or dev drafts it from DDL, sample messages, architecture notes, whatever's on hand.
-- **A prompt file, as-is** — the same prompt files used to *create* a project are already requirements prose. Drop one in unchanged.
-- **Requirements From Interview (RFI)** — no document at all. Tell the AI you want to discuss the system instead of handing over a spec; it interviews you conversationally (constants, lookups/FKs, integration/judgment calls, type hierarchies), then synthesizes a `requirements.md` and reads it back for confirmation before building anything. See a real transcript at `samples/requirements/RFI/RFI-transcript.md`.
+- **Written by a person** — PM, analyst, or dev drafts it from DDL, sample messages, architecture notes, whatever's on hand. Usually a single **File**.
+- **A prompt file, as-is** — the same prompt files used to *create* a project are already requirements prose. Drop one in unchanged. Also a single **File**.
+- **Requirements From Interview (RFI)** — no document at all. Tell the AI you want to discuss the system instead of handing over a spec; it interviews you conversationally (constants, lookups/FKs, integration/judgment calls, type hierarchies), then synthesizes a `requirements.md` and reads it back for confirmation before building anything. See a real transcript at [samples/requirements/RFI/RFI-transcript.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/RFI/RFI-transcript.md){:target="_blank" rel="noopener"}.
+
+However you author it, `requirements.md` can stand alone as a single **File**, or grow into a **Folder** — `requirements.md` plus `message_formats/` (sample JSON, XML, CSV — see [EAI: By-Example Integrations](#eai-by-example-integrations) below) plus, for larger systems, several named subfolders under `docs/requirements/`, each its own incremental slice. [demo_eai](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} and [customs_demo_clvs](Customs-clvs-readme.md){:target="_blank" rel="noopener"} (above) are both Folder examples — the latter at real enterprise scale.
 
 Whichever path you took, the loop is the same:
 
@@ -184,9 +191,9 @@ AI does the initial build — but the developer reviews, owns, and iterates on e
 
 **Logic → Declarative Rules.** Business logic in the spec becomes Python rules in `logic/logic_discovery/` — short, readable, directly traceable to the spec. Dev reviews in the IDE, adjusts as needed. When requirements change, update the rule; ordering and reuse are automatic. No cascade of procedural updates to track down.
 
-**Message and API mappings → `ad-libs.md`.** Field mappings, Kafka patterns, lookup strategies AI had to fill in. Zero ad-libs means the spec was complete and unambiguous.
+**Message and API mappings → `ad-libs.md`.** This is *proactive* human in the loop — the AI doesn't wait to be asked "did you get this right?" It itemizes every field mapping, Kafka pattern, and lookup strategy it had to fill in, flags 🔴 the ones that need a real decision, and marks 🟡 the ones that were standard patterns needing no action. You review a short, itemized list instead of the whole diff — and zero 🔴 items means the spec was complete and unambiguous.
 
-Example from the `demo_eai` sample:
+Example from the [demo_eai](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} sample:
 
 ```
 🔴  OrderB2BMapper.py — parent_lookups tuple shape may not match what
@@ -199,6 +206,8 @@ Example from the `demo_eai` sample:
 🟡  order_b2b.py — 2-message Kafka pattern applied (blob saved in Tx 1,
     parsed in Tx 2). Required pattern per eai_subscribe.md.
 ```
+
+For the real thing at enterprise scale, see the [full ad-libs.md from `customs_demo_clvs`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_clvs/docs/requirements/customs_demo/ad-libs.md){:target="_blank" rel="noopener"} — 3 items flagged for review, 6 FYIs, out of 14 rules built. One 🔴 is a genuine ambiguity the AI caught on its own, unprompted: CBSA numeric customs-office codes (LVS-format messages) and 3-letter airport codes (HVS-format messages) land in the same source field, and only the numeric form matches any seeded office — exactly the kind of judgment call that needs a human, surfaced before anyone had to go looking for it.
 
 &nbsp;
 
@@ -241,7 +250,7 @@ sqlite3 database/db.sqlite "SELECT * FROM order_b2b_message; SELECT * FROM 'orde
 💬 create a new project called RFI, and let's discuss the system
 ```
 
-The AI interviews you and drafts `requirements.md` itself — see `samples/requirements/RFI/RFI-transcript.md` for a real session (Customer/Order/Item/Product, credit-limit constraint, Kafka shipping notification).
+The AI interviews you and drafts `requirements.md` itself — see [samples/requirements/RFI/RFI-transcript.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/RFI/RFI-transcript.md){:target="_blank" rel="noopener"} for a real session (Customer/Order/Item/Product, credit-limit constraint, Kafka shipping notification).
 
 &nbsp;
 
