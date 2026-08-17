@@ -48,9 +48,9 @@ Then along came the comet: ***NL, available in free IDEs.*** Overnight:
 
 So now Bus Users and Devs can share the ***same logic, and use the same (standard) tools.***  Suddenly, a proprietary studio - formerly *required* to capture rules - was *no longer necessary, in fact, was a liability.*   And, a huge org impact: the end of *Shadow IT wars* that had plagued Low Code.
 
-So, peace in the shire?  Not quite....
+So, peace in the shire?  Big progress: devs and BUs can both work on the same projects using the same tools.  Instead of being forced to pick one, AI and IDE flexibility allow the organization to blend both as makes sense on each project... with the ability to tune the mix as needs emerge.
 
-The fact is, AI-driven projects are not doing well.  Two reasons:
+But one key issue remains: the fact is, AI-driven projects are not doing well.  This is generally described as ***governance,*** but I think the core gets down to two reasons:
 
 1. AI, on its own, translates requirements to native code. *Lots* of it: 5 rules become 200 lines of code.  Suddenly, the intent is obscured.  You can't govern what you can't read.
 
@@ -89,3 +89,4 @@ And the key pieces of technology:
 
 * the rules engine, optimized for enterprise-class performance
 * the machinery (such as CE) to ensure the logic becomes rules, not code
+* and no baggage (such as proprietary IDE for rules capture)
