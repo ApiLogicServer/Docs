@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Key Realizations"
 
-    This article summarizes what we think are key realizations regarding app dev, reached over decades of my own experience:
+    This article summarizes our key app dev realizations, reached over decades of personal experience:
 
     1. Business Users are quite capable of designing non-trivial systems, given the right tools
     2. BRMS support for business rules is a key / required element of such tooling
@@ -20,19 +20,20 @@ He said yes, here we increment the quantity, here we decrement it.  It's all so 
 
 I confidently explained that's what *our* job was - to make the computer do that.  But driving home, it struck me that while it was not quite obvious, there was certainly a pattern...
 
-So, I played a what-if game: **what would it take* for the computer to 'just do that'.***  In moments, it hit me: if the system knew the quantity was the sum of the transactions, it could automate it.
+So, I played a what-if game: ***what would it take** for the computer to 'just do that'*.  In moments, it hit me: if the system knew the quantity was the sum of the transactions, it could automate it.
 
-And I ran across in my mind the 5-6 systems we'd built, and it became clear that these kinds of sums, counts and validations were the core of the system.  And exactly what the MBAs had written down.
+And I ran across in my mind the 5-6 systems we'd built, and it became clear that these kinds of sums, counts and validations were the core of each system.  And exactly what the MBAs had written down.
 
 It was the birth of rules.
 
 Some years later, we developed the Wang system that captured and automated these rules - one of the first BRMS.  Remarkably successful, but declaring rules required a new way of thinking.  
 
-This same approach worked for Versata on the J2EE space.  That coincided with the advent of IDEs.  And it became clear that **devs were resistant to studio-based rules if it meant *losing their IDE.***
+This same approach worked for Versata on the J2EE space.  Also sucessful, but 2 realizations:
 
-And, again it was clear that ***many customers 'got' rules, but too many did not.***  As soon as you looked away, the devs all too often 'ran home to code'.  
+1.  It was again clear that ***many customers 'got' rules, but too many did not.***  As soon as you looked away, the devs all too often 'ran home to code'. 
+2. This marked the advent of IDEs.  And it became clear that **devs were resistant to studio-based rules if it meant *losing their IDE.***
 
-So... how to capture the rules in the way users thought of them, and *not* lose the IDE.  It seemed like an academic exercise, because there were a myriad of ways to capture requirements, and they started with parsing NL.  Just too hard...
+So... how to capture the rules in the way users thought of them, and *not* lose the IDE.  It seemed like an academic exercise, because there were a myriad of ways to capture requirements, and they all started with parsing NL.  Just too hard...
 
 Then along came the comet: ***NL, available in free IDEs.*** Overnight:
 
