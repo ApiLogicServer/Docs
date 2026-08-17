@@ -56,6 +56,9 @@ The fact is, AI-driven projects are not doing well.  Two reasons:
 
 2. And, worse, we found bugs -- hard to spot, but fatal to data integrity.
 
+    * Funny story there... we were testing, and gave AI a 5 line prompt with instructions to create code.  It did.  I reviewed the code, and asked AI what would have if...  It understand the bug, and fixed it.  I did it again.
+    * At this point, the AI literally stopped and said "I see what you are doing.  You are teaching me about declarative rules vs. procedural code."  And it wrote a report, summarizing that ((click here))[https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md].
+
 Which brings us back around to rules.  The **rules *are* the governance**, excecuted by a rule engine.  We need to teach AI to generate rules, not code.  So, how?
 
 AI provides multiple ways to do that with *context* - additional information you provide to AI. 
@@ -68,7 +71,14 @@ What works better is **Context Engineering** - a set of project files in your pr
 * **problem-specific knowledge** (your logic: *"the balance is the sum of the unpaid orders"*) from 
 * **problem-independent knowledge** (system information: *here's how you transate 'sum' into rules*).  Significantly, this can be provided by a rule vendor, not the user.
 
+> It's a remarkable choreography between the IDE,  Coding Assistants, and LLMS:<br> 
+> - The IDE informs the AI Ass't about the CE<br>
+> - The AI Ass't processes prompts by gathering CE and project artifacts to prepare a plan that uses the LLM to translate<br>
+> - The resultant rules are deterministic, executed at runtime by the BRMS
+
 AI can then play the critical role of speaking to the user in *their* terms, and translating into rules - grounded, structured, governable.  All inside an IDE suitable for both devs and Bus Users, sharing the same artifacts.
+  
+---
 
 So, it retrospect, it seems so obvious: to really help, you need to 
 
