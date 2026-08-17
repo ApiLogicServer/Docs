@@ -26,7 +26,7 @@ And I ran across in my mind the 5-6 systems we'd built, and it became clear that
 
 It was the birth of rules.
 
-Some years later, we developed the Wang system that captured and automated these rules - one of the first BRMS.  Remarkably successful, but declaring rules required a new way of thinking.  
+Some years later, we developed the Wang system that captured and automated these rules - one of the first BRMS.  Remarkably successful, but not easy: declaring rules required a new way of thinking.  
 
 This same approach worked for Versata on the J2EE space.  Also sucessful, but 2 realizations:
 
@@ -66,7 +66,7 @@ In the beginning, we all learned Prompt Engineering: sandwich your request with 
 What works better is **Context Engineering** - a set of project files in your project.  The IDE AI Assistants know how to find it, and provide the needed aspects to AI.  This essentially paritions the prompt:
 
 * **problem-specific knowledge** (your logic: *"the balance is the sum of the unpaid orders"*) from 
-* **problem-independent knowledge** (*here's how you transate 'sum' into rules*).  Significantly, this can be provided by a rule vendor, not the user.
+* **problem-independent knowledge** (system information: *here's how you transate 'sum' into rules*).  Significantly, this can be provided by a rule vendor, not the user.
 
 AI can then play the critical role of speaking to the user in *their* terms, and translating into rules - grounded, structured, governable.  All inside an IDE suitable for both devs and Bus Users, sharing the same artifacts.
 
