@@ -1,6 +1,6 @@
 !!! pied-piper ":bulb: TL;DR - Key Realizations"
 
-    This article summarizes our key app dev realizations, reached over decades of personal experience:
+    This summarizes our key app dev realizations, reached over decades of personal experience:
 
     1. Business Users are quite capable of designing non-trivial systems, given the right tools
     2. BRMS support for business rules is a key / required element of such tooling
