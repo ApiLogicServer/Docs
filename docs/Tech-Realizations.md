@@ -84,3 +84,8 @@ So, it retrospect, it seems so obvious: to really help, you need to
 
 * ***Let users express themselves in familiar ways, in familiar environments.***  
 * And create ***governed rule-based systems they can read, trust and maintain.***
+
+And the key pieces of technology:
+
+* the rules engine, optimized for enterprise-class performance
+* the machinery (such as CE) to ensure the logic becomes rules, not code
