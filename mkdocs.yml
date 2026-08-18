@@ -254,6 +254,9 @@ nav:
     - Personal:
       - "Manager readme": Manager-readme.md
       - "Realizations": Tech-Realizations.md
+      - "Post - RFI": Tech-Realizations-RFI.md
+      - "Realizations - Post 1": Tech-Realizations-Post_1.md
+      - "Realizations - Post 2": Tech-Realizations-Post_2.md
       - "CLVS update": Customs-clvs-readme.md
       - "Ent AI v5.7": Tech-Ent-AI.md
       - "Gov By Arch": Tech-Gov-By-Arch.md

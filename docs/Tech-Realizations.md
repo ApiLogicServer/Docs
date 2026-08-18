@@ -72,7 +72,7 @@ What works better is **Context Engineering** - a set of project files in your pr
 * **problem-independent knowledge** (system information: *here's how you transate 'sum' into rules*).  Significantly, this can be provided by a rule vendor, not the user.
 
 > It's a remarkable choreography between the IDE,  Coding Assistants, and LLMS:<br> 
-> - The IDE informs the AI Ass't about the CE<br>
+> - The IDE informs the AI Ass't about the CE.  This includes rule creation training - Claude calls in the Rosetta Stone.<br>
 > - The AI Ass't processes prompts by gathering CE and project artifacts to prepare a plan that uses the LLM to translate<br>
 > - The resultant rules are deterministic, executed at runtime by the BRMS
 
