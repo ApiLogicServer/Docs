@@ -258,7 +258,15 @@ Given AI understanding of your project per Context Engineering, it can also prov
 
 #### Extend Context Engineering
 
-You can cause VSCode Copilot to pre-load your own instructions by placing `*.instructions.md` files in `.github`.  See the example in the Manager: `samples/readme_samples.md`:
+Project Context Engineering is used to direct AI to create rules not code, as well as a (large) number of generation directives (EAI, test creation, etc.).  It is stored in your project at `docs/training/`.
+
+It is created by the base scaffold, and can be extended by overlays in the manager or github using `genai-logic create --from-git=<url>` on project creation.
+
+Manager overlays are placed in the manager root at (`system/project_context_engineering/`), and are copied over every newly created project's `docs/training/`.  Use these for training file additions or overrides, applied on top of default scaffold and any `--from_git` overlay. 
+
+![ext-pce](images/manager/Project-CE.png)
+
+In addition, you can cause VSCode Copilot to pre-load your own instructions by placing `*.instructions.md` files in `.github`.  See the example in the Manager: `samples/readme_samples.md`:
 
 ![tour](images/ui-vibe/assistant/extend-ce.png)
 

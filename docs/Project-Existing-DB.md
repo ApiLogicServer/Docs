@@ -37,6 +37,16 @@ Discover other commands with `genai-logic --help`.
 
 &nbsp;
 
+### Extensible Scaffold, Context Engineering
+
+Projects are created from a scaffold, then overlaid with your data model and admin app.
+
+You can extend the scaffold using `--from-git=url`.  The files at <url> will overlay the system scaffold.  This enables you to add organization-specific files, docs, etc.
+
+You can also extend Context Engineering.  For more information, [click here](Project-AI-Enabled.md#extend-context-engineering){:target="_blank" rel="noopener"}.
+
+&nbsp;
+
 ### Create `--from-model`
 
 In addition to creating projects from databases, you can also create them from SQLAlchemy models.  For example:
