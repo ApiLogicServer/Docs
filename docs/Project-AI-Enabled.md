@@ -260,7 +260,7 @@ Given AI understanding of your project per Context Engineering, it can also prov
 
 Project Context Engineering is used to direct AI to create rules not code, as well as a (large) number of generation directives (EAI, test creation, etc.).  It is stored in your project at `docs/training/`.
 
-It is created by the base scaffold, and can be extended by overlays in the manager or github using `genai-logic create --from-git=<url>` on project creation.
+It is created by the base scaffold, and can be extended by overlays in the manager or github using `genai-logic create --from-git=<url>` on project creation.  For more information, see [project creation](Project-Existing-DB.md/#extensible-scaffold-context-engineering){:target="_blank" rel="noopener"}.
 
 Manager overlays are placed in the manager root at (`system/project_context_engineering/`), and are copied over every newly created project's `docs/training/`.  Use these for training file additions or overrides, applied on top of default scaffold and any `--from_git` overlay. 
 
