@@ -86,7 +86,7 @@ This is the start page for the [GenAI-Logic Manager](https://apilogicserver.gith
 ## 🤖 AI Assistance
 
 <!-- LOCAL-MGR-ONLY-START -->
-We get good results with **Claude Sonnet 5** — any AI assistant works (Claude Code, GitHub Copilot, etc.), but pick Sonnet 5 if you can. Then say:
+We get good results with **Claude Sonnet 5** — any AI assistant works (Claude Code, GitHub Copilot, Gemini, etc.), but look for Sonnet 5. Then say:
 <!-- LOCAL-MGR-ONLY-END -->
 <!-- CODESPACES-ONLY-START
 We get good results with **Claude Sonnet 5**. In this environment, GitHub Copilot is what's available — pick Sonnet 5 if you can. Then say:
