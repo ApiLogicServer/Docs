@@ -88,5 +88,8 @@ So, it retrospect, it seems so obvious: to really help, you need to
 And the key pieces of technology:
 
 * the rules engine, optimized for enterprise-class performance
-* the machinery (such as CE) to ensure the logic becomes rules, not code
+* engines that execute models: rules (ORM integration for no bypass, optimized), api, admin app
+* scaffold generation (vs whatever-ai-decides)
+* CE to explain *all* of that - not just rules-not-code, but models: api, admin app, msgs, rbsc, mcp, ... ***at design time***
+* extensibility for Scaffold/CE
 * and no baggage (such as proprietary IDE for rules capture)
