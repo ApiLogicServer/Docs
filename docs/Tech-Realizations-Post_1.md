@@ -22,7 +22,7 @@ But driving home, it hit me. He wasn't wrong. There was a pattern.
 
 I played a what-if game: what would it actually take for the computer to "just do that"? In about thirty seconds it clicked — if the system knew the quantity was the sum of the transactions, it could automate the whole thing itself.
 
-I ran the 5-6 systems I'd built through my head. Same pattern, every time. Sums, counts, validations. Exactly what the MBAs had been writing down all along.
+I ran the 5-6 systems I'd built through my head. Same pattern, every time. Sums, counts, validations.  It as the bulk of the effort.  Exactly what the MBAs had been writing down all along.
 
 It was the birth of rules, for me.
 
@@ -30,7 +30,7 @@ A few years later we built one of the first business rules engines, at Wang, to 
 
 The same approach worked again at Versata, in the J2EE years. Also a real success. But it also taught me two things that would matter for the next twenty years:
 
-1. Plenty of customers "got" rules. Too many didn't. And the moment nobody was watching, developers quietly went back to writing code.
+1. Plenty of customers "got" rules. Too many didn't - "thinking different" was still a challenge. And the moment nobody was watching, developers quietly went back to writing code.
 
 2. This was also when IDEs took over software development. Developers didn't just prefer their IDE. They actively resisted anything — rules included — that meant giving it up.
 
