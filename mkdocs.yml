@@ -26,7 +26,6 @@ nav:
     - Express Eval: Install-Eval.md
     - "Orientation": Tech-Training.md
     - Upgrade Version: Install-Upgrade.md
-  - "Executable Reqmts": Exec-Reqmts.md
   - Demos, Tutorial, Samples:
     - "Creating Demos": Manager-Demos.md
     - "Basic Demo": Sample-Basic-Demo.md
@@ -48,14 +47,8 @@ nav:
       - "Agile Tutorial": Tutorial-Agile.md
       - "AI - ChatGPT, Agile": Tutorial-AI.md
       - "Sample Systems": Data-Model-Examples.md
-  - GenAI:
-    - "Project Studio": Genai-logic-web-studio.md
-    - "WebGenAI Website": WebGenAI.md
-    - "WebGenAI Installation": WebGenAI-install.md      
-    - "WebGenAI Verification": WebGenAI-verify.md      
-    - "GenAI CLI": WebGenAI-CLI.md      
-    - "Sample": Sample-Genai.md
-  - 0. ApiLogicServer create:
+  - "Executable Reqmts": Exec-Reqmts.md
+  - 1. Project Creation:
     - "Manager": Manager.md
     - "Create - Existing DB": Project-Existing-DB.md
     - "Create - New DB (using AI)": Project-Create-Copilot.md
@@ -65,8 +58,9 @@ nav:
     - "Rebuild": Project-Rebuild.md
     - "Virtual Environment": Project-Env.md
     - "Builders": Project-Builders.md
+    - "Project Web Studio": Genai-logic-web-studio.md
     - "Create with Gen/AI on Web": WebGenAI-create.md
-  - 1. Apps:
+  - 2. Apps:
     - Automatic Admin App:
       - "Automatic Admin App": Admin-Tour.md
       - Admin-Customization.md
@@ -79,13 +73,13 @@ nav:
       - "Custom Web Apps": App-Custom.md
       - "Ontimize Overview": App-Custom-Ontimize-Overview.md
       - "App Model Editor": App-Model-Editor.md
-  - 2. API:
+  - 3. API:
     - "Automatic Multi-Table API": API.md
     - "Multi-Table APIs": API-Multi-Table.md
     - "Self-Serve APIs": API-Self-Serve.md
     - "Custom APIs": API-Customize.md
     - "Optimistic Locking": API-Opt-Lock.md
-  - 3. Logic:
+  - 4. Logic:
     - "Logic: Why": Logic-Why.md
     - "Logic: Rule Types, Patterns": Logic.md
     - "Logic: Using  AI":
@@ -105,7 +99,7 @@ nav:
       - "Allocation": "Logic-Allocation.md"
       - "Events": "Logic-Type-Events.md"
       - "Time/Date Stamping": Logic-Allocation-Time-Date.md
-  - 4. Security:
+  - 5. Security:
     - "Overview": Security-Overview.md
     - "Getting Started with Security": Security-Getting-Started.md
     - "Role-based Authorization": Security-Authorization.md
@@ -114,7 +108,7 @@ nav:
     - "Configure sql auth": Security-sql.md
     - "Configure Keycloak auth": Security-Keycloak.md
     - "Swagger": Security-Swagger.md
-  - 5. Application Integration:
+  - 6. Application Integration:
     - "EAI": Integration-EAI.md
     - "MCP Integration": Integration-MCP.md
     - "MCP AI Example": Integration-MCP-AI-Example.md
@@ -127,8 +121,6 @@ nav:
   - IDE - Customize, Manage:
     - "Customize Using Your IDE": IDE-Customize.md
     - "Fixup - missing attributes": IDE-Fixup-Attrs.md
-    - "Import / Merge WebGenai": IDE-Import-WebGenAI.md
-    - "Rebuild Test Data": IDE-Rebuild-Test-Data.md
     - "Project Governance Report ⚗️": IDE-Health-Check.md
   - Database:
     - "Connection Examples, Debug": Database-Connectivity.md
@@ -176,6 +168,14 @@ nav:
     - "What is GenAI-Logic": Architecture-What-Is-GenAI.md
     - "Project Operation": Architecture-Project-Operation.md
     - "Declarative Automation": Architecture-Declarative-Automation.md
+  - WebGenAI:
+    - "WebGenAI Website": WebGenAI.md
+    - "WebGenAI Installation": WebGenAI-install.md      
+    - "WebGenAI Verification": WebGenAI-verify.md      
+    - "GenAI CLI": WebGenAI-CLI.md      
+    - "Import / Merge WebGenai": IDE-Import-WebGenAI.md
+    - "Rebuild Test Data": IDE-Rebuild-Test-Data.md
+    - "Sample": Sample-Genai.md
   - Internals:
     - "Internal Dev Procedures": Architecture-Internals.md
     - "Admin App Architecture": Architecture-admin-app-reuse.md
