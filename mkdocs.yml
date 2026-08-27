@@ -48,7 +48,7 @@ nav:
       - "AI - ChatGPT, Agile": Tutorial-AI.md
       - "Sample Systems": Data-Model-Examples.md
   - "Executable Reqmts": Exec-Reqmts.md
-  - 1. Project Creation:
+  - 1. Project Creation - Executable Requirements:
     - "Manager": Manager.md
     - "Create - Existing DB": Project-Existing-DB.md
     - "Create - New DB (using AI)": Project-Create-Copilot.md
