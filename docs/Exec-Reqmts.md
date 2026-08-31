@@ -1,7 +1,7 @@
 ---
 title: Executable Requirements
 source: docs/Exec-Reqmts.md
-version: 2.0, 8/13/2026
+version: 2.1, 8/30/2026
 ---
 
 <style>
@@ -76,6 +76,8 @@ See it in practice: [demo_eai](Sample-Basic-EAI.md){:target="_blank" rel="noopen
 ![RFI](images/exec_reqmts/RFI.png)
 
 Classic wizards walk a fixed sequence of screens — no judgment, no pushback, blind to what you actually meant. RFI (above) is guided, not scripted: the AI asks follow-ups, catches gaps you didn't think to mention (see the transcript — the shipping notification only surfaced because the AI kept the thread open after the "requirements" looked done), and reads its synthesis back for confirmation before anything is built. It's closer to a business-analyst interview than a form.
+
+This has a governance consequence beyond convenience. Requirements quality has traditionally depended on the skill and training of whoever captures them — a gap missed in an interview is a gap missed in the rules. RFI moves that responsibility from the individual BA to the interview process itself: the same follow-up questions (constants, lookups/FKs, integration points, judgment calls) get asked regardless of who's in the room. Rules governance still depends on requirements being complete — RFI is one way to make that completeness less dependent on who happens to be running the interview.
 
 And whichever way you arrive at `requirements.md` — written, prompt file, or RFI — the resultant project is fully standard Python — your IDE, your source control, your deployment pipeline. Nothing is locked to a generator or a framework layer. You customize, test, and deploy it the same way you would any Python service. The requirements file and the ad-libs report stay alongside the code as living documentation, not as a regeneration mechanism.
 
