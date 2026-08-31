@@ -30,6 +30,30 @@ version: 2.1, 8/30/2026
 
 &nbsp;
 
+## Basic Example
+
+As shown below, you can create projects by supplying requirements, and/or requesting AI to interview you for them:
+
+![rfi_with_int](images/exec_reqmts/rfi_with_int.png)
+
+Use your AI Assistant, or, as shown here, VSCode's *Agent Window* (not currently available in codespaces).  Your interaction includes  *A. Prompt*, and optionally an *interview and response:*
+
+1. The prompt typically identifies your **domain**
+
+      * This is commonly an *existing database* or (as here) a description of a *new one*
+
+2. This prompt includes **fully specified logic** (not required)
+
+      * AI, driven by Context Engineering, translates these to 5 governing rules (not ~40X procedural code)
+
+3. This prompt also includes a **request for an interview** to clarify a discount
+4. You next provide your **response** to the interview questions
+5. The system **creates an executable project**
+6. You can open the project, and **iterate it:** add new requirements (`implement requirements`), or update existing ones
+
+
+<br>
+
 ## What It Is
 
 Traditional requirements are a handoff artifact: a document a developer reads, interprets, and then implements. Interpretation introduces drift — requirements that describe intent, code that approximates it.
