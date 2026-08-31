@@ -36,7 +36,7 @@ As shown below, you can create projects by supplying requirements, and/or reques
 
 ![rfi_with_int](images/exec_reqmts/rfi_with_int.png)
 
-Use your AI Assistant, or, as shown here, VSCode's *Agent Window* (not currently available in codespaces).  Your interaction includes  *A. Prompt*, and optionally an *interview and response:*
+Use your AI Assistant, or, as shown here, VSCode's *Agent Window* (not currently available in codespaces).  Your interaction is shown in the shaded areas, above:
 
 1. The prompt typically identifies your **domain**
 
