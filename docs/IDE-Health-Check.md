@@ -60,6 +60,8 @@ It is a better way to write the same Python that teams are already writing.
 
 ## Logic Flow — Requirements, Diagram, and Rules in One Document
 
+![logic diagram](images/vscode/logic-diagram.png)
+
 Say `create logic diagram` (or `create logic diagram from <requirement>`) in any
 project. The AI generates a Markdown document that combines:
 
