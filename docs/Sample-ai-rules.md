@@ -6,6 +6,16 @@ do_process_code_block_titles: True
 version: 1.0 from docsite, for readme 2/16/2026
 ---
 
+!!! pied-piper ":bulb: TL;DR - AI Rules: governed judgment calls inside deterministic logic"
+
+    Created by: › genai-logic create --project_name=demo_ai_rules_supplier --db_url=sqlite:///samples/dbs/basic_demo.sqlite
+
+    * An AI Rule (Request Pattern) picks the optimal Product Supplier, based on cost, lead time, and world conditions
+    * The AI's "proposal" is still governed by the deterministic rules around it — it can't violate business policy
+    * Full audit trail of every AI request and response
+
+    Status: Reference implementation
+
 <style>
   .md-typeset h1,
   .md-content__button {

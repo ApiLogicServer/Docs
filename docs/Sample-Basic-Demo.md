@@ -12,6 +12,16 @@ version: 1.0 from docsite, for readme 2/16/2026
   }
 </style>
 
+!!! pied-piper ":bulb: TL;DR - The main tutorial project: start here"
+
+    Created by: › genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basic_demo.sqlite
+
+    * Instant microservice — JSON:API + Admin UI + declarative logic + security, from one command
+    * Rebuild it yourself via this readme (CLI) or `readme_vibe.md` (natural language)
+    * The reference project most other samples and docs build on
+
+    Status: Primary tutorial
+
 # Product Tour (Start Here)
 
 This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-features) operation: 

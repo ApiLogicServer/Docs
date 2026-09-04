@@ -14,6 +14,8 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 
 !!! pied-piper ":bulb: TL;DR - Kafka Integration: Async Messaging"
 
+    Created by: › genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite, then Executable Requirements ("implement reqs")
+
     APIs are useful to application integration, but do not deal with the reality that the receiving system might be down.
 
     Message Brokers like Kafka address this with guaranteed ***async delivery*** of messages.  The Broker stores the message, delivering it (possibly later) when the the receiver is up.
