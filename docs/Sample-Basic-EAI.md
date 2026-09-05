@@ -65,6 +65,10 @@ $ genai-logic add-auth --provider-type=keycloak --db-url=localhost
 implement requirements docs/requirements/demo_eai
 ```
 
+**Using Podman instead of Docker?** Step C's `docker compose up -d` can be `podman compose up -d`
+instead — `devops/keycloak/docker-compose.yml` works unchanged. One-time setup: see
+[DevOps-Podman](DevOps-Podman.md).
+
 The prompts on this page are the requirements for this system. Execute the steps above to build it.  Thse requirements are not just a description of the system - AI can execute them, directly.
 
 This is a real project: your IDE, your Python, your source control. The prompts create it in minutes — but you own it fully and iterate from there. Change a rule; the engine determines execution order automatically. Add an endpoint; the rules are already there waiting for it.
@@ -304,8 +308,9 @@ curl "http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/demo_
 
 - Kafka is optional. To test with live Kafka:
   1. Start Docker: `docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d`
+     (Podman instead of Docker? Use `podman compose` — same file, unchanged. See [DevOps-Podman](DevOps-Podman.md).)
   2. Reset topics: `bash integration/kafka/order_b2b_reset.sh`
-  3. Restart the server (after Docker is up, so it picks up Kafka env vars and subscribes to topics)
+  3. Restart the server (after Docker/Podman is up, so it picks up Kafka env vars and subscribes to topics)
   4. Send a test message using the curl command above
 
 

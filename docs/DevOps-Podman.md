@@ -1,17 +1,17 @@
-!!! pied-piper ":bulb: TL;DR - Postman is a Docker Alternative"
+!!! pied-piper ":bulb: TL;DR - Podman is a Docker Alternative"
 
     Docker is familiar to most developers as a way to create, run and manage containers.  GenAI-Logic runs well with Docker, and is used in most of our examples.
 
-    Many developers use Postman (for more information, [click here](https://www.postman.com){:target="_blank" rel="noopener"}), which has the advantage that it's free to large enterprises.  GenAI-Logic also runs well with Postman, as described below.
-    
-      * We gathered this information by asking Claude to migrate `samples/demo_customs_clvs` to Podman, which not onlu worked flawlessly, but created the information below.
+    Many developers use Podman (for more information, [click here](https://podman.io){:target="_blank" rel="noopener"}), which has the advantage that it's free to large enterprises and requires no daemon. GenAI-Logic's Kafka integration (`integration/kafka/dockercompose_start_kafka.yml`) runs unchanged under Podman — no project files need to differ between Docker and Podman users.
+
+      * We gathered this information by asking Claude to migrate `samples/demo_customs_clvs` to Podman, which not only worked flawlessly, but created the information below. The steps apply to any GenAI-Logic project's Kafka integration, not just that one sample.
 
 &nbsp;
 
-# Podman Setup for demo_customs_clvs_podman
+# Podman Setup for GenAI-Logic Projects
 
-This project uses Podman instead of Docker. These are the one-time setup steps required on a Mac
-with no Docker installed.
+Any GenAI-Logic project's Kafka integration can run under Podman instead of Docker. These are the
+one-time setup steps required on a Mac with no Docker installed.
 
 ---
 
@@ -110,15 +110,16 @@ podman compose -f integration/kafka/dockercompose_start_kafka.yml down
 ## Reset Topics (between test runs)
 
 ```bash
-bash integration/kafka/isdc_reset.sh
+bash integration/kafka/<topic>_reset.sh
 ```
 
-This deletes and recreates the `isdc` and `isdc_processed` topics so consumer offsets start fresh.
+This deletes and recreates the topic(s) for that pipeline so consumer offsets start fresh
+(e.g. `isdc_reset.sh` in `demo_customs_clvs`, which resets `isdc` and `isdc_processed`).
 
 To also clear the database tables:
 
 ```bash
-bash integration/kafka/isdc_reset_db.sh
+bash integration/kafka/<topic>_reset_db.sh
 ```
 
 ---
@@ -131,7 +132,7 @@ podman exec broker1 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:
 
 # Read a topic from the beginning (increment group number each time to re-read)
 podman exec broker1 /opt/kafka/bin/kafka-console-consumer.sh \
-  --bootstrap-server localhost:9092 --topic isdc --from-beginning --group fresh-group-1
+  --bootstrap-server localhost:9092 --topic <topic> --from-beginning --group fresh-group-1
 ```
 
 ---
@@ -142,7 +143,7 @@ In `config/default.env`, set:
 
 ```
 KAFKA_SERVER = localhost:9092
-KAFKA_CONSUMER_GROUP = customs_demo-group1
+KAFKA_CONSUMER_GROUP = <project>-group1   # keep unique per project clone
 ```
 
 Without these, the app runs in debug/fallback mode only (no Kafka consumer activated).
@@ -151,17 +152,18 @@ Without these, the app runs in debug/fallback mode only (no Kafka consumer activ
 
 ## Run the Test Gate
 
-Requires the server running on port 5656 and Kafka running.
+If the project has one (e.g. `demo_customs_clvs`'s `docs/requirements/customs_demo/test_gate.sh`),
+requires the server running on port 5656 and Kafka running.
 
 ```bash
-bash docs/requirements/customs_demo/test_gate.sh
+bash docs/requirements/<name>/test_gate.sh
 ```
 
 The gate tests both the debug path (no Kafka needed) and the live Kafka path.
 To require the Kafka phase to pass:
 
 ```bash
-KAFKA_PHASE_REQUIRED=true bash docs/requirements/customs_demo/test_gate.sh
+KAFKA_PHASE_REQUIRED=true bash docs/requirements/<name>/test_gate.sh
 ```
 
 ---
