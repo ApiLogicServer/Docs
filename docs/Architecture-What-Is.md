@@ -42,7 +42,7 @@ The following
 
 ## Model Execution Engines
 
-When you create a project (`als create` or `als genai`), the system creates models shown below.  These model files are "executed" by the corresponding **Model Execution Engines**, as noted.
+When you create a project (`als create` or `als genai`), the system creates ***executable models*** shown below.  These model files are *executed* by the corresponding **Model Execution Engines**, as noted.
 
 ![Model Exec Engines](images/model/model-exec-engines.png)
 

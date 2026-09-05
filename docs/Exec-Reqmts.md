@@ -15,7 +15,7 @@ version: 2.1, 8/30/2026
 
 !!! pied-piper ":bulb: TL;DR - Requirements-Driven Iterative Development"
 
-    **Executable *Governed* Requirements** treats your requirements as the ongoing source of truth for governed logic — not a one-time handoff artifact, but the spec your system is **generated from**, and **re-generated from** as it iterates.
+    **Executable *Governed* Requirements** treats your requirements as the ongoing source of truth for governed logic — not a one-time handoff artifact, but the spec your system [models](Architecture-What-Is.md#model-execution-engines) are **generated from**, and **re-generated from** as it iterates.
 
     * **Any format:** structured prose, numbered lists, Gherkin — whatever your team already writes
     * **Three ways to arrive at `requirements.md`:**
