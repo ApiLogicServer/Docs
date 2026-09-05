@@ -245,6 +245,8 @@ rate, an overstatement for the cap and threshold amounts specifically.
 
 There is no required format. The spec is whatever your team already produces — prose, numbered lists, Gherkin. The key is structure: clear sections for logic, integrations, and acceptance criteria.
 
+> **Key Idea:** regardless of the format you choose, AI translates your requirements into rules, operating at commit, governing all sources (API, messages, agents,...) and paths (insert, update, delete).
+
 <br>
 
 ### Numbered prose
