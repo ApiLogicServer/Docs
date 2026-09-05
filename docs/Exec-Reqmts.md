@@ -151,13 +151,105 @@ This has a governance consequence beyond convenience. Requirements quality has t
 
 And whichever way you arrive at `requirements.md` — written, prompt file, or RFI — the resultant project is fully standard Python — your IDE, your source control, your deployment pipeline. Nothing is locked to a generator or a framework layer. You customize, test, and deploy it the same way you would any Python service. The requirements file and the ad-libs report stay alongside the code as living documentation, not as a regeneration mechanism.
 
+<details markdown>
+
+<summary>Library RFI</summary>
+
+<br>library_rfi — STEP 1b Partial Interview Transcript
+
+**Trigger:** Prompt was otherwise complete (project name + entities given) but explicitly
+requested an interview on: "how loans and fines should work, and what should happen when
+a member wants a book that's already checked out."
+
+**Original prompt (see `project_creation_prompt.md` for verbatim copy):**
+> Create a system called library_rfi for a small public library — tracking members, books,
+> and loans.
+>
+> Interview me to work out the rules: how loans and fines should work, and what should
+> happen when a member wants a book that's already checked out.
+
+(The prompt's first line, `// paste this into your AI Assistant:`, is a STEP 0 human-facing
+comment and was not acted on.)
+
+---
+
+***Q&A***
+
+**Question: Loan period**
+Options: 21 days, 1 renewal · 14 days, 2 renewals · No renewals · Other (I'll specify)
+
+**Answered:** 21 days, 1 renewal
+
+**Question: Fines**
+Options: Flat rate/day, capped · Flat rate/day, no cap · Grace period then flat rate ·
+No fines · *(list continued past what was captured)*
+
+**Answered:** Flat rate/day, capped
+
+**Question: Borrow limit**
+Options: Yes — block above a fine threshold · Yes — block on any unpaid fine ·
+No — fines don't restrict borrowing
+
+**Answered:** Yes — block above a fine threshold
+
+**Question: Checked-out**
+Options: Hold/reservation queue, FIFO · Reject, no waitlist · Hold queue + notification action
+
+**Answered:** Hold/reservation queue, FIFO
+
+**Note on specific numbers:** the options above establish *policy shape* (capped vs.
+uncapped, threshold-based vs. any-unpaid-fine, FIFO hold vs. reject), not literal dollar
+figures. Only the $0.25/day fine rate has a directly traceable source — answered inline in
+plain text (see Tool notes) after the first `AskUserQuestion` batch failed. The $10 fine
+cap and $5 block threshold do not appear in any option list captured; they were proposed by
+the AI in the synthesis below and accepted via "looks good - proceed," not selected from a
+menu. Flagged here rather than left implicit, since `ad-libs.md` describes all four figures
+as "confirmed verbatim via the STEP 1b interview" — true for the policy shape and the fine
+rate, an overstatement for the cap and threshold amounts specifically.
+
+**AI synthesis, read back to user:**
+
+> Library system (`library_rfi`) tracking Members, Books, and Loans.
+>
+> - A Loan runs 21 days from checkout, with one allowed renewal — blocked if the book has
+>   an active Hold from another member.
+> - Overdue Loans accrue a fine of $0.25/day (configurable via `sys_config.fine_rate_per_day`),
+>   capped at $10/book (configurable via `sys_config.fine_cap_per_book`).
+> - A Member's total unpaid fines are tracked; once unpaid fines reach $5 (configurable via
+>   `sys_config.fine_block_threshold`), the member is blocked from checking out additional
+>   books until fines are paid down.
+> - If a Member wants a Book that's currently checked out, they're placed on a FIFO Hold
+>   queue for that Book. When the Book is returned, the oldest Hold is marked "ready for
+>   pickup" — the member is notified to come get it (not auto-checked-out to them).
+
+**User:** "looks good - proceed"
+
+---
+
+**Tool notes (process, not requirements)**
+
+- First `AskUserQuestion` batch (fine cap / block threshold / renewal-vs-hold, 4 questions)
+  failed `InputValidationError` — three "Other" catch-all options were missing the required
+  `label` field. Fixed by adding explicit `"label": "Other"`.
+- The corrected retry failed again with `AbortError: Tool permission stream closed before
+  response received` — no answer captured. The user then answered the fine-rate question
+  inline in plain text: **"0.25/day, but it must be configurable."** The remaining three
+  questions (fine cap, block threshold, renewal-vs-hold) were then re-asked in a fresh,
+  successful `AskUserQuestion` call.
+
+</details>
+
 &nbsp;
 
 ## Requirement Format: Whatever You Already Write
 
 There is no required format. The spec is whatever your team already produces — prose, numbered lists, Gherkin. The key is structure: clear sections for logic, integrations, and acceptance criteria.
 
-**Numbered prose** (the simplest form — see [samples/prompts/genai_demo.prompt](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/prompts/genai_demo.prompt){:target="_blank" rel="noopener"}):
+<br>
+
+### Numbered prose
+
+The simplest form — see [samples/prompts/genai_demo.prompt](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/prompts/genai_demo.prompt){:target="_blank" rel="noopener"}):
 
 ```
 Create a system with customers, orders, items and products.
@@ -173,7 +265,11 @@ Use case: App Integration
     1. Publish the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 
-**Gherkin** — for teams that already use BDD-style specs (see `samples/requirements/demo-eai/docs/requirements/demo-eai/requirements.md`):
+<br>
+
+### Gherkin
+
+For teams that already use BDD-style specs (see `samples/requirements/demo-eai/docs/requirements/demo-eai/requirements.md`):
 
 ```gherkin
 Feature: Check Credit
@@ -189,6 +285,77 @@ Feature: Check Credit
 ```
 
 Both formats produce the same output: declarative rules enforced on every path, a standard JSON:API, and an Admin app — from a single `implement reqs` prompt.
+
+### Procedural
+
+Developers may be comfortable with procedural approaches (see `samples/library_rfi/docs/requirements/library_procedural.md`); these still result in clear, governed rules:
+
+<details markdown>
+
+<summary>Procedural Requirements </summary>
+
+<br>**library_rfi — Requirements as Procedural Steps**
+
+Same confirmed rules as `library_rfi-transcript.md`, restated the way a developer typically
+thinks about them first: as a sequence of steps per transaction, not as invariants on data.
+This is the "path-dependent" framing — compare against the declarative rules actually used
+in `logic/logic_discovery/loans_and_fines.py` and `holds.py`.
+
+---
+
+**Checkout a book**
+
+1. Look up the Book.
+2. If the Book already has an active loan (a Loan with no return_date), reject:
+   "Book is already checked out — place a Hold instead."
+3. Look up the Member.
+4. Sum `fine_amount - fine_paid` across all of the Member's Loans to get their current
+   fine_balance.
+5. If fine_balance >= fine_block_threshold, reject:
+   "Member is blocked from borrowing due to unpaid fines."
+6. Look up loan_period_days from sys_config.
+7. due_date = checkout_date + loan_period_days.
+8. Insert the Loan row.
+
+**Renew a loan**
+
+1. Look up the Loan.
+2. Query for any waiting Hold on this Loan's book_id belonging to a *different* member.
+3. If found, reject: "Cannot renew — this book has a waiting hold from another member."
+4. Look up loan_period_days from sys_config.
+5. due_date = checkout_date + 2 * loan_period_days.
+6. Set renewed = 1. Save the Loan.
+
+**Return a book**
+
+1. Look up the Loan.
+2. Set return_date = today.
+3. Look up fine_rate_per_day and fine_cap_per_book (or read them off the Loan if they were
+   copied there at checkout).
+4. days_late = return_date - due_date.
+5. If days_late > 0: fine_amount = min(days_late * fine_rate_per_day, fine_cap_per_book).
+   Else: fine_amount = 0.
+6. fine_balance = fine_amount - fine_paid. Save the Loan.
+7. Re-sum the Member's fine_balance across all their Loans.
+8. Recompute the Member's blocked flag: blocked = (fine_balance >= fine_block_threshold).
+   Save the Member.
+9. Query for the oldest waiting Hold on this Loan's book_id, ordered by requested_date.
+10. If found, set that Hold's status = 'ready'. Save it.
+
+**Pay a fine**
+
+1. Look up the Loan.
+2. fine_paid += payment amount.
+3. fine_balance = fine_amount - fine_paid. Save the Loan.
+4. Re-sum the Member's fine_balance across all their Loans.
+5. Recompute the Member's blocked flag. Save the Member.
+
+**Place a hold**
+
+1. Look up the Book.
+2. Insert a Hold row: member_id, book_id, requested_date = today, status = 'waiting'.
+
+</details>
 
 &nbsp;
 
