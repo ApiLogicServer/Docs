@@ -17,18 +17,16 @@ version: 1.1, 9/13/2026
 
     Your requirements — in whatever format you already write them — become a running, governed system in five stages: **DB, Scaffold, Project, Review, Deploy**.
 
-    * **Natural** — **use your existing formats**: a declarative list, Gherkin, procedural prose, even incomplete requirements — AI interviews you (RFI - Requirements from Interview) for what's missing
-    * **Readable** — **AI generates rules, not code**: the same requirement handed to a general coding assistant as a procedural task produces code that *looks* right and hides bugs; declarative rules don't
-    * **Reviewable** — **you review a short list, not the full diff**: AI writes back a proactive audit trail (`ad-libs.md`), flagging only what actually needs your judgment
-    * **Shared** — **fits your organization**: Business Users and Developers work the same project, with the same tools and artifacts — no hand-off, no rewrite
-    * **Standard** — **fits your infrastructure**: runs as scalable containers, reachable by API, MCP, and messages — not a bespoke integration
-    * **Trustable** — **governance is no bypass**: the rule engine plugs into the ORM's commit event, not into the API or handlers, so it fires identically whether the change comes from an API call, a message handler, or an AI agent
+    * **Natural** — **use your existing formats**: a declarative list, Gherkin, procedural prose, etc.  Your team can continue to use methodologies they are comfortable with.
+    * **Readable** — **AI generates rules, not code**: the same requirement handed to a general coding assistant as a procedural task produces code that *looks* right and hides bugs; five rules you can actually read.
+    * **Trustable** — **governance is no bypass**: the rule engine plugs into the ORM's commit event, not into the API or handlers, so it fires identically whether the change comes from an API call, a message handler, or an AI agent.
+    * **Reviewable** — **you review a short list, not the full diff**: AI writes back a proactive audit trail (`ad-libs.md`), flagging only what actually needs your judgment.
+    * **Shared** — **fits your organization**: Business Users and Developers work the same project, with the same tools and artifacts — no hand-off, no rewrite.
+    * **Standard** — **fits your infrastructure**: runs as scalable containers, reachable by API, MCP, and messages — not a bespoke integration.
 
 &nbsp;
 
 ![XR Operation](images/exec_reqmts/XR-Operation.png)
-
-Each stage below gets its own detail page under **1. Creating/Managing Projects** — this page is the concept summary they point back to.
 
 <br>
 
@@ -106,25 +104,25 @@ The rules are deterministic and plug into the database's commit event — not in
 ![admin-app-initial](images/basic_demo/admin-app-initial.jpeg)
 </details>
 
-*Why Python-as-declaration works this way, across rules, API, and UI: [Model Driven](Tech-DSL.md).*
+*Why Python-as-declaration works this way, across rules, API, and UI: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"}.*
 
 <br>
 
 ## Review - Rules Governance
 
-The requirements are executable, but it is designed as a 2-set process to provide the *human in the loop* governance of your business logic:
+The requirements are executable, but review is designed as a 3-step process to provide *human in the loop* governance of your business logic:
 
-1. **Read:** unlike native AI which generates ~200 lines of code you'd rather not read, the 5 check credit requirements generate 5 rules you can read.
+1. **Read:** unlike native AI which generates ~200 lines of code you'd rather not read, the 5 check credit requirements generate **5 rules you can read.**
 
 2. **Trust:** AI-generated code is not only lengthy, we have observed bugs (for more information, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}).  Rules are declarative, so address **all paths** (insert, update, delete), and operate as listeners to ORM commit events, so apply to **all transaction sources.**
 
-3. **Maintain:** the logic engine orders execution by analyzing dependencies, so it automatically adapts to changing rules — the same [comparison](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"} shows this is what lets the five rules handle the re-parenting cases the procedural version got wrong.
+3. **Maintain:** the rules engine **orders rules execution** by analyzing dependencies, so it automatically adapts to changing rules — the same [comparison](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"} shows this is what lets the five rules handle the re-parenting cases the procedural version got wrong.
 
 *Full architecture and the runtime opt-in pattern: [Logic](Logic-Why.md){:target="_blank" rel="noopener"} and [AI Security FAQ](FAQ-AI-Security.md){:target="_blank" rel="noopener"}. Audit-trail mechanics: [Executable Reqmts](Exec-Reqmts.md){:target="_blank" rel="noopener"}.*
 
 <br>
 
-## Deploy - standard container
+## Deploy - Standard Container
 
 The result runs as a scalable server exposing both the API and message handlers, built on the same rule engine and the same governance — no separate deployment step re-checks or re-implements the rules.
 
@@ -132,6 +130,6 @@ The result runs as a scalable server exposing both the API and message handlers,
 
 ## Iterate, Vibe Custom UIs
 
-You can add requirements, and update existings ones, in place.  Use your favorite Vibe tools to create custom User interfaces.  Use your IDE as always for coding, debugging, etc.  Ask AI to create tests, and add your own.
+You can add requirements, and update existing ones, in place.  Use your favorite Vibe tools to create custom User interfaces.  Use your IDE as always for coding, debugging, etc.  Ask AI to create tests, and add your own.
 
 *See [vibe](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}.  [Testing](Behave.md){:target="_blank" rel="noopener"}. The [Manager](Manager.md){:target="_blank" rel="noopener"} is where you run all of this day to day.*
