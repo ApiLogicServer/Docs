@@ -15,12 +15,14 @@ version: 1.1, 9/13/2026
 
 !!! pied-piper ":bulb: TL;DR - Requirements In, Enterprise-class Governed System Out"
 
-    Your requirements — in whatever format you already write them — become a running, governed system in five stages: **DB, Scaffold, Project, Review, Deploy**.
+    GenAI-Logic creates enterprise-class database transaction systems, governed by rules that can't be bypassed.
+
+    And it actively fosters collaboration between Business and IT, with standard tools and shared artifacts.
 
     * **Natural** — **use your existing formats**: a declarative list, Gherkin, procedural prose, etc.  Your team can continue to use methodologies they are comfortable with.
     * **Readable** — **AI generates rules, not code**: the same requirement handed to a general coding assistant as a procedural task produces code that *looks* right and hides bugs; five rules you can actually read.
     * **Trustable** — **governance is no bypass**: the rule engine plugs into the ORM's commit event, not into the API or handlers, so it fires identically whether the change comes from an API call, a message handler, or an AI agent.
-    * **Reviewable** — **you review a short list, not the full diff**: AI writes back a proactive audit trail (`ad-libs.md`), flagging only what actually needs your judgment.
+    * **Reviewable** — **AI flags what needs judgment**: AI writes back a proactive audit trail (`ad-libs.md`) — you review a short list, not the full diff.
     * **Shared** — **fits your organization**: Business Users and Developers work the same project, with the same tools and artifacts — no hand-off, no rewrite.
     * **Standard** — **fits your infrastructure**: runs as scalable containers, reachable by API, MCP, and messages — not a bespoke integration.
 
