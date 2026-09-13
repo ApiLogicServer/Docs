@@ -47,19 +47,25 @@ nav:
       - "Agile Tutorial": Tutorial-Agile.md
       - "AI - ChatGPT, Agile": Tutorial-AI.md
       - "Sample Systems": Data-Model-Examples.md
-  - "Executable Reqmts": Exec-Reqmts.md
-  - 1. Project Creation - Executable Requirements:
+  - "Executable Reqmts": Exec-Reqmts-Process.md
+  - 1. Creating/Managing Projects:
+    - "Fitting Your Workflow": WorkFlow.md
     - "Manager": Manager.md
+    - "Executable Reqmts": Exec-Reqmts.md
+    - "!DUP Create - New DB (use AI)": Project-Create-Copilot.md
     - "Create - Existing DB": Project-Existing-DB.md
-    - "Create - New DB (using AI)": Project-Create-Copilot.md
-    - "Project Structure": Project-Structure.md
     - "AI-Enabled Projects": Project-AI-Enabled.md
     - "Model Driven": Tech-DSL.md
-    - "Rebuild": Project-Rebuild.md
-    - "Virtual Environment": Project-Env.md
-    - "Builders": Project-Builders.md
     - "Project Web Studio": Genai-logic-web-studio.md
     - "Create with Gen/AI on Web": WebGenAI-create.md
+    - Managing your Project:
+      - "Project Structure": Project-Structure.md
+      - "Customize Using Your IDE": IDE-Customize.md
+      - "Fixup - missing attributes": IDE-Fixup-Attrs.md
+      - "Virtual Environment": Project-Env.md
+      - "Builders": Project-Builders.md
+      - "Project Governance Report ⚗️": IDE-Health-Check.md
+      - "Rebuild": Project-Rebuild.md
   - 2. Apps:
     - Automatic Admin App:
       - "Automatic Admin App": Admin-Tour.md
@@ -118,10 +124,6 @@ nav:
       - "Sample Integration": Sample-Integration.md
       - "Integration Mapping": Integration-Map.md
       - "Kafka Messaging": Integration-Kafka.md
-  - IDE - Customize, Manage:
-    - "Customize Using Your IDE": IDE-Customize.md
-    - "Fixup - missing attributes": IDE-Fixup-Attrs.md
-    - "Project Governance Report ⚗️": IDE-Health-Check.md
   - Database:
     - "Connection Examples, Debug": Database-Connectivity.md
     - "Database Diagram": Database-Diagram.md
