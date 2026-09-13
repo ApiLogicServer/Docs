@@ -17,14 +17,14 @@ version: 1.1, 9/13/2026
 
     GenAI-Logic turns your requirements into enterprise-class database transaction systems, governed by rules that can't be bypassed.
 
-    And it uses standard tools and shared artifacts, fostering collaboration between Business Users and Developers.
+    And it uses your methodology, standard tools, and shared artifacts, fostering collaboration between Business Users and Developers.
 
-    * **Natural** — **use your existing formats**: a declarative list, Gherkin, procedural prose, etc.  Your team keeps using methodologies they're already comfortable with, project after project.
-    * **Readable** — **AI generates rules, not code**: the same requirement handed to a general coding assistant as a procedural task produces code that *looks* right and hides bugs; five rules you can actually read.
+    * **Natural** — **use your existing methodology**: a declarative list, Gherkin, procedural prose, etc.  Your team keeps working the way they're already comfortable with, project after project.
+    * **Readable** — **AI generates rules, not code**: the same requirement handed to a general coding assistant as a procedural task produces code that *looks* right and hides bugs — vs. five rules you can actually read.
     * **Trustable** — **governance is no bypass**: the rule engine plugs into the ORM's commit event, not into the API or handlers, so it fires identically whether the change comes from an API call, a message handler, or an AI agent.
     * **Reviewable** — **AI flags what needs judgment**: AI writes back a proactive audit trail (`ad-libs.md`) — you review a short list, not the full diff.
-    * **Shared** — **fits your organization**: Business Users and Developers work the same project, with the same tools and artifacts — no hand-off, no rewrite.
-    * **Standard** — **fits your infrastructure**: runs as scalable containers, reachable by API, MCP, and messages — not a bespoke integration.
+    * **Shared** — **fits your organization**: Business Users and Developers work the same project, with standard tools and artifacts — no hand-off, no rewrite.
+    * **Standard** — **spans design to runtime**: build with your own IDE and git; run as scalable containers, reachable by API, MCP, and messages.
 
 &nbsp;
 
