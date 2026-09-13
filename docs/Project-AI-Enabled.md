@@ -254,6 +254,8 @@ Given AI understanding of your project per Context Engineering, it can also prov
 
 ![context-engineering](images/ui-vibe/assistant/hmm-black-box.png)
 
+Not sure what's possible? Ask *"what can you help me with?"* — Context Engineering answers with a concrete, numbered menu (add logic, customize the API, build custom UIs, add security, write tests) instead of a black-box guess.
+
 <br>
 
 #### Extend Context Engineering
