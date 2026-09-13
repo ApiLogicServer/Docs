@@ -15,13 +15,14 @@ version: 1.1, 9/13/2026
 
 !!! pied-piper ":bulb: TL;DR - Requirements In, Enterprise-class Governed System Out"
 
-    Your requirements — in whatever format you already write them — become a running, governed system in five stages: **DB, Scaffold, Project, Review, Deploy**. No screen painter, no manual data modeling, no shadow IT.
+    Your requirements — in whatever format you already write them — become a running, governed system in five stages: **DB, Scaffold, Project, Review, Deploy**.
 
-    * **Any format works:** a declarative list, Gherkin, procedural prose, even incomplete requirements — AI interviews you (RFI - Requirements from Interview) for what's missing
-    * **AI generates rules, not code** — the same requirement handed to a general coding assistant as a procedural task produces code that *looks* right and hides bugs; declarative rules don't
-    * **Reviewable: you review a short list of rules and a creation audit trail** — AI writes back a proactive audit trail (`ad-libs.md`), flagging only what actually needs your judgment
-    * **Enterprise-class:** created systems integrate into with your other systems, with automation for APIs, Messages and MCP
-    * **Governance is no bypass** — the rule engine plugs into the ORM's commit event, not into the API or handlers, so it fires identically whether the change comes from an API call, a message handler, or an AI agent
+    * **Natural** — **use your existing formats**: a declarative list, Gherkin, procedural prose, even incomplete requirements — AI interviews you (RFI - Requirements from Interview) for what's missing
+    * **Readable** — **AI generates rules, not code**: the same requirement handed to a general coding assistant as a procedural task produces code that *looks* right and hides bugs; declarative rules don't
+    * **Reviewable** — **you review a short list, not the full diff**: AI writes back a proactive audit trail (`ad-libs.md`), flagging only what actually needs your judgment
+    * **Shared** — **fits your organization**: Business Users and Developers work the same project, with the same tools and artifacts — no hand-off, no rewrite
+    * **Standard** — **fits your infrastructure**: runs as scalable containers, reachable by API, MCP, and messages — not a bespoke integration
+    * **Trustable** — **governance is no bypass**: the rule engine plugs into the ORM's commit event, not into the API or handlers, so it fires identically whether the change comes from an API call, a message handler, or an AI agent
 
 &nbsp;
 
@@ -29,9 +30,11 @@ version: 1.1, 9/13/2026
 
 Each stage below gets its own detail page under **1. Creating/Managing Projects** — this page is the concept summary they point back to.
 
+<br>
+
 ## Requirements - as you do now
 
-Write it the way you already write requirements — a declarative list, Gherkin ("Given a customer with a $20 credit limit, when an order for 20 Chais is placed, then the order is rejected"), or plain procedural prose ("get the product price, multiply it by the quantity, and add it to the order total"). AI converts any of these into the same governed, no-bypass rules.
+Write requirements the way you already do — nothing new to learn, nothing to migrate. AI converts whatever format you use into the same governed, no-bypass rules.
 
 **Example: paste these requirements into your AI Assistant**
 
@@ -55,17 +58,23 @@ Enterprise-class systems are supported with a set of requirements, including (fo
 
 *Formats, the RFI interview, and real transcripts: [Executable Reqmts](Exec-Reqmts.md){:target="_blank" rel="noopener"}. [Enterprise Sample](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/requirements/customs_demo_clvs){:target="_blank" rel="noopener"}*
 
+<br>
+
 ## Existing DB, or New DB
 
 Point at an existing database and it's used as-is — no migration, no re-modeling. Or describe a new one in your requirements text and AI creates it. Either way, the requirement text and the database are the two starting materials the rest of the pipeline is built from.
 
 *Walkthroughs: [Create - Existing DB](Project-Existing-DB.md){:target="_blank" rel="noopener"}.*
 
+<br>
+
 ## Scaffold (+ Context Eng)
 
 AI sets up the project and installs Context Engineering — training material embedded in the project itself that steers every later generation step toward declarative **rules instead of hard-to-read procedural code**.
 
 *What gets installed and why: [AI-Enabled Projects](Project-AI-Enabled.md){:target="_blank" rel="noopener"}.*
+
+<br>
 
 ## Standard Project - Executable
 
@@ -99,6 +108,8 @@ The rules are deterministic and plug into the database's commit event — not in
 
 *Why Python-as-declaration works this way, across rules, API, and UI: [Model Driven](Tech-DSL.md).*
 
+<br>
+
 ## Review - Rules Governance
 
 The requirements are executable, but it is designed as a 2-set process to provide the *human in the loop* governance of your business logic:
@@ -111,9 +122,13 @@ The requirements are executable, but it is designed as a 2-set process to provid
 
 *Full architecture and the runtime opt-in pattern: [Logic](Logic-Why.md){:target="_blank" rel="noopener"} and [AI Security FAQ](FAQ-AI-Security.md){:target="_blank" rel="noopener"}. Audit-trail mechanics: [Executable Reqmts](Exec-Reqmts.md){:target="_blank" rel="noopener"}.*
 
+<br>
+
 ## Deploy - standard container
 
 The result runs as a scalable server exposing both the API and message handlers, built on the same rule engine and the same governance — no separate deployment step re-checks or re-implements the rules.
+
+<br>
 
 ## Iterate, Vibe Custom UIs
 
