@@ -60,7 +60,7 @@ Incomplete is fine too — provide what you have and request an interview; AI as
 
 <details markdown>
 
-<summary>See: one prompt replaced 4 developers × 2 years (Cost Allocation)</summary>
+<summary>See: one prompt replaced 4 developers × 2 years (Cost Allocation); using regulations</summary>
 
 <br>
 
@@ -95,6 +95,15 @@ Charges can be placed by contractors.  They may supply only a minimal project de
 
 Total the charges into the Project and GL Account.
 ```
+
+This example illustrates:
+
+* Creating a project, *with regulations*
+* Using a simplified IDE - suitable for Business Users
+
+  * Full full project available to developers using standard UI
+
+![reg-tech](images/exec_reqmts/reg-tech.png)
 
 > See screens, data model, and more for this example: [Cost Allocation](Sample_Allo_Dept_GL_readme.md){:target="_blank" rel="noopener"}. Two more enterprise-scale examples, same pattern: [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"} and [Customs Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"}.
 
