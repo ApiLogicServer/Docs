@@ -84,7 +84,7 @@ AI sets up the project and installs Context Engineering — training material em
 
 AI generates an executable project: rules, API, Admin App and message handlers. Open it in your IDE, and run it.
 
-The rules are deterministic and plug into the database's commit event — not into the API or handlers themselves — so they fire the same way regardless of where the change came from: an API call, a message handler, or an AI agent (your APIs are MCP-discoverable, so agents call them like any other client).
+Context Engineering (above) and this rule engine are the **governance infrastructure**: rules are deterministic and plug into the database's commit event — not into the API or handlers themselves — so they fire the same way regardless of where the change came from: an API call, a message handler, or an AI agent (your APIs are MCP-discoverable, so agents call them like any other client).
 
 <details markdown>
 
@@ -118,7 +118,7 @@ The rules are deterministic and plug into the database's commit event — not in
 
 The requirements are executable, but review is designed as a 3-step process to provide *human in the loop* governance of your business logic:
 
-1. **Read:** unlike native AI which generates ~200 lines of code you'd rather not read, the 5 check credit requirements generate **5 rules you can read.**
+1. **Read:** unlike native AI which generates ~200 lines of code you'd rather not read, the 5 check credit requirements generate **5 rules you can read** — [40X less](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"} to read, trust, and maintain.
 
 2. **Trust:** AI-generated code is not only lengthy, we have observed bugs (for more information, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}).  Rules are declarative, so address **all paths** (insert, update, delete), and operate as listeners to ORM commit events, so apply to **all transaction sources.** AI itself is never used at runtime unless you explicitly request it — and even then, its proposals (say, an optimal supplier) are still checked against your rules.
 
