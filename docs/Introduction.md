@@ -1,7 +1,7 @@
 ---
-title: Executable Requirements Process
-source: docs/Exec-Reqmts-Process.md
-version: 1.1, 9/13/2026
+title: Introduction - Executable Requirements
+source: docs/Introduction.md
+version: 1.2, 9/14/2026
 ---
 
 <style>
@@ -11,7 +11,7 @@ version: 1.1, 9/13/2026
   }
 </style>
 
-# Governed Executable Requirements - Process
+# Introduction - Executable Requirements
 
 !!! pied-piper ":bulb: TL;DR - Requirements In, Enterprise-class Governed System Out"
 

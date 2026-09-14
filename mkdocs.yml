@@ -2,6 +2,11 @@ site_name: API Logic Server
 site_description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
 repo_url: https://github.com/ApiLogicServer/ApiLogicServer-src
 docs_dir: docs
+plugins:
+  - search
+  - redirects:
+      redirect_maps:
+        'Exec-Reqmts-Process.md': 'Introduction.md'
 strict: false
 theme:
   name: material
@@ -14,6 +19,7 @@ theme:
     - navigation.footer
 nav:
   - " ": index.md
+  - "Introduction to GenAI-Logic": Introduction.md
   - Quick Start:
     - Doc-Home.md
     - Express Install: Install-Express.md
@@ -48,7 +54,6 @@ nav:
       - "Agile Tutorial": Tutorial-Agile.md
       - "AI - ChatGPT, Agile": Tutorial-AI.md
       - "Sample Systems": Data-Model-Examples.md
-  - "Executable Reqmts": Exec-Reqmts-Process.md
   - 1. Creating/Managing Projects:
     - "Fitting Your Workflow": WorkFlow.md
     - "Manager": Manager.md
