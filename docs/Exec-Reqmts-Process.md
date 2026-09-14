@@ -60,7 +60,7 @@ Incomplete is fine too — provide what you have and request an interview; AI as
 
 Enterprise-class systems are supported with a set of requirements, including (for example) custom message formats, expressed by example.
 
-*Formats, the RFI interview, and real transcripts: [Executable Reqmts](Exec-Reqmts.md){:target="_blank" rel="noopener"}. Enterprise samples: [Cost Allocation](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/allocate_dept_account_demo){:target="_blank" rel="noopener"}, [Customs Surtax](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/requirements/customs_demo_clvs){:target="_blank" rel="noopener"}*
+*Formats, the RFI interview, and real transcripts: [Executable Reqmts](Exec-Reqmts.md){:target="_blank" rel="noopener"}. Enterprise samples — worth a skim, each with its own TL;DR, diagrams, and real code: [Cost Allocation](Sample_Allo_Dept_GL_readme.md){:target="_blank" rel="noopener"}, [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"}, [Customs Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"}*
 
 <br>
 

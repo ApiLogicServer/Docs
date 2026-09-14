@@ -27,14 +27,15 @@ nav:
     - "Orientation": Tech-Training.md
     - Upgrade Version: Install-Upgrade.md
   - Demos, Tutorial, Samples:
+    - "Customs CLVS (EAI)": Customs-clvs-readme.md
+    - "Customs Surtax": Customs-readme-surtax
+    - "Allo Dept/GL": Sample_Allo_Dept_GL_readme.md
     - "Creating Demos": Manager-Demos.md
     - "Basic Demo": Sample-Basic-Demo.md
     - ".. AI Rules Supplier": Sample-ai-rules.md
     - ".. MCP Send Mail": Sample-Basic-Demo-MCP-Send-Email.md
     - ".. Vibe": Sample-Basic-Demo-Vibe.md
     - ".. EAI": Sample-Basic-EAI.md
-    - ".. Customs Demo (EAI)": Customs-readme.md
-    - ".. Allo Dept/GL": Sample_Allo_Dept_GL_full.md
     - ".. Sub-Types": Sample-Types.md
     - Older:
       - "Sample_ai_mcp": Sample-ai-mcp.md
@@ -260,7 +261,6 @@ nav:
       - "Post - RFI": Tech-Realizations-RFI.md
       - "Realizations - Post 1": Tech-Realizations-Post_1.md
       - "Realizations - Post 2": Tech-Realizations-Post_2.md
-      - "CLVS update": Customs-clvs-readme.md
       - "Ent AI v5.7": Tech-Ent-AI.md
       - "Gov By Arch": Tech-Gov-By-Arch.md
       - "XGR v16": Tech-XGR.md

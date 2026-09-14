@@ -12,11 +12,16 @@ version: 1.0 from docsite, for readme 3/10/26
     * Cascade Allocation: a Charge automatically distributes to Departments, then to GL Accounts
     * AI Rules: fuzzy-matches informal project/contractor descriptions to the right Project
     * A good stress test for NL-to-declarative-logic creation — cascade allocation and AI fuzzy-matching from one prompt
-    * [Full writeup](https://apilogicserver.github.io/Docs/Sample_Allo_Dept_GL_full)
+
+    Browse the code: [allocate_dept_account_demo on GitHub](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/allocate_dept_account_demo){:target="_blank" rel="noopener"}
 
     Status: Reference implementation
 
 # Allocate Project Payments to configured Departments/Accounts
+
+![allocation-create](images/allocation/allo-dept-gl/allocation-create.png)
+
+&nbsp;
 
 **Audience:** Technical GenAI-Logic evaluators
 
@@ -122,7 +127,9 @@ This is a sophisticated system, requiring a multi-year efforts using traditional
 
 The project creation process starts with the prompt above; Copilot processes it as follows:
 
-1. Invokes AI, which, under the guidance of Context Engineering (see `docs/training`), computes the data model and builds a sqlite database (see `docs/allo_dept_gl_db.png`)
+1. Invokes AI, which, under the guidance of Context Engineering (see `docs/training`), computes the data model and builds a sqlite database:
+
+    ![allo-dept-gl-db](images/allocation/allo-dept-gl/allo_dept_gl_db.png)
 
 2. Invokes `genai-logic create --project-name=allo_dept_gl --db-url=<created database>`
 
@@ -132,9 +139,11 @@ The project creation process starts with the prompt above; Copilot processes it 
 
 3. Copilot then, again under the guidance of Context Engineering:
 
-    * Translates NL into Rules DSL (see `logic/logic_discovery', *not FrankenCode*)
+    * Translates NL into Rules DSL (see [`logic/logic_discovery`](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/allocate_dept_account_demo/logic/logic_discovery){:target="_blank" rel="noopener"}, *not FrankenCode*)
     * test data (with data initialized per rules)
     * and runs tests
+
+    ![allo-design](images/allocation/allo-dept-gl/allo_design.png)
 
 &nbsp;
 

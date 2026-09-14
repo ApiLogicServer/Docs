@@ -20,6 +20,8 @@ version: 1.3 from docsite, for readme 8/6/2016
     * Requirements expressed in Gherkin, not prose — see `docs/requirements/customs_demo/requirements.md`
     * A complex example of Executable Requirements — sample XML message formats, multiple requirements formats, full traceability from spec to rule to test
 
+    Browse the code: [demo_customs_clvs on GitHub](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_clvs){:target="_blank" rel="noopener"}
+
     Status: Reference implementation
 
 # Customs Demo
@@ -170,19 +172,19 @@ An enterprise integration (EAI) microservice that ingests CIMCorp/ISDC customs s
 
 ## Basic Design - 2 transaction message processing
 
-1. `integration/kafka/kafka_subscribe_discovery/isdc.py` - isdc
+1. [`integration/kafka/kafka_subscribe_discovery/isdc.py`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_clvs/integration/kafka/kafka_subscribe_discovery/isdc.py){:target="_blank" rel="noopener"} - isdc
     * reads message, inserts into `ShipmentXml` (Tx 1)
     * this ensures messages are saved, even if the xml contains errors
-2. `logic/logic_discovery/isdc_consume.py`
+2. [`logic/logic_discovery/isdc_consume.py`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_clvs/logic/logic_discovery/isdc_consume.py){:target="_blank" rel="noopener"}
     * ShipmentXml insert → publishes raw payload to topic: `isdc_processed`
-3. `integration/kafka/kafka_subscribe_discovery/isdc.py` - isdc_processed
+3. [`integration/kafka/kafka_subscribe_discovery/isdc.py`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_clvs/integration/kafka/kafka_subscribe_discovery/isdc.py){:target="_blank" rel="noopener"} - isdc_processed
     * parses xml → database tables (Tx 2)
-4. `api/api_discovery/isdc_kafka_consume_debug.py`
+4. [`api/api_discovery/isdc_kafka_consume_debug.py`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_clvs/api/api_discovery/isdc_kafka_consume_debug.py){:target="_blank" rel="noopener"}
     * `/consume_debug/isdc` bypasses Kafka — calls the same parser directly (no Kafka required for dev/test)
-5. Matching: `logic/logic_discovery/shipment_matching.py` — `early_row_event` on Shipment insert
+5. Matching: [`logic/logic_discovery/shipment_matching.py`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_clvs/logic/logic_discovery/shipment_matching.py){:target="_blank" rel="noopener"} — `early_row_event` on Shipment insert
     * Looks up `CcpCustomer` by `duty_bill_to_acct_nbr == trprt_bill_to_acct_nbr`
     * Match found: creates a `ShipmentParty` importer row; (if no match, logs a warning)
-5. CLVS: `logic/logic_discovery/clvs_eligibility.py` - computes eligibility
+6. CLVS: [`logic/logic_discovery/clvs_eligibility.py`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_clvs/logic/logic_discovery/clvs_eligibility.py){:target="_blank" rel="noopener"} - computes eligibility
 
 
 &nbsp;

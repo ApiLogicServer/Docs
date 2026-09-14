@@ -13,6 +13,8 @@ version: 1.0 from docsite, for readme 6/13/2026
     * AI distills that regulatory text directly into declarative rules
     * The [ad-libs report](docs/requirements/ad-libs.md) lists every low-confidence decision, so you know exactly where it guessed
 
+    Browse the code: [demo_customs_surtax on GitHub](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_surtax){:target="_blank" rel="noopener"}
+
     Status: Reference implementation
 
 # CBSA Steel Derivative Goods Surtax
@@ -132,7 +134,7 @@ Transactions are `CustomsEntry` records with one or more `SurtaxLineItem` rows (
 
 ### System: API, Database, Logic, Admin App
 
-The GenAI-Logic `create` command builds a complete, runnable project: the JSON:API server (with Swagger), a full CRUD Admin App, and 18 declarative rules in `logic/logic_discovery/cbsa_steel_surtax.py` implementing the tax calculation chain above.
+The GenAI-Logic `create` command builds a complete, runnable project: the JSON:API server (with Swagger), a full CRUD Admin App, and 18 declarative rules in [`logic/logic_discovery/cbsa_steel_surtax.py`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/demo_customs_surtax/logic/logic_discovery/cbsa_steel_surtax.py){:target="_blank" rel="noopener"} implementing the tax calculation chain above.
 
 ### Test Suite and Report
 
