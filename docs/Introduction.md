@@ -15,9 +15,9 @@ version: 1.2, 9/14/2026
 
 !!! pied-piper ":bulb: TL;DR - Requirements In, Enterprise-class Governed System Out"
 
-    GenAI-Logic turns your requirements into enterprise-class database transaction systems, governed by rules that can't be bypassed.
+    GenAI-Logic turns your requirements into enterprise-class database transaction systems, **governed by no-bypass rules**.
 
-    And it uses your methodology, standard tools, and shared artifacts, fostering collaboration between Business Users and Developers.
+    It **works with** the methodology and tools you already have — nothing new to adopt. And shared artifacts foster **collaboration** between Business Users and Developers.
 
     * **Familiar** — **use your existing methodology**: a declarative list, Gherkin, procedural prose, etc.  Your team keeps working the way they're already comfortable with, project after project.
     * **Readable** — **AI generates rules, not code**: the same requirement handed to a general coding assistant as a procedural task produces code that *looks* right and hides bugs — vs. five rules you can actually read.
