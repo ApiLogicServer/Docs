@@ -60,11 +60,11 @@ Incomplete is fine too — provide what you have and request an interview; AI as
 
 <details markdown>
 
-<summary>See: one prompt replaced 4 developers × 2 years (Cost Allocation); using regulations</summary>
+<summary>See: a governed system built from cited regulations (Cost Allocation)</summary>
 
 <br>
 
-Enterprise-class systems are supported too — a set of requirements, including (for example) custom message formats, expressed by example. This cascade-allocation prompt — GL accounts, funding splits, and AI Rules fuzzy-matching contractor charges to the right project — replaced 4 developers × 2 years of traditional development:
+Enterprise-class systems are supported too — a set of requirements, including (for example) custom message formats, expressed by example. This cascade-allocation prompt — GL accounts, funding splits, and AI Rules fuzzy-matching contractor charges to the right project — is governed the same way as the credit-check example above, at enterprise scale. The traditional, hand-coded version of this same logic took 4 developers × 2 years to build and keep governed:
 
 ```
 Departments own a series of General Ledger Accounts.
