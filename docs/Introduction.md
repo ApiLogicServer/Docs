@@ -163,6 +163,8 @@ AI generates an executable project: rules, API, Admin App and message handlers. 
 
 **Context Engineering** (above) and this **rule engine** are the governance infrastructure: rules are deterministic and plug into the database's commit event — not into the API or handlers themselves — so they fire the same way regardless of where the change came from: an API call, a message handler, or an AI agent (your APIs are MCP-discoverable, so agents call them like any other client).
 
+> **Governance by Architecture, Not Discipline:** many architects characterize this as *Governance by Architecture* — the system ensures the rules run for *all* ORM updates. Rules are the governance. Contrast this with *Governance by Discipline*, which relies on every developer making the right integrity call, every time. Sooner or later, something fails.
+
 *Why Python-as-declaration works this way, across rules, API, and UI: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"}.*
 
 <br>
