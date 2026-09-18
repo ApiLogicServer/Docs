@@ -168,12 +168,40 @@ You can't govern what you can't read.
 
 &nbsp;
 
-## Not a Corner Case. A Missing Category.
+## Following Up on the Bugs
 
-Here's the actual finding, and it's worth stating plainly.
+An obvious objection to the native-AI result: nobody ships the first draft. A
+developer would test it, notice the update and delete paths were missing, and
+ask AI to fix them. So that's what I tried next — three rounds, each a
+realistic bug report a developer would actually write after testing the app:
 
-[The comparison doc](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md)'s original bugs — reassign the order, forget the old customer's balance; reassign the item, forget to re-copy the price — were corner cases. The AI had written real update logic. It got two specific paths wrong inside it.
+1. "It only handled inserting a new order — it failed when I update a line
+   item. Please fix." Result: quantity and product changes on an existing
+   item both started working correctly.
+2. "Editing items works now. But adding a new item to an existing order
+   doesn't update the total, and deleting an item doesn't either." Result:
+   both fixed, cleanly, with no regressions.
 
-While serious, this test revealed something worse. There was no update logic. No delete logic. Not "some paths missing" — the entire category, for a spec written the exact way developers actually write specs, no trick prompt, no edge case, nothing unusual about the ask.
+Each round, native AI fixed exactly what was reported, correctly. Three
+rounds in, order creation and full item-level editing all worked. That's a
+real result, and it matters: iteration works, AI responds well to a clear bug
+report, and the fixes were not superficial patches — the same code paths were
+correctly reused across the three rounds.
+
+It also means the burden of finding every gap now sits with the team. Each of
+these three fixes exists because someone tested that specific case and wrote
+it up. Nothing in the fix generalized to a case nobody had tried yet.
+
+&nbsp;
+
+## If Your Team Keeps Working the Way It Does Today
+
+That's the question worth asking before adopting AI, not after: if your developers keep writing specs and reviewing code the way they do now, and you simply add AI to the process, what actually changes?
+
+Based on this test: less than it looks like at first. Your team still finds gaps by testing, one at a time, the same way they always have — AI just fixes each one quickly once it's found. That's real value. It's also worth asking whether better prompting or stricter test scaffolding closes this specific gap without any architecture change at all — we didn't test that variant here, and a more disciplined process might do better than the bare follow-up prompts we used. What this test does show is that the bare process doesn't generalize on its own: three rounds in, the thing that doesn't change is who's responsible for knowing whether every path is covered. It's still your team, doing it the way they always have — by hand, one test at a time.
+
+[The comparison doc](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md)'s original bugs — reassign the order, forget the old customer's balance; reassign the item, forget to re-copy the price — were corner cases inside code that mostly worked. This test's finding is broader: for a spec written the way developers ordinarily write one, no update logic and no delete logic existed at all. And after three rounds of real, successful bug fixing, that original reparenting bug was still there. Nobody had reassigned an order to a different customer yet, so nobody had reported it, so nothing had fixed it.
+
+Every fix in this test was locally correct. None of them generalized past the case that prompted it. That's the actual cost of keeping today's process and adding AI on top: your team is still the one finding every path by hand, and the [original comparison](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural) shows what that costs even in the best case — a cleanly declarative spec, handed to AI, still produced roughly 200 lines of procedural code for what became 5 rules here. Reviewing that gap by eye, on every project, is the real ask behind "just read the code."
 
 52% of organizations already use AI across multiple business functions or have it embedded into operations. Only 17% say governance is "embedded by design" — [OneTrust's 2026 AI-Ready Governance Survey](https://www.onetrust.com/resources/onetrust-2026-ai-ready-governance-report/), 1,200+ business leaders. Better models help. But this is architecture that can address the gap directly, in a way that's verifiable — not asserted. Rules you can read, and trust that they run.
