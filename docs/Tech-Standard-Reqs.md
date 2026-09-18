@@ -52,6 +52,8 @@ But it raised a real question.
 
 > Specs are often procedural - it's a natural way to think.  How would "native" AI translate such specs?
 
+I'd made the case for governed rules at enterprise scale before, in [AI With Rules You Can Read, Trust, and Maintain](https://www.linkedin.com/pulse/ai-rules-you-can-read-trust-maintain-val-huber-u7q5c). But that's an argument. This is a test.
+
 Then I watched a video that's picked up real traction fast. Its point: good architecture should work with what you naturally do, not require you to conform to its model.  Exactly right: like how a spreadsheet matches how financial analysts think.
 
 So, let's run an A/B test: the same natural (procedural) spec, once through native AI, once through AI governed by rules.
@@ -148,7 +150,7 @@ Rules that run this way at commit — no bypass — make governance something th
 
 &nbsp;
 
-## One More Thing — AI Still Gets It Wrong
+### One More Thing — AI Still Gets It Wrong
 
 Here's a mistake worth owning: the very first rule set in this article included `where=lambda row: row.date_shipped is None` on the `Customer.balance` rule — a shipped-orders filter this prompt never asked for. Compare it to the second rule set, later in this piece, for the same requirement — that clause is gone. I caught it and dropped it, but not before it sat there, unremarked, in what I'd already called "declarative."
 
@@ -164,4 +166,14 @@ That's how 5 lines of logic become 5 rules — not ~200 lines of frankencode you
 
 You can't govern what you can't read.
 
-AI will keep making mistakes. The question is whether you can find them before your customer does.
+&nbsp;
+
+## Not a Corner Case. A Missing Category.
+
+Here's the actual finding, and it's worth stating plainly.
+
+[The comparison doc](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md)'s original bugs — reassign the order, forget the old customer's balance; reassign the item, forget to re-copy the price — were corner cases. The AI had written real update logic. It got two specific paths wrong inside it.
+
+While serious, this test revealed something worse. There was no update logic. No delete logic. Not "some paths missing" — the entire category, for a spec written the exact way developers actually write specs, no trick prompt, no edge case, nothing unusual about the ask.
+
+88% of organizations used AI in at least one business function last year. Only 8% have a comprehensive AI governance framework in place — [OneTrust's 2026 AI-Ready Governance Survey](https://www.onetrust.com/resources/onetrust-2026-ai-ready-governance-report/), 1,200+ business leaders. Better models help. But this is architecture that can address the gap directly, in a way that's verifiable — not asserted. Rules you can read, and trust that they run.
