@@ -196,12 +196,29 @@ it up. Nothing in the fix generalized to a case nobody had tried yet.
 
 ## If Your Team Keeps Working the Way It Does Today
 
-That's the question worth asking before adopting AI, not after: if your developers keep writing specs and reviewing code the way they do now, and you simply add AI to the process, what actually changes?
+If your developers keep writing specs and reviewing code the way they do now, and you simply add AI to the process — what changes?
 
-Based on this test: less than it looks like at first. Your team still finds gaps by testing, one at a time, the same way they always have — AI just fixes each one quickly once it's found. That's real value. It's also worth asking whether better prompting or stricter test scaffolding closes this specific gap without any architecture change at all — we didn't test that variant here, and a more disciplined process might do better than the bare follow-up prompts we used. What this test does show is that the bare process doesn't generalize on its own: three rounds in, the thing that doesn't change is who's responsible for knowing whether every path is covered. It's still your team, doing it the way they always have — by hand, one test at a time.
+Less than it looks like. AI finds and fixes each gap fast, once someone's tested for it. Who's responsible for knowing whether every path is covered doesn't change at all. Still your team, still by hand, one test at a time.
 
-[The comparison doc](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md)'s original bugs — reassign the order, forget the old customer's balance; reassign the item, forget to re-copy the price — were corner cases inside code that mostly worked. This test's finding is broader: for a spec written the way developers ordinarily write one, no update logic and no delete logic existed at all. And after three rounds of real, successful bug fixing, that original reparenting bug was still there. Nobody had reassigned an order to a different customer yet, so nobody had reported it, so nothing had fixed it.
+[The comparison doc](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md)'s bugs — forget the old balance, forget to re-copy the price — were corner cases inside code that mostly worked. This test found something plainer: no update logic, no delete logic, for a spec written the ordinary way. Three rounds of real fixes later, that original bug was still there. Nobody had hit it yet.
 
-Every fix in this test was locally correct. None of them generalized past the case that prompted it. That's the actual cost of keeping today's process and adding AI on top: your team is still the one finding every path by hand, and the [original comparison](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural) shows what that costs even in the best case — a cleanly declarative spec, handed to AI, still produced roughly 200 lines of procedural code for what became 5 rules here. Reviewing that gap by eye, on every project, is the real ask behind "just read the code."
+And the [original comparison](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural) shows what reviewing that gap by hand actually costs — even from a clean, declarative spec: roughly 200 lines of procedural code, for what became 5 rules here.
 
-52% of organizations already use AI across multiple business functions or have it embedded into operations. Only 17% say governance is "embedded by design" — [OneTrust's 2026 AI-Ready Governance Survey](https://www.onetrust.com/resources/onetrust-2026-ai-ready-governance-report/), 1,200+ business leaders. Better models help. But this is architecture that can address the gap directly, in a way that's verifiable — not asserted. Rules you can read, and trust that they run.
+52% of organizations already use AI across multiple business functions. Only 17% say governance is "embedded by design" — [OneTrust's 2026 AI-Ready Governance Survey](https://www.onetrust.com/resources/onetrust-2026-ai-ready-governance-report/), 1,200+ business leaders.
+
+&nbsp;
+
+## The Root Cause, and the Way Out
+
+AI-assisted development still has a quality problem for business logic. That's not news.
+
+This test adds a root cause: the AI kept thinking procedurally. The spec was procedural. The follow-up prompts were procedural. Every fix was one more procedural patch.
+
+**Adding AI on top of that doesn't change it.** AI just writes the next patch faster. Three rounds running.
+
+Two ways to close the gap:
+
+- **Change how the team thinks.** Invariants on data, not steps in a process. Real skill, slow to build — the same adoption problem that made declarative rules a hard sell for decades before AI existed.
+- **Change what the AI is aimed at.** Same spec, same process, translated into rules instead of code. Every path tested here came back correct — no change to how the team works.
+
+The fix isn't asking anyone to think differently. It's giving their existing way of working an architecture that doesn't depend on catching every path by hand.
