@@ -133,20 +133,14 @@ Think of a spreadsheet. `B10 = SUM(B1:B9)` doesn't get called when a value chang
 
 &nbsp;
 
-### Governed by Architecture
+### Governance by Architecture, Not Discipline
 
-Code quality was never the variable. What matters is what the code is attached to.
-
-Procedural logic answers "what happens when X happens" — and only covers the X it was told about.
-
-A rule is declared on the data itself, so it applies to every path automatically: insert, update, delete, reassignment, all of it, for free.
-
-That's the case for domain expertise showing up as **architecture instead of discipline**. The judgment that catches "you forgot the old parent" doesn't have to live in one senior developer's head, reapplied by hand, project after project. It can live in the engine, applied the same way every time — with or without a smarter model underneath it.
-
-**Governance by Architecture, Not Discipline** has 2 key elements:
+Governed by Architecture has 2 key elements:
 
 - **A rule engine that understands the dependencies** — it knows `Customer.balance` depends on `Order.amount_total` depends on `Item.amount`, so it adjusts it, automatically, on every write, whether or not the code in front of it ever mentions "placing an order." It runs as a listener on the commit itself, not inside any particular API or handler — so it governs every path, from every transaction source, the same way. That adjustment, not a full recompute, is what keeps it fast at scale — this isn't a RETE engine re-evaluating everything from scratch.
 - **Context Engineering that instructs the same AI to write rules, not code** — the same model that wrote the frankencode above, writes 5 rules.
+
+*Governed by discipline* is the alternative — every developer, on every team, on every project, has to remember every pattern, every time. AI doesn't change that math; it just adds another party who has to remember. With architecture, nobody has to. It lives in the engine, applied the same way every time — with or without a smarter model underneath it.
 
 In most large companies, governance means a review cycle: someone signs off before a change ships, someone audits after the fact. That works, but it's a human checking a human.
 
