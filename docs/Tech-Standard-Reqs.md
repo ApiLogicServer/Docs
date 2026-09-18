@@ -145,7 +145,7 @@ That's the case for domain expertise showing up as **architecture instead of dis
 
 **Governance by Architecture, Not Discipline** has 2 key elements:
 
-- **A rule engine that understands the dependencies** — it knows `Customer.balance` depends on `Order.amount_total` depends on `Item.amount`, so it adjusts it, automatically, on every write, whether or not the code in front of it ever mentions "placing an order." It runs as a listener on the commit itself, not inside any particular API or handler — so it governs every path, from every transaction source, the same way. (Note: the "adjustment" is critical to performance - this is *not* a RETE engine).
+- **A rule engine that understands the dependencies** — it knows `Customer.balance` depends on `Order.amount_total` depends on `Item.amount`, so it adjusts it, automatically, on every write, whether or not the code in front of it ever mentions "placing an order." It runs as a listener on the commit itself, not inside any particular API or handler — so it governs every path, from every transaction source, the same way. That adjustment, not a full recompute, is what keeps it fast at scale — this isn't a RETE engine re-evaluating everything from scratch.
 - **Context Engineering that instructs the same AI to write rules, not code** — the same model that wrote the frankencode above, writes 5 rules.
 
 In most large companies, governance means a review cycle: someone signs off before a change ships, someone audits after the fact. That works, but it's a human checking a human.
