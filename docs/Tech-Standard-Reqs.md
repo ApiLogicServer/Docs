@@ -1,3 +1,17 @@
+---
+title: How Does Native AI Handle a Typical Spec?
+source: docs/Tech-Standard-Reqs.md
+---
+
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
+# How Does Native AI Handle a Typical Spec?
+
 ## AI Taught the Wrong Lesson.
 
 Funny story. A while back I asked my AI assistant for an example of a business rule, just to show someone how it's done. It gave me this:
@@ -10,13 +24,15 @@ Add that to the Customer Balance
 Ensure that is less that the Credit Limit
 ```
 
-I gasped. Here was AI teaching people the wrong paradigm — procedural code, wired to one event.
+I gasped. Here was AI teaching people the wrong paradigm — procedural, focused on one event.
 
-The whole point of a rule is that it **isn't** wired to anything. It declares what a value *is*, not when to compute it.
+What if it actually created code like that instead of rules?
+
+&nbsp;
 
 ### Then It Passed the Test Anyway.
 
-And yet, models had been improving. So I tried it anyway. I created a project, submitted that same procedural text, and asked for rules. Five came back:
+Well, models were improving, so I gave it a try. I created a project, submitted that same procedural text, to see what it would create.  I got:
 
 ```python
 Rule.copy(derive=Item.unit_price, from_parent=Product.unit_price)
@@ -26,37 +42,21 @@ Rule.sum(derive=Customer.balance, as_sum_of=Order.amount_total, where=lambda row
 Rule.constraint(validate=Customer, as_condition=lambda row: row.balance <= row.credit_limit, ...)
 ```
 
-Declarative. None of them wired to "placing an order." (One of these 5 lines has a mistake in it — more on that at the end.)
+Declarative Rules. Whew! OK, joke's on me. 
 
-That's not a style preference — it's the whole point. "On Placing Orders" only covers placing an order. These 5 rules cover **every path** to the same data:
+&nbsp;
 
-- change an item's quantity after the fact
-- delete an item
-- ship the order
-- move an item to a different order
-- move an order to a different customer
+## But specs are often procedural
 
-Same 5 rules, every time — because they're declared on `Item.amount`, `Order.amount_total`, and `Customer.balance` themselves, not on the moment someone places an order.
+But it raised a real question. 
 
-Think of a spreadsheet. `B10 = SUM(B1:B9)` doesn't get called when a value changes — it just reacts. Nobody writes a handler for "what if row 4 changes" versus "what if row 7 changes." The formula is declared once, on the data, and it's correct no matter which cell moves. That's what these 5 rules are doing with `Order.amount_total` and `Customer.balance` — the same automatic reaction, just across tables instead of cells.
+> Specs are often procedural - it's a natural way to think.  How would "native" AI translate such specs?
 
-AI hadn't just avoided the wrong lesson. It had translated its way past it — into something that actually covers every path, not just the one it was shown.
+Then I watched a video that's picked up real traction fast. Its point: good architecture should work with what you naturally do, not require you to conform to its model.  Exactly right: like how a spreadsheet matches how financial analysts think.
 
-## That's How Developers Actually Write Specs.
-
-Then I watched a video that's picked up real traction fast — someone arguing that AI coding failures aren't a skill issue, they're an architecture issue, and "you're holding it wrong" is a dodge, not an answer.
-
-That's when it hit me: "On Placing Orders, derive X, add it to Y, check it against Z" is a typical spec. Developers describe requirements as a sequence of things that happen, because that's how people naturally talk through a process.
-
-So what happens when a developer hands an AI assistant a spec written exactly this way? No rules engine underneath, nothing translating it first — just the plain, ordinary spec, and trust that whatever comes back is correct.
-
-I agree with the video's argument. But agreeing isn't proof. So I ran the test — the exact same prompt, verbatim, handed to two frontier models:
+So, let's run an A/B test: the same natural (procedural) spec, once through native AI, once through AI governed by rules.
 
 ```
-Note: this is a test of native AI coding ability — please do not use ApiLogicServer,
-GenAI-Logic, LogicBank, or any other code-generation or business-rules/rules-engine
-framework. Just plain hand-written code (standard web framework + ORM of your choice).
-
 Using basic_demo.sqlite, build a system (api + web app) that lets us enter orders.
 
 Here's what needs to happen when someone places an order:
@@ -67,9 +67,16 @@ Here's what needs to happen when someone places an order:
 - Before we let the order go through, check that the customer's balance doesn't go over their credit limit — if it would, reject the order.
 ```
 
-Same schema. Same wording. No ApiLogicServer, no rules engine — told explicitly not to use either. Plain hand-written code, their choice of stack.
+&nbsp;
 
-## Only the Insert Path Was Built
+## A) Native AI
+
+Handed straight to native AI, verbatim, to two frontier models — with an added instruction not to reach for our own stack:
+
+
+&nbsp;
+
+### Only the Insert Path Was Built
 
 Both wrote the same shape of system:
 
@@ -84,9 +91,7 @@ def place_order(db, customer_id, notes, line_items):
     db.commit()
 ```
 
-One function, wired to order creation. No update path. No delete path.
-
-`Customer.balance` isn't a value the system tracks — it's a running total, incremented when an order comes in and never touched again.
+One function, wired to order creation. **Fundamental logic missing:** no update path, no delete path.
 
 I probed it:
 
@@ -97,7 +102,9 @@ I probed it:
 
 **Every case, both models, left stale data behind.** No error. Nothing to catch it. The logic wasn't buggy so much as absent — it existed for exactly one path and nowhere else.
 
-## Same Prompt, Every Path Covered
+&nbsp;
+
+## B) Governed AI
 
 I ran the identical prompt through GenAI-Logic. Five rules came out:
 
@@ -109,6 +116,10 @@ Rule.sum(derive=Customer.balance, as_sum_of=Order.amount_total)
 Rule.constraint(validate=Customer, as_condition=lambda row: row.balance <= row.credit_limit, ...)
 ```
 
+&nbsp;
+
+### All Paths Covered
+
 None of them says "placing an order." Checked live against a running server, all four cases came back correct:
 
 - Change the quantity → the total updates
@@ -116,7 +127,13 @@ None of them says "placing an order." Checked live against a running server, all
 - Move the order to a new customer → old balance down, new balance up
 - Move the item to a new product → the price re-copies
 
-## Architecture Instead of Tribal Knowledge
+That's not a style preference — it's the whole point. "On Placing Orders" only covers placing an order. These 5 rules cover **every path** to the same data: change a quantity after the fact, delete an item, ship the order, move an item to a different order, move an order to a different customer. Same 5 rules, every time — because they're declared on `Item.amount`, `Order.amount_total`, and `Customer.balance` themselves, not on the moment someone places an order.
+
+Think of a spreadsheet. `B10 = SUM(B1:B9)` doesn't get called when a value changes — it just reacts. Nobody writes a handler for "what if row 4 changes" versus "what if row 7 is deleted." The formula is declared once, on the data, and it's correct no matter which cell moves. That's what these 5 rules are doing with `Order.amount_total` and `Customer.balance` — the same automatic reaction, just across tables instead of cells.
+
+&nbsp;
+
+### Governed by Architecture
 
 Code quality was never the variable. What matters is what the code is attached to.
 
@@ -124,22 +141,22 @@ Procedural logic answers "what happens when X happens" — and only covers the X
 
 A rule is declared on the data itself, so it applies to every path automatically: insert, update, delete, reassignment, all of it, for free.
 
-That's the case for domain expertise showing up as **architecture instead of tribal knowledge**. The judgment that catches "you forgot the old parent" doesn't have to live in one senior developer's head, reapplied by hand, project after project. It can live in the engine, applied the same way every time — with or without a smarter model underneath it.
+That's the case for domain expertise showing up as **architecture instead of discipline**. The judgment that catches "you forgot the old parent" doesn't have to live in one senior developer's head, reapplied by hand, project after project. It can live in the engine, applied the same way every time — with or without a smarter model underneath it.
 
-There's a name for this: **Governance by Architecture, Not Discipline.** Governance by discipline means trusting every developer to make the right integrity call, every time, on every path — including the paths nobody thought to test. Governance by architecture means the system enforces it whether anyone thought to or not.
+**Governance by Architecture, Not Discipline** has 2 key elements:
 
-Concretely, that's two pieces:
+- **A rule engine that understands the dependencies** — it knows `Customer.balance` depends on `Order.amount_total` depends on `Item.amount`, so it adjusts it, automatically, on every write, whether or not the code in front of it ever mentions "placing an order." It runs as a listener on the commit itself, not inside any particular API or handler — so it governs every path, from every transaction source, the same way. (Note: the "adjustment" is critical to performance - this is *not* a RETE engine).
+- **Context Engineering that instructs the same AI to write rules, not code** — the same model that wrote the frankencode above, writes 5 rules.
 
-- **A rule engine that understands the dependencies** — it knows `Customer.balance` depends on `Order.amount_total` depends on `Item.amount`, so it re-derives all of it, automatically, on every write, whether or not the code in front of it ever mentions "placing an order."
-- **Context Engineering that instructs the same AI to write rules, not code** — the same model that wrote the frankencode above, pointed at a rules engine instead of a blank file, writes 5 rules.
+In most large companies, governance means a review cycle: someone signs off before a change ships, someone audits after the fact. That works, but it's a human checking a human.
 
-This test is what that looks like when it fails. Two frontier models. Zero paths remembered beyond the one in the prompt. No careless developer to blame, either — there was no developer. Just the model, on its own, asked to do the one thing discipline-based governance has always asked of a person: remember every path, every time.
+Rules that run this way at commit — no bypass — make governance something the system does, not something a committee does later. Every transaction source, every path, every time.
 
-It didn't. Nothing does, forever, reliably. That's not a knock on the models. It's just what happens when the plan was "remember everything," and the thing doing the remembering — human or AI — is still a thing that forgets.
+&nbsp;
 
 ## One More Thing — AI Still Gets It Wrong
 
-Here's the mistake I flagged back at the start: the very first rule set in this article included `where=lambda row: row.date_shipped is None` on the `Customer.balance` rule — a shipped-orders filter this prompt never asked for. Compare it to the second rule set, later in this piece, for the same requirement — that clause is gone. I caught it and dropped it, but not before it sat there, unremarked, in what I'd already called "declarative."
+Here's a mistake worth owning: the very first rule set in this article included `where=lambda row: row.date_shipped is None` on the `Customer.balance` rule — a shipped-orders filter this prompt never asked for. Compare it to the second rule set, later in this piece, for the same requirement — that clause is gone. I caught it and dropped it, but not before it sat there, unremarked, in what I'd already called "declarative."
 
 Nobody said anything about shipping. AI added it anyway, echoing a different example it had seen before.
 
