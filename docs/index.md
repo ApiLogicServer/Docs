@@ -22,43 +22,83 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 ---
 
-## Learn It By Asking, Not Reading Front to Back
+## Concepts
 
-!!! important "That's how you learn this system"
-
-    Ask, at whatever point you're stuck — not front to back.
-
-The [Manager](Manager.md) provides a full sample catalog, each illustrating key patterns.  Each project is AI-enabled — ask your AI assistant how it works.
-
-![training](images/manager/Manager-Training.png)
-
-Context Engineering is what makes this possible: thousands of lines of training material, embedded in every project, that turn your AI assistant into a guide for *this specific project* — not a generic coding assistant guessing at your codebase. It's guidance without the walls of a classic studio, and it's what lets you ask a project "what can you help me with?" and get a real, scoped answer back.
-
-*More on how Context Engineering works: [Introduction](Introduction.md){:target="_blank" rel="noopener"}.*
+Worth a scan: this provides a heads-up for some things that may be new, plus some standard dev workflow that is no longer required.
 
 &nbsp;
 
-## Diagnose Your Product, Not Generated Spaghetti
+### What It Is
+
+#### AI (plus CE) First
+
+AI, augmented with Context Engineering (CE), is your recommended interface for generation, learning, diagnosis, and iteration.  You still have the full IDE, but virtually all of our customers rapidly adopt AI as their principal interface.
+
+This lets you pursue your own questions, rather than a rigid pre-defined structure.
+
+Every project ships with training material that turns your AI assistant into a guide for *that* project, not a generic assistant guessing at your codebase.
+
+<details markdown>
+<summary>Diagnosing a live problem</summary>
+
+<br>
 
 ![AI Log Analysis](images/logic/log-analysis.png)
 
-A developer panics: *"help! my project failed!!"*
+*"help! my project failed!!"* — the AI reads the log, reads the rule that fired, and explains it in plain terms: *"Someone tried to set Item quantity → 14,444. That would push Customer[Alice]'s balance to $1,299,960, over her $5,000 credit limit. The rule blocked it correctly."*
 
-The AI reads the log, understands the rules, and responds calmly:
+</details>
 
-> *"Your server is healthy — all APIs are responding.  This is your credit limit constraint working correctly.  Someone tried to set Item quantity → 14,444.  That would make Customer[Alice]'s balance → $1,299,960, exceeding her $5,000 credit limit.  The rule correctly blocked it with a 400 response."*
+<details markdown>
+<summary>Learning by asking</summary>
 
-It's reading the same rules you wrote — the same rules that appear in the logic log, the same rules a business analyst can read.  Everyone is looking at the same thing.
+<br>
 
-It's all standard tools underneath: your IDE, your debugger, your source control all work normally.  Rules live in your project as plain Python files, committed to git like everything else.  The stack is Python, Flask, SQLAlchemy, and Docker.  Deployment is standard containers.  Works with MySQL, Postgres, SQL Server, Oracle, and SQLite.  Nothing proprietary, nothing to unlearn.
+![training](images/manager/Manager-Training.png)
 
----
+The [Manager](Manager.md) ships a full sample catalog. Every project is AI-enabled — ask it how it works.
 
-## Generates Executable Models, Not Code
+</details>
 
-Rules **preserve design intent** — the rule and the requirement are the same thing.  When something breaks, you read the rule, not 200 lines of generated procedure.  When the business requirement changes, you change the rule; the engine handles the rest.
+*More: [Introduction](Introduction.md){:target="_blank" rel="noopener"}.*
 
-See [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"} for how declaring behavior in Python works.  For how the pieces fit together, see [Architecture](Architecture-What-Is.md){:target="_blank" rel="noopener"}.
+&nbsp;
+
+#### Executable Models
+
+Models manage the complexity — API, UI, and, most importantly, business logic. Runtime engines already in your Python environment execute them; see the example under [Create Your Own](#3-create-your-own). 
+
+It's still real, generated code — full access, always — open it, edit it, debug it in your IDE like any other project.
+
+*More: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"} · [Architecture](Architecture-What-Is.md){:target="_blank" rel="noopener"}.*
+
+&nbsp;
+
+#### Standard Tooling
+
+Your IDE, your debugger, your git, all work normally. Rules are plain Python files, committed like everything else. Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server, Oracle, SQLite. Nothing proprietary, nothing to unlearn.
+
+&nbsp;
+
+### What It Isn't
+
+#### Not Handler Logic
+
+Rules aren't called — from each API path or anywhere else. They fire automatically on commit, so every source and every path is governed automatically. They're self-ordering, too — you don't need to worry about that during maintenance.
+
+&nbsp;
+
+#### Not Manual Schema Maintenance
+
+Describe your change — add a column, say — and AI updates the model and the schema. Edit `models.py` by hand instead, and the next rebuild overwrites you.
+
+&nbsp;
+
+#### Iterate Requirements, Not Code
+
+Most AI code-gen breaks down at "now edit the generated code" — you're patching an artifact, not the thing you actually meant. Here, you iterate the requirement instead: describe the next one, and you get back a rule that covers every path — insert, update, delete, reassignment — automatically, not just the one you tested.
+
+When you do need code, it lives alongside the models, not layered on top of them.
 
 ---
 
@@ -104,6 +144,21 @@ This is a hands-on tour covering API creation, declarative rules, security, and 
 ### 3. Create Your Own
 
 You can create projects from existing databases, or new database projects from prompts.  In both cases, development continues in a classic iterative manner in the created project.  See the sample catalog above for patterns to draw from.
+
+Point at an existing database and describe your rules — paste the prompt into your AI assistant, or run the one-liner it gives you:
+
+![existing-db](images/exec_reqmts/basic_demo_existing_db.png)
+
+<details markdown>
+<summary>See the generated project — declarative models (e.g. rules), vs. procedural code</summary>
+
+<br>
+
+![existing-db-gen](images/exec_reqmts/basic_demo_existing_db_gen.png)
+
+The rule **is** the requirement. Read the rule, and you're reading the spec — not 200 lines of generated procedure standing in for it. Change the business rule, change the code; the engine handles the rest.
+
+</details>
 
 ---
 
