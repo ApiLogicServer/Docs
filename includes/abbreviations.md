@@ -70,3 +70,4 @@
 *[Context Engineering]: AI training injected into projects, so that (for example) logic is translated into rules not code, background system operation information, etc.
 *[context engineering]: AI training injected into projects, so that (for example) logic is translated into rules not code, background system operation information, etc.
 *[CE]: AI training injected into projects, so that (for example) logic is translated into rules not code, background system operation information, etc.
+*[API Logic Server]: The underlying technology and prior name for GenAI-Logic.

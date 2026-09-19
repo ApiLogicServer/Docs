@@ -1,5 +1,5 @@
 ---
-title: API Logic Server
+title: GenAI-Logic
 Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps, Microservice
 ---
 <style>
@@ -8,7 +8,6 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
     display: none;
   }
 </style>
-
 
 &nbsp;
 
