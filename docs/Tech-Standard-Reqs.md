@@ -200,6 +200,8 @@ If your developers keep writing specs and reviewing code the way they do now, an
 
 Less than it looks like. AI finds and fixes each gap fast, once someone's tested for it. Who's responsible for knowing whether every path is covered doesn't change at all. Still your team, still by hand, one test at a time.
 
+Better prompting or stricter test scaffolding might close some of this without touching the architecture at all — we didn't test that variant here. What we did test is the bare process, three rounds of it, and the bare process didn't generalize on its own.
+
 [The comparison doc](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md)'s bugs — forget the old balance, forget to re-copy the price — were corner cases inside code that mostly worked. This test found something plainer: no update logic, no delete logic, for a spec written the ordinary way. Three rounds of real fixes later, that original bug was still there. Nobody had hit it yet.
 
 And the [original comparison](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural) shows what reviewing that gap by hand actually costs — even from a clean, declarative spec: roughly 200 lines of procedural code, for what became 5 rules here.
