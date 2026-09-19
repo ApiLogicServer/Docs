@@ -19,9 +19,9 @@ version: 1.2, 9/14/2026
 
     It **works with** the methodology and tools you already have — nothing new to adopt. And shared artifacts foster **collaboration** between Business Users and Developers.
 
-    * **Familiar** — **use your existing methodology**: a declarative list, Gherkin, procedural prose, etc., project after project — the same governed rules come out either way.
+    * **Familiar** — **use your existing methodology**: the same governed rules come out either way, across the whole portfolio.
     * **Readable** — **AI generates rules, not code**: the same requirement handed to a general coding assistant as a procedural task produces code that *looks* right and hides bugs — vs. five rules you can actually read.
-    * **Trustable** — **governance is no bypass**: the rule engine plugs into the ORM's commit event, not into the API or handlers, so it fires identically whether the change comes from an API call, a message handler, or an AI agent.
+    * **Trustable** — **governance is no bypass**: enforced the same way regardless of source.
     * **Reviewable** — **AI flags what needs judgment**: AI writes back a proactive audit trail (`ad-libs.md`) — you review a short list, not the full diff.
     * **Shared** — **fits your organization**: Business Users and Developers work the same project, with standard tools and artifacts — no hand-off, no rewrite.
     * **Standard** — **spans design to runtime**: build with your own IDE and git; run as scalable containers, reachable by API, MCP, and messages.
