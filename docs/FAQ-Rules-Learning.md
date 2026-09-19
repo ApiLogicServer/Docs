@@ -72,7 +72,7 @@ the JSON:API, a custom endpoint, an MCP request, a Kafka handler, a script, an A
 touching the database directly. There's no entry point downstream of the commit, so there's no
 entry point that skips it.
 
-Same guarantee, stated in [Introduction - Executable Requirements](Introduction.md): *"the rule
+Same guarantee, stated in [Introduction: Governed Systems From Requirements](Introduction.md): *"the rule
 engine plugs into the ORM's commit event, not into the API or handlers, so it fires identically
 whether the change comes from an API call, a message handler, or an AI agent."* Procedural
 logic only runs where someone remembered to call it. Every new entry point is a new place to

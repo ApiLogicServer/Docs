@@ -18,7 +18,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
     And it uses your methodology, standard tools, and shared artifacts, fostering collaboration between Business Users and Developers.
 
-    For more, see [Governed Executable Requirements](Introduction.md){:target="_blank" rel="noopener"}.
+    For more, see the [Introduction](Introduction.md){:target="_blank" rel="noopener"}.
 
 ---
 

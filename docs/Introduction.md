@@ -1,7 +1,7 @@
 ---
-title: Introduction - Executable Requirements
+title: Introduction: Governed Systems From Requirements
 source: docs/Introduction.md
-version: 1.2, 9/14/2026
+version: 1.3, 9/19/2026
 ---
 
 <style>
@@ -11,7 +11,7 @@ version: 1.2, 9/14/2026
   }
 </style>
 
-# Introduction - Executable Requirements
+# Introduction: Governed Systems From Requirements
 
 !!! pied-piper ":bulb: TL;DR - Requirements In, Enterprise-class Governed System Out"
 
