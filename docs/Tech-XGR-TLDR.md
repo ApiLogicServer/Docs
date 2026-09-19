@@ -53,7 +53,7 @@ This answers the question every CIO is asking: *won't AI agents bypass my contro
 
 For regulated industries, the compliance gain is larger than the speed story. The traditional chain — *regulation → requirements → specs → code → enforcement → audit* — has a defect at every handoff. XGR compresses it to a single step, with the regulator's text as the source of truth.
 
-## Tooling for Governance at Scale
+## Tooling for Governance Across the Portfolio
 
 A single governed system is a proof of concept. The argument that matters is whether an organization can make governed-by-architecture the norm across hundreds of services, dozens of teams, and requirements arriving from every direction.
 

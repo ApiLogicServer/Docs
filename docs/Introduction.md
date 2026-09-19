@@ -173,7 +173,7 @@ AI generates an executable project: rules, API, Admin App and message handlers. 
 
 <br>
 
-## Governance at Scale
+## Governance Across the Portfolio
 
 !!! important "One Project to a Portfolio"
 

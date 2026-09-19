@@ -181,7 +181,7 @@ Governance-by-discipline was already failing in traditional systems, at signific
 
 The organizations that solve it are going to do it architecturally — rules at the commit point, in declarative form, generated from the requirements the business already writes. The organizations that try to solve it with more process, tighter agent confinement, and better-trained reviewers are going to spend the next five years discovering, in audit findings, that those approaches scale with the size of the discipline problem rather than against it. That is the dividing line.
 
-The frame the GenAI-Logic team uses for this is *Correct by Construction* — correctness as a property of the architecture, not a property of the team's discipline. After what I've seen, both in audit findings on traditional systems and in the early evidence on agentic ones, that's the right frame, and the window for adopting it on a planned timeline rather than a reactive one is closing.
+Architects have a name for this already: *Correct by Construction* — correctness as a property of the architecture, not a property of the team's discipline. It's the right frame here too. After what I've seen, both in audit findings on traditional systems and in the early evidence on agentic ones, the window for adopting it on a planned timeline rather than a reactive one is closing.
 
 I've started treating my requirements as the specification the system will run. The architecture takes them from there. I'd encourage other IT leaders to look at where their next eight-figure exposure is most likely to come from, and ask whether they want to address it by architecture or by discipline.
 

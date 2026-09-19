@@ -316,7 +316,7 @@ made visible in two numbers.
 
 &nbsp;
 
-## Portfolio View — Governance at Scale
+## Governance Across the Portfolio
 
 For organizations running multiple GenAI-Logic projects, health check scores
 provide a natural basis for tracking rule adoption across teams.
