@@ -264,6 +264,7 @@ nav:
     - Personal:
       - "Manager readme": Manager-readme.md
       - "Standard Requirements": Tech-Standard-Reqs.md
+      - "AI, You're in Control": Tech-AI-First.md
       - "Realizations": Tech-Realizations.md
       - "Post - RFI": Tech-Realizations-RFI.md
       - "Realizations - Post 1": Tech-Realizations-Post_1.md
