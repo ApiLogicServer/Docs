@@ -66,9 +66,13 @@ The [Manager](Manager.md) ships a full sample catalog. Every project is AI-enabl
 
 #### Executable Models
 
-Models manage the complexity — API, UI, and, most importantly, business logic. Runtime engines already in your Python environment execute them; see the example under [Create Your Own](#3-create-your-own). 
+Models manage the complexity — API, UI, Role-Based Access Control (RBAC), and, most importantly, business logic. Runtime engines already in your Python environment execute them; see the example under [Create Your Own](#3-create-your-own). 
 
 It's still real, generated code — full access, always — open it, edit it, debug it in your IDE like any other project.
+
+!!! pied-piper "The Payoff"
+
+    Taken together, these mean you can create governed systems from requirements — see the [Introduction](Introduction.md){:target="_blank" rel="noopener"}.
 
 *More: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"} · [Architecture](Architecture-What-Is.md){:target="_blank" rel="noopener"}.*
 
