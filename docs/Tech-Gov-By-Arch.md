@@ -73,11 +73,9 @@ Two earlier attempts at putting rules at the commit point both kept the procedur
 
 **AI-generated commit code.** A thoughtful reader will ask the modern version: couldn't AI just write the procedural commit-point code automatically?
 
-This was tried. From a five-rule specification, AI generated 220 lines of procedural code. The code looked reasonable. When asked about edge cases — *what if the customer assignment changes? what if the product changes?* — it found bugs. Each one a foreign-key change that updated the new parent's balance but left the old parent's balance uncorrected. Silent — no exceptions, just wrong data persisting to the database.
+This was tried. From a five-rule specification, AI generated ~200 lines of procedural code. The code looked reasonable. When asked about edge cases — *what if the customer assignment changes? what if the product changes?* — it found bugs. Each one a foreign-key change that updated the new parent's balance but left the old parent's balance uncorrected. Silent — no exceptions, just wrong data persisting to the database.
 
 When asked to explain its own failure, the AI diagnosed itself. Its summary: *"Business logic is not a coding problem. It's a dependency graph problem."* Dependencies in transactional logic, it concluded, are not reliably inferable from procedural control flow using pattern matching.
-
-That's not a vendor claim. It's the tool diagnosing its own output.
 
 The problem with procedural commit-point code isn't volume. It's that it's wrong, by the diagnosis of the system that produces it, in ways no review process can reliably catch — because no developer enumerates the full dependency graph either.
 
@@ -128,9 +126,9 @@ Rule.constraint(validate=Customer,
 
 Five rules. Standard Python. Open the file in VSCode. Set a breakpoint, step through with the debugger. Check it into git. Deploy in a container. The rules are readable code in a normal Python project, and the engine that executes them is purpose-built for transactions and open source — inspectable, forkable, no vendor lock-in for the runtime that does the enforcing.
 
-This is the part that, more than anything else, reduced my skepticism. The five rules above are a rigorous reformulation of the requirement — each rule maps to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The 220-line procedural version, generated from the same requirement, disperses that intent across handlers, branches, and helper functions. The original requirement is no longer visible in the code; you have to reconstruct it from how the code behaves.
+This is the part that, more than anything else, reduced my skepticism. The five rules above are a rigorous reformulation of the requirement — each rule maps to a clause an analyst wrote. A compliance officer can read them. An auditor can read them. The ~200-line procedural version, generated from the same requirement, disperses that intent across handlers, branches, and helper functions. The original requirement is no longer visible in the code; you have to reconstruct it from how the code behaves.
 
-I review the rules before they go into production. That's itself a governance step — the human-in-the-loop check that AI translated my requirement correctly. It's only possible because the rules are short and traceable to the requirement. Reviewing 220 lines of procedural code per scenario is not realistic, and the intent is buried in the volume regardless. Reviewability is what makes governance work — at design time when I check the translation, and at audit time when someone downstream verifies enforcement against policy.
+I review the rules before they go into production. That's itself a governance step — the human-in-the-loop check that AI translated my requirement correctly. It's only possible because the rules are short and traceable to the requirement. Reviewing ~200 lines of procedural code per scenario is not realistic, and the intent is buried in the volume regardless. Reviewability is what makes governance work — at design time when I check the translation, and at audit time when someone downstream verifies enforcement against policy.
 
 Location is one half of the architectural argument. *Reviewability* is the other.
 
@@ -171,7 +169,7 @@ A single governed system is interesting. An organization that makes governed-by-
 
 What makes it possible is that the business side of the requirements pipeline doesn't change (the left funnel). Analysts continue to produce the artifacts they already produce. Product owners continue to review them. They flow into Jira, into specs, into the same backlogs and the same review cadences. The pipeline already exists in every enterprise. What changes is what comes out the other end.
 
-Without an architecture like this, the same five-rule scenario produces 220 lines of procedural code on one team and 340 on another, each with the path-dependency bugs no developer (and no AI) enumerates exhaustively. Multiply that across every team, every quarter, every new endpoint, and governance reverts to a discipline problem at scale — which is to say, an unsolved problem. The audit findings I described at the top of this piece are exactly this failure mode.
+Without an architecture like this, the same five-rule scenario produces ~200 lines of procedural code on one team and 340 on another, each with the path-dependency bugs no developer (and no AI) enumerates exhaustively. Multiply that across every team, every quarter, every new endpoint, and governance reverts to a discipline problem at scale — which is to say, an unsolved problem. The audit findings I described at the top of this piece are exactly this failure mode.
 
 With this architecture, the same input *always* produces declarative rules that are automatically dependency-ordered, automatically enforced at commit, and automatically inherited by every new path — including paths that don't exist yet. The pipeline doesn't change. The output does. Governance becomes pipeline-native, and the cost of governance stops scaling with the size of the portfolio.
 

@@ -146,7 +146,7 @@ one line of rule. A conversation, not a project.
 
 &nbsp;
 
-## Goverance At Scale
+## Governance At Scale
 
 Five rules doesn't sound like much. Try it at 80 tables instead of one.
 

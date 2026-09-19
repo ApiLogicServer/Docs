@@ -101,7 +101,7 @@ This example illustrates:
 * Creating a project, *with regulations*
 * Using a simplified IDE - suitable for Business Users
 
-  * Full full project available to developers using standard UI
+  * Full project available to developers using standard UI
 
 ![reg-tech](images/exec_reqmts/reg-tech.png)
 
@@ -161,27 +161,29 @@ AI generates an executable project: rules, API, Admin App and message handlers. 
 
 ### Governance Infrastructure
 
-**Context Engineering** (above) and this **rule engine** are the governance infrastructure: rules plug into the database's commit event, not into any particular API or handler (your APIs are MCP-discoverable, so agents call them like any other client).
+**Context Engineering** and the **rule engine** are the governance infrastructure — one governs design time, the other runtime:
 
 ![Funnels](images/architecture/logic-architecture-exec.png){: style="width:450px"; align=right }
 
-**Design time:** whatever form the requirement takes — regulation, Gherkin, prose, procedural — AI compiles it into rules. Skip this architecture, and native AI writes path-oriented code instead, missing most use cases: [see our experiment](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"}.
+**Design time:** whatever form the requirement takes — regulation, Gherkin, prose, procedural — Context Engineering steers AI to compile it into rules. Without it, native AI writes path-oriented code instead: the insert path works, update and delete silently don't ([see our experiment](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"}).
 
-**Runtime:** every write funnels through the same commit point, regardless of source — API, agent, message, script.
+**Runtime:** every write — API, agent, message, script — passes through the same commit point, where the rules fire.
 
 *Why Python-as-declaration works this way, across rules, API, and UI: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"}.*
 
 <br>
 
-### Governance at Scale
+## Governance at Scale
 
 !!! important "One Project to a Portfolio"
 
     The rule engine ensures a project's rules are always followed — **no bypass, all sources and paths.**
 
-    The design funnel is what takes that same guarantee from one project to the entire portfolio, **without changing how your team works.**
+    The design-time funnel is what takes that same guarantee from one project to the entire portfolio — **without changing how your team works.**
 
-    And because the rules are readable, they're **one shared artifact, not two** — a developer and a business user can read the same file and agree it says what it should, instead of a spec and an implementation drifting apart.
+    Readable rules are **one shared artifact, not two** — business and developer read the same file and agree it says what it should. No spec drifting from its implementation.
+
+    The [experiment](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"} shows the mechanism holds on one spec, tested directly against native AI. The enterprise samples show it holds across different inputs — a cascade-allocation spec, an XML/Kafka pipeline, a regulatory citation — each arriving at the same governed shape, **without any of those teams first learning to write requirements differently**: [Cost Allocation](Sample_Allo_Dept_GL_readme.md){:target="_blank" rel="noopener"}, [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"}, [Customs Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"}.
 
     [Governance by Architecture](Tech-Gov-By-Arch.md){:target="_blank" rel="noopener"} · [Business User Collaboration](FAQ-Rules-Learning.md#business-user-collaboration){:target="_blank" rel="noopener"}
 
