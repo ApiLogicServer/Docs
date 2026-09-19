@@ -241,6 +241,8 @@ The result runs as a scalable server exposing both the API and message handlers,
 
 ## Iterate, Vibe Custom UIs
 
-You can add requirements, and update existing ones, in place.  Use your favorite Vibe tools to create custom User interfaces.  Use your IDE as always for coding, debugging, etc.  Ask AI to create tests, and add your own.
+Most teams now build their UI with a Vibe tool, not by hand. Vibe tools are frontend-only — they still need a real, governed backend to talk to, and that's what this project already is: an API with rules behind it, ready to point a Vibe tool at.
+
+You can add requirements, and update existing ones, in place.  Use your favorite Vibe tools to create custom User interfaces against this API.  Use your IDE as always for coding, debugging, etc.  Ask AI to create tests, and add your own.
 
 *See [vibe](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"}.  [Testing](Behave.md){:target="_blank" rel="noopener"}. The [Manager](Manager.md){:target="_blank" rel="noopener"} is where you run all of this day to day.*
