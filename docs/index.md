@@ -22,7 +22,23 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 ---
 
-## Your AI Assistant Already Knows This System
+## Learn It By Asking, Not Reading Front to Back
+
+!!! important "That's how you learn this system"
+
+    Ask, at whatever point you're stuck — not front to back.
+
+The [Manager](Manager.md) provides a full sample catalog, each illustrating key patterns.  Each project is AI-enabled — ask your AI assistant how it works.
+
+![training](images/manager/Manager-Training.png)
+
+Context Engineering is what makes this possible: thousands of lines of training material, embedded in every project, that turn your AI assistant into a guide for *this specific project* — not a generic coding assistant guessing at your codebase. It's guidance without the walls of a classic studio, and it's what lets you ask a project "what can you help me with?" and get a real, scoped answer back.
+
+*More on how Context Engineering works: [Introduction](Introduction.md){:target="_blank" rel="noopener"}.*
+
+&nbsp;
+
+## Diagnose Your Product, Not Generated Spaghetti
 
 ![AI Log Analysis](images/logic/log-analysis.png)
 
@@ -32,9 +48,7 @@ The AI reads the log, understands the rules, and responds calmly:
 
 > *"Your server is healthy — all APIs are responding.  This is your credit limit constraint working correctly.  Someone tried to set Item quantity → 14,444.  That would make Customer[Alice]'s balance → $1,299,960, exceeding her $5,000 credit limit.  The rule correctly blocked it with a 400 response."*
 
-The AI isn't reading generated spaghetti.  It's reading the same rules you wrote — the same rules that appear in the logic log, the same rules a business analyst can read.  Everyone is looking at the same thing.
-
-The thousands of lines of Context Engineering built into every project mean your AI assistant can explain behavior, diagnose problems, generate new rules, and create tests — without you having to explain the codebase first.
+It's reading the same rules you wrote — the same rules that appear in the logic log, the same rules a business analyst can read.  Everyone is looking at the same thing.
 
 It's all standard tools underneath: your IDE, your debugger, your source control all work normally.  Rules live in your project as plain Python files, committed to git like everything else.  The stack is Python, Flask, SQLAlchemy, and Docker.  Deployment is standard containers.  Works with MySQL, Postgres, SQL Server, Oracle, and SQLite.  Nothing proprietary, nothing to unlearn.
 
@@ -87,13 +101,9 @@ This is a hands-on tour covering API creation, declarative rules, security, and 
 
 &nbsp;
 
-### 3. Samples
+### 3. Create Your Own
 
-The [Manager](Manager.md) provides a full sample catalog, each illustrating key patterns.  Each project is AI-enabled — ask your AI assistant how it works.  
-
-Note you can create projects from existing databases, or new database projects from prompts.  In both cases, the presumption is that development continues in a classic iterative manner in the created project.
-
-![training](images/manager/Manager-Training.png)
+You can create projects from existing databases, or new database projects from prompts.  In both cases, development continues in a classic iterative manner in the created project.  See the sample catalog above for patterns to draw from.
 
 ---
 

@@ -129,6 +129,34 @@ AI sets up the project and installs Context Engineering — training material em
 
 <br>
 
+### Guidance, Without the Walls
+
+Classic studios solved "where do I start" with walls — a fixed palette, a proprietary format, "the tool's way" of thinking. AI alone hands you a clean sheet of paper instead — no walls, but also nothing to push against when you want a little guidance.
+
+Context Engineering is the guidance, without the walls — just enough, when you want it, in this project's own vocabulary.
+
+<details markdown>
+<summary>Just enough guidance — a menu of real next steps, not a forced curriculum</summary>
+
+<br>
+
+![help-me](images/manager/help-me.png)
+
+</details>
+
+<details markdown>
+<summary>Product depth on tap — a real answer, not a canned one-liner, with follow-up discussion</summary>
+
+<br>
+
+![what-are-rules](images/manager/what-are-rules.png)
+
+</details>
+
+Nothing proprietary underneath — still git, still standard Python, still a rule engine you can read. The guidance lives in the conversation, not in the output format.
+
+<br>
+
 ## Standard Project - Executable
 
 AI generates an executable project: rules, API, Admin App and message handlers. Open it in your IDE, and run it.
