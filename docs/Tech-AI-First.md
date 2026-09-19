@@ -28,7 +28,7 @@ We've written elsewhere about one sharp version of this cost: handed a typical, 
 
 Put the studio and the blank page side by side and a pattern shows up: both are trying to hold two different kinds of knowledge in one place, and both pay for it.
 
-There's **system knowledge** — the generic part. How a rule should cascade through dependent tables. What a foreign key lookup should look like. The shape of an admin UI for a typical entity. None of this is specific to your business; it's the same for almost every project.
+There's **system knowledge** — the generic part, and specifically the *enterprise* part. How a rule should cascade through dependent tables. What a foreign key lookup should look like. A robust API shouldn't be something you have to ask for either — optimistic locking, pagination, filtering, related-data retrieval are just assumed, the same way role-based access and audit trails are assumed. None of this is specific to your business; it's what any enterprise-class system needs, regardless of domain — the same knowledge a general coding assistant has to reconstruct, unevenly, on every single project, and easy to leave out precisely because nobody asked for it by name.
 
 And there's **domain knowledge** — your requirements. Your entities, your rules, your policy. The part only you know.
 
@@ -38,7 +38,7 @@ The studio bundled both into the tool, walls and all — which is exactly why it
 
 ## Guidance, Without the Walls
 
-Context Engineering is what happens once you stop conflating the two. Factor the system knowledge out, ship it *with* every project as training material — plain Python and markdown, not bolted onto a vendor's runtime — and hand the rest back to you. It doesn't restrict what you can build. It moves the starting line: the AI already knows a rule should cascade, already knows a lookup wants an integer foreign key, already knows a constant belongs in SysConfig, before you've typed a word. What's left for your prompt to supply is exactly the part that was always yours — the domain.
+Context Engineering is what happens once you stop conflating the two. Factor the system knowledge out, ship it *with* every project as training material — plain Python and markdown, not bolted onto a vendor's runtime — and hand the rest back to you. The result is an **enterprise-aware** system, not a generic one: the AI already knows business logic belongs in declarative, no-bypass rules — not scattered across handlers — already knows a lookup wants an integer foreign key, already knows role-based access and audit trails aren't optional extras, before you've typed a word. What's left for your prompt to supply is exactly the part that was always yours — the domain.
 
 The guidance travels with the project, too. Open it in six months, hand it to a new hire, point a different AI assistant at it — the knowledge is still there, because it was never locked in a studio's format to begin with.
 
@@ -98,6 +98,6 @@ Three moments, one source of guidance — not three different tools you have to 
 
 ## The Actual Claim
 
-Not "AI is easier now." Something narrower and more useful: the tradeoff the industry has been treating as fundamental — walls *or* freedom — isn't fundamental. It's an artifact of where the knowledge was allowed to live. Put it in the project instead of the tool, and you keep the freedom of a blank page with the guidance of a studio, and lose the downside of both.
+Not "AI is easier now." Something narrower and more useful: the tradeoff the industry has been treating as fundamental — walls *or* freedom — isn't fundamental. It's an artifact of where the knowledge was allowed to live. Put system knowledge in the project instead of the tool, and you get an enterprise-aware starting point with the freedom of a blank page — the guidance of a studio, none of its walls.
 
 *See also: [Introduction](Introduction.md){:target="_blank" rel="noopener"} for the full pipeline this fits into, and [the native-AI experiment](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"} for what happens without this guidance at all.*

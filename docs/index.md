@@ -69,7 +69,7 @@ Models manage the complexity — API, UI, Role-Based Access Control (RBAC), and,
 
 It's still real, generated code — full access, always — open it, edit it, debug it in your IDE like any other project.
 
-Most teams now build their UI with a Vibe tool. Vibe tools are frontend-only — they need a real, governed backend to call, and that's what you get here: an API with rules behind it, generated and ready before you open your Vibe tool.
+Most teams now build their UI with a Vibe tool. Vibe tools are frontend-only — they need real infrastructure underneath: a governed API with rules behind it, not a mock. That's what you get here, generated and ready before you open your Vibe tool.
 
 !!! pied-piper "The Payoff"
 
