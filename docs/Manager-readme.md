@@ -31,17 +31,24 @@ codespaces_patch: |
 
 # Welcome to GenAI-Logic
 
-### Governed Executable Requirements
+GenAI-Logic turns your requirements into enterprise-class database transaction systems, governed by rules that can't be bypassed.
 
-<!-- LOCAL-MGR-ONLY-START -->
-Describe it, and get a real system:
-<!-- LOCAL-MGR-ONLY-END -->
+And it uses your methodology, standard tools, and shared artifacts, fostering collaboration between Business Users and Developers.
+
+For a walk-through, see the [docs](https://apilogicserver.github.io/Docs/).
 <!-- CODESPACES-ONLY-START
-Describe it, and get a real system (see [codespaces setup here](system/ApiLogicServer-Internal-Dev/setup.gif)):
+(see [codespaces setup here](system/ApiLogicServer-Internal-Dev/setup.gif))
 CODESPACES-ONLY-END -->
 
+&nbsp;
+
 <details markdown>
-<summary>For <strong>today:</strong> a working API, Admin App, and governed logic, <strong>built from a prompt</strong></summary>
+<summary>Orientation — first time here? Start with this.</summary>
+
+<br>
+
+<details markdown>
+<summary>A working API, Admin App, and governed logic — <strong>built from a prompt</strong></summary>
 
 <br>Leverage AI for what it's great at — database design, data mapping, and more. Start from a prompt alone and AI designs the database too, or point it at your existing database and skip straight to the logic. Either way, your AI assistant reads whatever you already have — plain English, Gherkin, pseudocode — and hands business logic off as rules, not code.
 
@@ -50,7 +57,7 @@ CODESPACES-ONLY-END -->
 &nbsp;
 
 <details markdown>
-<summary>And it <strong>fits</strong>: uses your existing org, technology, and practices</summary>
+<summary>It fits: uses your existing org, technology, and practices</summary>
 
 <br>What comes out the other end is exactly what you already run:
 
@@ -64,15 +71,17 @@ CODESPACES-ONLY-END -->
 &nbsp;
 
 <details markdown>
-<summary>And for <strong>tomorrow</strong>: systems <strong><em>governed</em></strong> by rules you can <strong>Read, Trust, and Maintain</strong></summary>
+<summary>Systems governed by rules you can Read, Trust, and Maintain</summary>
 
-<br>**The key idea:** that split — AI for executable intent, declarative rules for governance — is the whole point. Here's what "governed" means in practice:
+<br>The split — AI for executable intent, declarative rules for governance — is the whole point. Here's what "governed" means in practice:
 
 - **Read** — [5 rules](samples/basic_demo_logic_gov/logic/logic_discovery/place_order/check_credit.py), not [~200 lines of code](samples/basic_demo_logic_gov/logic/procedural/credit_service.py). A rule you can point to and know what it does, at a glance.
 - **Trust** — those rules run at **one commit point**, no matter which path the transaction came in on — API, MCP, agent, Kafka. **No bypass.**
 - **Maintain** — add a rule anywhere, and the engine resolves dependency order automatically. No untangling existing code to find where it belongs.
 
 And you're not alone throughout: ask your AI assistant anything — architecture, rules, debugging, deployment, or how the system works.
+
+</details>
 
 </details>
 
