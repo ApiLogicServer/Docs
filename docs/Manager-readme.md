@@ -35,15 +35,15 @@ GenAI-Logic turns your requirements into enterprise-class database transaction s
 
 And it uses your methodology, standard tools, and shared artifacts, fostering collaboration between Business Users and Developers.
 
-For a walk-through, see the [docs](https://apilogicserver.github.io/Docs/).
+This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager) — where you manage projects, create notes and resources, etc.  It's also your learnng hub.
 <!-- CODESPACES-ONLY-START
 (see [codespaces setup here](system/ApiLogicServer-Internal-Dev/setup.gif))
 CODESPACES-ONLY-END -->
 
-&nbsp;
-
 <details markdown>
 <summary>Orientation — first time here? Start with this.</summary>
+
+For a walk-through, see the [docs](https://apilogicserver.github.io/Docs/).
 
 <br>
 
@@ -86,8 +86,6 @@ And you're not alone throughout: ask your AI assistant anything — architecture
 </details>
 
 <br>
-
-This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager) — where you manage projects, create notes and resources, etc.
 
 &nbsp;
 
