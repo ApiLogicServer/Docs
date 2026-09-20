@@ -85,8 +85,6 @@ And you're not alone throughout: ask your AI assistant anything — architecture
 
 </details>
 
-<br>
-
 ## 🤖 AI Assistance
 
 <!-- LOCAL-MGR-ONLY-START -->
