@@ -173,7 +173,32 @@ Create basic_demo from samples/prompts/genai_demo.prompt
 > **During project creation, a browser tab may auto-open (or offer to)** showing it running — safe to decline or dismiss.
 CODESPACES-ONLY-END -->
 
-The goal here isn't a demo — it's an **enterprise-class** system you can trust and maintain. That's exactly what gets tested next.
+**See it running:** Press F5 using "API Logic Server Run (run project from manager)", and open the Admin App. Explore the API via Swagger, browse the data, and follow the relationships — all auto-generated from the data model.
+
+Now trigger it: open an **unshipped** Order for Alice, edit the Widget item:
+
+```
+Change the quantity to a very large number. Save.
+```
+
+<details markdown>
+<summary>&emsp;&emsp;Detail Instructions -- Screen Shots</summary>
+
+<br>Alter the quantity for an *unshipped* item:
+
+1. Show the Customer List
+2. Show the first Customer
+3. Show first Order
+4. Edit the Item
+5. Set the quantity
+
+![credit-check](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/credit-check.png?raw=true?raw=true)
+
+</details>
+
+<br>
+
+The save fails — note the dialog. That's complex business logic running — **not what you'd get if you'd asked AI alone.** Let's explore.
 
 </details>
 
@@ -183,8 +208,6 @@ The goal here isn't a demo — it's an **enterprise-class** system you can trust
 <summary>AI is great — but logic-as-code is hard to Read, Trust, and Maintain — here's why</summary>
 
 <br>AI is genuinely good at UI, data mapping, boilerplate, etc — no argument there. **Business logic is the exception.**
-
-On a real system, business logic routinely consumes **half the development and debugging effort** — and it's the half that determines whether the system is actually correct.
 
 Left unguided, any AI assistant — including the one that just built basic_demo for you — would default to procedural code for logic like this. Ask it directly, and you get three problems:
 
@@ -211,7 +234,7 @@ There's a structural problem underneath the bugs, too: **AI pattern-matches depe
 <details markdown>
 <summary>&emsp;&emsp;<strong>Not trustworthy (2)</strong> — a typical spec produced logic for one path only</summary>
 
-<br>Two frontier models, no ApiLogicServer, told explicitly not to use rules. Given a typical requirement — check credit on placing an order, phrased the way a developer naturally writes it. Both produced the same shape of code: one function, wired to order creation. No update path. No delete path.
+<br>We gave two frontier models a typical requirement — check credit on placing an order, phrased the way a developer naturally writes it — with no ApiLogicServer, and told them explicitly not to use rules. Both produced the same shape of code: one function, wired to order creation. No update path. No delete path.
 
 Probed directly: change an item's quantity, delete an item, reassign an order to a different customer, reassign an item to a different product. Every case, both models, left stale data behind. No error. Nothing to catch it. The logic wasn't buggy so much as absent — it existed for exactly one path and nowhere else. [Full experiment →](Tech-Standard-Reqs.md)
 
@@ -244,11 +267,11 @@ That's not (only) a capability gap — it's a representation problem: procedural
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;1. Run it — see the API and logic operate</summary>
+<summary>&emsp;&emsp;1. What you just ran — see why it's different</summary>
 
 <br>You've probably used AI to generate code before — so what's different here?
 
-**Difference 1: it produces models, not code.** Run the basic_demo prompt above, and instead of a pile of procedural code, you get artifacts that declare structure or policy rather than procedure — same 5 requirements, same AI:
+**Difference 1: it produces executable models, not code.** You just ran that project. Instead of a pile of procedural code, you got artifacts that declare structure or policy rather than procedure — same 5 requirements, same AI:
 
 1. **Data model** — `database/models.py`
 2. **Full JSON:API** — Swagger, pagination, optimistic locking (`api/expose_api_models.py` — 52 lines, zero per-table code)
@@ -259,32 +282,7 @@ That's not (only) a capability gap — it's a representation problem: procedural
 
 Each small, readable, yours. Plain Python — standard tooling applies. Security is opt-in, not default — bootstrap RBAC anytime with `genai-logic add-auth`.
 
-**See it running:** Press F5 using "API Logic Server Run (run project from manager)", and open the Admin App. Explore the API via Swagger, browse the data, and follow the relationships — all auto-generated from the data model.
-
-Now trigger it: open an **unshipped** Order for Alice, edit the Widget item:
-
-```
-Change the quantity to a very large number. Save.
-```
-
-<details markdown>
-<summary>&emsp;&emsp;Detail Instructions -- Screen Shots</summary>
-
-<br>Alter the quantity for an *unshipped* item:
-
-1. Show the Customer List
-2. Show the first Customer
-3. Show first Order
-4. Edit the Item
-5. Set the quantity
-
-![credit-check](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/credit-check.png?raw=true?raw=true)
-
-</details>
-
-<br>
-
-The save fails — note the dialog. Why? Let's look.
+The save you just saw fail was enforced by exactly one of those 5 rules. Let's look at why that's not what you'd get from AI alone.
 
 </details>
 
@@ -408,7 +406,7 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>1. It's enterprise-aware, not just logic-aware</strong> — EAI, MCP, AI Rules, RBAC, Custom UIs</summary>
+<summary>&emsp;&emsp;<strong>It's enterprise-aware, not just logic-aware</strong> — EAI, MCP, AI Rules, RBAC, Custom UIs</summary>
 
 <br>Context Engineering's system knowledge isn't limited to rules — it already knows the integration points a real enterprise system needs, the same way it already knows a lookup wants an integer foreign key. [More on system vs. domain knowledge →](https://apilogicserver.github.io/Docs/Tech-AI-First/#two-kinds-of-knowledge-conflated)
 
@@ -435,7 +433,7 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>2. The Logic Architecture</strong> — any requirement format, one commit point (no bypass)</summary>
+<summary>&emsp;&emsp;<strong>The Logic Architecture</strong> — any requirement format, one commit point (no bypass)</summary>
 
 <br>The **Commit No Bypass** gate ensures these additional transaction sources — MCP, AI Rules, Custom UIs, and EAI's own Kafka producers and consumers — all converge on the same enforcement point.
 
@@ -454,7 +452,7 @@ That's the architecture: two funnels, converging on one engine, at the **same co
 &nbsp;
 
 <details open markdown>
-<summary>&emsp;&emsp;<strong>3. This is what makes Executable Requirements possible</strong> — at enterprise class</summary>
+<summary>&emsp;&emsp;<strong>This is what makes Executable Requirements possible</strong> — at enterprise class</summary>
 
 <br>We now have a comprehensive tool set (AI, rules for governance, enterprise integration services). These enable **Governed Enterprise Systems — from prompts**, in formats you already know, not a new syntax to learn:
 
@@ -569,6 +567,8 @@ Put together: once the AI knows how the system works, it doesn't just generate r
 <br>Don't take them on faith. Ask the same question a different way, or ask something not covered here — like where this architecture breaks down. If it just recites the same lines back, you've caught it. If it reasons, that's the test passing.
 
 </details>
+
+Ready to see it for yourself? The demo catalog below runs the same systems live.
 
 </details>
 
