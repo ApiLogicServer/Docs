@@ -146,6 +146,8 @@ Think of a spreadsheet. `B10 = SUM(B1:B9)` doesn't get called when a value chang
 
 ### Governance by Architecture, Not Discipline
 
+![Governance by Architecture, Not Discipline](images/architecture/gov-by-arch.png)
+
 Governed by Architecture has 2 key elements:
 
 - **A rule engine that understands the dependencies** — it knows `Customer.balance` depends on `Order.amount_total` depends on `Item.amount`, so it adjusts it, automatically, on every write, whether or not the code in front of it ever mentions "placing an order." It runs as a listener on the commit itself, not inside any particular API or handler — so it governs every path, from every transaction source, the same way. That adjustment, not a full recompute, is what keeps it fast at scale — this isn't a RETE engine re-evaluating everything from scratch.

@@ -38,7 +38,11 @@ This CE provides key services not found in traditional IDEs.
 <details markdown>
 <summary>Generation - Entire projects, or existing projects</summary>
 
-<br>Use the CE to create projects (see the example below, [here](#3-create-your-own)), or add logic to existing projects.
+<br>Use the CE to create projects, or add logic to existing projects.
+
+![existing-db](images/exec_reqmts/basic_demo_existing_db.png)
+
+*More below, under [Create Your Own](#3-create-your-own).*
 
 </details>
 
@@ -65,7 +69,7 @@ Then pursue technical topics according to your priorities.  For example, ask ***
 
 </details>
 
-*More: [Introduction](Introduction.md){:target="_blank" rel="noopener"}.*
+*More: [Introduction](Introduction.md){:target="_blank" rel="noopener"} · [AI, You're in Control](Tech-AI-First.md){:target="_blank" rel="noopener"}.*
 
 &nbsp;
 
@@ -83,7 +87,7 @@ Most teams now build their UI with a Vibe tool. Vibe tools are frontend-only —
 
     Taken together, these mean you can create governed enterprise-class systems from requirements — see the [Introduction](Introduction.md){:target="_blank" rel="noopener"}.
 
-*More: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"} · [Architecture](Architecture-What-Is.md){:target="_blank" rel="noopener"}.*
+*More: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"} · [Architecture](Architecture-What-Is.md){:target="_blank" rel="noopener"} · [tested against native AI](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"}.*
 
 &nbsp;
 

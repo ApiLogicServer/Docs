@@ -152,6 +152,8 @@ Context Engineering is the guidance, without the walls — just enough, when you
 
 Nothing proprietary underneath — still git, still standard Python, still a rule engine you can read. The guidance lives in the conversation, not in the output format.
 
+*Why this doesn't become its own wall, and what "enterprise-aware" system knowledge actually means: [AI, You're in Control](Tech-AI-First.md){:target="_blank" rel="noopener"}.*
+
 <br>
 
 ## Standard Project - Executable
