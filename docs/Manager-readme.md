@@ -198,7 +198,7 @@ Change the quantity to a very large number. Save.
 
 <br>
 
-The save fails — note the dialog. That's complex business logic running — **not what you'd get if you'd asked AI alone.** Let's explore.
+The save fails — note the dialog. That's a real business rule enforcing a policy, one of just 5 lines — **not what you'd get if you'd asked AI alone.** Let's explore.
 
 </details>
 
@@ -521,12 +521,12 @@ The IDE itself is simplified for this — same AI, same governed output, no deve
 &nbsp;
 
 <details markdown>
-<summary>Go deeper — guided tour, plus your AI as on-call support and consulting</summary>
+<summary>Go deeper — beyond credit-check: security, customization, integration, logic debugging</summary>
 
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;Guided tour — create basic_demo</summary>
+<summary>&emsp;&emsp;Guided tour — the full 30-45 min build, past what "The Ideal" showed</summary>
 
 <br>**Create basic_demo** (auto-opens with guided tour option):
 ```bash
