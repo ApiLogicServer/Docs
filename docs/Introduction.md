@@ -58,11 +58,9 @@ Use case: App Integration
 
 Incomplete is fine too — provide what you have and request an interview; AI asks what's missing, and drafts the requirement from your answers.
 
-<details markdown>
+&nbsp;
 
-<summary>See: complex cascade logic (Cost Allocation) and regtech for Business Users (Customs Surtax)</summary>
-
-<br>
+### Enterprise Scale, With Regulations
 
 Enterprise-class systems are supported too — a set of requirements, including (for example) custom message formats, expressed by example. This cascade-allocation prompt — GL accounts, funding splits, and AI Rules fuzzy-matching contractor charges to the right project — is governed the same way as the credit-check example above, at enterprise scale. The traditional, hand-coded version of this same logic took 4 developers × 2 years to build and keep governed:
 
@@ -96,18 +94,17 @@ Charges can be placed by contractors.  They may supply only a minimal project de
 Total the charges into the Project and GL Account.
 ```
 
-This example illustrates:
+This example illustrates creating a project, *with regulations*.
 
-* Creating a project, *with regulations*
-* Using a simplified IDE - suitable for Business Users
+&nbsp;
 
-  * Full project available to developers using standard UI
+### A Business-User-Friendly IDE
+
+The same example, built with a simplified IDE suitable for Business Users — the full project remains available to developers using the standard UI:
 
 ![reg-tech](images/exec_reqmts/reg-tech.png)
 
 > See screens, data model, and more for this example: [Cost Allocation](Sample_Allo_Dept_GL_readme.md){:target="_blank" rel="noopener"}. Two more enterprise-scale examples, same pattern: [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"} and [Customs Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"}.
-
-</details>
 
 *Formats, the RFI interview, and real transcripts: [Executable Reqmts](Exec-Reqmts.md){:target="_blank" rel="noopener"}. Enterprise samples — worth a skim, each with its own TL;DR, diagrams, and real code: [Cost Allocation](Sample_Allo_Dept_GL_readme.md){:target="_blank" rel="noopener"}, [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"}, [Customs Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"}*
 
