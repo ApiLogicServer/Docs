@@ -198,7 +198,7 @@ Change the quantity to a very large number. Save.
 
 <br>
 
-The save fails — note the dialog. That's a real business rule enforcing a policy, one of just 5 lines — **not what you'd get if you'd asked AI alone.** Let's explore.
+The save fails — note the dialog. That's 5 rules — not ~200 lines of code — governing this transaction across four tables. **Not what you'd get if you'd asked AI alone.** Let's explore.
 
 </details>
 
@@ -283,6 +283,8 @@ That's not (only) a capability gap — it's a representation problem: procedural
 Each small, readable, yours. Plain Python — standard tooling applies. Security is opt-in, not default — bootstrap RBAC anytime with `genai-logic add-auth`.
 
 The save you just saw fail was enforced by exactly one of those 5 rules. Let's look at why that's not what you'd get from AI alone.
+
+![Governance by Architecture, Not Discipline](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/gov-by-arch.png?raw=true)
 
 </details>
 
@@ -510,7 +512,7 @@ The IDE itself is simplified for this — same AI, same governed output, no deve
 &nbsp;
 
 <details markdown>
-<summary>Business Users and Developers, One Artifact</summary>
+<summary>Business Users and Developers — Same Tools, Same Artifacts</summary>
 
 &nbsp;
 

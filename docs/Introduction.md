@@ -194,6 +194,15 @@ AI generates an executable project: rules, API, Admin App and message handlers. 
 
 **Runtime:** every write — API, agent, message, script — passes through the same commit point, where the rules fire.
 
+<details markdown>
+<summary>See the contrast: with Context Engineering, vs. without</summary>
+
+<br>
+
+![Governance by Architecture, Not Discipline](images/architecture/gov-by-arch.png)
+
+</details>
+
 *Why Python-as-declaration works this way, across rules, API, and UI: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"}.*
 
 <br>

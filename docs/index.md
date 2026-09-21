@@ -99,6 +99,8 @@ Your IDE, your debugger, your git, all work normally. Rules are plain Python fil
 
 Rules **aren't called** — from each API path or anywhere else. They fire automatically on commit, so every transaction source (APIs, messages, MCP Agents) and every path are governed automatically. They're **self-ordering,** too — you don't need to worry about that during maintenance.
 
+*See the architecture: [Governance by Architecture, Not Discipline](Tech-Gov-By-Arch.md){:target="_blank" rel="noopener"}.*
+
 &nbsp;
 
 #### Not Manual Schema Maintenance

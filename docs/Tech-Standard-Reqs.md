@@ -10,6 +10,15 @@ source: docs/Tech-Standard-Reqs.md
   }
 </style>
 
+!!! pied-piper ":bulb: TL;DR: Native AI Generates Code Missing From Standard Specs... Rules Don't"
+
+    In this study, we submitted standard procedural specifications to AI, and found that it generated systems **missing** core services such as delete and update.
+
+    Rules understand dependencies, and how they affect all verbs. So, the solution:
+
+    > Pair a rules engine with Context Engineering so that AI generates rules, not code. <br>This provides the **governance** enterprises require.
+
+
 # How Does Native AI Handle a Typical Spec?
 
 ## AI Taught the Wrong Lesson.
@@ -21,10 +30,10 @@ On Placing Orders,
 Derive item amount as quantity times Product Price
 Add that to the Order Total Amount
 Add that to the Customer Balance
-Ensure that is less that the Credit Limit
+Ensure that is less than the Credit Limit
 ```
 
-I gasped. Here was AI teaching people the wrong paradigm — procedural, focused on one event.
+I gasped. Here was AI teaching people the *wrong paradigm* — procedural, focused on one event.
 
 What if it actually created code like that instead of rules?
 
@@ -32,7 +41,7 @@ What if it actually created code like that instead of rules?
 
 ### Then It Passed the Test Anyway.
 
-Well, models were improving, so I gave it a try. I created a project, submitted that same procedural text, to see what it would create.  I got:
+Well, models were improving, so I gave it a try.  I created a project, submitted that same procedural text, to see what it would create.  I got:
 
 ```python
 Rule.copy(derive=Item.unit_price, from_parent=Product.unit_price)
@@ -54,7 +63,7 @@ But it raised a real question.
 
 I'd made the case for governed rules at enterprise scale before, in [AI With Rules You Can Read, Trust, and Maintain](https://www.linkedin.com/pulse/ai-rules-you-can-read-trust-maintain-val-huber-u7q5c). But that's an argument. This is a test.
 
-Then I watched a video that's picked up real traction fast. Its point: good architecture should work with what you naturally do, not require you to conform to its model.  Exactly right: like how a spreadsheet matches how financial analysts think.
+There's a real principle at work here: good architecture should work with what you naturally do, not require you to conform to its model — like how a spreadsheet matches how financial analysts think.
 
 So, let's run an A/B test: the same natural (procedural) spec, once through native AI, once through AI governed by rules.
 
@@ -150,7 +159,7 @@ Rules that run this way at commit — no bypass — make governance something th
 
 &nbsp;
 
-### One More Thing — AI Still Gets It Wrong
+### AI Makes Mistakes — Which Is Why Readability Is Critical
 
 Here's a mistake worth owning: the very first rule set in this article included `where=lambda row: row.date_shipped is None` on the `Customer.balance` rule — a shipped-orders filter this prompt never asked for. Compare it to the second rule set, later in this piece, for the same requirement — that clause is gone. I caught it and dropped it, but not before it sat there, unremarked, in what I'd already called "declarative."
 
@@ -206,7 +215,7 @@ Better prompting or stricter test scaffolding might close some of this without t
 
 And the [original comparison](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_logic_gov/logic/procedural) shows what reviewing that gap by hand actually costs — even from a clean, declarative spec: roughly 200 lines of procedural code, for what became 5 rules here.
 
-52% of organizations already use AI across multiple business functions. Only 17% say governance is "embedded by design" — [OneTrust's 2026 AI-Ready Governance Survey](https://www.onetrust.com/resources/onetrust-2026-ai-ready-governance-report/), 1,200+ business leaders.
+This isn't just one project's finding. 52% of organizations already use AI across multiple business functions. Only 17% say governance is "embedded by design" — [OneTrust's 2026 AI-Ready Governance Survey](https://www.onetrust.com/resources/onetrust-2026-ai-ready-governance-report/), 1,200+ business leaders. The gap between adoption and governance is industry-wide, not a one-off.
 
 &nbsp;
 
