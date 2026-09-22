@@ -89,7 +89,7 @@ Handed straight to native AI, verbatim, to two frontier models — with an added
 
 ### Only the Insert Path Was Built
 
-Both wrote the same shape of system:
+Both native models wrote the same shape of system:
 
 ```python
 def place_order(db, customer_id, notes, line_items):
@@ -117,7 +117,7 @@ I probed it:
 
 ## B) Governed AI
 
-I ran the identical prompt through GenAI-Logic. Five rules came out:
+I ran the identical prompt through GenAI-Logic. As noted above, five rules came out:
 
 ```python
 Rule.copy(derive=Item.unit_price, from_parent=Product.unit_price)
@@ -140,7 +140,7 @@ None of them says "placing an order." Checked live against a running server, all
 
 That's not a style preference — it's the whole point. "On Placing Orders" only covers placing an order. These 5 rules cover **every path** to the same data: change a quantity after the fact, delete an item, ship the order, move an item to a different order, move an order to a different customer. Same 5 rules, every time — because they're declared on `Item.amount`, `Order.amount_total`, and `Customer.balance` themselves, not on the moment someone places an order.
 
-Think of a spreadsheet. `B10 = SUM(B1:B9)` doesn't get called when a value changes — it just reacts. Nobody writes a handler for "what if row 4 changes" versus "what if row 7 is deleted." The formula is declared once, on the data, and it's correct no matter which cell moves. That's what these 5 rules are doing with `Order.amount_total` and `Customer.balance` — the same automatic reaction, just across tables instead of cells.
+Think of a spreadsheet. `B10 = SUM(B1:B9)` doesn't get *called* when a value changes — it just reacts, automatically. Nobody writes a handler for "what if row 4 changes" versus "what if row 7 is deleted." The formula is declared once, on the data, and it's correct no matter which cell moves. That's what these 5 rules are doing with `Order.amount_total` and `Customer.balance` — the same automatic reaction, just across tables instead of cells.
 
 &nbsp;
 
@@ -157,7 +157,7 @@ Governed by Architecture has 2 key elements:
 
 In most large companies, governance means a review cycle: someone signs off before a change ships, someone audits after the fact. That works, but it's a human checking a human.
 
-Rules that run this way at commit — no bypass — make governance something the system does, not something a committee does later. Every transaction source, every path, every time.
+Rules that run this way at commit — no bypass — make governance something the *system* does, not something a committee does later. Every transaction source, every path, every time.
 
 &nbsp;
 
@@ -183,14 +183,15 @@ You can't govern what you can't read.
 
 An obvious objection to the native-AI result: nobody ships the first draft. A
 developer would test it, notice the update and delete paths were missing, and
-ask AI to fix them. So that's what I tried next — three rounds, each a
-realistic bug report a developer would actually write after testing the app:
+ask AI to fix them. Quite so.
 
-1. "It only handled inserting a new order — it failed when I update a line
-   item. Please fix." Result: quantity and product changes on an existing
+So that's what I tried next — three rounds, each a realistic bug report a developer would actually write after testing the app:
+
+1. *"It only handled inserting a new order — it failed when I update a line
+   item. Please fix."* Result: quantity and product changes on an existing
    item both started working correctly.
-2. "Editing items works now. But adding a new item to an existing order
-   doesn't update the total, and deleting an item doesn't either." Result:
+2. *"Editing items works now. But adding a new item to an existing order
+   doesn't update the total, and deleting an item doesn't either."* Result:
    both fixed, cleanly, with no regressions.
 
 Each round, native AI fixed exactly what was reported, correctly. Three
@@ -225,7 +226,7 @@ This isn't just one project's finding. 52% of organizations already use AI acros
 
 AI-assisted development still has a quality problem for business logic. That's not news.
 
-This test adds a root cause: the AI kept thinking procedurally. The spec was procedural. The follow-up prompts were procedural. Every fix was one more procedural patch.
+This test identified a root cause: the AI kept thinking procedurally. The spec was procedural. The follow-up prompts were procedural. Every fix was one more procedural patch.
 
 **Adding AI on top of that doesn't change it.** AI just writes the next patch faster. Three rounds running.
 
@@ -234,4 +235,13 @@ Two ways to close the gap:
 - **Change how the team thinks.** Invariants on data, not steps in a process. Real skill, slow to build — the same adoption problem that made declarative rules a hard sell for decades before AI existed.
 - **Change what the AI is aimed at.** Same spec, same process, translated into rules instead of code. Every path tested here came back correct — no change to how the team works.
 
-The fix isn't asking anyone to think differently. It's giving their existing way of working an architecture that doesn't depend on catching every path by hand.
+The fix isn't asking anyone to think differently. It's giving their existing way of working an architecture that doesn't depend on catching every path by hand: a rule engine, plus Context Engineering that directs AI to write rules, not code.
+
+&nbsp;
+
+## See the Full Projects
+
+Both sides of this test, unedited — inspect the code on GitHub, or run them yourself: start at [www.genai-logic.com](https://www.genai-logic.com){:target="_blank" rel="noopener"}, then open in Codespaces.
+
+- **Native AI, no rules engine:** [inspect on GitHub](https://github.com/ApiLogicServer/codespaces_mgr/tree/main/samples/bd_claude_native_ai) — the prompt, the code, the transcript
+- **GenAI-Logic:** [inspect on GitHub](https://github.com/ApiLogicServer/codespaces_mgr/tree/main/samples/basic_demo_genai_logic) — the same prompt, the 5 rules, all paths verified
