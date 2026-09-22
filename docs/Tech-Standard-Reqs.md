@@ -10,13 +10,15 @@ source: docs/Tech-Standard-Reqs.md
   }
 </style>
 
-!!! pied-piper ":bulb: TL;DR: Native AI Generates Code Missing From Standard Specs... Rules Don't"
+!!! pied-piper ":bulb: TL;DR: From Standard Specs, native AI Generates Code With Missing Services... Rules Don't"
 
     In this study, we submitted standard procedural specifications to AI, and found that it generated systems **missing** core services such as delete and update.
 
     Rules understand dependencies, and how they affect all verbs. So, the solution:
 
     > Pair a rules engine with Context Engineering so that AI generates rules, not code. <br>This provides the **governance** enterprises require.
+
+    ![gov-by_arch](images/architecture/proc-decl-simple.png)
 
 
 # How Does Native AI Handle a Typical Spec?
