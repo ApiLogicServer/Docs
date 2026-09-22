@@ -500,6 +500,10 @@ That's the point. A hand-coded system needs a correct handler for every path on 
 
 Give us whatever, you get rules — even the hardest case. [A head-to-head test](Tech-Standard-Reqs.md) fed the same naturally procedural spec to native AI and to this pipeline. Native AI built the insert path and silently dropped update and delete. The pipeline produced 5 governed rules covering every path. Same input, same AI — the difference was the architecture.
 
+![Procedural Spec In, Declarative Rules Out](images/exec_reqmts/proc-to-decl.png)
+
+The GenAI-Logic side of that test, in full: [samples/basic_demo_genai_logic](samples/basic_demo_genai_logic) — the procedurally-phrased prompt, the 5 rules it produced, and confirmation all 9 change paths are governed, not just the one the prompt described.
+
 The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_native_ai) — the actual code, the prompt, and the [unedited transcript](samples/bd_claude_native_ai/transcript.md).
 
 </details>
