@@ -96,16 +96,6 @@ And you're not alone throughout: ask your AI assistant anything — architecture
 
 </details>
 
-<br>
-
-## 🤖 AI Assistance
-
-In your Coding Assistant, say:
-
-```
-Please load `.github/.copilot-instructions.md`.
-```
-
 &nbsp;
 
 ## 🚀 First Time Here?
