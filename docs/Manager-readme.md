@@ -152,10 +152,16 @@ Use case: App Integration
     1. Publish the Order to Kafka topic 'order_shipping' when the date_shipped is not None.
 ```
 
+<!-- CODESPACES-ONLY-START
+> **In a hurry, or want zero AI/model dependency?** Skip the wait — copy the finished result instead:
+> ```bash
+> cp -r samples/basic_demo_existing_db basic_demo
+> ```
+> Same prompt, same logic, same rules — [check_credit.py](samples/basic_demo_existing_db/logic/logic_discovery/place_order/check_credit.py) is real, already there. Press F5 and you're looking at a working, governed project in seconds, no AI call required.
+CODESPACES-ONLY-END -->
+
 <details markdown>
 <summary>Starting from a new database instead?</summary>
-
-&nbsp;
 
 The prompt above starts from an existing database — the common real-world case, and much faster (no schema design step). You *could* have AI design a new database from scratch instead:
 
@@ -205,7 +211,7 @@ The save fails — note the dialog. That's 5 rules — not ~200 lines of code �
 &nbsp;
 
 <details markdown>
-<summary>AI is great — but logic-as-code is hard to Read, Trust, and Maintain — here's why</summary>
+<summary>AI Alone Writes Code You Can't Trust — Here's the Evidence</summary>
 
 <br>AI is genuinely good at UI, data mapping, boilerplate, etc — no argument there. **Business logic is the exception.**
 
@@ -449,6 +455,8 @@ That's the architecture: two funnels, converging on one engine, at the **same co
 
     * **This architecture is future-proofed:** a new integration tomorrow (another broker, custom API, an MCP tool call) inherits every rule already declared, automatically — because rules operate at the ORM layer, the same `before_flush` listener from above. Nothing to re-wire, nothing to remember to call.
 
+*Full case: [Governance by Architecture, Not Discipline](https://apilogicserver.github.io/Docs/Tech-Gov-By-Arch/).*
+
 </details>
 
 &nbsp;
@@ -484,13 +492,15 @@ That's the architecture: two funnels, converging on one engine, at the **same co
 &nbsp;
 
 <details markdown>
-<summary>This scales past one project — here's how</summary>
+<summary>Scales Past One Project — Any Requirement Format Produces Governed Rules</summary>
 
 <br>The three enterprise systems above ([Budget Allocation](samples/prompts/allocation.prompt.md), [CBSA Customs Surtax](samples/demo_customs_surtax/readme.md), [Customs CLVS](samples/demo_customs_clvs/readme.md)) were built from three different input formats — a plain prompt, actual regulation text, Gherkin — by different teams, writing the way they already write. All three came out the same way: governed rules, no bypass.
 
 That's the point. A hand-coded system needs a correct handler for every path on every table — the discipline has to live in each team. Here, the pipeline supplies the paths. The second project doesn't depend on the first team's care, or on anyone learning a new methodology first.
 
 Give us whatever, you get rules — even the hardest case. [A head-to-head test](Tech-Standard-Reqs.md) fed the same naturally procedural spec to native AI and to this pipeline. Native AI built the insert path and silently dropped update and delete. The pipeline produced 5 governed rules covering every path. Same input, same AI — the difference was the architecture.
+
+The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_native_ai) — the actual code, the prompt, and the [unedited transcript](samples/bd_claude_native_ai/transcript.md).
 
 </details>
 
@@ -501,22 +511,51 @@ Give us whatever, you get rules — even the hardest case. [A head-to-head test]
 
 &nbsp;
 
-<br>[Requirements From Interview](https://apilogicserver.github.io/Docs/Exec-Reqmts/) — a business user doesn't need to already know how to write a spec. They say what they know; the AI interviews them on what's still ambiguous, confirms before building. [Real transcript, unedited →](samples/requirements/RFI/RFI-transcript.md)
+<details markdown>
+<summary>&emsp;&emsp;Requirements From Interview — a business user doesn't need to already know how to write a spec</summary>
 
-Once it's running, the same access works both directions: ask the AI *"what can you do for me?"* and get a real, project-specific answer — not a canned capabilities list.
+<br>They say what they know; the AI interviews them on what's still ambiguous, confirms before building.
 
-The IDE itself is simplified for this — same AI, same governed output, no developer tooling to learn: [Business-User-Friendly IDE →](https://apilogicserver.github.io/Docs/Introduction/#a-business-user-friendly-ide)
+![RFI](images/exec_reqmts/RFI.png)
+
+[Real transcript, unedited →](samples/requirements/RFI/RFI-transcript.md)
 
 </details>
 
 &nbsp;
 
 <details markdown>
-<summary>Business Users and Developers — Same Tools, Same Artifacts</summary>
+<summary>&emsp;&emsp;"What can you do for me?" — a real, project-specific answer, not a canned capabilities list</summary>
+
+<br>Once it's running, the same access works both directions: ask the AI, and get a concrete, numbered menu grounded in *this* project.
+
+![help-me](images/manager/help-me.png)
+
+</details>
 
 &nbsp;
 
-<br>The rule a business user reads and the rule a developer debugs are the same five lines, in the same file, in the same IDE. No hand-off where intent gets lost, no second document to keep in sync. A policy change — "or equal to," not just "less than" — is one line of English, then one line of rule. Not a re-spec, not a re-build.
+<details markdown>
+<summary>&emsp;&emsp;A Business-User-Friendly IDE — same AI, same governed output, no developer tooling to learn</summary>
+
+<br>
+
+![reg-tech](images/exec_reqmts/reg-tech.png)
+
+*More: [Business-User-Friendly IDE →](https://apilogicserver.github.io/Docs/Introduction/#a-business-user-friendly-ide)*
+
+</details>
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>Promotes Business User and Developer Collaboration — One Artifact, One Toolset</summary>
+
+<br>The rule a business user reads and the rule a developer debugs are the same five lines, in the same file, in the same IDE. No hand-off where intent gets lost, or start-over to utilize enterprise-standard languages, tooling, and deployment. A policy change — "or equal to," not just "less than" — is one line of English, then one line of rule. Not a re-spec, not a re-build.
+
+![collaboration](images/exec_reqmts/collaboration.png)
 
 </details>
 
