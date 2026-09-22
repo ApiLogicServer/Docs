@@ -13,9 +13,11 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 !!! pied-piper ":robot: Welcome to GenAI-Logic"
 
-    GenAI-Logic turns your requirements into enterprise-class database transaction systems, governed by rules that can't be bypassed.
+    GenAI-Logic turns your requirements into enterprise-class database transaction systems, **governed** by **no-bypass rules**.
 
-    And it uses your methodology, standard tools, and shared artifacts, fostering collaboration between Business Users and Developers.
+    It reads whatever form your requirements are already in — **plain English, Gherkin, actual regulation text** — or, you can request an **interview** to discover the requirements.
+
+    And it **fits what you already use**: your methodology, standard tools, and shared artifacts, **fostering collaboration** between Business Users and Developers.
 
     For a walk-through, see the [Introduction](Introduction.md){:target="_blank" rel="noopener"}.
 

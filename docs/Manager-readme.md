@@ -31,61 +31,16 @@ codespaces_patch: |
 
 # Welcome to GenAI-Logic
 
-GenAI-Logic turns your requirements into enterprise-class database transaction systems, governed by rules that can't be bypassed.
+GenAI-Logic turns your requirements into enterprise-class database transaction systems, **governed** by **no-bypass rules**.
 
-And it uses your methodology, standard tools, and shared artifacts, fostering collaboration between Business Users and Developers.
+It reads whatever form your requirements are already in — **plain English, Gherkin, actual regulation text** — or, you can request an **interview** to discover the requirements.
+
+And it **fits what you already use**: your methodology, standard tools, and shared artifacts, **fostering collaboration** between Business Users and Developers.
 
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager) — where you manage projects, create notes and resources, etc.  It's also your learnng hub.
 <!-- CODESPACES-ONLY-START
 (see [codespaces setup here](system/ApiLogicServer-Internal-Dev/setup.gif))
 CODESPACES-ONLY-END -->
-
-<details markdown>
-<summary>Orientation — first time here? Start with this.</summary>
-
-For a walk-through, see the [docs](https://apilogicserver.github.io/Docs/).
-
-<br>
-
-<details markdown>
-<summary>A working API, Admin App, and governed logic — <strong>built from a prompt</strong></summary>
-
-<br>Leverage AI for what it's great at — database design, data mapping, and more. Start from a prompt alone and AI designs the database too, or point it at your existing database and skip straight to the logic. Either way, your AI assistant reads whatever you already have — plain English, Gherkin, pseudocode — and hands business logic off as rules, not code.
-
-</details>
-
-&nbsp;
-
-<details markdown>
-<summary>It fits: uses your existing org, technology, and practices</summary>
-
-<br>What comes out the other end is exactly what you already run:
-
-1. **A business user can drive it, in the requirements format they already write** — plain English, Gherkin, pseudocode, even actual regulation text; no database design, screen painting, or scripting to learn.
-2. **Standard IDE, standard language** — a project in the IDE and language you already use, ready to extend.
-3. **Standard deploy** — a standard container; cloud or on-prem, no additional charges.
-4. **Standard enterprise infrastructure** — pluggable security (SQL or Keycloak), full REST API, event/messaging integration (Kafka, webhooks) — built in, not bolted on, same as any other enterprise system.
-
-</details>
-
-&nbsp;
-
-<details markdown>
-<summary>Systems governed by rules you can Read, Trust, and Maintain</summary>
-
-<br>The split — AI for executable intent, declarative rules for governance — is the whole point. Here's what "governed" means in practice:
-
-- **Read** — [5 rules](samples/basic_demo_logic_gov/logic/logic_discovery/place_order/check_credit.py), not [~200 lines of code](samples/basic_demo_logic_gov/logic/procedural/credit_service.py). A rule you can point to and know what it does, at a glance.
-- **Trust** — those rules run at **one commit point**, no matter which path the transaction came in on — API, MCP, agent, Kafka. **No bypass.**
-- **Maintain** — add a rule anywhere, and the engine resolves dependency order automatically. No untangling existing code to find where it belongs.
-
-And you're not alone throughout: ask your AI assistant anything — architecture, rules, debugging, deployment, or how the system works.
-
-</details>
-
-</details>
-
-&nbsp;
 
 <details markdown>
 <summary><strong>Say "hi" to your coding assistant</strong> — click to see important notes on models</summary>
@@ -104,7 +59,7 @@ And you're not alone throughout: ask your AI assistant anything — architecture
 <details markdown>
 <summary>The Ideal — executable business prompts, held to an enterprise standard</summary>
 
-<br>
+<br>Governance — logic that's readable, enforced without bypass, and auditable — isn't a developer nicety; it's a standing CIO concern for any AI-built system. Watch for it below: the same commit that fails in a moment is that property, live.
 
 <!-- LOCAL-MGR-ONLY-START -->
 > **Heads up:** you're about to switch to the AI chat panel, and back. VS Code's preview forgets which sections below are open/closed when you return — so **drag this preview tab's icon out into its own window** first (once), and it won't happen again.

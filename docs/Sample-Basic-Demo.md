@@ -43,14 +43,6 @@ This illustrates basic [GenAI-Logic](https://www.genai-logic.com/product/key-fea
 
 <br>
 
-**🤖 Ready to Explore?**
-
-**Recommended:** Say to Copilot: *"Guide me through basic_demo"* (30-45 min hands-on tour)
-
-**Alternative:** Follow the sections below at your own pace
-
-<br>
-
 The entire process takes 20 minutes; usage notes:
 
 * Important: look for **readme files** in created projects
