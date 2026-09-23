@@ -84,17 +84,24 @@ This app illustrates using IntegrationServices for B2B push-style integrations w
 
 &nbsp;
 
-![demp_kafka](images/integration/demo_kafka.png)
+![demo-eai](images/integration/demo-eai.png)
 
-The **demo_kafka API Logic Server** provides APIs *and logic*:
+**basic_demo_eai** is a single API Logic Server providing APIs *and logic* — it both
+subscribes and publishes, so there's no second project to stand up:
 
-1. **Order Logic:** enforcing database integrity and application Integration (alert shipping)
+1. **Order Logic:** enforcing database integrity (Check Credit) and application
+   integration (notify shipping)
 
-2. A **Custom API**, to match an agreed-upon format for B2B partners
+2. A **Custom API** (`OrderB2B`), matching an agreed-upon format for B2B partners
 
-3. **Standard APIs** for ad-hoc integration, user interfaces, etc
+3. **Kafka Subscribe:** listens on topic `order_b2b` for inbound orders from a
+   message broker
 
-The **Shipping API Logic Server** listens on kafka, and processes the message.<br><br>
+4. **Kafka Publish:** publishes to topic `order_shipping` when an order ships —
+   consumed by whatever downstream shipping system you plug in (not part of this
+   demo)
+
+5. **Standard APIs** for ad-hoc integration, user interfaces, etc<br><br>
 
 <br>
 
@@ -301,18 +308,58 @@ curl 'http://localhost:5656/consume_debug/order_b2b?file=integration/kafka/messa
 
 ## 6. How to Test
 
-- Test without Kafka (debug endpoint bypasses Kafka entirely):
-```
-curl "http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/demo_eai/message_formats/order_b2b.json"
+> **Kafka is optional during development.** The server doesn't require a broker to
+> start or run — this is deliberate, so you can build and test the full system with
+> zero infrastructure.
+>
+> * **Subscribe side:** exercised with no broker at all via the `consume_debug`
+>   endpoint (`APILOGICPROJECT_CONSUME_DEBUG=true`, on by default) — same code path
+>   as live Kafka, just triggered by a curl instead of a topic message.
+> * **Publish side:** if no broker is reachable at `localhost:9092`, the publish
+>   call still completes the underlying transaction — it buffers the message, waits
+>   up to ~10s for the broker, then logs a delivery failure. Nothing crashes; that
+>   PATCH will just feel a little slow. That's the timeout you're seeing, not a bug.
+>
+> Bring up Kafka only when you want to verify the wire-level integration (Step 3
+> below).
+
+**1. Start the server:** F5 (or `python api_logic_server_run.py`)
+
+**2. Admin App:** browse to [http://localhost:5656/](http://localhost:5656/) — click
+Customer Alice, see Orders and Items.
+
+**3. Check Credit — no Kafka needed:**
+```bash title="Check Credit — no Kafka needed"
+# Good order
+curl -X POST http://localhost:5656/api/OrderB2B \
+  -H "Content-Type: application/json" \
+  -d '{"Account":"Alice","Notes":"test","Items":[{"Name":"Widget","QuantityOrdered":1}]}'
+
+# Over-limit order — expect 400, "balance exceeds credit limit"
+curl -X POST http://localhost:5656/api/OrderB2B \
+  -H "Content-Type: application/json" \
+  -d '{"Account":"Alice","Notes":"over limit","Items":[{"Name":"Widget","QuantityOrdered":50}]}'
 ```
 
-- Kafka is optional. To test with live Kafka:
+**4. Kafka Subscribe — no live Kafka needed:**
+```bash title="Kafka Subscribe — no live Kafka needed"
+curl "http://localhost:5656/consume_debug/order_b2b?file=integration/kafka/message_formats/order_b2b.json"
+```
+Verify: `sqlite3 database/db.sqlite "SELECT * FROM 'order' ORDER BY id DESC LIMIT 1; SELECT * FROM item ORDER BY id DESC LIMIT 3;"`
+
+**5. Kafka Publish:** PATCH an order's `date_shipped` (e.g. via the Admin App, or
+the API) and watch the log — `publish_kafka_message: delivered to topic
+'order_shipping'` if a broker is up, or a delivery-failure log after ~10s if not
+(see callout above — expected either way).
+
+**6. (Optional) Live Kafka, end-to-end:**
 
   1. Start Docker: `docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d`
      (Podman instead of Docker? Use `podman compose` — same file, unchanged. See [DevOps-Podman](DevOps-Podman.md).)
   2. Reset topics: `bash integration/kafka/order_b2b_reset.sh`
   3. Restart the server (after Docker/Podman is up, so it picks up Kafka env vars and subscribes to topics)
-  4. Send a test message using the curl command above
+  4. Publish a real message to `order_b2b` and confirm it's consumed — same
+     verification query as Step 4.
 
 
 <br>
