@@ -160,19 +160,19 @@ The save fails — note the dialog. That's 5 rules — not ~200 lines of code �
 
 <br>AI is genuinely good at UI, data mapping, boilerplate, etc — no argument there. **Business logic is the exception.**
 
-Left unguided, any AI assistant — including the one that just built basic_demo for you — would default to procedural code for logic like this. Ask it directly, and you get three problems:
+Left unguided, any AI assistant — including the one that just built basic_demo for you — would default to procedural code for logic like this. Generate with native AI, and you get these three problems:
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Not readable</strong> — unreadable at scale is ungovernable at scale</summary>
+<summary>&emsp;&emsp;<strong>Not readable</strong> — you can't govern what you can't read (5 vs ~200 lines)</summary>
 
-<br>[procedural/credit_service.py](samples/basic_demo_logic_gov/logic/procedural/credit_service.py) — ~200 lines for those same 5 requirements. Open it and judge for yourself. Now picture a real system: 10-20X the requirements of this example, and proportionally more procedural code to match. Nobody can audit that at a glance — not the next developer, not compliance, not you in six months. At that scale, an auditor can't read it all — they can only sample, and hope.
+<br>[procedural/credit_service.py](samples/basic_demo_logic_gov/logic/procedural/credit_service.py) — **~200 lines** for those same **5 requirements**. Open it and judge for yourself. Now picture a real system: 10-20X the requirements of this example, and proportionally more procedural code to match. Nobody can audit that at a glance — not the next developer, not compliance, not you in six months. At that scale, an auditor can't read it all — they can only sample, and hope.
 
 </details>
 
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Not trustworthy (1)</strong> — the procedural version shipped 2 real bugs</summary>
+<summary>&emsp;&emsp;<strong>Not trustworthy (1)</strong> — good spec generated 2 subtle bugs</summary>
 
 <br>Found only by specifically testing what happens when a row is reparented to a new owner: [the A/B test](samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md). Root cause: **path confusion** — procedural code must enumerate every change path (insert, update, delete, reparent) by hand, and it's easy to miss one.
 
@@ -183,9 +183,9 @@ There's a structural problem underneath the bugs, too: **AI pattern-matches depe
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Not trustworthy (2)</strong> — a typical spec produced logic for one path only</summary>
+<summary>&emsp;&emsp;<strong>Not trustworthy (2)</strong> — <em>typical</em> spec omitted entire update and delete paths</summary>
 
-<br>We gave two frontier models a typical requirement — check credit on placing an order, phrased the way a developer naturally writes it — with no ApiLogicServer, and told them explicitly not to use rules. Both produced the same shape of code: one function, wired to order creation. No update path. No delete path.
+<br>The example above presumed an excellent, declarative spec — but specs aren't always so good. We tried it with a *typical* one: check credit on placing an order, phrased the way a developer naturally writes it. We gave that requirement to two frontier models, with no ApiLogicServer, and told them explicitly not to use rules. Both produced the same shape of code: one function, wired to order creation. No update path. No delete path.
 
 Probed directly: change an item's quantity, delete an item, reassign an order to a different customer, reassign an item to a different product. Every case, both models, left stale data behind. No error. Nothing to catch it. The logic wasn't buggy so much as absent — it existed for exactly one path and nowhere else. [Full experiment →](Tech-Standard-Reqs.md)
 
@@ -204,9 +204,9 @@ But that doesn't dodge the risk, it repeats it — the AI re-derives everything 
 
 &nbsp;
 
-That's not (only) a capability gap — it's a representation problem: procedural code doesn't carry an explicit dependency graph, so nothing short of building one — inside the AI's process or outside it — closes this gap. A rules engine builds that graph explicitly, once, and checks it. That's the difference this document shows.
+That's not (only) a capability gap — it's what happens when dependencies are expressed as procedural code: real opportunities for subtle, hard-to-spot bugs. With rules, those same dependencies are handled deterministically by the rules engine — computed once, checked every time. That's the difference this document shows.
 
-**We're deeply impressed with AI — this is about closing the one gap it has: logic.** That's next.
+**We're deeply impressed with AI — this is about closing the gap it has here: logic.** That's next.
 
 </details>
 
