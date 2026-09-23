@@ -185,7 +185,7 @@ There's a structural problem underneath the bugs, too: **AI pattern-matches depe
 <details markdown>
 <summary>&emsp;&emsp;<strong>Not trustworthy (2)</strong> — <em>typical</em> spec omitted entire update and delete paths</summary>
 
-<br>The example above presumed an excellent, declarative spec — but specs aren't always so good. We tried it with a *typical* one: check credit on placing an order, phrased the way a developer naturally writes it. We gave that requirement to two frontier models, with no ApiLogicServer, and told them explicitly not to use rules. Both produced the same shape of code: one function, wired to order creation. No update path. No delete path.
+<br>The example above presumed an excellent, declarative spec — but specs aren't always so good. We tried it with a *typical* one: check credit on placing an order, phrased the way a developer naturally writes it. We gave that requirement to two frontier models, with no ApiLogicServer, and told them explicitly not to use rules. Both produced the same shape of code: one function, wired to order creation. No update path. No delete path — confirmed in [the actual code](samples/bd_claude_native_ai/app/orders.py).
 
 Probed directly: change an item's quantity, delete an item, reassign an order to a different customer, reassign an item to a different product. Every case, both models, left stale data behind. No error. Nothing to catch it. The logic wasn't buggy so much as absent — it existed for exactly one path and nowhere else. [Full experiment →](Tech-Standard-Reqs.md)
 
