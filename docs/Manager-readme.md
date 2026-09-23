@@ -156,7 +156,7 @@ The save fails — note the dialog. That's 5 rules — not ~200 lines of code �
 &nbsp;
 
 <details markdown>
-<summary>AI Alone Writes Code You Can't Trust — Here's the Evidence</summary>
+<summary>AI Alone Writes Code You Can't Read or Trust — Here's the Evidence</summary>
 
 <br>AI is genuinely good at UI, data mapping, boilerplate, etc — no argument there. **Business logic is the exception.**
 
@@ -354,7 +354,7 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 &nbsp;
 
 <details markdown>
-<summary>Pre-Built Enterprise Architecture — API, MCP, Messages, Rules, RBAC</summary>
+<summary>Pre-Built Enterprise Architecture — API, MCP, Messages, Rules, RBAC (via Context Engineering)</summary>
 
 &nbsp;
 
@@ -458,7 +458,7 @@ The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_nat
 &nbsp;
 
 <details markdown>
-<summary>Business Users, Empowered — NL requirements, AI assistance</summary>
+<summary>Business Users Empowered — a Friendly IDE, Guided by AI (via Context Engineering)</summary>
 
 &nbsp;
 
