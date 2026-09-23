@@ -143,7 +143,7 @@ Change the quantity to a very large number. Save.
 4. Edit the Item
 5. Set the quantity
 
-![credit-check](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/credit-check.png?raw=true?raw=true)
+![credit-check](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/credit-check.png?raw=true)
 
 </details>
 
