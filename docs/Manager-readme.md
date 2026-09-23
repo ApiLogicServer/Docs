@@ -504,7 +504,9 @@ The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_nat
 <details markdown>
 <summary>Promotes Business User and Developer Collaboration — One Artifact, One Toolset</summary>
 
-<br>The rule a business user reads and the rule a developer debugs are the same five lines, in the same file, in the same IDE. No hand-off where intent gets lost, or start-over to utilize enterprise-standard languages, tooling, and deployment. A policy change — "or equal to," not just "less than" — is one line of English, then one line of rule. Not a re-spec, not a re-build.
+<br>The rule a business user reads and the rule a developer debugs are the same lines, in the same file, in the same IDE — standard Python, standard tooling, your infrastructure, not a proprietary one.
+
+No paying twice: once for the BU-built version, again when it hits its limit and a developer has to rebuild it to meet corporate standards. No finger-pointing between departments over whose fault the gap was — there's one artifact, one team owns it, from day one.
 
 ![collaboration](images/exec_reqmts/collaboration.png)
 
