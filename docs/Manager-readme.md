@@ -194,7 +194,7 @@ Probed directly: change an item's quantity, delete an item, reassign an order to
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Not maintainable</strong> — the cost doesn't scale with the fix</summary>
+<summary>&emsp;&emsp;<strong>Not maintainable</strong> — every regeneration re-exposes you to (1) and (2)</summary>
 
 <br>Hand-editing 200 generated lines isn't a real option — nobody reliably patches the output of a code generator, any more than you'd hand-patch a compiler's output. That leaves one path: **change the prompt and regenerate.**
 
