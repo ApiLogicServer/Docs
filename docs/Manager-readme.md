@@ -363,7 +363,22 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 
 <br>Context Engineering's system knowledge isn't limited to rules — it already knows the integration points a real enterprise system needs, the same way it already knows a lookup wants an integer foreign key. [More on system vs. domain knowledge →](https://apilogicserver.github.io/Docs/Tech-AI-First/#two-kinds-of-knowledge-conflated)
 
-- **Enterprise Integration (EAI)** — the demo above showed ***Publish** the Order to Kafka topic*. For the **subscribe** side, see [samples/basic_demo_eai/readme.md](samples/basic_demo_eai/readme.md): B2B orders from partner systems, via a Custom API or Kafka subscriber, including *lookups* so partners send `"Account": "Alice"` (not internal IDs).
+- **Enterprise Integration (EAI)** — the demo above showed ***Publish** the Order to Kafka topic*. For the **subscribe** side, see [samples/basic_demo_eai/readme.md](samples/basic_demo_eai/readme.md): B2B orders from partner systems, via a Custom API or Kafka subscriber, including *lookups* so partners send `"Account": "Alice"` (not internal IDs).  Below is the portion of the requirement for subscribing:
+
+```text
+Feature: Kafka Subscribe Order Integration - Inbound orders from sales channel
+
+  Scenario: Accept inbound orders from sales channel
+    Given an inbound order message in JSON format (message_formats/order_b2b.json)
+    When the message is received from Kafka topic order_b2b
+    Then use the 2-message pattern
+    And save the raw payload as a blob in the first transaction
+    And parse and persist the order in the second transaction
+    And map Account to Customer by name
+    And map Items.Name to Product by name
+    And map Items.QuantityOrdered to Item.quantity
+    And create the order with all Check Credit rules enforced
+```
 
 <br>
 
