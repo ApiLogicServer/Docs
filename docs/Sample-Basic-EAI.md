@@ -307,6 +307,7 @@ curl "http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/demo_
 ```
 
 - Kafka is optional. To test with live Kafka:
+
   1. Start Docker: `docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d`
      (Podman instead of Docker? Use `podman compose` — same file, unchanged. See [DevOps-Podman](DevOps-Podman.md).)
   2. Reset topics: `bash integration/kafka/order_b2b_reset.sh`
