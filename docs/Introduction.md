@@ -201,7 +201,7 @@ AI generates an executable project: rules, API, Admin App and message handlers. 
 
 <br>
 
-![Governance by Architecture, Not Discipline](images/architecture/gov-by-arch.png)
+![Governance by Architecture, Not Discipline](images/architecture/proc-decl-simple.png)
 
 </details>
 

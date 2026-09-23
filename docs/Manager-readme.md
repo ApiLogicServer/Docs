@@ -213,12 +213,12 @@ That's not (only) a capability gap — it's a representation problem: procedural
 &nbsp;
 
 <details markdown>
-<summary>AI-driven rules are easy to Read, Trust, and Maintain — here's how</summary>
+<summary>Easy to Read, Trust, and Maintain — Augment AI with Rules</summary>
 
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;1. What you just ran — see why it's different</summary>
+<summary>&emsp;&emsp;<strong>1. What you just ran</strong> — see why it's different</summary>
 
 <br>You've probably used AI to generate code before — so what's different here?
 
@@ -242,7 +242,7 @@ The save you just saw fail was enforced by exactly one of those 5 rules. Let's l
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;2. Debug it — standard logging, standard debugger</summary>
+<summary>&emsp;&emsp;<strong>2. Debug it</strong> — standard logging, standard debugger</summary>
 
 <br>No new tools required. The rule chain that just fired is in the log — plain text, readable in your terminal or editor: [sample trace](samples/basic_demo_logic_gov/logs/als-sample.log). A live run writes the same thing to the standard log, `logs/als.log`.
 
@@ -255,7 +255,7 @@ Every rule is a plain Python function or lambda. Set a breakpoint on any `callin
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;3. Iterate — 1 AI prompt adds table, relationship, 2 rules</summary>
+<summary>&emsp;&emsp;<strong>3. Iterate</strong> — 1 AI prompt adds table, relationship, 2 rules</summary>
 
 <br>Ask your AI assistant for a new rule, in plain English:
 
@@ -272,7 +272,7 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;4. Why Rules Are Declarative — automatic calling, automatic ordering</summary>
+<summary>&emsp;&emsp;<strong>4. Why Rules Are Declarative</strong> — automatic calling, automatic ordering</summary>
 
 <br>This iteration — like maintenance generally — was remarkably simple, because **rules are declarative:**
 
@@ -291,7 +291,7 @@ The next section explores this in detail. Ask your AI assistant — *"What are r
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;5. How Declarative Rules Make Logic Easy to Read, Trust, and Maintain</summary>
+<summary>&emsp;&emsp;<strong>5. How Declarative Rules Make Logic Easy to Read, Trust, and Maintain</strong></summary>
 
 <br>**Rules** enforce business policy — multi-table derivations, constraints, and actions like messaging. **LogicBank**, the rule engine, hooks SQLAlchemy's commit event to run them on every transaction — authored as plain Python functions in `logic/logic_discovery/`, readable, version-controlled, owned like any other source file.
 
@@ -320,7 +320,7 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;How this works: Context Engineering (CE) + a commit-time rules engine</summary>
+<summary>&emsp;&emsp;<strong>How this works: Context Engineering (CE) + a commit-time rules engine</strong></summary>
 
 <br>Two things have to be true for this to work:
 
@@ -354,7 +354,7 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 &nbsp;
 
 <details markdown>
-<summary>Pre-Built Enterprise Architecture — API, MCP, Messages, RBAC</summary>
+<summary>Pre-Built Enterprise Architecture — API, MCP, Messages, Rules, RBAC</summary>
 
 &nbsp;
 
@@ -445,9 +445,11 @@ That's the point. A hand-coded system needs a correct handler for every path on 
 
 Give us whatever, you get rules — even the hardest case. [A head-to-head test](Tech-Standard-Reqs.md) fed the same naturally procedural spec to native AI and to this pipeline. Native AI built the insert path and silently dropped update and delete. The pipeline produced 5 governed rules covering every path. Same input, same AI — the difference was the architecture.
 
-![Procedural Spec In, Declarative Rules Out](images/exec_reqmts/proc-to-decl.png)
+![Governance by Architecture, Not Discipline](images/architecture/proc-decl-simple.png)
 
 The GenAI-Logic side of that test, in full: [samples/basic_demo_genai_logic](samples/basic_demo_genai_logic) — the procedurally-phrased prompt, the 5 rules it produced, and confirmation all 9 change paths are governed, not just the one the prompt described.
+
+![Procedural Spec In, Declarative Rules Out](images/exec_reqmts/proc-to-decl.png)
 
 The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_native_ai) — the actual code, the prompt, and the [unedited transcript](samples/bd_claude_native_ai/transcript.md).
 
@@ -461,22 +463,22 @@ The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_nat
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;Requirements From Interview — a business user doesn't need to already know how to write a spec</summary>
+<summary>&emsp;&emsp;<strong>A Business-User-Friendly IDE</strong> — same AI, same governed output, no developer tooling to learn</summary>
 
-<br>They say what they know; the AI interviews them on what's still ambiguous, confirms before building.
+<br>
 
-![RFI](images/exec_reqmts/RFI.png)
+![reg-tech](images/exec_reqmts/reg-tech.png)
 
-[Real transcript, unedited →](samples/requirements/RFI/RFI-transcript.md)
+*More: [Business-User-Friendly IDE →](https://apilogicserver.github.io/Docs/Introduction/#a-business-user-friendly-ide)*
 
 </details>
 
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;"What can you do for me?" — a real, project-specific answer, not a canned capabilities list</summary>
+<summary>&emsp;&emsp;<strong>No Proprietary Interface, No Rigid Structure</strong> — just ask the AI when you need guidance</summary>
 
-<br>Once it's running, the same access works both directions: ask the AI, and get a concrete, numbered menu grounded in *this* project.
+<br>Traditional studios lock you into proprietary, rigid interfaces. Here, AI isn't boxed into a fixed structure — and when you need guidance, just ask.
 
 ![help-me](images/manager/help-me.png)
 
@@ -485,13 +487,13 @@ The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_nat
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;A Business-User-Friendly IDE — same AI, same governed output, no developer tooling to learn</summary>
+<summary>&emsp;&emsp;<strong>And When You Need Even More Guidance</strong> — just ask the system to define Requirements From Interview</summary>
 
-<br>
+<br>And when you need even more guidance, just ask the system to define the **requirements from an interview** — AI will interview you on what's still ambiguous, then confirm before building. No spec-writing skill required going in.
 
-![reg-tech](images/exec_reqmts/reg-tech.png)
+![RFI](images/exec_reqmts/RFI.png)
 
-*More: [Business-User-Friendly IDE →](https://apilogicserver.github.io/Docs/Introduction/#a-business-user-friendly-ide)*
+[Real transcript, unedited →](samples/requirements/RFI/RFI-transcript.md)
 
 </details>
 
@@ -516,7 +518,7 @@ The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_nat
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;Guided tour — the full 30-45 min build, past what "The Ideal" showed</summary>
+<summary>&emsp;&emsp;<strong>Guided tour</strong> — the full 30-45 min build, past what "The Ideal" showed</summary>
 
 <br>**Create basic_demo** (auto-opens with guided tour option):
 ```bash
@@ -532,7 +534,7 @@ genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basi
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;Your AI as on-call consultant — ask it anything, verify it doesn't just recite</summary>
+<summary>&emsp;&emsp;<strong>Your AI as on-call consultant</strong> — ask it anything, verify it doesn't just recite</summary>
 
 <br>Same materials, same AI you've been using — it doesn't just write rules, it automates everything above and helps when things break: EAI's 2-message Kafka pattern, the AI/Request Pattern wiring, Executable Requirements' pre-coding schema assessment — all documented training material (`docs/training/*`) the AI reads *before* writing your code, not generic knowledge it's guessing from. Ask "what are rules?" or "how do rules work?" — or, without an AI handy, just read [samples/basic_demo_logic_gov/logic/readme_logic.md](samples/basic_demo_logic_gov/logic/readme_logic.md) — same material.
 
@@ -552,7 +554,7 @@ More background: [Eval Guide](https://apilogicserver.github.io/Docs/Eval/).
 Put together: once the AI knows how the system works, it doesn't just generate rules instead of code — it helps you debug them, and helps you understand them. A design assistant, not just a coding assistant.
 
 <details markdown>
-<summary>&emsp;&emsp;&emsp;&emsp;The AI was trained on this material — can you trust its answers?</summary>
+<summary>&emsp;&emsp;&emsp;&emsp;<strong>The AI was trained on this material</strong> — can you trust its answers?</summary>
 
 <br>Don't take them on faith. Ask the same question a different way, or ask something not covered here — like where this architecture breaks down. If it just recites the same lines back, you've caught it. If it reasons, that's the test passing.
 
