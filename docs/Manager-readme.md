@@ -61,27 +61,7 @@ CODESPACES-ONLY-END -->
 
 <br>Governance — logic that's readable, enforced without bypass, and auditable — isn't a developer nicety; it's a standing CIO concern for any AI-built system. Watch for it below: the same commit that fails in a moment is that property, live.
 
-<!-- LOCAL-MGR-ONLY-START -->
-> **Heads up:** you're about to switch to the AI chat panel, and back. VS Code's preview forgets which sections below are open/closed when you return — so **drag this preview tab's icon out into its own window** first (once), and it won't happen again.
-<!-- LOCAL-MGR-ONLY-END -->
-<!-- CODESPACES-ONLY-START
-> **Heads up:** you're about to switch to the AI chat panel, and back. The browser tab showing this README forgets which sections below are open/closed when you return — so **open the README on GitHub** ([ApiLogicServer/codespaces_mgr](https://github.com/ApiLogicServer/codespaces_mgr)) **in a split-view tab** first (once), and it won't happen again.
-
-<details markdown>
-<summary>&emsp;&emsp;Show me how</summary>
-
-<br>Right-click the GitHub README tab and choose **New Split View with Current Tab**:
-
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/git-codespaces/StartSplitView.png?raw=true" alt="Open the README from GitHub, right-click the tab, choose New Split View with Current Tab" width="700">
-
-You'll end up with the Codespace on one side and the README on the other — switch between AI chat and README without losing your place:
-
-<img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/git-codespaces/SplitView.png?raw=true" alt="Codespace and README side by side in split view" width="700">
-
-</details>
-CODESPACES-ONLY-END -->
-
-<br>Say this to your AI assistant (allow several minutes):
+Say this to your AI assistant (allow several minutes):
 
 ```
 Create basic_demo from samples/dbs/basic_demo.sqlite.
@@ -231,7 +211,7 @@ That's not (only) a capability gap — it's what happens when dependencies are e
 
 **Difference 2: the logic itself is declarative.** 5 lines, intent still clear — not ~200 lines of procedural frankencode. That's what declarative buys — more on that below.
 
-Each small, readable, yours. Plain Python — standard tooling applies. Security is opt-in, not default — bootstrap RBAC anytime with `genai-logic add-auth`.
+It's plain Python — standard tooling applies. Security is opt-in, not default — bootstrap RBAC anytime with `genai-logic add-auth`.
 
 The save you just saw fail was enforced by exactly one of those 5 rules. Let's look at why that's not what you'd get from AI alone.
 
