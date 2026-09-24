@@ -59,7 +59,9 @@ CODESPACES-ONLY-END -->
 <details markdown>
 <summary>The Ideal — executable business prompts, held to an enterprise standard</summary>
 
-<br>Governance — logic that's readable, enforced without bypass, and auditable — isn't a developer nicety; it's a standing CIO concern for any AI-built system. Watch for it below: the same commit that fails in a moment is that property, live.
+<br>
+
+> **Governance** — logic that's readable, enforced without bypass, and auditable — isn't a developer nicety; it's a [standing CIO concern](https://www.nascio.org/resource/state-cio-top-ten-policy-and-technology-priorities-for-2026/) — AI just took the #1 spot in NASCIO's 2026 survey of state CIOs, after cybersecurity held it for 12 straight years. Watch for it below: the same commit that fails in a moment is that property, live.
 
 Say this to your AI assistant (allow several minutes):
 
