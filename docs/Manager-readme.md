@@ -407,6 +407,8 @@ generates gets, automatically — not something you ask for:
 
 <br>Your API is **MCP-discoverable** out of the box (`/.well-known/mcp.json`). Copilot, Claude, or ChatGPT can find the schema and answer natural-language queries against it. There's no discovery layer for you to write — see [samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md](samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md)
 
+<img src="images/basic_demo/mcp-ui.png" alt="Admin App SysMcp form — a business user enters a natural-language request (list unpaid orders, email each customer a discount), no code written" width="560">
+
 </details>
 
 <br>
