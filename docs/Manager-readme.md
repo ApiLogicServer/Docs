@@ -363,7 +363,12 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 
 <br>Context Engineering's system knowledge isn't limited to rules — it already knows the integration points a real enterprise system needs, the same way it already knows a lookup wants an integer foreign key. [More on system vs. domain knowledge →](https://apilogicserver.github.io/Docs/Tech-AI-First/#two-kinds-of-knowledge-conflated)
 
-- **Enterprise Integration (EAI)** — the demo above showed ***Publish** the Order to Kafka topic*. For the **subscribe** side, see [samples/basic_demo_eai/readme.md](samples/basic_demo_eai/readme.md): B2B orders from partner systems, via a Custom API or Kafka subscriber, including *lookups* so partners send `"Account": "Alice"` (not internal IDs). One project handles both directions — no separate system to stand up:
+<br>
+
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>Enterprise Integration (EAI)</strong> — B2B partner orders via Custom API or Kafka</summary>
+
+<br>The demo above showed ***Publish** the Order to Kafka topic*. For the **subscribe** side, see [samples/basic_demo_eai/readme.md](samples/basic_demo_eai/readme.md): B2B orders from partner systems, via a Custom API or Kafka subscriber, including *lookups* so partners send `"Account": "Alice"` (not internal IDs). One project handles both directions — no separate system to stand up:
 
 <img src="images/integration/demo-eai.png" alt="basic_demo_eai: B2B Partner and Broker both feed one governed order system, which publishes order_shipping" width="560">
 
@@ -375,22 +380,41 @@ Feature: Kafka Subscribe Order Integration - Inbound orders from sales channel
   Scenario: Accept inbound orders from sales channel
     Given an inbound order message in JSON format (message_formats/order_b2b.json)
     When the message is received from Kafka topic order_b2b
-    Then use the 2-message pattern
-    And save the raw payload as a blob in the first transaction
-    And parse and persist the order in the second transaction
-    And map Account to Customer by name
+    Then map Account to Customer by name
     And map Items.Name to Product by name
     And map Items.QuantityOrdered to Item.quantity
-    And create the order with all Check Credit rules enforced
 ```
 
+Notice what that requirement does *not* say. Every Kafka subscriber this platform
+generates gets, automatically — not something you ask for:
+
+* **The 2-message pattern** — the raw payload is saved first (a transaction that
+  always commits), then parsed and persisted in a second transaction, so a bad
+  message never loses data mid-parse.
+* **Failures are never silent** — a rejected lookup or business rule leaves the
+  saved message queryable, with the failure reason recorded on it directly
+  (`error_text`), not buried in a server log.
+* **Existing business rules enforce themselves** — the same Check Credit logic
+  fires whether the write came from this Kafka consumer, the REST API, the
+  `OrderB2B` custom API, or the Admin App.
+
+</details>
+
 <br>
 
-- **MCP** (Model Context Protocol) — your API is **MCP-discoverable** out of the box (`/.well-known/mcp.json`). Copilot, Claude, or ChatGPT can find the schema and answer natural-language queries against it. There's no discovery layer for you to write — see [samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md](samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md)
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>MCP</strong> (Model Context Protocol) — your API is agent-discoverable out of the box</summary>
+
+<br>Your API is **MCP-discoverable** out of the box (`/.well-known/mcp.json`). Copilot, Claude, or ChatGPT can find the schema and answer natural-language queries against it. There's no discovery layer for you to write — see [samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md](samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md)
+
+</details>
 
 <br>
 
-- **AI Rules** — rules that call AI for genuinely judgment-call decisions (e.g. picking a supplier under disrupted shipping lanes). Such AI "proposals" are **governed by the deterministic rules** to ensure results conform to business policy, with a full audit trail of every AI request and response — see [samples/basic_demo_ai_rules-supplier/readme.md](samples/basic_demo_ai_rules-supplier/readme.md)
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>AI Rules</strong> — governed judgment calls inside deterministic logic</summary>
+
+<br>Rules that call AI for genuinely judgment-call decisions (e.g. picking a supplier under disrupted shipping lanes). Such AI "proposals" are **governed by the deterministic rules** to ensure results conform to business policy, with a full audit trail of every AI request and response — see [samples/basic_demo_ai_rules-supplier/readme.md](samples/basic_demo_ai_rules-supplier/readme.md)
 
 <img src="images/sample-ai/copilot/AI-Rules-Audit.png" alt="Audit trail of an AI Rule's request and response, shown in the Admin App" width="560">
 
@@ -407,13 +431,25 @@ On Placing Orders, Check Credit:
 6. __Use AI__ to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions
 ```
 
-<br>
-
-- **Custom UIs, safely** — Vibe tools (Cursor, v0, etc.) generate the UI; it's built against the same governed API, so the logic runs the same regardless of what's calling it. More below.
+</details>
 
 <br>
 
-- **RBAC** (Role Based Access Control) — declare row level security using technologies like Keycloak.
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>Custom UIs, safely</strong> — Vibe tools generate the UI, the API stays governed</summary>
+
+<br>Vibe tools (Cursor, v0, etc.) generate the UI; it's built against the same governed API, so the logic runs the same regardless of what's calling it. More below.
+
+</details>
+
+<br>
+
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>RBAC</strong> (Role Based Access Control) — row-level security, declared not coded</summary>
+
+<br>Declare row level security using technologies like Keycloak.
+
+</details>
 
 </details>
 
