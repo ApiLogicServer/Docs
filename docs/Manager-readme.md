@@ -409,6 +409,10 @@ generates gets, automatically — not something you ask for:
 
 <img src="images/basic_demo/mcp-ui.png" alt="Admin App SysMcp form — a business user enters a natural-language request (list unpaid orders, email each customer a discount), no code written" width="560">
 
+Here, an end user makes a NL request to find some data, and send email.
+
+You can also use MCP in your IDE to issue queries in natural language.
+
 </details>
 
 <br>
