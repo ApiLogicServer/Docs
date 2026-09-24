@@ -269,7 +269,7 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>4. Created and Enforced — One Architecture</strong> — Context Engineering in, a commit-time engine out, no bypass</summary>
+<summary>&emsp;&emsp;<strong>4. Governance Architecture</strong> — declare and run (Context Engineering, Rules engine)</summary>
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/logic-architecture-exec.png?raw=true" alt="Design and Runtime funnels into one governed Rules Engine" height="380" width="380" align="right">
 
@@ -326,21 +326,17 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 <details markdown>
 <summary>Pre-Built Enterprise Architecture — API, EAI, MCP, Rules, RBAC, Vibe UIs (via Context Engineering)</summary>
 
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;<strong>Beyond API and Logic</strong> — EAI, MCP, AI Rules, RBAC, Custom UIs</summary>
+
 <br>You've seen the API work, and you now know how the logic behind it holds up — declarative,
 auto-enforced, governable. Fair question: does that survive contact with a *real* system?
 Kafka messages, B2B partners, AI agents, role-based access, custom UIs — one credit-check
 rule on one table is a long way from an enterprise integration. It does — the same
 Context Engineering that knows a lookup wants a foreign key also knows what an enterprise
-system needs at its edges.
-
-&nbsp;
-
-<details markdown>
-<summary>&emsp;&emsp;<strong>It's enterprise-aware, not just logic-aware</strong> — EAI, MCP, AI Rules, RBAC, Custom UIs</summary>
-
-<br>Context Engineering's system knowledge isn't limited to rules — it already knows the integration points a real enterprise system needs, the same way it already knows a lookup wants an integer foreign key. [More on system vs. domain knowledge →](https://apilogicserver.github.io/Docs/Tech-AI-First/#two-kinds-of-knowledge-conflated)
-
-<br>
+system needs at its edges. [More on system vs. domain knowledge →](https://apilogicserver.github.io/Docs/Tech-AI-First/#two-kinds-of-knowledge-conflated)
 
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>Enterprise Integration (EAI)</strong> — B2B partner orders via Custom API or Kafka</summary>
@@ -472,7 +468,7 @@ for more NL → declaration examples.
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Governed Enterprise Systems, from Prompts</strong> — Executable Requirements, at enterprise class</summary>
+<summary>&emsp;&emsp;<strong>Governed Enterprise Sample Systems, from Prompts</strong> — Executable Requirements</summary>
 
 <br>Put that enterprise awareness to work, and here's what it builds. **Unburdened from logic, AI is free to do what it's great at** — reading any requirement format and translating intent, while rules turn that intent into real, governed systems. For example, these three: built from a plain prompt, actual regulation text, and Gherkin, by different teams writing the way they already write — not a new syntax to learn, and all three came out the same way: governed rules, no bypass. Click to see the prompt and the rules it produced:
 
