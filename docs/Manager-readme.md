@@ -385,18 +385,16 @@ Feature: Kafka Subscribe Order Integration - Inbound orders from sales channel
     And map Items.QuantityOrdered to Item.quantity
 ```
 
-Notice what that requirement does *not* say. Every Kafka subscriber this platform
-generates gets, automatically — not something you ask for:
+Notice that you can define **complex message/API formats by example** — drop a
+sample JSON file next to the requirement and reference it, instead of writing out
+a schema. For more, see
+[samples/requirements/Order-EAI/message_formats](samples/requirements/Order-EAI/message_formats).
 
-* **The 2-message pattern** — the raw payload is saved first (a transaction that
-  always commits), then parsed and persisted in a second transaction, so a bad
-  message never loses data mid-parse.
-* **Failures are never silent** — a rejected lookup or business rule leaves the
-  saved message queryable, with the failure reason recorded on it directly
-  (`error_text`), not buried in a server log.
-* **Existing business rules enforce themselves** — the same Check Credit logic
-  fires whether the write came from this Kafka consumer, the REST API, the
-  `OrderB2B` custom API, or the Admin App.
+Also notice what that requirement does *not* say. **Enterprise-grade reliability** —
+a 2-message save that never loses data mid-parse, a queryable `error_text` reason
+on every failure instead of a buried log line, and the same Check Credit rule
+enforced no matter which path wrote the row — comes with every Kafka subscriber
+this platform generates. You don't ask for it.
 
 </details>
 
