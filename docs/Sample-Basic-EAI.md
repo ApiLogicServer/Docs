@@ -185,6 +185,13 @@ Use case: App Integration
 
 ![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-vibe.png)
 
+> **These rules are declared once, on the data — not once per entry point.** LogicBank hooks
+> the database commit itself, so Check Credit fires on *every* write path that touches an
+> Order or Item: the Admin App, the standard JSON:API, the `OrderB2B` custom API (Section 4),
+> and the Kafka subscriber (Section 5) — all four call the same rules, automatically. Nothing
+> downstream has to (or even can) re-request "enforce Check Credit here too" — that's not a
+> phrase you'll find in this project's requirements.md.
+
 <br>
 
 ## 3. Message Formats — Already Included
@@ -220,10 +227,10 @@ Feature: B2B Order Integration
     Then map Account to Customer by name
     And map Items.Name to Product by name
     And map Items.QuantityOrdered to Item.quantity
-    And create the order with all Check Credit rules enforced
 ```
 
-Result: `POST /api/OrderB2B` — see Section 6 to test it.
+Result: `POST /api/OrderB2B` — see Section 6 to test it. Note there's no clause here
+about enforcing Check Credit — see Section 2's callout for why not.
 
 <br>
 
@@ -238,14 +245,20 @@ Feature: Kafka Subscribe Order Integration
   Scenario: Accept inbound orders from sales channel
     Given an inbound order message in JSON format (message_formats/order_b2b.json)
     When the message is received from Kafka topic order_b2b
-    Then use the 2-message pattern
-    And save the raw payload as a blob in the first transaction
-    And parse and persist the order in the second transaction
-    And map Account to Customer by name
+    Then map Account to Customer by name
     And map Items.Name to Product by name
     And map Items.QuantityOrdered to Item.quantity
-    And create the order with all Check Credit rules enforced
 ```
+
+> **Notice what this requirement does *not* say.** It doesn't mention the 2-message
+> pattern, a blob table, error capture, or Check Credit — none of that is a decision
+> left to whoever writes the requirement. The EAI-consume Context Engineering treats
+> the 2-message pattern (raw payload saved first, parsed second) as mandatory for
+> every Kafka subscriber it builds — "single-transaction consumers cause data loss"
+> — and, just as mandatory, requires that a failed parse/lookup/constraint records
+> *why* on the blob row (`error_text`), not only in a server log. Both are structural
+> guarantees of how this platform builds Kafka subscribers, not something this
+> requirement asked for. See **What Got Built** below for what that produces.
 
 &nbsp;
 
@@ -270,7 +283,12 @@ topic: order_b2b
   → Consumer 2:  parse → Order + Items, resolve FKs, LogicBank rules  (Tx 2)
 ```
 
-Parse failures leave `is_processed = False` on the blob row — queryable and retryable.
+Parse or business-rule failures leave `is_processed = False` on the blob row —
+queryable and retryable — **and** write the failure reason to `error_text` on that
+same row, so you can tell *why* a message is stuck without cross-referencing server
+logs: `SELECT id, error_text FROM order_b2b_message WHERE is_processed = 0`. Neither
+of these — the 2-message split or the error capture — is something this project's
+requirements.md asked for; both are how this platform builds every Kafka subscriber.
 
 **Key Files**
 
@@ -278,11 +296,11 @@ See the module docstring in [integration/kafka/kafka_subscribe_discovery/order_b
 
 | File | Role |
 |------|------|
-| `logic/logic_discovery/place_order/order_b2b_consume.py` | `row_event` bridge — publishes blob to `order_b2b_processed` (no inline parse) |
+| `logic/logic_discovery/order_b2b_consume.py` | `row_event` bridge — publishes blob to `order_b2b_processed` (no inline parse) |
 | `integration/OrderB2bMapper.py` | JSON → Order + Items (3-tier mapping contract) |
-| `api/api_discovery/order_b2b_kafka_consume_debug.py` | `/consume_debug/order_b2b` — test without Kafka |
+| `api/api_discovery/order_b2b_consume_debug.py` | `/consume_debug/order_b2b` — test without Kafka |
 | `integration/kafka/message_formats/order_b2b.json` | Message format spec / test fixture |
-| `test/order_b2b_reset.sh` | Reset Kafka topics + log between runs |
+| `integration/kafka/order_b2b_reset.sh` | Reset Kafka topics + log between runs |
 
 **Quick Test (no Kafka needed)**
 

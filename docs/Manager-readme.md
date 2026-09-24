@@ -363,7 +363,11 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 
 <br>Context Engineering's system knowledge isn't limited to rules — it already knows the integration points a real enterprise system needs, the same way it already knows a lookup wants an integer foreign key. [More on system vs. domain knowledge →](https://apilogicserver.github.io/Docs/Tech-AI-First/#two-kinds-of-knowledge-conflated)
 
-- **Enterprise Integration (EAI)** — the demo above showed ***Publish** the Order to Kafka topic*. For the **subscribe** side, see [samples/basic_demo_eai/readme.md](samples/basic_demo_eai/readme.md): B2B orders from partner systems, via a Custom API or Kafka subscriber, including *lookups* so partners send `"Account": "Alice"` (not internal IDs).  Below is the portion of the requirement for subscribing:
+- **Enterprise Integration (EAI)** — the demo above showed ***Publish** the Order to Kafka topic*. For the **subscribe** side, see [samples/basic_demo_eai/readme.md](samples/basic_demo_eai/readme.md): B2B orders from partner systems, via a Custom API or Kafka subscriber, including *lookups* so partners send `"Account": "Alice"` (not internal IDs). One project handles both directions — no separate system to stand up:
+
+<img src="images/integration/demo-eai.png" alt="basic_demo_eai: B2B Partner and Broker both feed one governed order system, which publishes order_shipping" width="560">
+
+Below is the portion of the requirement for subscribing:
 
 ```text
 Feature: Kafka Subscribe Order Integration - Inbound orders from sales channel
@@ -386,7 +390,22 @@ Feature: Kafka Subscribe Order Integration - Inbound orders from sales channel
 
 <br>
 
-- **AI Rules** — rules that call AI for genuinely judgment-call decisions (e.g. picking a supplier under disrupted shipping lanes). Such AI "proposals" are **governed by the deterministic rules** to ensure results conform to business policy — see [samples/basic_demo_ai_rules-supplier/readme.md](samples/basic_demo_ai_rules-supplier/readme.md)
+- **AI Rules** — rules that call AI for genuinely judgment-call decisions (e.g. picking a supplier under disrupted shipping lanes). Such AI "proposals" are **governed by the deterministic rules** to ensure results conform to business policy, with a full audit trail of every AI request and response — see [samples/basic_demo_ai_rules-supplier/readme.md](samples/basic_demo_ai_rules-supplier/readme.md)
+
+<img src="images/sample-ai/copilot/AI-Rules-Audit.png" alt="Audit trail of an AI Rule's request and response, shown in the Admin App" width="560">
+
+The rule below is one line (`__Use AI__ to Set...`) inside an otherwise ordinary logic declaration — deterministic and AI rules aren't two systems, they're the same DSL:
+
+```text
+On Placing Orders, Check Credit:
+
+1. The Customer's balance is less than the credit limit
+2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+3. The Order's amount_total is the sum of the Item amount
+4. The Item amount is the quantity * unit_price
+5. The Product count suppliers is the sum of the Product Suppliers
+6. __Use AI__ to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions
+```
 
 <br>
 
