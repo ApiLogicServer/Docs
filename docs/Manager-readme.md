@@ -447,7 +447,33 @@ On Placing Orders, Check Credit:
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>RBAC</strong> (Role Based Access Control) — row-level security, declared not coded</summary>
 
-<br>Declare row level security using technologies like Keycloak.
+<br>Declare row level security using technologies like Keycloak — and declare it the same
+way you declare logic: describe it, AI writes `declare_security.py`. Same project as
+above:
+
+```text
+sales role reads Customer and Order, but can't insert, update, or delete
+```
+```text
+sales sees only customers with credit_limit >= 3000, or a positive balance
+```
+
+turns into:
+
+```python
+DefaultRolePermission(to_role=Roles.sales, can_read=True, can_insert=False, can_update=False, can_delete=False)
+
+Grant(on_entity=models.Customer, to_role=Roles.sales,
+      filter=lambda: models.Customer.credit_limit >= 3000, filter_debug="credit_limit >= 3000")
+Grant(on_entity=models.Customer, to_role=Roles.sales,
+      filter=lambda: models.Customer.balance > 0, filter_debug="balance > 0")
+# two Grants for the same role are OR'd — either condition qualifies
+```
+
+No SQL, no per-endpoint checks to remember — the filter applies automatically everywhere
+that role touches Customer: the API, the Admin App, MCP queries. See
+[samples/basic_demo_eai/security/readme_security.md](samples/basic_demo_eai/security/readme_security.md)
+for more NL → declaration examples.
 
 </details>
 
