@@ -215,7 +215,7 @@ That's not (only) a capability gap — it's what happens when dependencies are e
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>1. What you just ran</strong> — see why it's different</summary>
+<summary>&emsp;&emsp;<strong>1. What you just ran</strong> — executable models: API, app... and <strong>logic</strong></summary>
 
 <br>You've probably used AI to generate code before — so what's different here?
 
@@ -275,10 +275,10 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 
 **Design Funnel — how rules get created.** Any requirement format — NL, Gherkin, pseudocode, formulas — goes in. **Context Engineering** is what makes that safe with AI in the loop: it steers the AI toward the *right* rule type (sum vs. count vs. Allocate vs. Request Pattern) for what you actually asked for, instead of letting it default to the procedural code it's seen a million times in training. That's not a hypothetical risk — see **Not trustworthy (2)** above for what the same AI produces *without* it.
 
-**Runtime Funnel — how rules get enforced.** All transaction sources — APIs, messages, MCP, agents, workflows — converge here. Rules aren't called from your code; they're wired into a single SQLAlchemy `before_flush` listener, loaded once at server start. Every write, from any path, passes through that one listener before it commits. No bypass — there's no second door.
+**Runtime Funnel — how rules get enforced.** All transaction sources — APIs, messages, MCP, agents, workflows, and whatever comes next — converge here. Rules aren't called from your code; they're wired into a single SQLAlchemy `before_flush` listener, loaded once at server start. Every write passes through that one listener before it commits — **reused for every path**. No bypass — there's no second door.
 
 <details markdown>
-<summary>&emsp;&emsp;<em><strong>Why this matters:</strong> declarative rules are never called and never need ordering — worth reading</em></summary>
+<summary>&emsp;&emsp;<em>Why this matters: rules are <strong>never called and never need ordering</strong> — worth reading</em></summary>
 
 <br>The Iterate example above — like maintenance generally — was remarkably simple, because **rules are declarative:**
 
@@ -307,11 +307,13 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<em>More on this architecture — future-proofing, full case</em></summary>
+<summary>&emsp;&emsp;<em>Some call this "governance by architecture, not discipline" — what that means</em></summary>
 
-<br>**This architecture is future-proofed:** a new integration tomorrow (another broker, custom API, an MCP tool call) inherits every rule already declared, automatically — because rules operate at the ORM layer, the same listener above. Nothing to re-wire, nothing to remember to call.
+<br>**Discipline** means every developer, on every change, has to remember the right pattern and every edge case — the burden lives in people, and it slips.
 
-*Full case: [Governance by Architecture, Not Discipline](https://apilogicserver.github.io/Docs/Tech-Gov-By-Arch/).* And since any format goes in the Design Funnel, it scales past one project — see below.
+**Architecture** means the software does it automatically — it's just how the system works, the same way a commit handler always runs. Nobody has to remember, because there's nothing to remember.
+
+Full case: [Governance by Architecture, Not Discipline](https://apilogicserver.github.io/Docs/Tech-Gov-By-Arch/).
 
 </details>
 
@@ -330,11 +332,10 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 <summary>&emsp;&emsp;<strong>Beyond API and Logic</strong> — EAI, MCP, AI Rules, RBAC, Custom UIs</summary>
 
 <br>You've seen the API work, and you now know how the logic behind it holds up — declarative,
-auto-enforced, governable. Fair question: does that survive contact with a *real* system?
-Kafka messages, B2B partners, AI agents, role-based access, custom UIs — one credit-check
-rule on one table is a long way from an enterprise integration. It does — the same
-Context Engineering that knows a lookup wants a foreign key also knows what an enterprise
-system needs at its edges. [More on system vs. domain knowledge →](https://apilogicserver.github.io/Docs/Tech-AI-First/#two-kinds-of-knowledge-conflated)
+auto-enforced, governable. Fair question: **how does it integrate with your other enterprise
+infrastructure** — Kafka messages, B2B partners, AI agents, role-based access, custom UIs? The
+same **Context Engineering** that knows how to generate rules (not code) also knows key enterprise
+patterns. [More on system vs. domain knowledge →](https://apilogicserver.github.io/Docs/Tech-AI-First/#two-kinds-of-knowledge-conflated)
 
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>Enterprise Integration (EAI)</strong> — B2B partner orders via Custom API or Kafka</summary>
@@ -378,7 +379,7 @@ this platform generates. You don't ask for it.
 
 <img src="images/basic_demo/mcp-ui.png" alt="Admin App SysMcp form — a business user enters a natural-language request (list unpaid orders, email each customer a discount), no code written" width="560">
 
-Here, an end user makes a NL request to find some data, and send email.
+Here, an end user makes a NL request to find some data, and send email — **the same governing rules enforce it**, whether the request came from MCP, the API, or a form. No new door, no new bypass.
 
 You can also use MCP in your IDE to issue queries in natural language.
 
@@ -477,10 +478,10 @@ for more NL → declaration examples.
 <details markdown>
 <summary>&emsp;&emsp;<strong>Governed Enterprise Sample Systems, from Prompts</strong> — Executable Requirements</summary>
 
-<br>Put that enterprise awareness to work, and here's what it builds. **Unburdened from logic, AI is free to do what it's great at** — reading any requirement format and translating intent, while rules turn that intent into real, governed systems. For example, these three: built from a plain prompt, actual regulation text, and Gherkin, by different teams writing the way they already write — not a new syntax to learn, and all three came out the same way: governed rules, no bypass. Click to see the prompt and the rules it produced:
+<br>Put that enterprise awareness to work, and here's what it builds. **Unburdened from logic, AI is free to do what it's great at** — reading any requirement format and translating intent, while rules turn that intent into real, governed systems. For example, these three: built from a plain prompt, actual regulation text, and Gherkin, by different teams **writing the way they *already* write** — not a new syntax to learn, and all three came out the same way: **generated as governed rules**, no bypass. Click to see the prompt and the rules it produced:
 
 <details markdown>
-<summary>&emsp;&emsp;↳ <strong>Budget allocation</strong> — cascading cost allocation, two levels deep</summary>
+<summary>&emsp;&emsp;↳ <strong>Budget allocation</strong> — complex cascading cost allocation, two levels deep</summary>
 
 <br>[The prompt](samples/prompts/allocation.prompt.md) ([↗](https://github.com/ApiLogicServer/allocate_dept_account_demo/blob/main/docs/requirements/prompt.md)) that built it:
 
@@ -513,6 +514,8 @@ Project Funding Definition is active.
 And the rules it produced:
 
 <img src="samples/allocate_dept_account_demo/docs/requirements/logic_diagrams/logic_diagram.svg" alt="Logic diagram: cascading budget allocation rule chain" width="480">
+
+The key takeaway: this is **complex business logic** — far beyond the illustrative demo.
 
 **Trust:** read [the resultant rules](samples/allocate_dept_account_demo/logic/logic_discovery/charge_distribution.py) ([↗](https://github.com/ApiLogicServer/allocate_dept_account_demo/blob/main/logic/logic_discovery/charge_distribution.py)) — they'll monitor every transaction.
 
