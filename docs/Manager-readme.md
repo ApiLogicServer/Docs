@@ -45,7 +45,7 @@ CODESPACES-ONLY-END -->
 <details markdown>
 <summary><strong>Say "hi" to your coding assistant</strong> — click to see important notes on models</summary>
 
-<br>Using a lighter or auto-selected model? Fine for exploring — for real logic you intend to keep, pick a frontier model (Claude Sonnet 5, GPT-5, etc.) if your plan allows it, and review the AI's output either way, the same as you would any other engineer's.
+<br>Using a lighter or auto-selected model? Fine for exploring — for real logic you intend to keep, pick a frontier model (Claude Sonnet 5, Gemini 3 Pro, GPT-5, etc.) if your plan allows it, and review the AI's output either way, the same as you would any other engineer's.
 
 *Why this matters: [AI-Enabled Projects](https://apilogicserver.github.io/Docs/Project-AI-Enabled/).*
 
@@ -142,12 +142,14 @@ The save fails — note the dialog. That's 5 rules — not ~200 lines of code �
 
 <br>AI is genuinely good at UI, data mapping, boilerplate, etc — no argument there. **Business logic is the exception.**
 
-Left unguided, any AI assistant — including the one that just built basic_demo for you — would default to procedural code for logic like this. Generate with native AI, and you get these three problems:
+Left unguided, any AI assistant — including the one that just built basic_demo for you — generates a running system for logic like this. On inspection, we found three problems:
 
 <details markdown>
 <summary>&emsp;&emsp;<strong>Not readable</strong> — you can't govern what you can't read (5 vs ~200 lines)</summary>
 
-<br>[procedural/credit_service.py](samples/basic_demo_logic_gov/logic/procedural/credit_service.py) — **~200 lines** for those same **5 requirements**. Open it and judge for yourself. ~200 lines is a demo-scale number — a real system runs 1-2 orders of magnitude more requirements, and proportionally more procedural code to match. That's why business logic ends up as roughly half the total effort on a real system. Nobody can audit that at a glance — not the next developer, not compliance, not you in six months. At that scale, an auditor can't read it all — they can only sample, and hope.
+[procedural/credit_service.py](samples/basic_demo_logic_gov/logic/procedural/credit_service.py) — **~200 lines** for those same **5 requirements**. Open it and judge for yourself.
+
+~200 lines is a **demo-scale** number — a real system runs 1-2 orders of magnitude more requirements, and proportionally more procedural code to match. That's why **business logic ends up as roughly half the total effort on a real system**. Nobody can audit that at a glance — not the next developer, not compliance, not you in six months. At that scale, an auditor can't read it all — they can only sample, and hope.
 
 </details>
 
@@ -167,7 +169,7 @@ There's a structural problem underneath the bugs, too: **AI pattern-matches depe
 <details markdown>
 <summary>&emsp;&emsp;<strong>Not trustworthy (2)</strong> — <em>typical</em> spec omitted entire update and delete paths</summary>
 
-<br>The example above presumed an excellent, declarative spec — but specs aren't always so good. We tried it with a *typical* one: check credit on placing an order, phrased the way a developer naturally writes it. We gave that requirement to two frontier models, with no ApiLogicServer, and told them explicitly not to use rules:
+<br>The example above presumed an excellent, declarative spec — but specs aren't always so good. We tried it with a *typical* one: check credit on placing an order, phrased the way a developer naturally writes it. We gave that requirement to two frontier models, with no GenAI-Logic, and told them explicitly not to use rules:
 
 ```text
 Note: this is a test of native AI coding ability — please do not use ApiLogicServer, GenAI-Logic, LogicBank, or any other code-generation or business-rules/rules-engine framework. Just plain hand-written code (standard web framework + ORM of your choice).
@@ -198,8 +200,6 @@ Probed directly: change an item's quantity, delete an item, reassign an order to
 **Regen risks the same bug, every time.** The AI re-derives everything from scratch, with no guarantee it reproduces the paths that already worked. Adding one small constraint — a one-line change — means regenerating and re-reviewing the whole system, every time, at every table. On a real system that's not a quick edit. It's hours, real AI cost, and a fresh chance at a new bug — to make a change that should have taken a minute.
 
 </details>
-
-&nbsp;
 
 That's not (only) a capability gap — it's what happens when dependencies are expressed as procedural code: real opportunities for subtle, hard-to-spot bugs. With rules, those same dependencies are handled deterministically by the rules engine — computed once, checked every time. That's the difference this document shows.
 
@@ -835,7 +835,7 @@ See [Project-Env](https://apilogicserver.github.io/Docs/Project-Env/) for more i
 
 **2. Start and Stop the Server**
 
-Both IDEs provide Run Configurations to start programs.  These are pre-built by `ApiLogicServer create`.
+Both IDEs provide Run Configurations to start programs.  These are pre-built by `genai-logic create`.
 
 For VSCode, start the Server with F5, Stop with Shift-F5 or the red stop button.
 
