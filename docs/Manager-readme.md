@@ -138,7 +138,7 @@ The save fails — note the dialog. That's 5 rules — not ~200 lines of code �
 &nbsp;
 
 <details markdown>
-<summary>AI Alone Writes Code You Can't Read or Trust — Here's the Evidence</summary>
+<summary>AI Alone Writes Code That's Hard to Read or Trust — Here's the Evidence</summary>
 
 <br>AI is genuinely good at UI, data mapping, boilerplate, etc — no argument there. **Business logic is the exception.**
 
