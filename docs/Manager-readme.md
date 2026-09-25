@@ -230,9 +230,7 @@ That's not (only) a capability gap — it's what happens when dependencies are e
 
 It's plain Python — standard tooling applies. Security is opt-in, not default — bootstrap RBAC anytime with `genai-logic add-auth`.
 
-The save you just saw fail was enforced by exactly one of those 5 rules. Let's look at why that's not what you'd get from AI alone.
-
-![Governance by Architecture, Not Discipline](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/gov-by-arch.png?raw=true)
+The save you just saw fail was enforced by exactly one of those 5 rules.
 
 </details>
 
@@ -413,13 +411,22 @@ On Placing Orders, Check Credit:
 <br>
 
 <details markdown>
-<summary>&emsp;&emsp;↳ <strong>Vibe Custom UIs</strong> — the API and logic are already built, generate the UI safely on top</summary>
+<summary>&emsp;&emsp;↳ <strong>Vibe Custom UIs</strong> — keep your vibe tool, point it at a governed backend</summary>
 
 <br>The API and business logic are already built and governed — that's the part that's hard to get right, and now you don't hand-write it. What's left is the UI, and that's exactly what vibe tools (Cursor, v0, etc.) are great at.
 
 Point yours at the generated API, and it renders against real, governed data — the same logic runs no matter what's calling it. One database, one API, any number of custom front ends: dashboards, tree views, maps, card layouts — all shown below, same backend, all generated in about 15 minutes with no hand-written JavaScript.
 
 <img src="images/ui-vibe/nw/vibe-gallery.png" alt="Gallery of vibe-generated UIs — dashboard, tree view, map, cards — all against one governed API" width="700">
+
+The card layout above, worked first try:
+
+```text
+Add an option on the Employee List page to show results as cards, and
+show the employee image in the card.
+```
+
+More prompts (tree view, map, landing page) and what each produced: [Admin-Vibe-Sample](https://apilogicserver.github.io/Docs/Admin-Vibe-Sample).
 
 Quick-start a React app from your (possibly customized) admin app:
 ```
