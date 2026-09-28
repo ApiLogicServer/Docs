@@ -277,7 +277,7 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 
 **Driven** by Context Engineering — translates AI intent into **spreadsheet-like rules**, not the procedural code (with all the code-sprawl issues above). The result stays as concise as the requirement itself: **~40x less** than the equivalent code, since **rules are deterministic, path-independent expressions** of *what*, not *how*.
 
-**Rules** — enforced at runtime by the rules engine. All transaction sources — APIs, messages, MCP, agents, workflows, and whatever comes next — converge here. Rules aren't called from your code; they're wired into a single SQLAlchemy `before_flush` listener, loaded once at server start. Every write passes through that one listener before it commits — **reused for every path**. No bypass — there's no second door.
+**Rules** — enforced at runtime by the rules engine. All transaction sources — APIs, messages, MCP, agents, workflows, and whatever comes next — converge here. Rules aren't called from your code; they're wired into a single SQLAlchemy `before_flush` listener, loaded once at server start. **All transaction sources** pass through that one listener at commit, where **rules govern for every path**. No bypass — there's no second door.
 
 <br>
 
