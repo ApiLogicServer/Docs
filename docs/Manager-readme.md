@@ -267,7 +267,7 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>4. AI Driven Rules</strong> — declare and run (Context Engineering, Rules engine)</summary>
+<summary>&emsp;&emsp;<strong>4. AI Driven Rules</strong> — governed executable prompts (AI, Context Engineering, Rules engine)</summary>
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/logic-architecture-exec.png?raw=true" alt="Design and Runtime funnels into one governed Rules Engine" height="380" width="380" align="right">
 
@@ -275,9 +275,11 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 
 **AI** — translates virtually any intent (NL, Gherkin, pseudocode, formulas), as shown here. This means you can use your **existing approaches/methodologies**, which drives a **repeatable process**.
 
-**Driven** by Context Engineering — to create **spreadsheet-like rules**, not the procedural code (with all the issues above). The result stays as concise as the requirement itself: **~40x less** than the equivalent code, since rules are **path-independent expressions** of *what*, not *how*.
+**Driven** by Context Engineering — translates AI intent into **spreadsheet-like rules**, not the procedural code (with all the code-sprawl issues above). The result stays as concise as the requirement itself: **~40x less** than the equivalent code, since **rules are deterministic, path-independent expressions** of *what*, not *how*.
 
 **Rules** — enforced at runtime by the rules engine. All transaction sources — APIs, messages, MCP, agents, workflows, and whatever comes next — converge here. Rules aren't called from your code; they're wired into a single SQLAlchemy `before_flush` listener, loaded once at server start. Every write passes through that one listener before it commits — **reused for every path**. No bypass — there's no second door.
+
+<br>
 
 <details markdown>
 <summary>&emsp;&emsp;<em>Why this matters: rules are <strong>never called and never need ordering</strong> — worth reading</em></summary>
