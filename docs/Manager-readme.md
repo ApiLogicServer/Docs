@@ -131,7 +131,10 @@ Change the quantity to a very large number. Save.
 
 <br>
 
-The save fails — note the dialog. That's 5 rules — not ~200 lines of code — governing this transaction across four tables. **Not what you'd get if you'd asked AI alone.** Let's explore.
+Key take-aways:
+
+* The save fails — note the dialog.  The **dialog is governance in action.**
+* That's 5 rules — not ~200 lines of code — governing this transaction across four tables. **Not what you'd get if you'd asked AI alone.** Let's explore.
 
 </details>
 
