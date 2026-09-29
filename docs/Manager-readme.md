@@ -594,7 +594,7 @@ Every requirement leaves things unsaid — the AI has to resolve that ambiguity 
 
 **For anything with no safe default, it stops outright** — trained by Context Engineering to do exactly that, rather than guess and move on. No code written for that piece, a `FIXME` left in its place, and the real options listed here for you to decide. That's the comforting part: not just "the AI made a call, here it is," but "the AI knew this one wasn't its call to make."
 
-You review the judgment calls, not the code. [Full report](samples/basic_demo_logic_gov/docs/requirements/ad-libs.md).
+You review the judgment calls, not the code. [Full report](samples/students_courses/docs/requirements/course_dropoff/ad-libs.md).
 
 </details>
 
