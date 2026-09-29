@@ -588,7 +588,13 @@ Rules make it **auditable** — logistics firm participation is *subject to audi
 
 <br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/ad-lib-report.png?raw=true" alt="Ad-libs report: a Review Required entry naming a blocking ambiguity, with candidate resolutions" width="640">
 
-A requirement is intent — natural language, vague by nature, often incomplete. A rule is rigorous — complete, deterministic, checkable. AI's job is to translate one into the other; ours is to govern what it did along the way. Every requirement leaves things unsaid — the AI has to resolve that ambiguity somehow. Rather than resolve it silently, it logs the decision and asks you to confirm it, or — for anything with no safe default — stops outright and lists the real options, rather than guessing and moving on. You review the judgment calls, not the code. [Full report](samples/basic_demo_logic_gov/docs/requirements/ad-libs.md).
+A requirement is intent — natural language, vague by nature, often incomplete. A rule is rigorous — complete, deterministic, checkable. AI's job is to translate one into the other; ours is to govern what it did along the way.
+
+Every requirement leaves things unsaid — the AI has to resolve that ambiguity somehow. It logs the decision here instead of resolving it silently, so you can confirm it.
+
+**For anything with no safe default, it stops outright** — trained by Context Engineering to do exactly that, rather than guess and move on. No code written for that piece, a `FIXME` left in its place, and the real options listed here for you to decide. That's the comforting part: not just "the AI made a call, here it is," but "the AI knew this one wasn't its call to make."
+
+You review the judgment calls, not the code. [Full report](samples/basic_demo_logic_gov/docs/requirements/ad-libs.md).
 
 </details>
 
