@@ -586,7 +586,7 @@ Rules make it **auditable** — logistics firm participation is *subject to audi
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>AI Alerts</strong> — proactive human-in-the-loop, every AI assumption</summary>
 
-<br>*(screenshot placeholder)*
+<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/ad-lib-report.png?raw=true" alt="Ad-libs report: a Review Required entry naming a blocking ambiguity, with candidate resolutions" width="640">
 
 A requirement is intent — natural language, vague by nature, often incomplete. A rule is rigorous — complete, deterministic, checkable. AI's job is to translate one into the other; ours is to govern what it did along the way. Every requirement leaves things unsaid — the AI has to resolve that ambiguity somehow. Rather than resolve it silently, it logs the decision and asks you to confirm it, or — for anything with no safe default — stops outright and lists the real options, rather than guessing and moving on. You review the judgment calls, not the code. [Full report](samples/basic_demo_logic_gov/docs/requirements/ad-libs.md).
 
@@ -608,7 +608,7 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>Health Check</strong> — logic analysis / usage / utilization (across the portfolio)</summary>
 
-<br>*(screenshot placeholder)*
+<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/proj-gov-report.png?raw=true" alt="Health check report: coverage, integrity, and red-flag scores for a project's rules" width="640">
 
 Ongoing hygiene, not just at creation: run any time to confirm the codebase still holds up as the project evolves — rule adoption, dependency-tracking integrity, missing docstrings, across the whole project. [Full report](samples/basic_demo_logic_gov/docs/requirements/health_check.md).
 
@@ -619,7 +619,7 @@ Ongoing hygiene, not just at creation: run any time to confirm the codebase stil
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>Test Creation</strong> — requirements traceability (from rules analysis)</summary>
 
-<br>*(screenshot placeholder)*
+<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/hehave-test.png?raw=true" alt="Behave Logic Report: a test scenario traced to the rules it exercised and the logic log proving they fired" width="640">
 
 Behave tests trace straight back to the requirement that drove them — and the report shows which declarative rules fired for each scenario, with before/after values, not just pass/fail. Requirement → test → rule → execution log, in one place. [Full report](samples/basic_demo_logic_gov/test/api_logic_server_behave/reports/Behave%20Logic%20Report.md).
 
