@@ -579,17 +579,51 @@ Rules make it **auditable** — logistics firm participation is *subject to audi
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Governance reports</strong> — logic flow, AI alerts, health check</summary>
+<summary>&emsp;&emsp;<strong>Project Governance</strong> — logic flow, AI alerts, health check (automatic report creation)</summary>
 
-<br>Rules you can read is only half of it — the AI is also proactive about what it wants *you* to double-check. Three reports, generated from the running system, not hand-written:
+<br>
 
-- **[Logic flow diagram](samples/basic_demo_logic_gov/docs/requirements/logic_flow_basic_demo_logic_gov.md)** — NL requirement, dependency diagram, and rule summary, for every rule chain
-- **[AI alerts](samples/basic_demo_logic_gov/docs/requirements/ad-libs.md)** — every assumption the AI made beyond the spec, flagged for you to verify, not buried
-- **[Health check](samples/basic_demo_logic_gov/docs/requirements/health_check.md)** — rule adoption, dependency-tracking integrity, missing docstrings, across the whole project
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>AI Alerts</strong> — proactive human-in-the-loop, every AI assumption</summary>
 
-A compliance reviewer can check the implementation in minutes, not by reading code. Here's that report for the basic_demo rules you just ran — the same report generates for any project, including the enterprise-scale ones below:
+<br>*(screenshot placeholder)*
 
-<img src="samples/basic_demo_logic_gov/docs/requirements/logic_diagrams/logic_diagram.svg" alt="Logic diagram: Item/Order/Customer rule chain, generated from the running rules" width="480">
+A requirement is intent — natural language, vague by nature, often incomplete. A rule is rigorous — complete, deterministic, checkable. AI's job is to translate one into the other; ours is to govern what it did along the way. Every requirement leaves things unsaid — the AI has to resolve that ambiguity somehow. Rather than resolve it silently, it logs the decision and asks you to confirm it, or — for anything with no safe default — stops outright and lists the real options, rather than guessing and moving on. You review the judgment calls, not the code. [Full report](samples/basic_demo_logic_gov/docs/requirements/ad-libs.md).
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>Logic Flow Diagram</strong> — visualize logic flow</summary>
+
+<br><img src="samples/basic_demo_logic_gov/docs/requirements/logic_diagrams/logic_diagram.svg" alt="Logic diagram: Item/Order/Customer rule chain, generated from the running rules" width="480">
+
+A compliance reviewer can check the implementation in minutes, not by reading code. [Full report](samples/basic_demo_logic_gov/docs/requirements/logic_flow_basic_demo_logic_gov.md) — the same report generates for any project, including the enterprise-scale ones below.
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>Health Check</strong> — logic analysis / usage / utilization (across the portfolio)</summary>
+
+<br>*(screenshot placeholder)*
+
+Ongoing hygiene, not just at creation: run any time to confirm the codebase still holds up as the project evolves — rule adoption, dependency-tracking integrity, missing docstrings, across the whole project. [Full report](samples/basic_demo_logic_gov/docs/requirements/health_check.md).
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>Test Creation</strong> — requirements traceability (from rules analysis)</summary>
+
+<br>*(screenshot placeholder)*
+
+Behave tests trace straight back to the requirement that drove them — and the report shows which declarative rules fired for each scenario, with before/after values, not just pass/fail. Requirement → test → rule → execution log, in one place. [Full report](samples/basic_demo_logic_gov/test/api_logic_server_behave/reports/Behave%20Logic%20Report.md).
+
+</details>
 
 </details>
 
