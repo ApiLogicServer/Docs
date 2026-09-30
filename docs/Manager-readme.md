@@ -323,7 +323,7 @@ But that same vagueness is why requirements can't be the system of record. **An 
 
 Rigorous and complete, rules are a suitable statement of record for **auditing**:
 - **Readable** — 40x less than the procedural equivalent, critical at enterprise scale
-- **Trustworthy** — the engine guarantees it: an auditor isn't tracing execution paths, complex dependency chains, or worrying code did not get called at all
+- **Trustworthy** — the engine guarantees it: an auditor isn't tracing execution paths, complex dependency chains, or worrying code did not get called at all. This is the exact chain AI's procedural code missed earlier — reparenting an Item silently left one side of the balance stale.
 
 </details>
 
