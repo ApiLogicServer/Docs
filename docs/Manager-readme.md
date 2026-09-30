@@ -285,7 +285,7 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 <br>
 
 <details markdown>
-<summary>&emsp;&emsp;<em>Why this matters: rules are <strong>never called and never need ordering</strong> — worth reading</em></summary>
+<summary>&emsp;&emsp;Why this matters: auto-called, auto-ordered — <strong>that's what makes rules trustworthy</strong></summary>
 
 <br>The Iterate example above — like maintenance generally — was remarkably simple, because **rules are declarative:**
 
@@ -314,7 +314,18 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<em>Some call this "governance by architecture, not discipline" — what that means</em></summary>
+<summary>&emsp;&emsp;Intent is vague — <strong>rules <em>are</em> the governance you can read and trust</strong></summary>
+
+<br>Trustworthy enforcement is half the story — the other half is what's being enforced. Natural language input is vague — that's what lets AI discover intent you haven't fully spelled out, not a flaw to fix. But the prompt is not the system of record. If it were — if "vague and incomplete" is also what governs the transaction — there's nothing for an auditor to check but the generated code itself: sampling and hoping, the same problem as hand-written procedural logic, no better for having AI in the loop.
+
+The rule is the statement of record: complete and unambiguous on every path, because the requirement it came from wasn't. Auditing it means both halves at once — **read** it (that's the 40x: small enough to actually see all of it) and **trust** it (that's the architecture, above: auto-invoked, auto-ordered — the engine runs it, on every commit, no bypass, so what you read is what actually happens). Read without trust is just documentation. Trust without read is a black box.
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;Some call this "governance by architecture, not discipline" — what that means</summary>
 
 <br>**Discipline** means every developer, on every change, has to remember the right pattern and every edge case — the burden lives in people, and it slips.
 
