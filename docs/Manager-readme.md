@@ -285,7 +285,7 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 <br>
 
 <details markdown>
-<summary>&emsp;&emsp;Why this matters: auto-called, auto-ordered — <strong>that's what makes rules trustworthy</strong></summary>
+<summary>&emsp;&emsp;<strong>Declarative rules are trustworthy</strong>, since they're automatically invoked and ordered</summary>
 
 <br>The Iterate example above — like maintenance generally — was remarkably simple, because **rules are declarative:**
 
@@ -316,9 +316,13 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 <details markdown>
 <summary>&emsp;&emsp;Intent is vague — <strong>rules <em>are</em> the governance you can read and trust</strong></summary>
 
-<br>Trustworthy enforcement is half the story — the other half is what's being enforced. Natural language input is vague — that's what lets AI discover intent you haven't fully spelled out, not a flaw to fix. But the prompt is not the system of record. If it were — if "vague and incomplete" is also what governs the transaction — there's nothing for an auditor to check but the generated code itself: sampling and hoping, the same problem as hand-written procedural logic, no better for having AI in the loop.
+<br>**Natural language is vague and incomplete by nature** — that's exactly what lets AI discover intent you haven't fully spelled out. That's immensely valuable.
 
-The rule is the statement of record: complete and unambiguous on every path, because the requirement it came from wasn't. Auditing it means both halves at once — **read** it (that's the 40x: small enough to actually see all of it) and **trust** it (that's the architecture, above: auto-invoked, auto-ordered — the engine runs it, on every commit, no bypass, so what you read is what actually happens). Read without trust is just documentation. Trust without read is a black box.
+But that same vagueness is why requirements can't be the system of record. **An auditor needs something rigorous and complete** to check against.
+
+Rigorous and complete, rules are a suitable statement of record for **auditing**:
+- **Readable** — 40x less than the procedural equivalent, critical at enterprise scale
+- **Trustworthy** — the engine guarantees it: an auditor isn't tracing execution paths or worrying code did not get called
 
 </details>
 
