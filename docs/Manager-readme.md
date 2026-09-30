@@ -300,6 +300,7 @@ Functions don't behave like that. So why is that? **Traditional logic is procedu
 | **Auto-reused** | Declared once, enforced over every change path — no per-path handlers to write or miss |
 | **Auto-invoked** | Fires at every commit, from every caller — can't be forgotten, can't be bypassed |
 | **Auto-ordered** | The engine computes dependency order — add a rule anywhere, it finds its place |
+| **Auto-chained** | A change in one table fires dependent rules in another — so changes to Item's amount adjust the Order's total |
 
 `Rule.sum(derive=Customer.balance, as_sum_of=Order.amount_total, where=lambda row: row.date_shipped is None)` looks like a function call — it isn't one. Grep this codebase for `check_credit(` — you won't find a call site. Nothing calls it. It runs because it's *declared*, not because something invokes it.
 
@@ -322,7 +323,7 @@ But that same vagueness is why requirements can't be the system of record. **An 
 
 Rigorous and complete, rules are a suitable statement of record for **auditing**:
 - **Readable** — 40x less than the procedural equivalent, critical at enterprise scale
-- **Trustworthy** — the engine guarantees it: an auditor isn't tracing execution paths or worrying code did not get called
+- **Trustworthy** — the engine guarantees it: an auditor isn't tracing execution paths, complex dependency chains, or worrying code did not get called at all
 
 </details>
 
