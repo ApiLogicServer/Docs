@@ -316,7 +316,7 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 <details markdown>
 <summary>&emsp;&emsp;Intent is vague — <strong>rules <em>are</em> the governance you can read and trust</strong></summary>
 
-<br>**Natural language is vague and incomplete by nature** — that's exactly what lets AI discover intent you haven't fully spelled out. That's immensely valuable.
+<br>**Natural language is vague and incomplete by nature** — and that's how we *actually* communicate. AI meets you there: no artificial syntax to learn, and the vagueness is exactly what lets it discover intent you haven't fully spelled out. That's immensely valuable.
 
 But that same vagueness is why requirements can't be the system of record. **An auditor needs something rigorous and complete** to check against.
 
