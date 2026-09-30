@@ -607,9 +607,13 @@ Rules make it **auditable** — logistics firm participation is *subject to audi
 
 <br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/ad-lib-report.png?raw=true" alt="Ad-libs report: a Review Required entry naming a blocking ambiguity, with candidate resolutions" width="640">
 
-A requirement is intent — natural language, vague by nature, often incomplete. A rule is rigorous — complete, deterministic, checkable. AI's job is to translate one into the other; ours is to govern what it did along the way.
+AI can generate a full working system — API, Admin App, business logic — in minutes. How do you know it's what you meant? Where do you look?
 
-Every requirement leaves things unsaid — the AI has to resolve that ambiguity somehow. It logs the decision here instead of resolving it silently, so you can confirm it.
+Most of it, you don't need to. The API and Admin App are **mechanical** — deterministically derived from the schema, the same every time, nothing the AI "decided."
+
+The one place a human judgment call was actually needed — where the AI translated your intent into policy — is also the clearest, most concise version of the whole system: **the rules**.
+
+Every requirement leaves things unsaid — the AI can and should resolve that ambiguity. But that carries the responsibility to provide a **proactive** heads-up so you can confirm the decision; that's shown in the report above.
 
 **For anything with no safe default, it stops outright** — trained by Context Engineering to do exactly that, rather than guess and move on. No code written for that piece, a `FIXME` left in its place, and the real options listed here for you to decide. That's the comforting part: not just "the AI made a call, here it is," but "the AI knew this one wasn't its call to make."
 
