@@ -61,7 +61,7 @@ CODESPACES-ONLY-END -->
 
 <br>
 
-> **Governance** — logic that's readable, enforced without bypass, and auditable — isn't a developer nicety; it's a [standing CIO concern](https://www.nascio.org/resource/state-cio-top-ten-policy-and-technology-priorities-for-2026/) — AI just took the #1 spot in NASCIO's 2026 survey of state CIOs, after cybersecurity held it for 12 straight years. Watch for it below: the same commit that fails in a moment is that property, live.
+> **Governance** — logic that's readable, enforced without bypass, and auditable — isn't a developer nicety; it's a [standing CIO concern](https://www.nascio.org/resource/state-cio-top-ten-policy-and-technology-priorities-for-2026/) — AI just took the #1 spot in NASCIO's 2026 survey of state CIOs, displacing cybersecurity. Governance is often regarded as a **process** — reviews, signoffs, a committee — here it's **automated**. Watch for it below: the same commit that fails in a moment is that property, live.
 
 Say this to your AI assistant (allow several minutes):
 
@@ -189,7 +189,11 @@ Here's what needs to happen when someone places an order:
 
 Both produced the same shape of code: one function, wired to order creation. **No update path. No delete path** — confirmed in [the actual code](samples/bd_claude_native_ai/app/orders.py).
 
-Probed directly: change an item's quantity, delete an item, reassign an order to a different customer, reassign an item to a different product. Every case, both models, left stale data behind. No error. Nothing to catch it. The logic wasn't buggy so much as absent — it existed for exactly one path and nowhere else. [Full experiment →](Tech-Standard-Reqs.md)
+Probed directly: change an item's quantity, delete an item, reassign an order to a different customer, reassign an item to a different product. Every case, both models, left stale data behind. No error. Nothing to catch it.
+
+**Key takeaways:**
+- **The logic wasn't buggy so much as absent** — it existed for exactly one path and nowhere else. [Full experiment →](Tech-Standard-Reqs.md)
+- **A similar finding, looking beyond logic:** the hand-written API has no PATCH or DELETE on any resource either — not a bug, just more of what the prompt never asked for. [Full assessment →](samples/bd_claude_native_ai/project-assessment.md)
 
 </details>
 
