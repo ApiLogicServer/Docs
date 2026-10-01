@@ -143,9 +143,9 @@ Key take-aways:
 <details markdown>
 <summary>AI Alone Writes Code That's Hard to Read or Trust — Here's the Evidence</summary>
 
-<br>AI is genuinely good at UI, data mapping, boilerplate, etc — no argument there. **Business logic is the exception.**
+<br>AI is genuinely good at UI, data mapping, boilerplate, etc — we see impressive results. **Business logic is the exception.**
 
-Left unguided, any AI assistant — including the one that just built basic_demo for you — generates a running system for logic like this. On inspection, we found three problems:
+Left unguided, any AI assistant — including the one that just built basic_demo for you — generates a running system from this requirement. On inspection, we found three problems:
 
 <details markdown>
 <summary>&emsp;&emsp;<strong>Not readable</strong> — you can't govern what you can't read (5 vs ~200 lines)</summary>
@@ -319,13 +319,13 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;Intent is vague — <strong>rules <em>are</em> the governance you can read and trust</strong></summary>
+<summary>&emsp;&emsp;Intent is an incomplete sketch — <strong>rules <em>are</em> the governance you can read and trust</strong></summary>
 
-<br>**Natural language is vague and incomplete by nature** — and that's how we *actually* communicate. AI meets you there: no artificial syntax to learn, and the vagueness is exactly what lets it discover intent you haven't fully spelled out. That's immensely valuable.
+<br>**Natural language requirements are — and should be — a sketch, not complete.** (Otherwise, it would be code!) That's exactly what you want to hand to a capable collaborator: not every detail spelled out, just enough for them to run with it and do what you *meant*, not merely what you *said*. AI provides real value there — no artificial syntax to learn, just the gaps filled the way a good team member would fill them.
 
-But that same vagueness is why requirements can't be the system of record. **An auditor needs something rigorous and complete** to check against.
+But that same incompleteness is why **natural language requirements can't be the system of record.** An auditor needs something rigorous and complete to check against.
 
-Rigorous and complete, rules are a suitable statement of record for **auditing**:
+**Rules *are* a suitable system of record — rigorous, complete — for auditing:**
 - **Readable** — 40x less than the procedural equivalent, critical at enterprise scale
 - **Trustworthy** — the engine guarantees it: an auditor isn't tracing execution paths, complex dependency chains, or worrying code did not get called at all. This is the exact chain AI's procedural code missed earlier — reparenting an Item silently left one side of the balance stale.
 
