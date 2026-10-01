@@ -150,9 +150,15 @@ Left unguided, any AI assistant — including the one that just built basic_demo
 <details markdown>
 <summary>&emsp;&emsp;<strong>Not readable</strong> — you can't govern what you can't read (5 vs ~200 lines)</summary>
 
-<br><img src="images/manager/readme/credit_service.png" alt="~200 lines of procedural credit-check code, for the same 5 requirements 5 declarative rules cover" width="640">
+<br>**~200 lines** of procedural code — ***hard to read, intent unclear*:**
+<img src="images/manager/readme/credit_service.png" alt="~200 lines of procedural credit-check code, for the same 5 requirements 5 declarative rules cover" width="640">
 
-[procedural/credit_service.py](samples/basic_demo_logic_gov/logic/procedural/credit_service.py) — **~200 lines** for those same **5 requirements**. Open it and judge for yourself.
+Same 5 requirements from the Check Credit prompt in "The Ideal" above — handed to AI with no guidance, it generated this: [procedural/credit_service.py](samples/basic_demo_logic_gov/logic/procedural/credit_service.py) — **~200 lines**. Open it and judge for yourself.
+
+**5 declarative rules — *readable* at a glance:**
+<img src="images/manager/readme/check_credit.png" alt="5 declarative rules for check_credit — the same 5 requirements, readable in seconds" width="640">
+
+[logic_discovery/place_order/check_credit.py](samples/basic_demo_logic_gov/logic/logic_discovery/place_order/check_credit.py) — same 5 requirements, same AI.
 
 ~200 lines is a **demo-scale** number — a real system runs 1-2 orders of magnitude more requirements, and proportionally more procedural code to match. That's why **business logic ends up as roughly half the total effort on a real system**. Nobody can audit that at a glance — not the next developer, not compliance, not you in six months. At that scale, an auditor can't read it all — they can only sample, and hope.
 
