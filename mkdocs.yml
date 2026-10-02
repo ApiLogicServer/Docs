@@ -263,6 +263,7 @@ nav:
     - "Product Overview": Product-Overview.md
     - Personal:
       - "Manager readme": Manager-readme.md
+      - "Manager video": Tech-Manager-Video.md
       - "Standard Requirements": Tech-Standard-Reqs.md
       - "AI, You're in Control": Tech-AI-First.md
       - "Realizations": Tech-Realizations.md

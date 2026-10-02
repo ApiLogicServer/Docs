@@ -216,6 +216,8 @@ Probed directly: change an item's quantity, delete an item, reassign an order to
 
 </details>
 
+<br>
+
 That's not (only) a capability gap — it's what happens when dependencies are expressed as procedural code: real opportunities for subtle, hard-to-spot bugs. With rules, those same dependencies are handled deterministically by the rules engine — computed once, checked every time. That's the difference this document shows.
 
 **We're deeply impressed with AI — this is about closing the gap it has here: logic.** That's next.
@@ -423,30 +425,6 @@ You can also use MCP in your IDE to issue queries in natural language.
 <br>
 
 <details markdown>
-<summary>&emsp;&emsp;↳ <strong>AI Rules</strong> — governed judgment calls inside deterministic logic</summary>
-
-<br>Rules that call AI for genuinely judgment-call decisions (e.g. picking a supplier under disrupted shipping lanes). Such AI "proposals" are **governed by the deterministic rules** to ensure results conform to business policy, with a full audit trail of every AI request and response — see [samples/basic_demo_ai_rules-supplier/readme.md](samples/basic_demo_ai_rules-supplier/readme.md)
-
-<img src="images/sample-ai/copilot/AI-Rules-Audit.png" alt="Audit trail of an AI Rule's request and response, shown in the Admin App" width="560">
-
-The rule below is one line (`__Use AI__ to Set...`) inside an otherwise ordinary logic declaration — deterministic and AI rules aren't two systems, they're the same DSL:
-
-```text
-On Placing Orders, Check Credit:
-
-1. The Customer's balance is less than the credit limit
-2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
-3. The Order's amount_total is the sum of the Item amount
-4. The Item amount is the quantity * unit_price
-5. The Product count suppliers is the sum of the Product Suppliers
-6. __Use AI__ to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions
-```
-
-</details>
-
-<br>
-
-<details markdown>
 <summary>&emsp;&emsp;↳ <strong>Vibe Custom UIs</strong> — keep your vibe tool, point it at a governed backend</summary>
 
 <br>The API and business logic are already built and governed — that's the part that's hard to get right, and now you don't hand-write it. What's left is the UI, and that's exactly what vibe tools (Cursor, v0, etc.) are great at.
@@ -503,6 +481,30 @@ No SQL, no per-endpoint checks to remember — the filter applies automatically 
 that role touches Customer: the API, the Admin App, MCP queries. See
 [samples/basic_demo_eai/security/readme_security.md](samples/basic_demo_eai/security/readme_security.md)
 for more NL → declaration examples.
+
+</details>
+
+<br>
+
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>AI Rules</strong> — governed judgment calls inside deterministic logic</summary>
+
+<br>Rules that call AI for genuinely judgment-call decisions (e.g. picking a supplier under disrupted shipping lanes). Such AI "proposals" are **governed by the deterministic rules** to ensure results conform to business policy, with a full audit trail of every AI request and response — see [samples/basic_demo_ai_rules-supplier/readme.md](samples/basic_demo_ai_rules-supplier/readme.md)
+
+<img src="images/sample-ai/copilot/AI-Rules-Audit.png" alt="Audit trail of an AI Rule's request and response, shown in the Admin App" width="560">
+
+The rule below is one line (`__Use AI__ to Set...`) inside an otherwise ordinary logic declaration — deterministic and AI rules aren't two systems, they're the same DSL:
+
+```text
+On Placing Orders, Check Credit:
+
+1. The Customer's balance is less than the credit limit
+2. The Customer's balance is the sum of the Order amount_total where date_shipped is null
+3. The Order's amount_total is the sum of the Item amount
+4. The Item amount is the quantity * unit_price
+5. The Product count suppliers is the sum of the Product Suppliers
+6. __Use AI__ to Set Item field unit_price by finding the optimal Product Supplier based on cost, lead time, and world conditions
+```
 
 </details>
 
