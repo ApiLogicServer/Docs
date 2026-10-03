@@ -61,7 +61,7 @@ CODESPACES-ONLY-END -->
 
 <br>
 
-> **Governance** — logic that's readable, enforced without bypass, and auditable — isn't a developer nicety; it's a [standing CIO concern](https://www.nascio.org/resource/state-cio-top-ten-policy-and-technology-priorities-for-2026/) — AI just took the #1 spot in NASCIO's 2026 survey of state CIOs, displacing cybersecurity. Whereas governance is often regarded as a **process** — reviews, signoffs, a committee — our **focus is automated governance**. Watch for it below: the same commit that fails in a moment is that property, live.
+> **Governance** — logic that's readable, enforced without bypass, and auditable — isn't a developer nicety; it's a [standing CIO concern](https://www.nascio.org/resource/state-cio-top-ten-policy-and-technology-priorities-for-2026/) — AI took the #1 spot in NASCIO's 2026 survey of state CIOs, and governance is the first concern NASCIO lists under it. Whereas governance is often regarded as a **process** — reviews, signoffs, a committee — our **focus is automated governance**. Watch for it below: the same commit that fails in a moment is that property, live.
 
 Say this to your AI assistant (allow several minutes):
 
@@ -171,7 +171,12 @@ Same 5 requirements from the Check Credit prompt in "The Ideal" above — handed
 <details markdown>
 <summary>&emsp;&emsp;<strong>Not trustworthy (1)</strong> — good spec generated 2 subtle bugs</summary>
 
-<br>Found only by specifically testing what happens when a row is reparented to a new owner: [the A/B test](samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md). Root cause: **path confusion** — procedural code must enumerate every change path (insert, update, delete, reparent) by hand, and it's easy to miss one.
+<br>The AI's code handled updates, but missed two re-parenting cases:
+
+- **Change an item's product, and the order wasn't re-priced** — the item kept its old price, and the error propagated to the order total and the customer balance.
+- **Move an order to another customer, and the old customer's balance stayed stale.**
+
+Found only by specifically testing what happens when a row is reparented to a new owner: [the A/B test](samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md). Root cause: **path confusion** — procedural code must enumerate every change path (insert, update, delete, reparent) by hand, and it's easy to miss one.
 
 There's a structural problem underneath the bugs, too: **AI pattern-matches dependencies, it doesn't compute them** — so the odds of a miss go up as the system grows. [More detail →](samples/basic_demo_logic_gov/logic/procedural/declarative-vs-procedural-comparison.md#the-underlying-problem-dependency-graphs)
 
@@ -597,7 +602,7 @@ On Placing Orders, Check Credit:
 
 <br>Put that enterprise awareness to work, and here's what it builds.
 
-Prompt-to-app tools build the screens. The harder part is the logic: these three enterprise-class projects have **governed business logic**, created using each team's existing requirement methodology.
+Prompt-to-app tools build the screens. Here are three complete systems — the API, the Admin App, and the harder part, **business logic governed by rules** — created using each team's existing requirement methodology.
 
 **Fast, and better:** the results below replaced work reported in person-years, and delivered where the hand-built versions fell short: a working allocation, and audit failures caught.
 

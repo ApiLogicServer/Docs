@@ -6,7 +6,7 @@
 
 ## 0. Opening (0:00–0:30)
 
-Governance took the number one spot in this year's NASCIO survey of state CIOs.
+The number one priority for state CIOs this year, in the NASCIO survey, is AI — and the first concern NASCIO lists under it is governance.
 
 Governance is often regarded as a  **process** — reviews, sign-offs, a committee. Here it's **automated**, and for business logic it means three things: read, trust, and maintain.
 
@@ -34,9 +34,9 @@ Let's explore how that logic was implemented.
 
 AI is genuinely good at UI, data mapping, boilerplate. Business logic is the exception.
 
-We gave AI the same five requirements, without rules. It generated about two hundred lines of procedural code, against five rules. For a real system, there's orders of magnitude more.
+We gave AI the same five requirements, without rules. Five requirements became about two hundred lines of procedural code. With rules, they stay five. A real system has orders of magnitude more — more than anyone can read, let alone audit.
 
-On inspection, we found bugs. Change an item's product, and the price wasn't re-copied. Move an order to another customer, and the old customer's balance stayed stale.
+On inspection, we found bugs. The code handled updates, but missed two re-parenting cases. Change an item's product, and the order wasn't re-priced. Move an order to another customer, and the old customer's balance stayed stale.
 
 Then we tried a typical spec — written the way a developer naturally writes it. Two frontier models, no rules. Both built the insert path. Neither built update or delete. The logic wasn't buggy so much as absent.
 
@@ -134,7 +134,7 @@ If requested, **Logic Using AI** can reason at runtime. "Find the optimal suppli
 
 ## 9. Enterprise Results
 
-Prompt-to-app tools build the screens. The harder part is the business logic, and that's what these three enterprise-class projects show — governed, and created using each team's existing requirement methodology.
+Prompt-to-app tools build the screens. Here are three complete systems: the API, the Admin App, and the harder part, business logic governed by rules — created from each team's existing requirements.
 
 The first is cascading cost allocation, two levels deep — **complex** logic that was built by hand, reportedly by four developers over two years, and didn't deliver. Here it comes from a prompt.
 
