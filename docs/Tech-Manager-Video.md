@@ -88,19 +88,43 @@ Governance by architecture, not by discipline. Discipline means every developer,
 
 ---
 
-## 6. Governing the AI's Own Judgment (7:45–8:45)
+## 6. Enterprise Connectivity, in Brief
 
-Every requirement leaves things unsaid, so the AI has to resolve some ambiguity. That carries a responsibility: tell you what it assumed.
+The same rules govern **APIs, messages, and agents**.  The system is a scalable server, deployed as a standard container.
 
-The AI Alerts report lists those judgment calls. And for anything with no safe default, it stops — no code written, a marker left, the options listed for a person to decide. You review the judgment calls, not the code.
+The APIs are discoverable through **MCP**, so a business user can ask for new functionality, like emailing customers with overdue orders, without IT support, and still be subject to the rules.
 
-A logic flow diagram, generated from the running rules, lets a compliance reviewer check the implementation in minutes.
+Logic-enabled APIs provide the perfect backdrop for creating custom UIs using your favorite **vibe tools**.  Built-in support for **RBAC** ensures uses see only the rows authorized for their roles.
 
-And the test report traces requirement, to test, to rule, to the execution log — before and after values — in one place.
+If requested, **AI Rules** can operate runtime. "Find the optimal supplier" can reason about world conditions, like a Suez Canal blockage. But the AI only proposes. The same deterministic rules decide, and the decision is audited.## 6. Governing the AI's Own Judgment (7:45–8:45)
 
 ---
 
-## 7. Business Users and IT, One Artifact (8:45–9:20)
+## 7. Enterprise Results
+
+
+
+---
+
+## 8. Project Governance
+
+Every requirement leaves things unsaid, so the AI has to resolve some ambiguity. That carries a responsibility: tell you what it assumed.
+
+The **AI Alerts **report lists those judgment calls. And for anything with no safe default, it stops — no code written, a marker left, the options listed for a person to decide. You review the judgment calls, not the code.
+
+A **logic flow diagram**, generated from the running rules, lets a compliance reviewer check the implementation in minutes.
+
+The **Health Check** report provides metrics on rule utlizatiion, across the portfolio.
+
+And the **test report **traces requirement, to test, to rule, to the execution log — before and after values — in one place.
+
+---
+
+## 9. Business Users and IT Collaboration
+
+Since AI can translate virtually any intent, your team can continue use **existing methodologies.**
+
+Business Users can use natural language, with a business oriented view provided by the **same IDE** the developers use.  So, hitting a complexity wall does not mean a restart and finger-pointing - developers can build out the system using familar tools.  **Collaboration not finger-pointing,**
 
 There's no proprietary studio and no rigid structure. A business user can just ask the AI for guidance — or ask it to interview them to work out the requirements.
 
@@ -108,16 +132,6 @@ And the rule a business user reads and the rule a developer debugs are the same 
 
 ---
 
-## 8. Enterprise Connectivity, in Brief (9:20–9:50)
-
-The same rules govern APIs, messages, and agents — the APIs are discoverable through MCP, so a business user can ask for new functionality, like emailing customers with overdue orders, without IT support, and still be subject to the rules.
-
-AI can be part of the logic at runtime too. "Find the optimal supplier" can reason about world conditions, like a Suez Canal blockage. But the AI only proposes. The same deterministic rules decide, and the decision is audited.
-
----
-
-## 9. Close (9:50–10:10)
+## 10. Close
 
 It's free and open source; the README walks through all of this.
-
-The question I'd most like your read on: would IT accept rules as the record of what a system does?

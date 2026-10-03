@@ -125,7 +125,7 @@ Change the quantity to a very large number. Save.
 4. Edit the Item
 5. Set the quantity
 
-![credit-check](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/credit-check.png?raw=true)
+![credit-check](images/basic_demo/credit-check.png)
 
 </details>
 
@@ -232,9 +232,9 @@ That's not (only) a capability gap — it's what happens when dependencies are e
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>1. What you just ran</strong> — executable models: API, app... and <strong>logic</strong></summary>
+<summary>&emsp;&emsp;<strong>What you just built</strong> — run it, debug it, change it</summary>
 
-<br>You've probably used AI to generate code before — so what's different here?
+<br>**Run it.** You've probably used AI to generate code before — so what's different here?
 
 **Difference 1: it produces executable models, not code.** You just ran that project. Instead of a pile of procedural code, you got artifacts that declare structure or policy rather than procedure — same 5 requirements, same AI:
 
@@ -249,27 +249,13 @@ It's plain Python — standard tooling applies. Security is opt-in, not default 
 
 The save you just saw fail was enforced by exactly one of those 5 rules.
 
-</details>
-
-&nbsp;
-
-<details markdown>
-<summary>&emsp;&emsp;<strong>2. Debug it</strong> — standard logging, standard debugger</summary>
-
-<br>No new tools required. The rule chain that just fired is in the log — plain text, readable in your terminal or editor: [sample trace](samples/basic_demo_logic_gov/logs/als-sample.log). A live run writes the same thing to the standard log, `logs/als.log`.
+**Debug it.** No new tools required. The rule chain that just fired is in the log — plain text, readable in your terminal or editor: [sample trace](samples/basic_demo_logic_gov/logs/als-sample.log). A live run writes the same thing to the standard log, `logs/als.log`.
 
 Every rule is a plain Python function or lambda. Set a breakpoint on any `calling=` function or `as_condition=` lambda in your IDE, exactly like you would anywhere else in the codebase — no proprietary debugger, no special UI.
 
-![logic-debug](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/logic/logic-debug.png?raw=true)
+![logic-debug](images/logic/logic-debug.png)
 
-</details>
-
-&nbsp;
-
-<details markdown>
-<summary>&emsp;&emsp;<strong>3. Iterate</strong> — 1 AI prompt adds table, relationship, 2 rules</summary>
-
-<br>Ask your AI assistant for a new rule, in plain English:
+**Change it.** Ask your AI assistant for a new rule, in plain English:
 
 ```
 Customers should not be able to create new orders if they have unresolved past due letters.
@@ -284,7 +270,7 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>4. AI Driven Rules</strong> — governed executable prompts (AI, Context Engineering, Rules engine)</summary>
+<summary>&emsp;&emsp;<strong>Trustworthy and Auditable</strong> — AI Driven Rules (AI, Context Engineering, Rules engine)</summary>
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/logic-architecture-exec.png?raw=true" alt="Design and Runtime funnels into one governed Rules Engine" height="380" width="380" align="right">
 
@@ -301,7 +287,7 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 <details markdown>
 <summary>&emsp;&emsp;<strong>Declarative rules are trustworthy</strong>, since they're automatically invoked and ordered</summary>
 
-<br>The Iterate example above — like maintenance generally — was remarkably simple, because **rules are declarative:**
+<br>The "Change it" example above — like maintenance generally — was remarkably simple, because **rules are declarative:**
 
 - **No need to call the new logic.** Rules are invoked automatically - regardless of the originating path.  You can **trust** that they'll always run.
 - **Order doesn't matter.** Open `check_credit.py` and shuffle the five rules into any order you like. Rerun — still correct. Try that with 200 lines of procedural code.  You can **trust** that they'll run in the right order.
@@ -356,17 +342,101 @@ Full case: [Governance by Architecture, Not Discipline](https://apilogicserver.g
 
 </details>
 
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;<strong>Project Governance</strong> — see and manage the logic (alerts, diagrams, health check, tests)</summary>
+
+<br>
+
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>AI Alerts</strong> — proactive human-in-the-loop, every AI assumption</summary>
+
+<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/ad-lib-report.png?raw=true" alt="Ad-libs report: a Review Required entry naming a blocking ambiguity, with candidate resolutions" width="640">
+
+AI can generate a full working system — API, Admin App, business logic — in minutes. How do you know it's what you meant? Where do you look?
+
+Most of it, you don't need to. The API and Admin App are **mechanical** — deterministically derived from the schema, the same every time, nothing the AI "decided."
+
+The one place a human judgment call was actually needed — where the AI translated your intent into policy — is also the clearest, most concise version of the whole system: **the rules**.
+
+Every requirement leaves things unsaid — the AI can and should resolve that ambiguity. But that carries the responsibility to provide a **proactive** heads-up so you can confirm the decision; that's shown in the report above.
+
+**For anything with no safe default, it stops outright** — trained by Context Engineering to do exactly that, rather than guess and move on. No code written for that piece, a `FIXME` left in its place, and the real options listed here for you to decide. That's the comforting part: not just "the AI made a call, here it is," but "the AI knew this one wasn't its call to make."
+
+You review the judgment calls, not the code. [Full report](samples/students_courses/docs/requirements/course_dropoff/ad-libs.md).
+
 </details>
 
 &nbsp;
 
 <details markdown>
-<summary>Pre-Built Enterprise Architecture — API, EAI, MCP, Rules, RBAC, Vibe UIs (via Context Engineering)</summary>
+<summary>&emsp;&emsp;↳ <strong>Logic Flow Diagram</strong> — visualize logic flow</summary>
+
+<br><img src="samples/basic_demo_logic_gov/docs/requirements/logic_diagrams/logic_diagram.svg" alt="Logic diagram: Item/Order/Customer rule chain, generated from the running rules" width="480">
+
+A compliance reviewer can check the implementation in minutes, not by reading code. [Full report](samples/basic_demo_logic_gov/docs/requirements/logic_flow_basic_demo_logic_gov.md) — the same report generates for any project, including the enterprise-scale ones below.
+
+</details>
 
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Beyond API and Logic</strong> — EAI, MCP, AI Rules, RBAC, Custom UIs</summary>
+<summary>&emsp;&emsp;↳ <strong>Health Check</strong> — logic analysis / usage / utilization</summary>
+
+<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/proj-gov-report.png?raw=true" alt="Health check report: coverage, integrity, and red-flag scores for a project's rules" width="640">
+
+Ongoing hygiene, not just at creation: run any time to confirm the codebase still holds up as the project evolves — rule adoption, dependency-tracking integrity, missing docstrings, across the whole project. [Full report](samples/basic_demo_logic_gov/docs/requirements/health_check.md).
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>Test Creation</strong> — requirements traceability (from rules analysis)</summary>
+
+<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/hehave-test.png?raw=true" alt="Behave Logic Report: a test scenario traced to the rules it exercised and the logic log proving they fired" width="640">
+
+The three reports above analyze the rules as declared — this one proves they ran. Behave tests trace straight back to the requirement that drove them — and the report shows which declarative rules fired for each scenario, with before/after values, not just pass/fail. Requirement → test → rule → execution log, in one place. [Full report](samples/basic_demo_logic_gov/test/api_logic_server_behave/reports/Behave%20Logic%20Report.md).
+
+</details>
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;<strong>Governance at Scale</strong> — across projects and the org, no bird-dogging (the pipeline itself produces rules)</summary>
+
+<br>**Governance usually decays.** Rules only govern if the team keeps writing rules, and keeping a team on rules, not procedural code, has historically meant bird-dogging them: walking the floor, catching the reversions. Take the bird-dog away and the procedural code sneaks back in.
+
+Here, the funnel itself produces rules. A hand-coded system needs a correct handler for every path on every table, so the discipline has to live in each team. Here, the pipeline supplies the paths. The second project doesn't depend on the first team's care, or on anyone learning a new methodology first.
+
+Give us whatever, you get rules — even the hardest case. [A head-to-head test](Tech-Standard-Reqs.md) fed the same naturally procedural spec to native AI and to this pipeline. Native AI built the insert path and silently dropped update and delete. The pipeline produced 5 governed rules covering every path. Same input, same AI — the difference was the architecture.
+
+![Governance by Architecture, Not Discipline](images/architecture/proc-decl-simple.png)
+
+The GenAI-Logic side of that test, in full: [samples/basic_demo_genai_logic](samples/basic_demo_genai_logic) — the procedurally-phrased prompt, the 5 rules it produced, and confirmation all 9 change paths are governed, not just the one the prompt described.
+
+![Procedural Spec In, Declarative Rules Out](images/exec_reqmts/proc-to-decl.png)
+
+The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_native_ai) — the actual code, the prompt, and the [unedited transcript](samples/bd_claude_native_ai/transcript.md).
+
+Full case: [Governance at Scale](https://apilogicserver.github.io/Docs/Tech-XGR/).
+
+</details>
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>Enterprise-Class Results — enabled by a pre-built enterprise architecture (click to see real projects)</summary>
+
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;<strong>Enterprise Architecture</strong> — EAI, MCP, Logic Using AI, RBAC, Custom UIs</summary>
 
 <br>You've seen the API work, and you now know how the logic behind it holds up — declarative,
 auto-enforced, governable. Fair question: **how does it integrate with your other enterprise
@@ -487,7 +557,7 @@ for more NL → declaration examples.
 <br>
 
 <details markdown>
-<summary>&emsp;&emsp;↳ <strong>AI Rules</strong> — governed judgment calls inside deterministic logic</summary>
+<summary>&emsp;&emsp;↳ <strong>Logic Using AI</strong> — governed reasoning inside deterministic rules</summary>
 
 <br>Rules that call AI for genuinely judgment-call decisions (e.g. picking a supplier under disrupted shipping lanes). Such AI "proposals" are **governed by the deterministic rules** to ensure results conform to business policy, with a full audit trail of every AI request and response — see [samples/basic_demo_ai_rules-supplier/readme.md](samples/basic_demo_ai_rules-supplier/readme.md)
 
@@ -611,90 +681,13 @@ Rules make it **auditable** — logistics firm participation is *subject to audi
 
 &nbsp;
 
-<details markdown>
-<summary>&emsp;&emsp;<strong>Project Governance</strong> — managing the logic, across the portfolio</summary>
-
-<br>
-
-<details markdown>
-<summary>&emsp;&emsp;↳ <strong>AI Alerts</strong> — proactive human-in-the-loop, every AI assumption</summary>
-
-<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/ad-lib-report.png?raw=true" alt="Ad-libs report: a Review Required entry naming a blocking ambiguity, with candidate resolutions" width="640">
-
-AI can generate a full working system — API, Admin App, business logic — in minutes. How do you know it's what you meant? Where do you look?
-
-Most of it, you don't need to. The API and Admin App are **mechanical** — deterministically derived from the schema, the same every time, nothing the AI "decided."
-
-The one place a human judgment call was actually needed — where the AI translated your intent into policy — is also the clearest, most concise version of the whole system: **the rules**.
-
-Every requirement leaves things unsaid — the AI can and should resolve that ambiguity. But that carries the responsibility to provide a **proactive** heads-up so you can confirm the decision; that's shown in the report above.
-
-**For anything with no safe default, it stops outright** — trained by Context Engineering to do exactly that, rather than guess and move on. No code written for that piece, a `FIXME` left in its place, and the real options listed here for you to decide. That's the comforting part: not just "the AI made a call, here it is," but "the AI knew this one wasn't its call to make."
-
-You review the judgment calls, not the code. [Full report](samples/students_courses/docs/requirements/course_dropoff/ad-libs.md).
 
 </details>
 
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;↳ <strong>Logic Flow Diagram</strong> — visualize logic flow</summary>
-
-<br><img src="samples/basic_demo_logic_gov/docs/requirements/logic_diagrams/logic_diagram.svg" alt="Logic diagram: Item/Order/Customer rule chain, generated from the running rules" width="480">
-
-A compliance reviewer can check the implementation in minutes, not by reading code. [Full report](samples/basic_demo_logic_gov/docs/requirements/logic_flow_basic_demo_logic_gov.md) — the same report generates for any project, including the enterprise-scale ones below.
-
-</details>
-
-&nbsp;
-
-<details markdown>
-<summary>&emsp;&emsp;↳ <strong>Health Check</strong> — logic analysis / usage / utilization (across the portfolio)</summary>
-
-<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/proj-gov-report.png?raw=true" alt="Health check report: coverage, integrity, and red-flag scores for a project's rules" width="640">
-
-Ongoing hygiene, not just at creation: run any time to confirm the codebase still holds up as the project evolves — rule adoption, dependency-tracking integrity, missing docstrings, across the whole project. [Full report](samples/basic_demo_logic_gov/docs/requirements/health_check.md).
-
-</details>
-
-&nbsp;
-
-<details markdown>
-<summary>&emsp;&emsp;↳ <strong>Test Creation</strong> — requirements traceability (from rules analysis)</summary>
-
-<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/hehave-test.png?raw=true" alt="Behave Logic Report: a test scenario traced to the rules it exercised and the logic log proving they fired" width="640">
-
-The three reports above analyze the rules as declared — this one proves they ran. Behave tests trace straight back to the requirement that drove them — and the report shows which declarative rules fired for each scenario, with before/after values, not just pass/fail. Requirement → test → rule → execution log, in one place. [Full report](samples/basic_demo_logic_gov/test/api_logic_server_behave/reports/Behave%20Logic%20Report.md).
-
-</details>
-
-</details>
-
-</details>
-
-&nbsp;
-
-<details markdown>
-<summary>Scales Past One Project — Any Requirement Format Produces Governed Rules</summary>
-
-<br>That's the point. A hand-coded system needs a correct handler for every path on every table — the discipline has to live in each team. Here, the pipeline supplies the paths. The second project doesn't depend on the first team's care, or on anyone learning a new methodology first.
-
-Give us whatever, you get rules — even the hardest case. [A head-to-head test](Tech-Standard-Reqs.md) fed the same naturally procedural spec to native AI and to this pipeline. Native AI built the insert path and silently dropped update and delete. The pipeline produced 5 governed rules covering every path. Same input, same AI — the difference was the architecture.
-
-![Governance by Architecture, Not Discipline](images/architecture/proc-decl-simple.png)
-
-The GenAI-Logic side of that test, in full: [samples/basic_demo_genai_logic](samples/basic_demo_genai_logic) — the procedurally-phrased prompt, the 5 rules it produced, and confirmation all 9 change paths are governed, not just the one the prompt described.
-
-![Procedural Spec In, Declarative Rules Out](images/exec_reqmts/proc-to-decl.png)
-
-The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_native_ai) — the actual code, the prompt, and the [unedited transcript](samples/bd_claude_native_ai/transcript.md).
-
-</details>
-
-&nbsp;
-
-<details markdown>
-<summary>Business Users Empowered — a Friendly IDE, Guided by AI (via Context Engineering)</summary>
+<summary>Business Users and Developers, Collaborating — a Friendly IDE with Just Enough Guidance (via Context Engineering)</summary>
 
 &nbsp;
 
@@ -716,7 +709,24 @@ The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_nat
 
 <br>Traditional studios lock you into proprietary, rigid interfaces. Here, AI isn't boxed into a fixed structure — and when you need guidance, just ask.
 
+You keep your own methodology, and you never face a blank page: ask for just enough guidance, when you need it.
+
 ![help-me](images/manager/help-me.png)
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;<strong>One Artifact, One Toolset</strong> — promotes Business User and Developer collaboration</summary>
+
+<br>No proprietary interface means no proprietary artifact, either. The rule a business user reads and the rule a developer debugs are the same lines, in the same file, in the same IDE — **standard Python, standard tooling**, your infrastructure, not a proprietary one.
+
+**Standard means no rewrite when the limit is reached** — a proprietary IDE and language hit a wall the BU version can't get past; a developer has to rebuild it in real code to meet corporate standards. Here the developer opens the same file. No paying twice for the same logic.
+
+The result: **BU/IT collaboration** instead of finger-pointing over whose fault the gap was — one artifact, one team owns it, from day one.
+
+![collaboration](images/exec_reqmts/collaboration.png)
 
 </details>
 
@@ -732,21 +742,6 @@ The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_nat
 [Real transcript, unedited →](samples/requirements/RFI/RFI-transcript.md)
 
 </details>
-
-</details>
-
-&nbsp;
-
-<details markdown>
-<summary>Promotes Business User and Developer Collaboration — One Artifact, One Toolset</summary>
-
-<br>The rule a business user reads and the rule a developer debugs are the same lines, in the same file, in the same IDE — **standard Python, standard tooling**, your infrastructure, not a proprietary one.
-
-**Standard means no rewrite when the limit is reached** — a proprietary IDE and language hit a wall the BU version can't get past; a developer has to rebuild it in real code to meet corporate standards. Here the developer opens the same file. No paying twice for the same logic.
-
-The result: **BU/IT collaboration** instead of finger-pointing over whose fault the gap was — one artifact, one team owns it, from day one.
-
-![collaboration](images/exec_reqmts/collaboration.png)
 
 </details>
 
@@ -1016,7 +1011,7 @@ To hide the YAML or JSON front matter (the metadata block at the top of your mar
 
 The preview will now automatically strip the front matter from the rendered view.
 
-![hide-front-matter](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/hide-front-matter.png?raw=true)
+![hide-front-matter](images/manager/hide-front-matter.png)
 
 </details>
 
