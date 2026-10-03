@@ -8,19 +8,19 @@
 
 Governance took the number one spot in this year's NASCIO survey of state CIOs.
 
-Governance is often regarded as a  **process** — reviews, sign-offs, a committee. Here it's **automated**.
+Governance is often regarded as a  **process** — reviews, sign-offs, a committee. Here it's **automated**, and for business logic it means three things: read, trust, and maintain.
 
-I want to look at one narrow question: when AI writes your business logic, can anyone read it, trust it, and maintain it?
+Let's explore that.
 
 ---
 
 ## 1. The Ideal (0:30–2:00)
 
-Ideally, you supply a prompt, and it runs.
+Ideally, you supply a prompt to your AI, and it runs.
 
 Here are five plain-English requirements for a credit check: a customer's balance is the sum of their unshipped orders, and it can't exceed the credit limit.
 
-A few minutes later, you have a running app — screens, an enterprise-class API, and the logic. Think of it as hello world, for logic.
+A few minutes later, you have a running app — screens, an enterprise-class API, and the logic, all in one service. Think of it as hello world, for logic.
 
 This constraint message is the result of a three-table transaction. That's **governance in action**.
 
@@ -50,7 +50,7 @@ So — how do we keep the speed and simplicity of AI, with the governance enterp
 
 ## 3. Trustworthy and Auditable - AI Driven Rules
 
-What we want is governed systems you can read, trust, and maintain. That's what AI Driven Rules deliver. It has three parts:
+AI Driven Rules are a new piece of infrastructure, designed to create governed systems you can read, trust, and maintain. It has three parts:
 
 First, AI translates intent — from plain English, Gherkin, even regulation text. That means you keep your existing methodologies, which promotes adoption.
 
@@ -58,7 +58,9 @@ Second, Context Engineering. It's injected into every project, and it directs th
 
 Third, the rules engine enforces them at runtime. It listens to the database's ORM events, so every source — APIs, messages, agents — and every path — insert, update, delete — goes through the same commit point. There's no second door.
 
-It's a bit like a DBMS - the rules are the DDL, the rules engine is the database server.
+And it's not a Rete engine — those are built for decision logic. This one is built for transactions: it sees the actual change events and fires only the rules they affect.
+
+Think of it like a DBMS: the rules are the DDL, the rules engine is the database server.
 
 ---
 

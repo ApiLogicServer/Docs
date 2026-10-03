@@ -108,6 +108,8 @@ CODESPACES-ONLY-END -->
 
 **See it running:** Press F5 using "API Logic Server Run (run project from manager)", and open the **Admin App**. Explore the **API via Swagger**, browse the data, and follow the relationships — all auto-generated from the data model.
 
+What you're running is a service: an API, an Admin App, and the rules engine, over your database. Callers use the API (or messages, or MCP); the rules fire inside the service, at commit, from Python files in your project.
+
 Now trigger it: open an **unshipped** Order for Alice, edit the Widget item:
 
 ```
@@ -263,6 +265,8 @@ Customers should not be able to create new orders if they have unresolved past d
 
 There was no `Letter` table in the model — the AI adds it, relates it to `Customer`, and declares a `count` + a `constraint`. One sentence creates a schema change and two new rules — automatically integrated with the 5 already there. No need to open `check_credit.py` to find where this belongs, or trace the other rules to check for conflicts.
 
+To change a requirement later, edit its `requirements.md` and say "implement reqs". The AI diffs the new text against the existing rules and changes only what differs. The requirement, the rules, and the AI's assumptions are all files in your repo, so changes go through your normal review.
+
 **A lot just happened here — worth a closer look.**
 
 </details>
@@ -274,13 +278,17 @@ There was no `Letter` table in the model — the AI adds it, relates it to `Cust
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/logic-architecture-exec.png?raw=true" alt="Design and Runtime funnels into one governed Rules Engine" height="380" width="380" align="right">
 
-<br>Two funnels, converging on one engine, at the same commit point:
+<br>**AI Driven Rules are a new piece of infrastructure.** Think of a DBMS: the rules are the DDL, and the rules engine is the database server.
+
+Two funnels, converging on one engine, at the same commit point:
 
 **AI** translates intent, from virtually any format (NL, Gherkin, pseudocode, formulas), as shown in this diagram. This means you can use your **existing approaches/methodologies**, which drives a **repeatable process**.
 
-**Driven** by Context Engineering — translates AI intent into declarative **spreadsheet-like rules**, not the procedural code (with all the code-sprawl issues above). The result stays as concise as the requirement itself: **~40x less** than the equivalent code, since **rules are deterministic, path-independent expressions** of *what*, not *how*.
+**Driven** by Context Engineering — translates AI intent into declarative **spreadsheet-like rules**, not the procedural code (with all the code-sprawl issues above). The result stays as concise as the requirement itself: **~40x less** than the equivalent code in this example (consistent with production data from the predecessor system — see the Appendix), since **rules are deterministic, path-independent expressions** of *what*, not *how*.
 
 **Rules** — enforced at runtime by the rules engine. All transaction sources — APIs, messages, MCP, agents, workflows, and whatever comes next — converge here. Rules aren't called from your code; they're wired into a single SQLAlchemy `before_flush` listener, loaded once at server start. **All transaction sources** pass through that one listener at commit, where **rules govern for every path**. No bypass — there's no second door.
+
+**Not a RETE engine.** Classic rules engines are *called* with a bag of objects, pattern-match across them, and re-derive everything — built for decision logic. This one is purpose-built for transactions: it hooks the ORM, receives the actual change events (*Item inserted; Order.amount_total moved from X to Y*), and fires only the rules those changes affect, maintaining aggregates incrementally instead of recomputing them. [Why this matters →](https://apilogicserver.github.io/Docs/FAQ-RETE/)
 
 <br>
 
@@ -304,7 +312,7 @@ Functions don't behave like that. So why is that? **Traditional logic is procedu
 
 `Rule.sum(derive=Customer.balance, as_sum_of=Order.amount_total, where=lambda row: row.date_shipped is None)` looks like a function call — it isn't one. Grep this codebase for `check_credit(` — you won't find a call site. Nothing calls it. It runs because it's *declared*, not because something invokes it.
 
-**This is bigger than 40x less code.** With procedural code, seeing a function isn't enough — you still have to trace every call site to know whether it actually runs for the path you care about. With a rule, seeing it *is* the proof: Auto-invoked guarantees it fires everywhere, so reading the rule tells you it runs — **without the path analysis** you'd otherwise have to do yourself.
+**This is bigger than the ~40x less code.** With procedural code, seeing a function isn't enough — you still have to trace every call site to know whether it actually runs for the path you care about. With a rule, seeing it *is* the proof: Auto-invoked guarantees it fires everywhere, so reading the rule tells you it runs — **without the path analysis** you'd otherwise have to do yourself.
 
 If it helps: think of a **spreadsheet** — `B10 = SUM(B1:B9)` isn't called, it *reacts*. Rules react the same way to changes in what they depend on.
 
@@ -322,7 +330,7 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 But that same incompleteness is why **natural language requirements can't be the system of record.** An auditor needs something rigorous and complete to check against.
 
 **Rules *are* a suitable system of record — rigorous, complete — for auditing:**
-- **Readable** — 40x less than the procedural equivalent, critical at enterprise scale
+- **Readable** — ~40x less than the procedural equivalent in this example, critical at enterprise scale
 - **Trustworthy** — the engine guarantees it: an auditor isn't tracing execution paths, complex dependency chains, or worrying code did not get called at all. This is the exact chain AI's procedural code missed earlier — reparenting an Item silently left one side of the balance stale.
 
 </details>
