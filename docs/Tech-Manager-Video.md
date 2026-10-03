@@ -10,7 +10,7 @@ Governance took the number one spot in this year's NASCIO survey of state CIOs.
 
 Governance is often regarded as a  **process** — reviews, sign-offs, a committee. Here it's **automated**.
 
-I want to look at one narrow question: when AI writes your business logic, can anyone read it, and trust it?
+I want to look at one narrow question: when AI writes your business logic, can anyone read it, trust it, and maintain it?
 
 ---
 
@@ -24,7 +24,7 @@ A few minutes later, you have a running app — screens, an enterprise-class API
 
 This constraint message is the result of a three-table transaction. That's **governance in action**.
 
-Notice what failed here: an edit to an existing order. The requirement said "when placing an order." Nobody wrote an update-time check. The rules just apply.
+What failed here was an edit to an existing order. The requirement said "when placing an order." Nobody wrote an update-time check. The rules just apply.
 
 Let's explore how that logic was implemented.
 
@@ -34,7 +34,7 @@ Let's explore how that logic was implemented.
 
 AI is genuinely good at UI, data mapping, boilerplate. Business logic is the exception.
 
-We gave AI the same five requirements, without rules. It generated about two hundred lines of procedural code. Open it and judge for yourself. For a real system, there's orders of magnitude more.
+We gave AI the same five requirements, without rules. It generated about two hundred lines of procedural code, against five rules. For a real system, there's orders of magnitude more.
 
 On inspection, we found bugs. Change an item's product, and the price wasn't re-copied. Move an order to another customer, and the old customer's balance stayed stale.
 
@@ -48,9 +48,9 @@ So — how do we keep the speed and simplicity of AI, with the governance enterp
 
 ---
 
-## 3. AI Driven Rules (3:45–5:15)
+## 3. Trustworthy and Auditable - AI Driven Rules
 
-This AI Driven Rules architecture provides governance you can read, trust and maintain:
+What we want is governed systems you can read, trust, and maintain. That's what AI Driven Rules deliver. It has three parts:
 
 First, AI translates intent — from plain English, Gherkin, even regulation text. That means you keep your existing methodologies, which promotes adoption.
 
@@ -62,13 +62,13 @@ It's a bit like a DBMS - the rules are the DDL, the rules engine is the database
 
 ---
 
-## 4. Trust Derives from the Declarative Approach (5:15–6:15)
+## 4. Declarative Rules Are Trustworthy 
 
 With procedural code, it's not always clear whether the code is called at all. If it is, it has to be sequenced properly. The hardest part is dependency management: when something changes, are the side effects handled?
 
 Declarative removes those issues. The engine discovers the dependencies, orders the logic correctly, and chains the side effects — like a spreadsheet.
 
-Shuffle these rules into any order. Rerun. Still correct. Search for a call to `check_credit` — you won't find one. Nothing calls it. Rules are declarative ("what"), not procedural ("how").
+Shuffle the rules into any order, rerun, and it's still correct. There's no call to `check_credit` anywhere — nothing calls it. Rules are declarative ("what"), not procedural ("how").
 
 So if you see a rule, you can trust that it runs, and in the right order.
 
@@ -76,7 +76,7 @@ With rules, seeing really is believing.
 
 ---
 
-## 5. The System of Record (6:15–7:45)
+## 5. Rules are the Governance you can Read and Trust
 
 Natural-language requirements are — and should be — a sketch, not complete. That's exactly what you want to hand to a capable collaborator: not every detail spelled out, just enough for them to do what you meant, not merely what you said. AI is good at that. No artificial syntax to learn.
 
@@ -88,50 +88,70 @@ Governance by architecture, not by discipline. Discipline means every developer,
 
 ---
 
-## 6. Enterprise Connectivity, in Brief
-
-The same rules govern **APIs, messages, and agents**.  The system is a scalable server, deployed as a standard container.
-
-The APIs are discoverable through **MCP**, so a business user can ask for new functionality, like emailing customers with overdue orders, without IT support, and still be subject to the rules.
-
-Logic-enabled APIs provide the perfect backdrop for creating custom UIs using your favorite **vibe tools**.  Built-in support for **RBAC** ensures uses see only the rows authorized for their roles.
-
-If requested, **AI Rules** can operate runtime. "Find the optimal supplier" can reason about world conditions, like a Suez Canal blockage. But the AI only proposes. The same deterministic rules decide, and the decision is audited.## 6. Governing the AI's Own Judgment (7:45–8:45)
-
----
-
-## 7. Enterprise Results
-
-
-
----
-
-## 8. Project Governance
+## 6. Project Governance
 
 Every requirement leaves things unsaid, so the AI has to resolve some ambiguity. That carries a responsibility: tell you what it assumed.
 
-The **AI Alerts **report lists those judgment calls. And for anything with no safe default, it stops — no code written, a marker left, the options listed for a person to decide. You review the judgment calls, not the code.
+The **AI Alerts** report lists those judgment calls. And for anything with no safe default, it stops — no code written, a marker left, the options listed for a person to decide. You review the judgment calls, not the code.
 
 A **logic flow diagram**, generated from the running rules, lets a compliance reviewer check the implementation in minutes.
 
-The **Health Check** report provides metrics on rule utlizatiion, across the portfolio.
+The **Health Check** report provides metrics on rule utilization.
 
-And the **test report **traces requirement, to test, to rule, to the execution log — before and after values — in one place.
+And the **test report** traces requirement, to test, to rule, to the execution log — before and after values — in one place.
 
 ---
 
-## 9. Business Users and IT Collaboration
+## 7. Governance at Scale
 
-Since AI can translate virtually any intent, your team can continue use **existing methodologies.**
+Governance usually decays. Rules only govern if the team keeps writing rules, and keeping a team on rules has historically meant bird-dogging: walking the floor, catching the reversions. Take the bird-dog away and the procedural code sneaks back in.
 
-Business Users can use natural language, with a business oriented view provided by the **same IDE** the developers use.  So, hitting a complexity wall does not mean a restart and finger-pointing - developers can build out the system using familar tools.  **Collaboration not finger-pointing,**
+Here, the pipeline itself produces rules. Whatever the requirement format, it supplies the paths, so the second project doesn't depend on the first team's care.
 
-There's no proprietary studio and no rigid structure. A business user can just ask the AI for guidance — or ask it to interview them to work out the requirements.
+That typical spec again: native AI built the insert path and dropped update and delete. Fed to this pipeline, it produced five rules covering all nine paths. Same input, same AI. The difference was the architecture.
+
+And every project gets the same reports, so governance is visible across the portfolio — without reading a line of code.
+
+---
+
+## 8. Enterprise Architecture, in Brief
+
+The system is a scalable server, deployed as a standard container, and the same rules govern everything that touches it.
+
+The APIs are discoverable through **MCP**, so a business user can ask for new functionality, like emailing customers with overdue orders, without IT support, and still be subject to the rules.
+
+Logic-enabled APIs provide the perfect backdrop for creating custom UIs using your favorite **vibe tools**.  Built-in support for **RBAC** ensures users see only the rows authorized for their roles.
+
+If requested, **Logic Using AI** can reason at runtime. "Find the optimal supplier" can reason about world conditions, like a Suez Canal blockage. But the AI only proposes. The same deterministic rules decide, and the decision is audited.
+
+---
+
+## 9. Enterprise Results
+
+Three systems, each built from a prompt, in the way each team already writes requirements.
+
+The first is cascading cost allocation, two levels deep — the kind of logic that's painful to hand-code and easy to get subtly wrong.
+
+The second is Canadian customs duties. The prompt points at the actual web-based regulations, and the rules are distilled straight from the regulation text.
+
+The third screens dangerous goods, from Gherkin requirements, where an audit failure carries an eight-figure exposure.
+
+Three different inputs, and all three came out the same way: governed rules, no bypass. And an auditor can read them.
+
+---
+
+## 10. Business Users and IT Collaboration
+
+Since AI can translate virtually any intent, your team can continue to use **existing methodologies.**
+
+Business Users can use natural language, with a business oriented view provided by the **same IDE** the developers use.  So, hitting a complexity wall does not mean a restart and finger-pointing - developers can build out the system using familiar tools.  **Collaboration, not finger-pointing.**
+
+There's no proprietary studio and no rigid structure. You keep your own methodology, and you never face a blank page: ask the AI for just enough guidance, when you need it — or ask it to interview you to work out the requirements.
 
 And the rule a business user reads and the rule a developer debugs are the same lines, in the same file, in the same IDE. Standard Python, standard tooling. One artifact, one team.
 
 ---
 
-## 10. Close
+## 11. Close
 
 It's free and open source; the README walks through all of this.

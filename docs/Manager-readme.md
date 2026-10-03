@@ -315,7 +315,7 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;Intent is an incomplete sketch — <strong>rules <em>are</em> the governance you can read and trust</strong></summary>
+<summary>&emsp;&emsp;<strong>Rules <em>are</em> the governance you can read and trust</strong> — because intent is only an incomplete sketch</summary>
 
 <br>**Natural language requirements are — and should be — a sketch, not complete.** (Otherwise, it would be code!) That's exactly what you want to hand to a capable collaborator: not every detail spelled out, just enough for them to run with it and do what you *meant*, not merely what you *said*. AI provides real value there — no artificial syntax to learn, just the gaps filled the way a good team member would fill them.
 
@@ -630,8 +630,6 @@ The key takeaway: this is **complex business logic** — far beyond the illustra
 
 </details>
 
-&nbsp;
-
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>Canadian CBSA duty calculation</strong> — rules distilled straight from the regulation text</summary>
 
@@ -660,8 +658,6 @@ Producing these rules:
 
 </details>
 
-&nbsp;
-
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>Low Value Import Shipments (CLVS)</strong> — screens dangerous goods, using internationally agreed rules</summary>
 
@@ -675,12 +671,7 @@ Rules make it **auditable** — logistics firm participation is *subject to audi
 
 </details>
 
-&nbsp;
-
 </details>
-
-&nbsp;
-
 
 </details>
 
