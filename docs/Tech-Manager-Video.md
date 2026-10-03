@@ -104,9 +104,9 @@ And the **test report** traces requirement, to test, to rule, to the execution l
 
 ## 7. Governance at Scale
 
-Governance usually decays. Rules only govern if the team keeps writing rules, and keeping a team on rules has historically meant bird-dogging: walking the floor, catching the reversions. Take the bird-dog away and the procedural code sneaks back in.
+Governance depends on rules — they're what you can read, trust, and audit. But the discipline to keep using rules, not procedural code, is hard to sustain across teams. Someone has to walk the floor, bird-dogging and catching the reversions, and when the bird-dog goes away, the procedural code sneaks back in.
 
-Here, the pipeline itself produces rules. Whatever the requirement format, it supplies the paths, so the second project doesn't depend on the first team's care.
+Here, the architecture produces the rules. Whatever the requirement format, Context Engineering directs the AI to generate rules, not code. No team has to remember to choose them. Rules are what comes out.
 
 That typical spec again: native AI built the insert path and dropped update and delete. Fed to this pipeline, it produced five rules covering all nine paths. Same input, same AI. The difference was the architecture.
 
@@ -128,15 +128,15 @@ If requested, **Logic Using AI** can reason at runtime. "Find the optimal suppli
 
 ## 9. Enterprise Results
 
-Three systems, each built from a prompt, in the way each team already writes requirements.
+Prompt-to-app tools build the screens. Here are three enterprise-class projects created with governed business logic, using each team's existing requirement methodology. And the results are fast.
 
-The first is cascading cost allocation, two levels deep — the kind of logic that's painful to hand-code and easy to get subtly wrong.
+Look at the customs surtax prompt: it reads like business language, not rules. A practitioner tried it, it worked, and his estimate was that it replaced a project of about a person-year.
 
-The second is Canadian customs duties. The prompt points at the actual web-based regulations, and the rules are distilled straight from the regulation text.
+The allocation system was built by hand — reportedly four developers over two years — and it didn't deliver. Here it comes from a prompt.
 
-The third screens dangerous goods, from Gherkin requirements, where an audit failure carries an eight-figure exposure.
+CLVS, the dangerous-goods screening, was a multi-year effort that missed audit failures the rules caught.
 
-Three different inputs, and all three came out the same way: governed rules, no bypass. And an auditor can read them.
+Three different inputs, and all three came out the same way: governed rules, no bypass.
 
 ---
 
