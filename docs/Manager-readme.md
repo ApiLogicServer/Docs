@@ -408,11 +408,13 @@ The three reports above analyze the rules as declared — this one proves they r
 <details markdown>
 <summary>&emsp;&emsp;<strong>Governance at Scale</strong> — the architecture reliably produces rules</summary>
 
-<br>**Governance depends on rules** — they're what you can read, trust, and audit. But the **rules-vs-code discipline is hard to sustain** across teams: someone has to walk the floor, bird-dogging and catching the reversions, and when the bird-dog goes away, the procedural code sneaks back in.
+<br>**Governance depends on rules** — they're what you can read, trust, and audit. But the **manual rules-vs-code discipline is hard to sustain** across projects: someone has to walk the floor, bird-dogging and catching the reversions, and when the bird-dog goes away, the procedural code sneaks back in.
 
 **Here, the architecture produces the rules.** Whatever the requirement format, Context Engineering directs the AI to generate rules, not procedural code. No team has to remember to choose rules, or be policed into it. Rules are what comes out.
 
 **The evidence:** [a head-to-head test](Tech-Standard-Reqs.md) gave the same naturally procedural spec — the kind most likely to produce procedural code — to native AI and to this pipeline. Native AI built the insert path and silently dropped update and delete. The pipeline produced 5 governed rules covering every path. Same input, same AI — the difference was the architecture.
+
+**And it repeats:** we've run these three samples hundreds of times, and the output has always been rules. The Context Engineering is tuned not just on rule syntax but on the best patterns of rule use, and because the output is rules, anyone can read and check them.
 
 ![Governance by Architecture, Not Discipline](images/architecture/proc-decl-simple.png)
 
@@ -587,7 +589,7 @@ On Placing Orders, Check Credit:
 
 <br>Put that enterprise awareness to work, and here's what it builds.
 
-Prompt-to-app tools build the screens. Here are three enterprise-class projects created **with governed business logic**, using each team's existing requirement methodology.
+Prompt-to-app tools build the screens. The harder part is the logic: these three enterprise-class projects have **governed business logic**, created using each team's existing requirement methodology.
 
 **Fast, and better:** the results below replaced work reported in person-years, and delivered where the hand-built versions fell short: a working allocation, and audit failures caught.
 

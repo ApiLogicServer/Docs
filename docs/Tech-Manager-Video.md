@@ -104,11 +104,13 @@ And the **test report** traces requirement, to test, to rule, to the execution l
 
 ## 7. Governance at Scale
 
-Governance depends on rules — they're what you can read, trust, and audit. But the discipline to keep using rules, not procedural code, is hard to sustain across teams. Someone has to walk the floor, bird-dogging and catching the reversions, and when the bird-dog goes away, the procedural code sneaks back in.
+Governance depends on rules — they're what you can read, trust, and audit. But the manual discipline to keep using rules, not procedural code, is hard to sustain across projects.
 
-Here, the architecture produces the rules. Whatever the requirement format, Context Engineering directs the AI to generate rules, not code. No team has to remember to choose them. Rules are what comes out.
+Here, the **architecture produces the rules**. Whatever the requirement format, Context Engineering directs the AI to generate rules, not code. No team has to remember to choose them. Rules are what comes out.
 
 That typical spec again: native AI built the insert path and dropped update and delete. Fed to this pipeline, it produced five rules covering all nine paths. Same input, same AI. The difference was the architecture.
+
+And it repeats: these samples have been run hundreds of times, and the output is always rules. The Context Engineering knows the patterns, not just the syntax.
 
 And every project gets the same reports, so governance is visible across the portfolio — without reading a line of code.
 
@@ -117,6 +119,8 @@ And every project gets the same reports, so governance is visible across the por
 ## 8. Enterprise Architecture, in Brief
 
 The system is a scalable server, deployed as a standard container, and the same rules govern everything that touches it.
+
+That includes **enterprise integration**: B2B partner orders arrive by custom API or Kafka, and go through the same rules.
 
 The APIs are discoverable through **MCP**, so a business user can ask for new functionality, like emailing customers with overdue orders, without IT support, and still be subject to the rules.
 
@@ -128,13 +132,13 @@ If requested, **Logic Using AI** can reason at runtime. "Find the optimal suppli
 
 ## 9. Enterprise Results
 
-Prompt-to-app tools build the screens. Here are three enterprise-class projects created with governed business logic, using each team's existing requirement methodology. And the results are fast.
+Prompt-to-app tools build the screens. The harder part is the business logic, and that's what these three enterprise-class projects show — governed, and created using each team's existing requirement methodology.
 
-Look at the customs surtax prompt: it reads like business language, not rules. A practitioner tried it, it worked, and his estimate was that it replaced a project of about a person-year.
+The first is cascading cost allocation, two levels deep — **complex** logic that was built by hand, reportedly by four developers over two years, and didn't deliver. Here it comes from a prompt.
 
-The allocation system was built by hand — reportedly four developers over two years — and it didn't deliver. Here it comes from a prompt.
+The second is Canadian customs duties. The prompt reads the actual **web-based regulations**, in business language, not rules, and one practitioner who tried it estimated it replaced a project of about a person-year.
 
-CLVS, the dangerous-goods screening, was a multi-year effort that missed audit failures the rules caught.
+The third screens dangerous goods, from Gherkin requirements — a multi-year effort that missed audit failures the rules caught.
 
 Three different inputs, and all three came out the same way: governed rules, no bypass.
 
@@ -154,4 +158,4 @@ And the rule a business user reads and the rule a developer debugs are the same 
 
 ## 11. Close
 
-It's free and open source; the README walks through all of this.
+Fast, and better — governed, enterprise-class systems, built by business users and developers from one artifact. It's free and open source; the README walks through all of it.
