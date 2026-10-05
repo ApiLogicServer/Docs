@@ -143,7 +143,7 @@ Key take-aways:
 &nbsp;
 
 <details markdown>
-<summary>AI Alone Writes Code That's Hard to Read or Trust — Here's the Evidence</summary>
+<summary>AI Alone Writes Code That's Hard to Read or Trust — Here's What We Found</summary>
 
 <br>AI is genuinely good at UI, data mapping, boilerplate, etc — we see impressive results. **Business logic is the exception.**
 
@@ -298,7 +298,7 @@ Two funnels, converging on one engine, at the same commit point:
 <br>
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Declarative rules are trustworthy</strong>, since they're automatically invoked and ordered</summary>
+<summary>&emsp;&emsp;↳ <strong>Declarative rules are trustworthy</strong>, since they're automatically invoked and ordered</summary>
 
 <br>The "Change it" example above — like maintenance generally — was remarkably simple, because **rules are declarative:**
 
@@ -328,7 +328,7 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Rules <em>are</em> the governance you can read and trust</strong> — because intent is only an incomplete sketch</summary>
+<summary>&emsp;&emsp;↳ <strong>Rules <em>are</em> the governance you can read and trust</strong> — because intent is only an incomplete sketch</summary>
 
 <br>**Natural language requirements are — and should be — a sketch, not complete.** (Otherwise, it would be code!) That's exactly what you want to hand to a capable collaborator: not every detail spelled out, just enough for them to run with it and do what you *meant*, not merely what you *said*. AI provides real value there — no artificial syntax to learn, just the gaps filled the way a good team member would fill them.
 
@@ -343,7 +343,7 @@ But that same incompleteness is why **natural language requirements can't be the
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;Some call this "governance by architecture, not discipline" — what that means</summary>
+<summary>&emsp;&emsp;↳ Some call this "governance by architecture, not discipline" — what that means</summary>
 
 <br>**Discipline** means every developer, on every change, has to remember the right pattern and every edge case — the burden lives in people, and it slips.
 
