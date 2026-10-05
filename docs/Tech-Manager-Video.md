@@ -2,13 +2,46 @@
 
 *Script for the walkthrough of the Manager README. Target: under 10 minutes (~1,300 spoken words). Revised draft.*
 
-AI is remarkable for screens, data mapping... but struggles with logic.  And AI/Governance is identified as the leading CIO issue.
+0:00 AI is top priority for state CIOs this year (NASCIO survey)
 
-This shows how AI, Driven By Context Engineering to create rules not code, provides governance.  Business logic you can read, trust and maintain.
+- And the first concern NASCIO lists is governance
 
-We show 3 enterprise projects created from a prompt, with project management services for logic utilization, visualization, and testing.
+0:11 Ideal - executable business prompts
 
-We then show how it can drive collaboration across your Business Users and IT, using their tools and methodologies.
+1:40 With Native AI, we found issues of readability and trust
+
+2:50 AI, Driven By Context Engineering to create rules not code, provides governance
+
+- Rules are the governance you can read, trust and maintain
+
+5:23 Requirements are - and should be - incomplete
+
+- So cannot be the system of record for verification and audit
+- Rules are auditable and verifiable, and ~40x more concise
+
+6:25 Project Governance Reports - logic utilization, visualization, and testing
+
+- Requirements Traceability
+
+7:20 Governance At Scale
+
+- Existing methodologies result in governing rules, every project, every time
+
+8:42 Enterprise Technology Automation for EAI, APIs, MCP, RBAC, Vibe UIs
+
+10:00 Real enterprise projects created from a prompt
+
+11:07 Drive collaboration across your Business Users and IT
+
+- Using standard tools, and their preferred methodologies
+- Bus User Friendly IDE
+- Balances freedom with just enough support
+- Including Requirements from AI Driven interview
+
+This is walk-through of the product readme.
+
+- Explore it via your browser using Codespaces (shown here): https://github.com/codespaces/new/ApiLogicServer/codespaces_mgr
+- Or standard Python install: https://apilogicserver.github.io/Docs/
 
 ---
 
