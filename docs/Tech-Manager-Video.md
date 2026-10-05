@@ -10,7 +10,7 @@
 
 1:40 With Native AI, we found issues of readability and trust
 
-2:50 AI, Driven By Context Engineering to create rules not code, provides governance
+2:50 AI, Driven By Context Engineering to create rules (not code), provides governance
 
 - Rules are the governance you can read, trust and maintain
 
