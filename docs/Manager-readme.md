@@ -239,7 +239,7 @@ That's not (only) a capability gap — it's what happens when dependencies are e
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>What you just built</strong> — run it, debug it, change it</summary>
+<summary>&emsp;&emsp;<strong>What you just built</strong> — run it, debug it, change it (your IDE)</summary>
 
 <br>**Run it.** You've probably used AI to generate code before — so what's different here?
 
@@ -283,9 +283,7 @@ To change a requirement later, edit its `requirements.md` and say "implement req
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/logic-architecture-exec.png?raw=true" alt="Design and Runtime funnels into one governed Rules Engine" height="380" width="380" align="right">
 
-<br>**AI Driven Rules are the missing governance layer for AI-written logic.** They sit alongside the infrastructure you already rely on — your database, Kafka, security — and make what AI creates enforceable on every transaction, from every source. Think of a DBMS: the rules are the DDL, and the rules engine is the database server.
-
-Two funnels, converging on one engine, at the same commit point:
+<br>Two funnels, converging on one engine, at the same commit point:
 
 **AI** translates intent, from virtually any format (NL, Gherkin, pseudocode, formulas), as shown in this diagram. This means you can use your **existing approaches/methodologies**, which drives a **repeatable process**.
 
@@ -350,6 +348,24 @@ But that same incompleteness is why **natural language requirements can't be the
 **Architecture** means the software does it automatically — it's just how the system works, the same way a commit handler always runs. Nobody has to remember, because there's nothing to remember.
 
 Full case: [Governance by Architecture, Not Discipline](https://apilogicserver.github.io/Docs/Tech-Gov-By-Arch/).
+
+</details>
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>&emsp;&emsp;<strong>The missing governance layer</strong> — alongside your database, Kafka, and security</summary>
+
+<br>**AI Driven Rules are the missing governance layer for AI-written logic.** They sit alongside the infrastructure you already rely on — your database, Kafka, security — and make what AI creates enforceable on every transaction, from every source.
+
+<img src="images/manager/readme/Gov-Layer.png" alt="AI Driven Rules sit between callers and the database, alongside security (Keycloak/RBAC) and messaging (Kafka); rules are written by AI and Context Engineering" width="640">
+
+<details markdown>
+<summary>&emsp;&emsp;↳ <strong>Think of a DBMS</strong> — the rules are the DDL, the rules engine is the database server</summary>
+
+<br>The rules are plain Python files in your project, under source control, the way DDL is a script you keep. The rules engine runs inside your service and enforces them at commit, the way a database server enforces its schema.
 
 </details>
 
@@ -598,7 +614,7 @@ On Placing Orders, Check Credit:
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Governed Enterprise Sample Systems, from Prompts</strong> — Executable Requirements</summary>
+<summary>&emsp;&emsp;<strong>Three real systems</strong> — built from prompts, governed by rules</summary>
 
 <br>Put that enterprise awareness to work, and here's what it builds.
 
