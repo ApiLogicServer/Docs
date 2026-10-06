@@ -364,14 +364,11 @@ Full case: [Governance by Architecture, Not Discipline](https://apilogicserver.g
 
 They sit alongside the infrastructure you already rely on — your database, Kafka, security — and make what AI creates enforceable on every transaction, from every source.
 
+**Think of a DBMS** — the rules are the DDL, the rules engine is the database server. The rules are plain Python files in your project, under source control, the way DDL is a script you keep. The rules engine runs inside your service and enforces them at commit, the way a database server enforces its schema.
+
 <img src="images/manager/readme/Gov-Layer.png" alt="AI Driven Rules sit between callers and the database, alongside security (Keycloak/RBAC) and messaging (Kafka); rules are written by AI and Context Engineering" width="640">
 
-<details markdown>
-<summary>&emsp;&emsp;↳ <strong>Think of a DBMS</strong> — the rules are the DDL, the rules engine is the database server</summary>
-
-<br>The rules are plain Python files in your project, under source control, the way DDL is a script you keep. The rules engine runs inside your service and enforces them at commit, the way a database server enforces its schema.
-
-</details>
+&nbsp;
 
 </details>
 
