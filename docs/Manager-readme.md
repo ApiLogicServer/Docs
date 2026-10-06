@@ -283,7 +283,7 @@ To change a requirement later, edit its `requirements.md` and say "implement req
 
 <img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/architecture/logic-architecture-exec.png?raw=true" alt="Design and Runtime funnels into one governed Rules Engine" height="380" width="380" align="right">
 
-<br>**AI Driven Rules are a new piece of infrastructure.** Think of a DBMS: the rules are the DDL, and the rules engine is the database server.
+<br>**AI Driven Rules are the missing governance layer for AI-written logic.** They sit alongside the infrastructure you already rely on — your database, Kafka, security — and make what AI creates enforceable on every transaction, from every source. Think of a DBMS: the rules are the DDL, and the rules engine is the database server.
 
 Two funnels, converging on one engine, at the same commit point:
 
