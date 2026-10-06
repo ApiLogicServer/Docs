@@ -356,9 +356,13 @@ Full case: [Governance by Architecture, Not Discipline](https://apilogicserver.g
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>The missing governance layer</strong> — alongside your database, Kafka, and security</summary>
+<summary>&emsp;&emsp;<strong>The missing governance layer</strong> — delivering AI's speed and simplicity, with the governance enterprises require</summary>
 
-<br>**AI Driven Rules are the missing governance layer for AI-written logic.** They sit alongside the infrastructure you already rely on — your database, Kafka, security — and make what AI creates enforceable on every transaction, from every source.
+<br>
+
+> **AI Driven Rules are a new piece of enterprise infrastructure:** AI's speed and simplicity, with the governance enterprises require, brought into your existing architecture.
+
+They sit alongside the infrastructure you already rely on — your database, Kafka, security — and make what AI creates enforceable on every transaction, from every source.
 
 <img src="images/manager/readme/Gov-Layer.png" alt="AI Driven Rules sit between callers and the database, alongside security (Keycloak/RBAC) and messaging (Kafka); rules are written by AI and Context Engineering" width="640">
 
