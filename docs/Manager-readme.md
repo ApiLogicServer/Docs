@@ -31,7 +31,7 @@ codespaces_patch: |
 
 # Welcome to GenAI-Logic
 
-GenAI-Logic turns your requirements into enterprise-class database transaction systems, **governed** by **no-bypass rules**.
+GenAI-Logic turns your requirements into enterprise-class database transaction systems, **governed** by **no-bypass rules** that you can read, trust and maintain.
 
 It reads whatever form your requirements are already in — **plain English, Gherkin, actual regulation text** — or, you can request an **interview** to discover the requirements.
 
