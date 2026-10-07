@@ -205,6 +205,26 @@ Fast, and better — governed, enterprise-class systems, built by business users
 
 ---
 
+## LinkedIn post (proposed intro for the video)
+
+**Many assume AI will get good enough that the prompt becomes the system of record and generated code is just compiler output. We hope so.**
+
+But even if it does, governance needs something you can read and check. Requirements are, and should be, incomplete. Code is complete but unreadable at scale.
+
+Rules generated from prompts are complete, readable, and trustworthy.
+
+Many also govern the process: reviews, sign-offs, a committee. But what matters is the result: your business policy, enforced automatically on every transaction. Rules are that governed business policy.
+
+A 12-minute walkthrough, with three real systems built from prompts.
+
+*Post as a native LinkedIn video upload (same file as YouTube; captions: video.clean.srt). First comment, with the links:*
+
+> Try it in your browser (Codespaces): https://github.com/codespaces/new/ApiLogicServer/codespaces_mgr
+> Or a standard Python install: https://apilogicserver.github.io/Docs/
+> Same video on YouTube, with chapters: https://youtu.be/4pLAvWW9Pik
+
+---
+
 ## Video , Trest ust 1, Trust 32, Maint
 
 3. Reastart: start: Gov > TrustGov, Opeen,
