@@ -13,7 +13,38 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 </style>
 
 
-## Create an MCP service with NL
+## TL;DR: MCP Enables Business Users to Request Services in Natural Language
+
+This demo creates an **MCP (Model Context Protocol) service** that lets business users send emails by typing natural language requests in the Admin App, like:
+
+> *"List the orders date_shipped is null and CreatedOn before 2023-07-14, and send a discount email (subject: 'Discount Offer') to the customer for each one."*
+
+![mcp-ui](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-ui.png?raw=true)
+
+### Fast Path: Executable Requirements
+
+```bash
+# From the Manager, implement the MCP Send Email specification:
+implement reqs demo_mcp_send_email
+```
+
+This auto-generates:
+- ✅ Database schema (SysEmail, SysMpc tables)
+- ✅ Business logic rules (credit check, email opt-out enforcement)
+- ✅ MCP client executor (processes natural language requests)
+- ✅ Admin App UI (SysMpc form for entering requests)
+
+Then test in the Admin App at `http://localhost:5656/`.
+
+---
+
+### Deep Dive: Manual Step-by-Step
+
+Prefer to learn how each piece works? Follow the walkthrough below. Same result, step by step.
+
+---
+
+## Manual Walkthrough: Create an MCP service with NL
 
 In this demo, we will **use Natural Language (NL) to create an MCP service (send email)**:
 
@@ -23,9 +54,7 @@ In this demo, we will **use Natural Language (NL) to create an MCP service (send
 
 2. **Declare Business Logic:** no-bypass governance using natural language logic and rules
 3. **Create an email service:** add logic to create an audited email service
-4. **MCP Client**: enable business users to invoke services with natural language, here via the automatically created Admin App (or, use your own app):
-
-![mcp-ui](https://github.com/ApiLogicServer/Docs/blob/main/docs/images/basic_demo/mcp-ui.png?raw=true)
+4. **MCP Client**: enable business users to invoke services with natural language, here via the automatically created Admin App (or, use your own app)
 
 ``` bash title='🤖 Bootstrap your AI Assistant — paste into chat (Agent mode, e.g. Claude Sonnet 4.6)'
 Please load `.github/.copilot-instructions.md`
