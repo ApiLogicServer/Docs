@@ -195,7 +195,7 @@ Same 5 requirements from the Check Credit prompt in "The Ideal" above — handed
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Not trustworthy (1)</strong> — good spec generated 2 subtle bugs</summary>
+<summary>&emsp;&emsp;<strong>Not trustworthy (a)</strong> — subtle bugs even from a good spec</summary>
 
 <br>The AI's code handled updates, but missed two re-parenting cases:
 
@@ -211,7 +211,7 @@ There's a structural problem underneath the bugs, too: **AI pattern-matches depe
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Not trustworthy (2)</strong> — <em>typical</em> spec omitted entire update and delete paths</summary>
+<summary>&emsp;&emsp;<strong>Not trustworthy (b)</strong> — whole paths silently missing from a typical spec</summary>
 
 <br>The example above presumed an excellent, declarative spec — but specs aren't always so good. We tried it with a *typical* one: check credit on placing an order, phrased the way a developer naturally writes it. We gave that requirement to two frontier models, with no GenAI-Logic, and told them explicitly not to use rules:
 
@@ -241,7 +241,7 @@ Probed directly: change an item's quantity, delete an item, reassign an order to
 &nbsp;
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Not maintainable</strong> — every regeneration re-exposes you to (1) and (2)</summary>
+<summary>&emsp;&emsp;<strong>Not maintainable</strong> — every regeneration re-exposes you to (a) and (b)</summary>
 
 <br>Hand-editing 200 generated lines isn't a real option — nobody reliably patches the output of a code generator, any more than you'd hand-patch a compiler's output. That leaves one path: **change the prompt and regenerate.**
 
@@ -366,16 +366,7 @@ But that same incompleteness is why **natural language requirements can't be the
 
 &nbsp;
 
-<details markdown>
-<summary>&emsp;&emsp;↳ Some call this "governance by architecture, not discipline" — what that means</summary>
-
-<br>**Discipline** means every developer, on every change, has to remember the right pattern and every edge case — the burden lives in people, and it slips.
-
-**Architecture** means the software does it automatically — it's just how the system works, the same way a commit handler always runs. Nobody has to remember, because there's nothing to remember.
-
-Full case: [Governance by Architecture, Not Discipline](https://apilogicserver.github.io/Docs/Tech-Gov-By-Arch/).
-
-</details>
+*This is what people mean by "governance by architecture, not discipline" — see the full idea, tying this together with everything else here, further down this page.*
 
 </details>
 
@@ -809,6 +800,27 @@ The result: **BU/IT collaboration** instead of finger-pointing over whose fault 
 [Real transcript, unedited →](samples/requirements/RFI/RFI-transcript.md)
 
 </details>
+
+</details>
+
+&nbsp;
+
+<details markdown>
+<summary>Governance by Architecture, Not Discipline — design time, runtime, review time</summary>
+
+<br>**Discipline** means someone has to remember: write the rule correctly, write it for every path, keep doing it right as the system grows, never cut a corner under deadline pressure. The burden lives in people — and it slips.
+
+**Architecture** means the system doesn't depend on anyone remembering — at every point it matters:
+
+- **At design time — anything in, rules out.** Prompt, Gherkin, regulation text, spreadsheet formula — whatever form intent arrives in, Context Engineering steers it toward *rules*, not code. Not a best practice to follow — what the pipeline does **by construction**. ("AI Alone Writes Code That's Hard to Read or Trust" above was a *found* problem, not an exception.)
+
+- **At runtime — enforced, not called.** Every transaction, every caller — API, message, MCP, agent, workflow (see "Trustworthy and Auditable" above) — fires through **the one commit point** nothing can route around. Nothing to forget, because there's nothing to remember.
+
+- **At review time — rules are executable business documentation.** **The same rules** are code to a developer, business documentation to a business user confirming policy (see "Business Users and Developers, Collaborating" above), and audit evidence to the auditor certifying it. And since the engine owns ordering and dependencies, reading a rule needs no call-site tracing — you can trust it runs, and that it already accounts for what it depends on.
+
+Same claim, every time someone needs it — design, runtime, or review: what happens doesn't depend on anyone's diligence. It depends on the architecture.
+
+Full case: [Governance by Architecture, Not Discipline](https://apilogicserver.github.io/Docs/Tech-Gov-By-Arch/).
 
 </details>
 
