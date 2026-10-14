@@ -43,6 +43,7 @@ nav:
     - ".. Vibe": Sample-Basic-Demo-Vibe.md
     - ".. EAI": Sample-Basic-EAI.md
     - ".. Sub-Types": Sample-Types.md
+    - ".. Students & Courses": Sample-Students-Courses.md
     - Older:
       - "Sample_ai_mcp": Sample-ai-mcp.md
       - "GenAI Microservice Automation": Sample-Genai.md
