@@ -2,6 +2,7 @@
 title: Students & Courses
 version: 1.0, 10/13/2026
 ---
+
 <style>
   .md-typeset h1,
   .md-content__button {
@@ -11,17 +12,17 @@ version: 1.0, 10/13/2026
 
 !!! pied-piper ":bulb: TL;DR - When the CE correctly refuses to guess, and what resolving it later looks like"
 
-    * **`students_courses`** — a course-attendance requirement with two traps a literal
-      reading won't reveal: a column named `consecutive_absences` whose own requirement text
-      says `count(...)` (a plain count never resets — it needs a streak, not a tally), and a
-      Course Drop-Off Alert that depends on an `Attendance(status='absent')` row that nothing
-      in the system ever writes. The CE catches both unaided: the streak gets built correctly,
-      and the alert logic is left commented out with a `FIXME` rather than guessing a trigger
-      mechanism it was never asked to invent.
-    * **`students_courses_1`** — the same project, carried one phase further. A second
-      Executable Requirements pass supplies the missing design decision (an externally
-      triggered sweep endpoint, suited to a clustered deployment, plus an `Enrollment` table
-      the sweep needs to know who was expected) and turns the `FIXME` into working code.
+* **`students_courses`** — a course-attendance requirement with two traps a literal
+  reading won't reveal: a column named `consecutive_absences` whose own requirement text
+  says `count(...)` (a plain count never resets — it needs a streak, not a tally), and a
+  Course Drop-Off Alert that depends on an `Attendance(status='absent')` row that nothing
+  in the system ever writes. The CE catches both unaided: the streak gets built correctly,
+  and the alert logic is left commented out with a `FIXME` rather than guessing a trigger
+  mechanism it was never asked to invent.
+* **`students_courses_1`** — the same project, carried one phase further. A second
+  Executable Requirements pass supplies the missing design decision (an externally
+  triggered sweep endpoint, suited to a clustered deployment, plus an `Enrollment` table
+  the sweep needs to know who was expected) and turns the `FIXME` into working code.
 
 # Students & Courses
 
@@ -92,7 +93,15 @@ into the requirement, so the spec no longer depends on anyone noticing the name.
 
 ![Logic diagram, annotated: the Enrollment table and Attendance event added in phase 2](images/students_courses/students_courses_attendance.png)
 
+Here is the revised database, created from `implement requirements'::
+
 ([Scalable SVG version](images/students_courses/logic_diagram.svg))
+
+And here is the sweeper, created from `implement requirements':
+
+![db](images/students_courses/students_db.png)
+
+![sweeper](images/students_courses/insert_abasence.png)
 
 [Full report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/students_courses_1/docs/requirements/students_courses_attendance_sweep/ad-libs.md)
 
