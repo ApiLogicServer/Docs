@@ -40,6 +40,8 @@ You can read this.  A compliance officer can read it, and so can the next develo
 
 In an A/B test on a 3-table system, AI-generated procedural code ran to about 220 lines and missed 8 change paths.  The same logic took 5 rules, and the engine covered all 9 paths.  See the [A/B test](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md).  That's a ~40x reduction in what you have to review and understand.
 
+In addition to the size, rules automate depenndencies.  With code, you have to analyze all the execution paths to understand whether it called at all the right times.  Like spreadsheets, rules guarantee: if the rule is there, it will be called, and in the right order.
+
 &nbsp;
 
 ## Trust comes from the architecture
@@ -48,7 +50,7 @@ Readable isn't enough.  We need an architecture that steers AI to rules, and exe
 
 ![funnels](images/architecture/logic-architecture-exec.png)
 
-At design time, we've trained AI to translate your intent into rules, not code, for you to review.
+At design time, we've trained AI to translate your intent into rules, not code, for you to review.  We do this with extensive context engineering used at creation time, part of every project.
 
 At runtime, you also need to know the rules can't be bypassed.  The rules engine hooks into ORM commit events, so it governs every transaction source that commits through the ORM, whether it comes from the API, the UI or an agent.  No bypass.
 
