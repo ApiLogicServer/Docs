@@ -231,6 +231,31 @@ nav:
     - "Is this like Versata?": "FAQ-Versata.md"
     - "What about Maintenance?": FAQ-Maintenance.md
     - "Adoption Considerations?": Tech-Adoption.md
+  - Articles:
+    - "AI Code Review": Tech-Surtax.md
+    - "Standard Requirements": Tech-Standard-Reqs.md
+    - "AI, You're in Control": Tech-AI-First.md
+    - "Realizations": Tech-Realizations.md
+    - "Post - RFI": Tech-Realizations-RFI.md
+    - "Realizations - Post 1": Tech-Realizations-Post_1.md
+    - "Realizations - Post 2": Tech-Realizations-Post_2.md
+    - "Ent AI v5.7": Tech-Ent-AI.md
+    - "Gov By Arch": Tech-Gov-By-Arch.md
+    - "XGR v16": Tech-XGR.md
+    - "XGR TLDR v7": Tech-XGR-TLDR.md
+    - "XRD": executable-requirements.md
+    - "XR Medium": Tech-Exec-Auto-Medium.md
+    - "XR EAI": Sample-Basic-EAI-Exec-Req.md
+    - "Basic Demo (unused)": Sample-Basic-Demo-Full-Unused.md
+    - "Tour": Sample-Basic-Tour.md
+    - "Think Declarative": Tech-declarative.md
+    - "Top CIO Concerns": Tech-CIO-Concerns.md
+    - "Governed Agentic Business Logic": Tech-Business-Logic-Agent.md
+    - "API Appliance": Tech-Toaster.md
+    - "Nat Lang Logic": Tech-Logic-Transcript.md
+    - "AI Human Collaboration": Tech-AI-Collaboration.md
+    - "AI-Driven Teaching": Tech-AI-Tutor.md
+    - "AI Delivers Agile": Tech-AI.md
   - Tech Notes:
     - "About Tech Notes": Tech--Notes.md
     - "Training WG Devs": Tech-Training-WG-Dev.md
@@ -240,11 +265,6 @@ nav:
     - "Allocation Case Study": Tech-Allocation-Article.md
     - "Allocation Case Study Full": Tech-Allocation-Article-Full.md
     - "Allo Dept/GL ReadMe": Sample_Allo_Dept_GL_readme.md
-    - "API Appliance": Tech-Toaster.md
-    - "Nat Lang Logic": Tech-Logic-Transcript.md
-    - "AI Human Collaboration": Tech-AI-Collaboration.md
-    - "AI-Driven Teaching": Tech-AI-Tutor.md
-    - "AI Delivers Agile": Tech-AI.md
     - "Sample AI Demo ChatGPT": Sample-AI-ChatGPT.md
     - "AI-driven Auto mysql": Tech-AI-mysql.md
     - "AI-driven Auto sqlite": Tech-AI-sqlite.md
@@ -264,27 +284,8 @@ nav:
     - "Product Overview": Product-Overview.md
     - Personal:
       - "Manager readme": Manager-readme.md
-      - "AI Code Review": Tech-Surtax.md
-      - "Manager video": Tech-Manager-Video.md
-      - "Standard Requirements": Tech-Standard-Reqs.md
-      - "AI, You're in Control": Tech-AI-First.md
-      - "Realizations": Tech-Realizations.md
-      - "Post - RFI": Tech-Realizations-RFI.md
-      - "Realizations - Post 1": Tech-Realizations-Post_1.md
-      - "Realizations - Post 2": Tech-Realizations-Post_2.md
-      - "Ent AI v5.7": Tech-Ent-AI.md
-      - "Gov By Arch": Tech-Gov-By-Arch.md
-      - "XGR v16": Tech-XGR.md
-      - "XGR TLDR v7": Tech-XGR-TLDR.md
-      - "XRD": executable-requirements.md
-      - "XR Medium": Tech-Exec-Auto-Medium.md
-      - "XR EAI": Sample-Basic-EAI-Exec-Req.md
-      - "Basic Demo (unused)": Sample-Basic-Demo-Full-Unused.md
-      - "Tour": Sample-Basic-Tour.md
-      - "Think Declarative": Tech-declarative.md
       - "Home": Home.md
-      - "Top CIO Concerns": Tech-CIO-Concerns.md
-      - "Governed Agentic Business Logic": Tech-Business-Logic-Agent.md
+      - "Manager video": Tech-Manager-Video.md
       - "INFO": ApiLogicServer-create.md
       - "Summary": Tech-Summary.md
       - "Welcome": Tech-Welcome.md
