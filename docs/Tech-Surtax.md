@@ -40,7 +40,7 @@ You can read this.  A compliance officer can read it, and so can the next develo
 
 In an A/B test on a 3-table system, AI-generated procedural code ran to about 220 lines and missed 8 change paths.  The same logic took 5 rules, and the engine covered all 9 paths.  See the [A/B test](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md).  That's a ~40x reduction in what you have to review and understand.
 
-In addition to the size, rules automate depenndencies.  With code, you have to analyze all the execution paths to understand whether it called at all the right times.  Like spreadsheets, rules guarantee: if the rule is there, it will be called, and in the right order.
+In addition to the size, rules automate dependencies.  With code, you have to analyze all the execution paths to understand whether it called at all the right times.  Like spreadsheets, rules guarantee: if the rule is there, it will be called, and in the right order.
 
 &nbsp;
 
