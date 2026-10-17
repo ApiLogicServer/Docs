@@ -38,7 +38,7 @@ That is business rules: spreadsheet-like expressions, executed by a runtime that
 
 You can read this.  A compliance officer can read it, and so can the next developer.  Review becomes reading a handful of rules instead of auditing generated code.
 
-In an A/B test on a 3-table system, AI-generated procedural code ran to about 220 lines and missed 8 change paths.  The same logic took 5 rules, and the engine covered all 9 paths.  See the [A/B test](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md).  That's a ~40x reduction in what you have to review and understand.
+In an A/B test on a small order system, AI-generated procedural code ran to about 200 lines and had two re-parenting bugs.  The same logic took 5 rules, with every change path covered.  See the [A/B test](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md).  That's a ~40x reduction in what you have to review and understand.
 
 In addition to the size, rules automate dependencies.  With code, you have to analyze all the execution paths to understand whether it called at all the right times.  Like spreadsheets, rules guarantee: if the rule is there, it will be called, and in the right order.
 
@@ -64,4 +64,4 @@ The result: logic you can read and trust.
 
 AI will keep getting better at generating code.  That doesn't fix governance, because the problem is the representation, not the capability.  Governance needs two things: a form of intent that is short enough to read and complete enough to trust, and an architecture that produces it and enforces it.
 
-This is a [sample app](https://apilogicserver.github.io/Docs/Customs-readme-surtax/) for [GenAI-Logic](https://www.genai-logic.com/) - free and open source.
+This is a [sample app](https://apilogicserver.github.io/Docs/Customs-readme-surtax/) for [GenAI-Logic](https://www.genai-logic.com/) - free to use, source available.
