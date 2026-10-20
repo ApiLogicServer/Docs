@@ -166,9 +166,10 @@ nav:
     - Dev Containers:
       - "Dev Containers": DevOps-Docker.md
       - "GitHub and Codespaces": DevOps-GitHub.md
-  - Agile / Testing:
+  - Test Creation:
     - "Agility With Behave": Behave.md
-    - "Behave Logic Report": Behave-Logic-Report.md
+    - "Behave Logic Report": Behave-Logic_Report-bd-eai.md
+    - "Behave Logic Report - nw": Behave-Logic-Report.md
     - Creating Tests:
       - "Create Tests From Logic": Behave-Creation.md
       - "Sample: basic_demo": Behave-Logic-Report-Basic-Demo.md
