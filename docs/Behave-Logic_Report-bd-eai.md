@@ -4,9 +4,8 @@
 
       1. `create logic diagram for each requirement` - optional; needs Graphviz (`brew install graphviz`)
       2. `create tests from rules` - writes the Behave `.feature` files and steps
-      3. Start the server, then run the tests yourself (from `test/api_logic_server_behave`):
-         `python behave_run.py --outfile=logs/behave.log`
-      4. Generate the report: `python behave_logic_report.py run`
+      3. `run the tests` - starts the server if needed, runs the Behave suite, reports pass/fail
+      4. `run the behave report`
 
       This creates the **Behave Logic Report** shown below, as `test/api_logic_server_behave/reports/Behave Logic Report.md`.
       You can run step 4 before any tests exist: the requirements, rules, data model, security and messages sections are read from the project's files.
@@ -405,7 +404,7 @@ More: [Logic Log](https://apilogicserver.github.io/Docs/Logic-Debug/#logic-log).
 create tests from rules
 ```
 
-The assistant reads `database/models.py`, the logic files and the custom APIs, then writes `.feature` files and step implementations under `test/api_logic_server_behave/features/`. It suggests how to run them; it does not run them for you.
+The assistant reads `database/models.py`, the logic files and the custom APIs, then writes `.feature` files and step implementations under `test/api_logic_server_behave/features/`. Then say `run the tests` and `run the behave report` and the assistant does both.
 
 Or, to have each requirement's tests linked in the Tests column above (it matches on `Feature:` name), say which names to use:
 
@@ -422,7 +421,7 @@ _Tests with other names still run and appear below; they just aren't linked to a
 
 **2. You can also define tests manually.** Add a `<name>.feature` file (Gherkin) under `test/api_logic_server_behave/features/` and its steps under `features/steps/`. The steps call the running API, so tests exercise the same rules as any client. See `docs/training/testing.md` for the patterns that keep tests repeatable.
 
-**Then run them** (server running, from `test/api_logic_server_behave`):
+**Or run them yourself** (server running, from `test/api_logic_server_behave`):
 
 ```
 python behave_run.py --outfile=logs/behave.log
