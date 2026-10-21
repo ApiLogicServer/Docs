@@ -233,6 +233,7 @@ nav:
     - "What about Maintenance?": FAQ-Maintenance.md
     - "Adoption Considerations?": Tech-Adoption.md
   - Articles:
+    - "Req Trace Rpt": Tech-RTP.md
     - "AI Code Review": Tech-Surtax.md
     - "Standard Requirements": Tech-Standard-Reqs.md
     - "AI, You're in Control": Tech-AI-First.md
