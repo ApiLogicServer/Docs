@@ -1,7 +1,7 @@
 ---
 title: Sample_Basic_EAI
 do_process_code_block_titles: True
-version: 1.8 from docsite, for readme 4/21/2026 - message_formats auto-included in prototype, xr
+version: 1.9 from docsite, for readme 10/20/2026 - no bootstrap prompt; Build It adds diagrams, tests, run tests, Behave Logic Report. (1.8: message_formats auto-included in prototype, xr)
 source: docs/Sample-Basic-EAI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
@@ -21,6 +21,8 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
     Message Brokers also support multi-cast: you ***publish*** a message to a "topic", and other systems ***subscribe***.  This is often casually described as "pub/sub".
 
     This sample presumes you are familiar with basic GenAI-Logic services, as illustrated in the Basic Demo tutorial.
+
+    **The flow this page walks through:** *Executable Requirements* (the spec is a prompt your AI executes, so the requirements build the system) → *tests* (AI writes Behave tests from the rules, and runs them) → *documentation* (a Requirements Traceability Report traces each requirement to its rules, tests and the logic that actually ran). Requirements, system, tests and docs stay connected, and each step is one sentence to your AI assistant — see [Build It](#build-it).
 
     > This is the same system used in [Executable Requirements](Exec-Reqmts.md){:target="_blank" rel="noopener"}, which focuses on how these prompts serve as the living spec — readable by business and IT, executable by AI.
 
@@ -77,39 +79,74 @@ there.
 ## Build It
 
 One command creates the project; one command executes **every** requirement below
-(Check Credit, B2B API, Kafka Subscribe, Kafka Publish, Security) — this is the
-**entire build**, not the first of several steps:
+(Check Credit, B2B API, Kafka Subscribe, Kafka Publish, Security) — steps A-D are the
+**entire build**, not the first of several. Steps E-H (diagrams, tests, report) are
+optional extras that document and verify it. Here is the whole procedure, then what each step means:
 
-```bash title="🤖 Bootstrap your AI assistant — paste into chat (Agent mode, Claude Sonnet 4.6 recommended)"
-Please load `.github/.copilot-instructions.md`
+> **Important:** be sure your AI assistant is in "Agent" mode ("Ask" will not work). No bootstrap prompt is needed: the Manager's context loads automatically when you open it in your AI assistant.
+
+```bash title="The entire procedure — Claude Code CLI: lines starting with ! run as shell commands, the rest are prompts"
+# A - Create Project
+!genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
+
+# B - Get Requirements
+!cd demo_eai && cp -r ../samples/requirements/demo_eai/ .
+
+# C - Add Security (optional)
+!cd demo_eai/devops/keycloak && docker compose up -d
+!cd demo_eai && genai-logic add-auth --provider-type=keycloak --db-url=localhost
+
+# D - Implement Requirements
+implement requirements docs/requirements/demo_eai in project demo_eai
+
+# E - Logic Diagrams (optional)
+create logic diagram for each requirement in demo_eai
+
+# F - Create Tests (optional)
+create tests from rules in demo_eai, one Feature per requirement, named exactly:
+- Check Credit
+- B2B Order Integration
+- Kafka Subscribe Order Integration
+- Kafka Publish Shipping Notification
+- Row-Level Security
+
+# G - Run Tests (optional)
+run the tests in demo_eai
+
+# H - Traceability Report (optional)
+run the requirements traceability report in demo_eai
+
+# Then OPEN the report: demo_eai/test/api_logic_server_behave/reports/Requirements Traceability Report.md
+# (in VS Code: open the file, then Cmd/Ctrl+Shift+V for the rendered preview)
 ```
 
-> **Important:** be sure CoPilot is in "Agent" Mode.  "Ask" will not work.  Also, we get consistently good results with `Claude Sonnet 4.6`.
-
-```bash title="Establish Initial State, Execute Requirements"
-# A - Create project from existing database
-genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
-
-# B - In created project, get these requirements
-$ cp -r ../samples/requirements/demo_eai/ .
-
-# C - Optionally, configure security
-$ (cd devops/keycloak; docker compose up -d)
-$ genai-logic add-auth --provider-type=keycloak --db-url=localhost
-
-# D - Create system from requirements
-implement requirements docs/requirements/demo_eai
-```
+**Running it in the CLI:** start Claude Code in the Manager folder and paste one step at a time (a `!` line, or a prompt), not the whole block at once. A `!` line is run as a shell command by Claude Code. Each line names the project (`demo_eai`) so it works from the Manager root; if you would rather work inside the project, open `demo_eai` as the workspace and drop the `in demo_eai` and `cd demo_eai` parts. Steps E-H use triggers that live in the project's own context (`demo_eai/.github/copilot-instructions.md`); if the assistant does not recognise one from the Manager root, that is the reason, and opening `demo_eai` as the workspace fixes it.
 
 **Using Podman instead of Docker?** Step C's `docker compose up -d` can be `podman compose up -d`
 instead — `devops/keycloak/docker-compose.yml` works unchanged. One-time setup: see
 [DevOps-Podman](DevOps-Podman.md).
 
-The full requirements spec that step D executes is
-[docs/requirements/demo_eai/requirements.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md)
-— 5 Gherkin features. **Sections 2-5b and 7 below are a tour of what that one command
-built** — each maps back to the requirement that produced it. They are not
-additional steps to run.
+&nbsp;
+
+### What the steps mean
+
+| Step | What it does |
+|---|---|
+| **A - Create Project** | Creates a working, MCP-enabled API and Admin App from the existing database (and the `genai-logic` CLI to manage it). No logic yet. |
+| **B - Get Requirements** | Copies the requirements (5 Gherkin features, plus the message formats) into the project. |
+| **C - Add Security (optional)** | Turns on Keycloak security so the row-level security requirement (§5) is enforced. Skip it and everything else still runs. |
+| **D - Implement Requirements** | The build: your AI assistant reads the requirements and writes the rules, the Custom API, the Kafka subscribe and publish, and the security declarations. Sections 2-5b and 7 below tour what it produced. |
+| **E - Logic Diagrams (optional)** | Draws the rule chain for each requirement as an SVG; the report shows each one under its requirement. |
+| **F - Create Tests (optional)** | Writes Behave scenarios from the rules. Naming the Features exactly as the requirements do lets the report show, per requirement, which tests exercised it. |
+| **G - Run Tests (optional)** | Runs the scenarios against the live API and records the logic log for each. |
+| **H - Traceability Report (optional)** | Writes the report, `demo_eai/test/api_logic_server_behave/reports/Requirements Traceability Report.md`. **Open it** (VS Code: open the file, then Cmd/Ctrl+Shift+V for the rendered preview): requirements traced to rules, tests and logic logs, the data model, security and messages. See an example in [Requirements Traceability Report](Behave-Logic_Report-bd-eai.md). |
+
+* Steps E-H are also said to your AI assistant with the created project as its workspace. Each is optional, and H works without the others (run it right after D for everything except test results).
+* The *Row-Level Security* scenarios only mean something once security is on (step C); without it the report shows that requirement as untested.
+* A scenario that reads a message back from the `order_shipping` topic needs a live broker (Section 6, Step 6); every other scenario runs with no Kafka.
+* The full requirements spec that step D executes is
+  [docs/requirements/demo_eai/requirements.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md).
+  **Sections 2-5b and 7 below are a tour of what step D built** — each maps back to the requirement that produced it. They are not additional steps to run.
 
 This is a real project: your IDE, your Python, your source control. The prompt creates it in minutes — but you own it fully and iterate from there. Change a rule; the engine determines execution order automatically. Add an endpoint; the rules are already there waiting for it.
 
@@ -344,7 +381,7 @@ only activates once auth is configured; skip it and the rest of the system still
 >   up to ~10s for the broker, then logs a delivery failure. Nothing crashes; that
 >   PATCH will just feel a little slow. That's the timeout you're seeing, not a bug.
 >
-> Bring up Kafka only when you want to verify the wire-level integration (Step 3
+> Bring up Kafka only when you want to verify the wire-level integration (Step 6
 > below).
 
 **1. Start the server:** F5 (or `python api_logic_server_run.py`)
