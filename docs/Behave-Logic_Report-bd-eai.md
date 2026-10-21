@@ -24,9 +24,9 @@ A governable system is one you can **read**, **trust**, and **maintain**: each r
 It is generated from the project's own files, nothing written by hand, so it is as current as the last run and covers the whole project, not a sample. Open **Background** (below the summary) for what the terms mean, how to read the report, and what it can and can't tell you.
 
 
-**Project:** basic_demo_eai &nbsp;|&nbsp; **Generated:** October 21, 2026 12:04 &nbsp;|&nbsp; **Rules:** 8 &nbsp;|&nbsp; **Test scenarios:** 14 &nbsp;|&nbsp; **Generator:** requirements_traceability_report.py 2.9
+**Project:** basic_demo_eai &nbsp;|&nbsp; **Generated:** October 21, 2026 12:09 &nbsp;|&nbsp; **Rules:** 8 &nbsp;|&nbsp; **Test scenarios:** 14 &nbsp;|&nbsp; **Generator:** requirements_traceability_report.py 2.9
 
-**Last test run:** October 20, 2026 17:28 (18h 35m before this report; test results and logic logs below are from that run)
+**Last test run:** October 20, 2026 17:28 (18h 40m before this report; test results and logic logs below are from that run)
 
 
 &nbsp;
@@ -34,13 +34,13 @@ It is generated from the project's own files, nothing written by hand, so it is 
 
 ## At a Glance
 
-**⚠ 5 requirement(s), all implemented; 4 tested (gap: §5 Security); 14 of 14 scenarios passed; last run 18h 35m ago.**
+**⚠ 5 requirement(s), all implemented; 4 tested (gap: §5 Security); 14 of 14 scenarios passed; last run 18h 40m ago.**
 
 | | |
 |---|---|
 | Requirements | 5 (5 implemented) |
 | Tested | 4 of 5 - gap: §5 Security |
-| Last test run | ✅ 14 passed, 0 failed (October 20, 2026 17:28, 18h 35m ago) |
+| Last test run | ✅ 14 passed, 0 failed (October 20, 2026 17:28, 18h 40m ago) |
 | Rules | 8 (5 declarative, 0 Python functions, 3 Python events) |
 | Rules shown running in a test log | 7 of 8 |
 | Security | not enabled; 11 role(s), 1 row-level grant(s) |
@@ -146,7 +146,7 @@ Better AI makes generating code easier. It doesn't change what you have to read.
 
 <br>
 
-![governance loop](governance_loop.svg)
+![governance loop](https://apilogicserver.github.io/Docs/images/agile/governance_loop.svg)
 
 In two phases. First, `genai-logic create` builds a working system from the database: API, Admin App, data model. Then behavior is added from requirements — the typical sequence, each step a request to an AI assistant:
 
@@ -1490,9 +1490,9 @@ Logic Phase:		AFTER_FLUSH LOGIC	(session=0x10c9c19d0)   										 - 2026-10-19 
 
 | | |
 |---|---|
-| Generated | October 21, 2026 12:04 |
+| Generated | October 21, 2026 12:09 |
 | Generator | `requirements_traceability_report.py` 2.9 |
-| Report text from | reports/Requirements Traceability Report Template.md (sha256 164507ad5341) |
+| Report text from | reports/Requirements Traceability Report Template.md (sha256 e0c810e2e22e) |
 | Tests last ran | October 20, 2026 17:28 |
 | Project | basic_demo_eai |
 | Project created | September 23, 2026 17:58:57 |
