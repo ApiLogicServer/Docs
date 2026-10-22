@@ -25,7 +25,7 @@ Feature: Check Credit
     And reject if balance exceeds the credit limit
 ```
 
-becomes working business logic in a running system, with its database, API and Admin app.  As a demo, it's stunning.  (A regulation-sized prompt is more dramatic still; see [You Can't Govern What You Can't Read](Tech-Surtax.md).)
+becomes working business logic in a running system, with its database, API and Admin app.  As a demo, it's stunning.  (A regulation-sized prompt is more dramatic still; see [You Can't Govern What You Can't Read](https://apilogicserver.github.io/Docs/Tech-Surtax/).)
 
 And then what we all ask: *what did AI build?*  "Unpaid orders": what does that mean in the data?  "Exceeds": does a balance equal to the limit count?  Somebody decided.
 
@@ -42,7 +42,7 @@ A governable system is one you can **read**, **trust**, and **maintain**.  That 
 
 What about process: reviews, sign-offs, documentation standards?  Process governs paper.  A sign-off certifies that someone reviewed what no one could fully read, and the documents drift from the code the day they're written.  That can look like governance without governing anything.
 
-What about better models?  Models miss things today: in one experiment, an order system silently went stale on updates and deletes ([details](Tech-Standard-Reqs.md)).  Better models should help, and we hope so.  But that doesn't address the governance issue, which is readability: a better model still generates more code than anyone will read.
+What about better models?  Models miss things today: in one experiment, an order system silently went stale on updates and deletes ([details](https://apilogicserver.github.io/Docs/Tech-Standard-Reqs/)).  Better models should help, and we hope so.  But that doesn't address the governance issue, which is readability: a better model still generates more code than anyone will read.
 
 The problem is the representation, not the capability.  We need something in between: not too little, not too much.
 
@@ -81,7 +81,7 @@ Requirements say too little, and code says too much.  **Rules are just right** �
 
 That restores the compiler's contract: a readable source, deterministically executed.  It only works if the output is what runs.  Documentation kept beside code drifts the day it's written.  Rules are **executable documentation** that you can read and trust:
 
-* **Read:** rules stay near the requirement's level, so a report can list them side by side and you can check one against the other.  5 rules vs. ~200 lines: **~40x less to review**, whether generated or hand-coded.  That's a small system; for what happened at scale, see [what Versata tells us](FAQ-Versata.md).
+* **Read:** rules stay near the requirement's level, so a report can list them side by side and you can check one against the other.  5 rules vs. ~200 lines: **~40x less to review**, whether generated or hand-coded.  That's a small system; for what happened at scale, see [what Versata tells us](https://apilogicserver.github.io/Docs/FAQ-Versata/).
 * **Trust:** the document is enforced, not just descriptive.
     * **What you read is what runs** — no drift between description and behavior.
     * **Dependencies:** with code, you analyze every execution path to know it runs at the right times.  With rules, if the rule is there, it runs, in the right order.
@@ -123,7 +123,7 @@ To maintain the system, you edit the requirement, re-implement, re-run the tests
 
 ## A governed result: read the rules
 
-The [Requirements Traceability Report](Behave-Logic_Report-bd-eai.md) is where governance happens.  Each requirement is listed beside the rules that implement it and the tests that exercise it, so you can check one against the other:
+The [Requirements Traceability Report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/) is where governance happens.  Each requirement is listed beside the rules that implement it and the tests that exercise it, so you can check one against the other:
 
 ![Requirement to rules](images/articles/Req-Trace-Rpt/Req-To-Rules.png)
 
@@ -143,7 +143,7 @@ The report reads the declarative rules exactly.  The Kafka handlers in the sampl
 
 &nbsp;
 
-## The point
+## Conclusion
 
 The question at the start was *what did AI build?*  With code, you answer it by reading the code, and you are back to the developer who was the documentation.
 
@@ -151,4 +151,4 @@ With rules, the same rules do two jobs.  The engine runs them, and they are the 
 
 That is what makes it governable.  You can read it, you can trust it, and when the requirement changes, you can maintain it.
 
-[GenAI-Logic](https://www.genai-logic.com/) — free to use, source available.  The full [generated report](Behave-Logic_Report-bd-eai.md), from a [sample app](Sample-Basic-EAI.md).
+[GenAI-Logic](https://www.genai-logic.com/) — free to use, source available.  The full [generated report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/), from a [sample app](https://apilogicserver.github.io/Docs/Sample-Basic-EAI/).
