@@ -98,9 +98,18 @@ You write the requirements.  AI generates the rules from them.
 
 ![Process overview](images/articles/Req-Trace-Rpt/Process-Overview.png)
 
+That is the whole process.  After you write the requirement, each step is a sentence to your AI assistant:
+
+1. `implement reqs check_credit` creates the rules
+2. `create tests from rules` writes the test scenarios
+3. `run the tests` starts the server if needed, runs the suite, and reports pass or fail
+4. `run the requirements traceability report` produces the report
+
+Optionally, `create logic diagram for each requirement` draws the rule chains.
+
 The rules sit at the center, and the same rules drive both sides.  The engine runs them.  AI reads them, just as you can, and generates the tests, the logic diagrams and the report from them.  That is what **executable documentation** means: one source, so the description and the behavior can't drift apart.
 
-Take the tests.  Whatever appears in the rules is what to test.  Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.  For each such field it asks the same questions: what happens when it is inserted, changed, or deleted?  The answers are the scenarios: change a quantity, change a product, delete an item, move an order to another customer, ship it, unship it.
+Take the tests.  **The rules are what make automatic test creation possible: whatever appears in them is what to test.**  Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.  For each such field it asks the same questions: what happens when it is inserted, changed, or deleted?  The answers are the scenarios: change a quantity, change a product, delete an item, move an order to another customer, ship it, unship it.
 
 These are the change paths that hand-written code tends to miss (the experiment above covered only the insert).  Here they come straight from the rules, not from someone remembering them.  The report then shows which rules the tests actually exercised.
 
