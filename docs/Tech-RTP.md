@@ -73,6 +73,11 @@ Rule.constraint(
 
 Five rules, and the engine runs them and orders the dependencies itself.
 
+And the earlier questions are answered right there in the code, as decisions you can see:
+
+- **"Unpaid orders"** means `date_shipped is None`, since the data has no payment field.
+- **"Exceeds"** means `balance <= credit_limit`, so a balance equal to the limit is allowed.
+
 These are *transaction* rules.  The engine listens for database commits, compares each row's old and new state, and adjusts a parent total by the change instead of re-reading the children.  It is not a RETE-style [decision engine](https://apilogicserver.github.io/Docs/FAQ-RETE/); it is built for transaction processing, and the two are complementary.  A decision engine has to be *called*, so you must audit every caller to know the logic is enforced.  Here the engine fires _automatically_ on every commit, so nothing can skip it.  No-bypass trust.
 
 ### 2. Goldilocks: for review, rules are just right
