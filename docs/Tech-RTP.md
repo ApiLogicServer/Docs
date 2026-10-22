@@ -25,7 +25,7 @@ Feature: Check Credit
     And reject if balance exceeds the credit limit
 ```
 
-becomes working business logic in a running system.  And the system comes first: creating a project from the database, with no rules at all, takes one command and a few seconds.  It already gives you an enterprise-class API (JSON:API with filtering, sorting, pagination, optimistic locking and Swagger docs), MCP-enabled so AI agents can discover and use it, and a multi-table Admin App.  As a demo, it's stunning.  (A regulation-sized prompt is more dramatic still; see [You Can't Govern What You Can't Read](https://apilogicserver.github.io/Docs/Tech-Surtax/).)
+becomes working business logic in a running system.  Even before any rules, creating a project from the database gives you an enterprise-class API (JSON:API with filtering, sorting, pagination, optimistic locking and Swagger docs), MCP-enabled so AI agents can discover and use it, and a multi-table Admin App.  As a demo, it's stunning.  (A regulation-sized prompt is more dramatic still; see [You Can't Govern What You Can't Read](https://apilogicserver.github.io/Docs/Tech-Surtax/).)
 
 And then what we all ask: *what did AI build?*  "Unpaid orders": what does that mean in the data?  "Exceeds": does a balance equal to the limit count?  Somebody decided.
 
@@ -37,7 +37,7 @@ The old developer's job didn't go away; it got bigger.  The volume went up, and 
 
 A governable system is one you can **read**, **trust**, and **maintain**.  That starts with a simple question: *what does the system do?*  There are two standard places to look, and both break down:
 
-- **Requirements say too little.**  The prompt is **incomplete** by design (we *want* AI to fill in details and make assumptions) and the generation is **probabilistic**.  So the prompt can't be the source of truth, and the code can't be trusted unread, the way we trust a compiler's output.
+- **Requirements say too little.**  The **prompt is incomplete** by design (we *want* AI to fill in details and make assumptions) and the **generation is probabilistic**.  Bad combination.  So the prompt can't be the source of truth, and the code can't be trusted unread, the way we trust a compiler's output.
 - **Code says too much.**  Business language in, hundreds of lines of procedural code out.  That moves all the complexity from writing to reading, and generated code is more than any team can read.  Review is already being called the next bottleneck.  In an [A/B test](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md), a five-line credit policy became about 200 lines of AI-generated procedural code, with two bugs in change paths it missed.
 
 What about process: reviews, sign-offs, documentation standards?  Process governs paper.  A sign-off certifies that someone reviewed what no one could fully read, and the documents drift from the code the day they're written.  That can look like governance without governing anything.
@@ -50,7 +50,7 @@ The problem is the representation, not the capability.  We need something in bet
 
 ## Maintain the abstraction: rules, not code
 
-We started at a high level of abstraction — business language — and ended at a very low one.  So don't drop down.
+We started at a high level of abstraction — business language — and ended at a very low one.  So, don't drop down...
 
 > Train AI to translate intent into something just as high-level, but complete and deterministic: business rules, executed by an engine that handles the dependencies.
 
@@ -73,7 +73,7 @@ Rule.constraint(
 
 Five rules, and the engine runs them and orders the dependencies itself.
 
-These are *transaction* rules.  The engine listens for database commits, compares each row's old and new state, and adjusts a parent total by the change instead of re-reading the children.  It is not a RETE-style [decision engine](https://apilogicserver.github.io/Docs/FAQ-RETE/); it is built for transaction processing, and the two are complementary.  A decision engine has to be *called*, so you must audit every caller to know the logic is enforced.  Here the engine fires on every commit, so nothing can skip it.
+These are *transaction* rules.  The engine listens for database commits, compares each row's old and new state, and adjusts a parent total by the change instead of re-reading the children.  It is not a RETE-style [decision engine](https://apilogicserver.github.io/Docs/FAQ-RETE/); it is built for transaction processing, and the two are complementary.  A decision engine has to be *called*, so you must audit every caller to know the logic is enforced.  Here the engine fires _automatically_ on every commit, so nothing can skip it.  No-bypass trust.
 
 ### 2. Goldilocks: for review, rules are just right
 
@@ -83,18 +83,18 @@ That restores the compiler's contract: a readable source, deterministically exec
 
 * **Read:** rules stay near the requirement's level, so a report can list them side by side and you can check one against the other.  5 rules vs. ~200 lines: **~40x less to review**, whether generated or hand-coded.  That's a small system; for what happened at scale, see [what Versata tells us](https://apilogicserver.github.io/Docs/FAQ-Versata/).
 * **Trust:** the document is enforced, not just descriptive.
-    * **What you read is what runs** — no drift between description and behavior.
-    * **Dependencies:** with code, you analyze every execution path to know it runs at the right times.  With rules, if the rule is there, it runs, in the right order.
-    * **All sources and paths:** the engine hooks every commit through the ORM — API, UI or agent — insert, update and delete, including related rows.
-    * **Evidence:** each test scenario embeds the engine's log of every rule that ran, in order, with old and new values (below).
+    - **What you read is what runs** — no drift between description and behavior.
+    - **Dependencies:** with code, you analyze every execution path to know it runs at the right times.  With rules, if the rule is there, it runs, in the right order.
+    - **All sources and paths:** the engine hooks every commit through the ORM — API, UI or agent — insert, update and delete, including related rows.
+    - **Evidence:** each test scenario embeds the engine's log of every rule that ran, in order, with old and new values (below).
 
 > Seeing is believing: if you see a rule, you can trust it will run, in the right order, with automatic dependency management.
 
-Governance here is active, not just process: the engine enforces the rules on every transaction, so what you review is what is enforced.
+**Governance here is active**, not just process: the engine enforces the rules on every transaction, so what you review is what is enforced.
 
 ### 3. The process
 
-You write the requirements.  AI generates the rules from them.
+You write the requirements.  AI generates the rules from them:
 
 ![Process overview](images/articles/Req-Trace-Rpt/Process-Overview.png)
 
@@ -144,7 +144,7 @@ The report is built from the project's own files, and it checks in both directio
 
 ![Test execution with logic log](images/articles/Req-Trace-Rpt/Test-Exec.png)
 
-A partner order arrives.  The unit price is copied from the product, the amount is calculated, and the order total and the customer's balance are adjusted, each line showing the old and new value.  It is the engine's own account of what happened, not the test author's.
+A partner order arrives.  The unit price is copied from the product, the amount is calculated, and the order total and the customer's balance are adjusted, each line showing a specific rule firing, including the row with the old and new values.  It is the engine's own account of what happened, not the test author's.
 
 &nbsp;
 
