@@ -98,7 +98,11 @@ You write the requirements.  AI generates the rules from them.
 
 ![Process overview](images/articles/Req-Trace-Rpt/Process-Overview.png)
 
-The rules sit at the center, and the same rules drive both sides.  The engine runs them.  AI reads them, just as you can, and generates the tests, the logic diagrams and the report from them.  That is what **executable documentation** means: one source, so the description and the behavior can't drift apart.  Whatever appears in the rules is what to test, and the report shows which rules the tests actually exercised.
+The rules sit at the center, and the same rules drive both sides.  The engine runs them.  AI reads them, just as you can, and generates the tests, the logic diagrams and the report from them.  That is what **executable documentation** means: one source, so the description and the behavior can't drift apart.
+
+Take the tests.  Whatever appears in the rules is what to test.  Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.  For each such field it asks the same questions: what happens when it is inserted, changed, or deleted?  The answers are the scenarios: change a quantity, change a product, delete an item, move an order to another customer, ship it, unship it.
+
+These are the change paths that hand-written code tends to miss (the experiment above covered only the insert).  Here they come straight from the rules, not from someone remembering them.  The report then shows which rules the tests actually exercised.
 
 Because the rules are declared, the report can work out things a reader would otherwise have to judge: which requirement each rule serves, which columns are derived, who can do what.  Nothing is inferred from the code; the dependencies are stated.
 
@@ -141,6 +145,10 @@ The report reads the declarative rules exactly.  The Kafka handlers in the sampl
 
 ## The point
 
-AI will keep getting better at generating code.  That doesn't fix governance.  What does: a representation short enough to read and complete enough to trust, an architecture that enforces it, and a report that shows — requirement, rules, tests, evidence — what the AI built.
+The question at the start was *what did AI build?*  With code, you answer it by reading the code, and you are back to the developer who was the documentation.
+
+With rules, the same rules do two jobs.  The engine runs them, and they are the input to the documentation: the requirement beside the rules, the tests, the diagrams, the record of the rules running.  Nobody writes that document, so it can't fall behind the system.
+
+That is what makes it governable.  You can read it, you can trust it, and when the requirement changes, you can maintain it.
 
 [GenAI-Logic](https://www.genai-logic.com/) — free to use, source available.  The full [generated report](Behave-Logic_Report-bd-eai.md), from a [sample app](Sample-Basic-EAI.md).
