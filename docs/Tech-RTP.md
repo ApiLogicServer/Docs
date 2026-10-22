@@ -104,6 +104,15 @@ Because the rules are declared, the report can work out things a reader would ot
 
 Requirements keep changing, so iteration is where this matters.  With code, the hard part is finding where to make the change so that it always runs in the right order.  Maintenance becomes archaeology.  With rules, the engine guarantees that: you change the rule, and it runs, in the right order.
 
+Here is a real change, on the credit example.  We edited requirement 4: the item amount is the quantity times the price, *less 10% when the quantity is 10 or more*.  We asked the AI to re-implement it and compared the logic.  One rule changed, the item amount formula; the rest of the credit rules and the Kafka rule were untouched.
+
+Then we ran the old tests, unchanged, and regenerated the report:
+
+> **❌ 2 requirements, all implemented; 2 tested; 10 of 11 scenarios passed, 1 FAILED**
+> `expected balance 900.0, got 810.0`
+
+An old test expected a balance of 900 for ten widgets.  The rules had done what the new requirement says (ten widgets cost 810), so the test was the thing out of date: it still encoded the old policy.  We updated it, added scenarios for the new behavior, and the report went back to passing.  A second edit, "strictly less than the credit limit", changed the credit constraint and its error message, and nothing else.
+
 To maintain the system, you edit the requirement, re-implement, re-run the tests and regenerate the report.  The report then shows what is left uncovered: a requirement with no test, a rule with no requirement, a channel no test touches.
 
 &nbsp;
@@ -126,7 +135,7 @@ A partner order arrives.  The unit price is copied from the product, the amount 
 
 ## What this doesn't claim
 
-The report reads the declarative rules exactly.  The Kafka handlers in the sample are Python, and for those it can only quote the docstring; its own summary says so: *5 declarative, 3 Python events*.  It also says what it can't show: whether a published message reached the broker, whether an event had an effect, whether the requirements are right.
+The report reads the declarative rules exactly.  The Kafka handlers in the sample are Python, and for those it can only quote the docstring; its own summary says so: *5 declarative, 3 Python events*.  It also says what it can't show: whether a published message reached the broker, whether an event had an effect, whether the requirements are right.  And the change described above is one run on a small example: it shows what the process does, not how often.
 
 &nbsp;
 
