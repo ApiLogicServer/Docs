@@ -25,7 +25,7 @@ Feature: Check Credit
     And reject if balance exceeds the credit limit
 ```
 
-becomes working business logic in a running system, with its database, API and Admin app.  As a demo, it's stunning.  (A regulation-sized prompt is more dramatic still; see [You Can't Govern What You Can't Read](https://apilogicserver.github.io/Docs/Tech-Surtax/).)
+becomes working business logic in a running system.  And the system comes first: creating a project from the database, with no rules at all, takes one command and a few seconds.  It already gives you an enterprise-class API (JSON:API with filtering, sorting, pagination, optimistic locking and Swagger docs), MCP-enabled so AI agents can discover and use it, and a multi-table Admin App.  As a demo, it's stunning.  (A regulation-sized prompt is more dramatic still; see [You Can't Govern What You Can't Read](https://apilogicserver.github.io/Docs/Tech-Surtax/).)
 
 And then what we all ask: *what did AI build?*  "Unpaid orders": what does that mean in the data?  "Exceeds": does a balance equal to the limit count?  Somebody decided.
 
@@ -106,6 +106,8 @@ That is the whole process.  After you write the requirement, each step is a sent
 4. `run the requirements traceability report` produces the report
 
 Optionally, `create logic diagram for each requirement` draws the rule chains.
+
+This example is deliberately small.  A real prompt goes further: a partner API, Kafka messaging in and out, row-level security.  The [sample's full prompt](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md) is five short requirements, and [its report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/) lists 8 rules and 14 test scenarios.
 
 The rules sit at the center, and the same rules drive both sides.  The engine runs them.  AI reads them, just as you can, and generates the tests, the logic diagrams and the report from them.  That is what **executable documentation** means: one source, so the description and the behavior can't drift apart.
 
