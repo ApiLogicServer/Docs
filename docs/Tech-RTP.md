@@ -162,4 +162,6 @@ With rules, the same rules do two jobs.  The engine runs them, and they are the 
 
 That is what makes it governable.  You can read it, you can trust it, and when the requirement changes, you can maintain it.
 
+> Rules are the governance.
+
 [GenAI-Logic](https://www.genai-logic.com/) — free to use, source available.  The full [generated report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/), from a [sample app](https://apilogicserver.github.io/Docs/Sample-Basic-EAI/).
