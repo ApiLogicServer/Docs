@@ -79,10 +79,10 @@ Pre-reqs:
 
 ## 1. Create From Existing DB
 
-If you arrived here from the Manager README's **Use Case 4: Vibe Dev Backend**, this
+If you arrived here from the Manager README's **Vibe Dev Backend** demo, this
 project already exists — created via the CLI (faster than an AI prompt for this step):
 
-```bash title="In the Manager: Create a project from an existing database (already done, if you followed Use Case 4)"
+```bash title="In the Manager: Create a project from an existing database (already done, if you followed the Vibe Dev Backend demo)"
 genai-logic create --project_name=demo_vibe --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 ```
 
