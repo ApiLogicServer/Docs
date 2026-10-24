@@ -1,7 +1,7 @@
 ---
 title: Sample_Basic_EAI
 do_process_code_block_titles: True
-version: 1.9 from docsite, for readme 10/20/2026 - no bootstrap prompt; Build It adds diagrams, tests, run tests, Behave Logic Report. (1.8: message_formats auto-included in prototype, xr)
+version: 1.10 from docsite, for readme 10/24/2026 - no-container script (Docker/Podman optional); (1.9: 10/20/2026 - no bootstrap prompt; Build It adds diagrams, tests, run tests, Behave Logic Report. (1.8: message_formats auto-included in prototype, xr))
 source: docs/Sample-Basic-EAI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
@@ -116,7 +116,7 @@ run the tests in demo_eai
 # H - Traceability Report (optional)
 run the requirements traceability report in demo_eai
 
-# Then OPEN the report: demo_eai/test/api_logic_server_behave/reports/Requirements Traceability Report.md
+# Then OPEN the report: demo_eai/docs/requirements/Requirements Traceability Report.md
 # (in VS Code: open the file, then Cmd/Ctrl+Shift+V for the rendered preview)
 ```
 
@@ -125,6 +125,18 @@ run the requirements traceability report in demo_eai
 **Using Podman instead of Docker?** Step C's `docker compose up -d` can be `podman compose up -d`
 instead — `devops/keycloak/docker-compose.yml` works unchanged. One-time setup: see
 [DevOps-Podman](DevOps-Podman.md).
+
+**No Docker or Podman at all** (a Codespace, say, or a laptop without a container runtime)? Use the no-container
+script, `samples/requirements/demo_eai/create_script_no_container.txt`, instead of the commands above. It builds the same
+system from the same requirements, with two differences:
+
+* **Security** uses the SQL authentication provider (no Keycloak), and Row-Level Security is still tested.
+* **Kafka** runs in fallback mode (`KAFKA_SERVER` unset). Subscribe is tested through the debug endpoint,
+  `/consume_debug/order_b2b`, which runs the same parse-and-save function the live consumer uses; the report labels
+  those scenarios *simulated*. Live Kafka delivery is not verified in this mode. Start a broker and set `KAFKA_SERVER`
+  and `KAFKA_CONSUMER_GROUP`, and the same endpoint publishes through the broker and the same tests run live.
+
+Either script ends with a line saying which mode ran.
 
 &nbsp;
 
@@ -139,7 +151,7 @@ instead — `devops/keycloak/docker-compose.yml` works unchanged. One-time setup
 | **E - Logic Diagrams (optional)** | Draws the rule chain for each requirement as an SVG; the report shows each one under its requirement. |
 | **F - Create Tests (optional)** | Writes Behave scenarios from the rules. Naming the Features exactly as the requirements do lets the report show, per requirement, which tests exercised it. |
 | **G - Run Tests (optional)** | Runs the scenarios against the live API and records the logic log for each. |
-| **H - Traceability Report (optional)** | Writes the report, `demo_eai/test/api_logic_server_behave/reports/Requirements Traceability Report.md`. **Open it** (VS Code: open the file, then Cmd/Ctrl+Shift+V for the rendered preview): requirements traced to rules, tests and logic logs, the data model, security and messages. See an example in [Requirements Traceability Report](Behave-Logic_Report-bd-eai.md). |
+| **H - Traceability Report (optional)** | Writes the report, `demo_eai/docs/requirements/Requirements Traceability Report.md`. **Open it** (VS Code: open the file, then Cmd/Ctrl+Shift+V for the rendered preview): requirements traced to rules, tests and logic logs, the data model, security and messages. See an example in [Requirements Traceability Report](Behave-Logic_Report-bd-eai.md). |
 
 * Steps E-H are also said to your AI assistant with the created project as its workspace. Each is optional, and H works without the others (run it right after D for everything except test results).
 * The *Row-Level Security* scenarios only mean something once security is on (step C); without it the report shows that requirement as untested.
