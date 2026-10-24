@@ -1,7 +1,7 @@
 ---
 title: Sample_Basic_EAI
 do_process_code_block_titles: True
-version: 1.10 from docsite, for readme 10/24/2026 - no-container script (Docker/Podman optional); (1.9: 10/20/2026 - no bootstrap prompt; Build It adds diagrams, tests, run tests, Behave Logic Report. (1.8: message_formats auto-included in prototype, xr))
+version: 1.11 from docsite, for readme 10/24/2026 - the no-container script is an opt-out of Docker/Podman, not only for machines without them; (1.10: 10/24/2026 - no-container script (Docker/Podman optional); (1.9: 10/20/2026 - no bootstrap prompt; Build It adds diagrams, tests, run tests, Behave Logic Report. (1.8: message_formats auto-included in prototype, xr))
 source: docs/Sample-Basic-EAI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
@@ -126,9 +126,9 @@ run the requirements traceability report in demo_eai
 instead — `devops/keycloak/docker-compose.yml` works unchanged. One-time setup: see
 [DevOps-Podman](DevOps-Podman.md).
 
-**No Docker or Podman at all** (a Codespace, say, or a laptop without a container runtime)? Use the no-container
-script, `samples/requirements/demo_eai/create_script_no_container.txt`, instead of the commands above. It builds the same
-system from the same requirements, with two differences:
+**Skip Docker/Podman?** Use the no-container script, `samples/requirements/demo_eai/create_script_no_container.txt`,
+instead of the commands above. It never uses a container, so it works whether or not a container runtime is installed
+(a Codespace, say, has none). It builds the same system from the same requirements, with two differences:
 
 * **Security** uses the SQL authentication provider (no Keycloak), and Row-Level Security is still tested.
 * **Kafka** runs in fallback mode (`KAFKA_SERVER` unset). Subscribe is tested through the debug endpoint,
