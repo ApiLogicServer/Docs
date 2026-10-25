@@ -99,28 +99,85 @@ That restores the compiler's contract: a readable source, deterministically exec
 
 ### 3. The process
 
-You write the requirements.  AI generates the rules from them:
+You write the requirements.  AI generates the rules from them, which are then used to create tests and reports.
+
+The rules sit at the center, and the same rules drive both sides.  The engine runs them.  AI reads them, just as you can, and generates the tests, the logic diagrams and the report from them.  That is what **executable documentation** means: one source, so the description and the behavior can't drift apart.
 
 ![Process overview](images/articles/Req-Trace-Rpt/Process-Overview.png)
 
-That is the whole process.  After you write the requirement, each step is a sentence to your AI assistant:
+&nbsp;
 
-1. `implement reqs check_credit` creates the rules
-2. `create tests from rules` writes the test scenarios
-3. `run the tests` starts the server if needed, runs the suite, and reports pass or fail
-4. `run the requirements traceability report` produces the report
+#### Creation
+
+This is the whole process.  After you write the requirement, paste this to your AI assistant:
+
+![create_script](images/integration/demo_eai/create_script.png)
+
+The script uses these requirements, here expressed in Gherkin (we have tested many formats):
+
+![create_script](images/integration/demo_eai/reqmts.png)
 
 Optionally, `create logic diagram for each requirement` draws the rule chains.
 
 This example is deliberately small.  A real prompt goes further: a partner API, Kafka messaging in and out, row-level security.  The [sample's full prompt](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md) is five short requirements, and [its report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/) lists 8 rules and 14 test scenarios.
 
-The rules sit at the center, and the same rules drive both sides.  The engine runs them.  AI reads them, just as you can, and generates the tests, the logic diagrams and the report from them.  That is what **executable documentation** means: one source, so the description and the behavior can't drift apart.
+&nbsp;
+
+#### Rule Creation
+
+The rules are created as Python source.  Manage them in git.
+
+Observe the organization help developers match rules to their requirements using the file name.
+
+ ![rules_code](images/integration/demo_eai/rules_code.png)
+
+&nbsp;
+
+#### Test Creation
 
 Take the tests.  **The rules are what make automatic test creation possible: whatever appears in them is what to test.**  Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.  For each such field it asks the same questions: what happens when it is inserted, changed, or deleted?  The answers are the scenarios: change a quantity, change a product, delete an item, move an order to another customer, ship it, unship it.
 
 These are the change paths that hand-written code tends to miss (the experiment above covered only the insert).  Here they come straight from the rules, not from someone remembering them.  The report then shows which rules the tests actually exercised.
 
 Because the rules are declared, the report can work out things a reader would otherwise have to judge: which requirement each rule serves, which columns are derived, who can do what.  Nothing is inferred from the code; the dependencies are stated.
+
+&nbsp;
+
+#### Requirements Traceability Report
+
+This report is completely created from the rules and the logs resulting from test execution.
+
+The report contains many sections, including messages, security.  Some key sections are shown below.
+
+&nbsp;
+
+##### Orientation
+
+The report is designed to be consumed by Business Users, including those not directly part of the development.  The reports therefore begins with a short orientation so such users can understand the process, what requirements and rules are, etc.  
+
+This enables an organization to store these in a central repository, enabling business users to discover systems, what they do, and their testing.
+
+![create_script](images/integration/demo_eai/orientation.png)
+
+&nbsp;
+
+##### Requirements and Rules
+
+This reports enables business users to see each requirement, and the resulting spreadsheet-like rules.
+
+![reqmts_rules](images/integration/demo_eai/reqmts_rules.png)
+
+&nbsp;
+
+##### Test Results
+
+This shows each test - it's definition, and (for those seeking detail), the detail rule execution.
+
+![reqmts_rules_exec](images/integration/demo_eai/reqmts_rules_exec.png)
+
+&nbsp;
+
+#### Maintanance
 
 Requirements keep changing, so iteration is where this matters.  With code, the hard part is finding where to make the change so that it always runs in the right order.  Maintenance becomes archaeology.  With rules, the engine guarantees that: you change the rule, and it runs, in the right order.
 
