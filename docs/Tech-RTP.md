@@ -148,7 +148,7 @@ That restores the compiler's contract: a readable source, deterministically exec
 
 &nbsp;
 
-### 3. The process
+## Creation process
 
 You write the requirements.  AI generates the rules from them, which are then used to create tests and reports.
 
@@ -158,7 +158,7 @@ The rules sit at the center, and the same rules drive execution and documentatio
 
 &nbsp;
 
-#### Creation Script, Requirements
+### Creation Script, Requirements
 
 This is the actual process.  After you write the requirement, paste this to your AI assistant:
 
@@ -172,11 +172,11 @@ This example is deliberately small.  A real prompt goes further: a partner API, 
 
 &nbsp;
 
-#### What Get Created
+### What Get Created
 
 &nbsp;
 
-##### Project Creation
+#### Enterprise-class Projects
 
 Enterprise best-practice standards are applied by the architecture, rather than relying on discipline.
 
@@ -188,7 +188,7 @@ The system also creates a useful multi-table Admin app for prototyping and testi
 
 &nbsp;
 
-##### Rule Creation
+#### Rules
 
 The rules are created as Python source from the requirements file(s), shown above.  Manage them in git.
 
@@ -198,7 +198,7 @@ Observe the file/folder organization help developers match rules to their requir
 
 &nbsp;
 
-##### Automated Test Creation
+#### Automated Tests
 
 Tests are the foundation: the system is presumed guilty until tests prove it works.  Test creation is expensive.
 
@@ -214,7 +214,7 @@ Because the rules are declared, the report can work out things a reader would ot
 
 &nbsp;
 
-##### The Ad-Lib report
+#### The Ad-Lib report
 
 While we want AI to fill in the gaps, it's important it be transparent about its decisions.  So, the Context Engineering stipulates that it create a report detailing decisions that need review.
 
@@ -222,7 +222,7 @@ Human in the loop -- proactively.
 
 &nbsp;
 
-##### Requirements Traceability Report Creation
+#### Requirements Traceability Report
 
 The **Requirements Traceability Report** (Line 17) is completely created from the rules and the logs resulting from test execution (Line 15).
 
@@ -230,13 +230,13 @@ The report contains many sections, including messages, security.  Some key secti
 
 &nbsp;
 
-#### Vibe Custom UIs
+## Vibe Custom UIs
 
 The created API is perfect as a basis for using your favorite vibe tools for custom user interfaces.
 
 &nbsp;
 
-#### Maintanance
+## Maintanance
 
 Requirements keep changing, so iteration is where this matters.  With code, the hard part is finding where to make the change so that it always runs in the right order.  Maintenance becomes archaeology.  With rules, the engine guarantees that: you change the rule, and it runs, in the right order.
 
