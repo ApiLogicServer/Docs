@@ -180,11 +180,11 @@ This example is deliberately small.  A real prompt goes further: a partner API, 
 
 Enterprise best-practice standards are applied by the architecture, rather than relying on discipline.
 
-APIs (JSON:API) provide filtering, sorting, pagination, related data access, optimistic locking and Swagger docs.  They are MCP-enabled so AI agents can discover and use it.
+**APIs** (JSON:API) provide filtering, sorting, pagination, related data access, optimistic locking and Swagger docs.  They are **MCP-enabled** so AI agents can discover and use it.
 
-Enterprise best-practice standards are also provided for message processing.  They are stored in blob tables, and processed in a separate transaction to ensure that messages are not lost if errors occur.
+Enterprise best-practice standards are also provided for **message processing.**  They are stored in blob tables, and processed in a separate transaction to ensure that messages are not lost if errors occur.
 
-The system also creates a useful multi-table Admin app for prototyping and testing.  It is a complement to custom UIs you vibe using the API.
+The system also creates a **multi-table Admin app,** useful for prototyping and testing.  It is a complement to custom UIs you vibe using the API.
 
 &nbsp;
 
