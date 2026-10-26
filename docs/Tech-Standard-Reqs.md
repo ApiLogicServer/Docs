@@ -245,5 +245,5 @@ The fix isn't asking anyone to think differently. It's giving their existing way
 
 Both sides of this test, unedited — inspect the code on GitHub, or run them yourself: start at [www.genai-logic.com](https://www.genai-logic.com){:target="_blank" rel="noopener"}, then open in Codespaces.
 
-- **Native AI, no rules engine:** [inspect on GitHub](https://github.com/ApiLogicServer/codespaces_mgr/tree/main/samples/bd_claude_native_ai) — the prompt, the code, the transcript
+- **Native AI, no rules engine:** [inspect on GitHub](https://github.com/ApiLogicServer/codespaces_mgr/tree/main/samples/native_ai/bd_claude_native_ai) — the prompt, the code, the transcript
 - **GenAI-Logic:** [inspect on GitHub](https://github.com/ApiLogicServer/codespaces_mgr/tree/main/samples/basic_demo_genai_logic) — the same prompt, the 5 rules, all paths verified

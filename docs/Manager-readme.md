@@ -236,13 +236,13 @@ Here's what needs to happen when someone places an order:
 - Before we let the order go through, check that the customer's balance doesn't go over their credit limit — if it would, reject the order.
 ```
 
-Both produced the same shape of code: one function, wired to order creation. **No update path. No delete path** — confirmed in [the actual code](samples/bd_claude_native_ai/app/orders.py).
+Both produced the same shape of code: one function, wired to order creation. **No update path. No delete path** — confirmed in [the actual code](samples/native_ai/bd_claude_native_ai/app/orders.py).
 
 Probed directly: change an item's quantity, delete an item, reassign an order to a different customer, reassign an item to a different product. Every case, both models, left stale data behind. No error. Nothing to catch it.
 
 **Key takeaways:**
 - **The logic wasn't buggy so much as absent** — it existed for exactly one path and nowhere else. [Full experiment →](Tech-Standard-Reqs.md)
-- **A similar finding, looking beyond logic:** the hand-written API has no PATCH or DELETE on any resource either — not a bug, just more of what the prompt never asked for. [Full assessment →](samples/bd_claude_native_ai/project-assessment.md)
+- **A similar finding, looking beyond logic:** the hand-written API has no PATCH or DELETE on any resource either — not a bug, just more of what the prompt never asked for. [Full assessment →](samples/native_ai/bd_claude_native_ai/project-assessment.md)
 
 </details>
 
@@ -498,7 +498,7 @@ The GenAI-Logic side of that test, in full: [samples/basic_demo_genai_logic](sam
 
 ![Procedural Spec In, Declarative Rules Out](images/exec_reqmts/proc-to-decl.png)
 
-The native-AI side, in full: [samples/bd_claude_native_ai](samples/bd_claude_native_ai) — the actual code, the prompt, and the [unedited transcript](samples/bd_claude_native_ai/transcript.md).
+The native-AI side, in full: [samples/native_ai/bd_claude_native_ai](samples/native_ai/bd_claude_native_ai) — the actual code, the prompt, and the [unedited transcript](samples/native_ai/bd_claude_native_ai/transcript.md).
 
 Full case: [Governance at Scale](https://apilogicserver.github.io/Docs/Tech-XGR/).
 
