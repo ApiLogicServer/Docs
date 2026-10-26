@@ -26,8 +26,6 @@ Seeing is believing - due to the architecture
 
 rules diagram, test creation, Req Rules Report (some screen shots)
 
-- todo
--- ent arch (2 step msg, opt lock...) - disc vs arch
 -->
 
 <style>
@@ -174,13 +172,23 @@ This example is deliberately small.  A real prompt goes further: a partner API, 
 
 &nbsp;
 
-#### Project Creation
-
-Even before any rules, creating a project from the database gives you an enterprise-class API (JSON:API with filtering, sorting, pagination, related data access, optimistic locking and Swagger docs), MCP-enabled so AI agents can discover and use it, and a multi-table Admin App.
+#### What Get Created
 
 &nbsp;
 
-#### Rule Creation
+##### Project Creation
+
+Enterprise best-practice standards are applied by the architecture, rather than relying on discipline.
+
+APIs (JSON:API) provide filtering, sorting, pagination, related data access, optimistic locking and Swagger docs.  They are MCP-enabled so AI agents can discover and use it.
+
+Enterprise best-practice standards are also provided for message processing.  They are stored in blob tables, and processed in a separate transaction to ensure that messages are not lost if errors occur.
+
+The system also creates a useful multi-table Admin app for prototyping and testing.  It is a complement to custom UIs you vibe using the API.
+
+&nbsp;
+
+##### Rule Creation
 
 The rules are created as Python source from the requirements file(s), shown above.  Manage them in git.
 
@@ -190,7 +198,7 @@ Observe the file/folder organization help developers match rules to their requir
 
 &nbsp;
 
-#### Automated Test Creation
+##### Automated Test Creation
 
 Tests are the foundation: the system is presumed guilty until tests prove it works.  Test creation is expensive.
 
@@ -206,11 +214,25 @@ Because the rules are declared, the report can work out things a reader would ot
 
 &nbsp;
 
-#### Requirements Traceability Report Creation
+##### The Ad-Lib report
 
-The **Requirements Traceability Report** is completely created from the rules and the logs resulting from test execution.
+While we want AI to fill in the gaps, it's important it be transparent about its decisions.  So, the Context Engineering stipulates that it create a report detailing decisions that need review.
+
+Human in the loop -- proactively.
+
+&nbsp;
+
+##### Requirements Traceability Report Creation
+
+The **Requirements Traceability Report** (Line 17) is completely created from the rules and the logs resulting from test execution (Line 15).
 
 The report contains many sections, including messages, security.  Some key sections are shown below.
+
+&nbsp;
+
+#### Vibe Custom UIs
+
+The created API is perfect as a basis for using your favorite vibe tools for custom user interfaces.
 
 &nbsp;
 
