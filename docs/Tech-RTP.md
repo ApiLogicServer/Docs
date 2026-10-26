@@ -27,7 +27,7 @@ Feature: Check Credit
 
 becomes working business logic in a running system.  Even before any rules, creating a project from the database gives you an enterprise-class API (JSON:API with filtering, sorting, pagination, optimistic locking and Swagger docs), MCP-enabled so AI agents can discover and use it, and a multi-table Admin App.  As a demo, it's stunning.  (A regulation-sized prompt is more dramatic still; see [You Can't Govern What You Can't Read](https://apilogicserver.github.io/Docs/Tech-Surtax/).)
 
-And then what we all ask: *what did AI build?*  "Unpaid orders": what does that mean in the data?  "Exceeds": does a balance equal to the limit count?  Somebody decided.
+And then we all ask: *what did AI build?*  "Unpaid orders": what does that mean in the data?  "Exceeds": does a balance equal to the limit count?  Somebody decided.
 
 The old developer's job didn't go away; it got bigger.  The volume went up, and the author left.  Nobody wrote this code, and nobody can say what it does without reading all of it.
 
@@ -53,6 +53,12 @@ The problem is the representation, not the capability.  We need something in bet
 We started at a high level of abstraction — business language — and ended at a very low one.  So, don't drop down...
 
 > Train AI to translate intent into something just as high-level, but complete and deterministic: business rules, executed by an engine that handles the dependencies.
+
+We do this by training AI with Context Engineering, shown below.  This is injected into every project when it is created, and guides AI to generate rules (not code).  It is used at design time, not runtime:
+
+![CE](images/integration/demo_eai/context_eng.png)
+
+&nbsp;
 
 ### 1. Rules
 
@@ -107,13 +113,13 @@ The rules sit at the center, and the same rules drive both sides.  The engine ru
 
 &nbsp;
 
-#### Creation
+#### Creation Script, Requirements
 
 This is the whole process.  After you write the requirement, paste this to your AI assistant:
 
 ![create_script](images/integration/demo_eai/create_script.png)
 
-The script uses these requirements, here expressed in Gherkin (we have tested many formats):
+The script uses the requirements (line 7 in the the creation script), here expressed in Gherkin (we have tested many formats):
 
 ![create_script](images/integration/demo_eai/reqmts.png)
 
@@ -125,17 +131,23 @@ This example is deliberately small.  A real prompt goes further: a partner API, 
 
 #### Rule Creation
 
-The rules are created as Python source.  Manage them in git.
+The rules are created as Python source from the requirements file(s), shown above.  Manage them in git.
 
-Observe the organization help developers match rules to their requirements using the file name.
+Observe the file/folder organization help developers match rules to their requirements using the file name.
 
  ![rules_code](images/integration/demo_eai/rules_code.png)
 
 &nbsp;
 
-#### Test Creation
+#### Automated Test Creation
 
-Take the tests.  **The rules are what make automatic test creation possible: whatever appears in them is what to test.**  Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.  For each such field it asks the same questions: what happens when it is inserted, changed, or deleted?  The answers are the scenarios: change a quantity, change a product, delete an item, move an order to another customer, ship it, unship it.
+Tests are the foundation: the system is presumed guilty until tests prove it works.  Test creation is expensive.
+
+**The rules make automatic test creation possible: *whatever appears in them is what to test.*** See row 13 in the creation script, above.
+
+ Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.  
+
+For each such field it asks the same questions: what happens when it is inserted, changed, or deleted?  The answers are the scenarios: change a quantity, change a product, delete an item, move an order to another customer, ship it, unship it.
 
 These are the change paths that hand-written code tends to miss (the experiment above covered only the insert).  Here they come straight from the rules, not from someone remembering them.  The report then shows which rules the tests actually exercised.
 
