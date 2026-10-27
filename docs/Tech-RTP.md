@@ -303,7 +303,7 @@ A partner order arrives.  The unit price is copied from the product, the amount 
 
 ## What this doesn't claim
 
-The report reads the declarative rules exactly.  The Kafka handlers in the sample are Python, and for those it can only quote the docstring; its own summary says so: *5 declarative, 3 Python events*.  It also says what it can't show: whether a published message reached the broker, whether an event had an effect, whether the requirements are right.  And the change described above is one run on a small example: it shows what the process does, not how often.
+The report reads the declarative rules exactly.  The three Python events are the extension points: code for what the rule types don't express, running in the engine's own transaction and phases.  For those it can only quote the docstring; its own summary says so: *5 declarative, 3 Python events*.  It also says what it can't show: whether a published message reached the broker, whether an event had an effect, whether the requirements are right.  And the change described above is one run on a small example: it shows what the process does, not how often.
 
 &nbsp;
 
