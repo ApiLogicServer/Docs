@@ -47,7 +47,7 @@ But does the code match our intent?  I heard of a large company that kept a deve
 
 ## New school: what did AI build?
 
-Now AI writes the code, and the experience is remarkable.  A requirement like this, in business language:
+Now AI writes the code, and the experience is remarkable.  A transaction-logic requirement like this, in plain language:
 
 ```gherkin
 Feature: Check Credit
