@@ -207,9 +207,9 @@ Tests are the foundation: the system is presumed guilty until tests prove it wor
 
  Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.  
 
-For each such field, AI asks the same questions: what happens when it is inserted, changed, or deleted?  The answers are the scenarios: change a quantity, change a product, delete an item, move an order to another customer, ship it, unship it.
+For each such field, AI asks the same questions: what happens when it is inserted, changed, or deleted?  The answers are the scenarios: change a quantity, ship an order and, by the same questions, delete an item, unship it, move an order to another customer, change an item's product.
 
-These are the change paths that hand-written code tends to miss (the experiment above covered only the insert).  Here they come straight from the rules, not from someone remembering them.  The report then shows which rules the tests actually exercised.
+These are the change paths that hand-written code tends to miss (the experiment above covered only the insert).  Here they come straight from the rules, not from someone remembering them.  Without rules, an AI writing tests has to infer which paths matter from the prose or from the code, the same inference that missed the update and delete paths in the experiment above.  (We have not measured that for tests.)  The report then shows which rules the tests actually exercised.
 
 Because the rules are declared, the report can work out things a reader would otherwise have to judge: which requirement each rule serves, which columns are derived, who can do what.  Nothing is inferred from the code; the dependencies are stated.
 
@@ -313,10 +313,10 @@ The question at the start was *what did AI build?*  With code, you answer it by 
 
 With rules, the same rules do two jobs.  The engine runs them, and they are the input to the documentation: the requirement beside the rules, the tests, the diagrams, the record of the rules running.  Nobody writes that document, so it can't fall behind the system.
 
-Here is that in one run.  From five short requirements and a few plain-English requests (create the project, implement the requirements, create the tests, run the report), the AI built a partner API, Kafka messaging in and out, and row-level security.  The result is 8 rules (5 declarative, 3 Python events) and 12 of 12 scenarios passing against a live Kafka broker, with a report that traces each requirement to its rules and tests and lists its own gaps.  The AI also listed three judgment calls for review, the first of them what "unpaid" means.  Inspect the [sample project](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai): start with `logic/logic_discovery/check_credit.py` and `docs/requirements/demo_eai/ad-libs.md`, then open the report.
+Here is that in one run.  From five short requirements and a few plain-English requests (create the project, implement the requirements, create the tests, run the report), the AI built a partner API, Kafka messaging in and out, and row-level security.  
 
-That is what makes it governable.  You can read it, you can trust it, and when the requirement changes, you can maintain it.
+The result is 8 rules (5 declarative, 3 Python events) and 12 of 12 scenarios passing against a live Kafka broker, with a report that traces each requirement to its rules and tests and lists its own gaps.  The AI also listed three judgment calls for review, the first of them what "unpaid" means.  Inspect the [sample project](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai): start with `logic/logic_discovery/check_credit.py` and `docs/requirements/demo_eai/ad-libs.md`, then open the report.
 
-> Rules are the governance.
+> **Rules are the governance**<br> - Enforcement You Can Trust<br> - Documentation YOou Can Read and Understand
 
 [GenAI-Logic](https://www.genai-logic.com/) — free to use, source available.  The full [generated report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/), from a [sample app](https://apilogicserver.github.io/Docs/Sample-Basic-EAI/).
