@@ -317,6 +317,6 @@ Here is that in one run.  From five short requirements and a few plain-English r
 
 The result is 8 rules (5 declarative, 3 Python events) and 12 of 12 scenarios passing against a live Kafka broker, with a report that traces each requirement to its rules and tests and lists its own gaps.  The AI also listed three judgment calls for review, the first of them what "unpaid" means.  Inspect the [sample project](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai): start with `logic/logic_discovery/check_credit.py` and `docs/requirements/demo_eai/ad-libs.md`, then open the report.
 
-> **Rules are the governance**<br> - Enforcement You Can Trust<br> - Documentation YOou Can Read and Understand
+> **Rules are the governance**<br> - Enforcement You Can Trust<br> - Documentation You Can Read
 
 [GenAI-Logic](https://www.genai-logic.com/) — free to use, source available.  The full [generated report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/), from a [sample app](https://apilogicserver.github.io/Docs/Sample-Basic-EAI/).
