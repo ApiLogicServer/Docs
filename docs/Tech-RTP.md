@@ -91,9 +91,15 @@ We started at a high level of abstraction — business language — and ended at
 
 > Train AI to translate intent into something just as high-level, but complete and deterministic: business rules, executed by an engine that automates invocation and dependency management.
 
-AI training is by Context Engineering, shown below.  This is injected into every project when it is created, and guides AI to generate rules (not code).  It is used at design time, not runtime:
+AI training is by Context Engineering, shown below.  This is injected into every project when it is created, and guides AI to generate rules (not code).  It is used at design time, not runtime.
+
+<details markdown>
+
+<summary>Context Engineering Directs AI to Create Rules, Not Code </summary>
 
 ![CE](images/integration/demo_eai/context_eng.png)
+
+</details>
 
 &nbsp;
 
@@ -165,7 +171,7 @@ This is the actual process.  After you write the requirements, paste this to you
 
 ![create_script](images/integration/demo_eai/create_script.png)
 
-The script identifies the requirements (line 7 in the creation script), here expressed in Gherkin (we have tested many formats).
+The script identifies the requirements (line 7 in the creation script), here expressed in Gherkin (use your own methodology - other formats work as well).
 
 This example is deliberately small.  A real prompt goes further: a partner API, Kafka messaging in and out, row-level security.  The [sample's full prompt](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md) is five short requirements, and [its report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/) lists 8 rules and 12 test scenarios.
 
@@ -201,7 +207,7 @@ Observe the file/folder organization help developers match rules to their requir
 
 #### Automated Tests
 
-Tests are the foundation: the system is presumed guilty until tests prove it works.  Test creation is expensive.  So another AI service is to automate test creation.
+Tests prove the rules work: the system is presumed guilty until tests prove it works.  Test creation is expensive.  So another AI service is to automate test creation.
 
 **The rules make automatic test creation *intelligent*: *whatever appears in them is what to test.*** See line 13 in the creation script, above.
 
