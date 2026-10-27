@@ -41,7 +41,7 @@ rules diagram, test creation, Req Rules Report (some screen shots)
 
 Systems exist to enforce business policy.  Of course.
 
-But does the code match our intent?  I heard of a large company that kept a developer whose real job was reading the code to find out what the policy actually was.  The documentation was hopeless, so he *was* the documentation.  A human parser.
+But does the code match our intent?  I heard of a large company that kept a developer whose real job was reading the code to find out what the policy actually was.  The documentation was hopeless, so that developer *was* the documentation.  A human parser.
 
 &nbsp;
 
@@ -125,7 +125,7 @@ These are *transaction* rules.  The engine listens for database commits, compare
 
   * It is not a RETE-style [decision engine](https://apilogicserver.github.io/Docs/FAQ-RETE/); it is built for transaction processing, and the two are complementary.  A decision engine has to be *called*, so you must audit every caller to know the logic is enforced.  Here the engine fires _automatically_ on every commit, so nothing can skip it.  No-bypass trust.
 
-Rule execution is automatically ordered by system-discovered dependencies.  This means you can safely assume that rules are called in the right order, and that all side-effects are addressed.  So, for example, customer balances are adjusted with orders are inserted, paid, re-assigned, or deleted.
+Rule execution is automatically ordered by system-discovered dependencies.  This means you can safely assume that rules are called in the right order, and that all side-effects are addressed.  So, for example, customer balances are adjusted when orders are inserted, paid, re-assigned, or deleted.
 
 &nbsp;
 
@@ -165,9 +165,9 @@ This is the actual process.  After you write the requirements, paste this to you
 
 ![create_script](images/integration/demo_eai/create_script.png)
 
-The script identifies the requirements (line 7 in the the creation script), here expressed in Gherkin (we have tested many formats).
+The script identifies the requirements (line 7 in the creation script), here expressed in Gherkin (we have tested many formats).
 
-This example is deliberately small.  A real prompt goes further: a partner API, Kafka messaging in and out, row-level security.  The [sample's full prompt](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md) is five short requirements, and [its report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/) lists 8 rules and 14 test scenarios.
+This example is deliberately small.  A real prompt goes further: a partner API, Kafka messaging in and out, row-level security.  The [sample's full prompt](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md) is five short requirements, and [its report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/) lists 8 rules and 12 test scenarios.
 
 &nbsp;
 
@@ -203,7 +203,7 @@ Observe the file/folder organization help developers match rules to their requir
 
 Tests are the foundation: the system is presumed guilty until tests prove it works.  Test creation is expensive.  So another AI service is to automate test creation.
 
-**The rules make automatic test creation *intelligent*: *whatever appears in them is what to test.*** See row 13 in the creation script, above.
+**The rules make automatic test creation *intelligent*: *whatever appears in them is what to test.*** See line 13 in the creation script, above.
 
  Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.  
 
@@ -225,7 +225,7 @@ Human in the loop -- proactively.
 
 #### Requirements Traceability Report
 
-The **Requirements Traceability Report** (Line 17) is completely created from the rules and the logs resulting from test execution (Line 15).
+The **Requirements Traceability Report** (line 17) is completely created from the rules and the logs resulting from test execution (line 15).
 
 The report contains many sections, including messages, security.  Some key sections are shown below.
 
@@ -237,11 +237,11 @@ The created API is perfect as a basis for using your favorite vibe tools for cus
 
 &nbsp;
 
-## Maintanance
+## Maintenance
 
 Requirements keep changing, so iteration is where this matters.  With code, the hard part is finding where to make the change so that it always runs in the right order.  Maintenance becomes archaeology.  With rules, the engine guarantees that: you change the rule, and it runs, in the right order.
 
-Here is a real change, on the credit example.  We edited requirement 4: the item amount is the quantity times the price, *less 10% when the quantity is 10 or more*.  We asked the AI to re-implement it and compared the logic.  One rule changed, the item amount formula; the rest of the credit rules and the Kafka rule were untouched.
+Here is a real change, on the small credit example (a separate run from the sample's 12 scenarios above).  We edited requirement 4: the item amount is the quantity times the price, *less 10% when the quantity is 10 or more*.  We asked the AI to re-implement it and compared the logic.  One rule changed, the item amount formula; the rest of the credit rules and the Kafka rule were untouched.
 
 Then we ran the old tests, unchanged, and regenerated the report:
 
@@ -260,13 +260,13 @@ The [Requirements Traceability Report](https://apilogicserver.github.io/Docs/Beh
 
 The report is built from the project's own files, and it checks in both directions.  A requirement with no rule or no test is a gap.  So is a rule that traces to no requirement.  
 
-It also reports its own holes.  In the sample there are 5 requirements, all implemented, and 4 tested; Security has no tests, and the report says so.  Of the 8 rules, 7 ran in at least one test, and the report explains why it could not match the eighth.  Two integration channels that no test mentions are flagged.
+It also reports its own holes.  In the sample there are 5 requirements, all implemented and all 5 tested, Security included.  Of the 8 rules, 7 ran in at least one test, and the report explains why it could not match the eighth: a generic date-stamping handler whose name the engine's log does not give.  It also lists two implementation files that trace to no requirement, the stamping handler and the B2B mapper.
 
 &nbsp;
 
 ### New User Orientation
 
-The report is designed to be consumed by Business Users, including those not directly part of the development.  The reports therefore begins with a short orientation, so such users can understand the process, what requirements and rules are, etc.  
+The report is designed to be consumed by Business Users, including those not directly part of the development.  The report therefore begins with a short orientation, so such users can understand the process, what requirements and rules are, etc.  
 
 This enables an organization to store these in a central repository, enabling business users to discover systems, what they do, and their testing.
 
@@ -293,7 +293,7 @@ Optionally, `create logic diagram for each requirement` draws the rule chains. (
 
 **Trust, but verify.**  A passing test is a claim; the evidence is a record of the rules running.  Because the engine runs on every commit, it can record exactly what rules ran, so each test scenario shows every rule that fired (indents show multi-table chaining).
 
-This shows each test - it's definition, and (for those seeking detail), the detail rule execution.
+This shows each test - its definition, and (for those seeking detail), the detail rule execution.
 
 ![reqmts_rules_exec](images/integration/demo_eai/reqmts_rules_exec.png)
 
@@ -312,6 +312,8 @@ The report reads the declarative rules exactly.  The Kafka handlers in the sampl
 The question at the start was *what did AI build?*  With code, you answer it by reading the code, and you are back to the developer who was the documentation.
 
 With rules, the same rules do two jobs.  The engine runs them, and they are the input to the documentation: the requirement beside the rules, the tests, the diagrams, the record of the rules running.  Nobody writes that document, so it can't fall behind the system.
+
+Here is that in one run.  From five short requirements and a few plain-English requests (create the project, implement the requirements, create the tests, run the report), the AI built a partner API, Kafka messaging in and out, and row-level security.  The result is 8 rules (5 declarative, 3 Python events) and 12 of 12 scenarios passing against a live Kafka broker, with a report that traces each requirement to its rules and tests and lists its own gaps.  The AI also listed three judgment calls for review, the first of them what "unpaid" means.  Inspect the [sample project](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai): start with `logic/logic_discovery/check_credit.py` and `docs/requirements/demo_eai/ad-libs.md`, then open the report.
 
 That is what makes it governable.  You can read it, you can trust it, and when the requirement changes, you can maintain it.
 
