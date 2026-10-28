@@ -40,9 +40,9 @@ One small system, three steps.  Two AI assistants took part, Antigravity and Cla
 
 &nbsp;
 
-### Running step 3
+### Running step 4
 
-Step 3 is a short script, pasted to the AI assistant.  It creates the project, then implements the requirements named on line 7, the ones recovered from the legacy code, and goes on to the tests and the report.
+Step 4 is a short script, pasted to the AI assistant.  It creates the project, then implements the requirements named on line 7, the ones recovered from the legacy code, and goes on to the tests and the report.
 
 ![The creation script and the requirements recovered from the legacy code](images/articles/Modernization/create_script.png)
 
