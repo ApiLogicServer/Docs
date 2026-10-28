@@ -292,6 +292,8 @@ This enables business users to see each requirement, and the resulting spreadshe
 
 Optionally, `create logic diagram for each requirement` draws the rule chains. (See line 11 in the creation script).
 
+![Logic Diagram](images/exec_reqmts/Governance.png)
+
 &nbsp;
 
 ### Test Results
