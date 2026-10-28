@@ -18,7 +18,9 @@ the script and the recovered requirements are in samples/requirements/demo_eai_m
 
 Legacy systems enforce business policy, but the policy lives in the code.  The requirements are gone, or never existed, and the one person who could say what the system does has moved on (see [What Did the AI Build?](https://apilogicserver.github.io/Docs/Tech-RTP/)).
 
-Modernizing that code usually means reading it, guessing at intent, and rewriting it.  We tried to automate all three.
+Modernizing that code usually means reading it, guessing at intent, and rewriting it into a modern architecture.  But it's still spaghetti code, and the documentation drift starts again.
+
+Here's an approach that not only modernizes, but results in a system **governed by declarative, spreadsheet-like rules** you can **read, trust and maintain.**
 
 &nbsp;
 
@@ -26,9 +28,11 @@ Modernizing that code usually means reading it, guessing at intent, and rewritin
 
 One small system, three steps.  Two AI assistants took part, Antigravity and Claude, each with GenAI-Logic's context engineering loaded.
 
-1. **The legacy system.**  We had AI build the *demo_eai* order system as a conventional application, with no GenAI-Logic: SQLAlchemy session hooks for the business logic, a REST API, a Kafka consumer and producer, Keycloak security.  Then we removed every document.  What remained was code and tests: a legacy system.
-2. **Recover the requirements.**  Antigravity read the code and wrote down what it does, in plain language: six sections covering the data model, the business rules, shipping notifications, B2B intake, security and the API contract.  Claude also recovered them, as a check; the two cover the same ground.
-3. **Rebuild as rules.**  From Antigravity's recovered requirements, Claude generated a new system: declarative business rules, tests, and a traceability report.  The build took about 12 minutes.
+1. We began with one of our standard samples: *demo_eai* (order entry with inputs from APIs and Messages)
+2. **The legacy system.**  We had AI build *demo_eai* as a conventional application, with no GenAI-Logic: SQLAlchemy session hooks for the business logic, a REST API, a Kafka consumer and producer, Keycloak security.  Then we removed every document.  What remained was code and tests: a legacy system.
+3. **Distill the requirements from the legacy system.**  Antigravity read the code and distilled down what it does, in plain language: six sections covering the data model, the business rules, shipping notifications, B2B intake, security and the API contract.  Claude also recovered them, as a check; the two cover the same ground. [Legacy project and distilled requirements docs here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/native_ai/demo_eai_legacy){:target="_blank" rel="noopener"}.
+4. **Rebuild - modernized, with rules.**  From Antigravity's recovered requirements, Claude generated a new system: declarative business rules, tests, and a traceability report.  The build took about 12 minutes.
+5. [The resultant system is here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/native_ai/demo_eai_modernized){:target="_blank" rel="noopener"}, including [system-generated tests and report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/native_ai/demo_eai_modernized/docs/requirements/project_creation_report.md){:target="_blank" rel="noopener"}.
 
 ![How the projects were created](images/articles/Modernization/modernization_process.svg)
 
