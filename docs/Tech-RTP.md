@@ -177,7 +177,7 @@ This example is deliberately small.  A real prompt goes further: a partner API, 
 
 &nbsp;
 
-### What Get Created
+### What Gets Created
 
 Context Engineering is not just rules - it covers other key aspects noted in the subsections below.
 
@@ -199,7 +199,7 @@ The system also creates a **multi-table Admin app,** useful for prototyping and 
 
 The rules are created as Python source from the requirements file(s), shown above.  Manage them in git.
 
-Observe the file/folder organization help developers match rules to their requirements using the file name.
+Observe the file/folder organization helps developers match rules to their requirements using the file name.
 
  ![rules_code](images/integration/demo_eai/rules_code.png)
 

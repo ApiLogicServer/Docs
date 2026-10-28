@@ -235,6 +235,7 @@ nav:
   - Articles:
     - "Req Trace Rpt": Tech-RTP.md
     - "AI Code Review": Tech-Surtax.md
+    - "Modernization": Tech-Modernization-Automation.md
     - "Standard Requirements": Tech-Standard-Reqs.md
     - "AI, You're in Control": Tech-AI-First.md
     - "Realizations": Tech-Realizations.md
