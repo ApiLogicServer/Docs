@@ -16,23 +16,34 @@ the script and the recovered requirements are in samples/requirements/demo_eai_m
 
 ## The problem
 
-Legacy systems enforce business policy, but the policy lives in the code.  The requirements are gone, or never existed, and the one person who could say what the system does has moved on (see [What Did the AI Build?](https://apilogicserver.github.io/Docs/Tech-RTP/)).
+Modernization seeks to upgrade the technology of legacy systems to modern software architectures.  That's valuable - better performance, easier to find developers, etc.
 
-Modernizing that code usually means reading it, guessing at intent, and rewriting it into a modern architecture.  But it's still spaghetti code, and the documentation drift starts again.
+But legacy systems are typically opaque: business policy is hidden behind code written long ago.  Governance requires we clearly understand how our systems enforce our business policy, and provide a sound basis for evolving it.  A technology modernization moves the opacity to a new stack; it doesn't remove it.
 
-Here's an approach that not only modernizes, but results in a system **governed by declarative, spreadsheet-like rules** you can **read, trust and maintain.**
+Recent AI technology is starting to extract - recover - business logic from legacy code bases.  In short, the business requirements.
+
+GenAI-Logic can turn requirements into rule based systems, where the rules _are_ the governance: executable documentation you can read, trust and maintain.  See [this companion article](Tech-RTP.md){:target="_blank" rel="noopener"}.
+
+So, we ran an experiment:
+
+1. Extract the requirements from a legacy system.
+2. Give them to GenAI-Logic to create a system that is both modern and governed.
+
+This document is a report on that experiment.
+
+TLDR: it worked.  Encouraging, but this is a one short experiment - see the caveats below.
 
 &nbsp;
 
 ## The experiment
 
-One small system, three steps.  Two AI assistants took part, Antigravity and Claude, each with GenAI-Logic's context engineering loaded.
+One small system, five steps.  Two AI assistants took part, Antigravity and Claude, each with GenAI-Logic's context engineering loaded.
 
 1. We began by using the requirements from one of our standard samples: *demo_eai* (order entry with inputs from APIs and Messages).  It created the reference implementation, using GenAI-Logic.
-2. **The legacy system.**  We had AI build *demo_eai* as a conventional application, with no GenAI-Logic: SQLAlchemy session hooks for the business logic, a REST API, a Kafka consumer and producer, Keycloak security.  
+2. **The legacy system.**  We had AI build *demo_eai* as a conventional application, without GenAI-Logic: SQLAlchemy session hooks for the business logic, a REST API, a Kafka consumer and producer, Keycloak security.
 3. Then we removed every document.  What remained was code and tests: a legacy system.
 4. **Recover the requirements from the legacy system.**  Antigravity read the code and distilled down what it does, in plain language: six sections covering the data model, the business rules, shipping notifications, B2B intake, security and the API contract.  Claude also recovered them, as a check; the two cover the same ground. [Legacy project and distilled requirements docs here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/native_ai/demo_eai_legacy){:target="_blank" rel="noopener"}.
-5. **Rebuild - modernized, with rules.**  From Antigravity's recovered requirements, Claude generated a new system: declarative business rules, tests, and a traceability report.  The build took about 12 minutes.  [The resultant system is here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/native_ai/demo_eai_modernized){:target="_blank" rel="noopener"}, including [system-generated tests and report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/native_ai/demo_eai_modernized/docs/requirements/project_creation_report.md){:target="_blank" rel="noopener"}.
+5. **Rebuild - modernized_, with rules_.**  From Antigravity's recovered requirements, Claude generated a new system: declarative business rules, tests, and a traceability report.  The build took about 12 minutes.  [The resultant system is here](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/native_ai/demo_eai_modernized){:target="_blank" rel="noopener"}, including [system-generated tests and report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/native_ai/demo_eai_modernized/docs/requirements/project_creation_report.md){:target="_blank" rel="noopener"}.
 
 ![How the projects were created](images/articles/Modernization/modernization_process.svg)
 
@@ -40,9 +51,9 @@ One small system, three steps.  Two AI assistants took part, Antigravity and Cla
 
 &nbsp;
 
-### Running step 4
+### Running step 5
 
-Step 4 is a short script, pasted to the AI assistant.  It creates the project, then implements the requirements named on line 7, the ones recovered from the legacy code, and goes on to the tests and the report.
+Step 5 is a short script, pasted to the AI assistant.  It creates the project, then implements the requirements named on line 7, the ones recovered from the legacy code, and goes on to the tests and the report.
 
 ![The creation script and the requirements recovered from the legacy code](images/articles/Modernization/create_script.png)
 
@@ -50,15 +61,21 @@ Step 4 is a short script, pasted to the AI assistant.  It creates the project, t
 
 &nbsp;
 
+## What went it
+
+Here is an excerpt of the legacy code, where business logic is implemented as procedural code:
+
+![legacy logic](images/articles/Modernization/legacy_logic.png)
+
 ## What came out
 
-| | Legacy | Modernized |
-|---|---|---|
-| **Where the policy lives** | Session hooks in `app/logic.py` | Five declarative rules in `check_credit.py` |
-| **Written requirements** | None | Recovered from the code, then traced to rules |
-| **Judgment calls** | Invisible | Listed in an ad-libs report: 6 items for review |
-| **Evidence** | Tests | 35 of 35 scenarios passing, Kafka tested live through the broker, each scenario embedding the engine's log of the rules that ran |
-| **Governance** | Read the code | A Requirements Traceability Report: each requirement beside its rules and tests |
+|                            | Legacy                          | Modernized                                                                                           |
+| -------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Where the policy lives** | Session hooks in `app/logic.py` | Five declarative rules in `check_credit.py` -- see below                                             |
+| **Written requirements**   | None                            | Recovered from the code, then traced to rules                                                        |
+| **Judgment calls**         | Invisible                       | Listed in an ad-libs report: 6 items for review                                                      |
+| **Evidence**               | Tests                           | 35 of 35 scenarios passing, Kafka tested live through the broker, each scenario embedding the engine's log of the rules that ran |
+| **Governance**             | Read the code                   | A [Requirements Traceability Report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/native_ai/demo_eai_modernized/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}: each requirement beside its rules and tests |
 
 The rules for the credit policy:
 
