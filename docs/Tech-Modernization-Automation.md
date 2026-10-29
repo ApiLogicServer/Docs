@@ -123,7 +123,11 @@ A person decides each of these.  That is the point of listing them.
 
 ## Why rules
 
-Modernization has an old failure mode: the rewrite is as unreadable as the original, so the problem is renewed, not solved.  Rules are the part that changes it.  They are close to the requirement's own level, executed by an engine that fires on every commit, and the report lists each requirement beside the rules that implement it.  The next system is one you can read.
+Instead of modernizing Legacy-Frankencode into Modern-Frankencode, this approach results in rule-based systems you can:
+
+* **read:** rules are ~40x more concise, and automate complex dependency management
+* **trust:** rules are automatically run at commit time - every transaction source, every path, no bypass
+* **maintain:** rules are self-ordering, so you can add new rules without execution-path archaeology.  Just add new rules, and you can trust they will always be run, in the right order
 
 &nbsp;
 
