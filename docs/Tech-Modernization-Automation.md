@@ -146,5 +146,3 @@ We checked the modernized system against the recovered requirements, not against
 Legacy code in, readable rules out, with the requirements recovered along the way and a report that shows the work: 8 rules, 35 of 35 scenarios passing, Kafka tested live, and six decisions listed for review.  Start with the recovered requirements, then the rules in `check_credit.py`, then the ad-libs report, then the traceability report.
 
 > **Rules are the governance**<br> - Enforcement You Can Trust<br> - Documentation You Can Read
-
-[GenAI-Logic](https://www.genai-logic.com/) — free to use, source available.

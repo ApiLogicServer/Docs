@@ -73,13 +73,13 @@ The requirements simplify ERPNext deliberately: one ledger table instead of the 
 
 The run took about 21 minutes.
 
-|                            | ERPNext                                         | Rebuilt                                                                                           |
-| -------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| **Where the policy lives** | Four `check_credit_limit` methods in four modules | Four commit constraints calling one check, one limit lookup and one outstanding amount          |
-| **Written requirements**   | None                                            | Recovered from the code, then traced to rules                                                     |
-| **Judgment calls**         | Invisible                                       | Listed in an ad-libs report: 12 items for review, 12 notes                                        |
-| **Evidence**               | A large test suite                              | 52 credit scenarios passing (53 with the scaffold's own); each ERPNext credit test in the slice has a counterpart scenario |
-| **Governance**             | Read the code                                   | A Requirements Traceability Report: each requirement beside its rules and tests                   |
+|                            | ERPNext                                           | Rebuilt                                                                                              |
+| -------------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Where the policy lives** | Four `check_credit_limit` methods in four modules | Four commit constraints calling one check, one limit lookup and one outstanding amount               |
+| **Written requirements**   | None                                              | Recovered from the code, then traced to rules                                                        |
+| **Judgment calls**         | Invisible                                         | Listed in an ad-libs report: 12 items for review, 12 notes                                           |
+| **Evidence**               | A large test suite                                | 52 credit scenarios passing (53 with the scaffold's own); each ERPNext credit test in the slice has a counterpart scenario |
+| **Governance**             | Read the code                                     | A Requirements Traceability Report: each requirement beside its rules and tests                      |
 
 The full system has 32 rules: 15 declarative (sums, formulas, copies, constraints), 13 Python functions and 4 events.  The credit controller exception, where a user holding a role may exceed the limit, is one function:
 
@@ -175,5 +175,3 @@ Instead of modernizing Legacy-Frankencode into Modern-Frankencode, this approach
 Source in, requirements recovered, rules out, with a report that shows the work: 32 rules, 52 scenarios passing, and twelve decisions listed for review.  Read the recovered requirements first, then the credit rules, then the review list.  Treat the result as a promising second data point, with the caveats above.
 
 > **Rules are the governance**<br> - Enforcement You Can Trust<br> - Documentation You Can Read
-
-[GenAI-Logic](https://www.genai-logic.com/) — free to use, source available.
