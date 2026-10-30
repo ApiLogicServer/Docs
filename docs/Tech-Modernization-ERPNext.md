@@ -175,3 +175,4 @@ Instead of modernizing Legacy-Frankencode into Modern-Frankencode, this approach
 Source in, requirements recovered, rules out, with a report that shows the work: 32 rules, 52 scenarios passing, and twelve decisions listed for review.  Read the recovered requirements first, then the credit rules, then the review list.  Treat the result as a promising second data point, with the caveats above.
 
 > **Rules are the governance**<br> - Enforcement You Can Trust<br> - Documentation You Can Read
+
