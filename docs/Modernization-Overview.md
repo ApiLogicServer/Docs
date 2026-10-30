@@ -13,8 +13,25 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
 
 # Modernization: Recover the Requirements, Rebuild as Rules
 
-!!! pied-piper ":bulb: TL;DR - Recover the requirements from legacy code, rebuild as rules"
-    AI recovers the business requirements from a legacy system; GenAI-Logic rebuilds it from them as declarative rules, with tests and a report that traces each requirement to its rules.  The rules are the governance: you can read, trust and maintain them.  The AI lists every judgment call it made, so a person can decide them.<br>
+!!! pied-piper ":bulb: TL;DR - Recover the requirements from legacy code, rebuild as rule-based systems"
+    Recent technology enables:
+    
+    1. Using **AI to Extract Requirements** from legacy systems
+    2. Using **GenAI-Logic to create rule-based systems**
+   
+    The resultant systems is not only modernized - it is governed by declarative, spreadsheet like rules you can:
+
+    * **read:** rules are ~40x more concise, and automate complex dependency management
+    * **trust:** rules are automatically run at commit time - every transaction source, every path, no bypass
+    * **maintain:** rules are self-ordering, so you can add new rules without execution-path archaeology.  Just add new rules, and you can trust they will always be run, in the right order.  
+
+      * Without that, a rewrite recovers the requirements and then buries them again in new procedural code, and the documentation drift starts over.  [More on why rules](Tech-Modernization-Automation.md#why-rules){:target="_blank" rel="noopener"}.
+    
+    The process includes documentation:
+    
+    *  The AI lists every judgment call it made, so a person can confirm them
+    *  The Requirement Traceability Report lists all the extracted requirements, and their associated rules.  It also list tests - created by the system - and confirms which rules ran.
+
     We have run this twice.  The results are encouraging, but results on your system are hard to predict: see [what we can and cannot say](#what-we-can-and-cannot-say).
 
 &nbsp;
@@ -28,18 +45,6 @@ But legacy systems are typically opaque: business policy is hidden behind code w
 Recent AI technology is starting to extract - recover - business logic from legacy code bases.  In short, the business requirements.
 
 GenAI-Logic can turn requirements into rule based systems, where the rules _are_ the governance: executable documentation you can read, trust and maintain.  See [this companion article](Tech-RTP.md){:target="_blank" rel="noopener"}.
-
-&nbsp;
-
-## Why rules
-
-Instead of modernizing Legacy-Frankencode into Modern-Frankencode, this approach results in rule-based systems you can:
-
-* **read:** rules are ~40x more concise, and automate complex dependency management
-* **trust:** rules are automatically run at commit time - every transaction source, every path, no bypass
-* **maintain:** rules are self-ordering, so you can add new rules without execution-path archaeology.  Just add new rules, and you can trust they will always be run, in the right order
-
-Without that, a rewrite recovers the requirements and then buries them again in new procedural code, and the documentation drift starts over.  [More on why rules](Tech-Modernization-Automation.md#why-rules){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -131,4 +136,3 @@ The test we would most like to see is an older, messier codebase, recovered inde
 
 > **Rules are the governance**<br> - Enforcement You Can Trust<br> - Documentation You Can Read
 
-[GenAI-Logic](https://www.genai-logic.com/) — free to use, source available.
