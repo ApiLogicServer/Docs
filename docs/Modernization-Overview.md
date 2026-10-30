@@ -41,18 +41,6 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
 
 &nbsp;
 
-## The problem
-
-Modernization seeks to upgrade the technology of legacy systems to modern software architectures.  That's valuable - better performance, easier to find developers, etc.
-
-But legacy systems are typically opaque: business policy is hidden behind code written long ago.  Governance requires we clearly understand how our systems enforce our business policy, and provide a sound basis for evolving it.  A technology modernization moves the opacity to a new stack; it doesn't remove it.
-
-Recent AI technology is starting to extract - recover - business logic from legacy code bases.  In short, the business requirements.
-
-GenAI-Logic can turn requirements into rule based systems, where the rules _are_ the governance: executable documentation you can read, trust and maintain.  See [this companion article](Tech-RTP.md){:target="_blank" rel="noopener"}.
-
-&nbsp;
-
 ## The process
 
 ![Legacy to requirements to modernized system](images/articles/Modernization/modernization_overview.svg){: style="height:500px"; align=right }
@@ -64,6 +52,8 @@ Three steps:
 **2. Rebuild.**  The requirements go to GenAI-Logic, which builds a new system from them: the database and API, messages declarative rules for the business logic, tests generated from the rules, logic diagrams, and a Requirements Traceability Report that shows each requirement beside the rules and tests that implement it.  The AI follows a short script, one line per task.
 
 **3. Review.**  Wherever the requirements stopped and the AI had to decide, it records the decision in an *ad-libs* report, with the ones a person must check marked.  The more the AI infers, the more this list matters.  A person decides each item.
+
+See [this companion article](Tech-RTP.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
