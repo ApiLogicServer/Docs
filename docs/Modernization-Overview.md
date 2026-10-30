@@ -55,13 +55,13 @@ GenAI-Logic can turn requirements into rule based systems, where the rules _are_
 
 ## The process
 
-![Legacy to requirements to modernized system](images/articles/Modernization/modernization_overview.svg)
+![Legacy to requirements to modernized system](images/articles/Modernization/modernization_overview.svg){: style="height:500px"; align=right }
 
-Three steps.
+Three steps:
 
 **1. Recover.**  AI reads the legacy code and writes down what it does, in plain language: the data, the business rules, the integrations, the security.  The result is a requirements document.  It describes what the code does, which is not always what the business meant, so a person should read it.  It often records behavior nobody had written down.
 
-**2. Rebuild.**  The requirements go to GenAI-Logic, which builds a new system from them: the database and API, declarative rules for the business logic, tests generated from the rules, logic diagrams, and a Requirements Traceability Report that shows each requirement beside the rules and tests that implement it.  The AI follows a short script, one line per task.
+**2. Rebuild.**  The requirements go to GenAI-Logic, which builds a new system from them: the database and API, messages declarative rules for the business logic, tests generated from the rules, logic diagrams, and a Requirements Traceability Report that shows each requirement beside the rules and tests that implement it.  The AI follows a short script, one line per task.
 
 **3. Review.**  Wherever the requirements stopped and the AI had to decide, it records the decision in an *ad-libs* report, with the ones a person must check marked.  The more the AI infers, the more this list matters.  A person decides each item.
 
