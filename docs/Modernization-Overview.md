@@ -13,7 +13,7 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
 
 # Modernization: Recover the Requirements, Rebuild as Rules
 
-!!! pied-piper ":bulb: A rewrite buries the business policy again, in a new stack.  Recover the requirements, and rebuild using rules you can read, trust, and maintain"
+!!! pied-piper ":bulb: A rewrite buries the business policy again, in a new stack.  <br>Recover the requirements, and rebuild using rules you can read, trust, and maintain"
 
     Legacy systems are opaque: business policy is buried in code written long ago.  A technology modernization (better performance, easier hiring) moves that opacity to a new stack; it doesn't remove it.  
     
