@@ -1,0 +1,17 @@
+digraph G {
+  rankdir=TB; nodesep=0.4; ranksep=0.5; bgcolor="white";
+  node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", fillcolor="#f4f6f8", color="#5b6b7a", fontcolor="#1d2733", margin="0.16,0.10"];
+  edge [fontname="Helvetica", fontsize=10, color="#5b6b7a", fontcolor="#1d2733"];
+
+  src  [label=<<b>1. ERPNext credit control</b><br/><font point-size="10">open-source Python/Frappe<br/>four modules, one policy<br/>code + its own tests</font>>];
+  rec  [label=<<b>2. Requirements recovered</b><br/><font point-size="10">from the source code only<br/>tests and docs not read</font>>, fillcolor="#fdf1e3", color="#b9783a"];
+  chk  [label=<<b>3. Checked against the tests</b><br/><font point-size="10">two omissions found<br/>requirements amended</font>>, fillcolor="#fdf1e3", color="#b9783a"];
+  mod  [label=<<b>4. Rebuilt as rules</b><br/><font point-size="10">fresh AI session: script + requirements<br/>rules, tests, ad-libs, traceability report</font>>, fillcolor="#e4f3ea", color="#3d8a5c"];
+  cmp  [label=<<b>5. Compared</b><br/><font point-size="10">each ERPNext test against<br/>the rebuild's scenarios (by reading)</font>>];
+
+  src -> rec [label=" AI reads the code"];
+  rec -> chk [label=" read the repo's tests"];
+  chk -> mod [label=" AI + GenAI-Logic\n context engineering"];
+  mod -> cmp;
+  src -> cmp [style=dashed, constraint=false, label=" ERPNext's tests"];
+}

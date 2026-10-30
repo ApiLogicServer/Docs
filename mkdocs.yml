@@ -173,6 +173,10 @@ nav:
     - Creating Tests:
       - "Create Tests From Logic": Behave-Creation.md
       - "Sample: basic_demo": Behave-Logic-Report-Basic-Demo.md
+  - Modernization:
+    - "Modernization Overview": Modernization-Overview.md
+    - "Controlled Sample": Tech-Modernization-Automation.md
+    - "ERPNext": Tech-Modernization-ERPNext.md
   - Architecture:
     - "What is API Logic Server": Architecture-What-Is.md
     - "What is GenAI-Logic": Architecture-What-Is-GenAI.md
