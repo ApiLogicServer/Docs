@@ -14,6 +14,11 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
 # Modernization: Recover the Requirements, Rebuild as Rules
 
 !!! pied-piper ":bulb: TL;DR - Recover the requirements from legacy code, rebuild as rule-based systems"
+
+    Modernization seeks to upgrade the technology of legacy systems to modern software architectures.  That's valuable - better performance, easier to find developers, etc.
+
+    But legacy systems are typically opaque: business policy is hidden behind code written long ago.  Governance requires we clearly understand how our systems enforce our business policy, and provide a sound basis for evolving it.  A technology modernization moves the opacity to a new stack; it doesn't remove it.
+    
     Recent technology enables:
     
     1. Using **AI to Extract Requirements** from legacy systems
@@ -27,9 +32,9 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
 
       * Without that, a rewrite recovers the requirements and then buries them again in new procedural code, and the documentation drift starts over.  [More on why rules](Tech-Modernization-Automation.md#why-rules){:target="_blank" rel="noopener"}.
     
-    The process includes documentation:
+    The process creates documentation for understanding and managing the process:
     
-    *  The AI lists every judgment call it made, so a person can confirm them
+    *  The Ad-Lib report lists every judgment call it made, so a person can confirm them
     *  The Requirement Traceability Report lists all the extracted requirements, and their associated rules.  It also list tests - created by the system - and confirms which rules ran.
 
     We have run this twice.  The results are encouraging, but results on your system are hard to predict: see [what we can and cannot say](#what-we-can-and-cannot-say).
