@@ -13,31 +13,31 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
 
 # Modernization: Recover the Requirements, Rebuild as Rules
 
-!!! pied-piper ":bulb: TL;DR - Recover the requirements from legacy code, rebuild as rule-based systems"
+!!! pied-piper ":bulb: A rewrite moves the mess to a new stack.  Recover the requirements, and rebuild using rules you can read, trust, and maintain"
 
-    Modernization seeks to upgrade the technology of legacy systems to modern software architectures.  That's valuable - better performance, easier to find developers, etc.
-
-    But legacy systems are typically opaque: business policy is hidden behind code written long ago.  Governance requires we clearly understand how our systems enforce our business policy, and provide a sound basis for evolving it.  A technology modernization moves the opacity to a new stack; it doesn't remove it.
+    Legacy systems are opaque: business policy is buried in code written long ago.  A technology modernization (better performance, easier hiring) moves that opacity to a new stack; it doesn't remove it.  
     
-    Recent technology enables:
-    
-    1. Using **AI to Extract Requirements** from legacy systems
-    2. Using **GenAI-Logic to create rule-based systems**
-   
-    The resultant systems is not only modernized - it is governed by declarative, spreadsheet like rules you can:
+    A straight AI rewrite does the same, faster.  It recovers the requirements, then buries them again in new procedural code, and the documentation drift starts over.  Governance needs to see how a system enforces policy, and needs a sound basis for evolving it.
 
-    * **read:** rules are ~40x more concise, and automate complex dependency management
-    * **trust:** rules are automatically run at commit time - every transaction source, every path, no bypass
-    * **maintain:** rules are self-ordering, so you can add new rules without execution-path archaeology.  Just add new rules, and you can trust they will always be run, in the right order.  
+    The alternative is two steps:
 
-      * Without that, a rewrite recovers the requirements and then buries them again in new procedural code, and the documentation drift starts over.  [More on why rules](Tech-Modernization-Automation.md#why-rules){:target="_blank" rel="noopener"}.
-    
-    The process creates documentation for understanding and managing the process:
-    
-    *  The Ad-Lib report lists every judgment call it made, so a person can confirm them
-    *  The Requirement Traceability Report lists all the extracted requirements, and their associated rules.  It also list tests - created by the system - and confirms which rules ran.
+    1. Use **AI to extract the requirements** from the legacy system
+    2. Use **GenAI-Logic to rebuild it as declarative rules**: spreadsheet-like statements such as `balance <= credit_limit`, run by an engine on every commit
 
-    We have run this twice.  The results are encouraging, but results on your system are hard to predict: see [what we can and cannot say](#what-we-can-and-cannot-say).
+    The rebuilt system is not only modernized, it is governed by rules you can:
+
+    * **read:** rules are far more concise than the code they replace ([~40x in our credit-check comparison](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}), and the engine manages the dependencies
+    * **trust:** rules run automatically at commit time: every transaction source, every path, no bypass
+    * **maintain:** rules are self-ordering, so you add a rule without execution-path archaeology and trust it will run, in the right order.  [More on why rules](Tech-Modernization-Automation.md#why-rules){:target="_blank" rel="noopener"}
+
+    The process also produces documents for managing it:
+
+    * The ad-libs report lists every judgment call the AI made, so a person can confirm them
+    * The Requirements Traceability Report lists the extracted requirements and their rules, plus the tests the system created, and confirms which rules ran
+
+    The rebuild covers the database, API, messaging, security, and business logic.  It does not address deployment or database migration.
+
+    We have run this twice, on small systems.  The results are encouraging.  We have not shown that a rebuild behaves the same as the original: see [what we can and cannot say](#what-we-can-and-cannot-say).
 
 &nbsp;
 
@@ -49,11 +49,11 @@ Three steps:
 
 **1. Recover.**  AI reads the legacy code and writes down what it does, in plain language: the data, the business rules, the integrations, the security.  The result is a requirements document.  It describes what the code does, which is not always what the business meant, so a person should read it.  It often records behavior nobody had written down.
 
-**2. Rebuild.**  The requirements go to GenAI-Logic, which builds a new system from them: the database and API, messages declarative rules for the business logic, tests generated from the rules, logic diagrams, and a Requirements Traceability Report that shows each requirement beside the rules and tests that implement it.  The AI follows a short script, one line per task.
+**2. Rebuild.**  The requirements go to GenAI-Logic, which builds a new system from them: the database and API, messaging, declarative rules for the business logic, tests generated from the rules, logic diagrams, and a Requirements Traceability Report that shows each requirement beside the rules and tests that implement it.  The AI follows a short script, one line per task.
 
 **3. Review.**  Wherever the requirements stopped and the AI had to decide, it records the decision in an *ad-libs* report, with the ones a person must check marked.  The more the AI infers, the more this list matters.  A person decides each item.
 
-See [this companion article](Tech-RTP.md){:target="_blank" rel="noopener"}.
+For more on the automated reports, see ["What did AI Build"](Tech-RTP.md){:target="_blank" rel="noopener"}.
 
 &nbsp;
 
@@ -95,8 +95,6 @@ Plain statements of behavior, with no code.  The AI turns each into rules.
 
 ## The experiments
 
-We have run the process twice.
-
 | | [Controlled sample](Tech-Modernization-Automation.md){:target="_blank" rel="noopener"} | [ERPNext](Tech-Modernization-ERPNext.md){:target="_blank" rel="noopener"} |
 |---|---|---|
 | **Source** | An order-entry system AI built for the experiment, with its documents removed | The credit control in ERPNext, an open-source business application we did not write |
@@ -124,10 +122,7 @@ What we cannot say:
 - That the rebuilt system behaves the same as the original.  Both experiments used the same family of AI assistants end to end, and we compared against the recovered requirements and, for ERPNext, the repository's tests by reading.  We did not run the original and the rebuild side by side.
 - That it scales.  Both systems are small, and each was run once.
 - That it works on old code.  Neither source is decades old.
+- That it covers deployment or database migration.  Neither is addressed here.
 
 The test we would most like to see is an older, messier codebase, recovered independently by a second model, with the results compared.  If you have one, that is the experiment worth running.
-
-&nbsp;
-
-> **Rules are the governance**<br> - Enforcement You Can Trust<br> - Documentation You Can Read
 
