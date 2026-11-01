@@ -26,7 +26,24 @@ version: 1.3 from docsite, for readme 8/6/2016
 
 # Customs Demo
 
+## At a Glance
+
+### Process Msg Transactions
+
+The system 
+
+1. Subscribes to a broker message for shipments
+2. Determines which are **"Customs Low Value Shipments"** that require no further intervention
+    * Some of the classification rules are shown on the right panel
+3. Forwards low value shipments to the Tax System
+   
 ![summary](images/integration/customs_demo/summary.png)
+
+### Created from Requirements
+
+The system is created from requirements, as follows:
+
+![summary](images/integration/customs_demo/creation_process.png)
 
 &nbsp;
 
