@@ -150,21 +150,12 @@ Without these, the app runs in debug/fallback mode only (no Kafka consumer activ
 
 ---
 
-## Run the Test Gate
+## Test a Live Kafka Pipeline
 
-If the project has one (e.g. `demo_customs_clvs`'s `docs/requirements/customs_demo/test_gate.sh`),
-requires the server running on port 5656 and Kafka running.
-
-```bash
-bash docs/requirements/<name>/test_gate.sh
-```
-
-The gate tests both the debug path (no Kafka needed) and the live Kafka path.
-To require the Kafka phase to pass:
-
-```bash
-KAFKA_PHASE_REQUIRED=true bash docs/requirements/<name>/test_gate.sh
-```
+Run the project's Behave tests (the server must be running on port 5656, with Kafka enabled in `config/default.env`).
+Live sends are asynchronous, so the tests poll the blob table before asserting.
+To start from a clean state, and to see where a message ended up, follow
+"Verifying a subscribe pipeline" in the project's `docs/training/eai_subscribe.md`.
 
 ---
 
