@@ -19,7 +19,7 @@ version: 1.0, 10/13/2026
   in the system ever writes. The CE catches both unaided: the streak gets built correctly,
   and the alert logic is left commented out with a `FIXME` rather than guessing a trigger
   mechanism it was never asked to invent.
-* **`students_courses_1`** — the same project, carried one phase further. A second
+* **`students_courses_sweep`** — the same project, carried one phase further. A second
   Executable Requirements pass supplies the missing design decision (an externally
   triggered sweep endpoint, suited to a clustered deployment, plus an `Enrollment` table
   the sweep needs to know who was expected) and turns the `FIXME` into working code.
@@ -65,9 +65,9 @@ Rather than invent a trigger mechanism unprompted, the implementation leaves the
 logic commented out with a `FIXME`, and files the gap — with candidate strategies, not a
 silent pick — in its own `ad-libs.md`.
 
-[Full report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/students_courses/docs/requirements/course_dropoff/ad-libs.md)
+[Full report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/failure_to_post/students_courses/docs/requirements/course_dropoff/ad-libs.md)
 
-## Phase 2 — `students_courses_1`: resolved
+## Phase 2 — `students_courses_sweep`: resolved
 
 Given the missing decision — a scheduled reconciliation job, triggered externally rather
 than by an in-process timer (so a clustered deployment never races multiple instances
@@ -103,7 +103,7 @@ And here is the sweeper, created from `implement requirements':
 
 ![sweeper](images/students_courses/insert_abasence.png)
 
-[Full report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/students_courses_1/docs/requirements/students_courses_attendance_sweep/ad-libs.md)
+[Full report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/failure_to_post/students_courses_sweep/docs/requirements/students_courses_attendance_sweep/ad-libs.md)
 
 ## Try it
 
@@ -112,15 +112,14 @@ And here is the sweeper, created from `implement requirements':
 implement reqs students_courses
 
 # Phase 2, on a copy of the resulting project:
-cp -r samples/students_courses samples/students_courses_1
-cd samples/students_courses_1
-cp -r ../requirements/students_courses_attendance_sweep docs/requirements/
+cp -r samples/failure_to_post/students_courses samples/failure_to_post/students_courses_sweep
+cd samples/failure_to_post/students_courses_sweep
 ```
 
-Then, to the assistant:
+Then, to the assistant (it copies the set into `docs/requirements/`):
 
 ```
-implement reqs students_courses_attendance_sweep — note it also corrects course_dropoff's
+implement requirements ../requirements/students_courses_attendance_sweep — note it also corrects course_dropoff's
 Clause 1 (enrolled_count), update that use case's files too
 ```
 

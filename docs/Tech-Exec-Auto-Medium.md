@@ -76,18 +76,15 @@ The setup below creates a project from an existing database — standard Python,
 # A - Create project from existing database
 genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
 
-# B - In created project, get these requirements
-$ cp -r ../samples/requirements/demo_eai/ .
-
-# C - Optionally, configure security
+# B - Optionally, configure security
 $ (cd devops/keycloak; docker compose up -d)
 $ genai-logic add-auth --provider-type=keycloak --db-url=localhost
 
-# D - Create system from requirements
-implement requirements docs/requirements/demo_eai
+# C - Create system from requirements (the AI copies them into the project)
+implement requirements ../samples/requirements/demo_eai/docs/requirements/demo_eai
 ```
 
-The following is the exact prompt (steps 1-6) you can then submit to create logic, custom APIs, Messaging, and Security.  AI uses the Context Engineering to create executable software from the actual requirements below (step D).
+The following is the exact prompt (steps 1-6) you can then submit to create logic, custom APIs, Messaging, and Security.  AI uses the Context Engineering to create executable software from the actual requirements below (step C).
 
 &nbsp;
 

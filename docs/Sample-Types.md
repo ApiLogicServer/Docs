@@ -23,7 +23,7 @@ version: 1.1 (Sep 2026)
 
 # Entity Subtypes — Single Table Inheritance Pattern
 
-This is a delivered sample (`samples/demo_emp_types`), which can also rebuild as follows:
+This is a delivered sample (`samples/data_modeling/demo_emp_types`), which can also rebuild as follows:
 
 ![types](images/database/entity_types.png)
 

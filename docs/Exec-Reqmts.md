@@ -273,7 +273,7 @@ Use case: App Integration
 
 ### Gherkin
 
-For teams that already use BDD-style specs (see `samples/requirements/demo-eai/docs/requirements/demo-eai/requirements.md`):
+For teams that already use BDD-style specs (see `samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md`):
 
 ```gherkin
 Feature: Check Credit
@@ -456,21 +456,31 @@ For the real thing at enterprise scale, see the [full ad-libs.md from `customs_d
 
 ## Try It — `demo_eai` in Under 10 Minutes
 
-The Manager ships a ready-to-run sample: `samples/requirements/demo_eai/` — B2B order intake via both a custom REST endpoint and Kafka, with outbound shipping notification and full Check Credit logic.
+The Manager ships a ready-to-run sample: `samples/requirements/demo_eai/` — B2B order intake via both a custom REST endpoint and Kafka, with outbound shipping notification, full Check Credit logic and row-level security. A short script drives the whole build.
 
+**Step 1 — Paste the script.** From the Manager root, paste `samples/requirements/demo_eai/create_script.txt` into your AI assistant (Agent mode). Each line is a sentence; the AI maps it to the right CLI call:
 
-```bash title="Step 1 - Establish Initial State, Execute Requirements"
-# A - Create project from existing database
-genai-logic create --project_name=demo_eai --db_url=sqlite:///samples/dbs/basic_demo.sqlite
+```
+Check for Docker or Podman. If neither is running, continue in degraded mode (SQL security, simulated Kafka) and tell me so up front.
 
-# B - in created project, get these requirements
-$ cp -r ../samples/requirements/demo-eai/ .
+create project demo_eai from samples/dbs/basic_demo.sqlite
 
-# C - create system from requirements
-implement requirements docs/requirements/demo_eai
+add security (degrade to SQL if Keycloak is not available)
+
+implement requirements samples/requirements/demo_eai/docs/requirements/demo_eai
+
+verify message subscriptions (all topics)
+
+create logic diagram for each requirement (skip if graphviz is not available)
+
+create tests from rules, using default names
+
+run the tests
+
+run the requirements traceability report
 ```
 
-AI reads `docs/requirements/Order-EAI/requirements.md`, builds the system, and writes `docs/requirements/Order-EAI/ad-libs.md`.
+The AI reads `requirements.md`, builds the system, and writes `docs/requirements/demo_eai/ad-libs.md`. To avoid containers entirely, paste `create_script_no_container.txt` instead.
 
 **Step 2 — Review the audit trail:**
 
@@ -479,10 +489,10 @@ AI reads `docs/requirements/Order-EAI/requirements.md`, builds the system, and w
 
 Update `requirements.md` to clarify anything flagged red, then re-run.
 
-**Step 3 — Verify** (no Kafka required — use the `consume_debug` endpoint):
+**Step 3 — Verify.** The script's `verify message subscriptions` line already sends the sample message (live if a Kafka broker is running, otherwise through the `consume_debug` endpoint) and confirms the new order. To check by hand without Kafka:
 
 ```bash
-curl 'http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/Order-EAI/message_formats/order_b2b.json'
+curl 'http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/demo_eai/message_formats/order_b2b.json&mode=simulated'
 
 sqlite3 database/db.sqlite "SELECT * FROM order_b2b_message; SELECT * FROM 'order'; SELECT * FROM item;"
 ```
