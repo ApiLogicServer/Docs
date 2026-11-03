@@ -2,7 +2,7 @@
 title: "Welcome to GenAI-Logic"
 canonical_url: "https://www.genai-logic.com"
 description: "GenAI-Logic unites AI-generated app creation with deterministic declarative logic, reducing backend code by up to 40× and bringing governance and maintainability to enterprise AI systems."
-date: 2025-11-01
+date: "2025-11-01"
 ---
 
 # Welcome to GenAI‑Logic

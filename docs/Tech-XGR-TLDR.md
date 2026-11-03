@@ -1,7 +1,7 @@
 ---
 title: "Executable Governed Requirements - TLDR"
 author: Val Huber
-date: 2026-05-29
+date: "2026-05-29"
 version: 7
 ---
 

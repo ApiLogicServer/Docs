@@ -2,7 +2,7 @@
 title: "Enterprise AI: The Missing Piece"
 author: W. Ries
 version: 5.8
-date: 2026-06-22
+date: "2026-06-22"
 changed_v5.8: plainer lang (never had chance for training)
 changes_v5.6: tech debt bullet rewritten — platform-managed vs you-manage; plain language
 changes_v5.7: Agile section added — manifesto advised working software; real screens day one; iterate twelve times before lunch

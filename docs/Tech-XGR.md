@@ -1,7 +1,7 @@
 ---
 title: "AI Made Executable Requirements Real. Governance Is What Makes Them Deployable."
 author: Val Huber
-date: 2026-05-29
+date: "2026-05-29"
 version: 16
 ---
 
