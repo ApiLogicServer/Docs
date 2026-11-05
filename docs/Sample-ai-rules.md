@@ -25,6 +25,8 @@ version: 1.0 from docsite, for readme 2/16/2026
 
 ![example](images/sample-ai/copilot/AI-Rules-Audit.png)
 
+![example](images/sample-ai/creation.png)
+
 !!! pied-piper "TL;DR - Integrated Deterministic and AI Rules"
     ##
     AI provides creativity and reasoning that businesses want... how do we provide that, *with deterministic goverance?*.  
