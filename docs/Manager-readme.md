@@ -21,6 +21,11 @@ codespaces_patch: |
   the "## 🚀 First Time Here?" heading (sentinel: do not rename that heading without
   updating the matching logic in create_codespaces_mgr.py). The note warns Safari users to
   switch to Chrome/Edge. This avoids forking the README for Codespaces.
+image_links: |
+  Use markdown ![alt](images/...) with a doc-relative path, so images show in the editor preview and on
+  the mkdocs site; copy_md() makes them absolute for the Manager copy (only lines starting with "![").
+  A raw <img> tag is NOT rewritten by mkdocs (404s on the site) - use one only when you need align=,
+  with an absolute raw.githubusercontent.com URL (see the right-aligned diagram in "Trustworthy and Auditable").
 -->
 <style>
   -typeset h1,
@@ -109,7 +114,9 @@ CODESPACES-ONLY-END -->
 <details markdown>
 <summary>The AI turns those <strong>requirements</strong> into five <strong>rules</strong>, one for each — click to see them in your IDE</summary>
 
-<br><img src="../images/manager/readme/check_credit.png" alt="VS Code showing check_credit.py: the five requirements as intent at the top, and the five matching declarative rules below" width="640">
+<br>
+
+![VS Code showing check_credit.py: the five requirements as intent at the top, and the five matching declarative rules below](images/manager/readme/check_credit.png)
 
 The requirements are the docstring; the rules are the five lines of `declare_logic()`, one per requirement. The file is [check_credit.py](samples/basic_demo_logic_gov/logic/logic_discovery/place_order/check_credit.py).
 
@@ -187,12 +194,12 @@ Left unguided, any AI assistant — including the one that just built basic_demo
 <summary>&emsp;&emsp;<strong>Not readable</strong> — you can't govern what you can't read (5 vs ~200 lines)</summary>
 
 <br>**~200 lines** of procedural code — ***hard to read, intent unclear*:**
-<img src="../images/manager/readme/credit_service.png" alt="~200 lines of procedural credit-check code, for the same 5 requirements 5 declarative rules cover" width="640">
+![~200 lines of procedural credit-check code, for the same 5 requirements 5 declarative rules cover](images/manager/readme/credit_service.png)
 
 Same 5 requirements from the Check Credit prompt in "The Ideal" above — handed to AI with no guidance, it generated this: [procedural/credit_service.py](samples/basic_demo_logic_gov/logic/procedural/credit_service.py) — **~200 lines**. Open it and judge for yourself.
 
 **5 declarative rules — *readable* at a glance:**
-<img src="../images/manager/readme/check_credit.png" alt="5 declarative rules for check_credit — the same 5 requirements, readable in seconds" width="640">
+![5 declarative rules for check_credit — the same 5 requirements, readable in seconds](images/manager/readme/check_credit.png)
 
 [logic_discovery/place_order/check_credit.py](samples/basic_demo_logic_gov/logic/logic_discovery/place_order/check_credit.py) — same 5 requirements, same AI.
 
@@ -394,7 +401,7 @@ They sit alongside the infrastructure you already rely on — your database, Kaf
 
 **Think of a DBMS** — the rules are the DDL, the rules engine is the database server. The rules are plain Python files in your project, under source control, the way DDL is a script you keep. The rules engine runs inside your service and enforces them at commit, the way a database server enforces its schema.
 
-<img src="../images/manager/readme/Gov-Layer.png" alt="AI Driven Rules sit between callers and the database, alongside security (Keycloak/RBAC) and messaging (Kafka); rules are written by AI and Context Engineering" width="640">
+![AI Driven Rules sit between callers and the database, alongside security (Keycloak/RBAC) and messaging (Kafka); rules are written by AI and Context Engineering](images/manager/readme/Gov-Layer.png)
 
 &nbsp;
 
@@ -423,7 +430,7 @@ The alternatives don't give you that:
 - **Requirements are easy to read, but incomplete — and a little vague.** They leave decisions unmade and open to interpretation, so they can't tell you what the system does.
 - **Code is bloated, complicated, and hard to trust.** There's far more of it, and you have to trace where it's called, whether it's ordered correctly, and whether dependencies are handled.
 
-<img src="../images/manager/readme/check_credit.png" alt="5 declarative rules for check_credit — the same 5 requirements, readable in seconds" width="640">
+![5 declarative rules for check_credit — the same 5 requirements, readable in seconds](images/manager/readme/check_credit.png)
 
 [logic_discovery/place_order/check_credit.py](samples/basic_demo_logic_gov/logic/logic_discovery/place_order/check_credit.py): five requirements, five rules. What they can't show you is what the requirement left unsaid and the AI had to assume. That's next.
 
@@ -434,7 +441,9 @@ The alternatives don't give you that:
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>AI Alerts</strong> — proactive human-in-the-loop, every AI assumption</summary>
 
-<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/ad-lib-report.png?raw=true" alt="Ad-libs report: a Review Required entry naming a blocking ambiguity, with candidate resolutions" width="640">
+<br>
+
+![Ad-libs report: a Review Required entry naming a blocking ambiguity, with candidate resolutions](images/manager/readme/ad-lib-report.png)
 
 Every requirement leaves things unsaid — the AI can and should resolve that ambiguity. But that carries the responsibility to provide a **proactive** heads-up so you can confirm the decision; that's shown in the report above.
 
@@ -460,7 +469,9 @@ A compliance reviewer can check the implementation in minutes, not by reading co
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>Health Check</strong> — logic analysis / usage / utilization</summary>
 
-<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/proj-gov-report.png?raw=true" alt="Health check report: coverage, integrity, and red-flag scores for a project's rules" width="640">
+<br>
+
+![Health check report: coverage, integrity, and red-flag scores for a project's rules](images/manager/readme/proj-gov-report.png)
 
 Ongoing hygiene, not just at creation: run any time to confirm the codebase still holds up as the project evolves — rule adoption, dependency-tracking integrity, missing docstrings, across the whole project. [Full report](samples/basic_demo_logic_gov/docs/requirements/health_check.md).
 
@@ -471,7 +482,9 @@ Ongoing hygiene, not just at creation: run any time to confirm the codebase stil
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>Test Creation</strong> — requirements traceability (from rules analysis)</summary>
 
-<br><img src="https://github.com/ApiLogicServer/Docs/blob/main/docs/images/manager/readme/hehave-test.png?raw=true" alt="Behave Logic Report: a test scenario traced to the rules it exercised and the logic log proving they fired" width="640">
+<br>
+
+![Behave Logic Report: a test scenario traced to the rules it exercised and the logic log proving they fired](images/manager/readme/hehave-test.png)
 
 The three reports above analyze the rules as declared — this one proves they ran. Behave tests trace straight back to the requirement that drove them — and the report shows which declarative rules fired for each scenario, with before/after values, not just pass/fail. Requirement → test → rule → execution log, in one place. [Full report](samples/basic_demo_logic_gov/test/api_logic_server_behave/reports/Behave%20Logic%20Report.md).
 
@@ -528,7 +541,7 @@ patterns. [More on system vs. domain knowledge →](https://apilogicserver.githu
 
 <br>The demo above showed ***Publish** the Order to Kafka topic*. For the **subscribe** side, see [samples/basic_demo_eai/readme.md](samples/basic_demo_eai/readme.md): B2B orders from partner systems, via a Custom API or Kafka subscriber, including *lookups* so partners send `"Account": "Alice"` (not internal IDs). One project handles both directions — no separate system to stand up:
 
-<img src="../images/integration/demo-eai.png" alt="basic_demo_eai: B2B Partner and Broker both feed one governed order system, which publishes order_shipping" width="560">
+![basic_demo_eai: B2B Partner and Broker both feed one governed order system, which publishes order_shipping](images/integration/demo-eai.png)
 
 Below is the portion of the requirement for subscribing:
 
@@ -565,7 +578,7 @@ this platform generates. You don't ask for it.
 
 <br>Your API is **MCP-discoverable** out of the box (`/.well-known/mcp.json`). Copilot, Claude, or ChatGPT can find the schema and answer natural-language queries against it. There's no discovery layer for you to write — see [samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md](samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md)
 
-<img src="../images/basic_demo/mcp-ui.png" alt="Admin App SysMcp form — a business user enters a natural-language request (list unpaid orders, email each customer a discount), no code written" width="560">
+![Admin App SysMcp form — a business user enters a natural-language request (list unpaid orders, email each customer a discount), no code written](images/basic_demo/mcp-ui.png)
 
 Here, an end user makes a NL request to find some data, and send email — **the same governing rules enforce it**, whether the request came from MCP, the API, or a form. No new door, no new bypass.
 
@@ -582,7 +595,7 @@ You can also use MCP in your IDE to issue queries in natural language.
 
 Point yours at the generated API, and it renders against real, governed data — the same logic runs no matter what's calling it. One database, one API, any number of custom front ends: dashboards, tree views, maps, card layouts — all shown below, same backend, all generated in about 15 minutes with no hand-written JavaScript.
 
-<img src="../images/ui-vibe/nw/vibe-gallery.png" alt="Gallery of vibe-generated UIs — dashboard, tree view, map, cards — all against one governed API" width="700">
+![Gallery of vibe-generated UIs — dashboard, tree view, map, cards — all against one governed API](images/ui-vibe/nw/vibe-gallery.png)
 
 The card layout above, worked first try:
 
@@ -642,7 +655,7 @@ for more NL → declaration examples.
 
 <br>Rules that call AI for genuinely judgment-call decisions (e.g. picking a supplier under disrupted shipping lanes). Such AI "proposals" are **governed by the deterministic rules** to ensure results conform to business policy, with a full audit trail of every AI request and response — see [samples/basic_demo_ai_rules-supplier/readme.md](samples/basic_demo_ai_rules-supplier/readme.md)
 
-<img src="../images/sample-ai/copilot/AI-Rules-Audit.png" alt="Audit trail of an AI Rule's request and response, shown in the Admin App" width="560">
+![Audit trail of an AI Rule's request and response, shown in the Admin App](images/sample-ai/copilot/AI-Rules-Audit.png)
 
 The rule below is one line (`__Use AI__ to Set...`) inside an otherwise ordinary logic declaration — deterministic and AI rules aren't two systems, they're the same DSL:
 
