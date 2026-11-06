@@ -16,6 +16,7 @@ demo_eai: Sample-Basic-EAI
 demo_vibe: Sample-Basic-Demo-Vibe
 demo_copilot_mcp_discovery: Sample-ai-mcp
 basic_demo: Sample-Basic-Demo
+basic_demo_rfi: Sample-Basic-Demo-RFI
 codespaces_patch: |
   create_codespaces_mgr.py injects a Codespaces-only browser note immediately after
   the "## 🚀 First Time Here?" heading (sentinel: do not rename that heading without

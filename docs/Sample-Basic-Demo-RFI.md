@@ -2,7 +2,7 @@
 title: Sample_Basic_Demo_RFI
 do_process_code_block_titles: True
 version: 1.00
-source: Sample_Basic_Demo_RFI
+source: docs/Sample-Basic-Demo-RFI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
 <style>
@@ -24,7 +24,7 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 
 ## Overview
 
-This app illustrates using IntegrationServices for B2B push-style integrations with APIs, and internal integration with messages.
+This app illustrates *requirements from interview* (RFI). The prompt specifies the basic demo (Customers, Orders, Check Credit) in full, and asks AI to interview you only about one clause: encouraging sales of *"green"* products with a discount. AI interviews you on that clause, confirms its understanding, then builds the system.
 
 &nbsp;
 
