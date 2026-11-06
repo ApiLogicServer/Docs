@@ -38,9 +38,11 @@ nav:
     - "Allo Dept/GL": Sample_Allo_Dept_GL_readme.md
     - "Creating Demos": Manager-Demos.md
     - "Basic Demo": Sample-Basic-Demo.md
+    - "Creating Demos": Manager-Demos.md
     - ".. AI Rules Supplier": Sample-ai-rules.md
     - ".. MCP Send Mail": Sample-Basic-Demo-MCP-Send-Email.md
     - ".. Vibe": Sample-Basic-Demo-Vibe.md
+    - ".. Req From Interview": Sample-Basic-Demo-RFI.md
     - ".. EAI": Sample-Basic-EAI.md
     - ".. Sub-Types": Sample-Types.md
     - ".. Students & Courses": Sample-Students-Courses.md
