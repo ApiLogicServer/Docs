@@ -139,7 +139,7 @@ nav:
     - "Sample Databases": Data-Model-Examples.md
     - "Docker Test Databases": Database-Docker.md
     - Data-Model-Classes.md
-    - "Ontologies": Database-Ontology.md
+    - "Types and Ontologies": Database-Ontology.md
     - Data-Model-Keys.md
     - Data-Model-Customization.md
     - "Database Design Changes": Database-Changes.md
