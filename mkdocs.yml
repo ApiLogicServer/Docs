@@ -294,6 +294,7 @@ nav:
     - Personal:
       - "Manager readme": Manager-readme.md
       - "Home": Home.md
+      - "For Architects": Tech-Architects.md
       - "Manager video": Tech-Manager-Video.md
       - "INFO": ApiLogicServer-create.md
       - "Summary": Tech-Summary.md

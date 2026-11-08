@@ -9,7 +9,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
   }
 </style>
 
-&nbsp;
+ 
 
 !!! pied-piper ":robot: Welcome to GenAI-Logic"
 
@@ -19,7 +19,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
     And it **fits what you already use**: your methodology, standard tools, and shared artifacts, **fostering collaboration** between Business Users and Developers.
 
-    For a walk-through, see the [Introduction](Introduction.md){:target="_blank" rel="noopener"}.
+    For a walk-through, see the [Introduction][1]{:target="_blank" rel="noopener"}.
 
 ---
 
@@ -27,7 +27,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
 Worth a scan: this section provides a heads-up for some things that may be new, plus some standard dev workflow that is no longer required.
 
-&nbsp;
+ 
 
 ### What It Is
 
@@ -42,9 +42,9 @@ This CE provides key services not found in traditional IDEs.
 
 <br>Use the CE to create projects, or add logic to existing projects.
 
-![existing-db](images/exec_reqmts/basic_demo_existing_db.png)
+![existing-db][2]
 
-*More below, under [Create Your Own](#3-create-your-own).*
+*More below, under [Create Your Own][3].*
 
 </details>
 
@@ -56,7 +56,7 @@ This CE provides key services not found in traditional IDEs.
 
 ![training](images/manager/Manager-Training.png)
 
-The [Manager](Manager.md) ships a full sample catalog of pre-built sample projects. Each is AI-enabled — ask it how it works.  It will also work for projects you create.
+The [Manager][4] ships a full sample catalog of pre-built sample projects. Each is AI-enabled — ask it how it works.  It will also work for projects you create.
 
 Then pursue technical topics according to your priorities.  For example, ask ***"what are rules?"***
 
@@ -71,15 +71,15 @@ Then pursue technical topics according to your priorities.  For example, ask ***
 
 </details>
 
-*More: [Introduction](Introduction.md){:target="_blank" rel="noopener"} · [AI, You're in Control](Tech-AI-First.md){:target="_blank" rel="noopener"}.*
+*More: [Introduction][1]{:target="_blank" rel="noopener"} · [AI, You're in Control](Tech-AI-First.md){:target="_blank" rel="noopener"}.*
 
-&nbsp;
+ 
 
 #### Executable Models
 
 Models manage the complexity — API, UI, Role-Based Access Control (RBAC), and, most importantly, business logic. The example below illustrates how 5 simple requirements become 5 simple rules, not ~200 lines of code.
 
-Models are executed by runtime engines already in your Python environment; see the example under [Create Your Own](#3-create-your-own). 
+Models are executed by runtime engines already in your Python environment; see the example under [Create Your Own][3]. 
 
 Models are real, generated code — full access, always — open it, edit it, debug it in your IDE like any other project.
 
@@ -87,17 +87,17 @@ Most teams now build their UI with a Vibe tool. Vibe tools are frontend-only —
 
 !!! pied-piper "The Payoff"
 
-    Taken together, these mean you can create governed enterprise-class systems from requirements — see the [Introduction](Introduction.md){:target="_blank" rel="noopener"}.
+    Taken together, these mean you can create governed enterprise-class systems from requirements — see the [Introduction][1]{:target="_blank" rel="noopener"}.
 
 *More: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"} · [Architecture](Architecture-What-Is.md){:target="_blank" rel="noopener"} · [tested against native AI](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"}.*
 
-&nbsp;
+ 
 
 #### Standard Tooling
 
 Your IDE, your debugger, your git, all work normally. Rules are plain Python files, committed like everything else. Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server, Oracle, SQLite. Nothing proprietary, nothing to unlearn.
 
-&nbsp;
+ 
 
 ### What It Isn't
 
@@ -107,13 +107,13 @@ Rules **aren't called** — from each API path or anywhere else. They fire autom
 
 *See the architecture: [Governance by Architecture, Not Discipline](Tech-Gov-By-Arch.md){:target="_blank" rel="noopener"}.*
 
-&nbsp;
+ 
 
 #### Not Manual Schema Maintenance
 
 Describe your change — add a column, say — and AI updates the model and the schema. Edit `models.py` by hand instead, and the next rebuild overwrites you.
 
-&nbsp;
+ 
 
 #### Iterate Requirements, Not Code
 
@@ -144,10 +144,10 @@ Notes:
 3. If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md)
 4. If you are using VSCode, we ***strongly recommend*** you create the VSCode CLI - for more information, [click here](IDE-Customize.md#vscode-cli){:target="_blank" rel="noopener"}.  Do this before the next step
 
-See [Express Install](Install-Express.md) for details, including Docker and Codespaces options.  The `genai-logic start` command loads the [Manager](Manager.md){:target="_blank" rel="noopener"} (a directory for creating and managing projects, below).
+See [Express Install](Install-Express.md) for details, including Docker and Codespaces options.  The `genai-logic start` command loads the [Manager][4]{:target="_blank" rel="noopener"} (a directory for creating and managing projects, below).
 
 
-&nbsp;
+ 
 
 ### 2. Manager: manage projects, learning hub
 
@@ -182,7 +182,7 @@ This is a hands-on tour for creating `basic_demo`, covering API creation, declar
 
 </details>
 
-&nbsp;
+ 
 
 ### 3. Create Your Own
 
@@ -190,7 +190,7 @@ You can create projects from existing databases, or new database projects from p
 
 Point at an existing database and describe your rules — paste the prompt into your AI assistant, or run the one-liner it gives you:
 
-![existing-db](images/exec_reqmts/basic_demo_existing_db.png)
+![existing-db][2]
 
 <details markdown>
 <summary>See the generated project — declarative models (e.g. rules), vs. procedural code</summary>
@@ -219,3 +219,8 @@ It can be tricky to use Discord for screen sharing - here is the procedure for a
 2. Share your screen:
 
 ![discord-1](images/support/discord/discord-1.png)
+
+[1]: Introduction.md
+[2]: images/exec_reqmts/basic_demo_existing_db.png
+[3]: #3-create-your-own
+[4]: Manager.md
