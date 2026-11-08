@@ -1,6 +1,20 @@
-# GenAI-Logic for Architects
+---
+title: For Architects
+Description: Briefing
+---
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
 
-AI is remarkable at generating code, but [it's **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  Our core focus is to leverage AI intent capture, but direct it to create enterprise-class systems you can **read, trust and maintain**.
+!!! pied-piper ":robot: Welcome to GenAI-Logic"
+    AI is remarkable at generating code, but [it's **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  You can't govern what you can't read.
+    
+    Our core focus is to leverage AI intent capture, but direct it to create enterprise-class systems you can **read, trust and maintain**.
+
+<br>
 
 ![dgm](images/architecture/logic-architecture-arch.png)
 
@@ -63,6 +77,6 @@ In addition to no-bypass transaction logic **runtime enforcement**, the system p
 
 ## 5. Works with your other tools
 
-GenAI-Logic uses **standard databases, IDEs and Python** ("the language of AI").
+Your IDE, your debugger, your git, all work normally. Rules are plain Python files, committed like everything else. Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server, Oracle, SQLite. Nothing proprietary, nothing to unlearn.
 
 Standard JSON:APIs enable the use of [**Vibe tools**](Admin-Vibe.md){:target="_blank" rel="noopener"} for custom UI dev.

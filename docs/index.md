@@ -19,7 +19,12 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
     And it **fits what you already use**: your methodology, standard tools, and shared artifacts, **fostering collaboration** between Business Users and Developers.
 
-    For a walk-through, see the [Introduction][1]{:target="_blank" rel="noopener"}.
+    For a walk-through, see the [Introduction][1]{:target="_blank" rel="noopener"}
+
+![dgm](images/architecture/logic-architecture-exec.png)
+
+[For architects](Tech-Architects.md){:target="_blank" rel="noopener"}
+
 
 ---
 
