@@ -2,14 +2,13 @@
 title: GenAI-Logic
 Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code, Python, Docker, Azure, Web Apps, Microservice
 ---
+
 <style>
   .md-typeset h1,
   .md-content__button {
     display: none;
   }
 </style>
-
- 
 
 !!! pied-piper ":robot: Welcome to GenAI-Logic"
 
@@ -19,11 +18,12 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
     And it **fits what you already use**: your methodology, standard tools, and shared artifacts, **fostering collaboration** between Business Users and Developers.
 
-    For a walk-through, see the [Introduction][1]{:target="_blank" rel="noopener"}
+    For a walk-through, see the [Introduction][1]{:target="_blank" rel="noopener"}.
+
+    For an architect briefing, see [for architects](Tech-Architects.md){:target="_blank" rel="noopener"}.
 
 ![dgm](images/architecture/logic-architecture-exec.png)
 
-[For architects](Tech-Architects.md){:target="_blank" rel="noopener"}
 
 
 ---
@@ -31,8 +31,6 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 ## Concepts
 
 Worth a scan: this section provides a heads-up for some things that may be new, plus some standard dev workflow that is no longer required.
-
- 
 
 ### What It Is
 
@@ -78,8 +76,6 @@ Then pursue technical topics according to your priorities.  For example, ask ***
 
 *More: [Introduction][1]{:target="_blank" rel="noopener"} · [AI, You're in Control](Tech-AI-First.md){:target="_blank" rel="noopener"}.*
 
- 
-
 #### Executable Models
 
 Models manage the complexity — API, UI, Role-Based Access Control (RBAC), and, most importantly, business logic. The example below illustrates how 5 simple requirements become 5 simple rules, not ~200 lines of code.
@@ -96,13 +92,9 @@ Most teams now build their UI with a Vibe tool. Vibe tools are frontend-only —
 
 *More: [Model Driven](Tech-DSL.md){:target="_blank" rel="noopener"} · [Architecture](Architecture-What-Is.md){:target="_blank" rel="noopener"} · [tested against native AI](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"}.*
 
- 
-
 #### Standard Tooling
 
 Your IDE, your debugger, your git, all work normally. Rules are plain Python files, committed like everything else. Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server, Oracle, SQLite. Nothing proprietary, nothing to unlearn.
-
- 
 
 ### What It Isn't
 
@@ -112,13 +104,9 @@ Rules **aren't called** — from each API path or anywhere else. They fire autom
 
 *See the architecture: [Governance by Architecture, Not Discipline](Tech-Gov-By-Arch.md){:target="_blank" rel="noopener"}.*
 
- 
-
 #### Not Manual Schema Maintenance
 
 Describe your change — add a column, say — and AI updates the model and the schema. Edit `models.py` by hand instead, and the next rebuild overwrites you.
-
- 
 
 #### Iterate Requirements, Not Code
 
@@ -131,7 +119,6 @@ When you do need code, it lives alongside the models, not layered on top of them
 ---
 
 ## Getting Started
-
 
 ### 1. Install
 
@@ -151,12 +138,9 @@ Notes:
 
 See [Express Install](Install-Express.md) for details, including Docker and Codespaces options.  The `genai-logic start` command loads the [Manager][4]{:target="_blank" rel="noopener"} (a directory for creating and managing projects, below).
 
-
- 
-
 ### 2. Manager: manage projects, learning hub
 
-The Manager is a directory for creating and managing projects.   
+The Manager is a directory for creating and managing projects.
 
 ![Manager](images/manager/readme.png)
 
@@ -186,8 +170,6 @@ This is a hands-on tour for creating `basic_demo`, covering API creation, declar
 ![tutor](images/manager/tutor.png)
 
 </details>
-
- 
 
 ### 3. Create Your Own
 
