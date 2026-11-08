@@ -28,6 +28,20 @@ We provide extensive CE to direct AI to generate **rules, not code:**
 * **Trust:** rules are **not called**; they are wired into a single SQLAlchemy `before_flush` listener, so they run on **all transaction sources** (APIs, MCP, messages, app code) and paths - **no second door**.  Reading a rule tells you it runs, without tracing call sites.  **Governance by architecture, not discipline.**
 * **Maintain:** change a requirement, **change one rule**.  The engine re-derives everything that depends on it - no hunting for change paths, and no regenerating and re-reviewing procedural code.
 
+**Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, you describe the next requirement and get back a rule that covers every path - insert, update, delete, reassignment - not just the one you tested.  When you do need code, it lives alongside the rules, not layered on top of them.
+
+<details markdown>
+
+<summary>See - Declare Rules with AI </summary>
+
+<br>You can declare rules in an existing project as shown below.  You can also declare them when creating projects - see **2. Executable Requirements**.
+
+![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-vibe.png)
+
+</details>
+
+<br>
+
 **Think of a DBMS:** the rules are the DDL, and the rules engine is the database server - it runs inside your service and enforces them at commit.
 
 **The engine is [not RETE](FAQ-RETE.md){:target="_blank" rel="noopener"}:** it is purpose-built for transactions.  It receives the actual change events, fires only the rules they affect, and [maintains aggregates incrementally](Logic-Operation.md){:target="_blank" rel="noopener"} instead of recomputing them.
@@ -47,6 +61,16 @@ We provide extensive CE to direct AI to generate **rules, not code:**
 **The output is rules even when the input reads procedurally:** [given the same procedural spec](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"}, native AI built the insert path only, while this pipeline produced 5 rules covering every path.  [Repeated across projects](Tech-XGR.md){:target="_blank" rel="noopener"}, the result has been **rules every time**.
 
 This works particularly well with VSCode Agent Window, so **Developers and Business Users can share the same tools**.
+
+<details markdown>
+
+<summary>See - Requirements Specification</summary>
+
+<br>
+
+![create_script](images/integration/demo_eai/create_script.png)
+
+</details>
 
 <br>
 
@@ -80,3 +104,5 @@ In addition to no-bypass transaction logic **runtime enforcement**, the system p
 Your IDE, your debugger, your git, all work normally. Rules are plain Python files, committed like everything else. Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server, Oracle, SQLite. Nothing proprietary, nothing to unlearn.
 
 Standard JSON:APIs enable the use of [**Vibe tools**](Admin-Vibe.md){:target="_blank" rel="noopener"} for custom UI dev.
+
+<br>
