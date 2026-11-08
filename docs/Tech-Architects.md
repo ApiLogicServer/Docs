@@ -10,7 +10,7 @@ Description: Briefing
 </style>
 
 !!! pied-piper ":robot: Welcome to GenAI-Logic"
-    AI is remarkable at generating code, but [it's **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  You can't govern what you can't read.
+    AI is remarkable at generating code, but [it's **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  How can you govern what you can't read?
     
     Our core focus is to leverage AI intent capture, but direct it to create enterprise-class systems you can **read, trust and maintain**.
 
