@@ -10,7 +10,8 @@ Description: Briefing
   }
 </style>
 
-!!! pied-piper ":robot: Welcome to GenAI-Logic"
+!!! pied-piper ":robot: GenAI-Logic - Architecture Brief"
+
     AI is remarkable at generating code, but [it's **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  How can you govern what you can't read?
 
     Our core focus is to leverage AI intent capture, but direct it to create enterprise-class systems you can **read, trust and maintain**.
@@ -22,8 +23,9 @@ Description: Briefing
 **Two funnels, meeting at the rules:** 
 
 * any form of intent becomes rules (2), 
-* every transaction source (3) is governed by them at commit (1), and 
-* the same rules drive the governance reports (4).  
+* every transaction source (3) is governed by them at commit (1),
+* rules are automatically ordered and re-used for all paths (1), and 
+* the same rules drive the governance reports (4).
 
 More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-the-rules){:target="_blank" rel="noopener"}.
 
