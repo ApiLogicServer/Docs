@@ -2,6 +2,7 @@
 title: For Architects
 Description: Briefing
 ---
+
 <style>
   .md-typeset h1,
   .md-content__button {
@@ -10,8 +11,8 @@ Description: Briefing
 </style>
 
 !!! pied-piper ":robot: Welcome to GenAI-Logic"
-    AI is remarkable at generating code, but [it's **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  How can you govern what you can't read?
-    
+AI is remarkable at generating code, but [it's **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  How can you govern what you can't read?
+
     Our core focus is to leverage AI intent capture, but direct it to create enterprise-class systems you can **read, trust and maintain**.
 
 <br>
@@ -25,8 +26,8 @@ Description: Briefing
 We provide extensive CE to direct AI to generate **rules, not code:**
 
 * **Read:** [40X more concise](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}, and free from dependency management complexity
-* **Trust:** rules are **not called**; they are wired into a single SQLAlchemy `before_flush` listener, so they run on **all transaction sources** (APIs, MCP, messages, app code) and paths - **no second door**.  Reading a rule tells you it runs, without tracing call sites.  **Governance by architecture, not discipline.**
-* **Maintain:** change a requirement, **change one rule**.  The engine re-derives everything that depends on it - no hunting for change paths, and no regenerating and re-reviewing procedural code.
+* **Trust:** rules are **not called**; they are wired into a single SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) and paths - **no second door**.  Reading a rule tells you it runs, without tracing call sites.  **Governance by architecture, not discipline.**
+* **Maintain:** change the rule, and the engine takes care of the rest: calling it, ordering it, and propagating its dependencies.
 
 **Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, you describe the next requirement and get back a rule that covers every path - insert, update, delete, reassignment - not just the one you tested.  When you do need code, it lives alongside the rules, not layered on top of them.
 
@@ -93,7 +94,7 @@ In addition to no-bypass transaction logic **runtime enforcement**, the system p
 * **[Traceability reports](Behave-Logic-Report.md){:target="_blank" rel="noopener"}** that trace requirements to the underlying rules, and confirm their execution on tests
 * **AI Alerts:** reports where AI proactively calls for review for inferences drawn from incomplete or vague requirements - and where there is no safe default, it **stops and leaves a `FIXME`** rather than guessing
 * **Logic flow diagrams and a health check** (rule adoption, dependency-tracking integrity), generated from the rules
-* **[Ontology creation](Database-Ontology.md){:target="_blank" rel="noopener"}** makes systems available to an important class of tools, and provides terminology clarity for business users
+* **[Ontology creation](Database-Ontology.md){:target="_blank" rel="noopener"}** (including type support) makes systems available to an important class of tools, and provides terminology clarity for business users
 
 [More on project governance](Manager-readme.md#rules-you-can-read){:target="_blank" rel="noopener"}.
 
