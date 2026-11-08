@@ -12,9 +12,9 @@ Description: Briefing
 
 !!! pied-piper ":robot: GenAI-Logic - Architecture Brief"
 
-    AI is remarkable at generating code, but [it's **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  How can you govern what you can't read?
+    AI is remarkable at generating code, but the [generated code **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  How can you govern what you can't read?
 
-    Our core focus is to leverage AI intent capture, but direct it to create enterprise-class systems you can **read, trust and maintain**.
+    Our core focus is to leverage AI intent capture, but provide ***governance*** by directing it to create enterprise-class systems you can **read, trust and maintain**.
 
 <br>
 
@@ -22,10 +22,10 @@ Description: Briefing
 
 **Two funnels, meeting at the rules:** 
 
-* any form of intent becomes rules (2), 
-* every transaction source (3) is governed by them at commit (1),
-* rules are automatically ordered and re-used for all paths (1), and 
-* the same rules drive the governance reports (4).
+* vritually any form of intent becomes rules (2), 
+* every transaction source (3) is governed by them,
+* by a commit funnel, which rules automatically orders and re-uses logic for all paths (1), where 
+* the same rules drive governance reports (4).
 
 More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-the-rules){:target="_blank" rel="noopener"}.
 
@@ -36,10 +36,10 @@ More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-
 We provide extensive CE to direct AI to generate **rules, not code:**
 
 * **Read:** [40X more concise](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}, and free from dependency management complexity
-* **Trust:** rules are **not called**; they are wired into a single SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) and paths - **no second door**.  Reading a rule tells you it runs, without tracing call sites.  **Governance by architecture, not discipline.**
+* **Trust:** rules are **not called**; they are wired into the SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) and paths - **no bypass**.  Reading a rule thus tells you it runs, without tracing call paths.  **Governance by architecture**, not dependent on discipline.
 * **Maintain:** change the rule, and the engine takes care of the rest: calling it, ordering it, and propagating its dependencies.
 
-**Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, you describe the next requirement and get back a rule that covers every path - insert, update, delete, reassignment - not just the one you tested.  When you do need code, it lives alongside the rules, not layered on top of them.
+**Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, you describe the next requirement and get back rules that cover every path - insert, update, delete, reassignment - not just the one you designed.
 
 <details markdown>
 
@@ -59,7 +59,7 @@ We provide extensive CE to direct AI to generate **rules, not code:**
 
 **When a rule can't express it, [Python events](Logic-Type-Events.md){:target="_blank" rel="noopener"} are the extension point** - they run in the same transaction, integrated with the rules.  Events can't silently reopen the bypass: the engine [refuses to start](Logic-Type-Events.md#events-must-not-mutate-row){:target="_blank" rel="noopener"} if an event mutates a row without an explicit override.
 
-**Rules address business logic and Role Based Access Control.**
+Rules address both business logic and **Role Based Access Control.**
 
 **The approach is [proven](Tech-Proven.md){:target="_blank" rel="noopener"}:** the same technology ran in production for decades at Wang PACE and [Versata](FAQ-Versata.md){:target="_blank" rel="noopener"}.
 
@@ -67,7 +67,7 @@ We provide extensive CE to direct AI to generate **rules, not code:**
 
 ## 2. Executable Requirements
 
-**No matter how requirements are provided, [rules are created](Exec-Reqmts.md){:target="_blank" rel="noopener"}.**  CE even enables AI to [**interview** users](Exec-Reqmts.md#requirements-from-interview){:target="_blank" rel="noopener"} to capture requirements, or process requirements extracted from **legacy code** ([Modernization](Modernization-Overview.md){:target="_blank" rel="noopener"}).
+**No matter how requirements are provided, [rules are created](Exec-Reqmts.md){:target="_blank" rel="noopener"}.**  CE even enables AI to [interview users](Exec-Reqmts.md#requirements-from-interview){:target="_blank" rel="noopener"} to capture requirements, or process requirements extracted from **legacy code** ([modernization](Modernization-Overview.md){:target="_blank" rel="noopener"}).
 
 **The output is rules even when the input reads procedurally:** [given the same procedural spec](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"}, native AI built the insert path only, while this pipeline produced 5 rules covering every path.  [Repeated across projects](Tech-XGR.md){:target="_blank" rel="noopener"}, the result has been **rules every time**.
 
@@ -77,20 +77,22 @@ This works particularly well with VSCode Agent Window, so **Developers and Busin
 
 <summary>See - Requirements Specification</summary>
 
-<br>
+<br>Developers can use AI in their standard IDE:
 
 ![create_script](images/integration/demo_eai/create_script.png)
 
+Business Users can use Agents Window:
+![create_script](images/exec_reqmts/rfi_with_int_bd_rfi.png)
 </details>
 
 <br>
 
 ## 3. Enterprise-class architecture
 
-That same CE automates systems with **rule-enabled access:**
+Other CE elements automate systems with **rule-enabled access:**
 
-* **[Enterprise-class APIs](API.md){:target="_blank" rel="noopener"}:** pagination, [optimistic locking](API-Opt-Lock.md){:target="_blank" rel="noopener"}, filtering, sorting etc.  APIs are automatically [**MCP enabled**](Integration-MCP.md){:target="_blank" rel="noopener"}, so agents can invoke them with full deterministic logic enforcement.
-* **[Message handling](Integration-EAI.md){:target="_blank" rel="noopener"}:** declare subscribe and publish
+* **[Enterprise-class APIs](API.md){:target="_blank" rel="noopener"}:** pagination, [optimistic locking](API-Opt-Lock.md){:target="_blank" rel="noopener"}, filtering, sorting etc.  APIs are **automatically [MCP enabled](Integration-MCP.md){:target="_blank" rel="noopener"}**, so agents can invoke them with full deterministic logic enforcement.
+* **[Message handling](Integration-EAI.md){:target="_blank" rel="noopener"}:** subscribe and publish
 
 **Proof points:** [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"}, [Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"}, [Budget Allocation](Sample_Allo_Dept_GL_readme.md){:target="_blank" rel="noopener"}
 
