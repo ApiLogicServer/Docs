@@ -33,13 +33,13 @@ More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-
 
 ## 1. Business Logic - rules not code
 
-We provide extensive CE to direct AI to generate **rules, not code:**
+We provide extensive CE to direct AI to generate **rules, not code**.  Rules are spreadsheet-like expressions you can:
 
 * **Read:** [40X more concise](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}, and free from dependency management complexity
 * **Trust:** rules are **not called**; they are wired into the SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) and paths - **no bypass**.  Reading a rule thus tells you it runs, without tracing call paths.  **Governance by architecture**, not dependent on discipline.
 * **Maintain:** change the rule, and the engine takes care of the rest: calling it, ordering it, and propagating its dependencies.
 
-**Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, you describe the next requirement and get back rules that cover every path - insert, update, delete, reassignment - not just the one you designed.
+**Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, alter the requirement and get back rules that cover every path - insert, update, delete, reassignment - not just the one you designed.
 
 <details markdown>
 
@@ -114,7 +114,9 @@ In addition to no-bypass transaction logic **runtime enforcement**, the system p
 
 ## 5. Works with your other tools
 
-Your IDE, your debugger, your git, all work normally. Rules are plain Python files, committed like everything else. Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server, Oracle, SQLite. Nothing proprietary, nothing to unlearn.
+Your IDE, your debugger, your git, all work normally. Rules are plain Python files, full logging and debugging, and committed like everything else.
+
+Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server, Oracle, SQLite. Nothing proprietary, nothing to unlearn.
 
 Standard JSON:APIs enable the use of [**Vibe tools**](Admin-Vibe.md){:target="_blank" rel="noopener"} for custom UI dev.
 
