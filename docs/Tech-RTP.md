@@ -35,7 +35,7 @@ rules diagram, test creation, Req Rules Report (some screen shots)
   }
 </style>
 
-# What Did the AI Build?
+# What Did AI Build?
 
 ## Old school: what is our business policy?
 
@@ -75,7 +75,7 @@ The old developer's job didn't go away; it got bigger.  The volume went up, and 
 A governable system is one you can **read**, **trust**, and **maintain**.  That starts with a simple question: *what does the system do?*  There are two standard places to look, and both break down:
 
 - **Requirements say too little.**  The **prompt is incomplete** by design (we *want* AI to fill in details and make assumptions) and the **generation is probabilistic**.  Bad combination.  So the prompt can't be the source of truth, and the code can't be trusted unread, the way we trust a compiler's output.<br><br>
-- **Code says too much.**  Business language in, **40X more** procedural code out, bearing *little relationship* to the originating requirements.  In an [A/B test](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md), a five-line credit policy became about 200 lines of AI-generated procedural code, with two bugs in change paths it missed.  Review is already being called the next bottleneck.  
+- **Code says too much.**  Business language in, **40X more** procedural code out, bearing *little relationship* to the originating requirements.  In an [A/B test](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md), a five-line credit policy became about 200 lines of AI-generated procedural code, with two bugs in change paths it missed.  Review is already being called the next bottleneck.
 
 What about process: reviews, sign-offs, documentation standards?  Process governs paper.  A sign-off certifies that someone reviewed what no one could fully read, and the documents drift from the code the day they're written.  That can look like governance without governing anything.
 
@@ -129,7 +129,7 @@ And the earlier questions are answered right there in the code, as decisions you
 
 These are *transaction* rules.  The engine listens for database commits, compares each row's old and new state, and adjusts a parent total by the change instead of re-reading the children.
 
-  * It is not a RETE-style [decision engine](https://apilogicserver.github.io/Docs/FAQ-RETE/); it is built for transaction processing, and the two are complementary.  A decision engine has to be *called*, so you must audit every caller to know the logic is enforced.  Here the engine fires _automatically_ on every commit, so nothing can skip it.  No-bypass trust.
+* It is not a RETE-style [decision engine](https://apilogicserver.github.io/Docs/FAQ-RETE/); it is built for transaction processing, and the two are complementary.  A decision engine has to be *called*, so you must audit every caller to know the logic is enforced.  Here the engine fires _automatically_ on every commit, so nothing can skip it.  No-bypass trust.
 
 Rule execution is automatically ordered by system-discovered dependencies.  This means you can safely assume that rules are called in the right order, and that all side-effects are addressed.  So, for example, customer balances are adjusted when orders are inserted, paid, re-assigned, or deleted.
 
@@ -142,7 +142,6 @@ Requirements say too little, and code says too much.  **Rules are just right** â
 Rules restore the compiler's contract: a readable source, deterministically executed.  It only works if the output is what runs.  Documentation kept beside code drifts the day it's written.  Rules are **executable documentation** that you can read and trust:
 
 * **Read:** rules stay near the requirement's level, so a report can list them side by side and you can check one against the other.  5 rules vs. ~200 lines: **~40x less to review**, whether generated or hand-coded.  That's a small system; for what happened at scale, see [what Versata tells us](https://apilogicserver.github.io/Docs/FAQ-Versata/).<br><br>
-
 * **Trust:** the document is enforced, not just descriptive.
     - **What you read is what runs** â€” no drift between description and behavior.
     - **Dependencies:** with code, you analyze every execution path to know it runs at the right times.  That's the hard part.  With rules, if the rule is there, it runs, in the right order.
@@ -209,9 +208,9 @@ Observe the file/folder organization helps developers match rules to their requi
 
 Tests prove the rules work: the system is presumed guilty until tests prove it works.  Test creation is expensive.  So another AI service is to automate test creation.
 
-**The rules make automatic test creation *intelligent*: *whatever appears in them is what to test.*** See line 13 in the creation script, above.
+**The rules make automatic test creation *intelligent*: *whatever appears in them is what to test.** See line 13 in the creation script, above.
 
- Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.  
+ Each rule names the fields it reads and the fields it writes, so the AI can see which fields have side effects: change an item's quantity, and the item amount, the order total and the customer's balance all move.
 
 For each such field, AI asks the same questions: what happens when it is inserted, changed, or deleted?  The answers are the scenarios: change a quantity, ship an order and, by the same questions, delete an item, unship it, move an order to another customer, change an item's product.
 
@@ -264,7 +263,7 @@ To maintain the system, you edit the requirement, re-implement, re-run the tests
 
 The [Requirements Traceability Report](https://apilogicserver.github.io/Docs/Behave-Logic_Report-bd-eai/) is governance documentation.  It's organized according to the business requirements: each requirement is listed beside the rules that implement it, and the tests that exercise it.  This provides the traceability from the requirement, to the code, to the verification that it works.
 
-The report is built from the project's own files, and it checks in both directions.  A requirement with no rule or no test is a gap.  So is a rule that traces to no requirement.  
+The report is built from the project's own files, and it checks in both directions.  A requirement with no rule or no test is a gap.  So is a rule that traces to no requirement.
 
 It also reports its own holes.  In the sample there are 5 requirements, all implemented and all 5 tested, Security included.  Of the 8 rules, 7 ran in at least one test, and the report explains why it could not match the eighth: a generic date-stamping handler whose name the engine's log does not give.  It also lists two implementation files that trace to no requirement, the stamping handler and the B2B mapper.
 
@@ -272,7 +271,7 @@ It also reports its own holes.  In the sample there are 5 requirements, all impl
 
 ### New User Orientation
 
-The report is designed to be consumed by Business Users, including those not directly part of the development.  The report therefore begins with a short orientation, so such users can understand the process, what requirements and rules are, etc.  
+The report is designed to be consumed by Business Users, including those not directly part of the development.  The report therefore begins with a short orientation, so such users can understand the process, what requirements and rules are, etc.
 
 This enables an organization to store these in a central repository, enabling business users to discover systems, what they do, and their testing.
 
@@ -298,7 +297,6 @@ Optionally, `create logic diagram for each requirement` draws the rule chains. (
 
 ### Test Results
 
-
 **Trust, but verify.**  A passing test is a claim; the evidence is a record of the rules running.  Because the engine runs on every commit, it can record exactly what rules ran, so each test scenario shows every rule that fired (indents show multi-table chaining).
 
 This shows each test - its definition, and (for those seeking detail), the detail rule execution.
@@ -321,7 +319,7 @@ The question at the start was *what did AI build?*  With code, you answer it by 
 
 With rules, the same rules do two jobs.  The engine runs them, and they are the input to the documentation: the requirement beside the rules, the tests, the diagrams, the record of the rules running.  Nobody writes that document, so it can't fall behind the system.
 
-Here is that in one run.  From five short requirements and a few plain-English requests (create the project, implement the requirements, create the tests, run the report), the AI built a partner API, Kafka messaging in and out, and row-level security.  
+Here is that in one run.  From five short requirements and a few plain-English requests (create the project, implement the requirements, create the tests, run the report), the AI built a partner API, Kafka messaging in and out, and row-level security.
 
 The result is 8 rules (5 declarative, 3 Python events) and 12 of 12 scenarios passing against a live Kafka broker, with a report that traces each requirement to its rules and tests and lists its own gaps.  The AI also listed three judgment calls for review, the first of them what "unpaid" means.  Inspect the [sample project](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai): start with `logic/logic_discovery/check_credit.py` and `docs/requirements/demo_eai/ad-libs.md`, then open the report.
 

@@ -12,11 +12,17 @@ Description: Briefing
 
 !!! pied-piper ":robot: GenAI-Logic - Architecture Brief"
 
-    AI is remarkable at generating code, but the [generated code **is hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  How can you govern what you can't read?
+    AI is remarkable at generating code, but you're left without clarity on what to govern:
+    
+    * the requirements are incomplete.  AI completed them probabilistically - with guesses you never see.
+    * the generated code **is hard to read and trust**.  How can you govern what you can't read?
 
-    Our core focus is to leverage AI intent capture, but provide ***governance*** by directing it to create enterprise-class systems you can **read, trust and maintain**.
+    Our core focus is to leverage AI intent capture, extended to provide ***governance:***
+    
+    > Context Engineering (CE) to create enterprise-class systems based on **rules** you can **read, trust and maintain**.
 
-    See the full article: [What Did the AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}.
+    See the full background: [What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
+
 
 <br>
 
@@ -24,10 +30,11 @@ Description: Briefing
 
 **Two funnels, meeting at the rules:** 
 
-* vritually any form of intent becomes rules (2), 
-* every transaction source (3) is governed by them,
-* by a commit funnel, which rules automatically orders and re-uses logic for all paths (1), where 
-* the same rules drive governance reports (4).
+1. virtually any form of intent becomes rules, 
+2. every transaction source is governed by them,
+3. by a commit funnel that executes automatically ordered, reused rules over all paths,
+4. while the same rules drive the governance reports.
+
 
 More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-the-rules){:target="_blank" rel="noopener"}.
 
