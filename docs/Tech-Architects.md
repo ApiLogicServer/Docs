@@ -31,17 +31,18 @@ Description: Briefing
 
 **Two funnels, meeting at the rules:** 
 
-1. virtually any form of intent becomes rules, 
-2. every transaction source is governed by them,
-3. by a commit funnel that executes automatically ordered, reused rules over all paths,
-4. while the same rules drive the governance reports.
+1. Virtually any form of intent becomes rules ([Executable Requirements](#executable-requirements)),
+2. Every transaction source ([Enterprise-class Architecture](#enterprise-class-architecture)) is governed by them,
+3. By a commit funnel that executes automatically ordered, reused rules over all paths ([Business Logic](#business-logic-rules-not-code)),
+4. While the same rules drive the governance reports ([Governance](#governance)).
+
 
 
 More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-the-rules){:target="_blank" rel="noopener"}.
 
 <br clear="all">
 
-## 1. Business Logic - rules not code
+## Business Logic - rules not code
 
 We provide extensive CE to direct AI to generate **rules, not code**.  Rules are spreadsheet-like expressions you can:
 
@@ -55,7 +56,7 @@ We provide extensive CE to direct AI to generate **rules, not code**.  Rules are
 
 <summary>See - Declare Rules with AI </summary>
 
-<br>You can declare rules in an existing project as shown below.  You can also declare them when creating projects - see **2. Executable Requirements**.
+<br>You can declare rules in an existing project as shown below.  You can also declare them when creating projects - see [Executable Requirements](#executable-requirements).
 
 ![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-vibe.png)
 
@@ -75,7 +76,7 @@ Rules address both business logic and **Role Based Access Control.**
 
 <br>
 
-## 2. Executable Requirements
+## Executable Requirements
 
 **No matter how requirements are provided, [rules are created](Exec-Reqmts.md){:target="_blank" rel="noopener"}.**  CE even enables AI to [interview users](Exec-Reqmts.md#requirements-from-interview){:target="_blank" rel="noopener"} to capture requirements, or process requirements extracted from **legacy code** ([modernization](Modernization-Overview.md){:target="_blank" rel="noopener"}).
 
@@ -105,7 +106,7 @@ Here is the created, logic-enabled system:
 
 <br>
 
-## 3. Enterprise-class architecture
+## Enterprise-class architecture
 
 Other CE elements automate systems with **rule-enabled access:**
 
@@ -116,7 +117,7 @@ Other CE elements automate systems with **rule-enabled access:**
 
 <br>
 
-## 4. Governance
+## Governance
 
 In addition to no-bypass transaction logic **runtime enforcement**, the system provides **review support** with:
 
@@ -130,7 +131,7 @@ In addition to no-bypass transaction logic **runtime enforcement**, the system p
 
 <br>
 
-## 5. Works with your other tools
+## Works with your other tools
 
 Your IDE, your debugger, your git, all work normally. Rules are plain Python files, full logging and debugging, and committed like everything else.
 
