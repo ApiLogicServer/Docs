@@ -98,11 +98,11 @@ This works particularly well with VSCode Agent Window, so **Developers and Busin
 
 Business Users can use the simplified Agents Window (below).  This creates a system in minutes, including test data and screens.
 
-> Use this to explore new business initiatives, vet the backlog... in hours.
+> Use this to **explore new business initiatives**, **vet the backlog...** in hours.
 > 
 ![create_script](images/exec_reqmts/rfi_with_int_bd_rfi.png)
 
-Here is the created, logic-enabled system:
+Here is the created, logic-enabled system.  Business Users can **enter real transactions**, see business logic execute, and **collaborate on iterations.**
 
 ![running](images/exec_reqmts/rfi_with_int_bd.png)
 
