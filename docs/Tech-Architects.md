@@ -33,8 +33,8 @@ Description: Briefing
 
 1. Virtually any form of intent becomes rules ([Executable Requirements](#executable-requirements)),
 2. Every transaction source ([Enterprise-class Architecture](#enterprise-class-architecture)) is governed by them,
-3. By a commit funnel that executes automatically ordered, reused rules over all paths ([Business Logic](#business-logic-rules-not-code)),
-4. While the same rules drive the governance reports ([Governance](#governance)).
+3. Rules run at the commit funnel - automatically ordered, reused rules over all paths ([Business Logic](#business-logic-rules-not-code)),
+4. The same rules drive the governance reports ([Governance](#governance)).
 
 
 
