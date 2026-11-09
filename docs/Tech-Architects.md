@@ -14,8 +14,9 @@ Description: Briefing
 
     AI is remarkable at generating code, but you're left without clarity on what to govern:
     
-    * the requirements are incomplete.  AI completed them probabilistically - with guesses you never see.
+    * the requirements are incomplete, and AI fills the gaps with guesses you never see.  How can you govern what you can't see?
     * the generated code **is hard to read and trust**.  How can you govern what you can't read?
+
 
     Our core focus is to leverage AI intent capture, extended to provide ***governance:***
     
