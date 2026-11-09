@@ -12,9 +12,11 @@ Description: Briefing
 
 !!! pied-piper ":robot: GenAI-Logic - Architecture Brief"
 
-    AI is remarkable at generating code, but the [generated code **hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  How can you govern what you can't read?
+    AI is remarkable at generating code, but the [generated code **is hard to read and trust**](Manager-readme.md#ai-alone){:target="_blank" rel="noopener"}.  How can you govern what you can't read?
 
     Our core focus is to leverage AI intent capture, but provide ***governance*** by directing it to create enterprise-class systems you can **read, trust and maintain**.
+
+    See the full article: [What Did the AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}.
 
 <br>
 
@@ -75,14 +77,22 @@ This works particularly well with VSCode Agent Window, so **Developers and Busin
 
 <details markdown>
 
-<summary>See - Requirements Specification</summary>
+<summary>See - Executable Requirements</summary>
 
 <br>Developers can use AI in their standard IDE:
 
 ![create_script](images/integration/demo_eai/create_script.png)
 
-Business Users can use Agents Window:
+Business Users can use the simplified Agents Window (below).  This creates a system in minutes, including test data and screens.
+
+> Use this to explore new business initiatives, vet the backlog... in hours.
+> 
 ![create_script](images/exec_reqmts/rfi_with_int_bd_rfi.png)
+
+Here is the created, logic-enabled system:
+
+![running](images/exec_reqmts/rfi_with_int_bd.png)
+
 </details>
 
 <br>
