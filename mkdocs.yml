@@ -57,7 +57,7 @@ nav:
       - "Agile Tutorial": Tutorial-Agile.md
       - "AI - ChatGPT, Agile": Tutorial-AI.md
       - "Sample Systems": Data-Model-Examples.md
-  - 1. Creating/Managing Projects:
+  - 1. Create/Manage Projects:
     - "Fitting Your Workflow": WorkFlow.md
     - "Manager": Manager.md
     - "Executable Reqmts": Exec-Reqmts.md
