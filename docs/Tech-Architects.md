@@ -42,6 +42,8 @@ More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-
 
 <br clear="all">
 
+---
+
 ## Business Logic - rules not code
 
 We provide extensive CE to direct AI to generate **rules, not code**.  Rules are spreadsheet-like expressions you can:
@@ -76,6 +78,8 @@ Rules address both business logic and **Role Based Access Control.**
 
 <br>
 
+---
+
 ## Executable Requirements
 
 **No matter how requirements are provided, [rules are created](Exec-Reqmts.md){:target="_blank" rel="noopener"}.**  CE even enables AI to [interview users](Exec-Reqmts.md#requirements-from-interview){:target="_blank" rel="noopener"} to capture requirements, or process requirements extracted from **legacy code** ([modernization](Modernization-Overview.md){:target="_blank" rel="noopener"}).
@@ -106,6 +110,8 @@ Here is the created, logic-enabled system:
 
 <br>
 
+---
+
 ## Enterprise-class architecture
 
 Other CE elements automate systems with **rule-enabled access:**
@@ -116,6 +122,8 @@ Other CE elements automate systems with **rule-enabled access:**
 **Proof points:** [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"}, [Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"}, [Budget Allocation](Sample_Allo_Dept_GL_readme.md){:target="_blank" rel="noopener"}
 
 <br>
+
+---
 
 ## Governance
 
@@ -130,6 +138,8 @@ In addition to no-bypass transaction logic **runtime enforcement**, the system p
 [More on project governance](Manager-readme.md#rules-you-can-read){:target="_blank" rel="noopener"}.
 
 <br>
+
+---
 
 ## Works with your other tools
 
