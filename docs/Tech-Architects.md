@@ -49,7 +49,7 @@ More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-
 We provide extensive CE to direct AI to generate **rules, not code**.  Rules are spreadsheet-like expressions you can:
 
 * **Read:** [40X more concise](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}, and free from dependency management complexity
-* **Trust:** rules are **not called**; they are wired into the SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) and paths - **no bypass**.  Reading a rule thus tells you it runs, without tracing call paths.  **Governance by architecture**, not dependent on discipline.
+* **Trust:** rules are ***automatically* called**; they are wired into the SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) and paths - **no bypass**.  Reading a rule thus tells you it runs, without tracing call paths.  **Governance by architecture**, not dependent on discipline.
 * **Maintain:** change the rule, and the engine takes care of the rest: calling it, ordering it, and propagating its dependencies.
 
 **Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, alter the requirement and get back rules that cover every path - insert, update, delete, reassignment - not just the one you designed.
@@ -72,7 +72,7 @@ We provide extensive CE to direct AI to generate **rules, not code**.  Rules are
 
 **When a rule can't express it, [Python events](Logic-Type-Events.md){:target="_blank" rel="noopener"} are the extension point** - they run in the same transaction, integrated with the rules.  Events can't silently reopen the bypass: the engine [refuses to start](Logic-Type-Events.md#events-must-not-mutate-row){:target="_blank" rel="noopener"} if an event mutates a row without an explicit override.
 
-Rules address both business logic and **Role Based Access Control.**
+Rules address both transaction logic and **Role Based Access Control.**
 
 **The approach is [proven](Tech-Proven.md){:target="_blank" rel="noopener"}:** the same technology ran in production for decades at Wang PACE and [Versata](FAQ-Versata.md){:target="_blank" rel="noopener"}.
 
