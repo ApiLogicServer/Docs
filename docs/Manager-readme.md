@@ -49,6 +49,8 @@ Whatever comes in, **governing rules come out** — project after project. It re
 
 And it **fits what you already use**: your methodology, standard tools, and shared artifacts, **fostering collaboration** between Business Users and Developers.
 
+**Evaluating this as an architect?** Start with the [Architecture Brief](https://apilogicserver.github.io/Docs/Tech-Architects/).
+
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager) — where you manage projects, notes and resources. It's also your learning hub.
 <!-- CODESPACES-ONLY-START
 (see [codespaces setup here](system/ApiLogicServer-Internal-Dev/setup.gif))
@@ -577,7 +579,7 @@ this platform generates. You don't ask for it.
 <details markdown>
 <summary>&emsp;&emsp;↳ <strong>MCP</strong> (Model Context Protocol) — your API is agent-discoverable out of the box</summary>
 
-<br>Your API is **MCP-discoverable** out of the box (`/.well-known/mcp.json`). Copilot, Claude, or ChatGPT can find the schema and answer natural-language queries against it. There's no discovery layer for you to write — see [samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md](samples/basic_demo_ai_rules-supplier/readme_ai_mcp.md)
+<br>Your API is **MCP-discoverable** out of the box (`/.well-known/mcp.json`). Copilot, Claude, or ChatGPT can find the schema and answer natural-language queries against it. There's no discovery layer for you to write — see [samples/basic_demo_ai_rules-supplier/readme.md](samples/basic_demo_ai_rules-supplier/readme.md)
 
 ![Admin App SysMcp form — a business user enters a natural-language request (list unpaid orders, email each customer a discount), no code written](images/basic_demo/mcp-ui.png)
 
