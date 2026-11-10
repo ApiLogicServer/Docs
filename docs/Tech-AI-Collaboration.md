@@ -104,7 +104,7 @@ Instead of ephemeral prompt tuning, we embedded the teaching *inside each projec
 
 Every generated system now ships with its own curriculum:
 
-- `.github/.copilot-instructions.md` — how to reason about architecture  
+- `.github/copilot-instructions.md` — how to reason about architecture  
 - `docs/training/logic_bank_api.prompt` — how to express rules  
 - `docs/training/testing.md` — how to verify behavior  
 

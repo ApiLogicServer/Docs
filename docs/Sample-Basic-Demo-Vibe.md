@@ -22,7 +22,7 @@ version: 1.1 (Jul 2026) - Section 2 updated for the Claude/CE React-app generati
 <br>
 
 ```bash title='🤖 Bootstrap your AI assistant — paste into chat (Agent mode, Claude Sonnet 4.6 recommended)'
-Please load `.github/.copilot-instructions.md`
+Please load `.github/copilot-instructions.md`
 ```
 
 <br>

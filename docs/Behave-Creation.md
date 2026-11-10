@@ -219,7 +219,7 @@ Testing benefits the same way the rules themselves do:
 
 ## Internals
 
-Training instruction for the AI Assistant (e.g., Copilot) is included in your project at `docs/training/testing.md`.  It is usually discovered by the Best Practice to load `.github/.copilot-instructions.md` when opening the project.
+Training instruction for the AI Assistant (e.g., Copilot) is included in your project at `docs/training/testing.md`.  It is usually discovered by the Best Practice to load `.github/copilot-instructions.md` when opening the project.
 
 ---
 

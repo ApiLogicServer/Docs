@@ -2,7 +2,7 @@
 
     Every project created by GenAI-Logic includes comprehensive training materials, readme's with code examples, and integration points that work seamlessly with GitHub Copilot, Claude, ChatGPT, and other AI assistants.
 
-    Projects are pre-created with `.github/.copilot-instructions.md`, AI training documents (`docs/training`), and working code examples that serve as a ***"message in a bottle"*** for AI assistants — no more explaining your project structure from scratch.
+    Projects are pre-created with `.github/copilot-instructions.md`, AI training documents (`docs/training`), and working code examples that serve as a ***"message in a bottle"*** for AI assistants — no more explaining your project structure from scratch.
 
     **Where AI helps most:**
 
@@ -159,7 +159,7 @@ For **project creation and executable requirements**, Claude Code terminal is re
 
 ### Why Claude Code Terminal for Creation
 
-**Project Creation** runs from the **Manager workspace**. The Manager's `.github/.copilot-instructions.md` guides Claude Code through the full sequence in one uninterrupted command:
+**Project Creation** runs from the **Manager workspace**. The Manager's `.github/copilot-instructions.md` guides Claude Code through the full sequence in one uninterrupted command:
 
 1. Scaffold project from `starter.sqlite`
 2. Read training docs silently (`subsystem_creation.md`, `logic_bank_api.md`, etc.)
@@ -210,14 +210,14 @@ AI is enabled as described below.
 When you create a new project with `genai-logic create`, project contains extensive Context Engineering to guide your AI Assistant to leverage Logic Automation.
 
 ```bash title="Bootstrap this by telling your AI Assistant to bootstrap itself"
-Please load `.github/.copilot-instructions.md`
+Please load `.github/copilot-instructions.md`
 ```
 
 ![AI-Enabled Projects](images/ui-vibe/assistant/copilot-hello.png)
 
 Your project includes comprehensive training materials that serve as a "message in a bottle" for AI assistants:
 
-1. **`.github/.copilot-instructions.md`** - this is the "message in a bottle" that enabled your AI Assitant to understand GenAI-Logic projects, and deliver the services above
+1. **`.github/copilot-instructions.md`** - this is the "message in a bottle" that enabled your AI Assitant to understand GenAI-Logic projects, and deliver the services above
 2. **`docs/training/`** - AI training documents with detail examples and patterns
 3. **`readme.md`** - Project overview with quick start instructions
 4. **Code examples** - real working examples in the `readme's` throughout the project

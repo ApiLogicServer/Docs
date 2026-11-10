@@ -10,14 +10,14 @@
 set -e  # Exit on error
 
 # Paths
-SOURCE_BASE="$HOME/dev/ApiLogicServer/ApiLogicServer-dev/org_git/ApiLogicServer-src/api_logic_server_cli/prototypes/base"
-DOCS_DIR="$HOME/dev/ApiLogicServer/ApiLogicServer-dev/org_git/Docs/docs"
+SOURCE_BASE="$HOME/dev/genai-logic/ApiLogicServer-dev/org_git/ApiLogicServer-src/api_logic_server_cli/prototypes/base"
+DOCS_DIR="$HOME/dev/genai-logic/ApiLogicServer-dev/org_git/Docs/docs"
 
 echo " "
 echo "Sync Context Engineering (CE) files to Docs for AI-assisted evaluation"
 echo " "
 echo "This will:"
-echo "  1. Copy bootstrap: .github/.copilot-instructions.md → Eval-copilot-instructions.md"
+echo "  1. Copy bootstrap: .github/copilot-instructions.md → Eval-copilot-instructions.md"
 echo "  2. Copy 19 training files: docs/training/*.md → Eval-*.md"
 echo "  3. Transform references: docs/training/*.md → Eval-*.md"
 echo " "
@@ -29,7 +29,7 @@ echo " "
 
 # 1. Copy and rename bootstrap
 echo "Copying bootstrap..."
-cp "$SOURCE_BASE/.github/.copilot-instructions.md" "$DOCS_DIR/Eval-copilot-instructions.md"
+cp "$SOURCE_BASE/.github/copilot-instructions.md" "$DOCS_DIR/Eval-copilot-instructions.md"
 
 # 2. Copy and rename training files (explicit list)
 echo "Copying training files..."

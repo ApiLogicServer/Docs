@@ -159,7 +159,7 @@ Traditional pitches force you through a predetermined flow. With AI evaluation, 
 
 <summary>When you bootstrapped your AI with those URLs, you accessed 2,599 lines of training materials</summary>
 
-- **`.copilot-instructions.md`** (1,587 lines) - The bootstrap/entry point for architecture understanding
+- **`copilot-instructions.md`** (1,587 lines) - The bootstrap/entry point for architecture understanding
 - **`docs/training/` folder** - Additional materials (LogicBank API reference, testing guide with 555 lines, architecture deep-dives)
 
 Here's what makes them credible - and why your AI will recognize genuine technical understanding vs. marketing claims.

@@ -333,8 +333,8 @@ The development environment has **two distinct Manager workspaces**:
 - [Medium Article](https://medium.com/@valjhuber/declarative-genai-the-architecture-behind-enterprise-vibe-automation-1b8a4fe4fbd7) - Complete architectural rationale
 
 **For Created Project Development:**
-- Manager-level `.copilot-instructions.md` - How to CREATE projects
-- Project-level `.copilot-instructions.md` - How to EXTEND/CUSTOMIZE projects
+- Manager-level `copilot-instructions.md` - How to CREATE projects
+- Project-level `copilot-instructions.md` - How to EXTEND/CUSTOMIZE projects
 - `docs/training/logic_bank_api.prompt` - LogicBank API reference (in each project)
 - `docs/training/testing.md` - Behave testing guide (1755 lines, in each project)
 
@@ -733,8 +733,8 @@ cp -a /build/. ../ApiLogicServer/api_logic_server_cli/create_from_model/admin/
 
 If you install the dev source from the manager, you are set up to use the Manager as a dev companion.  To bootstrap:
 
-1. Please load `.github/.copilot-instructions.md`.
-2. Please load `samples/nw_sample/.github/.copilot-instructions.md`.
+1. Please load `.github/copilot-instructions.md`.
+2. Please load `samples/nw_sample/.github/copilot-instructions.md`.
 3. Please load `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md`.
 
 

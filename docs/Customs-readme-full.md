@@ -334,7 +334,7 @@ The 'basic_demo` tables were an accidental artifact - we thought.  But when we r
 * we lost the master/detail structure that had been inferred from `basic_demo` - this needed to be added to the prompt
 * `basic_demo` also showed several basic logic patterns that we needed to add to the CE, shown below
 
-The study produced several durable CE principles now encoded in Context Engineering ()`subsystem_creation.md`, `logic_bank_api.md`, and `.copilot-instructions.md`):
+The study produced several durable CE principles now encoded in Context Engineering ()`subsystem_creation.md`, `logic_bank_api.md`, and `copilot-instructions.md`):
 
 * **Reference table default** — flat column + `Rule.copy`. Versioned child table only when the prompt explicitly mentions `effective_date`, rate history, or versioning.
 
