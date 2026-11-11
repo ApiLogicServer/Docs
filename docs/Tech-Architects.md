@@ -130,7 +130,7 @@ Other CE elements automate systems with **rule-enabled access:**
 In addition to no-bypass transaction logic **runtime enforcement**, the system provides **review support** with:
 
 * **[Test creation and execution](Behave.md){:target="_blank" rel="noopener"}**, by leveraging rules, to verify the requirements and rule execution
-* **[Traceability reports](Behave-Logic-Report.md){:target="_blank" rel="noopener"}** that trace requirements to the underlying rules, and confirm their execution on tests
+* **[Traceability reports](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** that trace requirements to the underlying rules, and confirm their execution on tests
 * **AI Alerts:** reports where AI proactively calls for review for inferences drawn from incomplete or vague requirements - and where there is no safe default, it **stops and leaves a `FIXME`** rather than guessing
 * **Logic flow diagrams and a health check** (rule adoption, dependency-tracking integrity), generated from the rules
 * **[Ontology creation](Database-Ontology.md){:target="_blank" rel="noopener"}** (including type support) makes systems available to an important class of tools, and provides terminology clarity for business users
