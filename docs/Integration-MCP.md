@@ -37,12 +37,12 @@ So, approach is to use the LLM to prepare - but not issue - the API calls.  This
 
 1. MCP Client Executor Startup calls `.well-known` endpoint to load training and schema meta data for each configured server
 
-2. MCP Client Executor sends Bus User ***NL query + training + schema*** to the external LLM (here we are using ChatGPT - requires API Key).  LLM returns an ***MCP Tool Context*** JSON block.
+2. MCP Client Executor sends Bus User ***NL query + training + schema*** to the external LLM (any OpenAI-compatible endpoint: OpenAI, Claude, local Ollama - requires an API key for hosted providers; see [Configuration](Logic-Using-AI.md#configuration)).  LLM returns an ***MCP Tool Context*** JSON block.
 
 	* An MCP Client Executor might be similar in concept to installed/Web ChatGPT (etc), but those *cannot* be used to access servers since they cannot issue http calls.  This is a custom client app (or, perhaps an IDE tool).
 
 	* To explore `integration/mcp/mcp_client_executor.py`, [click here](https://github.com/ApiLogicServer/basic_demo/blob/main/integration/mcp/mcp_client_executor.py){:target="_blank" rel="noopener"}
-	* Tool definitions are OpenAI specific, so we are sending the schema (in each prompt)
+	* Tool-calling formats differ by LLM provider, so we send the schema in each prompt (provider-neutral)
 
 		* Note this strongly suggests this is a **subset** of your database - edit `docs/mcp_schema.json` as required. 
  
@@ -76,7 +76,7 @@ Create the **basic_demo** under the [Manager](Manager.md) as described in the Ma
 ![create-server](images/integration/mcp/overview/1-create-server.png)
 
 2. Run `als add-cust` to load mcp (and logic)
-3. Optionally, define an environment variable: `APILOGICSERVER_CHATGPT_APIKEY` ChatGPT API Key (obtain one [like this](WebGenAI-CLI.md/#configuration)).
+3. Optionally, configure a language model with environment variables: `APILOGICSERVER_LLM_API_KEY` (and, for a provider other than OpenAI, `APILOGICSERVER_LLM_BASE_URL` and `APILOGICSERVER_LLM_MODEL`).  OpenAI, Claude and local Ollama endpoints are supported; see [Logic: Using AI - Configuration](Logic-Using-AI.md#configuration).  The older `APILOGICSERVER_CHATGPT_APIKEY` is still accepted.
 
 	* To make the demo less fiddly, the system loads the tool context from `integration/mcp/examples/mcp_tool_context.json`.  You can engage the LLM by setting `create_tool_context_from_llm` to `True`, which requires an API Key.
 

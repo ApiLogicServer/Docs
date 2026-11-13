@@ -216,10 +216,49 @@ These fields tell **exactly** what AI saw, why it chose, and what it returned.
 
 ## Configuration
 
-Note:
+AI rules create a request table in your database, and call a language model through `integration/ai/llm_client.py`, a small file in every project. It runs inside your API Logic Server process: there is no extra server, no SDK and no new dependency. It makes an HTTP call to an endpoint you configure, using the OpenAI-compatible chat protocol, so you choose the model provider.
 
-* this creates a table in your database
-* you will need to configure an environment variable `APILOGICSERVER_CHATGPT_APIKEY`.  If this is omitted, the system falls back to selecting the minimum cost supplier.
+If no model is configured or reachable, the rule does not fail: it uses its deterministic fallback (for the supplier example, the minimum-cost supplier) and records why in the request row.
+
+### Environment variables
+
+| Variable | Meaning |
+|---|---|
+| `APILOGICSERVER_LLM_BASE_URL` | Endpoint, e.g. `http://localhost:11434/v1` (Ollama) or `https://api.openai.com/v1` |
+| `APILOGICSERVER_LLM_MODEL` | Model name, e.g. `gpt-4o` or `llama3.1` |
+| `APILOGICSERVER_LLM_API_KEY` | API key. Optional for local endpoints. The older `APILOGICSERVER_CHATGPT_APIKEY` is still accepted |
+| `APILOGICSERVER_LLM_TIMEOUT` | Seconds to wait for a reply (default 30) |
+
+If `APILOGICSERVER_LLM_BASE_URL` is not set:
+
+* with an API key: OpenAI (`https://api.openai.com/v1`, model `gpt-4o`)
+* with no key: a quick check for a local Ollama at `http://localhost:11434/v1` (you must set `APILOGICSERVER_LLM_MODEL`, since Ollama has no default model)
+* otherwise: no model is available, and the fallback is used
+
+### Providers
+
+| Provider | `BASE_URL` | `MODEL` | Key |
+|---|---|---|---|
+| Ollama (local) | `http://localhost:11434/v1` | a model you have pulled | none |
+| OpenAI | `https://api.openai.com/v1` | `gpt-4o` | OpenAI key |
+| Claude | `https://api.anthropic.com/v1/` | a Claude model id | Anthropic key |
+| Gemini | `https://generativelanguage.googleapis.com/v1beta/openai/` | a Gemini model id | Gemini API key |
+
+Status: OpenAI and Claude (through Anthropic's OpenAI-compatibility endpoint) have been run live. Ollama-style endpoints have been tested only against a stub, and Gemini is **unverified** until run with a real key. Compatibility layers are partial: Claude rejects `temperature`, which the client drops automatically. Azure OpenAI and Google Vertex AI are **not supported yet** (their authentication differs from the OpenAI-compatible protocol).
+
+### Setting the variables
+
+A persistent change is seen only by *new* terminals and processes, so restart your IDE too.
+
+* **macOS / Linux:** add `export APILOGICSERVER_LLM_API_KEY="..."` to `~/.zprofile` (zsh) or `~/.bashrc`
+* **Windows, persistent for your user (PowerShell or cmd):** `setx APILOGICSERVER_LLM_API_KEY "..."`
+* **Windows, this session only:** PowerShell `$env:APILOGICSERVER_LLM_API_KEY = "..."`; cmd `set APILOGICSERVER_LLM_API_KEY=...`
+
+Keep a key out of files that are committed, or open in an editor while an AI assistant session is running.
+
+### Projects created before Nov 2026
+
+Earlier AI-rule handlers call OpenAI directly, using `APILOGICSERVER_CHATGPT_APIKEY`; they keep working while the `openai` package is installed. To move one to the vendor-neutral client, ask your AI coding assistant: *"migrate AI rules to the LLM client"*. It copies in `llm_client.py` if missing, changes only the call block in each handler, and tells you the old variable is no longer read. Failures that the old handler swallowed are now logged.
 
 ---
 
