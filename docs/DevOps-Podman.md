@@ -159,6 +159,41 @@ To start from a clean state, and to see where a message ended up, follow
 
 ---
 
+## Keycloak (security) under Podman
+
+Keycloak runs unchanged too. From the project root:
+
+```bash
+cd devops/keycloak
+podman compose up -d
+cd ../..
+genai-logic add-auth --provider-type=keycloak --db-url=localhost
+```
+
+Verify: `curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/realms/kcals` returns `200`
+(the realm is imported on first start). Admin console: <http://localhost:8080> (`admin` / `password`).
+
+!!! warning "Podman remembers the absolute path of a bind mount"
+
+    `devops/keycloak/docker-compose.yml` mounts `$PWD/import`. Podman stores the **absolute host path** when
+    it creates the container. If that project directory is later deleted, moved or regenerated, the next
+    `podman start keycloak` fails with:
+
+        crun: cannot stat `.../devops/keycloak/import`: No such file or directory
+
+    The fix is to recreate the container from a directory that still exists:
+
+    ```bash
+    podman rm -f keycloak
+    cd <a project>/devops/keycloak && podman compose up -d
+    ```
+
+    Realm state lives inside the container (Keycloak dev mode), so recreating it re-imports the realm from `import/`.
+    If you create the container from a project you will later delete or regenerate, copy `devops/keycloak/import`
+    somewhere permanent first and mount that path instead (edit the `volumes:` line).
+
+---
+
 ## Disk Layout (where things are stored on Mac)
 
 | What | Mac path |
