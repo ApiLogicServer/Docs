@@ -1,0 +1,26 @@
+:root
+  {
+    --md-admonition-icon--pied-piper:url('../docs/assets/images/bulb_icon.svg');
+    --md-primary-fg-color: #004225;
+    --md-primary-fg-color--light: #2d5a3d;
+    --md-primary-fg-color--dark: #001a0f;
+  }
+  .md-typeset .admonition.pied-piper,
+  .md-typeset details.pied-piper {
+    border-color: rgb(43, 155, 70);
+  }
+  .md-typeset .pied-piper > .admonition-title,
+  .md-typeset .pied-piper > summary {
+    background-color: rgba(43, 155, 70, 0.1);
+  }
+  .md-typeset .pied-piper > .admonition-title::before,
+  .md-typeset .pied-piper > summary::before {
+    background-color: rgb(43, 155, 70);
+    -webkit-mask-image: var(--md-admonition-icon--pied-piper);
+            mask-image: var(--md-admonition-icon--pied-piper);
+  }
+  blockquote {
+    border-left: 4px solid gray;
+    font-style: italic;
+    padding-left: 10em;
+  }
