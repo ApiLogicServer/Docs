@@ -14,13 +14,13 @@ Description: Briefing
 
     AI is remarkable at generating code, but you're left without clarity on what to govern:
     
-    * the requirements are incomplete, and AI fills the gaps with **guesses you never see.**  How can you govern what you can't see?
-    * the generated code **is hard to read and trust**.  How can you govern what you can't read?
+    * the *requirements* are incomplete, and AI fills the gaps with **guesses you never see.**  How can you govern what you can't see?
+    * the *generated code* is **hard to read and trust**.  How can you govern what you can't read?
 
 
     Our core focus is to leverage AI intent capture, extended to provide ***governance:***
     
-    > Context Engineering (CE) to create enterprise-class systems based on **rules** you can **read, trust and maintain**.
+    > Context Engineering (CE) to create enterprise-class systems <br>based on **rules** you can **read, trust and maintain**.
 
     See the full background: [What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
 
@@ -60,19 +60,25 @@ We provide extensive CE to direct AI to generate **rules, not code**.  Rules are
 
 <br>You can declare rules in an existing project as shown below.  You can also declare them when creating projects - see [Executable Requirements](#executable-requirements).
 
+The Context Engineering is a (large) set of files under `docs`.
+
 ![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-vibe.png)
 
 </details>
 
 <br>
 
+AI creates rules at design time - runtime execution is **deterministic**.  Their readability facilites *"human in the loop"* review (see the example above) to verify proper AI rule creation.
+
+**Probabalistic rules are an *"opt-in"*** (e.g. choose the [optimal supplier](Sample-ai-rules.md){:target="_blank" rel="noopener"}, subject to world conditions).  These rules operate at runtime.  The values are always subjected to the deterministic constraints.
+
 **Think of a DBMS:** the rules are the DDL, and the rules engine is the database server - it runs inside your service and enforces them at commit.
 
-**The engine is [not RETE](FAQ-RETE.md){:target="_blank" rel="noopener"}:** it is purpose-built for transactions.  It receives the actual change events, fires only the rules they affect, and [maintains aggregates incrementally](Logic-Operation.md){:target="_blank" rel="noopener"} instead of recomputing them.
+**The rules engine is [not RETE](FAQ-RETE.md){:target="_blank" rel="noopener"}:** it is purpose-built for transactions.  It receives the actual change events, fires only the rules they affect, and [maintains aggregates incrementally](Logic-Operation.md){:target="_blank" rel="noopener"} instead of recomputing them.
 
 **When a rule can't express it, [Python events](Logic-Type-Events.md){:target="_blank" rel="noopener"} are the extension point** - they run in the same transaction, integrated with the rules.  Events can't silently reopen the bypass: the engine [refuses to start](Logic-Type-Events.md#events-must-not-mutate-row){:target="_blank" rel="noopener"} if an event mutates a row without an explicit override.
 
-While you can enter rules using IDE code completion, most use AI to specify requirements as shown above.  Since requirements can be specified in virtually any format, this makes the system **highly adoptible** - your team simply provides requirements in the formats to which they are accustomed.
+While you can enter rules using IDE code completion, most use AI to specify requirements as shown above.  Since requirements can be specified in virtually any format, this makes the system **highly adoptable** - your team simply provides requirements in the formats to which they are accustomed.
 
 Rules address both transaction logic and **Role Based Access Control.**
 
@@ -124,7 +130,7 @@ Other CE elements automate systems with **rule-enabled access:**
 **Proof points:** 
 
 * [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"} - rule-based system closes a $20m/yr audit exposure
-* [Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"} - "reg tech" system automated from web-based regulations
+* [Customs Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"} - "reg tech" system automated from web-based regulations
 * [Budget Allocation](Sample_Allo_Dept_GL_readme.md){:target="_blank" rel="noopener"} - complex logic, delivered in 2 days, vs. 2 year failed effort
 
 <br>
@@ -135,11 +141,11 @@ Other CE elements automate systems with **rule-enabled access:**
 
 In addition to no-bypass[^1] transaction logic **runtime enforcement**, the system generates **review and audit support** with:
 
-* **[Test creation and execution](Behave.md){:target="_blank" rel="noopener"}**, by leveraging rules, to verify the requirements and rule execution.  Rules include positive and negative tests.
-* **[Requirements Traceability reports](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** that trace requirements to the underlying rules, and confirm their execution on tests with actual logs, showing how rules ran during each tests
+* **[Test creation and execution](Behave.md){:target="_blank" rel="noopener"}**, by leveraging rules, to verify the requirements and rule execution.  Tests include positive and negative tests.
+* **[Requirements Traceability reports](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** that trace requirements to the underlying rules, and confirm their execution on tests with actual logs, showing how rules ran during each test
 
-  * This is a significant step beyond reading the rules - it's direct support for **auditing**
-* **[AI Alerts](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/demo_eai/ad-libs.md){:target="_blank" rel="noopener"}:** reports where AI proactively calls for review for inferences drawn from incomplete or vague requirements - and where there is no safe default, it **stops and leaves a `FIXME`** rather than guessing
+  * This is a significant step beyond *reading* the rules - it's direct support for **auditing**
+* **[AI Alerts](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/demo_eai/ad-libs.md){:target="_blank" rel="noopener"}:** AI proactively calls for review for inferences drawn from incomplete or vague requirements - and where there is no safe default, it **stops and leaves a `FIXME`** rather than guessing
 * **Logic flow diagrams and a health check** (rule adoption, dependency-tracking integrity), generated from the rules
 * **[Ontology creation](https://apilogicserver.github.io/Docs/Database-Ontology/){:target="_blank" rel="noopener"}** (including type support) makes systems available to an important class of tools, and provides terminology clarity for business users
 
