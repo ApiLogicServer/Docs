@@ -48,8 +48,8 @@ More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-
 
 We provide extensive CE to direct AI to generate **rules, not code**.  Rules are spreadsheet-like expressions you can:
 
-* **Read:** [40X more concise](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}, and free from dependency management complexity
-* **Trust:** rules are ***automatically* called**; they are wired into the SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) and paths - **no bypass**.  Reading a rule thus tells you it runs, without tracing call paths.  **Governance by architecture**, not dependent on discipline.
+* **Read:** 5 rules vs ~220 lines of procedural code for the same requirements ([40X more concise](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}; same AI, same behavior), and free from dependency management complexity
+* **Trust:** rules are ***automatically* called** by the SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) - **no bypass**.[^1]  Reading a rule thus tells you it runs, without tracing call paths.  **Governance by architecture**, not dependent on discipline.
 * **Maintain:** change the rule, and the engine takes care of the rest: calling it, ordering it, and propagating its dependencies.
 
 **Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, alter the requirement and get back rules that cover every path - insert, update, delete, reassignment - not just the one you designed.
@@ -133,7 +133,7 @@ Other CE elements automate systems with **rule-enabled access:**
 
 ## Governance
 
-In addition to no-bypass transaction logic **runtime enforcement**, the system generates **review and audit support** with:
+In addition to no-bypass[^1] transaction logic **runtime enforcement**, the system generates **review and audit support** with:
 
 * **[Test creation and execution](Behave.md){:target="_blank" rel="noopener"}**, by leveraging rules, to verify the requirements and rule execution.  Rules include positive and negative tests.
 * **[Requirements Traceability reports](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** that trace requirements to the underlying rules, and confirm their execution on tests with actual logs, showing how rules ran during each tests
@@ -160,3 +160,5 @@ Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server
 Standard JSON:APIs enable the use of [**Vibe tools**](Admin-Vibe.md){:target="_blank" rel="noopener"} for custom UI dev.
 
 <br>
+
+[^1]: Within the architecture: every write goes through the logic tier (the application's data layer), which is where the rules are hooked in.  As in any 3-tier system, direct database access around that tier is outside this guarantee.
