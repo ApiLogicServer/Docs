@@ -1,5 +1,5 @@
 <!--
-title: Welcome - see end for instructions to hide this
+title: Welcome to GenAI-Logic
 Description: Instant mcp-enabled microservices, standard projects, declarative business logic
 Source: docs/Manager-readme
 version info: 17.03.08 (07/22/2026)
@@ -1158,21 +1158,77 @@ ApiLogicServer create --project-name=samples/nw_sample_nocust --db-url=nw
 
 &nbsp;
 
-### Hiding Front Matter
+### Containers: Podman or Docker
 
 <details markdown>
 
-<summary>Hiding Front Matter </summary>
+<summary>Postgres, Keycloak and Kafka: Podman or Docker</summary>
 
-To hide the YAML or JSON front matter (the metadata block at the top of your markdown files) in the built-in VS Code markdown preview, you can adjust your editor settings:
+Some samples use containers: Postgres (5432), Keycloak (8080), Kafka (9092). Use either runtime; the commands are the same with `docker` in place of `podman`. Neither is required for the basic demos: scripts that need a container say so up front and fall back.
 
-1. Open the Settings panel using Ctrl + , (Windows/Linux) or Cmd + , (macOS).
-2. Search for the following term: `markdown.previewFrontMatter`.
-3. Change the dropdown value from show to `hide`.
+**1. Install and start the runtime**
 
-The preview will now automatically strip the front matter from the rendered view.
+* **Podman (Mac):** `brew install podman`, then `podman machine init` (once) and `podman machine start`. Install with Homebrew: the dmg alone left the command line incomplete. See [Podman setup](https://apilogicserver.github.io/Docs/DevOps-Podman/).
+* **Docker:** install and start Docker Desktop.
 
-![hide-front-matter](images/manager/hide-front-matter.png)
+**2. Postgres**
+
+```bash
+podman run -d --restart always --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=p docker.io/apilogicserver/postgres:latest
+```
+
+The [Database-Docker](https://apilogicserver.github.io/Docs/Database-Docker/) page lists this and the MySQL and SQL Server images. It shows `docker`: use `podman` instead, and skip its `--net dev-network` unless you run the API Logic Server container itself.
+
+**3. Keycloak**
+
+Keycloak imports its realm files from a folder you mount. Keep that folder outside the Manager, so a Manager refresh does not remove it (a container records the folder's absolute path when it is created):
+
+```bash
+V=$HOME/container-volumes
+mkdir -p $V/keycloak/import
+cp -n system/ApiLogicServer-Internal-Dev/container-volumes-template/keycloak/import/*.json $V/keycloak/import/
+podman run -d --restart always --name keycloak -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=password \
+  -v $V/keycloak/import:/opt/keycloak/data/import quay.io/keycloak/keycloak:23.0.6 \
+  start-dev --import-realm --proxy=edge --hostname-strict=false --hostname-strict-https=false
+```
+
+Verify: `curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/realms/kcals` returns `200`. Admin console: http://localhost:8080 (admin / password). More: [Security-Keycloak](https://apilogicserver.github.io/Docs/Security-Keycloak/).
+
+**4. Kafka**
+
+One broker, `broker1`, serves every project on the machine. Live Kafka is optional: without it the server runs in fallback mode, and `/consume_debug/<topic>` exercises the same consumer code with a curl.
+
+```bash
+V=$HOME/container-volumes
+mkdir -p $V/kafka/data
+podman run -d --restart always --name broker1 -p 9092:9092 -p 9093:9093 \
+  -e KAFKA_NODE_ID=1 -e KAFKA_PROCESS_ROLES=broker,controller -e KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER \
+  -e KAFKA_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093 -e KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT \
+  -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT \
+  -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_CONTROLLER_QUORUM_VOTERS=1@localhost:9093 \
+  -e CLUSTER_ID=r4zt_wrqTRuT7W2NJsB_GA -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 \
+  -e KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1 -e KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1 \
+  -v $V/kafka/data:/integration/kafka/volume docker.io/apache/kafka:3.7.0
+```
+
+Verify: `podman exec broker1 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list` connects (an empty list is fine). Read a topic: `podman exec broker1 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic> --from-beginning --group fresh-group-1` (use a new group number to re-read).
+
+Each project's `integration/kafka/dockercompose_start_kafka.yml` starts the same broker with `compose`. Podman then needs a compose provider (`brew install docker-compose`, then `{"cliPluginsExtraDirs":["/opt/homebrew/lib/docker/cli-plugins"]}` in `~/.docker/config.json`); the `podman run` above avoids that. To have Podman's VM start at login instead of `podman machine start` after each reboot: `brew install --cask podman-desktop`.
+
+Then, in the project: set `KAFKA_SERVER` and reset topics, as in its `integration/kafka/kafka_readme.md`. Stop the broker with `podman stop broker1`.
+
+**5. After a reboot**
+
+The commands above use `--restart always`, so the containers come back by themselves once Podman's VM is up. On a Mac that is the only step, and Podman Desktop (`brew install --cask podman-desktop`) does it at login:
+
+```bash
+podman machine start
+podman ps        # postgresql-container, keycloak, broker1 should be Up
+```
+
+A container created without `--restart always` stays stopped: start it with `podman start <name>`, or recreate it with the flag.
+
+**Framework developers:** the dev install creates `ApiLogicServer-dev/container-volumes/` for these mounts, and BLT checks the containers before it builds. See `system/ApiLogicServer-Internal-Dev/internals-readme.md`.
 
 </details>
 
