@@ -1211,13 +1211,58 @@ podman run -d --restart always --name broker1 -p 9092:9092 -p 9093:9093 \
   -v $V/kafka/data:/integration/kafka/volume docker.io/apache/kafka:3.7.0
 ```
 
-Verify: `podman exec broker1 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list` connects (an empty list is fine). Read a topic: `podman exec broker1 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic> --from-beginning --group fresh-group-1` (use a new group number to re-read).
+Verify: `podman exec broker1 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list` connects (an empty list is fine). Read a topic: `podman exec broker1 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic order_b2b --from-beginning --group fresh-group-1` (any topic name works; use a new group number to re-read).
 
 Each project's `integration/kafka/dockercompose_start_kafka.yml` starts the same broker with `compose`. Podman then needs a compose provider (`brew install docker-compose`, then `{"cliPluginsExtraDirs":["/opt/homebrew/lib/docker/cli-plugins"]}` in `~/.docker/config.json`); the `podman run` above avoids that. To have Podman's VM start at login instead of `podman machine start` after each reboot: `brew install --cask podman-desktop`.
 
 Then, in the project: set `KAFKA_SERVER` and reset topics, as in its `integration/kafka/kafka_readme.md`. Stop the broker with `podman stop broker1`.
 
-**5. After a reboot**
+**5. Verify the containers end to end**
+
+The checks above show each container is up. This shows they work with a project: Keycloak logs you in, Kafka carries a message in and out. It uses `samples/basic_demo_eai`, which is already wired to all three (Keycloak realm `kcals`, broker `localhost:9092`). Start the server in one terminal, from the Manager folder, and leave it running:
+
+```bash
+cd samples/basic_demo_eai
+source ../../venv/bin/activate
+mkdir -p logs
+python api_logic_server_run.py
+```
+
+Wait for `Kafka mode: ACTIVE` in the output (about 10 seconds). The server never commits Kafka offsets, so every start re-reads the messages still on the topics. The last command below empties them, so the next start has nothing to replay. Then, in a second terminal, run the rest from `samples/basic_demo_eai`. It adds one order and one message row to the sample's database; nothing else changes. Stop the server with Ctrl+C when you are done.
+
+```bash
+# Postgres: lists the databases
+podman exec postgresql-container psql -U postgres -c '\l'
+
+# Kafka in: empty the queue, then send the sample order message through the broker
+curl -X POST http://localhost:5656/consume_debug/order_b2b/reset
+curl "http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/demo_eai/message_formats/order_b2b.json"
+# wait about 5 seconds, then see that it landed
+sqlite3 database/db.sqlite "select id, is_processed from order_b2b_message order by id desc limit 1; select id, amount_total, notes from 'order' order by id desc limit 1;"
+
+# Keycloak: log in, then read who issued the token
+TOKEN=$(curl -s -X POST http://localhost:5656/api/auth/login -H 'Content-Type: application/json' -d '{"username":"admin","password":"p"}' | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
+python3 -c "import sys,json,base64;p=sys.argv[1].split('.')[1];p+='='*(-len(p)%4);print(json.loads(base64.urlsafe_b64decode(p))['iss'])" "$TOKEN"
+
+# Kafka out: ship that order (the newest one), then check the log
+ORDER_ID=$(sqlite3 database/db.sqlite "select max(id) from 'order'")
+curl -X PATCH http://localhost:5656/api/Order/$ORDER_ID/ -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/vnd.api+json' -d "{\"data\":{\"type\":\"Order\",\"id\":\"$ORDER_ID\",\"attributes\":{\"date_shipped\":\"2026-11-15\"}}}"
+grep "delivered to topic" logs/als.log
+
+# Clean up: empty the queue again, so the next server start replays nothing (a replay would create duplicate orders)
+curl -X POST http://localhost:5656/consume_debug/order_b2b/reset
+```
+
+| Check | Pass looks like |
+|---|---|
+| Postgres | A table of databases prints |
+| Kafka in | The `consume_debug` reply says `"mode":"live"` and `"published":true`; the sqlite output shows `is_processed` = `1` and a new order with amount `390` and notes `Kafka order from sales` |
+| Keycloak | The issuer is `http://localhost:8080/realms/kcals` |
+| Kafka out | The `PATCH` answers `200`; the log shows `delivered to topic 'order_shipping'` |
+
+If `"mode"` says `simulated` the broker did not answer: check `podman ps` and that `KAFKA_SERVER` is set in `config/default.env`. The Keycloak line only applies to a project set up with Keycloak (a SQL-auth project shows a different issuer). Reading the log, not the topic, makes the Kafka-out check independent of messages left by earlier runs.
+
+**6. After a reboot**
 
 The commands above use `--restart always`, so the containers come back by themselves once Podman's VM is up. On a Mac that is the only step, and Podman Desktop (`brew install --cask podman-desktop`) does it at login:
 
@@ -1226,7 +1271,7 @@ podman machine start
 podman ps        # postgresql-container, keycloak, broker1 should be Up
 ```
 
-A container created without `--restart always` stays stopped: start it with `podman start <name>`, or recreate it with the flag.
+A container created without `--restart always` stays stopped: start it with `podman start broker1` (or `keycloak`, `postgresql-container`), or recreate it with the flag.
 
 **Framework developers:** the dev install creates `ApiLogicServer-dev/container-volumes/` for these mounts, and BLT checks the containers before it builds. See `system/ApiLogicServer-Internal-Dev/internals-readme.md`.
 
