@@ -8,5 +8,6 @@
     },
     "cSpell.words": [
         "ontimize"
-    ]
+    ],
+    "codeQL.githubDatabase.download": "never"
 }
