@@ -5,6 +5,7 @@
 ### Historical Evolution
 
 **1. Wang Labs PACE (1980s-1990s)**
+
 - Original commercial business rules platform
 - **6,000+ corporate customers** running mission-critical systems
 - Pioneered declarative multi-table derivations and constraints
@@ -12,6 +13,7 @@
 - Established automatic dependency ordering and chaining
 
 **2. Versata (1990s-2010s)**
+
 - $3.4 billion startup backed by founders of Microsoft, Sybase, Ingres, Informix
 - Fortune 500 enterprise deployments
 - Advanced the rules engine with optimization (pruning, delta-based adjustments)
@@ -19,6 +21,7 @@
 - Validated the declarative paradigm across thousands of production systems
 
 **3. API Logic Server / GenAI-Logic (2020s-present)**
+
 - Modern evolution: same proven patterns, contemporary stack
 - Python/SQLAlchemy (vs. Java/JDBC)
 - Cloud-native (Docker/Kubernetes)
@@ -39,6 +42,7 @@ This Medium article explains the fundamental architectural distinction that make
 **The Problem: "FrankenCode"**
 
 Traditional GenAI vibe tools generate 200+ lines of buggy procedural code that:
+
 - Misses corner cases (e.g., changing customer on order, changing product on item)
 - Violates SOA principles (logic dumped on client)
 - Creates instant technical debt (unmaintainable, opaque)
@@ -74,271 +78,61 @@ Declarative rules aren't optional or a "coding style" - they're a **fundamental 
 &nbsp;
 
 
-## GenAI Prompt Engineering: Natural Language → Structured Specifications
+## The Dev Environment: User Manager and Dev Manager
 
-### The ChatGPT Project Creation Pipeline
+![dev env](images/architecture/internals/dev-dirs.png)
 
-The `genai-logic create` command translates natural language requirements into complete working projects using **fine-tuned ChatGPT** with structured prompt engineering.
+The dev environment has two Managers. Both are folders named `genai-logic`, with the same layout, README and CE files, so it is easy to lose track of which one you are in. Check the path, or the version that `genai-logic` prints (17.05.30 above: the user manager).
 
-**Key Principle:** AI generates **declarative specifications** (models + rules), not procedural code. The runtime engines provide correctness guarantees.
+| Term | Where | What it is |
+|---|---|---|
+| **user manager** | e.g. `~/dev/genai-logic` | A normal user install (`pip install`, then `genai-logic start`), running the released version. You run the dev installer from here. |
+| **dev root** | `ApiLogicServer-dev/`, inside the user manager | Created by the dev installer. Not a Manager (no venv): it holds the source and the BLT output. |
+| **src** | `ApiLogicServer-dev/org_git/` | Gold source: `ApiLogicServer-src`, `Docs`, `LogicBank`. Changes are made here, or propagated here. |
+| **dev manager** | `ApiLogicServer-dev/build_and_test/genai-logic` | Built by BLT from src, with the version under development in its venv. Every BLT run regenerates it: never treat it as gold. |
 
-### Prompt Engineering Architecture
+Older pages call the user manager the *Seminal Manager*, and the dev manager the *BLT Manager* or *local-mgr*.
 
-**Location:** `system/genai/prompt_inserts/`
-
-**Core Templates:**
-
-1. **`sqlite_inserts.prompt`** - Main orchestrator:
-   ```
-   Use SQLAlchemy to create a sqlite database for: {{prompt}}
-   {% include 'sqlite_inserts_model_test_hints.prompt' %}
-   {% include 'graphics.prompt' %}
-   {% include 'response_format.prompt' %}
-   ```
-
-2. **`sqlite_inserts_model_test_hints.prompt`** - Critical generation rules:
-   - "If you create sum, count or formula Logic Bank rules, then you **MUST** create a corresponding column in the data model"
-   - Use autonum keys for ALL tables (including junction tables)
-   - Create classes, never tables (singular names, capitalized)
-   - No check constraints (use rules instead)
-   - Foreign key columns (not relationship names) for test data
-
-3. **`logic_inserts.prompt`** - Rule generation:
-   ```
-   Use LogicBank to enforce these requirements (do not generate check constraints);
-   be sure to update the data model and *all* test data with any attributes used in the logic
-   ```
-
-4. **`response_format.prompt`** - Structured output schema:
-   ```python
-   class WGResult(BaseModel):
-       models: List[Model]              # SQLAlchemy classes
-       rules: List[Rule]                # LogicBank declarations  
-       test_data: str                   # Python test data creation
-       test_data_sqlite: str            # INSERT statements
-       graphics: List[Graphic]          # Dashboard queries
-       name: str                        # Suggested project name
-   ```
-
-### Model + Logic Co-Generation (Key Insight)
-
-**Unlike existing database projects**, GenAI creation **modifies the data model** to support logic:
-
-**Example Input:**
 ```
-Customer.balance = Sum(Order.amount_total where date_shipped is null)
-Order.amount_total = Sum(Item.amount)
-Order.item_count = Count(Items); can't ship if item_count == 0
+genai-logic/                              # user manager (pip install + genai-logic start)
+├── venv/  samples/  system/ ...
+└── ApiLogicServer-dev/                   # dev root (install-ApiLogicServer-dev.sh)
+    ├── org_git/                          # src: edit here
+    │   ├── ApiLogicServer-src/           #   framework, CE, prototypes; BLT is tests/build_and_test/
+    │   ├── Docs/                         #   docs and readmes (a push is needed for them to take effect)
+    │   └── LogicBank/                    #   rule engine
+    ├── build_and_test/genai-logic/       # dev manager: built by BLT, regenerated by each run
+    ├── clean/genai-logic/                # fresh install of the new build, no projects: used to upgrade older managers
+    ├── container-volumes/                # container data that survives rebuilds
+    └── servers/                          # scratch projects
 ```
 
-**ChatGPT Automatically Creates:**
-- `Customer` class with `balance` column (Decimal)
-- `Order` class with `amount_total` column (Decimal)  
-- `Order` class with `item_count` column (Integer)
-- Corresponding LogicBank rules for all derivations
-- Test data with derived attributes pre-initialized
+**Why this architecture:**
 
-**Critical Pattern:** Derived attributes **materialize** as database columns. This enables:
-- Efficient queries (indexed, no runtime aggregation)
-- Scalable performance (pruning, delta adjustments)
-- Simple constraints (balance <= credit_limit works on stored value)
-
-### Training Examples: Teaching ChatGPT Rule Patterns
-
-**Location:** `org_git/ApiLogicServer-src/tests/genai_tests/logic_training/`
-
-**Format:** `*.prompt` (input) + `*.txt` (expected output) → `ft.jsonl` (fine-tuning data)
-
-**Pattern Categories:**
-
-1. **Chain Up (Aggregation + Constraint)**
-   - `emp_depts.prompt`: Department.total_salary = sum(Employee.salary); total_salary <= budget
-   - `genai_demo.prompt`: Customer.balance = sum(Order.amount_total); balance <= credit_limit
-   - **Teaches:** Derive first, constrain second (two-step pattern)
-
-2. **Counts as Existence Checks**
-   - `genai_demo.prompt`: Order.item_count = Count(Items); constraint: can't ship if item_count == 0
-   - **Teaches:** Use count for validation, not just analytics
-
-3. **Cardinality Patterns (Qualified Any)**
-   - `products.prompt`: Total notices + severity 5 notices; error if orderable with bad notices
-   - `graduate.prompt`: Probation count + sick days count; graduation eligibility constraint
-   - **Teaches:** Multiple counts (total + qualified) for complex conditions
-
-4. **Ready Flag (Conditional Aggregations)**
-   - `ready_flag.prompt`: Customer.balance = sum(Order.amount_total where ready == True AND date_shipped is None)
-   - **Teaches:** Qualified sums with multiple conditions, cascading flags
-
-5. **Chain Down (Copy/Formula Propagation)**
-   - Item.unit_price = copy(Product.unit_price) - price change doesn't affect old orders
-   - Item.ready = Order.ready (formula propagation)
-   - **Teaches:** Difference between copy (point-in-time) and formula (live reference)
-
-### Common AI Mistakes (Corrections)
-
-Several `*_corrected_prompt.txt` files document typical errors:
-
-**1. Wrong Relationship Path** (`airport_corrected_prompt.txt`):
-- ❌ Original: "airplane's passengers must be less than seating capacity"
-- Problem: No direct Airplane → Passenger relationship
-- ✅ Corrected: "**flight's** passengers must be less than its Airplane's seating capacity"
-- Lesson: AI needs explicit relationship path
-
-**2. Constraint Depends on Derived Flag** (`products_corrected_prompt.txt`):
-- ❌ Original: "product is orderable IF no severity 5 notices"
-- Problem: Makes `orderable` derived, then uses it in constraint (circular)
-- ✅ Corrected: "RAISE ERROR if product.orderable == True AND has severity 5 notices"
-- Lesson: Flag is **input**, constraint validates it (not derived from constraint conditions)
-
-**3. Negative Condition Logic**:
-- ❌ Harder: "if student.can_graduate, then must have < 3 probations"
-- ✅ Easier: "error if can_graduate == True AND probation_count > 2"
-- Pattern: `not(row.flag and bad_condition)` is clearest for AI
-
-### Fine-Tuning Process
-
-**Training Data:** `logic_training/ft.jsonl` (~374KB)
-- JSONL format for ChatGPT fine-tuning API
-- Generated from 10+ prompt/response pairs
-- Format: `{"messages": [{"role": "system", ...}, {"role": "user", ...}, {"role": "assistant", ...}]}`
-
-**Generation Script:** `logic_training/create_json_l.py`
-- Converts pattern examples → training data
-- System prompt + user prompt + expected response
-- Updates `ft.jsonl` with new examples
-
-### CLI Commands Using This System
-
-**Create from natural language:**
-```bash
-genai-logic create --project-name=my_system --using="your requirements here"
-# Pipeline: assemble prompts → ChatGPT API → parse WGResult → generate project
-```
-
-**Translate logic (existing DB):**
-```bash
-genai-logic logic-translate --project-name=. --using-file=docs/logic
-# Uses logic_translate.prompt: NL in docs/logic → rules in logic/logic_discovery/
-```
-
-**Add logic to existing project:**
-```bash
-genai-logic add-logic --using="The Order's amount_total is sum of Item amounts"
-# Appends rules to logic/declare_logic.py or logic/logic_discovery/
-```
-
-### Why This Architecture Succeeds
-
-**Traditional GenAI Code Generation:**
-- Outputs: 200+ lines of procedural code
-- Problems: Misses corner cases, violates SOA, creates technical debt
-- Example miss: Foreign key change (Order.customer_id) requires adjusting BOTH old and new customer balances
-
-**Declarative GenAI (This System):**
-- Outputs: 5 rules (declarative specifications)
-- Execution: Proven rules engine (40+ years, 6,000+ deployments)
-- Coverage: Engine handles ALL change paths automatically via dependency analysis
-- Result: **Correctness guarantee** + 40X code reduction
-
-**Critical Insight:** AI doesn't need to "think through" all possible change paths. It translates requirements → rules, and the **engine provides completeness**.
-
-**Natural Language → DSL → Runtime Engine** (not NL → procedural code)
-
-### Testing Examples
-
-**Location:** `system/genai/examples/`
-
-Each directory contains:
-- `*.prompt` - User requirements (various formality levels)
-- `*.response_example` - Expected ChatGPT output
-- Subdirectories for iterations (`genai_demo_iteration/`, `genai_demo_iteration_discount/`)
-
-**Key Examples:**
-- `genai_demo/` - Complete Check Credit + No Empty Orders (primary teaching example)
-- `genai_demo_informal.prompt` - Less structured input (tests robustness)
-- `ready_flag/` - Multi-use-case with conditional logic
-- `airport/` - Complex 10+ table system
-- `time_tracking_billing/` - Real-world business scenario
-
-**Purpose:** Validate prompt engineering works across formality levels and complexity ranges.
-
-&nbsp;
-
-
-## CRITICAL: Understanding the Nested Manager Architecture
-
-The development environment has **two distinct Manager workspaces**:
-
-**1. Seminal Manager** - `~/dev/ApiLogicServer/ApiLogicServer-dev/`
-- Original Manager installation from `als start`
-- Stable, persistent workspace
-- Contains `build_and_test/` directory
-- Used to run the BLT process
-- Houses `org_git/` with source repositories
-
-**2. BLT Manager (Nested)** - `~/dev/ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer/`
-- Created and refreshed by the BLT (Build, Load and Test) process
-- Contains rebuilt/tested version of API Logic Server
-- Contains sample projects (`basic_demo`, `nw_sample`, etc.) for testing
-- Has its own venv shared by test projects
-- Gets regenerated with each BLT run
-- Contains `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` for AI context restoration
-
-**Complete Directory Structure:**
-```
-~/dev/ApiLogicServer/ApiLogicServer-dev/          # Seminal Manager
-├── build_and_test/
-│   └── ApiLogicServer/                           # BLT Manager (nested workspace)
-│       ├── samples/                              # Sample/test projects
-│       │   ├── basic_demo_sample/
-│       │   ├── nw_sample/
-│       │   └── ...
-│       ├── venv/                                 # Shared venv for test projects
-│       ├── system/
-│       │   └── ApiLogicServer-Internal-Dev/      # Internal dev tooling
-│       │       ├── copilot-dev-context.md        # AI context restoration
-│       │       └── install-ApiLogicServer-dev.sh # Dev environment setup
-│       └── docs/                                 # Training materials
-└── org_git/
-    ├── ApiLogicServer-src/                       # Framework source (edit here)
-    │   └── api_logic_server_cli/
-    │       └── prototypes/
-    │           ├── base/                         # Templates for created projects
-    │           └── manager/                      # Manager workspace templates
-    |       └── tests/
-    |           └── build_and_test/               # system rebuild and test -> build_and_test 
-    └── Docs/                                     # Documentation project
-        └── docs/
-            └── Architecture-Internals.md         # This page
-```
-
-**Development Workflow:**
-1. Edit framework code in `org_git/ApiLogicServer-src/`
-2. Run BLT from Seminal Manager (rebuilds, tests, regenerates BLT Manager)
-3. Test with sample projects in BLT Manager workspace
-4. BLT Manager gets fresh context from `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` after each rebuild
-
-**Why This Architecture:**
-- **Isolation:** Changes being tested don't affect stable Seminal Manager
-- **Clean slate:** Each BLT run creates fresh testing environment
-- **Shared venv:** Test projects reuse BLT Manager's venv (speeds testing)
-- **Context preservation:** `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` re-establishes understanding after rebuild
+- **You see what users see:** the dev manager is a real Manager, built the way users get one, but from your source.
+- **Isolation:** the user manager keeps the released version; changes under test live in the dev manager.
+- **Clean slate:** each BLT run rebuilds the dev manager from src.
+- **Shared venv:** projects created in the dev manager use its venv, so there is no per-project install.
+- **AI context:** in the dev manager, say `dev-arch` to load `system/ApiLogicServer-Internal-Dev/dev-architecture.md` (the internals context, including the rule that every change lands in src).
 
 &nbsp;
 
 ## Cross-References for Full Context
 
 **For Strategic Architecture Understanding:**
-- `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md` - Technology lineage, declarative architecture, NL→DSL→Engines pattern
+
+- `system/ApiLogicServer-Internal-Dev/dev-architecture.md` (say `dev-arch` in the dev manager) - Technology lineage, declarative architecture, NL→DSL→Engines pattern
 - [Medium Article](https://medium.com/@valjhuber/declarative-genai-the-architecture-behind-enterprise-vibe-automation-1b8a4fe4fbd7) - Complete architectural rationale
 
 **For Created Project Development:**
+
 - Manager-level `copilot-instructions.md` - How to CREATE projects
 - Project-level `copilot-instructions.md` - How to EXTEND/CUSTOMIZE projects
 - `docs/training/logic_bank_api.prompt` - LogicBank API reference (in each project)
 - `docs/training/testing.md` - Behave testing guide (1755 lines, in each project)
 
 **For End Users:**
+
 - [API Logic Server Documentation](https://apilogicserver.github.io/Docs/Doc-Home/) - Complete user guide
 - [Installation](https://apilogicserver.github.io/Docs/Install/) - Setup procedures
 - [Tutorial](https://apilogicserver.github.io/Docs/Tutorial/) - Step-by-step learning
@@ -353,135 +147,59 @@ This page does _not_ address created projects, rather, it is about the API Logic
 
 # How to Install it
 
-The subsections below described the steps to:
+The result is the structure shown in [The Dev Environment](#the-dev-environment-user-manager-and-dev-manager). Details, including the BLT stages: [dev_setup.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/internal_dev/dev_setup.md){:target="_blank" rel="noopener"}.
 
-1. Obtain the software from GitHub
-2. Open the dev workspace in your IDE
-3. Create the "initial 'venv'"
-4. Perform the critical "Smoke Test" to ensure system operation
+1. **Install the user version and create the user manager**, as any user would ([Install](Install-Express.md){:target="_blank" rel="noopener"}):
 
+    ```bash
+    python -m pip install ApiLogicServer
+    genai-logic start
+    ```
 
-## Manager Internal Development Setup
+2. **Verify the SQLite projects.** In the user manager, create and run a project such as `basic_demo`, following the Manager README. No containers are needed.
 
-![dev env](images/architecture/internals/dev-dirs.png)
+3. **Activate the containers** (Postgres, Keycloak, Kafka; Docker or Podman), and verify them with the Manager README: [Containers: Podman or Docker](Manager-readme.md#containers-podman-or-docker){:target="_blank" rel="noopener"}. You can postpone this: BLT runs without containers until you enable container tests (step 5).
 
-To create the dev enviroment (result shown above): 
+4. **Install the dev source.** You need the [VS Code CLI](IDE-Customize.md/#vscode-cli){:target="_blank" rel="noopener"}. From the user manager root (Windows: `install-ApiLogicServer-dev.ps1`):
 
-1. Install the user version of the API Logic Server
+    ```bash title="Install API Logic Server Development environment"
+    sh system/ApiLogicServer-Internal-Dev/install-ApiLogicServer-dev.sh vscode    # or: charm | x
+    ```
 
-    * let's assume it's `~/dev/ApiLogicServer-dev`
+    It creates `ApiLogicServer-dev/` (and refuses to run if it exists), clones `ApiLogicServer-src`, `Docs` and `LogicBank` into `org_git/`, copies the Admin App build (sra) from the user manager's venv, and seeds `container-volumes/`. With `vscode`, it also creates the src venv and opens the dev workspace, `org_git/ApiLogicServer-src/.vscode/ApiLogicServerDev.code-workspace`.
 
-2. Start the Manager: `als start`
-3. Be sure you have installed the VSCode CLI - see [the VSCode CLI procedure](IDE-Customize.md/#vscode-cli){:target="_blank" rel="noopener"}
-4. In your CLI terminal window:
-    * Note: Windows users use `install-ApiLogicServer-dev.ps1`)
+5. **Update your `env.py`.** BLT reads its test switches from the platform file (`tests/build_and_test/env_mac.py`, `env_win.py` or `env_linux.py`), with your personal `env.py` (gitignored, same folder) layered on top. The platform defaults need no containers. Add flags to `env.py` as you activate containers: BLT checks each container a test needs before it builds, and prints the exact command for any that is missing.
 
-```bash title="Install API Logic Server Development environment"
-sh system/ApiLogicServer-Internal-Dev/install-ApiLogicServer-dev.sh
-```
-5. In your newly created dev source, create `ApiLogicServer/ApiLogicServer-dev/org_git/ApiLogicServer-src/api_logic_server_cli/api_logic_server_info.yaml`, with:
-```
-last_created_date: May 28, 2025 12:08:45
-last_created_project_name: /Users/val/dev/ApiLogicServer/ApiLogicServer-dev/servers/basic_demo
-last_created_version: 14.05.16
-```
+6. **Run BLT to create the dev manager.** In the dev workspace, run the launch config **Build Load & Test**, or **BLT, Hold the Tomato** to build without running the tests:
 
-The install procedure will use `git clone` to create folders in `~/dev/ApiLogicServer/ApiLogicServer-dev/org/:`
+    ![BLT Hold Tomato](images/architecture/blt-no-tomato.png)
 
-![dev structure](images/internals/install-ApiLogicServer-dev.png)
+    It creates `ApiLogicServer-dev/build_and_test/genai-logic` (and `clean/genai-logic`). Open the dev manager in VS Code: that is where you work (see [Ongoing dev](#ongoing-dev)).
 
 &nbsp;
 
 ### Admin App Source
 
-This section is only if you did not load from the script.  You need to obtain the build of safrs react admin.
-
-It's basically straightforward, _though note_ the `cp` command which copies the `safrs-react-admin` runtime to API Logic Server for subsequent creation of API Logic Projects:
+If BLT fails, a common cause is that sra (the Admin App build) is missing at `api_logic_server_cli/create_from_model/safrs-react-admin-npm-build`. This happens if the install procedure was not followed, or failed. Obtain the sra build folder and copy it there:
 
 ```bash
-echo "\ncopying build (sra - safrs-react-admin) --> ApiLogicServer"
 cp -r ../build api_logic_server_cli/create_from_model/safrs-react-admin-npm-build
 ```
 
 For more information, [see Admin App Reuse](Architecture-admin-app-reuse.md/#4-sra-runtime-extraced-from-project){:target="_blank" rel="noopener"}.
 
-> Note: `curl` must be installed for this procedure.
-
-&nbsp;
-
-### Determine your IDE
-
-API Logic Server has been developed with both VSCode and PyCharm.  While in many cases we prefer PyCharm, we have gravitated to VSCode since it supports an "initial `venv`".  
-
-This means that for the many test projects, there is no need to create a per-project `venv`.  This speeds unit testing considerably.
-
-> Importantly, this relies on the Build and Test procedure to create the "initial `venv`".
-
-You will find that the VSCode install has a large number of Run Configs for these test projects.  In general, the created project can be run immediately in another window of VSCode, using the "initial `venv`".
-
-&nbsp;
-
-## Open the dev workspace
-
-`install-ApiLogicServer...` will create a project workspace (`~/dev/ApiLogicServer/ApiLogicServer-dev/org_git/ApiLogicServer-src/.vscode/ApiLogicServerDev.code-workspace`), and open it VS Code or PyCharm.
-
-```bash title='open the dev project'
-cd ~/dev/ApiLogicServer/ApiLogicServer-dev/org_git/ApiLogicServer-src/.vscode
-code ApiLogicServerDev.code-workspace
-```
-
-
-Python requires a virtual environment; the procedure differs for `vscode` vs. `charm`:
-
-* `vscode` projects are created with a `venv` and are ready to run the Launch Configurations to create the sample
-* `charm` projects require that you create the `venv` with the PyCharm
-
-It should look something like this:
-
-![dev structure](images/internals/dev-project.png)
-
-&nbsp;
-
-## Run the BLT
-
-It is tiresome to create a `venv` for each project.  So, the system creates projects with a VSCode property identifying the `venv`.
-
-* In actual practice, this is the [manager's `venv`](Manager.md){:target="_blank" rel="noopener"}.  
-
-* For the dev environment, it is calculated to the `venv` of the [BLT](#build-and-test): 
-
-    * Note: the dev env BLT is not valid here, since it does not contain the CLI (which is needed for projects)
-
-![default-interpreter-path](images/architecture/default-interpreter-path.png)
-
-1. So, your first task is to [***run the BLT***](#build-and-test).  It is simplest to run it without testing, just to create the `venv` (and verify your installation).  
-
-    * Execute the **2nd Run Config (*BLT - Hold the Tomato*)** to create the `venv` used for created projects, such as the Sample (see next section):
-
-![BLT Hold Tomato](images/architecture/blt-no-tomato.png)
-
-2. Verify you have a `venv` at as shown above at:<br>`ApiLogicServer/ApiLogicServer-dev/build_and_test/ApiLogicServer`
-
-&nbsp;
-
-### Setup Required
-
-If this fails, a common error is that sra is not installed at `api_logic_server_cli/create_from_model/safrs-react-admin-npm-build`.  This can happen if the install procedure was not followed, or failed.
-
-Obtain the sra build folder, and copy it to the location above.
-
 &nbsp;
 
 ## Critical "Smoke Test"
 
-> This is the "smoke test" of API Logic Server.  In general, this should be successful prior to pushing changes.
+> The everyday smoke test is the dev manager itself: if BLT builds it and its projects run, the system works. The procedure below, which creates a sample directly from gold src, is for emergencies, when the dev manager fails badly.
 
 
 &nbsp;
 
 ### Create the Sample
 
-Once in your IDE, you can run the pre-defined launch configuration `2 - Create servers/ApiLogicProject (new IDE)` to create and run the sample.  This creates `~/dev/servers/ApiLogicProject`.
+In the dev workspace, run the launch configuration `2 - Create servers/ApiLogicProject (new IDE)` to create and run the sample, in `ApiLogicServer-dev/servers/ApiLogicProject`.
 
 ![dev-run](images/vscode/dev-run.png)
 
@@ -507,6 +225,21 @@ A critical test is the ***Behave Test***.  It tests a dozen or so transactions, 
 # Ongoing dev
 
 Follow these procesures to introduce changes, test them, and perform releases.
+
+&nbsp;
+
+## Day to day: work in the dev manager
+
+Most work is done in the dev manager, so you see what users see.
+
+1. Open `ApiLogicServer-dev/build_and_test/genai-logic` in VS Code, and say `dev-arch` to your AI assistant. It loads the internals context (`dev-architecture.md`), including the rule that every change lands in src.
+2. Direct the AI to change CE or code **in the dev manager's venv** (`venv/lib/python3.13/site-packages/api_logic_server_cli/...`). Changes take effect at once: create or rerun a project, and test.
+3. The AI knows how to propagate each change to src: `org_git/ApiLogicServer-src` for code, CE and prototypes; `org_git/Docs` for docs and readmes. A venv change that never reaches src is lost on the next BLT.
+
+    Readmes behave differently from CE and code: projects and BLT fetch them from GitHub, so a Docs edit reaches the dev manager only after a push (or when the AI runs `copy_md()` from gold src, which reads your local Docs).
+4. Run BLT to rebuild the dev manager from src and confirm the change; then commit and push.
+
+The subsections below cover debugging the CLI itself, in the dev workspace (`ApiLogicServerDev.code-workspace`).
 
 &nbsp;
 
@@ -556,12 +289,12 @@ For more information, [see here](Architecture-Internals-BLT.md){:target="_blank"
 
 Build and Test should run on Macs, Linux (Ubuntu) and Windows 11.  Once these are successful, release as follows:
 
-1. At the root of `ApiLogicServer-src`, with **no `venv`**
-2. Run
+1. At the root of `ApiLogicServer-src`, with **no `venv`** active
+2. Run the commands BLT prints at the end of a run:
 ```bash
-python3 setup.py sdist bdist_wheel
-
-python3 -m twine upload  --skip-existing dist/* 
+rm -r dist
+python3 -m build
+python3 -m twine upload  --skip-existing dist/*
 ```
 
 This will upload to Pypi.  You of course need credentials.
@@ -577,6 +310,8 @@ This will upload to Pypi.  You of course need credentials.
 # docker buildx build --push -f docker/api_logic_server.Dockerfile --tag apilogicserver/api_logic_server:10.03.16 -o type=image --platform=linux/arm64,linux/amd64 .
 # docker buildx build --push -f docker/api_logic_server.Dockerfile --tag apilogicserver/api_logic_server:latest -o type=image --platform=linux/arm64,linux/amd64 .
 ```
+
+7. Optionally, refresh the Codespaces trial repo (`org_git/codespaces_mgr`, generated from the dev manager by `.devcontainer-codespaces/create_codespaces_mgr.py`). It is an evaluation program, so refresh it when the Manager readme gains content that matters to evaluators, not for every bug-fix release.
 
 &nbsp;
 
@@ -731,11 +466,7 @@ cp -a /build/. ../ApiLogicServer/api_logic_server_cli/create_from_model/admin/
 
 ## Using AI Assistant
 
-If you install the dev source from the manager, you are set up to use the Manager as a dev companion.  To bootstrap:
-
-1. Please load `.github/copilot-instructions.md`.
-2. Please load `samples/nw_sample/.github/copilot-instructions.md`.
-3. Please load `system/ApiLogicServer-Internal-Dev/copilot-dev-context.md`.
+In the dev manager, say **`dev-arch`** to your AI assistant. It loads `system/ApiLogicServer-Internal-Dev/dev-architecture.md` together with the Manager and project CE files, and answers with one line naming the gold-source workflow. The same phrase works in `org_git/ApiLogicServer-src` (through its `CLAUDE.md`).
 
 
 &nbsp;

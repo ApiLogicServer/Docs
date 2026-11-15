@@ -1183,7 +1183,7 @@ CR=docker        # or: CR=podman
 $CR run -d --restart always --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=p docker.io/apilogicserver/postgres:latest
 ```
 
-The [Database-Docker](https://apilogicserver.github.io/Docs/Database-Docker/) page lists this and the MySQL and SQL Server images. It shows `docker`: use `$CR` instead, and skip its `--net dev-network` unless you run the API Logic Server container itself.
+The [Database-Docker](https://apilogicserver.github.io/Docs/Database-Docker/) page lists this and the MySQL and SQL Server images. It uses `docker`; use `$CR`. Its commands add `--net dev-network`, which is not needed here: the server runs on your machine and reaches each container through its published port (`localhost:5432`). It is needed only when API Logic Server itself runs in a container and connects by container name (`postgresql-container`). In that case, create the network once (`$CR network create dev-network`) and attach the database container: `$CR network connect dev-network postgresql-container`.
 
 **3. Keycloak**
 

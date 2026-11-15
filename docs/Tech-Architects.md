@@ -68,9 +68,9 @@ The Context Engineering is a (large) set of files under `docs`.
 
 <br>
 
-AI creates rules at design time - runtime execution is **deterministic**.  Their readability facilites *"human in the loop"* review (see the example above) to verify proper AI rule creation.
+AI creates rules at design time - runtime execution is **deterministic**.  Their readability facilitates *"human in the loop"* review (see the example above) to verify proper AI rule creation.
 
-**Probabalistic rules are an *"opt-in"*** (e.g. choose the [optimal supplier](Sample-ai-rules.md){:target="_blank" rel="noopener"}, subject to world conditions).  These rules operate at runtime.  The values are always subjected to the deterministic constraints.
+**Probabilistic rules are an *"opt-in"*** (e.g. choose the [optimal supplier](Sample-ai-rules.md){:target="_blank" rel="noopener"}, subject to world conditions).  These rules operate at runtime.  The values are always subjected to the deterministic constraints.
 
 **Think of a DBMS:** the rules are the DDL, and the rules engine is the database server - it runs inside your service and enforces them at commit.
 
@@ -78,7 +78,7 @@ AI creates rules at design time - runtime execution is **deterministic**.  Their
 
 **When a rule can't express it, [Python events](Logic-Type-Events.md){:target="_blank" rel="noopener"} are the extension point** - they run in the same transaction, integrated with the rules.  Events can't silently reopen the bypass: the engine [refuses to start](Logic-Type-Events.md#events-must-not-mutate-row){:target="_blank" rel="noopener"} if an event mutates a row without an explicit override.
 
-While you can enter rules using IDE code completion, most use AI to specify requirements as shown above.  Since requirements can be specified in virtually any format, this makes the system **highly adoptable** - your team simply provides requirements in the formats to which they are accustomed.
+While you can enter rules using IDE code completion, most use AI to specify requirements as shown above.  Since requirements can be specified in virtually any format, this makes the system **highly adoptable** - your team simply provides requirements in the formats to which they are accustomed.  You no longer need to *think* in rules to author them, only to *read* them.
 
 Rules address both transaction logic and **Role Based Access Control.**
 
