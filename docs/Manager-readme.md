@@ -51,6 +51,8 @@ And it **fits what you already use**: your methodology, standard tools, and shar
 
 **Evaluating this as an architect?** Start with the [Architecture Brief](https://apilogicserver.github.io/Docs/Tech-Architects/).
 
+**Evaluating this for DevOps?** Set up and test your container runtime ([Podman or Docker](#containers-podman-or-docker)), then follow the [DevOps Quick Start](https://apilogicserver.github.io/Docs/DevOps-Quick-Start/).
+
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager) — where you manage projects, notes and resources. It's also your learning hub.
 <!-- CODESPACES-ONLY-START
 (see [codespaces setup here](system/ApiLogicServer-Internal-Dev/setup.gif))
@@ -1174,7 +1176,8 @@ Some samples use containers: Postgres (5432), Keycloak (8080), Kafka (9092). Use
 Then tell the shell which one you use (every command below uses it; a new terminal needs it again, unless you add it to your profile as shown after the block):
 
 ```bash
-export CONTAINER_CLI=docker        # or: export CONTAINER_CLI=podman
+# or: export CONTAINER_CLI=podman
+export CONTAINER_CLI=docker
 ```
 
 To avoid repeating this in every terminal, put one line in your shell profile (`~/.zshrc`, or `~/.bashrc`); it picks Docker if it is running, else Podman:
@@ -1184,6 +1187,15 @@ export CONTAINER_CLI=$(docker info >/dev/null 2>&1 && echo docker || echo podman
 ```
 
 It is exported so scripts (for example a project's `devops/docker-image/build_image.sh`) use the same runtime.
+
+(zsh only: also run `setopt interactive_comments` once, and add it to the same profile.  Without it, zsh prints `command not found: #` for comment lines in pasted blocks, which is harmless as long as the comments stand on their own line.)
+
+**1b. Test it** (pulls the standard image on first use, about 1 GB; prints the Python and GenAI-Logic versions):
+
+```bash
+$CONTAINER_CLI run --rm apilogicserver/api_logic_server python3 --version
+$CONTAINER_CLI run --rm apilogicserver/api_logic_server genai-logic welcome
+```
 
 **2. Postgres**
 
@@ -1245,7 +1257,8 @@ python api_logic_server_run.py
 Wait for `Kafka mode: ACTIVE` in the output (about 10 seconds). The server never commits Kafka offsets, so every start re-reads the messages still on the topics. The last command below empties them, so the next start has nothing to replay. Then, in a second terminal, run the rest from the Manager folder (paths below are qualified; a new terminal does not have `CONTAINER_CLI` unless you added it to your profile, so the block sets it). It adds one order and one message row to the sample's database; nothing else changes. Stop the server with Ctrl+C when you are done.
 
 ```bash
-export CONTAINER_CLI=docker        # or: podman (skip if set in your profile)
+# or: podman, and skip this line if it is set in your profile
+export CONTAINER_CLI=docker
 
 # Postgres: lists the databases
 $CONTAINER_CLI exec postgresql-container psql -U postgres -c '\l'
@@ -1260,12 +1273,12 @@ sqlite3 samples/basic_demo_eai/database/db.sqlite "select id, is_processed from 
 TOKEN=$(curl -s -X POST http://localhost:5656/api/auth/login -H 'Content-Type: application/json' -d '{"username":"admin","password":"p"}' | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
 python3 -c "import sys,json,base64;p=sys.argv[1].split('.')[1];p+='='*(-len(p)%4);print(json.loads(base64.urlsafe_b64decode(p))['iss'])" "$TOKEN"
 
-# Kafka out: ship that order (the newest one), then check the log
+# Kafka out: ship that order, the newest one, then check the log
 ORDER_ID=$(sqlite3 samples/basic_demo_eai/database/db.sqlite "select max(id) from 'order'")
 curl -X PATCH http://localhost:5656/api/Order/$ORDER_ID/ -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/vnd.api+json' -d "{\"data\":{\"type\":\"Order\",\"id\":\"$ORDER_ID\",\"attributes\":{\"date_shipped\":\"2026-11-15\"}}}"
 grep "delivered to topic" samples/basic_demo_eai/logs/als.log
 
-# Clean up: empty the queue again, so the next server start replays nothing (a replay would create duplicate orders)
+# Clean up: empty the queue again, so the next server start replays nothing, because a replay would create duplicate orders
 curl -X POST http://localhost:5656/consume_debug/order_b2b/reset
 ```
 
@@ -1284,7 +1297,8 @@ The commands above use `--restart always`, so the containers come back by themse
 
 ```bash
 podman machine start
-$CONTAINER_CLI ps        # postgresql-container, keycloak, broker1 should be Up
+# postgresql-container, keycloak, broker1 should be Up
+$CONTAINER_CLI ps
 ```
 
 A container created without `--restart always` stays stopped: start it with `$CONTAINER_CLI start broker1` (or `keycloak`, `postgresql-container`), or recreate it with the flag.

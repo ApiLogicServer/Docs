@@ -162,15 +162,18 @@ The basic demos need no containers.  Some samples use Postgres, Keycloak or Kafk
     export CONTAINER_CLI=$(docker info >/dev/null 2>&1 && echo docker || echo podman)
     ```
 
+    zsh users (the macOS default): also add `setopt interactive_comments`, so `#` comment lines in pasted commands are ignored instead of causing errors.
+
     Open a new terminal, and check it: `echo $CONTAINER_CLI`.  (Windows PowerShell: `$env:CONTAINER_CLI = "docker"`, or `"podman"`.)
 
 3. Test it by running the standard image:
 
     ```bash title="Test container"
     $CONTAINER_CLI run --rm apilogicserver/api_logic_server python3 --version
+    $CONTAINER_CLI run --rm apilogicserver/api_logic_server genai-logic welcome
     ```
 
-    This pulls the image on first use (about 1 GB) and prints the Python version.  If it does, containers work.
+    This pulls the image on first use (about 1 GB) and prints the Python version, then the GenAI-Logic version.  If it does, containers work.
 
 The Manager's `README` has the full procedure (section **Containers: Podman or Docker**: Postgres, Keycloak, Kafka, with verification steps).  To run and validate a project in a container, see the [DevOps Quick Start](DevOps-Quick-Start.md).
 
