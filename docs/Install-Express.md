@@ -95,49 +95,84 @@ Open the appropriate section below.
 
 === "Docker"
 
-    __Start Docker__
-    ```bash title="Start (might install) API Logic Server Docker"
-      > docker run -it --name api_logic_server --rm -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost genai-logic/api_logic_server
-      $ # you are now active in the API Logic Server docker container to create projects
+    __Start the container__
+
+    This needs no Python install: the image contains Python, API Logic Server and its libraries.  Run it from the directory in which you want your projects (it is mounted at `/localhost`):
+
+    ```bash title="Start API Logic Server container"
+    docker run -it --name api_logic_server --rm -p 5656:5656 -v ${PWD}:/localhost apilogicserver/api_logic_server
+    # you are now at a prompt inside the API Logic Server container
     ```
 
-    > **Mac ARM:** if you have an M1 or M2 Mac, change the last parameter to `apilogicserver/api_logic_server_arm`
-  
-    > **Windows:** use __Powershell__ (`PWD` is not supported in Command Line)
+    > **Podman:** use `podman` instead of `docker`.  The image runs natively on Intel and Arm (M-series) machines.
+
+    > **Windows:** use __PowerShell__ (`${PWD}` is not supported in Command Prompt).
 
     &nbsp;
 
-    __Create the Tutorial Project__
+    __Create the Basic Demo Project__
 
-    You are now running a terminal window in the Docker machine.  Create the Tutorial project:
-      ```bash title="Create Tutorial"
-      $ cd /localhost/             # a directory on your local file system in which...
-      $ genai-logic tutorial    # tutorial directory will be created
-      $ exit                       # return to local host 
-      ```
+    You are now at a prompt in the container.  Create the project in the mounted directory, then return to your machine:
+
+    ```bash title="Create Basic Demo"
+    cd /localhost
+    genai-logic create --project_name=basic_demo --db_url=basic_demo
+    exit
+    ```
+
+    The project is now in your directory (`basic_demo`).  To run it without installing anything else, see [Use Standard Image](DevOps-Containers-Use-Standard.md).
 
     &nbsp;
 
     __Or, Create a Typical Project__
 
     Typical project creation identifies the database and target project name:
-      ```bash title="Create Typical project"
-      $ cd /localhost/             # a directory on your local file system for project creation
-      $ genai-logic create-and-run --project_name=ApiLogicProject --db_url=
-      $ exit                       # return to local host 
-      ```
+
+    ```bash title="Create Typical project"
+    cd /localhost
+    genai-logic create --project_name=ApiLogicProject --db_url=<your database URI>
+    exit
+    ```
 
     &nbsp;
 
     __Open the created Project in VSCode__
-    
+
     Once the project is created, open it in VSCode on your local host:
 
-    1. Open Folder `genai-logic/tutorial` in VSCode
+    1. Open Folder `basic_demo` in VSCode
         * Accept option to "Reopen in Container"
 
-            > If you already skipped this option, no worries.  Use __View > Command Palette > Remote-Containers: Reopen in Container__
+            > If you already skipped this option, no worries.  Use __View > Command Palette > Dev Containers: Reopen in Container__
 
+
+&nbsp;
+
+---
+
+## Containers (optional): set up and test after install
+
+The basic demos need no containers.  Some samples use Postgres, Keycloak or Kafka containers, and DevOps teams will want to verify the container path.  After install, take a minute to set up and test your container runtime - **Docker or Podman** (Podman is fully supported; see [Podman](DevOps-Podman.md)).
+
+1. Start the runtime: Docker Desktop, or for Podman `podman machine start`.
+
+2. Tell the shell which one you use.  Add this line to your shell profile (`~/.zshrc` or `~/.bashrc`) so every terminal and every script has it (it picks Docker if running, else Podman):
+
+    ```bash title="Set CONTAINER_CLI"
+    export CONTAINER_CLI=$(docker info >/dev/null 2>&1 && echo docker || echo podman)
+    ```
+
+    Open a new terminal, and check it: `echo $CONTAINER_CLI`.  (Windows PowerShell: `$env:CONTAINER_CLI = "docker"`, or `"podman"`.)
+
+3. Test it by running the standard image:
+
+    ```bash title="Test container"
+    $CONTAINER_CLI run --rm apilogicserver/api_logic_server python3 --version
+    ```
+
+    This pulls the image on first use (about 1 GB) and prints the Python version.  If it does, containers work.
+
+The Manager's `README` has the full procedure (section **Containers: Podman or Docker**: Postgres, Keycloak, Kafka, with verification steps).  To run and validate a project in a container, see the [DevOps Quick Start](DevOps-Quick-Start.md).
 
 &nbsp;
 

@@ -1,14 +1,36 @@
-!!! pied-piper ":bulb: TL;DR - Using the standard container"
+!!! pied-piper ":bulb: TL;DR - Run your project in the standard container - no build required"
 
-    You can run your project using the standard container, or build your own container as described on the next page.
+    The standard image, `apilogicserver/api_logic_server`, contains Python, API Logic Server and the libraries projects use.  Mount your project folder and run it:
 
-    [Containers](DevOps-Containers.md){:target="_blank" rel="noopener"} are a best practice for deployment, *and* offer several advantages for development.  This outlines a typical scenario for building images for API Logic Server projects.
+    ```bash
+    cd <your-project>
+    docker run -it --rm --name api_logic_project -p 5656:5656 -v ${PWD}:/app apilogicserver/api_logic_server python3 /app/api_logic_server_run.py
+    ```
 
-    `devops/docker-image/build-image.dockerfile` is pre-built into your project.  Alter it for your organization and project name.  It contains instructions for using it via the command line to `build` and `push` your image.
+    Open `http://localhost:5656`.  Podman: type `podman` for `docker`.  New to this?  See the [DevOps Quick Start](DevOps-Quick-Start.md).
 
+Projects include `devops/docker-standard-image/`, with a compose file and `env.list` for this:
+
+```bash
+docker compose -f devops/docker-standard-image/docker-compose-standard-image.yml up
+```
+
+Configure the server with environment variables (database URI, security, ports) in `env.list` or the compose file; see [Container Configuration](DevOps-Container-Configuration.md).
 
 ![Container Overview](images/devops/docker-standard-image-Keycloak.png)
 
-The diagram above illustrates you can run your project using the pre-created docker image.
+The diagram above illustrates running your project in the pre-created image, connected to other containers such as a database or Keycloak.
 
-> You may wish to connect your system to others containers, such as databases or keycloak.  Networking requires you configure the hosts' IP address as shown above.
+> Networking: a container cannot reach other containers at `localhost`.  Configure the host's IP address (or `host.docker.internal`) as shown above, or put the containers on a shared network (`docker network create dev-network`, then `--net dev-network`).
+
+&nbsp;
+
+## Need a package the image does not have?
+
+The image contains the libraries used by projects (Flask, SQLAlchemy, SAFRS, LogicBank, Kafka, and drivers for PostgreSQL, MySQL, Oracle and SQL Server).  If you need another, extend the image with a short dockerfile - see [Build Project Image](DevOps-Containers-Build.md#mypkgs-containerize-packages).
+
+&nbsp;
+
+## Or, build your own image
+
+To bake your project into an image you can push to a registry, see [Build Project Image](DevOps-Containers-Build.md).

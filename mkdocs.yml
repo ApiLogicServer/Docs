@@ -153,6 +153,7 @@ nav:
     - "Install Oracle Thick": Install-oracle-thick.md
     - "Sqlite": Data-Model-Sqlite.md
   - DevOps - Containers:
+    - "Quick Start (DevOps)": DevOps-Quick-Start.md
     - "About Containers": DevOps-Containers.md
     - "Podman": DevOps-Podman.md
     - "DevOps Automation": DevOps-Automation.md

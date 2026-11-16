@@ -15,7 +15,7 @@ You will typically want to test your image before pushing it to DockerHub.  Use 
 For example, to run your project container directly, you can 
 
 ```bash
-sh devops/docker-image/run_image.sh run_image.sh
+sh devops/docker-image/run_image.sh
 ```
 
 &nbsp;
@@ -23,6 +23,10 @@ sh devops/docker-image/run_image.sh run_image.sh
 #### `environment` variables
 
 Note you can use **env variables** to configure your servers and ports.  For more information, [click here](DevOps-Container-Configuration.md#overridden-by-env-variables){:target="_blank" rel="noopener"}.
+
+> To reach another container (e.g., a database) by name, create a network (`docker network create dev-network`) and add `--net dev-network` to the `docker run`.  It is not needed when you reach containers through published ports on `localhost`, or when the server runs outside a container.
+
+> Podman: use `podman` for `docker` (or `export CONTAINER_CLI=podman` for the `devops` scripts).
 
 &nbsp;
 
@@ -83,7 +87,7 @@ If you update your ApiLogicServer container to a new version, your existing VSCo
 The `api_logic_server` image supports startup arguments so you can control the `api_logic_server` container, by running a startup script.  You can run your own script, or use the pre-supplied script (`/home/api_logic_server/bin/run-project.sh`) to load/run a git project.  For example:
 
 ```bash
-docker run -it --name api_logic_server --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost apilogicserver/api_logic_server sh /home/api_logic_server/bin/run-project.sh https://github.com/valhuber/Tutorial-ApiLogicProject.git /localhost/Project-Fixup.sh
+docker run -it --name api_logic_server --rm -p 5656:5656 -v ${PWD}:/localhost apilogicserver/api_logic_server sh /home/api_logic_server/bin/run-project.sh https://github.com/valhuber/Tutorial-ApiLogicProject.git /localhost/Project-Fixup.sh
 ```
 
 will load the pre-built sample project from git, and run it.  Prior to execution it runs `/localhost/Project-Fixup.sh`, which in this case resets ui/admin files, like this:
@@ -102,7 +106,7 @@ cp ui/admin/admin_custom_nw.yaml ui/admin/admin.yaml
 Instead of using a startup script, you can also use environment variables to achieve the same effect:
 
 ```bash
-docker run -it --name api_logic_server --rm --net dev-network -p 5656:5656 -p 5002:5002 -v ${PWD}:/localhost   -e APILOGICSERVER_GIT='https://github.com/valhuber/Tutorial-ApiLogicProject.git' -e APILOGICSERVER_FIXUP='/localhost/Project-Fixup.sh' apilogicserver/api_logic_server
+docker run -it --name api_logic_server --rm -p 5656:5656 -v ${PWD}:/localhost   -e APILOGICSERVER_GIT='https://github.com/valhuber/Tutorial-ApiLogicProject.git' -e APILOGICSERVER_FIXUP='/localhost/Project-Fixup.sh' apilogicserver/api_logic_server
 ```
 
 

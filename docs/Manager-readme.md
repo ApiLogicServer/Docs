@@ -1164,26 +1164,34 @@ ApiLogicServer create --project-name=samples/nw_sample_nocust --db-url=nw
 
 <summary>Postgres, Keycloak and Kafka: Podman or Docker</summary>
 
-Some samples use containers: Postgres (5432), Keycloak (8080), Kafka (9092). Use either runtime: step 1 sets `CR` to `docker` or `podman`, and every command below uses `$CR`. Neither is required for the basic demos: scripts that need a container say so up front and fall back.
+Some samples use containers: Postgres (5432), Keycloak (8080), Kafka (9092). Use either runtime: step 1 sets `CONTAINER_CLI` to `docker` or `podman`, and every command below uses `$CONTAINER_CLI`. Neither is required for the basic demos: scripts that need a container say so up front and fall back.
 
 **1. Install and start the runtime**
 
 * **Podman (Mac):** `brew install podman`, then `podman machine init` (once) and `podman machine start`. Install with Homebrew: the dmg alone left the command line incomplete. See [Podman setup](https://apilogicserver.github.io/Docs/DevOps-Podman/).
 * **Docker:** install and start Docker Desktop.
 
-Then tell the shell which one you use (once per terminal; every command below uses it):
+Then tell the shell which one you use (every command below uses it; a new terminal needs it again, unless you add it to your profile as shown after the block):
 
 ```bash
-CR=docker        # or: CR=podman
+export CONTAINER_CLI=docker        # or: export CONTAINER_CLI=podman
 ```
+
+To avoid repeating this in every terminal, put one line in your shell profile (`~/.zshrc`, or `~/.bashrc`); it picks Docker if it is running, else Podman:
+
+```bash
+export CONTAINER_CLI=$(docker info >/dev/null 2>&1 && echo docker || echo podman)
+```
+
+It is exported so scripts (for example a project's `devops/docker-image/build_image.sh`) use the same runtime.
 
 **2. Postgres**
 
 ```bash
-$CR run -d --restart always --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=p docker.io/apilogicserver/postgres:latest
+$CONTAINER_CLI run -d --restart always --name postgresql-container -p 5432:5432 -e POSTGRES_PASSWORD=p docker.io/apilogicserver/postgres:latest
 ```
 
-The [Database-Docker](https://apilogicserver.github.io/Docs/Database-Docker/) page lists this and the MySQL and SQL Server images. It uses `docker`; use `$CR`. Its commands add `--net dev-network`, which is not needed here: the server runs on your machine and reaches each container through its published port (`localhost:5432`). It is needed only when API Logic Server itself runs in a container and connects by container name (`postgresql-container`). In that case, create the network once (`$CR network create dev-network`) and attach the database container: `$CR network connect dev-network postgresql-container`.
+The [Database-Docker](https://apilogicserver.github.io/Docs/Database-Docker/) page lists this and the MySQL and SQL Server images. It uses `docker`; use `$CONTAINER_CLI`. Its commands add `--net dev-network`, which is not needed here: the server runs on your machine and reaches each container through its published port (`localhost:5432`). It is needed only when API Logic Server itself runs in a container and connects by container name (`postgresql-container`). In that case, create the network once (`$CONTAINER_CLI network create dev-network`) and attach the database container: `$CONTAINER_CLI network connect dev-network postgresql-container`.
 
 **3. Keycloak**
 
@@ -1193,7 +1201,7 @@ Keycloak imports its realm files from a folder you mount. Keep that folder outsi
 V=$HOME/container-volumes
 mkdir -p $V/keycloak/import
 cp -n system/ApiLogicServer-Internal-Dev/container-volumes-template/keycloak/import/*.json $V/keycloak/import/
-$CR run -d --restart always --name keycloak -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=password \
+$CONTAINER_CLI run -d --restart always --name keycloak -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=password \
   -v $V/keycloak/import:/opt/keycloak/data/import quay.io/keycloak/keycloak:23.0.6 \
   start-dev --import-realm --proxy=edge --hostname-strict=false --hostname-strict-https=false
 ```
@@ -1207,7 +1215,7 @@ One broker, `broker1`, serves every project on the machine. Live Kafka is option
 ```bash
 V=$HOME/container-volumes
 mkdir -p $V/kafka/data
-$CR run -d --restart always --name broker1 -p 9092:9092 -p 9093:9093 \
+$CONTAINER_CLI run -d --restart always --name broker1 -p 9092:9092 -p 9093:9093 \
   -e KAFKA_NODE_ID=1 -e KAFKA_PROCESS_ROLES=broker,controller -e KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER \
   -e KAFKA_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093 -e KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT \
   -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT \
@@ -1217,11 +1225,11 @@ $CR run -d --restart always --name broker1 -p 9092:9092 -p 9093:9093 \
   -v $V/kafka/data:/integration/kafka/volume docker.io/apache/kafka:3.7.0
 ```
 
-Verify: `$CR exec broker1 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list` connects (an empty list is fine). Read a topic: `$CR exec broker1 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic order_b2b --from-beginning --group fresh-group-1` (any topic name works; use a new group number to re-read).
+Verify: `$CONTAINER_CLI exec broker1 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list` connects (an empty list is fine). Read a topic: `$CONTAINER_CLI exec broker1 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic order_b2b --from-beginning --group fresh-group-1` (any topic name works; use a new group number to re-read).
 
-Each project's `integration/kafka/dockercompose_start_kafka.yml` starts the same broker with `compose`. Podman then needs a compose provider (`brew install docker-compose`, then `{"cliPluginsExtraDirs":["/opt/homebrew/lib/docker/cli-plugins"]}` in `~/.docker/config.json`); the `$CR run` above avoids that. To have Podman's VM start at login instead of `podman machine start` after each reboot: `brew install --cask podman-desktop`.
+Each project's `integration/kafka/dockercompose_start_kafka.yml` starts the same broker with `compose`. Podman then needs a compose provider (`brew install docker-compose`, then `{"cliPluginsExtraDirs":["/opt/homebrew/lib/docker/cli-plugins"]}` in `~/.docker/config.json`); the `$CONTAINER_CLI run` above avoids that. To have Podman's VM start at login instead of `podman machine start` after each reboot: `brew install --cask podman-desktop`.
 
-Then, in the project: set `KAFKA_SERVER` and reset topics, as in its `integration/kafka/kafka_readme.md`. Stop the broker with `$CR stop broker1`.
+Then, in the project: set `KAFKA_SERVER` and reset topics, as in its `integration/kafka/kafka_readme.md`. Stop the broker with `$CONTAINER_CLI stop broker1`.
 
 **5. Verify the containers end to end**
 
@@ -1234,13 +1242,13 @@ mkdir -p logs
 python api_logic_server_run.py
 ```
 
-Wait for `Kafka mode: ACTIVE` in the output (about 10 seconds). The server never commits Kafka offsets, so every start re-reads the messages still on the topics. The last command below empties them, so the next start has nothing to replay. Then, in a second terminal, run the rest from the Manager folder (paths below are qualified; a new terminal does not have `CR`, so the block sets it). It adds one order and one message row to the sample's database; nothing else changes. Stop the server with Ctrl+C when you are done.
+Wait for `Kafka mode: ACTIVE` in the output (about 10 seconds). The server never commits Kafka offsets, so every start re-reads the messages still on the topics. The last command below empties them, so the next start has nothing to replay. Then, in a second terminal, run the rest from the Manager folder (paths below are qualified; a new terminal does not have `CONTAINER_CLI` unless you added it to your profile, so the block sets it). It adds one order and one message row to the sample's database; nothing else changes. Stop the server with Ctrl+C when you are done.
 
 ```bash
-CR=docker        # or: CR=podman (a new terminal does not have it)
+export CONTAINER_CLI=docker        # or: podman (skip if set in your profile)
 
 # Postgres: lists the databases
-$CR exec postgresql-container psql -U postgres -c '\l'
+$CONTAINER_CLI exec postgresql-container psql -U postgres -c '\l'
 
 # Kafka in: empty the queue, then send the sample order message through the broker
 curl -X POST http://localhost:5656/consume_debug/order_b2b/reset
@@ -1268,7 +1276,7 @@ curl -X POST http://localhost:5656/consume_debug/order_b2b/reset
 | Keycloak | The issuer is `http://localhost:8080/realms/kcals` |
 | Kafka out | The `PATCH` answers `200`; the log shows `delivered to topic 'order_shipping'` |
 
-If `"mode"` says `simulated` the broker did not answer: check `$CR ps` and that `KAFKA_SERVER` is set in `config/default.env`. The Keycloak line only applies to a project set up with Keycloak (a SQL-auth project shows a different issuer). Reading the log, not the topic, makes the Kafka-out check independent of messages left by earlier runs.
+If `"mode"` says `simulated` the broker did not answer: check `$CONTAINER_CLI ps` and that `KAFKA_SERVER` is set in `config/default.env`. The Keycloak line only applies to a project set up with Keycloak (a SQL-auth project shows a different issuer). Reading the log, not the topic, makes the Kafka-out check independent of messages left by earlier runs.
 
 **6. After a reboot**
 
@@ -1276,10 +1284,10 @@ The commands above use `--restart always`, so the containers come back by themse
 
 ```bash
 podman machine start
-$CR ps        # postgresql-container, keycloak, broker1 should be Up
+$CONTAINER_CLI ps        # postgresql-container, keycloak, broker1 should be Up
 ```
 
-A container created without `--restart always` stays stopped: start it with `$CR start broker1` (or `keycloak`, `postgresql-container`), or recreate it with the flag.
+A container created without `--restart always` stays stopped: start it with `$CONTAINER_CLI start broker1` (or `keycloak`, `postgresql-container`), or recreate it with the flag.
 
 **Framework developers:** the dev install creates `ApiLogicServer-dev/container-volumes/` for these mounts, and BLT checks the containers before it builds. See `system/ApiLogicServer-Internal-Dev/internals-readme.md`.
 
