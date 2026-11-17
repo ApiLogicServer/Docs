@@ -2,7 +2,7 @@
 
     A GenAI-Logic project is a plain Python (Flask, SQLAlchemy) service: one process, one port (5656), configured by environment variables, state in your database.  It runs in a standard public image, `apilogicserver/api_logic_server`; there is nothing to build to try it.
 
-    This page is for DevOps teams: install, run, verify, and what to look at.  You need Docker or Podman, nothing else - no Python install.
+    This page is for DevOps teams: install, run, verify, and what to look at.  You need two things: **Docker or Podman**, to run projects; and a **local install** of GenAI-Logic (Python and `pip install ApiLogicServer`, see [Install-Express](Install-Express.md)) to create them, as developers do in step 2.  Running a project needs only the container: no Python on the servers.
 
 &nbsp;
 
