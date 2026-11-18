@@ -6,20 +6,26 @@
 
 &nbsp;
 
+## Start in the Manager
+
+![quick-start](images/devops/quick-start.png)
+
+&nbsp;
+
 ## What you are running
 
-| Item | Detail |
-|---|---|
-| **Image** | `apilogicserver/api_logic_server` on Docker Hub, linux `amd64` and `arm64`. Built from [`docker/api_logic_server.Dockerfile`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile): `python:3.12-slim`, plus `pip install -r requirements.txt` |
-| **Process** | One Python process: `python3 /app/api_logic_server_run.py` (Flask).  `gunicorn` is in the image, for example `gunicorn api_logic_server_run:flask_app -w 2 -b 0.0.0.0:5656` |
-| **User** | Non-root (`api_logic_server`) |
-| **Port** | `5656` (HTTP) |
-| **Your code** | The project folder, mounted at `/app` (or copied into your own image - see [Build Project Image](DevOps-Containers-Build.md)) |
-| **Config** | Environment variables (`APILOGICPROJECT_*`), e.g. database URI, security on/off, port.  See `devops/docker-standard-image/env.list` and [Container Configuration](DevOps-Container-Configuration.md) |
-| **State** | In your database. The default is SQLite (a file in the project's `database/` folder); set `APILOGICPROJECT_SQLALCHEMY_DATABASE_URI` for PostgreSQL, MySQL, Oracle or SQL Server (drivers are in the image) |
-| **Logs** | stdout, and `logs/als.log` in the project folder |
+| Item               | Detail                                                                                               |
+| ------------------ | ---------------------------------------------------------------------------------------------------- |
+| **Image**          | `apilogicserver/api_logic_server` on Docker Hub, linux `amd64` and `arm64`. Built from [`docker/api_logic_server.Dockerfile`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/docker/api_logic_server.Dockerfile): `python:3.12-slim`, plus `pip install -r requirements.txt` |
+| **Process**        | One Python process: `python3 /app/api_logic_server_run.py` (Flask).  `gunicorn` is in the image, for example `gunicorn api_logic_server_run:flask_app -w 2 -b 0.0.0.0:5656` |
+| **User**           | Non-root (`api_logic_server`)                                                                        |
+| **Port**           | `5656` (HTTP)                                                                                        |
+| **Your code**      | The project folder, mounted at `/app` (or copied into your own image - see [Build Project Image](DevOps-Containers-Build.md)) |
+| **Config**         | Environment variables (`APILOGICPROJECT_*`), e.g. database URI, security on/off, port.  See `devops/docker-standard-image/env.list` and [Container Configuration](DevOps-Container-Configuration.md) |
+| **State**          | In your database. The default is SQLite (a file in the project's `database/` folder); set `APILOGICPROJECT_SQLALCHEMY_DATABASE_URI` for PostgreSQL, MySQL, Oracle or SQL Server (drivers are in the image) |
+| **Logs**           | stdout, and `logs/als.log` in the project folder                                                     |
 | **Business logic** | Declarative rules in `logic/`, executed in-process by the [LogicBank](https://github.com/ApiLogicServer/LogicBank) library on SQLAlchemy commit.  No separate service |
-| **API** | JSON:API (`/api/<Table>`), OpenAPI/Swagger at `/api`, Admin UI at `/admin-app/index.html` |
+| **API**            | JSON:API (`/api/<Table>`), OpenAPI/Swagger at `/api`, Admin UI at `/admin-app/index.html`            |
 
 Extra Python packages are plain `pip`: put `RUN pip install <package>` in your project's `devops/docker-image/build_image.dockerfile`, which extends the standard image.
 

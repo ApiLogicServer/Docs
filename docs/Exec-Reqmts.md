@@ -1,7 +1,7 @@
 ---
 title: Executable Requirements
 source: docs/Exec-Reqmts.md
-version: 2.1, 8/30/2026
+version: 2.2, 11/17/2026
 ---
 
 <style>
@@ -386,6 +386,35 @@ Whichever path you took, the loop is the same:
 Not a one-shot deployment — the starting point for iterative development. Each cycle produces a working system you own and refine.
 
 **What belongs in `requirements.md`:** what to build (tables, handlers, APIs, logic rules), message formats (reference `message_formats/`, map non-obvious fields), phases (in scope now vs. deferred), acceptance (how to verify it worked). Leave out implementation details, file names, framework choices — let AI decide those; read the ad-libs to see what it chose.
+
+&nbsp;
+
+## Requirements Iteration
+
+You can alter requirements and re-implement them:
+
+![iterate](images/exec_reqmts/iterate-requirements.png)
+
+``` title="Iteration prompt from example above"
+// Requirements iteration: change a requirement, its rule change.
+
+// Example: copy/paste this into your AI assistant, from the Manager folder.
+// The system creates and runs the tests; the last step tells you what to compare.
+
+// Same prompt as the basic_demo_existing_db sample, under a new name so the two do not collide.
+create basic_demo_iteration from samples/prompts/basic_demo_existing_db.prompt
+
+// Save initial logic for compare
+in basic_demo_iteration, copy logic/logic_discovery/place_order/check_credit.py to check_credit_original.txt in the same folder
+
+// alter the requirement, and implement it
+in basic_demo_iteration/docs/requirements/check_credit/requirements.md, change requirement 4 to: The Item amount is the quantity * unit_price, less 10% when the quantity is 10 or more
+implement reqs check_credit (in basic_demo_iteration)
+When done, print this verbatim: "Next: compare basic_demo_iteration/logic/logic_discovery/place_order/check_credit_original.txt with check_credit.py. Only the Item amount rule should differ; the other rules, and the Kafka event in app_integration.py, are unchanged. Then read docs/requirements/check_credit/ad-libs.md for the judgment calls the AI made (for example, where the 10% and the 10-unit threshold are kept)."
+
+// Try next: change requirement 1 to "The Customer's balance is strictly less than the credit limit", then: implement reqs check_credit
+// ("less than" alone is read as <=, so a balance equal to the limit is allowed; "strictly" asks for <.)
+```
 
 &nbsp;
 

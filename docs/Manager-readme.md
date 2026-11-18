@@ -1166,7 +1166,7 @@ ApiLogicServer create --project-name=samples/nw_sample_nocust --db-url=nw
 
 <summary>Postgres, Keycloak and Kafka: Podman or Docker</summary>
 
-Some samples use containers: Postgres (5432), Keycloak (8080), Kafka (9092). Use either runtime: step 1 sets `CONTAINER_CLI` to `docker` or `podman`, and every command below uses `$CONTAINER_CLI`. Neither is required for the basic demos: scripts that need a container say so up front and fall back.
+<br>Some samples use containers: Postgres (5432), Keycloak (8080), Kafka (9092). Use either runtime: step 1 sets `CONTAINER_CLI` to `docker` or `podman`, and every command below uses `$CONTAINER_CLI`. Neither is required for the basic demos: scripts that need a container say so up front and fall back.
 
 **1. Install and start the runtime**
 
