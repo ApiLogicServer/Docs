@@ -52,7 +52,7 @@ We provide extensive CE to direct AI to generate **rules, not code**.  Rules are
 * **Trust:** rules are ***automatically* called** by the SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) - **no bypass**.[^1]  Reading a rule thus tells you it runs, without tracing call paths.  **Governance by architecture**, not dependent on discipline.
 * **Maintain:** change the rule, and the engine takes care of the rest: calling it, ordering it, and propagating its dependencies.
 
-**Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, alter the requirement and get back rules that cover every path - insert, update, delete, reassignment - not just the one you designed.
+**Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, alter the requirement and get back rules that cover every path - insert, update, delete, reassignment - not just the one you designed.  For more information, [click here](Exec-Reqmts.md#requirements-iteration){:target="_blank" rel="noopener"}.
 
 <details markdown>
 
