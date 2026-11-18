@@ -418,6 +418,20 @@ When done, print this verbatim: "Next: compare basic_demo_iteration/logic/logic_
 
 &nbsp;
 
+### How requirements are matched to logic
+
+A requirement set lives in `docs/requirements/<name>/requirements.md`; the rules that implement it live in `logic/logic_discovery/`.  They are linked by **content, not by file name**: when the AI writes a logic file, it copies the requirement text verbatim into the file's docstring (for Gherkin requirements, including the `Feature:` line).  That copy is the link:
+
+| Who | How it finds the logic |
+|-----|------------------------|
+| `implement reqs <name>` | Searches the logic files for the requirement's text.  One match: it changes that file.  No match: a new use case, so a new file.  More than one: it stops and asks you. |
+| Requirements Traceability Report | Links each requirement to the source files that carry its text, and the tests that ran them. |
+| The server, at startup | Loads every file in `logic/logic_discovery/`, whatever its name. |
+
+So you can **rename or move logic files** (for example, to group them in folders), and iteration still finds them.  Keep the docstring: it is the link.  If it is missing, the AI falls back to the file name (`<name>.py`) and says so in `ad-libs.md`.
+
+&nbsp;
+
 ## EAI: By-Example Integrations
 
 For messaging integrations the requirements spec uses a **by-example** approach: include a sample JSON message alongside the spec, and AI auto-maps obvious fields silently — you only specify exceptions.
