@@ -19,8 +19,9 @@ Description: Briefing
 
 
     Our core focus is to leverage AI intent capture, extended to provide ***governance:***
+
+    > Enterprise-class systems based on ***rules* you can read, trust and maintain**,<br>defined by Natural Language prompts, translated into rules by Context Engineering (CE). 
     
-    > Context Engineering (CE) to create enterprise-class systems <br>based on **rules** you can **read, trust and maintain**.
 
     See the full background: [What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
 
