@@ -24,6 +24,8 @@ Description: Briefing
 
     See the full background: [What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
 
+    **See it in 10 minutes:** [First Time Here](Manager-readme.md#first-time-here){:target="_blank" rel="noopener"} - paste one prompt, run the system, and watch a rule reject a bad save.
+
 
 <br>
 
@@ -69,6 +71,8 @@ The Context Engineering is a (large) set of files under `docs`.
 <br>
 
 AI creates rules at design time - runtime execution is **deterministic**.  Their readability facilitates *"human in the loop"* review (see the example above) to verify proper AI rule creation.
+
+**Better models don't remove the need:** even if AI becomes good enough that the prompt is the system of record, and code is compiler output nobody reads, governance still needs something you can read and check.  Rules are that artifact, whichever model wrote them.
 
 **Probabilistic rules are an *"opt-in"*** (e.g. choose the [optimal supplier](Sample-ai-rules.md){:target="_blank" rel="noopener"}, subject to world conditions).  These rules operate at runtime.  The values are always subjected to the deterministic constraints.
 

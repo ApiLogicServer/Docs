@@ -82,7 +82,7 @@ CODESPACES-ONLY-END -->
 
 **How do we get the speed and simplicity of AI — with the governance enterprises require?**
 
-Everyone who's had AI build a system hits the same wall afterward: *what have I actually got?* The developer can't be sure what it does when something changes. QA doesn't know what to test. The business can't say what policy it's really enforcing — and the auditor can't certify what nobody can read. Requirements are, and should be, incomplete. Code is complete but unreadable at scale.
+Everyone who's had AI build a system hits the same wall afterward: *what have I actually got?* The *requirements* are incomplete, and AI fills the gaps with **guesses you never see**. The *code* is complete, but **hard to read and trust** at scale. You can't govern what you can't see, or what you can't read.
 
 **The missing artifact is spreadsheet-like rules.** *Balance = sum of unshipped orders. Balance must not exceed credit limit.* One line per requirement, readable by anyone who's ever read a spreadsheet. And like a spreadsheet, they *react*: change anything, every dependent value recalculates — automatically, on every path, nothing to forget. That's why they're trustworthy, not just readable.
 
