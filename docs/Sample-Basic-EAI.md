@@ -59,21 +59,21 @@ subscribes and publishes, so there's no second project to stand up:
 
 ![create_script](images/integration/demo_eai/create_script.png)
 
-**No Kafka installed? No Docker?** Not required for any of this. The Kafka client
-library installs with the project either way; you only need an actual broker
-running if you want to see live message delivery (Section 6, Step 6 — optional).
-Everything else — building, running, Check Credit, the Custom API, and even the
-Kafka Subscribe/Publish logic itself — works and is fully testable without one.
-If/when you do want live Kafka, the project includes everything to stand one up —
-see `integration/kafka/kafka_readme.md`'s **Live Kafka Test** section
-(`docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d`, Podman
-alternative included).
+The requirements are shown at right above, truncated.  To see the entire file, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md){:target="_blank" rel="noopener"}.  
+
+> These requirements create the project logic for integration and business logic.  This example uses Gherkin in an `md` file; we have found pretty much all formats work.
 
 &nbsp;
 
-**Just want to run it, skip building?** The Manager already has a pre-built
-`basic_demo_eai` — jump straight to [Section 1, Run and Verify](#1-run-and-verify).
-Everyone — whether you just built it or you're using the pre-built copy — starts
+### Using Kafka
+
+**No Kafka installed? No Docker?** Not required for any of this. The Kafka client library installs with the project either way; you only need an actual broker running if you want to see live message delivery (Section 6, Step 6 — optional).
+
+Everything else — building, running, Check Credit, the Custom API, and even the Kafka Subscribe/Publish logic itself — works and is fully testable without one.  
+
+If/when you do want live Kafka, the manager readme contains setup and verification instructions.  To see them, [click here](DevOps-Quick-Start.md){:target="_blank" rel="noopener"}.
+
+**Just want to run it, skip building?** The Manager already has a pre-built `basic_demo_eai` — jump straight to [Section 1, Run and Verify](#1-run-and-verify).  Everyone — whether you just built it or you're using the pre-built copy — starts
 there.
 
 &nbsp;
