@@ -52,7 +52,7 @@ More in [Governance by Architecture](Tech-Gov-By-Arch.md#two-funnels-meeting-at-
 We provide extensive CE to direct AI to generate **rules, not code**.  Rules are spreadsheet-like expressions you can:
 
 * **Read:** 5 rules vs ~220 lines of procedural code for the same requirements ([40X more concise](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}; same AI, same behavior), and free from dependency management complexity
-* **Trust:** rules are ***automatically* called** by the SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) - **no bypass**.[^1]  Reading a rule thus tells you it runs, without tracing call paths.  **Governance by architecture**, not dependent on discipline.
+* **Trust:** rules are ***automatically* called** by the SQLAlchemy session hook, so they run on **all transaction sources** (APIs, MCP, messages, app code) - **no bypass**.[^1]  Reading a rule thus tells you it runs, without tracing call paths.  **Commit-level invariants, not call-site discipline:** no helper to remember in every handler - governance by architecture.
 * **Maintain:** change the rule, and the engine takes care of the rest: calling it, ordering it, and propagating its dependencies.
 
 **Iterate requirements, not code:** code generation - whether AI or classic - breaks down when you have to "edit the generated code": you're patching an artifact, not the thing you actually meant.  Here, alter the requirement and get back rules that cover every path - insert, update, delete, reassignment - not just the one you designed.  For more information, [click here](Exec-Reqmts.md#requirements-iteration){:target="_blank" rel="noopener"}.
@@ -166,10 +166,14 @@ Your IDE, your debugger, your git, all work normally. Rules are plain Python fil
 
 Deploys as a standard container.
 
-Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server, Oracle, SQLite. Nothing proprietary, nothing to unlearn.
+Stack: Python, Flask, SQLAlchemy, Docker. Works with MySQL, Postgres, SQL Server, Oracle, SQLite. Nothing proprietary, nothing to unlearn.[^1]
 
 Standard JSON:APIs enable the use of [**Vibe tools**](Admin-Vibe.md){:target="_blank" rel="noopener"} for custom UI dev.
 
 <br>
 
-[^1]: Within the architecture: every write goes through the logic tier (the application's data layer), which is where the rules are hooked in.  As in any 3-tier system, direct database access around that tier is outside this guarantee.
+[^1]: **Boundaries** - where the guarantees stop, and where the approach does not fit:
+
+    * **Writes around the logic tier:** every write through the logic tier (the application's data layer, where the rules are hooked in) is governed.  As in any 3-tier system, direct database access around that tier is outside this guarantee.  [More on no-bypass](FAQ-Rules-Learning.md#trust-on-commit-no-bypass){:target="_blank" rel="noopener"}.
+    * **Workloads:** rules govern transactional data - derivations, constraints and actions on commit.  They are not for analytics / OLAP, or for systems whose behavior is mostly not data transactions.  You may find it useful to employ [complementary technologies](FAQ-RETE.md#key-differences-in-rules-engines-process-decision-transaction){:target="_blank" rel="noopener"} for process and decision logic.
+    * **Lock-in:** the stack is standard, and the rules engine (LogicBank) is open source.  But rules are written against its API; leaving means re-expressing them as procedural code - the code they replaced.  [Standards, not a proprietary studio](FAQ-Low-Code.md#devs-standards-architecture){:target="_blank" rel="noopener"}.
