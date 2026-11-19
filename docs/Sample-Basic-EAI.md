@@ -226,7 +226,7 @@ Use case: App Integration
     1. Send the Order to Kafka topic 'order_shipping' if the date_shipped is not None.
 ```
 
-![Nat Lang Logic](images/sample-ai/copilot/copilot-logic-vibe.png)
+![Nat Lang Logic](images/integration/demo_eai/rules_code.png)
 
 > **These rules are declared once, on the data — not once per entry point.** LogicBank hooks
 > the database commit itself, so Check Credit fires on *every* write path that touches an
