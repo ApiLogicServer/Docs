@@ -16,16 +16,18 @@ Description: Briefing
     
     * the *requirements* are incomplete, and AI fills the gaps with **guesses you never see.**  How can you govern what you can't see?
     * the *generated code* is **hard to read and trust**.  How can you govern what you can't read?
+    * and you still need to prove it does what you asked - **testing is the new bottleneck**.  How can you govern what you can't prove?
 
+    The answer: Context Engineering (CE) directs AI to **translate your requirements into rules, not code**.  So you can:
 
-    Our core focus is to leverage AI intent capture, extended to provide ***governance:***
-
-    > Enterprise-class systems based on ***rules* you can read, trust and maintain**,<br>defined by Natural Language prompts, translated into rules by Context Engineering (CE). 
+    > **See the guesses** - AI flags every assumption it made for review, and leaves a `FIXME` where there is no safe default.<br>
+    > **Read and trust the rules** - 40X more concise than code, and enforced by the rules engine at commit, on every transaction from every source - no bypass.<br>
+    > **Prove the rules implement the requirements** - generated tests run, and the traceability report shows each requirement, its rules, and the logs of them firing.
     
 
-    See the full background: [What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
+    Full background: [What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
 
-    **See it in 10 minutes:** [First Time Here](Manager-readme.md#first-time-here){:target="_blank" rel="noopener"} - paste one prompt, run the system, and watch a rule reject a bad save.
+    **Try it in 10 minutes:** [First Time Here](Manager-readme.md#first-time-here){:target="_blank" rel="noopener"} - paste one prompt, run the system, and watch a rule reject a bad save.
 
 
 <br>
@@ -37,7 +39,7 @@ Description: Briefing
 1. Virtually any form of intent becomes rules ([Executable Requirements](#executable-requirements)),
 2. Every transaction source ([Enterprise-class Architecture](#enterprise-class-architecture)) is governed by them,
 3. Rules run at the commit funnel - automatically ordered, reused over all paths ([Business Logic](#business-logic-rules-not-code)),
-4. The same rules drive the governance reports ([Governance](#governance)).
+4. The same rules drive the governance reports ([Governance](#governance-proof-not-just-review)).
 
 
 
@@ -142,17 +144,24 @@ Other CE elements automate systems with **rule-enabled access:**
 
 ---
 
-## Governance
+## Governance - proof, not just review
 
-In addition to no-bypass[^1] transaction logic **runtime enforcement**, the system generates **review and audit support** with:
+Reading the rules isn't enough, and AI output doesn't verify itself.  Before anyone can approve deployment, they need evidence that the system does what it set out to do.
 
-* **[Test creation and execution](Behave.md){:target="_blank" rel="noopener"}**, by leveraging rules, to verify the requirements and rule execution.  Tests include positive and negative tests.
-* **[Requirements Traceability reports](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** that trace requirements to the underlying rules, and confirm their execution on tests with actual logs, showing how rules ran during each test
+That evidence is generated, **closing the loop** to show each requirement is tested, with verified rule execution:
 
-  * This is a significant step beyond *reading* the rules - it's direct support for **auditing**
-* **[AI Alerts](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/demo_eai/ad-libs.md){:target="_blank" rel="noopener"}:** AI proactively calls for review for inferences drawn from incomplete or vague requirements - and where there is no safe default, it **stops and leaves a `FIXME`** rather than guessing
-* **Logic flow diagrams and a health check** (rule adoption, dependency-tracking integrity), generated from the rules
-* **[Ontology creation](https://apilogicserver.github.io/Docs/Database-Ontology/){:target="_blank" rel="noopener"}** (including type support) makes systems available to an important class of tools, and provides terminology clarity for business users
+1. **[Tests are generated from the rules](Behave.md){:target="_blank" rel="noopener"}**, one Feature per requirement, covering each change path every rule implies (for a sum: insert, update, delete, and moving a row to a different parent; for a constraint: accepted, at the boundary, and rejected).
+2. **The tests run**, and the rules engine logs every rule that fires.
+3. **The [Requirements Traceability Report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** is built from that run: for each requirement, the rules that implement it, the tests that exercise it, and the logs of those rules firing - side by side with the requirement text, so a reviewer can confirm each rule says what its requirement means.
+
+**The result: proof the rules implement the requirements** - an executed record you can hand an auditor, with each rule beside the requirement it implements.
+
+Two things keep the record trustworthy:
+
+* **The guesses are visible.**  The record is only as good as the interpretation behind it.  [AI Alerts](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/demo_eai/ad-libs.md){:target="_blank" rel="noopener"} flag every inference drawn from vague requirements, and where there is no safe default, the AI **stops and leaves a `FIXME`** instead of a test that would pass for the wrong reason.
+* **The rules can't be bypassed.**  The rules the tests exercised are the same rules that run at commit on every transaction in production[^1] - not a separate code path that might differ.
+
+Also generated from the rules: **logic flow diagrams**, a **health check** (rule adoption, dependency-tracking integrity), and an **[ontology](https://apilogicserver.github.io/Docs/Database-Ontology/){:target="_blank" rel="noopener"}** (including type support) for tools and business terminology.
 
 [More on project governance](Manager-readme.md#rules-you-can-read){:target="_blank" rel="noopener"}.
 
