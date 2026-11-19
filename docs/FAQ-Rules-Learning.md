@@ -69,7 +69,7 @@ Nothing calls these 5 rules. There is no "order placement" code for them to be c
 
 They sit on the ORM's commit event. Every write to `Item`, `Order`, or `Customer` fires them -
 the JSON:API, a custom endpoint, an MCP request, a Kafka handler, a script, an AI agent
-touching the database directly. There's no entry point downstream of the commit, so there's no
+calling the MCP / API. There's no entry point downstream of the commit, so there's no
 entry point that skips it.
 
 Same guarantee, stated in [Introduction: Governed Systems From Requirements](Introduction.md): *"the rule
