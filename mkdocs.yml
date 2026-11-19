@@ -61,7 +61,7 @@ nav:
     - "Fitting Your Workflow": WorkFlow.md
     - "Manager": Manager.md
     - "Executable Reqmts": Exec-Reqmts.md
-    - "!DUP Create - New DB (use AI)": Project-Create-Copilot.md
+    - "Create - New DB (use AI)": Project-Create-Copilot.md
     - "Create - Existing DB": Project-Existing-DB.md
     - "AI-Enabled Projects": Project-AI-Enabled.md
     - "Model Driven": Tech-DSL.md
