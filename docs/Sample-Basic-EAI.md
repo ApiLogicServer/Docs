@@ -61,7 +61,7 @@ subscribes and publishes, so there's no second project to stand up:
 
 The requirements are shown at right above, truncated.  To see the entire file, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md){:target="_blank" rel="noopener"}.  
 
-> These requirements create the project logic for integration and business logic.  This example uses Gherkin in an `md` file; we have found pretty much all formats work.
+> This creates the executable project: **integration** (MCP-enabled API, messaging), **business logic**, and the **Admin App**.  It then creates / runs the tests, and documents it all in [this file](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}. This example uses Gherkin `md` file; you can also use your existing methodolgies.
 
 &nbsp;
 
