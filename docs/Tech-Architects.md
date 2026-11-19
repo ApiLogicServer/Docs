@@ -150,11 +150,13 @@ Reading the rules isn't enough, and AI output doesn't verify itself.  Before any
 
 That evidence is generated, **closing the loop** to show each requirement is tested, with verified rule execution:
 
-1. **[Tests are generated from the rules](Behave.md){:target="_blank" rel="noopener"}**, one Feature per requirement, covering each change path every rule implies (for a sum: insert, update, delete, and moving a row to a different parent; for a constraint: accepted, at the boundary, and rejected).
+1. **[Tests are generated from the rules](Behave.md){:target="_blank" rel="noopener"}**[^2], one Feature per requirement, covering each change path every rule implies (for a sum: insert, update, delete, and moving a row to a different parent; for a constraint: accepted, at the boundary, and rejected).
 2. **The tests run**, and the rules engine logs every rule that fires.
 3. **The [Requirements Traceability Report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** is built from that run: for each requirement, the rules that implement it, the tests that exercise it, and the logs of those rules firing - side by side with the requirement text, so a reviewer can confirm each rule says what its requirement means.
 
 **The result: proof the rules implement the requirements** - an executed record you can hand an auditor, with each rule beside the requirement it implements.
+
+![exec-reqmts-verify](images/exec_reqmts/exec-reqmts-verify.png)
 
 Two things keep the record trustworthy:
 
@@ -186,3 +188,5 @@ Standard JSON:APIs enable the use of [**Vibe tools**](Admin-Vibe.md){:target="_b
     * **Writes around the logic tier:** every write through the logic tier (the application's data layer, where the rules are hooked in) is governed.  As in any 3-tier system, direct database access around that tier is outside this guarantee.  [More on no-bypass](FAQ-Rules-Learning.md#trust-on-commit-no-bypass){:target="_blank" rel="noopener"}.
     * **Workloads:** rules govern transactional data - derivations, constraints and actions on commit.  They are not for analytics / OLAP, or for systems whose behavior is mostly not data transactions.  You may find it useful to employ [complementary technologies](FAQ-RETE.md#key-differences-in-rules-engines-process-decision-transaction){:target="_blank" rel="noopener"} for process and decision logic.
     * **Lock-in:** the stack is standard, and the rules engine (LogicBank) is open source.  But rules are written against its API; leaving means re-expressing them as procedural code - the code they replaced.  [Standards, not a proprietary studio](FAQ-Low-Code.md#devs-standards-architecture){:target="_blank" rel="noopener"}.
+
+[^2]: **Independent tests:** the rules suggest *what* to test - each change path they imply.  The tests then run through the API like any client, and check the resulting data against fixed expected values; they never ask the engine for the answer.  Whether each rule means what its requirement says is confirmed by people, reading the trace.
