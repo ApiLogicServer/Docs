@@ -1,7 +1,7 @@
 ---
 title: Sample_Basic_EAI
 do_process_code_block_titles: True
-version: 1.15 from docsite, for readme 11/19/2026 - requirement 6, Operations Dashboard (order flow), and the seeded order history it charts; (1.14: for readme 10/24/2026 - one closing message (what to review, where the report is) instead of a mid-run "Built" line that runs did not print; (1.13: Build It is the adaptive clean script (sentences, no shell lines; degrades instead of stopping); (1.12: "This sample" instead of the project name (the same readme is fetched for demo_eai); (1.11: the no-container script is an opt-out of Docker/Podman, not only for machines without them; (1.10: 10/24/2026 - no-container script (Docker/Podman optional); (1.9: 10/20/2026 - no bootstrap prompt; Build It adds diagrams, tests, run tests, Behave Logic Report. (1.8: message_formats auto-included in prototype, xr))
+version: 1.16 from docsite, for readme 11/20/2026 - "Is the business flowing?" TL;DR; section 8 recast as rules, not a reporting stack (totals maintained by rules; shown anywhere via /api/DailyFlow); folds for requirement, rules, diagram, page; (1.15: 11/19/2026 - requirement 6, Operations Dashboard (order flow), and the seeded order history it charts; (1.14: for readme 10/24/2026 - one closing message (what to review, where the report is) instead of a mid-run "Built" line that runs did not print; (1.13: Build It is the adaptive clean script (sentences, no shell lines; degrades instead of stopping); (1.12: "This sample" instead of the project name (the same readme is fetched for demo_eai); (1.11: the no-container script is an opt-out of Docker/Podman, not only for machines without them; (1.10: 10/24/2026 - no-container script (Docker/Podman optional); (1.9: 10/20/2026 - no bootstrap prompt; Build It adds diagrams, tests, run tests, Behave Logic Report. (1.8: message_formats auto-included in prototype, xr))
 source: docs/Sample-Basic-EAI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
@@ -65,6 +65,25 @@ subscribes and publishes, so there's no second project to stand up:
 The requirements are shown at right above, truncated.  To see the entire file, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md){:target="_blank" rel="noopener"}.  
 
 > This creates the executable project: **integration** (MCP-enabled API, messaging), **business logic**, and the **Admin App**.  It then creates / runs the tests, and documents it all in [this file](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}. This example uses Gherkin `md` file; you can also use your existing methodolgies.
+
+&nbsp;
+
+### Is the business flowing?
+
+![order flow dashboard: daily totals maintained by rules](images/integration/demo_eai/bus_order_flow/Bus-governance.png)
+
+Rules keep each transaction correct. An executive also needs to know that the business is *flowing*: orders arriving,
+being processed, not piling up as rejects. This sample answers that with **rules, not a reporting stack**: ten
+one-line rules maintain daily totals of orders, Kafka messages and B2B requests. The totals are updated in the same
+transaction, on every path (B2B API, Kafka, Admin App), so they are as trustworthy as the balances: no ETL, no
+separate metrics pipeline, nothing to drift.
+
+**None of it is hand-written.** The rules and the charts were built by your AI assistant from requirement §6, a few
+lines of Gherkin (shown in Section 8), in the same `implement requirements` step as the rest of the system.
+
+The charts are about 100 lines of glue on the Admin App home page. The totals themselves are a standard, secured API
+resource (`/api/DailyFlow`), so Grafana, Power BI or a custom (Vibe) UI can show the same numbers.
+*We maintain the numbers; show them anywhere.* Details in [Section 8](#8-requirement-6-operations-dashboard-order-flow).
 
 &nbsp;
 
@@ -466,9 +485,10 @@ For full details and generated code examples, see [Integration EAI — Publish](
 
 ## 8. Requirement §6 — Operations Dashboard (Order Flow)
 
-Rules govern each transaction. An operator also wants to know that transactions are *flowing*: arriving, being
-processed, and not piling up as rejects. Requirement §6 puts that on the Admin App home page. This is the result,
-after the build and the seed step (C2):
+Requirement §6 asks: *is the business flowing?* Orders arriving, being processed, and not piling up as rejects. The
+usual answer is a reporting stack: queries or a scheduled job feed a metrics store, and a dashboard reads it. This
+sample answers with **more rules**, generated from the requirement below, not hand-coded. The daily totals are
+derived like any other value, so the dashboard only reads them. This is the result, after the build and the seed step (C2):
 
 ![order flow dashboard, from the seed step of the create script](images/integration/demo_eai/bus_order_flow/Bus-governance.png)
 
@@ -476,6 +496,24 @@ The left chart is orders per day (count and amount). The right chart is, per day
 the B2B API requests: processed, rejected, and not yet done. The seeded history shows what an operator looks for: a
 **bad-data day** (messages keep arriving, but most are rejected) and the **flow stopping** (two days with no activity),
 then recovery.
+
+**Why rules, not a reporting stack:**
+
+| | Reporting stack (queries, jobs, metrics store) | Rules (this sample) |
+|---|---|---|
+| **When the totals change** | On a schedule, or by re-querying each time the page opens | In the transaction that changes the data |
+| **Which writes are counted** | Whatever the query or job reads | Every write path: B2B API, Kafka, Admin App, and any path added later |
+| **Cost per change** | Re-scans the rows | Adjusts the day's total by the change (one row, no scan) |
+| **Can it drift?** | A copy can lag or diverge from the data | No: same engine and same commit as the customer balances |
+| **What you write** | Queries, jobs, a pipeline to run them | Ten one-line rules |
+
+The flow numbers get the same guarantee as the balances: an order that commits is counted, and one that rolls back is
+not, on every path.
+
+**Show them anywhere.** The Admin App charts are one consumer of the totals, not the product. `DailyFlow` is a
+standard API resource (`/api/DailyFlow`), with the same security, filtering and sorting as every table. Grafana,
+Power BI or a custom (Vibe) UI can show the same numbers, and an alert can watch them. *We maintain the numbers; show
+them anywhere.*
 
 <details markdown>
 
