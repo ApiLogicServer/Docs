@@ -1,7 +1,7 @@
 ---
 title: Sample_Basic_EAI
 do_process_code_block_titles: True
-version: 1.14 from docsite, for readme 10/24/2026 - one closing message (what to review, where the report is) instead of a mid-run "Built" line that runs did not print; (1.13: Build It is the adaptive clean script (sentences, no shell lines; degrades instead of stopping); (1.12: "This sample" instead of the project name (the same readme is fetched for demo_eai); (1.11: the no-container script is an opt-out of Docker/Podman, not only for machines without them; (1.10: 10/24/2026 - no-container script (Docker/Podman optional); (1.9: 10/20/2026 - no bootstrap prompt; Build It adds diagrams, tests, run tests, Behave Logic Report. (1.8: message_formats auto-included in prototype, xr))
+version: 1.15 from docsite, for readme 11/19/2026 - requirement 6, Operations Dashboard (order flow), and the seeded order history it charts; (1.14: for readme 10/24/2026 - one closing message (what to review, where the report is) instead of a mid-run "Built" line that runs did not print; (1.13: Build It is the adaptive clean script (sentences, no shell lines; degrades instead of stopping); (1.12: "This sample" instead of the project name (the same readme is fetched for demo_eai); (1.11: the no-container script is an opt-out of Docker/Podman, not only for machines without them; (1.10: 10/24/2026 - no-container script (Docker/Podman optional); (1.9: 10/20/2026 - no bootstrap prompt; Build It adds diagrams, tests, run tests, Behave Logic Report. (1.8: message_formats auto-included in prototype, xr))
 source: docs/Sample-Basic-EAI.md
 Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 ---
@@ -53,6 +53,9 @@ subscribes and publishes, so there's no second project to stand up:
 
 5. **Standard APIs** for ad-hoc integration, user interfaces, etc
 
+6. **Operations Dashboard:** charts on the Admin App home page showing that orders
+   are flowing — messages received, processed and rejected per day, and orders per day
+
 &nbsp;
 
 ## Creation and Setup
@@ -81,9 +84,9 @@ there.
 ## Build It
 
 One sentence creates the project; one sentence executes **every** requirement below
-(Check Credit, B2B API, Kafka Subscribe, Kafka Publish, Security) — steps A-C are the
-**entire build**, not the first of several. Steps D-H (Kafka check, diagrams, tests, report) are
-optional extras that verify and document it. Here is the whole procedure, then what each step means:
+(Check Credit, B2B API, Kafka Subscribe, Kafka Publish, Security, Operations Dashboard) — steps A-C are the
+**entire build**, not the first of several. Step C2 seeds history for the dashboard, and steps D-H (Kafka check,
+diagrams, tests, report) are optional extras that verify and document it. Here is the whole procedure, then what each step means:
 
 > **Important:** be sure your AI assistant is in "Agent" mode ("Ask" will not work). No bootstrap prompt is needed: the Manager's context loads automatically when you open it in your AI assistant.
 
@@ -99,6 +102,9 @@ add security (degrade to SQL if Keycloak is not available)
 
 // C - Implement Requirements
 implement requirements samples/requirements/demo_eai/docs/requirements/demo_eai
+
+// C2 - Seed order history
+seed order history for the dashboard: the 30 days before today, through the rules (not SQL), with weekday and weekend volumes, one day with mostly rejected messages, and no activity 3 and 2 days ago
 
 // D - Verify Kafka
 verify message subscriptions (all topics)
@@ -140,7 +146,8 @@ When the report is done, print this verbatim: "Next: scan these two files: logic
 | **0 - Environment** | Your assistant checks for Docker or Podman. With neither running it says so up front and continues in degraded mode (SQL security, Kafka tested through the debug endpoint). |
 | **A - Create Project** | Creates a working, MCP-enabled API and Admin App from the existing database (and the `genai-logic` CLI to manage it). No logic yet. |
 | **B - Security** | Keycloak when a container runtime is running, else the SQL authentication provider that ships in the project, so the row-level security requirement (§5) is enforced either way. You are told which was used. |
-| **C - Implement Requirements** | The build: the requirements (5 Gherkin features, plus the message formats) are copied into the project, and your AI assistant writes the rules, the Custom API, the Kafka subscribe and publish, and the security declarations. It also writes `ad-libs.md`, the judgment calls it made, for you to review (the closing message points you at it). Sections 2-5b and 7 below tour what it produced. |
+| **C - Implement Requirements** | The build: the requirements (6 Gherkin features, plus the message formats) are copied into the project, and your AI assistant writes the rules, the Custom API, the Kafka subscribe and publish, the security declarations, and the dashboard. It also writes `ad-libs.md`, the judgment calls it made, for you to review (the closing message points you at it). Sections 2-5b, 7 and 8 below tour what it produced. |
+| **C2 - Seed Order History** | Gives the dashboard 30 days of history to chart (Section 8). A script run inside the app writes the orders and message rows through the ORM with the rules active, so every amount, total and balance is derived and the credit limit checked. It does **not** go through the B2B API or Kafka: the mapper, the consumers and their error recording are exercised by the tests (step F), not by the seed. Deterministic: a rebuild draws the same picture. |
 | **D - Verify Kafka** | With a broker running: enables live Kafka, resets the topics first (messages left by earlier runs would otherwise be replayed), sends the sample message, and confirms a processed blob and a new order. With no broker it verifies the simulated path and says so. |
 | **E - Logic Diagrams** | Draws the rule chain for each requirement as an SVG; the report shows each one under its requirement. Skipped with a one-line note if graphviz is missing. |
 | **F - Create Tests** | Writes Behave scenarios from the rules. "Default names" means each Feature is named exactly as its requirement, so the report can show, per requirement, which tests exercised it. |
@@ -152,7 +159,7 @@ When the report is done, print this verbatim: "Next: scan these two files: logic
 * A scenario that reads a message back from the `order_shipping` topic needs a live broker (Section 6, Step 6); every other scenario runs with no Kafka.
 * The full requirements spec that step C executes is
   [docs/requirements/demo_eai/requirements.md](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md).
-  **Sections 2-5b and 7 below are a tour of what step C built** — each maps back to the requirement that produced it. They are not additional steps to run.
+  **Sections 2-5b, 7 and 8 below are a tour of what step C built** — each maps back to the requirement that produced it. They are not additional steps to run.
 
 This is a real project: your IDE, your Python, your source control. The prompt creates it in minutes — but you own it fully and iterate from there. Change a rule; the engine determines execution order automatically. Add an endpoint; the rules are already there waiting for it.
 
@@ -453,3 +460,113 @@ Feature: Kafka Publish Shipping Notification
 AI reads the format file and `models.py` and maps by name.  Direct matches are silent; uncertain ones get `# TODO: verify` in `FIELD_EXCEPTIONS`; anything unresolvable is added to `_unresolved` and **blocks server start** — reported to you in chat immediately.
 
 For full details and generated code examples, see [Integration EAI — Publish](Integration-EAI.md#publish--outbound-kafka-messages){:target="_blank" rel="noopener"}.
+
+
+<br>
+
+## 8. Requirement §6 — Operations Dashboard (Order Flow)
+
+Rules govern each transaction. An operator also wants to know that transactions are *flowing*: arriving, being
+processed, and not piling up as rejects. Requirement §6 puts that on the Admin App home page. This is the result,
+after the build and the seed step (C2):
+
+![order flow dashboard, from the seed step of the create script](images/integration/demo_eai/bus_order_flow/Bus-governance.png)
+
+The left chart is orders per day (count and amount). The right chart is, per day, the `order_b2b` Kafka messages and
+the B2B API requests: processed, rejected, and not yet done. The seeded history shows what an operator looks for: a
+**bad-data day** (messages keep arriving, but most are rejected) and the **flow stopping** (two days with no activity),
+then recovery.
+
+<details markdown>
+
+<summary>The requirement</summary>
+
+<br>
+
+![requirement §6](images/integration/demo_eai/bus_order_flow/order_flow_totals_reqs.png)
+
+Requirement §2 adds one clause the dashboard depends on: *record each request, with its outcome* — so a rejected
+B2B request leaves a row to count, not just an HTTP 400.
+
+</details>
+
+<details markdown>
+
+<summary>The rules: daily totals, maintained by the engine (note use of insert_parent)</summary>
+
+<br>
+
+The `insert_parent` argument directs the engine to create parents on sum/count adjustment.
+
+![daily totals rules](images/integration/demo_eai/bus_order_flow/order_flow_totals_rules.png)
+
+The totals are not computed when the page opens; they are **rules**, kept current on every transaction, like any
+other derived value:
+
+* **One row per day** (`DailyFlow`), keyed by the day each Order, message and request arrived (`CreatedOnDay`, set by
+  date stamping).
+* **`insert_parent=True`**: the first arrival of a day creates that day's row; every later one adjusts it. Nothing
+  pre-creates days.
+* **Counts and sums** of each kind of arrival, with `where=` for processed and rejected; **not yet done** is a
+  formula: received − processed − rejected.
+* **Every write path counts**: the B2B API, the Kafka consumers and the Admin App all go through the same rules.
+  A failed message or request records its reason (`error_text`) through the same governed session, so the rules
+  count the rejection.
+
+The page only reads `DailyFlow` (`api/api_discovery/dashboard_services.py`), fills a day with no row as zero (so the
+chart can show the flow stopping), and renders on every request, not cached.
+
+</details>
+
+<details markdown>
+
+<summary>The logic diagram</summary>
+
+<br>
+
+![daily totals logic diagram](images/integration/demo_eai/bus_order_flow/order_flow_totals_dgm.png)
+
+From the Requirements Traceability Report: each arrow is a numbered rule, from the arriving rows (Order,
+OrderB2bMessage, OrderB2bRequest) to the day's totals.
+
+</details>
+
+<details markdown>
+
+<summary>The page: how the totals reach the screen</summary>
+
+<br>
+
+![dashboard implementation](images/integration/demo_eai/bus_order_flow/order_flow_totals_impl.png)
+
+The rules are the easy part; getting the totals onto the home page takes five hops:
+
+1. **`ui/admin/home.js`**: the Admin App home page is a fixed HTML string, so it holds one `<iframe>` pointing at `/dashboard`.
+2. **`/dashboard`** returns one iframe per chart.
+3. **`/chart_graphics/<name>`** calls that chart's function, listed in `CHARTS`.
+4. **The chart function** (for example `order_volume_query()`) reads the `DailyFlow` rows, fills quiet days with zeros, and returns a plain dict.
+5. **`ui/templates/multi_series_chart.jinja`** writes the dict into a page that draws it with Chart.js.
+
+Hops 2-4 are in `api/api_discovery/dashboard_services.py`. To add a chart, add a function and a `CHARTS` entry;
+`home.js` does not change. The project's `api/api_discovery/dashboard_services_readme.md` explains why each hop
+exists, the dict the template expects, and what to add for production (a login).
+
+</details>
+
+**Where the history comes from: step C2, and what it is not.** A new project has only today's test data, so the
+charts would be one spike at the right edge. Step C2 seeds the 30 days before today
+(`database/test_data/seed_order_flow.py`). The seed writes through the ORM inside the app with the rules active:
+every item price and amount, order total, customer balance and daily total is derived by the rules, and the credit
+limit is checked. It is **not** delivered through the B2B API or Kafka: the seeded messages and requests are written
+already processed (or rejected, with an error text the seed supplies). The tests (step F) exercise the real API and the
+real topic. The seed is deterministic (fixed random seed, dates relative to today) and refuses to run twice.
+
+> **Retention:** order, message and request rows are never purged. The totals count them, so deleting rows would
+> lower past days' totals. The logic file carries a TODO with the options.
+
+> **Live Kafka and restarts:** the consumer commits its offsets, so a restart does not read old messages again
+> (`APILOGICPROJECT_KAFKA_COMMIT_OFFSETS`, on by default; see `config/default.env`). The create script empties the
+> topics after the tests, so the test messages are not replayed into a later demo.
+
+For how to ask your AI assistant for queries and dashboards in your own project, see
+[Admin Customization — AI Assistant](Admin-Customization.md#ai-assistant){:target="_blank" rel="noopener"}.

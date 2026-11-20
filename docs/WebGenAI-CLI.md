@@ -375,6 +375,9 @@ Since the logic is in separate directories, the system is able to support ongoin
 
 ## Dashboard Graphics
 
+!!! warning "Retired"
+    The `genai-graphics` command described below has been removed.  Ask your AI Assistant instead - see [AI Assistant](Admin-Customization.md#ai-assistant).
+
 The simplest way to create Dashboard Graphics is the Admin Assistant.  For more information, [click here](Admin-Customization.md#ai-assistant).
 
 You can also use the CLI to create Dashboard Graphics:
