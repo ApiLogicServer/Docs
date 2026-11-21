@@ -107,6 +107,24 @@ Note the order of events: the message was **saved first** (message 106), then pa
 into Order 274. Had parsing or the credit check failed, the message would still be there, with the reason. See
 [4b](#4b-kafka-subscribe-requirement-3).
 
+**The same rule, on a different path.** Now the over-limit order of [2a](#2a-the-api-place-an-order-and-the-rules-check-credit),
+sent as a Kafka message (50 Widgets for Alice, a separate real run). Nothing in the Kafka code mentions credit:
+
+```text title="Kafka: an over-limit message, rejected by the same Check Credit rule"
+Alice before:   balance 870, credit_limit 5000, 381 orders
+
+GET /consume_debug/order_b2b?file=<over-limit order, 50 Widget>&mode=live
+  → {"mode": "live", "topic": "order_b2b", "published": true, "success": true, ...}
+
+a few seconds later:
+  OrderB2bMessage 203:  is_processed = false,
+                        error_text = "balance (5370.0000000000) exceeds credit limit (5000.0000000000)"
+Alice after:    balance 870, 381 orders          (unchanged: no order was created)
+```
+
+Same constraint, same limit, a different entry point: the order was refused, the balance did not move, and the
+message was kept with the reason. That is "no bypass" demonstrated, not asserted.
+
 &nbsp;
 
 ### 2c. The dashboard: is the business flowing?
@@ -163,7 +181,14 @@ rejected), ran them against the live API, and built the
 from that run: for each requirement, the rules that implement it, the tests that exercise it, and the logs of those
 rules firing.
 
-That is the record you can hand a reviewer: each requirement, beside the rules and the evidence that they ran.
+That is the record you can hand a reviewer: each requirement, beside the rules and the evidence that they ran. The
+tests show the rules ran and passed; a person still confirms each rule *means* what its requirement says, which is
+why the report puts them side by side.
+
+**Expect gaps, and read them as a feature.** The report is honest about what it did not prove. A real build of this
+sample showed, for example: credit-limit rejection on the *update* path marked **NOT covered** in the test plan, one
+rule of 18 not seen in any scenario's log, and no test that touches `/chart_graphics`. Your build will show its own
+list. A report that lists what is unproven is the point: a gap is visible, not a test that passes for the wrong reason.
 
 ![traceability report: requirement, tests, rules](images/integration/demo_eai/reqmts_rules.png)
 
@@ -534,7 +559,7 @@ add security (degrade to SQL if Keycloak is not available)
 implement requirements samples/requirements/demo_eai/docs/requirements/demo_eai
 
 // C1 - Admin App
-update the Admin App to show the new tables: replace ui/admin/admin.yaml with admin-merge.yaml (keep a backup), and show the message and request payloads as text areas
+update the Admin App to show the new tables: replace ui/admin/admin.yaml with admin-merge.yaml (keep a backup), show the message and request payloads as text areas, and drop the tab groups that link a table to its daily totals
 
 // C2 - Seed order history
 seed order history for the dashboard: the 30 days before today, through the rules (not SQL), with weekday and weekend volumes (orders arriving as B2B requests and as Kafka messages), one day with mostly rejected messages, and no activity 3 and 2 days ago
@@ -556,7 +581,7 @@ empty the Kafka topics, so a server restart does not read the test messages agai
 
 // I - Traceability Report
 run the requirements traceability report
-When the report is done, print this verbatim: "Next: scan these two files: logic/logic_discovery/check_credit.py (the rules) and docs/requirements/demo_eai/ad-libs.md (the judgment calls the AI made). Then open the report: demo_eai/docs/requirements/Requirements Traceability Report.md (in VS Code: open the file, then Cmd/Ctrl+Shift+V for the rendered preview)."
+When the report is done, print this verbatim: "Next: scan these two files: logic/logic_discovery/check_credit.py (the rules) and docs/requirements/demo_eai/ad-libs.md (the judgment calls the AI made). Then open the report: docs/requirements/Requirements Traceability Report.md (all three paths are in the project; in VS Code: open the file, then Cmd/Ctrl+Shift+V for the rendered preview)."
 ```
 
 **Running it:** start your AI assistant (Claude Code, for example) in the Manager folder and paste the block, or paste [`create_script.txt`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/create_script.txt), which is the same script, with [each step explained](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/create_script_annotated.txt). Lines starting with `//` are notes for you; the assistant ignores them. The first steps run from the Manager root; later ones (tests, report) use triggers that live in the created project's context (`demo_eai/.github/copilot-instructions.md`). If the assistant does not recognise one, open `demo_eai` as the workspace.
@@ -584,7 +609,7 @@ When the report is done, print this verbatim: "Next: scan these two files: logic
 | **A - Create Project** | Creates a working, MCP-enabled API and Admin App from the existing database (and the `genai-logic` CLI to manage it). No logic yet. |
 | **B - Security** | Keycloak when a container runtime is running, else the SQL authentication provider that ships in the project, so the row-level security requirement (§5) is enforced either way. You are told which was used. |
 | **C - Implement Requirements** | The build: the requirements (6 Gherkin features, plus the message formats) are copied into the project, and your AI assistant writes the rules, the Custom API, the Kafka subscribe and publish, the security declarations, and the dashboard. It also writes `ad-libs.md`, the judgment calls it made, for you to review (the closing message points you at it). Sections 2 and 3 below tour what it produced. |
-| **C1 - Admin App** | The build added tables (the daily totals, the messages, the requests). The schema rebuild wrote them to `admin-merge.yaml` and left `admin.yaml` alone, since it may hold your edits; this project has none, so it is replaced. |
+| **C1 - Admin App** | The build added tables (the daily totals, the messages, the requests). The schema rebuild wrote them to `admin-merge.yaml` and left `admin.yaml` alone, since it may hold your edits; this project has none, so it is replaced (with a backup). The generated Admin App also links each table to its daily totals as a tab group; those are dropped, since the dashboard shows them. |
 | **C2 - Seed Order History** | Gives the dashboard 30 days of history to chart ([3d](#3d-is-the-business-flowing-daily-totals-as-rules)). A script run inside the app writes the orders, messages and requests through the ORM with the rules active, so every amount, total and balance is derived and the credit limit checked. It does **not** go through the B2B API or Kafka: those are exercised by the tests (step F). Deterministic: a rebuild draws the same picture. |
 | **D - Verify Kafka** | With a broker running: enables live Kafka, resets the topics first (messages left by earlier runs would otherwise be read again), sends the sample message, and confirms a processed blob and a new order. With no broker it verifies the simulated path and says so. |
 | **E - Logic Diagrams** | Draws the rule chain for each requirement as an SVG; the report shows each one under its requirement. Skipped with a one-line note if graphviz is missing. |
@@ -726,7 +751,7 @@ not (expected either way).
 
 **Where the dashboard history comes from: step C2, and what it is not.** A new project has only today's test data, so
 the charts would be one spike at the right edge. Step C2 seeds the 30 days before today
-(`database/test_data/seed_order_flow.py`). The seed writes through the ORM inside the app with the rules active:
+(a script under `database/test_data/`; the AI chooses its name). The seed writes through the ORM inside the app with the rules active:
 every item price and amount, order total, customer balance and daily total is derived by the rules, and the credit
 limit is checked. It is **not** delivered through the B2B API or Kafka: the seeded messages and requests are written
 already processed (or rejected, with an error text the seed supplies). The tests (step F) exercise the real API and the

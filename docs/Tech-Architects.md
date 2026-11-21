@@ -22,7 +22,7 @@ Description: Briefing
 
     > **See the guesses** - AI flags every assumption it made for review, and leaves a `FIXME` where there is no safe default.<br>
     > **Read and trust the rules** - 40X more concise than code, and enforced by the rules engine at commit, on every transaction from every source - no bypass.<br>
-    > **Prove the rules implement the requirements** - generated tests run, and the traceability report shows each requirement, its rules, and the logs of them firing.
+    > **Prove the rules ran, and check what they mean** - generated tests run, and the traceability report shows each requirement, its rules, and the logs of them firing, so a reviewer can confirm each rule says what its requirement means.
     
 
     Full background: [What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
@@ -157,7 +157,7 @@ That evidence is generated, **closing the loop** to show each requirement is tes
 2. **The tests run**, and the rules engine logs every rule that fires.
 3. **The [Requirements Traceability Report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** (from the EAI sample) is built from that run: for each requirement, the rules that implement it, the tests that exercise it, and the logs of those rules firing - side by side with the requirement text, so a reviewer can confirm each rule says what its requirement means.
 
-**The result: proof the rules implement the requirements** - an executed record you can hand an auditor, with each rule beside the requirement it implements.
+**The result: an executed record you can hand an auditor** - each rule beside the requirement it implements, with evidence that it ran.  The record shows the rules ran and passed; people confirm each rule *means* what its requirement says (see the second point below, and note 2).  The report also states what it does *not* cover, so a gap is visible rather than silent.
 
 ![exec-reqmts-verify](images/exec_reqmts/exec-reqmts-verify.png)
 
