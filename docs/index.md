@@ -18,9 +18,15 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
     And it **fits what you already use**: your methodology, standard tools, and shared artifacts, **fostering collaboration** between Business Users and Developers.
 
-    For a walk-through, see the [Introduction][1]{:target="_blank" rel="noopener"}.
+    **Evaluating? Three steps, about 45 minutes:**
 
-    For an architect briefing, see [for architects](Tech-Architects.md){:target="_blank" rel="noopener"}.
+    1. **Read the [Architects Brief](Tech-Architects.md){:target="_blank" rel="noopener"}** (10 min): the claim.
+    2. **Review the [EAI sample](Sample-Basic-EAI.md){:target="_blank" rel="noopener"}** (15 min): one system that shows every idea in the Brief. Open its rules, the AI's judgment calls, and the traceability report.
+    3. **[Install](Install-Express.md){:target="_blank" rel="noopener"} and build it yourself** (20 min): paste the sample's create script into your AI assistant.
+
+    Then go deeper with the [Manager readme](Manager-readme.md){:target="_blank" rel="noopener"}. Details, and how to evaluate with your AI assistant: [Evaluation Guide](Eval.md){:target="_blank" rel="noopener"}.
+
+    For a walk-through of the concepts, see the [Introduction][1]{:target="_blank" rel="noopener"}.
 
 ![dgm](images/architecture/logic-architecture-exec.png)
 
@@ -132,15 +138,14 @@ genai-logic start                                   # opens the Manager
 Notes:
 
 1. Windows users will need to run the terminal in Admin mode, with scripts enabled
-2. For `genai` functions, you will need an [OpenAI Key](Sample-Basic-Tour.md#get-an-openai-apikey){:target="_blank" rel="noopener"}
-3. If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md)
-4. If you are using VSCode, we ***strongly recommend*** you create the VSCode CLI - for more information, [click here](IDE-Customize.md#vscode-cli){:target="_blank" rel="noopener"}.  Do this before the next step
+2. If you are using SqlServer, you also need to [install `pyodbc`](Install-pyodbc.md)
+3. If you are using VSCode, we ***strongly recommend*** you create the VSCode CLI - for more information, [click here](IDE-Customize.md#vscode-cli){:target="_blank" rel="noopener"}.  Do this before the next step
 
 See [Express Install](Install-Express.md) for details, including Docker and Codespaces options.  The `genai-logic start` command loads the [Manager][4]{:target="_blank" rel="noopener"} (a directory for creating and managing projects, below).
 
 ### 2. Manager: manage projects, learning hub
 
-The Manager is a directory for creating and managing projects.
+The Manager is a directory for creating and managing projects. **Once installed, work through the [Manager readme](Manager-readme.md){:target="_blank" rel="noopener"}**: it opens when you run `genai-logic start`, and is the next level down from the Evaluation Guide.
 
 ![Manager](images/manager/readme.png)
 
@@ -154,7 +159,7 @@ The Manager is a directory for creating and managing projects.
 </details>
 
 <details markdown>
-<summary>AI-Guided Tutorial</summary>
+<summary>AI-Guided Tutorial: study the rules in depth</summary>
 
 <br>In your terminal window:
 ```
@@ -165,7 +170,7 @@ Inside the created project, say to your AI assistant:
 
 > *"Guide me through basic_demo"*
 
-This is a hands-on tour for creating `basic_demo`, covering API creation, declarative rules, security, and Python customization.  The AI acts as a knowledgeable colleague — running commands, explaining what happens, answering questions.  Scripts ensure no coding errors.  This is the recommended starting point.  Allow 30-45 minutes.
+This is a hands-on tour for creating `basic_demo`, covering API creation, declarative rules, security, and Python customization.  The AI acts as a knowledgeable colleague — running commands, explaining what happens, answering questions.  Scripts ensure no coding errors.  Use it to study how rules work in depth; for the breadth of the product (integration, security, tests, traceability), see the EAI sample in the [Evaluation Guide](Eval.md){:target="_blank" rel="noopener"}.  Allow 30-45 minutes.
 
 ![tutor](images/manager/tutor.png)
 

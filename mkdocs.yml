@@ -182,6 +182,7 @@ nav:
     - "Controlled Sample": Tech-Modernization-Automation.md
     - "ERPNext": Tech-Modernization-ERPNext.md
   - Architecture:
+    - "Architects Brief": Tech-Architects.md
     - "What is API Logic Server": Architecture-What-Is.md
     - "What is GenAI-Logic": Architecture-What-Is-GenAI.md
     - "Project Operation": Architecture-Project-Operation.md
@@ -295,7 +296,6 @@ nav:
     - Personal:
       - "Manager readme": Manager-readme.md
       - "Home": Home.md
-      - "For Architects": Tech-Architects.md
       - "Manager video": Tech-Manager-Video.md
       - "INFO": ApiLogicServer-create.md
       - "Summary": Tech-Summary.md

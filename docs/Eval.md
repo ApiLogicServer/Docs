@@ -1,18 +1,73 @@
-!!! note "Evaluate GenAI-Logic - Use Your AI Assistant"
-    You can evaluate GenAI-Logic in the classic way:
-    
-    * Install (requires Python): to see the Express Install, [click here](Install-Express.md){:target="_blank" rel="noopener"}.  
-    * Samples: the installer includes several pre-configured sqlite databases and tutorials - [see the basic demo here](Sample-Basic-Demo.md){:target="_blank" rel="noopener"}.
-    
-    You can also use your **AI Assistant** for a *self-guided evaluation.*  Instead of *"drinking from the fire-hose"* of a website or documentation:
-    
-    * Ask questions *you* care about, follow-up on details, get AI opinions, ... 
-    
-    * This is enabled by the `context engineering` material included in each project for use by AI Coding tools ([click here to find out more about AI-Enabled Projects](Project-AI-Enabled.md){:target="_blank" rel="noopener"}).  We've made it available on line to support your evaluation.
+!!! pied-piper ":bulb: TL;DR - Evaluate GenAI-Logic in three steps, about 45 minutes"
+
+    1. **Read the [Architects Brief](Tech-Architects.md){:target="_blank" rel="noopener"}** (10 minutes): the claim.
+    2. **Review the [EAI sample](Sample-Basic-EAI.md){:target="_blank" rel="noopener"}** (15 minutes): the evidence, one system that shows every idea in the Brief.
+    3. **Install it and build the sample yourself** (about 20 minutes): the proof, on your machine, by your AI assistant.
+
+    Then, to go further: work through the [Manager readme](Manager-readme.md){:target="_blank" rel="noopener"}, or [ask your AI assistant](#4-go-deeper-ask-your-ai-assistant) the questions you care about.
 
 <br>
 
-## 1. Bootstrap Your AI
+## 1. Read the Architects Brief
+
+The [Architects Brief](Tech-Architects.md){:target="_blank" rel="noopener"} makes the case in one page: AI that builds a
+system from requirements leaves you with guesses you can't see, code you can't read at scale, and nothing that proves it
+works. GenAI-Logic directs the AI to translate requirements into **rules, not code**, so you can:
+
+* **See the guesses**: AI flags every assumption it made, for review.
+* **Read and trust the rules**: about [40X more concise than code](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}, enforced by the engine at commit, on every
+  transaction from every source.
+* **Prove the rules implement the requirements**: generated tests run, and a traceability report shows each
+  requirement, its rules, and the logs of them firing.
+
+<br>
+
+## 2. Review the EAI Sample
+
+The [EAI sample](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} is a complete system built from six
+requirements: Check Credit rules, a B2B API, Kafka subscribe and publish, row-level security, and a dashboard showing
+that orders are flowing. It is real integration, not a toy, and every claim in the Brief is visible in it.
+
+Don't read it top to bottom. Read its TL;DR, then open the three artifacts that answer the Brief's three claims:
+
+| The Brief's claim | Open this | What to look for |
+|---|---|---|
+| **See the guesses** | [`ad-libs.md`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/demo_eai/ad-libs.md){:target="_blank" rel="noopener"} | Every judgment call the AI made beyond the requirements, the ones to review first marked 🔴 |
+| **Read and trust the rules** | [`check_credit.py`](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/logic/logic_discovery/check_credit.py){:target="_blank" rel="noopener"} | Five one-line rules, each traceable to a line of the requirement |
+| **Prove it** | [Requirements Traceability Report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"} | Each requirement, its rules, its tests, and the logic that ran |
+
+Then look at [Is the business flowing?](Sample-Basic-EAI.md#3d-is-the-business-flowing-daily-totals-as-rules){:target="_blank" rel="noopener"}: the same
+rules that keep each transaction correct also maintain the daily totals an executive watches.
+
+<br>
+
+## 3. Install and Build It Yourself
+
+Reading convinces; running proves. Install GenAI-Logic ([Express Install](Install-Express.md){:target="_blank" rel="noopener"},
+requires Python), open the Manager in your IDE, and paste the sample's create script into your AI assistant
+([Build It](Sample-Basic-EAI.md#build-it){:target="_blank" rel="noopener"}). Your AI builds the system from the
+requirements, creates and runs the tests, and writes the report: about 20 minutes, with nothing written by hand.
+Then compare what you got with the three artifacts above.
+
+* **No Docker?** Not needed. The script notices and builds the same system with SQL security and simulated Kafka.
+* **Nothing to install?** Run it in a browser with [GitHub Codespaces](DevOps-GitHub.md){:target="_blank" rel="noopener"}.
+
+**Next level down: the [Manager readme](Manager-readme.md){:target="_blank" rel="noopener"}.** It is the
+Manager's own welcome page, and works through the product in depth: creating projects from a prompt or your own
+database, logic, security, integration, and the catalog of demos.
+
+<br>
+
+## 4. Go Deeper: Ask Your AI Assistant
+
+You can also use your **AI Assistant** for a *self-guided evaluation.* Instead of *"drinking from the fire-hose"* of a
+website or documentation, ask the questions *you* care about, follow up on details, and get AI opinions. This is enabled
+by the *context engineering* included in each project for AI coding tools
+([AI-Enabled Projects](Project-AI-Enabled.md){:target="_blank" rel="noopener"}), which we've published on line for your evaluation.
+
+<br>
+
+### a. Bootstrap Your AI
 !!! question "Bootstrap your AI Assistant by pasting this prompt"
     I'm evaluating GenAI-Logic. Here are the resources:
 
@@ -30,7 +85,7 @@ Your AI will automatically discover and explore the referenced learning material
 
 <br>
 
-## 2. Cut to the Chase: Is This Just Another AI Tool?
+### b. Cut to the Chase: Is This Just Another AI Tool?
 
 !!! question "GenAI tools are now a dime a dozen. Cut to the Chase with this prompt"
     We already have AI coding assistants that generate code. What strategic problem does this solve that our existing tools don't address?
@@ -38,9 +93,9 @@ Your AI will automatically discover and explore the referenced learning material
 
 <br>
 
-### AI Response
+#### AI Response
 
-When we tested this question with Claude 4.5, here's what it concluded after analyzing the materials:
+When we tested this question with several models, here is a typical conclusion, after analyzing the materials:
 
 ??? example "Claude's Response"
     AI coding assistants (including Copilot) generate procedural code that looks reasonable but has a structural flaw: they can't guarantee correctness across all change paths in multi-table business logic. The comparison study shows even sophisticated AI missed critical bugs (FK changes affecting multiple parents, transitive dependencies) because pattern-matching can't reliably trace dependency chains.
@@ -59,7 +114,7 @@ When we tested this question with Claude 4.5, here's what it concluded after ana
 
 <br>
 
-### Why This Evaluation Method Works
+#### Why This Evaluation Method Works
 
 Unlike traditional marketing claims, this answer comes from **independent AI analysis** of the technical materials, not vendor assertions.
 
@@ -69,7 +124,7 @@ When you ask your AI assistant to evaluate GenAI-Logic:
 * Forms conclusions based on technical analysis
 * Reaches consistent findings across different AI models
 
-**We tested this:** Claude 4.5, ChatGPT, and Gemini all independently analyzed the same materials. They reached the same strategic conclusions because those conclusions emerge from the architecture itself, not marketing language.
+**We tested this:** several models (Claude, ChatGPT, Gemini) independently analyzed the same materials. They reached the same strategic conclusions because those conclusions emerge from the architecture itself, not marketing language.
 
 **You can verify this yourself** - the materials are public, your AI will reach its own conclusions. If GenAI-Logic claimed "cows jump over the moon," your AI would call that out immediately.
 
@@ -77,13 +132,13 @@ When you ask your AI assistant to evaluate GenAI-Logic:
 
 <br>
 
-## 3. The InfoQ Challenge
+### c. The InfoQ Challenge
 
 InfoQ identified the #1 enterprise AI challenges - moving beyond demos, with support for humans and agents.  
 
 <br>
 
-### a. Challenge GenAI-Logic
+#### Challenge GenAI-Logic
 
 !!! question "Paste this InfoQ Challenge into your AI"
     Please evaluate this page: https://www.genai-logic.com - does it meet the challenge?
@@ -100,7 +155,7 @@ InfoQ identified the #1 enterprise AI challenges - moving beyond demos, with sup
 
 <br>
 
-### b. Score the Response
+#### Score the Response
 
 !!! question "Enter this prompt to Score the Response"
     Score whether the response clearly conveys these ideas (using any equivalent wording) - 1-5 stars:
@@ -121,11 +176,11 @@ InfoQ identified the #1 enterprise AI challenges - moving beyond demos, with sup
        All current and future paths—apps, services, and agents—inherit the same rules by construction.
 
 
-When we tested with Claude 4.5, ChatGPT, and Gemini, all three scored us 4.8-5.0.
+When we tested with several models (Claude, ChatGPT, Gemini), all scored us 4.8-5.0.
 
 <br>
 
-## Explore What YOU Care About
+### d. Explore What YOU Care About
 
 Traditional pitches force you through a predetermined flow. With AI evaluation, ask what matters to YOU:
 
@@ -157,10 +212,10 @@ Traditional pitches force you through a predetermined flow. With AI evaluation, 
 
 <details markdown>
 
-<summary>When you bootstrapped your AI with those URLs, you accessed 2,599 lines of training materials</summary>
+<summary>When you bootstrapped your AI with those URLs, you gave it thousands of lines of training materials</summary>
 
-- **`copilot-instructions.md`** (1,587 lines) - The bootstrap/entry point for architecture understanding
-- **`docs/training/` folder** - Additional materials (LogicBank API reference, testing guide with 555 lines, architecture deep-dives)
+- **`copilot-instructions.md`** - The bootstrap/entry point for architecture understanding
+- **`docs/training/` folder** - Additional materials (LogicBank API reference, testing guide, architecture deep-dives)
 
 Here's what makes them credible - and why your AI will recognize genuine technical understanding vs. marketing claims.
 
@@ -178,7 +233,7 @@ Here's what makes them credible - and why your AI will recognize genuine technic
 - AI: "I see - it handles the update path but misses FK changes and deletes. The rules engine tracks all parent-child relationships automatically."
 - AI documents: The precise failure modes, why they occur, how the engine guarantees correctness
 
-**The result: 2,599 lines** of technical analysis across 13+ topics (Rosetta Stone, Logic Patterns, Testing with 790 lines on failure modes, MCP Integration, Admin App architecture, etc.)
+**The result: thousands of lines** of technical analysis across 13+ topics (Rosetta Stone, Logic Patterns, Testing with its failure modes, MCP Integration, Admin App architecture, etc.)
 
 ### Why Your AI Will Recognize This is Credible
 
@@ -205,7 +260,7 @@ When your AI reads the training materials, it evaluates:
 
 ### Why Multiple AIs Reach the Same Conclusions
 
-When Claude 4.5, ChatGPT, and Gemini independently analyzed GenAI-Logic and scored it 4.8-5.0 on the InfoQ challenge, they weren't just agreeing with each other.
+When several models (Claude, ChatGPT, Gemini) independently analyzed GenAI-Logic and scored it 4.8-5.0 on the InfoQ challenge, they weren't just agreeing with each other.
 
 **They were recognizing:**
 1. **Technical consistency** - The architectural claims are internally coherent

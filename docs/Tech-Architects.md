@@ -27,6 +27,8 @@ Description: Briefing
 
     Full background: [What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
 
+    **See every claim in one system:** the [EAI sample](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} was built by AI from six requirements: rules, a B2B API, Kafka in and out, security, and a dashboard showing the business is flowing.  Open its judgment calls, its rules, and its traceability report - the evidence for each claim above.
+
     **Try it in 10 minutes:** [First Time Here](Manager-readme.md#first-time-here){:target="_blank" rel="noopener"} - paste one prompt, run the system, and watch a rule reject a bad save.
 
 
@@ -136,6 +138,7 @@ Other CE elements automate systems with **rule-enabled access:**
 
 **Proof points:** 
 
+* [EAI sample](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} - the integration patterns above (B2B API, Kafka subscribe and publish, security), from requirements, tested and traced
 * [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"} - rule-based system closes a $20m/yr audit exposure
 * [Customs Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"} - "reg tech" system automated from web-based regulations
 * [Budget Allocation](Sample_Allo_Dept_GL_readme.md){:target="_blank" rel="noopener"} - complex logic, delivered in 2 days, vs. 2 year failed effort
@@ -152,7 +155,7 @@ That evidence is generated, **closing the loop** to show each requirement is tes
 
 1. **[Tests are generated from the rules](Behave.md){:target="_blank" rel="noopener"}**[^2], one Feature per requirement, covering each change path every rule implies (for a sum: insert, update, delete, and moving a row to a different parent; for a constraint: accepted, at the boundary, and rejected).
 2. **The tests run**, and the rules engine logs every rule that fires.
-3. **The [Requirements Traceability Report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** is built from that run: for each requirement, the rules that implement it, the tests that exercise it, and the logs of those rules firing - side by side with the requirement text, so a reviewer can confirm each rule says what its requirement means.
+3. **The [Requirements Traceability Report](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}** (from the EAI sample) is built from that run: for each requirement, the rules that implement it, the tests that exercise it, and the logs of those rules firing - side by side with the requirement text, so a reviewer can confirm each rule says what its requirement means.
 
 **The result: proof the rules implement the requirements** - an executed record you can hand an auditor, with each rule beside the requirement it implements.
 
@@ -160,7 +163,7 @@ That evidence is generated, **closing the loop** to show each requirement is tes
 
 Two things keep the record trustworthy:
 
-* **The guesses are visible.**  The record is only as good as the interpretation behind it.  [AI Alerts](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/demo_eai/ad-libs.md){:target="_blank" rel="noopener"} flag every inference drawn from vague requirements, and where there is no safe default, the AI **stops and leaves a `FIXME`** instead of a test that would pass for the wrong reason.
+* **The guesses are visible.**  The record is only as good as the interpretation behind it.  [AI Alerts](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/basic_demo_eai/docs/requirements/demo_eai/ad-libs.md){:target="_blank" rel="noopener"} (from the EAI sample) flag every inference drawn from vague requirements, and where there is no safe default, the AI **stops and leaves a `FIXME`** instead of a test that would pass for the wrong reason.
 * **The rules can't be bypassed.**  The rules the tests exercised are the same rules that run at commit on every transaction in production[^1] - not a separate code path that might differ.
 
 Also generated from the rules: **logic flow diagrams**, a **health check** (rule adoption, dependency-tracking integrity), and an **[ontology](https://apilogicserver.github.io/Docs/Database-Ontology/){:target="_blank" rel="noopener"}** (including type support) for tools and business terminology.

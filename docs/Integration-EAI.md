@@ -1,7 +1,7 @@
 ---
 title: Integration EAI
 do_process_code_block_titles: True
-version: 1.4  4/7/2026
+version: 1.5  11/20/2026 - key files match the current sample; failures keep their reason (error_text); live test steps use the debug service; new Production section (consumer offsets, consumer groups)
 ---
 
 <style>
@@ -267,18 +267,20 @@ topic: order_b2b
   → Consumer 2:  parse → Order + Items, resolve FKs, LogicBank rules  (Tx 2)
 ```
 
-Parse failures leave `is_processed = False` on the blob row — queryable and retryable.  The raw message is never lost.
+Parse, lookup or rule failures leave `is_processed = False` on the blob row, and write the reason to `error_text` on the same row: queryable and retryable, with no need to search the server log.  The raw message is never lost.
 
 The AI generates these key files:
 
 | File                                                       | Role                                                                           |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | `integration/kafka/kafka_subscribe_discovery/order_b2b.py` | Consumer logic — design details, field mapping, registration                   |
-| `logic/logic_discovery/place_order/order_b2b_consume.py`   | `row_event` bridge — publishes blob to `order_b2b_processed` (no inline parse) |
-| `integration/OrderB2bMapper.py`                            | JSON → Order + Items (3-tier mapping contract)                                 |
-| `api/api_discovery/order_b2b_kafka_consume_debug.py`       | `/consume_debug/order_b2b` — test without Kafka                                |
-| `integration/kafka/message_formats/order_b2b.json`         | Message format spec / test fixture                                             |
-| `test/order_b2b_reset.sh`                                  | Reset Kafka topics + log between runs                                          |
+| `logic/logic_discovery/order_b2b_consume.py`               | `row_event` bridge — publishes blob to `order_b2b_processed` (no inline parse) |
+| `integration/OrderB2bKafkaMapper.py`                       | JSON → Order + Items (3-tier mapping contract)                                 |
+| `api/api_discovery/order_b2b_kafka_consume_debug.py`       | Debug service: send the sample, live or simulated; `/reset` empties the queue  |
+| `docs/requirements/demo_eai/message_formats/order_b2b.json`| Message format spec / test fixture                                             |
+| `integration/kafka/order_b2b_reset.sh`                     | Delete and recreate the Kafka topics between runs                              |
+
+File names are from the [EAI sample](Sample-Basic-EAI.md){:target="_blank" rel="noopener"}; the AI chooses them during the build, so your own project may name them differently.  The module docstrings tie them to the requirement.
 
 ## Testing
 
@@ -289,15 +291,16 @@ Because the subscriber is wired to a debug endpoint, **no running Kafka instance
 ```bash
 # APILOGICPROJECT_CONSUME_DEBUG=true must be set in config/default.env
 python api_logic_server_run.py
-curl 'http://localhost:5656/consume_debug/order_b2b?file=integration/kafka/message_formats/order_b2b.json'
+curl 'http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/demo_eai/message_formats/order_b2b.json'
 sqlite3 database/db.sqlite "SELECT * FROM order_b2b_message; SELECT * FROM 'order'; SELECT * FROM item;"
 ```
 
 ```bash
 docker compose -f integration/kafka/dockercompose_start_kafka.yml up -d
-# Enable KAFKA_CONSUMER + KAFKA_PRODUCER in config/default.env
-bash test/order_b2b_reset.sh       # recreates topics + clears log
-# Start server; publish sample JSON to order_b2b topic
+# Set KAFKA_SERVER and a project-unique KAFKA_CONSUMER_GROUP in config/default.env, then start the server
+curl -X POST 'http://localhost:5656/consume_debug/order_b2b/reset'     # empty the queue
+curl 'http://localhost:5656/consume_debug/order_b2b?file=docs/requirements/demo_eai/message_formats/order_b2b.json&mode=live'
+# live is asynchronous: the new order appears a few seconds later
 ```
 
 !!! note "Shared Logic"
@@ -312,3 +315,23 @@ You will often need to send test messages, clear message queues...
 For example, in the pre-supplied [Customs CVLS](Customs-clvs-readme.md){:target="_blank" rel="noopener"}
 
 ![debug-example](images/integration/debug/debug-helper.png)
+
+&nbsp;
+
+## Production: consumer offsets and groups
+
+**Offsets are committed.** After each message is handled, the consumer commits its offset, so a server restart
+resumes after the last message instead of reading the whole topic again (which would create duplicate orders). The
+offset is committed whether the message succeeded or failed: that is safe because Consumer 1 has already saved the raw
+message, and a failure is recorded on that row (`error_text`), so nothing is lost by moving on.
+
+This is on by default. `APILOGICPROJECT_KAFKA_COMMIT_OFFSETS = false` (in `config/default.env`) turns it off: every
+server start then re-reads the whole topic and processes each message again. Use that only to re-run a pipeline by
+hand during development, never in production.
+
+**One consumer group per project.** Set a project-unique `KAFKA_CONSUMER_GROUP`. Two projects sharing a group share
+the offsets and split the messages: each would see only some of them, or none.
+
+**Test messages.** A test run leaves its messages on the topics. Empty them before a demo restarts with a fresh
+database (`curl -X POST .../consume_debug/<topic>/reset`); the EAI sample's create script does this after the tests.
+
