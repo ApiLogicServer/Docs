@@ -16,7 +16,7 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
 
     **What it is:** an order system. Partners send orders through a B2B API and a Kafka topic; rules enforce credit limits; shipping is notified by Kafka; the sales role sees only its customers; and the home page shows that orders are flowing.
 
-    **How it's created:** you paste a short script into your AI assistant. It creates the project, implements six requirements (Gherkin), then writes and runs the tests and a traceability report. About 20 minutes, nothing written by hand.
+    **How it's created:** you paste a short script into your AI assistant. It creates the project, implements six requirements (Gherkin), then writes and runs the tests, and creates a traceability report. About 20 minutes, nothing written by hand.
 
     **What to learn from it** - the [Architects Brief](Tech-Architects.md){:target="_blank" rel="noopener"}, shown in one system:
 
@@ -24,7 +24,7 @@ Propagation: see api_logic_server_cli/sample_mgr/create_readme.py
     2. **It runs:** a smoke test: an order through the API, a message through Kafka, and the dashboard ([Section 2](#2-it-runs-a-smoke-test)).
     3. **Governed:** what you can now govern ([Section 3](#3-governed-show-me)):
         * **Read and trust the rules:** Check Credit is five rules, not ~220 lines of code, and they govern every path (API, Kafka, Admin App), with no bypass.
-        * **Prove it:** the traceability report shows each requirement, its rules, its tests, and the logic that ran.
+        * **Prove it:** the traceability report shows each requirement, its rules, its tests, and the rules that ran.
         * **See the guesses:** `ad-libs.md` lists every judgment call the AI made.
     4. **Enterprise-class infrastructure:** a B2B API, Kafka subscribe and publish, and row-level security, from the same requirements ([Section 4](#4-enterprise-class-infrastructure-from-the-same-requirements)).
     5. **Due diligence:** build it yourself ([Section 5](#5-due-diligence-build-it-yourself)).
@@ -47,11 +47,12 @@ executed by your AI assistant:
 ![create_script](images/integration/demo_eai/create_script.png)
 
 The requirements are shown at right above, truncated. **To see the entire file, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/requirements/demo_eai/docs/requirements/demo_eai/requirements.md){:target="_blank" rel="noopener"}.**
+
 This example uses Gherkin `md` files; you can also use your existing methodologies.
 
 | § | Requirement | Demonstrates |
 |---|---|---|
-| 1 | Check Credit | Rules, not code ([3a](#3a-rules-you-can-read-in-a-real-project)) |
+| 1 | Check Credit | Rules you can read and trust ([3a](#3a-rules-you-can-read-in-a-real-project)) |
 | 2 | B2B API: accept orders from partners, and record each request with its outcome | Custom API ([4a](#4a-b2b-api-requirement-2)) |
 | 3 | Kafka Subscribe: orders from the sales channel | Messaging, inbound ([4b](#4b-kafka-subscribe-requirement-3)) |
 | 4 | Kafka Publish: notify shipping on dispatch | Messaging, outbound ([4c](#4c-kafka-publish-requirement-4)) |
@@ -609,7 +610,7 @@ When the report is done, print this verbatim: "Next: scan these two files: logic
 | **A - Create Project** | Creates a working, MCP-enabled API and Admin App from the existing database (and the `genai-logic` CLI to manage it). No logic yet. |
 | **B - Security** | Keycloak when a container runtime is running, else the SQL authentication provider that ships in the project, so the row-level security requirement (§5) is enforced either way. You are told which was used. |
 | **C - Implement Requirements** | The build: the requirements (6 Gherkin features, plus the message formats) are copied into the project, and your AI assistant writes the rules, the Custom API, the Kafka subscribe and publish, the security declarations, and the dashboard. It also writes `ad-libs.md`, the judgment calls it made, for you to review (the closing message points you at it). Sections 2 and 3 below tour what it produced. |
-| **C1 - Admin App** | The build added tables (the daily totals, the messages, the requests). The schema rebuild wrote them to `admin-merge.yaml` and left `admin.yaml` alone, since it may hold your edits; this project has none, so it is replaced (with a backup). The generated Admin App also links each table to its daily totals as a tab group; those are dropped, since the dashboard shows them. |
+| **C1 - Admin App** | The build added tables (the daily totals, the messages, the requests). The schema rebuild wrote them to `admin-merge.yaml` and left `admin.yaml` alone, since it may hold your edits; this project has none, so it is replaced (with a backup). The tab group from each table to its day's totals is dropped: the day key can be empty (the Admin App would show a 404), and the dashboard shows the totals anyway. |
 | **C2 - Seed Order History** | Gives the dashboard 30 days of history to chart ([3d](#3d-is-the-business-flowing-daily-totals-as-rules)). A script run inside the app writes the orders, messages and requests through the ORM with the rules active, so every amount, total and balance is derived and the credit limit checked. It does **not** go through the B2B API or Kafka: those are exercised by the tests (step F). Deterministic: a rebuild draws the same picture. |
 | **D - Verify Kafka** | With a broker running: enables live Kafka, resets the topics first (messages left by earlier runs would otherwise be read again), sends the sample message, and confirms a processed blob and a new order. With no broker it verifies the simulated path and says so. |
 | **E - Logic Diagrams** | Draws the rule chain for each requirement as an SVG; the report shows each one under its requirement. Skipped with a one-line note if graphviz is missing. |
