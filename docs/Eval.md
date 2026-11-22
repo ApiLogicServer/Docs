@@ -229,6 +229,7 @@ Here's what makes them credible - and why your AI will recognize genuine technic
 4. **AI documented its analysis** - The training materials reflect genuine technical understanding, not marketing assertions
 
 **Example: The A/B Test Documentation**
+
 - Val: "Here's procedural AI code. Here are the 2 bugs it has."
 - AI: "I see - it handles the update path but misses FK changes and deletes. The rules engine tracks all parent-child relationships automatically."
 - AI documents: The precise failure modes, why they occur, how the engine guarantees correctness
@@ -242,17 +243,20 @@ Here's what makes them credible - and why your AI will recognize genuine technic
 When your AI reads the training materials, it evaluates:
 
 **✅ Senior-level technical discourse:**
+
 - Detailed reasoning about commit-time governance, transitive dependencies, dependency graphs
 - Architectural trade-offs (when rules work, when they don't)
 - Failure mode analysis (not just happy paths)
 - Production system concerns (performance, testing, auditability)
 
 **❌ Marketing claims it would reject:**
+
 - "Rules are magical and solve everything!"
 - "No code needed!" (vs. the honest "~40x code reduction, 97% automation")
 - Vague benefits without technical justification
 
 **If Val had claimed nonsense** ("rules eliminate all SQL" or "rules identify user logic errors"), the AI would have questioned it:
+
 - "How? I see SQLAlchemy in the code"
 - "What kind of errors? Show me how the engine detects those"
 
@@ -263,6 +267,7 @@ When your AI reads the training materials, it evaluates:
 When several models (Claude, ChatGPT, Gemini) independently analyzed GenAI-Logic and scored it 4.8-5.0 on the InfoQ challenge, they weren't just agreeing with each other.
 
 **They were recognizing:**
+
 1. **Technical consistency** - The architectural claims are internally coherent
 2. **Verifiable behavior** - The documented behavior matches observable system operation
 3. **Senior-level reasoning** - The analysis demonstrates deep understanding of production systems

@@ -254,6 +254,7 @@ Both produced the same shape of code: one function, wired to order creation. **N
 Probed directly: change an item's quantity, delete an item, reassign an order to a different customer, reassign an item to a different product. Every case, both models, left stale data behind. No error. Nothing to catch it.
 
 **Key takeaways:**
+
 - **The logic wasn't buggy so much as absent** — it existed for exactly one path and nowhere else. [Full experiment →](Tech-Standard-Reqs.md)
 - **A similar finding, looking beyond logic:** the hand-written API has no PATCH or DELETE on any resource either — not a bug, just more of what the prompt never asked for. [Full assessment →](samples/native_ai_a_b_tests/bd_claude_native_ai/project-assessment.md)
 
@@ -383,6 +384,7 @@ Full writeup: [declarative/procedural comparison](samples/basic_demo_logic_gov/l
 But that same incompleteness is why **natural language requirements can't be the system of record.** An auditor needs something rigorous and complete to check against.
 
 **Rules *are* a suitable system of record — rigorous, complete — for auditing:**
+
 - **Readable** — ~40x less than the procedural equivalent in this example, critical at enterprise scale
 - **Trustworthy** — the engine guarantees it: an auditor isn't tracing execution paths, complex dependency chains, or worrying code did not get called at all. This is the exact chain AI's procedural code missed earlier — reparenting an Item silently left one side of the balance stale.
 
@@ -934,6 +936,7 @@ genai-logic create --project_name=basic_demo --db_url=sqlite:///samples/dbs/basi
 <br>Same materials, same AI you've been using — it doesn't just write rules, it automates everything above and helps when things break: EAI's 2-message Kafka pattern, the AI/Request Pattern wiring, Executable Requirements' pre-coding schema assessment — all documented training material (`docs/training/*`) the AI reads *before* writing your code, not generic knowledge it's guessing from. Ask "what are rules?" or "how do rules work?" — or, without an AI handy, just read [samples/basic_demo_logic_gov/logic/readme_logic.md](samples/basic_demo_logic_gov/logic/readme_logic.md) — same material.
 
 Ask it your own questions directly:
+
 - Is this really infrastructure, like a database?
 - Is this a black box? How do I debug a rule chain?
 - Can I verify this with tests, not just take it on faith?
