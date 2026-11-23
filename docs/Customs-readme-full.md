@@ -462,6 +462,8 @@ The contrast with procedural code is quantified in `logic/procedural/declarative
 
 ## 6. AI Use: Human In the Loop, Determinism
 
+> The general case (authoring vs. runtime, context vs. prompt engineering, why not RAG) is in [How AI Is Used: Authoring, Not Runtime](Project-AI-Enabled.md#how-ai-is-used-authoring-not-runtime){:target="_blank" rel="noopener"}. This section applies it to this system.
+
 While the system was *created* using AI, that was authoring only.  The expectation is that developers remain the ***human in the loop*** to verify the rules, and debug them.
 
 The created Rules in `logic/logic_discovery/cbsa_steel_surtax.py` execute **deterministically** at transaction commit time via SQLAlchemy ORM events. There is no inference, no sampling, and no variability: given the same input state, the same output is always produced. 

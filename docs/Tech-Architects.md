@@ -12,11 +12,15 @@ Description: Briefing
 
 !!! pied-piper ":robot: GenAI-Logic - Architecture Brief"
 
+    ![Native AI](images/architecture/tech-brief/native-ai.png){: style="width:250px"; align=right }
+
     AI is remarkable at generating code, but you're left without clarity on what to govern:
     
     * the *requirements* are incomplete, and AI fills the gaps with **guesses you never see.**  How can you govern what you can't see?
     * the *generated code* is **hard to read and trust**.  How can you govern what you can't read?
     * and you still need to prove it does what you asked - **testing is the new bottleneck**.  How can you govern what you can't prove?
+
+    ![GenAI-Logic](images/architecture/tech-brief/genai-logic.png){: style="width:250px"; align=right }
 
     The answer: Context Engineering (CE) directs AI to **translate your requirements into rules, not code**.  So you can:
 
@@ -75,7 +79,7 @@ The Context Engineering is a (large) set of files under `docs`.
 
 <br>
 
-AI creates rules at design time - runtime execution is **deterministic**.  Their readability facilitates *"human in the loop"* review (see the example above) to verify proper AI rule creation.
+AI creates rules at design time - runtime execution is **deterministic**.  Their readability facilitates *"human in the loop"* review (see the example above) to verify proper AI rule creation.  More on [how AI is used: authoring, not runtime](Project-AI-Enabled.md#how-ai-is-used-authoring-not-runtime){:target="_blank" rel="noopener"} (including context vs. prompt engineering, and why not RAG).
 
 **Better models don't remove the need:** even if AI becomes good enough that the prompt is the system of record, and code is compiler output nobody reads, governance still needs something you can read and check.  Rules are that artifact, whichever model wrote them.
 

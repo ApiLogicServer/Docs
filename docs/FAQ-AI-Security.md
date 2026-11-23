@@ -11,7 +11,7 @@ notes: Common security concerns about using AI, and how the architecture address
     2. **Does AI expose our data to the internet?** Rarely, and never by default. Most business logic runs as local Python/SQL with zero network calls once built. The one runtime exception — AI selecting between candidates (e.g., "best supplier") — is opt-in per project, sends only the specific fields named in that rule, and logs a full audit trail of exactly what was sent.
     3. **Does AI expose our trade secrets?** The translated logic lives as plain, readable rules in your own source-controlled codebase, executing locally. AI's involvement is a one-time (or occasional, on change) translation of what you wrote in your own prompt — not autonomous extraction of your algorithms.
 
-    Short version: **AI writes the logic; it doesn't run your business.** A deterministic rules engine does that, locally, under your control.
+    Short version: **AI writes the logic; it doesn't run your business.** A deterministic rules engine does that, locally, under your control.  See [How AI Is Used: Authoring, Not Runtime](Project-AI-Enabled.md#how-ai-is-used-authoring-not-runtime){:target="_blank" rel="noopener"}.
 
 ## 1. Will AI Make Mistakes That Corrupt Our Data?
 

@@ -296,6 +296,54 @@ Your project supports natural AI-assisted development:
 
 &nbsp;
 
+## How AI Is Used: Authoring, Not Runtime
+
+**AI authors; the engine runs.** AI writes the rules at design time. At runtime, the rules engine executes them
+deterministically at commit: no inference, no sampling; the same input state always gives the same result, on every
+write path (APIs, messages, the Admin App, agents).
+
+So the **human in the loop works at authoring time, not inspection time.** A reviewer reads the rules, which sit at the
+level of the requirement (one rule per derivation, not hundreds of lines of code tracing paths), and the AI's list of
+its own judgment calls (`ad-libs.md`). Once approved, the rules hold everywhere.
+
+**AI at runtime is opt-in, and governed the same way.** An [AI rule](Sample-ai-rules.md){:target="_blank" rel="noopener"}
+calls an LLM inside a transaction, for example to choose the best supplier given world conditions. Its result enters
+the same commit pipeline as a value a person typed: *AI may propose values, but rules determine what commits.* There is
+no separate governance layer for AI.
+
+&nbsp;
+
+### Context Engineering vs. Prompt Engineering
+
+| | Context engineering (CE) | Prompt engineering (PE) |
+|---|---|---|
+| **When** | Design time | Runtime, in a few narrow places |
+| **Who uses it** | Your IDE coding assistant | The running system |
+| **What it is** | The project's `.github/copilot-instructions.md` and `docs/training/`: how to build rules, tests, integrations | Prompts in code: AI rules, the MCP client (natural language to API calls), WebGenAI |
+| **Why it is safe** | Versioned with the project; the assistant's output is rules a person reviews | The LLM's answer is checked by rules before anything commits |
+
+CE is the main use of AI here: it steers a general-purpose coding assistant to produce rules, not procedural code, and
+to apply the platform's patterns (the 2-message Kafka pattern, by-example mapping, tests from rules) without being asked.
+
+&nbsp;
+
+### Why Not RAG
+
+Retrieval-augmented generation (RAG) feeds a model the document chunks most similar to the question. It is the right
+tool for *looking things up* in a large, changing corpus, such as a help-desk bot answering questions from these docs:
+each answer lives in a passage or two. The context engineering is different: it is *instructions to follow*, so RAG is
+not used here, on purpose:
+
+* **The context engineering is curated, so it is read whole.** Its checklists ("STOP: before writing any rule...")
+  work only when read in full; retrieval by similarity can miss the one step that applies, and the result looks fine.
+  Sections load by trigger (for example, "create tests" loads the testing guide), so the cost stays bounded.
+* **The project's own context is its code.** The assistant reads `models.py`, the logic files and the requirements
+  directly. There is no index to build, and none to go stale.
+* **It is versioned with the project.** The guidance a project was built with ships in its `docs/training/`, so what
+  the AI followed can be read, changed and reviewed like any other source file.
+
+&nbsp;
+
 ## Training
 
 There are important resources to help you get started.
