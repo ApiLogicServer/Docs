@@ -131,6 +131,7 @@ Rules support *chaining:* a rule may change a value that triggers other rules, i
 | **Ready Flag** | Multi-session editing, then , when ready...<br>adjust related data / enforce constraints | [Make Order Ready](Behave-Logic-Report.md/#scenario-order-made-ready){:target="_blank" rel="noopener"} |
 | **Events for Lib Access** | Events enable Python, use of standard libs (e.g., Kafka) | [Ship Order](Behave-Logic-Report.md#scenario-good-order-custom-service){:target="_blank" rel="noopener"} |
 | **Request Pattern** | Create Row to run service, per logic, e.g. MCP request:<br> _"find overdue orders, and send an email offering a discount"_    | See [MCP Send Mail](Integration-MCP.md#3a-logic-request-pattern)     |
+| **Rule Reuse** | Rules are declared on the data, not per path, so one rule can serve several requirements.<br>A requirement that names one path (_"on moving an order to another customer, check credit"_) is often already covered: it refers to the existing rules by name (`Uses:`), adds no new rule, and gets a test for its path | [Rule Reuse](Sample-Demo-Reuse.md){:target="_blank" rel="noopener"} |
 
 &nbsp;
 

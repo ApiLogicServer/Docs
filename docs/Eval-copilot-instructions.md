@@ -1,4 +1,9 @@
 ---
+version: 3.73 - 11/21/26 - Rule names and reuse (LogicBank 1.34.06): "implement reqs" names every constraint and event (name=), and checks for an existing rule before writing one; a redundant requirement is linked to it (Uses:, and a placeholder logic file with no rules as its content anchor) and logged as an ad-lib, with the path it names noted as a test to write when tests are created - no duplicate rule, and no tests created unasked. 3.72 - 11/21/26 - B2B APIs log partner values through api_utils.safe_log() (CodeQL log-injection). 3.71 - 11/19/26 - Opt-in B2B request log ("record each request, with its outcome"): request row committed first, failure recorded on the governed session. Verify Message Subscriptions: offsets are now committed (FlaskKafka 1.02), so only the first start reads old messages. Order-flow dashboards: see queries_dashboards.md 1.6 (rule-maintained daily totals, stamping keys, zero days, no cache).
+version: 3.70 - 11/17/26 - Executable Requirements: "implement reqs" now finds the existing logic file by content (the `Feature:` line, or the verbatim requirement text in its docstring), not by name; the naming convention is the fallback. One match: edit it; none: new use case; several: ask. A renamed or moved logic file was otherwise missed, and a second file written beside it: duplicate derivations stop the server, but duplicate constraints and events run twice.
+version: 3.69 - 11/13/26 - Requirements Traceability Report (generator 2.15+): each "Logic diagram" fold now shows the numbered rules beside the diagram (the same list as logic_flow_<req>.md), so the numbers on the diagram arrows can be matched to rules. The list is read from logic_flow_<req>.md, which `logic_diagram_gv.py --each` writes with the SVG; without it the fold shows the diagram alone.
+version: 3.68 - 11/10/26 - "Migrate AI Rules": two gaps found by migrating samples/allocate_dept_account_demo by hand. (1) The sequence assumed `integration/ai/llm_client.py` exists; older projects lack it, so STEP 2b copies it from the installed package first. (2) Detection now also looks for other key variable names (`OPENAI_API_KEY`, `os.environ`/`os.getenv` reads of a key) and STEP 4 / the summary must tell the user that the old variable is no longer read; failures the old handler swallowed are now logged.
+version: 3.67 - 11/10/26 - Vendor-neutral LLM calls. New `integration/ai/llm_client.py` in every project (urllib, no SDK, OpenAI-compatible protocol; OpenAI, Claude, Gemini, Ollama by environment variables). probabilistic_logic.md / probabilistic_template.py now use it instead of `from openai import OpenAI` (3.3 / 3.1), with LLMNotAvailable / LLMError -> deterministic fallback. New section "Migrate AI rules to the LLM client". The retired `genai-*` commands (genai, genai-utils, genai-logic, genai-graphics, genai-add-app, genai-iterate) are no longer referenced; `genai-add-mcp-client` stays. Claude and Gemini are reached through their OpenAI-compatibility endpoints and are UNVERIFIED until run with real keys.
 version: 3.66 - 11/10/26 - CE file renamed `.github/.copilot-instructions.md` -> `.github/copilot-instructions.md` (GitHub Copilot standard name; CLAUDE.md/GEMINI.md already pointed at it). Updated every reference, including the activation protocol's STEP 1 read path. The old spelling stays accepted as an activation phrase.
 version: 3.65 - 11/7/26 - Admin UI `show_when` for subtypes (STI) is now written on the "implement reqs" path too, not only in Method 4 (the old rule said: existing project, only on explicit request). Precautionary: a rebuilt demo_emp_types did write the entries (11, into admin-merge.yaml, pending the admin.yaml swap) even under the old rule, so this codifies what the run did; it was first misdiagnosed here as missing because only admin.yaml was checked. Where to look for show_when after a rebuild: admin-merge.yaml until the user approves the swap. Executable Requirements STEP 6 gets the matching checklist item.
 version: 3.64 - 11/7/26 - System Creation Services: two mechanical closing scans, run as commands against the finished project. (1) Step 8b, the subtype (STI) scan: `show_when` entries in admin.yaml, a null-exclusion constraint for every subtype-specific column, a TEXT yes/no classification axis (not `is_x` 0/1), and "only X may have Y" as a Rule.count plus a parent constraint. (2) A Before-you're-done bullet: no `sys_config_id` FK on a domain table (read constants with SysConfig.current). A blind demo_emp_types build (Sonnet 5.5, Nov 2026) read the STI section and the SysConfig guidance and still shipped none of them (0 show_when entries vs 11 in the reference build, only 1 of 7 null-exclusion constraints, `is_military` 0/1, a sys_config_id FK plus an early event to default it); the guidance was correct but sat in prose ~400 lines before the point of use, with no closing check. Same fix pattern as 3.38/3.39: a checklist at the end. implement_requirements.md gains a money-column convention (NUMERIC(15,2) and Decimal, not REAL).
@@ -675,8 +680,8 @@ STEP 2: Is a broker available? If the run is DEGRADED (the user opted out of con
         this). Tell the user you did.
 STEP 3: Stop any running server (restart hygiene), then reset the topics BEFORE the first live start:
         bash integration/kafka/<topic>_reset.sh (creates the topics if missing).
-        Why: offsets are never committed and the consumer starts at the earliest offset, so every start
-        REPLAYS the whole topic; messages left by earlier projects or runs become junk rows (real case,
+        Why: the consumer starts at the earliest offset its group has not committed, so the first start
+        reads everything already on the topic; messages left by earlier projects or runs become junk rows (real case,
         demo_eai Oct 2026: 3 junk orders and 3 failed lookups on the first live start). The script
         deletes and recreates those topics on the broker (other projects using the same names lose their
         messages). With the server already up and Kafka enabled, use the purge instead:
@@ -694,6 +699,60 @@ STEP 6: Stop the server you started and confirm the port is free. Report per top
 **❌ FORBIDDEN:** starting the server with Kafka enabled before the reset in STEP 3; restoring the project's
 database from a sample to clean up junk rows (reset the topics instead); declaring a topic verified from a
 simulated run when a broker was answering.
+
+---
+
+## 🔁 Migrate AI Rules to the LLM Client
+
+**ACTIVATION TRIGGERS:**
+- "migrate AI rules", "migrate AI rules to the LLM client"
+- "switch AI calls to Ollama" / "use Claude / Gemini for AI rules"
+- "remove openai", "stop using openai"
+
+**WHAT IT IS:** AI-rule handlers generated before Nov 2026 call OpenAI directly (`from openai import OpenAI`, key in
+`APILOGICSERVER_CHATGPT_APIKEY`). They keep working while the `openai` package is installed. This section moves a
+handler to `integration/ai/llm_client.py` (no SDK; OpenAI, Claude, Gemini, Ollama by environment variables). Nothing
+forces a migration; do it when the user asks.
+
+**MANDATORY SEQUENCE:**
+
+```
+STEP 1: Detect. Search the project (not samples/) for: `import openai`, `from openai import`, `OpenAI(`,
+        `APILOGICSERVER_CHATGPT_APIKEY`, `OPENAI_API_KEY`, any `os.environ` / `os.getenv` read of an API key,
+        `chat.completions.create`. List the files and functions found, and for each the key variable it reads,
+        and confirm with the user before changing anything.
+STEP 2: Read Eval-probabilistic_logic.md, section "LLM calls: always use integration/ai/llm_client.py",
+        and docs/training/probabilistic_template.py (the target shape). If the project's docs/training copies
+        are older and do not have that section, read the installed package's copies instead
+        (`<package>/prototypes/base/docs/training/`; the Manager CE explains how to find the package).
+STEP 2b: If `integration/ai/llm_client.py` does not exist (projects created before Nov 2026), copy it from the
+        installed package, `<package>/prototypes/base/integration/ai/llm_client.py`, into the project and say you did.
+        It is a single file with no dependencies; do not write your own client.
+STEP 3: Edit ONLY the call block in each handler (diff-style; never regenerate the file):
+        - add:    from integration.ai.llm_client import chat_json, LLMError, LLMNotAvailable
+        - replace the api_key check + OpenAI(...) + chat.completions.create + fence-stripping + json.loads
+          with one chat_json(system=..., user=prompt) inside try/except LLMNotAvailable / LLMError
+        - keep: the prompt text, the candidate building, id validation, the minimum-cost fallback,
+          the audit columns (request, reason, fallback_used, ...), docstrings, early-event wiring
+        - make sure the prompt says "JSON"
+        - fallback reasons now say "no LLM configured" (not "no API key")
+        - where the old code caught every exception and fell back silently, keep the fallback but log the cause
+          (`logic_row.log(...)`): a swallowed failure is how a broken LLM call goes unnoticed
+        If the handler was hand-edited and does not match the template, show the diff and ask.
+STEP 4: Configure (do not print any key): APILOGICSERVER_LLM_BASE_URL / _MODEL / _API_KEY. A user who already
+        has APILOGICSERVER_CHATGPT_APIKEY set needs no change for OpenAI. A handler that read any OTHER variable
+        (for example OPENAI_API_KEY) no longer finds its key: tell the user to set APILOGICSERVER_LLM_API_KEY,
+        or the handler will use its fallback. Also tell the user the model is now the configured one, not the
+        model that was hard-coded in the handler.
+STEP 5: Verify. Restart the server; run the project's behave tests if present; confirm the minimum-cost
+        fallback still works with no LLM configured (unset the key and the base URL). Do NOT make a live
+        LLM call unless the user says to. The user reads the diff.
+STEP 6: Other places that import openai (e.g. integration/mcp/mcp_client_executor.py): list them, say they are
+        not migrated by this section, and leave them.
+```
+
+**❌ FORBIDDEN:** regenerating a handler from scratch; changing audit columns or the fallback behavior; adding an
+`openai` / `anthropic` SDK import; storing a key in a file that is committed.
 
 ---
 
@@ -896,6 +955,13 @@ This is Phase 2 of the two-phase Executable Requirements workflow. Phase 1 (infr
 
 **This is not only for adding new use cases — editing an EXISTING `docs/requirements/<name>/requirements.md` and re-running "implement reqs `<name>`" is the supported way to change a requirement already in the system.** A user is unlikely to guess this on their own — "implement reqs" reads naturally as a one-time creation step, not an update mechanism, so proactively point it out when relevant (e.g. right after finishing a use case, or whenever the user asks "how do I change this rule later"). Example: editing `check_credit/requirements.md` from "balance is less than the credit limit" to "balance is less than or equal to the credit limit," then saying "implement reqs check_credit," re-derives the affected rule(s) from the updated text — the same STEP 1–7 sequence below runs again, it is not a special "edit mode." Diff the new requirements.md against the current logic file before writing anything, so only the actually-changed rule(s) are touched — do not regenerate the whole file from scratch and risk silently dropping unrelated rules or ad-lib decisions made earlier.
 
+**Find the existing logic file by content, not by name.** Before writing any logic for `<name>`, find the file(s) that already implement it: search `logic/logic_discovery/` (all subfolders) for the requirement's content anchor in module docstrings. The anchor is its `Feature:` line(s) when `requirements.md` is Gherkin; otherwise, its verbatim requirement text (the use-case heading and first clause), which every logic file's docstring carries. Then:
+- **one file matches:** edit that file, whatever its name or folder. Users rename and move logic files.
+- **none match:** it is a new use case; create it under the conventional name (see logic_bank_api.md, "Directory Structure").
+- **two or more match:** STOP and ask which is current. Never pick one, and never add another.
+
+Use the naming convention (`<name>.py`) to find a file only when no logic file carries a content anchor (for example, rules written by hand without the docstring), and note in ad-libs.md that the match was made by name. Why: a missed match writes a second file beside the renamed one, and both load. Duplicate derivations stop the server (`Duplicate Derivation rule`), but duplicate constraints and events are not detected: they run twice, so a publish event sends every Kafka message twice.
+
 **MANDATORY SEQUENCE:**
 
 ```
@@ -940,6 +1006,31 @@ STEP 5: Read Eval-implement_requirements.md COMPLETELY (silently)
 STEP 6: Implement all steps in requirements.md in sequence.
          Schema is already correct from the assessment above — no DDL surprises mid-implementation.
          LOGIC FILES: before writing each logic file:
+           [ ] EXISTING RULE FIRST — before writing any rule, look for one that already does the job, in every logic
+               file: the same derived column; a constraint on the same table that reads the same columns; an event on
+               the same table with the same topic or purpose. If one exists, do NOT write another (a second derivation
+               stops the server; a second constraint or event is not detected and runs twice). Instead:
+                 1. link the requirement to it: add `Uses: <Table.name> (<its requirement>)` under the requirement in
+                    docs/requirements/<use_case_name>/requirements.md (rule names: logic_bank_api.md, "RULE NAMES");
+                 1b. still write the requirement's logic file, in its use-case folder as usual
+                    (logic/logic_discovery/<use_case>/<name>.py), as a PLACEHOLDER with no rules: the module docstring is
+                    the verbatim requirement (the content anchor, so a later "implement reqs" finds it and adds nothing),
+                    and declare_logic() holds only a docstring naming what it uses, for example:
+                        def declare_logic():
+                            """No rules of its own: covered by existing rules, which run on every write path.
+                            Uses: Customer.balance (Check Credit), Customer.credit_limit_check (Check Credit)"""
+                    Name the rules, not the files that hold them (names survive renames). The traceability report reads
+                    this Uses: line too, and shows the requirement as "covered by existing rules";
+                 2. if the requirement names a path ("on moving an order to another customer"), note that path in the
+                    ad-lib below as the test to write. Do NOT create tests now: tests are created only when the user
+                    asks ("create tests"), and testing.md ("Requirements with only Uses:") turns the note into a scenario;
+                 3. log it in ad-libs.md: "redundant: <Table.name> already enforces this on every path; no new rule
+                    added; test to write: <the path>" (🟡 FYI if it restates the rule; 🔴 if it seems to want something different - then ask, and
+                    never change the existing rule silently).
+               Do not decide that two different expressions are equivalent: if the target matches but the condition
+               differs, show both and ask. A requirement that names one path for a rule that runs on every path is
+               the common case: rules are not per path.
+           [ ] NAME constraints and events (`name=`, logic_bank_api.md "RULE NAMES"); derivations are named by their column.
            [ ] A clause that names something the data does not define ("authorized courier", "designated
                office", "approved supplier") is IMPLEMENTED, never skipped. Pick the closest column the
                data does carry, put the compared value in a SysConfig column (Step 4a), default it to what the
@@ -1321,7 +1412,7 @@ changelog:
 
 3. **Automatic Business Logic**: All APIs (standard and custom) automatically inherit LogicBank rules without additional code.
 
-4. **CLI Commands**: Use `genai-logic --help` to see all available commands. When CLI commands exist for a task (e.g., `add-auth`, `genai-add-mcp-client`, `genai-add-app`), ALWAYS use them instead of manual configuration - they handle all setup correctly.
+4. **CLI Commands**: Use `genai-logic --help` to see all available commands. When CLI commands exist for a task (e.g., `add-auth`, `genai-add-mcp-client`), ALWAYS use them instead of manual configuration - they handle all setup correctly.
 
 > **📋 Testing:** For comprehensive testing conventions, patterns, and examples, see `Eval-testing.md` (555 lines - I'll read this before we create any tests)
 
@@ -1341,7 +1432,7 @@ changelog:
 ### MCP Client (Included)
 - **Client Executor**: `integration/mcp/mcp_client_executor.py`
 - **Natural Language**: Process queries like "List customers with credit_limit > 1000"
-- **LLM Integration**: Uses OpenAI GPT-4 to translate natural language → API calls
+- **LLM Integration**: Uses an LLM, through `integration/ai/llm_client.py` (OpenAI, Claude, Gemini, Ollama by environment variables; see `Eval-probabilistic_logic.md`), to translate natural language → API calls
 - **Example Usage**:
   ```bash
   cd basic_demo
@@ -3004,13 +3095,7 @@ Then, `npm install` and `npm start`.
 
 Temporary restriction: security must be disabled.
 
-**Fallback (only if no AI assistant is available in this environment):** the
-CLI generator calls OpenAI directly, one API call per resource file:
-```bash
-genai-logic genai-add-app --app-name=my-app-name --vibe
-```
-Requires an OpenAI key in `.env`. Produces the same output shape as the
-default method — prefer the default whenever you're running as the assistant.
+**There is no CLI fallback:** the old `genai-logic genai-add-app` command (ChatGPT, one API call per resource) was retired. Generate the app yourself as described above.
 
 **IMPORTANT**: When working with React apps, ALWAYS read `docs/training` first. This file contains critical data access provider configuration that was built when the project was created. The data provider handles JSON:API communication and record context - ignore this at your peril.
 
@@ -3394,6 +3479,22 @@ When creating new B2B APIs, follow this proven pattern:
 - Provide meaningful success messages with key information (ID, customer, item count)
 - Use YAML format in docstrings for clean Swagger documentation
 - Always use actual database data in examples (check with sqlite3 queries)
+- Log partner-supplied values through `api_utils.safe_log()` (`from api.system import api_utils`): it strips line breaks, so a
+  partner cannot forge lines in `logs/als.log` (CWE-117; CodeQL `py/log-injection`, real case: demo_eai, Nov 2026)
+
+**Opt-in: record each request (B2B request log).** Only when the requirement asks for it — phrasing like "record each
+request, with its outcome" — keep a row per call, the same shape as an EAI blob table: `<Api>Request` (id, `CreatedOn`
+DATETIME, `CreatedOnDay` TEXT if a daily-totals table counts it, `payload` TEXT, `is_processed` BOOLEAN default 0,
+`error_text` TEXT) — on the DDL list in Phase 1, created by DDL + rebuild-from-database. In the service:
+1. Insert the request row (`is_processed=False`) and **commit** it first (Tx 1): the call is recorded even if processing fails.
+2. Process as usual (mapper, `session.add`, `session.flush()`); on success set `is_processed=True` on the request row and
+   let the request commit (Tx 2).
+3. On failure: `session.rollback()` (this service owns its transaction), re-read the request row, set `error_text`,
+   `session.commit()` — on the governed session, so rules on the request table (failure counts) see it — then
+   `raise safrs.ValidationError(...)` as before, so the partner still gets HTTP 400.
+Not the default: it costs a write per call, grows without bound (put a retention TODO in the service: never delete
+rows that a totals table counts), and stores partner payloads. Without the clause, a rejected call is rolled back
+and leaves no row — say so in ad-libs.md when a dashboard counts rejections.
 
 **AI Anti-Patterns to Avoid**:
 - **Don't assume CRUD operations**: If user asks for "create order API", only implement POST/insert (ask if they need GET/PUT/DELETE)

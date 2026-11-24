@@ -1,7 +1,7 @@
 ---
 title: Executable Requirements
 source: docs/Exec-Reqmts.md
-version: 2.2, 11/17/2026
+version: 2.3, 11/24/2026 - "One rule, several requirements" (Uses:, link to the Rule Reuse sample)
 ---
 
 <style>
@@ -429,6 +429,18 @@ A requirement set lives in `docs/requirements/<name>/requirements.md`; the rules
 | The server, at startup | Loads every file in `logic/logic_discovery/`, whatever its name. |
 
 So you can **rename or move logic files** (for example, to group them in folders), and iteration still finds them.  Keep the docstring: it is the link.  If it is missing, the AI falls back to the file name (`<name>.py`) and says so in `ad-libs.md`.
+
+&nbsp;
+
+### One rule, several requirements
+
+Rules are declared on the data, not per path, so one rule often serves several requirements.  A requirement that names one path, such as *"on moving an order to another customer, check credit"*, is usually already covered by the Check Credit rules.  The AI does not write a second rule.  Instead it:
+
+* links the requirement to the existing rules by name, with a `Uses:` line in its `requirements.md` (for example `Uses: Customer.balance (Check Credit), Customer.credit_limit_check (Check Credit)`)
+* logs it in `ad-libs.md` as redundant, with the path to test
+* adds a test for that path when you create tests
+
+The Requirements Traceability Report shows the requirement as **covered by existing rules**.  For a walkthrough, see the [Rule Reuse sample](Sample-Demo-Reuse.md) (`basic_demo_rule_reuse`).
 
 &nbsp;
 
