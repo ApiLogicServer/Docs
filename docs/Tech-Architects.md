@@ -29,7 +29,7 @@ Description: Briefing
     * **Prove the rules ran, and check what they mean** - generated tests run, and the traceability report shows each requirement, its rules, and the logs of them firing, so a reviewer can confirm each rule says what its requirement means.
     
 
-    Full background: [What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
+    For a related article, [Click Here - What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
 
     **See every claim in one system:** the [EAI sample](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} was built by AI from six requirements: rules, a B2B API, Kafka in and out, security, and a dashboard showing the business is flowing.  Its judgment calls, rules and traceability report are the evidence for each claim above.
 
