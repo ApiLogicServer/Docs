@@ -15,14 +15,20 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
 
 !!! pied-piper ":bulb: A rewrite buries the business policy again, in a new stack.  <br>Recover the requirements, and rebuild using rules you can read, trust, and maintain"
 
-    Legacy systems are opaque: business policy is buried in code written long ago.  A technology modernization (better performance, easier hiring) moves that opacity to a new stack; it doesn't remove it.  
+    Legacy systems are opaque: business policy is buried in code written long ago.  A platform port (better performance, easier hiring) moves that opacity to a new stack; it doesn't remove it.  
     
     A straight AI rewrite does the same, faster.  It recovers the requirements, then buries them again in new procedural code, and the documentation drift starts over.  Governance needs to see how a system enforces policy, and needs a sound basis for evolving it.
 
-    The alternative is two steps:
+    | | Platform port | Modernization |
+    |---|---|---|
+    | What moves | Code, stack 1 → stack 2 | Requirements, recovered as rules |
+    | Policy afterwards | Still buried, in new code | Readable, enforced, traced |
 
-    1. Use **AI to extract the requirements** from the legacy system
-    2. Use **GenAI-Logic to rebuild it as declarative rules**: spreadsheet-like statements such as `balance <= credit_limit`, run by an engine on every commit
+    The alternative is three steps:
+
+    1. **Recover:** use AI to extract the requirements from the legacy system
+    2. **Rebuild:** use GenAI-Logic to rebuild it as declarative rules: spreadsheet-like statements such as `balance <= credit_limit`, run by an engine on every commit
+    3. **Review:** a person confirms the judgment calls the AI recorded where the requirements stopped
 
     The rebuilt system is not only modernized, it is governed by rules you can:
 
@@ -57,11 +63,47 @@ For more on the automated reports, see ["What did AI Build"](Tech-RTP.md){:targe
 
 &nbsp;
 
-### What the script and the requirements look like
+## Sample Reference System
+
+The source is `demo_eai_legacy`: an order-entry system with business logic in procedural code (SQLAlchemy session hooks), a REST API, Kafka, and Keycloak security, with its documents removed [^1].  The full experiment is [here](Tech-Modernization-Automation.md){:target="_blank" rel="noopener"}.
+
+Both systems are included in your Manager, under `samples/modernization/`, so you can open each step's result:
+
+| Step | Open |
+|---|---|
+| 1. Recover | `demo_eai_legacy/app/logic.py` (the legacy code) and `demo_eai_legacy/requirements_from_antigravity.md` (the recovered requirements) |
+| 2. Rebuild | `demo_eai_modernized/logic/logic_discovery/` (the rules) and `demo_eai_modernized/docs/requirements/Requirements Traceability Report.md` |
+| 3. Review | `demo_eai_modernized/docs/requirements/demo_eai/ad-libs.md` (the decisions for review) |
+
+&nbsp;
+
+### 1. Recover
+
+The legacy code holds the policy in procedural session hooks.  An excerpt:
+
+![legacy logic](images/articles/Modernization/extract.png)
+
+AI read the code and wrote down what it does, in plain language.  An excerpt of the recovered requirements:
+
+> 4. **Customer Balance Rollup (Unshipped Orders Only)**: `Customer.balance` is recalculated as the sum of `Order.amount_total` across all **unshipped** orders (`date_shipped IS NULL`) for that customer whenever affected orders or items change, an order is reassigned to a different customer, `date_shipped` is set/cleared, or an order is deleted.
+>
+> 5. **Credit Limit Enforcement**: Whenever a customer's `balance` is recalculated or an existing customer's `credit_limit` is updated, the system verifies `balance <= credit_limit`.  If exceeded, `CreditError` is raised (`"{name}: balance {balance} exceeds credit limit {limit}"`), aborting the transaction.
+
+Plain statements of behavior, with no code.
+
+&nbsp;
+
+### 2. Rebuild
+
 
 The rebuild is driven by a script like this, pasted to the AI assistant:
 
+![The creation script and the requirements recovered from the legacy code](images/articles/Modernization/create_script.png)
+
+*Left: the creation script.  Right: the requirements it implements, recovered from the legacy code.*
 ```
+Check for Docker or Podman. If neither is running, continue in degraded mode (SQL security, simulated Kafka) and tell me so up front.
+
 create project demo_eai_modernized from samples/dbs/basic_demo.sqlite
 
 add security (degrade to SQL if Keycloak is not available)
@@ -77,25 +119,48 @@ create tests from rules, using default names
 run the tests
 
 run the requirements traceability report
+When the report is done, print this verbatim: "Next: scan these two files: logic/logic_discovery/check_credit.py (the rules) and docs/requirements/demo_eai/ad-libs.md (the judgment calls the AI made). Then open the report: demo_eai_modernized/docs/requirements/Requirements Traceability Report.md (in VS Code: open the file, then Cmd/Ctrl+Shift+V for the rendered preview)."
 ```
 
-"implement requirements" names the recovered requirements.  An excerpt:
+"implement requirements" names the requirements recovered in step 1:
 
-> 4. **Customer Balance Rollup (Unshipped Orders Only)**: `Customer.balance` is recalculated as the sum of `Order.amount_total` across all **unshipped** orders (`date_shipped IS NULL`) for that customer whenever affected orders or items change, an order is reassigned to a different customer, `date_shipped` is set/cleared, or an order is deleted.
->
-> 5. **Credit Limit Enforcement**: Whenever a customer's `balance` is recalculated or an existing customer's `credit_limit` is updated, the system verifies `balance <= credit_limit`.  If exceeded, `CreditError` is raised (`"{name}: balance {balance} exceeds credit limit {limit}"`), aborting the transaction.
+The AI turns each requirement into rules.  The credit policy, which was procedural code in the legacy system, becomes:
 
-Plain statements of behavior, with no code.  The AI turns each into rules.
+```python
+Rule.copy(derive=models.Item.unit_price, from_parent=models.Product.unit_price)
+Rule.formula(derive=models.Item.amount, as_expression=lambda row: row.quantity * row.unit_price)
+Rule.sum(derive=models.Order.amount_total, as_sum_of=models.Item.amount)
+Rule.sum(derive=models.Customer.balance, as_sum_of=models.Order.amount_total,
+         where=lambda row: row.date_shipped is None)
+Rule.constraint(validate=models.Customer,
+                as_condition=lambda row: row.credit_limit is None or row.balance <= row.credit_limit,
+                error_msg="{row.name}: balance {row.balance} exceeds credit limit {row.credit_limit}")
+```
 
-![The creation script and the requirements recovered from the legacy code](images/articles/Modernization/create_script.png)
+&nbsp;
 
-*Left: the creation script.  Right: the requirements it implements, recovered from the legacy code.*
+### 3. Review
+
+Where the requirements stopped, the AI decided, and recorded each decision in the ad-libs report.  A person confirms each one.  An excerpt:
+
+<!-- TODO (Val): ad-libs excerpt image from samples/modernization/demo_eai_modernized/docs/requirements/demo_eai/ad-libs.md -->
+![Ad-libs report excerpt: decisions the AI made beyond the requirements](images/articles/Modernization/ad_libs_excerpt.png)
+
+*Decisions for review, for example: the shipping message is now published before the commit, not after; the `sales` role now comes from the token, not a configured username.*
+
+&nbsp;
+
+#### Governance
+
+The requirements to rules report (for the full report, [click here](https://github.com/ApiLogicServer/ApiLogicServer-src/blob/main/api_logic_server_cli/prototypes/manager/samples/modernization/demo_eai_modernized/docs/requirements/Requirements%20Traceability%20Report.md){:target="_blank" rel="noopener"}) documents each requirement, a set of tests, and rules that ran for each test:
+
+![Rules Rpt](images/articles/Modernization/rules-rpt.png)
 
 &nbsp;
 
 ## The experiments
 
-| | [Controlled sample](Tech-Modernization-Automation.md){:target="_blank" rel="noopener"} | [ERPNext](Tech-Modernization-ERPNext.md){:target="_blank" rel="noopener"} |
+| | Example 1: [Controlled sample](Tech-Modernization-Automation.md){:target="_blank" rel="noopener"} | Example 2: [ERPNext](Tech-Modernization-ERPNext.md){:target="_blank" rel="noopener"} |
 |---|---|---|
 | **Source** | An order-entry system AI built for the experiment, with its documents removed | The credit control in ERPNext, an open-source business application we did not write |
 | **Policy** | Customer balance against a credit limit; shipping messages; partner orders | A customer's credit limit, enforced on four kinds of document with different bypass logic |
@@ -126,3 +191,4 @@ What we cannot say:
 
 The test we would most like to see is an older, messier codebase, recovered independently by a second model, with the results compared.  If you have one, that is the experiment worth running.
 
+[^1]: We built the **[legacy system](https://github.com/ApiLogicServer/ApiLogicServer-src/tree/main/api_logic_server_cli/prototypes/manager/samples/modernization/demo_eai_legacy){:target="_blank" rel="noopener"}** using "native Claude" ***without GenAI-Logic***, from the same requirements as **[Basic Demo EAI](Sample-Basic-EAI.md){:target="_blank" rel="noopener"}** (so, with code not rules).  We then removed the docs.
