@@ -160,7 +160,7 @@ The requirements to rules report (for the full report, [click here](https://gith
 
 ## Vibe User Interfaces
 
-The process above will create a server, including API and Logic, and a default "Admin UI".  Use Vibe tools to recreate user interfaces.  You can put them in the same project.  Be sure to remind API to access data via the API.
+The process above will create a server, including API and Logic, and a default "Admin UI".  Use [Vibe tools](Admin-Vibe-Sample.md){:target="_blank" rel="noopener"} to recreate user interfaces.  You can put them in the same project.  Be sure to remind API to access data via the API.
 
 Many such tools can create apps from screen shots or code of your existing apps.
 
