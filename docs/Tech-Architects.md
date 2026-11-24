@@ -20,7 +20,7 @@ Description: Briefing
     * the *generated code* is **hard to read and trust**.  How can you govern what you can't read?
     * and you still need to prove it does what you asked - **testing is the new bottleneck**.  How can you govern what you can't prove?
 
-    <br>**The answer:** Context Engineering (CE) directs AI to **translate requirements into rules, not code**. So you can: 
+    <br>**The answer:** Context Engineering (CE) directs AI to **translate requirements into rules, not code**. So you can adopt AI **prudently**:
 
     ![GenAI-Logic](images/architecture/tech-brief/genai-logic.png){: style="width:165px; clear:right" align=right }
 
