@@ -109,13 +109,6 @@ Rules address both transaction logic and **Role Based Access Control.**
 
 This works particularly well with VSCode Agent Window, so **Developers and Business Users can share the same tools**.
 
-&nbsp;
-
-### New Initiatives, Modernization
-
-**New initiatives:** requirements come from a business idea, a backlog item, or an AI interview with the user.  Since the created system includes **test data and a UI**, business users can rapidly vet the backlog with **real logic running on real transactions**, not wireframes.
-
-**Modernization:** AI [extracts requirements from the legacy system](Modernization-Overview.md){:target="_blank" rel="noopener"}, and those requirements are fed to GenAI-Logic to create **rules** - modernizing the *logic*, rather than a platform port of the old code.
 
 <details markdown>
 
@@ -134,6 +127,27 @@ Here is the created, logic-enabled system.  Business Users can **enter real tran
 ![running](images/exec_reqmts/rfi_with_int_bd.png)
 
 </details>
+
+
+&nbsp;
+
+### From New Initiatives
+
+Requirements come from a business idea, a backlog item, or an AI interview with the user.  Since the created system includes **test data and a UI**, business users can rapidly vet the backlog with **real logic running on real transactions**, not wireframes.
+
+&nbsp;
+
+### From Modernization
+
+AI [extracts requirements from the legacy system](Modernization-Overview.md){:target="_blank" rel="noopener"}, and those requirements are fed to GenAI-Logic to create **rules** - modernizing the *logic*, rather than a platform port of the old code.
+
+&nbsp;
+
+### From Regulations
+
+Requirements can be capture by having AI read regulations.  For example, 
+
+* [Customs Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"} - "reg tech" system automated from web-based regulations
 
 <br>
 
@@ -157,7 +171,7 @@ Other CE elements automate systems with **rule-enabled access:**
 
 ---
 
-## Governance - proof, not just review
+## Governance - Review... and *Proof*
 
 Reading the rules isn't enough, and AI output doesn't verify itself.  Before anyone can approve deployment, they need evidence that the system does what it set out to do.
 
