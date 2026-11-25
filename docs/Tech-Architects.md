@@ -109,9 +109,11 @@ Rules address both transaction logic and **Role Based Access Control.**
 
 This works particularly well with VSCode Agent Window, so **Developers and Business Users can share the same tools**.
 
-### New Initiatives and Modernization
+&nbsp;
 
-**New initiatives:** requirements come from a business idea, a backlog item, or an AI interview with the user.  Since the created system includes **test data and a UI**, business users can vet the backlog with **real logic running on real transactions**, not wireframes.
+### New Initiatives, Modernization
+
+**New initiatives:** requirements come from a business idea, a backlog item, or an AI interview with the user.  Since the created system includes **test data and a UI**, business users can rapidly vet the backlog with **real logic running on real transactions**, not wireframes.
 
 **Modernization:** AI [extracts requirements from the legacy system](Modernization-Overview.md){:target="_blank" rel="noopener"}, and those requirements are fed to GenAI-Logic to create **rules** - modernizing the *logic*, rather than a platform port of the old code.
 
