@@ -109,6 +109,12 @@ Rules address both transaction logic and **Role Based Access Control.**
 
 This works particularly well with VSCode Agent Window, so **Developers and Business Users can share the same tools**.
 
+### New Initiatives and Modernization
+
+**New initiatives:** requirements come from a business idea, a backlog item, or an AI interview with the user.  Since the created system includes **test data and a UI**, business users can vet the backlog with **real logic running on real transactions**, not wireframes.
+
+**Modernization:** AI [extracts requirements from the legacy system](Modernization-Overview.md){:target="_blank" rel="noopener"}, and those requirements are fed to GenAI-Logic to create **rules** - modernizing the *logic*, rather than a platform port of the old code.
+
 <details markdown>
 
 <summary>See - Executable Requirements</summary>
@@ -119,8 +125,6 @@ This works particularly well with VSCode Agent Window, so **Developers and Busin
 
 Business Users can use the simplified Agents Window (below).  This creates a system in minutes, including test data and screens.
 
-> Use this to **explore new business initiatives**, **vet the backlog...** in hours.
-> 
 ![create_script](images/exec_reqmts/rfi_with_int_bd_rfi.png)
 
 Here is the created, logic-enabled system.  Business Users can **enter real transactions**, see business logic execute, and **collaborate on iterations.**
