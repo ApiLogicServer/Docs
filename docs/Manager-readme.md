@@ -52,7 +52,7 @@ And it **fits what you already use**: your methodology, standard tools, and shar
 
 **Evaluating this as an architect?** Start with the [Architecture Brief](https://apilogicserver.github.io/Docs/Tech-Architects/).
 
-**Evaluating this for DevOps?** Set up and test your container runtime ([Podman or Docker](#containers-podman-or-docker)), then follow the [DevOps Quick Start](https://apilogicserver.github.io/Docs/DevOps-Quick-Start/).
+**Evaluating this for DevOps?** Set up and test your container runtime ([Podman or Docker](#containers-podman-or-docker)), then follow the [DevOps Quick Start](https://apilogicserver.github.io/Docs/DevOps-Quick-Start/). For dev, pre-prod and prod settings and secrets, see [Environments and Secrets](https://apilogicserver.github.io/Docs/DevOps-Container-Configuration/#environments-and-secrets-dev-pre-prod-prod).
 
 This is the start page for the [GenAI-Logic Manager](https://apilogicserver.github.io/Docs/Manager) — where you manage projects, notes and resources. It's also your learning hub.
 <!-- CODESPACES-ONLY-START

@@ -3,6 +3,8 @@
 
     Containers are most commonly configured by environment variables, either in docker files, docker compose files, env files, or command line arguments.  The most common configuration parameters govern database / port locations - [click here](#overridden-by-env-variables).
 
+    For dev, pre-prod and prod, and for passwords and other secrets, see [Environments and Secrets](#environments-and-secrets-dev-pre-prod-prod): the standard industry practice, not something specific to GenAI-Logic.
+
 &nbsp;
 
 ## Starting the Server
@@ -74,13 +76,75 @@ This can be useful in testing if you don't have access to the server console.  T
 
 ## Configuring the server
 
-Configuration parameters enable you to specify hosts and ports, database locations, debug settings, etc,, as described below.
+Configuration parameters enable you to specify hosts and ports, database locations, debug settings, etc., as described below.
+
+&nbsp;
+
+### Environments and Secrets: dev, pre-prod, prod
+
+!!! note "Not specific to GenAI-Logic"
+
+    This is the common best practice for configuring any service, in any language: "store config in the environment", from [The Twelve-Factor App](https://12factor.net/config){:target="_blank" rel="noopener"}. Your platform team most likely uses it already. GenAI-Logic projects follow it, so they deploy the way your other services do.
+
+**The principles:**
+
+1. **One build, many environments.** The same code (and the same container image) runs in dev, pre-prod and prod. Only configuration differs.
+2. **Configuration comes from the environment.** Each environment sets environment variables; they override the defaults committed with the code.
+3. **Secrets are never in git.** Database passwords, signing keys and client secrets come from a secrets store, injected as environment variables when the service starts.
+4. **Commit the names, not the values.** The repository shows which variables exist (with safe dev defaults); each environment supplies its own values.
+
+**Layers - the higher layer wins:**
+
+```
+  environment variables        set by the deployment, secrets injected here      (wins)
+          ▲
+  config/default.env           committed with the project: non-secret defaults
+          ▲
+  config/config.py             code defaults
+```
+
+**Where values come from, per environment:**
+
+```
+                              ┌─ dev:      config/default.env  +  personal overrides (not committed)
+                              │
+  same code / same image  ────┼─ pre-prod: deployment config    +  secrets store  ──►  env variables  ──►  server
+                              │
+                              └─ prod:     deployment config    +  secrets store  ──►  env variables  ──►  server
+```
+
+| | Dev | Pre-prod | Prod |
+|:--|:--|:--|:--|
+| **Non-secret settings** (hosts, ports, Kafka broker, Keycloak realm) | `config/default.env` | Deployment config: docker compose env, Kubernetes ConfigMap, or the cloud service's environment settings (below) | Same as pre-prod, prod values |
+| **Secrets** (database password, `SECRET_KEY`, client secrets) | Local dev values; real ones only in a personal, uncommitted file or shell | Secrets store: Kubernetes Secrets, HashiCorp Vault, CI secrets, or the cloud's store (below) | Same as pre-prod, prod values |
+
+The same pattern works on every major cloud; only the product names differ:
+
+| Cloud | Environment settings (non-secret) | Secrets store |
+|:--|:--|:--|
+| **AWS** | ECS task definition, App Runner, EKS ConfigMap; Systems Manager Parameter Store | AWS Secrets Manager |
+| **Azure** | App Service / Container Apps settings, AKS ConfigMap | Azure Key Vault |
+| **GCP** | Cloud Run / GKE environment variables, ConfigMap | Google Secret Manager |
+| **IBM Cloud** | Code Engine / IKS / OpenShift environment variables, ConfigMap | IBM Cloud Secrets Manager |
+
+Each one delivers its secrets to the container as environment variables, so the project needs no cloud-specific code.
+
+In each cloud, a small group (typically the platform or security team) manages secret values, and only the running service, not people, is granted read access; every read and change is audited. Developers need never see production passwords.
+| **Who sets them** | Each developer | The deployment pipeline | The deployment pipeline |
+
+**Check before going to production:**
+
+- `SECRET_KEY`: the project ships with a placeholder in `config/default.env`. It signs security tokens, so set your own value from the secrets store.
+- `APILOGICPROJECT_CONSUME_DEBUG=false`: the Kafka debug endpoints are for development only.
+- Database URIs (`SQLALCHEMY_DATABASE_URI`, `SQLALCHEMY_DATABASE_URI_AUTHENTICATION`) carry passwords: set them from the secrets store, never in a committed file.
+
+The sections below describe each layer, and the variable names.
 
 &nbsp;
 
 ### Database Locations
 
-SQLAlchemy database URIs are set in your `conf/config.py` file, from your creation CLI arguments.  They apply to target database(s), and the authentication database.  For example:
+SQLAlchemy database URIs are set in your `config/config.py` file, from your creation CLI arguments.  They apply to target database(s), and the authentication database.  For example:
 
 ```python
     SQLALCHEMY_DATABASE_URI : typing.Optional[str] = f"mysql+pymysql://root:p@localhost:3306/classicmodels"
@@ -120,7 +184,7 @@ Hosts are defaulted as follows:
 | Docker | `0.0.0.0` |
 | Local Install | `localhost` |
 
-These defaults are also stored in the `conf/config.py` file.
+These defaults are also stored in the `config/config.py` file.
 
 &nbsp;
 
@@ -138,7 +202,13 @@ ApiLogicServer create --project_name=~/dev/servers/api_logic_server \
 
 ### Overridden by: Config.py
 
-As noted above, the defaults are stored in the `conf/config.py` file.  You can override these values as required.
+As noted above, the defaults are stored in the `config/config.py` file.  You can override these values as required.
+
+&nbsp;
+
+### Overridden by: config/default.env
+
+`config/default.env` is committed with the project and loaded when the server starts. Most settings are read from it (security, locking, Kafka, debug endpoints), each with a comment explaining it. It is the right place for non-secret defaults shared by the team, and the wrong place for passwords: it is in git. An environment variable of the same name overrides it.
 
 &nbsp;
 
@@ -195,7 +265,7 @@ A common approach for host, port and database configuration is to use env variab
 
     You can see the env variables in the sample `env_list` file - [click here](https://github.com/ApiLogicServer/demo/blob/main/devops/docker-image/env.list){:target="_blank" rel="noopener"}.  
 
-The names of the variables are those noted used in the `conf/config.py` file, **preceded by** `APILOGICPROJECT_`[^1].  These values override both the `conf/config.py` values and the Api Logic Project CLI arguments.
+The names of the variables are those noted used in the `config/config.py` file, **preceded by** `APILOGICPROJECT_`[^1].  These values override both the `config/config.py` values and the Api Logic Project CLI arguments.
 
 Here are the most commonly set environment variables:
 
