@@ -59,6 +59,8 @@ Authentication Providers are called by the system during login.  They are passed
 
 The system provides **default providers** for sql and keycloak.  In addition, you can **create your own provider** to interface with your authentication system (LDAP, AD etc)
 
+The sql provider, as shipped, is for development and testing (passwords are in plain text); for production, use keycloak, your own provider, or harden the sql provider - [see here](Security-sql.md).
+
 Multiple systems will share the same authentication data, so, even if you are using sql, this "auth" database/schema will be separate from each application database/schema.
 
 &nbsp;

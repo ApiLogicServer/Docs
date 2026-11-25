@@ -134,7 +134,9 @@ In each cloud, a small group (typically the platform or security team) manages s
 
 **Check before going to production:**
 
-- `SECRET_KEY`: the project ships with a placeholder in `config/default.env`. It signs security tokens, so set your own value from the secrets store.
+- `SECRET_KEY`: the project ships with a placeholder in `config/default.env`. With the SQL security provider it signs login tokens (Keycloak signs its own), so set your own value from the secrets store: at least 32 random characters, for example `python -c "import secrets; print(secrets.token_urlsafe(48))"`.
+- `APILOGICPROJECT_ENV`: `dev`, `preprod` or `prod`. `config/default.env` says `dev`; the deployment sets it, and the project's container image (`devops/docker-image`) defaults to `prod`. Outside `dev`, a server with SQL security refuses to start with the placeholder `SECRET_KEY`; in `dev` it starts and logs a reminder.
+- Security provider: the sql provider, as shipped, stores passwords in plain text and is for development and testing. Use Keycloak or your identity provider in production, or harden the sql provider ([see here](Security-sql.md)).
 - `APILOGICPROJECT_CONSUME_DEBUG=false`: the Kafka debug endpoints are for development only.
 - Database URIs (`SQLALCHEMY_DATABASE_URI`, `SQLALCHEMY_DATABASE_URI_AUTHENTICATION`) carry passwords: set them from the secrets store, never in a committed file.
 

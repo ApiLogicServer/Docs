@@ -8,6 +8,8 @@
 
     It's extensible: you can add additional attributes to the `Users` table, and reference these in `Grant` statements.
 
+    **As shipped, the sql provider is for development and testing:** passwords are stored and compared in plain text.  For production, use [Keycloak](Security-Keycloak.md) or your organization's identity provider (through a [custom provider](Security-Overview.md#custom-auth-providers)), or harden the sql provider: hash the passwords (override `check_password` in `security/authentication_provider/sql/auth_provider.py`) and set `SECRET_KEY` from your secrets store (see [Environments and Secrets](DevOps-Container-Configuration.md#environments-and-secrets-dev-pre-prod-prod)).
+
 
 &nbsp;
 

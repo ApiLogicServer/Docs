@@ -246,6 +246,7 @@ Then, as you wish:
 * **Your own image** - `sh devops/docker-image/build_image.sh .`, then `sh devops/docker-image/run_image.sh`.  The dockerfile is 3 lines: `FROM apilogicserver/api_logic_server`, `COPY`, `CMD`.  See [Build Project Image](DevOps-Containers-Build.md).  Projects created before release 17.05.37 carry older scripts that call `docker` and need a `dev-network`.  On Podman, build directly instead: `$CONTAINER_CLI build -f devops/docker-image/build_image.dockerfile -t myproject .` (run from the project folder), then run it as in step 3 with `myproject` as the image.
 * **Compose** - `$CONTAINER_CLI compose -f devops/docker-standard-image/docker-compose-standard-image.yml up`
 * **Security** - `genai-logic add-auth --provider-type=sql` (run as in step 2, with `-w /localhost`) uses a SQL user table - no other container.  Keycloak is also supported; see [Security](Security-Overview.md).
+* **Dev to prod** - the same image as dev and as prod, secrets kept out of git, the prod database created and migrated with Alembic: [DevOps Quick Start: Dev to Prod](DevOps-Quick-Start-Dev-to-Prod.md).
 
 &nbsp;
 
