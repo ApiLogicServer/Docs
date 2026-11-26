@@ -26,7 +26,7 @@ Description: Instantly Create and Run Database Projects - GenAI, Flask, APIs, SQ
 
     Then go deeper with the [Manager readme](Manager-readme.md){:target="_blank" rel="noopener"}. Details, and how to evaluate with your AI assistant: [Evaluation Guide](Eval.md){:target="_blank" rel="noopener"}.
 
-    For a walk-through of the concepts, see the [Introduction][1]{:target="_blank" rel="noopener"}.
+    For a walk-through of the concepts, [click here to see the Introduction][1]{:target="_blank" rel="noopener"}.
 
 ![dgm](images/architecture/logic-architecture-exec.png)
 
