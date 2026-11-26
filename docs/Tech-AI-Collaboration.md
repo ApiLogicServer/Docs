@@ -112,7 +112,7 @@ When a new AI assistant opens the repo, it learns how the system works before wr
 
 That's how we taught GenAI the right architecture — once — and made that teaching permanent.
 
-![AI-Enabled Projects](images/ui-vibe/ai-enabled-projects.png)
+![AI-Enabled Projects](images/ui-vibe/assistant/ai-enabled-projects.png)
 
 
 

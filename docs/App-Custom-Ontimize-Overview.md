@@ -289,7 +289,6 @@ The app_model.yaml file is created during the "app-create" or "create" phase and
 
 ## Entity
 Use the Ontimize editor to exclude a selected entity or change the titles.
-![](images/ui/templates/Entity.png)
 
 ### Edit Entity
 |field|Description|
@@ -303,7 +302,6 @@ Use the Ontimize editor to exclude a selected entity or change the titles.
 
 ## Attributes
 Use the Ontimize editor to change the label, tooltip, exclude selected attributes, include attribute in the search or sort, enable or mark fields as required, and include visible in the home table display.
-![](ui/templates/EntityAttr.png)
 ### Edit Attributes
 |field|Description|
 :------|:---------------|
@@ -322,7 +320,6 @@ Use the Ontimize editor to change the label, tooltip, exclude selected attribute
 
 ## Relationships (TabGroup)
 Use the Ontimize editor to exclude tab on detail page (tomany) or change the tile used to display.
-![](ui/templates/TabGroup.png)
 ### Edit Tab Groups
 |field|Description|
 :------|:---------------|

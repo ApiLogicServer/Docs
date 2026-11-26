@@ -64,7 +64,7 @@ $ ApiLogicServer create --project_name= --db_url=    # create ApiLogicProject
 
 You can then open the project in your IDE, and run it as follows:
 
-1. **Create `venv`:** as shown in the [Readme](Readme.md#1-setup-and-run) ***(not required for VSCode or Docker)***
+1. **Create `venv`:** as shown in the [Project Environment](https://apilogicserver.github.io/Docs/Project-Env/) ***(not required for VSCode or Docker)***
 
 2. **Start the Server:** F5 (PyCharm: Ctl-D).
 

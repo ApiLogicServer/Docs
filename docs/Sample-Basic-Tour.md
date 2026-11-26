@@ -563,7 +563,7 @@ Verify it's operating properly:
 
     a. Review `Tutorial`, Explore Customizations.
 
-![GenAI Automation](system/https://github.com/ApiLogicServer/Docs/blob/main/docs/images/genai.png?raw=true)
+![GenAI Automation](images/sample-ai/copilot/genai.png)
 
 </details>
 </br>
@@ -917,7 +917,7 @@ Enforce the Check Credit requirement (do not generate check constraints):
 5. Store the Items.UnitPrice as a copy from Product.UnitPrice
 ```
 
-![copilot](system/https://github.com/ApiLogicServer/Docs/blob/main/docs/images/copilot.png?raw=true)
+![copilot](images/sample-ai/copilot/copilot.png)
 </details>
 
 <br>

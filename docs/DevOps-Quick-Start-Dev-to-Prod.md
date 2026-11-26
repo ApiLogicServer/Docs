@@ -12,7 +12,7 @@ You need:
 
 - The [DevOps Quick Start](DevOps-Quick-Start.md), steps 1-3 done: the Manager has a `basic_demo` project (with `add-cust`), and you can run containers (`$CONTAINER_CLI` is `docker` or `podman`).  Stop its container if it is still running: `$CONTAINER_CLI rm -f basic_demo`.
 - The Postgres container, running on port 5432 (Manager README, "Containers: Podman or Docker").
-- Release 17.05.45 or later.  Earlier projects lack `devops/docker-compose-prod/` and the secret check.
+- Release 17.05.46 or later.  Earlier projects lack `devops/docker-compose-prod/` and the secret check.
 
 Run the commands from the project folder, with the Manager's venv active:
 

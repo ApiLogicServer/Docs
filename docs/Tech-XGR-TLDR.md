@@ -97,7 +97,7 @@ Compliance proven, not asserted.
 
 ## Technology Notes
 
-**The rules engine is open source, proven infrastructure.** The commit-boundary enforcement architecture was first deployed commercially in the Versata engine in the late 1990s, and later in Live API Creator — the kind of infrastructure that takes a decade to get right, now rebuilt for the AI era. Every governed system runs on it continuously — this is infrastructure in the same sense as a database, not a tool you use once. For more, [click here](genai-logic.com).
+**The rules engine is open source, proven infrastructure.** The commit-boundary enforcement architecture was first deployed commercially in the Versata engine in the late 1990s, and later in Live API Creator — the kind of infrastructure that takes a decade to get right, now rebuilt for the AI era. Every governed system runs on it continuously — this is infrastructure in the same sense as a database, not a tool you use once. For more, [click here](https://www.genai-logic.com).
 
 **Context Engineering ensures rules, not code.** Directing AI to produce declarative rules rather than procedural code requires more than a well-crafted prompt. The current implementation is 8,000+ lines of curated, tested guidance, refined against real systems. It is why the pipeline produces rules by default — closing the procedural off-ramp that caused previous generations of declarative tooling to erode.
 

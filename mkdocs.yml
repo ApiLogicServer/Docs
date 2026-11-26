@@ -35,7 +35,7 @@ nav:
     - Upgrade Version: Install-Upgrade.md
   - Demos, Tutorial, Samples:
     - "Customs CLVS (EAI)": Customs-clvs-readme.md
-    - "Customs Surtax": Customs-readme-surtax
+    - "Customs Surtax": Customs-readme-surtax.md
     - "Allo Dept/GL": Sample_Allo_Dept_GL_readme.md
     - "Creating Demos": Manager-Demos.md
     - "Basic Demo": Sample-Basic-Demo.md
