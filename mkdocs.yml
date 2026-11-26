@@ -1,6 +1,7 @@
 site_name: GenAI-Logic
 site_description: Instantly Create and Run Database Projects - Flask, APIs, SQLAlchemy, React Apps, Rules, Low-Code
-repo_url: https://github.com/ApiLogicServer/ApiLogicServer-src
+repo_url: https://github.com/ApiLogicServer/ApiLogicServer-src   # header badge shows the product's version / stars
+edit_uri: https://github.com/ApiLogicServer/Docs/edit/main/docs/ # "edit this page" goes to the Docs repo (absolute, so repo_url can stay on the product)
 docs_dir: docs
 plugins:
   - search
@@ -18,6 +19,13 @@ theme:
     - kramdown
     - content.tooltips
     - navigation.footer
+    - content.code.copy        # copy button on code blocks
+    - content.action.edit      # "edit this page" (see edit_uri)
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.top           # back-to-top button
+    - toc.follow               # "On this Page" follows the scroll
 nav:
   - " ": index.md
   - "Introduction to GenAI-Logic": Introduction.md
@@ -334,7 +342,11 @@ markdown_extensions:
       auto_append:
         - includes/abbreviations.md
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:            # ```mermaid blocks render as diagrams (Material's built-in Mermaid support)
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true 
   - pymdownx.highlight:
@@ -345,8 +357,3 @@ markdown_extensions:
  
 extra_css:
   - stylesheets/extra.css
-  
-extra_javascript:
-  - https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js
-  - assets/javascripts/mermaid-init.js
-  - https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js
