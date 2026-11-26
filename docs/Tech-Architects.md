@@ -155,6 +155,8 @@ Requirements can be capture by having AI read regulations.  For example,
 
 ## Enterprise-class architecture
 
+**Architecture known in advance:** AI coding tools decide the architecture each time they run, so you review it each time.  Here the engines and the CE set it: APIs, messaging, AI and external calls through the Request Pattern, security.  You approve the architecture once, not each system the AI builds.
+
 Other CE elements automate systems with **rule-enabled access:**
 
 * **[Enterprise-class APIs](API.md){:target="_blank" rel="noopener"}:** pagination, [optimistic locking](API-Opt-Lock.md){:target="_blank" rel="noopener"}, filtering, sorting etc.  APIs are **automatically [MCP enabled](Integration-MCP.md){:target="_blank" rel="noopener"}**, so agents can invoke them with full deterministic logic enforcement.
