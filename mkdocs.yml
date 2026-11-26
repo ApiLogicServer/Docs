@@ -4,6 +4,7 @@ repo_url: https://github.com/ApiLogicServer/ApiLogicServer-src
 docs_dir: docs
 plugins:
   - search
+  - glightbox          # click an image to view it full screen; opt out per image with { .off-glb }
   - redirects:
       redirect_maps:
         'Exec-Reqmts-Process.md': 'Introduction.md'
