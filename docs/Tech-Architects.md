@@ -45,7 +45,7 @@ Description: Briefing
 1. Virtually any form of intent becomes rules ([Executable Requirements](#executable-requirements)),
 2. Every transaction source ([Enterprise-class Architecture](#enterprise-class-architecture)) is governed by them,
 3. Rules run at the commit funnel - automatically ordered, reused over all paths ([Business Logic](#business-logic-rules-not-code)),
-4. The same rules drive the governance reports ([Governance](#governance-proof-not-just-review)).
+4. The same rules drive the governance reports ([Governance](#governance-review-and-proof)).
 
 
 
@@ -107,7 +107,7 @@ Rules address both transaction logic and **Role Based Access Control.**
 
 **The output is rules even when the input reads procedurally:** [given the same procedural spec](Tech-Standard-Reqs.md){:target="_blank" rel="noopener"}, native AI built the insert path only, while this pipeline produced 5 rules covering every path.  [Repeated across projects](Tech-XGR.md){:target="_blank" rel="noopener"}, the result has been **rules every time**.
 
-This works particularly well with VSCode Agent Window, so **Developers and Business Users can share the same tools**.
+This works particularly well with the VSCode Agents Window, so **Developers and Business Users can share the same tools**.
 
 
 <details markdown>
@@ -131,22 +131,27 @@ Here is the created, logic-enabled system.  Business Users can **enter real tran
 
 &nbsp;
 
-### From New Initiatives
-
-Requirements come from a business idea, a backlog item, or an AI interview with the user.  Since the created system includes **test data and a UI**, business users can rapidly vet the backlog with **real logic running on real transactions**, not wireframes.
+Rules apply to any transactional system, so the question is which **business problem** you are solving:
 
 &nbsp;
 
-### From Modernization
+### New Initiatives: prototype in minutes, and keep it
 
-AI [extracts requirements from the legacy system](Modernization-Overview.md){:target="_blank" rel="noopener"}, and those requirements are fed to GenAI-Logic to create **rules** - modernizing the *logic*, rather than a platform port of the old code.
+Requirements come from a business idea, a backlog item, or an AI interview with the user.  A running prototype takes **10-20 minutes**, and since it includes **test data and a UI**, business users can vet the idea with **real logic running on real transactions**, not wireframes.  It is not a throw-away: it is an **enterprise architecture you iterate** into the production system.
 
 &nbsp;
 
-### From Regulations
+### Modernization: recover the logic, don't port the code
 
-Requirements can be capture by having AI read regulations.  For example, 
+A platform port, or an AI rewrite, leaves the business logic **still buried, in a new stack**.  Instead, AI [recovers the requirements from the legacy system](Modernization-Overview.md){:target="_blank" rel="noopener"}, GenAI-Logic rebuilds them as **rules you can read, trust, and maintain**, and a person reviews the judgment calls the AI recorded.  We have run this twice, including on [a real open-source ERP](Tech-Modernization-ERPNext.md){:target="_blank" rel="noopener"} we did not write.
 
+&nbsp;
+
+### Regulated Systems: prove compliance
+
+Requirements come from your own compliance specs, or AI can read the regulations directly.  Either way, the result is [an executed record you can hand an auditor](#governance-review-and-proof) (see below).  For example:
+
+* [Customs CLVS](Customs-clvs-readme.md){:target="_blank" rel="noopener"} - from internally written requirements, a rule-based system closes a $20m/yr audit exposure
 * [Customs Surtax](Customs-readme-surtax.md){:target="_blank" rel="noopener"} - "reg tech" system automated from web-based regulations
 
 <br>

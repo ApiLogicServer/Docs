@@ -20,7 +20,7 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
     Modernization is three steps:
 
     1. **Recover:** use AI to extract the requirements from the legacy system
-    2. **Rebuild:** use GenAI-Logic to rebuild it as declarative rules: spreadsheet-like statements such as `balance <= credit_limit`, run by an engine on every commit
+    2. **Rebuild:** use GenAI-Logic to rebuild the system with declarative rules: spreadsheet-like statements such as `balance <= credit_limit`, run by an engine on every commit
     3. **Review:** a person confirms the judgment calls the AI recorded where the requirements stopped
 
     The result is rules you can:
