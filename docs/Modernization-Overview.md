@@ -13,7 +13,7 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
 
 # Modernization: Recover the Requirements, Rebuild as Rules
 
-!!! pied-piper ":bulb: A tech port moves the code to a new stack, with the business logic still buried in it.  <br>A modernization recovers the requirements and rebuilds them as rules you can read, trust, and maintain."
+!!! pied-piper ":bulb: A *tech port* moves the code to a new stack, with the business logic still buried in it.  <br>&emsp;&nbsp;A *modernization* recovers the requirements as rules you can read, trust, and maintain."
 
     An AI rewrite is a port too, only faster: it recovers the requirements, then buries them again in new procedural code, and the documentation drift starts over.
 
