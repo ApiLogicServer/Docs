@@ -13,37 +13,30 @@ Pages: Tech-Modernization-Automation.md (controlled sample, demo_eai), Tech-Mode
 
 # Modernization: Recover the Requirements, Rebuild as Rules
 
-!!! pied-piper ":bulb: A rewrite buries the business policy again, in a new stack.  <br>Recover the requirements, and rebuild using rules you can read, trust, and maintain"
+!!! pied-piper ":bulb: A tech port moves the code to a new stack, with the business logic still buried in it.  <br>A modernization recovers the requirements and rebuilds them as rules you can read, trust, and maintain."
 
-    Legacy systems are opaque: business policy is buried in code written long ago.  A platform port (better performance, easier hiring) moves that opacity to a new stack; it doesn't remove it.  
-    
-    A straight AI rewrite does the same, faster.  It recovers the requirements, then buries them again in new procedural code, and the documentation drift starts over.  Governance needs to see how a system enforces policy, and needs a sound basis for evolving it.
+    An AI rewrite is a port too, only faster: it recovers the requirements, then buries them again in new procedural code, and the documentation drift starts over.
 
-    | | Platform port | Modernization |
-    |---|---|---|
-    | What moves | Code, stack 1 → stack 2 | Requirements, recovered as rules |
-    | Policy afterwards | Still buried, in new code | Readable, enforced, traced |
-
-    The alternative is three steps:
+    Modernization is three steps:
 
     1. **Recover:** use AI to extract the requirements from the legacy system
     2. **Rebuild:** use GenAI-Logic to rebuild it as declarative rules: spreadsheet-like statements such as `balance <= credit_limit`, run by an engine on every commit
     3. **Review:** a person confirms the judgment calls the AI recorded where the requirements stopped
 
-    The rebuilt system is not only modernized, it is governed by rules you can:
+    The result is rules you can:
 
     * **read:** rules are far more concise than the code they replace ([~40x in our credit-check comparison](https://github.com/ApiLogicServer/basic_demo/blob/main/logic/procedural/declarative-vs-procedural-comparison.md){:target="_blank" rel="noopener"}), and the engine manages the dependencies
     * **trust:** rules run automatically at commit time: every transaction source, every path, no bypass
     * **maintain:** rules are self-ordering, so you add a rule without execution-path archaeology and trust it will run, in the right order.  [More on why rules](Tech-Modernization-Automation.md#why-rules){:target="_blank" rel="noopener"}
 
-    The process also produces documents for managing it:
+The process also produces documents for managing it:
 
-    * The ad-libs report lists every judgment call the AI made, so a person can confirm them
-    * The Requirements Traceability Report lists the extracted requirements and their rules, plus the tests the system created, and confirms which rules ran
+* The ad-libs report lists every judgment call the AI made, so a person can confirm them
+* The Requirements Traceability Report lists the extracted requirements and their rules, plus the tests the system created, and confirms which rules ran
 
-    The rebuild covers the database, API, messaging, security, and business logic.  It does not address deployment or database migration.
+The rebuild covers the database, API, messaging, security, and business logic.  It does not address deployment or database migration.
 
-    We have run this twice, on small systems.  The results are encouraging.  We have not shown that a rebuild behaves the same as the original: see [what we can and cannot say](#what-we-can-and-cannot-say).
+We have run this twice, on small systems.  The results are encouraging.  We have not shown that a rebuild behaves the same as the original: see [what we can and cannot say](#what-we-can-and-cannot-say).
 
 &nbsp;
 
