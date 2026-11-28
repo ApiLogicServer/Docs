@@ -182,7 +182,7 @@ Key take-aways:
 
 * The save fails — note the dialog.  The **dialog is governance in action.**
 * **First thing to check: read the rules.** The API and Admin App are mechanical; open `logic/logic_discovery/place_order/check_credit.py` in your project — that's where "is it right?" is decided.
-* That's 5 rules — not ~200 lines of code — governing this transaction across four tables. **Not what you'd get if you'd asked AI alone.** Let's explore.
+* That's 5 rules — not ~220 lines of code — governing this transaction across four tables. **Not what you'd get if you'd asked AI alone.** Let's explore.
 
 </details>
 
@@ -197,19 +197,19 @@ Key take-aways:
 Left unguided, any AI assistant — including the one that just built basic_demo for you — generates a running system from this requirement. On inspection, we found three problems:
 
 <details markdown>
-<summary>&emsp;&emsp;<strong>Not readable</strong> — you can't govern what you can't read (5 vs ~200 lines)</summary>
+<summary>&emsp;&emsp;<strong>Not readable</strong> — you can't govern what you can't read (5 vs ~220 lines)</summary>
 
-<br>**~200 lines** of procedural code — ***hard to read, intent unclear*:**
-![~200 lines of procedural credit-check code, for the same 5 requirements 5 declarative rules cover](images/manager/readme/credit_service.png)
+<br>**~220 lines** of procedural code — ***hard to read, intent unclear*:**
+![~220 lines of procedural credit-check code, for the same 5 requirements 5 declarative rules cover](images/manager/readme/credit_service.png)
 
-Same 5 requirements from the Check Credit prompt in "The Ideal" above — handed to AI with no guidance, it generated this: [procedural/credit_service.py](samples/basic_demo_logic_gov/logic/procedural/credit_service.py) — **~200 lines**. Open it and judge for yourself.
+Same 5 requirements from the Check Credit prompt in "The Ideal" above — handed to AI with no guidance, it generated this: [procedural/credit_service.py](samples/basic_demo_logic_gov/logic/procedural/credit_service.py) — **~220 lines**. Open it and judge for yourself.
 
 **5 declarative rules — *readable* at a glance:**
 ![5 declarative rules for check_credit — the same 5 requirements, readable in seconds](images/manager/readme/check_credit.png)
 
 [logic_discovery/place_order/check_credit.py](samples/basic_demo_logic_gov/logic/logic_discovery/place_order/check_credit.py) — same 5 requirements, same AI.
 
-~200 lines is a **demo-scale** number — a real system runs 1-2 orders of magnitude more requirements, and proportionally more procedural code to match. That's why **business logic ends up as roughly half the total effort on a real system**. Nobody can audit that at a glance — not the next developer, not compliance, not you in six months. At that scale, an auditor can't read it all — they can only sample, and hope.
+~220 lines is a **demo-scale** number — a real system runs 1-2 orders of magnitude more requirements, and proportionally more procedural code to match. That's why **business logic ends up as roughly half the total effort on a real system**. Nobody can audit that at a glance — not the next developer, not compliance, not you in six months. At that scale, an auditor can't read it all — they can only sample, and hope.
 
 </details>
 
@@ -299,7 +299,7 @@ That's not (only) a capability gap — it's what happens when dependencies are e
 3. **Admin App** — multi-table, with navigations and lookups (`ui/admin/admin.yaml` — simple YAML, not HTML/JS)
 4. **Business logic** — [logic_discovery/place_order/check_credit.py](samples/basic_demo_logic_gov/logic/logic_discovery/place_order/check_credit.py) — 5 rules (~40X less), same requirements, same AI, 0 bugs
 
-**Difference 2: the logic itself is declarative.** 5 lines, intent still clear — not ~200 lines of procedural frankencode. That's what declarative buys — more on that below.
+**Difference 2: the logic itself is declarative.** 5 lines, intent still clear — not ~220 lines of procedural frankencode. That's what declarative buys — more on that below.
 
 It's plain Python — standard tooling applies. Security is opt-in, not default — bootstrap RBAC anytime with `genai-logic add-auth`.
 
@@ -350,7 +350,7 @@ To change a requirement later, edit its `requirements.md` and say "implement req
 <br>The "Change it" example above — like maintenance generally — was remarkably simple, because **rules are declarative:**
 
 - **No need to call the new logic.** Rules are invoked automatically - regardless of the originating path.  You can **trust** that they'll always run.
-- **Order doesn't matter.** Open `check_credit.py` and shuffle the five rules into any order you like. Rerun — still correct. Try that with 200 lines of procedural code.  You can **trust** that they'll run in the right order.
+- **Order doesn't matter.** Open `check_credit.py` and shuffle the five rules into any order you like. Rerun — still correct. Try that with 220 lines of procedural code.  You can **trust** that they'll run in the right order.
 - **You got more than you asked for.** The original requirement said *"On Placing Orders, Check Credit"* — insert time. But the save that failed was an *edit* to an existing order. Nobody wrote an update-time check.
 
 Functions don't behave like that. So why is that? **Traditional logic is procedural** — you own *how*: when it's called, and in what order. **Declarative logic — rules** — is about *what*, not how: you state the fact, and the system takes responsibility for invocation and ordering.
