@@ -217,6 +217,10 @@ Standard JSON:APIs enable the use of [**Vibe tools**](Admin-Vibe.md){:target="_b
 
 <br>
 
+For the developer's view, see the [Developers Brief](Tech-Developers.md){:target="_blank" rel="noopener"}.
+
+<br>
+
 [^1]: **Boundaries** - where the guarantees stop, and where the approach does not fit:
 
     * **Writes around the logic tier:** every write through the logic tier (the application's data layer, where the rules are hooked in) is governed.  As in any 3-tier system, direct database access around that tier is outside this guarantee.  [More on no-bypass](FAQ-Rules-Learning.md#trust-on-commit-no-bypass){:target="_blank" rel="noopener"}.

@@ -194,6 +194,7 @@ nav:
     - "ERPNext": Tech-Modernization-ERPNext.md
   - Architecture:
     - "Architects Brief": Tech-Architects.md
+    - "Developers Brief": Tech-Developers.md
     - "What is API Logic Server": Architecture-What-Is.md
     - "What is GenAI-Logic": Architecture-What-Is-GenAI.md
     - "Project Operation": Architecture-Project-Operation.md
