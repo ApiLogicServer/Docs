@@ -16,9 +16,9 @@ Description: Briefing
 
     AI is remarkable at generating code, but **hard to govern:**
     
-    * the *requirements* are incomplete, and AI fills the gaps with **guesses you never see.**  How can you govern what you can't see?
-    * the *generated code* is **hard to read and trust**.  How can you govern what you can't read?
-    * and you still need to prove it does what you asked - **testing is the new bottleneck**.  How can you govern what you can't prove?
+    * the *requirements* are incomplete, and AI fills the gaps with **guesses you never see.**<br>:material-alert-outline: How can you govern what you can't see?
+    * the *generated code* is **hard to read and trust**.<br>:material-alert-outline: How can you govern what you can't read?
+    * and you still need to prove it does what you asked - **testing is the new bottleneck**.<br>:material-alert-outline: How can you govern what you can't prove?
 
     <br>**The answer:** Context Engineering (CE) directs AI to **translate requirements into rules, not code**. So you can adopt AI **prudently**:
 
@@ -31,9 +31,9 @@ Description: Briefing
 
     For a related article, [Click Here - What Did AI Build?](Tech-RTP.md){:target="_blank" rel="noopener"}
 
-    **See every claim in one system:** the [EAI sample](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} was built by AI from six requirements: rules, a B2B API, Kafka in and out, security, and a dashboard showing the business is flowing.  Its judgment calls, rules and traceability report are the evidence for each claim above.
+    **See every claim in one system:** an enterprise-class system, created from requirements and governed by rules you can read, trust and maintain. The [EAI sample](Sample-Basic-EAI.md){:target="_blank" rel="noopener"} was built by AI from six requirements: rules, a B2B API, Kafka in and out, security, and a dashboard showing the business is flowing.  Its judgment calls, rules and traceability report are the evidence for each claim above.
 
-    **Try it in 10 minutes:** [First Time Here](Manager-readme.md#first-time-here){:target="_blank" rel="noopener"} - paste one prompt, run the system, and watch a rule reject a bad save.
+    **Explore it, or rebuild it:** [Install Express](Install-Express.md){:target="_blank" rel="noopener"} - two steps: install, then create and start the Manager - or use it in your browser with [Codespaces](https://github.com/codespaces/new/ApiLogicServer/codespaces_mgr){:target="_blank" rel="noopener"}, with nothing to install. The systems above come pre-built in it, with their rules, tests and traceability report, so you can open the code, run one, and watch a rule reject a bad save. Or paste the one-prompt requirements and have AI rebuild it.
 
 
 <br>
