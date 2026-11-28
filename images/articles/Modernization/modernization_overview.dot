@@ -1,0 +1,14 @@
+digraph G {
+  rankdir=TB; nodesep=0.4; ranksep=0.6; bgcolor="white";
+  node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", fillcolor="#f4f6f8", color="#5b6b7a", fontcolor="#1d2733", margin="0.18,0.12"];
+  edge [fontname="Helvetica", fontsize=10, color="#5b6b7a", fontcolor="#1d2733"];
+
+  leg  [label=<<b>Legacy system</b><br/><font point-size="10">code and tests<br/>policy hidden in the code</font>>, fillcolor="#fdf1e3", color="#b9783a"];
+  req  [label=<<b>Requirements</b><br/><font point-size="10">plain language<br/>what the code does</font>>];
+  mod  [label=<<b>Modernized system</b><br/><font point-size="10">governed by rules<br/>tests<br/>traceability report</font>>, fillcolor="#e4f3ea", color="#3d8a5c"];
+  adl  [label=<<b>Judgment calls</b><br/><font point-size="10">what the AI decided<br/>beyond the requirements</font>>, fillcolor="#fff8d9", color="#b59a2a"];
+
+  leg -> req [label=" 1. Recover\n AI reads the code"];
+  req -> mod [label=" 2. Rebuild\n AI + GenAI-Logic"];
+  mod -> adl [label=" 3. Review\n a person decides", style=dashed];
+}
